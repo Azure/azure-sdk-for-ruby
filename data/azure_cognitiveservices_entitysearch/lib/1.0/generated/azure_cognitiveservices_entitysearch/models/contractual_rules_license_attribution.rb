@@ -32,7 +32,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContractualRules/LicenseAttribution',
           type: {
@@ -40,7 +39,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
             class_name: 'ContractualRulesLicenseAttribution',
             model_properties: {
               target_property_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'targetPropertyName',
@@ -49,7 +47,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -57,7 +54,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               must_be_close_to_content: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'mustBeCloseToContent',
@@ -66,7 +62,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               license: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'license',
@@ -76,7 +71,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               license_notice: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'licenseNotice',

@@ -11,13 +11,13 @@ module Azure::Profiles::V2018_03_01
       ManagementLocks = Azure::Locks::Mgmt::V2016_09_01::ManagementLocks
 
       module Models
+        OperationDisplay = Azure::Locks::Mgmt::V2016_09_01::Models::OperationDisplay
         ManagementLockOwner = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
         Operation = Azure::Locks::Mgmt::V2016_09_01::Models::Operation
         ManagementLockListResult = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
         OperationListResult = Azure::Locks::Mgmt::V2016_09_01::Models::OperationListResult
         ManagementLockObject = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
         LockLevel = Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
-        OperationDisplay = Azure::Locks::Mgmt::V2016_09_01::Models::OperationDisplay
       end
 
       class LocksManagementClass
@@ -51,6 +51,9 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def operation_display
+            Azure::Locks::Mgmt::V2016_09_01::Models::OperationDisplay
+          end
           def management_lock_owner
             Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
           end
@@ -68,9 +71,6 @@ module Azure::Profiles::V2018_03_01
           end
           def lock_level
             Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
-          end
-          def operation_display
-            Azure::Locks::Mgmt::V2016_09_01::Models::OperationDisplay
           end
         end
       end

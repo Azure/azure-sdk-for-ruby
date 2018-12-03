@@ -46,7 +46,7 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       # full name, United States.
       attr_accessor :address_country
 
-      # @return [String] The two letter ISO code of this countr. For example,
+      # @return [String] The two letter ISO code of this country. For example,
       # US.
       attr_accessor :country_iso
 
@@ -68,7 +68,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PostalAddress',
           type: {
@@ -76,7 +75,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
             class_name: 'PostalAddress',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -84,7 +82,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -93,14 +90,12 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               contractual_rules: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'contractualRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContractualRulesContractualRuleElementType',
                       type: {
@@ -113,7 +108,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -122,7 +116,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -131,7 +124,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'url',
@@ -140,7 +132,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               image: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'image',
@@ -150,7 +141,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',
@@ -159,7 +149,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               entity_presentation_info: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'entityPresentationInfo',
@@ -169,7 +158,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               bing_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'bingId',
@@ -178,7 +166,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               street_address: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'streetAddress',
@@ -187,7 +174,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               address_locality: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'addressLocality',
@@ -196,7 +182,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               address_subregion: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'addressSubregion',
@@ -205,7 +190,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               address_region: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'addressRegion',
@@ -214,7 +198,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               postal_code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'postalCode',
@@ -223,7 +206,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               post_office_box_number: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'postOfficeBoxNumber',
@@ -232,7 +214,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               address_country: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'addressCountry',
@@ -241,7 +222,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               country_iso: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'countryIso',
@@ -250,7 +230,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               neighborhood: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'neighborhood',
@@ -259,7 +238,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               address_region_abbreviation: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'addressRegionAbbreviation',
@@ -268,7 +246,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               text: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'text',

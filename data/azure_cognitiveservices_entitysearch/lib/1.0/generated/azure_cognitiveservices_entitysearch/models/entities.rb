@@ -43,7 +43,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Entities',
           type: {
@@ -51,7 +50,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
             class_name: 'Entities',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -59,7 +57,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,14 +65,12 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               contractual_rules: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'contractualRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContractualRulesContractualRuleElementType',
                       type: {
@@ -88,7 +83,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -97,7 +91,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               query_context: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'queryContext',
@@ -107,7 +100,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               query_scenario: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'queryScenario',
@@ -117,13 +109,11 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ThingElementType',
                       type: {

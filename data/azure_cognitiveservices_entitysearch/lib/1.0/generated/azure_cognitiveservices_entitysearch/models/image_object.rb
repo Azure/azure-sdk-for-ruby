@@ -29,7 +29,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageObject',
           type: {
@@ -37,7 +36,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
             class_name: 'ImageObject',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -45,7 +43,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -54,14 +51,12 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               contractual_rules: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'contractualRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContractualRulesContractualRuleElementType',
                       type: {
@@ -74,7 +69,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -83,7 +77,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -92,7 +85,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'url',
@@ -101,7 +93,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               image: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'image',
@@ -111,7 +102,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',
@@ -120,7 +110,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               entity_presentation_info: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'entityPresentationInfo',
@@ -130,7 +119,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               bing_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'bingId',
@@ -139,7 +127,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               thumbnail_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'thumbnailUrl',
@@ -148,14 +135,12 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               provider: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ThingElementType',
                       type: {
@@ -166,7 +151,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               text: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'text',
@@ -175,7 +159,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               content_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'contentUrl',
@@ -184,7 +167,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               host_page_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'hostPageUrl',
@@ -193,7 +175,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               width: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'width',
@@ -202,7 +183,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               height: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'height',
@@ -211,7 +191,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               thumbnail: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'thumbnail',

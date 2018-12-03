@@ -34,7 +34,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Entities/EntityPresentationInfo',
           type: {
@@ -42,7 +41,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
             class_name: 'EntitiesEntityPresentationInfo',
             model_properties: {
               entity_scenario: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'entityScenario',
                 default_value: 'DominantEntity',
@@ -51,14 +49,12 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               entity_type_hints: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'entityTypeHints',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EntityTypeElementType',
                       type: {
@@ -68,7 +64,6 @@ module Azure::CognitiveServices::EntitySearch::V1_0
                 }
               },
               entity_type_display_hint: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'entityTypeDisplayHint',
