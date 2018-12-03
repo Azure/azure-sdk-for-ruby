@@ -29,7 +29,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorDetail',
           type: {
@@ -37,7 +36,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'ErrorDetail',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -45,7 +43,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -53,7 +50,6 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
