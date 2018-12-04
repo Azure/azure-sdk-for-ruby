@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # A landmark recognized in the image
+    # A landmark recognized in the image.
     #
     class LandmarksModel
 
@@ -15,7 +15,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # @return [String] Name of the landmark.
       attr_accessor :name
 
-      # @return [Float] Confidence level for the landmark recognition.
+      # @return [Float] Confidence level for the landmark recognition as a
+      # value ranging from 0 to 1.
       attr_accessor :confidence
 
 
@@ -25,7 +26,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LandmarksModel',
           type: {
@@ -33,7 +33,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'LandmarksModel',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -41,7 +40,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               confidence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'confidence',
                 type: {

@@ -6,65 +6,65 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # An object describing face rectangle.
+    # A bounding box for an area inside an image.
     #
-    class FaceRectangle
+    class BoundingRect
 
       include MsRestAzure
 
-      # @return [Integer] X-coordinate of the top left point of the face, in
+      # @return [Integer] X-coordinate of the top left point of the area, in
       # pixels.
-      attr_accessor :left
+      attr_accessor :x
 
-      # @return [Integer] Y-coordinate of the top left point of the face, in
+      # @return [Integer] Y-coordinate of the top left point of the area, in
       # pixels.
-      attr_accessor :top
+      attr_accessor :y
 
-      # @return [Integer] Width measured from the top-left point of the face,
+      # @return [Integer] Width measured from the top-left point of the area,
       # in pixels.
-      attr_accessor :width
+      attr_accessor :w
 
-      # @return [Integer] Height measured from the top-left point of the face,
+      # @return [Integer] Height measured from the top-left point of the area,
       # in pixels.
-      attr_accessor :height
+      attr_accessor :h
 
 
       #
-      # Mapper for FaceRectangle class as Ruby Hash.
+      # Mapper for BoundingRect class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'FaceRectangle',
+          serialized_name: 'BoundingRect',
           type: {
             name: 'Composite',
-            class_name: 'FaceRectangle',
+            class_name: 'BoundingRect',
             model_properties: {
-              left: {
+              x: {
                 required: false,
-                serialized_name: 'left',
+                serialized_name: 'x',
                 type: {
                   name: 'Number'
                 }
               },
-              top: {
+              y: {
                 required: false,
-                serialized_name: 'top',
+                serialized_name: 'y',
                 type: {
                   name: 'Number'
                 }
               },
-              width: {
+              w: {
                 required: false,
-                serialized_name: 'width',
+                serialized_name: 'w',
                 type: {
                   name: 'Number'
                 }
               },
-              height: {
+              h: {
                 required: false,
-                serialized_name: 'height',
+                serialized_name: 'h',
                 type: {
                   name: 'Number'
                 }

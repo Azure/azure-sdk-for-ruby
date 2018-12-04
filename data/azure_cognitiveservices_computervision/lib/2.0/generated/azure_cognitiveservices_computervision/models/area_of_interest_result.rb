@@ -6,15 +6,15 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # The results of a image tag operation, including any tags and image
-    # metadata.
+    # Result of AreaOfInterest operation.
     #
-    class TagResult
+    class AreaOfInterestResult
 
       include MsRestAzure
 
-      # @return [Array<ImageTag>] A list of tags with confidence level.
-      attr_accessor :tags
+      # @return [BoundingRect] A bounding box for an area of interest inside an
+      # image.
+      attr_accessor :area_of_interest
 
       # @return [String] Id of the REST API request.
       attr_accessor :request_id
@@ -24,30 +24,24 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
 
       #
-      # Mapper for TagResult class as Ruby Hash.
+      # Mapper for AreaOfInterestResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TagResult',
+          serialized_name: 'AreaOfInterestResult',
           type: {
             name: 'Composite',
-            class_name: 'TagResult',
+            class_name: 'AreaOfInterestResult',
             model_properties: {
-              tags: {
+              area_of_interest: {
                 required: false,
-                serialized_name: 'tags',
+                read_only: true,
+                serialized_name: 'areaOfInterest',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'ImageTagElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'ImageTag'
-                      }
-                  }
+                  name: 'Composite',
+                  class_name: 'BoundingRect'
                 }
               },
               request_id: {

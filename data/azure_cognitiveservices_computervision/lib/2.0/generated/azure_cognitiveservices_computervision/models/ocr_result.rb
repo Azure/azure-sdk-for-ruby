@@ -29,9 +29,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       attr_accessor :text_angle
 
       # @return [String] Orientation of the text recognized in the image. The
-      # value (up,down,left, or right) refers to the direction that the top of
-      # the recognized text is facing, after the image has been rotated around
-      # its center according to the detected text angle (see textAngle
+      # value (up, down, left, or right) refers to the direction that the top
+      # of the recognized text is facing, after the image has been rotated
+      # around its center according to the detected text angle (see textAngle
       # property).
       attr_accessor :orientation
 
@@ -46,7 +46,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OcrResult',
           type: {
@@ -54,7 +53,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'OcrResult',
             model_properties: {
               language: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'language',
                 type: {
@@ -62,7 +60,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               text_angle: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'textAngle',
                 type: {
@@ -70,7 +67,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               orientation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'orientation',
                 type: {
@@ -78,13 +74,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               regions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'regions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OcrRegionElementType',
                       type: {

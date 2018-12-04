@@ -19,7 +19,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # 'Male', 'Female'
       attr_accessor :gender
 
-      # @return [FaceRectangle]
+      # @return [FaceRectangle] Rectangle in the image containing the
+      # identified face.
       attr_accessor :face_rectangle
 
 
@@ -29,7 +30,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FaceDescription',
           type: {
@@ -37,7 +37,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'FaceDescription',
             model_properties: {
               age: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'age',
                 type: {
@@ -45,7 +44,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               gender: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gender',
                 type: {
@@ -54,7 +52,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               face_rectangle: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'faceRectangle',
                 type: {

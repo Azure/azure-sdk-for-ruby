@@ -6,13 +6,14 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # List of celebrities recognized in the image.
+    # Result of domain-specific classifications for the domain of celebrities.
     #
     class CelebrityResults
 
       include MsRestAzure
 
-      # @return [Array<CelebritiesModel>]
+      # @return [Array<CelebritiesModel>] List of celebrities recognized in the
+      # image.
       attr_accessor :celebrities
 
       # @return [String] Id of the REST API request.
@@ -28,7 +29,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CelebrityResults',
           type: {
@@ -36,13 +36,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'CelebrityResults',
             model_properties: {
               celebrities: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'celebrities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CelebritiesModelElementType',
                       type: {
@@ -53,7 +51,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {
@@ -61,7 +58,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {

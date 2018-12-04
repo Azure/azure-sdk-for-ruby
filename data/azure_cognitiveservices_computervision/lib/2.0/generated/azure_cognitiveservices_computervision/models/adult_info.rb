@@ -17,11 +17,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # adult-oriented content.
       attr_accessor :is_adult_content
 
-      # @return [Boolean] A value indicating if the image is race.
+      # @return [Boolean] A value indicating if the image is racy.
       attr_accessor :is_racy_content
 
-      # @return [Float] Score from 0 to 1 that indicates how much of adult
-      # content is within the image.
+      # @return [Float] Score from 0 to 1 that indicates how much the content
+      # is considered adult-oriented within the image.
       attr_accessor :adult_score
 
       # @return [Float] Score from 0 to 1 that indicates how suggestive is the
@@ -35,7 +35,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AdultInfo',
           type: {
@@ -43,7 +42,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'AdultInfo',
             model_properties: {
               is_adult_content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isAdultContent',
                 type: {
@@ -51,7 +49,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               is_racy_content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isRacyContent',
                 type: {
@@ -59,7 +56,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               adult_score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'adultScore',
                 type: {
@@ -67,7 +63,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               racy_score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'racyScore',
                 type: {
