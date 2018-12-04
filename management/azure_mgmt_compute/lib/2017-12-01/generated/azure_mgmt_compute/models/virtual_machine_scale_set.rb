@@ -46,7 +46,7 @@ module Azure::Compute::Mgmt::V2017_12_01
       # placement group, of max size 100 virtual machines.
       attr_accessor :single_placement_group
 
-      # @return [Boolean] Whether to force stictly even Virtual Machine
+      # @return [Boolean] Whether to force strictly even Virtual Machine
       # distribution cross x-zones in case there is zone outage.
       attr_accessor :zone_balance
 
