@@ -665,7 +665,7 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
     # @param account_name [String] The name of the cognitive services account
-    # within the specified resource group. Congitive Services account names must be
+    # within the specified resource group. Cognitive Services account names must be
     # between 3 and 24 characters in length and use numbers and lower-case letters
     # only.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -684,7 +684,7 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
     # @param account_name [String] The name of the cognitive services account
-    # within the specified resource group. Congitive Services account names must be
+    # within the specified resource group. Cognitive Services account names must be
     # between 3 and 24 characters in length and use numbers and lower-case letters
     # only.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -702,7 +702,7 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
     # @param account_name [String] The name of the cognitive services account
-    # within the specified resource group. Congitive Services account names must be
+    # within the specified resource group. Cognitive Services account names must be
     # between 3 and 24 characters in length and use numbers and lower-case letters
     # only.
     # @param [Hash{String => String}] A hash of custom headers that will be added
