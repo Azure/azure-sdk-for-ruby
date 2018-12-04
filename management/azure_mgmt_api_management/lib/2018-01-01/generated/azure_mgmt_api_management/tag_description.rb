@@ -361,7 +361,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Create/Update tag fescription in scope of the Api.
+    # Create/Update tag description in scope of the Api.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -384,7 +384,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Create/Update tag fescription in scope of the Api.
+    # Create/Update tag description in scope of the Api.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -406,7 +406,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Create/Update tag fescription in scope of the Api.
+    # Create/Update tag description in scope of the Api.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.

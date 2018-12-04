@@ -13,7 +13,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       include MsRestAzure
 
       # @return [Duration] Duration in ISO8601 format after which reconnect
-      # will be initiated. Minimum duration of the Reconect is PT2M.
+      # will be initiated. Minimum duration of the Reconnect is PT2M.
       attr_accessor :after
 
 
