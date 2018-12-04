@@ -25,7 +25,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # @return [String] The port number for discovery.
       attr_accessor :port
 
-      # @return [String] The CS account Id which has priviliges to update the
+      # @return [String] The CS account Id which has privileges to update the
       # vCenter.
       attr_accessor :run_as_account_id
 

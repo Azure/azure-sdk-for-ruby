@@ -18,7 +18,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # @return [String] VCenter internal ID.
       attr_accessor :internal_id
 
-      # @return [DateTime] The time when the last heartbeat was reveived by
+      # @return [DateTime] The time when the last heartbeat was received by
       # vCenter.
       attr_accessor :last_heartbeat
 

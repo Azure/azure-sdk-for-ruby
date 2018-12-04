@@ -215,7 +215,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # The operation to update a registered vCenter.
     #
     # @param fabric_name [String] Fabric name.
-    # @param v_center_name [String] vCeneter name
+    # @param v_center_name [String] vCenter name
     # @param update_vcenter_request [UpdateVCenterRequest] The input to the update
     # vCenter operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -230,7 +230,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
     #
     # @param fabric_name [String] Fabric name.
-    # @param v_center_name [String] vCeneter name
+    # @param v_center_name [String] vCenter name
     # @param update_vcenter_request [UpdateVCenterRequest] The input to the update
     # vCenter operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -655,7 +655,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # The operation to update a registered vCenter.
     #
     # @param fabric_name [String] Fabric name.
-    # @param v_center_name [String] vCeneter name
+    # @param v_center_name [String] vCenter name
     # @param update_vcenter_request [UpdateVCenterRequest] The input to the update
     # vCenter operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -674,7 +674,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # The operation to update a registered vCenter.
     #
     # @param fabric_name [String] Fabric name.
-    # @param v_center_name [String] vCeneter name
+    # @param v_center_name [String] vCenter name
     # @param update_vcenter_request [UpdateVCenterRequest] The input to the update
     # vCenter operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -692,7 +692,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # The operation to update a registered vCenter.
     #
     # @param fabric_name [String] Fabric name.
-    # @param v_center_name [String] vCeneter name
+    # @param v_center_name [String] vCenter name
     # @param update_vcenter_request [UpdateVCenterRequest] The input to the update
     # vCenter operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added

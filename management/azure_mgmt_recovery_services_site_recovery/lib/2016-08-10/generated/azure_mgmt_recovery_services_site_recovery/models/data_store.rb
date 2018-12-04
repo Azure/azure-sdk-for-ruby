@@ -6,7 +6,7 @@
 module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   module Models
     #
-    # The datastore details of the MT.
+    # The data store details of the MT.
     #
     class DataStore
 

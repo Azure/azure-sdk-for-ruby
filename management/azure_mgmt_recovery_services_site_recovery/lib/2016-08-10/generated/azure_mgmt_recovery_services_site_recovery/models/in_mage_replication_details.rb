@@ -122,8 +122,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # null.
       attr_accessor :azure_storage_account_id
 
-      # @return [Array<String>] The datastores of the on-premise machine Value
-      # can be list of strings that contain datastore names
+      # @return [Array<String>] The data stores of the on-premise machine Value
+      # can be list of strings that contain data store names
       attr_accessor :datastores
 
       # @return [Array<HealthError>] The validation errors of the on-premise

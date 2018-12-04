@@ -31,7 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # @return [String] The CS account Id.
       attr_accessor :run_as_account_id
 
-      # @return [String] The target datastore name.
+      # @return [String] The target data store name.
       attr_accessor :datastore_name
 
       # @return [InMageDiskExclusionInput] The enable disk exclusion input.

@@ -6,7 +6,7 @@
 module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   module Models
     #
-    # Recovery plan updation properties.
+    # Recovery plan update properties.
     #
     class UpdateRecoveryPlanInputProperties
 

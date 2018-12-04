@@ -11,7 +11,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # difference in structure or method signature. Since there were no base
     # Models for certain fields and methods viz NetworkMappingProperties and
     # Load with required return type, the class has been introduced in its
-    # entirety with references to base models to facilitate exensions in
+    # entirety with references to base models to facilitate extensions in
     # subsequent versions.
     #
     class NetworkMapping < Resource

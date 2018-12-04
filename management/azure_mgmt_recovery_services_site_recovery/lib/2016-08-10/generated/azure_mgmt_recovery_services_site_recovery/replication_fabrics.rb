@@ -328,7 +328,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     end
 
     #
-    # Creates an Azure Site Recoery fabric.
+    # Creates an Azure Site Recovery fabric.
     #
     # The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site)
     #
@@ -989,7 +989,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     end
 
     #
-    # Creates an Azure Site Recoery fabric.
+    # Creates an Azure Site Recovery fabric.
     #
     # The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site)
     #
@@ -1006,7 +1006,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     end
 
     #
-    # Creates an Azure Site Recoery fabric.
+    # Creates an Azure Site Recovery fabric.
     #
     # The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site)
     #
@@ -1022,7 +1022,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     end
 
     #
-    # Creates an Azure Site Recoery fabric.
+    # Creates an Azure Site Recovery fabric.
     #
     # The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site)
     #

@@ -12,7 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
-      # @return [StorageClassificationProperties] Proprties of the storage
+      # @return [StorageClassificationProperties] Properties of the storage
       # object.
       attr_accessor :properties
 

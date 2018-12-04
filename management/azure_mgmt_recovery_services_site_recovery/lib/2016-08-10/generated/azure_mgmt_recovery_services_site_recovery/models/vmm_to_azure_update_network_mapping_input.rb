@@ -6,7 +6,7 @@
 module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   module Models
     #
-    # Update network mappings input properties/behaviour specific to vmm to
+    # Update network mappings input properties/behavior specific to vmm to
     # azure.
     #
     class VmmToAzureUpdateNetworkMappingInput < FabricSpecificUpdateNetworkMappingInput

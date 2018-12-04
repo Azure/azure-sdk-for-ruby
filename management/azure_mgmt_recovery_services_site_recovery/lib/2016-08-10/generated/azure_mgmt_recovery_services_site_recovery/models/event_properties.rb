@@ -29,7 +29,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # @return [String] The severity of the event.
       attr_accessor :severity
 
-      # @return [DateTime] The time of occurence of the event.
+      # @return [DateTime] The time of occurrence of the event.
       attr_accessor :time_of_occurrence
 
       # @return [String] The ARM ID of the fabric.
