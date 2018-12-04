@@ -265,8 +265,8 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     #
     # @return [News] operation results.
     #
-    def search(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, freshness:nil, market:nil, offset:nil, original_image:nil, safe_search:nil, set_lang:nil, sort_by:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
-      response = search_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, count:count, freshness:freshness, market:market, offset:offset, original_image:original_image, safe_search:safe_search, set_lang:set_lang, sort_by:sort_by, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
+    def search(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, count = nil, freshness = nil, market = nil, offset = nil, original_image = nil, safe_search = nil, set_lang = nil, sort_by = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+      response = search_async(query, accept_language, user_agent, client_id, client_ip, location, country_code, count, freshness, market, offset, original_image, safe_search, set_lang, sort_by, text_decorations, text_format, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -509,8 +509,8 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def search_with_http_info(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, freshness:nil, market:nil, offset:nil, original_image:nil, safe_search:nil, set_lang:nil, sort_by:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
-      search_async(query, accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, count:count, freshness:freshness, market:market, offset:offset, original_image:original_image, safe_search:safe_search, set_lang:set_lang, sort_by:sort_by, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
+    def search_with_http_info(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, count = nil, freshness = nil, market = nil, offset = nil, original_image = nil, safe_search = nil, set_lang = nil, sort_by = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+      search_async(query, accept_language, user_agent, client_id, client_ip, location, country_code, count, freshness, market, offset, original_image, safe_search, set_lang, sort_by, text_decorations, text_format, custom_headers).value!
     end
 
     #
@@ -752,13 +752,13 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def search_async(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, freshness:nil, market:nil, offset:nil, original_image:nil, safe_search:nil, set_lang:nil, sort_by:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+    def search_async(query, accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, count = nil, freshness = nil, market = nil, offset = nil, original_image = nil, safe_search = nil, set_lang = nil, sort_by = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -771,6 +771,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
       path_template = 'news/search'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -808,11 +809,11 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     end
 
     #
-    # The News Category API lets lets you search on Bing and get back a list of top
-    # news articles by category. This section provides technical details about the
-    # query parameters and headers that you use to request news and the JSON
-    # response objects that contain them.  For examples that show how to make
-    # requests, see [Searching the web for
+    # The News Category API lets you search on Bing and get back a list of top news
+    # articles by category. This section provides technical details about the query
+    # parameters and headers that you use to request news and the JSON response
+    # objects that contain them.  For examples that show how to make requests, see
+    # [Searching the web for
     # news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
     #
     # @param accept_language [String] A comma-delimited list of one or more
@@ -1048,17 +1049,17 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     #
     # @return [News] operation results.
     #
-    def category(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, category:nil, count:nil, headline_count:nil, market:nil, offset:nil, original_image:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
-      response = category_async(accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, category:category, count:count, headline_count:headline_count, market:market, offset:offset, original_image:original_image, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
+    def category(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, category = nil, count = nil, headline_count = nil, market = nil, offset = nil, original_image = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+      response = category_async(accept_language, user_agent, client_id, client_ip, location, country_code, category, count, headline_count, market, offset, original_image, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The News Category API lets lets you search on Bing and get back a list of top
-    # news articles by category. This section provides technical details about the
-    # query parameters and headers that you use to request news and the JSON
-    # response objects that contain them.  For examples that show how to make
-    # requests, see [Searching the web for
+    # The News Category API lets you search on Bing and get back a list of top news
+    # articles by category. This section provides technical details about the query
+    # parameters and headers that you use to request news and the JSON response
+    # objects that contain them.  For examples that show how to make requests, see
+    # [Searching the web for
     # news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
     #
     # @param accept_language [String] A comma-delimited list of one or more
@@ -1294,16 +1295,16 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def category_with_http_info(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, category:nil, count:nil, headline_count:nil, market:nil, offset:nil, original_image:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
-      category_async(accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, category:category, count:count, headline_count:headline_count, market:market, offset:offset, original_image:original_image, safe_search:safe_search, set_lang:set_lang, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
+    def category_with_http_info(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, category = nil, count = nil, headline_count = nil, market = nil, offset = nil, original_image = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+      category_async(accept_language, user_agent, client_id, client_ip, location, country_code, category, count, headline_count, market, offset, original_image, safe_search, set_lang, text_decorations, text_format, custom_headers).value!
     end
 
     #
-    # The News Category API lets lets you search on Bing and get back a list of top
-    # news articles by category. This section provides technical details about the
-    # query parameters and headers that you use to request news and the JSON
-    # response objects that contain them.  For examples that show how to make
-    # requests, see [Searching the web for
+    # The News Category API lets you search on Bing and get back a list of top news
+    # articles by category. This section provides technical details about the query
+    # parameters and headers that you use to request news and the JSON response
+    # objects that contain them.  For examples that show how to make requests, see
+    # [Searching the web for
     # news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
     #
     # @param accept_language [String] A comma-delimited list of one or more
@@ -1539,12 +1540,12 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def category_async(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, category:nil, count:nil, headline_count:nil, market:nil, offset:nil, original_image:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+    def category_async(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, category = nil, count = nil, headline_count = nil, market = nil, offset = nil, original_image = nil, safe_search = nil, set_lang = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1557,6 +1558,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
       path_template = 'news'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1594,8 +1596,8 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     end
 
     #
-    # The News Trending Topics API lets lets you search on Bing and get back a list
-    # of trending news topics that are currently trending on Bing. This section
+    # The News Trending Topics API lets you search on Bing and get back a list of
+    # trending news topics that are currently trending on Bing. This section
     # provides technical details about the query parameters and headers that you
     # use to request news and the JSON response objects that contain them.  For
     # examples that show how to make requests, see [Searching the web for
@@ -1815,14 +1817,14 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     #
     # @return [TrendingTopics] operation results.
     #
-    def trending(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, market:nil, offset:nil, safe_search:nil, set_lang:nil, since:nil, sort_by:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
-      response = trending_async(accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, count:count, market:market, offset:offset, safe_search:safe_search, set_lang:set_lang, since:since, sort_by:sort_by, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
+    def trending(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, count = nil, market = nil, offset = nil, safe_search = nil, set_lang = nil, since = nil, sort_by = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+      response = trending_async(accept_language, user_agent, client_id, client_ip, location, country_code, count, market, offset, safe_search, set_lang, since, sort_by, text_decorations, text_format, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The News Trending Topics API lets lets you search on Bing and get back a list
-    # of trending news topics that are currently trending on Bing. This section
+    # The News Trending Topics API lets you search on Bing and get back a list of
+    # trending news topics that are currently trending on Bing. This section
     # provides technical details about the query parameters and headers that you
     # use to request news and the JSON response objects that contain them.  For
     # examples that show how to make requests, see [Searching the web for
@@ -2042,13 +2044,13 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def trending_with_http_info(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, market:nil, offset:nil, safe_search:nil, set_lang:nil, since:nil, sort_by:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
-      trending_async(accept_language:accept_language, user_agent:user_agent, client_id:client_id, client_ip:client_ip, location:location, country_code:country_code, count:count, market:market, offset:offset, safe_search:safe_search, set_lang:set_lang, since:since, sort_by:sort_by, text_decorations:text_decorations, text_format:text_format, custom_headers:custom_headers).value!
+    def trending_with_http_info(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, count = nil, market = nil, offset = nil, safe_search = nil, set_lang = nil, since = nil, sort_by = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+      trending_async(accept_language, user_agent, client_id, client_ip, location, country_code, count, market, offset, safe_search, set_lang, since, sort_by, text_decorations, text_format, custom_headers).value!
     end
 
     #
-    # The News Trending Topics API lets lets you search on Bing and get back a list
-    # of trending news topics that are currently trending on Bing. This section
+    # The News Trending Topics API lets you search on Bing and get back a list of
+    # trending news topics that are currently trending on Bing. This section
     # provides technical details about the query parameters and headers that you
     # use to request news and the JSON response objects that contain them.  For
     # examples that show how to make requests, see [Searching the web for
@@ -2268,12 +2270,12 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def trending_async(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, market:nil, offset:nil, safe_search:nil, set_lang:nil, since:nil, sort_by:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+    def trending_async(accept_language = nil, user_agent = nil, client_id = nil, client_ip = nil, location = nil, country_code = nil, count = nil, market = nil, offset = nil, safe_search = nil, set_lang = nil, since = nil, sort_by = nil, text_decorations = nil, text_format = nil, custom_headers = nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2286,6 +2288,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
       path_template = 'news/trendingtopics'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

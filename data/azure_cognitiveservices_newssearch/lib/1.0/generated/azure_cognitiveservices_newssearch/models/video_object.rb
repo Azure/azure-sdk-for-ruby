@@ -53,7 +53,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VideoObject',
           type: {
@@ -61,7 +60,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
             class_name: 'VideoObject',
             model_properties: {
               _type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '_type',
                 type: {
@@ -69,7 +67,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -78,7 +75,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               web_search_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'webSearchUrl',
@@ -87,7 +83,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -96,7 +91,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'url',
@@ -105,7 +99,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               image: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'image',
@@ -115,7 +108,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',
@@ -124,7 +116,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               alternate_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'alternateName',
@@ -133,7 +124,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               bing_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'bingId',
@@ -142,7 +132,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               thumbnail_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'thumbnailUrl',
@@ -151,14 +140,12 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               provider: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ThingElementType',
                       type: {
@@ -169,7 +156,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               date_published: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'datePublished',
@@ -178,7 +164,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               video: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'video',
@@ -188,7 +173,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               content_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'contentUrl',
@@ -197,7 +181,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               width: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'width',
@@ -206,7 +189,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               height: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'height',
@@ -215,7 +197,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               motion_thumbnail_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'motionThumbnailUrl',
@@ -224,7 +205,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               motion_thumbnail_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'motionThumbnailId',
@@ -233,7 +213,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               embed_html: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'embedHtml',
@@ -242,7 +221,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               allow_https_embed: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'allowHttpsEmbed',
@@ -251,7 +229,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               view_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'viewCount',
@@ -260,7 +237,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               thumbnail: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'thumbnail',
@@ -270,7 +246,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               video_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'videoId',
@@ -279,7 +254,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               allow_mobile_embed: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'allowMobileEmbed',
@@ -288,7 +262,6 @@ module Azure::CognitiveServices::NewsSearch::V1_0
                 }
               },
               is_superfresh: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isSuperfresh',
