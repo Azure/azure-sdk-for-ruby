@@ -27,7 +27,6 @@ module Azure::Redis::Mgmt::V2017_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RedisAccessKeys',
           type: {
@@ -35,7 +34,6 @@ module Azure::Redis::Mgmt::V2017_02_01
             class_name: 'RedisAccessKeys',
             model_properties: {
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'primaryKey',
@@ -44,7 +42,6 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'secondaryKey',

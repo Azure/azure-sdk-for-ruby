@@ -6,7 +6,7 @@
 module Azure::Redis::Mgmt::V2017_10_01
   module Models
     #
-    # List of linked servers (with properites) of a Redis cache.
+    # List of linked servers (with properties) of a Redis cache.
     #
     class RedisLinkedServerWithPropertiesList
 
@@ -14,7 +14,7 @@ module Azure::Redis::Mgmt::V2017_10_01
 
       include MsRest::JSONable
       # @return [Array<RedisLinkedServerWithProperties>] List of linked servers
-      # (with properites) of a Redis cache.
+      # (with properties) of a Redis cache.
       attr_accessor :value
 
       # @return [String] Link for next set.
@@ -58,7 +58,6 @@ module Azure::Redis::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RedisLinkedServerWithPropertiesList',
           type: {
@@ -66,13 +65,11 @@ module Azure::Redis::Mgmt::V2017_10_01
             class_name: 'RedisLinkedServerWithPropertiesList',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RedisLinkedServerWithPropertiesElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::Redis::Mgmt::V2017_10_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',
