@@ -45,8 +45,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [SearchService] operation results.
     #
-    def create_or_update(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -71,9 +71,9 @@ module Azure::Search::Mgmt::V2015_08_19
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
+    def create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options:search_management_request_options, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -106,8 +106,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [SearchService] operation results.
     #
-    def update(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
-      response = update_async(resource_group_name, search_service_name, service, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def update(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
+      response = update_async(resource_group_name, search_service_name, service, search_management_request_options, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -128,8 +128,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
-      update_async(resource_group_name, search_service_name, service, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
+      update_async(resource_group_name, search_service_name, service, search_management_request_options, custom_headers).value!
     end
 
     #
@@ -149,7 +149,7 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
+    def update_async(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'search_service_name is nil' if search_service_name.nil?
       fail ArgumentError, 'service is nil' if service.nil?
@@ -162,12 +162,13 @@ module Azure::Search::Mgmt::V2015_08_19
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       request_headers['x-ms-client-request-id'] = client_request_id.to_s unless client_request_id.to_s.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Search::Mgmt::V2015_08_19::Models::SearchService.mapper()
@@ -230,8 +231,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [SearchService] operation results.
     #
-    def get(resource_group_name, search_service_name, search_management_request_options:nil, custom_headers:nil)
-      response = get_async(resource_group_name, search_service_name, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def get(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
+      response = get_async(resource_group_name, search_service_name, search_management_request_options, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -250,8 +251,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, search_service_name, search_management_request_options:nil, custom_headers:nil)
-      get_async(resource_group_name, search_service_name, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
+      get_async(resource_group_name, search_service_name, search_management_request_options, custom_headers).value!
     end
 
     #
@@ -269,7 +270,7 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, search_service_name, search_management_request_options:nil, custom_headers:nil)
+    def get_async(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'search_service_name is nil' if search_service_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -281,7 +282,6 @@ module Azure::Search::Mgmt::V2015_08_19
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -342,8 +342,8 @@ module Azure::Search::Mgmt::V2015_08_19
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, search_service_name, search_management_request_options:nil, custom_headers:nil)
-      response = delete_async(resource_group_name, search_service_name, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def delete(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
+      response = delete_async(resource_group_name, search_service_name, search_management_request_options, custom_headers).value!
       nil
     end
 
@@ -363,8 +363,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, search_service_name, search_management_request_options:nil, custom_headers:nil)
-      delete_async(resource_group_name, search_service_name, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
+      delete_async(resource_group_name, search_service_name, search_management_request_options, custom_headers).value!
     end
 
     #
@@ -383,7 +383,7 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, search_service_name, search_management_request_options:nil, custom_headers:nil)
+    def delete_async(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'search_service_name is nil' if search_service_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -395,7 +395,6 @@ module Azure::Search::Mgmt::V2015_08_19
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -444,8 +443,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [SearchServiceListResult] operation results.
     #
-    def list_by_resource_group(resource_group_name, search_management_request_options:nil, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def list_by_resource_group(resource_group_name, search_management_request_options = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, search_management_request_options, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -462,8 +461,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, search_management_request_options:nil, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, search_management_request_options = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, search_management_request_options, custom_headers).value!
     end
 
     #
@@ -479,7 +478,7 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, search_management_request_options:nil, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, search_management_request_options = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -490,7 +489,6 @@ module Azure::Search::Mgmt::V2015_08_19
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -552,8 +550,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [CheckNameAvailabilityOutput] operation results.
     #
-    def check_name_availability(name, search_management_request_options:nil, custom_headers:nil)
-      response = check_name_availability_async(name, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def check_name_availability(name, search_management_request_options = nil, custom_headers = nil)
+      response = check_name_availability_async(name, search_management_request_options, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -573,8 +571,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(name, search_management_request_options:nil, custom_headers:nil)
-      check_name_availability_async(name, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def check_name_availability_with_http_info(name, search_management_request_options = nil, custom_headers = nil)
+      check_name_availability_async(name, search_management_request_options, custom_headers).value!
     end
 
     #
@@ -593,7 +591,7 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(name, search_management_request_options:nil, custom_headers:nil)
+    def check_name_availability_async(name, search_management_request_options = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -608,12 +606,13 @@ module Azure::Search::Mgmt::V2015_08_19
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       request_headers['x-ms-client-request-id'] = client_request_id.to_s unless client_request_id.to_s.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput.mapper()
@@ -685,8 +684,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [SearchService] operation results.
     #
-    def begin_create_or_update(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -714,8 +713,8 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options:search_management_request_options, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options, custom_headers).value!
     end
 
     #
@@ -742,7 +741,7 @@ module Azure::Search::Mgmt::V2015_08_19
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options:nil, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'search_service_name is nil' if search_service_name.nil?
       fail ArgumentError, 'service is nil' if service.nil?
@@ -755,12 +754,13 @@ module Azure::Search::Mgmt::V2015_08_19
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       request_headers['x-ms-client-request-id'] = client_request_id.to_s unless client_request_id.to_s.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Search::Mgmt::V2015_08_19::Models::SearchService.mapper()
