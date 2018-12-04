@@ -6,7 +6,7 @@
 module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   module Models
     #
-    # Onprem disk details data.
+    # On-prem disk details data.
     #
     class DiskDetails
 

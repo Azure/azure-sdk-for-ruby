@@ -227,7 +227,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # Lists the storage classification mappings for the fabric.
     #
     # @param fabric_name [String] Fabric name.
-    # @param storage_classification_name [String] Storage classfication name.
+    # @param storage_classification_name [String] Storage classification name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -244,7 +244,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # Lists the storage classification mappings for the fabric.
     #
     # @param fabric_name [String] Fabric name.
-    # @param storage_classification_name [String] Storage classfication name.
+    # @param storage_classification_name [String] Storage classification name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -260,7 +260,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # Lists the storage classification mappings for the fabric.
     #
     # @param fabric_name [String] Fabric name.
-    # @param storage_classification_name [String] Storage classfication name.
+    # @param storage_classification_name [String] Storage classification name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -817,7 +817,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # Lists the storage classification mappings for the fabric.
     #
     # @param fabric_name [String] Fabric name.
-    # @param storage_classification_name [String] Storage classfication name.
+    # @param storage_classification_name [String] Storage classification name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

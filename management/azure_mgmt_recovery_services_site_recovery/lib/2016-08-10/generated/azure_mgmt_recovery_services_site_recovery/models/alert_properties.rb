@@ -6,7 +6,7 @@
 module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   module Models
     #
-    # The proprties of an alert.
+    # The properties of an alert.
     #
     class AlertProperties
 

@@ -6,7 +6,7 @@
 module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   module Models
     #
-    # Create network mappings input properties/behaviour specific to vmm to vmm
+    # Create network mappings input properties/behavior specific to vmm to vmm
     # Network mapping.
     #
     class VmmToVmmCreateNetworkMappingInput < FabricSpecificCreateNetworkMappingInput

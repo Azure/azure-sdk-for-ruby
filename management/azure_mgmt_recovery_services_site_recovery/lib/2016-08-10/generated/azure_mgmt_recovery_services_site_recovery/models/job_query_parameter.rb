@@ -15,7 +15,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # @return [String] Date time to get jobs from.
       attr_accessor :start_time
 
-      # @return [String] Date time to get jobs upto.
+      # @return [String] Date time to get jobs up to.
       attr_accessor :end_time
 
       # @return [String] The Id of the fabric to search jobs under.

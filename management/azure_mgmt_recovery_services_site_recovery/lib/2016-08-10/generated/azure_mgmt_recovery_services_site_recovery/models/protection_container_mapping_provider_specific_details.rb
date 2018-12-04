@@ -12,7 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
-      # @return [String] Gets the class type. Overriden in derived classes.
+      # @return [String] Gets the class type. Overridden in derived classes.
       attr_accessor :instance_type
 
 

@@ -137,8 +137,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # {SrsDataContract.EnableRDPOnTargetOption} enum.
       attr_accessor :enable_rdpon_target_option
 
-      # @return [Array<String>] The datastores of the on-premise machine. Value
-      # can be list of strings that contain datastore names.
+      # @return [Array<String>] The data stores of the on-premise machine.
+      # Value can be list of strings that contain data store names.
       attr_accessor :datastores
 
       # @return [String] The ARM Id of the target Azure VM. This value will be

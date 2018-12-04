@@ -43,7 +43,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # @return [String] The VCenter infrastructure Id.
       attr_accessor :v_center_infrastructure_id
 
-      # @return [String] A value inidicating the discovery type of the machine.
+      # @return [String] A value indicating the discovery type of the machine.
       # Value can be vCenter or physical.
       attr_accessor :discovery_type
 

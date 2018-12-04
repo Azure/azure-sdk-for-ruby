@@ -12,8 +12,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
-      # @return [StorageClassificationMappingProperties] Proprties of the
-      # storage mappping object.
+      # @return [StorageClassificationMappingProperties] Properties of the
+      # storage mapping object.
       attr_accessor :properties
 
 

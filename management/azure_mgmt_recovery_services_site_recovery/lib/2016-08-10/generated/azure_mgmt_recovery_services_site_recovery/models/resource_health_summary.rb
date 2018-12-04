@@ -13,7 +13,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
-      # @return [Integer] The count of total resources umder the container.
+      # @return [Integer] The count of total resources under the container.
       attr_accessor :resource_count
 
       # @return [Array<HealthErrorSummary>] The list of summary of health

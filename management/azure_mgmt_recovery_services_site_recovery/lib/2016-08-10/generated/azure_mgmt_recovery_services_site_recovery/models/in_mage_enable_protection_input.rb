@@ -40,7 +40,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # @return [String] The multi vm group name.
       attr_accessor :multi_vm_group_name
 
-      # @return [String] The target datastore name.
+      # @return [String] The target data store name.
       attr_accessor :datastore_name
 
       # @return [InMageDiskExclusionInput] The enable disk exclusion input.

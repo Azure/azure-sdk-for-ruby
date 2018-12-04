@@ -7,7 +7,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   module Models
     #
     # This class contains monitoring details of all the inconsistent Protected
-    # Entites in Vmm.
+    # Entities in Vmm.
     #
     class ConsistencyCheckTaskDetails < TaskTypeDetails
 

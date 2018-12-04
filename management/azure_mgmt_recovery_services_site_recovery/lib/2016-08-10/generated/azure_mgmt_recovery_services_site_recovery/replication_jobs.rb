@@ -112,7 +112,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # The operation to cancel an Azure Site Recovery job.
     #
-    # @param job_name [String] Job indentifier.
+    # @param job_name [String] Job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -124,7 +124,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     end
 
     #
-    # @param job_name [String] Job indentifier.
+    # @param job_name [String] Job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -589,7 +589,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # The operation to cancel an Azure Site Recovery job.
     #
-    # @param job_name [String] Job indentifier.
+    # @param job_name [String] Job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -605,7 +605,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # The operation to cancel an Azure Site Recovery job.
     #
-    # @param job_name [String] Job indentifier.
+    # @param job_name [String] Job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -620,7 +620,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # The operation to cancel an Azure Site Recovery job.
     #
-    # @param job_name [String] Job indentifier.
+    # @param job_name [String] Job identifier.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
