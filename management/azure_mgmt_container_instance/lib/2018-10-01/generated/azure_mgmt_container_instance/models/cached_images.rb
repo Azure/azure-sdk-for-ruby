@@ -12,6 +12,9 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
 
       include MsRestAzure
 
+      # @return [String] The resource Id of the cached image.
+      attr_accessor :id
+
       # @return [String] The OS type of the cached image.
       attr_accessor :os_type
 
@@ -31,6 +34,13 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
             name: 'Composite',
             class_name: 'CachedImages',
             model_properties: {
+              id: {
+                required: false,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               os_type: {
                 required: true,
                 serialized_name: 'osType',
