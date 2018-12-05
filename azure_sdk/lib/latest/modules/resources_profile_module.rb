@@ -7,15 +7,16 @@ require 'azure_mgmt_resources'
 module Azure::Profiles::Latest
   module Resources
     module Mgmt
+      Operations = Azure::Resources::Mgmt::V2018_05_01::Operations
       Deployments = Azure::Resources::Mgmt::V2018_05_01::Deployments
       Providers = Azure::Resources::Mgmt::V2018_05_01::Providers
       ResourceGroups = Azure::Resources::Mgmt::V2018_05_01::ResourceGroups
       Tags = Azure::Resources::Mgmt::V2018_05_01::Tags
-      DeploymentOperations = Azure::Resources::Mgmt::V2018_05_01::DeploymentOperations
       Resources = Azure::Resources::Mgmt::V2018_05_01::Resources
-      Operations = Azure::Resources::Mgmt::V2018_05_01::Operations
+      DeploymentOperations = Azure::Resources::Mgmt::V2018_05_01::DeploymentOperations
 
       module Models
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         GenericResourceFilter = Azure::Resources::Mgmt::V2018_05_01::Models::GenericResourceFilter
         Identity = Azure::Resources::Mgmt::V2018_05_01::Models::Identity
         TemplateLink = Azure::Resources::Mgmt::V2018_05_01::Models::TemplateLink
@@ -30,12 +31,12 @@ module Azure::Profiles::Latest
         Provider = Azure::Resources::Mgmt::V2018_05_01::Models::Provider
         ResourceGroupListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
         ResourcesMoveInfo = Azure::Resources::Mgmt::V2018_05_01::Models::ResourcesMoveInfo
-        Dependency = Azure::Resources::Mgmt::V2018_05_01::Models::Dependency
-        ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
-        DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
         DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
+        ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
+        Dependency = Azure::Resources::Mgmt::V2018_05_01::Models::Dependency
         TagCount = Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
         ProviderListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
+        DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
         ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
         TagDetails = Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
         TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
@@ -68,12 +69,11 @@ module Azure::Profiles::Latest
         ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
         Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
         ResourceIdentityType = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
       end
 
       class ResourcesManagementClass
-        attr_reader :deployments, :providers, :resource_groups, :tags, :deployment_operations, :resources, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :deployments, :providers, :resource_groups, :tags, :resources, :deployment_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -83,13 +83,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @deployments = @client_0.deployments
           @providers = @client_0.providers
           @resource_groups = @client_0.resource_groups
           @tags = @client_0.tags
-          @deployment_operations = @client_0.deployment_operations
           @resources = @client_0.resources
-          @operations = @client_0.operations
+          @deployment_operations = @client_0.deployment_operations
 
           @model_classes = ModelClasses.new
         end
@@ -108,6 +108,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
           def generic_resource_filter
             Azure::Resources::Mgmt::V2018_05_01::Models::GenericResourceFilter
           end
@@ -150,23 +153,23 @@ module Azure::Profiles::Latest
           def resources_move_info
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourcesMoveInfo
           end
-          def dependency
-            Azure::Resources::Mgmt::V2018_05_01::Models::Dependency
+          def deployment_properties_extended
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
           end
           def export_template_request
             Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
           end
-          def deployment_extended
-            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
-          end
-          def deployment_properties_extended
-            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
+          def dependency
+            Azure::Resources::Mgmt::V2018_05_01::Models::Dependency
           end
           def tag_count
             Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
           end
           def provider_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
+          end
+          def deployment_extended
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
           end
           def resource_group_filter
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
@@ -263,9 +266,6 @@ module Azure::Profiles::Latest
           end
           def resource_identity_type
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
-          end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
           end
           def sku
             Azure::Resources::Mgmt::V2018_05_01::Models::Sku
