@@ -32,7 +32,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Dimension',
           type: {
@@ -40,7 +39,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'Dimension',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,7 +46,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -56,7 +53,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               internal_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalName',
                 type: {
@@ -64,7 +60,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               to_be_exported_for_shoebox: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'toBeExportedForShoebox',
                 type: {

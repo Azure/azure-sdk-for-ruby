@@ -38,7 +38,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SignalRUsage',
           type: {
@@ -46,7 +45,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'SignalRUsage',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -54,7 +52,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentValue',
                 type: {
@@ -62,7 +59,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'limit',
                 type: {
@@ -70,7 +66,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -79,7 +74,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
