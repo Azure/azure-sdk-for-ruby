@@ -27,7 +27,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NameAvailabilityParameters',
           type: {
@@ -35,7 +34,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'NameAvailabilityParameters',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -43,7 +41,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

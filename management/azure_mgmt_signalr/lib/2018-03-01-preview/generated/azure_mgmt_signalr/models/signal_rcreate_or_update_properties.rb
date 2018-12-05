@@ -25,7 +25,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SignalRCreateOrUpdateProperties',
           type: {
@@ -33,7 +32,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'SignalRCreateOrUpdateProperties',
             model_properties: {
               host_name_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hostNamePrefix',
                 type: {
