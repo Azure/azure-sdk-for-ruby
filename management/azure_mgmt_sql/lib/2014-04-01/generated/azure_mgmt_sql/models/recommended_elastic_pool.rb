@@ -6,7 +6,7 @@
 module Azure::SQL::Mgmt::V2014_04_01
   module Models
     #
-    # Represents a recommented elastic pool.
+    # Represents a recommended elastic pool.
     #
     class RecommendedElasticPool < ProxyResource
 

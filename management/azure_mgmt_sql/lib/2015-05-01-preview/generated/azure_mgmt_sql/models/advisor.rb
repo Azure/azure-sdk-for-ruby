@@ -6,7 +6,7 @@
 module Azure::SQL::Mgmt::V2015_05_01_preview
   module Models
     #
-    # Database, Server or Elatic Pool Advisor.
+    # Database, Server or Elastic Pool Advisor.
     #
     class Advisor < ProxyResource
 
@@ -32,8 +32,8 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       # @return [AutoExecuteStatusInheritedFrom] Gets the resource from which
       # current value of auto-execute status is inherited. Auto-execute status
-      # can be set on (and inhertied from) different levels in the resource
-      # heirarchy. Possible values are 'Subscription', 'Server', 'ElasticPool',
+      # can be set on (and inherited from) different levels in the resource
+      # hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool',
       # 'Database' and 'Default' (when status is not explicitly set on any
       # level). Possible values include: 'Default', 'Subscription', 'Server',
       # 'ElasticPool', 'Database'
