@@ -1,10 +1,6 @@
 {
-    "management": [
-        "azure_mgmt_sqlvirtualmachine",
-        "azure_mgmt_kusto",
-        "azure_mgmt_storage",
-        "azure_mgmt_container_instance",
-        "azure_mgmt_network"
+    "data": [
+        "azure_cognitiveservices_qnamaker"
     ],
     "rollup": [
         "azure_sdk"

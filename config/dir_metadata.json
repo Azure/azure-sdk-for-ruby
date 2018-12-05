@@ -534,6 +534,13 @@
       "module_require": "azure_cognitiveservices_newssearch"
     }
   },
+  "Microsoft.CognitiveServices.Qnamaker":{
+    "data": {
+      "path": "data/azure_cognitiveservices_qnamaker",
+      "namespace": "Azure::CognitiveServices::Qnamaker",
+      "module_require": "azure_cognitiveservices_qnamaker"
+    }
+  },
   "Microsoft.CognitiveServices.SpellCheck": {
     "data": {
       "path": "data/azure_cognitiveservices_spellcheck",

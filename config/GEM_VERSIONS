@@ -1,7 +1,7 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.19.2"
+        "azure_sdk": "0.19.3"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.17.0",
@@ -11,6 +11,7 @@
         "azure_cognitiveservices_face": "0.17.0",
         "azure_cognitiveservices_imagesearch": "0.17.0",
         "azure_cognitiveservices_newssearch": "0.17.0",
+        "azure_cognitiveservices_qnamaker": "0.17.0",
         "azure_cognitiveservices_spellcheck": "0.17.0",
         "azure_cognitiveservices_textanalytics": "0.17.1",
         "azure_cognitiveservices_videosearch": "0.17.0",

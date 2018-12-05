@@ -1,3 +1,8 @@
+## 2018.12.05 - Azure Ruby SDK Release
+* Released the following SDKs
+   - azure_cognitiveservices_qnamaker - v0.17.0
+   - azure_sdk - v0.19.3
+   
 ## 2018.11.27 - Azure Ruby SDK Release
 * Released the following SDKs
    - azure_mgmt_sqlvirtualmachine - v0.17.0
