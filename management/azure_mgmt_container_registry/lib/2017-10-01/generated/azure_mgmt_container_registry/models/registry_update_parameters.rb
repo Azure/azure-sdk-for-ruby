@@ -28,6 +28,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # the container registry.
       attr_accessor :storage_account
 
+      # @return [NetworkRuleSet] The network rule set for a container registry.
+      attr_accessor :network_rule_set
+
 
       #
       # Mapper for RegistryUpdateParameters class as Ruby Hash.
@@ -82,6 +85,15 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 type: {
                   name: 'Composite',
                   class_name: 'StorageAccountProperties'
+                }
+              },
+              network_rule_set: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.networkRuleSet',
+                type: {
+                  name: 'Composite',
+                  class_name: 'NetworkRuleSet'
                 }
               }
             }

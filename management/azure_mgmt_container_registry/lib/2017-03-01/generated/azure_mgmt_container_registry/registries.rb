@@ -171,6 +171,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
@@ -316,6 +317,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
@@ -410,6 +412,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
@@ -513,6 +516,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
 
 
       request_headers = {}
@@ -691,6 +695,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
@@ -801,6 +806,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
@@ -913,6 +919,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
