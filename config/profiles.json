@@ -313,7 +313,7 @@
                 },
                 "Microsoft.Logic": {
                     "management": {
-                        "2016-06-01": ["*"]
+                        "2018-07-01-preview": ["*"]
                     }
                 },
                 "Microsoft.MachineLearning": {
@@ -1158,7 +1158,7 @@
             "resourceTypes": {
                 "Microsoft.Logic" : {
                     "management": {
-                        "2016-06-01": ["*"]
+                        "2018-07-01-preview": ["*"]
                     }
                 }
             },

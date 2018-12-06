@@ -54,7 +54,7 @@
         "azure_mgmt_kusto": "0.17.0",
         "azure_mgmt_links": "0.17.1",
         "azure_mgmt_locks": "0.17.1",
-        "azure_mgmt_logic": "0.17.1",
+        "azure_mgmt_logic": "0.17.2",
         "azure_mgmt_machine_learning": "0.17.1",
         "azure_mgmt_managed_applications": "0.17.1",
         "azure_mgmt_marketplace_ordering": "0.17.1",

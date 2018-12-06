@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_container_registry"
+        "azure_mgmt_container_registry",
+        "azure_mgmt_logic"
     ],
     "data": [
         "azure_cognitiveservices_customvisiontraining",

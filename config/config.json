@@ -632,6 +632,11 @@
     }
   },
   "azure_mgmt_logic": {
+    "azure_mgmt_logic_2018_07_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4342342fca475d5098bcec806e7d87acaf191dc4/specification/logic/resource-manager/readme.md",
+      "namespace": "Azure::Logic::Mgmt::V2018_07_01_preview",
+      "tag": "package-2018-07-preview"
+    },
     "azure_mgmt_logic_2016_06_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/logic/resource-manager/readme.md",
       "namespace": "Azure::Logic::Mgmt::V2016_06_01",
