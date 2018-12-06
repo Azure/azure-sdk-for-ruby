@@ -35,7 +35,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrafficFlow',
           type: {
@@ -43,7 +42,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
             class_name: 'TrafficFlow',
             model_properties: {
               source_ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceIp',
                 type: {
@@ -51,7 +49,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               latitude: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'latitude',
                 type: {
@@ -59,7 +56,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               longitude: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'longitude',
                 type: {
@@ -67,13 +63,11 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               query_experiences: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'queryExperiences',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'QueryExperienceElementType',
                       type: {

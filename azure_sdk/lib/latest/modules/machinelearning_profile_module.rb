@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
+        ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
         AsyncOperationStatus = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
         OperationEntity = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntity
         InputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
@@ -50,7 +51,6 @@ module Azure::Profiles::Latest
         WebService = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
         WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
         DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
-        ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
       end
 
       class MachineLearningManagementClass
@@ -84,6 +84,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def column_type
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+          end
           def async_operation_status
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
           end
@@ -200,9 +203,6 @@ module Azure::Profiles::Latest
           end
           def diagnostics_level
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
-          end
-          def column_type
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
           end
         end
       end
