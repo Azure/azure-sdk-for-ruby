@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2015_04_01
   module Models
     #
-    # Domain availablility check result.
+    # Domain availability check result.
     #
     class DomainAvailablilityCheckResult
 
