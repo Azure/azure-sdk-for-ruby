@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2015_08_01
   module Models
     #
-    # Collection of certitificateorder certificates.
+    # Collection of certificate order certificates.
     #
     class AppServiceCertificateCollection
 
