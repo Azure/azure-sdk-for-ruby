@@ -58,7 +58,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MigrationConfigListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'MigrationConfigListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MigrationConfigPropertiesElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',

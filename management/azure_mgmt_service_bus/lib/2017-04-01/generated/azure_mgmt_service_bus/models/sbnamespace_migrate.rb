@@ -6,36 +6,35 @@
 module Azure::ServiceBus::Mgmt::V2017_04_01
   module Models
     #
-    # Description of a Check Name availability request properties.
+    # Namespace Migrate Object
     #
-    class CheckNameAvailability
+    class SBNamespaceMigrate
 
       include MsRestAzure
 
-      # @return [String] The Name to check the namespce name availability and
-      # The namespace name can contain only letters, numbers, and hyphens. The
-      # namespace must start with a letter, and it must end with a letter or
-      # number.
-      attr_accessor :name
+      # @return [NameSpaceType] Type of namespaces. Possible values include:
+      # 'Messaging', 'NotificationHub', 'Mixed', 'EventHub', 'Relay'
+      attr_accessor :target_namespace_type
 
 
       #
-      # Mapper for CheckNameAvailability class as Ruby Hash.
+      # Mapper for SBNamespaceMigrate class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CheckNameAvailability',
+          serialized_name: 'SBNamespaceMigrate',
           type: {
             name: 'Composite',
-            class_name: 'CheckNameAvailability',
+            class_name: 'SBNamespaceMigrate',
             model_properties: {
-              name: {
+              target_namespace_type: {
                 required: true,
-                serialized_name: 'name',
+                serialized_name: 'targetNamespaceType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'NameSpaceType'
                 }
               }
             }

@@ -29,11 +29,11 @@ module Azure::Profiles::Latest
       PostalAddress = Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
       Organization = Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
+      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
       ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
-      MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
-      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
+      LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
       TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
       Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
       License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
@@ -52,7 +52,7 @@ module Azure::Profiles::Latest
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
-      LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
+      MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
     end
@@ -147,20 +147,20 @@ module Azure::Profiles::Latest
         def organization
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
         end
+        def error
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+        end
         def intangible
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
         end
         def contractual_rules_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
         end
-        def media_object
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
-        end
-        def error
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
-        end
         def civic_structure
           Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
+        end
+        def local_business
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
         end
         def tourist_attraction
           Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
@@ -216,8 +216,8 @@ module Azure::Profiles::Latest
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
         end
-        def local_business
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
+        def media_object
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
         end
         def entity_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
