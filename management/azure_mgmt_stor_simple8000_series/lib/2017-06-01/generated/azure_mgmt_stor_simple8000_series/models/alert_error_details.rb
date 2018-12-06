@@ -18,7 +18,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       # @return [String] The error message
       attr_accessor :error_message
 
-      # @return [Integer] The number of occurences
+      # @return [Integer] The number of occurrences
       attr_accessor :occurences
 
 
@@ -28,7 +28,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AlertErrorDetails',
           type: {
@@ -36,7 +35,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'AlertErrorDetails',
             model_properties: {
               error_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorCode',
                 type: {
@@ -44,7 +42,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               error_message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorMessage',
                 type: {
@@ -52,7 +49,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               occurences: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'occurences',
                 type: {

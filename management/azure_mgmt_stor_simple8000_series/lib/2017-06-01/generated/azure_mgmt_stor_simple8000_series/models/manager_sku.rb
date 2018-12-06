@@ -23,7 +23,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ManagerSku',
           type: {
@@ -31,7 +30,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'ManagerSku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'name',

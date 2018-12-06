@@ -34,7 +34,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VmImage',
           type: {
@@ -42,7 +41,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'VmImage',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -50,7 +48,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               version: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'version',
                 type: {
@@ -58,7 +55,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               offer: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'offer',
                 type: {
@@ -66,7 +62,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               publisher: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'publisher',
                 type: {
@@ -74,7 +69,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
