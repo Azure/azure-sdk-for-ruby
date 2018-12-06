@@ -1,12 +1,14 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.19.3"
+        "azure_sdk": "0.19.4"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.17.0",
         "azure_cognitiveservices_contentmoderator": "0.17.0",
         "azure_cognitiveservices_customsearch": "0.17.0",
+        "azure_cognitiveservices_customvisiontraining": "0.17.0",
+        "azure_cognitiveservices_customvisionprediction": "0.17.0",
         "azure_cognitiveservices_entitysearch": "0.17.0",
         "azure_cognitiveservices_face": "0.17.0",
         "azure_cognitiveservices_imagesearch": "0.17.0",

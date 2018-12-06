@@ -506,6 +506,20 @@
       "module_require": "azure_cognitiveservices_customsearch"
     }
   },
+  "Microsoft.CognitiveServices.Customvisiontraining": {
+    "data": {
+      "path": "data/azure_cognitiveservices_customvisiontraining",
+      "namespace": "Azure::CognitiveServices::Customvisiontraining",
+      "module_require": "azure_cognitiveservices_customvisiontraining"
+    }
+  },
+  "Microsoft.CognitiveServices.Customvisionprediction": {
+    "data": {
+      "path": "data/azure_cognitiveservices_customvisionprediction",
+      "namespace": "Azure::CognitiveServices::Customvisionprediction",
+      "module_require": "azure_cognitiveservices_customvisionprediction"
+    }
+  },
   "Microsoft.CognitiveServices.EntitySearch": {
     "data": {
       "path": "data/azure_cognitiveservices_entitysearch",

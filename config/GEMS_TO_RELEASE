@@ -1,6 +1,7 @@
 {
     "data": [
-        "azure_cognitiveservices_qnamaker"
+        "azure_cognitiveservices_customvisiontraining",
+        "azure_cognitiveservices_customvisionprediction"
     ],
     "rollup": [
         "azure_sdk"

@@ -511,6 +511,16 @@
                         "1.0": ["*"]
                     }
                 },
+                "Microsoft.CognitiveServices.Customvisiontraining": {
+                    "data": {
+                        "2.2": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.Customvisionprediction": {
+                    "data": {
+                        "2.0": ["*"]
+                    }
+                },
                 "Microsoft.CognitiveServices.EntitySearch": {
                     "data": {
                         "1.0": ["*"]
@@ -1819,6 +1829,34 @@
                     }
                 },
                 "output_dir": "data/azure_cognitiveservices_customsearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_customvisiontraining": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.Customvisiontraining": {
+                        "data": {
+                            "2.2": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_customvisiontraining/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_customvisionprediction": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.Customvisionprediction": {
+                        "data": {
+                            "2.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_customvisionprediction/lib/profiles",
                 "individual_gem_profile": true
             }
         ],
