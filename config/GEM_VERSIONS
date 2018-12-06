@@ -1,12 +1,14 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.19.3"
+        "azure_sdk": "0.19.4"
     },
     "data": {
         "azure_cognitiveservices_computervision": "0.17.0",
         "azure_cognitiveservices_contentmoderator": "0.17.0",
         "azure_cognitiveservices_customsearch": "0.17.0",
+        "azure_cognitiveservices_customvisiontraining": "0.17.0",
+        "azure_cognitiveservices_customvisionprediction": "0.17.0",
         "azure_cognitiveservices_entitysearch": "0.17.0",
         "azure_cognitiveservices_face": "0.17.0",
         "azure_cognitiveservices_imagesearch": "0.17.0",
@@ -34,7 +36,7 @@
         "azure_mgmt_compute": "0.18.3",
         "azure_mgmt_consumption": "0.17.1",
         "azure_mgmt_container_instance": "0.17.3",
-        "azure_mgmt_container_registry": "0.17.1",
+        "azure_mgmt_container_registry": "0.17.2",
         "azure_mgmt_container_service": "0.18.1",
         "azure_mgmt_customer_insights": "0.17.1",
         "azure_mgmt_datalake_analytics": "0.17.1",
@@ -52,7 +54,7 @@
         "azure_mgmt_kusto": "0.17.0",
         "azure_mgmt_links": "0.17.1",
         "azure_mgmt_locks": "0.17.1",
-        "azure_mgmt_logic": "0.17.1",
+        "azure_mgmt_logic": "0.17.2",
         "azure_mgmt_machine_learning": "0.17.1",
         "azure_mgmt_managed_applications": "0.17.1",
         "azure_mgmt_marketplace_ordering": "0.17.1",

@@ -209,7 +209,8 @@
                 },
                 "Microsoft.ContainerRegistry": {
                     "management": {
-                        "2017-10-01": ["*"]
+                        "2017-10-01": ["*"],
+                        "2018-09-01": ["*"]
                     }
                 },
                 "Microsoft.ContainerService": {
@@ -312,7 +313,7 @@
                 },
                 "Microsoft.Logic": {
                     "management": {
-                        "2016-06-01": ["*"]
+                        "2018-07-01-preview": ["*"]
                     }
                 },
                 "Microsoft.MachineLearning": {
@@ -509,6 +510,16 @@
                 "Microsoft.CognitiveServices.CustomSearch": {
                     "data": {
                         "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.Customvisiontraining": {
+                    "data": {
+                        "2.2": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.Customvisionprediction": {
+                    "data": {
+                        "2.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.EntitySearch": {
@@ -796,7 +807,8 @@
             "resourceTypes": {
                 "Microsoft.ContainerRegistry" : {
                     "management": {
-                        "2017-10-01": ["*"]
+                        "2017-10-01": ["*"],
+                        "2018-09-01": ["*"]
                     }
                 }
             },
@@ -1146,7 +1158,7 @@
             "resourceTypes": {
                 "Microsoft.Logic" : {
                     "management": {
-                        "2016-06-01": ["*"]
+                        "2018-07-01-preview": ["*"]
                     }
                 }
             },
@@ -1819,6 +1831,34 @@
                     }
                 },
                 "output_dir": "data/azure_cognitiveservices_customsearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_customvisiontraining": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.Customvisiontraining": {
+                        "data": {
+                            "2.2": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_customvisiontraining/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_customvisionprediction": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.Customvisionprediction": {
+                        "data": {
+                            "2.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_customvisionprediction/lib/profiles",
                 "individual_gem_profile": true
             }
         ],

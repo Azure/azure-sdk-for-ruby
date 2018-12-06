@@ -71,6 +71,8 @@ require 'latest/modules/web_profile_module'
 require 'latest/modules/computervision_profile_module'
 require 'latest/modules/contentmoderator_profile_module'
 require 'latest/modules/customsearch_profile_module'
+require 'latest/modules/customvisiontraining_profile_module'
+require 'latest/modules/customvisionprediction_profile_module'
 require 'latest/modules/entitysearch_profile_module'
 require 'latest/modules/face_profile_module'
 require 'latest/modules/imagesearch_profile_module'
@@ -89,7 +91,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :computer_vision, :content_moderator, :custom_search, :entity_search, :face, :image_search, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -189,6 +191,8 @@ module Azure::Profiles::Latest
       @computer_vision = ComputerVisionAdapter.new(self, base_url, sdk_options)
       @content_moderator = ContentModeratorAdapter.new(self, base_url, sdk_options)
       @custom_search = CustomSearchAdapter.new(self, base_url, sdk_options)
+      @customvisiontraining = CustomvisiontrainingAdapter.new(self, base_url, sdk_options)
+      @customvisionprediction = CustomvisionpredictionAdapter.new(self, base_url, sdk_options)
       @entity_search = EntitySearchAdapter.new(self, base_url, sdk_options)
       @face = FaceAdapter.new(self, base_url, sdk_options)
       @image_search = ImageSearchAdapter.new(self, base_url, sdk_options)
@@ -737,6 +741,20 @@ module Azure::Profiles::Latest
     end
 
     class CustomSearchAdapter < Azure::Profiles::Latest::CustomSearch::CustomSearchDataClass
+
+      def initialize(context, base_url, options)
+        super(context)
+      end
+    end
+
+    class CustomvisiontrainingAdapter < Azure::Profiles::Latest::Customvisiontraining::CustomvisiontrainingDataClass
+
+      def initialize(context, base_url, options)
+        super(context)
+      end
+    end
+
+    class CustomvisionpredictionAdapter < Azure::Profiles::Latest::Customvisionprediction::CustomvisionpredictionDataClass
 
       def initialize(context, base_url, options)
         super(context)

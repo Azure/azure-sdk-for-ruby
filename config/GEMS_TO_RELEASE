@@ -1,6 +1,11 @@
 {
+    "management": [
+        "azure_mgmt_container_registry",
+        "azure_mgmt_logic"
+    ],
     "data": [
-        "azure_cognitiveservices_qnamaker"
+        "azure_cognitiveservices_customvisiontraining",
+        "azure_cognitiveservices_customvisionprediction"
     ],
     "rollup": [
         "azure_sdk"
