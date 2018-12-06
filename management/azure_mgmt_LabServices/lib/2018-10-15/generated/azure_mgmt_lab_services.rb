@@ -83,7 +83,7 @@ module Azure::LabServices::Mgmt::V2018_10_15
     autoload :GalleryImageReference,                              '2018-10-15/generated/azure_mgmt_LabServices/models/gallery_image_reference.rb'
     autoload :OperationStatusResponse,                            '2018-10-15/generated/azure_mgmt_LabServices/models/operation_status_response.rb'
     autoload :EnvironmentOperationsPayload,                       '2018-10-15/generated/azure_mgmt_LabServices/models/environment_operations_payload.rb'
-    autoload :PersonalPerferencesOperationsPayload,               '2018-10-15/generated/azure_mgmt_LabServices/models/personal_perferences_operations_payload.rb'
+    autoload :PersonalPreferencesOperationsPayload,               '2018-10-15/generated/azure_mgmt_LabServices/models/personal_preferences_operations_payload.rb'
     autoload :GetEnvironmentResponse,                             '2018-10-15/generated/azure_mgmt_LabServices/models/get_environment_response.rb'
     autoload :ProviderOperationResult,                            '2018-10-15/generated/azure_mgmt_LabServices/models/provider_operation_result.rb'
     autoload :SizeInfo,                                           '2018-10-15/generated/azure_mgmt_LabServices/models/size_info.rb'

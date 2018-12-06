@@ -340,16 +340,16 @@ module Azure::LabServices::Mgmt::V2018_10_15
     # Get personal preferences for a user
     #
     # @param user_name [String] The name of the user.
-    # @param personal_perferences_operations_payload
-    # [PersonalPerferencesOperationsPayload] Represents payload for any Environment
+    # @param personal_preferences_operations_payload
+    # [PersonalPreferencesOperationsPayload] Represents payload for any Environment
     # operations like get, start, stop, connect
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [GetPersonalPreferencesResponse] operation results.
     #
-    def get_personal_preferences(user_name, personal_perferences_operations_payload, custom_headers = nil)
-      response = get_personal_preferences_async(user_name, personal_perferences_operations_payload, custom_headers).value!
+    def get_personal_preferences(user_name, personal_preferences_operations_payload, custom_headers = nil)
+      response = get_personal_preferences_async(user_name, personal_preferences_operations_payload, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -357,33 +357,33 @@ module Azure::LabServices::Mgmt::V2018_10_15
     # Get personal preferences for a user
     #
     # @param user_name [String] The name of the user.
-    # @param personal_perferences_operations_payload
-    # [PersonalPerferencesOperationsPayload] Represents payload for any Environment
+    # @param personal_preferences_operations_payload
+    # [PersonalPreferencesOperationsPayload] Represents payload for any Environment
     # operations like get, start, stop, connect
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_personal_preferences_with_http_info(user_name, personal_perferences_operations_payload, custom_headers = nil)
-      get_personal_preferences_async(user_name, personal_perferences_operations_payload, custom_headers).value!
+    def get_personal_preferences_with_http_info(user_name, personal_preferences_operations_payload, custom_headers = nil)
+      get_personal_preferences_async(user_name, personal_preferences_operations_payload, custom_headers).value!
     end
 
     #
     # Get personal preferences for a user
     #
     # @param user_name [String] The name of the user.
-    # @param personal_perferences_operations_payload
-    # [PersonalPerferencesOperationsPayload] Represents payload for any Environment
+    # @param personal_preferences_operations_payload
+    # [PersonalPreferencesOperationsPayload] Represents payload for any Environment
     # operations like get, start, stop, connect
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_personal_preferences_async(user_name, personal_perferences_operations_payload, custom_headers = nil)
+    def get_personal_preferences_async(user_name, personal_preferences_operations_payload, custom_headers = nil)
       fail ArgumentError, 'user_name is nil' if user_name.nil?
-      fail ArgumentError, 'personal_perferences_operations_payload is nil' if personal_perferences_operations_payload.nil?
+      fail ArgumentError, 'personal_preferences_operations_payload is nil' if personal_preferences_operations_payload.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -396,8 +396,8 @@ module Azure::LabServices::Mgmt::V2018_10_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::LabServices::Mgmt::V2018_10_15::Models::PersonalPerferencesOperationsPayload.mapper()
-      request_content = @client.serialize(request_mapper,  personal_perferences_operations_payload)
+      request_mapper = Azure::LabServices::Mgmt::V2018_10_15::Models::PersonalPreferencesOperationsPayload.mapper()
+      request_content = @client.serialize(request_mapper,  personal_preferences_operations_payload)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'providers/Microsoft.LabServices/users/{userName}/getPersonalPreferences'
