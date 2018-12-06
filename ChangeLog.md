@@ -1,3 +1,11 @@
+## 2018.12.06 - Azure Ruby SDK Release
+* Released the following SDKs
+   - azure_mgmt_container_registry - v0.17.2
+   - azure_mgmt_logic - v0.17.2
+   - azure_cognitiveservices_customvisiontraining - v0.17.0
+   - azure_cognitiveservices_customvisionprediction - v0.17.0
+   - azure_sdk - v0.19.4
+   
 ## 2018.12.05 - Azure Ruby SDK Release
 * Released the following SDKs
    - azure_cognitiveservices_qnamaker - v0.17.0
