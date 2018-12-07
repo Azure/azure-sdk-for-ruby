@@ -19,6 +19,9 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
       # Server. Possible values include: 'NEW', 'EXTEND', 'ADD'
       attr_accessor :disk_configuration_type
 
+      # @return [Integer] Device id of the first disk to be updated.
+      attr_accessor :starting_device_id
+
 
       #
       # Mapper for SqlStorageUpdateSettings class as Ruby Hash.
@@ -47,6 +50,14 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
                 serialized_name: 'diskConfigurationType',
                 type: {
                   name: 'String'
+                }
+              },
+              starting_device_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'startingDeviceId',
+                type: {
+                  name: 'Number'
                 }
               }
             }

@@ -20,8 +20,8 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
       # SQL2017-WS2016.
       attr_accessor :sql_image_offer
 
-      # @return [SqlImageSku] SQL image sku. Possible values include:
-      # 'Developer', 'Express', 'Standard', 'Enterprise', 'Web'
+      # @return [SqlVmGroupImageSku] SQL image sku. Possible values include:
+      # 'Developer', 'Enterprise'
       attr_accessor :sql_image_sku
 
       # @return [ScaleType] Scale type. Possible values include: 'HA'

@@ -15,9 +15,6 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
       # @return [Boolean] Enable or disable R services (SQL 2016 onwards).
       attr_accessor :is_rservices_enabled
 
-      # @return [Boolean] Enable or disable Azure Backup service.
-      attr_accessor :backup_permissions_for_azure_backup_svc
-
 
       #
       # Mapper for AdditionalFeaturesServerConfigurations class as Ruby Hash.
@@ -36,14 +33,6 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'isRServicesEnabled',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              backup_permissions_for_azure_backup_svc: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'backupPermissionsForAzureBackupSvc',
                 type: {
                   name: 'Boolean'
                 }

@@ -18,7 +18,7 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
       # @return [String] Resource id of the public IP.
       attr_accessor :public_ip_address_resource_id
 
-      # @return [String] Subnet used to include private IP.
+      # @return [String] Resource id of the load balancer.
       attr_accessor :load_balancer_resource_id
 
       # @return [Integer] Probe port.
