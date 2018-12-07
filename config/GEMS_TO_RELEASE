@@ -1,4 +1,7 @@
 {
+    "management": [
+        "azure_mgmt_sqlvirtualmachine"
+    ],
     "data": [
         "azure_cognitiveservices_newssearch",
         "azure_cognitiveservices_visualsearch",
