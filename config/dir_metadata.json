@@ -420,6 +420,11 @@
       "path": "management/azure_mgmt_service_fabric",
       "namespace": "Azure::ServiceFabric::Mgmt",
       "module_require": "azure_mgmt_service_fabric"
+    },
+    "data": {
+      "path": "data/azure_service_fabric",
+      "namespace": "Azure::ServiceFabric",
+      "module_require": "azure_service_fabric"
     }
   },
   "Microsoft.Signalr": {

@@ -1684,5 +1684,22 @@
       "namespace": "Azure::KeyVault::V7_0",
       "tag": "package-7.0"
     }
+  },
+  "azure_service_fabric": {
+    "azure_service_fabric_v6.2": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/servicefabric/data-plane/readme.md",
+      "namespace": "Azure::ServiceFabric::V6_2",
+      "tag": "6.2"
+    },
+    "azure_service_fabric_v6.3": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/servicefabric/data-plane/readme.md",
+      "namespace": "Azure::ServiceFabric::V6_3",
+      "tag": "6.3"
+    },
+    "azure_service_fabric_v6.4": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/servicefabric/data-plane/readme.md",
+      "namespace": "Azure::ServiceFabric::V6_4",
+      "tag": "6.4"
+    }
   }
 }

@@ -446,6 +446,9 @@
                     "management": {
                         "2017-07-01-preview": ["*"],
                         "2018-02-01": ["*"]
+                    },
+                    "data": {
+                        "6.4": ["*"]
                     }
                 },
                 "Microsoft.Signalr": {
@@ -2089,6 +2092,20 @@
                     }
                 },
             "output_dir": "data/azure_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_service_fabric": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.ServiceFabric": {
+                    "data": {
+                        "6.4": ["*"]
+                    }
+                }
+            },
+            "output_dir": "data/azure_service_fabric/lib/profiles",
             "individual_gem_profile": true
         }
         ]

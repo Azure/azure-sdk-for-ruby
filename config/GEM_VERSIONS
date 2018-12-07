@@ -23,7 +23,8 @@
         "azure_cognitiveservices_visualsearch": "0.17.1",
         "azure_event_grid": "0.17.0",
         "azure_graph_rbac": "0.17.0",
-        "azure_key_vault": "0.17.1"
+        "azure_key_vault": "0.17.1",
+        "azure_service_fabric": "0.17.0"
     },
     "management" : {
         "azure_mgmt_analysis_services": "0.17.1",
