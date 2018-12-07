@@ -650,10 +650,11 @@ module Azure::Profiles::Latest
       end
     end
 
-    class ServiceFabricAdapter
+    class ServiceFabricAdapter < Azure::Profiles::Latest::ServiceFabric::ServiceFabricDataClass
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
+        super(context)
         @mgmt = Azure::Profiles::Latest::ServiceFabric::Mgmt::ServiceFabricManagementClass.new(context, base_url, options)
       end
     end
