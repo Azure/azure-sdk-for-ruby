@@ -42,8 +42,8 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [Array<Marketplace>] operation results.
     #
-    def list(filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      first_page = list_as_lazy(filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers)
+    def list(filter = nil, top = nil, skiptoken = nil, custom_headers = nil)
+      first_page = list_as_lazy(filter, top, skiptoken, custom_headers)
       first_page.get_all_items
     end
 
@@ -67,8 +67,8 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      list_async(filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_with_http_info(filter = nil, top = nil, skiptoken = nil, custom_headers = nil)
+      list_async(filter, top, skiptoken, custom_headers).value!
     end
 
     #
@@ -91,15 +91,12 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
+    def list_async(filter = nil, top = nil, skiptoken = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -145,7 +142,7 @@ module Azure::Consumption::Mgmt::V2018_01_31
     end
 
     #
-    # Lists the marketplaces for a scope by billing period and subscripotionId.
+    # Lists the marketplaces for a scope by billing period and subscriptionId.
     # Marketplaces are available via this API only for May 1, 2014 or later.
     #
     # @param billing_period_name [String] Billing Period Name.
@@ -165,13 +162,13 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [Array<Marketplace>] operation results.
     #
-    def list_by_billing_period(billing_period_name, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      first_page = list_by_billing_period_as_lazy(billing_period_name, filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers)
+    def list_by_billing_period(billing_period_name, filter = nil, top = nil, skiptoken = nil, custom_headers = nil)
+      first_page = list_by_billing_period_as_lazy(billing_period_name, filter, top, skiptoken, custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Lists the marketplaces for a scope by billing period and subscripotionId.
+    # Lists the marketplaces for a scope by billing period and subscriptionId.
     # Marketplaces are available via this API only for May 1, 2014 or later.
     #
     # @param billing_period_name [String] Billing Period Name.
@@ -191,12 +188,12 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_billing_period_with_http_info(billing_period_name, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      list_by_billing_period_async(billing_period_name, filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_by_billing_period_with_http_info(billing_period_name, filter = nil, top = nil, skiptoken = nil, custom_headers = nil)
+      list_by_billing_period_async(billing_period_name, filter, top, skiptoken, custom_headers).value!
     end
 
     #
-    # Lists the marketplaces for a scope by billing period and subscripotionId.
+    # Lists the marketplaces for a scope by billing period and subscriptionId.
     # Marketplaces are available via this API only for May 1, 2014 or later.
     #
     # @param billing_period_name [String] Billing Period Name.
@@ -216,16 +213,13 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_billing_period_async(billing_period_name, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
+    def list_by_billing_period_async(billing_period_name, filter = nil, top = nil, skiptoken = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'billing_period_name is nil' if billing_period_name.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -281,8 +275,8 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [MarketplacesListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -297,8 +291,8 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -312,12 +306,11 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -362,7 +355,7 @@ module Azure::Consumption::Mgmt::V2018_01_31
     end
 
     #
-    # Lists the marketplaces for a scope by billing period and subscripotionId.
+    # Lists the marketplaces for a scope by billing period and subscriptionId.
     # Marketplaces are available via this API only for May 1, 2014 or later.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -372,13 +365,13 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [MarketplacesListResult] operation results.
     #
-    def list_by_billing_period_next(next_page_link, custom_headers:nil)
-      response = list_by_billing_period_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_billing_period_next(next_page_link, custom_headers = nil)
+      response = list_by_billing_period_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Lists the marketplaces for a scope by billing period and subscripotionId.
+    # Lists the marketplaces for a scope by billing period and subscriptionId.
     # Marketplaces are available via this API only for May 1, 2014 or later.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -388,12 +381,12 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_billing_period_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_billing_period_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_billing_period_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_billing_period_next_async(next_page_link, custom_headers).value!
     end
 
     #
-    # Lists the marketplaces for a scope by billing period and subscripotionId.
+    # Lists the marketplaces for a scope by billing period and subscriptionId.
     # Marketplaces are available via this API only for May 1, 2014 or later.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -403,12 +396,11 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_billing_period_next_async(next_page_link, custom_headers:nil)
+    def list_by_billing_period_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -473,19 +465,19 @@ module Azure::Consumption::Mgmt::V2018_01_31
     # @return [MarketplacesListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      response = list_async(filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_as_lazy(filter = nil, top = nil, skiptoken = nil, custom_headers = nil)
+      response = list_async(filter, top, skiptoken, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
     end
 
     #
-    # Lists the marketplaces for a scope by billing period and subscripotionId.
+    # Lists the marketplaces for a scope by billing period and subscriptionId.
     # Marketplaces are available via this API only for May 1, 2014 or later.
     #
     # @param billing_period_name [String] Billing Period Name.
@@ -506,12 +498,12 @@ module Azure::Consumption::Mgmt::V2018_01_31
     # @return [MarketplacesListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_billing_period_as_lazy(billing_period_name, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      response = list_by_billing_period_async(billing_period_name, filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_by_billing_period_as_lazy(billing_period_name, filter = nil, top = nil, skiptoken = nil, custom_headers = nil)
+      response = list_by_billing_period_async(billing_period_name, filter, top, skiptoken, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_billing_period_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_billing_period_next_async(next_page_link, custom_headers)
         end
         page
       end
