@@ -1,3 +1,20 @@
+## 2018.12.07 - Azure Ruby SDK Release
+* Released the following SDKs
+   - azure_mgmt_sqlvirtualmachine - v0.17.1
+   - azure_cognitiveservices_newssearch - v0.17.1
+   - azure_cognitiveservices_visualsearch - v0.17.1
+   - azure_cognitiveservices_spellcheck - v0.17.1
+   - azure_cognitiveservices_entitysearch - v0.17.1
+   - azure_cognitiveservices_websearch - v0.17.2
+   - azure_cognitiveservices_imagesearch - v0.17.1
+   - azure_cognitiveservices_customsearch - v0.17.1
+   - azure_cognitiveservices_videosearch - v0.17.1
+   - azure_cognitiveservices_autosuggest - v0.17.0
+   - azure_cognitiveservices_customimagesearch - v0.17.0
+   - azure_service_fabric - v0.17.0
+   - azure_sdk - v0.19.5
+   
+
 ## 2018.12.06 - Azure Ruby SDK Release
 * Released the following SDKs
    - azure_mgmt_container_registry - v0.17.2
