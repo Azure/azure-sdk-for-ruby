@@ -1,24 +1,26 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.19.4"
+        "azure_sdk": "0.19.5"
     },
     "data": {
+        "azure_cognitiveservices_autosuggest": "0.17.0",
+        "azure_cognitiveservices_customimagesearch": "0.17.0",
         "azure_cognitiveservices_computervision": "0.17.0",
         "azure_cognitiveservices_contentmoderator": "0.17.0",
-        "azure_cognitiveservices_customsearch": "0.17.0",
+        "azure_cognitiveservices_customsearch": "0.17.1",
         "azure_cognitiveservices_customvisiontraining": "0.17.0",
         "azure_cognitiveservices_customvisionprediction": "0.17.0",
-        "azure_cognitiveservices_entitysearch": "0.17.0",
+        "azure_cognitiveservices_entitysearch": "0.17.1",
         "azure_cognitiveservices_face": "0.17.0",
-        "azure_cognitiveservices_imagesearch": "0.17.0",
-        "azure_cognitiveservices_newssearch": "0.17.0",
+        "azure_cognitiveservices_imagesearch": "0.17.1",
+        "azure_cognitiveservices_newssearch": "0.17.1",
         "azure_cognitiveservices_qnamaker": "0.17.0",
-        "azure_cognitiveservices_spellcheck": "0.17.0",
+        "azure_cognitiveservices_spellcheck": "0.17.1",
         "azure_cognitiveservices_textanalytics": "0.17.1",
-        "azure_cognitiveservices_videosearch": "0.17.0",
-        "azure_cognitiveservices_websearch": "0.17.1",
-        "azure_cognitiveservices_visualsearch": "0.17.0",
+        "azure_cognitiveservices_videosearch": "0.17.1",
+        "azure_cognitiveservices_websearch": "0.17.2",
+        "azure_cognitiveservices_visualsearch": "0.17.1",
         "azure_event_grid": "0.17.0",
         "azure_graph_rbac": "0.17.0",
         "azure_key_vault": "0.17.1"

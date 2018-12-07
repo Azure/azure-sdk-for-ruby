@@ -1,11 +1,15 @@
 {
-    "management": [
-        "azure_mgmt_container_registry",
-        "azure_mgmt_logic"
-    ],
     "data": [
-        "azure_cognitiveservices_customvisiontraining",
-        "azure_cognitiveservices_customvisionprediction"
+        "azure_cognitiveservices_newssearch",
+        "azure_cognitiveservices_visualsearch",
+        "azure_cognitiveservices_spellcheck",
+        "azure_cognitiveservices_entitysearch",
+        "azure_cognitiveservices_websearch",
+        "azure_cognitiveservices_imagesearch",
+        "azure_cognitiveservices_customsearch",
+        "azure_cognitiveservices_videosearch",
+        "azure_cognitiveservices_autosuggest",
+        "azure_cognitiveservices_customimagesearch"
     ],
     "rollup": [
         "azure_sdk"

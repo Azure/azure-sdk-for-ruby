@@ -1494,6 +1494,22 @@
       "tag": "package-2018-02"
     }
   },
+  "azure_cognitiveservices_autosuggest": {
+    "azure_cognitiveservices_autosuggest_v1.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/AutoSuggest/readme.md",
+      "namespace": "Azure::CognitiveServices::Autosuggest::V1_0",
+      "title": "AutosuggestClient",
+      "tag": "release_1_0"
+    }
+  },
+  "azure_cognitiveservices_customimagesearch": {
+    "azure_cognitiveservices_customimagesearch_v1.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/CustomImageSearch/readme.md",
+      "namespace": "Azure::CognitiveServices::Customimagesearch::V1_0",
+      "title": "CustomimagesearchClient",
+      "tag": "release_1_0"
+    }
+  },
   "azure_cognitiveservices_computervision":{
     "azure_cognitiveservices_computervision_v2.0": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/ComputerVision/readme.md",
@@ -1519,7 +1535,7 @@
   },
   "azure_cognitiveservices_customsearch":{
     "azure_cognitiveservices_customsearch_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/CustomWebSearch/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/CustomWebSearch/readme.md",
       "namespace": "Azure::CognitiveServices::CustomSearch::V1_0",
       "title": "CustomSearchClient",
       "tag": "release_1_0"
@@ -1555,7 +1571,7 @@
   },
   "azure_cognitiveservices_entitysearch":{
     "azure_cognitiveservices_entitysearch_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/EntitySearch/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/EntitySearch/readme.md",
       "namespace": "Azure::CognitiveServices::EntitySearch::V1_0",
       "title": "EntitySearchClient",
       "tag": "release_1_0"
@@ -1571,7 +1587,7 @@
   },
   "azure_cognitiveservices_imagesearch":{
     "azure_cognitiveservices_imagesearch_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/ImageSearch/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/ImageSearch/readme.md",
       "namespace": "Azure::CognitiveServices::ImageSearch::V1_0",
       "title": "ImageSearchClient",
       "tag": "release_1_0"
@@ -1579,7 +1595,7 @@
   },
   "azure_cognitiveservices_newssearch":{
     "azure_cognitiveservices_newssearch_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/NewsSearch/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/NewsSearch/readme.md",
       "namespace": "Azure::CognitiveServices::NewsSearch::V1_0",
       "title": "NewsSearchClient",
       "tag": "release_1_0"
@@ -1595,7 +1611,7 @@
   },
   "azure_cognitiveservices_spellcheck":{
     "azure_cognitiveservices_spellcheck_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/SpellCheck/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/SpellCheck/readme.md",
       "namespace": "Azure::CognitiveServices::SpellCheck::V1_0",
       "title": "SpellCheckClient",
       "tag": "release_1_0"
@@ -1617,7 +1633,7 @@
   },
   "azure_cognitiveservices_videosearch":{
     "azure_cognitiveservices_videosearch_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/VideoSearch/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/VideoSearch/readme.md",
       "namespace": "Azure::CognitiveServices::VideoSearch::V1_0",
       "title": "VideoSearchClient",
       "tag": "release_1_0"
@@ -1625,7 +1641,7 @@
   },
   "azure_cognitiveservices_websearch":{
     "azure_cognitiveservices_websearch_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/cognitiveservices/data-plane/WebSearch/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/WebSearch/readme.md",
       "namespace": "Azure::CognitiveServices::WebSearch::V1_0",
       "title": "WebSearchClient",
       "tag": "release_1_0"
@@ -1633,7 +1649,7 @@
   },
   "azure_cognitiveservices_visualsearch":{
     "azure_cognitiveservices_visualsearch_v1.0_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3869689cbdb70abe1804d639b6a6acce47232612/specification/cognitiveservices/data-plane/VisualSearch/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/VisualSearch/readme.md",
       "namespace": "Azure::CognitiveServices::VisualSearch::V1_0",
       "title": "VisualSearchClient",
       "tag": "release_1_0"

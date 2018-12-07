@@ -485,6 +485,20 @@
       "module_require": "azure_mgmt_web"
     }
   },
+  "Microsoft.CognitiveServices.Autosuggest": {
+    "data": {
+      "path": "data/azure_cognitiveservices_autosuggest",
+      "namespace": "Azure::CognitiveServices::Autosuggest",
+      "module_require": "azure_cognitiveservices_autosuggest"
+    }
+  },
+  "Microsoft.CognitiveServices.Customimagesearch": {
+    "data": {
+      "path": "data/azure_cognitiveservices_customimagesearch",
+      "namespace": "Azure::CognitiveServices::Customimagesearch",
+      "module_require": "azure_cognitiveservices_customimagesearch"
+    }
+  },
   "Microsoft.CognitiveServices.ComputerVision": {
     "data": {
       "path": "data/azure_cognitiveservices_computervision",
