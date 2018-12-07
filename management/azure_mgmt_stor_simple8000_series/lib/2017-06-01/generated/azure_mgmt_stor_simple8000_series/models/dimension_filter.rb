@@ -31,7 +31,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DimensionFilter',
           type: {
@@ -39,7 +38,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'DimensionFilter',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -47,7 +45,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               values: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'values',
                 type: {

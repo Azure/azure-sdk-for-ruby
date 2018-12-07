@@ -7,10 +7,11 @@ require 'azure_mgmt_links'
 module Azure::Profiles::V2017_03_09
   module Links
     module Mgmt
-      ResourceLinks = Azure::Links::Mgmt::V2016_09_01::ResourceLinks
       Operations = Azure::Links::Mgmt::V2016_09_01::Operations
+      ResourceLinks = Azure::Links::Mgmt::V2016_09_01::ResourceLinks
 
       module Models
+        OperationDisplay = Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
         Operation = Azure::Links::Mgmt::V2016_09_01::Models::Operation
         OperationListResult = Azure::Links::Mgmt::V2016_09_01::Models::OperationListResult
         ResourceLinkResult = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
@@ -18,11 +19,10 @@ module Azure::Profiles::V2017_03_09
         ResourceLinkFilter = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
         ResourceLink = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
         Filter = Azure::Links::Mgmt::V2016_09_01::Models::Filter
-        OperationDisplay = Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
       end
 
       class LinksManagementClass
-        attr_reader :resource_links, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :resource_links, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -32,8 +32,8 @@ module Azure::Profiles::V2017_03_09
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @resource_links = @client_0.resource_links
           @operations = @client_0.operations
+          @resource_links = @client_0.resource_links
 
           @model_classes = ModelClasses.new
         end
@@ -52,6 +52,9 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def operation_display
+            Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
+          end
           def operation
             Azure::Links::Mgmt::V2016_09_01::Models::Operation
           end
@@ -72,9 +75,6 @@ module Azure::Profiles::V2017_03_09
           end
           def filter
             Azure::Links::Mgmt::V2016_09_01::Models::Filter
-          end
-          def operation_display
-            Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
           end
         end
       end

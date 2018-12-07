@@ -47,7 +47,6 @@ module Azure::StorSimple8000Series::Profiles::Latest
       ScheduleRecurrence = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ScheduleRecurrence
       SymmetricEncryptedSecret = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SymmetricEncryptedSecret
       NicIPv6 = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NicIPv6
-      Time = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
       AcsConfiguration = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AcsConfiguration
       StorageAccountCredentialList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::StorageAccountCredentialList
       AlertErrorDetails = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertErrorDetails
@@ -143,6 +142,7 @@ module Azure::StorSimple8000Series::Profiles::Latest
       EncryptionAlgorithm = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::EncryptionAlgorithm
       BackupType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupType
       BackupJobCreationType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupJobCreationType
+      Time = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
       VolumeType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeType
       ScheduledBackupStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ScheduledBackupStatus
       BackupPolicyCreationType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupPolicyCreationType
@@ -313,9 +313,6 @@ module Azure::StorSimple8000Series::Profiles::Latest
       end
       def nic_ipv6
         Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NicIPv6
-      end
-      def time
-        Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
       end
       def acs_configuration
         Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AcsConfiguration
@@ -601,6 +598,9 @@ module Azure::StorSimple8000Series::Profiles::Latest
       end
       def backup_job_creation_type
         Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupJobCreationType
+      end
+      def time
+        Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
       end
       def volume_type
         Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeType
