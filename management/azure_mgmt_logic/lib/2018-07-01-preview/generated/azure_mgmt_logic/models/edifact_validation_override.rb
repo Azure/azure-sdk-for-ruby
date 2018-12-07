@@ -21,10 +21,10 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       attr_accessor :enforce_character_set
 
       # @return [Boolean] The value indicating whether to validate EDI types.
-      attr_accessor :validate_edi_types
+      attr_accessor :validate_editypes
 
       # @return [Boolean] The value indicating whether to validate XSD types.
-      attr_accessor :validate_xsd_types
+      attr_accessor :validate_xsdtypes
 
       # @return [Boolean] The value indicating whether to allow leading and
       # trailing spaces and zeroes.
@@ -66,16 +66,16 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                   name: 'Boolean'
                 }
               },
-              validate_edi_types: {
+              validate_editypes: {
                 required: true,
-                serialized_name: 'validateEdiTypes',
+                serialized_name: 'validateEDITypes',
                 type: {
                   name: 'Boolean'
                 }
               },
-              validate_xsd_types: {
+              validate_xsdtypes: {
                 required: true,
-                serialized_name: 'validateXsdTypes',
+                serialized_name: 'validateXSDTypes',
                 type: {
                   name: 'Boolean'
                 }
