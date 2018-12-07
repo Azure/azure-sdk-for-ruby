@@ -963,6 +963,7 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def search_async(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, aspect:nil, color:nil, country_code:nil, count:nil, freshness:nil, height:nil, id:nil, image_content:nil, image_type:nil, license:nil, market:nil, max_file_size:nil, max_height:nil, max_width:nil, min_file_size:nil, min_height:nil, min_width:nil, offset:nil, safe_search:nil, size:nil, set_lang:nil, width:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
@@ -981,6 +982,7 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       path_template = 'images/search'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1867,6 +1869,7 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def details_async(query, accept_language:nil, content_type:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, crop_bottom:nil, crop_left:nil, crop_right:nil, crop_top:nil, crop_type:nil, country_code:nil, id:nil, image_url:nil, insights_token:nil, modules:nil, market:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
@@ -1886,6 +1889,7 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       path_template = 'images/details'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -2469,6 +2473,7 @@ module Azure::CognitiveServices::ImageSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def trending_async(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
 
 
@@ -2486,6 +2491,7 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       path_template = 'images/trending'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

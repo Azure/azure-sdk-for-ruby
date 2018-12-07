@@ -753,6 +753,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def search_async(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, freshness:nil, market:nil, offset:nil, original_image:nil, safe_search:nil, set_lang:nil, sort_by:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
@@ -771,6 +772,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
       path_template = 'news/search'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -808,11 +810,11 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     end
 
     #
-    # The News Category API lets lets you search on Bing and get back a list of top
-    # news articles by category. This section provides technical details about the
-    # query parameters and headers that you use to request news and the JSON
-    # response objects that contain them.  For examples that show how to make
-    # requests, see [Searching the web for
+    # The News Category API lets you search on Bing and get back a list of top news
+    # articles by category. This section provides technical details about the query
+    # parameters and headers that you use to request news and the JSON response
+    # objects that contain them.  For examples that show how to make requests, see
+    # [Searching the web for
     # news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
     #
     # @param accept_language [String] A comma-delimited list of one or more
@@ -1054,11 +1056,11 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     end
 
     #
-    # The News Category API lets lets you search on Bing and get back a list of top
-    # news articles by category. This section provides technical details about the
-    # query parameters and headers that you use to request news and the JSON
-    # response objects that contain them.  For examples that show how to make
-    # requests, see [Searching the web for
+    # The News Category API lets you search on Bing and get back a list of top news
+    # articles by category. This section provides technical details about the query
+    # parameters and headers that you use to request news and the JSON response
+    # objects that contain them.  For examples that show how to make requests, see
+    # [Searching the web for
     # news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
     #
     # @param accept_language [String] A comma-delimited list of one or more
@@ -1299,11 +1301,11 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     end
 
     #
-    # The News Category API lets lets you search on Bing and get back a list of top
-    # news articles by category. This section provides technical details about the
-    # query parameters and headers that you use to request news and the JSON
-    # response objects that contain them.  For examples that show how to make
-    # requests, see [Searching the web for
+    # The News Category API lets you search on Bing and get back a list of top news
+    # articles by category. This section provides technical details about the query
+    # parameters and headers that you use to request news and the JSON response
+    # objects that contain them.  For examples that show how to make requests, see
+    # [Searching the web for
     # news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
     #
     # @param accept_language [String] A comma-delimited list of one or more
@@ -1540,6 +1542,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def category_async(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, category:nil, count:nil, headline_count:nil, market:nil, offset:nil, original_image:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
 
 
@@ -1557,6 +1560,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
       path_template = 'news'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1594,8 +1598,8 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     end
 
     #
-    # The News Trending Topics API lets lets you search on Bing and get back a list
-    # of trending news topics that are currently trending on Bing. This section
+    # The News Trending Topics API lets you search on Bing and get back a list of
+    # trending news topics that are currently trending on Bing. This section
     # provides technical details about the query parameters and headers that you
     # use to request news and the JSON response objects that contain them.  For
     # examples that show how to make requests, see [Searching the web for
@@ -1821,8 +1825,8 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     end
 
     #
-    # The News Trending Topics API lets lets you search on Bing and get back a list
-    # of trending news topics that are currently trending on Bing. This section
+    # The News Trending Topics API lets you search on Bing and get back a list of
+    # trending news topics that are currently trending on Bing. This section
     # provides technical details about the query parameters and headers that you
     # use to request news and the JSON response objects that contain them.  For
     # examples that show how to make requests, see [Searching the web for
@@ -2047,8 +2051,8 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     end
 
     #
-    # The News Trending Topics API lets lets you search on Bing and get back a list
-    # of trending news topics that are currently trending on Bing. This section
+    # The News Trending Topics API lets you search on Bing and get back a list of
+    # trending news topics that are currently trending on Bing. This section
     # provides technical details about the query parameters and headers that you
     # use to request news and the JSON response objects that contain them.  For
     # examples that show how to make requests, see [Searching the web for
@@ -2269,6 +2273,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def trending_async(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, market:nil, offset:nil, safe_search:nil, set_lang:nil, since:nil, sort_by:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
 
 
@@ -2286,6 +2291,7 @@ module Azure::CognitiveServices::NewsSearch::V1_0
       path_template = 'news/trendingtopics'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
