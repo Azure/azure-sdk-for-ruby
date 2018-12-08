@@ -12,10 +12,15 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     include MsRestAzure::Serialization
 
     # @return [String] the base URI of the service.
-    attr_accessor :base_url
+    attr_reader :base_url
 
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials1
+
+    # @return [String] Supported Cognitive Services endpoints (protocol and
+    # hostname, for example: "https://westus.api.cognitive.microsoft.com",
+    # "https://api.cognitive.microsoft.com").
+    attr_accessor :endpoint
 
     # @return Subscription credentials which uniquely identify client
     # subscription.
@@ -39,17 +44,17 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     #
     # Creates initializes a new instance of the CustomSearchClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
-    # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
     #
-    def initialize(credentials = nil, base_url = nil, options = nil)
+    def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = base_url || 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0'
+      @base_url = '{Endpoint}/bingcustomsearch/v7.0'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
       @custom_instance = CustomInstance.new(self)
+      @endpoint = 'https://api.cognitive.microsoft.com'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -121,7 +126,7 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_customsearch'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

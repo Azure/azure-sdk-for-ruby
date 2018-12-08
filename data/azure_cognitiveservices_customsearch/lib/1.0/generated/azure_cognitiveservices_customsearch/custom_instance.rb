@@ -26,7 +26,7 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     # The Custom Search API lets you send a search query to Bing and get back web
     # pages found in your custom view of the web.
     #
-    # @param custom_config [Integer] The identifier for the custom search
+    # @param custom_config [String] The identifier for the custom search
     # configuration
     # @param query [String] The user's search query term. The term may not be
     # empty. The term may contain Bing Advanced Operators. For example, to limit
@@ -218,7 +218,7 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     # The Custom Search API lets you send a search query to Bing and get back web
     # pages found in your custom view of the web.
     #
-    # @param custom_config [Integer] The identifier for the custom search
+    # @param custom_config [String] The identifier for the custom search
     # configuration
     # @param query [String] The user's search query term. The term may not be
     # empty. The term may contain Bing Advanced Operators. For example, to limit
@@ -409,7 +409,7 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     # The Custom Search API lets you send a search query to Bing and get back web
     # pages found in your custom view of the web.
     #
-    # @param custom_config [Integer] The identifier for the custom search
+    # @param custom_config [String] The identifier for the custom search
     # configuration
     # @param query [String] The user's search query term. The term may not be
     # empty. The term may contain Bing Advanced Operators. For example, to limit
@@ -593,9 +593,9 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def search_async(custom_config, query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, market:'en-us', offset:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'custom_config is nil' if custom_config.nil?
-      fail ArgumentError, "'custom_config' should satisfy the constraint - 'InclusiveMinimum': '0'" if !custom_config.nil? && custom_config < 0
       fail ArgumentError, 'query is nil' if query.nil?
 
 
@@ -613,6 +613,7 @@ module Azure::CognitiveServices::CustomSearch::V1_0
       path_template = 'search'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

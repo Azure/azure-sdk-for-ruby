@@ -716,6 +716,7 @@ module Azure::CognitiveServices::WebSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def search_async(query, accept_language:nil, pragma:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, answer_count:nil, country_code:nil, count:nil, freshness:nil, market:'en-us', offset:nil, promote:nil, response_filter:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
@@ -735,6 +736,7 @@ module Azure::CognitiveServices::WebSearch::V1_0
       path_template = 'search'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

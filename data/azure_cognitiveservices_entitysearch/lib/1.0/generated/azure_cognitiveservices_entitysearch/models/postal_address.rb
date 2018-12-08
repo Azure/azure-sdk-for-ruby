@@ -46,7 +46,7 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       # full name, United States.
       attr_accessor :address_country
 
-      # @return [String] The two letter ISO code of this countr. For example,
+      # @return [String] The two letter ISO code of this country. For example,
       # US.
       attr_accessor :country_iso
 

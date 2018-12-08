@@ -34,7 +34,7 @@ module Azure::CognitiveServices::ImageSearch::V1_0
       # of the number of websites where you can buy an apple pie. To indicate
       # the number of offers in your UX, include badging such as a shopping
       # cart icon that contains the count. When the user clicks on the icon,
-      # use imageInisghtsToken to get the list of websites.
+      # use imageInsightsToken to get the list of websites.
       attr_accessor :insights_metadata
 
       # @return [String] Unique Id for the image

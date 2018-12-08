@@ -514,6 +514,7 @@ module Azure::CognitiveServices::EntitySearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def search_async(query, accept_language:nil, pragma:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:'en-us', response_filter:nil, response_format:nil, safe_search:nil, set_lang:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
@@ -533,6 +534,7 @@ module Azure::CognitiveServices::EntitySearch::V1_0
       path_template = 'entities'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

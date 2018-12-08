@@ -446,6 +446,9 @@
                     "management": {
                         "2017-07-01-preview": ["*"],
                         "2018-02-01": ["*"]
+                    },
+                    "data": {
+                        "6.4.0.36": ["*"]
                     }
                 },
                 "Microsoft.Signalr": {
@@ -495,6 +498,16 @@
                 "Microsoft.Web": {
                     "management": {
                         "2018-02-01": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.Autosuggest": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.Customimagesearch": {
+                    "data": {
+                        "1.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.ComputerVision": {
@@ -1792,6 +1805,34 @@
                 "individual_gem_profile": true
             }
         ],
+        "azure_cognitiveservices_autosuggest": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.Autosuggest": {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_autosuggest/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_customimagesearch": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.Customimagesearch": {
+                        "data": {
+                            "1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_customimagesearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_cognitiveservices_computervision": [
             {
                 "name": "Latest",
@@ -2051,6 +2092,20 @@
                     }
                 },
             "output_dir": "data/azure_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_service_fabric": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.ServiceFabric": {
+                    "data": {
+                        "6.4.0.36": ["*"]
+                    }
+                }
+            },
+            "output_dir": "data/azure_service_fabric/lib/profiles",
             "individual_gem_profile": true
         }
         ]

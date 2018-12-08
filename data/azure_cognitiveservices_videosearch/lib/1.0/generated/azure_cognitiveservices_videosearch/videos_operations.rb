@@ -793,6 +793,7 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def search_async(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, count:nil, freshness:nil, id:nil, length:nil, market:nil, offset:nil, pricing:nil, resolution:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
@@ -811,6 +812,7 @@ module Azure::CognitiveServices::VideoSearch::V1_0
       path_template = 'videos/search'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1538,6 +1540,7 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def details_async(query, accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, id:nil, modules:nil, market:nil, resolution:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
       fail ArgumentError, 'query is nil' if query.nil?
 
@@ -1556,6 +1559,7 @@ module Azure::CognitiveServices::VideoSearch::V1_0
       path_template = 'videos/details'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -2196,6 +2200,7 @@ module Azure::CognitiveServices::VideoSearch::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def trending_async(accept_language:nil, user_agent:nil, client_id:nil, client_ip:nil, location:nil, country_code:nil, market:nil, safe_search:nil, set_lang:nil, text_decorations:nil, text_format:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       x_bing_apis_sdk = 'true'
 
 
@@ -2213,6 +2218,7 @@ module Azure::CognitiveServices::VideoSearch::V1_0
       path_template = 'videos/trending'
 
       request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
