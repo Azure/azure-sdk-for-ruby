@@ -477,7 +477,7 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete an existing face from a face list (given by a persisitedFaceId and a
+    # Delete an existing face from a face list (given by a persistedFaceId and a
     # faceListId). Persisted image related to the face will also be deleted.
     #
     # @param face_list_id [String] Id referencing a particular face list.
@@ -493,7 +493,7 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete an existing face from a face list (given by a persisitedFaceId and a
+    # Delete an existing face from a face list (given by a persistedFaceId and a
     # faceListId). Persisted image related to the face will also be deleted.
     #
     # @param face_list_id [String] Id referencing a particular face list.
@@ -509,7 +509,7 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete an existing face from a face list (given by a persisitedFaceId and a
+    # Delete an existing face from a face list (given by a persistedFaceId and a
     # faceListId). Persisted image related to the face will also be deleted.
     #
     # @param face_list_id [String] Id referencing a particular face list.
