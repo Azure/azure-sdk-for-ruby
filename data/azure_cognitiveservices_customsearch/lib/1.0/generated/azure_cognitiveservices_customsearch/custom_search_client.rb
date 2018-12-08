@@ -126,7 +126,7 @@ module Azure::CognitiveServices::CustomSearch::V1_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_customsearch'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

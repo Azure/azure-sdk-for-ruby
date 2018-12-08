@@ -41,7 +41,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        @client_0 = Azure::CognitiveServices::NewsSearch::V1_0::NewsSearchClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::CognitiveServices::NewsSearch::V1_0::NewsSearchClient.new(configurable.credentials, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
