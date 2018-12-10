@@ -1,19 +1,20 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.19.5"
+        "azure_sdk": "0.19.6"
     },
     "data": {
         "azure_cognitiveservices_autosuggest": "0.17.0",
         "azure_cognitiveservices_customimagesearch": "0.17.0",
         "azure_cognitiveservices_computervision": "0.17.0",
-        "azure_cognitiveservices_contentmoderator": "0.17.0",
+        "azure_cognitiveservices_contentmoderator": "0.17.1",
         "azure_cognitiveservices_customsearch": "0.18.0",
         "azure_cognitiveservices_customvisiontraining": "0.17.0",
         "azure_cognitiveservices_customvisionprediction": "0.17.0",
         "azure_cognitiveservices_entitysearch": "0.18.0",
         "azure_cognitiveservices_face": "0.17.0",
         "azure_cognitiveservices_imagesearch": "0.18.0",
+        "azure_cognitiveservices_localsearch": "0.17.0",
         "azure_cognitiveservices_newssearch": "0.18.0",
         "azure_cognitiveservices_qnamaker": "0.17.0",
         "azure_cognitiveservices_spellcheck": "0.18.0",

@@ -17,14 +17,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
   # If the content passed to the text API or the image API exceeds the size
   # limits, the API will return an error code that informs about the issue.
   #
-  # This API is currently available in:
-  #
-  # * West US - westus.api.cognitive.microsoft.com
-  # * East US 2 - eastus2.api.cognitive.microsoft.com
-  # * West Central US - westcentralus.api.cognitive.microsoft.com
-  # * West Europe - westeurope.api.cognitive.microsoft.com
-  # * Southeast Asia - southeastasia.api.cognitive.microsoft.com .
-  #
   class Reviews
     include MsRestAzure
 
@@ -79,7 +71,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_review_async(team_name, review_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
 
@@ -93,7 +85,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -170,7 +162,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_job_details_async(team_name, job_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'job_id is nil' if job_id.nil?
 
@@ -184,7 +176,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/jobs/{JobId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -348,7 +340,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_reviews_async(url_content_type, team_name, create_review_body, sub_team:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'url_content_type is nil' if url_content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'create_review_body is nil' if create_review_body.nil?
@@ -386,7 +378,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -651,7 +643,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_job_async(team_name, content_type, content_id, workflow_name, job_content_type, content, call_back_endpoint:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'content_id is nil' if content_id.nil?
@@ -676,7 +668,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/jobs'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -832,7 +824,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_video_frame_async(team_name, review_id, timescale:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
 
@@ -846,7 +838,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1001,7 +993,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_video_frames_async(team_name, review_id, start_seed:nil, no_of_records:nil, filter:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
 
@@ -1015,7 +1007,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1092,7 +1084,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def publish_video_review_async(team_name, review_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
 
@@ -1106,7 +1098,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/publish'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1190,7 +1182,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_video_transcript_moderation_result_async(content_type, team_name, review_id, transcript_moderation_body, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
@@ -1229,7 +1221,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/transcriptmoderationresult'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1302,7 +1294,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_video_transcript_async(team_name, review_id, vttfile, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
       content_type = 'text/plain'
@@ -1331,7 +1323,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/transcript'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1486,7 +1478,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_video_reviews_async(content_type, team_name, create_video_reviews_body, sub_team:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'create_video_reviews_body is nil' if create_video_reviews_body.nil?
@@ -1524,7 +1516,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1641,7 +1633,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_video_frame_url_async(content_type, team_name, review_id, video_frame_body, timescale:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
@@ -1680,7 +1672,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1772,7 +1764,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_video_frame_stream_async(content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'team_name is nil' if team_name.nil?
       fail ArgumentError, 'review_id is nil' if review_id.nil?
@@ -1796,7 +1788,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

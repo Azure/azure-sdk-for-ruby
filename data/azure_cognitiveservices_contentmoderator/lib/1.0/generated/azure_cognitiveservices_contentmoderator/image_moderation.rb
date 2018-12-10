@@ -17,14 +17,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
   # If the content passed to the text API or the image API exceeds the size
   # limits, the API will return an error code that informs about the issue.
   #
-  # This API is currently available in:
-  #
-  # * West US - westus.api.cognitive.microsoft.com
-  # * East US 2 - eastus2.api.cognitive.microsoft.com
-  # * West Central US - westcentralus.api.cognitive.microsoft.com
-  # * West Europe - westeurope.api.cognitive.microsoft.com
-  # * Southeast Asia - southeastasia.api.cognitive.microsoft.com .
-  #
   class ImageModeration
     include MsRestAzure
 
@@ -79,7 +71,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def find_faces_async(cache_image:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
       request_headers = {}
@@ -91,7 +83,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/FindFaces'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -192,7 +184,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def ocrmethod_async(language, cache_image:nil, enhanced:false, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'language is nil' if language.nil?
 
 
@@ -205,7 +197,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/OCR'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -282,7 +274,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def evaluate_method_async(cache_image:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
       request_headers = {}
@@ -294,7 +286,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/Evaluate'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -398,7 +390,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def match_method_async(list_id:nil, cache_image:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
       request_headers = {}
@@ -410,7 +402,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/Match'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -490,7 +482,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def find_faces_file_input_async(image_stream, cache_image:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'image_stream is nil' if image_stream.nil?
 
 
@@ -515,7 +507,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/FindFaces'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -599,7 +591,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def find_faces_url_input_async(content_type, image_url, cache_image:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'image_url is nil' if image_url.nil?
 
@@ -620,7 +612,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/FindFaces'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -728,7 +720,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def ocrurl_input_async(language, content_type, image_url, cache_image:nil, enhanced:false, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'language is nil' if language.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'image_url is nil' if image_url.nil?
@@ -750,7 +742,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/OCR'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -855,7 +847,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def ocrfile_input_async(language, image_stream, cache_image:nil, enhanced:false, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'language is nil' if language.nil?
       fail ArgumentError, 'image_stream is nil' if image_stream.nil?
 
@@ -881,7 +873,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/OCR'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -962,7 +954,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def evaluate_file_input_async(image_stream, cache_image:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'image_stream is nil' if image_stream.nil?
 
 
@@ -987,7 +979,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/Evaluate'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1071,7 +1063,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def evaluate_url_input_async(content_type, image_url, cache_image:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'image_url is nil' if image_url.nil?
 
@@ -1092,7 +1084,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/Evaluate'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1203,7 +1195,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def match_url_input_async(content_type, image_url, list_id:nil, cache_image:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'image_url is nil' if image_url.nil?
 
@@ -1224,7 +1216,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/Match'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -1332,7 +1324,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def match_file_input_async(image_stream, list_id:nil, cache_image:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'image_stream is nil' if image_stream.nil?
 
 
@@ -1357,7 +1349,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessImage/Match'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

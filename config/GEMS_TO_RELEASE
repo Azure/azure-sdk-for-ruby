@@ -1,19 +1,7 @@
 {
-    "management": [
-        "azure_mgmt_sqlvirtualmachine"
-    ],
     "data": [
-        "azure_cognitiveservices_newssearch",
-        "azure_cognitiveservices_visualsearch",
-        "azure_cognitiveservices_spellcheck",
-        "azure_cognitiveservices_entitysearch",
-        "azure_cognitiveservices_websearch",
-        "azure_cognitiveservices_imagesearch",
-        "azure_cognitiveservices_customsearch",
-        "azure_cognitiveservices_videosearch",
-        "azure_cognitiveservices_autosuggest",
-        "azure_cognitiveservices_customimagesearch",
-        "azure_service_fabric"
+        "azure_cognitiveservices_contentmoderator",
+        "azure_cognitiveservices_localsearch"
     ],
     "rollup": [
         "azure_sdk"
