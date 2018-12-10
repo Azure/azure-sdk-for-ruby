@@ -560,6 +560,13 @@
       "module_require": "azure_cognitiveservices_imagesearch"
     }
   },
+  "Microsoft.CognitiveServices.LocalSearch": {
+    "data": {
+      "path": "data/azure_cognitiveservices_localsearch",
+      "namespace": "Azure::CognitiveServices::LocalSearch",
+      "module_require": "azure_cognitiveservices_localsearch"
+    }
+  },
   "Microsoft.CognitiveServices.NewsSearch": {
     "data": {
       "path": "data/azure_cognitiveservices_newssearch",

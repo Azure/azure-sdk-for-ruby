@@ -1527,7 +1527,7 @@
   },
   "azure_cognitiveservices_contentmoderator":{
     "azure_cognitiveservices_contentmoderator_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/ContentModerator/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bff1f6c451ed7751154672e92f9c67218235a723/specification/cognitiveservices/data-plane/ContentModerator/readme.md",
       "namespace": "Azure::CognitiveServices::ContentModerator::V1_0",
       "title": "ContentModeratorClient",
       "tag": "release_1_0"
@@ -1590,6 +1590,14 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/ImageSearch/readme.md",
       "namespace": "Azure::CognitiveServices::ImageSearch::V1_0",
       "title": "ImageSearchClient",
+      "tag": "release_1_0"
+    }
+  },
+  "azure_cognitiveservices_localsearch": {
+    "azure_cognitiveservices_localsearch_v1.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bff1f6c451ed7751154672e92f9c67218235a723/specification/cognitiveservices/data-plane/LocalSearch/readme.md",
+      "namespace": "Azure::CognitiveServices::LocalSearch::V1_0",
+      "title": "LocalSearchClient",
       "tag": "release_1_0"
     }
   },

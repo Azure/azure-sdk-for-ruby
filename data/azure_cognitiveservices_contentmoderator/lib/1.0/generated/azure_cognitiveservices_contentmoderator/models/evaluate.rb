@@ -27,7 +27,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       # @return [Boolean] Indicates if an image is classified as adult.
       attr_accessor :is_image_adult_classified
 
-      # @return [Float] The racy classication score.
+      # @return [Float] The racy classification score.
       attr_accessor :racy_classification_score
 
       # @return [Boolean] Indicates if the image is classified as racy.

@@ -17,14 +17,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
   # If the content passed to the text API or the image API exceeds the size
   # limits, the API will return an error code that informs about the issue.
   #
-  # This API is currently available in:
-  #
-  # * West US - westus.api.cognitive.microsoft.com
-  # * East US 2 - eastus2.api.cognitive.microsoft.com
-  # * West Central US - westcentralus.api.cognitive.microsoft.com
-  # * West Europe - westeurope.api.cognitive.microsoft.com
-  # * Southeast Asia - southeastasia.api.cognitive.microsoft.com .
-  #
   class ListManagementImage
     include MsRestAzure
 
@@ -82,7 +74,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_image_async(list_id, tag:nil, label:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
 
 
@@ -95,7 +87,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}/images'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -170,7 +162,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_all_images_async(list_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
 
 
@@ -183,7 +175,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}/images'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -264,7 +256,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_all_image_ids_async(list_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
 
 
@@ -277,7 +269,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}/images'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -354,7 +346,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_image_async(list_id, image_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
       fail ArgumentError, 'image_id is nil' if image_id.nil?
 
@@ -368,7 +360,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}/images/{ImageId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -461,7 +453,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_image_url_input_async(list_id, content_type, image_url, tag:nil, label:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'image_url is nil' if image_url.nil?
@@ -483,7 +475,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}/images'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -568,7 +560,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def add_image_file_input_async(list_id, image_stream, tag:nil, label:nil, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
       fail ArgumentError, 'image_stream is nil' if image_stream.nil?
 
@@ -594,7 +586,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}/images'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

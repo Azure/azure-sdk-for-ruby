@@ -1,3 +1,9 @@
+## 2018.12.09 - Azure Ruby SDK Release
+* Released the following SDKs
+   - azure_cognitiveservices_localsearch - v0.17.0
+   - azure_cognitiveservices_contentmoderator -v0.17.1
+   - azure_sdk -v0.19.6
+   
 ## 2018.12.07 - Azure Ruby SDK Release
 * Released the following SDKs
    - azure_mgmt_sqlvirtualmachine - v0.17.1

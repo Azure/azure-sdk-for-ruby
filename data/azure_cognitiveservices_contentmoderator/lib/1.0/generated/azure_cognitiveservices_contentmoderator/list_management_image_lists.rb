@@ -17,14 +17,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
   # If the content passed to the text API or the image API exceeds the size
   # limits, the API will return an error code that informs about the issue.
   #
-  # This API is currently available in:
-  #
-  # * West US - westus.api.cognitive.microsoft.com
-  # * East US 2 - eastus2.api.cognitive.microsoft.com
-  # * West Central US - westcentralus.api.cognitive.microsoft.com
-  # * West Europe - westeurope.api.cognitive.microsoft.com
-  # * Southeast Asia - southeastasia.api.cognitive.microsoft.com .
-  #
   class ListManagementImageLists
     include MsRestAzure
 
@@ -76,7 +68,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_details_async(list_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
 
 
@@ -89,7 +81,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -163,7 +155,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(list_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
 
 
@@ -176,7 +168,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -263,7 +255,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def update_async(list_id, content_type, body, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'body is nil' if body.nil?
@@ -285,7 +277,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -363,7 +355,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_async(content_type, body, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'content_type is nil' if content_type.nil?
       fail ArgumentError, 'body is nil' if body.nil?
 
@@ -384,7 +376,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -455,7 +447,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_all_image_lists_async(custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
       request_headers = {}
@@ -467,7 +459,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -556,7 +548,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def refresh_index_method_async(list_id, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'list_id is nil' if list_id.nil?
 
 
@@ -569,7 +561,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/lists/v1.0/imagelists/{listId}/RefreshIndex'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],

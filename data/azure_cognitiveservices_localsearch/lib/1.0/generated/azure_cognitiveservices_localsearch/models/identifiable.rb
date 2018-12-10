@@ -3,48 +3,52 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::ContentModerator::V1_0
+module Azure::CognitiveServices::LocalSearch::V1_0
   module Models
     #
-    # Model object.
+    # Defines the identity of a resource.
     #
-    #
-    class RefreshIndexAdvancedInfoItem
+    class Identifiable < ResponseBase
 
       include MsRestAzure
 
-      # @return [String] Key parameter to describe advanced info.
-      attr_accessor :key_one
 
-      # @return [String] Key parameter to describe advanced info.
-      attr_accessor :key_two
+      def initialize
+        @_type = "Identifiable"
+      end
+
+      attr_accessor :_type
+
+      # @return [String] A String identifier.
+      attr_accessor :id
 
 
       #
-      # Mapper for RefreshIndexAdvancedInfoItem class as Ruby Hash.
+      # Mapper for Identifiable class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'RefreshIndex_AdvancedInfoItem',
+          serialized_name: 'Identifiable',
           type: {
             name: 'Composite',
-            class_name: 'RefreshIndexAdvancedInfoItem',
+            class_name: 'Identifiable',
             model_properties: {
-              key_one: {
+              _type: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'Key One',
+                required: true,
+                serialized_name: '_type',
                 type: {
                   name: 'String'
                 }
               },
-              key_two: {
+              id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'Key Two',
+                read_only: true,
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }

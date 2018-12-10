@@ -17,14 +17,6 @@ module Azure::CognitiveServices::ContentModerator::V1_0
   # If the content passed to the text API or the image API exceeds the size
   # limits, the API will return an error code that informs about the issue.
   #
-  # This API is currently available in:
-  #
-  # * West US - westus.api.cognitive.microsoft.com
-  # * East US 2 - eastus2.api.cognitive.microsoft.com
-  # * West Central US - westcentralus.api.cognitive.microsoft.com
-  # * West Europe - westeurope.api.cognitive.microsoft.com
-  # * Southeast Asia - southeastasia.api.cognitive.microsoft.com .
-  #
   class TextModeration
     include MsRestAzure
 
@@ -106,7 +98,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def screen_text_async(text_content_type, text_content, language:nil, autocorrect:false, pii:false, list_id:nil, classify:false, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'text_content_type is nil' if text_content_type.nil?
       fail ArgumentError, 'text_content is nil' if text_content.nil?
 
@@ -133,7 +125,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessText/Screen/'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
@@ -223,7 +215,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def detect_language_async(text_content_type, text_content, custom_headers:nil)
-      fail ArgumentError, '@client.base_url is nil' if @client.base_url.nil?
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'text_content_type is nil' if text_content_type.nil?
       fail ArgumentError, 'text_content is nil' if text_content.nil?
 
@@ -250,7 +242,7 @@ module Azure::CognitiveServices::ContentModerator::V1_0
       path_template = 'contentmoderator/moderate/v1.0/ProcessText/DetectLanguage'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{baseUrl}', @client.base_url)
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
