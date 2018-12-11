@@ -19,11 +19,11 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
         AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
         Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
-        AppAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
         OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
-        AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
-        App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
         OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
+        AppAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
+        App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
+        AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
       end
 
       class IotCentralManagementClass
@@ -81,20 +81,20 @@ module Azure::Profiles::Latest
           def operation
             Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
           end
-          def app_availability_info
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
-          end
           def operation_list_result
             Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
           end
-          def app_sku
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
+          def operation_inputs
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
+          end
+          def app_availability_info
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
           end
           def app
             Azure::IotCentral::Mgmt::V2018_09_01::Models::App
           end
-          def operation_inputs
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
+          def app_sku
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
           end
         end
       end

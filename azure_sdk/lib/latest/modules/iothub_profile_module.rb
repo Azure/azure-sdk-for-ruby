@@ -13,6 +13,7 @@ module Azure::Profiles::Latest
       ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
 
       module Models
+        RoutingEndpoints = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
         RoutingMessage = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingMessage
         StorageEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
         TestAllRoutesInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
@@ -44,8 +45,8 @@ module Azure::Profiles::Latest
         IotHubSkuTier = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuTier
         EndpointHealthStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthStatus
         JobType = Azure::IotHub::Mgmt::V2018_04_01::Models::JobType
-        IotHubScaleType = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
         Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+        IotHubScaleType = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
         IotHubNameUnavailabilityReason = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameUnavailabilityReason
         TestResultStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::TestResultStatus
         RouteErrorSeverity = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
@@ -89,7 +90,6 @@ module Azure::Profiles::Latest
         UserSubscriptionQuota = Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuota
         RoutingServiceBusQueueEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusQueueEndpointProperties
         UserSubscriptionQuotaListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuotaListResult
-        RoutingEndpoints = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
       end
 
       class IotHubManagementClass
@@ -125,6 +125,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def routing_endpoints
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
+          end
           def routing_message
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingMessage
           end
@@ -218,11 +221,11 @@ module Azure::Profiles::Latest
           def job_type
             Azure::IotHub::Mgmt::V2018_04_01::Models::JobType
           end
-          def iot_hub_scale_type
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
-          end
           def name
             Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+          end
+          def iot_hub_scale_type
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
           end
           def iot_hub_name_unavailability_reason
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameUnavailabilityReason
@@ -352,9 +355,6 @@ module Azure::Profiles::Latest
           end
           def user_subscription_quota_list_result
             Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuotaListResult
-          end
-          def routing_endpoints
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
           end
         end
       end

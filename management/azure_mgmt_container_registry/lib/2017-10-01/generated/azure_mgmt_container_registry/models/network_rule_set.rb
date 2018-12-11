@@ -20,6 +20,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # @return [Array<VirtualNetworkRule>] The virtual network rules.
       attr_accessor :virtual_network_rules
 
+      # @return [Array<IPRule>] The IP ACL rules.
+      attr_accessor :ip_rules
+
 
       #
       # Mapper for NetworkRuleSet class as Ruby Hash.
@@ -52,6 +55,21 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                       type: {
                         name: 'Composite',
                         class_name: 'VirtualNetworkRule'
+                      }
+                  }
+                }
+              },
+              ip_rules: {
+                required: false,
+                serialized_name: 'ipRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'IPRuleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IPRule'
                       }
                   }
                 }
