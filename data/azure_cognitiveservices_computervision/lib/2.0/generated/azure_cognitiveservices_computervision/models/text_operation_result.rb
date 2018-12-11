@@ -28,7 +28,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TextOperationResult',
           type: {
@@ -36,7 +35,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'TextOperationResult',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -45,7 +43,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               recognition_result: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recognitionResult',
                 type: {

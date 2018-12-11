@@ -16,6 +16,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       Color = "Color"
       Tags = "Tags"
       Description = "Description"
+      Objects = "Objects"
     end
   end
 end

@@ -13,7 +13,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [String] Publicly reachable URL of an image
+      # @return [String] Publicly reachable URL of an image.
       attr_accessor :url
 
 
@@ -23,7 +23,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageUrl',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'ImageUrl',
             model_properties: {
               url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 type: {

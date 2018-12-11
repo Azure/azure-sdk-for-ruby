@@ -6,69 +6,63 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Model object.
+    # Result of a DetectImage call.
     #
-    #
-    class Line
+    class DetectResult
 
       include MsRestAzure
 
-      # @return [Array<Integer>]
-      attr_accessor :bounding_box
+      # @return [Array<DetectedObject>] An array of detected objects.
+      attr_accessor :objects
 
-      # @return [String]
-      attr_accessor :text
+      # @return [String] Id of the REST API request.
+      attr_accessor :request_id
 
-      # @return [Array<Word>]
-      attr_accessor :words
+      # @return [ImageMetadata]
+      attr_accessor :metadata
 
 
       #
-      # Mapper for Line class as Ruby Hash.
+      # Mapper for DetectResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Line',
+          serialized_name: 'DetectResult',
           type: {
             name: 'Composite',
-            class_name: 'Line',
+            class_name: 'DetectResult',
             model_properties: {
-              bounding_box: {
+              objects: {
                 required: false,
-                serialized_name: 'boundingBox',
+                read_only: true,
+                serialized_name: 'objects',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'NumberElementType',
+                      serialized_name: 'DetectedObjectElementType',
                       type: {
-                        name: 'Number'
+                        name: 'Composite',
+                        class_name: 'DetectedObject'
                       }
                   }
                 }
               },
-              text: {
+              request_id: {
                 required: false,
-                serialized_name: 'text',
+                serialized_name: 'requestId',
                 type: {
                   name: 'String'
                 }
               },
-              words: {
+              metadata: {
                 required: false,
-                serialized_name: 'words',
+                serialized_name: 'metadata',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'WordElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'Word'
-                      }
-                  }
+                  name: 'Composite',
+                  class_name: 'ImageMetadata'
                 }
               }
             }

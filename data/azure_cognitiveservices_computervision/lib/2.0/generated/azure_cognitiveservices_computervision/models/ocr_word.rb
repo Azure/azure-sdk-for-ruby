@@ -30,7 +30,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OcrWord',
           type: {
@@ -38,7 +37,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'OcrWord',
             model_properties: {
               bounding_box: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'boundingBox',
                 type: {
@@ -46,7 +44,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'text',
                 type: {

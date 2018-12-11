@@ -6,38 +6,41 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # An object describing possible celebrity identification.
+    # An object detected inside an image.
     #
-    class CelebritiesModel
+    class ObjectHierarchy
 
       include MsRestAzure
 
-      # @return [String] Name of the celebrity.
-      attr_accessor :name
+      # @return [String] Label for the object.
+      attr_accessor :object
 
-      # @return [Float] Confidence level for the celebrity recognition as a
-      # value ranging from 0 to 1.
+      # @return [Float] Confidence score of having observed the object in the
+      # image, as a value ranging from 0 to 1.
       attr_accessor :confidence
 
-      # @return [FaceRectangle] Location of the identified face in the image.
-      attr_accessor :face_rectangle
+      # @return [ObjectHierarchy] The parent object, from a taxonomy
+      # perspective.
+      # The parent object is a more generic form of this object.  For example,
+      # a 'bulldog' would have a parent of 'dog'.
+      attr_accessor :parent
 
 
       #
-      # Mapper for CelebritiesModel class as Ruby Hash.
+      # Mapper for ObjectHierarchy class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CelebritiesModel',
+          serialized_name: 'ObjectHierarchy',
           type: {
             name: 'Composite',
-            class_name: 'CelebritiesModel',
+            class_name: 'ObjectHierarchy',
             model_properties: {
-              name: {
+              object: {
                 required: false,
-                serialized_name: 'name',
+                serialized_name: 'object',
                 type: {
                   name: 'String'
                 }
@@ -49,12 +52,12 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                   name: 'Double'
                 }
               },
-              face_rectangle: {
+              parent: {
                 required: false,
-                serialized_name: 'faceRectangle',
+                serialized_name: 'parent',
                 type: {
                   name: 'Composite',
-                  class_name: 'FaceRectangle'
+                  class_name: 'ObjectHierarchy'
                 }
               }
             }
