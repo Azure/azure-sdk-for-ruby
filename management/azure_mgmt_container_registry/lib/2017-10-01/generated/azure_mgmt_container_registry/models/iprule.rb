@@ -18,7 +18,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       # @return [String] Specifies the IP or IP range in CIDR format. Only IPV4
       # address is allowed.
-      attr_accessor :value
+      attr_accessor :ipaddress_or_range
 
 
       #
@@ -41,7 +41,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                   name: 'String'
                 }
               },
-              value: {
+              ipaddress_or_range: {
                 required: true,
                 serialized_name: 'value',
                 type: {

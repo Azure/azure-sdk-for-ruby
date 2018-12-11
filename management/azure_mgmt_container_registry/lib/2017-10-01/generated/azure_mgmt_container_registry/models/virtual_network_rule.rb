@@ -18,7 +18,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       # @return [String] Resource ID of a subnet, for example:
       # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-      attr_accessor :id
+      attr_accessor :virtual_network_resource_id
 
 
       #
@@ -41,7 +41,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                   name: 'String'
                 }
               },
-              id: {
+              virtual_network_resource_id: {
                 required: true,
                 serialized_name: 'id',
                 type: {
