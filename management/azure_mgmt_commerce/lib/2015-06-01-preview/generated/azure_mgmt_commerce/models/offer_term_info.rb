@@ -34,7 +34,6 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OfferTermInfo',
           type: {
@@ -44,7 +43,6 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
             class_name: 'OfferTermInfo',
             model_properties: {
               effective_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'EffectiveDate',
                 type: {

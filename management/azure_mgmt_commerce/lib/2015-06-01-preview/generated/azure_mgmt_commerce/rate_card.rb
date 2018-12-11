@@ -40,8 +40,8 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
     #
     # @return [ResourceRateCardInfo] operation results.
     #
-    def get(filter, custom_headers:nil)
-      response = get_async(filter, custom_headers:custom_headers).value!
+    def get(filter, custom_headers = nil)
+      response = get_async(filter, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -64,8 +64,8 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(filter, custom_headers:nil)
-      get_async(filter, custom_headers:custom_headers).value!
+    def get_with_http_info(filter, custom_headers = nil)
+      get_async(filter, custom_headers).value!
     end
 
     #
@@ -87,14 +87,13 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(filter, custom_headers:nil)
+    def get_async(filter, custom_headers = nil)
       fail ArgumentError, 'filter is nil' if filter.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
