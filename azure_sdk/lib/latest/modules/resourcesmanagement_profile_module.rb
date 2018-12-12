@@ -14,32 +14,32 @@ module Azure::Profiles::Latest
 
       module Models
         ErrorDetails = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorDetails
-        Type = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
         Operation = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Operation
         OperationListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationListResult
+        Type = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
+        CheckNameAvailabilityResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
+        OperationResults = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationResults
         OperationDisplayProperties = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationDisplayProperties
         EntityParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityParentGroupInfo
-        EntityInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityInfo
+        ManagementGroup = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroup
         TenantBackfillStatusResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::TenantBackfillStatusResult
         EntityListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityListResult
-        OperationResults = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationResults
-        CheckNameAvailabilityResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
+        ManagementGroupListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupListResult
         EntityHierarchyItem = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityHierarchyItem
+        ManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupDetails
         PatchManagementGroupRequest = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::PatchManagementGroupRequest
-        ManagementGroup = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroup
+        CreateParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateParentGroupInfo
         CreateManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupDetails
         ParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ParentGroupInfo
         CreateManagementGroupChildInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupChildInfo
         CreateManagementGroupRequest = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupRequest
         ManagementGroupChildInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupChildInfo
-        ManagementGroupListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupListResult
         CheckNameAvailabilityRequest = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityRequest
-        ManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupDetails
-        Reason = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
-        CreateParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateParentGroupInfo
         ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupInfo
+        EntityInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityInfo
         Status = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Status
         ErrorResponse = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorResponse
+        Reason = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
       end
 
       class ResourcesManagementManagementClass
@@ -78,14 +78,20 @@ module Azure::Profiles::Latest
           def error_details
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorDetails
           end
-          def type
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
-          end
           def operation
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Operation
           end
           def operation_list_result
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationListResult
+          end
+          def type
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
+          end
+          def check_name_availability_result
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
+          end
+          def operation_results
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationResults
           end
           def operation_display_properties
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationDisplayProperties
@@ -93,8 +99,8 @@ module Azure::Profiles::Latest
           def entity_parent_group_info
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityParentGroupInfo
           end
-          def entity_info
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityInfo
+          def management_group
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroup
           end
           def tenant_backfill_status_result
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::TenantBackfillStatusResult
@@ -102,20 +108,20 @@ module Azure::Profiles::Latest
           def entity_list_result
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityListResult
           end
-          def operation_results
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationResults
-          end
-          def check_name_availability_result
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
+          def management_group_list_result
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupListResult
           end
           def entity_hierarchy_item
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityHierarchyItem
           end
+          def management_group_details
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupDetails
+          end
           def patch_management_group_request
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::PatchManagementGroupRequest
           end
-          def management_group
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroup
+          def create_parent_group_info
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateParentGroupInfo
           end
           def create_management_group_details
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupDetails
@@ -132,29 +138,23 @@ module Azure::Profiles::Latest
           def management_group_child_info
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupChildInfo
           end
-          def management_group_list_result
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupListResult
-          end
           def check_name_availability_request
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityRequest
           end
-          def management_group_details
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupDetails
-          end
-          def reason
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
-          end
-          def create_parent_group_info
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateParentGroupInfo
-          end
           def management_group_info
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupInfo
+          end
+          def entity_info
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityInfo
           end
           def status
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Status
           end
           def error_response
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorResponse
+          end
+          def reason
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
           end
         end
       end

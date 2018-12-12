@@ -43,6 +43,9 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # @return [ReplicationUsages] replication_usages
     attr_reader :replication_usages
 
+    # @return [CheckResourceNameAvailability] check_resource_name_availability
+    attr_reader :check_resource_name_availability
+
     # @return [Vaults] vaults
     attr_reader :vaults
 
@@ -71,6 +74,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       @vault_certificates = VaultCertificates.new(self)
       @registered_identities = RegisteredIdentities.new(self)
       @replication_usages = ReplicationUsages.new(self)
+      @check_resource_name_availability = CheckResourceNameAvailability.new(self)
       @vaults = Vaults.new(self)
       @operations = Operations.new(self)
       @vault_extended_info_operations = VaultExtendedInfoOperations.new(self)
