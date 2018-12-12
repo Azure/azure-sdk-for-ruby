@@ -36,10 +36,10 @@ module Azure::Profiles::Latest
         RelayNamespace = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
         SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
         HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
+        AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
         Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
         ErrorResponse = Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
         TrackedResource = Azure::Relay::Mgmt::V2017_04_01::Models::TrackedResource
-        AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
       end
 
       class RelayManagementClass
@@ -144,6 +144,9 @@ module Azure::Profiles::Latest
           def hybrid_connection
             Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
           end
+          def access_rights
+            Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
+          end
           def sku
             Azure::Relay::Mgmt::V2017_04_01::Models::Sku
           end
@@ -152,9 +155,6 @@ module Azure::Profiles::Latest
           end
           def tracked_resource
             Azure::Relay::Mgmt::V2017_04_01::Models::TrackedResource
-          end
-          def access_rights
-            Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
           end
         end
       end

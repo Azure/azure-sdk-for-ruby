@@ -439,13 +439,14 @@ module Azure::Profiles::Latest
       Vaults = Azure::KeyVault::Mgmt::V2018_02_14::Vaults
 
       module Models
+        VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
         NetworkRuleSet = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
         Permissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
         Resource = Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
         OperationDisplay = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay
-        VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
         DeletedVault = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVault
         VaultListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultListResult
+        IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
         DeletedVaultListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultListResult
         VaultProperties = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultProperties
         ResourceListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::ResourceListResult
@@ -472,7 +473,6 @@ module Azure::Profiles::Latest
         AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
         Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
         Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
-        IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
         NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
         NetworkRuleAction = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
       end
@@ -508,6 +508,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def virtual_network_rule
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
+          end
           def network_rule_set
             Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
           end
@@ -520,14 +523,14 @@ module Azure::Profiles::Latest
           def operation_display
             Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay
           end
-          def virtual_network_rule
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
-          end
           def deleted_vault
             Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVault
           end
           def vault_list_result
             Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultListResult
+          end
+          def iprule
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
           end
           def deleted_vault_list_result
             Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVaultListResult
@@ -606,9 +609,6 @@ module Azure::Profiles::Latest
           end
           def sku
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
-          end
-          def iprule
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
           end
           def network_rule_bypass_options
             Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions

@@ -14,6 +14,7 @@ module Azure::Profiles::Latest
     Domains = Azure::GraphRbac::V1_6::Domains
 
     module Models
+      DomainListResult = Azure::GraphRbac::V1_6::Models::DomainListResult
       PasswordCredential = Azure::GraphRbac::V1_6::Models::PasswordCredential
       ServicePrincipalListResult = Azure::GraphRbac::V1_6::Models::ServicePrincipalListResult
       PasswordProfile = Azure::GraphRbac::V1_6::Models::PasswordProfile
@@ -24,14 +25,14 @@ module Azure::Profiles::Latest
       GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
       PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
       SignInName = Azure::GraphRbac::V1_6::Models::SignInName
-      ApplicationAddOwnerParameters = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
       GroupCreateParameters = Azure::GraphRbac::V1_6::Models::GroupCreateParameters
+      ApplicationAddOwnerParameters = Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
       UserListResult = Azure::GraphRbac::V1_6::Models::UserListResult
       DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
       UserGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
-      ADGroup = Azure::GraphRbac::V1_6::Models::ADGroup
       Application = Azure::GraphRbac::V1_6::Models::Application
       ApplicationCreateParameters = Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
+      ADGroup = Azure::GraphRbac::V1_6::Models::ADGroup
       ServicePrincipal = Azure::GraphRbac::V1_6::Models::ServicePrincipal
       UserType = Azure::GraphRbac::V1_6::Models::UserType
       ApplicationUpdateParameters = Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters
@@ -55,7 +56,6 @@ module Azure::Profiles::Latest
       PasswordCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::PasswordCredentialsUpdateParameters
       ServicePrincipalCreateParameters = Azure::GraphRbac::V1_6::Models::ServicePrincipalCreateParameters
       GetObjectsResult = Azure::GraphRbac::V1_6::Models::GetObjectsResult
-      DomainListResult = Azure::GraphRbac::V1_6::Models::DomainListResult
     end
 
     class GraphRbacDataClass
@@ -93,6 +93,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def domain_list_result
+          Azure::GraphRbac::V1_6::Models::DomainListResult
+        end
         def password_credential
           Azure::GraphRbac::V1_6::Models::PasswordCredential
         end
@@ -123,11 +126,11 @@ module Azure::Profiles::Latest
         def sign_in_name
           Azure::GraphRbac::V1_6::Models::SignInName
         end
-        def application_add_owner_parameters
-          Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
-        end
         def group_create_parameters
           Azure::GraphRbac::V1_6::Models::GroupCreateParameters
+        end
+        def application_add_owner_parameters
+          Azure::GraphRbac::V1_6::Models::ApplicationAddOwnerParameters
         end
         def user_list_result
           Azure::GraphRbac::V1_6::Models::UserListResult
@@ -138,14 +141,14 @@ module Azure::Profiles::Latest
         def user_get_member_groups_parameters
           Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
         end
-        def adgroup
-          Azure::GraphRbac::V1_6::Models::ADGroup
-        end
         def application
           Azure::GraphRbac::V1_6::Models::Application
         end
         def application_create_parameters
           Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
+        end
+        def adgroup
+          Azure::GraphRbac::V1_6::Models::ADGroup
         end
         def service_principal
           Azure::GraphRbac::V1_6::Models::ServicePrincipal
@@ -215,9 +218,6 @@ module Azure::Profiles::Latest
         end
         def get_objects_result
           Azure::GraphRbac::V1_6::Models::GetObjectsResult
-        end
-        def domain_list_result
-          Azure::GraphRbac::V1_6::Models::DomainListResult
         end
       end
     end
