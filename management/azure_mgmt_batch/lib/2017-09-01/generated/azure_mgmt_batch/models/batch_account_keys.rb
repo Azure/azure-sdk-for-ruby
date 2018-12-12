@@ -28,7 +28,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BatchAccountKeys',
           type: {
@@ -36,7 +35,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'BatchAccountKeys',
             model_properties: {
               account_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'accountName',
@@ -45,7 +43,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               primary: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'primary',
@@ -54,7 +51,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               secondary: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'secondary',
