@@ -28,7 +28,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       attr_accessor :enabled
 
       # @return [String] Value of the schedule's recurring interval, if the
-      # scheduletype is recurring. ISO8601 duration format.
+      # schedule type is recurring. ISO8601 duration format.
       attr_accessor :interval
 
 

@@ -6,7 +6,7 @@
 module Azure::SQL::Mgmt::V2017_03_01_preview
   module Models
     #
-    # A list of long term retention bacukps.
+    # A list of long term retention backups.
     #
     class LongTermRetentionBackupListResult
 

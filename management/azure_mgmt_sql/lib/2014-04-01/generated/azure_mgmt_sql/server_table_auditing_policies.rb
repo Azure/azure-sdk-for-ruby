@@ -126,7 +126,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Creates or updates a servers's table auditing policy. Table auditing is
+    # Creates or updates a server's table auditing policy. Table auditing is
     # deprecated, use blob auditing instead.
     #
     # @param resource_group_name [String] The name of the resource group that
@@ -146,7 +146,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Creates or updates a servers's table auditing policy. Table auditing is
+    # Creates or updates a server's table auditing policy. Table auditing is
     # deprecated, use blob auditing instead.
     #
     # @param resource_group_name [String] The name of the resource group that
@@ -165,7 +165,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Creates or updates a servers's table auditing policy. Table auditing is
+    # Creates or updates a server's table auditing policy. Table auditing is
     # deprecated, use blob auditing instead.
     #
     # @param resource_group_name [String] The name of the resource group that
@@ -253,7 +253,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Lists a servers's table auditing policies. Table auditing is deprecated, use
+    # Lists a server's table auditing policies. Table auditing is deprecated, use
     # blob auditing instead.
     #
     # @param resource_group_name [String] The name of the resource group that
@@ -271,7 +271,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Lists a servers's table auditing policies. Table auditing is deprecated, use
+    # Lists a server's table auditing policies. Table auditing is deprecated, use
     # blob auditing instead.
     #
     # @param resource_group_name [String] The name of the resource group that
@@ -288,7 +288,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Lists a servers's table auditing policies. Table auditing is deprecated, use
+    # Lists a server's table auditing policies. Table auditing is deprecated, use
     # blob auditing instead.
     #
     # @param resource_group_name [String] The name of the resource group that
