@@ -34,7 +34,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FunctionProperties',
           type: {
@@ -44,7 +43,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'FunctionProperties',
             model_properties: {
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',

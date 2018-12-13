@@ -31,7 +31,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Avro',
           type: {
@@ -39,7 +38,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'AvroSerialization',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -47,7 +45,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

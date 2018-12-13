@@ -23,7 +23,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -31,7 +30,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'Sku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
