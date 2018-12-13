@@ -24,8 +24,8 @@ module Azure::Profiles::Latest
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
       Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
-      MediaObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
       Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+      MediaObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
       StructuredValue = Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
       Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       RelatedSearchesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
@@ -144,11 +144,11 @@ module Azure::Profiles::Latest
         def intangible
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
         end
-        def media_object
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
-        end
         def error
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+        end
+        def media_object
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
         end
         def structured_value
           Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue

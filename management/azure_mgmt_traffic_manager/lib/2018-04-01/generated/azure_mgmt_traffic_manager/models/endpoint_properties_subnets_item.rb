@@ -29,7 +29,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EndpointProperties_subnetsItem',
           type: {
@@ -37,7 +36,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
             class_name: 'EndpointPropertiesSubnetsItem',
             model_properties: {
               first: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'first',
                 type: {
@@ -45,7 +43,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               last: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'last',
                 type: {
@@ -53,7 +50,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               scope: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scope',
                 type: {

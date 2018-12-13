@@ -35,7 +35,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HeatMapModel',
           type: {
@@ -43,7 +42,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
             class_name: 'HeatMapModel',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -51,7 +49,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -59,7 +56,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -67,7 +63,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -75,7 +70,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endTime',
                 type: {
@@ -83,13 +77,11 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               endpoints: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpoints',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HeatMapEndpointElementType',
                       type: {
@@ -100,13 +92,11 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               traffic_flows: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.trafficFlows',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrafficFlowElementType',
                       type: {

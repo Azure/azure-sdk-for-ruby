@@ -25,7 +25,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrackedResource',
           type: {
@@ -33,7 +32,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
             class_name: 'TrackedResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -41,7 +39,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -49,7 +46,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -57,13 +53,11 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -73,7 +67,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
