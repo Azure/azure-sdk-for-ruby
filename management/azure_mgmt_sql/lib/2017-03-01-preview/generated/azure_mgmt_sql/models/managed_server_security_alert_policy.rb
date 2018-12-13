@@ -6,9 +6,9 @@
 module Azure::SQL::Mgmt::V2017_03_01_preview
   module Models
     #
-    # A server security alert policy.
+    # A managed server security alert policy.
     #
-    class ServerSecurityAlertPolicy < ProxyResource
+    class ManagedServerSecurityAlertPolicy < ProxyResource
 
       include MsRestAzure
 
@@ -48,16 +48,16 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
 
       #
-      # Mapper for ServerSecurityAlertPolicy class as Ruby Hash.
+      # Mapper for ManagedServerSecurityAlertPolicy class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServerSecurityAlertPolicy',
+          serialized_name: 'ManagedServerSecurityAlertPolicy',
           type: {
             name: 'Composite',
-            class_name: 'ServerSecurityAlertPolicy',
+            class_name: 'ManagedServerSecurityAlertPolicy',
             model_properties: {
               id: {
                 required: false,

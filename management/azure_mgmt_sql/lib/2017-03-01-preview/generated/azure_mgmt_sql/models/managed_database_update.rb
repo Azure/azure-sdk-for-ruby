@@ -15,9 +15,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # @return [String] Collation of the managed database.
       attr_accessor :collation
 
-      # @return [ManagedDatabaseStatus] Status for the database. Possible
-      # values include: 'Online', 'Offline', 'Shutdown', 'Creating',
-      # 'Inaccessible'
+      # @return [ManagedDatabaseStatus] Status of the database. Possible values
+      # include: 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible',
+      # 'Updating'
       attr_accessor :status
 
       # @return [DateTime] Creation date of the database.
@@ -46,8 +46,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # SourceManagedInstanceName and PointInTime must be specified.
       # RestoreExternalBackup: Create a database by restoring from external
       # backup files. Collation, StorageContainerUri and
-      # StorageContainerSasToken must be specified. Possible values include:
-      # 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+      # StorageContainerSasToken must be specified. Recovery: Creates a
+      # database by restoring a geo-replicated backup. RecoverableDatabaseId
+      # must be specified as the recoverable database resource ID to restore.
+      # Possible values include: 'Default', 'RestoreExternalBackup',
+      # 'PointInTimeRestore', 'Recovery'
       attr_accessor :create_mode
 
       # @return [String] Conditional. If createMode is RestoreExternalBackup,
@@ -59,6 +62,10 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # associated with create operation of this database.
       attr_accessor :source_database_id
 
+      # @return [String] The restorable dropped database resource id to restore
+      # when creating this database.
+      attr_accessor :restorable_dropped_database_id
+
       # @return [String] Conditional. If createMode is RestoreExternalBackup,
       # this value is required. Specifies the storage container sas token.
       attr_accessor :storage_container_sas_token
@@ -66,6 +73,10 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # @return [String] Instance Failover Group resource identifier that this
       # managed database belongs to.
       attr_accessor :failover_group_id
+
+      # @return [String] The resource identifier of the recoverable database
+      # associated with create operation of this database.
+      attr_accessor :recoverable_database_id
 
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
@@ -157,6 +168,13 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                   name: 'String'
                 }
               },
+              restorable_dropped_database_id: {
+                required: false,
+                serialized_name: 'properties.restorableDroppedDatabaseId',
+                type: {
+                  name: 'String'
+                }
+              },
               storage_container_sas_token: {
                 required: false,
                 serialized_name: 'properties.storageContainerSasToken',
@@ -168,6 +186,13 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.failoverGroupId',
+                type: {
+                  name: 'String'
+                }
+              },
+              recoverable_database_id: {
+                required: false,
+                serialized_name: 'properties.recoverableDatabaseId',
                 type: {
                   name: 'String'
                 }

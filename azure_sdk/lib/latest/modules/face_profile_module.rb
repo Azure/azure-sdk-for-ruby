@@ -12,9 +12,17 @@ module Azure::Profiles::Latest
     Face = Azure::CognitiveServices::Face::V1_0::Face
 
     module Models
-      FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
+      HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
+      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
+      BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
       ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
+      NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
+      TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
+      FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
+      TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
+      UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+      FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
@@ -34,9 +42,9 @@ module Azure::Profiles::Latest
       VerifyFaceToFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
       FaceAttributes = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
+      VerifyResult = Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
       PersistedFace = Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
       FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
-      VerifyResult = Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
       Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
       Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
@@ -44,20 +52,12 @@ module Azure::Profiles::Latest
       Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
       NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
-      UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
-      DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
-      TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
       Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
-      PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
-      FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
-      GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
-      Person = Azure::CognitiveServices::Face::V1_0::Models::Person
-      BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
-      HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
-      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
-      NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
+      DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
-      TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
+      PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
+      Person = Azure::CognitiveServices::Face::V1_0::Models::Person
+      GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
     end
 
     class FaceDataClass
@@ -93,14 +93,38 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def find_similar_match_mode
-          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
+        def hair_color_type
+          Azure::CognitiveServices::Face::V1_0::Models::HairColorType
+        end
+        def accessory_type
+          Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
+        end
+        def blur_level
+          Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
         end
         def exposure_level
           Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
         end
+        def noise_level
+          Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
+        end
+        def training_status
+          Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
+        end
+        def face_list
+          Azure::CognitiveServices::Face::V1_0::Models::FaceList
+        end
+        def training_status_type
+          Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
+        end
+        def update_person_face_request
+          Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
+        end
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+        end
+        def find_similar_match_mode
+          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
@@ -159,14 +183,14 @@ module Azure::Profiles::Latest
         def face_attributes
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
         end
+        def verify_result
+          Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
+        end
         def persisted_face
           Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
         end
         def facial_hair
           Azure::CognitiveServices::Face::V1_0::Models::FacialHair
-        end
-        def verify_result
-          Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
         end
         def coordinate
           Azure::CognitiveServices::Face::V1_0::Models::Coordinate
@@ -189,47 +213,23 @@ module Azure::Profiles::Latest
         def image_url
           Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
         end
-        def update_person_face_request
-          Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
+        def blur
+          Azure::CognitiveServices::Face::V1_0::Models::Blur
         end
         def detected_face
           Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
         end
-        def training_status
-          Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
-        end
-        def blur
-          Azure::CognitiveServices::Face::V1_0::Models::Blur
+        def gender
+          Azure::CognitiveServices::Face::V1_0::Models::Gender
         end
         def person_group
           Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
         end
-        def face_list
-          Azure::CognitiveServices::Face::V1_0::Models::FaceList
-        end
-        def glasses_type
-          Azure::CognitiveServices::Face::V1_0::Models::GlassesType
-        end
         def person
           Azure::CognitiveServices::Face::V1_0::Models::Person
         end
-        def blur_level
-          Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
-        end
-        def hair_color_type
-          Azure::CognitiveServices::Face::V1_0::Models::HairColorType
-        end
-        def accessory_type
-          Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
-        end
-        def noise_level
-          Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
-        end
-        def gender
-          Azure::CognitiveServices::Face::V1_0::Models::Gender
-        end
-        def training_status_type
-          Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
+        def glasses_type
+          Azure::CognitiveServices::Face::V1_0::Models::GlassesType
         end
       end
     end

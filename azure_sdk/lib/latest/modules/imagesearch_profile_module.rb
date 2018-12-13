@@ -9,8 +9,9 @@ module Azure::Profiles::Latest
     ImagesOperations = Azure::CognitiveServices::ImageSearch::V1_0::ImagesOperations
 
     module Models
-      ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
+      ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
       Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+      ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
       WebPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
       SearchResultsAnswer = Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
@@ -22,10 +23,10 @@ module Azure::Profiles::Latest
       ErrorSubCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
+      Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
       Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
       MediaObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
-      Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
       StructuredValue = Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
       Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       RelatedSearchesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
@@ -62,11 +63,10 @@ module Azure::Profiles::Latest
       ImageContent = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
       ImageLicense = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
       ImageSize = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
-      ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
+      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
       Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
-      ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+      ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
     end
 
     class ImageSearchDataClass
@@ -99,11 +99,14 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def response_base
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
+        def image_insight_module
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
         end
         def response
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+        end
+        def response_base
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
         end
         def query
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
@@ -138,6 +141,9 @@ module Azure::Profiles::Latest
         def image_object
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
         end
+        def error
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+        end
         def organization
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
         end
@@ -146,9 +152,6 @@ module Azure::Profiles::Latest
         end
         def media_object
           Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
-        end
-        def error
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
         end
         def structured_value
           Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
@@ -258,8 +261,8 @@ module Azure::Profiles::Latest
         def image_size
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
         end
-        def image_crop_type
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
+        def error_response
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
         end
         def image_type
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
@@ -267,11 +270,8 @@ module Azure::Profiles::Latest
         def person
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
         end
-        def image_insight_module
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-        end
-        def error_response
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+        def image_crop_type
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
         end
       end
     end
