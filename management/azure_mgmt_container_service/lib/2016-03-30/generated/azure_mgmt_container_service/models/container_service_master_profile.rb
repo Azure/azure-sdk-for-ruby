@@ -20,7 +20,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       # @return [String] DNS prefix to be used to create the FQDN for master.
       attr_accessor :dns_prefix
 
-      # @return [String] FDQN for the master.
+      # @return [String] FQDN for the master.
       attr_accessor :fqdn
 
 
