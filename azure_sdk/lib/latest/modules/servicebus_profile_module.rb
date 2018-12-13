@@ -15,8 +15,8 @@ module Azure::Profiles::Latest
       EventHubs = Azure::ServiceBus::Mgmt::V2017_04_01::EventHubs
       Operations = Azure::ServiceBus::Mgmt::V2017_04_01::Operations
       Topics = Azure::ServiceBus::Mgmt::V2017_04_01::Topics
-      Namespaces = Azure::ServiceBus::Mgmt::V2017_04_01::Namespaces
       Regions = Azure::ServiceBus::Mgmt::V2017_04_01::Regions
+      Namespaces = Azure::ServiceBus::Mgmt::V2017_04_01::Namespaces
       Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
 
       module Models
@@ -75,7 +75,7 @@ module Azure::Profiles::Latest
       end
 
       class ServiceBusManagementClass
-        attr_reader :disaster_recovery_configs, :migration_configs, :queues, :rules, :premium_messaging_regions_operations, :event_hubs, :operations, :topics, :namespaces, :regions, :subscriptions, :configurable, :base_url, :options, :model_classes
+        attr_reader :disaster_recovery_configs, :migration_configs, :queues, :rules, :premium_messaging_regions_operations, :event_hubs, :operations, :topics, :regions, :namespaces, :subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -93,8 +93,8 @@ module Azure::Profiles::Latest
           @event_hubs = @client_0.event_hubs
           @operations = @client_0.operations
           @topics = @client_0.topics
-          @namespaces = @client_0.namespaces
           @regions = @client_0.regions
+          @namespaces = @client_0.namespaces
           @subscriptions = @client_0.subscriptions
 
           @model_classes = ModelClasses.new
