@@ -43,7 +43,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventGridEvent',
           type: {
@@ -51,7 +50,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'EventGridEvent',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -59,7 +57,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               topic: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'topic',
                 type: {
@@ -67,7 +64,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               subject: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'subject',
                 type: {
@@ -75,7 +71,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               data: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'data',
                 type: {
@@ -83,7 +78,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               event_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'eventType',
                 type: {
@@ -91,7 +85,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               event_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'eventTime',
                 type: {
@@ -99,7 +92,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               metadata_version: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'metadataVersion',
@@ -108,7 +100,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               data_version: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'dataVersion',
                 type: {

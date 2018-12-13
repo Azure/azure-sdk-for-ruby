@@ -24,7 +24,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SubscriptionDeletedEventData',
           type: {
@@ -32,7 +31,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'SubscriptionDeletedEventData',
             model_properties: {
               event_subscription_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'eventSubscriptionId',

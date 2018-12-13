@@ -37,7 +37,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerRegistryEventRequest',
           type: {
@@ -45,7 +44,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'ContainerRegistryEventRequest',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -53,7 +51,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               addr: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'addr',
                 type: {
@@ -61,7 +58,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               host: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'host',
                 type: {
@@ -69,7 +65,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               method: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'method',
                 type: {
@@ -77,7 +72,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               useragent: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'useragent',
                 type: {

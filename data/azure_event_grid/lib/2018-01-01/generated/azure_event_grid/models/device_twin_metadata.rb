@@ -23,7 +23,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceTwinMetadata',
           type: {
@@ -31,7 +30,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'DeviceTwinMetadata',
             model_properties: {
               last_updated: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastUpdated',
                 type: {
