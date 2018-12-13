@@ -22,9 +22,9 @@ module Azure::Web::Mgmt::V2016_09_01
     attr_reader :client
 
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
     # @param detailed [Boolean] Specify <code>true</code> to return all App Service
     # plan properties. The default is <code>false</code>, which returns a subset of
@@ -41,9 +41,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
     # @param detailed [Boolean] Specify <code>true</code> to return all App Service
     # plan properties. The default is <code>false</code>, which returns a subset of
@@ -59,9 +59,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
     # @param detailed [Boolean] Specify <code>true</code> to return all App Service
     # plan properties. The default is <code>false</code>, which returns a subset of
@@ -1423,9 +1423,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -1447,9 +1447,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -1470,9 +1470,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -1549,7 +1549,7 @@ module Azure::Web::Mgmt::V2016_09_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service plan.
-    # @param soft_restart [Boolean] Specify <code>true</code> to performa a soft
+    # @param soft_restart [Boolean] Specify <code>true</code> to perform a soft
     # restart, applies the configuration settings and restarts the apps if
     # necessary. The default is <code>false</code>, which always restarts and
     # reprovisions the apps
@@ -1570,7 +1570,7 @@ module Azure::Web::Mgmt::V2016_09_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service plan.
-    # @param soft_restart [Boolean] Specify <code>true</code> to performa a soft
+    # @param soft_restart [Boolean] Specify <code>true</code> to perform a soft
     # restart, applies the configuration settings and restarts the apps if
     # necessary. The default is <code>false</code>, which always restarts and
     # reprovisions the apps
@@ -1591,7 +1591,7 @@ module Azure::Web::Mgmt::V2016_09_01
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service plan.
-    # @param soft_restart [Boolean] Specify <code>true</code> to performa a soft
+    # @param soft_restart [Boolean] Specify <code>true</code> to perform a soft
     # restart, applies the configuration settings and restarts the apps if
     # necessary. The default is <code>false</code>, which always restarts and
     # reprovisions the apps
@@ -1765,9 +1765,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Gets all selectable sku's for a given App Service Plan
+    # Gets all selectable SKUs for a given App Service Plan
     #
-    # Gets all selectable sku's for a given App Service Plan
+    # Gets all selectable SKUs for a given App Service Plan
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -1783,9 +1783,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Gets all selectable sku's for a given App Service Plan
+    # Gets all selectable SKUs for a given App Service Plan
     #
-    # Gets all selectable sku's for a given App Service Plan
+    # Gets all selectable SKUs for a given App Service Plan
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -1800,9 +1800,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Gets all selectable sku's for a given App Service Plan
+    # Gets all selectable SKUs for a given App Service Plan
     #
-    # Gets all selectable sku's for a given App Service Plan
+    # Gets all selectable SKUs for a given App Service Plan
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
@@ -3222,9 +3222,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3239,9 +3239,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3255,9 +3255,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3693,9 +3693,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3710,9 +3710,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3726,9 +3726,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3972,9 +3972,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
-    # Get all App Service plans for a subcription.
+    # Get all App Service plans for a subscription.
     #
     # @param detailed [Boolean] Specify <code>true</code> to return all App Service
     # plan properties. The default is <code>false</code>, which returns a subset of
@@ -4101,9 +4101,9 @@ module Azure::Web::Mgmt::V2016_09_01
     end
 
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
-    # Get metrics for an App Serice plan.
+    # Get metrics for an App Service plan.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.

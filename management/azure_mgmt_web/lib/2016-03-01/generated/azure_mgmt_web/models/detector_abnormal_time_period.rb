@@ -12,10 +12,10 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
-      # @return [DateTime] Start time of the corelated event
+      # @return [DateTime] Start time of the correlated event
       attr_accessor :start_time
 
-      # @return [DateTime] End time of the corelated event
+      # @return [DateTime] End time of the correlated event
       attr_accessor :end_time
 
       # @return [String] Message describing the event

@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2016_08_01
   module Models
     #
-    # User crendentials used for publishing activity.
+    # User credentials used for publishing activity.
     #
     class Deployment < ProxyOnlyResource
 

@@ -719,8 +719,9 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param name [String] Name of the recommendation.
     # @param update_seen [Boolean] Specify <code>true</code> to update the
     # last-seen timestamp of the recommendation object.
-    # @param recommendation_id [String] The GUID of the recommedation object if you
-    # query an expired one. You don't need to specify it to query an active entry.
+    # @param recommendation_id [String] The GUID of the recommendation object if
+    # you query an expired one. You don't need to specify it to query an active
+    # entry.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -742,8 +743,9 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param name [String] Name of the recommendation.
     # @param update_seen [Boolean] Specify <code>true</code> to update the
     # last-seen timestamp of the recommendation object.
-    # @param recommendation_id [String] The GUID of the recommedation object if you
-    # query an expired one. You don't need to specify it to query an active entry.
+    # @param recommendation_id [String] The GUID of the recommendation object if
+    # you query an expired one. You don't need to specify it to query an active
+    # entry.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -764,8 +766,9 @@ module Azure::Web::Mgmt::V2016_03_01
     # @param name [String] Name of the recommendation.
     # @param update_seen [Boolean] Specify <code>true</code> to update the
     # last-seen timestamp of the recommendation object.
-    # @param recommendation_id [String] The GUID of the recommedation object if you
-    # query an expired one. You don't need to specify it to query an active entry.
+    # @param recommendation_id [String] The GUID of the recommendation object if
+    # you query an expired one. You don't need to specify it to query an active
+    # entry.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

@@ -12,7 +12,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
-      # @return [Array<String>] Instrunctions if any for the data source
+      # @return [Array<String>] Instructions if any for the data source
       attr_accessor :instructions
 
       # @return [Array<NameValuePair>] Datasource Uri Links

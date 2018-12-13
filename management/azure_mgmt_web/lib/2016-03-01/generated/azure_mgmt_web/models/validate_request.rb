@@ -38,7 +38,7 @@ module Azure::Web::Mgmt::V2016_03_01
       attr_accessor :is_spot
 
       # @return [Integer] Target capacity of the App Service plan (number of
-      # VM's).
+      # VMs).
       attr_accessor :capacity
 
       # @return [String] Name of App Service Environment where app or App
