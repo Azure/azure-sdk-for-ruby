@@ -25,13 +25,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # Check available SKUs.
     #
     # @param location [String] Resource location.
-    # @param skus [Array<SkuName>] The SKU of the resource.
-    # @param kind [Kind] The Kind of the resource. Possible values include:
-    # 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
-    # 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
-    # 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
-    # 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
-    # 'TextAnalytics', 'TextTranslation', 'WebLM'
+    # @param skus [Array<String>] The SKU of the resource.
+    # @param kind [String] The Kind of the resource.
     # @param type [String] The Type of the resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -47,13 +42,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # Check available SKUs.
     #
     # @param location [String] Resource location.
-    # @param skus [Array<SkuName>] The SKU of the resource.
-    # @param kind [Kind] The Kind of the resource. Possible values include:
-    # 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
-    # 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
-    # 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
-    # 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
-    # 'TextAnalytics', 'TextTranslation', 'WebLM'
+    # @param skus [Array<String>] The SKU of the resource.
+    # @param kind [String] The Kind of the resource.
     # @param type [String] The Type of the resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -68,13 +58,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # Check available SKUs.
     #
     # @param location [String] Resource location.
-    # @param skus [Array<SkuName>] The SKU of the resource.
-    # @param kind [Kind] The Kind of the resource. Possible values include:
-    # 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
-    # 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
-    # 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
-    # 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
-    # 'TextAnalytics', 'TextTranslation', 'WebLM'
+    # @param skus [Array<String>] The SKU of the resource.
+    # @param kind [String] The Kind of the resource.
     # @param type [String] The Type of the resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
