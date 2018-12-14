@@ -18,11 +18,9 @@ module Azure::Profiles::Latest
         ResourceSkuRestrictionsType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsType
         ProvisioningState = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
         ResourceSkuRestrictions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
-        SkuName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
         ResourceSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
         Usage = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
         ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
-        Kind = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
         ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
         CognitiveServicesAccountUpdateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
         OperationDisplayInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
@@ -96,9 +94,6 @@ module Azure::Profiles::Latest
           def resource_sku_restrictions
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
           end
-          def sku_name
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
-          end
           def resource_sku
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
           end
@@ -107,9 +102,6 @@ module Azure::Profiles::Latest
           end
           def resource_skus_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
-          end
-          def kind
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
           end
           def error_body
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
