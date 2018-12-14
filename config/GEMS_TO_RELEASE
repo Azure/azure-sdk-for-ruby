@@ -1,7 +1,6 @@
 {
-    "data": [
-        "azure_cognitiveservices_contentmoderator",
-        "azure_cognitiveservices_localsearch"
+    "management": [
+        "azure_mgmt_network"
     ],
     "rollup": [
         "azure_sdk"

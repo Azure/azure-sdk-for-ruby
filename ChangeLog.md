@@ -1,3 +1,8 @@
+## 2018.12.04 - Azure Ruby SDK Release
+* Released the following SDKs
+   - azure_mgmt_network - v0.18.2 - Fixed a bug in the configuration files.
+   - azure_sdk -v0.19.7 - Fixed a bug in the network configuration files. Refer [Issue #1968](https://github.com/Azure/azure-sdk-for-ruby/issues/1968) for further details. 
+   
 ## 2018.12.09 - Azure Ruby SDK Release
 * Released the following SDKs
    - azure_cognitiveservices_localsearch - v0.17.0
