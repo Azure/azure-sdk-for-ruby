@@ -12,6 +12,8 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       Push = "push"
       Delete = "delete"
       Quarantine = "quarantine"
+      ChartPush = "chart_push"
+      ChartDelete = "chart_delete"
     end
   end
 end
