@@ -12,7 +12,7 @@ module Azure::LabServices::Mgmt::V2018_10_15
 
       include MsRestAzure
 
-      # @return [Array<EnvironmentDetails>] List of all the evironments
+      # @return [Array<EnvironmentDetails>] List of all the environments
       attr_accessor :environments
 
 
