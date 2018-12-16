@@ -7,18 +7,17 @@ require 'azure_mgmt_container_instance'
 module Azure::Profiles::Latest
   module ContainerInstance
     module Mgmt
+      ContainerGroups = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerGroups
       Operations = Azure::ContainerInstance::Mgmt::V2018_06_01::Operations
       ContainerGroupUsage = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerGroupUsage
       ContainerOperations = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerOperations
-      ContainerGroups = Azure::ContainerInstance::Mgmt::V2018_06_01::ContainerGroups
 
       module Models
-        Port = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Port
         IpAddress = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::IpAddress
         EnvironmentVariable = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::EnvironmentVariable
         ContainerGroupPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupPropertiesInstanceView
-        Event = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Event
         ResourceRequests = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceRequests
+        Event = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Event
         ContainerGroupDiagnostics = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupDiagnostics
         ResourceRequirements = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceRequirements
         VolumeMount = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::VolumeMount
@@ -53,10 +52,11 @@ module Azure::Profiles::Latest
         ContainerInstanceOperationsOrigin = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerInstanceOperationsOrigin
         Resource = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Resource
         UsageName = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::UsageName
+        Port = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Port
       end
 
       class ContainerInstanceManagementClass
-        attr_reader :operations, :container_group_usage, :container_operations, :container_groups, :configurable, :base_url, :options, :model_classes
+        attr_reader :container_groups, :operations, :container_group_usage, :container_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -66,10 +66,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @container_groups = @client_0.container_groups
           @operations = @client_0.operations
           @container_group_usage = @client_0.container_group_usage
           @container_operations = @client_0.container_operations
-          @container_groups = @client_0.container_groups
 
           @model_classes = ModelClasses.new
         end
@@ -88,9 +88,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def port
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Port
-          end
           def ip_address
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::IpAddress
           end
@@ -100,11 +97,11 @@ module Azure::Profiles::Latest
           def container_group_properties_instance_view
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupPropertiesInstanceView
           end
-          def event
-            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Event
-          end
           def resource_requests
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ResourceRequests
+          end
+          def event
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Event
           end
           def container_group_diagnostics
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerGroupDiagnostics
@@ -207,6 +204,9 @@ module Azure::Profiles::Latest
           end
           def usage_name
             Azure::ContainerInstance::Mgmt::V2018_06_01::Models::UsageName
+          end
+          def port
+            Azure::ContainerInstance::Mgmt::V2018_06_01::Models::Port
           end
         end
       end
