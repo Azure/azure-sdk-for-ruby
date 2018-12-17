@@ -7,7 +7,6 @@ require 'azure_mgmt_logic'
 module Azure::Profiles::Latest
   module Logic
     module Mgmt
-      Certificates = Azure::Logic::Mgmt::V2016_06_01::Certificates
       Workflows = Azure::Logic::Mgmt::V2016_06_01::Workflows
       WorkflowVersions = Azure::Logic::Mgmt::V2016_06_01::WorkflowVersions
       WorkflowTriggers = Azure::Logic::Mgmt::V2016_06_01::WorkflowTriggers
@@ -25,11 +24,9 @@ module Azure::Profiles::Latest
       Partners = Azure::Logic::Mgmt::V2016_06_01::Partners
       Agreements = Azure::Logic::Mgmt::V2016_06_01::Agreements
       Sessions = Azure::Logic::Mgmt::V2016_06_01::Sessions
+      Certificates = Azure::Logic::Mgmt::V2016_06_01::Certificates
 
       module Models
-        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
-        TrackingRecordType = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
-        EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
         EventLevel = Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
         AccessKeyType = Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyType
         KeyType = Azure::Logic::Mgmt::V2016_06_01::Models::KeyType
@@ -198,10 +195,13 @@ module Azure::Profiles::Latest
         EdifactCharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
         X12TimeFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
         TrackEventsOperationOptions = Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
+        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
+        TrackingRecordType = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
+        EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
       end
 
       class LogicManagementClass
-        attr_reader :certificates, :workflows, :workflow_versions, :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :workflow_run_action_repetitions, :workflow_run_action_scoped_repetitions, :workflow_run_operations, :integration_accounts, :integration_account_assemblies, :integration_account_batch_configurations, :schemas, :maps, :partners, :agreements, :sessions, :configurable, :base_url, :options, :model_classes
+        attr_reader :workflows, :workflow_versions, :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :workflow_run_action_repetitions, :workflow_run_action_scoped_repetitions, :workflow_run_operations, :integration_accounts, :integration_account_assemblies, :integration_account_batch_configurations, :schemas, :maps, :partners, :agreements, :sessions, :certificates, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -211,7 +211,6 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @certificates = @client_0.certificates
           @workflows = @client_0.workflows
           @workflow_versions = @client_0.workflow_versions
           @workflow_triggers = @client_0.workflow_triggers
@@ -229,6 +228,7 @@ module Azure::Profiles::Latest
           @partners = @client_0.partners
           @agreements = @client_0.agreements
           @sessions = @client_0.sessions
+          @certificates = @client_0.certificates
 
           @model_classes = ModelClasses.new
         end
@@ -247,15 +247,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def message_filter_type
-            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
-          end
-          def tracking_record_type
-            Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
-          end
-          def edifact_decimal_indicator
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
-          end
           def event_level
             Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
           end
@@ -759,6 +750,15 @@ module Azure::Profiles::Latest
           end
           def track_events_operation_options
             Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
+          end
+          def message_filter_type
+            Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
+          end
+          def tracking_record_type
+            Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
+          end
+          def edifact_decimal_indicator
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
           end
         end
       end

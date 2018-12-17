@@ -7,8 +7,8 @@ require 'azure_mgmt_storage'
 module Azure::Profiles::V2018_03_01
   module Storage
     module Mgmt
-      StorageAccounts = Azure::Storage::Mgmt::V2016_01_01::StorageAccounts
       UsageOperations = Azure::Storage::Mgmt::V2016_01_01::UsageOperations
+      StorageAccounts = Azure::Storage::Mgmt::V2016_01_01::StorageAccounts
 
       module Models
         StorageAccountCreateParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCreateParameters
@@ -17,7 +17,6 @@ module Azure::Profiles::V2018_03_01
         ProvisioningState = Azure::Storage::Mgmt::V2016_01_01::Models::ProvisioningState
         CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2016_01_01::Models::CheckNameAvailabilityResult
         SkuName = Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
-        Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
         StorageAccountCheckNameAvailabilityParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCheckNameAvailabilityParameters
         StorageAccountKey = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountKey
         StorageAccountListResult = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListResult
@@ -27,22 +26,23 @@ module Azure::Profiles::V2018_03_01
         StorageAccountRegenerateKeyParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountRegenerateKeyParameters
         Endpoints = Azure::Storage::Mgmt::V2016_01_01::Models::Endpoints
         CustomDomain = Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
+        EncryptionServices = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
         UsageListResult = Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
         Sku = Azure::Storage::Mgmt::V2016_01_01::Models::Sku
         UsageName = Azure::Storage::Mgmt::V2016_01_01::Models::UsageName
         SkuTier = Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
-        StorageAccount = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
-        EncryptionServices = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
+        Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
+        Kind = Azure::Storage::Mgmt::V2016_01_01::Models::Kind
         AccessTier = Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
         Usage = Azure::Storage::Mgmt::V2016_01_01::Models::Usage
         AccountStatus = Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
         KeyPermission = Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
-        Kind = Azure::Storage::Mgmt::V2016_01_01::Models::Kind
         UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
+        StorageAccount = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
       end
 
       class StorageManagementClass
-        attr_reader :storage_accounts, :usage_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :usage_operations, :storage_accounts, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -52,8 +52,8 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @storage_accounts = @client_0.storage_accounts
           @usage_operations = @client_0.usage_operations
+          @storage_accounts = @client_0.storage_accounts
 
           @model_classes = ModelClasses.new
         end
@@ -90,9 +90,6 @@ module Azure::Profiles::V2018_03_01
           def sku_name
             Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
           end
-          def reason
-            Azure::Storage::Mgmt::V2016_01_01::Models::Reason
-          end
           def storage_account_check_name_availability_parameters
             Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCheckNameAvailabilityParameters
           end
@@ -120,6 +117,9 @@ module Azure::Profiles::V2018_03_01
           def custom_domain
             Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
           end
+          def encryption_services
+            Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
+          end
           def usage_list_result
             Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
           end
@@ -132,11 +132,11 @@ module Azure::Profiles::V2018_03_01
           def sku_tier
             Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
           end
-          def storage_account
-            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
+          def reason
+            Azure::Storage::Mgmt::V2016_01_01::Models::Reason
           end
-          def encryption_services
-            Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
+          def kind
+            Azure::Storage::Mgmt::V2016_01_01::Models::Kind
           end
           def access_tier
             Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
@@ -150,11 +150,11 @@ module Azure::Profiles::V2018_03_01
           def key_permission
             Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
           end
-          def kind
-            Azure::Storage::Mgmt::V2016_01_01::Models::Kind
-          end
           def usage_unit
             Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
+          end
+          def storage_account
+            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
           end
         end
       end

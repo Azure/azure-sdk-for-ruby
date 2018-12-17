@@ -8,9 +8,6 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
-      Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
-      EntitiesBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult
-      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
       MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
       DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_0::Models::DetectedLanguage
       MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageInput
@@ -26,6 +23,9 @@ module Azure::Profiles::Latest
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::ErrorRecord
       EntityRecord = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntityRecord
       EntitiesBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResultItem
+      Input = Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
+      EntitiesBatchResult = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult
+      InternalError = Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
     end
 
     class TextAnalyticsDataClass
@@ -57,15 +57,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def input
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
-        end
-        def entities_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult
-        end
-        def internal_error
-          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
-        end
         def multi_language_batch_input
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput
         end
@@ -110,6 +101,15 @@ module Azure::Profiles::Latest
         end
         def entities_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResultItem
+        end
+        def input
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::Input
+        end
+        def entities_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult
+        end
+        def internal_error
+          Azure::CognitiveServices::TextAnalytics::V2_0::Models::InternalError
         end
       end
     end

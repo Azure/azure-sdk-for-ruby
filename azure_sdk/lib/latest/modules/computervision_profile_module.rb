@@ -8,8 +8,6 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
-      TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
-      Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
       FaceDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
       ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
       Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
@@ -46,6 +44,8 @@ module Azure::Profiles::Latest
       ComputerVisionErrorCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionErrorCodes
       VisualFeatureTypes = Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
       OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
+      TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
+      Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
     end
 
     class ComputerVisionDataClass
@@ -77,12 +77,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def text_recognition_mode
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
-        end
-        def details
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
-        end
         def face_description
           Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
         end
@@ -190,6 +184,12 @@ module Azure::Profiles::Latest
         end
         def ocr_languages
           Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
+        end
+        def text_recognition_mode
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
+        end
+        def details
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
         end
       end
     end
