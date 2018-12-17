@@ -7,18 +7,15 @@ require 'azure_mgmt_storage'
 module Azure::Profiles::Latest
   module Storage
     module Mgmt
+      StorageAccounts = Azure::Storage::Mgmt::V2018_07_01::StorageAccounts
+      Usages = Azure::Storage::Mgmt::V2018_07_01::Usages
       Operations = Azure::Storage::Mgmt::V2018_07_01::Operations
       Skus = Azure::Storage::Mgmt::V2018_07_01::Skus
-      StorageAccounts = Azure::Storage::Mgmt::V2018_07_01::StorageAccounts
       BlobContainers = Azure::Storage::Mgmt::V2018_07_01::BlobContainers
-      Usages = Azure::Storage::Mgmt::V2018_07_01::Usages
 
       module Models
         ManagementPoliciesRulesSetParameter = Azure::Storage::Mgmt::V2018_03_01_preview::Models::ManagementPoliciesRulesSetParameter
         StorageAccountManagementPolicies = Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccountManagementPolicies
-        TrackedResource = Azure::Storage::Mgmt::V2018_07_01::Models::TrackedResource
-        IPRule = Azure::Storage::Mgmt::V2018_07_01::Models::IPRule
-        NetworkRuleSet = Azure::Storage::Mgmt::V2018_07_01::Models::NetworkRuleSet
         AzureEntityResource = Azure::Storage::Mgmt::V2018_07_01::Models::AzureEntityResource
         ProxyResource = Azure::Storage::Mgmt::V2018_07_01::Models::ProxyResource
         ProvisioningState = Azure::Storage::Mgmt::V2018_07_01::Models::ProvisioningState
@@ -46,9 +43,9 @@ module Azure::Profiles::Latest
         UsageUnit = Azure::Storage::Mgmt::V2018_07_01::Models::UsageUnit
         Reason = Azure::Storage::Mgmt::V2018_07_01::Models::Reason
         StorageAccountCreateParameters = Azure::Storage::Mgmt::V2018_07_01::Models::StorageAccountCreateParameters
-        Permissions = Azure::Storage::Mgmt::V2018_07_01::Models::Permissions
         StorageAccountUpdateParameters = Azure::Storage::Mgmt::V2018_07_01::Models::StorageAccountUpdateParameters
         Resource = Azure::Storage::Mgmt::V2018_07_01::Models::Resource
+        Permissions = Azure::Storage::Mgmt::V2018_07_01::Models::Permissions
         OperationDisplay = Azure::Storage::Mgmt::V2018_07_01::Models::OperationDisplay
         Operation = Azure::Storage::Mgmt::V2018_07_01::Models::Operation
         OperationListResult = Azure::Storage::Mgmt::V2018_07_01::Models::OperationListResult
@@ -81,20 +78,23 @@ module Azure::Profiles::Latest
         Sku = Azure::Storage::Mgmt::V2018_07_01::Models::Sku
         Services = Azure::Storage::Mgmt::V2018_07_01::Models::Services
         SignedResourceTypes = Azure::Storage::Mgmt::V2018_07_01::Models::SignedResourceTypes
-        HttpProtocol = Azure::Storage::Mgmt::V2018_07_01::Models::HttpProtocol
         Action = Azure::Storage::Mgmt::V2018_07_01::Models::Action
+        Bypass = Azure::Storage::Mgmt::V2018_07_01::Models::Bypass
         PublicAccess = Azure::Storage::Mgmt::V2018_07_01::Models::PublicAccess
         LeaseStatus = Azure::Storage::Mgmt::V2018_07_01::Models::LeaseStatus
-        LeaseState = Azure::Storage::Mgmt::V2018_07_01::Models::LeaseState
+        HttpProtocol = Azure::Storage::Mgmt::V2018_07_01::Models::HttpProtocol
         SignedResource = Azure::Storage::Mgmt::V2018_07_01::Models::SignedResource
-        Bypass = Azure::Storage::Mgmt::V2018_07_01::Models::Bypass
-        ImmutabilityPolicyUpdateType = Azure::Storage::Mgmt::V2018_07_01::Models::ImmutabilityPolicyUpdateType
-        LeaseDuration = Azure::Storage::Mgmt::V2018_07_01::Models::LeaseDuration
         ImmutabilityPolicyState = Azure::Storage::Mgmt::V2018_07_01::Models::ImmutabilityPolicyState
+        ImmutabilityPolicyUpdateType = Azure::Storage::Mgmt::V2018_07_01::Models::ImmutabilityPolicyUpdateType
+        LeaseState = Azure::Storage::Mgmt::V2018_07_01::Models::LeaseState
+        LeaseDuration = Azure::Storage::Mgmt::V2018_07_01::Models::LeaseDuration
+        TrackedResource = Azure::Storage::Mgmt::V2018_07_01::Models::TrackedResource
+        IPRule = Azure::Storage::Mgmt::V2018_07_01::Models::IPRule
+        NetworkRuleSet = Azure::Storage::Mgmt::V2018_07_01::Models::NetworkRuleSet
       end
 
       class StorageManagementClass
-        attr_reader :operations, :skus, :storage_accounts, :blob_containers, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :storage_accounts, :usages, :operations, :skus, :blob_containers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -110,11 +110,11 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
+          @storage_accounts = @client_1.storage_accounts
+          @usages = @client_1.usages
           @operations = @client_1.operations
           @skus = @client_1.skus
-          @storage_accounts = @client_1.storage_accounts
           @blob_containers = @client_1.blob_containers
-          @usages = @client_1.usages
 
           @model_classes = ModelClasses.new
         end
@@ -140,15 +140,6 @@ module Azure::Profiles::Latest
           end
           def storage_account_management_policies
             Azure::Storage::Mgmt::V2018_03_01_preview::Models::StorageAccountManagementPolicies
-          end
-          def tracked_resource
-            Azure::Storage::Mgmt::V2018_07_01::Models::TrackedResource
-          end
-          def iprule
-            Azure::Storage::Mgmt::V2018_07_01::Models::IPRule
-          end
-          def network_rule_set
-            Azure::Storage::Mgmt::V2018_07_01::Models::NetworkRuleSet
           end
           def azure_entity_resource
             Azure::Storage::Mgmt::V2018_07_01::Models::AzureEntityResource
@@ -231,14 +222,14 @@ module Azure::Profiles::Latest
           def storage_account_create_parameters
             Azure::Storage::Mgmt::V2018_07_01::Models::StorageAccountCreateParameters
           end
-          def permissions
-            Azure::Storage::Mgmt::V2018_07_01::Models::Permissions
-          end
           def storage_account_update_parameters
             Azure::Storage::Mgmt::V2018_07_01::Models::StorageAccountUpdateParameters
           end
           def resource
             Azure::Storage::Mgmt::V2018_07_01::Models::Resource
+          end
+          def permissions
+            Azure::Storage::Mgmt::V2018_07_01::Models::Permissions
           end
           def operation_display
             Azure::Storage::Mgmt::V2018_07_01::Models::OperationDisplay
@@ -336,11 +327,11 @@ module Azure::Profiles::Latest
           def signed_resource_types
             Azure::Storage::Mgmt::V2018_07_01::Models::SignedResourceTypes
           end
-          def http_protocol
-            Azure::Storage::Mgmt::V2018_07_01::Models::HttpProtocol
-          end
           def action
             Azure::Storage::Mgmt::V2018_07_01::Models::Action
+          end
+          def bypass
+            Azure::Storage::Mgmt::V2018_07_01::Models::Bypass
           end
           def public_access
             Azure::Storage::Mgmt::V2018_07_01::Models::PublicAccess
@@ -348,23 +339,32 @@ module Azure::Profiles::Latest
           def lease_status
             Azure::Storage::Mgmt::V2018_07_01::Models::LeaseStatus
           end
-          def lease_state
-            Azure::Storage::Mgmt::V2018_07_01::Models::LeaseState
+          def http_protocol
+            Azure::Storage::Mgmt::V2018_07_01::Models::HttpProtocol
           end
           def signed_resource
             Azure::Storage::Mgmt::V2018_07_01::Models::SignedResource
           end
-          def bypass
-            Azure::Storage::Mgmt::V2018_07_01::Models::Bypass
+          def immutability_policy_state
+            Azure::Storage::Mgmt::V2018_07_01::Models::ImmutabilityPolicyState
           end
           def immutability_policy_update_type
             Azure::Storage::Mgmt::V2018_07_01::Models::ImmutabilityPolicyUpdateType
           end
+          def lease_state
+            Azure::Storage::Mgmt::V2018_07_01::Models::LeaseState
+          end
           def lease_duration
             Azure::Storage::Mgmt::V2018_07_01::Models::LeaseDuration
           end
-          def immutability_policy_state
-            Azure::Storage::Mgmt::V2018_07_01::Models::ImmutabilityPolicyState
+          def tracked_resource
+            Azure::Storage::Mgmt::V2018_07_01::Models::TrackedResource
+          end
+          def iprule
+            Azure::Storage::Mgmt::V2018_07_01::Models::IPRule
+          end
+          def network_rule_set
+            Azure::Storage::Mgmt::V2018_07_01::Models::NetworkRuleSet
           end
         end
       end

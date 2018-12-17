@@ -41,8 +41,6 @@ module Azure::Profiles::Latest
       Usages = Azure::Automation::Mgmt::V2015_10_31::Usages
 
       module Models
-        TrackedResource = Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
-        ProxyResource = Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
         HttpStatusCode = Azure::Automation::Mgmt::V2015_10_31::Models::HttpStatusCode
         Job = Azure::Automation::Mgmt::V2015_10_31::Models::Job
         Resource = Azure::Automation::Mgmt::V2015_10_31::Models::Resource
@@ -148,37 +146,39 @@ module Azure::Profiles::Latest
         RunbookCreateOrUpdateDraftParameters = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookCreateOrUpdateDraftParameters
         DscConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration
         Credential = Azure::Automation::Mgmt::V2015_10_31::Models::Credential
-        DscCompilationJob = Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
-        ModuleModel = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
-        Connection = Azure::Automation::Mgmt::V2015_10_31::Models::Connection
-        DscNodeConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
-        Variable = Azure::Automation::Mgmt::V2015_10_31::Models::Variable
-        Runbook = Azure::Automation::Mgmt::V2015_10_31::Models::Runbook
-        DscNode = Azure::Automation::Mgmt::V2015_10_31::Models::DscNode
-        AutomationAccountState = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
-        Webhook = Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
         Certificate = Azure::Automation::Mgmt::V2015_10_31::Models::Certificate
+        ModuleModel = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
+        DscNode = Azure::Automation::Mgmt::V2015_10_31::Models::DscNode
+        DscNodeConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
+        DscCompilationJob = Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
+        Runbook = Azure::Automation::Mgmt::V2015_10_31::Models::Runbook
+        Connection = Azure::Automation::Mgmt::V2015_10_31::Models::Connection
+        Variable = Azure::Automation::Mgmt::V2015_10_31::Models::Variable
+        Webhook = Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
+        SkuNameEnum = Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
         Schedule = Azure::Automation::Mgmt::V2015_10_31::Models::Schedule
         AutomationKeyName = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyName
         AutomationKeyPermissions = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyPermissions
-        SkuNameEnum = Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
-        JobStatus = Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
+        JobProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
+        AutomationAccountState = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
         JobStreamType = Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamType
         ContentSourceType = Azure::Automation::Mgmt::V2015_10_31::Models::ContentSourceType
-        JobProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
-        DscConfigurationState = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationState
+        DscConfigurationProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
+        JobStatus = Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
         AgentRegistrationKeyName = Azure::Automation::Mgmt::V2015_10_31::Models::AgentRegistrationKeyName
         GroupTypeEnum = Azure::Automation::Mgmt::V2015_10_31::Models::GroupTypeEnum
-        DscConfigurationProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
-        RunbookTypeEnum = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookTypeEnum
+        ModuleProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
+        DscConfigurationState = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationState
         RunbookState = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookState
         RunbookProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookProvisioningState
-        ModuleProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
-        ScheduleFrequency = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
-        Usage = Azure::Automation::Mgmt::V2015_10_31::Models::Usage
         ScheduleDay = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
+        RunbookTypeEnum = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookTypeEnum
+        Usage = Azure::Automation::Mgmt::V2015_10_31::Models::Usage
+        ScheduleFrequency = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
         Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
         ErrorResponse = Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
+        TrackedResource = Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
+        ProxyResource = Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
       end
 
       class AutomationManagementClass
@@ -242,12 +242,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def tracked_resource
-            Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
-          end
-          def proxy_resource
-            Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
-          end
           def http_status_code
             Azure::Automation::Mgmt::V2015_10_31::Models::HttpStatusCode
           end
@@ -563,35 +557,35 @@ module Azure::Profiles::Latest
           def credential
             Azure::Automation::Mgmt::V2015_10_31::Models::Credential
           end
-          def dsc_compilation_job
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
+          def certificate
+            Azure::Automation::Mgmt::V2015_10_31::Models::Certificate
           end
           def module_model
             Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
           end
-          def connection
-            Azure::Automation::Mgmt::V2015_10_31::Models::Connection
+          def dsc_node
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscNode
           end
           def dsc_node_configuration
             Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
           end
-          def variable
-            Azure::Automation::Mgmt::V2015_10_31::Models::Variable
+          def dsc_compilation_job
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
           end
           def runbook
             Azure::Automation::Mgmt::V2015_10_31::Models::Runbook
           end
-          def dsc_node
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscNode
+          def connection
+            Azure::Automation::Mgmt::V2015_10_31::Models::Connection
           end
-          def automation_account_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
+          def variable
+            Azure::Automation::Mgmt::V2015_10_31::Models::Variable
           end
           def webhook
             Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
           end
-          def certificate
-            Azure::Automation::Mgmt::V2015_10_31::Models::Certificate
+          def sku_name_enum
+            Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
           end
           def schedule
             Azure::Automation::Mgmt::V2015_10_31::Models::Schedule
@@ -602,11 +596,11 @@ module Azure::Profiles::Latest
           def automation_key_permissions
             Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyPermissions
           end
-          def sku_name_enum
-            Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
+          def job_provisioning_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
           end
-          def job_status
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
+          def automation_account_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
           end
           def job_stream_type
             Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamType
@@ -614,11 +608,11 @@ module Azure::Profiles::Latest
           def content_source_type
             Azure::Automation::Mgmt::V2015_10_31::Models::ContentSourceType
           end
-          def job_provisioning_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
+          def dsc_configuration_provisioning_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
           end
-          def dsc_configuration_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationState
+          def job_status
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
           end
           def agent_registration_key_name
             Azure::Automation::Mgmt::V2015_10_31::Models::AgentRegistrationKeyName
@@ -626,11 +620,11 @@ module Azure::Profiles::Latest
           def group_type_enum
             Azure::Automation::Mgmt::V2015_10_31::Models::GroupTypeEnum
           end
-          def dsc_configuration_provisioning_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationProvisioningState
+          def module_provisioning_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
           end
-          def runbook_type_enum
-            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookTypeEnum
+          def dsc_configuration_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationState
           end
           def runbook_state
             Azure::Automation::Mgmt::V2015_10_31::Models::RunbookState
@@ -638,23 +632,29 @@ module Azure::Profiles::Latest
           def runbook_provisioning_state
             Azure::Automation::Mgmt::V2015_10_31::Models::RunbookProvisioningState
           end
-          def module_provisioning_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
+          def schedule_day
+            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
           end
-          def schedule_frequency
-            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
+          def runbook_type_enum
+            Azure::Automation::Mgmt::V2015_10_31::Models::RunbookTypeEnum
           end
           def usage
             Azure::Automation::Mgmt::V2015_10_31::Models::Usage
           end
-          def schedule_day
-            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
+          def schedule_frequency
+            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
           end
           def sku
             Azure::Automation::Mgmt::V2015_10_31::Models::Sku
           end
           def error_response
             Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
+          end
+          def tracked_resource
+            Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
+          end
+          def proxy_resource
+            Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
           end
         end
       end

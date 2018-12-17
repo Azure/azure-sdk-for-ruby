@@ -7,17 +7,17 @@ require 'azure_mgmt_container_service'
 module Azure::Profiles::Latest
   module ContainerService
     module Mgmt
-      Operations = Azure::ContainerService::Mgmt::V2018_03_31::Operations
       ManagedClusters = Azure::ContainerService::Mgmt::V2018_03_31::ManagedClusters
+      Operations = Azure::ContainerService::Mgmt::V2018_03_31::Operations
       ContainerServices = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServices
 
       module Models
+        ContainerServiceListResult = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceListResult
+        ContainerServiceOrchestratorTypes = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorTypes
+        ContainerService = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerService
+        ContainerServiceCustomProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceCustomProfile
         ContainerServiceOrchestratorProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorProfile
         ContainerServiceAgentPoolProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceAgentPoolProfile
-        ContainerServiceListResult = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceListResult
-        ContainerService = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerService
-        ContainerServiceOrchestratorTypes = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorTypes
-        ContainerServiceCustomProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceCustomProfile
         Resource = Azure::ContainerService::Mgmt::V2018_03_31::Models::Resource
         OperationListResult = Azure::ContainerService::Mgmt::V2018_03_31::Models::OperationListResult
         ContainerServiceWindowsProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceWindowsProfile
@@ -51,7 +51,7 @@ module Azure::Profiles::Latest
       end
 
       class ContainerServiceManagementClass
-        attr_reader :operations, :managed_clusters, :container_services, :configurable, :base_url, :options, :model_classes
+        attr_reader :managed_clusters, :operations, :container_services, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -67,8 +67,8 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @operations = @client_1.operations
           @managed_clusters = @client_1.managed_clusters
+          @operations = @client_1.operations
 
           @client_2 = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServiceClient.new(configurable.credentials, base_url, options)
           if(@client_2.respond_to?(:subscription_id))
@@ -98,23 +98,23 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def container_service_list_result
+            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceListResult
+          end
+          def container_service_orchestrator_types
+            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorTypes
+          end
+          def container_service
+            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerService
+          end
+          def container_service_custom_profile
+            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceCustomProfile
+          end
           def container_service_orchestrator_profile
             Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorProfile
           end
           def container_service_agent_pool_profile
             Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceAgentPoolProfile
-          end
-          def container_service_list_result
-            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceListResult
-          end
-          def container_service
-            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerService
-          end
-          def container_service_orchestrator_types
-            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorTypes
-          end
-          def container_service_custom_profile
-            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceCustomProfile
           end
           def resource
             Azure::ContainerService::Mgmt::V2018_03_31::Models::Resource

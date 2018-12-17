@@ -7,14 +7,10 @@ require 'azure_mgmt_dns'
 module Azure::Profiles::Latest
   module Dns
     module Mgmt
-      Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
       RecordSets = Azure::Dns::Mgmt::V2018_03_01_preview::RecordSets
+      Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
 
       module Models
-        TrackedResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
-        Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
-        ProxyResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
-        AzureEntityResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
         RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
         Resource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
         ZoneUpdate = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
@@ -34,10 +30,14 @@ module Azure::Profiles::Latest
         TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
         NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
         SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
+        TrackedResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
+        Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
+        ProxyResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
+        AzureEntityResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
       end
 
       class DnsManagementClass
-        attr_reader :zones, :record_sets, :configurable, :base_url, :options, :model_classes
+        attr_reader :record_sets, :zones, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -47,8 +47,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @zones = @client_0.zones
           @record_sets = @client_0.record_sets
+          @zones = @client_0.zones
 
           @model_classes = ModelClasses.new
         end
@@ -67,18 +67,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def tracked_resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
-          end
-          def zone
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
-          end
-          def proxy_resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
-          end
-          def azure_entity_resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
-          end
           def record_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
           end
@@ -135,6 +123,18 @@ module Azure::Profiles::Latest
           end
           def soa_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
+          end
+          def tracked_resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
+          end
+          def zone
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
+          end
+          def proxy_resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
+          end
+          def azure_entity_resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
           end
         end
       end

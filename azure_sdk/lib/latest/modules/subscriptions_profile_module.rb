@@ -14,14 +14,14 @@ module Azure::Profiles::Latest
       module Models
         Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
         OperationDisplay = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
+        Operation = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
         TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
-        TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
         SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
         Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
         OperationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
-        Operation = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
         SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
+        TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
         SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
       end
@@ -64,11 +64,11 @@ module Azure::Profiles::Latest
           def operation_display
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
           end
+          def operation
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
+          end
           def tenant_id_description
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
-          end
-          def tenant_list_result
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
           end
           def subscription_policies
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
@@ -82,11 +82,11 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
           end
-          def operation
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
-          end
           def subscription_state
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
+          end
+          def tenant_list_result
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
           end
           def location_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult

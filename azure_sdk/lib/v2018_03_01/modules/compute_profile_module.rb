@@ -7,8 +7,6 @@ require 'azure_mgmt_compute'
 module Azure::Profiles::V2018_03_01
   module Compute
     module Mgmt
-      AvailabilitySets = Azure::Compute::Mgmt::V2017_03_30::AvailabilitySets
-      VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensionImages
       VirtualMachineExtensions = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensions
       VirtualMachines = Azure::Compute::Mgmt::V2017_03_30::VirtualMachines
       VirtualMachineImages = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineImages
@@ -23,12 +21,10 @@ module Azure::Profiles::V2018_03_01
       Disks = Azure::Compute::Mgmt::V2017_03_30::Disks
       Snapshots = Azure::Compute::Mgmt::V2017_03_30::Snapshots
       VirtualMachineRunCommands = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineRunCommands
+      AvailabilitySets = Azure::Compute::Mgmt::V2017_03_30::AvailabilitySets
+      VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensionImages
 
       module Models
-        NetworkProfile = Azure::Compute::Mgmt::V2017_03_30::Models::NetworkProfile
-        KeyVaultAndSecretReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndSecretReference
-        DiagnosticsProfile = Azure::Compute::Mgmt::V2017_03_30::Models::DiagnosticsProfile
-        SourceVault = Azure::Compute::Mgmt::V2017_03_30::Models::SourceVault
         VirtualMachineAgentInstanceView = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineAgentInstanceView
         VirtualMachineScaleSetNetworkConfigurationDnsSettings = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetNetworkConfigurationDnsSettings
         BootDiagnosticsInstanceView = Azure::Compute::Mgmt::V2017_03_30::Models::BootDiagnosticsInstanceView
@@ -194,10 +190,14 @@ module Azure::Profiles::V2018_03_01
         VirtualMachineScaleSetPublicIPAddressConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetPublicIPAddressConfiguration
         OSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::OSProfile
         VirtualMachineScaleSetUpdatePublicIPAddressConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
+        NetworkProfile = Azure::Compute::Mgmt::V2017_03_30::Models::NetworkProfile
+        KeyVaultAndSecretReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndSecretReference
+        DiagnosticsProfile = Azure::Compute::Mgmt::V2017_03_30::Models::DiagnosticsProfile
+        SourceVault = Azure::Compute::Mgmt::V2017_03_30::Models::SourceVault
       end
 
       class ComputeManagementClass
-        attr_reader :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :configurable, :base_url, :options, :model_classes
+        attr_reader :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :availability_sets, :virtual_machine_extension_images, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -207,8 +207,6 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @availability_sets = @client_0.availability_sets
-          @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
           @virtual_machine_extensions = @client_0.virtual_machine_extensions
           @virtual_machines = @client_0.virtual_machines
           @virtual_machine_images = @client_0.virtual_machine_images
@@ -223,6 +221,8 @@ module Azure::Profiles::V2018_03_01
           @disks = @client_0.disks
           @snapshots = @client_0.snapshots
           @virtual_machine_run_commands = @client_0.virtual_machine_run_commands
+          @availability_sets = @client_0.availability_sets
+          @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
 
           @model_classes = ModelClasses.new
         end
@@ -241,18 +241,6 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
-          def network_profile
-            Azure::Compute::Mgmt::V2017_03_30::Models::NetworkProfile
-          end
-          def key_vault_and_secret_reference
-            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndSecretReference
-          end
-          def diagnostics_profile
-            Azure::Compute::Mgmt::V2017_03_30::Models::DiagnosticsProfile
-          end
-          def source_vault
-            Azure::Compute::Mgmt::V2017_03_30::Models::SourceVault
-          end
           def virtual_machine_agent_instance_view
             Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineAgentInstanceView
           end
@@ -747,6 +735,18 @@ module Azure::Profiles::V2018_03_01
           end
           def virtual_machine_scale_set_update_public_ipaddress_configuration
             Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
+          end
+          def network_profile
+            Azure::Compute::Mgmt::V2017_03_30::Models::NetworkProfile
+          end
+          def key_vault_and_secret_reference
+            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndSecretReference
+          end
+          def diagnostics_profile
+            Azure::Compute::Mgmt::V2017_03_30::Models::DiagnosticsProfile
+          end
+          def source_vault
+            Azure::Compute::Mgmt::V2017_03_30::Models::SourceVault
           end
         end
       end
