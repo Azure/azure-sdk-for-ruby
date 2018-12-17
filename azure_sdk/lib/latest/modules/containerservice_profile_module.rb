@@ -7,8 +7,8 @@ require 'azure_mgmt_container_service'
 module Azure::Profiles::Latest
   module ContainerService
     module Mgmt
-      Operations = Azure::ContainerService::Mgmt::V2018_03_31::Operations
       ManagedClusters = Azure::ContainerService::Mgmt::V2018_03_31::ManagedClusters
+      Operations = Azure::ContainerService::Mgmt::V2018_03_31::Operations
       ContainerServices = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServices
 
       module Models
@@ -51,7 +51,7 @@ module Azure::Profiles::Latest
       end
 
       class ContainerServiceManagementClass
-        attr_reader :operations, :managed_clusters, :container_services, :configurable, :base_url, :options, :model_classes
+        attr_reader :managed_clusters, :operations, :container_services, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -67,8 +67,8 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @operations = @client_1.operations
           @managed_clusters = @client_1.managed_clusters
+          @operations = @client_1.operations
 
           @client_2 = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServiceClient.new(configurable.credentials, base_url, options)
           if(@client_2.respond_to?(:subscription_id))

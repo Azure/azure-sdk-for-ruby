@@ -11,10 +11,6 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
-        ModuleAssetParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
-        AsyncOperationErrorInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
-        ServiceInputOutputSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
-        DiagnosticsConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
         AsyncOperationStatus = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
         WebService = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
         OutputPort = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPort
@@ -51,6 +47,10 @@ module Azure::Profiles::Latest
         BlobLocation = Azure::MachineLearning::Mgmt::V2017_01_01::Models::BlobLocation
         OperationEntityListResult = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntityListResult
         PaginatedWebServicesList = Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
+        ModuleAssetParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
+        AsyncOperationErrorInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
+        ServiceInputOutputSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
+        DiagnosticsConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
       end
 
       class MachineLearningManagementClass
@@ -84,18 +84,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def module_asset_parameter
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
-          end
-          def async_operation_error_info
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
-          end
-          def service_input_output_specification
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
-          end
-          def diagnostics_configuration
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
-          end
           def async_operation_status
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
           end
@@ -203,6 +191,18 @@ module Azure::Profiles::Latest
           end
           def paginated_web_services_list
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
+          end
+          def module_asset_parameter
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
+          end
+          def async_operation_error_info
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
+          end
+          def service_input_output_specification
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
+          end
+          def diagnostics_configuration
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
           end
         end
       end

@@ -22,13 +22,12 @@ module Azure::Profiles::Latest
       ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
       SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
-      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
+      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       Places = Azure::CognitiveServices::EntitySearch::V1_0::Models::Places
       PostalAddress = Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
-      Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
       Organization = Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
       ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
@@ -53,6 +52,7 @@ module Azure::Profiles::Latest
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
+      Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
     end
@@ -126,9 +126,6 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
         end
-        def error
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
-        end
         def contractual_rules_contractual_rule
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
         end
@@ -138,14 +135,14 @@ module Azure::Profiles::Latest
         def image_object
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
         end
+        def error
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+        end
         def places
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Places
         end
         def postal_address
           Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
-        end
-        def place
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
         end
         def organization
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
@@ -218,6 +215,9 @@ module Azure::Profiles::Latest
         end
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
+        end
+        def place
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
         end
         def entity_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType

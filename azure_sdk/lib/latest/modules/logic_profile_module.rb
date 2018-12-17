@@ -100,11 +100,11 @@ module Azure::Profiles::Latest
         EdifactDelimiterOverride = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDelimiterOverride
         AS2ErrorSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2ErrorSettings
         EdifactProtocolSettings = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProtocolSettings
-        Response = Azure::Logic::Mgmt::V2016_06_01::Models::Response
         EdifactOneWayAgreement = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactOneWayAgreement
         WorkflowTriggerRecurrence = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerRecurrence
         EdifactAgreementContent = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactAgreementContent
         WorkflowTriggerListCallbackUrlQueries = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerListCallbackUrlQueries
+        Response = Azure::Logic::Mgmt::V2016_06_01::Models::Response
         AgreementContent = Azure::Logic::Mgmt::V2016_06_01::Models::AgreementContent
         OperationResultProperties = Azure::Logic::Mgmt::V2016_06_01::Models::OperationResultProperties
         WorkflowRunTrigger = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunTrigger
@@ -124,20 +124,20 @@ module Azure::Profiles::Latest
         AS2AcknowledgementConnectionSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2AcknowledgementConnectionSettings
         IntegrationAccountCertificateListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountCertificateListResult
         IntegrationAccountSessionListResult = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionListResult
-        AS2EnvelopeSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
         RecurrenceScheduleOccurrence = Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceScheduleOccurrence
         Correlation = Azure::Logic::Mgmt::V2016_06_01::Models::Correlation
         ErrorInfo = Azure::Logic::Mgmt::V2016_06_01::Models::ErrorInfo
         WorkflowRunActionListResult = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowRunActionListResult
         ListKeyVaultKeysDefinition = Azure::Logic::Mgmt::V2016_06_01::Models::ListKeyVaultKeysDefinition
+        AS2EnvelopeSettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
         ArtifactProperties = Azure::Logic::Mgmt::V2016_06_01::Models::ArtifactProperties
-        KeyVaultKeyAttributes = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyAttributes
-        B2BPartnerContent = Azure::Logic::Mgmt::V2016_06_01::Models::B2BPartnerContent
+        Request = Azure::Logic::Mgmt::V2016_06_01::Models::Request
         KeyVaultKey = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKey
+        KeyVaultKeyAttributes = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyAttributes
         AS2SecuritySettings = Azure::Logic::Mgmt::V2016_06_01::Models::AS2SecuritySettings
         WorkflowTriggerFilter = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerFilter
         TrackingEventErrorInfo = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingEventErrorInfo
-        Request = Azure::Logic::Mgmt::V2016_06_01::Models::Request
+        B2BPartnerContent = Azure::Logic::Mgmt::V2016_06_01::Models::B2BPartnerContent
         AssemblyCollection = Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyCollection
         TrackingEventsDefinition = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingEventsDefinition
         KeyVaultKeyCollection = Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyCollection
@@ -195,16 +195,16 @@ module Azure::Profiles::Latest
         MapType = Azure::Logic::Mgmt::V2016_06_01::Models::MapType
         X12TimeFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12TimeFormat
         X12DateFormat = Azure::Logic::Mgmt::V2016_06_01::Models::X12DateFormat
-        EdifactCharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
         ErrorResponse = Azure::Logic::Mgmt::V2016_06_01::Models::ErrorResponse
-        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
-        TrackEventsOperationOptions = Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
         UsageIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
+        MessageFilterType = Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
+        EdifactCharacterSet = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
+        EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
         SegmentTerminatorSuffix = Azure::Logic::Mgmt::V2016_06_01::Models::SegmentTerminatorSuffix
         EventLevel = Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
-        EdifactDecimalIndicator = Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
-        AccessKeyType = Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyType
         TrackingRecordType = Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
+        TrackEventsOperationOptions = Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
+        AccessKeyType = Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyType
       end
 
       class LogicManagementClass
@@ -469,9 +469,6 @@ module Azure::Profiles::Latest
           def edifact_protocol_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactProtocolSettings
           end
-          def response
-            Azure::Logic::Mgmt::V2016_06_01::Models::Response
-          end
           def edifact_one_way_agreement
             Azure::Logic::Mgmt::V2016_06_01::Models::EdifactOneWayAgreement
           end
@@ -483,6 +480,9 @@ module Azure::Profiles::Latest
           end
           def workflow_trigger_list_callback_url_queries
             Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowTriggerListCallbackUrlQueries
+          end
+          def response
+            Azure::Logic::Mgmt::V2016_06_01::Models::Response
           end
           def agreement_content
             Azure::Logic::Mgmt::V2016_06_01::Models::AgreementContent
@@ -541,9 +541,6 @@ module Azure::Profiles::Latest
           def integration_account_session_list_result
             Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountSessionListResult
           end
-          def as2_envelope_settings
-            Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
-          end
           def recurrence_schedule_occurrence
             Azure::Logic::Mgmt::V2016_06_01::Models::RecurrenceScheduleOccurrence
           end
@@ -559,17 +556,20 @@ module Azure::Profiles::Latest
           def list_key_vault_keys_definition
             Azure::Logic::Mgmt::V2016_06_01::Models::ListKeyVaultKeysDefinition
           end
+          def as2_envelope_settings
+            Azure::Logic::Mgmt::V2016_06_01::Models::AS2EnvelopeSettings
+          end
           def artifact_properties
             Azure::Logic::Mgmt::V2016_06_01::Models::ArtifactProperties
           end
-          def key_vault_key_attributes
-            Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyAttributes
-          end
-          def b2_bpartner_content
-            Azure::Logic::Mgmt::V2016_06_01::Models::B2BPartnerContent
+          def request
+            Azure::Logic::Mgmt::V2016_06_01::Models::Request
           end
           def key_vault_key
             Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKey
+          end
+          def key_vault_key_attributes
+            Azure::Logic::Mgmt::V2016_06_01::Models::KeyVaultKeyAttributes
           end
           def as2_security_settings
             Azure::Logic::Mgmt::V2016_06_01::Models::AS2SecuritySettings
@@ -580,8 +580,8 @@ module Azure::Profiles::Latest
           def tracking_event_error_info
             Azure::Logic::Mgmt::V2016_06_01::Models::TrackingEventErrorInfo
           end
-          def request
-            Azure::Logic::Mgmt::V2016_06_01::Models::Request
+          def b2_bpartner_content
+            Azure::Logic::Mgmt::V2016_06_01::Models::B2BPartnerContent
           end
           def assembly_collection
             Azure::Logic::Mgmt::V2016_06_01::Models::AssemblyCollection
@@ -754,20 +754,20 @@ module Azure::Profiles::Latest
           def x12_date_format
             Azure::Logic::Mgmt::V2016_06_01::Models::X12DateFormat
           end
-          def edifact_character_set
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
-          end
           def error_response
             Azure::Logic::Mgmt::V2016_06_01::Models::ErrorResponse
+          end
+          def usage_indicator
+            Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
           end
           def message_filter_type
             Azure::Logic::Mgmt::V2016_06_01::Models::MessageFilterType
           end
-          def track_events_operation_options
-            Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
+          def edifact_character_set
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactCharacterSet
           end
-          def usage_indicator
-            Azure::Logic::Mgmt::V2016_06_01::Models::UsageIndicator
+          def edifact_decimal_indicator
+            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
           end
           def segment_terminator_suffix
             Azure::Logic::Mgmt::V2016_06_01::Models::SegmentTerminatorSuffix
@@ -775,14 +775,14 @@ module Azure::Profiles::Latest
           def event_level
             Azure::Logic::Mgmt::V2016_06_01::Models::EventLevel
           end
-          def edifact_decimal_indicator
-            Azure::Logic::Mgmt::V2016_06_01::Models::EdifactDecimalIndicator
+          def tracking_record_type
+            Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
+          end
+          def track_events_operation_options
+            Azure::Logic::Mgmt::V2016_06_01::Models::TrackEventsOperationOptions
           end
           def access_key_type
             Azure::Logic::Mgmt::V2016_06_01::Models::AccessKeyType
-          end
-          def tracking_record_type
-            Azure::Logic::Mgmt::V2016_06_01::Models::TrackingRecordType
           end
         end
       end

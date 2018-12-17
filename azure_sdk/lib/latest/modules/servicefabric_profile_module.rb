@@ -7,8 +7,8 @@ require 'azure_mgmt_service_fabric'
 module Azure::Profiles::Latest
   module ServiceFabric
     module Mgmt
-      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
+      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
       Operations = Azure::ServiceFabric::Mgmt::V2018_02_01::Operations
@@ -46,10 +46,6 @@ module Azure::Profiles::Latest
         StatefulServiceProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceProperties
         StatefulServiceUpdateProperties = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::StatefulServiceUpdateProperties
         ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
-        AvailableOperationDisplay = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AvailableOperationDisplay
-        ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterHealthPolicy
-        AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AzureActiveDirectory
-        ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeHealthPolicy
         ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
         ClientCertificateThumbprint = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateThumbprint
         ClusterUpgradeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradeDeltaHealthPolicy
@@ -77,10 +73,14 @@ module Azure::Profiles::Latest
         ErrorModelError = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModelError
         DiagnosticsStorageAccountConfig = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::DiagnosticsStorageAccountConfig
         ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradePolicy
+        AvailableOperationDisplay = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AvailableOperationDisplay
+        ClusterHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterHealthPolicy
+        AzureActiveDirectory = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AzureActiveDirectory
+        ServiceTypeHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeHealthPolicy
       end
 
       class ServiceFabricManagementClass
-        attr_reader :version, :application, :application_type, :service, :operations, :clusters, :cluster_versions, :configurable, :base_url, :options, :model_classes
+        attr_reader :application, :version, :application_type, :service, :operations, :clusters, :cluster_versions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -90,8 +90,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @version = @client_0.version
           @application = @client_0.application
+          @version = @client_0.version
           @application_type = @client_0.application_type
           @service = @client_0.service
 
@@ -213,18 +213,6 @@ module Azure::Profiles::Latest
           def proxy_resource
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
           end
-          def available_operation_display
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AvailableOperationDisplay
-          end
-          def cluster_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterHealthPolicy
-          end
-          def azure_active_directory
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AzureActiveDirectory
-          end
-          def service_type_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeHealthPolicy
-          end
           def client_certificate_common_name
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
           end
@@ -305,6 +293,18 @@ module Azure::Profiles::Latest
           end
           def cluster_upgrade_policy
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradePolicy
+          end
+          def available_operation_display
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AvailableOperationDisplay
+          end
+          def cluster_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterHealthPolicy
+          end
+          def azure_active_directory
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AzureActiveDirectory
+          end
+          def service_type_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeHealthPolicy
           end
         end
       end
