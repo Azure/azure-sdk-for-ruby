@@ -19,8 +19,6 @@ module Azure::Profiles::V2018_03_01
       AppServiceEnvironments = Azure::Web::Mgmt::V2016_09_01::AppServiceEnvironments
 
       module Models
-        DataSource = Azure::Web::Mgmt::V2016_03_01::Models::DataSource
-        ResponseMetaData = Azure::Web::Mgmt::V2016_03_01::Models::ResponseMetaData
         AnalysisData = Azure::Web::Mgmt::V2016_03_01::Models::AnalysisData
         CsmMoveResourceEnvelope = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope
         DataTableResponseColumn = Azure::Web::Mgmt::V2016_03_01::Models::DataTableResponseColumn
@@ -102,6 +100,8 @@ module Azure::Profiles::V2018_03_01
         HostingEnvironmentDeploymentInfo = Azure::Web::Mgmt::V2016_03_01::Models::HostingEnvironmentDeploymentInfo
         DiagnosticMetricSample = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticMetricSample
         DiagnosticMetricSet = Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticMetricSet
+        DataSource = Azure::Web::Mgmt::V2016_03_01::Models::DataSource
+        ResponseMetaData = Azure::Web::Mgmt::V2016_03_01::Models::ResponseMetaData
         Deployment = Azure::Web::Mgmt::V2016_08_01::Models::Deployment
         Snapshot = Azure::Web::Mgmt::V2016_08_01::Models::Snapshot
         AzureTableStorageApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::AzureTableStorageApplicationLogsConfig
@@ -204,8 +204,6 @@ module Azure::Profiles::V2018_03_01
         CloneAbilityResult = Azure::Web::Mgmt::V2016_08_01::Models::CloneAbilityResult
         SiteExtensionType = Azure::Web::Mgmt::V2016_08_01::Models::SiteExtensionType
         BuiltInAuthenticationProvider = Azure::Web::Mgmt::V2016_08_01::Models::BuiltInAuthenticationProvider
-        Experiments = Azure::Web::Mgmt::V2016_09_01::Models::Experiments
-        SiteMachineKey = Azure::Web::Mgmt::V2016_09_01::Models::SiteMachineKey
         HostNameSslState = Azure::Web::Mgmt::V2016_09_01::Models::HostNameSslState
         SkuDescription = Azure::Web::Mgmt::V2016_09_01::Models::SkuDescription
         WorkerPool = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPool
@@ -303,6 +301,8 @@ module Azure::Profiles::V2018_03_01
         OperationStatus = Azure::Web::Mgmt::V2016_09_01::Models::OperationStatus
         CorsSettings = Azure::Web::Mgmt::V2016_09_01::Models::CorsSettings
         AutoHealTriggers = Azure::Web::Mgmt::V2016_09_01::Models::AutoHealTriggers
+        Experiments = Azure::Web::Mgmt::V2016_09_01::Models::Experiments
+        SiteMachineKey = Azure::Web::Mgmt::V2016_09_01::Models::SiteMachineKey
         Identifier = Azure::Web::Mgmt::V2016_09_01::Models::Identifier
       end
 
@@ -361,12 +361,6 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
-          def data_source
-            Azure::Web::Mgmt::V2016_03_01::Models::DataSource
-          end
-          def response_meta_data
-            Azure::Web::Mgmt::V2016_03_01::Models::ResponseMetaData
-          end
           def analysis_data
             Azure::Web::Mgmt::V2016_03_01::Models::AnalysisData
           end
@@ -609,6 +603,12 @@ module Azure::Profiles::V2018_03_01
           end
           def diagnostic_metric_set
             Azure::Web::Mgmt::V2016_03_01::Models::DiagnosticMetricSet
+          end
+          def data_source
+            Azure::Web::Mgmt::V2016_03_01::Models::DataSource
+          end
+          def response_meta_data
+            Azure::Web::Mgmt::V2016_03_01::Models::ResponseMetaData
           end
           def deployment
             Azure::Web::Mgmt::V2016_08_01::Models::Deployment
@@ -916,12 +916,6 @@ module Azure::Profiles::V2018_03_01
           def built_in_authentication_provider
             Azure::Web::Mgmt::V2016_08_01::Models::BuiltInAuthenticationProvider
           end
-          def experiments
-            Azure::Web::Mgmt::V2016_09_01::Models::Experiments
-          end
-          def site_machine_key
-            Azure::Web::Mgmt::V2016_09_01::Models::SiteMachineKey
-          end
           def host_name_ssl_state
             Azure::Web::Mgmt::V2016_09_01::Models::HostNameSslState
           end
@@ -1212,6 +1206,12 @@ module Azure::Profiles::V2018_03_01
           end
           def auto_heal_triggers
             Azure::Web::Mgmt::V2016_09_01::Models::AutoHealTriggers
+          end
+          def experiments
+            Azure::Web::Mgmt::V2016_09_01::Models::Experiments
+          end
+          def site_machine_key
+            Azure::Web::Mgmt::V2016_09_01::Models::SiteMachineKey
           end
           def identifier
             Azure::Web::Mgmt::V2016_09_01::Models::Identifier

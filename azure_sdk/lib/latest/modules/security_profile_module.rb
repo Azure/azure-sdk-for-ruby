@@ -7,16 +7,13 @@ require 'azure_mgmt_security'
 module Azure::Profiles::Latest
   module Security
     module Mgmt
+      Pricings = Azure::Security::Mgmt::V2017_08_01_preview::Pricings
+      SecurityContacts = Azure::Security::Mgmt::V2017_08_01_preview::SecurityContacts
       WorkspaceSettings = Azure::Security::Mgmt::V2017_08_01_preview::WorkspaceSettings
       AutoProvisioningSettings = Azure::Security::Mgmt::V2017_08_01_preview::AutoProvisioningSettings
       Compliances = Azure::Security::Mgmt::V2017_08_01_preview::Compliances
-      Pricings = Azure::Security::Mgmt::V2017_08_01_preview::Pricings
-      SecurityContacts = Azure::Security::Mgmt::V2017_08_01_preview::SecurityContacts
 
       module Models
-        AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
-        PricingTier = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
-        AutoProvision = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
         Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
         AutoProvisioningSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSettingList
         PricingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingList
@@ -30,10 +27,13 @@ module Azure::Profiles::Latest
         AutoProvisioningSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
         Compliance = Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
         AlertNotifications = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
+        AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
+        PricingTier = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
+        AutoProvision = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
       end
 
       class SecurityManagementClass
-        attr_reader :workspace_settings, :auto_provisioning_settings, :compliances, :pricings, :security_contacts, :configurable, :base_url, :options, :model_classes
+        attr_reader :pricings, :security_contacts, :workspace_settings, :auto_provisioning_settings, :compliances, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -43,11 +43,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @pricings = @client_0.pricings
+          @security_contacts = @client_0.security_contacts
           @workspace_settings = @client_0.workspace_settings
           @auto_provisioning_settings = @client_0.auto_provisioning_settings
           @compliances = @client_0.compliances
-          @pricings = @client_0.pricings
-          @security_contacts = @client_0.security_contacts
 
           @model_classes = ModelClasses.new
         end
@@ -66,15 +66,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def alerts_to_admins
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
-          end
-          def pricing_tier
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
-          end
-          def auto_provision
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
-          end
           def resource
             Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
           end
@@ -113,6 +104,15 @@ module Azure::Profiles::Latest
           end
           def alert_notifications
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
+          end
+          def alerts_to_admins
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
+          end
+          def pricing_tier
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
+          end
+          def auto_provision
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
           end
         end
       end
