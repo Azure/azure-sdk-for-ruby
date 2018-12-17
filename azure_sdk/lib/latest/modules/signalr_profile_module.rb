@@ -7,15 +7,11 @@ require 'azure_mgmt_signalr'
 module Azure::Profiles::Latest
   module Signalr
     module Mgmt
+      Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
       Operations = Azure::Signalr::Mgmt::V2018_03_01_preview::Operations
       SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
-      Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
 
       module Models
-        NameAvailability = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
-        SignalRUsage = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
-        SignalRUpdateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
-        SignalRUsageName = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageName
         SignalRResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
         SignalRCreateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
         SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
@@ -37,10 +33,14 @@ module Azure::Profiles::Latest
         SignalRCreateOrUpdateProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateOrUpdateProperties
         SignalRKeys = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys
         OperationProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
+        NameAvailability = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
+        SignalRUsage = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
+        SignalRUpdateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
+        SignalRUsageName = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageName
       end
 
       class SignalrManagementClass
-        attr_reader :operations, :signal_r, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :usages, :operations, :signal_r, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -50,9 +50,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @usages = @client_0.usages
           @operations = @client_0.operations
           @signal_r = @client_0.signal_r
-          @usages = @client_0.usages
 
           @model_classes = ModelClasses.new
         end
@@ -71,18 +71,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def name_availability
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
-          end
-          def signal_rusage
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
-          end
-          def signal_rupdate_parameters
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
-          end
-          def signal_rusage_name
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageName
-          end
           def signal_rresource
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
           end
@@ -145,6 +133,18 @@ module Azure::Profiles::Latest
           end
           def operation_properties
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
+          end
+          def name_availability
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
+          end
+          def signal_rusage
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
+          end
+          def signal_rupdate_parameters
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
+          end
+          def signal_rusage_name
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageName
           end
         end
       end

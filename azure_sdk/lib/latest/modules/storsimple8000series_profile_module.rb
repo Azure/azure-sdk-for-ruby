@@ -7,7 +7,6 @@ require 'azure_mgmt_stor_simple8000_series'
 module Azure::Profiles::Latest
   module StorSimple8000Series
     module Mgmt
-      Backups = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Backups
       Jobs = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Jobs
       Managers = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Managers
       AccessControlRecords = Azure::StorSimple8000Series::Mgmt::V2017_06_01::AccessControlRecords
@@ -15,20 +14,17 @@ module Azure::Profiles::Latest
       Operations = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Operations
       BandwidthSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::BandwidthSettings
       CloudAppliances = Azure::StorSimple8000Series::Mgmt::V2017_06_01::CloudAppliances
-      Devices = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Devices
       DeviceSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::DeviceSettings
       BackupSchedules = Azure::StorSimple8000Series::Mgmt::V2017_06_01::BackupSchedules
+      Devices = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Devices
       HardwareComponentGroups = Azure::StorSimple8000Series::Mgmt::V2017_06_01::HardwareComponentGroups
       VolumeContainers = Azure::StorSimple8000Series::Mgmt::V2017_06_01::VolumeContainers
       Volumes = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Volumes
       StorageAccountCredentials = Azure::StorSimple8000Series::Mgmt::V2017_06_01::StorageAccountCredentials
       BackupPolicies = Azure::StorSimple8000Series::Mgmt::V2017_06_01::BackupPolicies
+      Backups = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Backups
 
       module Models
-        Updates = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Updates
-        VolumeContainer = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeContainer
-        AlertEmailNotificationStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertEmailNotificationStatus
-        AlertSourceType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSourceType
         AlertStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertStatus
         EncryptionAlgorithm = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::EncryptionAlgorithm
         BackupJobCreationType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupJobCreationType
@@ -132,11 +128,11 @@ module Azure::Profiles::Latest
         AvailableProviderOperationList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AvailableProviderOperationList
         BackupList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupList
         ListFailoverTargetsRequest = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ListFailoverTargetsRequest
-        Time = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
         BackupScheduleList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupScheduleList
+        ManagerIntrinsicSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerIntrinsicSettings
         BandwidthSettingList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSettingList
         ManagerSku = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerSku
-        ManagerIntrinsicSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerIntrinsicSettings
+        Time = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
         CloneRequest = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloneRequest
         CloudApplianceConfigurationList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloudApplianceConfigurationList
         NetworkAdapters = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetworkAdapters
@@ -184,10 +180,14 @@ module Azure::Profiles::Latest
         JobErrorDetails = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobErrorDetails
         StorageAccountCredential = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::StorageAccountCredential
         AlertScope = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertScope
+        Updates = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Updates
+        VolumeContainer = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeContainer
+        AlertEmailNotificationStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertEmailNotificationStatus
+        AlertSourceType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSourceType
       end
 
       class StorSimple8000SeriesManagementClass
-        attr_reader :backups, :jobs, :managers, :access_control_records, :alerts, :operations, :bandwidth_settings, :cloud_appliances, :devices, :device_settings, :backup_schedules, :hardware_component_groups, :volume_containers, :volumes, :storage_account_credentials, :backup_policies, :configurable, :base_url, :options, :model_classes
+        attr_reader :jobs, :managers, :access_control_records, :alerts, :operations, :bandwidth_settings, :cloud_appliances, :device_settings, :backup_schedules, :devices, :hardware_component_groups, :volume_containers, :volumes, :storage_account_credentials, :backup_policies, :backups, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -197,7 +197,6 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @backups = @client_0.backups
           @jobs = @client_0.jobs
           @managers = @client_0.managers
           @access_control_records = @client_0.access_control_records
@@ -205,14 +204,15 @@ module Azure::Profiles::Latest
           @operations = @client_0.operations
           @bandwidth_settings = @client_0.bandwidth_settings
           @cloud_appliances = @client_0.cloud_appliances
-          @devices = @client_0.devices
           @device_settings = @client_0.device_settings
           @backup_schedules = @client_0.backup_schedules
+          @devices = @client_0.devices
           @hardware_component_groups = @client_0.hardware_component_groups
           @volume_containers = @client_0.volume_containers
           @volumes = @client_0.volumes
           @storage_account_credentials = @client_0.storage_account_credentials
           @backup_policies = @client_0.backup_policies
+          @backups = @client_0.backups
 
           @model_classes = ModelClasses.new
         end
@@ -231,18 +231,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def updates
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Updates
-          end
-          def volume_container
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeContainer
-          end
-          def alert_email_notification_status
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertEmailNotificationStatus
-          end
-          def alert_source_type
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSourceType
-          end
           def alert_status
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertStatus
           end
@@ -552,11 +540,11 @@ module Azure::Profiles::Latest
           def list_failover_targets_request
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ListFailoverTargetsRequest
           end
-          def time
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
-          end
           def backup_schedule_list
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupScheduleList
+          end
+          def manager_intrinsic_settings
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerIntrinsicSettings
           end
           def bandwidth_setting_list
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSettingList
@@ -564,8 +552,8 @@ module Azure::Profiles::Latest
           def manager_sku
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerSku
           end
-          def manager_intrinsic_settings
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerIntrinsicSettings
+          def time
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
           end
           def clone_request
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloneRequest
@@ -707,6 +695,18 @@ module Azure::Profiles::Latest
           end
           def alert_scope
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertScope
+          end
+          def updates
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Updates
+          end
+          def volume_container
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeContainer
+          end
+          def alert_email_notification_status
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertEmailNotificationStatus
+          end
+          def alert_source_type
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSourceType
           end
         end
       end

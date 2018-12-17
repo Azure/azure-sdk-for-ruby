@@ -12,8 +12,6 @@ module Azure::Profiles::Latest
       PolicyStates = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyStates
 
       module Models
-        SummaryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
-        PolicyStatesResource = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
         OperationDisplay = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
         QueryOptions = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryOptions
         Operation = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
@@ -28,6 +26,8 @@ module Azure::Profiles::Latest
         PolicyState = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
         OperationsListResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
         QueryFailureError = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
+        SummaryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
+        PolicyStatesResource = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
       end
 
       class PolicyInsightsManagementClass
@@ -62,12 +62,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def summary_results
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
-          end
-          def policy_states_resource
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
-          end
           def operation_display
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
           end
@@ -109,6 +103,12 @@ module Azure::Profiles::Latest
           end
           def query_failure_error
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
+          end
+          def summary_results
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
+          end
+          def policy_states_resource
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
           end
         end
       end
