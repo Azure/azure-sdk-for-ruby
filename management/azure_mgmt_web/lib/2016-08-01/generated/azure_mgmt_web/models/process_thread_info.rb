@@ -42,7 +42,7 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [String] User processor time.
       attr_accessor :user_processor_time
 
-      # @return [String] Priviledged processor time.
+      # @return [String] Privileged processor time.
       attr_accessor :priviledged_processor_time
 
       # @return [String] Thread state.
