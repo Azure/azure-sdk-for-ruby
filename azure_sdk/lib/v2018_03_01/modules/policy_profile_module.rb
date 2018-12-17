@@ -11,12 +11,12 @@ module Azure::Profiles::V2018_03_01
       PolicyAssignments = Azure::Policy::Mgmt::V2016_12_01::PolicyAssignments
 
       module Models
-        PolicyAssignment = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignment
-        PolicyDefinition = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinition
-        PolicyAssignmentListResult = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignmentListResult
         PolicyDefinitionListResult = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinitionListResult
         PolicyType = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyType
         PolicyMode = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyMode
+        PolicyAssignment = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignment
+        PolicyDefinition = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinition
+        PolicyAssignmentListResult = Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignmentListResult
       end
 
       class PolicyManagementClass
@@ -50,15 +50,6 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
-          def policy_assignment
-            Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignment
-          end
-          def policy_definition
-            Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinition
-          end
-          def policy_assignment_list_result
-            Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignmentListResult
-          end
           def policy_definition_list_result
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinitionListResult
           end
@@ -67,6 +58,15 @@ module Azure::Profiles::V2018_03_01
           end
           def policy_mode
             Azure::Policy::Mgmt::V2016_12_01::Models::PolicyMode
+          end
+          def policy_assignment
+            Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignment
+          end
+          def policy_definition
+            Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinition
+          end
+          def policy_assignment_list_result
+            Azure::Policy::Mgmt::V2016_12_01::Models::PolicyAssignmentListResult
           end
         end
       end

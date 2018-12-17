@@ -14,10 +14,6 @@ module Azure::Profiles::Latest
     Users = Azure::GraphRbac::V1_6::Users
 
     module Models
-      DirectoryObjectListResult = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
-      UserBase = Azure::GraphRbac::V1_6::Models::UserBase
-      AADObject = Azure::GraphRbac::V1_6::Models::AADObject
-      RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
       GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
       PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
       SignInName = Azure::GraphRbac::V1_6::Models::SignInName
@@ -56,6 +52,10 @@ module Azure::Profiles::Latest
       PasswordCredential = Azure::GraphRbac::V1_6::Models::PasswordCredential
       ServicePrincipalListResult = Azure::GraphRbac::V1_6::Models::ServicePrincipalListResult
       PasswordProfile = Azure::GraphRbac::V1_6::Models::PasswordProfile
+      DirectoryObjectListResult = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
+      UserBase = Azure::GraphRbac::V1_6::Models::UserBase
+      AADObject = Azure::GraphRbac::V1_6::Models::AADObject
+      RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
     end
 
     class GraphRbacDataClass
@@ -93,18 +93,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def directory_object_list_result
-          Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
-        end
-        def user_base
-          Azure::GraphRbac::V1_6::Models::UserBase
-        end
-        def aadobject
-          Azure::GraphRbac::V1_6::Models::AADObject
-        end
-        def required_resource_access
-          Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
-        end
         def get_objects_parameters
           Azure::GraphRbac::V1_6::Models::GetObjectsParameters
         end
@@ -218,6 +206,18 @@ module Azure::Profiles::Latest
         end
         def password_profile
           Azure::GraphRbac::V1_6::Models::PasswordProfile
+        end
+        def directory_object_list_result
+          Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
+        end
+        def user_base
+          Azure::GraphRbac::V1_6::Models::UserBase
+        end
+        def aadobject
+          Azure::GraphRbac::V1_6::Models::AADObject
+        end
+        def required_resource_access
+          Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
         end
       end
     end

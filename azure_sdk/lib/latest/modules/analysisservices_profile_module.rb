@@ -7,8 +7,8 @@ require 'azure_mgmt_analysis_services'
 module Azure::Profiles::Latest
   module AnalysisServices
     module Mgmt
-      Operations = Azure::AnalysisServices::Mgmt::V2017_08_01::Operations
       Servers = Azure::AnalysisServices::Mgmt::V2017_08_01::Servers
+      Operations = Azure::AnalysisServices::Mgmt::V2017_08_01::Operations
 
       module Models
         Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
@@ -41,7 +41,7 @@ module Azure::Profiles::Latest
       end
 
       class AnalysisServicesManagementClass
-        attr_reader :operations, :servers, :configurable, :base_url, :options, :model_classes
+        attr_reader :servers, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -51,8 +51,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @servers = @client_0.servers
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
