@@ -101,10 +101,6 @@ module Azure::Web::Profiles::V2018_03_01
       CheckNameResourceTypes = Azure::Web::Mgmt::V2016_03_01::Models::CheckNameResourceTypes
       ValidateResourceTypes = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResourceTypes
       SkuName = Azure::Web::Mgmt::V2016_03_01::Models::SkuName
-      CustomHostnameAnalysisResult = Azure::Web::Mgmt::V2016_08_01::Models::CustomHostnameAnalysisResult
-      Deployment = Azure::Web::Mgmt::V2016_08_01::Models::Deployment
-      FunctionEnvelope = Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelope
-      FunctionSecrets = Azure::Web::Mgmt::V2016_08_01::Models::FunctionSecrets
       HostNameBinding = Azure::Web::Mgmt::V2016_08_01::Models::HostNameBinding
       MSDeploy = Azure::Web::Mgmt::V2016_08_01::Models::MSDeploy
       MSDeployLog = Azure::Web::Mgmt::V2016_08_01::Models::MSDeployLog
@@ -167,46 +163,46 @@ module Azure::Web::Profiles::V2018_03_01
       BackupRequest = Azure::Web::Mgmt::V2016_08_01::Models::BackupRequest
       ConnectionStringDictionary = Azure::Web::Mgmt::V2016_08_01::Models::ConnectionStringDictionary
       ContinuousWebJob = Azure::Web::Mgmt::V2016_08_01::Models::ContinuousWebJob
-      SiteConfigResourceCollection = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResourceCollection
-      FunctionEnvelopeCollection = Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelopeCollection
+      DeploymentCollection = Azure::Web::Mgmt::V2016_08_01::Models::DeploymentCollection
+      HttpLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::HttpLogsConfig
+      FunctionEnvelope = Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelope
+      FunctionSecrets = Azure::Web::Mgmt::V2016_08_01::Models::FunctionSecrets
       PerfMonResponse = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonResponse
+      CustomHostnameAnalysisResult = Azure::Web::Mgmt::V2016_08_01::Models::CustomHostnameAnalysisResult
+      Deployment = Azure::Web::Mgmt::V2016_08_01::Models::Deployment
       IdentifierCollection = Azure::Web::Mgmt::V2016_08_01::Models::IdentifierCollection
       DatabaseBackupSetting = Azure::Web::Mgmt::V2016_08_01::Models::DatabaseBackupSetting
       BackupItemCollection = Azure::Web::Mgmt::V2016_08_01::Models::BackupItemCollection
+      ProcessInfoCollection = Azure::Web::Mgmt::V2016_08_01::Models::ProcessInfoCollection
       AzureTableStorageApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::AzureTableStorageApplicationLogsConfig
       ApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::ApplicationLogsConfig
-      ProcessModuleInfoCollection = Azure::Web::Mgmt::V2016_08_01::Models::ProcessModuleInfoCollection
       ProcessThreadInfoCollection = Azure::Web::Mgmt::V2016_08_01::Models::ProcessThreadInfoCollection
-      ProcessInfoCollection = Azure::Web::Mgmt::V2016_08_01::Models::ProcessInfoCollection
-      PublicCertificateCollection = Azure::Web::Mgmt::V2016_08_01::Models::PublicCertificateCollection
-      TriggeredWebJobCollection = Azure::Web::Mgmt::V2016_08_01::Models::TriggeredWebJobCollection
       CsmPublishingProfileOptions = Azure::Web::Mgmt::V2016_08_01::Models::CsmPublishingProfileOptions
-      WebAppInstanceCollection = Azure::Web::Mgmt::V2016_08_01::Models::WebAppInstanceCollection
       ConnStringValueTypePair = Azure::Web::Mgmt::V2016_08_01::Models::ConnStringValueTypePair
-      SiteCloneabilityCriterion = Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneabilityCriterion
+      ProcessModuleInfoCollection = Azure::Web::Mgmt::V2016_08_01::Models::ProcessModuleInfoCollection
       EnabledConfig = Azure::Web::Mgmt::V2016_08_01::Models::EnabledConfig
       TriggeredJobHistoryCollection = Azure::Web::Mgmt::V2016_08_01::Models::TriggeredJobHistoryCollection
-      SnapshotCollection = Azure::Web::Mgmt::V2016_08_01::Models::SnapshotCollection
-      PerfMonCounterCollection = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonCounterCollection
-      HostNameBindingCollection = Azure::Web::Mgmt::V2016_08_01::Models::HostNameBindingCollection
+      WebAppInstanceCollection = Azure::Web::Mgmt::V2016_08_01::Models::WebAppInstanceCollection
+      PublicCertificateCollection = Azure::Web::Mgmt::V2016_08_01::Models::PublicCertificateCollection
+      TriggeredWebJobCollection = Azure::Web::Mgmt::V2016_08_01::Models::TriggeredWebJobCollection
       SiteCloneability = Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneability
       PerfMonSet = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSet
+      SnapshotCollection = Azure::Web::Mgmt::V2016_08_01::Models::SnapshotCollection
+      SiteCloneabilityCriterion = Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneabilityCriterion
+      HostNameBindingCollection = Azure::Web::Mgmt::V2016_08_01::Models::HostNameBindingCollection
+      FileSystemApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::FileSystemApplicationLogsConfig
       FileSystemHttpLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::FileSystemHttpLogsConfig
+      PerfMonCounterCollection = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonCounterCollection
       WebJobCollection = Azure::Web::Mgmt::V2016_08_01::Models::WebJobCollection
       ContinuousWebJobCollection = Azure::Web::Mgmt::V2016_08_01::Models::ContinuousWebJobCollection
-      FileSystemApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::FileSystemApplicationLogsConfig
       BackupSchedule = Azure::Web::Mgmt::V2016_08_01::Models::BackupSchedule
+      PerfMonSample = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSample
       AzureBlobStorageApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::AzureBlobStorageApplicationLogsConfig
       AzureBlobStorageHttpLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::AzureBlobStorageHttpLogsConfig
       MSDeployLogEntry = Azure::Web::Mgmt::V2016_08_01::Models::MSDeployLogEntry
-      HttpLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::HttpLogsConfig
-      PerfMonSample = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSample
+      SiteConfigResourceCollection = Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResourceCollection
+      FunctionEnvelopeCollection = Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelopeCollection
       SlotDifferenceCollection = Azure::Web::Mgmt::V2016_08_01::Models::SlotDifferenceCollection
-      DeploymentCollection = Azure::Web::Mgmt::V2016_08_01::Models::DeploymentCollection
-      SkuInfoCollection = Azure::Web::Mgmt::V2016_09_01::Models::SkuInfoCollection
-      ResourceCollection = Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection
-      WorkerPoolCollection = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolCollection
-      HybridConnectionCollection = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
       MetricAvailabilily = Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailabilily
       SkuInfo = Azure::Web::Mgmt::V2016_09_01::Models::SkuInfo
       UsageCollection = Azure::Web::Mgmt::V2016_09_01::Models::UsageCollection
@@ -303,6 +299,10 @@ module Azure::Web::Profiles::V2018_03_01
       AppServiceEnvironmentCollection = Azure::Web::Mgmt::V2016_09_01::Models::AppServiceEnvironmentCollection
       HostingEnvironmentDiagnostics = Azure::Web::Mgmt::V2016_09_01::Models::HostingEnvironmentDiagnostics
       AddressResponse = Azure::Web::Mgmt::V2016_09_01::Models::AddressResponse
+      SkuInfoCollection = Azure::Web::Mgmt::V2016_09_01::Models::SkuInfoCollection
+      ResourceCollection = Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection
+      WorkerPoolCollection = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolCollection
+      HybridConnectionCollection = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
     end
 
     #
@@ -624,18 +624,6 @@ module Azure::Web::Profiles::V2018_03_01
       def sku_name
         Azure::Web::Mgmt::V2016_03_01::Models::SkuName
       end
-      def custom_hostname_analysis_result
-        Azure::Web::Mgmt::V2016_08_01::Models::CustomHostnameAnalysisResult
-      end
-      def deployment
-        Azure::Web::Mgmt::V2016_08_01::Models::Deployment
-      end
-      def function_envelope
-        Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelope
-      end
-      def function_secrets
-        Azure::Web::Mgmt::V2016_08_01::Models::FunctionSecrets
-      end
       def host_name_binding
         Azure::Web::Mgmt::V2016_08_01::Models::HostNameBinding
       end
@@ -822,14 +810,26 @@ module Azure::Web::Profiles::V2018_03_01
       def continuous_web_job
         Azure::Web::Mgmt::V2016_08_01::Models::ContinuousWebJob
       end
-      def site_config_resource_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResourceCollection
+      def deployment_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::DeploymentCollection
       end
-      def function_envelope_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelopeCollection
+      def http_logs_config
+        Azure::Web::Mgmt::V2016_08_01::Models::HttpLogsConfig
+      end
+      def function_envelope
+        Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelope
+      end
+      def function_secrets
+        Azure::Web::Mgmt::V2016_08_01::Models::FunctionSecrets
       end
       def perf_mon_response
         Azure::Web::Mgmt::V2016_08_01::Models::PerfMonResponse
+      end
+      def custom_hostname_analysis_result
+        Azure::Web::Mgmt::V2016_08_01::Models::CustomHostnameAnalysisResult
+      end
+      def deployment
+        Azure::Web::Mgmt::V2016_08_01::Models::Deployment
       end
       def identifier_collection
         Azure::Web::Mgmt::V2016_08_01::Models::IdentifierCollection
@@ -840,38 +840,26 @@ module Azure::Web::Profiles::V2018_03_01
       def backup_item_collection
         Azure::Web::Mgmt::V2016_08_01::Models::BackupItemCollection
       end
+      def process_info_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::ProcessInfoCollection
+      end
       def azure_table_storage_application_logs_config
         Azure::Web::Mgmt::V2016_08_01::Models::AzureTableStorageApplicationLogsConfig
       end
       def application_logs_config
         Azure::Web::Mgmt::V2016_08_01::Models::ApplicationLogsConfig
       end
-      def process_module_info_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::ProcessModuleInfoCollection
-      end
       def process_thread_info_collection
         Azure::Web::Mgmt::V2016_08_01::Models::ProcessThreadInfoCollection
-      end
-      def process_info_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::ProcessInfoCollection
-      end
-      def public_certificate_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::PublicCertificateCollection
-      end
-      def triggered_web_job_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::TriggeredWebJobCollection
       end
       def csm_publishing_profile_options
         Azure::Web::Mgmt::V2016_08_01::Models::CsmPublishingProfileOptions
       end
-      def web_app_instance_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::WebAppInstanceCollection
-      end
       def conn_string_value_type_pair
         Azure::Web::Mgmt::V2016_08_01::Models::ConnStringValueTypePair
       end
-      def site_cloneability_criterion
-        Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneabilityCriterion
+      def process_module_info_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::ProcessModuleInfoCollection
       end
       def enabled_config
         Azure::Web::Mgmt::V2016_08_01::Models::EnabledConfig
@@ -879,14 +867,14 @@ module Azure::Web::Profiles::V2018_03_01
       def triggered_job_history_collection
         Azure::Web::Mgmt::V2016_08_01::Models::TriggeredJobHistoryCollection
       end
-      def snapshot_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::SnapshotCollection
+      def web_app_instance_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::WebAppInstanceCollection
       end
-      def perf_mon_counter_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::PerfMonCounterCollection
+      def public_certificate_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::PublicCertificateCollection
       end
-      def host_name_binding_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::HostNameBindingCollection
+      def triggered_web_job_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::TriggeredWebJobCollection
       end
       def site_cloneability
         Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneability
@@ -894,8 +882,23 @@ module Azure::Web::Profiles::V2018_03_01
       def perf_mon_set
         Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSet
       end
+      def snapshot_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::SnapshotCollection
+      end
+      def site_cloneability_criterion
+        Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneabilityCriterion
+      end
+      def host_name_binding_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::HostNameBindingCollection
+      end
+      def file_system_application_logs_config
+        Azure::Web::Mgmt::V2016_08_01::Models::FileSystemApplicationLogsConfig
+      end
       def file_system_http_logs_config
         Azure::Web::Mgmt::V2016_08_01::Models::FileSystemHttpLogsConfig
+      end
+      def perf_mon_counter_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::PerfMonCounterCollection
       end
       def web_job_collection
         Azure::Web::Mgmt::V2016_08_01::Models::WebJobCollection
@@ -903,11 +906,11 @@ module Azure::Web::Profiles::V2018_03_01
       def continuous_web_job_collection
         Azure::Web::Mgmt::V2016_08_01::Models::ContinuousWebJobCollection
       end
-      def file_system_application_logs_config
-        Azure::Web::Mgmt::V2016_08_01::Models::FileSystemApplicationLogsConfig
-      end
       def backup_schedule
         Azure::Web::Mgmt::V2016_08_01::Models::BackupSchedule
+      end
+      def perf_mon_sample
+        Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSample
       end
       def azure_blob_storage_application_logs_config
         Azure::Web::Mgmt::V2016_08_01::Models::AzureBlobStorageApplicationLogsConfig
@@ -918,29 +921,14 @@ module Azure::Web::Profiles::V2018_03_01
       def msdeploy_log_entry
         Azure::Web::Mgmt::V2016_08_01::Models::MSDeployLogEntry
       end
-      def http_logs_config
-        Azure::Web::Mgmt::V2016_08_01::Models::HttpLogsConfig
+      def site_config_resource_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::SiteConfigResourceCollection
       end
-      def perf_mon_sample
-        Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSample
+      def function_envelope_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::FunctionEnvelopeCollection
       end
       def slot_difference_collection
         Azure::Web::Mgmt::V2016_08_01::Models::SlotDifferenceCollection
-      end
-      def deployment_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::DeploymentCollection
-      end
-      def sku_info_collection
-        Azure::Web::Mgmt::V2016_09_01::Models::SkuInfoCollection
-      end
-      def resource_collection
-        Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection
-      end
-      def worker_pool_collection
-        Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolCollection
-      end
-      def hybrid_connection_collection
-        Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
       end
       def metric_availabilily
         Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailabilily
@@ -1229,6 +1217,18 @@ module Azure::Web::Profiles::V2018_03_01
       end
       def address_response
         Azure::Web::Mgmt::V2016_09_01::Models::AddressResponse
+      end
+      def sku_info_collection
+        Azure::Web::Mgmt::V2016_09_01::Models::SkuInfoCollection
+      end
+      def resource_collection
+        Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection
+      end
+      def worker_pool_collection
+        Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolCollection
+      end
+      def hybrid_connection_collection
+        Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
       end
     end
   end

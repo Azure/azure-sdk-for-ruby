@@ -11,7 +11,6 @@ module Azure::Profiles::V2018_03_01
       Zones = Azure::Dns::Mgmt::V2016_04_01::Zones
 
       module Models
-        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         RecordSetUpdateParameters = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
         RecordSetListResult = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
         AaaaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
@@ -19,9 +18,10 @@ module Azure::Profiles::V2018_03_01
         MxRecord = Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
         PtrRecord = Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
         SrvRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
+        CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
         ZoneDeleteResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
         RecordSet = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
-        CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
+        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         ZoneListResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
         TxtRecord = Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
         NsRecord = Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
@@ -66,9 +66,6 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
-          def resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
-          end
           def record_set_update_parameters
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
           end
@@ -90,14 +87,17 @@ module Azure::Profiles::V2018_03_01
           def srv_record
             Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
           end
+          def cname_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
+          end
           def zone_delete_result
             Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
           end
           def record_set
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
           end
-          def cname_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
+          def resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
           end
           def zone_list_result
             Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult

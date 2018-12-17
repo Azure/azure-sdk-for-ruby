@@ -7,11 +7,11 @@ require 'azure_mgmt_traffic_manager'
 module Azure::Profiles::Latest
   module TrafficManager
     module Mgmt
-      Endpoints = Azure::TrafficManager::Mgmt::V2018_04_01::Endpoints
-      GeographicHierarchies = Azure::TrafficManager::Mgmt::V2018_04_01::GeographicHierarchies
       HeatMap = Azure::TrafficManager::Mgmt::V2018_04_01::HeatMap
       TrafficManagerUserMetricsKeys = Azure::TrafficManager::Mgmt::V2018_04_01::TrafficManagerUserMetricsKeys
       Profiles = Azure::TrafficManager::Mgmt::V2018_04_01::Profiles
+      Endpoints = Azure::TrafficManager::Mgmt::V2018_04_01::Endpoints
+      GeographicHierarchies = Azure::TrafficManager::Mgmt::V2018_04_01::GeographicHierarchies
 
       module Models
         MonitorConfigCustomHeadersItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfigCustomHeadersItem
@@ -46,7 +46,7 @@ module Azure::Profiles::Latest
       end
 
       class TrafficManagerManagementClass
-        attr_reader :endpoints, :geographic_hierarchies, :heat_map, :traffic_manager_user_metrics_keys, :profiles, :configurable, :base_url, :options, :model_classes
+        attr_reader :heat_map, :traffic_manager_user_metrics_keys, :profiles, :endpoints, :geographic_hierarchies, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -56,11 +56,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @endpoints = @client_0.endpoints
-          @geographic_hierarchies = @client_0.geographic_hierarchies
           @heat_map = @client_0.heat_map
           @traffic_manager_user_metrics_keys = @client_0.traffic_manager_user_metrics_keys
           @profiles = @client_0.profiles
+          @endpoints = @client_0.endpoints
+          @geographic_hierarchies = @client_0.geographic_hierarchies
 
           @model_classes = ModelClasses.new
         end
