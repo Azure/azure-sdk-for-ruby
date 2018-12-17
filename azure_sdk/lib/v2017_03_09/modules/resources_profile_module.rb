@@ -11,8 +11,8 @@ module Azure::Profiles::V2017_03_09
       Providers = Azure::Resources::Mgmt::V2016_02_01::Providers
       ResourceGroups = Azure::Resources::Mgmt::V2016_02_01::ResourceGroups
       Tags = Azure::Resources::Mgmt::V2016_02_01::Tags
-      Resources = Azure::Resources::Mgmt::V2016_02_01::Resources
       DeploymentOperations = Azure::Resources::Mgmt::V2016_02_01::DeploymentOperations
+      Resources = Azure::Resources::Mgmt::V2016_02_01::Resources
 
       module Models
         GenericResourceFilter = Azure::Resources::Mgmt::V2016_02_01::Models::GenericResourceFilter
@@ -24,11 +24,10 @@ module Azure::Profiles::V2017_03_09
         ResourceManagementErrorWithDetails = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceManagementErrorWithDetails
         ResourceGroup = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroup
         AliasType = Azure::Resources::Mgmt::V2016_02_01::Models::AliasType
-        Dependency = Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
         Provider = Azure::Resources::Mgmt::V2016_02_01::Models::Provider
         ResourceGroupListResult = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroupListResult
         ResourcesMoveInfo = Azure::Resources::Mgmt::V2016_02_01::Models::ResourcesMoveInfo
-        DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentPropertiesExtended
+        Dependency = Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
         ExportTemplateRequest = Azure::Resources::Mgmt::V2016_02_01::Models::ExportTemplateRequest
         DeploymentExtended = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExtended
         TagCount = Azure::Resources::Mgmt::V2016_02_01::Models::TagCount
@@ -38,7 +37,7 @@ module Azure::Profiles::V2017_03_09
         TagDetails = Azure::Resources::Mgmt::V2016_02_01::Models::TagDetails
         DeploymentProperties = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentProperties
         TagsListResult = Azure::Resources::Mgmt::V2016_02_01::Models::TagsListResult
-        AliasPathType = Azure::Resources::Mgmt::V2016_02_01::Models::AliasPathType
+        DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentPropertiesExtended
         TargetResource = Azure::Resources::Mgmt::V2016_02_01::Models::TargetResource
         BasicDependency = Azure::Resources::Mgmt::V2016_02_01::Models::BasicDependency
         HttpMessage = Azure::Resources::Mgmt::V2016_02_01::Models::HttpMessage
@@ -48,6 +47,7 @@ module Azure::Profiles::V2017_03_09
         DeploymentOperation = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentOperation
         DeploymentExportResult = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExportResult
         DeploymentOperationsListResult = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentOperationsListResult
+        AliasPathType = Azure::Resources::Mgmt::V2016_02_01::Models::AliasPathType
         ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceProviderOperationDisplayProperties
         DebugSetting = Azure::Resources::Mgmt::V2016_02_01::Models::DebugSetting
         DeploymentListResult = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentListResult
@@ -64,7 +64,7 @@ module Azure::Profiles::V2017_03_09
       end
 
       class ResourcesManagementClass
-        attr_reader :deployments, :providers, :resource_groups, :tags, :resources, :deployment_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :deployments, :providers, :resource_groups, :tags, :deployment_operations, :resources, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -78,8 +78,8 @@ module Azure::Profiles::V2017_03_09
           @providers = @client_0.providers
           @resource_groups = @client_0.resource_groups
           @tags = @client_0.tags
-          @resources = @client_0.resources
           @deployment_operations = @client_0.deployment_operations
+          @resources = @client_0.resources
 
           @model_classes = ModelClasses.new
         end
@@ -125,9 +125,6 @@ module Azure::Profiles::V2017_03_09
           def alias_type
             Azure::Resources::Mgmt::V2016_02_01::Models::AliasType
           end
-          def dependency
-            Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
-          end
           def provider
             Azure::Resources::Mgmt::V2016_02_01::Models::Provider
           end
@@ -137,8 +134,8 @@ module Azure::Profiles::V2017_03_09
           def resources_move_info
             Azure::Resources::Mgmt::V2016_02_01::Models::ResourcesMoveInfo
           end
-          def deployment_properties_extended
-            Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentPropertiesExtended
+          def dependency
+            Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
           end
           def export_template_request
             Azure::Resources::Mgmt::V2016_02_01::Models::ExportTemplateRequest
@@ -167,8 +164,8 @@ module Azure::Profiles::V2017_03_09
           def tags_list_result
             Azure::Resources::Mgmt::V2016_02_01::Models::TagsListResult
           end
-          def alias_path_type
-            Azure::Resources::Mgmt::V2016_02_01::Models::AliasPathType
+          def deployment_properties_extended
+            Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentPropertiesExtended
           end
           def target_resource
             Azure::Resources::Mgmt::V2016_02_01::Models::TargetResource
@@ -196,6 +193,9 @@ module Azure::Profiles::V2017_03_09
           end
           def deployment_operations_list_result
             Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentOperationsListResult
+          end
+          def alias_path_type
+            Azure::Resources::Mgmt::V2016_02_01::Models::AliasPathType
           end
           def resource_provider_operation_display_properties
             Azure::Resources::Mgmt::V2016_02_01::Models::ResourceProviderOperationDisplayProperties
