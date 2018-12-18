@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JobInputHttp"
+        @@odatatype = "#Microsoft.Media.JobInputHttp"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] Base URI for HTTPS job input. It will be concatenated
       # with provided file names.   If no base uri is given, then the provided
@@ -31,7 +31,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JobInputHttp',
           type: {
@@ -39,15 +38,13 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'JobInputHttp',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -55,13 +52,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               files: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'files',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -71,7 +66,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               base_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'baseUri',
                 type: {

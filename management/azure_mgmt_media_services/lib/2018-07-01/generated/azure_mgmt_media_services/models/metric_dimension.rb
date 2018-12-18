@@ -28,7 +28,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricDimension',
           type: {
@@ -36,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'MetricDimension',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -45,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'displayName',
@@ -54,7 +51,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               to_be_exported_for_shoebox: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'toBeExportedForShoebox',

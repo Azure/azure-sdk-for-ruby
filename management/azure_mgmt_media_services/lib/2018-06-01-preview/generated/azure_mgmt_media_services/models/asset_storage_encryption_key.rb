@@ -22,7 +22,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AssetStorageEncryptionKey',
           type: {
@@ -30,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'AssetStorageEncryptionKey',
             model_properties: {
               storage_encryption_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageEncryptionKey',
                 type: {

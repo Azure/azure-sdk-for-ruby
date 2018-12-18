@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingPolicyFairPlayConfiguration',
           type: {
@@ -35,7 +34,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'StreamingPolicyFairPlayConfiguration',
             model_properties: {
               custom_license_acquisition_url_template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customLicenseAcquisitionUrlTemplate',
                 type: {
@@ -43,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               allow_persistent_license: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'allowPersistentLicense',
                 type: {

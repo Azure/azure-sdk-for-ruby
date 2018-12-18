@@ -34,7 +34,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentKeyPolicyProperties',
           type: {
@@ -42,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'ContentKeyPolicyProperties',
             model_properties: {
               policy_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'policyId',
@@ -51,7 +49,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'created',
@@ -60,7 +57,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastModified',
@@ -69,7 +65,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -77,13 +72,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               options: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'options',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContentKeyPolicyOptionElementType',
                       type: {

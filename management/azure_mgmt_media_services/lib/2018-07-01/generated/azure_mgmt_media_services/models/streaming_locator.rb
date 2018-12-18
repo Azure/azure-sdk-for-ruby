@@ -54,7 +54,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingLocator',
           type: {
@@ -62,7 +61,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'StreamingLocator',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -71,7 +69,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -80,7 +77,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -89,7 +85,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               asset_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.assetName',
                 type: {
@@ -97,7 +92,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -106,7 +100,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -114,7 +107,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endTime',
                 type: {
@@ -122,7 +114,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               streaming_locator_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.streamingLocatorId',
                 type: {
@@ -130,7 +121,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               streaming_policy_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.streamingPolicyName',
                 type: {
@@ -138,7 +128,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               default_content_key_policy_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.defaultContentKeyPolicyName',
                 type: {
@@ -146,13 +135,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               content_keys: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.contentKeys',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StreamingLocatorContentKeyElementType',
                       type: {
@@ -163,7 +150,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               alternative_media_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.alternativeMediaId',
                 type: {

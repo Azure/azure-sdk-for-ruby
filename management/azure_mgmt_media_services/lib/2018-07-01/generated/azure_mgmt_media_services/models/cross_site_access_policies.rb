@@ -26,7 +26,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CrossSiteAccessPolicies',
           type: {
@@ -34,7 +33,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'CrossSiteAccessPolicies',
             model_properties: {
               client_access_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientAccessPolicy',
                 type: {
@@ -42,7 +40,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               cross_domain_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'crossDomainPolicy',
                 type: {

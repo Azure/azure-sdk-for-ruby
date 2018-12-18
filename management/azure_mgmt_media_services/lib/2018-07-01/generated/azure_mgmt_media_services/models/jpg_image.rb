@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JpgImage"
+        @@odatatype = "#Microsoft.Media.JpgImage"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Array<JpgLayer>] A collection of output JPEG image layers to
       # be produced by the encoder.
@@ -31,7 +31,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JpgImage',
           type: {
@@ -39,15 +38,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'JpgImage',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -55,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               key_frame_interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyFrameInterval',
                 type: {
@@ -63,16 +59,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               stretch_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'stretchMode',
                 type: {
-                  name: 'Enum',
-                  module: 'StretchMode'
+                  name: 'String'
                 }
               },
               start: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'start',
                 type: {
@@ -80,7 +73,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               step: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'step',
                 type: {
@@ -88,7 +80,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               range: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'range',
                 type: {
@@ -96,13 +87,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               layers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'layers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JpgLayerElementType',
                       type: {

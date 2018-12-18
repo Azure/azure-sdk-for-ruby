@@ -32,7 +32,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingPath',
           type: {
@@ -40,31 +39,25 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'StreamingPath',
             model_properties: {
               streaming_protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'streamingProtocol',
                 type: {
-                  name: 'Enum',
-                  module: 'StreamingPolicyStreamingProtocol'
+                  name: 'String'
                 }
               },
               encryption_scheme: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'encryptionScheme',
                 type: {
-                  name: 'Enum',
-                  module: 'EncryptionScheme'
+                  name: 'String'
                 }
               },
               paths: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'paths',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

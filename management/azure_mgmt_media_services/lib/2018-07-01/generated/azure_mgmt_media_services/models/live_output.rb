@@ -53,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveOutput',
           type: {
@@ -61,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'LiveOutput',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -70,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -79,7 +76,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -88,7 +84,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -96,7 +91,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               asset_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.assetName',
                 type: {
@@ -104,7 +98,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               archive_window_length: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.archiveWindowLength',
                 type: {
@@ -112,7 +105,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               manifest_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.manifestName',
                 type: {
@@ -120,7 +112,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               hls: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hls',
                 type: {
@@ -129,7 +120,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               output_snap_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outputSnapTime',
                 type: {
@@ -137,7 +127,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -146,7 +135,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',
@@ -155,7 +143,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -164,7 +151,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               resource_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceState',

@@ -23,7 +23,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ListContentKeysResponse',
           type: {
@@ -31,13 +30,11 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'ListContentKeysResponse',
             model_properties: {
               content_keys: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentKeys',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StreamingLocatorContentKeyElementType',
                       type: {

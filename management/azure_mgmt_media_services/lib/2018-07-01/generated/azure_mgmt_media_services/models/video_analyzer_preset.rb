@@ -15,14 +15,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.VideoAnalyzerPreset"
+        @@odatatype = "#Microsoft.Media.VideoAnalyzerPreset"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [InsightsType] The type of insights to be extracted. If not set
       # then based on the content the type will selected.  If the content is
-      # audi only then only audio insights are extraced and if it is video
+      # audio only then only audio insights are extracted and if it is video
       # only. Possible values include: 'AudioInsightsOnly',
       # 'VideoInsightsOnly', 'AllInsights'
       attr_accessor :insights_to_extract
@@ -34,15 +34,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.VideoAnalyzerPreset',
           type: {
             name: 'Composite',
             class_name: 'VideoAnalyzerPreset',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -50,7 +48,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               audio_language: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audioLanguage',
                 type: {
@@ -58,12 +55,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               insights_to_extract: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'insightsToExtract',
                 type: {
-                  name: 'Enum',
-                  module: 'InsightsType'
+                  name: 'String'
                 }
               }
             }

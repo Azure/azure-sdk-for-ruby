@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JpgLayer"
+        @@odatatype = "#Microsoft.Media.JpgLayer"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Integer] The compression quality of the JPEG output. Range is
       # from 0-100 and the default is 70.
@@ -30,7 +30,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JpgLayer',
           type: {
@@ -38,7 +37,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'JpgLayer',
             model_properties: {
               width: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'width',
                 type: {
@@ -46,7 +44,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               height: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'height',
                 type: {
@@ -54,15 +51,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -70,7 +65,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               quality: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'quality',
                 type: {

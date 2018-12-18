@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.TransportStreamFormat"
+        @@odatatype = "#Microsoft.Media.TransportStreamFormat"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
 
       #
@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.TransportStreamFormat',
           type: {
@@ -35,15 +34,13 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'TransportStreamFormat',
             model_properties: {
               filename_pattern: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'filenamePattern',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -51,13 +48,11 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               output_files: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputFiles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OutputFileElementType',
                       type: {

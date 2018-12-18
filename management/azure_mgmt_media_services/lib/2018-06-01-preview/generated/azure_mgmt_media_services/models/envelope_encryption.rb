@@ -24,7 +24,7 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       # tracks
       attr_accessor :content_keys
 
-      # @return [String] KeyAcquistionUrlTemplate is used to point to user
+      # @return [String] KeyAcquisitionUrlTemplate is used to point to user
       # specified service to delivery content keys
       attr_accessor :custom_key_acquisition_url_template
 
@@ -35,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EnvelopeEncryption',
           type: {
@@ -43,7 +42,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'EnvelopeEncryption',
             model_properties: {
               enabled_protocols: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabledProtocols',
                 type: {
@@ -52,13 +50,11 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               clear_tracks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clearTracks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrackSelectionElementType',
                       type: {
@@ -69,7 +65,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               content_keys: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentKeys',
                 type: {
@@ -78,7 +73,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               custom_key_acquisition_url_template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customKeyAcquisitionUrlTemplate',
                 type: {

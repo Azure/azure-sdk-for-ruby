@@ -54,7 +54,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentKeyPolicyPlayReadyLicense',
           type: {
@@ -62,7 +61,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'ContentKeyPolicyPlayReadyLicense',
             model_properties: {
               allow_test_devices: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'allowTestDevices',
                 type: {
@@ -70,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               begin_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'beginDate',
                 type: {
@@ -78,7 +75,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               expiration_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expirationDate',
                 type: {
@@ -86,7 +82,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               relative_begin_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'relativeBeginDate',
                 type: {
@@ -94,7 +89,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               relative_expiration_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'relativeExpirationDate',
                 type: {
@@ -102,7 +96,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               grace_period: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gracePeriod',
                 type: {
@@ -110,7 +103,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               play_right: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'playRight',
                 type: {
@@ -119,7 +111,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               license_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'licenseType',
                 type: {
@@ -128,7 +119,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               content_key_location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'contentKeyLocation',
                 type: {
@@ -139,7 +129,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               content_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'contentType',
                 type: {
