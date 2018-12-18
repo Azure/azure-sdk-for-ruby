@@ -29,7 +29,6 @@ module Azure::Storage::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionService',
           type: {
@@ -37,7 +36,6 @@ module Azure::Storage::Mgmt::V2017_10_01
             class_name: 'EncryptionService',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Storage::Mgmt::V2017_10_01
                 }
               },
               last_enabled_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastEnabledTime',

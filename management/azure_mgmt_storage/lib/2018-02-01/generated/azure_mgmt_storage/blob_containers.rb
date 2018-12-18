@@ -35,8 +35,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [ListContainerItems] operation results.
     #
-    def list(resource_group_name, account_name, custom_headers:nil)
-      response = list_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list(resource_group_name, account_name, custom_headers = nil)
+      response = list_async(resource_group_name, account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -54,8 +54,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      list_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      list_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
@@ -72,22 +72,14 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, account_name, custom_headers:nil)
+    def list_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -155,8 +147,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [BlobContainer] operation results.
     #
-    def create(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
-      response = create_async(resource_group_name, account_name, container_name, blob_container, custom_headers:custom_headers).value!
+    def create(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
+      response = create_async(resource_group_name, account_name, container_name, blob_container, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -183,8 +175,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
-      create_async(resource_group_name, account_name, container_name, blob_container, custom_headers:custom_headers).value!
+    def create_with_http_info(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
+      create_async(resource_group_name, account_name, container_name, blob_container, custom_headers).value!
     end
 
     #
@@ -210,30 +202,22 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
+    def create_async(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       fail ArgumentError, 'blob_container is nil' if blob_container.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_02_01::Models::BlobContainer.mapper()
@@ -303,8 +287,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [BlobContainer] operation results.
     #
-    def update(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
-      response = update_async(resource_group_name, account_name, container_name, blob_container, custom_headers:custom_headers).value!
+    def update(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
+      response = update_async(resource_group_name, account_name, container_name, blob_container, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -330,8 +314,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
-      update_async(resource_group_name, account_name, container_name, blob_container, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
+      update_async(resource_group_name, account_name, container_name, blob_container, custom_headers).value!
     end
 
     #
@@ -356,30 +340,22 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, account_name, container_name, blob_container, custom_headers:nil)
+    def update_async(resource_group_name, account_name, container_name, blob_container, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       fail ArgumentError, 'blob_container is nil' if blob_container.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_02_01::Models::BlobContainer.mapper()
@@ -445,8 +421,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [BlobContainer] operation results.
     #
-    def get(resource_group_name, account_name, container_name, custom_headers:nil)
-      response = get_async(resource_group_name, account_name, container_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, account_name, container_name, custom_headers = nil)
+      response = get_async(resource_group_name, account_name, container_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -468,8 +444,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, account_name, container_name, custom_headers:nil)
-      get_async(resource_group_name, account_name, container_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, account_name, container_name, custom_headers = nil)
+      get_async(resource_group_name, account_name, container_name, custom_headers).value!
     end
 
     #
@@ -490,25 +466,15 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, account_name, container_name, custom_headers:nil)
+    def get_async(resource_group_name, account_name, container_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -570,8 +536,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, account_name, container_name, custom_headers:nil)
-      response = delete_async(resource_group_name, account_name, container_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, account_name, container_name, custom_headers = nil)
+      response = delete_async(resource_group_name, account_name, container_name, custom_headers).value!
       nil
     end
 
@@ -593,8 +559,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, account_name, container_name, custom_headers:nil)
-      delete_async(resource_group_name, account_name, container_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, account_name, container_name, custom_headers = nil)
+      delete_async(resource_group_name, account_name, container_name, custom_headers).value!
     end
 
     #
@@ -615,25 +581,15 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, account_name, container_name, custom_headers:nil)
+    def delete_async(resource_group_name, account_name, container_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -690,8 +646,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [LegalHold] operation results.
     #
-    def set_legal_hold(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
-      response = set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:custom_headers).value!
+    def set_legal_hold(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
+      response = set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -717,8 +673,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def set_legal_hold_with_http_info(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
-      set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:custom_headers).value!
+    def set_legal_hold_with_http_info(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
+      set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers).value!
     end
 
     #
@@ -743,30 +699,22 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
+    def set_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, 'legal_hold is nil' if legal_hold.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_02_01::Models::LegalHold.mapper()
@@ -836,8 +784,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [LegalHold] operation results.
     #
-    def clear_legal_hold(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
-      response = clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:custom_headers).value!
+    def clear_legal_hold(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
+      response = clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -863,8 +811,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def clear_legal_hold_with_http_info(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
-      clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:custom_headers).value!
+    def clear_legal_hold_with_http_info(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
+      clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers).value!
     end
 
     #
@@ -889,30 +837,22 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers:nil)
+    def clear_legal_hold_async(resource_group_name, account_name, container_name, legal_hold, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, 'legal_hold is nil' if legal_hold.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_02_01::Models::LegalHold.mapper()
@@ -985,8 +925,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def create_or_update_immutability_policy(resource_group_name, account_name, container_name, parameters:nil, if_match:nil, custom_headers:nil)
-      response = create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters:parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def create_or_update_immutability_policy(resource_group_name, account_name, container_name, parameters = nil, if_match = nil, custom_headers = nil)
+      response = create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1015,8 +955,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_immutability_policy_with_http_info(resource_group_name, account_name, container_name, parameters:nil, if_match:nil, custom_headers:nil)
-      create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters:parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def create_or_update_immutability_policy_with_http_info(resource_group_name, account_name, container_name, parameters = nil, if_match = nil, custom_headers = nil)
+      create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters, if_match, custom_headers).value!
     end
 
     #
@@ -1044,31 +984,23 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters:nil, if_match:nil, custom_headers:nil)
+    def create_or_update_immutability_policy_async(resource_group_name, account_name, container_name, parameters = nil, if_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       immutability_policy_name = 'default'
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_02_01::Models::ImmutabilityPolicy.mapper()
@@ -1139,8 +1071,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def get_immutability_policy(resource_group_name, account_name, container_name, if_match:nil, custom_headers:nil)
-      response = get_immutability_policy_async(resource_group_name, account_name, container_name, if_match:if_match, custom_headers:custom_headers).value!
+    def get_immutability_policy(resource_group_name, account_name, container_name, if_match = nil, custom_headers = nil)
+      response = get_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1167,8 +1099,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match:nil, custom_headers:nil)
-      get_immutability_policy_async(resource_group_name, account_name, container_name, if_match:if_match, custom_headers:custom_headers).value!
+    def get_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match = nil, custom_headers = nil)
+      get_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
     end
 
     #
@@ -1194,26 +1126,16 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_immutability_policy_async(resource_group_name, account_name, container_name, if_match:nil, custom_headers:nil)
+    def get_immutability_policy_async(resource_group_name, account_name, container_name, if_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       immutability_policy_name = 'default'
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1285,8 +1207,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def delete_immutability_policy(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
-      response = delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:custom_headers).value!
+    def delete_immutability_policy(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
+      response = delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1316,8 +1238,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
-      delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:custom_headers).value!
+    def delete_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
+      delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
     end
 
     #
@@ -1346,27 +1268,17 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
+    def delete_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       immutability_policy_name = 'default'
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1436,8 +1348,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def lock_immutability_policy(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
-      response = lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:custom_headers).value!
+    def lock_immutability_policy(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
+      response = lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1465,8 +1377,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def lock_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
-      lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:custom_headers).value!
+    def lock_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
+      lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers).value!
     end
 
     #
@@ -1493,26 +1405,16 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers:nil)
+    def lock_immutability_policy_async(resource_group_name, account_name, container_name, if_match, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1584,8 +1486,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [ImmutabilityPolicy] operation results.
     #
-    def extend_immutability_policy(resource_group_name, account_name, container_name, if_match, parameters:nil, custom_headers:nil)
-      response = extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters:parameters, custom_headers:custom_headers).value!
+    def extend_immutability_policy(resource_group_name, account_name, container_name, if_match, parameters = nil, custom_headers = nil)
+      response = extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1615,8 +1517,8 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def extend_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, parameters:nil, custom_headers:nil)
-      extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters:parameters, custom_headers:custom_headers).value!
+    def extend_immutability_policy_with_http_info(resource_group_name, account_name, container_name, if_match, parameters = nil, custom_headers = nil)
+      extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters, custom_headers).value!
     end
 
     #
@@ -1645,31 +1547,23 @@ module Azure::Storage::Mgmt::V2018_02_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters:nil, custom_headers:nil)
+    def extend_immutability_policy_async(resource_group_name, account_name, container_name, if_match, parameters = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'container_name is nil' if container_name.nil?
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MaxLength': '63'" if !container_name.nil? && container_name.length > 63
-      fail ArgumentError, "'container_name' should satisfy the constraint - 'MinLength': '3'" if !container_name.nil? && container_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2018_02_01::Models::ImmutabilityPolicy.mapper()

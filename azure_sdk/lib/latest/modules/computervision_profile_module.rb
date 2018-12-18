@@ -8,6 +8,8 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
+      ImageType = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
       FaceDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
       ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
       Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
@@ -20,7 +22,6 @@ module Azure::Profiles::Latest
       OcrRegion = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrRegion
       AdultInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
       OcrResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
-      ImageType = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
       ModelDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
       ImageCaption = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageCaption
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::ListModelsResult
@@ -45,7 +46,6 @@ module Azure::Profiles::Latest
       VisualFeatureTypes = Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
       OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
       TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
-      Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def details
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
+        end
+        def image_type
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
+        end
         def face_description
           Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
         end
@@ -112,9 +118,6 @@ module Azure::Profiles::Latest
         end
         def ocr_result
           Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
-        end
-        def image_type
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
         end
         def model_description
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
@@ -187,9 +190,6 @@ module Azure::Profiles::Latest
         end
         def text_recognition_mode
           Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
-        end
-        def details
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
         end
       end
     end
