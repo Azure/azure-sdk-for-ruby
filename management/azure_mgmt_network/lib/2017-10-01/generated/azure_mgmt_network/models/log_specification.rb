@@ -28,7 +28,6 @@ module Azure::Network::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LogSpecification',
           type: {
@@ -36,7 +35,6 @@ module Azure::Network::Mgmt::V2017_10_01
             class_name: 'LogSpecification',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               blob_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobDuration',
                 type: {
