@@ -23,7 +23,6 @@ module Azure::Network::Mgmt::V2017_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'virtualNetworkConnectionGatewayReference',
           type: {
@@ -31,7 +30,6 @@ module Azure::Network::Mgmt::V2017_11_01
             class_name: 'VirtualNetworkConnectionGatewayReference',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {

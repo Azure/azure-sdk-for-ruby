@@ -49,7 +49,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PublicIpAddress',
           type: {
@@ -57,7 +56,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'PublicIpAddress',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -66,7 +64,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -75,7 +72,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -84,7 +80,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -92,13 +87,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -108,7 +101,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               public_ipallocation_method: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.publicIPAllocationMethod',
                 type: {
@@ -116,7 +108,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               ip_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipConfiguration',
                 type: {
@@ -125,7 +116,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               dns_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSettings',
                 type: {
@@ -134,7 +124,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               ip_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipAddress',
                 type: {
@@ -142,7 +131,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               idle_timeout_in_minutes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -150,7 +138,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               resource_guid: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -158,7 +145,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -166,7 +152,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
