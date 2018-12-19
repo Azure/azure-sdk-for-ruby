@@ -14,6 +14,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       Shutdown = "Shutdown"
       Creating = "Creating"
       Inaccessible = "Inaccessible"
+      Updating = "Updating"
     end
   end
 end

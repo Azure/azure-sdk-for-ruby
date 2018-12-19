@@ -28,7 +28,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       attr_accessor :enabled
 
       # @return [String] Value of the schedule's recurring interval, if the
-      # scheduletype is recurring. ISO8601 duration format.
+      # schedule type is recurring. ISO8601 duration format.
       attr_accessor :interval
 
 
@@ -38,7 +38,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobSchedule',
           type: {
@@ -46,7 +45,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobSchedule',
             model_properties: {
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 default_value: Date.parse('0001-01-01T00:00:00Z'),
@@ -55,7 +53,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 default_value: Date.parse('9999-12-31T11:59:59Z'),
@@ -64,7 +61,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 default_value: 'Once',
@@ -74,7 +70,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -82,7 +77,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'interval',
                 type: {

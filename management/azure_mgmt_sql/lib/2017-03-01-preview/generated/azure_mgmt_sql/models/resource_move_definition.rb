@@ -22,7 +22,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceMoveDefinition',
           type: {
@@ -30,7 +29,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'ResourceMoveDefinition',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {

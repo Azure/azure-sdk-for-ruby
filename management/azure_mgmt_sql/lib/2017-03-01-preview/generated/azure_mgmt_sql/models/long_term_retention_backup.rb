@@ -37,7 +37,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LongTermRetentionBackup',
           type: {
@@ -45,7 +44,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'LongTermRetentionBackup',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -54,7 +52,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,7 +60,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,7 +68,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               server_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serverName',
@@ -81,7 +76,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               server_create_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serverCreateTime',
@@ -90,7 +84,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseName',
@@ -99,7 +92,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               database_deletion_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseDeletionTime',
@@ -108,7 +100,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               backup_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.backupTime',
@@ -117,7 +108,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               backup_expiration_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.backupExpirationTime',

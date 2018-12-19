@@ -17,7 +17,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       attr_accessor :predicate_expression
 
       # @return [BlobAuditingPolicyState] Specifies the state of the policy. If
-      # state is Enabled, storageEndpoint and storageAccountAccessKey are
+      # state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are
       # required. Possible values include: 'Enabled', 'Disabled'
       attr_accessor :state
 
@@ -27,11 +27,12 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       attr_accessor :storage_endpoint
 
       # @return [String] Specifies the identifier key of the auditing storage
-      # account. If state is Enabled, storageAccountAccessKey is required.
+      # account. If state is Enabled and storageEndpoint is specified,
+      # storageAccountAccessKey is required.
       attr_accessor :storage_account_access_key
 
       # @return [Integer] Specifies the number of days to keep in the audit
-      # logs.
+      # logs in the storage account.
       attr_accessor :retention_days
 
       # @return [Array<String>] Specifies the Actions-Groups and Actions to
@@ -92,12 +93,12 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # REFERENCES
       #
       # The general form for defining an action to be audited is:
-      # <action> ON <object> BY <principal>
+      # {action} ON {object} BY {principal}
       #
       # Note that <object> in the above format can refer to an object like a
       # table, view, or stored procedure, or an entire database or schema. For
-      # the latter cases, the forms DATABASE::<db_name> and
-      # SCHEMA::<schema_name> are used, respectively.
+      # the latter cases, the forms DATABASE::{db_name} and
+      # SCHEMA::{schema_name} are used, respectively.
       #
       # For example:
       # SELECT on dbo.myTable by public
@@ -115,6 +116,28 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # the storage's secondary key.
       attr_accessor :is_storage_secondary_key_in_use
 
+      # @return [Boolean] Specifies whether audit events are sent to Azure
+      # Monitor.
+      # In order to send the events to Azure Monitor, specify 'State' as
+      # 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
+      #
+      # When using REST API to configure auditing, Diagnostic Settings with
+      # 'SQLSecurityAuditEvents' diagnostic logs category on the database
+      # should be also created.
+      # Note that for server level audit you should use the 'master' database
+      # as {databaseName}.
+      #
+      # Diagnostic Settings URI format:
+      # PUT
+      # https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+      #
+      # For more information, see [Diagnostic Settings REST
+      # API](https://go.microsoft.com/fwlink/?linkid=2033207)
+      # or [Diagnostic Settings
+      # PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+      #
+      attr_accessor :is_azure_monitor_target_enabled
+
 
       #
       # Mapper for ExtendedServerBlobAuditingPolicy class as Ruby Hash.
@@ -122,7 +145,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExtendedServerBlobAuditingPolicy',
           type: {
@@ -130,7 +152,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'ExtendedServerBlobAuditingPolicy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -139,7 +160,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -148,7 +168,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -157,7 +176,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               predicate_expression: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.predicateExpression',
                 type: {
@@ -165,7 +183,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.state',
                 type: {
@@ -174,7 +191,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageEndpoint',
                 type: {
@@ -182,7 +198,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_account_access_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountAccessKey',
                 type: {
@@ -190,7 +205,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               retention_days: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retentionDays',
                 type: {
@@ -198,13 +212,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               audit_actions_and_groups: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.auditActionsAndGroups',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -214,7 +226,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_account_subscription_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountSubscriptionId',
                 type: {
@@ -222,9 +233,15 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               is_storage_secondary_key_in_use: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isStorageSecondaryKeyInUse',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              is_azure_monitor_target_enabled: {
+                required: false,
+                serialized_name: 'properties.isAzureMonitorTargetEnabled',
                 type: {
                   name: 'Boolean'
                 }
