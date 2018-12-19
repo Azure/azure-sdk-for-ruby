@@ -22,7 +22,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ValidateProbeInput',
           type: {
@@ -30,7 +29,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'ValidateProbeInput',
             model_properties: {
               probe_url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'probeURL',
                 type: {
