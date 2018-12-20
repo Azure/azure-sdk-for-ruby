@@ -33,7 +33,6 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SecurityRuleAssociations',
           type: {
@@ -41,7 +40,6 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'SecurityRuleAssociations',
             model_properties: {
               network_interface_association: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterfaceAssociation',
                 type: {
@@ -50,7 +48,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               subnet_association: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnetAssociation',
                 type: {
@@ -59,13 +56,11 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               default_security_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultSecurityRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SecurityRuleElementType',
                       type: {
@@ -76,13 +71,11 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               effective_security_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'effectiveSecurityRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EffectiveNetworkSecurityRuleElementType',
                       type: {

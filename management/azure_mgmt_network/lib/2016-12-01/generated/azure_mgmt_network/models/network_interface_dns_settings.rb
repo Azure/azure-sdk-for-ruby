@@ -45,7 +45,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterfaceDnsSettings',
           type: {
@@ -53,13 +52,11 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'NetworkInterfaceDnsSettings',
             model_properties: {
               dns_servers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -69,13 +66,11 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               applied_dns_servers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appliedDnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -85,7 +80,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               internal_dns_name_label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalDnsNameLabel',
                 type: {
@@ -93,7 +87,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               internal_fqdn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalFqdn',
                 type: {
@@ -101,7 +94,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               internal_domain_name_suffix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalDomainNameSuffix',
                 type: {

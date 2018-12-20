@@ -24,7 +24,6 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AddressSpace',
           type: {
@@ -32,13 +31,11 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'AddressSpace',
             model_properties: {
               address_prefixes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'addressPrefixes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -36,7 +36,6 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayIPConfiguration',
           type: {
@@ -44,7 +43,6 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ApplicationGatewayIPConfiguration',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -52,7 +50,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               subnet: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnet',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -77,7 +72,6 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

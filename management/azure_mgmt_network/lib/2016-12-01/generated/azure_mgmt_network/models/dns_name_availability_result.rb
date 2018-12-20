@@ -22,7 +22,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DnsNameAvailabilityResult',
           type: {
@@ -30,7 +29,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'DnsNameAvailabilityResult',
             model_properties: {
               available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'available',
                 type: {
