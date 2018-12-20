@@ -38,7 +38,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SyncGroupLogProperties',
           type: {
@@ -46,7 +45,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncGroupLogProperties',
             model_properties: {
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',
@@ -55,7 +53,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,7 +61,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'source',
@@ -73,7 +69,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               details: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'details',
@@ -82,7 +77,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               tracing_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tracingId',
@@ -91,7 +85,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               operation_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operationStatus',

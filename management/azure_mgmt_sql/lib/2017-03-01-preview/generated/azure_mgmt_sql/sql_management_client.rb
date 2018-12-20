@@ -24,16 +24,15 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # @return [String] The API version to use for the request.
     attr_reader :api_version
 
-    # @return [String] The preferred language for the response.
+    # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] The retry timeout in seconds for Long Running
-    # Operations. Default value is 30.
+    # @return [Integer] Gets or sets the retry timeout in seconds for Long
+    # Running Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] Whether a unique x-ms-client-request-id should be
-    # generated. When set to true a unique x-ms-client-request-id value is
-    # generated and included in each request. Default is true.
+    # @return [Boolean] When set to true a unique x-ms-client-request-id value
+    # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [ExtendedDatabaseBlobAuditingPolicies]
@@ -102,14 +101,24 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # backup_long_term_retention_policies
     attr_reader :backup_long_term_retention_policies
 
+    # @return [ManagedBackupShortTermRetentionPolicies]
+    # managed_backup_short_term_retention_policies
+    attr_reader :managed_backup_short_term_retention_policies
+
     # @return [ManagedDatabases] managed_databases
     attr_reader :managed_databases
 
+    # @return
+    # [ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies]
+    # managed_restorable_dropped_database_backup_short_term_retention_policies
+    attr_reader :managed_restorable_dropped_database_backup_short_term_retention_policies
+
+    # @return [RestorableDroppedManagedDatabases]
+    # restorable_dropped_managed_databases
+    attr_reader :restorable_dropped_managed_databases
+
     # @return [RestorePoints] restore_points
     attr_reader :restore_points
-
-    # @return [SensitivityLabels] sensitivity_labels
-    attr_reader :sensitivity_labels
 
     # @return [ServerAutomaticTuningOperations]
     # server_automatic_tuning_operations
@@ -120,6 +129,14 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
     # @return [ServerSecurityAlertPolicies] server_security_alert_policies
     attr_reader :server_security_alert_policies
+
+    # @return [ManagedDatabaseSecurityAlertPolicies]
+    # managed_database_security_alert_policies
+    attr_reader :managed_database_security_alert_policies
+
+    # @return [ManagedServerSecurityAlertPolicies]
+    # managed_server_security_alert_policies
+    attr_reader :managed_server_security_alert_policies
 
     #
     # Creates initializes a new instance of the SqlManagementClient class.
@@ -154,12 +171,16 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       @job_versions = JobVersions.new(self)
       @long_term_retention_backups = LongTermRetentionBackups.new(self)
       @backup_long_term_retention_policies = BackupLongTermRetentionPolicies.new(self)
+      @managed_backup_short_term_retention_policies = ManagedBackupShortTermRetentionPolicies.new(self)
       @managed_databases = ManagedDatabases.new(self)
+      @managed_restorable_dropped_database_backup_short_term_retention_policies = ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.new(self)
+      @restorable_dropped_managed_databases = RestorableDroppedManagedDatabases.new(self)
       @restore_points = RestorePoints.new(self)
-      @sensitivity_labels = SensitivityLabels.new(self)
       @server_automatic_tuning_operations = ServerAutomaticTuningOperations.new(self)
       @server_dns_aliases = ServerDnsAliases.new(self)
       @server_security_alert_policies = ServerSecurityAlertPolicies.new(self)
+      @managed_database_security_alert_policies = ManagedDatabaseSecurityAlertPolicies.new(self)
+      @managed_server_security_alert_policies = ManagedServerSecurityAlertPolicies.new(self)
       @api_version = '2017-03-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -213,9 +234,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -232,7 +250,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_sql'
-        sdk_information = "#{sdk_information}/0.17.1"
+        if defined? Azure::SQL::Mgmt::V2017_03_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::SQL::Mgmt::V2017_03_01_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

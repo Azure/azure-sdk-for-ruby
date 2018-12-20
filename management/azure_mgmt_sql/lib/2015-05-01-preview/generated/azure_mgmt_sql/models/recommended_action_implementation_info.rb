@@ -29,7 +29,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedActionImplementationInfo',
           type: {
@@ -37,7 +36,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'RecommendedActionImplementationInfo',
             model_properties: {
               method: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'method',
@@ -47,7 +45,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               script: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'script',
