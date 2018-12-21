@@ -7,26 +7,26 @@ require 'azure_mgmt_policy'
 module Azure::Profiles::Latest
   module Policy
     module Mgmt
-      PolicyAssignments = Azure::Policy::Mgmt::V2018_03_01::PolicyAssignments
       PolicyDefinitions = Azure::Policy::Mgmt::V2018_03_01::PolicyDefinitions
+      PolicyAssignments = Azure::Policy::Mgmt::V2018_03_01::PolicyAssignments
       PolicySetDefinitions = Azure::Policy::Mgmt::V2018_03_01::PolicySetDefinitions
 
       module Models
         PolicyDefinition = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinition
+        PolicyAssignmentListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignmentListResult
         PolicyDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionListResult
-        PolicyAssignment = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
+        PolicyType = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
+        PolicyMode = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
         PolicyDefinitionReference = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
         ErrorResponse = Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
         PolicySetDefinition = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinition
-        PolicyAssignmentListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignmentListResult
         PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinitionListResult
         PolicySku = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
-        PolicyType = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
-        PolicyMode = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
+        PolicyAssignment = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
       end
 
       class PolicyManagementClass
-        attr_reader :policy_assignments, :policy_definitions, :policy_set_definitions, :configurable, :base_url, :options, :model_classes
+        attr_reader :policy_definitions, :policy_assignments, :policy_set_definitions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -36,8 +36,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @policy_assignments = @client_0.policy_assignments
           @policy_definitions = @client_0.policy_definitions
+          @policy_assignments = @client_0.policy_assignments
           @policy_set_definitions = @client_0.policy_set_definitions
 
           @model_classes = ModelClasses.new
@@ -60,11 +60,17 @@ module Azure::Profiles::Latest
           def policy_definition
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinition
           end
+          def policy_assignment_list_result
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignmentListResult
+          end
           def policy_definition_list_result
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionListResult
           end
-          def policy_assignment
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
+          def policy_type
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
+          end
+          def policy_mode
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
           end
           def policy_definition_reference
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
@@ -75,20 +81,14 @@ module Azure::Profiles::Latest
           def policy_set_definition
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinition
           end
-          def policy_assignment_list_result
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignmentListResult
-          end
           def policy_set_definition_list_result
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinitionListResult
           end
           def policy_sku
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
           end
-          def policy_type
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
-          end
-          def policy_mode
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
+          def policy_assignment
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
           end
         end
       end

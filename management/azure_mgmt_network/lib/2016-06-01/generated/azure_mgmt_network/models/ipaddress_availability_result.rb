@@ -26,7 +26,6 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IPAddressAvailabilityResult',
           type: {
@@ -34,7 +33,6 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'IPAddressAvailabilityResult',
             model_properties: {
               available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'available',
                 type: {
@@ -42,13 +40,11 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               available_ipaddresses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableIPAddresses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

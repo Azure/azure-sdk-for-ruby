@@ -33,7 +33,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NextHopResult',
           type: {
@@ -41,7 +40,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'NextHopResult',
             model_properties: {
               next_hop_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextHopType',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               next_hop_ip_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextHopIpAddress',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               route_table_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'routeTableId',
                 type: {

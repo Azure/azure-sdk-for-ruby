@@ -35,7 +35,6 @@ module Azure::Network::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkUsage',
           type: {
@@ -43,7 +42,6 @@ module Azure::Network::Mgmt::V2017_10_01
             class_name: 'VirtualNetworkUsage',
             model_properties: {
               current_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'currentValue',
@@ -52,7 +50,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -61,7 +58,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'limit',
@@ -70,7 +66,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -80,7 +75,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
