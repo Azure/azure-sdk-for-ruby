@@ -30,7 +30,6 @@ module Azure::Storage::Mgmt::V2018_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LegalHoldProperties',
           type: {
@@ -38,7 +37,6 @@ module Azure::Storage::Mgmt::V2018_02_01
             class_name: 'LegalHoldProperties',
             model_properties: {
               has_legal_hold: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'hasLegalHold',
@@ -47,13 +45,11 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TagPropertyElementType',
                       type: {
