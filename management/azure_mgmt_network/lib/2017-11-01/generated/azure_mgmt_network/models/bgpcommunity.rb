@@ -40,7 +40,6 @@ module Azure::Network::Mgmt::V2017_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BGPCommunity',
           type: {
@@ -48,7 +47,6 @@ module Azure::Network::Mgmt::V2017_11_01
             class_name: 'BGPCommunity',
             model_properties: {
               service_supported_region: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceSupportedRegion',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               community_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'communityName',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               community_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'communityValue',
                 type: {
@@ -72,13 +68,11 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               community_prefixes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'communityPrefixes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -88,7 +82,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               is_authorized_to_use: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isAuthorizedToUse',
                 type: {
@@ -96,7 +89,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               service_group: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceGroup',
                 type: {
