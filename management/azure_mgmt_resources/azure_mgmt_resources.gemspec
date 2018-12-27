@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
     'source_code_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_resources'
   }
 
-  spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/*"]
+  spec.files         = Dir["LICENSE.txt", "lib/**/*"]
   spec.files.reject! { |fn| fn.include? "build.json" }
   spec.bindir        = 'bin'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
