@@ -16,7 +16,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       attr_accessor :type
 
       # @return [Boolean] Gets or sets a Boolean value to indicate whether the
-      # parameter is madatory or not.
+      # parameter is mandatory or not.
       attr_accessor :is_mandatory
 
       # @return [Integer] Get or sets the position of the parameter.

@@ -6,7 +6,7 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # Definition of runas credential to use for hybrid worker.
+    # Definition of RunAs credential to use for hybrid worker.
     #
     class RunAsCredentialAssociationProperty
 

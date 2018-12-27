@@ -22,11 +22,11 @@ module Azure::Automation::Mgmt::V2015_10_31
     attr_reader :client
 
     #
-    # Delete the connectiontype.
+    # Delete the connection type.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
-    # @param connection_type_name [String] The name of connectiontype.
+    # @param connection_type_name [String] The name of connection type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -37,11 +37,11 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Delete the connectiontype.
+    # Delete the connection type.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
-    # @param connection_type_name [String] The name of connectiontype.
+    # @param connection_type_name [String] The name of connection type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -52,11 +52,11 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Delete the connectiontype.
+    # Delete the connection type.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
-    # @param connection_type_name [String] The name of connectiontype.
+    # @param connection_type_name [String] The name of connection type.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -106,11 +106,11 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve the connectiontype identified by connectiontype name.
+    # Retrieve the connection type identified by connection type name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
-    # @param connection_type_name [String] The name of connectiontype.
+    # @param connection_type_name [String] The name of connection type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -122,11 +122,11 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve the connectiontype identified by connectiontype name.
+    # Retrieve the connection type identified by connection type name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
-    # @param connection_type_name [String] The name of connectiontype.
+    # @param connection_type_name [String] The name of connection type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -137,11 +137,11 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve the connectiontype identified by connectiontype name.
+    # Retrieve the connection type identified by connection type name.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
-    # @param connection_type_name [String] The name of connectiontype.
+    # @param connection_type_name [String] The name of connection type.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -201,14 +201,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Create a connectiontype.
+    # Create a connection type.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The parameters supplied to the create or
-    # update connectiontype operation.
+    # update connection type operation.
     # @param parameters [ConnectionTypeCreateOrUpdateParameters] The parameters
-    # supplied to the create or update connectiontype operation.
+    # supplied to the create or update connection type operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -220,14 +220,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Create a connectiontype.
+    # Create a connection type.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The parameters supplied to the create or
-    # update connectiontype operation.
+    # update connection type operation.
     # @param parameters [ConnectionTypeCreateOrUpdateParameters] The parameters
-    # supplied to the create or update connectiontype operation.
+    # supplied to the create or update connection type operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -238,14 +238,14 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Create a connectiontype.
+    # Create a connection type.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
     # @param connection_type_name [String] The parameters supplied to the create or
-    # update connectiontype operation.
+    # update connection type operation.
     # @param parameters [ConnectionTypeCreateOrUpdateParameters] The parameters
-    # supplied to the create or update connectiontype operation.
+    # supplied to the create or update connection type operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -325,7 +325,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve a list of connectiontypes.
+    # Retrieve a list of connection types.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
@@ -340,7 +340,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve a list of connectiontypes.
+    # Retrieve a list of connection types.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
@@ -354,7 +354,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve a list of connectiontypes.
+    # Retrieve a list of connection types.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.
@@ -416,7 +416,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve a list of connectiontypes.
+    # Retrieve a list of connection types.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -431,7 +431,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve a list of connectiontypes.
+    # Retrieve a list of connection types.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -445,7 +445,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve a list of connectiontypes.
+    # Retrieve a list of connection types.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -503,7 +503,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     end
 
     #
-    # Retrieve a list of connectiontypes.
+    # Retrieve a list of connection types.
     #
     # @param resource_group_name [String] Name of an Azure Resource group.
     # @param automation_account_name [String] The name of the automation account.

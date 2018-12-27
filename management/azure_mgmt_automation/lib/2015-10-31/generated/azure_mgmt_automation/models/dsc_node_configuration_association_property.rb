@@ -6,13 +6,13 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # The dsc nodeconfiguration property associated with the entity.
+    # The dsc node configuration property associated with the entity.
     #
     class DscNodeConfigurationAssociationProperty
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the name of the dsc nodeconfiguration.
+      # @return [String] Gets or sets the name of the dsc node configuration.
       attr_accessor :name
 
 

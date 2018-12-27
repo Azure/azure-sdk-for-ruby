@@ -6,7 +6,7 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # Definition of the agent registration infomration type.
+    # Definition of the agent registration information type.
     #
     class AgentRegistration
 

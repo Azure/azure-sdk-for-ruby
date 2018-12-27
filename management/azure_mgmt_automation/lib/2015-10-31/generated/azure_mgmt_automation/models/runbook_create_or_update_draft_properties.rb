@@ -6,8 +6,7 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # The parameters supplied to the create or update dratft runbook
-    # properties.
+    # The parameters supplied to the create or update draft runbook properties.
     #
     class RunbookCreateOrUpdateDraftProperties
 

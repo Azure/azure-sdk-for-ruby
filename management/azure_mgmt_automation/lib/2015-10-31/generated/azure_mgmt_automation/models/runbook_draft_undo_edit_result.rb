@@ -6,7 +6,7 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # The response model for the undoedit runbook operation.
+    # The response model for the undo edit runbook operation.
     #
     class RunbookDraftUndoEditResult
 
