@@ -5,7 +5,8 @@
         "azure_mgmt_storage",
         "azure_mgmt_media_services",
         "azure_mgmt_cognitive_services",
-        "azure_mgmt_policy"
+        "azure_mgmt_policy",
+        "azure_mgmt_container_registry"
     ],
     "rollup": [
         "azure_sdk"

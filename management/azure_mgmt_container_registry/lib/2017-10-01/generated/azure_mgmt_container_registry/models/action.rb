@@ -6,14 +6,10 @@
 module Azure::ContainerRegistry::Mgmt::V2017_10_01
   module Models
     #
-    # Defines values for WebhookAction
+    # Defines values for Action
     #
-    module WebhookAction
-      Push = "push"
-      Delete = "delete"
-      Quarantine = "quarantine"
-      ChartPush = "chart_push"
-      ChartDelete = "chart_delete"
+    module Action
+      Allow = "Allow"
     end
   end
 end

@@ -6,33 +6,33 @@
 module Azure::ContainerRegistry::Mgmt::V2017_10_01
   module Models
     #
-    # Virtual network rule.
+    # IP rule with specific IP or IP range in CIDR format.
     #
-    class VirtualNetworkRule
+    class IPRule
 
       include MsRestAzure
 
-      # @return [Action] The action of virtual network rule. Possible values
-      # include: 'Allow'. Default value: 'Allow' .
+      # @return [Action] The action of IP ACL rule. Possible values include:
+      # 'Allow'. Default value: 'Allow' .
       attr_accessor :action
 
-      # @return [String] Resource ID of a subnet, for example:
-      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-      attr_accessor :virtual_network_resource_id
+      # @return [String] Specifies the IP or IP range in CIDR format. Only IPV4
+      # address is allowed.
+      attr_accessor :ipaddress_or_range
 
 
       #
-      # Mapper for VirtualNetworkRule class as Ruby Hash.
+      # Mapper for IPRule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'VirtualNetworkRule',
+          serialized_name: 'IPRule',
           type: {
             name: 'Composite',
-            class_name: 'VirtualNetworkRule',
+            class_name: 'IPRule',
             model_properties: {
               action: {
                 client_side_validation: true,
@@ -43,10 +43,10 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                   name: 'String'
                 }
               },
-              virtual_network_resource_id: {
+              ipaddress_or_range: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'id',
+                serialized_name: 'value',
                 type: {
                   name: 'String'
                 }

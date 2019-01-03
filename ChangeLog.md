@@ -1,3 +1,14 @@
+## 2019.01.02 - Azure Ruby SDK Release
+* Released the following SDKs
+   - azure_mgmt_machine_learning_services - v0.17.0
+   - azure_mgmt_policy_insights - v0.17.1
+   - azure_mgmt_storage - v0.17.5
+   - azure_mgmt_media_services - v0.18.0
+   - azure_mgmt_cognitive_services - v0.18.0
+   - azure_mgmt_policy - v0.17.2
+   - azure_mgmt_container_registry - v0.18.0
+   - azure_sdk - v0.20.0
+   
 ## 2018.12.04 - Azure Ruby SDK Release
 * Released the following SDKs
    - azure_mgmt_network - v0.18.2 - Fixed a bug in the configuration files.
