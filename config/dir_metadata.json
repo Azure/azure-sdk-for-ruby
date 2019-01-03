@@ -247,6 +247,13 @@
       "module_require": "azure_mgmt_machine_learning"
     }
   },
+  "Microsoft.MachineLearningServices": {
+    "management": {
+      "path": "management/azure_mgmt_machine_learning_services",
+      "namespace": "Azure::MachineLearningServices::Mgmt",
+      "module_require": "azure_mgmt_machine_learning_services"
+    }
+  },
   "Microsoft.ManagedApplications": {
     "management": {
       "path": "management/azure_mgmt_managed_applications",

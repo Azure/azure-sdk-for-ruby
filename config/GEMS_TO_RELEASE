@@ -1,6 +1,6 @@
 {
     "management": [
-        "azure_mgmt_network"
+        "azure_mgmt_machine_learning_services"
     ],
     "rollup": [
         "azure_sdk"

@@ -321,6 +321,11 @@
                         "2017-01-01": ["*"]
                     }
                 },
+                "Microsoft.MachineLearningServices": {
+                    "management": {
+                        "2018-11-19": ["*"]
+                    }
+                },
                 "Microsoft.ManagedApplications": {
                     "management": {
                         "2018-06-01": ["*"]
@@ -1195,6 +1200,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_machine_learning/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_machine_learning_services": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.MachineLearningServices": {
+                    "management": {
+                        "2018-11-19": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_machine_learning_services/lib/profiles",
             "individual_gem_profile": true
         }
         ],
