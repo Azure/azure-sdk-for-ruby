@@ -37,9 +37,7 @@ module Azure::Profiles::Latest
         UsagesResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UsagesResult
         ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
         CognitiveServicesResourceAndSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
-        SkuName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
         SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
-        Kind = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
         ProvisioningState = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
         KeyName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
         UnitType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UnitType
@@ -153,14 +151,8 @@ module Azure::Profiles::Latest
           def cognitive_services_resource_and_sku
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
           end
-          def sku_name
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
-          end
           def sku_tier
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
-          end
-          def kind
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
           end
           def provisioning_state
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState

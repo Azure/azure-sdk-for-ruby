@@ -12,16 +12,10 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
-      # @return [Array<SkuName>] The SKU of the resource.
+      # @return [Array<String>] The SKU of the resource.
       attr_accessor :skus
 
-      # @return [Kind] The Kind of the resource. Possible values include:
-      # 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7',
-      # 'Bing.Speech', 'Bing.SpellCheck.v7', 'ComputerVision',
-      # 'ContentModerator', 'CustomSpeech', 'CustomVision.Prediction',
-      # 'CustomVision.Training', 'Emotion', 'Face', 'LUIS', 'QnAMaker',
-      # 'SpeakerRecognition', 'SpeechTranslation', 'TextAnalytics',
-      # 'TextTranslation', 'WebLM'
+      # @return [String] The Kind of the resource.
       attr_accessor :kind
 
       # @return [String] The Type of the resource.
@@ -50,7 +44,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'SkuNameElementType',
+                      serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
                       }
