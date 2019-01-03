@@ -101,8 +101,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'properties.state',
                 type: {
-                  name: 'Enum',
-                  module: 'JobState'
+                  name: 'String'
                 }
               },
               description: {
@@ -157,8 +156,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'properties.priority',
                 type: {
-                  name: 'Enum',
-                  module: 'Priority'
+                  name: 'String'
                 }
               },
               correlation_data: {

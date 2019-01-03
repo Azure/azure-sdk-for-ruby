@@ -24,7 +24,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # Policy
       attr_accessor :label_reference_in_streaming_policy
 
-      # @return [String] Value of  of Content Key
+      # @return [String] Value of Content Key
       attr_accessor :value
 
       # @return [String] ContentKeyPolicy used by Content Key
@@ -61,8 +61,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'type',
                 type: {
-                  name: 'Enum',
-                  module: 'StreamingLocatorContentKeyType'
+                  name: 'String'
                 }
               },
               label_reference_in_streaming_policy: {

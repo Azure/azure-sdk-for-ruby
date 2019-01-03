@@ -321,6 +321,11 @@
                         "2017-01-01": ["*"]
                     }
                 },
+                "Microsoft.MachineLearningServices": {
+                    "management": {
+                        "2018-03-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.ManagedApplications": {
                     "management": {
                         "2018-06-01": ["*"]
@@ -372,12 +377,13 @@
                 },
                 "Microsoft.Policy": {
                     "management": {
-                        "2018-03-01": ["*"]
+                        "2018-05-01": ["*"]
                     }
                 },
                 "Microsoft.PolicyInsights": {
                     "management": {
-                        "2018-04-04": ["*"]
+                        "2018-04-04": ["*"],
+                        "2018-07-01-preview": ["*"]
                     }
                 },
                 "Microsoft.PowerBiEmbedded": {
@@ -1198,6 +1204,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_machine_learning_services": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.MachineLearningServices": {
+                    "management": {
+                        "2018-03-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_machine_learning_services/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_managed_applications": [
         {
             "name": "Latest",
@@ -1371,7 +1391,7 @@
             "resourceTypes": {
                 "Microsoft.Policy" : {
                     "management": {
-                        "2018-03-01": ["*"]
+                        "2018-05-01": ["*"]
                     }
                 }
             },
@@ -1385,7 +1405,8 @@
             "resourceTypes": {
                 "Microsoft.PolicyInsights": {
                     "management": {
-                        "2018-04-04": ["*"]
+                        "2018-04-04": ["*"],
+                        "2018-07-01-preview": ["*"]
                     }
                 }
             },

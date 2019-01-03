@@ -6,7 +6,7 @@
 module Azure::MediaServices::Mgmt::V2018_06_01_preview
   module Models
     #
-    # Describes a list of of inputs to a Job.
+    # Describes a list of inputs to a Job.
     #
     class JobInputs < JobInput
 

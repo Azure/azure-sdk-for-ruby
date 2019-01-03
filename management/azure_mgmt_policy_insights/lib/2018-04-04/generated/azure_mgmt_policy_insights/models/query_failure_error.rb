@@ -36,6 +36,7 @@ module Azure::PolicyInsights::Mgmt::V2018_04_04
               code: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'code',
                 type: {
                   name: 'String'
@@ -44,6 +45,7 @@ module Azure::PolicyInsights::Mgmt::V2018_04_04
               message: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'message',
                 type: {
                   name: 'String'

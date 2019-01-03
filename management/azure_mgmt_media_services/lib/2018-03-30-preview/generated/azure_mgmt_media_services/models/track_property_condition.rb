@@ -20,7 +20,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       # operation. Possible values include: 'Unknown', 'Equal'
       attr_accessor :operation
 
-      # @return [String] Track proprty value
+      # @return [String] Track property value
       attr_accessor :value
 
 

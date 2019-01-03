@@ -6,7 +6,7 @@
 module Azure::Policy::Mgmt::V2017_06_01_preview
   module Models
     #
-    # Error reponse indicates ARM is not able to process the incoming request.
+    # Error response indicates ARM is not able to process the incoming request.
     # The reason is provided in the error message.
     #
     class ErrorResponse

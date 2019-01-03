@@ -91,7 +91,7 @@ module Azure::PolicyInsights::Mgmt::V2017_08_09_preview
       # assignment is for a policy set.
       attr_accessor :policy_set_definition_parameters
 
-      # @return [Column] Comma seperated list of management group IDs, which
+      # @return [Column] Comma separated list of management group IDs, which
       # represent the hierarchy of the management groups the resource is under.
       attr_accessor :management_group_ids
 

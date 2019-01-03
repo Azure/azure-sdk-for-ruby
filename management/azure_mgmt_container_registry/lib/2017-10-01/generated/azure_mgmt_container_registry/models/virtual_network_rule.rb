@@ -6,15 +6,19 @@
 module Azure::ContainerRegistry::Mgmt::V2017_10_01
   module Models
     #
-    # The virtual network rule for a container registry.
+    # Virtual network rule.
     #
     class VirtualNetworkRule
 
       include MsRestAzure
 
+      # @return [Action] The action of virtual network rule. Possible values
+      # include: 'Allow'. Default value: 'Allow' .
+      attr_accessor :action
+
       # @return [String] Resource ID of a subnet, for example:
       # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-      attr_accessor :id
+      attr_accessor :virtual_network_resource_id
 
 
       #
@@ -30,7 +34,16 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             name: 'Composite',
             class_name: 'VirtualNetworkRule',
             model_properties: {
-              id: {
+              action: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'action',
+                default_value: 'Allow',
+                type: {
+                  name: 'String'
+                }
+              },
+              virtual_network_resource_id: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'id',

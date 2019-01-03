@@ -635,7 +635,7 @@ module Azure::Policy::Mgmt::V2016_12_01
     #
     # Deletes a policy assignment by ID.
     #
-    # When providing a scope for the assigment, use
+    # When providing a scope for the assignment, use
     # '/subscriptions/{subscription-id}/' for subscriptions,
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
     # resource groups, and
@@ -658,7 +658,7 @@ module Azure::Policy::Mgmt::V2016_12_01
     #
     # Deletes a policy assignment by ID.
     #
-    # When providing a scope for the assigment, use
+    # When providing a scope for the assignment, use
     # '/subscriptions/{subscription-id}/' for subscriptions,
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
     # resource groups, and
@@ -680,7 +680,7 @@ module Azure::Policy::Mgmt::V2016_12_01
     #
     # Deletes a policy assignment by ID.
     #
-    # When providing a scope for the assigment, use
+    # When providing a scope for the assignment, use
     # '/subscriptions/{subscription-id}/' for subscriptions,
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
     # resource groups, and
@@ -751,7 +751,7 @@ module Azure::Policy::Mgmt::V2016_12_01
     #
     # Policy assignments are inherited by child resources. For example, when you
     # apply a policy to a resource group that policy is assigned to all resources
-    # in the group. When providing a scope for the assigment, use
+    # in the group. When providing a scope for the assignment, use
     # '/subscriptions/{subscription-id}/' for subscriptions,
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
     # resource groups, and
@@ -777,7 +777,7 @@ module Azure::Policy::Mgmt::V2016_12_01
     #
     # Policy assignments are inherited by child resources. For example, when you
     # apply a policy to a resource group that policy is assigned to all resources
-    # in the group. When providing a scope for the assigment, use
+    # in the group. When providing a scope for the assignment, use
     # '/subscriptions/{subscription-id}/' for subscriptions,
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
     # resource groups, and
@@ -802,7 +802,7 @@ module Azure::Policy::Mgmt::V2016_12_01
     #
     # Policy assignments are inherited by child resources. For example, when you
     # apply a policy to a resource group that policy is assigned to all resources
-    # in the group. When providing a scope for the assigment, use
+    # in the group. When providing a scope for the assignment, use
     # '/subscriptions/{subscription-id}/' for subscriptions,
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
     # resource groups, and
@@ -880,7 +880,7 @@ module Azure::Policy::Mgmt::V2016_12_01
     #
     # Gets a policy assignment by ID.
     #
-    # When providing a scope for the assigment, use
+    # When providing a scope for the assignment, use
     # '/subscriptions/{subscription-id}/' for subscriptions,
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
     # resource groups, and
@@ -903,7 +903,7 @@ module Azure::Policy::Mgmt::V2016_12_01
     #
     # Gets a policy assignment by ID.
     #
-    # When providing a scope for the assigment, use
+    # When providing a scope for the assignment, use
     # '/subscriptions/{subscription-id}/' for subscriptions,
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
     # resource groups, and
@@ -925,7 +925,7 @@ module Azure::Policy::Mgmt::V2016_12_01
     #
     # Gets a policy assignment by ID.
     #
-    # When providing a scope for the assigment, use
+    # When providing a scope for the assignment, use
     # '/subscriptions/{subscription-id}/' for subscriptions,
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
     # resource groups, and

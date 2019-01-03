@@ -6,8 +6,8 @@
 module Azure::Policy::Mgmt::V2018_03_01
   module Models
     #
-    # Error reponse indicates Azure Resource Manager is not able to process the
-    # incoming request. The reason is provided in the error message.
+    # Error response indicates Azure Resource Manager is not able to process
+    # the incoming request. The reason is provided in the error message.
     #
     class ErrorResponse
 

@@ -1,7 +1,7 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.19.7"
+        "azure_sdk": "0.20.0"
     },
     "data": {
         "azure_cognitiveservices_autosuggest": "0.17.0",
@@ -35,12 +35,12 @@
         "azure_mgmt_batch": "0.17.1",
         "azure_mgmt_billing": "0.17.1",
         "azure_mgmt_cdn": "0.17.1",
-        "azure_mgmt_cognitive_services": "0.17.0",
+        "azure_mgmt_cognitive_services": "0.18.0",
         "azure_mgmt_commerce": "0.17.0",
         "azure_mgmt_compute": "0.18.3",
         "azure_mgmt_consumption": "0.17.1",
         "azure_mgmt_container_instance": "0.17.3",
-        "azure_mgmt_container_registry": "0.17.2",
+        "azure_mgmt_container_registry": "0.18.0",
         "azure_mgmt_container_service": "0.18.1",
         "azure_mgmt_customer_insights": "0.17.1",
         "azure_mgmt_datalake_analytics": "0.17.1",
@@ -60,16 +60,17 @@
         "azure_mgmt_locks": "0.17.1",
         "azure_mgmt_logic": "0.17.2",
         "azure_mgmt_machine_learning": "0.17.1",
+        "azure_mgmt_machine_learning_services": "0.17.0",
         "azure_mgmt_managed_applications": "0.17.1",
         "azure_mgmt_marketplace_ordering": "0.17.1",
-        "azure_mgmt_media_services": "0.17.2",
+        "azure_mgmt_media_services": "0.18.0",
         "azure_mgmt_monitor": "0.17.1",
         "azure_mgmt_msi": "0.17.0",
         "azure_mgmt_network": "0.18.2",
         "azure_mgmt_notification_hubs": "0.17.1",
         "azure_mgmt_operational_insights": "0.17.1",
-        "azure_mgmt_policy": "0.17.1",
-        "azure_mgmt_policy_insights": "0.17.0",
+        "azure_mgmt_policy": "0.17.2",
+        "azure_mgmt_policy_insights": "0.17.1",
         "azure_mgmt_powerbi_embedded": "0.17.0",
         "azure_mgmt_recovery_services": "0.17.1",
         "azure_mgmt_recovery_services_backup": "0.17.1",
@@ -87,7 +88,7 @@
         "azure_mgmt_sql": "0.17.1",
         "azure_mgmt_sqlvirtualmachine": "0.17.1",
         "azure_mgmt_stor_simple8000_series": "0.17.1",
-        "azure_mgmt_storage": "0.17.4",
+        "azure_mgmt_storage": "0.17.5",
         "azure_mgmt_stream_analytics": "0.17.1",
         "azure_mgmt_subscriptions": "0.17.1",
         "azure_mgmt_traffic_manager": "0.17.1",

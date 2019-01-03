@@ -123,8 +123,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: true,
                 serialized_name: 'licenseType',
                 type: {
-                  name: 'Enum',
-                  module: 'ContentKeyPolicyPlayReadyLicenseType'
+                  name: 'String'
                 }
               },
               content_key_location: {
@@ -143,8 +142,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: true,
                 serialized_name: 'contentType',
                 type: {
-                  name: 'Enum',
-                  module: 'ContentKeyPolicyPlayReadyContentType'
+                  name: 'String'
                 }
               }
             }
