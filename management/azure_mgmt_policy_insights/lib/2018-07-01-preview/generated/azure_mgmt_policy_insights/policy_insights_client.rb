@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::PolicyInsights::Mgmt::V2017_08_09_preview
+module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,7 +17,10 @@ module Azure::PolicyInsights::Mgmt::V2017_08_09_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] API version to use with the client requests.
+    # @return [String] Microsoft Azure subscription ID.
+    attr_accessor :subscription_id
+
+    # @return [String] Client Api Version.
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -32,14 +35,11 @@ module Azure::PolicyInsights::Mgmt::V2017_08_09_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [PolicyEvents] policy_events
-    attr_reader :policy_events
+    # @return [PolicyTrackedResources] policy_tracked_resources
+    attr_reader :policy_tracked_resources
 
-    # @return [PolicyStates] policy_states
-    attr_reader :policy_states
-
-    # @return [Operations] operations
-    attr_reader :operations
+    # @return [Remediations] remediations
+    attr_reader :remediations
 
     #
     # Creates initializes a new instance of the PolicyInsightsClient class.
@@ -54,10 +54,9 @@ module Azure::PolicyInsights::Mgmt::V2017_08_09_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @policy_events = PolicyEvents.new(self)
-      @policy_states = PolicyStates.new(self)
-      @operations = Operations.new(self)
-      @api_version = '2017-08-09-preview'
+      @policy_tracked_resources = PolicyTrackedResources.new(self)
+      @remediations = Remediations.new(self)
+      @api_version = '2018-07-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

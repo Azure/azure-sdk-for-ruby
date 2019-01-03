@@ -3,52 +3,51 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::PolicyInsights::Mgmt::V2018_04_04
+module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
   module Models
     #
-    # Error definition.
+    # Scenario specific error details.
     #
-    class QueryFailureError
+    class TypedErrorInfo
 
       include MsRestAzure
 
-      # @return [String] Service specific error code which serves as the
-      # substatus for the HTTP error code.
-      attr_accessor :code
+      # @return [String] The type of included error details.
+      attr_accessor :type
 
-      # @return [String] Description of the error.
-      attr_accessor :message
+      # @return The scenario specific error details.
+      attr_accessor :info
 
 
       #
-      # Mapper for QueryFailureError class as Ruby Hash.
+      # Mapper for TypedErrorInfo class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'QueryFailure_error',
+          serialized_name: 'TypedErrorInfo',
           type: {
             name: 'Composite',
-            class_name: 'QueryFailureError',
+            class_name: 'TypedErrorInfo',
             model_properties: {
-              code: {
+              type: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'code',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              message: {
+              info: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'message',
+                serialized_name: 'info',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               }
             }

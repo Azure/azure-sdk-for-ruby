@@ -3,50 +3,44 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::PolicyInsights::Mgmt::V2018_04_04
+module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
   module Models
     #
-    # Error definition.
+    # Additional parameters for a set of operations.
     #
-    class QueryFailureError
+    class QueryOptions
 
       include MsRestAzure
 
-      # @return [String] Service specific error code which serves as the
-      # substatus for the HTTP error code.
-      attr_accessor :code
+      # @return [Integer] Maximum number of records to return.
+      attr_accessor :top
 
-      # @return [String] Description of the error.
-      attr_accessor :message
+      # @return [String] OData filter expression.
+      attr_accessor :filter
 
 
       #
-      # Mapper for QueryFailureError class as Ruby Hash.
+      # Mapper for QueryOptions class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'QueryFailure_error',
           type: {
             name: 'Composite',
-            class_name: 'QueryFailureError',
+            class_name: 'QueryOptions',
             model_properties: {
-              code: {
+              top: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'code',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               },
-              message: {
+              filter: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'message',
                 type: {
                   name: 'String'
                 }

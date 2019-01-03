@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::PolicyInsights::Mgmt::V2018_04_04
+module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
   module Models
     #
     # Error definition.
