@@ -1053,30 +1053,36 @@
     }
   },
   "azure_mgmt_policy": {
+    "azure_mgmt_policy_2018_05_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/resources/resource-manager/readme.md",
+      "namespace": "Azure::Policy::Mgmt::V2018_05_01",
+      "title": "PolicyClient",
+      "tag": "package-policy-2018-05"
+    },
     "azure_mgmt_policy_2018_03_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Policy::Mgmt::V2018_03_01",
       "title": "PolicyClient",
       "tag": "package-policy-2018-03"
     },
     "azure_mgmt_policy_2017_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Policy::Mgmt::V2017_06_01_preview",
       "title": "PolicyClient",
       "tag": "package-pure-policy-2017-06"
     },
     "azure_mgmt_policy_2016_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Policy::Mgmt::V2016_12_01",
       "tag": "package-policy-2016-12"
     },
     "azure_mgmt_policy_2016_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Policy::Mgmt::V2016_04_01",
       "tag": "package-policy-2016-04"
     },
     "azure_mgmt_policy_2015_10_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Policy::Mgmt::V2015_10_01_preview",
       "tag": "package-policy-2015-10"
     }

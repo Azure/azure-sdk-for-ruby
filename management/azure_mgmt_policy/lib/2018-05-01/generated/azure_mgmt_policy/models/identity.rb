@@ -3,61 +3,64 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Policy::Mgmt::V2018_03_01
+module Azure::Policy::Mgmt::V2018_05_01
   module Models
     #
-    # Error response indicates Azure Resource Manager is not able to process
-    # the incoming request. The reason is provided in the error message.
+    # Identity for the resource.
     #
-    class ErrorResponse
+    class Identity
 
       include MsRestAzure
 
-      # @return [String] Http status code.
-      attr_accessor :http_status
+      # @return [String] The principal ID of the resource identity.
+      attr_accessor :principal_id
 
-      # @return [String] Error code.
-      attr_accessor :error_code
+      # @return [String] The tenant ID of the resource identity.
+      attr_accessor :tenant_id
 
-      # @return [String] Error message indicating why the operation failed.
-      attr_accessor :error_message
+      # @return [ResourceIdentityType] The identity type. Possible values
+      # include: 'SystemAssigned', 'None'
+      attr_accessor :type
 
 
       #
-      # Mapper for ErrorResponse class as Ruby Hash.
+      # Mapper for Identity class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ErrorResponse',
+          serialized_name: 'Identity',
           type: {
             name: 'Composite',
-            class_name: 'ErrorResponse',
+            class_name: 'Identity',
             model_properties: {
-              http_status: {
+              principal_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'httpStatus',
+                read_only: true,
+                serialized_name: 'principalId',
                 type: {
                   name: 'String'
                 }
               },
-              error_code: {
+              tenant_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'errorCode',
+                read_only: true,
+                serialized_name: 'tenantId',
                 type: {
                   name: 'String'
                 }
               },
-              error_message: {
+              type: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'errorMessage',
+                serialized_name: 'type',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'ResourceIdentityType'
                 }
               }
             }

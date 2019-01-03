@@ -69,7 +69,7 @@
         "azure_mgmt_network": "0.18.2",
         "azure_mgmt_notification_hubs": "0.17.1",
         "azure_mgmt_operational_insights": "0.17.1",
-        "azure_mgmt_policy": "0.17.1",
+        "azure_mgmt_policy": "0.17.2",
         "azure_mgmt_policy_insights": "0.17.1",
         "azure_mgmt_powerbi_embedded": "0.17.0",
         "azure_mgmt_recovery_services": "0.17.1",

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Policy::Mgmt::V2016_04_01
+module Azure::Policy::Mgmt::V2018_05_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -41,6 +41,9 @@ module Azure::Policy::Mgmt::V2016_04_01
     # @return [PolicyDefinitions] policy_definitions
     attr_reader :policy_definitions
 
+    # @return [PolicySetDefinitions] policy_set_definitions
+    attr_reader :policy_set_definitions
+
     #
     # Creates initializes a new instance of the PolicyClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -56,7 +59,8 @@ module Azure::Policy::Mgmt::V2016_04_01
 
       @policy_assignments = PolicyAssignments.new(self)
       @policy_definitions = PolicyDefinitions.new(self)
-      @api_version = '2016-04-01'
+      @policy_set_definitions = PolicySetDefinitions.new(self)
+      @api_version = '2018-05-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

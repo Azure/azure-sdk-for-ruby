@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Policy::Mgmt::V2018_03_01
+module Azure::Policy::Mgmt::V2018_05_01
   module Models
     #
     # Error response indicates Azure Resource Manager is not able to process
