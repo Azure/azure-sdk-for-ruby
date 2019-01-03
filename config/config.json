@@ -661,13 +661,6 @@
       "namespace": "Azure::MachineLearningServices::Mgmt:V2018_03_01_preview",
       "tag": "package-2018-03-preview",
       "title": "MachineLearningServicesClient"
-    },
-    "azure_mgmt_machine_learning_services_2018_11_19": {
-      "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2018-11-19/machineLearningServices.json"
-      ],
-      "namespace": "Azure::MachineLearningServices::Mgmt:V2018_11_19",
-      "title": "MachineLearningServicesClient"
     }
   },
   "azure_mgmt_managed_applications": {
