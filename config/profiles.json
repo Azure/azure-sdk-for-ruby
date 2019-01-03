@@ -382,7 +382,8 @@
                 },
                 "Microsoft.PolicyInsights": {
                     "management": {
-                        "2018-04-04": ["*"]
+                        "2018-04-04": ["*"],
+                        "2018-07-01-preview": ["*"]
                     }
                 },
                 "Microsoft.PowerBiEmbedded": {
@@ -1404,7 +1405,8 @@
             "resourceTypes": {
                 "Microsoft.PolicyInsights": {
                     "management": {
-                        "2018-04-04": ["*"]
+                        "2018-04-04": ["*"],
+                        "2018-07-01-preview": ["*"]
                     }
                 }
             },
