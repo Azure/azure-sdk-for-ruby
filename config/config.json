@@ -658,7 +658,7 @@
   "azure_mgmt_machine_learning_services": {
     "azure_mgmt_machine_learning_services_2018_03_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/machinelearningservices/resource-manager/readme.md",
-      "namespace": "Azure::MachineLearningServices::Mgmt:V2018_03_01_preview",
+      "namespace": "Azure::MachineLearningServices::Mgmt::V2018_03_01_preview",
       "tag": "package-2018-03-preview",
       "title": "MachineLearningServicesClient"
     }

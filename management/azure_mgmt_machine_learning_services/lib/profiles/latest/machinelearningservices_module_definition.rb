@@ -2,6 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure
-  VERSION = '0.19.8'
-end
+module Azure end
+module Azure::MachineLearningServices end
+module Azure::MachineLearningServices::Profiles end
+module Azure::MachineLearningServices::Profiles::Latest end
