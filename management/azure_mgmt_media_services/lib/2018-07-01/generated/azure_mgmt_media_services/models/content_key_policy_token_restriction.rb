@@ -135,8 +135,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: true,
                 serialized_name: 'restrictionTokenType',
                 type: {
-                  name: 'Enum',
-                  module: 'ContentKeyPolicyRestrictionTokenType'
+                  name: 'String'
                 }
               },
               open_id_connect_discovery_document: {

@@ -43,8 +43,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: true,
                 serialized_name: 'property',
                 type: {
-                  name: 'Enum',
-                  module: 'FilterTrackPropertyType'
+                  name: 'String'
                 }
               },
               value: {
@@ -60,8 +59,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: true,
                 serialized_name: 'operation',
                 type: {
-                  name: 'Enum',
-                  module: 'FilterTrackPropertyCompareOperation'
+                  name: 'String'
                 }
               }
             }

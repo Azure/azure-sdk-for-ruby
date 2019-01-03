@@ -33,7 +33,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param top [Integer] Specifies a non-negative integer n that limits the
     # number of items returned from a collection. The service returns the number of
     # available items up to but not greater than the specified value n.
-    # @param orderby [String] Specifies the the key by which the result collection
+    # @param orderby [String] Specifies the key by which the result collection
     # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -57,7 +57,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param top [Integer] Specifies a non-negative integer n that limits the
     # number of items returned from a collection. The service returns the number of
     # available items up to but not greater than the specified value n.
-    # @param orderby [String] Specifies the the key by which the result collection
+    # @param orderby [String] Specifies the key by which the result collection
     # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -80,7 +80,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param top [Integer] Specifies a non-negative integer n that limits the
     # number of items returned from a collection. The service returns the number of
     # available items up to but not greater than the specified value n.
-    # @param orderby [String] Specifies the the key by which the result collection
+    # @param orderby [String] Specifies the key by which the result collection
     # should be ordered.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -771,7 +771,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param top [Integer] Specifies a non-negative integer n that limits the
     # number of items returned from a collection. The service returns the number of
     # available items up to but not greater than the specified value n.
-    # @param orderby [String] Specifies the the key by which the result collection
+    # @param orderby [String] Specifies the key by which the result collection
     # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

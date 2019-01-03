@@ -47,7 +47,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             model_properties: {
               start_timestamp: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'startTimestamp',
                 type: {
                   name: 'Number'
@@ -55,7 +55,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               end_timestamp: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'endTimestamp',
                 type: {
                   name: 'Number'
@@ -63,7 +63,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               presentation_window_duration: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'presentationWindowDuration',
                 type: {
                   name: 'Number'
@@ -71,7 +71,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               live_backoff_duration: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'liveBackoffDuration',
                 type: {
                   name: 'Number'
@@ -79,7 +79,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               timescale: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'timescale',
                 type: {
                   name: 'Number'
@@ -87,7 +87,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               force_end_timestamp: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'forceEndTimestamp',
                 type: {
                   name: 'Boolean'

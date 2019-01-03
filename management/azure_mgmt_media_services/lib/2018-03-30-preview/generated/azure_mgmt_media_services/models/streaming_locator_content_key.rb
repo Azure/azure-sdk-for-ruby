@@ -23,7 +23,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       # @return ID of Content Key
       attr_accessor :id
 
-      # @return [String] Value of  of Content Key
+      # @return [String] Value of Content Key
       attr_accessor :value
 
       # @return [String] ContentKeyPolicy used by Content Key

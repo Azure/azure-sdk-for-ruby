@@ -24,8 +24,8 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       # tracks
       attr_accessor :content_keys
 
-      # @return [String] LicenseAcquistionUrlTemplate is used to point to user
-      # speicified service to delivery content keys
+      # @return [String] LicenseAcquisitionUrlTemplate is used to point to user
+      # specified service to delivery content keys
       attr_accessor :custom_license_acquisition_url_template
 
 

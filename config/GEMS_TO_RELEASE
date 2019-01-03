@@ -2,7 +2,8 @@
     "management": [
         "azure_mgmt_machine_learning_services",
         "azure_mgmt_policy_insights",
-        "azure_mgmt_storage"
+        "azure_mgmt_storage",
+        "azure_mgmt_media_services"
     ],
     "rollup": [
         "azure_sdk"

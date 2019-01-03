@@ -51,8 +51,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'onError',
                 type: {
-                  name: 'Enum',
-                  module: 'OnErrorType'
+                  name: 'String'
                 }
               },
               relative_priority: {
@@ -60,8 +59,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'relativePriority',
                 type: {
-                  name: 'Enum',
-                  module: 'Priority'
+                  name: 'String'
                 }
               },
               preset: {

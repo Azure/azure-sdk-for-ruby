@@ -22,7 +22,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
       # @return [InsightsType] The type of insights to be extracted. If not set
       # then based on the content the type will selected.  If the content is
-      # audi only then only audio insights are extraced and if it is video
+      # audio only then only audio insights are extracted and if it is video
       # only. Possible values include: 'AudioInsightsOnly',
       # 'VideoInsightsOnly', 'AllInsights'
       attr_accessor :insights_to_extract
@@ -62,8 +62,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'insightsToExtract',
                 type: {
-                  name: 'Enum',
-                  module: 'InsightsType'
+                  name: 'String'
                 }
               }
             }
