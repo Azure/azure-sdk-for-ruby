@@ -3,13 +3,13 @@ language: ruby
 rvm:
   - 2.1.5
   - 2.2.0
-  - 2.3.0
+  - 2.3.1
 matrix:
   include:
-    - rvm: 2.3.0
+    - rvm: 2.3.1
       env: LATEST_RUNTIME=true
   allow_failures:
-    - rvm: 2.3.0
+    - rvm: 2.3.1
       env: LATEST_RUNTIME=true
 before_install:
   - gem install bundler -v 1.14.1
