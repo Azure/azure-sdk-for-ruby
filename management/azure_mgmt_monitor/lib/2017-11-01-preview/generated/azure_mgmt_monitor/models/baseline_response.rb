@@ -23,7 +23,7 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
       attr_accessor :name
 
       # @return [String] The timespan for which the data was retrieved. Its
-      # value consists of two datatimes concatenated, separated by '/'.  This
+      # value consists of two datetimes concatenated, separated by '/'.  This
       # may be adjusted in the future and returned back from what was
       # originally requested.
       attr_accessor :timespan
@@ -53,7 +53,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BaselineResponse',
           type: {
@@ -61,7 +60,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
             class_name: 'BaselineResponse',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -70,7 +68,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -79,7 +76,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -89,7 +85,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               timespan: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timespan',
                 type: {
@@ -97,7 +92,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.interval',
                 type: {
@@ -105,7 +99,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               aggregation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.aggregation',
                 type: {
@@ -113,13 +106,11 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               timestamps: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timestamps',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DateTimeElementType',
                       type: {
@@ -129,13 +120,11 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               baseline: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.baseline',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BaselineElementType',
                       type: {
@@ -146,13 +135,11 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metadata',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BaselineMetadataValueElementType',
                       type: {
