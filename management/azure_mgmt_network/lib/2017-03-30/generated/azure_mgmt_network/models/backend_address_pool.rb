@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2017_03_30
 
       # @return [SubResource] Gets outbound rules that use this backend address
       # pool.
-      attr_accessor :outbound_rule
+      attr_accessor :outbound_nat_rule
 
       # @return [String] Get provisioning state of the public IP resource.
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -43,7 +43,6 @@ module Azure::Network::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackendAddressPool',
           type: {
@@ -51,7 +50,6 @@ module Azure::Network::Mgmt::V2017_03_30
             class_name: 'BackendAddressPool',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -59,14 +57,12 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               backend_ipconfigurations: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.backendIPConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkInterfaceIPConfigurationElementType',
                       type: {
@@ -77,14 +73,12 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               load_balancing_rules: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.loadBalancingRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -94,18 +88,16 @@ module Azure::Network::Mgmt::V2017_03_30
                   }
                 }
               },
-              outbound_rule: {
-                client_side_validation: true,
+              outbound_nat_rule: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.outboundRule',
+                serialized_name: 'properties.outboundNatRule',
                 type: {
                   name: 'Composite',
                   class_name: 'SubResource'
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -113,7 +105,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -121,7 +112,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

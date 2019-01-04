@@ -7,14 +7,16 @@ require 'azure_mgmt_container_registry'
 module Azure::Profiles::Latest
   module ContainerRegistry
     module Mgmt
-      Operations = Azure::ContainerRegistry::Mgmt::V2017_10_01::Operations
       Replications = Azure::ContainerRegistry::Mgmt::V2017_10_01::Replications
       Webhooks = Azure::ContainerRegistry::Mgmt::V2017_10_01::Webhooks
+      Operations = Azure::ContainerRegistry::Mgmt::V2017_10_01::Operations
+      Tasks = Azure::ContainerRegistry::Mgmt::V2018_09_01::Tasks
       Registries = Azure::ContainerRegistry::Mgmt::V2018_09_01::Registries
       Runs = Azure::ContainerRegistry::Mgmt::V2018_09_01::Runs
-      Tasks = Azure::ContainerRegistry::Mgmt::V2018_09_01::Tasks
 
       module Models
+        Request = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Request
+        Event = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
         RegistryUsageListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageListResult
         QuarantinePolicy = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::QuarantinePolicy
         ImportSource = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSource
@@ -25,7 +27,6 @@ module Azure::Profiles::Latest
         RegistryNameStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryNameStatus
         OperationMetricSpecificationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationMetricSpecificationDefinition
         OperationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationDefinition
-        Sku = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Sku
         ReplicationUpdateParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ReplicationUpdateParameters
         StorageAccountProperties = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::StorageAccountProperties
         ReplicationListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ReplicationListResult
@@ -35,58 +36,40 @@ module Azure::Profiles::Latest
         RegistryPassword = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryPassword
         WebhookUpdateParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookUpdateParameters
         RegenerateCredentialParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegenerateCredentialParameters
-        WebhookListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookListResult
         ImportSourceCredentials = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSourceCredentials
         EventInfo = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventInfo
-        OperationServiceSpecificationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
+        WebhookListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookListResult
         CallbackConfig = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::CallbackConfig
-        Status = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
-        Target = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Target
+        OperationServiceSpecificationDefinition = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
         EventListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventListResult
-        RegistryListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListResult
-        Request = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Request
         RegistryUsage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsage
         Actor = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Actor
-        OperationListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationListResult
-        Source = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
-        RegistryListCredentialsResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
+        RegistryListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListResult
+        Target = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Target
         EventContent = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
-        VirtualNetworkRule = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::VirtualNetworkRule
+        RegistryListCredentialsResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
         EventRequestMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
+        VirtualNetworkRule = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::VirtualNetworkRule
+        Registry = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
         ImportImageParameters = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportImageParameters
         EventResponseMessage = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
-        Registry = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
-        Replication = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
-        Webhook = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Webhook
-        Event = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
         ImportMode = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportMode
-        SkuName = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuName
-        SkuTier = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
-        DefaultAction = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::DefaultAction
+        Replication = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
         PasswordName = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PasswordName
+        DefaultAction = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::DefaultAction
+        SkuTier = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
         RegistryUsageUnit = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageUnit
         PolicyStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PolicyStatus
         TrustPolicyType = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::TrustPolicyType
         WebhookStatus = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookStatus
         WebhookAction = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
-        PlatformUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::PlatformUpdateParameters
-        TaskStepUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStepUpdateParameters
-        ImageDescriptor = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ImageDescriptor
-        AuthInfoUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::AuthInfoUpdateParameters
-        SourceTriggerDescriptor = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerDescriptor
-        SourceUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceUpdateParameters
-        AgentProperties = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::AgentProperties
-        SourceTriggerUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerUpdateParameters
-        SourceUploadDefinition = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceUploadDefinition
-        BaseImageTriggerUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageTriggerUpdateParameters
-        RunFilter = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunFilter
-        TriggerUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TriggerUpdateParameters
-        RunGetLogResult = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunGetLogResult
-        TaskUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskUpdateParameters
-        TaskStepProperties = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStepProperties
-        Resource = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::Resource
+        Webhook = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Webhook
+        OperationListResult = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationListResult
+        SkuName = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuName
+        Status = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
+        Sku = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Sku
+        Source = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
         SourceProperties = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceProperties
-        ProxyResource = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ProxyResource
         BaseImageTrigger = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageTrigger
         Argument = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::Argument
         RunUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunUpdateParameters
@@ -112,23 +95,40 @@ module Azure::Profiles::Latest
         DockerBuildStepUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::DockerBuildStepUpdateParameters
         FileTaskStepUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::FileTaskStepUpdateParameters
         EncodedTaskStepUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::EncodedTaskStepUpdateParameters
+        TaskUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskUpdateParameters
         RunStatus = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunStatus
         RunType = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunType
         OS = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::OS
         Architecture = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::Architecture
         Variant = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::Variant
         ProvisioningState = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ProvisioningState
-        TaskStatus = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStatus
         BaseImageDependencyType = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageDependencyType
-        SourceControlType = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceControlType
+        TaskStatus = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStatus
         TokenType = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TokenType
-        SourceTriggerEvent = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerEvent
+        SourceControlType = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceControlType
         TriggerStatus = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TriggerStatus
+        SourceTriggerEvent = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerEvent
         BaseImageTriggerType = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageTriggerType
+        Resource = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::Resource
+        PlatformUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::PlatformUpdateParameters
+        TaskStepUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStepUpdateParameters
+        ImageDescriptor = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ImageDescriptor
+        AuthInfoUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::AuthInfoUpdateParameters
+        SourceTriggerDescriptor = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerDescriptor
+        SourceUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceUpdateParameters
+        AgentProperties = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::AgentProperties
+        SourceTriggerUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerUpdateParameters
+        SourceUploadDefinition = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceUploadDefinition
+        BaseImageTriggerUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageTriggerUpdateParameters
+        RunFilter = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunFilter
+        TriggerUpdateParameters = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TriggerUpdateParameters
+        RunGetLogResult = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunGetLogResult
+        ProxyResource = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ProxyResource
+        TaskStepProperties = Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStepProperties
       end
 
       class ContainerRegistryManagementClass
-        attr_reader :operations, :replications, :webhooks, :registries, :runs, :tasks, :configurable, :base_url, :options, :model_classes
+        attr_reader :replications, :webhooks, :operations, :tasks, :registries, :runs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -138,18 +138,18 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @replications = @client_0.replications
           @webhooks = @client_0.webhooks
+          @operations = @client_0.operations
 
           @client_1 = Azure::ContainerRegistry::Mgmt::V2018_09_01::ContainerRegistryManagementClient.new(configurable.credentials, base_url, options)
           if(@client_1.respond_to?(:subscription_id))
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
+          @tasks = @client_1.tasks
           @registries = @client_1.registries
           @runs = @client_1.runs
-          @tasks = @client_1.tasks
 
           @model_classes = ModelClasses.new
         end
@@ -170,6 +170,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def request
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Request
+          end
+          def event
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
+          end
           def registry_usage_list_result
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageListResult
           end
@@ -200,9 +206,6 @@ module Azure::Profiles::Latest
           def operation_definition
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationDefinition
           end
-          def sku
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Sku
-          end
           def replication_update_parameters
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ReplicationUpdateParameters
           end
@@ -230,35 +233,23 @@ module Azure::Profiles::Latest
           def regenerate_credential_parameters
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegenerateCredentialParameters
           end
-          def webhook_list_result
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookListResult
-          end
           def import_source_credentials
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportSourceCredentials
           end
           def event_info
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventInfo
           end
-          def operation_service_specification_definition
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
+          def webhook_list_result
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookListResult
           end
           def callback_config
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::CallbackConfig
           end
-          def status
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
-          end
-          def target
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Target
+          def operation_service_specification_definition
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationServiceSpecificationDefinition
           end
           def event_list_result
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventListResult
-          end
-          def registry_list_result
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListResult
-          end
-          def request
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Request
           end
           def registry_usage
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsage
@@ -266,23 +257,26 @@ module Azure::Profiles::Latest
           def actor
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Actor
           end
-          def operation_list_result
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationListResult
+          def registry_list_result
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListResult
           end
-          def source
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
-          end
-          def registry_list_credentials_result
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
+          def target
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Target
           end
           def event_content
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventContent
           end
-          def virtual_network_rule
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::VirtualNetworkRule
+          def registry_list_credentials_result
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryListCredentialsResult
           end
           def event_request_message
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventRequestMessage
+          end
+          def virtual_network_rule
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::VirtualNetworkRule
+          end
+          def registry
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
           end
           def import_image_parameters
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportImageParameters
@@ -290,32 +284,20 @@ module Azure::Profiles::Latest
           def event_response_message
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::EventResponseMessage
           end
-          def registry
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Registry
+          def import_mode
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportMode
           end
           def replication
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Replication
           end
-          def webhook
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Webhook
-          end
-          def event
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
-          end
-          def import_mode
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ImportMode
-          end
-          def sku_name
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuName
-          end
-          def sku_tier
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
+          def password_name
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PasswordName
           end
           def default_action
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::DefaultAction
           end
-          def password_name
-            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::PasswordName
+          def sku_tier
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuTier
           end
           def registry_usage_unit
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::RegistryUsageUnit
@@ -332,59 +314,26 @@ module Azure::Profiles::Latest
           def webhook_action
             Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::WebhookAction
           end
-          def platform_update_parameters
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::PlatformUpdateParameters
+          def webhook
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Webhook
           end
-          def task_step_update_parameters
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStepUpdateParameters
+          def operation_list_result
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::OperationListResult
           end
-          def image_descriptor
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ImageDescriptor
+          def sku_name
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::SkuName
           end
-          def auth_info_update_parameters
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::AuthInfoUpdateParameters
+          def status
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Status
           end
-          def source_trigger_descriptor
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerDescriptor
+          def sku
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Sku
           end
-          def source_update_parameters
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceUpdateParameters
-          end
-          def agent_properties
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::AgentProperties
-          end
-          def source_trigger_update_parameters
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerUpdateParameters
-          end
-          def source_upload_definition
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceUploadDefinition
-          end
-          def base_image_trigger_update_parameters
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageTriggerUpdateParameters
-          end
-          def run_filter
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunFilter
-          end
-          def trigger_update_parameters
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TriggerUpdateParameters
-          end
-          def run_get_log_result
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunGetLogResult
-          end
-          def task_update_parameters
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskUpdateParameters
-          end
-          def task_step_properties
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStepProperties
-          end
-          def resource
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::Resource
+          def source
+            Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Source
           end
           def source_properties
             Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceProperties
-          end
-          def proxy_resource
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ProxyResource
           end
           def base_image_trigger
             Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageTrigger
@@ -461,6 +410,9 @@ module Azure::Profiles::Latest
           def encoded_task_step_update_parameters
             Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::EncodedTaskStepUpdateParameters
           end
+          def task_update_parameters
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskUpdateParameters
+          end
           def run_status
             Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunStatus
           end
@@ -479,26 +431,74 @@ module Azure::Profiles::Latest
           def provisioning_state
             Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ProvisioningState
           end
-          def task_status
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStatus
-          end
           def base_image_dependency_type
             Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageDependencyType
           end
-          def source_control_type
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceControlType
+          def task_status
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStatus
           end
           def token_type
             Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TokenType
           end
-          def source_trigger_event
-            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerEvent
+          def source_control_type
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceControlType
           end
           def trigger_status
             Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TriggerStatus
           end
+          def source_trigger_event
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerEvent
+          end
           def base_image_trigger_type
             Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageTriggerType
+          end
+          def resource
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::Resource
+          end
+          def platform_update_parameters
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::PlatformUpdateParameters
+          end
+          def task_step_update_parameters
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStepUpdateParameters
+          end
+          def image_descriptor
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ImageDescriptor
+          end
+          def auth_info_update_parameters
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::AuthInfoUpdateParameters
+          end
+          def source_trigger_descriptor
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerDescriptor
+          end
+          def source_update_parameters
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceUpdateParameters
+          end
+          def agent_properties
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::AgentProperties
+          end
+          def source_trigger_update_parameters
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceTriggerUpdateParameters
+          end
+          def source_upload_definition
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::SourceUploadDefinition
+          end
+          def base_image_trigger_update_parameters
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::BaseImageTriggerUpdateParameters
+          end
+          def run_filter
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunFilter
+          end
+          def trigger_update_parameters
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TriggerUpdateParameters
+          end
+          def run_get_log_result
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::RunGetLogResult
+          end
+          def proxy_resource
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::ProxyResource
+          end
+          def task_step_properties
+            Azure::ContainerRegistry::Mgmt::V2018_09_01::Models::TaskStepProperties
           end
         end
       end
