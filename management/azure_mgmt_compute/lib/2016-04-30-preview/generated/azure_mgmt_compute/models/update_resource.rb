@@ -22,7 +22,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateResource',
           type: {
@@ -30,13 +29,11 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'UpdateResource',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

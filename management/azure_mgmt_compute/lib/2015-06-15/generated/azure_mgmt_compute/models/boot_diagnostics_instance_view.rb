@@ -25,7 +25,6 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BootDiagnosticsInstanceView',
           type: {
@@ -33,7 +32,6 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'BootDiagnosticsInstanceView',
             model_properties: {
               console_screenshot_blob_uri: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'consoleScreenshotBlobUri',
@@ -42,7 +40,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               serial_console_log_blob_uri: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'serialConsoleLogBlobUri',

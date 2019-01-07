@@ -29,7 +29,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # <br><br>For Linux VMs, the certificate file is placed under the
       # /var/lib/waagent directory, with the file name
       # <UppercaseThumbprint>.crt for the X509 certificate file and
-      # <UppercaseThumbpring>.prv for private key. Both of these files are .pem
+      # <UppercaseThumbprint>.prv for private key. Both of these files are .pem
       # formatted.
       attr_accessor :certificate_store
 
@@ -40,7 +40,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultCertificate',
           type: {
@@ -48,7 +47,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VaultCertificate',
             model_properties: {
               certificate_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateUrl',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               certificate_store: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateStore',
                 type: {
