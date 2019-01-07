@@ -50,7 +50,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageDataDisk',
           type: {
@@ -58,7 +57,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ImageDataDisk',
             model_properties: {
               lun: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'lun',
                 type: {
@@ -66,7 +64,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               snapshot: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'snapshot',
                 type: {
@@ -75,7 +72,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               managed_disk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {
@@ -84,7 +80,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               blob_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobUri',
                 type: {
@@ -92,7 +87,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -101,7 +95,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               disk_size_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {
@@ -109,7 +102,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               storage_account_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountType',
                 type: {

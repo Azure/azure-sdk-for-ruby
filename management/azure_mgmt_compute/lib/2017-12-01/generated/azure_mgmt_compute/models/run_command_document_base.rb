@@ -35,7 +35,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RunCommandDocumentBase',
           type: {
@@ -43,7 +42,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'RunCommandDocumentBase',
             model_properties: {
               schema: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: '$schema',
                 type: {
@@ -51,7 +49,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -59,7 +56,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'osType',
                 type: {
@@ -68,7 +64,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               label: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'label',
                 type: {
@@ -76,7 +71,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'description',
                 type: {
