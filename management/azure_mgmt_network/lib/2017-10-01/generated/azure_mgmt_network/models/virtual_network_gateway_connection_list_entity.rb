@@ -89,7 +89,6 @@ module Azure::Network::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkGatewayConnectionListEntity',
           type: {
@@ -97,7 +96,6 @@ module Azure::Network::Mgmt::V2017_10_01
             class_name: 'VirtualNetworkGatewayConnectionListEntity',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -105,7 +103,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -114,7 +111,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -123,7 +119,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -131,13 +126,11 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -147,7 +140,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               authorization_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authorizationKey',
                 type: {
@@ -155,7 +147,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               virtual_network_gateway1: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.virtualNetworkGateway1',
                 type: {
@@ -164,7 +155,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               virtual_network_gateway2: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualNetworkGateway2',
                 type: {
@@ -173,7 +163,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               local_network_gateway2: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.localNetworkGateway2',
                 type: {
@@ -182,7 +171,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               connection_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.connectionType',
                 type: {
@@ -190,7 +178,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               routing_weight: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.routingWeight',
                 type: {
@@ -198,7 +185,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               shared_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sharedKey',
                 type: {
@@ -206,7 +192,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               connection_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.connectionStatus',
@@ -215,14 +200,12 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               tunnel_connection_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.tunnelConnectionStatus',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TunnelConnectionHealthElementType',
                       type: {
@@ -233,7 +216,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               egress_bytes_transferred: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.egressBytesTransferred',
@@ -242,7 +224,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               ingress_bytes_transferred: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.ingressBytesTransferred',
@@ -251,7 +232,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               peer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peer',
                 type: {
@@ -260,7 +240,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               enable_bgp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableBgp',
                 type: {
@@ -268,7 +247,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               use_policy_based_traffic_selectors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.usePolicyBasedTrafficSelectors',
                 type: {
@@ -276,13 +254,11 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               ipsec_policies: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipsecPolicies',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IpsecPolicyElementType',
                       type: {
@@ -293,7 +269,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               resource_guid: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -301,7 +276,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -310,7 +284,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

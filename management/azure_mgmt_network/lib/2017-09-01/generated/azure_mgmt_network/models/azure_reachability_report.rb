@@ -30,7 +30,6 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AzureReachabilityReport',
           type: {
@@ -38,7 +37,6 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'AzureReachabilityReport',
             model_properties: {
               aggregation_level: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'aggregationLevel',
                 type: {
@@ -46,7 +44,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               provider_location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'providerLocation',
                 type: {
@@ -55,13 +52,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               reachability_report: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'reachabilityReport',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AzureReachabilityReportItemElementType',
                       type: {

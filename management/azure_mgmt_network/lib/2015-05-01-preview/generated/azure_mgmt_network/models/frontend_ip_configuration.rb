@@ -65,7 +65,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FrontendIpConfiguration',
           type: {
@@ -73,7 +72,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'FrontendIpConfiguration',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -81,7 +79,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               private_ipaddress: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAddress',
                 type: {
@@ -89,7 +86,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               private_ipallocation_method: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAllocationMethod',
                 type: {
@@ -97,7 +93,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               subnet: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnet',
                 type: {
@@ -106,7 +101,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               public_ipaddress: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicIPAddress',
                 type: {
@@ -115,13 +109,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               inbound_nat_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.inboundNatRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -132,13 +124,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               inbound_nat_pools: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.inboundNatPools',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -149,13 +139,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               outbound_nat_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outboundNatRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -166,13 +154,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               load_balancing_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancingRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -183,7 +169,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -191,7 +176,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -199,7 +183,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

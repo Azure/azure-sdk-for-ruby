@@ -49,7 +49,6 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Subnet',
           type: {
@@ -57,7 +56,6 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'Subnet',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -65,7 +63,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.addressPrefix',
                 type: {
@@ -73,7 +70,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               network_security_group: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkSecurityGroup',
                 type: {
@@ -82,7 +78,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               route_table: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.routeTable',
                 type: {
@@ -91,14 +86,12 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               ip_configurations: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.ipConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IPConfigurationElementType',
                       type: {
@@ -109,13 +102,11 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               resource_navigation_links: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceNavigationLinks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceNavigationLinkElementType',
                       type: {
@@ -126,7 +117,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -134,7 +124,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -142,7 +131,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

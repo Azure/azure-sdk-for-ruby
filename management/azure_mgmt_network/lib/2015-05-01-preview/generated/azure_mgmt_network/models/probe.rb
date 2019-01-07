@@ -64,7 +64,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Probe',
           type: {
@@ -72,7 +71,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'Probe',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -80,13 +78,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               load_balancing_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancingRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -97,7 +93,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -105,7 +100,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.port',
                 type: {
@@ -113,7 +107,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               interval_in_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.intervalInSeconds',
                 type: {
@@ -121,7 +114,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               number_of_probes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.numberOfProbes',
                 type: {
@@ -129,7 +121,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               request_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requestPath',
                 type: {
@@ -137,7 +128,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -145,7 +135,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -153,7 +142,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
