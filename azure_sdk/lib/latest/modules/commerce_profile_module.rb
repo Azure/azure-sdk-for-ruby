@@ -11,7 +11,6 @@ module Azure::Profiles::Latest
       RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
 
       module Models
-        UsageAggregation = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
         InfoField = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::InfoField
         UsageAggregationListResult = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
         OfferTermInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
@@ -23,6 +22,7 @@ module Azure::Profiles::Latest
         ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
         MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
         ResourceRateCardInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
+        UsageAggregation = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
       end
 
       class CommerceManagementClass
@@ -56,9 +56,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def usage_aggregation
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
-          end
           def info_field
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::InfoField
           end
@@ -91,6 +88,9 @@ module Azure::Profiles::Latest
           end
           def resource_rate_card_info
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
+          end
+          def usage_aggregation
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
           end
         end
       end
