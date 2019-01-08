@@ -34,8 +34,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Topic] operation results.
     #
-    def get(resource_group_name, topic_name, custom_headers:nil)
-      response = get_async(resource_group_name, topic_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, topic_name, custom_headers = nil)
+      response = get_async(resource_group_name, topic_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -52,8 +52,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, topic_name, custom_headers:nil)
-      get_async(resource_group_name, topic_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, topic_name, custom_headers = nil)
+      get_async(resource_group_name, topic_name, custom_headers).value!
     end
 
     #
@@ -69,7 +69,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, topic_name, custom_headers:nil)
+    def get_async(resource_group_name, topic_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
@@ -77,7 +77,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -136,8 +135,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Topic] operation results.
     #
-    def create_or_update(resource_group_name, topic_name, topic_info, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, topic_name, topic_info, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -152,9 +151,9 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers:nil)
+    def create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -181,8 +180,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, topic_name, custom_headers:nil)
-      response = delete_async(resource_group_name, topic_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, topic_name, custom_headers = nil)
+      response = delete_async(resource_group_name, topic_name, custom_headers).value!
       nil
     end
 
@@ -196,9 +195,9 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, topic_name, custom_headers:nil)
+    def delete_async(resource_group_name, topic_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, topic_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, topic_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -227,8 +226,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Topic] operation results.
     #
-    def update(resource_group_name, topic_name, topic_update_parameters, custom_headers:nil)
-      response = update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers:custom_headers).value!
+    def update(resource_group_name, topic_name, topic_update_parameters, custom_headers = nil)
+      response = update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -244,9 +243,9 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers:nil)
+    def update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers = nil)
       # Send request
-      promise = begin_update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers:custom_headers)
+      promise = begin_update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -272,8 +271,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [TopicsListResult] operation results.
     #
-    def list_by_subscription(custom_headers:nil)
-      response = list_by_subscription_async(custom_headers:custom_headers).value!
+    def list_by_subscription(custom_headers = nil)
+      response = list_by_subscription_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -287,8 +286,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_with_http_info(custom_headers:nil)
-      list_by_subscription_async(custom_headers:custom_headers).value!
+    def list_by_subscription_with_http_info(custom_headers = nil)
+      list_by_subscription_async(custom_headers).value!
     end
 
     #
@@ -301,13 +300,12 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_async(custom_headers:nil)
+    def list_by_subscription_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -364,8 +362,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [TopicsListResult] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -381,8 +379,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -397,14 +395,13 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -462,8 +459,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [TopicSharedAccessKeys] operation results.
     #
-    def list_shared_access_keys(resource_group_name, topic_name, custom_headers:nil)
-      response = list_shared_access_keys_async(resource_group_name, topic_name, custom_headers:custom_headers).value!
+    def list_shared_access_keys(resource_group_name, topic_name, custom_headers = nil)
+      response = list_shared_access_keys_async(resource_group_name, topic_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -480,8 +477,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_shared_access_keys_with_http_info(resource_group_name, topic_name, custom_headers:nil)
-      list_shared_access_keys_async(resource_group_name, topic_name, custom_headers:custom_headers).value!
+    def list_shared_access_keys_with_http_info(resource_group_name, topic_name, custom_headers = nil)
+      list_shared_access_keys_async(resource_group_name, topic_name, custom_headers).value!
     end
 
     #
@@ -497,7 +494,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_shared_access_keys_async(resource_group_name, topic_name, custom_headers:nil)
+    def list_shared_access_keys_async(resource_group_name, topic_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
@@ -505,7 +502,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -565,8 +561,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [TopicSharedAccessKeys] operation results.
     #
-    def regenerate_key(resource_group_name, topic_name, regenerate_key_request, custom_headers:nil)
-      response = regenerate_key_async(resource_group_name, topic_name, regenerate_key_request, custom_headers:custom_headers).value!
+    def regenerate_key(resource_group_name, topic_name, regenerate_key_request, custom_headers = nil)
+      response = regenerate_key_async(resource_group_name, topic_name, regenerate_key_request, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -585,8 +581,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def regenerate_key_with_http_info(resource_group_name, topic_name, regenerate_key_request, custom_headers:nil)
-      regenerate_key_async(resource_group_name, topic_name, regenerate_key_request, custom_headers:custom_headers).value!
+    def regenerate_key_with_http_info(resource_group_name, topic_name, regenerate_key_request, custom_headers = nil)
+      regenerate_key_async(resource_group_name, topic_name, regenerate_key_request, custom_headers).value!
     end
 
     #
@@ -604,7 +600,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def regenerate_key_async(resource_group_name, topic_name, regenerate_key_request, custom_headers:nil)
+    def regenerate_key_async(resource_group_name, topic_name, regenerate_key_request, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
@@ -613,11 +609,12 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::EventGrid::Mgmt::V2018_01_01::Models::TopicRegenerateKeyRequest.mapper()
@@ -680,8 +677,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [EventTypesListResult] operation results.
     #
-    def list_event_types(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:nil)
-      response = list_event_types_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:custom_headers).value!
+    def list_event_types(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers = nil)
+      response = list_event_types_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -700,8 +697,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_event_types_with_http_info(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:nil)
-      list_event_types_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:custom_headers).value!
+    def list_event_types_with_http_info(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers = nil)
+      list_event_types_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers).value!
     end
 
     #
@@ -719,7 +716,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_event_types_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers:nil)
+    def list_event_types_async(resource_group_name, provider_namespace, resource_type_name, resource_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'provider_namespace is nil' if provider_namespace.nil?
@@ -729,7 +726,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -788,8 +784,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Topic] operation results.
     #
-    def begin_create_or_update(resource_group_name, topic_name, topic_info, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, topic_name, topic_info, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -807,8 +803,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, topic_name, topic_info, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, topic_name, topic_info, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers).value!
     end
 
     #
@@ -825,7 +821,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, topic_name, topic_info, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
@@ -834,11 +830,12 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::EventGrid::Mgmt::V2018_01_01::Models::Topic.mapper()
@@ -898,8 +895,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, topic_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, topic_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, topic_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, topic_name, custom_headers).value!
       nil
     end
 
@@ -916,8 +913,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, topic_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, topic_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, topic_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, topic_name, custom_headers).value!
     end
 
     #
@@ -933,7 +930,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, topic_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, topic_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
@@ -941,7 +938,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -991,8 +987,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Topic] operation results.
     #
-    def begin_update(resource_group_name, topic_name, topic_update_parameters, custom_headers:nil)
-      response = begin_update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers:custom_headers).value!
+    def begin_update(resource_group_name, topic_name, topic_update_parameters, custom_headers = nil)
+      response = begin_update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1011,8 +1007,8 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(resource_group_name, topic_name, topic_update_parameters, custom_headers:nil)
-      begin_update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers:custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, topic_name, topic_update_parameters, custom_headers = nil)
+      begin_update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers).value!
     end
 
     #
@@ -1030,7 +1026,7 @@ module Azure::EventGrid::Mgmt::V2018_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers:nil)
+    def begin_update_async(resource_group_name, topic_name, topic_update_parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
@@ -1039,11 +1035,12 @@ module Azure::EventGrid::Mgmt::V2018_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::EventGrid::Mgmt::V2018_01_01::Models::TopicUpdateParameters.mapper()

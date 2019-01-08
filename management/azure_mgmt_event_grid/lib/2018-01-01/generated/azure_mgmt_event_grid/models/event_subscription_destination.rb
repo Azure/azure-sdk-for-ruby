@@ -29,7 +29,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscriptionDestination',
           type: {
