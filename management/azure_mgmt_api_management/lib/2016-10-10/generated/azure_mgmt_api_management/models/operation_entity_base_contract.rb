@@ -33,7 +33,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationEntityBaseContract',
           type: {
@@ -41,13 +40,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'OperationEntityBaseContract',
             model_properties: {
               template_parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'templateParameters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ParameterContractElementType',
                       type: {
@@ -58,7 +55,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 constraints: {
@@ -69,7 +65,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               request: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'request',
                 type: {
@@ -78,13 +73,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               responses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'responses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResultContractElementType',
                       type: {

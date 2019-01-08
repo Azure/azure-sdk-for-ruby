@@ -27,7 +27,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeployConfigurationParameters',
           type: {
@@ -35,7 +34,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'DeployConfigurationParameters',
             model_properties: {
               branch: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'branch',
                 type: {
@@ -43,7 +41,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               force: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'force',
                 type: {

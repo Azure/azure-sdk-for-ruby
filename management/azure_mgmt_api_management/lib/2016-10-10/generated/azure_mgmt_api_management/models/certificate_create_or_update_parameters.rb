@@ -26,7 +26,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateCreateOrUpdateParameters',
           type: {
@@ -34,7 +33,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'CertificateCreateOrUpdateParameters',
             model_properties: {
               data: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'data',
                 type: {
@@ -42,7 +40,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'password',
                 type: {

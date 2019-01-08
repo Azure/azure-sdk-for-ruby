@@ -25,7 +25,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'QuotaCounterValueContract',
           type: {
@@ -33,7 +32,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'QuotaCounterValueContract',
             model_properties: {
               calls_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'callsCount',
                 type: {
@@ -41,7 +39,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               kb_transferred: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kbTransferred',
                 type: {
