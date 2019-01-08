@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2016_03_30
   module Models
     #
-    # Response for CheckDnsNameAvailability Api servive call
+    # Response for CheckDnsNameAvailability Api service call
     #
     class DnsNameAvailabilityResult
 

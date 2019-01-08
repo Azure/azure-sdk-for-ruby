@@ -22,8 +22,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       attr_accessor :private_ipallocation_method
 
       # @return [SubResource] Gets or sets the reference of the subnet
-      # resource.A subnet from wher the load balancer gets its private frontend
-      # address
+      # resource.A subnet from where the load balancer gets its private
+      # frontend address
       attr_accessor :subnet
 
       # @return [SubResource] Gets or sets the reference of the PublicIP
