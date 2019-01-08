@@ -7,9 +7,9 @@ require 'azure_mgmt_search'
 module Azure::Profiles::Latest
   module Search
     module Mgmt
-      Services = Azure::Search::Mgmt::V2015_08_19::Services
       AdminKeys = Azure::Search::Mgmt::V2015_08_19::AdminKeys
       QueryKeys = Azure::Search::Mgmt::V2015_08_19::QueryKeys
+      Services = Azure::Search::Mgmt::V2015_08_19::Services
       Operations = Azure::Search::Mgmt::V2015_08_19::Operations
 
       module Models
@@ -20,10 +20,10 @@ module Azure::Profiles::Latest
         UnavailableNameReason = Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
         HostingMode = Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
         SkuName = Azure::Search::Mgmt::V2015_08_19::Models::SkuName
-        Identity = Azure::Search::Mgmt::V2015_08_19::Models::Identity
-        Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
         SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
         AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
+        Identity = Azure::Search::Mgmt::V2015_08_19::Models::Identity
+        Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
         Sku = Azure::Search::Mgmt::V2015_08_19::Models::Sku
         OperationDisplay = Azure::Search::Mgmt::V2015_08_19::Models::OperationDisplay
         Operation = Azure::Search::Mgmt::V2015_08_19::Models::Operation
@@ -34,7 +34,7 @@ module Azure::Profiles::Latest
       end
 
       class SearchManagementClass
-        attr_reader :services, :admin_keys, :query_keys, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :admin_keys, :query_keys, :services, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -44,9 +44,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @services = @client_0.services
           @admin_keys = @client_0.admin_keys
           @query_keys = @client_0.query_keys
+          @services = @client_0.services
           @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
@@ -87,17 +87,17 @@ module Azure::Profiles::Latest
           def sku_name
             Azure::Search::Mgmt::V2015_08_19::Models::SkuName
           end
-          def identity
-            Azure::Search::Mgmt::V2015_08_19::Models::Identity
-          end
-          def resource
-            Azure::Search::Mgmt::V2015_08_19::Models::Resource
-          end
           def search_service_status
             Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
           end
           def admin_key_kind
             Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
+          end
+          def identity
+            Azure::Search::Mgmt::V2015_08_19::Models::Identity
+          end
+          def resource
+            Azure::Search::Mgmt::V2015_08_19::Models::Resource
           end
           def sku
             Azure::Search::Mgmt::V2015_08_19::Models::Sku

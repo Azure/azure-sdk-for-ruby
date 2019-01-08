@@ -49,7 +49,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   autoload :BackupProtectionContainers,                         '2016-12-01/generated/azure_mgmt_recovery_services_backup/backup_protection_containers.rb'
   autoload :SecurityPINs,                                       '2016-12-01/generated/azure_mgmt_recovery_services_backup/security_pins.rb'
   autoload :BackupResourceStorageConfigs,                       '2016-12-01/generated/azure_mgmt_recovery_services_backup/backup_resource_storage_configs.rb'
-  autoload :BackupResourceStorageConfig,                        '2016-12-01/generated/azure_mgmt_recovery_services_backup/backup_resource_storage_config.rb'
   autoload :RecoveryServicesBackupClient,                       '2016-12-01/generated/azure_mgmt_recovery_services_backup/recovery_services_backup_client.rb'
 
   module Models

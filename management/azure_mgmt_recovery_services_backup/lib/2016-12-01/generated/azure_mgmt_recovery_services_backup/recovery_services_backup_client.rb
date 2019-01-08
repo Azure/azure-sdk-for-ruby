@@ -118,9 +118,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # @return [BackupResourceStorageConfigs] backup_resource_storage_configs
     attr_reader :backup_resource_storage_configs
 
-    # @return [BackupResourceStorageConfig] backup_resource_storage_config
-    attr_reader :backup_resource_storage_config
-
     #
     # Creates initializes a new instance of the RecoveryServicesBackupClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -159,7 +156,6 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       @backup_protection_containers = BackupProtectionContainers.new(self)
       @security_pins = SecurityPINs.new(self)
       @backup_resource_storage_configs = BackupResourceStorageConfigs.new(self)
-      @backup_resource_storage_config = BackupResourceStorageConfig.new(self)
       @api_version = '2016-12-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
