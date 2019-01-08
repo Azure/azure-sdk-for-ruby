@@ -11,7 +11,6 @@ module Azure::Profiles::Latest
       JobCollections = Azure::Scheduler::Mgmt::V2016_03_01::JobCollections
 
       module Models
-        JobDefinition = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition
         HttpAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::HttpAuthentication
         StorageQueueMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::StorageQueueMessage
         JobHistoryDefinitionProperties = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryDefinitionProperties
@@ -35,26 +34,27 @@ module Azure::Profiles::Latest
         JobRecurrenceScheduleMonthlyOccurrence = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrenceScheduleMonthlyOccurrence
         ClientCertAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::ClientCertAuthentication
         ServiceBusTopicMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTopicMessage
-        SkuDefinition = Azure::Scheduler::Mgmt::V2016_03_01::Models::SkuDefinition
-        OAuthAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
-        JobActionType = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobActionType
         JobCollectionState = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionState
+        OAuthAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
+        SkuDefinition = Azure::Scheduler::Mgmt::V2016_03_01::Models::SkuDefinition
         JobScheduleDay = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobScheduleDay
-        RecurrenceFrequency = Azure::Scheduler::Mgmt::V2016_03_01::Models::RecurrenceFrequency
-        JobExecutionStatus = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobExecutionStatus
-        JobHistoryActionName = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryActionName
+        JobActionType = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobActionType
         RetryType = Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryType
         ServiceBusAuthenticationType = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusAuthenticationType
+        JobHistoryActionName = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryActionName
+        JobExecutionStatus = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobExecutionStatus
         ServiceBusTransportType = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTransportType
+        RecurrenceFrequency = Azure::Scheduler::Mgmt::V2016_03_01::Models::RecurrenceFrequency
         JobState = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobState
         DayOfWeek = Azure::Scheduler::Mgmt::V2016_03_01::Models::DayOfWeek
         JobProperties = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobProperties
-        BasicAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::BasicAuthentication
         JobStatus = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStatus
+        BasicAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::BasicAuthentication
         Sku = Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
         JobRecurrence = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrence
         JobCollectionQuota = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionQuota
         JobCollectionDefinition = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionDefinition
+        JobDefinition = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition
       end
 
       class SchedulerManagementClass
@@ -88,9 +88,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def job_definition
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition
-          end
           def http_authentication
             Azure::Scheduler::Mgmt::V2016_03_01::Models::HttpAuthentication
           end
@@ -160,29 +157,20 @@ module Azure::Profiles::Latest
           def service_bus_topic_message
             Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTopicMessage
           end
-          def sku_definition
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::SkuDefinition
+          def job_collection_state
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionState
           end
           def oauth_authentication
             Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
           end
-          def job_action_type
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobActionType
-          end
-          def job_collection_state
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionState
+          def sku_definition
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::SkuDefinition
           end
           def job_schedule_day
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobScheduleDay
           end
-          def recurrence_frequency
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::RecurrenceFrequency
-          end
-          def job_execution_status
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobExecutionStatus
-          end
-          def job_history_action_name
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryActionName
+          def job_action_type
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobActionType
           end
           def retry_type
             Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryType
@@ -190,8 +178,17 @@ module Azure::Profiles::Latest
           def service_bus_authentication_type
             Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusAuthenticationType
           end
+          def job_history_action_name
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryActionName
+          end
+          def job_execution_status
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobExecutionStatus
+          end
           def service_bus_transport_type
             Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTransportType
+          end
+          def recurrence_frequency
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::RecurrenceFrequency
           end
           def job_state
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobState
@@ -202,11 +199,11 @@ module Azure::Profiles::Latest
           def job_properties
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobProperties
           end
-          def basic_authentication
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::BasicAuthentication
-          end
           def job_status
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStatus
+          end
+          def basic_authentication
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::BasicAuthentication
           end
           def sku
             Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
@@ -219,6 +216,9 @@ module Azure::Profiles::Latest
           end
           def job_collection_definition
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionDefinition
+          end
+          def job_definition
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition
           end
         end
       end

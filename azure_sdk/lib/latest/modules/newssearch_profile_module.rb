@@ -11,7 +11,7 @@ module Azure::Profiles::Latest
     module Models
       ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
       Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
-      ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
+      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
       TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
       Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
@@ -31,7 +31,7 @@ module Azure::Profiles::Latest
       CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
       ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
-      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+      ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
     end
 
@@ -71,8 +71,8 @@ module Azure::Profiles::Latest
         def freshness
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
         end
-        def image_object
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
+        def error
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
         end
         def text_format
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
@@ -131,8 +131,8 @@ module Azure::Profiles::Latest
         def query
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
         end
-        def error
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+        def image_object
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
         end
         def media_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
