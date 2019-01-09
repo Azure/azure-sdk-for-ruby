@@ -9,7 +9,6 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
-      StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
       ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
       ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
       ContainerRegistryEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
@@ -45,6 +44,7 @@ module Azure::Profiles::Latest
       SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
       MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
       SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+      StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
     end
 
     class EventGridDataClass
@@ -76,9 +76,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def storage_blob_created_event_data
-          Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
-        end
         def service_bus_active_messages_available_with_no_listeners_event_data
           Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
         end
@@ -184,6 +181,9 @@ module Azure::Profiles::Latest
         def subscription_deleted_event_data
           Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
         end
+        def storage_blob_created_event_data
+          Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
+        end
       end
     end
     module Mgmt
@@ -195,7 +195,6 @@ module Azure::Profiles::Latest
       Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
 
       module Models
-        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
         AdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::AdvancedFilter
         JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::JsonFieldWithDefault
         RetryPolicy = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::RetryPolicy
@@ -203,27 +202,27 @@ module Azure::Profiles::Latest
         DomainsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainsListResult
         EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionDestination
         OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
-        OperationInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationInfo
         DeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
         EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionsListResult
+        OperationInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationInfo
         DomainRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainRegenerateKeyRequest
         EventTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventTypesListResult
         EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
-        Domain = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
-        DomainTopic = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
         TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
+        DomainTopic = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
         NumberInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberInAdvancedFilter
-        NumberNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
-        NumberLessThanAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanAdvancedFilter
+        Domain = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
         StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageBlobDeadLetterDestination
+        NumberLessThanAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanAdvancedFilter
         NumberGreaterThanAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberGreaterThanAdvancedFilter
-        NumberGreaterThanOrEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberGreaterThanOrEqualsAdvancedFilter
+        NumberNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
+        NumberLessThanOrEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanOrEqualsAdvancedFilter
         BoolEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::BoolEqualsAdvancedFilter
         StringInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringInAdvancedFilter
         StringNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringNotInAdvancedFilter
         StringBeginsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringBeginsWithAdvancedFilter
-        NumberLessThanOrEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanOrEqualsAdvancedFilter
         StringEndsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringEndsWithAdvancedFilter
+        NumberGreaterThanOrEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberGreaterThanOrEqualsAdvancedFilter
         StringContainsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringContainsAdvancedFilter
         WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::WebHookEventSubscriptionDestination
         EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventHubEventSubscriptionDestination
@@ -236,12 +235,12 @@ module Azure::Profiles::Latest
         TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeInfo
         DomainProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainProvisioningState
         InputSchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
-        TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
-        EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
         EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
-        ResourceRegionType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
+        TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
         TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
+        EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
         TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
+        ResourceRegionType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
         Resource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
         Operation = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Operation
         TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
@@ -253,6 +252,7 @@ module Azure::Profiles::Latest
         EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionUpdateParameters
         TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicRegenerateKeyRequest
         DomainTopicsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopicsListResult
+        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
       end
 
       class EventGridManagementClass
@@ -290,9 +290,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def topic_update_parameters
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
-          end
           def advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::AdvancedFilter
           end
@@ -314,14 +311,14 @@ module Azure::Profiles::Latest
           def operations_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
           end
-          def operation_info
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationInfo
-          end
           def dead_letter_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
           end
           def event_subscriptions_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionsListResult
+          end
+          def operation_info
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationInfo
           end
           def domain_regenerate_key_request
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainRegenerateKeyRequest
@@ -332,32 +329,32 @@ module Azure::Profiles::Latest
           def event_subscription_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
           end
-          def domain
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
+          def topic_types_list_result
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
           end
           def domain_topic
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
           end
-          def topic_types_list_result
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
-          end
           def number_in_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberInAdvancedFilter
           end
-          def number_not_in_advanced_filter
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
-          end
-          def number_less_than_advanced_filter
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanAdvancedFilter
+          def domain
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
           end
           def storage_blob_dead_letter_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageBlobDeadLetterDestination
           end
+          def number_less_than_advanced_filter
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanAdvancedFilter
+          end
           def number_greater_than_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberGreaterThanAdvancedFilter
           end
-          def number_greater_than_or_equals_advanced_filter
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberGreaterThanOrEqualsAdvancedFilter
+          def number_not_in_advanced_filter
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
+          end
+          def number_less_than_or_equals_advanced_filter
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanOrEqualsAdvancedFilter
           end
           def bool_equals_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::BoolEqualsAdvancedFilter
@@ -371,11 +368,11 @@ module Azure::Profiles::Latest
           def string_begins_with_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringBeginsWithAdvancedFilter
           end
-          def number_less_than_or_equals_advanced_filter
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanOrEqualsAdvancedFilter
-          end
           def string_ends_with_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringEndsWithAdvancedFilter
+          end
+          def number_greater_than_or_equals_advanced_filter
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberGreaterThanOrEqualsAdvancedFilter
           end
           def string_contains_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringContainsAdvancedFilter
@@ -413,23 +410,23 @@ module Azure::Profiles::Latest
           def input_schema
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
           end
-          def tracked_resource
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
-          end
-          def event_delivery_schema
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
-          end
           def event_subscription_provisioning_state
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
           end
-          def resource_region_type
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
+          def tracked_resource
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
           end
           def topic_provisioning_state
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
           end
+          def event_delivery_schema
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
+          end
           def topic_type_provisioning_state
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
+          end
+          def resource_region_type
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
           end
           def resource
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
@@ -463,6 +460,9 @@ module Azure::Profiles::Latest
           end
           def domain_topics_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopicsListResult
+          end
+          def topic_update_parameters
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
           end
         end
       end
