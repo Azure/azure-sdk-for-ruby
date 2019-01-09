@@ -18,7 +18,6 @@ module Azure::Profiles::Latest
         ContainerServiceOrchestratorTypes = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorTypes
         ContainerService = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerService
         ContainerServiceCustomProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceCustomProfile
-        ContainerServiceSshConfiguration = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshConfiguration
         ContainerServiceServicePrincipalProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceServicePrincipalProfile
         ContainerServiceLinuxProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceLinuxProfile
         ContainerServiceMasterProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceMasterProfile
@@ -35,8 +34,8 @@ module Azure::Profiles::Latest
         ManagedClusterAADProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAADProfile
         OperationValue = Azure::ContainerService::Mgmt::V2018_03_31::Models::OperationValue
         ManagedClusterListResult = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterListResult
-        OperationListResult = Azure::ContainerService::Mgmt::V2018_03_31::Models::OperationListResult
         ManagedClusterUpgradeProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterUpgradeProfile
+        OperationListResult = Azure::ContainerService::Mgmt::V2018_03_31::Models::OperationListResult
         ManagedClusterPoolUpgradeProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterPoolUpgradeProfile
         ManagedCluster = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedCluster
         ManagedClusterAccessProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAccessProfile
@@ -45,6 +44,7 @@ module Azure::Profiles::Latest
         TagsObject = Azure::ContainerService::Mgmt::V2018_03_31::Models::TagsObject
         ContainerServiceWindowsProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceWindowsProfile
         ContainerServiceSshPublicKey = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshPublicKey
+        ContainerServiceSshConfiguration = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshConfiguration
         OrchestratorProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
         OrchestratorVersionProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfile
         OrchestratorVersionProfileListResult = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfileListResult
@@ -116,9 +116,6 @@ module Azure::Profiles::Latest
           def container_service_custom_profile
             Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceCustomProfile
           end
-          def container_service_ssh_configuration
-            Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshConfiguration
-          end
           def container_service_service_principal_profile
             Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceServicePrincipalProfile
           end
@@ -167,11 +164,11 @@ module Azure::Profiles::Latest
           def managed_cluster_list_result
             Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterListResult
           end
-          def operation_list_result
-            Azure::ContainerService::Mgmt::V2018_03_31::Models::OperationListResult
-          end
           def managed_cluster_upgrade_profile
             Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterUpgradeProfile
+          end
+          def operation_list_result
+            Azure::ContainerService::Mgmt::V2018_03_31::Models::OperationListResult
           end
           def managed_cluster_pool_upgrade_profile
             Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterPoolUpgradeProfile
@@ -196,6 +193,9 @@ module Azure::Profiles::Latest
           end
           def container_service_ssh_public_key
             Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshPublicKey
+          end
+          def container_service_ssh_configuration
+            Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshConfiguration
           end
           def orchestrator_profile
             Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
