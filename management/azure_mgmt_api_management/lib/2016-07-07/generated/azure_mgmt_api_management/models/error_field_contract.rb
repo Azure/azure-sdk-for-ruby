@@ -28,7 +28,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorFieldContract',
           type: {
@@ -36,7 +35,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ErrorFieldContract',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -44,7 +42,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -52,7 +49,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {

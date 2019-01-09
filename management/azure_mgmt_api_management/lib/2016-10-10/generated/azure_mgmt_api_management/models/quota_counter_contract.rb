@@ -38,7 +38,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'QuotaCounterContract',
           type: {
@@ -46,7 +45,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'QuotaCounterContract',
             model_properties: {
               calls_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'callsCount',
                 type: {
@@ -54,7 +52,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               kb_transferred: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kbTransferred',
                 type: {
@@ -62,7 +59,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               counter_key: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'counterKey',
                 constraints: {
@@ -73,7 +69,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               period_key: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'periodKey',
                 constraints: {
@@ -84,7 +79,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               period_start_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'periodStartTime',
                 type: {
@@ -92,7 +86,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               period_end_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'periodEndTime',
                 type: {

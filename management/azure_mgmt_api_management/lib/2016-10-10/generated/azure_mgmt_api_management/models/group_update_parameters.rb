@@ -35,7 +35,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupUpdateParameters',
           type: {
@@ -43,7 +42,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'GroupUpdateParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -55,7 +53,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -63,7 +60,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -72,7 +68,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               external_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'externalId',
                 type: {

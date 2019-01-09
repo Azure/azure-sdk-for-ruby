@@ -60,7 +60,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LoggerCollection',
           type: {
@@ -68,13 +67,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'LoggerCollection',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LoggerResponseElementType',
                       type: {
@@ -85,7 +82,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -93,7 +89,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

@@ -29,7 +29,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiExportResult',
           type: {
@@ -37,7 +36,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'ApiExportResult',
             model_properties: {
               content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'content',
                 type: {
@@ -45,7 +43,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               status_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCode',
                 type: {
@@ -54,7 +51,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {

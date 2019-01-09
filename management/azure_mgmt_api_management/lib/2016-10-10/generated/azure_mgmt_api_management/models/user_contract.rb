@@ -47,7 +47,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserContract',
           type: {
@@ -55,7 +54,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'UserContract',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -63,7 +61,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               first_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'firstName',
                 type: {
@@ -71,7 +68,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               last_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastName',
                 type: {
@@ -79,7 +75,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               email: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'email',
                 type: {
@@ -87,7 +82,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -96,7 +90,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               registration_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'registrationDate',
                 type: {
@@ -104,7 +97,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               note: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'note',
                 type: {
@@ -112,14 +104,12 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               identities: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'identities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UserIdentityContractElementType',
                       type: {

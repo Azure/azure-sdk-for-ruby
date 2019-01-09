@@ -34,7 +34,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RequestContract',
           type: {
@@ -42,7 +41,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'RequestContract',
             model_properties: {
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -50,13 +48,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               query_parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'queryParameters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ParameterContractElementType',
                       type: {
@@ -67,13 +63,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               headers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'headers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ParameterContractElementType',
                       type: {
@@ -84,13 +78,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               representations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'representations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RepresentationContractElementType',
                       type: {

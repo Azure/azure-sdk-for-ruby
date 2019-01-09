@@ -23,7 +23,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IdentityProviderList',
           type: {
@@ -31,13 +30,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'IdentityProviderList',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IdentityProviderContractElementType',
                       type: {

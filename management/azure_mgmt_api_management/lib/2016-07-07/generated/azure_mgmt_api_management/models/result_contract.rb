@@ -29,7 +29,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResultContract',
           type: {
@@ -37,7 +36,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ResultContract',
             model_properties: {
               status_code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'statusCode',
                 constraints: {
@@ -49,7 +47,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -57,13 +54,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               representations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'representations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RepresentationContractElementType',
                       type: {
