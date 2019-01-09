@@ -6,7 +6,7 @@
 module Azure::EventGrid::Mgmt::V2018_01_01
   module Models
     #
-    # Topic regenerate share access key key request
+    # Topic regenerate share access key request
     #
     class TopicRegenerateKeyRequest
 
@@ -22,7 +22,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TopicRegenerateKeyRequest',
           type: {
@@ -30,7 +29,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
             class_name: 'TopicRegenerateKeyRequest',
             model_properties: {
               key_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyName',
                 type: {

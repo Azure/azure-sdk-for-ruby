@@ -19,7 +19,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DomainTopic',
           type: {
@@ -27,7 +26,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
             class_name: 'DomainTopic',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -36,7 +34,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -45,7 +42,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

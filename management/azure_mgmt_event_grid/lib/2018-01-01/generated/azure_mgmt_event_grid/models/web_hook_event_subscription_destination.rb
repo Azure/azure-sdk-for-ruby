@@ -34,7 +34,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WebHook',
           type: {
@@ -42,7 +41,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
             class_name: 'WebHookEventSubscriptionDestination',
             model_properties: {
               endpointType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'endpointType',
                 type: {
@@ -50,7 +48,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               endpoint_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpointUrl',
                 type: {
@@ -58,7 +55,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
                 }
               },
               endpoint_base_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endpointBaseUrl',

@@ -22,7 +22,6 @@ module Azure::EventGrid::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationsListResult',
           type: {
@@ -30,13 +29,11 @@ module Azure::EventGrid::Mgmt::V2018_01_01
             class_name: 'OperationsListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationElementType',
                       type: {
