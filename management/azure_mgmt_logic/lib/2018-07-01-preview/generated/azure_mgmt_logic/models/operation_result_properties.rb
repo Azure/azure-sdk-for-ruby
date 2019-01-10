@@ -40,7 +40,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationResultProperties',
           type: {
@@ -48,7 +47,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'OperationResultProperties',
             model_properties: {
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               correlation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'correlation',
                 type: {
@@ -73,7 +69,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -81,7 +76,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -89,7 +83,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

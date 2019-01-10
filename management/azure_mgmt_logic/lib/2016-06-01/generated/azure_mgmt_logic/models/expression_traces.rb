@@ -23,7 +23,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressionTraces',
           type: {
@@ -31,13 +30,11 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'ExpressionTraces',
             model_properties: {
               inputs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inputs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressionRootElementType',
                       type: {

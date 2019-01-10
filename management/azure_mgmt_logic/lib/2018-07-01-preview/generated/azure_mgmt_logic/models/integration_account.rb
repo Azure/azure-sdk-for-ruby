@@ -25,7 +25,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccount',
           type: {
@@ -33,7 +32,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'IntegrationAccount',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -42,7 +40,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,7 +48,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -60,7 +56,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -68,13 +63,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -84,7 +77,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -92,7 +84,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

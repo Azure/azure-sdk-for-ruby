@@ -58,7 +58,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'X12ProtocolSettings',
           type: {
@@ -66,7 +65,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'X12ProtocolSettings',
             model_properties: {
               validation_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'validationSettings',
                 type: {
@@ -75,7 +73,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               framing_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'framingSettings',
                 type: {
@@ -84,7 +81,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               envelope_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'envelopeSettings',
                 type: {
@@ -93,7 +89,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               acknowledgement_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'acknowledgementSettings',
                 type: {
@@ -102,7 +97,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               message_filter: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageFilter',
                 type: {
@@ -111,7 +105,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               security_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'securitySettings',
                 type: {
@@ -120,7 +113,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               processing_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'processingSettings',
                 type: {
@@ -129,13 +121,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               envelope_overrides: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'envelopeOverrides',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'X12EnvelopeOverrideElementType',
                       type: {
@@ -146,13 +136,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               validation_overrides: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'validationOverrides',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'X12ValidationOverrideElementType',
                       type: {
@@ -163,13 +151,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               message_filter_list: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageFilterList',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'X12MessageIdentifierElementType',
                       type: {
@@ -180,13 +166,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               schema_references: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'schemaReferences',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'X12SchemaReferenceElementType',
                       type: {
@@ -197,13 +181,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               x12delimiter_overrides: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'x12DelimiterOverrides',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'X12DelimiterOverridesElementType',
                       type: {

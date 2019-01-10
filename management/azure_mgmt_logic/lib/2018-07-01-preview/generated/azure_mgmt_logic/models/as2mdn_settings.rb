@@ -22,7 +22,7 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [Boolean] The value indicating whether to send the asynchronous
       # MDN.
-      attr_accessor :send_mdn_asynchronously
+      attr_accessor :send_mdnasynchronously
 
       # @return [String] The receipt delivery URL.
       attr_accessor :receipt_delivery_url
@@ -32,14 +32,14 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [Boolean] The value indicating whether to sign the outbound MDN
       # if optional.
-      attr_accessor :sign_outbound_mdn_if_optional
+      attr_accessor :sign_outbound_mdnif_optional
 
       # @return [String] The MDN text.
       attr_accessor :mdn_text
 
       # @return [Boolean] The value indicating whether to send inbound MDN to
       # message box.
-      attr_accessor :send_inbound_mdn_to_message_box
+      attr_accessor :send_inbound_mdnto_message_box
 
       # @return [HashingAlgorithm] The signing or hashing algorithm. Possible
       # values include: 'NotSpecified', 'None', 'MD5', 'SHA1', 'SHA2256',
@@ -53,7 +53,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AS2MdnSettings',
           type: {
@@ -61,31 +60,27 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'AS2MdnSettings',
             model_properties: {
               need_mdn: {
-                client_side_validation: true,
                 required: true,
-                serialized_name: 'needMdn',
+                serialized_name: 'needMDN',
                 type: {
                   name: 'Boolean'
                 }
               },
               sign_mdn: {
-                client_side_validation: true,
                 required: true,
-                serialized_name: 'signMdn',
+                serialized_name: 'signMDN',
                 type: {
                   name: 'Boolean'
                 }
               },
-              send_mdn_asynchronously: {
-                client_side_validation: true,
+              send_mdnasynchronously: {
                 required: true,
-                serialized_name: 'sendMdnAsynchronously',
+                serialized_name: 'sendMDNAsynchronously',
                 type: {
                   name: 'Boolean'
                 }
               },
               receipt_delivery_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'receiptDeliveryUrl',
                 type: {
@@ -93,39 +88,34 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               disposition_notification_to: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dispositionNotificationTo',
                 type: {
                   name: 'String'
                 }
               },
-              sign_outbound_mdn_if_optional: {
-                client_side_validation: true,
+              sign_outbound_mdnif_optional: {
                 required: true,
-                serialized_name: 'signOutboundMdnIfOptional',
+                serialized_name: 'signOutboundMDNIfOptional',
                 type: {
                   name: 'Boolean'
                 }
               },
               mdn_text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mdnText',
                 type: {
                   name: 'String'
                 }
               },
-              send_inbound_mdn_to_message_box: {
-                client_side_validation: true,
+              send_inbound_mdnto_message_box: {
                 required: true,
-                serialized_name: 'sendInboundMdnToMessageBox',
+                serialized_name: 'sendInboundMDNToMessageBox',
                 type: {
                   name: 'Boolean'
                 }
               },
               mic_hashing_algorithm: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'micHashingAlgorithm',
                 type: {

@@ -41,7 +41,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrackingEvent',
           type: {
@@ -49,7 +48,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'TrackingEvent',
             model_properties: {
               event_level: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'eventLevel',
                 type: {
@@ -58,7 +56,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               event_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'eventTime',
                 type: {
@@ -66,7 +63,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               record_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'recordType',
                 type: {
@@ -74,7 +70,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

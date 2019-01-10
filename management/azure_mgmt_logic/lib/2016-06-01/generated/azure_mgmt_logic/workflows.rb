@@ -32,8 +32,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Array<Workflow>] operation results.
     #
-    def list_by_subscription(top:nil, filter:nil, custom_headers:nil)
-      first_page = list_by_subscription_as_lazy(top:top, filter:filter, custom_headers:custom_headers)
+    def list_by_subscription(top = nil, filter = nil, custom_headers = nil)
+      first_page = list_by_subscription_as_lazy(top, filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -48,8 +48,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_with_http_info(top:nil, filter:nil, custom_headers:nil)
-      list_by_subscription_async(top:top, filter:filter, custom_headers:custom_headers).value!
+    def list_by_subscription_with_http_info(top = nil, filter = nil, custom_headers = nil)
+      list_by_subscription_async(top, filter, custom_headers).value!
     end
 
     #
@@ -63,13 +63,12 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_async(top:nil, filter:nil, custom_headers:nil)
+    def list_by_subscription_async(top = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -126,8 +125,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Array<Workflow>] operation results.
     #
-    def list_by_resource_group(resource_group_name, top:nil, filter:nil, custom_headers:nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, top:top, filter:filter, custom_headers:custom_headers)
+    def list_by_resource_group(resource_group_name, top = nil, filter = nil, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, top, filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -143,8 +142,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, top:nil, filter:nil, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, top:top, filter:filter, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, top = nil, filter = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, top, filter, custom_headers).value!
     end
 
     #
@@ -159,14 +158,13 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, top:nil, filter:nil, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, top = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -221,8 +219,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Workflow] operation results.
     #
-    def get(resource_group_name, workflow_name, custom_headers:nil)
-      response = get_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, workflow_name, custom_headers = nil)
+      response = get_async(resource_group_name, workflow_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -236,8 +234,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, workflow_name, custom_headers:nil)
-      get_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, workflow_name, custom_headers = nil)
+      get_async(resource_group_name, workflow_name, custom_headers).value!
     end
 
     #
@@ -250,7 +248,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, workflow_name, custom_headers:nil)
+    def get_async(resource_group_name, workflow_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -258,7 +256,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -314,8 +311,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Workflow] operation results.
     #
-    def create_or_update(resource_group_name, workflow_name, workflow, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, workflow_name, workflow, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, workflow_name, workflow, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, workflow_name, workflow, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -330,8 +327,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, workflow_name, workflow, custom_headers:nil)
-      create_or_update_async(resource_group_name, workflow_name, workflow, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, workflow_name, workflow, custom_headers = nil)
+      create_or_update_async(resource_group_name, workflow_name, workflow, custom_headers).value!
     end
 
     #
@@ -345,7 +342,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, workflow_name, workflow, custom_headers:nil)
+    def create_or_update_async(resource_group_name, workflow_name, workflow, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -354,11 +351,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
@@ -427,8 +425,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Workflow] operation results.
     #
-    def update(resource_group_name, workflow_name, workflow, custom_headers:nil)
-      response = update_async(resource_group_name, workflow_name, workflow, custom_headers:custom_headers).value!
+    def update(resource_group_name, workflow_name, workflow, custom_headers = nil)
+      response = update_async(resource_group_name, workflow_name, workflow, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -443,8 +441,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, workflow_name, workflow, custom_headers:nil)
-      update_async(resource_group_name, workflow_name, workflow, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, workflow_name, workflow, custom_headers = nil)
+      update_async(resource_group_name, workflow_name, workflow, custom_headers).value!
     end
 
     #
@@ -458,7 +456,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, workflow_name, workflow, custom_headers:nil)
+    def update_async(resource_group_name, workflow_name, workflow, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -467,11 +465,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
@@ -528,8 +527,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, workflow_name, custom_headers:nil)
-      response = delete_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, workflow_name, custom_headers = nil)
+      response = delete_async(resource_group_name, workflow_name, custom_headers).value!
       nil
     end
 
@@ -543,8 +542,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, workflow_name, custom_headers:nil)
-      delete_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, workflow_name, custom_headers = nil)
+      delete_async(resource_group_name, workflow_name, custom_headers).value!
     end
 
     #
@@ -557,7 +556,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, workflow_name, custom_headers:nil)
+    def delete_async(resource_group_name, workflow_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -565,7 +564,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -609,8 +607,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def disable(resource_group_name, workflow_name, custom_headers:nil)
-      response = disable_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def disable(resource_group_name, workflow_name, custom_headers = nil)
+      response = disable_async(resource_group_name, workflow_name, custom_headers).value!
       nil
     end
 
@@ -624,8 +622,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def disable_with_http_info(resource_group_name, workflow_name, custom_headers:nil)
-      disable_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def disable_with_http_info(resource_group_name, workflow_name, custom_headers = nil)
+      disable_async(resource_group_name, workflow_name, custom_headers).value!
     end
 
     #
@@ -638,7 +636,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def disable_async(resource_group_name, workflow_name, custom_headers:nil)
+    def disable_async(resource_group_name, workflow_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -646,7 +644,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -690,8 +687,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def enable(resource_group_name, workflow_name, custom_headers:nil)
-      response = enable_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def enable(resource_group_name, workflow_name, custom_headers = nil)
+      response = enable_async(resource_group_name, workflow_name, custom_headers).value!
       nil
     end
 
@@ -705,8 +702,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def enable_with_http_info(resource_group_name, workflow_name, custom_headers:nil)
-      enable_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def enable_with_http_info(resource_group_name, workflow_name, custom_headers = nil)
+      enable_async(resource_group_name, workflow_name, custom_headers).value!
     end
 
     #
@@ -719,7 +716,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def enable_async(resource_group_name, workflow_name, custom_headers:nil)
+    def enable_async(resource_group_name, workflow_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -727,7 +724,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -774,8 +770,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Object] operation results.
     #
-    def generate_upgraded_definition(resource_group_name, workflow_name, parameters, custom_headers:nil)
-      response = generate_upgraded_definition_async(resource_group_name, workflow_name, parameters, custom_headers:custom_headers).value!
+    def generate_upgraded_definition(resource_group_name, workflow_name, parameters, custom_headers = nil)
+      response = generate_upgraded_definition_async(resource_group_name, workflow_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -791,8 +787,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def generate_upgraded_definition_with_http_info(resource_group_name, workflow_name, parameters, custom_headers:nil)
-      generate_upgraded_definition_async(resource_group_name, workflow_name, parameters, custom_headers:custom_headers).value!
+    def generate_upgraded_definition_with_http_info(resource_group_name, workflow_name, parameters, custom_headers = nil)
+      generate_upgraded_definition_async(resource_group_name, workflow_name, parameters, custom_headers).value!
     end
 
     #
@@ -807,7 +803,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def generate_upgraded_definition_async(resource_group_name, workflow_name, parameters, custom_headers:nil)
+    def generate_upgraded_definition_async(resource_group_name, workflow_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -816,11 +812,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters.mapper()
@@ -870,8 +867,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [WorkflowTriggerCallbackUrl] operation results.
     #
-    def list_callback_url(resource_group_name, workflow_name, list_callback_url, custom_headers:nil)
-      response = list_callback_url_async(resource_group_name, workflow_name, list_callback_url, custom_headers:custom_headers).value!
+    def list_callback_url(resource_group_name, workflow_name, list_callback_url, custom_headers = nil)
+      response = list_callback_url_async(resource_group_name, workflow_name, list_callback_url, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -887,8 +884,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_callback_url_with_http_info(resource_group_name, workflow_name, list_callback_url, custom_headers:nil)
-      list_callback_url_async(resource_group_name, workflow_name, list_callback_url, custom_headers:custom_headers).value!
+    def list_callback_url_with_http_info(resource_group_name, workflow_name, list_callback_url, custom_headers = nil)
+      list_callback_url_async(resource_group_name, workflow_name, list_callback_url, custom_headers).value!
     end
 
     #
@@ -903,7 +900,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_callback_url_async(resource_group_name, workflow_name, list_callback_url, custom_headers:nil)
+    def list_callback_url_async(resource_group_name, workflow_name, list_callback_url, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -912,11 +909,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::GetCallbackUrlParameters.mapper()
@@ -974,8 +972,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Object] operation results.
     #
-    def list_swagger(resource_group_name, workflow_name, custom_headers:nil)
-      response = list_swagger_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def list_swagger(resource_group_name, workflow_name, custom_headers = nil)
+      response = list_swagger_async(resource_group_name, workflow_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -989,8 +987,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_swagger_with_http_info(resource_group_name, workflow_name, custom_headers:nil)
-      list_swagger_async(resource_group_name, workflow_name, custom_headers:custom_headers).value!
+    def list_swagger_with_http_info(resource_group_name, workflow_name, custom_headers = nil)
+      list_swagger_async(resource_group_name, workflow_name, custom_headers).value!
     end
 
     #
@@ -1003,7 +1001,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_swagger_async(resource_group_name, workflow_name, custom_headers:nil)
+    def list_swagger_async(resource_group_name, workflow_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -1011,7 +1009,6 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1056,8 +1053,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def move(resource_group_name, workflow_name, move, custom_headers:nil)
-      response = move_async(resource_group_name, workflow_name, move, custom_headers:custom_headers).value!
+    def move(resource_group_name, workflow_name, move, custom_headers = nil)
+      response = move_async(resource_group_name, workflow_name, move, custom_headers).value!
       nil
     end
 
@@ -1072,8 +1069,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def move_with_http_info(resource_group_name, workflow_name, move, custom_headers:nil)
-      move_async(resource_group_name, workflow_name, move, custom_headers:custom_headers).value!
+    def move_with_http_info(resource_group_name, workflow_name, move, custom_headers = nil)
+      move_async(resource_group_name, workflow_name, move, custom_headers).value!
     end
 
     #
@@ -1087,7 +1084,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def move_async(resource_group_name, workflow_name, move, custom_headers:nil)
+    def move_async(resource_group_name, workflow_name, move, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -1096,11 +1093,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
@@ -1148,8 +1146,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def regenerate_access_key(resource_group_name, workflow_name, key_type, custom_headers:nil)
-      response = regenerate_access_key_async(resource_group_name, workflow_name, key_type, custom_headers:custom_headers).value!
+    def regenerate_access_key(resource_group_name, workflow_name, key_type, custom_headers = nil)
+      response = regenerate_access_key_async(resource_group_name, workflow_name, key_type, custom_headers).value!
       nil
     end
 
@@ -1164,8 +1162,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def regenerate_access_key_with_http_info(resource_group_name, workflow_name, key_type, custom_headers:nil)
-      regenerate_access_key_async(resource_group_name, workflow_name, key_type, custom_headers:custom_headers).value!
+    def regenerate_access_key_with_http_info(resource_group_name, workflow_name, key_type, custom_headers = nil)
+      regenerate_access_key_async(resource_group_name, workflow_name, key_type, custom_headers).value!
     end
 
     #
@@ -1179,7 +1177,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def regenerate_access_key_async(resource_group_name, workflow_name, key_type, custom_headers:nil)
+    def regenerate_access_key_async(resource_group_name, workflow_name, key_type, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -1188,11 +1186,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::RegenerateActionParameter.mapper()
@@ -1240,8 +1239,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def validate_workflow(resource_group_name, workflow_name, validate, custom_headers:nil)
-      response = validate_workflow_async(resource_group_name, workflow_name, validate, custom_headers:custom_headers).value!
+    def validate_workflow(resource_group_name, workflow_name, validate, custom_headers = nil)
+      response = validate_workflow_async(resource_group_name, workflow_name, validate, custom_headers).value!
       nil
     end
 
@@ -1256,8 +1255,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def validate_workflow_with_http_info(resource_group_name, workflow_name, validate, custom_headers:nil)
-      validate_workflow_async(resource_group_name, workflow_name, validate, custom_headers:custom_headers).value!
+    def validate_workflow_with_http_info(resource_group_name, workflow_name, validate, custom_headers = nil)
+      validate_workflow_async(resource_group_name, workflow_name, validate, custom_headers).value!
     end
 
     #
@@ -1271,7 +1270,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def validate_workflow_async(resource_group_name, workflow_name, validate, custom_headers:nil)
+    def validate_workflow_async(resource_group_name, workflow_name, validate, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -1280,11 +1279,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
@@ -1333,8 +1333,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     # will be added to the HTTP request.
     #
     #
-    def validate(resource_group_name, location, workflow_name, workflow, custom_headers:nil)
-      response = validate_async(resource_group_name, location, workflow_name, workflow, custom_headers:custom_headers).value!
+    def validate(resource_group_name, location, workflow_name, workflow, custom_headers = nil)
+      response = validate_async(resource_group_name, location, workflow_name, workflow, custom_headers).value!
       nil
     end
 
@@ -1350,8 +1350,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def validate_with_http_info(resource_group_name, location, workflow_name, workflow, custom_headers:nil)
-      validate_async(resource_group_name, location, workflow_name, workflow, custom_headers:custom_headers).value!
+    def validate_with_http_info(resource_group_name, location, workflow_name, workflow, custom_headers = nil)
+      validate_async(resource_group_name, location, workflow_name, workflow, custom_headers).value!
     end
 
     #
@@ -1366,7 +1366,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def validate_async(resource_group_name, location, workflow_name, workflow, custom_headers:nil)
+    def validate_async(resource_group_name, location, workflow_name, workflow, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'location is nil' if location.nil?
@@ -1376,11 +1376,12 @@ module Azure::Logic::Mgmt::V2016_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
@@ -1428,8 +1429,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [WorkflowListResult] operation results.
     #
-    def list_by_subscription_next(next_page_link, custom_headers:nil)
-      response = list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next(next_page_link, custom_headers = nil)
+      response = list_by_subscription_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1443,8 +1444,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_subscription_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1457,12 +1458,11 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_next_async(next_page_link, custom_headers:nil)
+    def list_by_subscription_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1516,8 +1516,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [WorkflowListResult] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers:nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1531,8 +1531,8 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1545,12 +1545,11 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1606,12 +1605,12 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @return [WorkflowListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_subscription_as_lazy(top:nil, filter:nil, custom_headers:nil)
-      response = list_by_subscription_async(top:top, filter:filter, custom_headers:custom_headers).value!
+    def list_by_subscription_as_lazy(top = nil, filter = nil, custom_headers = nil)
+      response = list_by_subscription_async(top, filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_subscription_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_subscription_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1630,12 +1629,12 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @return [WorkflowListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, top:nil, filter:nil, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, top:top, filter:filter, custom_headers:custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, top = nil, filter = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, top, filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end

@@ -31,7 +31,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'X12SecuritySettings',
           type: {
@@ -39,7 +38,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'X12SecuritySettings',
             model_properties: {
               authorization_qualifier: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'authorizationQualifier',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               authorization_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationValue',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               security_qualifier: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'securityQualifier',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               password_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'passwordValue',
                 type: {

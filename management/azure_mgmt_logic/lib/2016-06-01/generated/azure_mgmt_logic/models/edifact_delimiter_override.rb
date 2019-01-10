@@ -58,7 +58,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactDelimiterOverride',
           type: {
@@ -66,7 +65,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'EdifactDelimiterOverride',
             model_properties: {
               message_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageId',
                 type: {
@@ -74,7 +72,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageVersion',
                 type: {
@@ -82,7 +79,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_release: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageRelease',
                 type: {
@@ -90,7 +86,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               data_element_separator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'dataElementSeparator',
                 type: {
@@ -98,7 +93,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               component_separator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'componentSeparator',
                 type: {
@@ -106,7 +100,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               segment_terminator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'segmentTerminator',
                 type: {
@@ -114,7 +107,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               repetition_separator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'repetitionSeparator',
                 type: {
@@ -122,7 +114,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               segment_terminator_suffix: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'segmentTerminatorSuffix',
                 type: {
@@ -131,7 +122,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               decimal_point_indicator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'decimalPointIndicator',
                 type: {
@@ -140,7 +130,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               release_indicator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'releaseIndicator',
                 type: {
@@ -148,7 +137,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_association_assigned_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageAssociationAssignedCode',
                 type: {
@@ -156,7 +144,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               target_namespace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetNamespace',
                 type: {

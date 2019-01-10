@@ -22,7 +22,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PartnerContent',
           type: {
@@ -30,7 +29,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'PartnerContent',
             model_properties: {
               b2b: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'b2b',
                 type: {

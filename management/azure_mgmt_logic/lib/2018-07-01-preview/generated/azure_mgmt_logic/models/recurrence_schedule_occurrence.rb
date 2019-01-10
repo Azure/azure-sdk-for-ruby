@@ -27,7 +27,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecurrenceScheduleOccurrence',
           type: {
@@ -35,7 +34,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'RecurrenceScheduleOccurrence',
             model_properties: {
               day: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'day',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               occurrence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'occurrence',
                 type: {

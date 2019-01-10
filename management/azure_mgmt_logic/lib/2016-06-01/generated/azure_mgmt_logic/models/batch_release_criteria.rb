@@ -28,7 +28,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BatchReleaseCriteria',
           type: {
@@ -36,7 +35,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'BatchReleaseCriteria',
             model_properties: {
               message_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageCount',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               batch_size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'batchSize',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               recurrence: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recurrence',
                 type: {

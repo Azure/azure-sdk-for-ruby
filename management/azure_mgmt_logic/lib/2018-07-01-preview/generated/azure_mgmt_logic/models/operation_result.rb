@@ -43,7 +43,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationResult',
           type: {
@@ -51,7 +50,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'OperationResult',
             model_properties: {
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -59,7 +57,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -67,7 +64,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               correlation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'correlation',
                 type: {
@@ -76,7 +72,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -84,7 +79,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -92,7 +86,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
@@ -100,7 +93,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'trackingId',
@@ -109,7 +101,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               inputs: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'inputs',
@@ -118,7 +109,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               inputs_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'inputsLink',
@@ -128,7 +118,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               outputs: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'outputs',
@@ -137,7 +126,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               outputs_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'outputsLink',
@@ -147,7 +135,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               tracked_properties: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'trackedProperties',
@@ -156,13 +143,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               retry_history: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryHistory',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RetryHistoryElementType',
                       type: {
@@ -173,7 +158,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               iteration_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'iterationCount',
                 type: {

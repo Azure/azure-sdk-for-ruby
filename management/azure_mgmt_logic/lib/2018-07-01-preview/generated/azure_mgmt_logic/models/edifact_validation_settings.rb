@@ -33,11 +33,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [Boolean] The value indicating whether to Whether to validate
       # EDI types.
-      attr_accessor :validate_edi_types
+      attr_accessor :validate_editypes
 
       # @return [Boolean] The value indicating whether to Whether to validate
       # XSD types.
-      attr_accessor :validate_xsd_types
+      attr_accessor :validate_xsdtypes
 
       # @return [Boolean] The value indicating whether to allow leading and
       # trailing spaces and zeroes.
@@ -59,7 +59,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactValidationSettings',
           type: {
@@ -67,7 +66,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'EdifactValidationSettings',
             model_properties: {
               validate_character_set: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'validateCharacterSet',
                 type: {
@@ -75,7 +73,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               check_duplicate_interchange_control_number: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkDuplicateInterchangeControlNumber',
                 type: {
@@ -83,7 +80,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               interchange_control_number_validity_days: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'interchangeControlNumberValidityDays',
                 type: {
@@ -91,7 +87,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               check_duplicate_group_control_number: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkDuplicateGroupControlNumber',
                 type: {
@@ -99,31 +94,27 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               check_duplicate_transaction_set_control_number: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkDuplicateTransactionSetControlNumber',
                 type: {
                   name: 'Boolean'
                 }
               },
-              validate_edi_types: {
-                client_side_validation: true,
+              validate_editypes: {
                 required: true,
-                serialized_name: 'validateEdiTypes',
+                serialized_name: 'validateEDITypes',
                 type: {
                   name: 'Boolean'
                 }
               },
-              validate_xsd_types: {
-                client_side_validation: true,
+              validate_xsdtypes: {
                 required: true,
-                serialized_name: 'validateXsdTypes',
+                serialized_name: 'validateXSDTypes',
                 type: {
                   name: 'Boolean'
                 }
               },
               allow_leading_and_trailing_spaces_and_zeroes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'allowLeadingAndTrailingSpacesAndZeroes',
                 type: {
@@ -131,7 +122,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               trim_leading_and_trailing_spaces_and_zeroes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'trimLeadingAndTrailingSpacesAndZeroes',
                 type: {
@@ -139,7 +129,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               trailing_separator_policy: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'trailingSeparatorPolicy',
                 type: {

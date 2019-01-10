@@ -61,7 +61,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTriggerHistory',
           type: {
@@ -69,7 +68,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'WorkflowTriggerHistory',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -78,7 +76,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTime',
@@ -87,7 +84,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endTime',
@@ -96,7 +92,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -105,7 +100,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.code',
@@ -114,7 +108,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.error',
@@ -123,7 +116,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               tracking_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.trackingId',
@@ -132,7 +124,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               correlation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.correlation',
                 type: {
@@ -141,7 +132,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               inputs_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.inputsLink',
@@ -151,7 +141,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               outputs_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.outputsLink',
@@ -161,7 +150,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               fired: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.fired',
@@ -170,7 +158,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               run: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.run',
@@ -180,7 +167,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -189,7 +175,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

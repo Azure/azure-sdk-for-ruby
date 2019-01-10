@@ -23,7 +23,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountPartnerFilter',
           type: {
@@ -31,7 +30,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'IntegrationAccountPartnerFilter',
             model_properties: {
               partner_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'partnerType',
                 type: {

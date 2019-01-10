@@ -25,7 +25,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentHash',
           type: {
@@ -33,7 +32,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'ContentHash',
             model_properties: {
               algorithm: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'algorithm',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
