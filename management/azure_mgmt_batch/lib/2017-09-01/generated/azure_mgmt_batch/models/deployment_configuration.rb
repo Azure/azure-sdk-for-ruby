@@ -32,7 +32,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentConfiguration',
           type: {
@@ -40,7 +39,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'DeploymentConfiguration',
             model_properties: {
               cloud_service_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cloudServiceConfiguration',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               virtual_machine_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualMachineConfiguration',
                 type: {
