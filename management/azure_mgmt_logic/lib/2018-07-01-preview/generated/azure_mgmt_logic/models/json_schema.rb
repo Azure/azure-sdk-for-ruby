@@ -25,7 +25,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JsonSchema',
           type: {
@@ -33,7 +32,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'JsonSchema',
             model_properties: {
               title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'content',
                 type: {

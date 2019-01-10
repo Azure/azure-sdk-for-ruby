@@ -34,8 +34,8 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
     #
     # @return [WorkflowTriggerCallbackUrl] operation results.
     #
-    def list_callback_url(resource_group_name, workflow_name, version_id, trigger_name, parameters:nil, custom_headers:nil)
-      response = list_callback_url_async(resource_group_name, workflow_name, version_id, trigger_name, parameters:parameters, custom_headers:custom_headers).value!
+    def list_callback_url(resource_group_name, workflow_name, version_id, trigger_name, parameters = nil, custom_headers = nil)
+      response = list_callback_url_async(resource_group_name, workflow_name, version_id, trigger_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -52,8 +52,8 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_callback_url_with_http_info(resource_group_name, workflow_name, version_id, trigger_name, parameters:nil, custom_headers:nil)
-      list_callback_url_async(resource_group_name, workflow_name, version_id, trigger_name, parameters:parameters, custom_headers:custom_headers).value!
+    def list_callback_url_with_http_info(resource_group_name, workflow_name, version_id, trigger_name, parameters = nil, custom_headers = nil)
+      list_callback_url_async(resource_group_name, workflow_name, version_id, trigger_name, parameters, custom_headers).value!
     end
 
     #
@@ -69,7 +69,7 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_callback_url_async(resource_group_name, workflow_name, version_id, trigger_name, parameters:nil, custom_headers:nil)
+    def list_callback_url_async(resource_group_name, workflow_name, version_id, trigger_name, parameters = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
@@ -79,11 +79,12 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Logic::Mgmt::V2018_07_01_preview::Models::GetCallbackUrlParameters.mapper()

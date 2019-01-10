@@ -24,7 +24,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateSecretKeyParameters',
           type: {
@@ -32,7 +31,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'RegenerateSecretKeyParameters',
             model_properties: {
               key_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyType',
                 type: {

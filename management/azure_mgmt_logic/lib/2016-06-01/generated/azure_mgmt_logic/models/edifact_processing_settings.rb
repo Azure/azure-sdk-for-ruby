@@ -38,7 +38,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactProcessingSettings',
           type: {
@@ -46,7 +45,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'EdifactProcessingSettings',
             model_properties: {
               mask_security_info: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'maskSecurityInfo',
                 type: {
@@ -54,7 +52,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               preserve_interchange: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'preserveInterchange',
                 type: {
@@ -62,7 +59,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               suspend_interchange_on_error: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'suspendInterchangeOnError',
                 type: {
@@ -70,7 +66,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               create_empty_xml_tags_for_trailing_separators: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'createEmptyXmlTagsForTrailingSeparators',
                 type: {
@@ -78,7 +73,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               use_dot_as_decimal_separator: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'useDotAsDecimalSeparator',
                 type: {

@@ -61,7 +61,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AS2ValidationSettings',
           type: {
@@ -69,7 +68,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'AS2ValidationSettings',
             model_properties: {
               override_message_properties: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'overrideMessageProperties',
                 type: {
@@ -77,7 +75,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               encrypt_message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'encryptMessage',
                 type: {
@@ -85,7 +82,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               sign_message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'signMessage',
                 type: {
@@ -93,7 +89,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               compress_message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'compressMessage',
                 type: {
@@ -101,7 +96,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               check_duplicate_message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkDuplicateMessage',
                 type: {
@@ -109,7 +103,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               interchange_duplicates_validity_days: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'interchangeDuplicatesValidityDays',
                 type: {
@@ -117,7 +110,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               check_certificate_revocation_list_on_send: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkCertificateRevocationListOnSend',
                 type: {
@@ -125,7 +117,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               check_certificate_revocation_list_on_receive: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkCertificateRevocationListOnReceive',
                 type: {
@@ -133,7 +124,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               encryption_algorithm: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'encryptionAlgorithm',
                 type: {
@@ -141,7 +131,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               signing_algorithm: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'signingAlgorithm',
                 type: {

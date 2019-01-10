@@ -35,7 +35,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AS2MessageConnectionSettings',
           type: {
@@ -43,7 +42,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'AS2MessageConnectionSettings',
             model_properties: {
               ignore_certificate_name_mismatch: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ignoreCertificateNameMismatch',
                 type: {
@@ -51,7 +49,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               support_http_status_code_continue: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'supportHttpStatusCodeContinue',
                 type: {
@@ -59,7 +56,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               keep_http_connection_alive: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'keepHttpConnectionAlive',
                 type: {
@@ -67,7 +63,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               unfold_http_headers: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'unfoldHttpHeaders',
                 type: {

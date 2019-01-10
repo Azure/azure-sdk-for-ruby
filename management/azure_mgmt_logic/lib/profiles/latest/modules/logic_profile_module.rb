@@ -30,6 +30,26 @@ module Azure::Logic::Profiles::Latest
     Operations = Azure::Logic::Mgmt::V2018_07_01_preview::Operations
 
     module Models
+      IntegrationAccountSkuName = Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountSkuName
+      SchemaType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SchemaType
+      MapType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::MapType
+      PartnerType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::PartnerType
+      AgreementType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::AgreementType
+      HashingAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::HashingAlgorithm
+      EncryptionAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EncryptionAlgorithm
+      SigningAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SigningAlgorithm
+      TrailingSeparatorPolicy = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrailingSeparatorPolicy
+      X12CharacterSet = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12CharacterSet
+      SegmentTerminatorSuffix = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SegmentTerminatorSuffix
+      X12DateFormat = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12DateFormat
+      X12TimeFormat = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12TimeFormat
+      UsageIndicator = Azure::Logic::Mgmt::V2018_07_01_preview::Models::UsageIndicator
+      MessageFilterType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::MessageFilterType
+      EdifactCharacterSet = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactCharacterSet
+      EdifactDecimalIndicator = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactDecimalIndicator
+      TrackEventsOperationOptions = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackEventsOperationOptions
+      EventLevel = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EventLevel
+      TrackingRecordType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackingRecordType
       X12EnvelopeOverride = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12EnvelopeOverride
       Resource = Azure::Logic::Mgmt::V2018_07_01_preview::Models::Resource
       X12ValidationOverride = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12ValidationOverride
@@ -184,26 +204,6 @@ module Azure::Logic::Profiles::Latest
       DaysOfWeek = Azure::Logic::Mgmt::V2018_07_01_preview::Models::DaysOfWeek
       DayOfWeek = Azure::Logic::Mgmt::V2018_07_01_preview::Models::DayOfWeek
       KeyType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::KeyType
-      IntegrationAccountSkuName = Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountSkuName
-      SchemaType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SchemaType
-      MapType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::MapType
-      PartnerType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::PartnerType
-      AgreementType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::AgreementType
-      HashingAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::HashingAlgorithm
-      EncryptionAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EncryptionAlgorithm
-      SigningAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SigningAlgorithm
-      TrailingSeparatorPolicy = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrailingSeparatorPolicy
-      X12CharacterSet = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12CharacterSet
-      SegmentTerminatorSuffix = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SegmentTerminatorSuffix
-      X12DateFormat = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12DateFormat
-      X12TimeFormat = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12TimeFormat
-      UsageIndicator = Azure::Logic::Mgmt::V2018_07_01_preview::Models::UsageIndicator
-      MessageFilterType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::MessageFilterType
-      EdifactCharacterSet = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactCharacterSet
-      EdifactDecimalIndicator = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactDecimalIndicator
-      TrackEventsOperationOptions = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackEventsOperationOptions
-      EventLevel = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EventLevel
-      TrackingRecordType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackingRecordType
     end
 
     #
@@ -272,6 +272,66 @@ module Azure::Logic::Profiles::Latest
     end
 
     class ModelClasses
+      def integration_account_sku_name
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountSkuName
+      end
+      def schema_type
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::SchemaType
+      end
+      def map_type
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::MapType
+      end
+      def partner_type
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::PartnerType
+      end
+      def agreement_type
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::AgreementType
+      end
+      def hashing_algorithm
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::HashingAlgorithm
+      end
+      def encryption_algorithm
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::EncryptionAlgorithm
+      end
+      def signing_algorithm
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::SigningAlgorithm
+      end
+      def trailing_separator_policy
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrailingSeparatorPolicy
+      end
+      def x12_character_set
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12CharacterSet
+      end
+      def segment_terminator_suffix
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::SegmentTerminatorSuffix
+      end
+      def x12_date_format
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12DateFormat
+      end
+      def x12_time_format
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12TimeFormat
+      end
+      def usage_indicator
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::UsageIndicator
+      end
+      def message_filter_type
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::MessageFilterType
+      end
+      def edifact_character_set
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactCharacterSet
+      end
+      def edifact_decimal_indicator
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactDecimalIndicator
+      end
+      def track_events_operation_options
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackEventsOperationOptions
+      end
+      def event_level
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::EventLevel
+      end
+      def tracking_record_type
+        Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackingRecordType
+      end
       def x12_envelope_override
         Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12EnvelopeOverride
       end
@@ -733,66 +793,6 @@ module Azure::Logic::Profiles::Latest
       end
       def key_type
         Azure::Logic::Mgmt::V2018_07_01_preview::Models::KeyType
-      end
-      def integration_account_sku_name
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountSkuName
-      end
-      def schema_type
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::SchemaType
-      end
-      def map_type
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::MapType
-      end
-      def partner_type
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::PartnerType
-      end
-      def agreement_type
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::AgreementType
-      end
-      def hashing_algorithm
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::HashingAlgorithm
-      end
-      def encryption_algorithm
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::EncryptionAlgorithm
-      end
-      def signing_algorithm
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::SigningAlgorithm
-      end
-      def trailing_separator_policy
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrailingSeparatorPolicy
-      end
-      def x12_character_set
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12CharacterSet
-      end
-      def segment_terminator_suffix
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::SegmentTerminatorSuffix
-      end
-      def x12_date_format
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12DateFormat
-      end
-      def x12_time_format
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12TimeFormat
-      end
-      def usage_indicator
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::UsageIndicator
-      end
-      def message_filter_type
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::MessageFilterType
-      end
-      def edifact_character_set
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactCharacterSet
-      end
-      def edifact_decimal_indicator
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactDecimalIndicator
-      end
-      def track_events_operation_options
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackEventsOperationOptions
-      end
-      def event_level
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::EventLevel
-      end
-      def tracking_record_type
-        Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackingRecordType
       end
     end
   end

@@ -41,7 +41,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AS2ProtocolSettings',
           type: {
@@ -49,7 +48,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AS2ProtocolSettings',
             model_properties: {
               message_connection_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageConnectionSettings',
                 type: {
@@ -58,7 +56,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               acknowledgement_connection_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'acknowledgementConnectionSettings',
                 type: {
@@ -67,7 +64,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               mdn_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'mdnSettings',
                 type: {
@@ -76,7 +72,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               security_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'securitySettings',
                 type: {
@@ -85,7 +80,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               validation_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'validationSettings',
                 type: {
@@ -94,7 +88,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               envelope_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'envelopeSettings',
                 type: {
@@ -103,7 +96,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               error_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'errorSettings',
                 type: {

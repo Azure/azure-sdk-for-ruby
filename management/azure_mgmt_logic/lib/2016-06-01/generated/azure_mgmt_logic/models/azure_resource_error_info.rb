@@ -25,7 +25,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AzureResourceErrorInfo',
           type: {
@@ -33,7 +32,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AzureResourceErrorInfo',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'message',
                 type: {
@@ -49,13 +46,11 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AzureResourceErrorInfoElementType',
                       type: {

@@ -21,10 +21,10 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       attr_accessor :enforce_character_set
 
       # @return [Boolean] The value indicating whether to validate EDI types.
-      attr_accessor :validate_edi_types
+      attr_accessor :validate_editypes
 
       # @return [Boolean] The value indicating whether to validate XSD types.
-      attr_accessor :validate_xsd_types
+      attr_accessor :validate_xsdtypes
 
       # @return [Boolean] The value indicating whether to allow leading and
       # trailing spaces and zeroes.
@@ -46,7 +46,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactValidationOverride',
           type: {
@@ -54,7 +53,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'EdifactValidationOverride',
             model_properties: {
               message_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageId',
                 type: {
@@ -62,31 +60,27 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               enforce_character_set: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enforceCharacterSet',
                 type: {
                   name: 'Boolean'
                 }
               },
-              validate_edi_types: {
-                client_side_validation: true,
+              validate_editypes: {
                 required: true,
-                serialized_name: 'validateEdiTypes',
+                serialized_name: 'validateEDITypes',
                 type: {
                   name: 'Boolean'
                 }
               },
-              validate_xsd_types: {
-                client_side_validation: true,
+              validate_xsdtypes: {
                 required: true,
-                serialized_name: 'validateXsdTypes',
+                serialized_name: 'validateXSDTypes',
                 type: {
                   name: 'Boolean'
                 }
               },
               allow_leading_and_trailing_spaces_and_zeroes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'allowLeadingAndTrailingSpacesAndZeroes',
                 type: {
@@ -94,7 +88,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               trailing_separator_policy: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'trailingSeparatorPolicy',
                 type: {
@@ -102,7 +95,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               trim_leading_and_trailing_spaces_and_zeroes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'trimLeadingAndTrailingSpacesAndZeroes',
                 type: {

@@ -28,7 +28,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Request',
           type: {
@@ -36,7 +35,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'Request',
             model_properties: {
               headers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'headers',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'uri',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               method: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'method',
                 type: {
