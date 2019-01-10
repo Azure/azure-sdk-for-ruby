@@ -26,7 +26,6 @@ module Azure::Compute::Mgmt::V2018_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiskSku',
           type: {
@@ -34,7 +33,6 @@ module Azure::Compute::Mgmt::V2018_04_01
             class_name: 'DiskSku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Compute::Mgmt::V2018_04_01
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tier',

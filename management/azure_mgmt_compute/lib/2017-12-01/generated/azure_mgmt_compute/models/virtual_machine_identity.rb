@@ -41,7 +41,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineIdentity',
           type: {
@@ -49,7 +48,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineIdentity',
             model_properties: {
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'principalId',
@@ -58,7 +56,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -67,7 +64,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -76,13 +72,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               identity_ids: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'identityIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

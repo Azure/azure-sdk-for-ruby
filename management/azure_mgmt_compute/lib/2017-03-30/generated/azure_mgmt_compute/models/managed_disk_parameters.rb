@@ -24,7 +24,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ManagedDiskParameters',
           type: {
@@ -32,7 +31,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ManagedDiskParameters',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -40,7 +38,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               storage_account_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountType',
                 type: {

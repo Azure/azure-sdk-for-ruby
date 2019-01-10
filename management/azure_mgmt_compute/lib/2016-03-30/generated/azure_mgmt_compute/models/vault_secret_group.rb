@@ -27,7 +27,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultSecretGroup',
           type: {
@@ -35,7 +34,6 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VaultSecretGroup',
             model_properties: {
               source_vault: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceVault',
                 type: {
@@ -44,13 +42,11 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               vault_certificates: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vaultCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VaultCertificateElementType',
                       type: {

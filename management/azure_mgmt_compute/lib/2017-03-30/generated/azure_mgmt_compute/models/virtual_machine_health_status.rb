@@ -22,7 +22,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineHealthStatus',
           type: {
@@ -30,7 +29,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineHealthStatus',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',

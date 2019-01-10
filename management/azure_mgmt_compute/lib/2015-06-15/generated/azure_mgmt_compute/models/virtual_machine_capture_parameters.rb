@@ -29,7 +29,6 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineCaptureParameters',
           type: {
@@ -37,7 +36,6 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineCaptureParameters',
             model_properties: {
               vhd_prefix: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'vhdPrefix',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               destination_container_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'destinationContainerName',
                 type: {
@@ -53,7 +50,6 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               overwrite_vhds: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'overwriteVhds',
                 type: {

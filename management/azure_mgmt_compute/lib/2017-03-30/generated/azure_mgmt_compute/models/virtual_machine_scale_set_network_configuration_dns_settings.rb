@@ -24,7 +24,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetNetworkConfigurationDnsSettings',
           type: {
@@ -32,13 +31,11 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetNetworkConfigurationDnsSettings',
             model_properties: {
               dns_servers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
