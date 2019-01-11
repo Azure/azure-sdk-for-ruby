@@ -19,7 +19,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
       # @return [Array<String>] Specifies an array of alerts that are disabled.
       # Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
-      # Access_Anomaly
+      # Access_Anomaly, Data_Exfiltration, Unsafe_Action
       attr_accessor :disabled_alerts
 
       # @return [Array<String>] Specifies an array of e-mail addresses to which
@@ -43,6 +43,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # Detection audit logs.
       attr_accessor :retention_days
 
+      # @return [DateTime] Specifies the UTC creation time of the policy.
+      attr_accessor :creation_time
+
 
       #
       # Mapper for ServerSecurityAlertPolicy class as Ruby Hash.
@@ -50,7 +53,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServerSecurityAlertPolicy',
           type: {
@@ -58,7 +60,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'ServerSecurityAlertPolicy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -67,7 +68,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -76,7 +76,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -85,7 +84,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.state',
                 type: {
@@ -94,13 +92,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               disabled_alerts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.disabledAlerts',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -110,13 +106,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               email_addresses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.emailAddresses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -126,7 +120,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               email_account_admins: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.emailAccountAdmins',
                 type: {
@@ -134,7 +127,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageEndpoint',
                 type: {
@@ -142,7 +134,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_account_access_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountAccessKey',
                 type: {
@@ -150,11 +141,18 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               retention_days: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retentionDays',
                 type: {
                   name: 'Number'
+                }
+              },
+              creation_time: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.creationTime',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

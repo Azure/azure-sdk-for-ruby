@@ -45,7 +45,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobStepOutput',
           type: {
@@ -53,7 +52,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobStepOutput',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 default_value: 'SqlDatabase',
@@ -62,7 +60,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               subscription_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionId',
                 type: {
@@ -70,7 +67,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               resource_group_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceGroupName',
                 type: {
@@ -78,7 +74,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               server_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'serverName',
                 type: {
@@ -86,7 +81,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'databaseName',
                 type: {
@@ -94,7 +88,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               schema_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'schemaName',
                 default_value: 'dbo',
@@ -103,7 +96,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               table_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'tableName',
                 type: {
@@ -111,7 +103,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               credential: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'credential',
                 type: {

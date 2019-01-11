@@ -15,9 +15,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # @return [String] Collation of the managed database.
       attr_accessor :collation
 
-      # @return [ManagedDatabaseStatus] Status for the database. Possible
-      # values include: 'Online', 'Offline', 'Shutdown', 'Creating',
-      # 'Inaccessible'
+      # @return [ManagedDatabaseStatus] Status of the database. Possible values
+      # include: 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible',
+      # 'Updating'
       attr_accessor :status
 
       # @return [DateTime] Creation date of the database.
@@ -46,8 +46,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # SourceManagedInstanceName and PointInTime must be specified.
       # RestoreExternalBackup: Create a database by restoring from external
       # backup files. Collation, StorageContainerUri and
-      # StorageContainerSasToken must be specified. Possible values include:
-      # 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+      # StorageContainerSasToken must be specified. Recovery: Creates a
+      # database by restoring a geo-replicated backup. RecoverableDatabaseId
+      # must be specified as the recoverable database resource ID to restore.
+      # Possible values include: 'Default', 'RestoreExternalBackup',
+      # 'PointInTimeRestore', 'Recovery'
       attr_accessor :create_mode
 
       # @return [String] Conditional. If createMode is RestoreExternalBackup,
@@ -59,6 +62,10 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # associated with create operation of this database.
       attr_accessor :source_database_id
 
+      # @return [String] The restorable dropped database resource id to restore
+      # when creating this database.
+      attr_accessor :restorable_dropped_database_id
+
       # @return [String] Conditional. If createMode is RestoreExternalBackup,
       # this value is required. Specifies the storage container sas token.
       attr_accessor :storage_container_sas_token
@@ -67,6 +74,10 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # managed database belongs to.
       attr_accessor :failover_group_id
 
+      # @return [String] The resource identifier of the recoverable database
+      # associated with create operation of this database.
+      attr_accessor :recoverable_database_id
+
 
       #
       # Mapper for ManagedDatabase class as Ruby Hash.
@@ -74,7 +85,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ManagedDatabase',
           type: {
@@ -82,7 +92,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'ManagedDatabase',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -91,7 +100,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -100,7 +108,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -109,7 +116,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -117,13 +123,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -133,7 +137,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               collation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.collation',
                 type: {
@@ -141,7 +144,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -150,7 +152,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               creation_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationDate',
@@ -159,7 +160,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               earliest_restore_point: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.earliestRestorePoint',
@@ -168,7 +168,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               restore_point_in_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.restorePointInTime',
                 type: {
@@ -176,7 +175,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               default_secondary_location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.defaultSecondaryLocation',
@@ -185,7 +183,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               catalog_collation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.catalogCollation',
                 type: {
@@ -193,7 +190,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               create_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createMode',
                 type: {
@@ -201,7 +197,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_container_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageContainerUri',
                 type: {
@@ -209,15 +204,20 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               source_database_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceDatabaseId',
                 type: {
                   name: 'String'
                 }
               },
+              restorable_dropped_database_id: {
+                required: false,
+                serialized_name: 'properties.restorableDroppedDatabaseId',
+                type: {
+                  name: 'String'
+                }
+              },
               storage_container_sas_token: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageContainerSasToken',
                 type: {
@@ -225,10 +225,16 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               failover_group_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.failoverGroupId',
+                type: {
+                  name: 'String'
+                }
+              },
+              recoverable_database_id: {
+                required: false,
+                serialized_name: 'properties.recoverableDatabaseId',
                 type: {
                   name: 'String'
                 }

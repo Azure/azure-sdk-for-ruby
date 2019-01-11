@@ -44,6 +44,16 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       # @return [Integer] The maximum storage size in GB.
       attr_accessor :storage_size_in_gb
 
+      # @return [String] Collation of the managed instance.
+      attr_accessor :collation
+
+      # @return [String] The Dns Zone that the managed instance is in.
+      attr_accessor :dns_zone
+
+      # @return [String] The resource id of another managed instance whose DNS
+      # zone this managed instance will share after creation.
+      attr_accessor :dns_zone_partner
+
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 
@@ -54,7 +64,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ManagedInstanceUpdate',
           type: {
@@ -62,7 +71,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'ManagedInstanceUpdate',
             model_properties: {
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -71,7 +79,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               fully_qualified_domain_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.fullyQualifiedDomainName',
@@ -80,7 +87,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               administrator_login: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.administratorLogin',
                 type: {
@@ -88,7 +94,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               administrator_login_password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.administratorLoginPassword',
                 type: {
@@ -96,7 +101,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               subnet_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnetId',
                 type: {
@@ -104,7 +108,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -113,7 +116,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               license_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.licenseType',
                 type: {
@@ -121,7 +123,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               v_cores: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vCores',
                 type: {
@@ -129,21 +130,40 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               storage_size_in_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageSizeInGB',
                 type: {
                   name: 'Number'
                 }
               },
+              collation: {
+                required: false,
+                serialized_name: 'properties.collation',
+                type: {
+                  name: 'String'
+                }
+              },
+              dns_zone: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.dnsZone',
+                type: {
+                  name: 'String'
+                }
+              },
+              dns_zone_partner: {
+                required: false,
+                serialized_name: 'properties.dnsZonePartner',
+                type: {
+                  name: 'String'
+                }
+              },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

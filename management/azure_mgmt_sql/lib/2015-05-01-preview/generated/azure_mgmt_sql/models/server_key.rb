@@ -43,7 +43,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServerKey',
           type: {
@@ -51,7 +50,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'ServerKey',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -60,7 +58,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -69,7 +66,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,7 +74,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -86,7 +81,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -95,7 +89,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               subregion: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.subregion',
@@ -104,7 +97,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               server_key_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.serverKeyType',
                 type: {
@@ -112,7 +104,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uri',
                 type: {
@@ -120,7 +111,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.thumbprint',
                 type: {
@@ -128,7 +118,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               creation_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationDate',
                 type: {

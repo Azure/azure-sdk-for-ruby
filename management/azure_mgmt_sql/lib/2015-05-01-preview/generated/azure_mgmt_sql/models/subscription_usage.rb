@@ -31,7 +31,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SubscriptionUsage',
           type: {
@@ -39,7 +38,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SubscriptionUsage',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,7 +46,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,7 +54,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,7 +62,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.displayName',
@@ -75,7 +70,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentValue',
@@ -84,7 +78,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.limit',
@@ -93,7 +86,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.unit',

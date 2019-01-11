@@ -30,7 +30,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobExecutionTarget',
           type: {
@@ -38,7 +37,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobExecutionTarget',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -47,7 +45,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               server_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'serverName',
@@ -56,7 +53,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'databaseName',
