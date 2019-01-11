@@ -29,7 +29,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Job',
           type: {
@@ -37,7 +36,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'Job',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,7 +44,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,7 +52,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,7 +60,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 default_value: '',
@@ -73,7 +68,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.version',
@@ -82,7 +76,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               schedule: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.schedule',
                 type: {

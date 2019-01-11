@@ -42,7 +42,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SyncAgent',
           type: {
@@ -50,7 +49,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncAgent',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -59,7 +57,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -68,7 +65,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -77,7 +73,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               sync_agent_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -86,7 +81,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               sync_database_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.syncDatabaseId',
                 type: {
@@ -94,7 +88,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               last_alive_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastAliveTime',
@@ -103,7 +96,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -112,7 +104,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               is_up_to_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isUpToDate',
@@ -121,7 +112,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               expiry_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.expiryTime',
@@ -130,7 +120,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.version',

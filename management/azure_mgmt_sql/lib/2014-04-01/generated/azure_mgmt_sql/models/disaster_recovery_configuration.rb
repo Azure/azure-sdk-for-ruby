@@ -52,7 +52,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DisasterRecoveryConfiguration',
           type: {
@@ -60,7 +59,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'DisasterRecoveryConfiguration',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -69,7 +67,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -78,7 +75,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -87,7 +83,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -96,7 +91,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               auto_failover: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.autoFailover',
                 type: {
@@ -104,7 +98,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               failover_policy: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.failoverPolicy',
                 type: {
@@ -112,7 +105,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               partner_server_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.partnerServerId',
                 type: {
@@ -120,7 +112,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               logical_server_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.logicalServerName',
@@ -129,7 +120,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               partner_logical_server_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.partnerLogicalServerName',
@@ -138,7 +128,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               role: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.role',
@@ -147,7 +136,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',

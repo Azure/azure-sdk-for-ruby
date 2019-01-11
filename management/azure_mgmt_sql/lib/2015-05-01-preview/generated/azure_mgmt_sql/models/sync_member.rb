@@ -56,7 +56,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SyncMember',
           type: {
@@ -64,7 +63,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncMember',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -73,7 +71,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -82,7 +79,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -91,7 +87,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               database_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.databaseType',
                 type: {
@@ -99,7 +94,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               sync_agent_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.syncAgentId',
                 type: {
@@ -107,7 +101,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               sql_server_database_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sqlServerDatabaseId',
                 type: {
@@ -115,7 +108,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               server_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serverName',
                 type: {
@@ -123,7 +115,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.databaseName',
                 type: {
@@ -131,7 +122,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               user_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userName',
                 type: {
@@ -139,7 +129,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.password',
                 type: {
@@ -147,7 +136,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               sync_direction: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.syncDirection',
                 type: {
@@ -155,7 +143,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               sync_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.syncState',

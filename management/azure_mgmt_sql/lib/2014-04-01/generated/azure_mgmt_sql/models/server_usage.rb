@@ -40,7 +40,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServerUsage',
           type: {
@@ -48,7 +47,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ServerUsage',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,7 +55,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               resource_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceName',
@@ -66,7 +63,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'displayName',
@@ -75,7 +71,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'currentValue',
@@ -84,7 +79,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'limit',
@@ -93,7 +87,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -102,7 +95,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               next_reset_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextResetTime',

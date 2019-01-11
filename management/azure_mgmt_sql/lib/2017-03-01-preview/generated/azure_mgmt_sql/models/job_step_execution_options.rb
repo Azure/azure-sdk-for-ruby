@@ -39,7 +39,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobStepExecutionOptions',
           type: {
@@ -47,7 +46,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobStepExecutionOptions',
             model_properties: {
               timeout_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeoutSeconds',
                 default_value: 43200,
@@ -56,7 +54,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               retry_attempts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryAttempts',
                 default_value: 10,
@@ -65,7 +62,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               initial_retry_interval_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'initialRetryIntervalSeconds',
                 default_value: 1,
@@ -74,7 +70,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               maximum_retry_interval_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maximumRetryIntervalSeconds',
                 default_value: 120,
@@ -83,7 +78,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               retry_interval_backoff_multiplier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryIntervalBackoffMultiplier',
                 default_value: 2,
