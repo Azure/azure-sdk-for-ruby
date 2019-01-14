@@ -33,8 +33,8 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
 
       attr_accessor :operatorType
 
-      # @return [String] The filter key. Represents an event property with upto
-      # two levels of nesting.
+      # @return [String] The filter key. Represents an event property with up
+      # to two levels of nesting.
       attr_accessor :key
 
 

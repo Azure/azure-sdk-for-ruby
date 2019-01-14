@@ -38,7 +38,7 @@ module Azure::Redis::Mgmt::V2015_08_01
 
       # @return [String] The exact ARM resource ID of the virtual network to
       # deploy the Redis cache in. Example format:
-      # /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
+      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
       attr_accessor :virtual_network
 
       # @return [String] Required when deploying a Redis cache inside an

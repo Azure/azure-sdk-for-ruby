@@ -8,7 +8,7 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
     #
     # This is used to express the source of an input schema mapping for a
     # single target field in the Event Grid Event schema. This is currently
-    # used in the mappings for the 'id','topic' and 'eventtime' properties.
+    # used in the mappings for the 'id','topic' and 'eventTime' properties.
     # This represents a field in the input event schema.
     #
     class JsonField

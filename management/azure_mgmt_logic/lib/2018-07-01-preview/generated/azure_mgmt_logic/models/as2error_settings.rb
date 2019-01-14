@@ -18,7 +18,7 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [Boolean] The value indicating whether to resend message If MDN
       # is not received.
-      attr_accessor :resend_if_mdn_not_received
+      attr_accessor :resend_if_mdnnot_received
 
 
       #
@@ -42,10 +42,10 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                   name: 'Boolean'
                 }
               },
-              resend_if_mdn_not_received: {
+              resend_if_mdnnot_received: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'resendIfMdnNotReceived',
+                serialized_name: 'resendIfMDNNotReceived',
                 type: {
                   name: 'Boolean'
                 }

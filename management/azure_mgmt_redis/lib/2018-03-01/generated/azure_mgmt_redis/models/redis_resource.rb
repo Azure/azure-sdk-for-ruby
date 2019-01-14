@@ -38,7 +38,7 @@ module Azure::Redis::Mgmt::V2018_03_01
 
       # @return [String] The full resource ID of a subnet in a virtual network
       # to deploy the Redis cache in. Example format:
-      # /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
+      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
       attr_accessor :subnet_id
 
       # @return [String] Static IP address. Required when deploying a Redis

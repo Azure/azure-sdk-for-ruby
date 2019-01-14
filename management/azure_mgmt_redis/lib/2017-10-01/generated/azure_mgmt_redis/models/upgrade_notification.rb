@@ -15,7 +15,7 @@ module Azure::Redis::Mgmt::V2017_10_01
       # @return [String] Name of upgrade notification.
       attr_accessor :name
 
-      # @return [DateTime] Timestamp when upgrade notification occured.
+      # @return [DateTime] Timestamp when upgrade notification occurred.
       attr_accessor :timestamp
 
       # @return [Hash{String => String}] Details about this upgrade
