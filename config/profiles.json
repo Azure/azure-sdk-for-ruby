@@ -257,7 +257,7 @@
                 },
                 "Microsoft.EventGrid": {
                     "management": {
-                        "2018-09-15-preview": ["*"]
+                        "2019-01-01": ["*"]
                     },
                     "data": {
                         "2018-01-01": ["*"]
@@ -271,6 +271,11 @@
                 "Microsoft.Features": {
                     "management": {
                         "2015-12-01": ["*"]
+                    }
+                },
+                "Microsoft.Hdinsight": {
+                    "management": {
+                        "2018-06-01-preview": ["*"]
                     }
                 },
                 "Microsoft.GraphRbac": {
@@ -984,7 +989,7 @@
             "resourceTypes": {
                 "Microsoft.EventGrid" : {
                     "management": {
-                        "2018-09-15-preview": ["*"]
+                        "2019-01-01": ["*"]
                     }
                 }
             },
@@ -1029,6 +1034,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_features/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_hdinsight": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Hdinsight": {
+                    "management": {
+                        "2018-06-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_hdinsight/lib/profiles",
             "individual_gem_profile": true
         }
         ],

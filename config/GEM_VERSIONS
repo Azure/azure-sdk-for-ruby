@@ -1,7 +1,7 @@
 
 {
     "rollup": {
-        "azure_sdk": "0.20.0"
+        "azure_sdk": "0.21.0"
     },
     "data": {
         "azure_cognitiveservices_autosuggest": "0.17.0",
@@ -49,16 +49,17 @@
         "azure_mgmt_dev_spaces": "0.17.1",
         "azure_mgmt_devtestlabs": "0.17.1",
         "azure_mgmt_dns": "0.17.2",
-        "azure_mgmt_event_grid": "0.17.2",
+        "azure_mgmt_event_grid": "0.17.3",
         "azure_mgmt_event_hub": "0.17.1",
         "azure_mgmt_features": "0.17.1",
+        "azure_mgmt_hdinsight": "0.17.0",
         "azure_mgmt_iot_central": "0.17.2",
         "azure_mgmt_iot_hub": "0.17.1",
         "azure_mgmt_key_vault": "0.17.2",
         "azure_mgmt_kusto": "0.17.0",
         "azure_mgmt_links": "0.17.1",
         "azure_mgmt_locks": "0.17.1",
-        "azure_mgmt_logic": "0.17.2",
+        "azure_mgmt_logic": "0.18.0",
         "azure_mgmt_machine_learning": "0.17.1",
         "azure_mgmt_machine_learning_services": "0.17.0",
         "azure_mgmt_managed_applications": "0.17.1",
@@ -75,7 +76,7 @@
         "azure_mgmt_recovery_services": "0.17.1",
         "azure_mgmt_recovery_services_backup": "0.17.1",
         "azure_mgmt_recovery_services_site_recovery": "0.17.1",
-        "azure_mgmt_redis": "0.17.1",
+        "azure_mgmt_redis": "0.17.2",
         "azure_mgmt_relay": "0.17.1",
         "azure_mgmt_resources": "0.17.2",
         "azure_mgmt_resources_management": "0.17.0",
