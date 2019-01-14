@@ -31,7 +31,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SenderAuthorization',
           type: {
@@ -39,7 +38,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'SenderAuthorization',
             model_properties: {
               action: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'action',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               role: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'role',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               scope: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scope',
                 type: {

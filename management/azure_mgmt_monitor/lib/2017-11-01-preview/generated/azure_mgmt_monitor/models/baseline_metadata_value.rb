@@ -25,7 +25,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BaselineMetadataValue',
           type: {
@@ -33,7 +32,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
             class_name: 'BaselineMetadataValue',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

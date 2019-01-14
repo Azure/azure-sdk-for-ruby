@@ -38,7 +38,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Metric',
           type: {
@@ -46,7 +45,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
             class_name: 'Metric',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -54,7 +52,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -62,7 +59,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -71,7 +67,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'unit',
                 type: {
@@ -80,13 +75,11 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               data: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'data',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricValueElementType',
                       type: {
