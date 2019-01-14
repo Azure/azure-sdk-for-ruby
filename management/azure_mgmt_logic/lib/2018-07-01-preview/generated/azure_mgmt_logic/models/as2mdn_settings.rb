@@ -22,7 +22,7 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [Boolean] The value indicating whether to send the asynchronous
       # MDN.
-      attr_accessor :send_mdn_asynchronously
+      attr_accessor :send_mdnasynchronously
 
       # @return [String] The receipt delivery URL.
       attr_accessor :receipt_delivery_url
@@ -32,14 +32,14 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [Boolean] The value indicating whether to sign the outbound MDN
       # if optional.
-      attr_accessor :sign_outbound_mdn_if_optional
+      attr_accessor :sign_outbound_mdnif_optional
 
       # @return [String] The MDN text.
       attr_accessor :mdn_text
 
       # @return [Boolean] The value indicating whether to send inbound MDN to
       # message box.
-      attr_accessor :send_inbound_mdn_to_message_box
+      attr_accessor :send_inbound_mdnto_message_box
 
       # @return [HashingAlgorithm] The signing or hashing algorithm. Possible
       # values include: 'NotSpecified', 'None', 'MD5', 'SHA1', 'SHA2256',
@@ -63,7 +63,7 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
               need_mdn: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'needMdn',
+                serialized_name: 'needMDN',
                 type: {
                   name: 'Boolean'
                 }
@@ -71,15 +71,15 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
               sign_mdn: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'signMdn',
+                serialized_name: 'signMDN',
                 type: {
                   name: 'Boolean'
                 }
               },
-              send_mdn_asynchronously: {
+              send_mdnasynchronously: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'sendMdnAsynchronously',
+                serialized_name: 'sendMDNAsynchronously',
                 type: {
                   name: 'Boolean'
                 }
@@ -100,10 +100,10 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                   name: 'String'
                 }
               },
-              sign_outbound_mdn_if_optional: {
+              sign_outbound_mdnif_optional: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'signOutboundMdnIfOptional',
+                serialized_name: 'signOutboundMDNIfOptional',
                 type: {
                   name: 'Boolean'
                 }
@@ -116,10 +116,10 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                   name: 'String'
                 }
               },
-              send_inbound_mdn_to_message_box: {
+              send_inbound_mdnto_message_box: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'sendInboundMdnToMessageBox',
+                serialized_name: 'sendInboundMDNToMessageBox',
                 type: {
                   name: 'Boolean'
                 }

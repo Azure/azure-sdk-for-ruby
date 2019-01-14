@@ -6,7 +6,7 @@
 module Azure::Redis::Mgmt::V2018_03_01
   module Models
     #
-    # List of linked servers (with properites) of a Redis cache.
+    # List of linked servers (with properties) of a Redis cache.
     #
     class RedisLinkedServerWithPropertiesList
 
@@ -14,7 +14,7 @@ module Azure::Redis::Mgmt::V2018_03_01
 
       include MsRest::JSONable
       # @return [Array<RedisLinkedServerWithProperties>] List of linked servers
-      # (with properites) of a Redis cache.
+      # (with properties) of a Redis cache.
       attr_accessor :value
 
       # @return [String] Link for next set.

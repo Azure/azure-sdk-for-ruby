@@ -1,3 +1,11 @@
+## 2019.01.14 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_redis - v0.17.2
+    - azure_mgmt_logic - v0.18.0
+    - azure_mgmt_event_grid - v0.17.3
+    - azure_mgmt_hdinsight - v0.17.0
+    - azure_sdk - v0.21.0
+
 ## 2019.01.02 - Azure Ruby SDK Release
 * Released the following SDKs
    - azure_mgmt_machine_learning_services - v0.17.0

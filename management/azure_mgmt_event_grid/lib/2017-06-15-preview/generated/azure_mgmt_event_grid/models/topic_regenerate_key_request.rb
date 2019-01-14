@@ -6,7 +6,7 @@
 module Azure::EventGrid::Mgmt::V2017_06_15_preview
   module Models
     #
-    # Topic regenerate share access key key request
+    # Topic regenerate share access key request
     #
     class TopicRegenerateKeyRequest
 
