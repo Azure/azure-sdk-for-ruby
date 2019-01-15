@@ -198,7 +198,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
     # advertised arp table associated with the ExpressRouteCircuits in a resource
     # group.
     #
@@ -215,7 +215,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
     # advertised arp table associated with the ExpressRouteCircuits in a resource
     # group.
     #
@@ -231,7 +231,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
     # advertised arp table associated with the ExpressRouteCircuits in a resource
     # group.
     #
@@ -296,9 +296,9 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit opertion retrieves the currently
-    # advertised routes table associated with the ExpressRouteCircuits in a
-    # resource group.
+    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
+    # currently advertised routes table associated with the ExpressRouteCircuits in
+    # a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
@@ -313,9 +313,9 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit opertion retrieves the currently
-    # advertised routes table associated with the ExpressRouteCircuits in a
-    # resource group.
+    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
+    # currently advertised routes table associated with the ExpressRouteCircuits in
+    # a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
@@ -329,9 +329,9 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit opertion retrieves the currently
-    # advertised routes table associated with the ExpressRouteCircuits in a
-    # resource group.
+    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
+    # currently advertised routes table associated with the ExpressRouteCircuits in
+    # a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
@@ -394,7 +394,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+    # The ListStats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -410,7 +410,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+    # The ListStats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -425,7 +425,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+    # The ListStats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -858,7 +858,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
     # advertised arp table associated with the ExpressRouteCircuits in a resource
     # group.
     #
@@ -875,7 +875,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
     # advertised arp table associated with the ExpressRouteCircuits in a resource
     # group.
     #
@@ -891,7 +891,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
     # advertised arp table associated with the ExpressRouteCircuits in a resource
     # group.
     #
@@ -952,9 +952,9 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit opertion retrieves the currently
-    # advertised routes table associated with the ExpressRouteCircuits in a
-    # resource group.
+    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
+    # currently advertised routes table associated with the ExpressRouteCircuits in
+    # a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -969,9 +969,9 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit opertion retrieves the currently
-    # advertised routes table associated with the ExpressRouteCircuits in a
-    # resource group.
+    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
+    # currently advertised routes table associated with the ExpressRouteCircuits in
+    # a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -985,9 +985,9 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit opertion retrieves the currently
-    # advertised routes table associated with the ExpressRouteCircuits in a
-    # resource group.
+    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
+    # currently advertised routes table associated with the ExpressRouteCircuits in
+    # a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1046,7 +1046,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+    # The ListStats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1062,7 +1062,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+    # The ListStats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1077,7 +1077,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+    # The ListStats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1313,7 +1313,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
     # advertised arp table associated with the ExpressRouteCircuits in a resource
     # group.
     #
@@ -1337,9 +1337,9 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit opertion retrieves the currently
-    # advertised routes table associated with the ExpressRouteCircuits in a
-    # resource group.
+    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
+    # currently advertised routes table associated with the ExpressRouteCircuits in
+    # a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
@@ -1361,7 +1361,7 @@ module Azure::Network::Mgmt::V2015_06_15
     end
 
     #
-    # The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+    # The ListStats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
