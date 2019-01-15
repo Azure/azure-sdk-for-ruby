@@ -25,7 +25,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CognitiveServicesAccountKeys',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CognitiveServicesAccountKeys',
             model_properties: {
               key1: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key1',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               key2: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key2',
                 type: {

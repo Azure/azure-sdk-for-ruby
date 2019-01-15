@@ -12,21 +12,13 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
-      # @return [Kind] The Kind of the resource. Possible values include:
-      # 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7',
-      # 'Bing.Speech', 'Bing.SpellCheck.v7', 'ComputerVision',
-      # 'ContentModerator', 'CustomSpeech', 'CustomVision.Prediction',
-      # 'CustomVision.Training', 'Emotion', 'Face', 'LUIS', 'QnAMaker',
-      # 'SpeakerRecognition', 'SpeechTranslation', 'TextAnalytics',
-      # 'TextTranslation', 'WebLM'
+      # @return [String] The Kind of the resource.
       attr_accessor :kind
 
       # @return [String] The Type of the resource.
       attr_accessor :type
 
-      # @return [SkuName] The SKU of Cognitive Services account. Possible
-      # values include: 'F0', 'P0', 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4',
-      # 'S5', 'S6'
+      # @return [String] The SKU of Cognitive Services account.
       attr_accessor :sku_name
 
       # @return [Boolean] Indicates the given SKU is available or not.
@@ -45,7 +37,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckSkuAvailabilityResult',
           type: {
@@ -53,7 +44,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CheckSkuAvailabilityResult',
             model_properties: {
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -61,7 +51,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -69,7 +58,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               sku_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skuName',
                 type: {
@@ -77,7 +65,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               sku_available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skuAvailable',
                 type: {
@@ -85,7 +72,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -93,7 +79,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

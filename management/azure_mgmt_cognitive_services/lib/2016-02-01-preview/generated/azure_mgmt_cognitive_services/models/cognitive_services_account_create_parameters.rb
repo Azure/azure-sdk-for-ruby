@@ -47,7 +47,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CognitiveServicesAccountCreateParameters',
           type: {
@@ -55,7 +54,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
             class_name: 'CognitiveServicesAccountCreateParameters',
             model_properties: {
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
@@ -64,7 +62,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'kind',
                 type: {
@@ -72,7 +69,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -80,13 +76,11 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -96,7 +90,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties',
                 type: {
