@@ -1,9 +1,6 @@
 {
     "management": [
-        "azure_mgmt_redis",
-        "azure_mgmt_logic",
-        "azure_mgmt_event_grid",
-        "azure_mgmt_hdinsight"
+        "azure_mgmt_network"
     ],
     "rollup": [
         "azure_sdk"

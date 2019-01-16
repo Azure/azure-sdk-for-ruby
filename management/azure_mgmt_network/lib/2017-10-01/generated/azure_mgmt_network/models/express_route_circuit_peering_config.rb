@@ -15,7 +15,7 @@ module Azure::Network::Mgmt::V2017_10_01
       # @return [Array<String>] The reference of AdvertisedPublicPrefixes.
       attr_accessor :advertised_public_prefixes
 
-      # @return [Array<String>] The communities of bgp peering. Spepcified for
+      # @return [Array<String>] The communities of bgp peering. Specified for
       # microsoft peering
       attr_accessor :advertised_communities
 

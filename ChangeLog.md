@@ -1,3 +1,8 @@
+## 2019.01.15 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_network - v0.18.3
+    - azure_sdk - v0.21.1
+
 ## 2019.01.14 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_redis - v0.17.2

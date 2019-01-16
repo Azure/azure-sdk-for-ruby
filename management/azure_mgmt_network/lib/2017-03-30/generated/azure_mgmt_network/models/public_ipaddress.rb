@@ -32,6 +32,10 @@ module Azure::Network::Mgmt::V2017_03_30
       # associated with the public IP address.
       attr_accessor :dns_settings
 
+      # @return [DdosSettings] The DDoS protection custom policy associated
+      # with the public IP address.
+      attr_accessor :ddos_settings
+
       # @return [Array<IpTag>] The list of tags associated with the public IP
       # address.
       attr_accessor :ip_tags
@@ -168,6 +172,15 @@ module Azure::Network::Mgmt::V2017_03_30
                 type: {
                   name: 'Composite',
                   class_name: 'PublicIPAddressDnsSettings'
+                }
+              },
+              ddos_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.ddosSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DdosSettings'
                 }
               },
               ip_tags: {

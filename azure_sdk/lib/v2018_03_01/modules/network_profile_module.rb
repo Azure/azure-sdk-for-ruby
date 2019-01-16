@@ -48,6 +48,7 @@ module Azure::Profiles::V2018_03_01
       module Models
         IpTag = Azure::Network::Mgmt::V2017_03_30::Models::IpTag
         EndpointService = Azure::Network::Mgmt::V2017_03_30::Models::EndpointService
+        DdosSettings = Azure::Network::Mgmt::V2017_03_30::Models::DdosSettings
         Delegation = Azure::Network::Mgmt::V2017_03_30::Models::Delegation
         ServiceAssociationLink = Azure::Network::Mgmt::V2017_03_30::Models::ServiceAssociationLink
         InterfaceEndpoint = Azure::Network::Mgmt::V2017_03_30::Models::InterfaceEndpoint
@@ -422,6 +423,9 @@ module Azure::Profiles::V2018_03_01
           end
           def endpoint_service
             Azure::Network::Mgmt::V2017_03_30::Models::EndpointService
+          end
+          def ddos_settings
+            Azure::Network::Mgmt::V2017_03_30::Models::DdosSettings
           end
           def delegation
             Azure::Network::Mgmt::V2017_03_30::Models::Delegation

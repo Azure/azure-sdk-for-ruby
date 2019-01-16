@@ -34,7 +34,7 @@ module Azure::Network::Mgmt::V2018_07_01
       attr_accessor :circuit_connection_status
 
       # @return [String] Provisioning state of the circuit connection resource.
-      # Possible values are: 'Succeded', 'Updating', 'Deleting', and 'Failed'.
+      # Possible values are: 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Gets name of the resource that is unique within a
