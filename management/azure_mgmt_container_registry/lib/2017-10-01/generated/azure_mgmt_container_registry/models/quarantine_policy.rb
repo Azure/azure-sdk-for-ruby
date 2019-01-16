@@ -23,7 +23,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'QuarantinePolicy',
           type: {
@@ -31,7 +30,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'QuarantinePolicy',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

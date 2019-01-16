@@ -34,7 +34,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationDefinition',
           type: {
@@ -42,7 +41,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'OperationDefinition',
             model_properties: {
               origin: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -50,7 +48,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -58,7 +55,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -67,7 +63,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               service_specification: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceSpecification',
                 type: {
