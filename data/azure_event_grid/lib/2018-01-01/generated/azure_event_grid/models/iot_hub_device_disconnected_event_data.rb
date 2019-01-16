@@ -19,7 +19,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IotHubDeviceDisconnectedEventData',
           type: {
@@ -27,7 +26,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'IotHubDeviceDisconnectedEventData',
             model_properties: {
               device_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceId',
                 type: {
@@ -35,7 +33,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               module_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'moduleId',
                 type: {
@@ -43,7 +40,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               hub_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hubName',
                 type: {
@@ -51,7 +47,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               device_connection_state_event_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceConnectionStateEventInfo',
                 type: {

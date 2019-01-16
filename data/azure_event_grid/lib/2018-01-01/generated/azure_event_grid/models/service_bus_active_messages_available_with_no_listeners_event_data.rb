@@ -45,7 +45,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceBusActiveMessagesAvailableWithNoListenersEventData',
           type: {
@@ -53,7 +52,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'ServiceBusActiveMessagesAvailableWithNoListenersEventData',
             model_properties: {
               namespace_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'namespaceName',
                 type: {
@@ -61,7 +59,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               request_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestUri',
                 type: {
@@ -69,7 +66,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               entity_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'entityType',
                 type: {
@@ -77,7 +73,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               queue_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'queueName',
                 type: {
@@ -85,7 +80,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               topic_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'topicName',
                 type: {
@@ -93,7 +87,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               subscription_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionName',
                 type: {
