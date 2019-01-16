@@ -18,12 +18,12 @@ module Azure::Profiles::Latest
       Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
       TrendingVideosCategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosCategory
       TrendingVideosSubcategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosSubcategory
-      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       VideosModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideosModule
       TrendingVideosTile = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
-      TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
-      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
       Videos = Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
+      TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
+      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
       VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
       VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
       VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
@@ -100,23 +100,23 @@ module Azure::Profiles::Latest
         def trending_videos_subcategory
           Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosSubcategory
         end
-        def response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
-        end
         def videos_module
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideosModule
         end
         def trending_videos_tile
           Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
         end
+        def videos
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
+        end
         def trending_videos
           Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
         end
+        def response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+        end
         def video_details
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
-        end
-        def videos
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
         end
         def video_query_scenario
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario

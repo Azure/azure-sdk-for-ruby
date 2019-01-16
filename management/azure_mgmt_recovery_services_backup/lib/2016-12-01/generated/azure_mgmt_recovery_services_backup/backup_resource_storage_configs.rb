@@ -237,8 +237,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     # will be added to the HTTP request.
     #
     #
-    def update1(vault_name, resource_group_name, parameters, custom_headers = nil)
-      response = update1_async(vault_name, resource_group_name, parameters, custom_headers).value!
+    def patch(vault_name, resource_group_name, parameters, custom_headers = nil)
+      response = patch_async(vault_name, resource_group_name, parameters, custom_headers).value!
       nil
     end
 
@@ -254,8 +254,8 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update1_with_http_info(vault_name, resource_group_name, parameters, custom_headers = nil)
-      update1_async(vault_name, resource_group_name, parameters, custom_headers).value!
+    def patch_with_http_info(vault_name, resource_group_name, parameters, custom_headers = nil)
+      patch_async(vault_name, resource_group_name, parameters, custom_headers).value!
     end
 
     #
@@ -270,7 +270,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update1_async(vault_name, resource_group_name, parameters, custom_headers = nil)
+    def patch_async(vault_name, resource_group_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?

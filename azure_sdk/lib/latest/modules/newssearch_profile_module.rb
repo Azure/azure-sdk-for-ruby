@@ -27,12 +27,12 @@ module Azure::Profiles::Latest
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
       Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
-      ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
+      Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
       VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
       SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
-      Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
-      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+      ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
       CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
+      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
     end
 
     class NewsSearchDataClass
@@ -119,8 +119,8 @@ module Azure::Profiles::Latest
         def trending_topics
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
         end
-        def error_code
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
+        def identifiable
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
         end
         def video_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
@@ -128,14 +128,14 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
         end
-        def identifiable
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
-        end
-        def error
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+        def error_code
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
         end
         def creative_work
           Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
+        end
+        def error
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
         end
       end
     end
