@@ -18,7 +18,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
 
       include MsRest::JSONable
       # @return [Array<ClientDiscoveryValueForSingleApi>] List of available
-      # operationss.
+      # operations.
       attr_accessor :value
 
       # @return [String] Link to the next chunk of Response.

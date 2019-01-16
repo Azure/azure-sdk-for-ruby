@@ -10,7 +10,7 @@
 module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   module Models
     #
-    # SAPHana specific recoverypoint, specifcally encaspulates full/diff
+    # SAPHana specific recoverypoint, specifically encapsulates full/diff
     # recoverypoints
     #
     class AzureWorkloadSAPHanaRecoveryPoint < AzureWorkloadRecoveryPoint

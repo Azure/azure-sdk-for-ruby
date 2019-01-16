@@ -39,34 +39,34 @@ module Azure::Profiles::Latest
         TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
         ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
         TagDetails = Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+        DeploymentProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
         TagsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
         AliasPathType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         TargetResource = Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
-        BasicDependency = Azure::Resources::Mgmt::V2018_05_01::Models::BasicDependency
         HttpMessage = Azure::Resources::Mgmt::V2018_05_01::Models::HttpMessage
-        DeploymentProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
+        DeploymentValidateResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentValidateResult
         DeploymentOperationProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationProperties
         DeploymentExtendedFilter = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtendedFilter
         DeploymentOperation = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperation
-        DeploymentExportResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
+        BasicDependency = Azure::Resources::Mgmt::V2018_05_01::Models::BasicDependency
         DeploymentOperationsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationsListResult
-        DeploymentValidateResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentValidateResult
+        Resource = Azure::Resources::Mgmt::V2018_05_01::Models::Resource
         ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceProviderOperationDisplayProperties
         DebugSetting = Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
-        Resource = Azure::Resources::Mgmt::V2018_05_01::Models::Resource
+        DeploymentListResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
         ProviderResourceType = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderResourceType
         ResourceGroupExportResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupExportResult
-        DeploymentListResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
+        OnErrorDeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
         GenericResource = Azure::Resources::Mgmt::V2018_05_01::Models::GenericResource
+        DeploymentExportResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
         OperationDisplay = Azure::Resources::Mgmt::V2018_05_01::Models::OperationDisplay
-        OnErrorDeploymentType = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
         Operation = Azure::Resources::Mgmt::V2018_05_01::Models::Operation
+        OnErrorDeploymentType = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
         OperationListResult = Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
         SubResource = Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
         ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
         DeploymentMode = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-        OnErrorDeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
         Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
         ResourceIdentityType = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
         Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
@@ -177,8 +177,8 @@ module Azure::Profiles::Latest
           def tag_details
             Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
           end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          def deployment_properties
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
           end
           def tags_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
@@ -186,17 +186,17 @@ module Azure::Profiles::Latest
           def alias_path_type
             Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
           end
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
           def target_resource
             Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
-          end
-          def basic_dependency
-            Azure::Resources::Mgmt::V2018_05_01::Models::BasicDependency
           end
           def http_message
             Azure::Resources::Mgmt::V2018_05_01::Models::HttpMessage
           end
-          def deployment_properties
-            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
+          def deployment_validate_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentValidateResult
           end
           def deployment_operation_properties
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationProperties
@@ -207,14 +207,14 @@ module Azure::Profiles::Latest
           def deployment_operation
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperation
           end
-          def deployment_export_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
+          def basic_dependency
+            Azure::Resources::Mgmt::V2018_05_01::Models::BasicDependency
           end
           def deployment_operations_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationsListResult
           end
-          def deployment_validate_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentValidateResult
+          def resource
+            Azure::Resources::Mgmt::V2018_05_01::Models::Resource
           end
           def resource_provider_operation_display_properties
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceProviderOperationDisplayProperties
@@ -222,8 +222,8 @@ module Azure::Profiles::Latest
           def debug_setting
             Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
           end
-          def resource
-            Azure::Resources::Mgmt::V2018_05_01::Models::Resource
+          def deployment_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
           end
           def provider_resource_type
             Azure::Resources::Mgmt::V2018_05_01::Models::ProviderResourceType
@@ -231,20 +231,23 @@ module Azure::Profiles::Latest
           def resource_group_export_result
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupExportResult
           end
-          def deployment_list_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
+          def on_error_deployment_extended
+            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
           end
           def generic_resource
             Azure::Resources::Mgmt::V2018_05_01::Models::GenericResource
           end
+          def deployment_export_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
+          end
           def operation_display
             Azure::Resources::Mgmt::V2018_05_01::Models::OperationDisplay
           end
-          def on_error_deployment_type
-            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
-          end
           def operation
             Azure::Resources::Mgmt::V2018_05_01::Models::Operation
+          end
+          def on_error_deployment_type
+            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
           end
           def operation_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
@@ -257,9 +260,6 @@ module Azure::Profiles::Latest
           end
           def deployment_mode
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-          end
-          def on_error_deployment_extended
-            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
           end
           def plan
             Azure::Resources::Mgmt::V2018_05_01::Models::Plan

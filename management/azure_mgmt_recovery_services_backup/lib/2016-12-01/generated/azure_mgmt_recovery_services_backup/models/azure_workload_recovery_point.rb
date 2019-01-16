@@ -10,8 +10,8 @@
 module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   module Models
     #
-    # Workload specific recoverypoint, specifcally encaspulates full/diff
-    # recoverypoint
+    # Workload specific recovery point, specifically encapsulates full/diff
+    # recovery point
     #
     class AzureWorkloadRecoveryPoint < RecoveryPoint
 

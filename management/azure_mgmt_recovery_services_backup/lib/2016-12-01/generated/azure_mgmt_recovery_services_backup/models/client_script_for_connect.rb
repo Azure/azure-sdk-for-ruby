@@ -32,7 +32,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # this is not null then ScriptContent should not be used
       attr_accessor :url
 
-      # @return [String] Mandator suffix that should be added to the name of
+      # @return [String] Mandatory suffix that should be added to the name of
       # script that is given for download to user.
       # If its null or empty then , ignore it.
       attr_accessor :script_name_suffix

@@ -36,9 +36,9 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       attr_accessor :protectedItemType
 
-      # @return [BackupManagementType] Type of backup managemenent for the
-      # backed up item. Possible values include: 'Invalid', 'AzureIaasVM',
-      # 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
+      # @return [BackupManagementType] Type of backup management for the backed
+      # up item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+      # 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
       # 'AzureWorkload', 'DefaultBackup'
       attr_accessor :backup_management_type
 

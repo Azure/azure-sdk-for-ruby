@@ -10,7 +10,7 @@
 module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
   module Models
     #
-    # Azure IaaS VM workload-specifc job object.
+    # Azure IaaS VM workload-specific job object.
     #
     class AzureIaaSVMJob < Job
 

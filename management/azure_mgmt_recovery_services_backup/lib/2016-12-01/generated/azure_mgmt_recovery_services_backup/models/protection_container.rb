@@ -40,7 +40,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [String] Friendly name of the container.
       attr_accessor :friendly_name
 
-      # @return [BackupManagementType] Type of backup managemenent for the
+      # @return [BackupManagementType] Type of backup management for the
       # container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
       # 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
       # 'AzureWorkload', 'DefaultBackup'

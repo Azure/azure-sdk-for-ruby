@@ -10,7 +10,7 @@
 module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   module Models
     #
-    # SQL specific recoverypoint, specifcally encaspulates full/diff
+    # SQL specific recoverypoint, specifically encapsulates full/diff
     # recoverypoint alongwith extended info
     #
     class AzureWorkloadSQLRecoveryPoint < AzureWorkloadRecoveryPoint

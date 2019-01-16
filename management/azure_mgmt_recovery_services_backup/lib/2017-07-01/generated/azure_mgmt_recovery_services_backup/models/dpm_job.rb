@@ -10,7 +10,7 @@
 module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
   module Models
     #
-    # DPM workload-specifc job object.
+    # DPM workload-specific job object.
     #
     class DpmJob < Job
 

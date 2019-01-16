@@ -10,7 +10,7 @@
 module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   module Models
     #
-    # BEK is bitlocker encrpytion key.
+    # BEK is bitlocker encryption key.
     #
     class BEKDetails
 

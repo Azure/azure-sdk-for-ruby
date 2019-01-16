@@ -12,7 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
     #
     # BEK is bitlocker key.
     # KEK is encryption key for BEK
-    # If the VM was encrypted then we will store follwing details :
+    # If the VM was encrypted then we will store following details :
     # 1. Secret(BEK) - Url + Backup Data + vaultId.
     # 2. Key(KEK) - Url + Backup Data + vaultId.
     # 3. EncryptionMechanism
@@ -25,7 +25,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [KEKDetails] KEK is encryption key for BEK.
       attr_accessor :kek_details
 
-      # @return [BEKDetails] BEK is bitlocker encrpytion key.
+      # @return [BEKDetails] BEK is bitlocker encryption key.
       attr_accessor :bek_details
 
       # @return [String] Encryption mechanism: None/ SinglePass/ DoublePass

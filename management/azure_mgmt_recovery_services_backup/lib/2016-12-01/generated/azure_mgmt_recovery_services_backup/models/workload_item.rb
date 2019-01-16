@@ -32,7 +32,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       attr_accessor :workloadItemType
 
-      # @return [String] Type of backup managemenent to backup an item.
+      # @return [String] Type of backup management to backup an item.
       attr_accessor :backup_management_type
 
       # @return [String] Type of workload for the backup management

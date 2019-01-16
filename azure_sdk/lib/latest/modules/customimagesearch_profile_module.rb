@@ -15,10 +15,10 @@ module Azure::Profiles::Latest
       MediaObject = Azure::CognitiveServices::Customimagesearch::V1_0::Models::MediaObject
       WebPage = Azure::CognitiveServices::Customimagesearch::V1_0::Models::WebPage
       ErrorSubCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorSubCode
-      Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
       ImageAspect = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageColor
       Freshness = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
+      Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
       ImageType = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
       ImageLicense = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
       ImageContent = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageContent
@@ -83,9 +83,6 @@ module Azure::Profiles::Latest
         def error_sub_code
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorSubCode
         end
-        def images
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
-        end
         def image_aspect
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageAspect
         end
@@ -94,6 +91,9 @@ module Azure::Profiles::Latest
         end
         def freshness
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
+        end
+        def images
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
         end
         def image_type
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType

@@ -21,7 +21,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       # 'CompletedWithWarnings', 'Cancelled', 'Cancelling'
       attr_accessor :status
 
-      # @return [BackupManagementType] Type of backup managmenent for the job.
+      # @return [BackupManagementType] Type of backup management for the job.
       # Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
       # 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
       # 'DefaultBackup'

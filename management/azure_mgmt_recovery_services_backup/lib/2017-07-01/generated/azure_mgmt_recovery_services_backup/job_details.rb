@@ -26,7 +26,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
     attr_reader :client
 
     #
-    # Gets exteded information associated with the job.
+    # Gets extended information associated with the job.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -43,7 +43,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
     end
 
     #
-    # Gets exteded information associated with the job.
+    # Gets extended information associated with the job.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -59,7 +59,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
     end
 
     #
-    # Gets exteded information associated with the job.
+    # Gets extended information associated with the job.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
