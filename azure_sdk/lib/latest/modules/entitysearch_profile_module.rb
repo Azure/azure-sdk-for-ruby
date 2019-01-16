@@ -34,10 +34,10 @@ module Azure::Profiles::Latest
       FoodEstablishment = Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
       Restaurant = Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
       Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
-      EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
+      LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
-      LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
+      EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
       Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
@@ -162,8 +162,8 @@ module Azure::Profiles::Latest
         def hotel
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
         end
-        def entity_query_scenario
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
+        def lodging_business
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
         end
         def entity_scenario
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
@@ -171,8 +171,8 @@ module Azure::Profiles::Latest
         def answer_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
         end
-        def lodging_business
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
+        def entity_query_scenario
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
         end
         def error
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
