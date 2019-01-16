@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2016_03_30
     attr_reader :client
 
     #
-    # The Delete NetworkSecurityGroup operation deletes the specifed network
+    # The Delete NetworkSecurityGroup operation deletes the specified network
     # security group
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -164,7 +164,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
     #
     # The Put NetworkSecurityGroup operation creates/updates a network security
-    # groupin the specified resource group.
+    # group in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -388,7 +388,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Delete NetworkSecurityGroup operation deletes the specifed network
+    # The Delete NetworkSecurityGroup operation deletes the specified network
     # security group
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -404,7 +404,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Delete NetworkSecurityGroup operation deletes the specifed network
+    # The Delete NetworkSecurityGroup operation deletes the specified network
     # security group
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -420,7 +420,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Delete NetworkSecurityGroup operation deletes the specifed network
+    # The Delete NetworkSecurityGroup operation deletes the specified network
     # security group
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -475,7 +475,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
     #
     # The Put NetworkSecurityGroup operation creates/updates a network security
-    # groupin the specified resource group.
+    # group in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -494,7 +494,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
     #
     # The Put NetworkSecurityGroup operation creates/updates a network security
-    # groupin the specified resource group.
+    # group in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -512,7 +512,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
     #
     # The Put NetworkSecurityGroup operation creates/updates a network security
-    # groupin the specified resource group.
+    # group in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security

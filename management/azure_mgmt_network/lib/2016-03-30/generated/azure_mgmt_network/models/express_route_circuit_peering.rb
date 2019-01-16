@@ -45,7 +45,7 @@ module Azure::Network::Mgmt::V2016_03_30
       # @return [Integer] Gets or sets the vlan id
       attr_accessor :vlan_id
 
-      # @return [ExpressRouteCircuitPeeringConfig] Gets or sets the mircosoft
+      # @return [ExpressRouteCircuitPeeringConfig] Gets or sets the Microsoft
       # peering config
       attr_accessor :microsoft_peering_config
 

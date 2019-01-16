@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2015_05_01_preview
   module Models
     #
-    # Response for ListVirtualNetworks Api servive call
+    # Response for ListVirtualNetworks Api service call
     #
     class VirtualNetworkListResult
 

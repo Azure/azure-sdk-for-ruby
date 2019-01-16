@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2018_01_01
   module Models
     #
-    # List of connection states snaphots.
+    # List of connection states snapshots.
     #
     class ConnectionMonitorQueryResult
 

@@ -46,7 +46,7 @@ module Azure::Network::Mgmt::V2016_03_30
       # @return [BgpSettings] Virtual network gateway's BGP speaker settings
       attr_accessor :bgp_settings
 
-      # @return [String] Gets or sets resource guid property of the
+      # @return [String] Gets or sets resource GUID property of the
       # VirtualNetworkGateway resource
       attr_accessor :resource_guid
 

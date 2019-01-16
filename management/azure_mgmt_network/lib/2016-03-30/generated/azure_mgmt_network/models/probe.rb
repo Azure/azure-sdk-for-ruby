@@ -36,7 +36,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       # @return [Integer] Gets or sets the number of probes where if no
       # response, will result in stopping further traffic from being delivered
-      # to the endpoint. This values allows endponints to be taken out of
+      # to the endpoint. This values allows endpoints to be taken out of
       # rotation faster or slower than the typical times used in Azure.
       attr_accessor :number_of_probes
 

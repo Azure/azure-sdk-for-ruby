@@ -38,7 +38,7 @@ module Azure::Network::Mgmt::V2016_03_30
       # NIC
       attr_accessor :enable_ipforwarding
 
-      # @return [String] Gets or sets resource guid property of the network
+      # @return [String] Gets or sets resource GUID property of the network
       # interface resource
       attr_accessor :resource_guid
 

@@ -22,23 +22,23 @@ module Azure::Network::Mgmt::V2016_06_01
       attr_accessor :protocol
 
       # @return [String] Gets or sets Source Port or Range. Integer or range
-      # between 0 and 65535. Asterix '*' can also be used to match all ports.
+      # between 0 and 65535. Asterisk '*' can also be used to match all ports.
       attr_accessor :source_port_range
 
       # @return [String] Gets or sets Destination Port or Range. Integer or
-      # range between 0 and 65535. Asterix '*' can also be used to match all
+      # range between 0 and 65535. Asterisk '*' can also be used to match all
       # ports.
       attr_accessor :destination_port_range
 
       # @return [String] Gets or sets source address prefix. CIDR or source IP
-      # range. Asterix '*' can also be used to match all source IPs. Default
+      # range. Asterisk '*' can also be used to match all source IPs. Default
       # tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can
       # also be used. If this is an ingress rule, specifies where network
       # traffic originates from.
       attr_accessor :source_address_prefix
 
       # @return [String] Gets or sets destination address prefix. CIDR or
-      # source IP range. Asterix '*' can also be used to match all source IPs.
+      # source IP range. Asterisk '*' can also be used to match all source IPs.
       # Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
       # 'Internet' can also be used.
       attr_accessor :destination_address_prefix
@@ -56,7 +56,7 @@ module Azure::Network::Mgmt::V2016_06_01
 
       # @return [SecurityRuleDirection] Gets or sets the direction of the
       # rule.InBound or Outbound. The direction specifies if rule will be
-      # evaluated on incoming or outcoming traffic. Possible values include:
+      # evaluated on incoming or outgoing traffic. Possible values include:
       # 'Inbound', 'Outbound'
       attr_accessor :direction
 
