@@ -35,7 +35,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MSDeployStatus',
           type: {
@@ -43,7 +42,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'MSDeployStatus',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,7 +50,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,7 +58,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,7 +73,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               deployer: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.deployer',
@@ -87,7 +81,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -97,7 +90,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTime',
@@ -106,7 +98,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endTime',
@@ -115,7 +106,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               complete: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.complete',

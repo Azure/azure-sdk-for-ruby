@@ -32,7 +32,6 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkAccessControlEntry',
           type: {
@@ -40,7 +39,6 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'NetworkAccessControlEntry',
             model_properties: {
               action: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'action',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               order: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'order',
                 type: {
@@ -65,7 +61,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               remote_subnet: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'remoteSubnet',
                 type: {

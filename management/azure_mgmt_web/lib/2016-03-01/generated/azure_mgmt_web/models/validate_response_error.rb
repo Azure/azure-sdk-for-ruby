@@ -25,7 +25,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ValidateResponseError',
           type: {
@@ -33,7 +32,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'ValidateResponseError',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # Class representing Reponse from Diagnostic Detectors
+    # Class representing Response from Diagnostic Detectors
     #
     class DiagnosticDetectorResponse < ProxyOnlyResource
 
@@ -45,7 +45,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticDetectorResponse',
           type: {
@@ -53,7 +52,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DiagnosticDetectorResponse',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -62,7 +60,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -71,7 +68,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -79,7 +75,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -88,7 +83,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -96,7 +90,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endTime',
                 type: {
@@ -104,7 +97,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               issue_detected: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.issueDetected',
                 type: {
@@ -112,7 +104,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               detector_definition: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.detectorDefinition',
                 type: {
@@ -121,13 +112,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               metrics: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metrics',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiagnosticMetricSetElementType',
                       type: {
@@ -138,13 +127,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               abnormal_time_periods: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.abnormalTimePeriods',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DetectorAbnormalTimePeriodElementType',
                       type: {
@@ -155,19 +142,16 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.data',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'NameValuePairElementType',
                             type: {
@@ -180,7 +164,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               response_meta_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.responseMetaData',
                 type: {

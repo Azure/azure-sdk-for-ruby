@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # User crendentials used for publishing activity.
+    # User credentials used for publishing activity.
     #
     class User < ProxyOnlyResource
 
@@ -34,7 +34,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'User',
           type: {
@@ -42,7 +41,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'User',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -51,7 +49,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -60,7 +57,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -68,7 +64,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -77,7 +72,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               user_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -85,7 +79,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               publishing_user_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publishingUserName',
                 type: {
@@ -93,7 +86,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               publishing_password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publishingPassword',
                 type: {
@@ -101,7 +93,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               publishing_password_hash: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publishingPasswordHash',
                 type: {
@@ -109,7 +100,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               publishing_password_hash_salt: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publishingPasswordHashSalt',
                 type: {
