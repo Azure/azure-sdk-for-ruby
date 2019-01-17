@@ -50,7 +50,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MSDeploy',
           type: {
@@ -58,7 +57,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'MSDeploy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -67,7 +65,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -76,7 +73,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -84,7 +80,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -93,7 +88,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               package_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.packageUri',
                 type: {
@@ -101,7 +95,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               connection_string: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.connectionString',
                 type: {
@@ -109,7 +102,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               db_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dbType',
                 type: {
@@ -117,7 +109,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               set_parameters_xml_file_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.setParametersXmlFileUri',
                 type: {
@@ -125,13 +116,11 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               set_parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.setParameters',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -141,7 +130,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               skip_app_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.skipAppData',
                 type: {
@@ -149,7 +137,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               app_offline: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.appOffline',
                 type: {

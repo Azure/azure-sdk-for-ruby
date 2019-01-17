@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # The status of the last successfull slot swap operation.
+    # The status of the last successful slot swap operation.
     #
     class SlotSwapStatus
 
@@ -28,7 +28,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SlotSwapStatus',
           type: {
@@ -36,7 +35,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'SlotSwapStatus',
             model_properties: {
               timestamp_utc: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestampUtc',
@@ -45,7 +43,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               source_slot_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'sourceSlotName',
@@ -54,7 +51,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               destination_slot_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'destinationSlotName',

@@ -23,7 +23,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TriggeredJobHistory',
           type: {
@@ -31,7 +30,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'TriggeredJobHistory',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,7 +38,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,7 +46,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -57,7 +53,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,13 +61,11 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               triggered_job_runs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.triggeredJobRuns',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TriggeredJobRunElementType',
                       type: {
