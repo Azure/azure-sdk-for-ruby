@@ -20,6 +20,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # @return [Array<VirtualNetworkRule>] The virtual network rules.
       attr_accessor :virtual_network_rules
 
+      # @return [Array<IPRule>] The IP ACL rules.
+      attr_accessor :ip_rules
+
 
       #
       # Mapper for NetworkRuleSet class as Ruby Hash.
@@ -27,7 +30,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkRuleSet',
           type: {
@@ -35,7 +37,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'NetworkRuleSet',
             model_properties: {
               default_action: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'defaultAction',
                 default_value: 'Allow',
@@ -44,18 +45,31 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               virtual_network_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualNetworkRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualNetworkRuleElementType',
                       type: {
                         name: 'Composite',
                         class_name: 'VirtualNetworkRule'
+                      }
+                  }
+                }
+              },
+              ip_rules: {
+                required: false,
+                serialized_name: 'ipRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'IPRuleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IPRule'
                       }
                   }
                 }
