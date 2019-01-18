@@ -24,7 +24,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       attr_accessor :objectType
 
-      # @return [DateTime] UTC time at which recoverypoint was created
+      # @return [DateTime] UTC time at which recovery point was created
       attr_accessor :recovery_point_time_in_utc
 
       # @return [RestorePointType] Type of restore point. Possible values

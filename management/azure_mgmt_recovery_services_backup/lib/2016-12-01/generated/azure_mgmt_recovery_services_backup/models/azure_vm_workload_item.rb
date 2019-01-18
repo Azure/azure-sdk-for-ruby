@@ -32,10 +32,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [Boolean] Indicates if workload item is auto-protectable
       attr_accessor :is_auto_protectable
 
-      # @return [Integer] For instance or AG, indicates number of DB's present
+      # @return [Integer] For instance or AG, indicates number of DBs present
       attr_accessor :subinquireditemcount
 
-      # @return [Integer] For instance or AG, indicates number of DB's to be
+      # @return [Integer] For instance or AG, indicates number of DBs to be
       # protected
       attr_accessor :sub_workload_item_count
 

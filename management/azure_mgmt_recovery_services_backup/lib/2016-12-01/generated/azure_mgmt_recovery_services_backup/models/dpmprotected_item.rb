@@ -29,7 +29,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [String] Backup Management server protecting this backup item
       attr_accessor :backup_engine_name
 
-      # @return [ProtectedItemState] Protection state of the backupengine.
+      # @return [ProtectedItemState] Protection state of the backup engine.
       # Possible values include: 'Invalid', 'IRPending', 'Protected',
       # 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
       attr_accessor :protection_state
