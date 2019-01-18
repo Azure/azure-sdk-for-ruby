@@ -31,7 +31,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IotHubSkuInfo',
           type: {
@@ -39,7 +38,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'IotHubSkuInfo',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -47,7 +45,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tier',
@@ -57,7 +54,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               capacity: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'capacity',
                 type: {

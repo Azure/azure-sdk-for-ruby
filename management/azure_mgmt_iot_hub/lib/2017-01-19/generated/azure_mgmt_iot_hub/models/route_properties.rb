@@ -45,7 +45,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RouteProperties',
           type: {
@@ -53,7 +52,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'RouteProperties',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -64,7 +62,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               source: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'source',
                 type: {
@@ -72,7 +69,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               condition: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'condition',
                 type: {
@@ -80,7 +76,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               endpoint_names: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'endpointNames',
                 constraints: {
@@ -90,7 +85,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -100,7 +94,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               is_enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'isEnabled',
                 type: {

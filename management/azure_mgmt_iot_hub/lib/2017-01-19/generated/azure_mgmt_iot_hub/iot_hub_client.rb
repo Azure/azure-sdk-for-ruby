@@ -23,16 +23,15 @@ module Azure::IotHub::Mgmt::V2017_01_19
     # @return [String] The version of the API.
     attr_reader :api_version
 
-    # @return [String] The preferred language for the response.
+    # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] The retry timeout in seconds for Long Running
-    # Operations. Default value is 30.
+    # @return [Integer] Gets or sets the retry timeout in seconds for Long
+    # Running Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] Whether a unique x-ms-client-request-id should be
-    # generated. When set to true a unique x-ms-client-request-id value is
-    # generated and included in each request. Default is true.
+    # @return [Boolean] When set to true a unique x-ms-client-request-id value
+    # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [IotHubResource] iot_hub_resource
@@ -105,9 +104,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -124,7 +120,9 @@ module Azure::IotHub::Mgmt::V2017_01_19
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_iot_hub'
-        sdk_information = "#{sdk_information}/0.17.1"
+        if defined? Azure::IotHub::Mgmt::V2017_01_19::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::IotHub::Mgmt::V2017_01_19::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
