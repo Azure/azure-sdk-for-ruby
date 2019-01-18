@@ -18,8 +18,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
       # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages
       attr_accessor :retention_time_in_days
 
-      # @return [Integer] The number of paritions for receiving device-to-cloud
-      # messages in the Event Hub-compatible endpoint. See:
+      # @return [Integer] The number of partitions for receiving
+      # device-to-cloud messages in the Event Hub-compatible endpoint. See:
       # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages.
       attr_accessor :partition_count
 
@@ -40,7 +40,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventHubProperties',
           type: {
@@ -48,7 +47,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'EventHubProperties',
             model_properties: {
               retention_time_in_days: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionTimeInDays',
                 type: {
@@ -56,7 +54,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               partition_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'partitionCount',
                 type: {
@@ -64,14 +61,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               partition_ids: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'partitionIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -81,7 +76,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               path: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'path',
@@ -90,7 +84,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               endpoint: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endpoint',

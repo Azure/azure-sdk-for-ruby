@@ -26,7 +26,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImportDevicesRequest',
           type: {
@@ -34,7 +33,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'ImportDevicesRequest',
             model_properties: {
               input_blob_container_uri: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'InputBlobContainerUri',
                 type: {
@@ -42,7 +40,6 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               output_blob_container_uri: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'OutputBlobContainerUri',
                 type: {
