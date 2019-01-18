@@ -28,8 +28,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Gets a long term retention backup.
     #
     # @param location_name [String] The location of the database.
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param backup_name [String] The backup name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -45,8 +45,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Gets a long term retention backup.
     #
     # @param location_name [String] The location of the database.
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param backup_name [String] The backup name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -61,8 +61,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Gets a long term retention backup.
     #
     # @param location_name [String] The location of the database.
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param backup_name [String] The backup name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -127,8 +127,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Deletes a long term retention backup.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param backup_name [String] The backup name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -140,8 +140,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param backup_name [String] The backup name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -169,8 +169,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Lists all long term retention backups for a database.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param only_latest_per_database [Boolean] Whether or not to only get the
     # latest backup for each database.
     # @param database_state [LongTermRetentionDatabaseState] Whether to query
@@ -190,8 +190,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Lists all long term retention backups for a database.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param only_latest_per_database [Boolean] Whether or not to only get the
     # latest backup for each database.
     # @param database_state [LongTermRetentionDatabaseState] Whether to query
@@ -210,8 +210,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Lists all long term retention backups for a database.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param only_latest_per_database [Boolean] Whether or not to only get the
     # latest backup for each database.
     # @param database_state [LongTermRetentionDatabaseState] Whether to query
@@ -381,7 +381,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Lists the long term retention backups for a given server.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
     # @param only_latest_per_database [Boolean] Whether or not to only get the
     # latest backup for each database.
     # @param database_state [LongTermRetentionDatabaseState] Whether to query
@@ -401,7 +401,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Lists the long term retention backups for a given server.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
     # @param only_latest_per_database [Boolean] Whether or not to only get the
     # latest backup for each database.
     # @param database_state [LongTermRetentionDatabaseState] Whether to query
@@ -420,7 +420,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Lists the long term retention backups for a given server.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
     # @param only_latest_per_database [Boolean] Whether or not to only get the
     # latest backup for each database.
     # @param database_state [LongTermRetentionDatabaseState] Whether to query
@@ -487,8 +487,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Deletes a long term retention backup.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param backup_name [String] The backup name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -503,8 +503,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Deletes a long term retention backup.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param backup_name [String] The backup name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -519,8 +519,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Deletes a long term retention backup.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param backup_name [String] The backup name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -836,8 +836,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Lists all long term retention backups for a database.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
-    # @param long_term_retention_database_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
+    # @param long_term_retention_database_name [String] The name of the database
     # @param only_latest_per_database [Boolean] Whether or not to only get the
     # latest backup for each database.
     # @param database_state [LongTermRetentionDatabaseState] Whether to query
@@ -890,7 +890,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Lists the long term retention backups for a given server.
     #
     # @param location_name [String] The location of the database
-    # @param long_term_retention_server_name [String]
+    # @param long_term_retention_server_name [String] The name of the server
     # @param only_latest_per_database [Boolean] Whether or not to only get the
     # latest backup for each database.
     # @param database_state [LongTermRetentionDatabaseState] Whether to query
