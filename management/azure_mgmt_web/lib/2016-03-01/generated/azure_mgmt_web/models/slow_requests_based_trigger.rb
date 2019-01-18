@@ -28,7 +28,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SlowRequestsBasedTrigger',
           type: {
@@ -36,7 +35,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'SlowRequestsBasedTrigger',
             model_properties: {
               time_taken: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeTaken',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               time_interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeInterval',
                 type: {

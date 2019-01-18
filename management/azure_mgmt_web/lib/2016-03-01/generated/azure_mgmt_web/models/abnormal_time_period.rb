@@ -32,7 +32,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AbnormalTimePeriod',
           type: {
@@ -40,7 +39,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'AbnormalTimePeriod',
             model_properties: {
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -48,7 +46,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -56,13 +53,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               events: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'events',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DetectorAbnormalTimePeriodElementType',
                       type: {
@@ -73,13 +68,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               solutions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'solutions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SolutionElementType',
                       type: {
