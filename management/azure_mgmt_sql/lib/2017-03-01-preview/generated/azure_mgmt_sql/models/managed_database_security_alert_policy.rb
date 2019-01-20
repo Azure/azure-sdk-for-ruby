@@ -14,7 +14,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
       # @return [SecurityAlertPolicyState] Specifies the state of the policy,
       # whether it is enabled or disabled or a policy has not been applied yet
-      # on the specific resource. Possible values include: 'New', 'Enabled',
+      # on the specific database. Possible values include: 'New', 'Enabled',
       # 'Disabled'
       attr_accessor :state
 
