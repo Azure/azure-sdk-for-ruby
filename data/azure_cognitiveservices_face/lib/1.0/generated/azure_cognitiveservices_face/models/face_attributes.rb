@@ -66,7 +66,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FaceAttributes',
           type: {
@@ -74,7 +73,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'FaceAttributes',
             model_properties: {
               age: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'age',
                 type: {
@@ -82,7 +80,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               gender: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gender',
                 type: {
@@ -91,7 +88,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               smile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'smile',
                 type: {
@@ -99,7 +95,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               facial_hair: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'facialHair',
                 type: {
@@ -108,7 +103,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               glasses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'glasses',
                 type: {
@@ -117,7 +111,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               head_pose: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'headPose',
                 type: {
@@ -126,7 +119,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               emotion: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'emotion',
                 type: {
@@ -135,7 +127,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               hair: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hair',
                 type: {
@@ -144,7 +135,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               makeup: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'makeup',
                 type: {
@@ -153,7 +143,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               occlusion: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'occlusion',
                 type: {
@@ -162,13 +151,11 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               accessories: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accessories',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AccessoryElementType',
                       type: {
@@ -179,7 +166,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               blur: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blur',
                 type: {
@@ -188,7 +174,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               exposure: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exposure',
                 type: {
@@ -197,7 +182,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               noise: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'noise',
                 type: {

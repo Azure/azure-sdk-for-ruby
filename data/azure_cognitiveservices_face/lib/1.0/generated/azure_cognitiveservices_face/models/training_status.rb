@@ -15,19 +15,29 @@ module Azure::CognitiveServices::Face::V1_0
       # @return [TrainingStatusType] Training status: notstarted, running,
       # succeeded, failed. If the training process is waiting to perform, the
       # status is notstarted. If the training is ongoing, the status is
-      # running. Status succeed means this person group is ready for Face -
-      # Identify. Status failed is often caused by no person or no persisted
-      # face exist in the person group. Possible values include: 'nonstarted',
-      # 'running', 'succeeded', 'failed'
+      # running. Status succeed means this person group or large person group
+      # is ready for Face - Identify, or this large face list is ready for Face
+      # - Find Similar. Status failed is often caused by no person or no
+      # persisted face exist in the person group or large person group, or no
+      # persisted face exist in the large face list. Possible values include:
+      # 'nonstarted', 'running', 'succeeded', 'failed'
       attr_accessor :status
 
       # @return [DateTime] A combined UTC date and time string that describes
-      # person group created time.
+      # the created time of the person group, large person group or large face
+      # list.
       attr_accessor :created
 
-      # @return [DateTime] Person group last modify time in the UTC, could be
-      # null value when the person group is not successfully trained.
+      # @return [DateTime] A combined UTC date and time string that describes
+      # the last modify time of the person group, large person group or large
+      # face list, could be null value when the group is not successfully
+      # trained.
       attr_accessor :last_action
+
+      # @return [DateTime] A combined UTC date and time string that describes
+      # the last successful training time of the person group, large person
+      # group or large face list.
+      attr_accessor :last_successful_training
 
       # @return [String] Show failure message when training failed (omitted
       # when training succeed).
@@ -40,7 +50,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrainingStatus',
           type: {
@@ -48,7 +57,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'TrainingStatus',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'status',
                 type: {
@@ -57,7 +65,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               created: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'createdDateTime',
                 type: {
@@ -65,15 +72,20 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               last_action: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastActionDateTime',
                 type: {
                   name: 'DateTime'
                 }
               },
+              last_successful_training: {
+                required: false,
+                serialized_name: 'lastSuccessfulTrainingDateTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

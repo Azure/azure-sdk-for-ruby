@@ -27,7 +27,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Blur',
           type: {
@@ -35,7 +34,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'Blur',
             model_properties: {
               blur_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blurLevel',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

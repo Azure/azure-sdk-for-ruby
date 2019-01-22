@@ -29,7 +29,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Exposure',
           type: {
@@ -37,7 +36,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'Exposure',
             model_properties: {
               exposure_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exposureLevel',
                 type: {
@@ -46,7 +44,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

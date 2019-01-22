@@ -22,7 +22,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'APIError',
           type: {
@@ -30,7 +29,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'APIError',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

@@ -25,7 +25,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FaceList',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'FaceList',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -44,7 +42,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               user_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userData',
                 constraints: {
@@ -55,7 +52,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               face_list_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'faceListId',
                 constraints: {
@@ -67,13 +63,11 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               persisted_faces: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'persistedFaces',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PersistedFaceElementType',
                       type: {

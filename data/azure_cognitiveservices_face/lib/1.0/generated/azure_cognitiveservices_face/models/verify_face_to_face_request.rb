@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # Request body for verify operation.
+    # Request body for face to face verification.
     #
     class VerifyFaceToFaceRequest
 
@@ -25,7 +25,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VerifyFaceToFaceRequest',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'VerifyFaceToFaceRequest',
             model_properties: {
               face_id1: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'faceId1',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               face_id2: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'faceId2',
                 type: {

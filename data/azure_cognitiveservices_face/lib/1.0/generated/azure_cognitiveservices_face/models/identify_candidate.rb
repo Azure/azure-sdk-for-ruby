@@ -27,7 +27,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IdentifyCandidate',
           type: {
@@ -35,7 +34,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'IdentifyCandidate',
             model_properties: {
               person_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'personId',
                 type: {
@@ -43,7 +41,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               confidence: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'confidence',
                 type: {

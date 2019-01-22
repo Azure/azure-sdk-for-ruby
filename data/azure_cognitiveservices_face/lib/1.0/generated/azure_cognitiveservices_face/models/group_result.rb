@@ -27,7 +27,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupResult',
           type: {
@@ -35,19 +34,16 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'GroupResult',
             model_properties: {
               groups: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'groups',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'UuidElementType',
                             type: {
@@ -59,13 +55,11 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               messy_group: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messyGroup',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UuidElementType',
                       type: {

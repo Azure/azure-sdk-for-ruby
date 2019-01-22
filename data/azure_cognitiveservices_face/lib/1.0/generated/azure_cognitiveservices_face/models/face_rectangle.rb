@@ -33,7 +33,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FaceRectangle',
           type: {
@@ -41,7 +40,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'FaceRectangle',
             model_properties: {
               width: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'width',
                 type: {
@@ -49,7 +47,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               height: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'height',
                 type: {
@@ -57,7 +54,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               left: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'left',
                 type: {
@@ -65,7 +61,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               top: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'top',
                 type: {

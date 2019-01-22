@@ -101,7 +101,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FaceLandmarks',
           type: {
@@ -109,7 +108,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'FaceLandmarks',
             model_properties: {
               pupil_left: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'pupilLeft',
                 type: {
@@ -118,7 +116,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               pupil_right: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'pupilRight',
                 type: {
@@ -127,7 +124,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               nose_tip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'noseTip',
                 type: {
@@ -136,7 +132,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               mouth_left: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mouthLeft',
                 type: {
@@ -145,7 +140,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               mouth_right: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mouthRight',
                 type: {
@@ -154,7 +148,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eyebrow_left_outer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyebrowLeftOuter',
                 type: {
@@ -163,7 +156,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eyebrow_left_inner: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyebrowLeftInner',
                 type: {
@@ -172,7 +164,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eye_left_outer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeLeftOuter',
                 type: {
@@ -181,7 +172,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eye_left_top: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeLeftTop',
                 type: {
@@ -190,7 +180,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eye_left_bottom: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeLeftBottom',
                 type: {
@@ -199,7 +188,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eye_left_inner: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeLeftInner',
                 type: {
@@ -208,7 +196,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eyebrow_right_inner: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyebrowRightInner',
                 type: {
@@ -217,7 +204,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eyebrow_right_outer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyebrowRightOuter',
                 type: {
@@ -226,7 +212,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eye_right_inner: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeRightInner',
                 type: {
@@ -235,7 +220,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eye_right_top: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeRightTop',
                 type: {
@@ -244,7 +228,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eye_right_bottom: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeRightBottom',
                 type: {
@@ -253,7 +236,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               eye_right_outer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eyeRightOuter',
                 type: {
@@ -262,7 +244,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               nose_root_left: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'noseRootLeft',
                 type: {
@@ -271,7 +252,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               nose_root_right: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'noseRootRight',
                 type: {
@@ -280,7 +260,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               nose_left_alar_top: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'noseLeftAlarTop',
                 type: {
@@ -289,7 +268,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               nose_right_alar_top: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'noseRightAlarTop',
                 type: {
@@ -298,7 +276,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               nose_left_alar_out_tip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'noseLeftAlarOutTip',
                 type: {
@@ -307,7 +284,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               nose_right_alar_out_tip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'noseRightAlarOutTip',
                 type: {
@@ -316,7 +292,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               upper_lip_top: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'upperLipTop',
                 type: {
@@ -325,7 +300,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               upper_lip_bottom: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'upperLipBottom',
                 type: {
@@ -334,7 +308,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               under_lip_top: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'underLipTop',
                 type: {
@@ -343,7 +316,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               under_lip_bottom: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'underLipBottom',
                 type: {
