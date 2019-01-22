@@ -25,7 +25,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Coordinate',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'Coordinate',
             model_properties: {
               x: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'x',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               y: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'y',
                 type: {

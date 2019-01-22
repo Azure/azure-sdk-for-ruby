@@ -23,7 +23,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageUrl',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'ImageUrl',
             model_properties: {
               url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 type: {

@@ -28,7 +28,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PersistedFace',
           type: {
@@ -36,7 +35,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'PersistedFace',
             model_properties: {
               persisted_face_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'persistedFaceId',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               user_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userData',
                 constraints: {

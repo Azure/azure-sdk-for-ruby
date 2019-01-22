@@ -23,7 +23,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupRequest',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'GroupRequest',
             model_properties: {
               face_ids: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'faceIds',
                 constraints: {
@@ -40,7 +38,6 @@ module Azure::CognitiveServices::Face::V1_0
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UuidElementType',
                       type: {

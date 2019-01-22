@@ -12,7 +12,7 @@ module Azure::CognitiveServices::Face::V1_0
 
       include MsRestAzure
 
-      # @return [String] PersonGroupId of the existing person groups.
+      # @return [String] PersonGroupId of the target person group.
       attr_accessor :person_group_id
 
 
@@ -22,7 +22,6 @@ module Azure::CognitiveServices::Face::V1_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PersonGroup',
           type: {
@@ -30,7 +29,6 @@ module Azure::CognitiveServices::Face::V1_0
             class_name: 'PersonGroup',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -41,7 +39,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               user_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userData',
                 constraints: {
@@ -52,7 +49,6 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               person_group_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'personGroupId',
                 constraints: {
