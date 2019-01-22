@@ -25,6 +25,11 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       # @return [String] Name to access Standard Namespace after migration
       attr_accessor :post_migration_name
 
+      # @return [String] State in which Standard to Premium Migration is,
+      # possible values : Unknown, Reverting, Completing, Initiating, Syncing,
+      # Active
+      attr_accessor :migration_state
+
 
       #
       # Mapper for MigrationConfigProperties class as Ruby Hash.
@@ -32,7 +37,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MigrationConfigProperties',
           type: {
@@ -40,7 +44,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'MigrationConfigProperties',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,7 +52,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -58,7 +60,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -67,7 +68,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -76,7 +76,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               pending_replication_operations_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.pendingReplicationOperationsCount',
@@ -85,7 +84,6 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               target_namespace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetNamespace',
                 type: {
@@ -93,9 +91,16 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               post_migration_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.postMigrationName',
+                type: {
+                  name: 'String'
+                }
+              },
+              migration_state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.migrationState',
                 type: {
                   name: 'String'
                 }
