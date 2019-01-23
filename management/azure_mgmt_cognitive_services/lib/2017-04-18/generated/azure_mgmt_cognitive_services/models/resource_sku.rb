@@ -38,7 +38,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSku',
           type: {
@@ -46,7 +45,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'ResourceSku',
             model_properties: {
               resource_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceType',
@@ -55,7 +53,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -64,7 +61,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tier',
@@ -73,7 +69,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -82,14 +77,12 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               locations: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -99,14 +92,12 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               restrictions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'restrictions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceSkuRestrictionsElementType',
                       type: {
