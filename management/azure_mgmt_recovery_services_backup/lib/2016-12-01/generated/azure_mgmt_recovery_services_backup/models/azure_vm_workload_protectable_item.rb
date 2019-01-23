@@ -41,10 +41,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [Boolean] Indicates if protectable item is auto-protected
       attr_accessor :is_auto_protected
 
-      # @return [Integer] For instance or AG, indicates number of DB's present
+      # @return [Integer] For instance or AG, indicates number of DBs present
       attr_accessor :subinquireditemcount
 
-      # @return [Integer] For instance or AG, indicates number of DB's to be
+      # @return [Integer] For instance or AG, indicates number of DBs to be
       # protected
       attr_accessor :subprotectableitemcount
 

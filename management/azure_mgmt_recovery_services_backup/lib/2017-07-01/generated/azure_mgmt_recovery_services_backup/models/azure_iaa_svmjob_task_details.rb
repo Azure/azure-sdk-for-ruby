@@ -38,7 +38,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       attr_accessor :progress_percentage
 
       # @return [String] Details about execution of the task.
-      # eg: number of bytes transfered etc
+      # eg: number of bytes transferred etc
       attr_accessor :task_execution_details
 
 

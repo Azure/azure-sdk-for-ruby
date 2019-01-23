@@ -28,10 +28,10 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [Integer] Number of disks in the backup engine.
       attr_accessor :disk_count
 
-      # @return [Float] Diskspace used in the backup engine.
+      # @return [Float] Disk space used in the backup engine.
       attr_accessor :used_disk_space
 
-      # @return [Float] Diskspace currently available in the backup engine.
+      # @return [Float] Disk space currently available in the backup engine.
       attr_accessor :available_disk_space
 
       # @return [DateTime] Last refresh time in the backup engine.

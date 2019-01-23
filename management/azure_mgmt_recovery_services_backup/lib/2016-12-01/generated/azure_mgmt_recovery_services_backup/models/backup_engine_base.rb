@@ -66,7 +66,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       # @return [Boolean] To check if backup engine upgrade available
       attr_accessor :is_dpm_upgrade_available
 
-      # @return [BackupEngineExtendedInfo] Extended info of the backupengine
+      # @return [BackupEngineExtendedInfo] Extended info of the backup engine
       attr_accessor :extended_info
 
 
