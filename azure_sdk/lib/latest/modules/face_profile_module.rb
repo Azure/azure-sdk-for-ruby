@@ -13,9 +13,10 @@ module Azure::Profiles::Latest
 
     module Models
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
-      FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
-      ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
+      FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
+      FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
+      SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
       GroupRequest = Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
       FaceLandmarks = Azure::CognitiveServices::Face::V1_0::Models::FaceLandmarks
       GroupResult = Azure::CognitiveServices::Face::V1_0::Models::GroupResult
@@ -42,22 +43,21 @@ module Azure::Profiles::Latest
       DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
       UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
       Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
+      ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
       TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
-      FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
       PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
       Person = Azure::CognitiveServices::Face::V1_0::Models::Person
+      FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
       GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
-      HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
       AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
       BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+      HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
       ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
-      FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
+      FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-      FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
-      SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
     end
 
     class FaceDataClass
@@ -96,14 +96,17 @@ module Azure::Profiles::Latest
         def apierror
           Azure::CognitiveServices::Face::V1_0::Models::APIError
         end
+        def error
+          Azure::CognitiveServices::Face::V1_0::Models::Error
+        end
         def face_rectangle
           Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
-        def image_url
-          Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
+        def find_similar_request
+          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
         end
-        def error
-          Azure::CognitiveServices::Face::V1_0::Models::Error
+        def similar_face
+          Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
         end
         def group_request
           Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
@@ -183,11 +186,11 @@ module Azure::Profiles::Latest
         def blur
           Azure::CognitiveServices::Face::V1_0::Models::Blur
         end
+        def image_url
+          Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
+        end
         def training_status
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
-        end
-        def face_list
-          Azure::CognitiveServices::Face::V1_0::Models::FaceList
         end
         def person_group
           Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
@@ -195,11 +198,11 @@ module Azure::Profiles::Latest
         def person
           Azure::CognitiveServices::Face::V1_0::Models::Person
         end
+        def face_list
+          Azure::CognitiveServices::Face::V1_0::Models::FaceList
+        end
         def glasses_type
           Azure::CognitiveServices::Face::V1_0::Models::GlassesType
-        end
-        def hair_color_type
-          Azure::CognitiveServices::Face::V1_0::Models::HairColorType
         end
         def accessory_type
           Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
@@ -207,14 +210,14 @@ module Azure::Profiles::Latest
         def blur_level
           Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
         end
+        def hair_color_type
+          Azure::CognitiveServices::Face::V1_0::Models::HairColorType
+        end
         def exposure_level
           Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
         end
         def noise_level
           Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
-        end
-        def find_similar_match_mode
-          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
         def gender
           Azure::CognitiveServices::Face::V1_0::Models::Gender
@@ -222,14 +225,11 @@ module Azure::Profiles::Latest
         def training_status_type
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
         end
+        def find_similar_match_mode
+          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
+        end
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-        end
-        def find_similar_request
-          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
-        end
-        def similar_face
-          Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
         end
       end
     end
