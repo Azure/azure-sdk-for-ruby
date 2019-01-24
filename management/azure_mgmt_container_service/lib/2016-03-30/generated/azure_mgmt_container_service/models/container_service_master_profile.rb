@@ -20,7 +20,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       # @return [String] DNS prefix to be used to create the FQDN for master.
       attr_accessor :dns_prefix
 
-      # @return [String] FDQN for the master.
+      # @return [String] FQDN for the master.
       attr_accessor :fqdn
 
 
@@ -30,7 +30,6 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceMasterProfile',
           type: {
@@ -38,7 +37,6 @@ module Azure::ContainerService::Mgmt::V2016_03_30
             class_name: 'ContainerServiceMasterProfile',
             model_properties: {
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 default_value: 1,
@@ -47,7 +45,6 @@ module Azure::ContainerService::Mgmt::V2016_03_30
                 }
               },
               dns_prefix: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'dnsPrefix',
                 type: {
@@ -55,7 +52,6 @@ module Azure::ContainerService::Mgmt::V2016_03_30
                 }
               },
               fqdn: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'fqdn',

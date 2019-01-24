@@ -26,7 +26,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceLinuxProfile',
           type: {
@@ -34,7 +33,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
             class_name: 'ContainerServiceLinuxProfile',
             model_properties: {
               admin_username: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'adminUsername',
                 constraints: {
@@ -45,7 +43,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               ssh: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ssh',
                 type: {
