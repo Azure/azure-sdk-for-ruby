@@ -20,6 +20,16 @@ module Azure::Consumption::Profiles::Latest
     Operations = Azure::Consumption::Mgmt::V2018_06_30::Operations
 
     module Models
+      Forecast = Azure::Consumption::Mgmt::V2018_06_30::Models::Forecast
+      BillingFrequency = Azure::Consumption::Mgmt::V2018_06_30::Models::BillingFrequency
+      CategoryType = Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
+      TimeGrainType = Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
+      OperatorType = Azure::Consumption::Mgmt::V2018_06_30::Models::OperatorType
+      Grain = Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
+      ChargeType = Azure::Consumption::Mgmt::V2018_06_30::Models::ChargeType
+      Bound = Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
+      CostTag = Azure::Consumption::Mgmt::V2018_06_30::Models::CostTag
+      Datagrain = Azure::Consumption::Mgmt::V2018_06_30::Models::Datagrain
       Notification = Azure::Consumption::Mgmt::V2018_06_30::Models::Notification
       MeterDetails = Azure::Consumption::Mgmt::V2018_06_30::Models::MeterDetails
       CurrentSpend = Azure::Consumption::Mgmt::V2018_06_30::Models::CurrentSpend
@@ -55,17 +65,7 @@ module Azure::Consumption::Profiles::Latest
       ReservationDetail = Azure::Consumption::Mgmt::V2018_06_30::Models::ReservationDetail
       TagsResult = Azure::Consumption::Mgmt::V2018_06_30::Models::TagsResult
       Budget = Azure::Consumption::Mgmt::V2018_06_30::Models::Budget
-      CostTag = Azure::Consumption::Mgmt::V2018_06_30::Models::CostTag
       PriceSheetResult = Azure::Consumption::Mgmt::V2018_06_30::Models::PriceSheetResult
-      Forecast = Azure::Consumption::Mgmt::V2018_06_30::Models::Forecast
-      BillingFrequency = Azure::Consumption::Mgmt::V2018_06_30::Models::BillingFrequency
-      CategoryType = Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
-      TimeGrainType = Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
-      OperatorType = Azure::Consumption::Mgmt::V2018_06_30::Models::OperatorType
-      Grain = Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
-      ChargeType = Azure::Consumption::Mgmt::V2018_06_30::Models::ChargeType
-      Bound = Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
-      Datagrain = Azure::Consumption::Mgmt::V2018_06_30::Models::Datagrain
     end
 
     #
@@ -124,6 +124,36 @@ module Azure::Consumption::Profiles::Latest
     end
 
     class ModelClasses
+      def forecast
+        Azure::Consumption::Mgmt::V2018_06_30::Models::Forecast
+      end
+      def billing_frequency
+        Azure::Consumption::Mgmt::V2018_06_30::Models::BillingFrequency
+      end
+      def category_type
+        Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
+      end
+      def time_grain_type
+        Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
+      end
+      def operator_type
+        Azure::Consumption::Mgmt::V2018_06_30::Models::OperatorType
+      end
+      def grain
+        Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
+      end
+      def charge_type
+        Azure::Consumption::Mgmt::V2018_06_30::Models::ChargeType
+      end
+      def bound
+        Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
+      end
+      def cost_tag
+        Azure::Consumption::Mgmt::V2018_06_30::Models::CostTag
+      end
+      def datagrain
+        Azure::Consumption::Mgmt::V2018_06_30::Models::Datagrain
+      end
       def notification
         Azure::Consumption::Mgmt::V2018_06_30::Models::Notification
       end
@@ -229,38 +259,8 @@ module Azure::Consumption::Profiles::Latest
       def budget
         Azure::Consumption::Mgmt::V2018_06_30::Models::Budget
       end
-      def cost_tag
-        Azure::Consumption::Mgmt::V2018_06_30::Models::CostTag
-      end
       def price_sheet_result
         Azure::Consumption::Mgmt::V2018_06_30::Models::PriceSheetResult
-      end
-      def forecast
-        Azure::Consumption::Mgmt::V2018_06_30::Models::Forecast
-      end
-      def billing_frequency
-        Azure::Consumption::Mgmt::V2018_06_30::Models::BillingFrequency
-      end
-      def category_type
-        Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
-      end
-      def time_grain_type
-        Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
-      end
-      def operator_type
-        Azure::Consumption::Mgmt::V2018_06_30::Models::OperatorType
-      end
-      def grain
-        Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
-      end
-      def charge_type
-        Azure::Consumption::Mgmt::V2018_06_30::Models::ChargeType
-      end
-      def bound
-        Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
-      end
-      def datagrain
-        Azure::Consumption::Mgmt::V2018_06_30::Models::Datagrain
       end
     end
   end
