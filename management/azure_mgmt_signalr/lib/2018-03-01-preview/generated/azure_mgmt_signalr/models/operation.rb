@@ -34,7 +34,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -42,7 +41,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'Operation',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -50,7 +48,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -59,7 +56,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               origin: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -67,7 +63,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
