@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2015_04_01
   module Models
     #
-    # Domain availablility check result.
+    # Domain availability check result.
     #
     class DomainAvailablilityCheckResult
 
@@ -32,7 +32,6 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DomainAvailablilityCheckResult',
           type: {
@@ -40,7 +39,6 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'DomainAvailablilityCheckResult',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,7 +46,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'available',
                 type: {
@@ -56,7 +53,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               domain_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'domainType',
                 type: {

@@ -26,7 +26,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceHealthMetadata',
           type: {
@@ -34,7 +33,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'ResourceHealthMetadata',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -43,7 +41,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -52,7 +49,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -60,7 +56,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -69,7 +64,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               category: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.category',
                 type: {
@@ -77,7 +71,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               signal_availability: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.signalAvailability',
                 type: {

@@ -44,7 +44,6 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HostName',
           type: {
@@ -52,7 +51,6 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'HostName',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -60,13 +58,11 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               site_names: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'siteNames',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -76,7 +72,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               azure_resource_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureResourceName',
                 type: {
@@ -84,7 +79,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               azure_resource_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureResourceType',
                 type: {
@@ -93,7 +87,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               custom_host_name_dns_record_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customHostNameDnsRecordType',
                 type: {
@@ -102,7 +95,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               host_name_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hostNameType',
                 type: {
