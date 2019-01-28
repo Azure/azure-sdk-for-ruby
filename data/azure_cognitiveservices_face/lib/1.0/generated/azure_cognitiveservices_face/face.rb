@@ -32,7 +32,7 @@ module Azure::CognitiveServices::Face::V1_0
     # list, created in Face List - Create a Face List. Face list contains a set of
     # persistedFaceIds which are persisted and will never expire. Parameter
     # faceListId, largeFaceListId and faceIds should not be provided at the same
-    # time。
+    # time.
     # @param large_face_list_id [String] An existing user-specified unique
     # candidate large face list, created in LargeFaceList - Create. Large face list
     # contains a set of persistedFaceIds which are persisted and will never expire.
@@ -68,7 +68,7 @@ module Azure::CognitiveServices::Face::V1_0
     # list, created in Face List - Create a Face List. Face list contains a set of
     # persistedFaceIds which are persisted and will never expire. Parameter
     # faceListId, largeFaceListId and faceIds should not be provided at the same
-    # time。
+    # time.
     # @param large_face_list_id [String] An existing user-specified unique
     # candidate large face list, created in LargeFaceList - Create. Large face list
     # contains a set of persistedFaceIds which are persisted and will never expire.
@@ -103,7 +103,7 @@ module Azure::CognitiveServices::Face::V1_0
     # list, created in Face List - Create a Face List. Face list contains a set of
     # persistedFaceIds which are persisted and will never expire. Parameter
     # faceListId, largeFaceListId and faceIds should not be provided at the same
-    # time。
+    # time.
     # @param large_face_list_id [String] An existing user-specified unique
     # candidate large face list, created in LargeFaceList - Create. Large face list
     # contains a set of persistedFaceIds which are persisted and will never expire.
