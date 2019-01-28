@@ -40,7 +40,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConsumerGroupCreateOrUpdateParameters',
           type: {
@@ -48,7 +47,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
             class_name: 'ConsumerGroupCreateOrUpdateParameters',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -56,7 +54,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -64,7 +61,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -72,7 +68,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               created_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAt',
@@ -81,7 +76,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               event_hub_path: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.eventHubPath',
@@ -90,7 +84,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               updated_at: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.updatedAt',
@@ -99,7 +92,6 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               user_metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userMetadata',
                 type: {

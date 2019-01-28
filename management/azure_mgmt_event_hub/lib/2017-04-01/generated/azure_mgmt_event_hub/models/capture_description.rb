@@ -36,6 +36,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
       # stored. (Storage Account, Blob Names)
       attr_accessor :destination
 
+      # @return [Boolean] A value that indicates whether to Skip Empty Archives
+      attr_accessor :skip_empty_archives
+
 
       #
       # Mapper for CaptureDescription class as Ruby Hash.
@@ -43,7 +46,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CaptureDescription',
           type: {
@@ -51,7 +53,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'CaptureDescription',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -59,7 +60,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               encoding: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'encoding',
                 type: {
@@ -68,7 +68,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               interval_in_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'intervalInSeconds',
                 constraints: {
@@ -80,7 +79,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               size_limit_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sizeLimitInBytes',
                 constraints: {
@@ -92,12 +90,18 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               destination: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'destination',
                 type: {
                   name: 'Composite',
                   class_name: 'Destination'
+                }
+              },
+              skip_empty_archives: {
+                required: false,
+                serialized_name: 'skipEmptyArchives',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

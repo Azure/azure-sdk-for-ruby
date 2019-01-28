@@ -7,7 +7,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
     # Parameters supplied to the Regenerate Authorization Rule operation,
-    # specifies which key neeeds to be reset.
+    # specifies which key needs to be reset.
     #
     class RegenerateAccessKeyParameters
 
@@ -28,7 +28,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateAccessKeyParameters',
           type: {
@@ -36,7 +35,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'RegenerateAccessKeyParameters',
             model_properties: {
               key_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyType',
                 type: {
@@ -45,7 +43,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key',
                 type: {
