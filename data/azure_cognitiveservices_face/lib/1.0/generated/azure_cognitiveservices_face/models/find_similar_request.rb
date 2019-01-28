@@ -21,7 +21,7 @@ module Azure::CognitiveServices::Face::V1_0
       # created in Face List - Create a Face List. Face list contains a set of
       # persistedFaceIds which are persisted and will never expire. Parameter
       # faceListId, largeFaceListId and faceIds should not be provided at the
-      # same time。
+      # same time.
       attr_accessor :face_list_id
 
       # @return [String] An existing user-specified unique candidate large face
