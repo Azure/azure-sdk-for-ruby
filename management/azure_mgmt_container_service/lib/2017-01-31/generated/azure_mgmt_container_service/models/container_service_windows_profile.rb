@@ -25,7 +25,6 @@ module Azure::ContainerService::Mgmt::V2017_01_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceWindowsProfile',
           type: {
@@ -33,7 +32,6 @@ module Azure::ContainerService::Mgmt::V2017_01_31
             class_name: 'ContainerServiceWindowsProfile',
             model_properties: {
               admin_username: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'adminUsername',
                 constraints: {
@@ -44,7 +42,6 @@ module Azure::ContainerService::Mgmt::V2017_01_31
                 }
               },
               admin_password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'adminPassword',
                 constraints: {
