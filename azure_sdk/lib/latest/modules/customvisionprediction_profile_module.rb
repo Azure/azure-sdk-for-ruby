@@ -8,10 +8,10 @@ module Azure::Profiles::Latest
   module Customvisionprediction
 
     module Models
-      Prediction = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::Prediction
       ImageUrl = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImageUrl
-      ImagePrediction = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImagePrediction
       BoundingBox = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::BoundingBox
+      Prediction = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::Prediction
+      ImagePrediction = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImagePrediction
     end
 
     class CustomvisionpredictionDataClass
@@ -43,17 +43,17 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def prediction
-          Azure::CognitiveServices::Customvisionprediction::V2_0::Models::Prediction
-        end
         def image_url
           Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImageUrl
         end
-        def image_prediction
-          Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImagePrediction
-        end
         def bounding_box
           Azure::CognitiveServices::Customvisionprediction::V2_0::Models::BoundingBox
+        end
+        def prediction
+          Azure::CognitiveServices::Customvisionprediction::V2_0::Models::Prediction
+        end
+        def image_prediction
+          Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImagePrediction
         end
       end
     end
