@@ -12,25 +12,25 @@ module Azure::EventGrid::V2018_01_01
 
       include MsRestAzure
 
-      # @return [String] The MIME type of the referenced object.
+      # @return [String] The MIME type of the artifact.
       attr_accessor :media_type
 
-      # @return [Integer] The number of bytes of the content.
+      # @return [Integer] The size in bytes of the artifact.
       attr_accessor :size
 
-      # @return [String] The digest of the helm chart.
+      # @return [String] The digest of the artifact.
       attr_accessor :digest
 
-      # @return [String] The repository name.
+      # @return [String] The repository name of the artifact.
       attr_accessor :repository
 
-      # @return [String] The tag name.
+      # @return [String] The tag of the artifact.
       attr_accessor :tag
 
-      # @return [String] The name of the helm chart.
+      # @return [String] The name of the artifact.
       attr_accessor :name
 
-      # @return [String] The version of the helm chart.
+      # @return [String] The version of the artifact.
       attr_accessor :version
 
 
