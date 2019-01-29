@@ -7,16 +7,20 @@ require 'azure_mgmt_policy_insights'
 module Azure::Profiles::Latest
   module PolicyInsights
     module Mgmt
-      PolicyEvents = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyEvents
       PolicyStates = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyStates
       Operations = Azure::PolicyInsights::Mgmt::V2018_04_04::Operations
+      PolicyEvents = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyEvents
 
       module Models
-        QueryFailureError = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
+        PolicyEvent = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
+        PolicyState = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
         OperationsListResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
-        PolicyStatesResource = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
+        QueryFailureError = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
         SummaryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
+        PolicyStatesResource = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
         QueryOptions = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryOptions
+        OperationDisplay = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
+        Operation = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
         PolicyDefinitionSummary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyDefinitionSummary
         PolicyAssignmentSummary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyAssignmentSummary
         PolicyEventsQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
@@ -24,14 +28,10 @@ module Azure::Profiles::Latest
         QueryFailure = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
         SummarizeResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
         PolicyStatesQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
-        OperationDisplay = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
-        PolicyState = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
-        Operation = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
-        PolicyEvent = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
       end
 
       class PolicyInsightsManagementClass
-        attr_reader :policy_events, :policy_states, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :policy_states, :operations, :policy_events, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -41,9 +41,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @policy_events = @client_0.policy_events
           @policy_states = @client_0.policy_states
           @operations = @client_0.operations
+          @policy_events = @client_0.policy_events
 
           @model_classes = ModelClasses.new
         end
@@ -62,20 +62,32 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def query_failure_error
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
+          def policy_event
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
+          end
+          def policy_state
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
           end
           def operations_list_results
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
           end
-          def policy_states_resource
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
+          def query_failure_error
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
           end
           def summary_results
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
           end
+          def policy_states_resource
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
+          end
           def query_options
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryOptions
+          end
+          def operation_display
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
+          end
+          def operation
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
           end
           def policy_definition_summary
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyDefinitionSummary
@@ -97,18 +109,6 @@ module Azure::Profiles::Latest
           end
           def policy_states_query_results
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
-          end
-          def operation_display
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
-          end
-          def policy_state
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
-          end
-          def operation
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
-          end
-          def policy_event
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
           end
         end
       end

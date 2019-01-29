@@ -7,12 +7,16 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
+      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
       IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
       ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
-      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
       Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
 
       module Models
+        RoutingProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingProperties
+        TagsResource = Azure::IotHub::Mgmt::V2018_04_01::Models::TagsResource
+        MessagingEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::MessagingEndpointProperties
+        EventHubConsumerGroupInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubConsumerGroupInfo
         CloudToDeviceProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::CloudToDeviceProperties
         EventHubConsumerGroupsListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubConsumerGroupsListResult
         IotHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubProperties
@@ -51,18 +55,18 @@ module Azure::Profiles::Latest
         IpFilterActionType = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
         RoutingSource = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
         OperationMonitoringLevel = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
+        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         Capabilities = Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
         IotHubSku = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSku
         IotHubSkuTier = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuTier
         EndpointHealthStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthStatus
-        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         JobType = Azure::IotHub::Mgmt::V2018_04_01::Models::JobType
         IotHubScaleType = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
         IotHubNameUnavailabilityReason = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameUnavailabilityReason
         TestResultStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::TestResultStatus
         RouteErrorSeverity = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
-        IpFilterRule = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
         Resource = Azure::IotHub::Mgmt::V2018_04_01::Models::Resource
+        IpFilterRule = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
         ErrorDetails = Azure::IotHub::Mgmt::V2018_04_01::Models::ErrorDetails
         OperationDisplay = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationDisplay
         Operation = Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
@@ -86,14 +90,10 @@ module Azure::Profiles::Latest
         IotHubCapacity = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubCapacity
         RouteProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteProperties
         IotHubSkuDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuDescription
-        RoutingProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingProperties
-        TagsResource = Azure::IotHub::Mgmt::V2018_04_01::Models::TagsResource
-        MessagingEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::MessagingEndpointProperties
-        EventHubConsumerGroupInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubConsumerGroupInfo
       end
 
       class IotHubManagementClass
-        attr_reader :iot_hub_resource, :resource_provider_common, :certificates, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :certificates, :iot_hub_resource, :resource_provider_common, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -103,9 +103,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @certificates = @client_0.certificates
           @iot_hub_resource = @client_0.iot_hub_resource
           @resource_provider_common = @client_0.resource_provider_common
-          @certificates = @client_0.certificates
           @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
@@ -125,6 +125,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def routing_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingProperties
+          end
+          def tags_resource
+            Azure::IotHub::Mgmt::V2018_04_01::Models::TagsResource
+          end
+          def messaging_endpoint_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::MessagingEndpointProperties
+          end
+          def event_hub_consumer_group_info
+            Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubConsumerGroupInfo
+          end
           def cloud_to_device_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::CloudToDeviceProperties
           end
@@ -239,6 +251,9 @@ module Azure::Profiles::Latest
           def operation_monitoring_level
             Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
           end
+          def name
+            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+          end
           def capabilities
             Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
           end
@@ -250,9 +265,6 @@ module Azure::Profiles::Latest
           end
           def endpoint_health_status
             Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthStatus
-          end
-          def name
-            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
           end
           def job_type
             Azure::IotHub::Mgmt::V2018_04_01::Models::JobType
@@ -269,11 +281,11 @@ module Azure::Profiles::Latest
           def route_error_severity
             Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
           end
-          def ip_filter_rule
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
-          end
           def resource
             Azure::IotHub::Mgmt::V2018_04_01::Models::Resource
+          end
+          def ip_filter_rule
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
           end
           def error_details
             Azure::IotHub::Mgmt::V2018_04_01::Models::ErrorDetails
@@ -343,18 +355,6 @@ module Azure::Profiles::Latest
           end
           def iot_hub_sku_description
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuDescription
-          end
-          def routing_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingProperties
-          end
-          def tags_resource
-            Azure::IotHub::Mgmt::V2018_04_01::Models::TagsResource
-          end
-          def messaging_endpoint_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::MessagingEndpointProperties
-          end
-          def event_hub_consumer_group_info
-            Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubConsumerGroupInfo
           end
         end
       end

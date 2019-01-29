@@ -14,6 +14,10 @@ module Azure::Profiles::Latest
       Compliances = Azure::Security::Mgmt::V2017_08_01_preview::Compliances
 
       module Models
+        WorkspaceSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
+        SecurityContact = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
+        Pricing = Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
+        WorkspaceSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
         AutoProvisioningSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
         Compliance = Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
         AlertNotifications = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
@@ -26,10 +30,6 @@ module Azure::Profiles::Latest
         ComplianceSegment = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceSegment
         SecurityContactList = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContactList
         ComplianceList = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
-        WorkspaceSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
-        SecurityContact = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
-        Pricing = Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
-        WorkspaceSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
       end
 
       class SecurityManagementClass
@@ -66,6 +66,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def workspace_setting_list
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
+          end
+          def security_contact
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
+          end
+          def pricing
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
+          end
+          def workspace_setting
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
+          end
           def auto_provisioning_setting
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
           end
@@ -101,18 +113,6 @@ module Azure::Profiles::Latest
           end
           def compliance_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
-          end
-          def workspace_setting_list
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
-          end
-          def security_contact
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
-          end
-          def pricing
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
-          end
-          def workspace_setting
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
           end
         end
       end
