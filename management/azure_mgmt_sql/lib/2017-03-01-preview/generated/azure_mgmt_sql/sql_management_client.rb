@@ -108,6 +108,15 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # @return [ManagedDatabases] managed_databases
     attr_reader :managed_databases
 
+    # @return
+    # [ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies]
+    # managed_restorable_dropped_database_backup_short_term_retention_policies
+    attr_reader :managed_restorable_dropped_database_backup_short_term_retention_policies
+
+    # @return [RestorableDroppedManagedDatabases]
+    # restorable_dropped_managed_databases
+    attr_reader :restorable_dropped_managed_databases
+
     # @return [RestorePoints] restore_points
     attr_reader :restore_points
 
@@ -164,6 +173,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       @backup_long_term_retention_policies = BackupLongTermRetentionPolicies.new(self)
       @managed_backup_short_term_retention_policies = ManagedBackupShortTermRetentionPolicies.new(self)
       @managed_databases = ManagedDatabases.new(self)
+      @managed_restorable_dropped_database_backup_short_term_retention_policies = ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.new(self)
+      @restorable_dropped_managed_databases = RestorableDroppedManagedDatabases.new(self)
       @restore_points = RestorePoints.new(self)
       @server_automatic_tuning_operations = ServerAutomaticTuningOperations.new(self)
       @server_dns_aliases = ServerDnsAliases.new(self)
