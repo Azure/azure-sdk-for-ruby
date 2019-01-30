@@ -28,7 +28,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UrlFileExtensionConditionParameters',
           type: {
@@ -36,7 +35,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'UrlFileExtensionConditionParameters',
             model_properties: {
               odatatype: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: '@odata\\.type',
@@ -46,13 +44,11 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               extensions: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'extensions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
