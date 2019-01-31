@@ -19,7 +19,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # 'Male', 'Female'
       attr_accessor :gender
 
-      # @return [FaceRectangle]
+      # @return [FaceRectangle] Rectangle in the image containing the
+      # identified face.
       attr_accessor :face_rectangle
 
 

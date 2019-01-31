@@ -6,13 +6,14 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # List of celebrities recognized in the image.
+    # Result of domain-specific classifications for the domain of celebrities.
     #
     class CelebrityResults
 
       include MsRestAzure
 
-      # @return [Array<CelebritiesModel>]
+      # @return [Array<CelebritiesModel>] List of celebrities recognized in the
+      # image.
       attr_accessor :celebrities
 
       # @return [String] Id of the REST API request.

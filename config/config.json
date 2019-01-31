@@ -457,8 +457,13 @@
     }
   },
   "azure_mgmt_devtestlabs": {
+    "azure_mgmt_devtestlabs_2018_09_15": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/devtestlabs/resource-manager/readme.md",
+      "namespace": "Azure::DevTestLabs::Mgmt::V2018_09_15",
+      "tag": "package-2018-09"
+    },
     "azure_mgmt_devtestlabs_2016_05_15": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/devtestlabs/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/devtestlabs/resource-manager/readme.md",
       "namespace": "Azure::DevTestLabs::Mgmt::V2016_05_15",
       "tag": "package-2016-05"
     }
@@ -543,12 +548,12 @@
   },
   "azure_mgmt_hdinsight": {
     "azure_mgmt_hdinsight_2015_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b980271c6202dd77735373cd172a89fad1d244d7/specification/hdinsight/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/hdinsight/resource-manager/readme.md",
       "namespace": "Azure::Hdinsight::Mgmt::V2015_03_01_preview",
       "tag": "package-2015-03-preview"
     },
     "azure_mgmt_hdinsight_2018_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b980271c6202dd77735373cd172a89fad1d244d7/specification/hdinsight/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/hdinsight/resource-manager/readme.md",
       "namespace": "Azure::Hdinsight::Mgmt::V2018_06_01_preview",
       "tag": "package-2018-06-preview"
     }
@@ -627,6 +632,13 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/24ab24bdc72cb5f0e7c6b9bdb3e54462983c79c3/specification/azure-kusto/resource-manager/readme.md",
       "namespace": "Azure::Kusto::Mgmt::V2018_09_07_privatepreview",
       "tag": "package-2017-09-07-privatepreview"
+    }
+  },
+  "azure_mgmt_labservices": {
+    "azure_mgmt_labservices_2018_10_15": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/labservices/resource-manager/readme.md",
+      "namespace": "Azure::Labservices::Mgmt::V2018_10_15",
+      "tag": "package-2018-10"
     }
   },
   "azure_mgmt_links": {
@@ -1589,14 +1601,14 @@
   },
   "azure_cognitiveservices_computervision":{
     "azure_cognitiveservices_computervision_v2.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/ComputerVision/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/cognitiveservices/data-plane/ComputerVision/readme.md",
       "namespace": "Azure::CognitiveServices::ComputerVision::V2_0",
       "title": "ComputerVisionClient",
       "tag": "release_2_0"
     },
     "azure_cognitiveservices_computervision_v1.0": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/cognitiveservices/data-plane/ComputerVision/stable/v1.0/ComputerVision.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/cognitiveservices/data-plane/ComputerVision/stable/v1.0/ComputerVision.json"
       ],
       "namespace": "Azure::CognitiveServices::ComputerVision::V1_0",
       "title": "ComputerVisionClient"

@@ -21,7 +21,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # origin at the top-left corner, and the y-axis pointing down.
       attr_accessor :bounding_box
 
-      # @return [Array<OcrLine>]
+      # @return [Array<OcrLine>] An array of recognized lines of text.
       attr_accessor :lines
 
 

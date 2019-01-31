@@ -30,6 +30,15 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [String] The storage account access key.
       attr_accessor :key
 
+      # @return [String] The resource ID of storage account, only to be
+      # specified for Azure Data Lake Storage Gen 2.
+      attr_accessor :resource_id
+
+      # @return [String] The managed identity (MSI) that is allowed to access
+      # the storage account, only to be specified for Azure Data Lake Storage
+      # Gen 2.
+      attr_accessor :msi_resource_id
+
 
       #
       # Mapper for StorageAccount class as Ruby Hash.
@@ -80,6 +89,22 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'key',
+                type: {
+                  name: 'String'
+                }
+              },
+              resource_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'resourceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              msi_resource_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'msiResourceId',
                 type: {
                   name: 'String'
                 }

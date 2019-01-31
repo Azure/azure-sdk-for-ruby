@@ -247,7 +247,7 @@
                 },
                 "Microsoft.DevTestLabs": {
                     "management": {
-                        "2016-05-15": ["*"]
+                        "2018-09-15": ["*"]
                     }
                 },
                 "Microsoft.Dns": {
@@ -304,6 +304,11 @@
                 "Microsoft.Kusto": {
                     "management": {
                         "2018-09-07-preview": ["*"]
+                    }
+                },
+                "Microsoft.Labservices": {
+                    "management": {
+                        "2018-10-15": ["*"]
                     }
                 },
                 "Microsoft.Links": {
@@ -923,7 +928,7 @@
             "resourceTypes": {
                 "Microsoft.DevTestLabs" : {
                     "management": {
-                        "2016-05-15": ["*"]
+                        "2018-09-15": ["*"]
                     }
                 }
             },
@@ -1128,6 +1133,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_kusto/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_labservices": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Labservices": {
+                    "management": {
+                        "2018-10-15": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_labservices/lib/profiles",
             "individual_gem_profile": true
         }
         ],

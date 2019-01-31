@@ -13,7 +13,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return Model-specific response
+      # @return Model-specific response.
       attr_accessor :result
 
       # @return [String] Id of the REST API request.

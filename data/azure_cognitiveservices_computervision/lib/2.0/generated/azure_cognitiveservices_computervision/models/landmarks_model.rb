@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # A landmark recognized in the image
+    # A landmark recognized in the image.
     #
     class LandmarksModel
 
@@ -15,7 +15,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # @return [String] Name of the landmark.
       attr_accessor :name
 
-      # @return [Float] Confidence level for the landmark recognition.
+      # @return [Float] Confidence level for the landmark recognition as a
+      # value ranging from 0 to 1.
       attr_accessor :confidence
 
 

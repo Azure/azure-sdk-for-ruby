@@ -12,10 +12,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [String] The text of the caption
+      # @return [String] The text of the caption.
       attr_accessor :text
 
-      # @return [Float] The level of confidence the service has in the caption
+      # @return [Float] The level of confidence the service has in the caption.
       attr_accessor :confidence
 
 

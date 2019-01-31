@@ -12,16 +12,20 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [Integer] X-coordinate of the top left point of the face.
+      # @return [Integer] X-coordinate of the top left point of the face, in
+      # pixels.
       attr_accessor :left
 
-      # @return [Integer] Y-coordinate of the top left point of the face.
+      # @return [Integer] Y-coordinate of the top left point of the face, in
+      # pixels.
       attr_accessor :top
 
-      # @return [Integer] Width measured from the top-left point of the face.
+      # @return [Integer] Width measured from the top-left point of the face,
+      # in pixels.
       attr_accessor :width
 
-      # @return [Integer] Height measured from the top-left point of the face.
+      # @return [Integer] Height measured from the top-left point of the face,
+      # in pixels.
       attr_accessor :height
 
 

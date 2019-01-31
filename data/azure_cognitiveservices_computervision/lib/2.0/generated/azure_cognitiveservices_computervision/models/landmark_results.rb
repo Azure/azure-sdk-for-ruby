@@ -6,13 +6,14 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # List of landmarks recognized in the image.
+    # Result of domain-specific classifications for the domain of landmarks.
     #
     class LandmarkResults
 
       include MsRestAzure
 
-      # @return [Array<LandmarksModel>]
+      # @return [Array<LandmarksModel>] List of landmarks recognized in the
+      # image.
       attr_accessor :landmarks
 
       # @return [String] Id of the REST API request.
