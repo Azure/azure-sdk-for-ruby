@@ -226,6 +226,13 @@
       "module_require": "azure_mgmt_kusto"
     }
   },
+  "Microsoft.Labservices": {
+    "management": {
+      "path": "management/azure_mgmt_labservices",
+      "namespace": "Azure::Labservices::Mgmt",
+      "module_require": "azure_mgmt_labservices"
+    }
+  },
   "Microsoft.Links": {
     "management": {
       "path": "management/azure_mgmt_links",

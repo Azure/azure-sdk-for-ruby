@@ -306,6 +306,11 @@
                         "2018-09-07-preview": ["*"]
                     }
                 },
+                "Microsoft.Labservices": {
+                    "management": {
+                        "2018-10-15": ["*"]
+                    }
+                },
                 "Microsoft.Links": {
                     "management": {
                         "2016-09-01": ["*"]
@@ -1128,6 +1133,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_kusto/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_labservices": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Labservices": {
+                    "management": {
+                        "2018-10-15": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_labservices/lib/profiles",
             "individual_gem_profile": true
         }
         ],
