@@ -31,7 +31,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceUsage',
           type: {
@@ -39,7 +38,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'ResourceUsage',
             model_properties: {
               resource_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceType',
@@ -48,7 +46,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -57,7 +54,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'currentValue',
@@ -66,7 +62,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'limit',
