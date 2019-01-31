@@ -15,26 +15,34 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # @return [Array<Category>] An array indicating identified categories.
       attr_accessor :categories
 
-      # @return [AdultInfo]
+      # @return [AdultInfo] An object describing whether the image contains
+      # adult-oriented content and/or is racy.
       attr_accessor :adult
 
-      # @return [ColorInfo]
+      # @return [ColorInfo] An object providing additional metadata describing
+      # color attributes.
       attr_accessor :color
 
-      # @return [ImageType]
+      # @return [ImageType] An object providing possible image types and
+      # matching confidence levels.
       attr_accessor :image_type
 
       # @return [Array<ImageTag>] A list of tags with confidence level.
       attr_accessor :tags
 
-      # @return [ImageDescriptionDetails]
+      # @return [ImageDescriptionDetails] A collection of content tags, along
+      # with a list of captions sorted by confidence level, and image metadata.
       attr_accessor :description
 
       # @return [Array<FaceDescription>] An array of possible faces within the
       # image.
       attr_accessor :faces
 
-      # @return [String] Id of the request for tracking purposes.
+      # @return [Array<DetectedObject>] Array of objects describing what was
+      # detected in the image.
+      attr_accessor :objects
+
+      # @return [String] Id of the REST API request.
       attr_accessor :request_id
 
       # @return [ImageMetadata]
@@ -137,6 +145,23 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                       type: {
                         name: 'Composite',
                         class_name: 'FaceDescription'
+                      }
+                  }
+                }
+              },
+              objects: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'objects',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'DetectedObjectElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'DetectedObject'
                       }
                   }
                 }

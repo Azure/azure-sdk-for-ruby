@@ -6,19 +6,19 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Image metadata
+    # Image metadata.
     #
     class ImageMetadata
 
       include MsRestAzure
 
-      # @return [Integer] Image width
+      # @return [Integer] Image width, in pixels.
       attr_accessor :width
 
-      # @return [Integer] Image height
+      # @return [Integer] Image height, in pixels.
       attr_accessor :height
 
-      # @return [String] Image format
+      # @return [String] Image format.
       attr_accessor :format
 
 

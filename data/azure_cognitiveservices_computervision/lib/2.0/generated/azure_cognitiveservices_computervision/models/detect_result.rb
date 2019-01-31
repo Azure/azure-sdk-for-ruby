@@ -6,15 +6,14 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Result of domain-specific classifications for the domain of celebrities.
+    # Result of a DetectImage call.
     #
-    class CelebrityResults
+    class DetectResult
 
       include MsRestAzure
 
-      # @return [Array<CelebritiesModel>] List of celebrities recognized in the
-      # image.
-      attr_accessor :celebrities
+      # @return [Array<DetectedObject>] An array of detected objects.
+      attr_accessor :objects
 
       # @return [String] Id of the REST API request.
       attr_accessor :request_id
@@ -24,31 +23,32 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
 
       #
-      # Mapper for CelebrityResults class as Ruby Hash.
+      # Mapper for DetectResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'CelebrityResults',
+          serialized_name: 'DetectResult',
           type: {
             name: 'Composite',
-            class_name: 'CelebrityResults',
+            class_name: 'DetectResult',
             model_properties: {
-              celebrities: {
+              objects: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'celebrities',
+                read_only: true,
+                serialized_name: 'objects',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'CelebritiesModelElementType',
+                      serialized_name: 'DetectedObjectElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'CelebritiesModel'
+                        class_name: 'DetectedObject'
                       }
                   }
                 }

@@ -12,10 +12,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [String]
+      # @return [String] The name of the model.
       attr_accessor :name
 
-      # @return [Array<String>]
+      # @return [Array<String>] Categories of the model.
       attr_accessor :categories
 
 

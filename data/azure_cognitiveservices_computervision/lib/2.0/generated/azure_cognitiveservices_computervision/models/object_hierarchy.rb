@@ -6,37 +6,43 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # A landmark recognized in the image.
+    # An object detected inside an image.
     #
-    class LandmarksModel
+    class ObjectHierarchy
 
       include MsRestAzure
 
-      # @return [String] Name of the landmark.
-      attr_accessor :name
+      # @return [String] Label for the object.
+      attr_accessor :object
 
-      # @return [Float] Confidence level for the landmark recognition as a
-      # value ranging from 0 to 1.
+      # @return [Float] Confidence score of having observed the object in the
+      # image, as a value ranging from 0 to 1.
       attr_accessor :confidence
+
+      # @return [ObjectHierarchy] The parent object, from a taxonomy
+      # perspective.
+      # The parent object is a more generic form of this object.  For example,
+      # a 'bulldog' would have a parent of 'dog'.
+      attr_accessor :parent
 
 
       #
-      # Mapper for LandmarksModel class as Ruby Hash.
+      # Mapper for ObjectHierarchy class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'LandmarksModel',
+          serialized_name: 'ObjectHierarchy',
           type: {
             name: 'Composite',
-            class_name: 'LandmarksModel',
+            class_name: 'ObjectHierarchy',
             model_properties: {
-              name: {
+              object: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'name',
+                serialized_name: 'object',
                 type: {
                   name: 'String'
                 }
@@ -47,6 +53,15 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 serialized_name: 'confidence',
                 type: {
                   name: 'Double'
+                }
+              },
+              parent: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'parent',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ObjectHierarchy'
                 }
               }
             }

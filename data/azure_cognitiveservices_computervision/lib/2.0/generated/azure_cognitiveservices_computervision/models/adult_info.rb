@@ -17,11 +17,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # adult-oriented content.
       attr_accessor :is_adult_content
 
-      # @return [Boolean] A value indicating if the image is race.
+      # @return [Boolean] A value indicating if the image is racy.
       attr_accessor :is_racy_content
 
-      # @return [Float] Score from 0 to 1 that indicates how much of adult
-      # content is within the image.
+      # @return [Float] Score from 0 to 1 that indicates how much the content
+      # is considered adult-oriented within the image.
       attr_accessor :adult_score
 
       # @return [Float] Score from 0 to 1 that indicates how suggestive is the

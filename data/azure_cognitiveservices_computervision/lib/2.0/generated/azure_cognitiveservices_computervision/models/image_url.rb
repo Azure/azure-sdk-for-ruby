@@ -13,7 +13,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [String] Publicly reachable URL of an image
+      # @return [String] Publicly reachable URL of an image.
       attr_accessor :url
 
 

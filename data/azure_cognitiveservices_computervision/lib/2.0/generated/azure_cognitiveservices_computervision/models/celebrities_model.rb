@@ -15,10 +15,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # @return [String] Name of the celebrity.
       attr_accessor :name
 
-      # @return [Float] Level of confidence ranging from 0 to 1.
+      # @return [Float] Confidence level for the celebrity recognition as a
+      # value ranging from 0 to 1.
       attr_accessor :confidence
 
-      # @return [FaceRectangle]
+      # @return [FaceRectangle] Location of the identified face in the image.
       attr_accessor :face_rectangle
 
 

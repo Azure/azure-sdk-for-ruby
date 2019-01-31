@@ -6,15 +6,15 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Result of domain-specific classifications for the domain of celebrities.
+    # Result of AreaOfInterest operation.
     #
-    class CelebrityResults
+    class AreaOfInterestResult
 
       include MsRestAzure
 
-      # @return [Array<CelebritiesModel>] List of celebrities recognized in the
+      # @return [BoundingRect] A bounding box for an area of interest inside an
       # image.
-      attr_accessor :celebrities
+      attr_accessor :area_of_interest
 
       # @return [String] Id of the REST API request.
       attr_accessor :request_id
@@ -24,33 +24,26 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
 
       #
-      # Mapper for CelebrityResults class as Ruby Hash.
+      # Mapper for AreaOfInterestResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'CelebrityResults',
+          serialized_name: 'AreaOfInterestResult',
           type: {
             name: 'Composite',
-            class_name: 'CelebrityResults',
+            class_name: 'AreaOfInterestResult',
             model_properties: {
-              celebrities: {
+              area_of_interest: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'celebrities',
+                read_only: true,
+                serialized_name: 'areaOfInterest',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'CelebritiesModelElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'CelebritiesModel'
-                      }
-                  }
+                  name: 'Composite',
+                  class_name: 'BoundingRect'
                 }
               },
               request_id: {

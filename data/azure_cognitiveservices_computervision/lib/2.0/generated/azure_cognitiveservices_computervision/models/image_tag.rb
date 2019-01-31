@@ -6,19 +6,19 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # An image caption, i.e. a brief description of what the image depicts.
+    # An entity observation in the image, along with the confidence score.
     #
     class ImageTag
 
       include MsRestAzure
 
-      # @return [String] The tag value
+      # @return [String] Name of the entity.
       attr_accessor :name
 
-      # @return [Float] The level of confidence the service has in the caption
+      # @return [Float] The level of confidence that the entity was observed.
       attr_accessor :confidence
 
-      # @return [String] Optional categorization for the tag
+      # @return [String] Optional hint/details for this tag.
       attr_accessor :hint
 
 

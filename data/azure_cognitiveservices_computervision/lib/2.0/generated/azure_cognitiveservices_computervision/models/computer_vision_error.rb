@@ -6,18 +6,13 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Model object.
-    #
+    # Details about the API request error.
     #
     class ComputerVisionError
 
       include MsRestAzure
 
-      # @return [ComputerVisionErrorCodes] The error code. Possible values
-      # include: 'InvalidImageUrl', 'InvalidImageFormat', 'InvalidImageSize',
-      # 'NotSupportedVisualFeature', 'NotSupportedImage', 'InvalidDetails',
-      # 'NotSupportedLanguage', 'BadArgument', 'FailedToProcess', 'Timeout',
-      # 'InternalServerError', 'Unspecified', 'StorageException'
+      # @return The error code.
       attr_accessor :code
 
       # @return [String] A message explaining the error reported by the
@@ -46,8 +41,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 required: true,
                 serialized_name: 'code',
                 type: {
-                  name: 'Enum',
-                  module: 'ComputerVisionErrorCodes'
+                  name: 'Object'
                 }
               },
               message: {

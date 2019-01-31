@@ -29,9 +29,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       attr_accessor :text_angle
 
       # @return [String] Orientation of the text recognized in the image. The
-      # value (up,down,left, or right) refers to the direction that the top of
-      # the recognized text is facing, after the image has been rotated around
-      # its center according to the detected text angle (see textAngle
+      # value (up, down, left, or right) refers to the direction that the top
+      # of the recognized text is facing, after the image has been rotated
+      # around its center according to the detected text angle (see textAngle
       # property).
       attr_accessor :orientation
 
