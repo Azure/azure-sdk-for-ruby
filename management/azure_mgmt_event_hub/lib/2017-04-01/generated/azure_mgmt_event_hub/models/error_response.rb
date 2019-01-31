@@ -6,7 +6,7 @@
 module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # Error reponse indicates EventHub service is not able to process the
+    # Error response indicates EventHub service is not able to process the
     # incoming request. The reason is provided in the error message.
     #
     class ErrorResponse
@@ -26,7 +26,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -34,7 +33,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'ErrorResponse',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -42,7 +40,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
