@@ -1,3 +1,11 @@
+## 2019.01.31 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_devtestlabs - v0.17.2
+    - azure_mgmt_hdinsight - v0.17.1
+    - azure_mgmt_labservices - v0.17.0
+    - azure_cognitiveservices_computervision - v0.18.0
+    - azure_sdk - v0.22.0
+
 ## 2019.01.15 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_network - v0.18.3
