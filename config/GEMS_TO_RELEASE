@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_devtestlabs"
+        "azure_mgmt_devtestlabs",
+        "azure_mgmt_hdinsight"
     ],
     "data": [
         "azure_cognitiveservices_computervision"
