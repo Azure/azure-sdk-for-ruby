@@ -31,7 +31,6 @@ module Azure::CDN::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OriginParameters',
           type: {
@@ -39,7 +38,6 @@ module Azure::CDN::Mgmt::V2015_06_01
             class_name: 'OriginParameters',
             model_properties: {
               host_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.hostName',
                 type: {
@@ -47,7 +45,6 @@ module Azure::CDN::Mgmt::V2015_06_01
                 }
               },
               http_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.httpPort',
                 type: {
@@ -55,7 +52,6 @@ module Azure::CDN::Mgmt::V2015_06_01
                 }
               },
               https_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.httpsPort',
                 type: {
