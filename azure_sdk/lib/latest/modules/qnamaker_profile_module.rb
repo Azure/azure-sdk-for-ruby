@@ -6,12 +6,13 @@ require 'azure_cognitiveservices_qnamaker'
 
 module Azure::Profiles::Latest
   module Qnamaker
-    Knowledgebase = Azure::CognitiveServices::Qnamaker::V4_0::Knowledgebase
-    Operations = Azure::CognitiveServices::Qnamaker::V4_0::Operations
     EndpointKeys = Azure::CognitiveServices::Qnamaker::V4_0::EndpointKeys
     Alterations = Azure::CognitiveServices::Qnamaker::V4_0::Alterations
+    Knowledgebase = Azure::CognitiveServices::Qnamaker::V4_0::Knowledgebase
+    Operations = Azure::CognitiveServices::Qnamaker::V4_0::Operations
 
     module Models
+      ErrorResponseError = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
       ErrorResponse = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponse
       Operation = Azure::CognitiveServices::Qnamaker::V4_0::Models::Operation
       CreateKbInputDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::CreateKbInputDTO
@@ -42,12 +43,11 @@ module Azure::Profiles::Latest
       ErrorCodeType = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorCodeType
       OperationStateType = Azure::CognitiveServices::Qnamaker::V4_0::Models::OperationStateType
       EnvironmentType = Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
-      ErrorResponseError = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
       Error = Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
     end
 
     class QnamakerDataClass
-      attr_reader :knowledgebase, :operations, :endpoint_keys, :alterations, :configurable, :base_url, :options, :model_classes
+      attr_reader :endpoint_keys, :alterations, :knowledgebase, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -57,10 +57,10 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @knowledgebase = @client_0.knowledgebase
-        @operations = @client_0.operations
         @endpoint_keys = @client_0.endpoint_keys
         @alterations = @client_0.alterations
+        @knowledgebase = @client_0.knowledgebase
+        @operations = @client_0.operations
 
         @model_classes = ModelClasses.new
       end
@@ -79,6 +79,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def error_response_error
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
+        end
         def error_response
           Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponse
         end
@@ -168,9 +171,6 @@ module Azure::Profiles::Latest
         end
         def environment_type
           Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
-        end
-        def error_response_error
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
         end
         def error
           Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
