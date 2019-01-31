@@ -22,7 +22,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     attr_reader :client
 
     #
-    # List notificationchannels in a given lab.
+    # List notification channels in a given lab.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -44,7 +44,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # List notificationchannels in a given lab.
+    # List notification channels in a given lab.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -65,7 +65,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # List notificationchannels in a given lab.
+    # List notification channels in a given lab.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -135,7 +135,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # Get notificationchannel.
+    # Get notification channels.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -153,7 +153,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # Get notificationchannel.
+    # Get notification channels.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -170,7 +170,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # Get notificationchannel.
+    # Get notification channels.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -354,7 +354,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # Delete notificationchannel.
+    # Delete notification channel.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -369,7 +369,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # Delete notificationchannel.
+    # Delete notification channel.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -384,7 +384,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # Delete notificationchannel.
+    # Delete notification channel.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -439,7 +439,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # Modify properties of notificationchannels.
+    # Modify properties of notification channels.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -456,7 +456,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # Modify properties of notificationchannels.
+    # Modify properties of notification channels.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -472,7 +472,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # Modify properties of notificationchannels.
+    # Modify properties of notification channels.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
@@ -645,7 +645,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # List notificationchannels in a given lab.
+    # List notification channels in a given lab.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -660,7 +660,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # List notificationchannels in a given lab.
+    # List notification channels in a given lab.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -674,7 +674,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # List notificationchannels in a given lab.
+    # List notification channels in a given lab.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -733,7 +733,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
     end
 
     #
-    # List notificationchannels in a given lab.
+    # List notification channels in a given lab.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
