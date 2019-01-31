@@ -247,7 +247,7 @@
                 },
                 "Microsoft.DevTestLabs": {
                     "management": {
-                        "2016-05-15": ["*"]
+                        "2018-09-15": ["*"]
                     }
                 },
                 "Microsoft.Dns": {
@@ -923,7 +923,7 @@
             "resourceTypes": {
                 "Microsoft.DevTestLabs" : {
                     "management": {
-                        "2016-05-15": ["*"]
+                        "2018-09-15": ["*"]
                     }
                 }
             },
