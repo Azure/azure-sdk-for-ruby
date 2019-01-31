@@ -42,6 +42,7 @@ gem 'azure_mgmt_iot_central',               path: 'management/azure_mgmt_iot_cen
 gem 'azure_mgmt_iot_hub',                   path: 'management/azure_mgmt_iot_hub'
 gem 'azure_mgmt_key_vault',                 path: 'management/azure_mgmt_key_vault'
 gem 'azure_mgmt_kusto',                     path: 'management/azure_mgmt_kusto'
+gem 'azure_mgmt_labservices',               path: 'management/azure_mgmt_labservices'
 gem 'azure_mgmt_links',                     path: 'management/azure_mgmt_links'
 gem 'azure_mgmt_locks',                     path: 'management/azure_mgmt_locks'
 gem 'azure_mgmt_logic',                     path: 'management/azure_mgmt_logic'
