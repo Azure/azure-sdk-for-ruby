@@ -61,7 +61,9 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       # @return [Boolean] Whether or not the public data endpoint is enabled.
       attr_accessor :public_data_endpoint_enabled
 
-      # @return [String] Proxy override of the managed instance.
+      # @return [ManagedInstanceProxyOverride] Connection type used for
+      # connecting to the instance. Possible values include: 'Proxy',
+      # 'Redirect', 'Default'
       attr_accessor :proxy_override
 
 

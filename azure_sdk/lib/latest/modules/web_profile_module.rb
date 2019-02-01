@@ -12,10 +12,10 @@ module Azure::Profiles::Latest
       Certificates = Azure::Web::Mgmt::V2018_02_01::Certificates
       DeletedWebApps = Azure::Web::Mgmt::V2018_02_01::DeletedWebApps
       Diagnostics = Azure::Web::Mgmt::V2018_02_01::Diagnostics
-      CertificateRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::CertificateRegistrationProvider
       AppServiceCertificateOrders = Azure::Web::Mgmt::V2018_02_01::AppServiceCertificateOrders
-      DomainRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::DomainRegistrationProvider
+      CertificateRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::CertificateRegistrationProvider
       TopLevelDomains = Azure::Web::Mgmt::V2018_02_01::TopLevelDomains
+      DomainRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::DomainRegistrationProvider
       ResourceHealthMetadataOperations = Azure::Web::Mgmt::V2018_02_01::ResourceHealthMetadataOperations
       Recommendations = Azure::Web::Mgmt::V2018_02_01::Recommendations
       Provider = Azure::Web::Mgmt::V2018_02_01::Provider
@@ -213,17 +213,17 @@ module Azure::Profiles::Latest
         DomainOwnershipIdentifier = Azure::Web::Mgmt::V2018_02_01::Models::DomainOwnershipIdentifier
         DomainPatchResource = Azure::Web::Mgmt::V2018_02_01::Models::DomainPatchResource
         TopLevelDomain = Azure::Web::Mgmt::V2018_02_01::Models::TopLevelDomain
-        AzureStoragePropertyDictionaryResource = Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource
         Dimension = Azure::Web::Mgmt::V2018_02_01::Models::Dimension
-        DeletedAppRestoreRequest = Azure::Web::Mgmt::V2018_02_01::Models::DeletedAppRestoreRequest
+        AzureStoragePropertyDictionaryResource = Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource
         MetricSpecification = Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
-        PrivateAccess = Azure::Web::Mgmt::V2018_02_01::Models::PrivateAccess
         PremierAddOnPatchResource = Azure::Web::Mgmt::V2018_02_01::Models::PremierAddOnPatchResource
-        SwiftVirtualNetwork = Azure::Web::Mgmt::V2018_02_01::Models::SwiftVirtualNetwork
+        DeletedAppRestoreRequest = Azure::Web::Mgmt::V2018_02_01::Models::DeletedAppRestoreRequest
         SnapshotRestoreRequest = Azure::Web::Mgmt::V2018_02_01::Models::SnapshotRestoreRequest
-        CertificateOrderStatus = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
+        PrivateAccess = Azure::Web::Mgmt::V2018_02_01::Models::PrivateAccess
         CertificateProductType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateProductType
+        SwiftVirtualNetwork = Azure::Web::Mgmt::V2018_02_01::Models::SwiftVirtualNetwork
         Usage = Azure::Web::Mgmt::V2018_02_01::Models::Usage
+        CertificateOrderStatus = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
         CertificateOrderActionType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderActionType
         IpFilterTag = Azure::Web::Mgmt::V2018_02_01::Models::IpFilterTag
         AzureStorageType = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageType
@@ -362,7 +362,7 @@ module Azure::Profiles::Latest
       end
 
       class WebManagementClass
-        attr_reader :app_service_plans, :web_apps, :certificates, :deleted_web_apps, :diagnostics, :certificate_registration_provider, :app_service_certificate_orders, :domain_registration_provider, :top_level_domains, :resource_health_metadata_operations, :recommendations, :provider, :domains, :app_service_environments, :configurable, :base_url, :options, :model_classes
+        attr_reader :app_service_plans, :web_apps, :certificates, :deleted_web_apps, :diagnostics, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :resource_health_metadata_operations, :recommendations, :provider, :domains, :app_service_environments, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -377,10 +377,10 @@ module Azure::Profiles::Latest
           @certificates = @client_0.certificates
           @deleted_web_apps = @client_0.deleted_web_apps
           @diagnostics = @client_0.diagnostics
-          @certificate_registration_provider = @client_0.certificate_registration_provider
           @app_service_certificate_orders = @client_0.app_service_certificate_orders
-          @domain_registration_provider = @client_0.domain_registration_provider
+          @certificate_registration_provider = @client_0.certificate_registration_provider
           @top_level_domains = @client_0.top_level_domains
+          @domain_registration_provider = @client_0.domain_registration_provider
           @resource_health_metadata_operations = @client_0.resource_health_metadata_operations
           @recommendations = @client_0.recommendations
           @provider = @client_0.provider
@@ -974,38 +974,38 @@ module Azure::Profiles::Latest
           def top_level_domain
             Azure::Web::Mgmt::V2018_02_01::Models::TopLevelDomain
           end
-          def azure_storage_property_dictionary_resource
-            Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource
-          end
           def dimension
             Azure::Web::Mgmt::V2018_02_01::Models::Dimension
           end
-          def deleted_app_restore_request
-            Azure::Web::Mgmt::V2018_02_01::Models::DeletedAppRestoreRequest
+          def azure_storage_property_dictionary_resource
+            Azure::Web::Mgmt::V2018_02_01::Models::AzureStoragePropertyDictionaryResource
           end
           def metric_specification
             Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
           end
-          def private_access
-            Azure::Web::Mgmt::V2018_02_01::Models::PrivateAccess
-          end
           def premier_add_on_patch_resource
             Azure::Web::Mgmt::V2018_02_01::Models::PremierAddOnPatchResource
           end
-          def swift_virtual_network
-            Azure::Web::Mgmt::V2018_02_01::Models::SwiftVirtualNetwork
+          def deleted_app_restore_request
+            Azure::Web::Mgmt::V2018_02_01::Models::DeletedAppRestoreRequest
           end
           def snapshot_restore_request
             Azure::Web::Mgmt::V2018_02_01::Models::SnapshotRestoreRequest
           end
-          def certificate_order_status
-            Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
+          def private_access
+            Azure::Web::Mgmt::V2018_02_01::Models::PrivateAccess
           end
           def certificate_product_type
             Azure::Web::Mgmt::V2018_02_01::Models::CertificateProductType
           end
+          def swift_virtual_network
+            Azure::Web::Mgmt::V2018_02_01::Models::SwiftVirtualNetwork
+          end
           def usage
             Azure::Web::Mgmt::V2018_02_01::Models::Usage
+          end
+          def certificate_order_status
+            Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
           end
           def certificate_order_action_type
             Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderActionType

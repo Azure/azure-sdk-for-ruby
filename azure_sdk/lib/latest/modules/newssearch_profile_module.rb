@@ -9,12 +9,13 @@ module Azure::Profiles::Latest
     NewsOperations = Azure::CognitiveServices::NewsSearch::V1_0::NewsOperations
 
     module Models
+      VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
       ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
-      SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
       ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
-      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-      NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
       Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
+      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+      News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
+      SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
@@ -29,10 +30,9 @@ module Azure::Profiles::Latest
       Thing = Azure::CognitiveServices::NewsSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
       NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
-      News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
-      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+      NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
-      VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
     end
 
     class NewsSearchDataClass
@@ -65,23 +65,26 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def video_object
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
+        end
         def error_code
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
-        end
-        def safe_search
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
         end
         def error_response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
         end
-        def error
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-        end
-        def news_topic
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
-        end
         def identifiable
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
+        end
+        def article
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+        end
+        def news
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::News
+        end
+        def safe_search
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
         end
         def query
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
@@ -125,17 +128,14 @@ module Azure::Profiles::Latest
         def news_article
           Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
         end
-        def news
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::News
+        def error
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
         end
-        def article
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
+        def news_topic
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
         end
         def trending_topics
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
-        end
-        def video_object
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
         end
       end
     end
