@@ -45,7 +45,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PriceSheetProperties',
           type: {
@@ -53,7 +52,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
             class_name: 'PriceSheetProperties',
             model_properties: {
               billing_period_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'billingPeriodId',
@@ -62,7 +60,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               meter_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'meterId',
@@ -71,7 +68,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               meter_details: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'meterDetails',
@@ -81,7 +77,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               unit_of_measure: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unitOfMeasure',
@@ -90,7 +85,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               included_quantity: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'includedQuantity',
@@ -99,7 +93,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               part_number: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'partNumber',
@@ -108,7 +101,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               unit_price: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unitPrice',
@@ -117,7 +109,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               currency_code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'currencyCode',

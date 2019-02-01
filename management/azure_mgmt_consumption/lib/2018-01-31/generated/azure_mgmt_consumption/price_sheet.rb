@@ -40,8 +40,8 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [PriceSheetResult] operation results.
     #
-    def get(expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
-      response = get_async(expand:expand, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
+    def get(expand = nil, skiptoken = nil, top = nil, custom_headers = nil)
+      response = get_async(expand, skiptoken, top, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -63,8 +63,8 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
-      get_async(expand:expand, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
+    def get_with_http_info(expand = nil, skiptoken = nil, top = nil, custom_headers = nil)
+      get_async(expand, skiptoken, top, custom_headers).value!
     end
 
     #
@@ -85,15 +85,12 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
+    def get_async(expand = nil, skiptoken = nil, top = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -157,8 +154,8 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [PriceSheetResult] operation results.
     #
-    def get_by_billing_period(billing_period_name, expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
-      response = get_by_billing_period_async(billing_period_name, expand:expand, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
+    def get_by_billing_period(billing_period_name, expand = nil, skiptoken = nil, top = nil, custom_headers = nil)
+      response = get_by_billing_period_async(billing_period_name, expand, skiptoken, top, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -181,8 +178,8 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_by_billing_period_with_http_info(billing_period_name, expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
-      get_by_billing_period_async(billing_period_name, expand:expand, skiptoken:skiptoken, top:top, custom_headers:custom_headers).value!
+    def get_by_billing_period_with_http_info(billing_period_name, expand = nil, skiptoken = nil, top = nil, custom_headers = nil)
+      get_by_billing_period_async(billing_period_name, expand, skiptoken, top, custom_headers).value!
     end
 
     #
@@ -204,16 +201,13 @@ module Azure::Consumption::Mgmt::V2018_01_31
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_by_billing_period_async(billing_period_name, expand:nil, skiptoken:nil, top:nil, custom_headers:nil)
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
+    def get_by_billing_period_async(billing_period_name, expand = nil, skiptoken = nil, top = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'billing_period_name is nil' if billing_period_name.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
