@@ -12,10 +12,13 @@ module Azure::Profiles::Latest
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
 
     module Models
-      FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
-      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
-      SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
+      APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
+      ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
+      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
+      Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
+      FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
+      SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
       GroupRequest = Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
       FaceLandmarks = Azure::CognitiveServices::Face::V1_0::Models::FaceLandmarks
       GroupResult = Azure::CognitiveServices::Face::V1_0::Models::GroupResult
@@ -31,14 +34,12 @@ module Azure::Profiles::Latest
       VerifyFaceToFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest
       FaceAttributes = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
       VerifyResult = Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
-      APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       PersistedFace = Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
       FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
       Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
       Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
       Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
-      ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
       Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
       NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
       DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
@@ -48,7 +49,6 @@ module Azure::Profiles::Latest
       FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
       PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
       Person = Azure::CognitiveServices::Face::V1_0::Models::Person
-      Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
       HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
       AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
@@ -93,17 +93,26 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def find_similar_request
-          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
+        def apierror
+          Azure::CognitiveServices::Face::V1_0::Models::APIError
+        end
+        def image_url
+          Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
+        end
+        def face_rectangle
+          Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
         end
+        def gender
+          Azure::CognitiveServices::Face::V1_0::Models::Gender
+        end
+        def find_similar_request
+          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
+        end
         def similar_face
           Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
-        end
-        def face_rectangle
-          Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
         def group_request
           Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
@@ -150,9 +159,6 @@ module Azure::Profiles::Latest
         def verify_result
           Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
         end
-        def apierror
-          Azure::CognitiveServices::Face::V1_0::Models::APIError
-        end
         def persisted_face
           Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
         end
@@ -170,9 +176,6 @@ module Azure::Profiles::Latest
         end
         def noise
           Azure::CognitiveServices::Face::V1_0::Models::Noise
-        end
-        def image_url
-          Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
         end
         def hair
           Azure::CognitiveServices::Face::V1_0::Models::Hair
@@ -200,9 +203,6 @@ module Azure::Profiles::Latest
         end
         def person
           Azure::CognitiveServices::Face::V1_0::Models::Person
-        end
-        def gender
-          Azure::CognitiveServices::Face::V1_0::Models::Gender
         end
         def glasses_type
           Azure::CognitiveServices::Face::V1_0::Models::GlassesType

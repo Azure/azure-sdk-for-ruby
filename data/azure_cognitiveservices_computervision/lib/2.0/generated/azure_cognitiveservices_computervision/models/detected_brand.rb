@@ -6,37 +6,38 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # An object describing possible celebrity identification.
+    # A brand detected in an image.
     #
-    class CelebritiesModel
+    class DetectedBrand
 
       include MsRestAzure
 
-      # @return [String] Name of the celebrity.
+      # @return [String] Label for the brand.
       attr_accessor :name
 
-      # @return [Float] Confidence level for the celebrity recognition as a
-      # value ranging from 0 to 1.
+      # @return [Float] Confidence score of having observed the brand in the
+      # image, as a value ranging from 0 to 1.
       attr_accessor :confidence
 
-      # @return [FaceRectangle] Location of the identified face in the image.
-      attr_accessor :face_rectangle
+      # @return [BoundingRect] Approximate location of the detected brand.
+      attr_accessor :rectangle
 
 
       #
-      # Mapper for CelebritiesModel class as Ruby Hash.
+      # Mapper for DetectedBrand class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CelebritiesModel',
+          serialized_name: 'DetectedBrand',
           type: {
             name: 'Composite',
-            class_name: 'CelebritiesModel',
+            class_name: 'DetectedBrand',
             model_properties: {
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -44,17 +45,19 @@ module Azure::CognitiveServices::ComputerVision::V2_0
               },
               confidence: {
                 required: false,
+                read_only: true,
                 serialized_name: 'confidence',
                 type: {
                   name: 'Double'
                 }
               },
-              face_rectangle: {
+              rectangle: {
                 required: false,
-                serialized_name: 'faceRectangle',
+                read_only: true,
+                serialized_name: 'rectangle',
                 type: {
                   name: 'Composite',
-                  class_name: 'FaceRectangle'
+                  class_name: 'BoundingRect'
                 }
               }
             }

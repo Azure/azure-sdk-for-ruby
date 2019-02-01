@@ -12,10 +12,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [Float] Confidence level that the image is a clip art.
+      # @return [Integer] Confidence level that the image is a clip art.
       attr_accessor :clip_art_type
 
-      # @return [Float] Confidence level that the image is a line drawing.
+      # @return [Integer] Confidence level that the image is a line drawing.
       attr_accessor :line_drawing_type
 
 
@@ -25,7 +25,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageType',
           type: {
@@ -33,19 +32,17 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'ImageType',
             model_properties: {
               clip_art_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clipArtType',
                 type: {
-                  name: 'Double'
+                  name: 'Number'
                 }
               },
               line_drawing_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lineDrawingType',
                 type: {
-                  name: 'Double'
+                  name: 'Number'
                 }
               }
             }
