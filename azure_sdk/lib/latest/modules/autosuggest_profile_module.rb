@@ -14,13 +14,13 @@ module Azure::Profiles::Latest
       ResponseBase = Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::Autosuggest::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchResultsAnswer
-      Suggestions = Azure::CognitiveServices::Autosuggest::V1_0::Models::Suggestions
+      Action = Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
       Thing = Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
       SearchAction = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
-      Action = Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
       ScenarioType = Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
+      Suggestions = Azure::CognitiveServices::Autosuggest::V1_0::Models::Suggestions
       SearchKind = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
       ErrorCode = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
@@ -76,8 +76,8 @@ module Azure::Profiles::Latest
         def search_results_answer
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchResultsAnswer
         end
-        def suggestions
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Suggestions
+        def action
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
         end
         def thing
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
@@ -91,11 +91,11 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
         end
-        def action
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
-        end
         def scenario_type
           Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
+        end
+        def suggestions
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Suggestions
         end
         def search_kind
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind

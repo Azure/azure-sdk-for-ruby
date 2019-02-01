@@ -7,12 +7,17 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
-      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
       IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
       ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
+      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
       Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
 
       module Models
+        JobResponseListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponseListResult
+        RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingStorageContainerProperties
+        IotHubCapacity = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubCapacity
+        RouteProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteProperties
+        IotHubSkuDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuDescription
         RoutingProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingProperties
         TagsResource = Azure::IotHub::Mgmt::V2018_04_01::Models::TagsResource
         MessagingEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::MessagingEndpointProperties
@@ -50,12 +55,12 @@ module Azure::Profiles::Latest
         RoutingEventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEventHubProperties
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
         ImportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
+        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         IotHubDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
         AccessRights = Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
         IpFilterActionType = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
         RoutingSource = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
         OperationMonitoringLevel = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
-        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         Capabilities = Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
         IotHubSku = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSku
         IotHubSkuTier = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuTier
@@ -71,8 +76,8 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationDisplay
         Operation = Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
         OperationListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
-        OperationInputs = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
         JobStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
+        OperationInputs = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
         IotHubQuotaMetricInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
         CertificateProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
         IotHubQuotaMetricInfoListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfoListResult
@@ -85,15 +90,10 @@ module Azure::Profiles::Latest
         EventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubProperties
         JobResponse = Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponse
         RoutingServiceBusTopicEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusTopicEndpointProperties
-        JobResponseListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponseListResult
-        RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingStorageContainerProperties
-        IotHubCapacity = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubCapacity
-        RouteProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteProperties
-        IotHubSkuDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuDescription
       end
 
       class IotHubManagementClass
-        attr_reader :certificates, :iot_hub_resource, :resource_provider_common, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :iot_hub_resource, :resource_provider_common, :certificates, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -103,9 +103,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @certificates = @client_0.certificates
           @iot_hub_resource = @client_0.iot_hub_resource
           @resource_provider_common = @client_0.resource_provider_common
+          @certificates = @client_0.certificates
           @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
@@ -125,6 +125,21 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def job_response_list_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponseListResult
+          end
+          def routing_storage_container_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingStorageContainerProperties
+          end
+          def iot_hub_capacity
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubCapacity
+          end
+          def route_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteProperties
+          end
+          def iot_hub_sku_description
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuDescription
+          end
           def routing_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingProperties
           end
@@ -236,6 +251,9 @@ module Azure::Profiles::Latest
           def import_devices_request
             Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
           end
+          def name
+            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+          end
           def iot_hub_description
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
           end
@@ -250,9 +268,6 @@ module Azure::Profiles::Latest
           end
           def operation_monitoring_level
             Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
-          end
-          def name
-            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
           end
           def capabilities
             Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
@@ -299,11 +314,11 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
           end
-          def operation_inputs
-            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
-          end
           def job_status
             Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
+          end
+          def operation_inputs
+            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
           end
           def iot_hub_quota_metric_info
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
@@ -340,21 +355,6 @@ module Azure::Profiles::Latest
           end
           def routing_service_bus_topic_endpoint_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusTopicEndpointProperties
-          end
-          def job_response_list_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponseListResult
-          end
-          def routing_storage_container_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingStorageContainerProperties
-          end
-          def iot_hub_capacity
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubCapacity
-          end
-          def route_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteProperties
-          end
-          def iot_hub_sku_description
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuDescription
           end
         end
       end

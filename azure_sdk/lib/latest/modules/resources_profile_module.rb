@@ -62,11 +62,11 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::Resources::Mgmt::V2018_05_01::Models::OperationDisplay
         OnErrorDeploymentType = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
         Operation = Azure::Resources::Mgmt::V2018_05_01::Models::Operation
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+        OperationListResult = Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
         SubResource = Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
         ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         DeploymentMode = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-        OperationListResult = Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
         Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
         ResourceIdentityType = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
         Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
@@ -246,8 +246,8 @@ module Azure::Profiles::Latest
           def operation
             Azure::Resources::Mgmt::V2018_05_01::Models::Operation
           end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          def operation_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
           end
           def sub_resource
             Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
@@ -255,11 +255,11 @@ module Azure::Profiles::Latest
           def resource_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
           end
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
           def deployment_mode
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-          end
-          def operation_list_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
           end
           def plan
             Azure::Resources::Mgmt::V2018_05_01::Models::Plan

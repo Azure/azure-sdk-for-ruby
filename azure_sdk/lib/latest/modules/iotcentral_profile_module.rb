@@ -11,6 +11,8 @@ module Azure::Profiles::Latest
       Operations = Azure::IotCentral::Mgmt::V2018_09_01::Operations
 
       module Models
+        AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
+        AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
         AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
         OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
         AppAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
@@ -22,8 +24,6 @@ module Azure::Profiles::Latest
         Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
         ErrorResponseBody = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
         OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
-        AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
-        AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
       end
 
       class IotCentralManagementClass
@@ -57,6 +57,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def app_list_result
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
+          end
+          def app_sku_info
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
+          end
           def app_patch
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
           end
@@ -89,12 +95,6 @@ module Azure::Profiles::Latest
           end
           def operation_list_result
             Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
-          end
-          def app_list_result
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
-          end
-          def app_sku_info
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
           end
         end
       end
