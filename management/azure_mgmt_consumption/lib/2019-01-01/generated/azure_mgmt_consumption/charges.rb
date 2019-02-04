@@ -23,116 +23,18 @@ module Azure::Consumption::Mgmt::V2019_01_01
     attr_reader :client
 
     #
-    # Lists the charges by enrollmentAccountId.
+    # Lists the charges based for the defined scope.
     #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param enrollment_account_id [String] EnrollmentAccount ID
-    # @param filter [String] May be used to filter charges by properties/usageEnd
-    # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
-    # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
-    # 'not'. Tag filter is a key value pair string where key and value is separated
-    # by a colon (:).
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ChargesListResult] operation results.
-    #
-    def list_by_enrollment_account(billing_account_id, enrollment_account_id, filter = nil, custom_headers = nil)
-      response = list_by_enrollment_account_async(billing_account_id, enrollment_account_id, filter, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Lists the charges by enrollmentAccountId.
-    #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param enrollment_account_id [String] EnrollmentAccount ID
-    # @param filter [String] May be used to filter charges by properties/usageEnd
-    # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
-    # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
-    # 'not'. Tag filter is a key value pair string where key and value is separated
-    # by a colon (:).
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_by_enrollment_account_with_http_info(billing_account_id, enrollment_account_id, filter = nil, custom_headers = nil)
-      list_by_enrollment_account_async(billing_account_id, enrollment_account_id, filter, custom_headers).value!
-    end
-
-    #
-    # Lists the charges by enrollmentAccountId.
-    #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param enrollment_account_id [String] EnrollmentAccount ID
-    # @param filter [String] May be used to filter charges by properties/usageEnd
-    # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
-    # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
-    # 'not'. Tag filter is a key value pair string where key and value is separated
-    # by a colon (:).
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_by_enrollment_account_async(billing_account_id, enrollment_account_id, filter = nil, custom_headers = nil)
-      fail ArgumentError, 'billing_account_id is nil' if billing_account_id.nil?
-      fail ArgumentError, 'enrollment_account_id is nil' if enrollment_account_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Consumption/charges'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'billingAccountId' => billing_account_id,'enrollmentAccountId' => enrollment_account_id},
-          query_params: {'api-version' => @client.api_version,'$filter' => filter},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Consumption::Mgmt::V2019_01_01::Models::ChargesListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists the charges based on enrollmentAccountId by billing period.
-    #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param enrollment_account_id [String] EnrollmentAccount ID
-    # @param billing_period_name [String] Billing Period Name.
+    # @param scope [String] The scope associated with usage details operations.
+    # This includes
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
+    # for Department scope and
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
+    # for EnrollmentAccount scope. For department and enrollment accounts, you can
+    # also add billing period to the scope using
+    # '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g.
+    # to specify billing period at department scope use
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
     # @param filter [String] May be used to filter charges by properties/usageEnd
     # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
     # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
@@ -143,17 +45,24 @@ module Azure::Consumption::Mgmt::V2019_01_01
     #
     # @return [ChargeSummary] operation results.
     #
-    def list_for_billing_period_by_enrollment_account(billing_account_id, enrollment_account_id, billing_period_name, filter = nil, custom_headers = nil)
-      response = list_for_billing_period_by_enrollment_account_async(billing_account_id, enrollment_account_id, billing_period_name, filter, custom_headers).value!
+    def list_by_scope(scope, filter = nil, custom_headers = nil)
+      response = list_by_scope_async(scope, filter, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Lists the charges based on enrollmentAccountId by billing period.
+    # Lists the charges based for the defined scope.
     #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param enrollment_account_id [String] EnrollmentAccount ID
-    # @param billing_period_name [String] Billing Period Name.
+    # @param scope [String] The scope associated with usage details operations.
+    # This includes
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
+    # for Department scope and
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
+    # for EnrollmentAccount scope. For department and enrollment accounts, you can
+    # also add billing period to the scope using
+    # '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g.
+    # to specify billing period at department scope use
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
     # @param filter [String] May be used to filter charges by properties/usageEnd
     # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
     # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
@@ -164,16 +73,23 @@ module Azure::Consumption::Mgmt::V2019_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_for_billing_period_by_enrollment_account_with_http_info(billing_account_id, enrollment_account_id, billing_period_name, filter = nil, custom_headers = nil)
-      list_for_billing_period_by_enrollment_account_async(billing_account_id, enrollment_account_id, billing_period_name, filter, custom_headers).value!
+    def list_by_scope_with_http_info(scope, filter = nil, custom_headers = nil)
+      list_by_scope_async(scope, filter, custom_headers).value!
     end
 
     #
-    # Lists the charges based on enrollmentAccountId by billing period.
+    # Lists the charges based for the defined scope.
     #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param enrollment_account_id [String] EnrollmentAccount ID
-    # @param billing_period_name [String] Billing Period Name.
+    # @param scope [String] The scope associated with usage details operations.
+    # This includes
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
+    # for Department scope and
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
+    # for EnrollmentAccount scope. For department and enrollment accounts, you can
+    # also add billing period to the scope using
+    # '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g.
+    # to specify billing period at department scope use
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
     # @param filter [String] May be used to filter charges by properties/usageEnd
     # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
     # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
@@ -184,10 +100,8 @@ module Azure::Consumption::Mgmt::V2019_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_for_billing_period_by_enrollment_account_async(billing_account_id, enrollment_account_id, billing_period_name, filter = nil, custom_headers = nil)
-      fail ArgumentError, 'billing_account_id is nil' if billing_account_id.nil?
-      fail ArgumentError, 'enrollment_account_id is nil' if enrollment_account_id.nil?
-      fail ArgumentError, 'billing_period_name is nil' if billing_period_name.nil?
+    def list_by_scope_async(scope, filter = nil, custom_headers = nil)
+      fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -196,227 +110,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/charges'
+      path_template = '{scope}/providers/Microsoft.Consumption/charges'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'billingAccountId' => billing_account_id,'enrollmentAccountId' => enrollment_account_id,'billingPeriodName' => billing_period_name},
-          query_params: {'api-version' => @client.api_version,'$filter' => filter},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Consumption::Mgmt::V2019_01_01::Models::ChargeSummary.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists the charges by departmentId.
-    #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param department_id [String] Department ID
-    # @param filter [String] May be used to filter charges by properties/usageEnd
-    # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
-    # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
-    # 'not'. Tag filter is a key value pair string where key and value is separated
-    # by a colon (:).
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ChargesListResult] operation results.
-    #
-    def list_by_department(billing_account_id, department_id, filter = nil, custom_headers = nil)
-      response = list_by_department_async(billing_account_id, department_id, filter, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Lists the charges by departmentId.
-    #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param department_id [String] Department ID
-    # @param filter [String] May be used to filter charges by properties/usageEnd
-    # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
-    # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
-    # 'not'. Tag filter is a key value pair string where key and value is separated
-    # by a colon (:).
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_by_department_with_http_info(billing_account_id, department_id, filter = nil, custom_headers = nil)
-      list_by_department_async(billing_account_id, department_id, filter, custom_headers).value!
-    end
-
-    #
-    # Lists the charges by departmentId.
-    #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param department_id [String] Department ID
-    # @param filter [String] May be used to filter charges by properties/usageEnd
-    # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
-    # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
-    # 'not'. Tag filter is a key value pair string where key and value is separated
-    # by a colon (:).
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_by_department_async(billing_account_id, department_id, filter = nil, custom_headers = nil)
-      fail ArgumentError, 'billing_account_id is nil' if billing_account_id.nil?
-      fail ArgumentError, 'department_id is nil' if department_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}/providers/Microsoft.Consumption/charges'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'billingAccountId' => billing_account_id,'departmentId' => department_id},
-          query_params: {'api-version' => @client.api_version,'$filter' => filter},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Consumption::Mgmt::V2019_01_01::Models::ChargesListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists the charges based on departmentId by billing period.
-    #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param department_id [String] Department ID
-    # @param billing_period_name [String] Billing Period Name.
-    # @param filter [String] May be used to filter charges by properties/usageEnd
-    # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
-    # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
-    # 'not'. Tag filter is a key value pair string where key and value is separated
-    # by a colon (:).
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ChargeSummary] operation results.
-    #
-    def list_for_billing_period_by_department(billing_account_id, department_id, billing_period_name, filter = nil, custom_headers = nil)
-      response = list_for_billing_period_by_department_async(billing_account_id, department_id, billing_period_name, filter, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Lists the charges based on departmentId by billing period.
-    #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param department_id [String] Department ID
-    # @param billing_period_name [String] Billing Period Name.
-    # @param filter [String] May be used to filter charges by properties/usageEnd
-    # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
-    # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
-    # 'not'. Tag filter is a key value pair string where key and value is separated
-    # by a colon (:).
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_for_billing_period_by_department_with_http_info(billing_account_id, department_id, billing_period_name, filter = nil, custom_headers = nil)
-      list_for_billing_period_by_department_async(billing_account_id, department_id, billing_period_name, filter, custom_headers).value!
-    end
-
-    #
-    # Lists the charges based on departmentId by billing period.
-    #
-    # @param billing_account_id [String] BillingAccount ID
-    # @param department_id [String] Department ID
-    # @param billing_period_name [String] Billing Period Name.
-    # @param filter [String] May be used to filter charges by properties/usageEnd
-    # (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt',
-    # 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or
-    # 'not'. Tag filter is a key value pair string where key and value is separated
-    # by a colon (:).
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_for_billing_period_by_department_async(billing_account_id, department_id, billing_period_name, filter = nil, custom_headers = nil)
-      fail ArgumentError, 'billing_account_id is nil' if billing_account_id.nil?
-      fail ArgumentError, 'department_id is nil' if department_id.nil?
-      fail ArgumentError, 'billing_period_name is nil' if billing_period_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/charges'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'billingAccountId' => billing_account_id,'departmentId' => department_id,'billingPeriodName' => billing_period_name},
+          skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

@@ -41,6 +41,15 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # @return [Marketplaces] marketplaces
     attr_reader :marketplaces
 
+    # @return [Budgets] budgets
+    attr_reader :budgets
+
+    # @return [Tags] tags
+    attr_reader :tags
+
+    # @return [Charges] charges
+    attr_reader :charges
+
     # @return [Balances] balances
     attr_reader :balances
 
@@ -53,14 +62,8 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # @return [ReservationRecommendations] reservation_recommendations
     attr_reader :reservation_recommendations
 
-    # @return [Budgets] budgets
-    attr_reader :budgets
-
     # @return [PriceSheet] price_sheet
     attr_reader :price_sheet
-
-    # @return [Tags] tags
-    attr_reader :tags
 
     # @return [Forecasts] forecasts
     attr_reader :forecasts
@@ -70,9 +73,6 @@ module Azure::Consumption::Mgmt::V2019_01_01
 
     # @return [AggregatedCost] aggregated_cost
     attr_reader :aggregated_cost
-
-    # @return [Charges] charges
-    attr_reader :charges
 
     #
     # Creates initializes a new instance of the ConsumptionManagementClient class.
@@ -89,17 +89,17 @@ module Azure::Consumption::Mgmt::V2019_01_01
 
       @usage_details = UsageDetails.new(self)
       @marketplaces = Marketplaces.new(self)
+      @budgets = Budgets.new(self)
+      @tags = Tags.new(self)
+      @charges = Charges.new(self)
       @balances = Balances.new(self)
       @reservations_summaries = ReservationsSummaries.new(self)
       @reservations_details = ReservationsDetails.new(self)
       @reservation_recommendations = ReservationRecommendations.new(self)
-      @budgets = Budgets.new(self)
       @price_sheet = PriceSheet.new(self)
-      @tags = Tags.new(self)
       @forecasts = Forecasts.new(self)
       @operations = Operations.new(self)
       @aggregated_cost = AggregatedCost.new(self)
-      @charges = Charges.new(self)
       @api_version = '2019-01-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

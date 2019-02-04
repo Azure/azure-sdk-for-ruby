@@ -6,7 +6,7 @@
 module Azure::Consumption::Mgmt::V2019_01_01
   module Models
     #
-    # Additional parameters for a set of operations.
+    # Additional parameters for list operation.
     #
     class QueryOptions
 

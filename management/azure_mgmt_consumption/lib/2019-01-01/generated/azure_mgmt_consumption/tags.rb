@@ -23,44 +23,77 @@ module Azure::Consumption::Mgmt::V2019_01_01
     attr_reader :client
 
     #
-    # Get all available tag keys for a billing account.
+    # Get all available tag keys for the defined scope
     #
-    # @param billing_account_id [String] BillingAccount ID
+    # @param scope [String] The scope associated with tags operations. This
+    # includes '/subscriptions/{subscriptionId}/' for subscription scope,
+    # '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+    # resourceGroup scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing
+    # Account scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
+    # for Department scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
+    # for EnrollmentAccount scope and
+    # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
+    # Management Group scope..
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TagsResult] operation results.
     #
-    def get(billing_account_id, custom_headers = nil)
-      response = get_async(billing_account_id, custom_headers).value!
+    def get(scope, custom_headers = nil)
+      response = get_async(scope, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get all available tag keys for a billing account.
+    # Get all available tag keys for the defined scope
     #
-    # @param billing_account_id [String] BillingAccount ID
+    # @param scope [String] The scope associated with tags operations. This
+    # includes '/subscriptions/{subscriptionId}/' for subscription scope,
+    # '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+    # resourceGroup scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing
+    # Account scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
+    # for Department scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
+    # for EnrollmentAccount scope and
+    # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
+    # Management Group scope..
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(billing_account_id, custom_headers = nil)
-      get_async(billing_account_id, custom_headers).value!
+    def get_with_http_info(scope, custom_headers = nil)
+      get_async(scope, custom_headers).value!
     end
 
     #
-    # Get all available tag keys for a billing account.
+    # Get all available tag keys for the defined scope
     #
-    # @param billing_account_id [String] BillingAccount ID
+    # @param scope [String] The scope associated with tags operations. This
+    # includes '/subscriptions/{subscriptionId}/' for subscription scope,
+    # '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+    # resourceGroup scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing
+    # Account scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
+    # for Department scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
+    # for EnrollmentAccount scope and
+    # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
+    # Management Group scope..
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(billing_account_id, custom_headers = nil)
+    def get_async(scope, custom_headers = nil)
+      fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'billing_account_id is nil' if billing_account_id.nil?
 
 
       request_headers = {}
@@ -68,13 +101,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.CostManagement/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/tags'
+      path_template = '{scope}/providers/Microsoft.Consumption/tags'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'billingAccountId' => billing_account_id},
+          skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
