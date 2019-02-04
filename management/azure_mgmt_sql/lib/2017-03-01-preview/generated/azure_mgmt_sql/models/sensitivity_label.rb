@@ -15,8 +15,20 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # @return [String] The label name.
       attr_accessor :label_name
 
+      # @return [String] The label ID.
+      attr_accessor :label_id
+
       # @return [String] The information type.
       attr_accessor :information_type
+
+      # @return [String] The information type ID.
+      attr_accessor :information_type_id
+
+      # @return [Boolean] Is sensitivity recommendation disabled. Applicable
+      # for recommended sensitivity label only. Specifies whether the
+      # sensitivity recommendation on this column is disabled (dismissed) or
+      # not.
+      attr_accessor :is_disabled
 
 
       #
@@ -25,7 +37,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SensitivityLabel',
           type: {
@@ -33,7 +44,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'SensitivityLabel',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -42,7 +52,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,7 +60,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -60,19 +68,39 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               label_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.labelName',
                 type: {
                   name: 'String'
                 }
               },
+              label_id: {
+                required: false,
+                serialized_name: 'properties.labelId',
+                type: {
+                  name: 'String'
+                }
+              },
               information_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.informationType',
                 type: {
                   name: 'String'
+                }
+              },
+              information_type_id: {
+                required: false,
+                serialized_name: 'properties.informationTypeId',
+                type: {
+                  name: 'String'
+                }
+              },
+              is_disabled: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.isDisabled',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
