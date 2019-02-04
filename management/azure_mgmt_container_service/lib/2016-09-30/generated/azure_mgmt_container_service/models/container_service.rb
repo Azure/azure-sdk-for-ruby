@@ -51,7 +51,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerService',
           type: {
@@ -59,7 +58,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
             class_name: 'ContainerService',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,7 +66,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -77,7 +74,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -86,7 +82,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -94,13 +89,11 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -110,7 +103,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -119,7 +111,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               orchestrator_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.orchestratorProfile',
                 type: {
@@ -128,7 +119,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               custom_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customProfile',
                 type: {
@@ -137,7 +127,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               service_principal_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.servicePrincipalProfile',
                 type: {
@@ -146,7 +135,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               master_profile: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.masterProfile',
                 type: {
@@ -155,13 +143,11 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               agent_pool_profiles: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.agentPoolProfiles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContainerServiceAgentPoolProfileElementType',
                       type: {
@@ -172,7 +158,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               windows_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.windowsProfile',
                 type: {
@@ -181,7 +166,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               linux_profile: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.linuxProfile',
                 type: {
@@ -190,7 +174,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               diagnostics_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diagnosticsProfile',
                 type: {

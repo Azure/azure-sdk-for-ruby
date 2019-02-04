@@ -27,7 +27,6 @@ module Azure::ContainerService::Mgmt::V2017_01_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceVMDiagnostics',
           type: {
@@ -35,7 +34,6 @@ module Azure::ContainerService::Mgmt::V2017_01_31
             class_name: 'ContainerServiceVMDiagnostics',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -43,7 +41,6 @@ module Azure::ContainerService::Mgmt::V2017_01_31
                 }
               },
               storage_uri: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'storageUri',
