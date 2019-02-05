@@ -31,8 +31,8 @@ module Azure::Profiles::Latest
       EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
       Response = Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
       EntityType = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
-      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       ErrorSubCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
+      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
       Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
     end
@@ -133,11 +133,11 @@ module Azure::Profiles::Latest
         def entity_type
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
         end
-        def action
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
-        end
         def error_sub_code
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
+        end
+        def action
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
         end
         def search_response
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
