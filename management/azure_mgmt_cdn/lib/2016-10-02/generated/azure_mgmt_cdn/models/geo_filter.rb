@@ -31,7 +31,6 @@ module Azure::CDN::Mgmt::V2016_10_02
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GeoFilter',
           type: {
@@ -39,7 +38,6 @@ module Azure::CDN::Mgmt::V2016_10_02
             class_name: 'GeoFilter',
             model_properties: {
               relative_path: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'relativePath',
                 type: {
@@ -47,7 +45,6 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               action: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'action',
                 type: {
@@ -56,13 +53,11 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               country_codes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'countryCodes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
