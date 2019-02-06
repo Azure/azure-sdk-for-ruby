@@ -138,6 +138,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # managed_server_security_alert_policies
     attr_reader :managed_server_security_alert_policies
 
+    # @return [SensitivityLabels] sensitivity_labels
+    attr_reader :sensitivity_labels
+
     #
     # Creates initializes a new instance of the SqlManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -181,6 +184,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       @server_security_alert_policies = ServerSecurityAlertPolicies.new(self)
       @managed_database_security_alert_policies = ManagedDatabaseSecurityAlertPolicies.new(self)
       @managed_server_security_alert_policies = ManagedServerSecurityAlertPolicies.new(self)
+      @sensitivity_labels = SensitivityLabels.new(self)
       @api_version = '2017-03-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
