@@ -28,9 +28,9 @@ module Azure::Compute::Mgmt::V2017_03_30
       # specified certificate store is implicitly in the LocalMachine account.
       # <br><br>For Linux VMs, the certificate file is placed under the
       # /var/lib/waagent directory, with the file name
-      # <UppercaseThumbprint>.crt for the X509 certificate file and
-      # <UppercaseThumbprint>.prv for private key. Both of these files are .pem
-      # formatted.
+      # &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
+      # &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files
+      # are .pem formatted.
       attr_accessor :certificate_store
 
 
