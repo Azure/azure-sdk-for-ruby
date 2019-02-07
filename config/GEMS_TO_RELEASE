@@ -1,11 +1,6 @@
 {
     "management": [
-        "azure_mgmt_devtestlabs",
-        "azure_mgmt_hdinsight",
-        "azure_mgmt_labservices"
-    ],
-    "data": [
-        "azure_cognitiveservices_computervision"
+        "azure_mgmt_kusto"
     ],
     "rollup": [
         "azure_sdk"
