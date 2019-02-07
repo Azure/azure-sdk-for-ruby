@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2016_06_01
   module Models
     #
-    # Peerings in a VirtualNetwork resource
+    # Peerings in a VirtualNework resource
     #
     class VirtualNetworkPeering < SubResource
 

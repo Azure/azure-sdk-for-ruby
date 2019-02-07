@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2016_03_30
   module Models
     #
-    # Response for ListNetworkSecurityGroups Api service call
+    # Response for ListNetworkSecurityGroups Api servive call
     #
     class NetworkSecurityGroupListResult
 

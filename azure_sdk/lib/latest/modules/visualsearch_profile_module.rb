@@ -18,8 +18,8 @@ module Azure::Profiles::Latest
       RelatedSearchesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RelatedSearchesModule
       PropertiesItem = Azure::CognitiveServices::VisualSearch::V1_0::Models::PropertiesItem
       RecipesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
-      ImagesImageMetadata = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
       Error = Azure::CognitiveServices::VisualSearch::V1_0::Models::Error
+      ImagesImageMetadata = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
       Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
       ImagesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
@@ -45,8 +45,8 @@ module Azure::Profiles::Latest
       ImageKnowledge = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
       ImageEntityAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageEntityAction
       ImageModuleAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
-      ImageRecipesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
       Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+      ImageRecipesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
       ImageShoppingSourcesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
       ContentTypes = Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
       ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
@@ -115,11 +115,11 @@ module Azure::Profiles::Latest
         def recipes_module
           Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
         end
-        def images_image_metadata
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
-        end
         def error
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Error
+        end
+        def images_image_metadata
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
         end
         def filters
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
@@ -196,11 +196,11 @@ module Azure::Profiles::Latest
         def image_module_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
         end
-        def image_recipes_action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
-        end
         def action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+        end
+        def image_recipes_action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
         end
         def image_shopping_sources_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction

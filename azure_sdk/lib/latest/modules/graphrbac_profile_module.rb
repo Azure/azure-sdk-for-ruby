@@ -6,12 +6,12 @@ require 'azure_graph_rbac'
 
 module Azure::Profiles::Latest
   module GraphRbac
+    ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
     Domains = Azure::GraphRbac::V1_6::Domains
     Users = Azure::GraphRbac::V1_6::Users
     Objects = Azure::GraphRbac::V1_6::Objects
     Applications = Azure::GraphRbac::V1_6::Applications
     Groups = Azure::GraphRbac::V1_6::Groups
-    ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
 
     module Models
       Domain = Azure::GraphRbac::V1_6::Models::Domain
@@ -59,7 +59,7 @@ module Azure::Profiles::Latest
     end
 
     class GraphRbacDataClass
-      attr_reader :domains, :users, :objects, :applications, :groups, :service_principals, :configurable, :base_url, :options, :model_classes
+      attr_reader :service_principals, :domains, :users, :objects, :applications, :groups, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -69,12 +69,12 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @service_principals = @client_0.service_principals
         @domains = @client_0.domains
         @users = @client_0.users
         @objects = @client_0.objects
         @applications = @client_0.applications
         @groups = @client_0.groups
-        @service_principals = @client_0.service_principals
 
         @model_classes = ModelClasses.new
       end

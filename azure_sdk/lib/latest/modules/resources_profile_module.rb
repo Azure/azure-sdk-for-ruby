@@ -33,19 +33,19 @@ module Azure::Profiles::Latest
         Dependency = Azure::Resources::Mgmt::V2018_05_01::Models::Dependency
         ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
         DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
+        DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
         IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
-        TagCount = Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
         TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
         ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
         ProviderListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
         TagDetails = Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
-        TagsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
+        TagCount = Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
         AliasPathType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
         TargetResource = Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
         BasicDependency = Azure::Resources::Mgmt::V2018_05_01::Models::BasicDependency
         HttpMessage = Azure::Resources::Mgmt::V2018_05_01::Models::HttpMessage
         DeploymentValidateResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentValidateResult
-        DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
+        TagsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
         DeploymentOperationProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationProperties
         DeploymentOperation = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperation
         DeploymentProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
@@ -159,11 +159,11 @@ module Azure::Profiles::Latest
           def deployment_extended
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
           end
+          def deployment_properties_extended
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
+          end
           def identity_user_assigned_identities_value
             Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
-          end
-          def tag_count
-            Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
           end
           def tag_value
             Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
@@ -177,8 +177,8 @@ module Azure::Profiles::Latest
           def tag_details
             Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
           end
-          def tags_list_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
+          def tag_count
+            Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
           end
           def alias_path_type
             Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
@@ -195,8 +195,8 @@ module Azure::Profiles::Latest
           def deployment_validate_result
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentValidateResult
           end
-          def deployment_properties_extended
-            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
+          def tags_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
           end
           def deployment_operation_properties
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationProperties

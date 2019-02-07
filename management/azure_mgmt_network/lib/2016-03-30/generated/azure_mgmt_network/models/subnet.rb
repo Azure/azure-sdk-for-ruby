@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2016_03_30
   module Models
     #
-    # Subnet in a VirtualNetwork resource
+    # Subnet in a VirtualNework resource
     #
     class Subnet < SubResource
 

@@ -9,16 +9,17 @@ module Azure::Profiles::Latest
     module Mgmt
       Databases = Azure::Kusto::Mgmt::V2018_09_07_preview::Databases
       EventHubConnections = Azure::Kusto::Mgmt::V2018_09_07_preview::EventHubConnections
-      Clusters = Azure::Kusto::Mgmt::V2018_09_07_preview::Clusters
       Operations = Azure::Kusto::Mgmt::V2018_09_07_preview::Operations
+      Clusters = Azure::Kusto::Mgmt::V2018_09_07_preview::Clusters
 
       module Models
+        EventHubConnectionUpdate = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnectionUpdate
         EventHubConnection = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnection
-        ProxyResource = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProxyResource
         TrackedResource = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::TrackedResource
-        AzureScaleType = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
         AzureSkuName = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureSkuName
+        ProxyResource = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProxyResource
         AzureEntityResource = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureEntityResource
+        AzureScaleType = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
         DataFormat = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DataFormat
         DatabasePrincipalRole = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalRole
         DatabasePrincipalType = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalType
@@ -51,11 +52,10 @@ module Azure::Profiles::Latest
         CheckNameResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::CheckNameResult
         ClusterUpdate = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ClusterUpdate
         DatabaseUpdate = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabaseUpdate
-        EventHubConnectionUpdate = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnectionUpdate
       end
 
       class KustoManagementClass
-        attr_reader :databases, :event_hub_connections, :clusters, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :databases, :event_hub_connections, :operations, :clusters, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -67,8 +67,8 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @databases = @client_0.databases
           @event_hub_connections = @client_0.event_hub_connections
-          @clusters = @client_0.clusters
           @operations = @client_0.operations
+          @clusters = @client_0.clusters
 
           @model_classes = ModelClasses.new
         end
@@ -87,23 +87,26 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def event_hub_connection_update
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnectionUpdate
+          end
           def event_hub_connection
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnection
-          end
-          def proxy_resource
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProxyResource
           end
           def tracked_resource
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::TrackedResource
           end
-          def azure_scale_type
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
-          end
           def azure_sku_name
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureSkuName
           end
+          def proxy_resource
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProxyResource
+          end
           def azure_entity_resource
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureEntityResource
+          end
+          def azure_scale_type
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
           end
           def data_format
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DataFormat
@@ -200,9 +203,6 @@ module Azure::Profiles::Latest
           end
           def database_update
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabaseUpdate
-          end
-          def event_hub_connection_update
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnectionUpdate
           end
         end
       end

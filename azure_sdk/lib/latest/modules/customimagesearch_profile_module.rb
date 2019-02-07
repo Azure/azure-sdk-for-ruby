@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     CustomInstance = Azure::CognitiveServices::Customimagesearch::V1_0::CustomInstance
 
     module Models
+      WebPage = Azure::CognitiveServices::Customimagesearch::V1_0::Models::WebPage
       ErrorSubCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorSubCode
       ImageAspect = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageColor
@@ -32,7 +33,6 @@ module Azure::Profiles::Latest
       Query = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Query
       Error = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Error
       ImageObject = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageObject
-      WebPage = Azure::CognitiveServices::Customimagesearch::V1_0::Models::WebPage
     end
 
     class CustomimagesearchDataClass
@@ -65,6 +65,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def web_page
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::WebPage
+        end
         def error_sub_code
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorSubCode
         end
@@ -133,9 +136,6 @@ module Azure::Profiles::Latest
         end
         def image_object
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageObject
-        end
-        def web_page
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::WebPage
         end
       end
     end

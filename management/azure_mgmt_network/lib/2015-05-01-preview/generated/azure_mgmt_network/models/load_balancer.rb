@@ -17,10 +17,10 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       attr_accessor :frontend_ipconfigurations
 
       # @return [Array<BackendAddressPool>] Gets or sets Pools of backend IP
-      # addresses
+      # addresseses
       attr_accessor :backend_address_pools
 
-      # @return [Array<LoadBalancingRule>] Gets or sets load balancing rules
+      # @return [Array<LoadBalancingRule>] Gets or sets loadbalancing rules
       attr_accessor :load_balancing_rules
 
       # @return [Array<Probe>] Gets or sets list of Load balancer probes

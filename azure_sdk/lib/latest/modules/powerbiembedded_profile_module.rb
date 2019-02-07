@@ -7,8 +7,8 @@ require 'azure_mgmt_powerbi_embedded'
 module Azure::Profiles::Latest
   module PowerBiEmbedded
     module Mgmt
-      Workspaces = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Workspaces
       WorkspaceCollections = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::WorkspaceCollections
+      Workspaces = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Workspaces
 
       module Models
         OperationList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList
@@ -33,7 +33,7 @@ module Azure::Profiles::Latest
       end
 
       class PowerBiEmbeddedManagementClass
-        attr_reader :workspaces, :workspace_collections, :configurable, :base_url, :options, :model_classes
+        attr_reader :workspace_collections, :workspaces, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -43,8 +43,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @workspaces = @client_0.workspaces
           @workspace_collections = @client_0.workspace_collections
+          @workspaces = @client_0.workspaces
 
           @model_classes = ModelClasses.new
         end

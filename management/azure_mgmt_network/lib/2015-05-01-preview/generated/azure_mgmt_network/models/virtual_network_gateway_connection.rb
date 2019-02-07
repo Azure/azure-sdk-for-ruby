@@ -22,14 +22,14 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       attr_accessor :local_network_gateway2
 
       # @return [VirtualNetworkGatewayConnectionType] Gateway connection type
-      # IPsec/Dedicated/VpnClient/Vnet2Vnet. Possible values include: 'IPsec',
+      # -Ipsec/Dedicated/VpnClient/Vnet2Vnet. Possible values include: 'IPsec',
       # 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
       attr_accessor :connection_type
 
       # @return [Integer] The Routing weight.
       attr_accessor :routing_weight
 
-      # @return [String] The IPsec share key.
+      # @return [String] The Ipsec share key.
       attr_accessor :shared_key
 
       # @return [VirtualNetworkGatewayConnectionStatus] Virtual network Gateway

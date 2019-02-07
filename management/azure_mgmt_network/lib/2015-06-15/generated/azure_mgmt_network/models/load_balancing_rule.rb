@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2015_06_15
   module Models
     #
-    # A load balancing rule for a load balancer.
+    # A loag balancing rule for a load balancer.
     #
     class LoadBalancingRule < SubResource
 

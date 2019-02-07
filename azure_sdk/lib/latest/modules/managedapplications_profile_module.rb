@@ -13,8 +13,8 @@ module Azure::Profiles::Latest
       module Models
         PlanPatchable = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::PlanPatchable
         ApplicationProviderAuthorization = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationProviderAuthorization
-        ApplicationDefinitionListResult = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinitionListResult
         Identity = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Identity
+        ApplicationDefinitionListResult = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinitionListResult
         ApplicationArtifact = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifact
         ApplicationPatchable = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationPatchable
         ApplicationDefinition = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinition
@@ -68,11 +68,11 @@ module Azure::Profiles::Latest
           def application_provider_authorization
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationProviderAuthorization
           end
-          def application_definition_list_result
-            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinitionListResult
-          end
           def identity
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Identity
+          end
+          def application_definition_list_result
+            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinitionListResult
           end
           def application_artifact
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifact

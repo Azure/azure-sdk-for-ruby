@@ -19,7 +19,7 @@ module Azure::Profiles::Latest
       SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       FaceLandmarks = Azure::CognitiveServices::Face::V1_0::Models::FaceLandmarks
-      GroupRequest = Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
+      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       HeadPose = Azure::CognitiveServices::Face::V1_0::Models::HeadPose
       GroupResult = Azure::CognitiveServices::Face::V1_0::Models::GroupResult
       IdentifyCandidate = Azure::CognitiveServices::Face::V1_0::Models::IdentifyCandidate
@@ -52,12 +52,12 @@ module Azure::Profiles::Latest
       BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
       ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
+      GroupRequest = Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
       IdentifyRequest = Azure::CognitiveServices::Face::V1_0::Models::IdentifyRequest
       HairColor = Azure::CognitiveServices::Face::V1_0::Models::HairColor
-      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
     end
 
     class FaceDataClass
@@ -114,8 +114,8 @@ module Azure::Profiles::Latest
         def face_landmarks
           Azure::CognitiveServices::Face::V1_0::Models::FaceLandmarks
         end
-        def group_request
-          Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
+        def error
+          Azure::CognitiveServices::Face::V1_0::Models::Error
         end
         def head_pose
           Azure::CognitiveServices::Face::V1_0::Models::HeadPose
@@ -213,6 +213,9 @@ module Azure::Profiles::Latest
         def noise_level
           Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
         end
+        def group_request
+          Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
+        end
         def find_similar_match_mode
           Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
@@ -227,9 +230,6 @@ module Azure::Profiles::Latest
         end
         def hair_color
           Azure::CognitiveServices::Face::V1_0::Models::HairColor
-        end
-        def error
-          Azure::CognitiveServices::Face::V1_0::Models::Error
         end
       end
     end

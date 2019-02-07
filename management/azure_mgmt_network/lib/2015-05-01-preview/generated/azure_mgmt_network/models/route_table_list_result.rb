@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2015_05_01_preview
   module Models
     #
-    # Response for ListRouteTable Api service call
+    # Response for ListRouteTable Api servive call
     #
     class RouteTableListResult
 

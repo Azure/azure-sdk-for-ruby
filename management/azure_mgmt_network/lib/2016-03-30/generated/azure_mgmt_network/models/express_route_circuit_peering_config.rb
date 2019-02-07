@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2016_03_30
   module Models
     #
-    # Specifies the peering config
+    # Specfies the peering config
     #
     class ExpressRouteCircuitPeeringConfig
 
