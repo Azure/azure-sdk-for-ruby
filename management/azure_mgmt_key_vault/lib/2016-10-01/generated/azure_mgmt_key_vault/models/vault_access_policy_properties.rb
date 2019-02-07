@@ -24,7 +24,6 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VaultAccessPolicyProperties',
           type: {
@@ -32,13 +31,11 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'VaultAccessPolicyProperties',
             model_properties: {
               access_policies: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'accessPolicies',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AccessPolicyEntryElementType',
                       type: {
