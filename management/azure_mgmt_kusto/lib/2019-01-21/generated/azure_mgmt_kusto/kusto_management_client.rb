@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Kusto::Mgmt::V2018_09_07_preview
+module Azure::Kusto::Mgmt::V2019_01_21
   #
   # A service client - single point of access to the REST API.
   #
@@ -43,8 +43,8 @@ module Azure::Kusto::Mgmt::V2018_09_07_preview
     # @return [Databases] databases
     attr_reader :databases
 
-    # @return [EventHubConnections] event_hub_connections
-    attr_reader :event_hub_connections
+    # @return [DataConnections] data_connections
+    attr_reader :data_connections
 
     # @return [Operations] operations
     attr_reader :operations
@@ -64,9 +64,9 @@ module Azure::Kusto::Mgmt::V2018_09_07_preview
 
       @clusters = Clusters.new(self)
       @databases = Databases.new(self)
-      @event_hub_connections = EventHubConnections.new(self)
+      @data_connections = DataConnections.new(self)
       @operations = Operations.new(self)
-      @api_version = '2018-09-07-preview'
+      @api_version = '2019-01-21'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

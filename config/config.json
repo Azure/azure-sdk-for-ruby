@@ -623,13 +623,18 @@
     }
   },
   "azure_mgmt_kusto": {
+    "azure_mgmt_kusto_2019_01_21": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/d7a64449b6fccae235bdd8392c9d3d863f1de800/specification/azure-kusto/resource-manager/readme.md",
+      "namespace": "Azure::Kusto::Mgmt::V2019_01_21",
+      "tag": "package-2019-01-21"
+    },
     "azure_mgmt_kusto_2018_09_07_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/24ab24bdc72cb5f0e7c6b9bdb3e54462983c79c3/specification/azure-kusto/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/d7a64449b6fccae235bdd8392c9d3d863f1de800/specification/azure-kusto/resource-manager/readme.md",
       "namespace": "Azure::Kusto::Mgmt::V2018_09_07_preview",
       "tag": "package-2018-09-07-preview"
     },
     "azure_mgmt_kusto_2018_09_07_privatepreview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/24ab24bdc72cb5f0e7c6b9bdb3e54462983c79c3/specification/azure-kusto/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/d7a64449b6fccae235bdd8392c9d3d863f1de800/specification/azure-kusto/resource-manager/readme.md",
       "namespace": "Azure::Kusto::Mgmt::V2018_09_07_privatepreview",
       "tag": "package-2017-09-07-privatepreview"
     }
