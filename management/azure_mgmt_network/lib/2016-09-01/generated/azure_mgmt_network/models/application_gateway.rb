@@ -26,24 +26,34 @@ module Azure::Network::Mgmt::V2016_09_01
       # 'Stopped', 'Starting', 'Running', 'Stopping'
       attr_accessor :operational_state
 
-      # @return [Array<ApplicationGatewayIPConfiguration>] Subnets of
-      # application the gateway resource.
+      # @return [Array<ApplicationGatewayIPConfiguration>] Subnets of the
+      # application gateway resource. For default limits, see [Application
+      # Gateway
+      # limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
       attr_accessor :gateway_ipconfigurations
 
       # @return [Array<ApplicationGatewayAuthenticationCertificate>]
-      # Authentication certificates of the application gateway resource.
+      # Authentication certificates of the application gateway resource. For
+      # default limits, see [Application Gateway
+      # limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
       attr_accessor :authentication_certificates
 
       # @return [Array<ApplicationGatewaySslCertificate>] SSL certificates of
-      # the application gateway resource.
+      # the application gateway resource. For default limits, see [Application
+      # Gateway
+      # limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
       attr_accessor :ssl_certificates
 
       # @return [Array<ApplicationGatewayFrontendIPConfiguration>] Frontend IP
-      # addresses of the application gateway resource.
+      # addresses of the application gateway resource. For default limits, see
+      # [Application Gateway
+      # limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
       attr_accessor :frontend_ipconfigurations
 
       # @return [Array<ApplicationGatewayFrontendPort>] Frontend ports of the
-      # application gateway resource.
+      # application gateway resource. For default limits, see [Application
+      # Gateway
+      # limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
       attr_accessor :frontend_ports
 
       # @return [Array<ApplicationGatewayProbe>] Probes of the application
@@ -51,19 +61,27 @@ module Azure::Network::Mgmt::V2016_09_01
       attr_accessor :probes
 
       # @return [Array<ApplicationGatewayBackendAddressPool>] Backend address
-      # pool of the application gateway resource.
+      # pool of the application gateway resource. For default limits, see
+      # [Application Gateway
+      # limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
       attr_accessor :backend_address_pools
 
       # @return [Array<ApplicationGatewayBackendHttpSettings>] Backend http
-      # settings of the application gateway resource.
+      # settings of the application gateway resource. For default limits, see
+      # [Application Gateway
+      # limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
       attr_accessor :backend_http_settings_collection
 
       # @return [Array<ApplicationGatewayHttpListener>] Http listeners of the
-      # application gateway resource.
+      # application gateway resource. For default limits, see [Application
+      # Gateway
+      # limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
       attr_accessor :http_listeners
 
       # @return [Array<ApplicationGatewayUrlPathMap>] URL path map of the
-      # application gateway resource.
+      # application gateway resource. For default limits, see [Application
+      # Gateway
+      # limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
       attr_accessor :url_path_maps
 
       # @return [Array<ApplicationGatewayRequestRoutingRule>] Request routing
