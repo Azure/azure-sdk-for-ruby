@@ -6,7 +6,7 @@
 module Azure::Billing::Mgmt::V2018_11_01_preview
   module Models
     #
-    # The properties of the product to initiate itansfer.
+    # The properties of the product to initiate a transfer.
     #
     class TransferProductProperties
 
