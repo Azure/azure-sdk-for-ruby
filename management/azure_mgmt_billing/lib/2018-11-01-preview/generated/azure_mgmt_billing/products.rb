@@ -28,12 +28,14 @@ module Azure::Billing::Mgmt::V2018_11_01_preview
     # @param billing_account_id [String] billing Account Id.
     # @param invoice_section_id [String] Invoice Id.
     # @param product_name [String] Product Id.
+    # @param parameters [TransferProductProperties] Parameters supplied to the
+    # Transfer Product operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def transfer(billing_account_id, invoice_section_id, product_name, custom_headers = nil)
-      response = transfer_async(billing_account_id, invoice_section_id, product_name, custom_headers).value!
+    def transfer(billing_account_id, invoice_section_id, product_name, parameters, custom_headers = nil)
+      response = transfer_async(billing_account_id, invoice_section_id, product_name, parameters, custom_headers).value!
       nil
     end
 
@@ -43,13 +45,15 @@ module Azure::Billing::Mgmt::V2018_11_01_preview
     # @param billing_account_id [String] billing Account Id.
     # @param invoice_section_id [String] Invoice Id.
     # @param product_name [String] Product Id.
+    # @param parameters [TransferProductProperties] Parameters supplied to the
+    # Transfer Product operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def transfer_with_http_info(billing_account_id, invoice_section_id, product_name, custom_headers = nil)
-      transfer_async(billing_account_id, invoice_section_id, product_name, custom_headers).value!
+    def transfer_with_http_info(billing_account_id, invoice_section_id, product_name, parameters, custom_headers = nil)
+      transfer_async(billing_account_id, invoice_section_id, product_name, parameters, custom_headers).value!
     end
 
     #
@@ -58,20 +62,20 @@ module Azure::Billing::Mgmt::V2018_11_01_preview
     # @param billing_account_id [String] billing Account Id.
     # @param invoice_section_id [String] Invoice Id.
     # @param product_name [String] Product Id.
+    # @param parameters [TransferProductProperties] Parameters supplied to the
+    # Transfer Product operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def transfer_async(billing_account_id, invoice_section_id, product_name, custom_headers = nil)
+    def transfer_async(billing_account_id, invoice_section_id, product_name, parameters, custom_headers = nil)
       fail ArgumentError, 'billing_account_id is nil' if billing_account_id.nil?
       fail ArgumentError, 'invoice_section_id is nil' if invoice_section_id.nil?
       fail ArgumentError, 'product_name is nil' if product_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
-      parameters = TransferProductProperties.new
-      unless
-      end
 
       request_headers = {}
 

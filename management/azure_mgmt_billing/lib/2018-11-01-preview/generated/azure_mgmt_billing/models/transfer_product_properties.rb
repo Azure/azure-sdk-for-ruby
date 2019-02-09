@@ -30,7 +30,6 @@ module Azure::Billing::Mgmt::V2018_11_01_preview
             model_properties: {
               destination_invoice_section_id: {
                 required: false,
-                read_only: true,
                 serialized_name: 'destinationInvoiceSectionId',
                 type: {
                   name: 'String'
