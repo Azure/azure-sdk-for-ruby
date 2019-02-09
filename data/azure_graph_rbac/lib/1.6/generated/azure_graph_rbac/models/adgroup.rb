@@ -22,6 +22,14 @@ module Azure::GraphRbac::V1_6
       # @return [String] The display name of the group.
       attr_accessor :display_name
 
+      # @return [Boolean] Whether the group is mail-enabled. Must be false.
+      # This is because only pure security groups can be created using the
+      # Graph API.
+      attr_accessor :mail_enabled
+
+      # @return [String] The mail alias for the group.
+      attr_accessor :mail_nickname
+
       # @return [Boolean] Whether the group is security-enable.
       attr_accessor :security_enabled
 
@@ -35,7 +43,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Group',
           type: {
@@ -43,12 +50,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'ADGroup',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -58,7 +63,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'objectId',
@@ -67,7 +71,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               deletion_timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'deletionTimestamp',
@@ -76,7 +79,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               objectType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -84,15 +86,27 @@ module Azure::GraphRbac::V1_6
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
                   name: 'String'
                 }
               },
+              mail_enabled: {
+                required: false,
+                serialized_name: 'mailEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              mail_nickname: {
+                required: false,
+                serialized_name: 'mailNickname',
+                type: {
+                  name: 'String'
+                }
+              },
               security_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'securityEnabled',
                 type: {
@@ -100,7 +114,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               mail: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mail',
                 type: {

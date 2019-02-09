@@ -30,7 +30,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupAddMemberParameters',
           type: {
@@ -38,12 +37,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'GroupAddMemberParameters',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -53,7 +50,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 type: {

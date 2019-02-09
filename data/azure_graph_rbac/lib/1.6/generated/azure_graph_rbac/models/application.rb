@@ -22,6 +22,11 @@ module Azure::GraphRbac::V1_6
       # @return [String] The application ID.
       attr_accessor :app_id
 
+      # @return [Array<AppRole>] The collection of application roles that an
+      # application may declare. These roles can be assigned to users, groups
+      # or service principals.
+      attr_accessor :app_roles
+
       # @return [Array<String>] The application permissions.
       attr_accessor :app_permissions
 
@@ -44,6 +49,20 @@ module Azure::GraphRbac::V1_6
       # @return [Boolean] Whether to allow implicit grant flow for OAuth2
       attr_accessor :oauth2allow_implicit_flow
 
+      # @return [Array<RequiredResourceAccess>] Specifies resources that this
+      # application requires access to and the set of OAuth permission scopes
+      # and application roles that it needs under each of those resources. This
+      # pre-configuration of required resource access drives the consent
+      # experience.
+      attr_accessor :required_resource_access
+
+      # @return [Array<KeyCredential>] A collection of KeyCredential objects.
+      attr_accessor :key_credentials
+
+      # @return [Array<PasswordCredential>] A collection of PasswordCredential
+      # objects
+      attr_accessor :password_credentials
+
 
       #
       # Mapper for Application class as Ruby Hash.
@@ -51,7 +70,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Application',
           type: {
@@ -59,12 +77,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'Application',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -74,7 +90,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'objectId',
@@ -83,7 +98,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               deletion_timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'deletionTimestamp',
@@ -92,7 +106,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               objectType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -100,21 +113,33 @@ module Azure::GraphRbac::V1_6
                 }
               },
               app_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appId',
                 type: {
                   name: 'String'
                 }
               },
+              app_roles: {
+                required: false,
+                serialized_name: 'appRoles',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AppRoleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AppRole'
+                      }
+                  }
+                }
+              },
               app_permissions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'appPermissions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -124,7 +149,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               available_to_other_tenants: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableToOtherTenants',
                 type: {
@@ -132,7 +156,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -140,13 +163,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               identifier_uris: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'identifierUris',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -156,13 +177,11 @@ module Azure::GraphRbac::V1_6
                 }
               },
               reply_urls: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replyUrls',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -172,7 +191,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               homepage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'homepage',
                 type: {
@@ -180,11 +198,55 @@ module Azure::GraphRbac::V1_6
                 }
               },
               oauth2allow_implicit_flow: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'oauth2AllowImplicitFlow',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              required_resource_access: {
+                required: false,
+                serialized_name: 'requiredResourceAccess',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'RequiredResourceAccessElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'RequiredResourceAccess'
+                      }
+                  }
+                }
+              },
+              key_credentials: {
+                required: false,
+                serialized_name: 'keyCredentials',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'KeyCredentialElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'KeyCredential'
+                      }
+                  }
+                }
+              },
+              password_credentials: {
+                required: false,
+                serialized_name: 'passwordCredentials',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'PasswordCredentialElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PasswordCredential'
+                      }
+                  }
                 }
               }
             }

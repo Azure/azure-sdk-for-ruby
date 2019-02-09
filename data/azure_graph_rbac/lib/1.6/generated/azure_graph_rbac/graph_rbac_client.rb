@@ -23,23 +23,25 @@ module Azure::GraphRbac::V1_6
     # @return [String] The tenant ID.
     attr_accessor :tenant_id
 
-    # @return [String] The preferred language for the response.
+    # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] The retry timeout in seconds for Long Running
-    # Operations. Default value is 30.
+    # @return [Integer] Gets or sets the retry timeout in seconds for Long
+    # Running Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] Whether a unique x-ms-client-request-id should be
-    # generated. When set to true a unique x-ms-client-request-id value is
-    # generated and included in each request. Default is true.
+    # @return [Boolean] When set to true a unique x-ms-client-request-id value
+    # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Objects] objects
-    attr_reader :objects
+    # @return [SignedInUser] signed_in_user
+    attr_reader :signed_in_user
 
     # @return [Applications] applications
     attr_reader :applications
+
+    # @return [DeletedApplications] deleted_applications
+    attr_reader :deleted_applications
 
     # @return [Groups] groups
     attr_reader :groups
@@ -50,8 +52,14 @@ module Azure::GraphRbac::V1_6
     # @return [Users] users
     attr_reader :users
 
+    # @return [Objects] objects
+    attr_reader :objects
+
     # @return [Domains] domains
     attr_reader :domains
+
+    # @return [OAuth2] oauth2
+    attr_reader :oauth2
 
     #
     # Creates initializes a new instance of the GraphRbacClient class.
@@ -66,12 +74,15 @@ module Azure::GraphRbac::V1_6
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @objects = Objects.new(self)
+      @signed_in_user = SignedInUser.new(self)
       @applications = Applications.new(self)
+      @deleted_applications = DeletedApplications.new(self)
       @groups = Groups.new(self)
       @service_principals = ServicePrincipals.new(self)
       @users = Users.new(self)
+      @objects = Objects.new(self)
       @domains = Domains.new(self)
+      @oauth2 = OAuth2.new(self)
       @api_version = '1.6'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -125,9 +136,6 @@ module Azure::GraphRbac::V1_6
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -144,7 +152,9 @@ module Azure::GraphRbac::V1_6
     #
     def add_telemetry
         sdk_information = 'azure_graph_rbac'
-        sdk_information = "#{sdk_information}/0.17.0"
+        if defined? Azure::GraphRbac::V1_6::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::GraphRbac::V1_6::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

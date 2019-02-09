@@ -30,8 +30,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [User] operation results.
     #
-    def create(parameters, custom_headers:nil)
-      response = create_async(parameters, custom_headers:custom_headers).value!
+    def create(parameters, custom_headers = nil)
+      response = create_async(parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -44,8 +44,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(parameters, custom_headers:nil)
-      create_async(parameters, custom_headers:custom_headers).value!
+    def create_with_http_info(parameters, custom_headers = nil)
+      create_async(parameters, custom_headers).value!
     end
 
     #
@@ -57,18 +57,19 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(parameters, custom_headers:nil)
+    def create_async(parameters, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::GraphRbac::V1_6::Models::UserCreateParameters.mapper()
@@ -125,8 +126,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Array<User>] operation results.
     #
-    def list(filter:nil, custom_headers:nil)
-      first_page = list_as_lazy(filter:filter, custom_headers:custom_headers)
+    def list(filter = nil, custom_headers = nil)
+      first_page = list_as_lazy(filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -139,8 +140,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(filter:nil, custom_headers:nil)
-      list_async(filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(filter = nil, custom_headers = nil)
+      list_async(filter, custom_headers).value!
     end
 
     #
@@ -152,13 +153,12 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(filter:nil, custom_headers:nil)
+    def list_async(filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -213,8 +213,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [User] operation results.
     #
-    def get(upn_or_object_id, custom_headers:nil)
-      response = get_async(upn_or_object_id, custom_headers:custom_headers).value!
+    def get(upn_or_object_id, custom_headers = nil)
+      response = get_async(upn_or_object_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -228,8 +228,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(upn_or_object_id, custom_headers:nil)
-      get_async(upn_or_object_id, custom_headers:custom_headers).value!
+    def get_with_http_info(upn_or_object_id, custom_headers = nil)
+      get_async(upn_or_object_id, custom_headers).value!
     end
 
     #
@@ -242,14 +242,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(upn_or_object_id, custom_headers:nil)
+    def get_async(upn_or_object_id, custom_headers = nil)
       fail ArgumentError, 'upn_or_object_id is nil' if upn_or_object_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -305,8 +304,8 @@ module Azure::GraphRbac::V1_6
     # will be added to the HTTP request.
     #
     #
-    def update(upn_or_object_id, parameters, custom_headers:nil)
-      response = update_async(upn_or_object_id, parameters, custom_headers:custom_headers).value!
+    def update(upn_or_object_id, parameters, custom_headers = nil)
+      response = update_async(upn_or_object_id, parameters, custom_headers).value!
       nil
     end
 
@@ -322,8 +321,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(upn_or_object_id, parameters, custom_headers:nil)
-      update_async(upn_or_object_id, parameters, custom_headers:custom_headers).value!
+    def update_with_http_info(upn_or_object_id, parameters, custom_headers = nil)
+      update_async(upn_or_object_id, parameters, custom_headers).value!
     end
 
     #
@@ -338,7 +337,7 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(upn_or_object_id, parameters, custom_headers:nil)
+    def update_async(upn_or_object_id, parameters, custom_headers = nil)
       fail ArgumentError, 'upn_or_object_id is nil' if upn_or_object_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -346,11 +345,12 @@ module Azure::GraphRbac::V1_6
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::GraphRbac::V1_6::Models::UserUpdateParameters.mapper()
@@ -397,8 +397,8 @@ module Azure::GraphRbac::V1_6
     # will be added to the HTTP request.
     #
     #
-    def delete(upn_or_object_id, custom_headers:nil)
-      response = delete_async(upn_or_object_id, custom_headers:custom_headers).value!
+    def delete(upn_or_object_id, custom_headers = nil)
+      response = delete_async(upn_or_object_id, custom_headers).value!
       nil
     end
 
@@ -412,8 +412,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(upn_or_object_id, custom_headers:nil)
-      delete_async(upn_or_object_id, custom_headers:custom_headers).value!
+    def delete_with_http_info(upn_or_object_id, custom_headers = nil)
+      delete_async(upn_or_object_id, custom_headers).value!
     end
 
     #
@@ -426,14 +426,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(upn_or_object_id, custom_headers:nil)
+    def delete_async(upn_or_object_id, custom_headers = nil)
       fail ArgumentError, 'upn_or_object_id is nil' if upn_or_object_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -480,8 +479,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [UserGetMemberGroupsResult] operation results.
     #
-    def get_member_groups(object_id, parameters, custom_headers:nil)
-      response = get_member_groups_async(object_id, parameters, custom_headers:custom_headers).value!
+    def get_member_groups(object_id, parameters, custom_headers = nil)
+      response = get_member_groups_async(object_id, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -497,8 +496,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_member_groups_with_http_info(object_id, parameters, custom_headers:nil)
-      get_member_groups_async(object_id, parameters, custom_headers:custom_headers).value!
+    def get_member_groups_with_http_info(object_id, parameters, custom_headers = nil)
+      get_member_groups_async(object_id, parameters, custom_headers).value!
     end
 
     #
@@ -513,7 +512,7 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_member_groups_async(object_id, parameters, custom_headers:nil)
+    def get_member_groups_async(object_id, parameters, custom_headers = nil)
       fail ArgumentError, 'object_id is nil' if object_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -521,11 +520,12 @@ module Azure::GraphRbac::V1_6
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters.mapper()
@@ -582,8 +582,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Array<User>] operation results.
     #
-    def list_next(next_link, custom_headers:nil)
-      response = list_next_async(next_link, custom_headers:custom_headers).value!
+    def list_next(next_link, custom_headers = nil)
+      response = list_next_async(next_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -596,8 +596,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_link, custom_headers:nil)
-      list_next_async(next_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_link, custom_headers = nil)
+      list_next_async(next_link, custom_headers).value!
     end
 
     #
@@ -609,14 +609,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_link, custom_headers:nil)
+    def list_next_async(next_link, custom_headers = nil)
       fail ArgumentError, 'next_link is nil' if next_link.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -671,12 +670,12 @@ module Azure::GraphRbac::V1_6
     #
     # @return [UserListResult] which provide lazy access to pages of the response.
     #
-    def list_as_lazy(filter:nil, custom_headers:nil)
-      response = list_async(filter:filter, custom_headers:custom_headers).value!
+    def list_as_lazy(filter = nil, custom_headers = nil)
+      response = list_async(filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_link|
-          list_next_async(next_link, custom_headers:custom_headers)
+          list_next_async(next_link, custom_headers)
         end
         page
       end

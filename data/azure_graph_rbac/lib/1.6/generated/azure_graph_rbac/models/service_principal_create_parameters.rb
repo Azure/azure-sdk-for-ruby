@@ -16,11 +16,25 @@ module Azure::GraphRbac::V1_6
       # collection
       attr_accessor :additional_properties
 
+      # @return [Boolean] Whether the account is enabled
+      attr_accessor :account_enabled
+
       # @return [String] application Id
       attr_accessor :app_id
 
-      # @return [Boolean] Whether the account is enabled
-      attr_accessor :account_enabled
+      # @return [Boolean] Specifies whether an AppRoleAssignment to a user or
+      # group is required before Azure AD will issue a user or access token to
+      # the application.
+      attr_accessor :app_role_assignment_required
+
+      # @return [String] The display name for the service principal.
+      attr_accessor :display_name
+
+      # @return [String]
+      attr_accessor :error_url
+
+      # @return [String] The URL to the homepage of the associated application.
+      attr_accessor :homepage
 
       # @return [Array<KeyCredential>] A collection of KeyCredential objects.
       attr_accessor :key_credentials
@@ -29,6 +43,23 @@ module Azure::GraphRbac::V1_6
       # objects
       attr_accessor :password_credentials
 
+      # @return [String] The display name of the tenant in which the associated
+      # application is specified.
+      attr_accessor :publisher_name
+
+      # @return [Array<String>] A collection of reply URLs for the service
+      # principal.
+      attr_accessor :reply_urls
+
+      # @return [String]
+      attr_accessor :saml_metadata_url
+
+      # @return [Array<String>] A collection of service principal names.
+      attr_accessor :service_principal_names
+
+      # @return [Array<String>]
+      attr_accessor :tags
+
 
       #
       # Mapper for ServicePrincipalCreateParameters class as Ruby Hash.
@@ -36,7 +67,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServicePrincipalCreateParameters',
           type: {
@@ -44,12 +74,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'ServicePrincipalCreateParameters',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -58,30 +86,54 @@ module Azure::GraphRbac::V1_6
                   }
                 }
               },
+              account_enabled: {
+                required: false,
+                serialized_name: 'accountEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               app_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'appId',
                 type: {
                   name: 'String'
                 }
               },
-              account_enabled: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'accountEnabled',
+              app_role_assignment_required: {
+                required: false,
+                serialized_name: 'appRoleAssignmentRequired',
                 type: {
                   name: 'Boolean'
                 }
               },
+              display_name: {
+                required: false,
+                serialized_name: 'displayName',
+                type: {
+                  name: 'String'
+                }
+              },
+              error_url: {
+                required: false,
+                serialized_name: 'errorUrl',
+                type: {
+                  name: 'String'
+                }
+              },
+              homepage: {
+                required: false,
+                serialized_name: 'homepage',
+                type: {
+                  name: 'String'
+                }
+              },
               key_credentials: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyCredentials',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyCredentialElementType',
                       type: {
@@ -92,18 +144,72 @@ module Azure::GraphRbac::V1_6
                 }
               },
               password_credentials: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'passwordCredentials',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PasswordCredentialElementType',
                       type: {
                         name: 'Composite',
                         class_name: 'PasswordCredential'
+                      }
+                  }
+                }
+              },
+              publisher_name: {
+                required: false,
+                serialized_name: 'publisherName',
+                type: {
+                  name: 'String'
+                }
+              },
+              reply_urls: {
+                required: false,
+                serialized_name: 'replyUrls',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              saml_metadata_url: {
+                required: false,
+                serialized_name: 'samlMetadataUrl',
+                type: {
+                  name: 'String'
+                }
+              },
+              service_principal_names: {
+                required: false,
+                serialized_name: 'servicePrincipalNames',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }
