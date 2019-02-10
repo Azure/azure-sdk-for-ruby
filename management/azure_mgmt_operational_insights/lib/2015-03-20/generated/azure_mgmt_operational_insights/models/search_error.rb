@@ -25,7 +25,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SearchError',
           type: {
@@ -33,7 +32,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchError',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -41,7 +39,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
