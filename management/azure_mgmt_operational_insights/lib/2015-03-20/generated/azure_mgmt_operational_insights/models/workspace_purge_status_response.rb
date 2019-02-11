@@ -23,7 +23,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkspacePurgeStatusResponse',
           type: {
@@ -31,7 +30,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'WorkspacePurgeStatusResponse',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'status',
                 type: {

@@ -70,7 +70,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SearchMetadata',
           type: {
@@ -78,7 +77,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchMetadata',
             model_properties: {
               search_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {
@@ -86,7 +84,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               result_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resultType',
                 type: {
@@ -94,7 +91,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               total: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'total',
                 type: {
@@ -102,7 +98,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               top: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'top',
                 type: {
@@ -110,7 +105,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -118,13 +112,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               core_summaries: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'coreSummaries',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CoreSummaryElementType',
                       type: {
@@ -135,7 +127,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -143,7 +134,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -151,7 +141,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               last_updated: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastUpdated',
                 type: {
@@ -159,7 +148,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               e_tag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eTag',
                 type: {
@@ -167,13 +155,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               sort: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sort',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SearchSortElementType',
                       type: {
@@ -184,7 +170,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               request_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestTime',
                 type: {
@@ -192,7 +177,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               aggregated_value_field: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'aggregatedValueField',
                 type: {
@@ -200,7 +184,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               aggregated_grouping_fields: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'aggregatedGroupingFields',
                 type: {
@@ -208,7 +191,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               sum: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sum',
                 type: {
@@ -216,7 +198,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               max: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'max',
                 type: {
@@ -224,7 +205,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               schema: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'schema',
                 type: {
