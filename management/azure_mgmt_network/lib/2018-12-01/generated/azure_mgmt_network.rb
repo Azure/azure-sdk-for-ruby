@@ -469,6 +469,7 @@ module Azure::Network::Mgmt::V2018_12_01
     autoload :AzureFirewallApplicationRuleProtocolType,           '2018-12-01/generated/azure_mgmt_network/models/azure_firewall_application_rule_protocol_type.rb'
     autoload :AzureFirewallNatRCActionType,                       '2018-12-01/generated/azure_mgmt_network/models/azure_firewall_nat_rcaction_type.rb'
     autoload :AzureFirewallNetworkRuleProtocol,                   '2018-12-01/generated/azure_mgmt_network/models/azure_firewall_network_rule_protocol.rb'
+    autoload :AzureFirewallThreatIntelMode,                       '2018-12-01/generated/azure_mgmt_network/models/azure_firewall_threat_intel_mode.rb'
     autoload :DdosCustomPolicyProtocol,                           '2018-12-01/generated/azure_mgmt_network/models/ddos_custom_policy_protocol.rb'
     autoload :DdosCustomPolicyTriggerSensitivityOverride,         '2018-12-01/generated/azure_mgmt_network/models/ddos_custom_policy_trigger_sensitivity_override.rb'
     autoload :AuthorizationUseStatus,                             '2018-12-01/generated/azure_mgmt_network/models/authorization_use_status.rb'

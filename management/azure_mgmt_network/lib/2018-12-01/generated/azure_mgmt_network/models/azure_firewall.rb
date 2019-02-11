@@ -32,6 +32,10 @@ module Azure::Network::Mgmt::V2018_12_01
       # Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
       attr_accessor :provisioning_state
 
+      # @return [AzureFirewallThreatIntelMode] The operation mode for Threat
+      # Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+      attr_accessor :threat_intel_mode
+
       # @return [String] Gets a unique read-only string that changes whenever
       # the resource is updated.
       attr_accessor :etag
@@ -156,6 +160,13 @@ module Azure::Network::Mgmt::V2018_12_01
               provisioning_state: {
                 required: false,
                 serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              threat_intel_mode: {
+                required: false,
+                serialized_name: 'properties.threatIntelMode',
                 type: {
                   name: 'String'
                 }
