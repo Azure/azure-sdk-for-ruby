@@ -13,7 +13,7 @@ module Azure::Network::Mgmt::V2018_12_01
       include MsRestAzure
 
       # @return [ConnectionMonitorSourceStatus] Status of connection monitor
-      # source. Possible values include: 'Uknown', 'Active', 'Inactive'
+      # source. Possible values include: 'Unknown', 'Active', 'Inactive'
       attr_accessor :source_status
 
       # @return [Array<ConnectionStateSnapshot>] Information about connection

@@ -9,7 +9,7 @@ module Azure::Network::Mgmt::V2018_12_01
     # Defines values for ConnectionMonitorSourceStatus
     #
     module ConnectionMonitorSourceStatus
-      Uknown = "Uknown"
+      Unknown = "Unknown"
       Active = "Active"
       Inactive = "Inactive"
     end
