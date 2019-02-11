@@ -21,7 +21,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # origin at the top-left corner, and the y-axis pointing down.
       attr_accessor :bounding_box
 
-      # @return [Array<OcrLine>]
+      # @return [Array<OcrLine>] An array of recognized lines of text.
       attr_accessor :lines
 
 
@@ -31,7 +31,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OcrRegion',
           type: {
@@ -39,7 +38,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'OcrRegion',
             model_properties: {
               bounding_box: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'boundingBox',
                 type: {
@@ -47,13 +45,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               lines: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lines',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OcrLineElementType',
                       type: {

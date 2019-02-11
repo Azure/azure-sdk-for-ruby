@@ -18,7 +18,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # @return [Float] Scoring of the category.
       attr_accessor :score
 
-      # @return [CategoryDetail]
+      # @return [CategoryDetail] Details of the identified category.
       attr_accessor :detail
 
 
@@ -28,7 +28,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Category',
           type: {
@@ -36,7 +35,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'Category',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +42,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               score: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'score',
                 type: {
@@ -52,7 +49,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               detail: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'detail',
                 type: {

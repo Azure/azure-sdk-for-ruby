@@ -34,7 +34,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ColorInfo',
           type: {
@@ -42,7 +41,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'ColorInfo',
             model_properties: {
               dominant_color_foreground: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dominantColorForeground',
                 type: {
@@ -50,7 +48,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               dominant_color_background: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dominantColorBackground',
                 type: {
@@ -58,13 +55,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               dominant_colors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dominantColors',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -74,7 +69,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               accent_color: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accentColor',
                 type: {
@@ -82,7 +76,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               is_bwimg: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isBWImg',
                 type: {
