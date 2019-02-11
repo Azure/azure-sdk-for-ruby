@@ -7,13 +7,13 @@ require 'azure_mgmt_resources'
 module Azure::Profiles::Latest
   module Resources
     module Mgmt
-      Resources = Azure::Resources::Mgmt::V2018_05_01::Resources
-      Deployments = Azure::Resources::Mgmt::V2018_05_01::Deployments
-      Operations = Azure::Resources::Mgmt::V2018_05_01::Operations
-      ResourceGroups = Azure::Resources::Mgmt::V2018_05_01::ResourceGroups
-      Tags = Azure::Resources::Mgmt::V2018_05_01::Tags
-      Providers = Azure::Resources::Mgmt::V2018_05_01::Providers
       DeploymentOperations = Azure::Resources::Mgmt::V2018_05_01::DeploymentOperations
+      ResourceGroups = Azure::Resources::Mgmt::V2018_05_01::ResourceGroups
+      Resources = Azure::Resources::Mgmt::V2018_05_01::Resources
+      Operations = Azure::Resources::Mgmt::V2018_05_01::Operations
+      Deployments = Azure::Resources::Mgmt::V2018_05_01::Deployments
+      Providers = Azure::Resources::Mgmt::V2018_05_01::Providers
+      Tags = Azure::Resources::Mgmt::V2018_05_01::Tags
 
       module Models
         Dependency = Azure::Resources::Mgmt::V2018_05_01::Models::Dependency
@@ -62,18 +62,18 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::Resources::Mgmt::V2018_05_01::Models::OperationDisplay
         OnErrorDeploymentType = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
         Operation = Azure::Resources::Mgmt::V2018_05_01::Models::Operation
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+        OperationListResult = Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
         SubResource = Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
         ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         DeploymentMode = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-        OperationListResult = Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
         Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
         ResourceIdentityType = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
         Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
       end
 
       class ResourcesManagementClass
-        attr_reader :resources, :deployments, :operations, :resource_groups, :tags, :providers, :deployment_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :deployment_operations, :resource_groups, :resources, :operations, :deployments, :providers, :tags, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -83,13 +83,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @resources = @client_0.resources
-          @deployments = @client_0.deployments
-          @operations = @client_0.operations
-          @resource_groups = @client_0.resource_groups
-          @tags = @client_0.tags
-          @providers = @client_0.providers
           @deployment_operations = @client_0.deployment_operations
+          @resource_groups = @client_0.resource_groups
+          @resources = @client_0.resources
+          @operations = @client_0.operations
+          @deployments = @client_0.deployments
+          @providers = @client_0.providers
+          @tags = @client_0.tags
 
           @model_classes = ModelClasses.new
         end
@@ -246,8 +246,8 @@ module Azure::Profiles::Latest
           def operation
             Azure::Resources::Mgmt::V2018_05_01::Models::Operation
           end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          def operation_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
           end
           def sub_resource
             Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
@@ -255,11 +255,11 @@ module Azure::Profiles::Latest
           def resource_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
           end
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
           def deployment_mode
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-          end
-          def operation_list_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
           end
           def plan
             Azure::Resources::Mgmt::V2018_05_01::Models::Plan

@@ -9,6 +9,8 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
+      Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
       ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
@@ -24,6 +26,7 @@ module Azure::Profiles::Latest
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
+      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
       Places = Azure::CognitiveServices::EntitySearch::V1_0::Models::Places
@@ -51,10 +54,7 @@ module Azure::Profiles::Latest
       EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
-      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
-      SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
-      Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def search_response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
+        end
+        def entities
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
+        end
         def error_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
         end
@@ -131,6 +137,9 @@ module Azure::Profiles::Latest
         end
         def error_sub_code
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
+        end
+        def error
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
         end
         def contractual_rules_contractual_rule
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
@@ -213,17 +222,8 @@ module Azure::Profiles::Latest
         def answer_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
         end
-        def error
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
-        end
         def entity_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
-        end
-        def search_response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
-        end
-        def entities
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
         end
       end
     end
