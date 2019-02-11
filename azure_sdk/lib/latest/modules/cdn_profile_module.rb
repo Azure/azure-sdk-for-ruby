@@ -7,15 +7,19 @@ require 'azure_mgmt_cdn'
 module Azure::Profiles::Latest
   module CDN
     module Mgmt
+      ResourceUsageOperations = Azure::CDN::Mgmt::V2017_10_12::ResourceUsageOperations
+      Origins = Azure::CDN::Mgmt::V2017_10_12::Origins
+      EdgeNodes = Azure::CDN::Mgmt::V2017_10_12::EdgeNodes
       Operations = Azure::CDN::Mgmt::V2017_10_12::Operations
       Profiles = Azure::CDN::Mgmt::V2017_10_12::Profiles
-      Origins = Azure::CDN::Mgmt::V2017_10_12::Origins
-      CustomDomains = Azure::CDN::Mgmt::V2017_10_12::CustomDomains
-      ResourceUsageOperations = Azure::CDN::Mgmt::V2017_10_12::ResourceUsageOperations
-      EdgeNodes = Azure::CDN::Mgmt::V2017_10_12::EdgeNodes
       Endpoints = Azure::CDN::Mgmt::V2017_10_12::Endpoints
+      CustomDomains = Azure::CDN::Mgmt::V2017_10_12::CustomDomains
 
       module Models
+        TrackedResource = Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
+        OriginUpdateParameters = Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
+        OriginListResult = Azure::CDN::Mgmt::V2017_10_12::Models::OriginListResult
+        ProfileListResult = Azure::CDN::Mgmt::V2017_10_12::Models::ProfileListResult
         PurgeParameters = Azure::CDN::Mgmt::V2017_10_12::Models::PurgeParameters
         SsoUri = Azure::CDN::Mgmt::V2017_10_12::Models::SsoUri
         LoadParameters = Azure::CDN::Mgmt::V2017_10_12::Models::LoadParameters
@@ -65,20 +69,16 @@ module Azure::Profiles::Latest
         CustomHttpsProvisioningState = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningState
         CustomHttpsProvisioningSubstate = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningSubstate
         Resource = Azure::CDN::Mgmt::V2017_10_12::Models::Resource
+        ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
         OperationDisplay = Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay
         Operation = Azure::CDN::Mgmt::V2017_10_12::Models::Operation
-        ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
         SkuName = Azure::CDN::Mgmt::V2017_10_12::Models::SkuName
         Sku = Azure::CDN::Mgmt::V2017_10_12::Models::Sku
         ErrorResponse = Azure::CDN::Mgmt::V2017_10_12::Models::ErrorResponse
-        TrackedResource = Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
-        OriginUpdateParameters = Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
-        OriginListResult = Azure::CDN::Mgmt::V2017_10_12::Models::OriginListResult
-        ProfileListResult = Azure::CDN::Mgmt::V2017_10_12::Models::ProfileListResult
       end
 
       class CDNManagementClass
-        attr_reader :operations, :profiles, :origins, :custom_domains, :resource_usage_operations, :edge_nodes, :endpoints, :configurable, :base_url, :options, :model_classes
+        attr_reader :resource_usage_operations, :origins, :edge_nodes, :operations, :profiles, :endpoints, :custom_domains, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -88,13 +88,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @resource_usage_operations = @client_0.resource_usage_operations
+          @origins = @client_0.origins
+          @edge_nodes = @client_0.edge_nodes
           @operations = @client_0.operations
           @profiles = @client_0.profiles
-          @origins = @client_0.origins
-          @custom_domains = @client_0.custom_domains
-          @resource_usage_operations = @client_0.resource_usage_operations
-          @edge_nodes = @client_0.edge_nodes
           @endpoints = @client_0.endpoints
+          @custom_domains = @client_0.custom_domains
 
           @model_classes = ModelClasses.new
         end
@@ -113,6 +113,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def tracked_resource
+            Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
+          end
+          def origin_update_parameters
+            Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
+          end
+          def origin_list_result
+            Azure::CDN::Mgmt::V2017_10_12::Models::OriginListResult
+          end
+          def profile_list_result
+            Azure::CDN::Mgmt::V2017_10_12::Models::ProfileListResult
+          end
           def purge_parameters
             Azure::CDN::Mgmt::V2017_10_12::Models::PurgeParameters
           end
@@ -260,14 +272,14 @@ module Azure::Profiles::Latest
           def resource
             Azure::CDN::Mgmt::V2017_10_12::Models::Resource
           end
+          def resource_type
+            Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
+          end
           def operation_display
             Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay
           end
           def operation
             Azure::CDN::Mgmt::V2017_10_12::Models::Operation
-          end
-          def resource_type
-            Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
           end
           def sku_name
             Azure::CDN::Mgmt::V2017_10_12::Models::SkuName
@@ -277,18 +289,6 @@ module Azure::Profiles::Latest
           end
           def error_response
             Azure::CDN::Mgmt::V2017_10_12::Models::ErrorResponse
-          end
-          def tracked_resource
-            Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
-          end
-          def origin_update_parameters
-            Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
-          end
-          def origin_list_result
-            Azure::CDN::Mgmt::V2017_10_12::Models::OriginListResult
-          end
-          def profile_list_result
-            Azure::CDN::Mgmt::V2017_10_12::Models::ProfileListResult
           end
         end
       end

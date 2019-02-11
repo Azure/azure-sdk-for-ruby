@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Operations = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Operations
 
       module Models
+        TrackedResource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::TrackedResource
         ControllerConnectionDetailsList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
         ControllerUpdateParameters = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerUpdateParameters
         ResourceProviderOperationDisplay = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDisplay
@@ -27,7 +28,6 @@ module Azure::Profiles::Latest
         ProvisioningState = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
         Sku = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Sku
         ErrorResponse = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorResponse
-        TrackedResource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::TrackedResource
       end
 
       class DevSpacesManagementClass
@@ -61,6 +61,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def tracked_resource
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::TrackedResource
+          end
           def controller_connection_details_list
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
           end
@@ -108,9 +111,6 @@ module Azure::Profiles::Latest
           end
           def error_response
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorResponse
-          end
-          def tracked_resource
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::TrackedResource
           end
         end
       end
