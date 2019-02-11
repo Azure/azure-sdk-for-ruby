@@ -54,6 +54,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       # zone this managed instance will share after creation.
       attr_accessor :dns_zone_partner
 
+      # @return [Boolean] Whether or not the public data endpoint is enabled.
+      attr_accessor :public_data_endpoint_enabled
+
+      # @return [ManagedInstanceProxyOverride] Connection type used for
+      # connecting to the instance. Possible values include: 'Proxy',
+      # 'Redirect', 'Default'
+      attr_accessor :proxy_override
+
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 
@@ -154,6 +162,20 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
               dns_zone_partner: {
                 required: false,
                 serialized_name: 'properties.dnsZonePartner',
+                type: {
+                  name: 'String'
+                }
+              },
+              public_data_endpoint_enabled: {
+                required: false,
+                serialized_name: 'properties.publicDataEndpointEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              proxy_override: {
+                required: false,
+                serialized_name: 'properties.proxyOverride',
                 type: {
                   name: 'String'
                 }
