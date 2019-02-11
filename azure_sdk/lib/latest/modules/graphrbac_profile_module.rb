@@ -6,14 +6,15 @@ require 'azure_graph_rbac'
 
 module Azure::Profiles::Latest
   module GraphRbac
+    Domains = Azure::GraphRbac::V1_6::Domains
+    Users = Azure::GraphRbac::V1_6::Users
     Objects = Azure::GraphRbac::V1_6::Objects
     Applications = Azure::GraphRbac::V1_6::Applications
     Groups = Azure::GraphRbac::V1_6::Groups
     ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
-    Domains = Azure::GraphRbac::V1_6::Domains
-    Users = Azure::GraphRbac::V1_6::Users
 
     module Models
+      UserUpdateParameters = Azure::GraphRbac::V1_6::Models::UserUpdateParameters
       GroupAddMemberParameters = Azure::GraphRbac::V1_6::Models::GroupAddMemberParameters
       GraphError = Azure::GraphRbac::V1_6::Models::GraphError
       KeyCredential = Azure::GraphRbac::V1_6::Models::KeyCredential
@@ -55,11 +56,10 @@ module Azure::Profiles::Latest
       ApplicationUpdateParameters = Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters
       UserCreateParameters = Azure::GraphRbac::V1_6::Models::UserCreateParameters
       User = Azure::GraphRbac::V1_6::Models::User
-      UserUpdateParameters = Azure::GraphRbac::V1_6::Models::UserUpdateParameters
     end
 
     class GraphRbacDataClass
-      attr_reader :objects, :applications, :groups, :service_principals, :domains, :users, :configurable, :base_url, :options, :model_classes
+      attr_reader :domains, :users, :objects, :applications, :groups, :service_principals, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -69,12 +69,12 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @domains = @client_0.domains
+        @users = @client_0.users
         @objects = @client_0.objects
         @applications = @client_0.applications
         @groups = @client_0.groups
         @service_principals = @client_0.service_principals
-        @domains = @client_0.domains
-        @users = @client_0.users
 
         @model_classes = ModelClasses.new
       end
@@ -93,6 +93,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def user_update_parameters
+          Azure::GraphRbac::V1_6::Models::UserUpdateParameters
+        end
         def group_add_member_parameters
           Azure::GraphRbac::V1_6::Models::GroupAddMemberParameters
         end
@@ -215,9 +218,6 @@ module Azure::Profiles::Latest
         end
         def user
           Azure::GraphRbac::V1_6::Models::User
-        end
-        def user_update_parameters
-          Azure::GraphRbac::V1_6::Models::UserUpdateParameters
         end
       end
     end

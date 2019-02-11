@@ -47,11 +47,11 @@ module Azure::Profiles::Latest
       PropertiesItem = Azure::CognitiveServices::VisualSearch::V1_0::Models::PropertiesItem
       RecipesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
       ImagesImageMetadata = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
+      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
       ImagesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
       Offer = Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
       AggregateOffer = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
-      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
       Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
@@ -202,6 +202,9 @@ module Azure::Profiles::Latest
         def images_image_metadata
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
         end
+        def action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+        end
         def images_module
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
         end
@@ -213,9 +216,6 @@ module Azure::Profiles::Latest
         end
         def aggregate_offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
-        end
-        def action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
         end
         def recipe
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe

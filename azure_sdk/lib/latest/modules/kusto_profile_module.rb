@@ -20,11 +20,11 @@ module Azure::Profiles::Latest
         Resource = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Resource
         Cluster = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Cluster
         OperationDisplay = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::OperationDisplay
+        State = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::State
         Operation = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Operation
         OperationListResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::OperationListResult
         ProvisioningState = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProvisioningState
         Database = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Database
-        State = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::State
         DatabasePrincipalListResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalListResult
         DatabasePrincipalListRequest = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalListRequest
         AzureSku = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureSku
@@ -108,6 +108,9 @@ module Azure::Profiles::Latest
           def operation_display
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::OperationDisplay
           end
+          def state
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::State
+          end
           def operation
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Operation
           end
@@ -119,9 +122,6 @@ module Azure::Profiles::Latest
           end
           def database
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Database
-          end
-          def state
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::State
           end
           def database_principal_list_result
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalListResult

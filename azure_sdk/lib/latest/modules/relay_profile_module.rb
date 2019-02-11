@@ -13,6 +13,7 @@ module Azure::Profiles::Latest
       WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
 
       module Models
+        HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
         RelayNamespaceListResult = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
         CheckNameAvailability = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailability
         HybridConnectionListResult = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnectionListResult
@@ -39,7 +40,6 @@ module Azure::Profiles::Latest
         AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
         Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
         SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
-        HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
       end
 
       class RelayManagementClass
@@ -75,6 +75,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def hybrid_connection
+            Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
+          end
           def relay_namespace_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
           end
@@ -152,9 +155,6 @@ module Azure::Profiles::Latest
           end
           def sku_tier
             Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
-          end
-          def hybrid_connection
-            Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
           end
         end
       end

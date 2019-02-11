@@ -7,12 +7,18 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
-      IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
       ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
       Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
       Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
+      IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
 
       module Models
+        EndpointHealthDataListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthDataListResult
+        SharedAccessSignatureAuthorizationRule = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRule
+        RegistryStatistics = Azure::IotHub::Mgmt::V2018_04_01::Models::RegistryStatistics
+        EventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubProperties
+        JobResponse = Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponse
+        RoutingServiceBusTopicEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusTopicEndpointProperties
         JobResponseListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponseListResult
         RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingStorageContainerProperties
         IotHubCapacity = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubCapacity
@@ -84,16 +90,10 @@ module Azure::Profiles::Latest
         CertificateListDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateListDescription
         EndpointHealthData = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthData
         CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificatePropertiesWithNonce
-        EndpointHealthDataListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthDataListResult
-        SharedAccessSignatureAuthorizationRule = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRule
-        RegistryStatistics = Azure::IotHub::Mgmt::V2018_04_01::Models::RegistryStatistics
-        EventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubProperties
-        JobResponse = Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponse
-        RoutingServiceBusTopicEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusTopicEndpointProperties
       end
 
       class IotHubManagementClass
-        attr_reader :iot_hub_resource, :resource_provider_common, :certificates, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :resource_provider_common, :certificates, :operations, :iot_hub_resource, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -103,10 +103,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @iot_hub_resource = @client_0.iot_hub_resource
           @resource_provider_common = @client_0.resource_provider_common
           @certificates = @client_0.certificates
           @operations = @client_0.operations
+          @iot_hub_resource = @client_0.iot_hub_resource
 
           @model_classes = ModelClasses.new
         end
@@ -125,6 +125,24 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def endpoint_health_data_list_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthDataListResult
+          end
+          def shared_access_signature_authorization_rule
+            Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRule
+          end
+          def registry_statistics
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RegistryStatistics
+          end
+          def event_hub_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubProperties
+          end
+          def job_response
+            Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponse
+          end
+          def routing_service_bus_topic_endpoint_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusTopicEndpointProperties
+          end
           def job_response_list_result
             Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponseListResult
           end
@@ -337,24 +355,6 @@ module Azure::Profiles::Latest
           end
           def certificate_properties_with_nonce
             Azure::IotHub::Mgmt::V2018_04_01::Models::CertificatePropertiesWithNonce
-          end
-          def endpoint_health_data_list_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthDataListResult
-          end
-          def shared_access_signature_authorization_rule
-            Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRule
-          end
-          def registry_statistics
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RegistryStatistics
-          end
-          def event_hub_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubProperties
-          end
-          def job_response
-            Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponse
-          end
-          def routing_service_bus_topic_endpoint_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusTopicEndpointProperties
           end
         end
       end

@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
@@ -54,7 +55,6 @@ module Azure::Profiles::Latest
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
-      SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def search_response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
+        end
         def entities
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
         end
@@ -221,9 +224,6 @@ module Azure::Profiles::Latest
         end
         def entity_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
-        end
-        def search_response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
         end
       end
     end

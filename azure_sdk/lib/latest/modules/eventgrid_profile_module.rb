@@ -9,6 +9,12 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
+      EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
+      ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
+      ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
+      ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
+      ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
+      MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
       ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
       MediaJobErrorDetail = Azure::EventGrid::V2018_01_01::Models::MediaJobErrorDetail
       ResourceActionFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceActionFailureData
@@ -81,12 +87,6 @@ module Azure::Profiles::Latest
       ContainerRegistryArtifactEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventTarget
       StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
       ContainerRegistryArtifactEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventData
-      EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
-      ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
-      ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
-      ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
-      ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
-      MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
     end
 
     class EventGridDataClass
@@ -118,6 +118,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def event_hub_capture_file_created_event_data
+          Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
+        end
+        def service_bus_active_messages_available_with_no_listeners_event_data
+          Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
+        end
+        def resource_write_failure_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
+        end
+        def service_bus_deadletter_messages_available_with_no_listeners_event_data
+          Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
+        end
+        def resource_delete_success_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
+        end
+        def media_job_state_change_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
+        end
         def resource_delete_cancel_data
           Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
         end
@@ -334,33 +352,15 @@ module Azure::Profiles::Latest
         def container_registry_artifact_event_data
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventData
         end
-        def event_hub_capture_file_created_event_data
-          Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
-        end
-        def service_bus_active_messages_available_with_no_listeners_event_data
-          Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
-        end
-        def resource_write_failure_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
-        end
-        def service_bus_deadletter_messages_available_with_no_listeners_event_data
-          Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
-        end
-        def resource_delete_success_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
-        end
-        def media_job_state_change_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
-        end
       end
     end
     module Mgmt
-      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
       DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
+      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
 
       module Models
         TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
@@ -424,7 +424,7 @@ module Azure::Profiles::Latest
       end
 
       class EventGridManagementClass
-        attr_reader :operations, :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
+        attr_reader :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -434,12 +434,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @domains = @client_0.domains
           @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
           @topic_types = @client_0.topic_types
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end

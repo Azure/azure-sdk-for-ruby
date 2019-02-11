@@ -12,6 +12,8 @@ module Azure::Profiles::Latest
       PolicyAssignments = Azure::Policy::Mgmt::V2018_03_01::PolicyAssignments
 
       module Models
+        PolicyMode = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
+        PolicyAssignment = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
         PolicyDefinition = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinition
         PolicyAssignmentListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignmentListResult
         PolicyDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionListResult
@@ -21,8 +23,6 @@ module Azure::Profiles::Latest
         PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinitionListResult
         PolicySku = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
         PolicyType = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
-        PolicyMode = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
-        PolicyAssignment = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
       end
 
       class PolicyManagementClass
@@ -57,6 +57,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def policy_mode
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
+          end
+          def policy_assignment
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
+          end
           def policy_definition
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinition
           end
@@ -83,12 +89,6 @@ module Azure::Profiles::Latest
           end
           def policy_type
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
-          end
-          def policy_mode
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
-          end
-          def policy_assignment
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
           end
         end
       end
