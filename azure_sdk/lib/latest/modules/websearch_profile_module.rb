@@ -9,10 +9,15 @@ module Azure::Profiles::Latest
     Web = Azure::CognitiveServices::WebSearch::V1_0::Web
 
     module Models
+      SafeSearch = Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
+      VideoObject = Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
+      Intangible = Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
+      Query = Azure::CognitiveServices::WebSearch::V1_0::Models::Query
+      ImageObject = Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
+      MediaObject = Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
       WebPage = Azure::CognitiveServices::WebSearch::V1_0::Models::WebPage
       AnswerType = Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
       ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
-      Query = Azure::CognitiveServices::WebSearch::V1_0::Models::Query
       ErrorSubCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
       Freshness = Azure::CognitiveServices::WebSearch::V1_0::Models::Freshness
       TextFormat = Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
@@ -42,14 +47,9 @@ module Azure::Profiles::Latest
       TimeZone = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
       StructuredValue = Azure::CognitiveServices::WebSearch::V1_0::Models::StructuredValue
       NewsArticle = Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
+      Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
       News = Azure::CognitiveServices::WebSearch::V1_0::Models::News
       Article = Azure::CognitiveServices::WebSearch::V1_0::Models::Article
-      SafeSearch = Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
-      VideoObject = Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
-      Intangible = Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
-      Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
-      ImageObject = Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
-      MediaObject = Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
     end
 
     class WebSearchDataClass
@@ -82,6 +82,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def safe_search
+          Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
+        end
+        def video_object
+          Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
+        end
+        def intangible
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
+        end
+        def query
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Query
+        end
+        def image_object
+          Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
+        end
+        def media_object
+          Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
+        end
         def web_page
           Azure::CognitiveServices::WebSearch::V1_0::Models::WebPage
         end
@@ -90,9 +108,6 @@ module Azure::Profiles::Latest
         end
         def error_response
           Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
-        end
-        def query
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Query
         end
         def error_sub_code
           Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
@@ -181,29 +196,14 @@ module Azure::Profiles::Latest
         def news_article
           Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
         end
+        def error
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Error
+        end
         def news
           Azure::CognitiveServices::WebSearch::V1_0::Models::News
         end
         def article
           Azure::CognitiveServices::WebSearch::V1_0::Models::Article
-        end
-        def safe_search
-          Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
-        end
-        def video_object
-          Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
-        end
-        def intangible
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
-        end
-        def error
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Error
-        end
-        def image_object
-          Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
-        end
-        def media_object
-          Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
         end
       end
     end

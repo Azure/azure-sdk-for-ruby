@@ -8,6 +8,7 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
+      DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
       Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
       ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
       MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageInput
@@ -25,7 +26,6 @@ module Azure::Profiles::Latest
       InternalError = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
       EntitiesBatchResultV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
       MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
-      DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
     end
 
     class TextAnalyticsDataClass
@@ -57,6 +57,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def detected_language
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
+        end
         def input
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
         end
@@ -107,9 +110,6 @@ module Azure::Profiles::Latest
         end
         def multi_language_batch_input
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
-        end
-        def detected_language
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
         end
       end
     end

@@ -22,19 +22,19 @@ module Azure::Profiles::Latest
       CreativeWork = Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
       SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
+      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
-      Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
       PostalAddress = Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
-      ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
+      Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
       Intangible = Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
-      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
-      GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
       SafeSearch = Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
+      ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
+      GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
       StructuredValue = Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
       Answer = Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
-      ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
       Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
+      ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
     end
 
     class LocalSearchDataClass
@@ -106,11 +106,11 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
         end
+        def action
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
+        end
         def entities_entity_presentation_info
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
-        end
-        def places
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
         end
         def postal_address
           Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
@@ -118,20 +118,20 @@ module Azure::Profiles::Latest
         def place
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
         end
-        def response_format
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
+        def places
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
         end
         def intangible
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
         end
-        def action
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
+        def safe_search
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
+        end
+        def response_format
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
         end
         def geo_coordinates
           Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
-        end
-        def safe_search
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
         end
         def structured_value
           Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
@@ -139,11 +139,11 @@ module Azure::Profiles::Latest
         def answer
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
         end
-        def error_code
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
-        end
         def error
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
+        end
+        def error_code
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
         end
       end
     end

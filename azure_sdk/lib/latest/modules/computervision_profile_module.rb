@@ -8,6 +8,12 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
+      ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
+      RecognitionResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
+      BoundingRect = Azure::CognitiveServices::ComputerVision::V2_0::Models::BoundingRect
+      TextOperationResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
+      Category = Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
       Gender = Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
       TextOperationStatusCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
       OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
@@ -45,12 +51,6 @@ module Azure::Profiles::Latest
       FaceRectangle = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceRectangle
       Word = Azure::CognitiveServices::ComputerVision::V2_0::Models::Word
       ImageTag = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
-      Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
-      ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
-      RecognitionResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
-      BoundingRect = Azure::CognitiveServices::ComputerVision::V2_0::Models::BoundingRect
-      TextOperationResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
-      Category = Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
     end
 
     class ComputerVisionDataClass
@@ -82,6 +82,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def line
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
+        end
+        def image_metadata
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
+        end
+        def recognition_result
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
+        end
+        def bounding_rect
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::BoundingRect
+        end
+        def text_operation_result
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
+        end
+        def category
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
+        end
         def gender
           Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
         end
@@ -192,24 +210,6 @@ module Azure::Profiles::Latest
         end
         def image_tag
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
-        end
-        def line
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
-        end
-        def image_metadata
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
-        end
-        def recognition_result
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
-        end
-        def bounding_rect
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::BoundingRect
-        end
-        def text_operation_result
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult
-        end
-        def category
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
         end
       end
     end
