@@ -6,12 +6,12 @@
 module Azure::Network::Mgmt::V2018_12_01
   module Models
     #
-    # Defines values for AzureFirewallRCActionType
+    # Defines values for AzureFirewallThreatIntelMode
     #
-    module AzureFirewallRCActionType
-      Allow = "Allow"
-      Deny = "Deny"
+    module AzureFirewallThreatIntelMode
       Alert = "Alert"
+      Deny = "Deny"
+      Off = "Off"
     end
   end
 end

@@ -13,7 +13,7 @@ module Azure::Network::Mgmt::V2018_12_01
       include MsRestAzure
 
       # @return [AzureFirewallRCActionType] The type of action. Possible values
-      # include: 'Allow', 'Deny'
+      # include: 'Allow', 'Deny', 'Alert'
       attr_accessor :type
 
 
