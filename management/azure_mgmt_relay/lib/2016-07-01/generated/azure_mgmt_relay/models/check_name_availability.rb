@@ -12,7 +12,7 @@ module Azure::Relay::Mgmt::V2016_07_01
 
       include MsRestAzure
 
-      # @return [String] The Name to check the namespce name availability and
+      # @return [String] The Name to check the namespace name availability and
       # The namespace name can contain only letters, numbers, and hyphens. The
       # namespace must start with a letter, and it must end with a letter or
       # number.
@@ -25,7 +25,6 @@ module Azure::Relay::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailability',
           type: {
@@ -33,7 +32,6 @@ module Azure::Relay::Mgmt::V2016_07_01
             class_name: 'CheckNameAvailability',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

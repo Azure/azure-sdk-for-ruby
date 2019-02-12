@@ -38,7 +38,6 @@ module Azure::Relay::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AccessKeys',
           type: {
@@ -46,7 +45,6 @@ module Azure::Relay::Mgmt::V2017_04_01
             class_name: 'AccessKeys',
             model_properties: {
               primary_connection_string: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryConnectionString',
                 type: {
@@ -54,7 +52,6 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               secondary_connection_string: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryConnectionString',
                 type: {
@@ -62,7 +59,6 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 type: {
@@ -70,7 +66,6 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
                 type: {
@@ -78,7 +73,6 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               key_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyName',
                 type: {

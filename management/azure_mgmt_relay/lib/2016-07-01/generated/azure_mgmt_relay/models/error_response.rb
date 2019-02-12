@@ -6,8 +6,8 @@
 module Azure::Relay::Mgmt::V2016_07_01
   module Models
     #
-    # Error reponse indicates Relay service is not able to process the incoming
-    # request. The reason is provided in the error message.
+    # Error response indicates Relay service is not able to process the
+    # incoming request. The reason is provided in the error message.
     #
     class ErrorResponse
 
@@ -26,7 +26,6 @@ module Azure::Relay::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -34,7 +33,6 @@ module Azure::Relay::Mgmt::V2016_07_01
             class_name: 'ErrorResponse',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
