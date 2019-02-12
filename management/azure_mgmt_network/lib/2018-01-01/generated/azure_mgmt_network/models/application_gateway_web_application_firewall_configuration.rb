@@ -34,7 +34,7 @@ module Azure::Network::Mgmt::V2018_01_01
       # @return [Boolean] Whether allow WAF to check request Body.
       attr_accessor :request_body_check
 
-      # @return [Integer] Maxium request body size for WAF.
+      # @return [Integer] Maximum request body size for WAF.
       attr_accessor :max_request_body_size
 
 
@@ -45,7 +45,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayWebApplicationFirewallConfiguration',
           type: {
@@ -53,7 +52,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'ApplicationGatewayWebApplicationFirewallConfiguration',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -61,7 +59,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               firewall_mode: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'firewallMode',
                 type: {
@@ -69,7 +66,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               rule_set_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ruleSetType',
                 type: {
@@ -77,7 +73,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               rule_set_version: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ruleSetVersion',
                 type: {
@@ -85,13 +80,11 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               disabled_rule_groups: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'disabledRuleGroups',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayFirewallDisabledRuleGroupElementType',
                       type: {
@@ -102,7 +95,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               request_body_check: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestBodyCheck',
                 type: {
@@ -110,7 +102,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               max_request_body_size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxRequestBodySize',
                 constraints: {
