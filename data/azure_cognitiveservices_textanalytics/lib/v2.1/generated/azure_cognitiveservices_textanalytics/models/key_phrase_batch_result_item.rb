@@ -22,8 +22,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
       attr_accessor :key_phrases
 
       # @return [DocumentStatistics] (Optional) if showStats=true was specified
-      # in the request this field will contain information about the
-      # document payload.
+      # in the request this field will contain information about the document
+      # payload.
       attr_accessor :statistics
 
 

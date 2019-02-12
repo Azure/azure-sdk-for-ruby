@@ -19,11 +19,9 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
       # @return [Array<ErrorRecord>] Errors and Warnings by document
       attr_accessor :errors
 
-      # @return [RequestStatistics] /// <summary>
-      # (Optional) if showStats=true was specified in the request this field
-      # will contain information about the
-      # request payload.
-      # </summary>
+      # @return [RequestStatistics] (Optional) if showStats=true was specified
+      # in the request this field will contain information about the request
+      # payload.
       attr_accessor :statistics
 
 

@@ -14,8 +14,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
       include MsRestAzure
 
       # @return [String] This is the 2 letter ISO 639-1 representation of a
-      # language.
-      # For example, use "en" for English; "es" for Spanish etc.,
+      # language. For example, use "en" for English; "es" for Spanish etc.,
       attr_accessor :language
 
       # @return [String] Unique, non-empty document identifier.

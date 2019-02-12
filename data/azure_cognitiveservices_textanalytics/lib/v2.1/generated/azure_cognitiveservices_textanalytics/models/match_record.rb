@@ -14,14 +14,13 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
       include MsRestAzure
 
       # @return [Float] (optional) If a well-known item with Wikipedia link is
-      # recognized,
-      # a decimal number denoting the confidence level of the Wikipedia info
-      # will be returned.
+      # recognized, a decimal number denoting the confidence level of the
+      # Wikipedia info will be returned.
       attr_accessor :wikipedia_score
 
-      # @return [Float] (optional) If an entity type is recognized,
-      # a decimal number denoting the confidence level of the entity type will
-      # be returned.
+      # @return [Float] (optional) If an entity type is recognized, a decimal
+      # number denoting the confidence level of the entity type will be
+      # returned.
       attr_accessor :entity_type_score
 
       # @return [String] Entity text as appears in the request.

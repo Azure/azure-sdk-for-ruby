@@ -30,8 +30,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
       # @return [String] URL for the entity's Wikipedia page.
       attr_accessor :wikipedia_url
 
-      # @return [String] Bing unique identifier of the recognized entity.
-      # Use in conjunction with the Bing Entity Search API to fetch additional
+      # @return [String] Bing unique identifier of the recognized entity. Use
+      # in conjunction with the Bing Entity Search API to fetch additional
       # relevant information.
       attr_accessor :bing_id
 

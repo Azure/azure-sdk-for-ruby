@@ -17,15 +17,14 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
       attr_accessor :id
 
       # @return [Float] A decimal number between 0 and 1 denoting the sentiment
-      # of the document.
-      # A score above 0.7 usually refers to a positive document while a score
-      # below 0.3 normally has a negative connotation.
+      # of the document. A score above 0.7 usually refers to a positive
+      # document while a score below 0.3 normally has a negative connotation.
       # Mid values refer to neutral text.
       attr_accessor :score
 
       # @return [DocumentStatistics] (Optional) if showStats=true was specified
-      # in the request this field will contain information about the
-      # document payload.
+      # in the request this field will contain information about the document
+      # payload.
       attr_accessor :statistics
 
 
