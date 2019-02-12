@@ -110,9 +110,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     end
 
     #
-    # Detect Language
-    #
     # The API returns the detected language and a numeric score between 0 and 1.
+    #
     # Scores close to 1 indicate 100% certainty that the identified language is
     # true. A total of 120 languages are supported.
     #
@@ -125,15 +124,14 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [LanguageBatchResult] operation results.
     #
-    def five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_seven(show_stats = nil, language_batch_input = nil, custom_headers = nil)
-      response = five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_seven_async(show_stats, language_batch_input, custom_headers).value!
+    def detect_language(show_stats = nil, language_batch_input = nil, custom_headers = nil)
+      response = detect_language_async(show_stats, language_batch_input, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Detect Language
-    #
     # The API returns the detected language and a numeric score between 0 and 1.
+    #
     # Scores close to 1 indicate 100% certainty that the identified language is
     # true. A total of 120 languages are supported.
     #
@@ -146,14 +144,13 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_seven_with_http_info(show_stats = nil, language_batch_input = nil, custom_headers = nil)
-      five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_seven_async(show_stats, language_batch_input, custom_headers).value!
+    def detect_language_with_http_info(show_stats = nil, language_batch_input = nil, custom_headers = nil)
+      detect_language_async(show_stats, language_batch_input, custom_headers).value!
     end
 
     #
-    # Detect Language
-    #
     # The API returns the detected language and a numeric score between 0 and 1.
+    #
     # Scores close to 1 indicate 100% certainty that the identified language is
     # true. A total of 120 languages are supported.
     #
@@ -166,7 +163,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_seven_async(show_stats = nil, language_batch_input = nil, custom_headers = nil)
+    def detect_language_async(show_stats = nil, language_batch_input = nil, custom_headers = nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
 
 
@@ -225,21 +222,13 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     end
 
     #
-    # Entities
+    # The API returns a list of recognized entities in a given document.
     #
-    # The API returns a list of known entities and general named entities
-    # (\"Person\", \"Location\", \"Organization\" etc) in a given document. Known
-    # entities are returned with Wikipedia Id and Wikipedia link, and also Bing Id
-    # which can be used in Bing Entity Search API. General named entities are
-    # returned with entity types. If a general named entity is also a known entity,
-    # then all information regarding it (Wikipedia Id, Bing Id, entity type etc)
-    # will be returned. See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking#supported-types-for-named-entity-recognition">Supported
-    # Entity Types in Text Analytics API</a> for the list of supported Entity
-    # Types. See the <a
+    # To get even more information on each recognized entity we recommend using the
+    # Bing Entity Search API by querying for the recognized entities names. See the
+    # <a
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
     # languages in Text Analytics API</a> for the list of enabled languages.
-    #
     #
     # @param show_stats [Boolean] (optional) if set to true, response will contain
     # input and document level statistics.
@@ -250,27 +239,19 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [EntitiesBatchResult] operation results.
     #
-    def fiveac_four_two_five_oned_fiveb_fourccd_one_five_five_fourda_seven_six_three_four(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
-      response = fiveac_four_two_five_oned_fiveb_fourccd_one_five_five_fourda_seven_six_three_four_async(show_stats, multi_language_batch_input, custom_headers).value!
+    def entities(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
+      response = entities_async(show_stats, multi_language_batch_input, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Entities
+    # The API returns a list of recognized entities in a given document.
     #
-    # The API returns a list of known entities and general named entities
-    # (\"Person\", \"Location\", \"Organization\" etc) in a given document. Known
-    # entities are returned with Wikipedia Id and Wikipedia link, and also Bing Id
-    # which can be used in Bing Entity Search API. General named entities are
-    # returned with entity types. If a general named entity is also a known entity,
-    # then all information regarding it (Wikipedia Id, Bing Id, entity type etc)
-    # will be returned. See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking#supported-types-for-named-entity-recognition">Supported
-    # Entity Types in Text Analytics API</a> for the list of supported Entity
-    # Types. See the <a
+    # To get even more information on each recognized entity we recommend using the
+    # Bing Entity Search API by querying for the recognized entities names. See the
+    # <a
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
     # languages in Text Analytics API</a> for the list of enabled languages.
-    #
     #
     # @param show_stats [Boolean] (optional) if set to true, response will contain
     # input and document level statistics.
@@ -281,26 +262,18 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def fiveac_four_two_five_oned_fiveb_fourccd_one_five_five_fourda_seven_six_three_four_with_http_info(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
-      fiveac_four_two_five_oned_fiveb_fourccd_one_five_five_fourda_seven_six_three_four_async(show_stats, multi_language_batch_input, custom_headers).value!
+    def entities_with_http_info(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
+      entities_async(show_stats, multi_language_batch_input, custom_headers).value!
     end
 
     #
-    # Entities
+    # The API returns a list of recognized entities in a given document.
     #
-    # The API returns a list of known entities and general named entities
-    # (\"Person\", \"Location\", \"Organization\" etc) in a given document. Known
-    # entities are returned with Wikipedia Id and Wikipedia link, and also Bing Id
-    # which can be used in Bing Entity Search API. General named entities are
-    # returned with entity types. If a general named entity is also a known entity,
-    # then all information regarding it (Wikipedia Id, Bing Id, entity type etc)
-    # will be returned. See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking#supported-types-for-named-entity-recognition">Supported
-    # Entity Types in Text Analytics API</a> for the list of supported Entity
-    # Types. See the <a
+    # To get even more information on each recognized entity we recommend using the
+    # Bing Entity Search API by querying for the recognized entities names. See the
+    # <a
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
     # languages in Text Analytics API</a> for the list of enabled languages.
-    #
     #
     # @param show_stats [Boolean] (optional) if set to true, response will contain
     # input and document level statistics.
@@ -311,7 +284,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def fiveac_four_two_five_oned_fiveb_fourccd_one_five_five_fourda_seven_six_three_four_async(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
+    def entities_async(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
 
 
@@ -370,12 +343,13 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     end
 
     #
-    # Key Phrases
-    #
     # The API returns a list of strings denoting the key talking points in the
-    # input text. See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-    # languages in Text Analytics API</a> for the list of enabled languages.
+    # input text.
+    #
+    # See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by key phrase extraction.
     #
     # @param show_stats [Boolean] (optional) if set to true, response will contain
     # input and document level statistics.
@@ -387,18 +361,19 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [KeyPhraseBatchResult] operation results.
     #
-    def five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_six(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
-      response = five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_six_async(show_stats, multi_language_batch_input, custom_headers).value!
+    def key_phrases(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
+      response = key_phrases_async(show_stats, multi_language_batch_input, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Key Phrases
-    #
     # The API returns a list of strings denoting the key talking points in the
-    # input text. See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-    # languages in Text Analytics API</a> for the list of enabled languages.
+    # input text.
+    #
+    # See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by key phrase extraction.
     #
     # @param show_stats [Boolean] (optional) if set to true, response will contain
     # input and document level statistics.
@@ -410,17 +385,18 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_six_with_http_info(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
-      five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_six_async(show_stats, multi_language_batch_input, custom_headers).value!
+    def key_phrases_with_http_info(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
+      key_phrases_async(show_stats, multi_language_batch_input, custom_headers).value!
     end
 
     #
-    # Key Phrases
-    #
     # The API returns a list of strings denoting the key talking points in the
-    # input text. See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-    # languages in Text Analytics API</a> for the list of enabled languages.
+    # input text.
+    #
+    # See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by key phrase extraction.
     #
     # @param show_stats [Boolean] (optional) if set to true, response will contain
     # input and document level statistics.
@@ -432,7 +408,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_six_async(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
+    def key_phrases_async(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
 
 
@@ -491,14 +467,14 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     end
 
     #
-    # Sentiment
+    # The API returns a numeric score between 0 and 1.
     #
-    # The API returns a numeric score between 0 and 1. Scores close to 1 indicate
-    # positive sentiment, while scores close to 0 indicate negative sentiment. A
-    # score of 0.5 indicates the lack of sentiment (e.g. a factoid statement). See
-    # the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-    # languages in Text Analytics API</a> for the list of enabled languages.
+    # Scores close to 1 indicate positive sentiment, while scores close to 0
+    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+    # (e.g. a factoid statement). See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by sentiment analysis.
     #
     # @param show_stats [Boolean] (optional) if set to true, response will contain
     # input and document level statistics.
@@ -509,20 +485,20 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [Object] operation results.
     #
-    def five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_nine(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
-      response = five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_nine_async(show_stats, multi_language_batch_input, custom_headers).value!
+    def sentiment(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
+      response = sentiment_async(show_stats, multi_language_batch_input, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Sentiment
+    # The API returns a numeric score between 0 and 1.
     #
-    # The API returns a numeric score between 0 and 1. Scores close to 1 indicate
-    # positive sentiment, while scores close to 0 indicate negative sentiment. A
-    # score of 0.5 indicates the lack of sentiment (e.g. a factoid statement). See
-    # the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-    # languages in Text Analytics API</a> for the list of enabled languages.
+    # Scores close to 1 indicate positive sentiment, while scores close to 0
+    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+    # (e.g. a factoid statement). See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by sentiment analysis.
     #
     # @param show_stats [Boolean] (optional) if set to true, response will contain
     # input and document level statistics.
@@ -533,19 +509,19 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_nine_with_http_info(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
-      five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_nine_async(show_stats, multi_language_batch_input, custom_headers).value!
+    def sentiment_with_http_info(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
+      sentiment_async(show_stats, multi_language_batch_input, custom_headers).value!
     end
 
     #
-    # Sentiment
+    # The API returns a numeric score between 0 and 1.
     #
-    # The API returns a numeric score between 0 and 1. Scores close to 1 indicate
-    # positive sentiment, while scores close to 0 indicate negative sentiment. A
-    # score of 0.5 indicates the lack of sentiment (e.g. a factoid statement). See
-    # the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-    # languages in Text Analytics API</a> for the list of enabled languages.
+    # Scores close to 1 indicate positive sentiment, while scores close to 0
+    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+    # (e.g. a factoid statement). See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by sentiment analysis.
     #
     # @param show_stats [Boolean] (optional) if set to true, response will contain
     # input and document level statistics.
@@ -556,7 +532,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_1
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def five_sixf_three_zeroceeeda_five_six_five_zerodb_zero_five_fivea_threec_nine_async(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
+    def sentiment_async(show_stats = nil, multi_language_batch_input = nil, custom_headers = nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
 
 
