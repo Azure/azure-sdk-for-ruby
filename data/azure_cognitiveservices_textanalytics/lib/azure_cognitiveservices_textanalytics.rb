@@ -4,4 +4,5 @@
 
 require 'v2.0/generated/azure_cognitiveservices_textanalytics'
 require 'v2.1-preview/generated/azure_cognitiveservices_textanalytics'
+require 'v2.1/generated/azure_cognitiveservices_textanalytics'
 require 'profiles/latest/textanalytics_latest_profile_client'
