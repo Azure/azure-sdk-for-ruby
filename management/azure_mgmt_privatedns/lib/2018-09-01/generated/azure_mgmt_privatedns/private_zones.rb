@@ -32,7 +32,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new Private DNS zone to
     # be created, but to prevent updating an existing zone. Other values will be
     # ignored.
@@ -54,7 +54,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new Private DNS zone to
     # be created, but to prevent updating an existing zone. Other values will be
     # ignored.
@@ -92,7 +92,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # @param parameters [PrivateZone] Parameters supplied to the Update operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -110,7 +110,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # @param parameters [PrivateZone] Parameters supplied to the Update operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -473,7 +473,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new Private DNS zone to
     # be created, but to prevent updating an existing zone. Other values will be
     # ignored.
@@ -498,7 +498,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new Private DNS zone to
     # be created, but to prevent updating an existing zone. Other values will be
     # ignored.
@@ -522,7 +522,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new Private DNS zone to
     # be created, but to prevent updating an existing zone. Other values will be
     # ignored.
@@ -615,7 +615,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # @param parameters [PrivateZone] Parameters supplied to the Update operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -636,7 +636,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # @param parameters [PrivateZone] Parameters supplied to the Update operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -656,7 +656,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # @param parameters [PrivateZone] Parameters supplied to the Update operation.
     # @param if_match [String] The ETag of the Private DNS zone. Omit this value to
     # always overwrite the current zone. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

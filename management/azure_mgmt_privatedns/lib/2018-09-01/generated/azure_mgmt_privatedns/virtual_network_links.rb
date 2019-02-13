@@ -33,7 +33,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # CreateOrUpdate operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new virtual network link
     # to the Private DNS zone to be created, but to prevent updating an existing
@@ -58,7 +58,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # CreateOrUpdate operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new virtual network link
     # to the Private DNS zone to be created, but to prevent updating an existing
@@ -99,7 +99,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -121,7 +121,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -413,7 +413,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # CreateOrUpdate operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new virtual network link
     # to the Private DNS zone to be created, but to prevent updating an existing
@@ -440,7 +440,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # CreateOrUpdate operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new virtual network link
     # to the Private DNS zone to be created, but to prevent updating an existing
@@ -466,7 +466,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # CreateOrUpdate operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new virtual network link
     # to the Private DNS zone to be created, but to prevent updating an existing
@@ -563,7 +563,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -587,7 +587,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -610,7 +610,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the virtual network link to the Private
     # DNS zone. Omit this value to always overwrite the current virtual network
-    # link. Specify the last-seen ETag value to prevent accidentally overwritting
+    # link. Specify the last-seen ETag value to prevent accidentally overwriting
     # any concurrent changes.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

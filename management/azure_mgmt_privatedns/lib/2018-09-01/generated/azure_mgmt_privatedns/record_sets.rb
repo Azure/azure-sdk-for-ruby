@@ -37,7 +37,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new record set to be
     # created, but to prevent updating an existing record set. Other values will be
     # ignored.
@@ -67,7 +67,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new record set to be
     # created, but to prevent updating an existing record set. Other values will be
     # ignored.
@@ -96,7 +96,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # operation.
     # @param if_match [String] The ETag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen ETag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new record set to be
     # created, but to prevent updating an existing record set. Other values will be
     # ignored.
@@ -196,7 +196,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The ETag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen ETag value to
-    # prevent accidentally overwritting concurrent changes.
+    # prevent accidentally overwriting concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -221,7 +221,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The ETag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen ETag value to
-    # prevent accidentally overwritting concurrent changes.
+    # prevent accidentally overwriting concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -245,7 +245,7 @@ module Azure::PrivateDns::Mgmt::V2018_09_01
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The ETag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen ETag value to
-    # prevent accidentally overwritting concurrent changes.
+    # prevent accidentally overwriting concurrent changes.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
