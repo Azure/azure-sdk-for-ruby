@@ -7,17 +7,22 @@ require 'azure_mgmt_compute'
 module Azure::Profiles::V2017_03_09
   module Compute
     module Mgmt
-      VirtualMachineScaleSets = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSets
-      VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSetVMs
-      AvailabilitySets = Azure::Compute::Mgmt::V2016_03_30::AvailabilitySets
-      VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensionImages
       VirtualMachineExtensions = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensions
       VirtualMachines = Azure::Compute::Mgmt::V2016_03_30::VirtualMachines
       VirtualMachineImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineImages
       UsageOperations = Azure::Compute::Mgmt::V2016_03_30::UsageOperations
       VirtualMachineSizes = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineSizes
+      VirtualMachineScaleSets = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSets
+      VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSetVMs
+      AvailabilitySets = Azure::Compute::Mgmt::V2016_03_30::AvailabilitySets
+      VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensionImages
 
       module Models
+        StorageProfile = Azure::Compute::Mgmt::V2016_03_30::Models::StorageProfile
+        VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetStorageProfile
+        WinRMListener = Azure::Compute::Mgmt::V2016_03_30::Models::WinRMListener
+        WindowsConfiguration = Azure::Compute::Mgmt::V2016_03_30::Models::WindowsConfiguration
+        ApiEntityReference = Azure::Compute::Mgmt::V2016_03_30::Models::ApiEntityReference
         SshConfiguration = Azure::Compute::Mgmt::V2016_03_30::Models::SshConfiguration
         VaultCertificate = Azure::Compute::Mgmt::V2016_03_30::Models::VaultCertificate
         OSProfile = Azure::Compute::Mgmt::V2016_03_30::Models::OSProfile
@@ -114,15 +119,10 @@ module Azure::Profiles::V2017_03_09
         Sku = Azure::Compute::Mgmt::V2016_03_30::Models::Sku
         VirtualHardDisk = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualHardDisk
         OSDisk = Azure::Compute::Mgmt::V2016_03_30::Models::OSDisk
-        StorageProfile = Azure::Compute::Mgmt::V2016_03_30::Models::StorageProfile
-        VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetStorageProfile
-        WinRMListener = Azure::Compute::Mgmt::V2016_03_30::Models::WinRMListener
-        WindowsConfiguration = Azure::Compute::Mgmt::V2016_03_30::Models::WindowsConfiguration
-        ApiEntityReference = Azure::Compute::Mgmt::V2016_03_30::Models::ApiEntityReference
       end
 
       class ComputeManagementClass
-        attr_reader :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :configurable, :base_url, :options, :model_classes
+        attr_reader :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :availability_sets, :virtual_machine_extension_images, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -132,15 +132,15 @@ module Azure::Profiles::V2017_03_09
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @virtual_machine_scale_sets = @client_0.virtual_machine_scale_sets
-          @virtual_machine_scale_set_vms = @client_0.virtual_machine_scale_set_vms
-          @availability_sets = @client_0.availability_sets
-          @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
           @virtual_machine_extensions = @client_0.virtual_machine_extensions
           @virtual_machines = @client_0.virtual_machines
           @virtual_machine_images = @client_0.virtual_machine_images
           @usage_operations = @client_0.usage_operations
           @virtual_machine_sizes = @client_0.virtual_machine_sizes
+          @virtual_machine_scale_sets = @client_0.virtual_machine_scale_sets
+          @virtual_machine_scale_set_vms = @client_0.virtual_machine_scale_set_vms
+          @availability_sets = @client_0.availability_sets
+          @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
 
           @model_classes = ModelClasses.new
         end
@@ -159,6 +159,21 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def storage_profile
+            Azure::Compute::Mgmt::V2016_03_30::Models::StorageProfile
+          end
+          def virtual_machine_scale_set_storage_profile
+            Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetStorageProfile
+          end
+          def win_rmlistener
+            Azure::Compute::Mgmt::V2016_03_30::Models::WinRMListener
+          end
+          def windows_configuration
+            Azure::Compute::Mgmt::V2016_03_30::Models::WindowsConfiguration
+          end
+          def api_entity_reference
+            Azure::Compute::Mgmt::V2016_03_30::Models::ApiEntityReference
+          end
           def ssh_configuration
             Azure::Compute::Mgmt::V2016_03_30::Models::SshConfiguration
           end
@@ -446,21 +461,6 @@ module Azure::Profiles::V2017_03_09
           end
           def osdisk
             Azure::Compute::Mgmt::V2016_03_30::Models::OSDisk
-          end
-          def storage_profile
-            Azure::Compute::Mgmt::V2016_03_30::Models::StorageProfile
-          end
-          def virtual_machine_scale_set_storage_profile
-            Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetStorageProfile
-          end
-          def win_rmlistener
-            Azure::Compute::Mgmt::V2016_03_30::Models::WinRMListener
-          end
-          def windows_configuration
-            Azure::Compute::Mgmt::V2016_03_30::Models::WindowsConfiguration
-          end
-          def api_entity_reference
-            Azure::Compute::Mgmt::V2016_03_30::Models::ApiEntityReference
           end
         end
       end

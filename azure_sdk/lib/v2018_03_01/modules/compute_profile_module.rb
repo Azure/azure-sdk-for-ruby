@@ -25,6 +25,12 @@ module Azure::Profiles::V2018_03_01
       VirtualMachineRunCommands = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineRunCommands
 
       module Models
+        StorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
+        VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetStorageProfile
+        WinRMListener = Azure::Compute::Mgmt::V2017_03_30::Models::WinRMListener
+        VirtualMachineScaleSetUpdateStorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateStorageProfile
+        WindowsConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::WindowsConfiguration
+        ApiEntityReference = Azure::Compute::Mgmt::V2017_03_30::Models::ApiEntityReference
         SshConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::SshConfiguration
         VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
         VaultCertificate = Azure::Compute::Mgmt::V2017_03_30::Models::VaultCertificate
@@ -188,12 +194,6 @@ module Azure::Profiles::V2018_03_01
         KeyVaultAndKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndKeyReference
         OSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::OSDisk
         VirtualMachineScaleSetDataDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
-        StorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
-        VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetStorageProfile
-        WinRMListener = Azure::Compute::Mgmt::V2017_03_30::Models::WinRMListener
-        VirtualMachineScaleSetUpdateStorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateStorageProfile
-        WindowsConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::WindowsConfiguration
-        ApiEntityReference = Azure::Compute::Mgmt::V2017_03_30::Models::ApiEntityReference
       end
 
       class ComputeManagementClass
@@ -241,6 +241,24 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def storage_profile
+            Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
+          end
+          def virtual_machine_scale_set_storage_profile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetStorageProfile
+          end
+          def win_rmlistener
+            Azure::Compute::Mgmt::V2017_03_30::Models::WinRMListener
+          end
+          def virtual_machine_scale_set_update_storage_profile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateStorageProfile
+          end
+          def windows_configuration
+            Azure::Compute::Mgmt::V2017_03_30::Models::WindowsConfiguration
+          end
+          def api_entity_reference
+            Azure::Compute::Mgmt::V2017_03_30::Models::ApiEntityReference
+          end
           def ssh_configuration
             Azure::Compute::Mgmt::V2017_03_30::Models::SshConfiguration
           end
@@ -729,24 +747,6 @@ module Azure::Profiles::V2018_03_01
           end
           def virtual_machine_scale_set_data_disk
             Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
-          end
-          def storage_profile
-            Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
-          end
-          def virtual_machine_scale_set_storage_profile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetStorageProfile
-          end
-          def win_rmlistener
-            Azure::Compute::Mgmt::V2017_03_30::Models::WinRMListener
-          end
-          def virtual_machine_scale_set_update_storage_profile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateStorageProfile
-          end
-          def windows_configuration
-            Azure::Compute::Mgmt::V2017_03_30::Models::WindowsConfiguration
-          end
-          def api_entity_reference
-            Azure::Compute::Mgmt::V2017_03_30::Models::ApiEntityReference
           end
         end
       end
