@@ -12,6 +12,8 @@ module Azure::Profiles::Latest
       SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
 
       module Models
+        TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
+        RegenerateKeyParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
         SignalRResourceList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList
         SignalRUsageList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageList
         NameAvailabilityParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
@@ -35,8 +37,6 @@ module Azure::Profiles::Latest
         Dimension = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
         MetricSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
         ResourceSku = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
-        TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
-        RegenerateKeyParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
       end
 
       class SignalrManagementClass
@@ -71,6 +71,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def tracked_resource
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
+          end
+          def regenerate_key_parameters
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
+          end
           def signal_rresource_list
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList
           end
@@ -139,12 +145,6 @@ module Azure::Profiles::Latest
           end
           def resource_sku
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
-          end
-          def tracked_resource
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
-          end
-          def regenerate_key_parameters
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
           end
         end
       end

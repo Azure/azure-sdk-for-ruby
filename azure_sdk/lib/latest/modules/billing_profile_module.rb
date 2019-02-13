@@ -13,6 +13,7 @@ module Azure::Profiles::Latest
       Operations = Azure::Billing::Mgmt::V2018_03_01_preview::Operations
 
       module Models
+        OperationListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationListResult
         DownloadUrl = Azure::Billing::Mgmt::V2018_03_01_preview::Models::DownloadUrl
         InvoicesListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
         BillingPeriodsListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriodsListResult
@@ -25,7 +26,6 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationDisplay
         ErrorResponse = Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorResponse
         Operation = Azure::Billing::Mgmt::V2018_03_01_preview::Models::Operation
-        OperationListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationListResult
       end
 
       class BillingManagementClass
@@ -61,6 +61,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def operation_list_result
+            Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationListResult
+          end
           def download_url
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::DownloadUrl
           end
@@ -96,9 +99,6 @@ module Azure::Profiles::Latest
           end
           def operation
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::Operation
-          end
-          def operation_list_result
-            Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationListResult
           end
         end
       end
