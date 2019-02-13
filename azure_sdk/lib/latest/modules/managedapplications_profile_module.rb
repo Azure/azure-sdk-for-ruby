@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       ApplicationDefinitions = Azure::ManagedApplications::Mgmt::V2018_06_01::ApplicationDefinitions
 
       module Models
+        Application = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Application
         PlanPatchable = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::PlanPatchable
         ApplicationProviderAuthorization = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationProviderAuthorization
         ApplicationDefinitionListResult = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinitionListResult
@@ -28,7 +29,6 @@ module Azure::Profiles::Latest
         Sku = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Sku
         ErrorResponse = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ErrorResponse
         ApplicationListResult = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationListResult
-        Application = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Application
       end
 
       class ManagedApplicationsManagementClass
@@ -62,6 +62,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def application
+            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Application
+          end
           def plan_patchable
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::PlanPatchable
           end
@@ -112,9 +115,6 @@ module Azure::Profiles::Latest
           end
           def application_list_result
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationListResult
-          end
-          def application
-            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Application
           end
         end
       end

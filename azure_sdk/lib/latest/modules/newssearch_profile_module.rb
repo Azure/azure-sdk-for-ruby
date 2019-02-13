@@ -9,9 +9,11 @@ module Azure::Profiles::Latest
     NewsOperations = Azure::CognitiveServices::NewsSearch::V1_0::NewsOperations
 
     module Models
+      Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
+      ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
+      MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
       Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
-      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
       TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
       Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
@@ -29,10 +31,8 @@ module Azure::Profiles::Latest
       SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
       ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
       CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
+      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
       ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
-      Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
-      ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
-      MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
     end
 
     class NewsSearchDataClass
@@ -65,14 +65,20 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def query
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
+        end
+        def image_object
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
+        end
+        def media_object
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
+        end
         def error_sub_code
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
         end
         def freshness
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
-        end
-        def error
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
         end
         def text_format
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
@@ -125,17 +131,11 @@ module Azure::Profiles::Latest
         def creative_work
           Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
         end
+        def error
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+        end
         def error_response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
-        end
-        def query
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
-        end
-        def image_object
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
-        end
-        def media_object
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
         end
       end
     end

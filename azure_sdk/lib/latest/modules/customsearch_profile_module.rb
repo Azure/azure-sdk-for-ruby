@@ -9,9 +9,12 @@ module Azure::Profiles::Latest
     CustomInstance = Azure::CognitiveServices::CustomSearch::V1_0::CustomInstance
 
     module Models
+      Query = Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
       QueryContext = Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
-      SearchResultsAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
+      Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
+      ResponseBase = Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
       WebPage = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
+      SearchResultsAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
       Answer = Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::CustomSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::CustomSearch::V1_0::Models::CreativeWork
@@ -23,11 +26,8 @@ module Azure::Profiles::Latest
       WebWebAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
       SearchResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
       TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
-      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
-      Query = Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
       Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
-      Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
-      ResponseBase = Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
+      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
     end
 
     class CustomSearchDataClass
@@ -60,14 +60,23 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def query
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
+        end
         def query_context
           Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
         end
-        def search_results_answer
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
+        def response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
+        end
+        def response_base
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
         end
         def web_page
           Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
+        end
+        def search_results_answer
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
         end
         def answer
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
@@ -102,20 +111,11 @@ module Azure::Profiles::Latest
         def text_format
           Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
         end
-        def error_response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
-        end
-        def query
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
-        end
         def error
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
         end
-        def response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
-        end
-        def response_base
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
+        def error_response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
         end
       end
     end

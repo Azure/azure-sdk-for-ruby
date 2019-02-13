@@ -7,13 +7,13 @@ require 'azure_mgmt_data_migration'
 module Azure::Profiles::Latest
   module DataMigration
     module Mgmt
+      Projects = Azure::DataMigration::Mgmt::V2018_07_15_preview::Projects
+      Files = Azure::DataMigration::Mgmt::V2018_07_15_preview::Files
+      Tasks = Azure::DataMigration::Mgmt::V2018_07_15_preview::Tasks
       ResourceSkus = Azure::DataMigration::Mgmt::V2018_07_15_preview::ResourceSkus
       Usages = Azure::DataMigration::Mgmt::V2018_07_15_preview::Usages
       Operations = Azure::DataMigration::Mgmt::V2018_07_15_preview::Operations
       Services = Azure::DataMigration::Mgmt::V2018_07_15_preview::Services
-      Projects = Azure::DataMigration::Mgmt::V2018_07_15_preview::Projects
-      Files = Azure::DataMigration::Mgmt::V2018_07_15_preview::Files
-      Tasks = Azure::DataMigration::Mgmt::V2018_07_15_preview::Tasks
 
       module Models
         MigrateSqlServerSqlMITaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutput
@@ -257,7 +257,7 @@ module Azure::Profiles::Latest
       end
 
       class DataMigrationManagementClass
-        attr_reader :resource_skus, :usages, :operations, :services, :projects, :files, :tasks, :configurable, :base_url, :options, :model_classes
+        attr_reader :projects, :files, :tasks, :resource_skus, :usages, :operations, :services, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -267,13 +267,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @projects = @client_0.projects
+          @files = @client_0.files
+          @tasks = @client_0.tasks
           @resource_skus = @client_0.resource_skus
           @usages = @client_0.usages
           @operations = @client_0.operations
           @services = @client_0.services
-          @projects = @client_0.projects
-          @files = @client_0.files
-          @tasks = @client_0.tasks
 
           @model_classes = ModelClasses.new
         end

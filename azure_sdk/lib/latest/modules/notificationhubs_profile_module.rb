@@ -7,11 +7,12 @@ require 'azure_mgmt_notification_hubs'
 module Azure::Profiles::Latest
   module NotificationHubs
     module Mgmt
-      NotificationHubs = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubs
       Operations = Azure::NotificationHubs::Mgmt::V2017_04_01::Operations
       Namespaces = Azure::NotificationHubs::Mgmt::V2017_04_01::Namespaces
+      NotificationHubs = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubs
 
       module Models
+        AccessRights = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
         Resource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Resource
         OperationDisplay = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::OperationDisplay
         Operation = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Operation
@@ -45,11 +46,10 @@ module Azure::Profiles::Latest
         NamespaceType = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceType
         ErrorResponse = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
         SkuName = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
-        AccessRights = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
       end
 
       class NotificationHubsManagementClass
-        attr_reader :notification_hubs, :operations, :namespaces, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :namespaces, :notification_hubs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -59,9 +59,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @notification_hubs = @client_0.notification_hubs
           @operations = @client_0.operations
           @namespaces = @client_0.namespaces
+          @notification_hubs = @client_0.notification_hubs
 
           @model_classes = ModelClasses.new
         end
@@ -80,6 +80,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def access_rights
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
+          end
           def resource
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Resource
           end
@@ -178,9 +181,6 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
-          end
-          def access_rights
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
           end
         end
       end

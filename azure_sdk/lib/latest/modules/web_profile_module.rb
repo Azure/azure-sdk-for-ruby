@@ -7,6 +7,8 @@ require 'azure_mgmt_web'
 module Azure::Profiles::Latest
   module Web
     module Mgmt
+      WebApps = Azure::Web::Mgmt::V2018_02_01::WebApps
+      Certificates = Azure::Web::Mgmt::V2018_02_01::Certificates
       DeletedWebApps = Azure::Web::Mgmt::V2018_02_01::DeletedWebApps
       Diagnostics = Azure::Web::Mgmt::V2018_02_01::Diagnostics
       Recommendations = Azure::Web::Mgmt::V2018_02_01::Recommendations
@@ -19,10 +21,14 @@ module Azure::Profiles::Latest
       DomainRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::DomainRegistrationProvider
       AppServiceEnvironments = Azure::Web::Mgmt::V2018_02_01::AppServiceEnvironments
       AppServicePlans = Azure::Web::Mgmt::V2018_02_01::AppServicePlans
-      WebApps = Azure::Web::Mgmt::V2018_02_01::WebApps
-      Certificates = Azure::Web::Mgmt::V2018_02_01::Certificates
 
       module Models
+        ValidateResponseError = Azure::Web::Mgmt::V2018_02_01::Models::ValidateResponseError
+        Solution = Azure::Web::Mgmt::V2018_02_01::Models::Solution
+        ResourceMetricName = Azure::Web::Mgmt::V2018_02_01::Models::ResourceMetricName
+        DetectorAbnormalTimePeriod = Azure::Web::Mgmt::V2018_02_01::Models::DetectorAbnormalTimePeriod
+        ResourceNameAvailability = Azure::Web::Mgmt::V2018_02_01::Models::ResourceNameAvailability
+        AbnormalTimePeriod = Azure::Web::Mgmt::V2018_02_01::Models::AbnormalTimePeriod
         SlotSwapStatus = Azure::Web::Mgmt::V2018_02_01::Models::SlotSwapStatus
         HostingEnvironmentDeploymentInfo = Azure::Web::Mgmt::V2018_02_01::Models::HostingEnvironmentDeploymentInfo
         CorsSettings = Azure::Web::Mgmt::V2018_02_01::Models::CorsSettings
@@ -71,13 +77,13 @@ module Azure::Profiles::Latest
         AzureResourceType = Azure::Web::Mgmt::V2018_02_01::Models::AzureResourceType
         ResourceMetricDefinition = Azure::Web::Mgmt::V2018_02_01::Models::ResourceMetricDefinition
         PushSettings = Azure::Web::Mgmt::V2018_02_01::Models::PushSettings
+        Identifier = Azure::Web::Mgmt::V2018_02_01::Models::Identifier
         HybridConnectionKey = Azure::Web::Mgmt::V2018_02_01::Models::HybridConnectionKey
         HybridConnection = Azure::Web::Mgmt::V2018_02_01::Models::HybridConnection
         Site = Azure::Web::Mgmt::V2018_02_01::Models::Site
         AppServicePlan = Azure::Web::Mgmt::V2018_02_01::Models::AppServicePlan
         DetectorDefinition = Azure::Web::Mgmt::V2018_02_01::Models::DetectorDefinition
         AnalysisDefinition = Azure::Web::Mgmt::V2018_02_01::Models::AnalysisDefinition
-        Identifier = Azure::Web::Mgmt::V2018_02_01::Models::Identifier
         DetectorResponse = Azure::Web::Mgmt::V2018_02_01::Models::DetectorResponse
         DiagnosticAnalysis = Azure::Web::Mgmt::V2018_02_01::Models::DiagnosticAnalysis
         DiagnosticCategory = Azure::Web::Mgmt::V2018_02_01::Models::DiagnosticCategory
@@ -287,13 +293,13 @@ module Azure::Profiles::Latest
         PublicCertificate = Azure::Web::Mgmt::V2018_02_01::Models::PublicCertificate
         RestoreRequest = Azure::Web::Mgmt::V2018_02_01::Models::RestoreRequest
         SiteAuthSettings = Azure::Web::Mgmt::V2018_02_01::Models::SiteAuthSettings
+        ManagedServiceIdentity = Azure::Web::Mgmt::V2018_02_01::Models::ManagedServiceIdentity
         SiteConfigResource = Azure::Web::Mgmt::V2018_02_01::Models::SiteConfigResource
         SiteConfigurationSnapshotInfo = Azure::Web::Mgmt::V2018_02_01::Models::SiteConfigurationSnapshotInfo
         SiteExtensionInfo = Azure::Web::Mgmt::V2018_02_01::Models::SiteExtensionInfo
         SiteInstance = Azure::Web::Mgmt::V2018_02_01::Models::SiteInstance
         SiteLogsConfig = Azure::Web::Mgmt::V2018_02_01::Models::SiteLogsConfig
         SitePatchResource = Azure::Web::Mgmt::V2018_02_01::Models::SitePatchResource
-        ManagedServiceIdentity = Azure::Web::Mgmt::V2018_02_01::Models::ManagedServiceIdentity
         SitePhpErrorLogFlag = Azure::Web::Mgmt::V2018_02_01::Models::SitePhpErrorLogFlag
         SiteSourceControl = Azure::Web::Mgmt::V2018_02_01::Models::SiteSourceControl
         SlotConfigNamesResource = Azure::Web::Mgmt::V2018_02_01::Models::SlotConfigNamesResource
@@ -353,16 +359,10 @@ module Azure::Profiles::Latest
         DeletedSite = Azure::Web::Mgmt::V2018_02_01::Models::DeletedSite
         AppServicePlanCollection = Azure::Web::Mgmt::V2018_02_01::Models::AppServicePlanCollection
         DeletedWebAppCollection = Azure::Web::Mgmt::V2018_02_01::Models::DeletedWebAppCollection
-        ValidateResponseError = Azure::Web::Mgmt::V2018_02_01::Models::ValidateResponseError
-        Solution = Azure::Web::Mgmt::V2018_02_01::Models::Solution
-        ResourceMetricName = Azure::Web::Mgmt::V2018_02_01::Models::ResourceMetricName
-        DetectorAbnormalTimePeriod = Azure::Web::Mgmt::V2018_02_01::Models::DetectorAbnormalTimePeriod
-        ResourceNameAvailability = Azure::Web::Mgmt::V2018_02_01::Models::ResourceNameAvailability
-        AbnormalTimePeriod = Azure::Web::Mgmt::V2018_02_01::Models::AbnormalTimePeriod
       end
 
       class WebManagementClass
-        attr_reader :deleted_web_apps, :diagnostics, :recommendations, :resource_health_metadata_operations, :provider, :domains, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :app_service_environments, :app_service_plans, :web_apps, :certificates, :configurable, :base_url, :options, :model_classes
+        attr_reader :web_apps, :certificates, :deleted_web_apps, :diagnostics, :recommendations, :resource_health_metadata_operations, :provider, :domains, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :app_service_environments, :app_service_plans, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -372,6 +372,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @web_apps = @client_0.web_apps
+          @certificates = @client_0.certificates
           @deleted_web_apps = @client_0.deleted_web_apps
           @diagnostics = @client_0.diagnostics
           @recommendations = @client_0.recommendations
@@ -384,8 +386,6 @@ module Azure::Profiles::Latest
           @domain_registration_provider = @client_0.domain_registration_provider
           @app_service_environments = @client_0.app_service_environments
           @app_service_plans = @client_0.app_service_plans
-          @web_apps = @client_0.web_apps
-          @certificates = @client_0.certificates
 
           @model_classes = ModelClasses.new
         end
@@ -404,6 +404,24 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def validate_response_error
+            Azure::Web::Mgmt::V2018_02_01::Models::ValidateResponseError
+          end
+          def solution
+            Azure::Web::Mgmt::V2018_02_01::Models::Solution
+          end
+          def resource_metric_name
+            Azure::Web::Mgmt::V2018_02_01::Models::ResourceMetricName
+          end
+          def detector_abnormal_time_period
+            Azure::Web::Mgmt::V2018_02_01::Models::DetectorAbnormalTimePeriod
+          end
+          def resource_name_availability
+            Azure::Web::Mgmt::V2018_02_01::Models::ResourceNameAvailability
+          end
+          def abnormal_time_period
+            Azure::Web::Mgmt::V2018_02_01::Models::AbnormalTimePeriod
+          end
           def slot_swap_status
             Azure::Web::Mgmt::V2018_02_01::Models::SlotSwapStatus
           end
@@ -548,6 +566,9 @@ module Azure::Profiles::Latest
           def push_settings
             Azure::Web::Mgmt::V2018_02_01::Models::PushSettings
           end
+          def identifier
+            Azure::Web::Mgmt::V2018_02_01::Models::Identifier
+          end
           def hybrid_connection_key
             Azure::Web::Mgmt::V2018_02_01::Models::HybridConnectionKey
           end
@@ -565,9 +586,6 @@ module Azure::Profiles::Latest
           end
           def analysis_definition
             Azure::Web::Mgmt::V2018_02_01::Models::AnalysisDefinition
-          end
-          def identifier
-            Azure::Web::Mgmt::V2018_02_01::Models::Identifier
           end
           def detector_response
             Azure::Web::Mgmt::V2018_02_01::Models::DetectorResponse
@@ -1196,6 +1214,9 @@ module Azure::Profiles::Latest
           def site_auth_settings
             Azure::Web::Mgmt::V2018_02_01::Models::SiteAuthSettings
           end
+          def managed_service_identity
+            Azure::Web::Mgmt::V2018_02_01::Models::ManagedServiceIdentity
+          end
           def site_config_resource
             Azure::Web::Mgmt::V2018_02_01::Models::SiteConfigResource
           end
@@ -1213,9 +1234,6 @@ module Azure::Profiles::Latest
           end
           def site_patch_resource
             Azure::Web::Mgmt::V2018_02_01::Models::SitePatchResource
-          end
-          def managed_service_identity
-            Azure::Web::Mgmt::V2018_02_01::Models::ManagedServiceIdentity
           end
           def site_php_error_log_flag
             Azure::Web::Mgmt::V2018_02_01::Models::SitePhpErrorLogFlag
@@ -1393,24 +1411,6 @@ module Azure::Profiles::Latest
           end
           def deleted_web_app_collection
             Azure::Web::Mgmt::V2018_02_01::Models::DeletedWebAppCollection
-          end
-          def validate_response_error
-            Azure::Web::Mgmt::V2018_02_01::Models::ValidateResponseError
-          end
-          def solution
-            Azure::Web::Mgmt::V2018_02_01::Models::Solution
-          end
-          def resource_metric_name
-            Azure::Web::Mgmt::V2018_02_01::Models::ResourceMetricName
-          end
-          def detector_abnormal_time_period
-            Azure::Web::Mgmt::V2018_02_01::Models::DetectorAbnormalTimePeriod
-          end
-          def resource_name_availability
-            Azure::Web::Mgmt::V2018_02_01::Models::ResourceNameAvailability
-          end
-          def abnormal_time_period
-            Azure::Web::Mgmt::V2018_02_01::Models::AbnormalTimePeriod
           end
         end
       end

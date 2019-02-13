@@ -7,12 +7,18 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
-      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
       IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
       Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
       ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
+      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
 
       module Models
+        AccessRights = Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
+        ImportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
+        Operation = Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
+        OperationMonitoringLevel = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
+        IpFilterActionType = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
+        RoutingSource = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
         IotHubSkuTier = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuTier
         Capabilities = Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
         IotHubSku = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSku
@@ -84,16 +90,10 @@ module Azure::Profiles::Latest
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
         TestRouteResult = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResult
         IotHubDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
-        AccessRights = Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
-        ImportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
-        Operation = Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
-        OperationMonitoringLevel = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
-        IpFilterActionType = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
-        RoutingSource = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
       end
 
       class IotHubManagementClass
-        attr_reader :certificates, :iot_hub_resource, :operations, :resource_provider_common, :configurable, :base_url, :options, :model_classes
+        attr_reader :iot_hub_resource, :operations, :resource_provider_common, :certificates, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -103,10 +103,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @certificates = @client_0.certificates
           @iot_hub_resource = @client_0.iot_hub_resource
           @operations = @client_0.operations
           @resource_provider_common = @client_0.resource_provider_common
+          @certificates = @client_0.certificates
 
           @model_classes = ModelClasses.new
         end
@@ -125,6 +125,24 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def access_rights
+            Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
+          end
+          def import_devices_request
+            Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
+          end
+          def operation
+            Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
+          end
+          def operation_monitoring_level
+            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
+          end
+          def ip_filter_action_type
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
+          end
+          def routing_source
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
+          end
           def iot_hub_sku_tier
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuTier
           end
@@ -337,24 +355,6 @@ module Azure::Profiles::Latest
           end
           def iot_hub_description
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
-          end
-          def access_rights
-            Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
-          end
-          def import_devices_request
-            Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
-          end
-          def operation
-            Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
-          end
-          def operation_monitoring_level
-            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
-          end
-          def ip_filter_action_type
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
-          end
-          def routing_source
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
           end
         end
       end
