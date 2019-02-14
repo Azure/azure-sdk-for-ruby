@@ -7,6 +7,12 @@ require 'azure_mgmt_devtestlabs'
 module Azure::Profiles::Latest
   module DevTestLabs
     module Mgmt
+      ArmTemplates = Azure::DevTestLabs::Mgmt::V2016_05_15::ArmTemplates
+      Artifacts = Azure::DevTestLabs::Mgmt::V2016_05_15::Artifacts
+      Costs = Azure::DevTestLabs::Mgmt::V2016_05_15::Costs
+      CustomImages = Azure::DevTestLabs::Mgmt::V2016_05_15::CustomImages
+      Formulas = Azure::DevTestLabs::Mgmt::V2016_05_15::Formulas
+      NotificationChannels = Azure::DevTestLabs::Mgmt::V2016_05_15::NotificationChannels
       PolicySets = Azure::DevTestLabs::Mgmt::V2016_05_15::PolicySets
       Schedules = Azure::DevTestLabs::Mgmt::V2016_05_15::Schedules
       ServiceRunners = Azure::DevTestLabs::Mgmt::V2016_05_15::ServiceRunners
@@ -24,14 +30,9 @@ module Azure::Profiles::Latest
       Labs = Azure::DevTestLabs::Mgmt::V2016_05_15::Labs
       GlobalSchedules = Azure::DevTestLabs::Mgmt::V2016_05_15::GlobalSchedules
       ArtifactSources = Azure::DevTestLabs::Mgmt::V2016_05_15::ArtifactSources
-      ArmTemplates = Azure::DevTestLabs::Mgmt::V2016_05_15::ArmTemplates
-      Artifacts = Azure::DevTestLabs::Mgmt::V2016_05_15::Artifacts
-      Costs = Azure::DevTestLabs::Mgmt::V2016_05_15::Costs
-      CustomImages = Azure::DevTestLabs::Mgmt::V2016_05_15::CustomImages
-      Formulas = Azure::DevTestLabs::Mgmt::V2016_05_15::Formulas
-      NotificationChannels = Azure::DevTestLabs::Mgmt::V2016_05_15::NotificationChannels
 
       module Models
+        GalleryImage = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GalleryImage
         HttpStatusCode = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HttpStatusCode
         User = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::User
         PolicyStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyStatus
@@ -52,12 +53,12 @@ module Azure::Profiles::Latest
         ArtifactInstallProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArtifactInstallProperties
         ResponseWithContinuationLab = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationLab
         ParametersValueFileInfo = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ParametersValueFileInfo
-        ResponseWithContinuationLabVirtualMachine = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationLabVirtualMachine
         ArmTemplateInfo = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArmTemplateInfo
         NetworkInterfaceProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NetworkInterfaceProperties
         ResponseWithContinuationUser = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationUser
         LabVirtualMachineCreationParameter = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineCreationParameter
         ArtifactDeploymentStatusPropertiesFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArtifactDeploymentStatusPropertiesFragment
+        ResponseWithContinuationLabVirtualMachine = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationLabVirtualMachine
         FormulaPropertiesFromVm = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::FormulaPropertiesFromVm
         ArtifactInstallPropertiesFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArtifactInstallPropertiesFragment
         ResponseWithContinuationLabVhd = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationLabVhd
@@ -83,12 +84,12 @@ module Azure::Profiles::Latest
         TargetCostProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::TargetCostProperties
         ResponseWithContinuationPolicy = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationPolicy
         LabCostSummaryProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabCostSummaryProperties
-        ResponseWithContinuationNotificationChannel = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationNotificationChannel
-        LabCostDetailsProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabCostDetailsProperties
-        EvaluatePoliciesRequest = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesRequest
         LabResourceCostProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabResourceCostProperties
-        PolicySetResult = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicySetResult
+        EvaluatePoliciesRequest = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesRequest
         SubnetOverrideFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SubnetOverrideFragment
+        PolicySetResult = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicySetResult
+        SubnetSharedPublicIpAddressConfigurationFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SubnetSharedPublicIpAddressConfigurationFragment
+        LabVhd = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVhd
         DayDetailsFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DayDetailsFragment
         SubnetFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SubnetFragment
         SharedPublicIpAddressConfigurationFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SharedPublicIpAddressConfigurationFragment
@@ -117,26 +118,26 @@ module Azure::Profiles::Latest
         SubnetSharedPublicIpAddressConfiguration = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SubnetSharedPublicIpAddressConfiguration
         ApplyArtifactsRequest = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ApplyArtifactsRequest
         ArtifactParameterPropertiesFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArtifactParameterPropertiesFragment
+        LabCostDetailsProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabCostDetailsProperties
+        ResponseWithContinuationNotificationChannel = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationNotificationChannel
         PortFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PortFragment
-        ProviderOperationResult = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ProviderOperationResult
-        CostThresholdProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdProperties
         UserIdentity = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserIdentity
-        ResponseWithContinuationArmTemplate = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArmTemplate
+        CostThresholdProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdProperties
         DetachDiskProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DetachDiskProperties
-        SubnetSharedPublicIpAddressConfigurationFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SubnetSharedPublicIpAddressConfigurationFragment
-        LabVhd = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVhd
-        ResponseWithContinuationArtifact = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifact
-        ArmTemplateParameterProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArmTemplateParameterProperties
+        ProviderOperationResult = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ProviderOperationResult
         EvaluatePoliciesResponse = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesResponse
-        ComputeVmInstanceViewStatusFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ComputeVmInstanceViewStatusFragment
-        ResponseWithContinuationCustomImage = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationCustomImage
+        ResponseWithContinuationArtifact = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifact
+        ResponseWithContinuationArmTemplate = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArmTemplate
         ResponseWithContinuationArtifactSource = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifactSource
+        ComputeVmInstanceViewStatusFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ComputeVmInstanceViewStatusFragment
+        ArmTemplateParameterProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArmTemplateParameterProperties
+        EvaluatePoliciesProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesProperties
         ResponseWithContinuationDisk = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationDisk
         Resource = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Resource
-        EvaluatePoliciesProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesProperties
+        ResponseWithContinuationDtlEnvironment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationDtlEnvironment
         NotificationSettingsFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationSettingsFragment
         AttachDiskProperties = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::AttachDiskProperties
-        ResponseWithContinuationDtlEnvironment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationDtlEnvironment
+        ResponseWithContinuationCustomImage = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationCustomImage
         ResponseWithContinuationGalleryImage = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationGalleryImage
         ResponseWithContinuationFormula = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationFormula
         CustomImagePropertiesCustom = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CustomImagePropertiesCustom
@@ -155,30 +156,30 @@ module Azure::Profiles::Latest
         LabVirtualMachineFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineFragment
         LabFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabFragment
         Disk = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Disk
-        Policy = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
+        PolicyFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFragment
         NotificationChannel = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel
         NotificationChannelFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelFragment
         LabVirtualMachine = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachine
         Secret = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Secret
         ServiceRunner = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ServiceRunner
         UserFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserFragment
-        PolicyFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFragment
-        VirtualNetwork = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetwork
-        NotificationStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationStatus
-        StorageType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::StorageType
         VirtualNetworkFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetworkFragment
-        EnableStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EnableStatus
-        SourceControlType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SourceControlType
-        CustomImageOsType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CustomImageOsType
+        VirtualNetwork = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetwork
+        Policy = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
+        StorageType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::StorageType
         CostThresholdStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdStatus
+        EnableStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EnableStatus
+        NotificationStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationStatus
+        CustomImageOsType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CustomImageOsType
+        HostCachingOptions = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HostCachingOptions
         Schedule = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Schedule
         LinuxOsState = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LinuxOsState
         FileUploadOptions = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::FileUploadOptions
-        HostCachingOptions = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HostCachingOptions
+        PremiumDataDisk = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PremiumDataDisk
         NotificationChannelEventType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelEventType
         WindowsOsState = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::WindowsOsState
         Port = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Port
-        PremiumDataDisk = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PremiumDataDisk
+        SourceControlType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SourceControlType
         TransportProtocol = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::TransportProtocol
         ReportingCycleType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ReportingCycleType
         VirtualMachineCreationSource = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualMachineCreationSource
@@ -187,11 +188,10 @@ module Azure::Profiles::Latest
         TargetCostStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::TargetCostStatus
         CostType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostType
         UsagePermissionType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UsagePermissionType
-        GalleryImage = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GalleryImage
       end
 
       class DevTestLabsManagementClass
-        attr_reader :policy_sets, :schedules, :service_runners, :users, :environments, :secrets, :virtual_machine_schedules, :virtual_machines, :disks, :operations, :gallery_images, :policies, :virtual_networks, :provider_operations, :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :notification_channels, :configurable, :base_url, :options, :model_classes
+        attr_reader :arm_templates, :artifacts, :costs, :custom_images, :formulas, :notification_channels, :policy_sets, :schedules, :service_runners, :users, :environments, :secrets, :virtual_machine_schedules, :virtual_machines, :disks, :operations, :gallery_images, :policies, :virtual_networks, :provider_operations, :labs, :global_schedules, :artifact_sources, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -201,6 +201,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @arm_templates = @client_0.arm_templates
+          @artifacts = @client_0.artifacts
+          @costs = @client_0.costs
+          @custom_images = @client_0.custom_images
+          @formulas = @client_0.formulas
+          @notification_channels = @client_0.notification_channels
           @policy_sets = @client_0.policy_sets
           @schedules = @client_0.schedules
           @service_runners = @client_0.service_runners
@@ -218,12 +224,6 @@ module Azure::Profiles::Latest
           @labs = @client_0.labs
           @global_schedules = @client_0.global_schedules
           @artifact_sources = @client_0.artifact_sources
-          @arm_templates = @client_0.arm_templates
-          @artifacts = @client_0.artifacts
-          @costs = @client_0.costs
-          @custom_images = @client_0.custom_images
-          @formulas = @client_0.formulas
-          @notification_channels = @client_0.notification_channels
 
           @model_classes = ModelClasses.new
         end
@@ -242,6 +242,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def gallery_image
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GalleryImage
+          end
           def http_status_code
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HttpStatusCode
           end
@@ -302,9 +305,6 @@ module Azure::Profiles::Latest
           def parameters_value_file_info
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ParametersValueFileInfo
           end
-          def response_with_continuation_lab_virtual_machine
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationLabVirtualMachine
-          end
           def arm_template_info
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArmTemplateInfo
           end
@@ -319,6 +319,9 @@ module Azure::Profiles::Latest
           end
           def artifact_deployment_status_properties_fragment
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArtifactDeploymentStatusPropertiesFragment
+          end
+          def response_with_continuation_lab_virtual_machine
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationLabVirtualMachine
           end
           def formula_properties_from_vm
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::FormulaPropertiesFromVm
@@ -395,23 +398,23 @@ module Azure::Profiles::Latest
           def lab_cost_summary_properties
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabCostSummaryProperties
           end
-          def response_with_continuation_notification_channel
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationNotificationChannel
-          end
-          def lab_cost_details_properties
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabCostDetailsProperties
+          def lab_resource_cost_properties
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabResourceCostProperties
           end
           def evaluate_policies_request
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesRequest
           end
-          def lab_resource_cost_properties
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabResourceCostProperties
+          def subnet_override_fragment
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SubnetOverrideFragment
           end
           def policy_set_result
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicySetResult
           end
-          def subnet_override_fragment
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SubnetOverrideFragment
+          def subnet_shared_public_ip_address_configuration_fragment
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SubnetSharedPublicIpAddressConfigurationFragment
+          end
+          def lab_vhd
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVhd
           end
           def day_details_fragment
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DayDetailsFragment
@@ -497,47 +500,47 @@ module Azure::Profiles::Latest
           def artifact_parameter_properties_fragment
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArtifactParameterPropertiesFragment
           end
+          def lab_cost_details_properties
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabCostDetailsProperties
+          end
+          def response_with_continuation_notification_channel
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationNotificationChannel
+          end
           def port_fragment
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PortFragment
-          end
-          def provider_operation_result
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ProviderOperationResult
-          end
-          def cost_threshold_properties
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdProperties
           end
           def user_identity
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserIdentity
           end
-          def response_with_continuation_arm_template
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArmTemplate
+          def cost_threshold_properties
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdProperties
           end
           def detach_disk_properties
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DetachDiskProperties
           end
-          def subnet_shared_public_ip_address_configuration_fragment
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SubnetSharedPublicIpAddressConfigurationFragment
-          end
-          def lab_vhd
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVhd
-          end
-          def response_with_continuation_artifact
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifact
-          end
-          def arm_template_parameter_properties
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArmTemplateParameterProperties
+          def provider_operation_result
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ProviderOperationResult
           end
           def evaluate_policies_response
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesResponse
           end
-          def compute_vm_instance_view_status_fragment
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ComputeVmInstanceViewStatusFragment
+          def response_with_continuation_artifact
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifact
           end
-          def response_with_continuation_custom_image
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationCustomImage
+          def response_with_continuation_arm_template
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArmTemplate
           end
           def response_with_continuation_artifact_source
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifactSource
+          end
+          def compute_vm_instance_view_status_fragment
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ComputeVmInstanceViewStatusFragment
+          end
+          def arm_template_parameter_properties
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArmTemplateParameterProperties
+          end
+          def evaluate_policies_properties
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesProperties
           end
           def response_with_continuation_disk
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationDisk
@@ -545,8 +548,8 @@ module Azure::Profiles::Latest
           def resource
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Resource
           end
-          def evaluate_policies_properties
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesProperties
+          def response_with_continuation_dtl_environment
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationDtlEnvironment
           end
           def notification_settings_fragment
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationSettingsFragment
@@ -554,8 +557,8 @@ module Azure::Profiles::Latest
           def attach_disk_properties
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::AttachDiskProperties
           end
-          def response_with_continuation_dtl_environment
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationDtlEnvironment
+          def response_with_continuation_custom_image
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationCustomImage
           end
           def response_with_continuation_gallery_image
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationGalleryImage
@@ -611,8 +614,8 @@ module Azure::Profiles::Latest
           def disk
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Disk
           end
-          def policy
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
+          def policy_fragment
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFragment
           end
           def notification_channel
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel
@@ -632,32 +635,32 @@ module Azure::Profiles::Latest
           def user_fragment
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserFragment
           end
-          def policy_fragment
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFragment
+          def virtual_network_fragment
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetworkFragment
           end
           def virtual_network
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetwork
           end
-          def notification_status
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationStatus
+          def policy
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
           end
           def storage_type
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::StorageType
           end
-          def virtual_network_fragment
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetworkFragment
+          def cost_threshold_status
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdStatus
           end
           def enable_status
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EnableStatus
           end
-          def source_control_type
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SourceControlType
+          def notification_status
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationStatus
           end
           def custom_image_os_type
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CustomImageOsType
           end
-          def cost_threshold_status
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::CostThresholdStatus
+          def host_caching_options
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HostCachingOptions
           end
           def schedule
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Schedule
@@ -668,8 +671,8 @@ module Azure::Profiles::Latest
           def file_upload_options
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::FileUploadOptions
           end
-          def host_caching_options
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HostCachingOptions
+          def premium_data_disk
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PremiumDataDisk
           end
           def notification_channel_event_type
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelEventType
@@ -680,8 +683,8 @@ module Azure::Profiles::Latest
           def port
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Port
           end
-          def premium_data_disk
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PremiumDataDisk
+          def source_control_type
+            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::SourceControlType
           end
           def transport_protocol
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::TransportProtocol
@@ -706,9 +709,6 @@ module Azure::Profiles::Latest
           end
           def usage_permission_type
             Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UsagePermissionType
-          end
-          def gallery_image
-            Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GalleryImage
           end
         end
       end

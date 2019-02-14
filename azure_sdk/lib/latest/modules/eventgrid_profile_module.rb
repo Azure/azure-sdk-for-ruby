@@ -9,6 +9,12 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
+      DeviceConnectionStateEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
+      ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
+      SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
+      MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
+      SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+      StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
       ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
       ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
       ContainerRegistryEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
@@ -39,12 +45,6 @@ module Azure::Profiles::Latest
       EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
       DeviceConnectionStateEventInfo = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventInfo
       SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
-      DeviceConnectionStateEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
-      ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
-      SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
-      MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
-      SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
-      StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
     end
 
     class EventGridDataClass
@@ -76,6 +76,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def device_connection_state_event_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
+        end
+        def resource_delete_cancel_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
+        end
+        def subscription_validation_event_data
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
+        end
+        def media_job_state_change_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
+        end
+        def subscription_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+        end
+        def storage_blob_created_event_data
+          Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
+        end
         def service_bus_active_messages_available_with_no_listeners_event_data
           Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
         end
@@ -166,24 +184,6 @@ module Azure::Profiles::Latest
         def subscription_validation_response
           Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
         end
-        def device_connection_state_event_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
-        end
-        def resource_delete_cancel_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
-        end
-        def subscription_validation_event_data
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
-        end
-        def media_job_state_change_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
-        end
-        def subscription_deleted_event_data
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
-        end
-        def storage_blob_created_event_data
-          Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
-        end
       end
     end
     module Mgmt
@@ -195,6 +195,12 @@ module Azure::Profiles::Latest
       Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
 
       module Models
+        EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFullUrl
+        DomainSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainSharedAccessKeys
+        EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionUpdateParameters
+        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicRegenerateKeyRequest
+        DomainTopicsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopicsListResult
+        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
         AdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::AdvancedFilter
         JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::JsonFieldWithDefault
         RetryPolicy = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::RetryPolicy
@@ -247,12 +253,6 @@ module Azure::Profiles::Latest
         InputSchemaMapping = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchemaMapping
         TopicsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicsListResult
         DomainUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainUpdateParameters
-        EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFullUrl
-        DomainSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainSharedAccessKeys
-        EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionUpdateParameters
-        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicRegenerateKeyRequest
-        DomainTopicsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopicsListResult
-        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
       end
 
       class EventGridManagementClass
@@ -290,6 +290,24 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def event_subscription_full_url
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFullUrl
+          end
+          def domain_shared_access_keys
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainSharedAccessKeys
+          end
+          def event_subscription_update_parameters
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionUpdateParameters
+          end
+          def topic_regenerate_key_request
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicRegenerateKeyRequest
+          end
+          def domain_topics_list_result
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopicsListResult
+          end
+          def topic_update_parameters
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
+          end
           def advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::AdvancedFilter
           end
@@ -445,24 +463,6 @@ module Azure::Profiles::Latest
           end
           def domain_update_parameters
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainUpdateParameters
-          end
-          def event_subscription_full_url
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFullUrl
-          end
-          def domain_shared_access_keys
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainSharedAccessKeys
-          end
-          def event_subscription_update_parameters
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionUpdateParameters
-          end
-          def topic_regenerate_key_request
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicRegenerateKeyRequest
-          end
-          def domain_topics_list_result
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopicsListResult
-          end
-          def topic_update_parameters
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
           end
         end
       end

@@ -11,12 +11,18 @@ module Azure::Profiles::V2018_03_01
       Zones = Azure::Dns::Mgmt::V2016_04_01::Zones
 
       module Models
+        TxtRecord = Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
+        NsRecord = Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
+        SoaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
+        TrackedResource = Azure::Dns::Mgmt::V2016_04_01::Models::TrackedResource
+        Zone = Azure::Dns::Mgmt::V2016_04_01::Models::Zone
+        ProxyResource = Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
         AzureEntityResource = Azure::Dns::Mgmt::V2016_04_01::Models::AzureEntityResource
         OperationStatus = Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
         HttpStatusCode = Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
         RecordType = Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
-        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         RecordSetUpdateParameters = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
+        RecordSetListResult = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
         AaaaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
         ARecord = Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
         MxRecord = Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
@@ -25,14 +31,8 @@ module Azure::Profiles::V2018_03_01
         CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
         ZoneDeleteResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
         RecordSet = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
+        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         ZoneListResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
-        RecordSetListResult = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
-        TxtRecord = Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
-        NsRecord = Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
-        SoaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
-        TrackedResource = Azure::Dns::Mgmt::V2016_04_01::Models::TrackedResource
-        Zone = Azure::Dns::Mgmt::V2016_04_01::Models::Zone
-        ProxyResource = Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
       end
 
       class DnsManagementClass
@@ -66,6 +66,24 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def txt_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
+          end
+          def ns_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
+          end
+          def soa_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
+          end
+          def tracked_resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::TrackedResource
+          end
+          def zone
+            Azure::Dns::Mgmt::V2016_04_01::Models::Zone
+          end
+          def proxy_resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
+          end
           def azure_entity_resource
             Azure::Dns::Mgmt::V2016_04_01::Models::AzureEntityResource
           end
@@ -78,11 +96,11 @@ module Azure::Profiles::V2018_03_01
           def record_type
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
           end
-          def resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
-          end
           def record_set_update_parameters
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
+          end
+          def record_set_list_result
+            Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
           end
           def aaaa_record
             Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
@@ -108,29 +126,11 @@ module Azure::Profiles::V2018_03_01
           def record_set
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
           end
+          def resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
+          end
           def zone_list_result
             Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
-          end
-          def record_set_list_result
-            Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
-          end
-          def txt_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
-          end
-          def ns_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
-          end
-          def soa_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
-          end
-          def tracked_resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::TrackedResource
-          end
-          def zone
-            Azure::Dns::Mgmt::V2016_04_01::Models::Zone
-          end
-          def proxy_resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
           end
         end
       end

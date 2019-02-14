@@ -16,21 +16,21 @@ module Azure::Profiles::Latest
       CredentialOperations = Azure::Automation::Mgmt::V2015_10_31::CredentialOperations
       DscCompilationJobOperations = Azure::Automation::Mgmt::V2015_10_31::DscCompilationJobOperations
       Operations = Azure::Automation::Mgmt::V2015_10_31::Operations
-      DscCompilationJobStream = Azure::Automation::Mgmt::V2015_10_31::DscCompilationJobStream
+      DscConfigurationOperations = Azure::Automation::Mgmt::V2015_10_31::DscConfigurationOperations
       AgentRegistrationInformation = Azure::Automation::Mgmt::V2015_10_31::AgentRegistrationInformation
       DscNodeOperations = Azure::Automation::Mgmt::V2015_10_31::DscNodeOperations
-      DscConfigurationOperations = Azure::Automation::Mgmt::V2015_10_31::DscConfigurationOperations
       NodeReports = Azure::Automation::Mgmt::V2015_10_31::NodeReports
+      DscNodeConfigurationOperations = Azure::Automation::Mgmt::V2015_10_31::DscNodeConfigurationOperations
       HybridRunbookWorkerGroupOperations = Azure::Automation::Mgmt::V2015_10_31::HybridRunbookWorkerGroupOperations
       JobOperations = Azure::Automation::Mgmt::V2015_10_31::JobOperations
-      DscNodeConfigurationOperations = Azure::Automation::Mgmt::V2015_10_31::DscNodeConfigurationOperations
+      JobStreamOperations = Azure::Automation::Mgmt::V2015_10_31::JobStreamOperations
       JobScheduleOperations = Azure::Automation::Mgmt::V2015_10_31::JobScheduleOperations
       LinkedWorkspaceOperations = Azure::Automation::Mgmt::V2015_10_31::LinkedWorkspaceOperations
       ActivityOperations = Azure::Automation::Mgmt::V2015_10_31::ActivityOperations
       ModuleModelOperations = Azure::Automation::Mgmt::V2015_10_31::ModuleModelOperations
       ObjectDataTypes = Azure::Automation::Mgmt::V2015_10_31::ObjectDataTypes
-      JobStreamOperations = Azure::Automation::Mgmt::V2015_10_31::JobStreamOperations
       Fields = Azure::Automation::Mgmt::V2015_10_31::Fields
+      DscCompilationJobStream = Azure::Automation::Mgmt::V2015_10_31::DscCompilationJobStream
       RunbookDraftOperations = Azure::Automation::Mgmt::V2015_10_31::RunbookDraftOperations
       RunbookOperations = Azure::Automation::Mgmt::V2015_10_31::RunbookOperations
       TestJobStreams = Azure::Automation::Mgmt::V2015_10_31::TestJobStreams
@@ -41,6 +41,8 @@ module Azure::Profiles::Latest
       Usages = Azure::Automation::Mgmt::V2015_10_31::Usages
 
       module Models
+        TrackedResource = Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
+        ProxyResource = Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
         HttpStatusCode = Azure::Automation::Mgmt::V2015_10_31::Models::HttpStatusCode
         Job = Azure::Automation::Mgmt::V2015_10_31::Models::Job
         Resource = Azure::Automation::Mgmt::V2015_10_31::Models::Resource
@@ -177,12 +179,10 @@ module Azure::Profiles::Latest
         ScheduleDay = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
         Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
         ErrorResponse = Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
-        TrackedResource = Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
-        ProxyResource = Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
       end
 
       class AutomationManagementClass
-        attr_reader :automation_account_operations, :statistics_operations, :keys, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :operations, :dsc_compilation_job_stream, :agent_registration_information, :dsc_node_operations, :dsc_configuration_operations, :node_reports, :hybrid_runbook_worker_group_operations, :job_operations, :dsc_node_configuration_operations, :job_schedule_operations, :linked_workspace_operations, :activity_operations, :module_model_operations, :object_data_types, :job_stream_operations, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_job_operations, :schedule_operations, :variable_operations, :webhook_operations, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :automation_account_operations, :statistics_operations, :keys, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :operations, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :job_stream_operations, :job_schedule_operations, :linked_workspace_operations, :activity_operations, :module_model_operations, :object_data_types, :fields, :dsc_compilation_job_stream, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_job_operations, :schedule_operations, :variable_operations, :webhook_operations, :usages, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -201,21 +201,21 @@ module Azure::Profiles::Latest
           @credential_operations = @client_0.credential_operations
           @dsc_compilation_job_operations = @client_0.dsc_compilation_job_operations
           @operations = @client_0.operations
-          @dsc_compilation_job_stream = @client_0.dsc_compilation_job_stream
+          @dsc_configuration_operations = @client_0.dsc_configuration_operations
           @agent_registration_information = @client_0.agent_registration_information
           @dsc_node_operations = @client_0.dsc_node_operations
-          @dsc_configuration_operations = @client_0.dsc_configuration_operations
           @node_reports = @client_0.node_reports
+          @dsc_node_configuration_operations = @client_0.dsc_node_configuration_operations
           @hybrid_runbook_worker_group_operations = @client_0.hybrid_runbook_worker_group_operations
           @job_operations = @client_0.job_operations
-          @dsc_node_configuration_operations = @client_0.dsc_node_configuration_operations
+          @job_stream_operations = @client_0.job_stream_operations
           @job_schedule_operations = @client_0.job_schedule_operations
           @linked_workspace_operations = @client_0.linked_workspace_operations
           @activity_operations = @client_0.activity_operations
           @module_model_operations = @client_0.module_model_operations
           @object_data_types = @client_0.object_data_types
-          @job_stream_operations = @client_0.job_stream_operations
           @fields = @client_0.fields
+          @dsc_compilation_job_stream = @client_0.dsc_compilation_job_stream
           @runbook_draft_operations = @client_0.runbook_draft_operations
           @runbook_operations = @client_0.runbook_operations
           @test_job_streams = @client_0.test_job_streams
@@ -242,6 +242,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def tracked_resource
+            Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
+          end
+          def proxy_resource
+            Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
+          end
           def http_status_code
             Azure::Automation::Mgmt::V2015_10_31::Models::HttpStatusCode
           end
@@ -649,12 +655,6 @@ module Azure::Profiles::Latest
           end
           def error_response
             Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
-          end
-          def tracked_resource
-            Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
-          end
-          def proxy_resource
-            Azure::Automation::Mgmt::V2015_10_31::Models::ProxyResource
           end
         end
       end
