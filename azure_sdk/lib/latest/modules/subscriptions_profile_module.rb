@@ -13,6 +13,7 @@ module Azure::Profiles::Latest
 
       module Models
         Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+        OperationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
         TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
         TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
@@ -23,7 +24,6 @@ module Azure::Profiles::Latest
         SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
         OperationDisplay = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
         Operation = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
-        OperationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
       end
 
       class SubscriptionsManagementClass
@@ -61,6 +61,9 @@ module Azure::Profiles::Latest
           def location
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
           end
+          def operation_list_result
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
+          end
           def tenant_id_description
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
           end
@@ -90,9 +93,6 @@ module Azure::Profiles::Latest
           end
           def operation
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
-          end
-          def operation_list_result
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
           end
         end
       end

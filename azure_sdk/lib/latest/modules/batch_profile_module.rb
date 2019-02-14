@@ -7,15 +7,17 @@ require 'azure_mgmt_batch'
 module Azure::Profiles::Latest
   module Batch
     module Mgmt
-      Location = Azure::Batch::Mgmt::V2017_09_01::Location
-      CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
-      Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
       BatchAccountOperations = Azure::Batch::Mgmt::V2017_09_01::BatchAccountOperations
       ApplicationPackageOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationPackageOperations
       ApplicationOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationOperations
+      Location = Azure::Batch::Mgmt::V2017_09_01::Location
       PoolOperations = Azure::Batch::Mgmt::V2017_09_01::PoolOperations
+      CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
+      Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
 
       module Models
+        ProxyResource = Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
+        FixedScaleSettings = Azure::Batch::Mgmt::V2017_09_01::Models::FixedScaleSettings
         AutoStorageBaseProperties = Azure::Batch::Mgmt::V2017_09_01::Models::AutoStorageBaseProperties
         AutoScaleSettings = Azure::Batch::Mgmt::V2017_09_01::Models::AutoScaleSettings
         BatchAccountCreateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountCreateParameters
@@ -93,12 +95,10 @@ module Azure::Profiles::Latest
         CheckNameAvailabilityResult = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityResult
         InboundNatPool = Azure::Batch::Mgmt::V2017_09_01::Models::InboundNatPool
         OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
-        ProxyResource = Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
-        FixedScaleSettings = Azure::Batch::Mgmt::V2017_09_01::Models::FixedScaleSettings
       end
 
       class BatchManagementClass
-        attr_reader :location, :certificate_operations, :operations, :batch_account_operations, :application_package_operations, :application_operations, :pool_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :batch_account_operations, :application_package_operations, :application_operations, :location, :pool_operations, :certificate_operations, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -108,13 +108,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @location = @client_0.location
-          @certificate_operations = @client_0.certificate_operations
-          @operations = @client_0.operations
           @batch_account_operations = @client_0.batch_account_operations
           @application_package_operations = @client_0.application_package_operations
           @application_operations = @client_0.application_operations
+          @location = @client_0.location
           @pool_operations = @client_0.pool_operations
+          @certificate_operations = @client_0.certificate_operations
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -133,6 +133,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def proxy_resource
+            Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
+          end
+          def fixed_scale_settings
+            Azure::Batch::Mgmt::V2017_09_01::Models::FixedScaleSettings
+          end
           def auto_storage_base_properties
             Azure::Batch::Mgmt::V2017_09_01::Models::AutoStorageBaseProperties
           end
@@ -363,12 +369,6 @@ module Azure::Profiles::Latest
           end
           def osdisk
             Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
-          end
-          def proxy_resource
-            Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
-          end
-          def fixed_scale_settings
-            Azure::Batch::Mgmt::V2017_09_01::Models::FixedScaleSettings
           end
         end
       end

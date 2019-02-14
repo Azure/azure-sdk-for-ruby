@@ -11,6 +11,12 @@ module Azure::Profiles::Latest
       Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
 
       module Models
+        NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
+        SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
+        TrackedResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
+        Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
+        ProxyResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
+        AzureEntityResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
         RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
         Resource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
         SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
@@ -28,12 +34,6 @@ module Azure::Profiles::Latest
         RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
         ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
         TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
-        NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
-        SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
-        TrackedResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
-        Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
-        ProxyResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
-        AzureEntityResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
       end
 
       class DnsManagementClass
@@ -67,6 +67,24 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def ns_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
+          end
+          def soa_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
+          end
+          def tracked_resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
+          end
+          def zone
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
+          end
+          def proxy_resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
+          end
+          def azure_entity_resource
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
+          end
           def record_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
           end
@@ -117,24 +135,6 @@ module Azure::Profiles::Latest
           end
           def txt_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
-          end
-          def ns_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
-          end
-          def soa_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
-          end
-          def tracked_resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
-          end
-          def zone
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
-          end
-          def proxy_resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
-          end
-          def azure_entity_resource
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
           end
         end
       end
