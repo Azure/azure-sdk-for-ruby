@@ -7,22 +7,22 @@ require 'azure_mgmt_links'
 module Azure::Profiles::Latest
   module Links
     module Mgmt
-      Operations = Azure::Links::Mgmt::V2016_09_01::Operations
       ResourceLinks = Azure::Links::Mgmt::V2016_09_01::ResourceLinks
+      Operations = Azure::Links::Mgmt::V2016_09_01::Operations
 
       module Models
-        ResourceLinkResult = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
-        OperationDisplay = Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
-        ResourceLinkProperties = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
-        Operation = Azure::Links::Mgmt::V2016_09_01::Models::Operation
-        ResourceLinkFilter = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
         OperationListResult = Azure::Links::Mgmt::V2016_09_01::Models::OperationListResult
         ResourceLink = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
         Filter = Azure::Links::Mgmt::V2016_09_01::Models::Filter
+        ResourceLinkResult = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
+        OperationDisplay = Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
+        ResourceLinkFilter = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
+        Operation = Azure::Links::Mgmt::V2016_09_01::Models::Operation
+        ResourceLinkProperties = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
       end
 
       class LinksManagementClass
-        attr_reader :operations, :resource_links, :configurable, :base_url, :options, :model_classes
+        attr_reader :resource_links, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -32,8 +32,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @resource_links = @client_0.resource_links
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -52,21 +52,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def resource_link_result
-            Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
-          end
-          def operation_display
-            Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
-          end
-          def resource_link_properties
-            Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
-          end
-          def operation
-            Azure::Links::Mgmt::V2016_09_01::Models::Operation
-          end
-          def resource_link_filter
-            Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
-          end
           def operation_list_result
             Azure::Links::Mgmt::V2016_09_01::Models::OperationListResult
           end
@@ -75,6 +60,21 @@ module Azure::Profiles::Latest
           end
           def filter
             Azure::Links::Mgmt::V2016_09_01::Models::Filter
+          end
+          def resource_link_result
+            Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
+          end
+          def operation_display
+            Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
+          end
+          def resource_link_filter
+            Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
+          end
+          def operation
+            Azure::Links::Mgmt::V2016_09_01::Models::Operation
+          end
+          def resource_link_properties
+            Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
           end
         end
       end

@@ -28,7 +28,6 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorDetails',
           type: {
@@ -36,7 +35,6 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
             class_name: 'ErrorDetails',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -45,7 +43,6 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -54,7 +51,6 @@ module Azure::Billing::Mgmt::V2017_02_27_preview
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'target',
