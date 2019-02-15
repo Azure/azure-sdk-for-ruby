@@ -1,6 +1,6 @@
 {
-    "management": [
-        "azure_mgmt_kusto"
+    "data": [
+        "azure_cognitiveservices_luisruntime"
     ],
     "rollup": [
         "azure_sdk"

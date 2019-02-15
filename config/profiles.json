@@ -571,6 +571,11 @@
                         "1.0": ["*"]
                     }
                 },
+                "Microsoft.CognitiveServices.LuisRuntime": {
+                    "data": {
+                        "2.0": ["*"]
+                    }
+                },
                 "Microsoft.CognitiveServices.NewsSearch": {
                     "data": {
                         "1.0": ["*"]
@@ -2020,6 +2025,20 @@
                     }
                 },
                 "output_dir": "data/azure_cognitiveservices_localsearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_luisruntime": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.LuisRuntime": {
+                        "data": {
+                            "2.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_luisruntime/lib/profiles",
                 "individual_gem_profile": true
             }
         ],

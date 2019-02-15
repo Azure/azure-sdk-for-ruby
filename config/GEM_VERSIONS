@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.22.1"
+        "azure_sdk": "0.22.2"
     },
     "data": {
         "azure_cognitiveservices_autosuggest": "0.17.0",
@@ -14,6 +14,7 @@
         "azure_cognitiveservices_face": "0.17.0",
         "azure_cognitiveservices_imagesearch": "0.18.0",
         "azure_cognitiveservices_localsearch": "0.17.0",
+        "azure_cognitiveservices_luisruntime": "0.17.0",
         "azure_cognitiveservices_newssearch": "0.18.0",
         "azure_cognitiveservices_qnamaker": "0.17.0",
         "azure_cognitiveservices_spellcheck": "0.18.0",

@@ -1695,6 +1695,14 @@
       "tag": "release_1_0"
     }
   },
+  "azure_cognitiveservices_luisruntime": {
+    "azure_cognitiveservices_luisruntime_v2.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/60ccc41ebc2b242ae68e14de5c11ed4a617aeaa4/specification/cognitiveservices/data-plane/LUIS/Runtime/readme.md",
+      "namespace": "Azure::CognitiveServices::LuisRuntime::V2_0",
+      "title": "LuisRuntimeClient",
+      "tag": "runtime_2_0"
+    }
+  },
   "azure_cognitiveservices_newssearch":{
     "azure_cognitiveservices_newssearch_v1.0": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6ff29f0aa976b9cd029a255e120e60ff26169615/specification/cognitiveservices/data-plane/NewsSearch/readme.md",
