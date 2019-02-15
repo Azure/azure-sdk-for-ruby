@@ -1,3 +1,8 @@
+## 2019.02.14 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_cognitiveservices_luisruntime - v0.17.0
+    - azure_sdk - v0.22.2
+    
 ## 2019.01.31 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_devtestlabs - v0.17.2
