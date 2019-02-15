@@ -2,6 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure
-  VERSION = '0.22.2'
-end
+module Azure end
+module Azure::LuisRuntime end
+module Azure::LuisRuntime::Profiles end
+module Azure::LuisRuntime::Profiles::Latest end
