@@ -35,7 +35,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverProcessServerRequestProperties',
           type: {
@@ -43,7 +42,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'FailoverProcessServerRequestProperties',
             model_properties: {
               container_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'containerName',
                 type: {
@@ -51,7 +49,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               source_process_server_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceProcessServerId',
                 type: {
@@ -59,7 +56,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_process_server_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetProcessServerId',
                 type: {
@@ -67,13 +63,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vms_to_migrate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmsToMigrate',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -83,7 +77,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               update_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'updateType',
                 type: {
