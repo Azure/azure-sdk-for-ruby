@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2017_11_01
   module Models
     #
-    # List of connection states snaphots.
+    # List of connection states snapshots.
     #
     class ConnectionMonitorQueryResult
 
@@ -23,7 +23,6 @@ module Azure::Network::Mgmt::V2017_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionMonitorQueryResult',
           type: {
@@ -31,13 +30,11 @@ module Azure::Network::Mgmt::V2017_11_01
             class_name: 'ConnectionMonitorQueryResult',
             model_properties: {
               states: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'states',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ConnectionStateSnapshotElementType',
                       type: {

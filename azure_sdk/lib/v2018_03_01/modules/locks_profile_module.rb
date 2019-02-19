@@ -11,13 +11,13 @@ module Azure::Profiles::V2018_03_01
       ManagementLocks = Azure::Locks::Mgmt::V2016_09_01::ManagementLocks
 
       module Models
+        OperationListResult = Azure::Locks::Mgmt::V2016_09_01::Models::OperationListResult
+        ManagementLockObject = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
+        LockLevel = Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
         OperationDisplay = Azure::Locks::Mgmt::V2016_09_01::Models::OperationDisplay
         ManagementLockOwner = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
         Operation = Azure::Locks::Mgmt::V2016_09_01::Models::Operation
         ManagementLockListResult = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
-        OperationListResult = Azure::Locks::Mgmt::V2016_09_01::Models::OperationListResult
-        ManagementLockObject = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
-        LockLevel = Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
       end
 
       class LocksManagementClass
@@ -51,6 +51,15 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def operation_list_result
+            Azure::Locks::Mgmt::V2016_09_01::Models::OperationListResult
+          end
+          def management_lock_object
+            Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
+          end
+          def lock_level
+            Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
+          end
           def operation_display
             Azure::Locks::Mgmt::V2016_09_01::Models::OperationDisplay
           end
@@ -62,15 +71,6 @@ module Azure::Profiles::V2018_03_01
           end
           def management_lock_list_result
             Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
-          end
-          def operation_list_result
-            Azure::Locks::Mgmt::V2016_09_01::Models::OperationListResult
-          end
-          def management_lock_object
-            Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
-          end
-          def lock_level
-            Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
           end
         end
       end

@@ -25,39 +25,6 @@ module Azure::Profiles::V2018_03_01
       VirtualMachineRunCommands = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineRunCommands
 
       module Models
-        VirtualMachineScaleSetManagedDiskParameters = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetManagedDiskParameters
-        VirtualMachineScaleSetOSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSDisk
-        SubResource = Azure::Compute::Mgmt::V2017_03_30::Models::SubResource
-        VirtualMachineScaleSetUpdateOSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSDisk
-        EncryptionSettings = Azure::Compute::Mgmt::V2017_03_30::Models::EncryptionSettings
-        AvailabilitySetListResult = Azure::Compute::Mgmt::V2017_03_30::Models::AvailabilitySetListResult
-        ImageListResult = Azure::Compute::Mgmt::V2017_03_30::Models::ImageListResult
-        VirtualMachineSizeListResult = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineSizeListResult
-        VirtualMachineScaleSetIdentity = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetIdentity
-        RunCommandListResult = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandListResult
-        ResourceSkuCapacity = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapacity
-        RunCommandDocumentBase = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandDocumentBase
-        ResourceSkuCosts = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCosts
-        VirtualMachineExtensionsListResult = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineExtensionsListResult
-        ResourceSkuCapabilities = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapabilities
-        OSDiskImage = Azure::Compute::Mgmt::V2017_03_30::Models::OSDiskImage
-        ResourceSkuRestrictions = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictions
-        RunCommandInput = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandInput
-        ResourceSku = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSku
-        Usage = Azure::Compute::Mgmt::V2017_03_30::Models::Usage
-        ResourceSkusResult = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
-        VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
-        VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
-        Plan = Azure::Compute::Mgmt::V2017_03_30::Models::Plan
-        VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
-        SnapshotList = Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
-        InstanceViewStatus = Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
-        KeyVaultKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
-        Sku = Azure::Compute::Mgmt::V2017_03_30::Models::Sku
-        VirtualHardDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualHardDisk
-        KeyVaultAndKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndKeyReference
-        OSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::OSDisk
-        VirtualMachineScaleSetDataDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
         StorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
         VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetStorageProfile
         WinRMListener = Azure::Compute::Mgmt::V2017_03_30::Models::WinRMListener
@@ -194,6 +161,39 @@ module Azure::Profiles::V2018_03_01
         DiskCreateOption = Azure::Compute::Mgmt::V2017_03_30::Models::DiskCreateOption
         AccessLevel = Azure::Compute::Mgmt::V2017_03_30::Models::AccessLevel
         InstanceViewTypes = Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewTypes
+        VirtualMachineScaleSetManagedDiskParameters = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetManagedDiskParameters
+        VirtualMachineScaleSetOSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSDisk
+        SubResource = Azure::Compute::Mgmt::V2017_03_30::Models::SubResource
+        VirtualMachineScaleSetUpdateOSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSDisk
+        EncryptionSettings = Azure::Compute::Mgmt::V2017_03_30::Models::EncryptionSettings
+        AvailabilitySetListResult = Azure::Compute::Mgmt::V2017_03_30::Models::AvailabilitySetListResult
+        ImageListResult = Azure::Compute::Mgmt::V2017_03_30::Models::ImageListResult
+        VirtualMachineSizeListResult = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineSizeListResult
+        VirtualMachineScaleSetIdentity = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetIdentity
+        RunCommandListResult = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandListResult
+        ResourceSkuCapacity = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapacity
+        RunCommandDocumentBase = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandDocumentBase
+        ResourceSkuCosts = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCosts
+        VirtualMachineExtensionsListResult = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineExtensionsListResult
+        ResourceSkuCapabilities = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapabilities
+        OSDiskImage = Azure::Compute::Mgmt::V2017_03_30::Models::OSDiskImage
+        ResourceSkuRestrictions = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictions
+        RunCommandInput = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandInput
+        ResourceSku = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSku
+        Usage = Azure::Compute::Mgmt::V2017_03_30::Models::Usage
+        ResourceSkusResult = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
+        VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
+        VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
+        Plan = Azure::Compute::Mgmt::V2017_03_30::Models::Plan
+        VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
+        SnapshotList = Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
+        InstanceViewStatus = Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
+        KeyVaultKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
+        Sku = Azure::Compute::Mgmt::V2017_03_30::Models::Sku
+        VirtualHardDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualHardDisk
+        KeyVaultAndKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndKeyReference
+        OSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::OSDisk
+        VirtualMachineScaleSetDataDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
       end
 
       class ComputeManagementClass
@@ -241,105 +241,6 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
-          def virtual_machine_scale_set_managed_disk_parameters
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetManagedDiskParameters
-          end
-          def virtual_machine_scale_set_osdisk
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSDisk
-          end
-          def sub_resource
-            Azure::Compute::Mgmt::V2017_03_30::Models::SubResource
-          end
-          def virtual_machine_scale_set_update_osdisk
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSDisk
-          end
-          def encryption_settings
-            Azure::Compute::Mgmt::V2017_03_30::Models::EncryptionSettings
-          end
-          def availability_set_list_result
-            Azure::Compute::Mgmt::V2017_03_30::Models::AvailabilitySetListResult
-          end
-          def image_list_result
-            Azure::Compute::Mgmt::V2017_03_30::Models::ImageListResult
-          end
-          def virtual_machine_size_list_result
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineSizeListResult
-          end
-          def virtual_machine_scale_set_identity
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetIdentity
-          end
-          def run_command_list_result
-            Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandListResult
-          end
-          def resource_sku_capacity
-            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapacity
-          end
-          def run_command_document_base
-            Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandDocumentBase
-          end
-          def resource_sku_costs
-            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCosts
-          end
-          def virtual_machine_extensions_list_result
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineExtensionsListResult
-          end
-          def resource_sku_capabilities
-            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapabilities
-          end
-          def osdisk_image
-            Azure::Compute::Mgmt::V2017_03_30::Models::OSDiskImage
-          end
-          def resource_sku_restrictions
-            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictions
-          end
-          def run_command_input
-            Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandInput
-          end
-          def resource_sku
-            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSku
-          end
-          def usage
-            Azure::Compute::Mgmt::V2017_03_30::Models::Usage
-          end
-          def resource_skus_result
-            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
-          end
-          def virtual_machine_capture_parameters
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
-          end
-          def virtual_machine_scale_set_osprofile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
-          end
-          def plan
-            Azure::Compute::Mgmt::V2017_03_30::Models::Plan
-          end
-          def virtual_machine_scale_set_update_osprofile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
-          end
-          def snapshot_list
-            Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
-          end
-          def instance_view_status
-            Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
-          end
-          def key_vault_key_reference
-            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
-          end
-          def sku
-            Azure::Compute::Mgmt::V2017_03_30::Models::Sku
-          end
-          def virtual_hard_disk
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualHardDisk
-          end
-          def key_vault_and_key_reference
-            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndKeyReference
-          end
-          def osdisk
-            Azure::Compute::Mgmt::V2017_03_30::Models::OSDisk
-          end
-          def virtual_machine_scale_set_data_disk
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
-          end
           def storage_profile
             Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
           end
@@ -747,6 +648,105 @@ module Azure::Profiles::V2018_03_01
           end
           def instance_view_types
             Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewTypes
+          end
+          def virtual_machine_scale_set_managed_disk_parameters
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetManagedDiskParameters
+          end
+          def virtual_machine_scale_set_osdisk
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSDisk
+          end
+          def sub_resource
+            Azure::Compute::Mgmt::V2017_03_30::Models::SubResource
+          end
+          def virtual_machine_scale_set_update_osdisk
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSDisk
+          end
+          def encryption_settings
+            Azure::Compute::Mgmt::V2017_03_30::Models::EncryptionSettings
+          end
+          def availability_set_list_result
+            Azure::Compute::Mgmt::V2017_03_30::Models::AvailabilitySetListResult
+          end
+          def image_list_result
+            Azure::Compute::Mgmt::V2017_03_30::Models::ImageListResult
+          end
+          def virtual_machine_size_list_result
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineSizeListResult
+          end
+          def virtual_machine_scale_set_identity
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetIdentity
+          end
+          def run_command_list_result
+            Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandListResult
+          end
+          def resource_sku_capacity
+            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapacity
+          end
+          def run_command_document_base
+            Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandDocumentBase
+          end
+          def resource_sku_costs
+            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCosts
+          end
+          def virtual_machine_extensions_list_result
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineExtensionsListResult
+          end
+          def resource_sku_capabilities
+            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapabilities
+          end
+          def osdisk_image
+            Azure::Compute::Mgmt::V2017_03_30::Models::OSDiskImage
+          end
+          def resource_sku_restrictions
+            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictions
+          end
+          def run_command_input
+            Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandInput
+          end
+          def resource_sku
+            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSku
+          end
+          def usage
+            Azure::Compute::Mgmt::V2017_03_30::Models::Usage
+          end
+          def resource_skus_result
+            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
+          end
+          def virtual_machine_capture_parameters
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
+          end
+          def virtual_machine_scale_set_osprofile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
+          end
+          def plan
+            Azure::Compute::Mgmt::V2017_03_30::Models::Plan
+          end
+          def virtual_machine_scale_set_update_osprofile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
+          end
+          def snapshot_list
+            Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
+          end
+          def instance_view_status
+            Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
+          end
+          def key_vault_key_reference
+            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
+          end
+          def sku
+            Azure::Compute::Mgmt::V2017_03_30::Models::Sku
+          end
+          def virtual_hard_disk
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualHardDisk
+          end
+          def key_vault_and_key_reference
+            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndKeyReference
+          end
+          def osdisk
+            Azure::Compute::Mgmt::V2017_03_30::Models::OSDisk
+          end
+          def virtual_machine_scale_set_data_disk
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
           end
         end
       end

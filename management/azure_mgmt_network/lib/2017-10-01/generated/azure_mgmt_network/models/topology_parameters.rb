@@ -29,7 +29,6 @@ module Azure::Network::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TopologyParameters',
           type: {
@@ -37,7 +36,6 @@ module Azure::Network::Mgmt::V2017_10_01
             class_name: 'TopologyParameters',
             model_properties: {
               target_resource_group_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetResourceGroupName',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               target_virtual_network: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetVirtualNetwork',
                 type: {
@@ -54,7 +51,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               target_subnet: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetSubnet',
                 type: {
