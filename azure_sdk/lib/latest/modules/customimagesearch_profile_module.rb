@@ -12,8 +12,8 @@ module Azure::Profiles::Latest
       ErrorResponse = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
       ResponseBase = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Answer
-      SearchResultsAnswer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
       Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+      SearchResultsAnswer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
       Thing = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable
@@ -74,11 +74,11 @@ module Azure::Profiles::Latest
         def answer
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Answer
         end
-        def search_results_answer
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
-        end
         def images
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+        end
+        def search_results_answer
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
         end
         def thing
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Thing
