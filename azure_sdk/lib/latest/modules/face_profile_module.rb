@@ -6,25 +6,26 @@ require 'azure_cognitiveservices_face'
 
 module Azure::Profiles::Latest
   module Face
-    PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
+    LargeFaceListOperations = Azure::CognitiveServices::Face::V1_0::LargeFaceListOperations
+    SnapshotOperations = Azure::CognitiveServices::Face::V1_0::SnapshotOperations
+    Face = Azure::CognitiveServices::Face::V1_0::Face
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
+    PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
     LargePersonGroupPerson = Azure::CognitiveServices::Face::V1_0::LargePersonGroupPerson
     LargePersonGroupOperations = Azure::CognitiveServices::Face::V1_0::LargePersonGroupOperations
-    LargeFaceListOperations = Azure::CognitiveServices::Face::V1_0::LargeFaceListOperations
-    Face = Azure::CognitiveServices::Face::V1_0::Face
-    SnapshotOperations = Azure::CognitiveServices::Face::V1_0::SnapshotOperations
 
     module Models
       OperationStatus = Azure::CognitiveServices::Face::V1_0::Models::OperationStatus
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
+      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       GroupResult = Azure::CognitiveServices::Face::V1_0::Models::GroupResult
-      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       IdentifyRequest = Azure::CognitiveServices::Face::V1_0::Models::IdentifyRequest
       IdentifyCandidate = Azure::CognitiveServices::Face::V1_0::Models::IdentifyCandidate
+      Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       IdentifyResult = Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
       FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
       VerifyFaceToPersonRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToPersonRequest
@@ -60,22 +61,21 @@ module Azure::Profiles::Latest
       LargePersonGroup = Azure::CognitiveServices::Face::V1_0::Models::LargePersonGroup
       GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
       HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
-      Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
       BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+      ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
       Snapshot = Azure::CognitiveServices::Face::V1_0::Models::Snapshot
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
-      ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
-      TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
-      SnapshotObjectType = Azure::CognitiveServices::Face::V1_0::Models::SnapshotObjectType
+      TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       SnapshotApplyMode = Azure::CognitiveServices::Face::V1_0::Models::SnapshotApplyMode
-      FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+      SnapshotObjectType = Azure::CognitiveServices::Face::V1_0::Models::SnapshotObjectType
       OperationStatusType = Azure::CognitiveServices::Face::V1_0::Models::OperationStatusType
+      FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
     end
 
     class FaceDataClass
-      attr_reader :person_group_person, :person_group_operations, :face_list_operations, :large_person_group_person, :large_person_group_operations, :large_face_list_operations, :face, :snapshot_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :large_face_list_operations, :snapshot_operations, :face, :person_group_operations, :face_list_operations, :person_group_person, :large_person_group_person, :large_person_group_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -85,14 +85,14 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @person_group_person = @client_0.person_group_person
+        @large_face_list_operations = @client_0.large_face_list_operations
+        @snapshot_operations = @client_0.snapshot_operations
+        @face = @client_0.face
         @person_group_operations = @client_0.person_group_operations
         @face_list_operations = @client_0.face_list_operations
+        @person_group_person = @client_0.person_group_person
         @large_person_group_person = @client_0.large_person_group_person
         @large_person_group_operations = @client_0.large_person_group_operations
-        @large_face_list_operations = @client_0.large_face_list_operations
-        @face = @client_0.face
-        @snapshot_operations = @client_0.snapshot_operations
 
         @model_classes = ModelClasses.new
       end
@@ -120,6 +120,9 @@ module Azure::Profiles::Latest
         def face_rectangle
           Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
+        def error
+          Azure::CognitiveServices::Face::V1_0::Models::Error
+        end
         def image_url
           Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
         end
@@ -129,14 +132,14 @@ module Azure::Profiles::Latest
         def group_result
           Azure::CognitiveServices::Face::V1_0::Models::GroupResult
         end
-        def error
-          Azure::CognitiveServices::Face::V1_0::Models::Error
-        end
         def identify_request
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyRequest
         end
         def identify_candidate
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyCandidate
+        end
+        def coordinate
+          Azure::CognitiveServices::Face::V1_0::Models::Coordinate
         end
         def identify_result
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
@@ -243,14 +246,14 @@ module Azure::Profiles::Latest
         def hair_color_type
           Azure::CognitiveServices::Face::V1_0::Models::HairColorType
         end
-        def coordinate
-          Azure::CognitiveServices::Face::V1_0::Models::Coordinate
-        end
         def accessory_type
           Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
         end
         def blur_level
           Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+        end
+        def exposure_level
+          Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
         end
         def snapshot
           Azure::CognitiveServices::Face::V1_0::Models::Snapshot
@@ -258,26 +261,23 @@ module Azure::Profiles::Latest
         def noise_level
           Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
         end
-        def exposure_level
-          Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
+        def find_similar_match_mode
+          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
         def training_status_type
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
         end
-        def find_similar_match_mode
-          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
+        def snapshot_apply_mode
+          Azure::CognitiveServices::Face::V1_0::Models::SnapshotApplyMode
         end
         def snapshot_object_type
           Azure::CognitiveServices::Face::V1_0::Models::SnapshotObjectType
         end
-        def snapshot_apply_mode
-          Azure::CognitiveServices::Face::V1_0::Models::SnapshotApplyMode
+        def operation_status_type
+          Azure::CognitiveServices::Face::V1_0::Models::OperationStatusType
         end
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-        end
-        def operation_status_type
-          Azure::CognitiveServices::Face::V1_0::Models::OperationStatusType
         end
       end
     end

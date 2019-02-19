@@ -11,7 +11,6 @@ module Azure::CognitiveServices::Face::V1_0
     module Gender
       Male = "male"
       Female = "female"
-      Genderless = "genderless"
     end
   end
 end
