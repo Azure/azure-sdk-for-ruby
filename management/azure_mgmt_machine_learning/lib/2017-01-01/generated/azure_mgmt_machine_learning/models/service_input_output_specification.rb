@@ -35,7 +35,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceInputOutputSpecification',
           type: {
@@ -43,7 +42,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'ServiceInputOutputSpecification',
             model_properties: {
               title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 type: {
@@ -51,7 +49,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -59,7 +56,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 default_value: 'object',
@@ -68,13 +64,11 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TableSpecificationElementType',
                       type: {

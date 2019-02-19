@@ -23,7 +23,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OutputPort',
           type: {
@@ -31,7 +30,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'OutputPort',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 default_value: 'Dataset',

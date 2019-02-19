@@ -24,7 +24,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RealtimeConfiguration',
           type: {
@@ -32,7 +31,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'RealtimeConfiguration',
             model_properties: {
               max_concurrent_calls: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxConcurrentCalls',
                 constraints: {
