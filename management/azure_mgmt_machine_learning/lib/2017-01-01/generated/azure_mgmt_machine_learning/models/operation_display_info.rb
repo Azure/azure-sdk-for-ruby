@@ -32,7 +32,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationDisplayInfo',
           type: {
@@ -40,7 +39,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'OperationDisplayInfo',
             model_properties: {
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',
@@ -49,7 +47,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operation',
@@ -58,7 +55,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               provider: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
@@ -67,7 +63,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               resource: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resource',
