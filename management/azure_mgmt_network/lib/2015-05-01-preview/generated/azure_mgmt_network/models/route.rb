@@ -46,7 +46,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Route',
           type: {
@@ -54,7 +53,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'Route',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -62,7 +60,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               address_prefix: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.addressPrefix',
                 type: {
@@ -70,7 +67,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               next_hop_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.nextHopType',
                 type: {
@@ -78,7 +74,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               next_hop_ip_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.nextHopIpAddress',
                 type: {
@@ -86,7 +81,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -94,7 +88,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -102,7 +95,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

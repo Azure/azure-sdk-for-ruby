@@ -28,7 +28,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayConnectionDraining',
           type: {
@@ -36,7 +35,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'ApplicationGatewayConnectionDraining',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               drain_timeout_in_sec: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'drainTimeoutInSec',
                 constraints: {

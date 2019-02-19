@@ -29,7 +29,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitServiceProviderProperties',
           type: {
@@ -37,7 +36,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'ExpressRouteCircuitServiceProviderProperties',
             model_properties: {
               service_provider_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceProviderName',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               peering_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'peeringLocation',
                 type: {
@@ -53,7 +50,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               bandwidth_in_mbps: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bandwidthInMbps',
                 type: {

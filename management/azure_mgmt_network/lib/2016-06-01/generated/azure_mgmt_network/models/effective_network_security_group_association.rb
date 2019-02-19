@@ -25,7 +25,6 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EffectiveNetworkSecurityGroupAssociation',
           type: {
@@ -33,7 +32,6 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'EffectiveNetworkSecurityGroupAssociation',
             model_properties: {
               subnet: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnet',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               network_interface: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterface',
                 type: {
