@@ -28,7 +28,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Dimension',
           type: {
@@ -36,7 +35,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'Dimension',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               internal_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalName',
                 type: {

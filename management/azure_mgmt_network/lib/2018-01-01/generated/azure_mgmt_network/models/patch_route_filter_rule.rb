@@ -43,7 +43,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PatchRouteFilterRule',
           type: {
@@ -51,7 +50,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'PatchRouteFilterRule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -59,7 +57,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               access: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.access',
                 type: {
@@ -67,7 +64,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               route_filter_rule_type: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'properties.routeFilterRuleType',
@@ -77,13 +73,11 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               communities: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.communities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -93,7 +87,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -102,7 +95,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -111,7 +103,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',

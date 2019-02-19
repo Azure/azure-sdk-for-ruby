@@ -32,7 +32,6 @@ module Azure::Network::Mgmt::V2017_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionMonitorParameters',
           type: {
@@ -40,7 +39,6 @@ module Azure::Network::Mgmt::V2017_11_01
             class_name: 'ConnectionMonitorParameters',
             model_properties: {
               source: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'source',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               destination: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'destination',
                 type: {
@@ -58,7 +55,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               auto_start: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'autoStart',
                 default_value: true,
@@ -67,7 +63,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               monitoring_interval_in_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'monitoringIntervalInSeconds',
                 default_value: 60,

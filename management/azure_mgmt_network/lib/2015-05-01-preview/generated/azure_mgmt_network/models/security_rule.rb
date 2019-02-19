@@ -22,23 +22,23 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       attr_accessor :protocol
 
       # @return [String] Gets or sets Source Port or Range. Integer or range
-      # between 0 and 65535. Asterix '*' can also be used to match all ports.
+      # between 0 and 65535. Asterisk '*' can also be used to match all ports.
       attr_accessor :source_port_range
 
       # @return [String] Gets or sets Destination Port or Range. Integer or
-      # range between 0 and 65535. Asterix '*' can also be used to match all
+      # range between 0 and 65535. Asterisk '*' can also be used to match all
       # ports.
       attr_accessor :destination_port_range
 
       # @return [String] Gets or sets source address prefix. CIDR or source IP
-      # range. Asterix '*' can also be used to match all source IPs. Default
+      # range. Asterisk '*' can also be used to match all source IPs. Default
       # tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can
       # also be used. If this is an ingress rule, specifies where network
       # traffic originates from.
       attr_accessor :source_address_prefix
 
       # @return [String] Gets or sets destination address prefix. CIDR or
-      # source IP range. Asterix '*' can also be used to match all source IPs.
+      # source IP range. Asterisk '*' can also be used to match all source IPs.
       # Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
       # 'Internet' can also be used.
       attr_accessor :destination_address_prefix
@@ -56,7 +56,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       # @return [SecurityRuleDirection] Gets or sets the direction of the
       # rule.InBound or Outbound. The direction specifies if rule will be
-      # evaluated on incoming or outcoming traffic. Possible values include:
+      # evaluated on incoming or outgoing traffic. Possible values include:
       # 'Inbound', 'Outbound'
       attr_accessor :direction
 
@@ -79,7 +79,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SecurityRule',
           type: {
@@ -87,7 +86,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'SecurityRule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -95,7 +93,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -103,7 +100,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -111,7 +107,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               source_port_range: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourcePortRange',
                 type: {
@@ -119,7 +114,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               destination_port_range: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.destinationPortRange',
                 type: {
@@ -127,7 +121,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               source_address_prefix: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.sourceAddressPrefix',
                 type: {
@@ -135,7 +128,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               destination_address_prefix: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.destinationAddressPrefix',
                 type: {
@@ -143,7 +135,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               access: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.access',
                 type: {
@@ -151,7 +142,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.priority',
                 type: {
@@ -159,7 +149,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               direction: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.direction',
                 type: {
@@ -167,7 +156,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -175,7 +163,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -183,7 +170,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
