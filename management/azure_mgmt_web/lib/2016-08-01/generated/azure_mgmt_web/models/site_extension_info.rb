@@ -81,7 +81,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SiteExtensionInfo',
           type: {
@@ -89,7 +88,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SiteExtensionInfo',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -98,7 +96,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -107,7 +104,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -115,7 +111,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -124,7 +119,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               site_extension_info_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.id',
                 type: {
@@ -132,7 +126,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.title',
                 type: {
@@ -140,7 +133,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               site_extension_info_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.type',
                 type: {
@@ -149,7 +141,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               summary: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.summary',
                 type: {
@@ -157,7 +148,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -165,7 +155,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.version',
                 type: {
@@ -173,7 +162,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               extension_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.extensionUrl',
                 type: {
@@ -181,7 +169,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               project_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.projectUrl',
                 type: {
@@ -189,7 +176,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               icon_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.iconUrl',
                 type: {
@@ -197,7 +183,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               license_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.licenseUrl',
                 type: {
@@ -205,7 +190,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               feed_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.feedUrl',
                 type: {
@@ -213,13 +197,11 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               authors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authors',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -229,7 +211,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               installation_args: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.installationArgs',
                 type: {
@@ -237,7 +218,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               published_date_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publishedDateTime',
                 type: {
@@ -245,7 +225,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               download_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.downloadCount',
                 type: {
@@ -253,7 +232,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               local_is_latest_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.localIsLatestVersion',
                 type: {
@@ -261,7 +239,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               local_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.localPath',
                 type: {
@@ -269,7 +246,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               installed_date_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.installedDateTime',
                 type: {
@@ -277,7 +253,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -285,7 +260,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               comment: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.comment',
                 type: {

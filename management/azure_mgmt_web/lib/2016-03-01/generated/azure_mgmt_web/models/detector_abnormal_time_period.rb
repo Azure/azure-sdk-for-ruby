@@ -12,10 +12,10 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
-      # @return [DateTime] Start time of the corelated event
+      # @return [DateTime] Start time of the correlated event
       attr_accessor :start_time
 
-      # @return [DateTime] End time of the corelated event
+      # @return [DateTime] End time of the correlated event
       attr_accessor :end_time
 
       # @return [String] Message describing the event
@@ -46,7 +46,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DetectorAbnormalTimePeriod',
           type: {
@@ -54,7 +53,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DetectorAbnormalTimePeriod',
             model_properties: {
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -62,7 +60,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -70,7 +67,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -78,7 +74,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'source',
                 type: {
@@ -86,7 +81,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'priority',
                 type: {
@@ -94,19 +88,16 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               meta_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metaData',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'NameValuePairElementType',
                             type: {
@@ -119,7 +110,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -128,13 +118,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               solutions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'solutions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SolutionElementType',
                       type: {

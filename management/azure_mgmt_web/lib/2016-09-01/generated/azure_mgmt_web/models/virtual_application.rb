@@ -33,7 +33,6 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualApplication',
           type: {
@@ -41,7 +40,6 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'VirtualApplication',
             model_properties: {
               virtual_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualPath',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               physical_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'physicalPath',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               preload_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'preloadEnabled',
                 type: {
@@ -65,13 +61,11 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               virtual_directories: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualDirectories',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualDirectoryElementType',
                       type: {

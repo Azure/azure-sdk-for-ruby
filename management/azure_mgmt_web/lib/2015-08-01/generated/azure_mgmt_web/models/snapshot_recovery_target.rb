@@ -30,7 +30,6 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SnapshotRecoveryTarget',
           type: {
@@ -38,7 +37,6 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'SnapshotRecoveryTarget',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -46,7 +44,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

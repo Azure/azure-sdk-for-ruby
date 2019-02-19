@@ -22,16 +22,16 @@ module Azure::Web::Mgmt::V2016_08_01
       # <code>ActionHostName</code>.
       attr_accessor :reroute_percentage
 
-      # @return [Float] In auto ramp up scenario this is the step to to
-      # add/remove from <code>ReroutePercentage</code> until it reaches
+      # @return [Float] In auto ramp up scenario this is the step to add/remove
+      # from <code>ReroutePercentage</code> until it reaches
       # <code>MinReroutePercentage</code> or <code>MaxReroutePercentage</code>.
-      # Site metrics are checked every N minutes specificed in
+      # Site metrics are checked every N minutes specified in
       # <code>ChangeIntervalInMinutes</code>.
       # Custom decision algorithm can be provided in TiPCallback site extension
       # which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       attr_accessor :change_step
 
-      # @return [Integer] Specifies interval in mimuntes to reevaluate
+      # @return [Integer] Specifies interval in minutes to reevaluate
       # ReroutePercentage.
       attr_accessor :change_interval_in_minutes
 
@@ -61,7 +61,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RampUpRule',
           type: {
@@ -69,7 +68,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'RampUpRule',
             model_properties: {
               action_host_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionHostName',
                 type: {
@@ -77,7 +75,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               reroute_percentage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reroutePercentage',
                 type: {
@@ -85,7 +82,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               change_step: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'changeStep',
                 type: {
@@ -93,7 +89,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               change_interval_in_minutes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'changeIntervalInMinutes',
                 type: {
@@ -101,7 +96,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               min_reroute_percentage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'minReroutePercentage',
                 type: {
@@ -109,7 +103,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               max_reroute_percentage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxReroutePercentage',
                 type: {
@@ -117,7 +110,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               change_decision_callback_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'changeDecisionCallbackUrl',
                 type: {
@@ -125,7 +117,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

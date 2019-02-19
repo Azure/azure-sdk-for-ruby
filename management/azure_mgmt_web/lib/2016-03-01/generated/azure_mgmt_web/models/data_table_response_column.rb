@@ -28,7 +28,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DataTableResponseColumn',
           type: {
@@ -36,7 +35,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DataTableResponseColumn',
             model_properties: {
               column_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'columnName',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               data_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataType',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               column_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'columnType',
                 type: {

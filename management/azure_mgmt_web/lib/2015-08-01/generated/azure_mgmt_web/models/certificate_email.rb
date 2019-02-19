@@ -25,7 +25,6 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateEmail',
           type: {
@@ -33,7 +32,6 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'CertificateEmail',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -42,7 +40,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,7 +48,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -59,7 +55,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -68,7 +63,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               email_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.emailId',
                 type: {
@@ -76,7 +70,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               time_stamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timeStamp',
                 type: {

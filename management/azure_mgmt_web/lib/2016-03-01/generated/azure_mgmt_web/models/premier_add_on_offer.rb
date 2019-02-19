@@ -55,7 +55,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PremierAddOnOffer',
           type: {
@@ -63,7 +62,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'PremierAddOnOffer',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -72,7 +70,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -81,7 +78,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -89,7 +85,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -98,7 +93,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sku',
                 type: {
@@ -106,7 +100,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               product: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.product',
                 type: {
@@ -114,7 +107,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               vendor: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vendor',
                 type: {
@@ -122,7 +114,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               premier_add_on_offer_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -130,7 +121,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               promo_code_required: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.promoCodeRequired',
                 type: {
@@ -138,7 +128,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               quota: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.quota',
                 type: {
@@ -146,7 +135,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               web_hosting_plan_restrictions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.webHostingPlanRestrictions',
                 type: {
@@ -155,7 +143,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               privacy_policy_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privacyPolicyUrl',
                 type: {
@@ -163,7 +150,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               legal_terms_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.legalTermsUrl',
                 type: {
@@ -171,7 +157,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               marketplace_publisher: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.marketplacePublisher',
                 type: {
@@ -179,7 +164,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               marketplace_offer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.marketplaceOffer',
                 type: {

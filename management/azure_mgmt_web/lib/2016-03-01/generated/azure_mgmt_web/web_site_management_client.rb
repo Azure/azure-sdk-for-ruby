@@ -24,16 +24,15 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [String] API Version
     attr_reader :api_version
 
-    # @return [String] The preferred language for the response.
+    # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] The retry timeout in seconds for Long Running
-    # Operations. Default value is 30.
+    # @return [Integer] Gets or sets the retry timeout in seconds for Long
+    # Running Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] Whether a unique x-ms-client-request-id should be
-    # generated. When set to true a unique x-ms-client-request-id value is
-    # generated and included in each request. Default is true.
+    # @return [Boolean] When set to true a unique x-ms-client-request-id value
+    # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [Certificates] certificates
@@ -131,9 +130,6 @@ module Azure::Web::Mgmt::V2016_03_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -153,8 +149,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [User] operation results.
     #
-    def get_publishing_user(custom_headers:nil)
-      response = get_publishing_user_async(custom_headers:custom_headers).value!
+    def get_publishing_user(custom_headers = nil)
+      response = get_publishing_user_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -168,8 +164,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_publishing_user_with_http_info(custom_headers:nil)
-      get_publishing_user_async(custom_headers:custom_headers).value!
+    def get_publishing_user_with_http_info(custom_headers = nil)
+      get_publishing_user_async(custom_headers).value!
     end
 
     #
@@ -182,12 +178,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_publishing_user_async(custom_headers:nil)
+    def get_publishing_user_async(custom_headers = nil)
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -242,8 +237,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [User] operation results.
     #
-    def update_publishing_user(user_details, custom_headers:nil)
-      response = update_publishing_user_async(user_details, custom_headers:custom_headers).value!
+    def update_publishing_user(user_details, custom_headers = nil)
+      response = update_publishing_user_async(user_details, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -258,8 +253,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_publishing_user_with_http_info(user_details, custom_headers:nil)
-      update_publishing_user_async(user_details, custom_headers:custom_headers).value!
+    def update_publishing_user_with_http_info(user_details, custom_headers = nil)
+      update_publishing_user_async(user_details, custom_headers).value!
     end
 
     #
@@ -273,17 +268,18 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_publishing_user_async(user_details, custom_headers:nil)
+    def update_publishing_user_async(user_details, custom_headers = nil)
       fail ArgumentError, 'user_details is nil' if user_details.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::User.mapper()
@@ -340,8 +336,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<SourceControl>] operation results.
     #
-    def list_source_controls(custom_headers:nil)
-      first_page = list_source_controls_as_lazy(custom_headers:custom_headers)
+    def list_source_controls(custom_headers = nil)
+      first_page = list_source_controls_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -355,8 +351,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_source_controls_with_http_info(custom_headers:nil)
-      list_source_controls_async(custom_headers:custom_headers).value!
+    def list_source_controls_with_http_info(custom_headers = nil)
+      list_source_controls_async(custom_headers).value!
     end
 
     #
@@ -369,12 +365,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_source_controls_async(custom_headers:nil)
+    def list_source_controls_async(custom_headers = nil)
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -429,8 +424,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [SourceControl] operation results.
     #
-    def get_source_control(source_control_type, custom_headers:nil)
-      response = get_source_control_async(source_control_type, custom_headers:custom_headers).value!
+    def get_source_control(source_control_type, custom_headers = nil)
+      response = get_source_control_async(source_control_type, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -445,8 +440,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_source_control_with_http_info(source_control_type, custom_headers:nil)
-      get_source_control_async(source_control_type, custom_headers:custom_headers).value!
+    def get_source_control_with_http_info(source_control_type, custom_headers = nil)
+      get_source_control_async(source_control_type, custom_headers).value!
     end
 
     #
@@ -460,13 +455,12 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_source_control_async(source_control_type, custom_headers:nil)
+    def get_source_control_async(source_control_type, custom_headers = nil)
       fail ArgumentError, 'source_control_type is nil' if source_control_type.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -523,8 +517,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [SourceControl] operation results.
     #
-    def update_source_control(source_control_type, request_message, custom_headers:nil)
-      response = update_source_control_async(source_control_type, request_message, custom_headers:custom_headers).value!
+    def update_source_control(source_control_type, request_message, custom_headers = nil)
+      response = update_source_control_async(source_control_type, request_message, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -540,8 +534,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_source_control_with_http_info(source_control_type, request_message, custom_headers:nil)
-      update_source_control_async(source_control_type, request_message, custom_headers:custom_headers).value!
+    def update_source_control_with_http_info(source_control_type, request_message, custom_headers = nil)
+      update_source_control_async(source_control_type, request_message, custom_headers).value!
     end
 
     #
@@ -556,18 +550,19 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_source_control_async(source_control_type, request_message, custom_headers:nil)
+    def update_source_control_async(source_control_type, request_message, custom_headers = nil)
       fail ArgumentError, 'source_control_type is nil' if source_control_type.nil?
       fail ArgumentError, 'request_message is nil' if request_message.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControl.mapper()
@@ -631,8 +626,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [ResourceNameAvailability] operation results.
     #
-    def check_name_availability(name, type, is_fqdn:nil, custom_headers:nil)
-      response = check_name_availability_async(name, type, is_fqdn:is_fqdn, custom_headers:custom_headers).value!
+    def check_name_availability(name, type, is_fqdn = nil, custom_headers = nil)
+      response = check_name_availability_async(name, type, is_fqdn, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -652,8 +647,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(name, type, is_fqdn:nil, custom_headers:nil)
-      check_name_availability_async(name, type, is_fqdn:is_fqdn, custom_headers:custom_headers).value!
+    def check_name_availability_with_http_info(name, type, is_fqdn = nil, custom_headers = nil)
+      check_name_availability_async(name, type, is_fqdn, custom_headers).value!
     end
 
     #
@@ -672,7 +667,7 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(name, type, is_fqdn:nil, custom_headers:nil)
+    def check_name_availability_async(name, type, is_fqdn = nil, custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'name is nil' if name.nil?
@@ -686,11 +681,12 @@ module Azure::Web::Mgmt::V2016_03_01
       end
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailabilityRequest.mapper()
@@ -748,8 +744,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DeploymentLocations] operation results.
     #
-    def get_subscription_deployment_locations(custom_headers:nil)
-      response = get_subscription_deployment_locations_async(custom_headers:custom_headers).value!
+    def get_subscription_deployment_locations(custom_headers = nil)
+      response = get_subscription_deployment_locations_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -763,8 +759,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_subscription_deployment_locations_with_http_info(custom_headers:nil)
-      get_subscription_deployment_locations_async(custom_headers:custom_headers).value!
+    def get_subscription_deployment_locations_with_http_info(custom_headers = nil)
+      get_subscription_deployment_locations_async(custom_headers).value!
     end
 
     #
@@ -777,13 +773,12 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_subscription_deployment_locations_async(custom_headers:nil)
+    def get_subscription_deployment_locations_async(custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -843,8 +838,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<GeoRegion>] operation results.
     #
-    def list_geo_regions(sku:nil, linux_workers_enabled:nil, custom_headers:nil)
-      first_page = list_geo_regions_as_lazy(sku:sku, linux_workers_enabled:linux_workers_enabled, custom_headers:custom_headers)
+    def list_geo_regions(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
+      first_page = list_geo_regions_as_lazy(sku, linux_workers_enabled, custom_headers)
       first_page.get_all_items
     end
 
@@ -863,8 +858,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_geo_regions_with_http_info(sku:nil, linux_workers_enabled:nil, custom_headers:nil)
-      list_geo_regions_async(sku:sku, linux_workers_enabled:linux_workers_enabled, custom_headers:custom_headers).value!
+    def list_geo_regions_with_http_info(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
+      list_geo_regions_async(sku, linux_workers_enabled, custom_headers).value!
     end
 
     #
@@ -882,13 +877,12 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_geo_regions_async(sku:nil, linux_workers_enabled:nil, custom_headers:nil)
+    def list_geo_regions_async(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -944,8 +938,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<Identifier>] operation results.
     #
-    def list_site_identifiers_assigned_to_host_name(name_identifier, custom_headers:nil)
-      first_page = list_site_identifiers_assigned_to_host_name_as_lazy(name_identifier, custom_headers:custom_headers)
+    def list_site_identifiers_assigned_to_host_name(name_identifier, custom_headers = nil)
+      first_page = list_site_identifiers_assigned_to_host_name_as_lazy(name_identifier, custom_headers)
       first_page.get_all_items
     end
 
@@ -960,8 +954,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_identifiers_assigned_to_host_name_with_http_info(name_identifier, custom_headers:nil)
-      list_site_identifiers_assigned_to_host_name_async(name_identifier, custom_headers:custom_headers).value!
+    def list_site_identifiers_assigned_to_host_name_with_http_info(name_identifier, custom_headers = nil)
+      list_site_identifiers_assigned_to_host_name_async(name_identifier, custom_headers).value!
     end
 
     #
@@ -975,18 +969,19 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_identifiers_assigned_to_host_name_async(name_identifier, custom_headers:nil)
+    def list_site_identifiers_assigned_to_host_name_async(name_identifier, custom_headers = nil)
       fail ArgumentError, 'name_identifier is nil' if name_identifier.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::NameIdentifier.mapper()
@@ -1044,8 +1039,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<PremierAddOnOffer>] operation results.
     #
-    def list_premier_add_on_offers(custom_headers:nil)
-      first_page = list_premier_add_on_offers_as_lazy(custom_headers:custom_headers)
+    def list_premier_add_on_offers(custom_headers = nil)
+      first_page = list_premier_add_on_offers_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -1059,8 +1054,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_premier_add_on_offers_with_http_info(custom_headers:nil)
-      list_premier_add_on_offers_async(custom_headers:custom_headers).value!
+    def list_premier_add_on_offers_with_http_info(custom_headers = nil)
+      list_premier_add_on_offers_async(custom_headers).value!
     end
 
     #
@@ -1073,13 +1068,12 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_premier_add_on_offers_async(custom_headers:nil)
+    def list_premier_add_on_offers_async(custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1134,8 +1128,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [SkuInfos] operation results.
     #
-    def list_skus(custom_headers:nil)
-      response = list_skus_async(custom_headers:custom_headers).value!
+    def list_skus(custom_headers = nil)
+      response = list_skus_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1149,8 +1143,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_skus_with_http_info(custom_headers:nil)
-      list_skus_async(custom_headers:custom_headers).value!
+    def list_skus_with_http_info(custom_headers = nil)
+      list_skus_async(custom_headers).value!
     end
 
     #
@@ -1163,13 +1157,12 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_skus_async(custom_headers:nil)
+    def list_skus_async(custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1227,8 +1220,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [VnetValidationFailureDetails] operation results.
     #
-    def verify_hosting_environment_vnet(parameters, custom_headers:nil)
-      response = verify_hosting_environment_vnet_async(parameters, custom_headers:custom_headers).value!
+    def verify_hosting_environment_vnet(parameters, custom_headers = nil)
+      response = verify_hosting_environment_vnet_async(parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1245,8 +1238,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def verify_hosting_environment_vnet_with_http_info(parameters, custom_headers:nil)
-      verify_hosting_environment_vnet_async(parameters, custom_headers:custom_headers).value!
+    def verify_hosting_environment_vnet_with_http_info(parameters, custom_headers = nil)
+      verify_hosting_environment_vnet_async(parameters, custom_headers).value!
     end
 
     #
@@ -1262,18 +1255,19 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def verify_hosting_environment_vnet_async(parameters, custom_headers:nil)
+    def verify_hosting_environment_vnet_async(parameters, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::VnetParameters.mapper()
@@ -1334,8 +1328,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # will be added to the HTTP request.
     #
     #
-    def move(resource_group_name, move_resource_envelope, custom_headers:nil)
-      response = move_async(resource_group_name, move_resource_envelope, custom_headers:custom_headers).value!
+    def move(resource_group_name, move_resource_envelope, custom_headers = nil)
+      response = move_async(resource_group_name, move_resource_envelope, custom_headers).value!
       nil
     end
 
@@ -1353,8 +1347,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def move_with_http_info(resource_group_name, move_resource_envelope, custom_headers:nil)
-      move_async(resource_group_name, move_resource_envelope, custom_headers:custom_headers).value!
+    def move_with_http_info(resource_group_name, move_resource_envelope, custom_headers = nil)
+      move_async(resource_group_name, move_resource_envelope, custom_headers).value!
     end
 
     #
@@ -1371,22 +1365,20 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def move_async(resource_group_name, move_resource_envelope, custom_headers:nil)
+    def move_async(resource_group_name, move_resource_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope.mapper()
@@ -1438,8 +1430,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [ValidateResponse] operation results.
     #
-    def validate(resource_group_name, validate_request, custom_headers:nil)
-      response = validate_async(resource_group_name, validate_request, custom_headers:custom_headers).value!
+    def validate(resource_group_name, validate_request, custom_headers = nil)
+      response = validate_async(resource_group_name, validate_request, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1457,8 +1449,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def validate_with_http_info(resource_group_name, validate_request, custom_headers:nil)
-      validate_async(resource_group_name, validate_request, custom_headers:custom_headers).value!
+    def validate_with_http_info(resource_group_name, validate_request, custom_headers = nil)
+      validate_async(resource_group_name, validate_request, custom_headers).value!
     end
 
     #
@@ -1475,22 +1467,20 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def validate_async(resource_group_name, validate_request, custom_headers:nil)
+    def validate_async(resource_group_name, validate_request, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'validate_request is nil' if validate_request.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ValidateRequest.mapper()
@@ -1551,8 +1541,8 @@ module Azure::Web::Mgmt::V2016_03_01
     # will be added to the HTTP request.
     #
     #
-    def validate_move(resource_group_name, move_resource_envelope, custom_headers:nil)
-      response = validate_move_async(resource_group_name, move_resource_envelope, custom_headers:custom_headers).value!
+    def validate_move(resource_group_name, move_resource_envelope, custom_headers = nil)
+      response = validate_move_async(resource_group_name, move_resource_envelope, custom_headers).value!
       nil
     end
 
@@ -1570,8 +1560,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def validate_move_with_http_info(resource_group_name, move_resource_envelope, custom_headers:nil)
-      validate_move_async(resource_group_name, move_resource_envelope, custom_headers:custom_headers).value!
+    def validate_move_with_http_info(resource_group_name, move_resource_envelope, custom_headers = nil)
+      validate_move_async(resource_group_name, move_resource_envelope, custom_headers).value!
     end
 
     #
@@ -1588,22 +1578,20 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def validate_move_async(resource_group_name, move_resource_envelope, custom_headers:nil)
+    def validate_move_async(resource_group_name, move_resource_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope.mapper()
@@ -1653,8 +1641,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [SourceControlCollection] operation results.
     #
-    def list_source_controls_next(next_page_link, custom_headers:nil)
-      response = list_source_controls_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_source_controls_next(next_page_link, custom_headers = nil)
+      response = list_source_controls_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1670,8 +1658,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_source_controls_next_with_http_info(next_page_link, custom_headers:nil)
-      list_source_controls_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_source_controls_next_with_http_info(next_page_link, custom_headers = nil)
+      list_source_controls_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1686,12 +1674,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_source_controls_next_async(next_page_link, custom_headers:nil)
+    def list_source_controls_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1747,8 +1734,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [GeoRegionCollection] operation results.
     #
-    def list_geo_regions_next(next_page_link, custom_headers:nil)
-      response = list_geo_regions_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_geo_regions_next(next_page_link, custom_headers = nil)
+      response = list_geo_regions_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1764,8 +1751,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_geo_regions_next_with_http_info(next_page_link, custom_headers:nil)
-      list_geo_regions_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_geo_regions_next_with_http_info(next_page_link, custom_headers = nil)
+      list_geo_regions_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1780,12 +1767,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_geo_regions_next_async(next_page_link, custom_headers:nil)
+    def list_geo_regions_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1841,8 +1827,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [IdentifierCollection] operation results.
     #
-    def list_site_identifiers_assigned_to_host_name_next(next_page_link, custom_headers:nil)
-      response = list_site_identifiers_assigned_to_host_name_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_identifiers_assigned_to_host_name_next(next_page_link, custom_headers = nil)
+      response = list_site_identifiers_assigned_to_host_name_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1858,8 +1844,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_identifiers_assigned_to_host_name_next_with_http_info(next_page_link, custom_headers:nil)
-      list_site_identifiers_assigned_to_host_name_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_identifiers_assigned_to_host_name_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_identifiers_assigned_to_host_name_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1874,12 +1860,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_identifiers_assigned_to_host_name_next_async(next_page_link, custom_headers:nil)
+    def list_site_identifiers_assigned_to_host_name_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1935,8 +1920,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [PremierAddOnOfferCollection] operation results.
     #
-    def list_premier_add_on_offers_next(next_page_link, custom_headers:nil)
-      response = list_premier_add_on_offers_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_premier_add_on_offers_next(next_page_link, custom_headers = nil)
+      response = list_premier_add_on_offers_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1952,8 +1937,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_premier_add_on_offers_next_with_http_info(next_page_link, custom_headers:nil)
-      list_premier_add_on_offers_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_premier_add_on_offers_next_with_http_info(next_page_link, custom_headers = nil)
+      list_premier_add_on_offers_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1968,12 +1953,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_premier_add_on_offers_next_async(next_page_link, custom_headers:nil)
+    def list_premier_add_on_offers_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2027,8 +2011,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [SourceControlCollection] operation results.
     #
-    def list_source_controls_as_lazy(custom_headers:nil)
-      first_page = list_source_controls_as_lazy_as_lazy(custom_headers:custom_headers)
+    def list_source_controls_as_lazy(custom_headers = nil)
+      first_page = list_source_controls_as_lazy_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -2042,8 +2026,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_source_controls_as_lazy_with_http_info(custom_headers:nil)
-      list_source_controls_as_lazy_async(custom_headers:custom_headers).value!
+    def list_source_controls_as_lazy_with_http_info(custom_headers = nil)
+      list_source_controls_as_lazy_async(custom_headers).value!
     end
 
     #
@@ -2056,11 +2040,10 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_source_controls_as_lazy_async(custom_headers:nil)
+    def list_source_controls_as_lazy_async(custom_headers = nil)
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
       path_template = 'providers/Microsoft.Web/sourcecontrols'
 
       request_url = @base_url || self.base_url
@@ -2114,8 +2097,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [GeoRegionCollection] operation results.
     #
-    def list_geo_regions_as_lazy(sku:nil, linux_workers_enabled:nil, custom_headers:nil)
-      first_page = list_geo_regions_as_lazy_as_lazy(sku:sku, linux_workers_enabled:linux_workers_enabled, custom_headers:custom_headers)
+    def list_geo_regions_as_lazy(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
+      first_page = list_geo_regions_as_lazy_as_lazy(sku, linux_workers_enabled, custom_headers)
       first_page.get_all_items
     end
 
@@ -2134,8 +2117,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_geo_regions_as_lazy_with_http_info(sku:nil, linux_workers_enabled:nil, custom_headers:nil)
-      list_geo_regions_as_lazy_async(sku:sku, linux_workers_enabled:linux_workers_enabled, custom_headers:custom_headers).value!
+    def list_geo_regions_as_lazy_with_http_info(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
+      list_geo_regions_as_lazy_async(sku, linux_workers_enabled, custom_headers).value!
     end
 
     #
@@ -2153,11 +2136,10 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_geo_regions_as_lazy_async(sku:nil, linux_workers_enabled:nil, custom_headers:nil)
+    def list_geo_regions_as_lazy_async(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions'
 
       request_url = @base_url || self.base_url
@@ -2208,8 +2190,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [IdentifierCollection] operation results.
     #
-    def list_site_identifiers_assigned_to_host_name_as_lazy(name_identifier, custom_headers:nil)
-      first_page = list_site_identifiers_assigned_to_host_name_as_lazy_as_lazy(name_identifier, custom_headers:custom_headers)
+    def list_site_identifiers_assigned_to_host_name_as_lazy(name_identifier, custom_headers = nil)
+      first_page = list_site_identifiers_assigned_to_host_name_as_lazy_as_lazy(name_identifier, custom_headers)
       first_page.get_all_items
     end
 
@@ -2224,8 +2206,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_identifiers_assigned_to_host_name_as_lazy_with_http_info(name_identifier, custom_headers:nil)
-      list_site_identifiers_assigned_to_host_name_as_lazy_async(name_identifier, custom_headers:custom_headers).value!
+    def list_site_identifiers_assigned_to_host_name_as_lazy_with_http_info(name_identifier, custom_headers = nil)
+      list_site_identifiers_assigned_to_host_name_as_lazy_async(name_identifier, custom_headers).value!
     end
 
     #
@@ -2239,11 +2221,12 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_identifiers_assigned_to_host_name_as_lazy_async(name_identifier, custom_headers:nil)
+    def list_site_identifiers_assigned_to_host_name_as_lazy_async(name_identifier, custom_headers = nil)
       fail ArgumentError, 'name_identifier is nil' if name_identifier.nil?
 
 
       request_headers = {}
+
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
@@ -2300,8 +2283,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [PremierAddOnOfferCollection] operation results.
     #
-    def list_premier_add_on_offers_as_lazy(custom_headers:nil)
-      first_page = list_premier_add_on_offers_as_lazy_as_lazy(custom_headers:custom_headers)
+    def list_premier_add_on_offers_as_lazy(custom_headers = nil)
+      first_page = list_premier_add_on_offers_as_lazy_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -2315,8 +2298,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_premier_add_on_offers_as_lazy_with_http_info(custom_headers:nil)
-      list_premier_add_on_offers_as_lazy_async(custom_headers:custom_headers).value!
+    def list_premier_add_on_offers_as_lazy_with_http_info(custom_headers = nil)
+      list_premier_add_on_offers_as_lazy_async(custom_headers).value!
     end
 
     #
@@ -2329,11 +2312,10 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_premier_add_on_offers_as_lazy_async(custom_headers:nil)
+    def list_premier_add_on_offers_as_lazy_async(custom_headers = nil)
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers'
 
       request_url = @base_url || self.base_url
@@ -2379,7 +2361,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_web'
-        sdk_information = "#{sdk_information}/0.17.2"
+        if defined? Azure::Web::Mgmt::V2016_03_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Web::Mgmt::V2016_03_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
