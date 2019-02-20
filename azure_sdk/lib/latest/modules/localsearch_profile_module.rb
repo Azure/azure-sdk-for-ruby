@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     Local = Azure::CognitiveServices::LocalSearch::V1_0::Local
 
     module Models
+      GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
       ErrorSubCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
       ErrorResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
       SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
@@ -28,13 +29,12 @@ module Azure::Profiles::Latest
       CreativeWork = Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
       SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
+      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
       ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
-      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
       Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
-      GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
     end
 
     class LocalSearchDataClass
@@ -67,6 +67,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def geo_coordinates
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
+        end
         def error_sub_code
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
         end
@@ -124,6 +127,9 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
         end
+        def action
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
+        end
         def error_code
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
         end
@@ -133,17 +139,11 @@ module Azure::Profiles::Latest
         def response_format
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
         end
-        def action
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
-        end
         def entity_scenario
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
         end
         def error
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
-        end
-        def geo_coordinates
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
         end
       end
     end

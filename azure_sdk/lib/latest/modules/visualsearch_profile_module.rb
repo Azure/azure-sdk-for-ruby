@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
+      Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
+      ImageObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
+      MediaObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
       ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
       CropArea = Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
@@ -46,16 +49,13 @@ module Azure::Profiles::Latest
       Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
-      Person = Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
+      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
       ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
-      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+      Person = Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
-      Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
-      ImageObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
-      MediaObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
     end
 
     class VisualSearchDataClass
@@ -88,6 +88,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def query
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
+        end
+        def image_object
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
+        end
+        def media_object
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
+        end
         def error_sub_code
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
         end
@@ -199,8 +208,8 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
         end
-        def person
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
+        def action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
         end
         def rating
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
@@ -214,20 +223,11 @@ module Azure::Profiles::Latest
         def item_availability
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
         end
-        def action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+        def person
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
         end
         def safe_search
           Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
-        end
-        def query
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
-        end
-        def image_object
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
-        end
-        def media_object
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
         end
       end
     end
