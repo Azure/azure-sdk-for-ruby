@@ -24,53 +24,44 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Retrieves the details of a vpn connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the vpn connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [VpnConnection] operation results.
     #
-    def get(resource_group_name, gateway_name, connection_name, custom_headers = nil)
-      response = get_async(resource_group_name, gateway_name, connection_name, custom_headers).value!
+    def get(gateway_name, custom_headers = nil)
+      response = get_async(gateway_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieves the details of a vpn connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the vpn connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, gateway_name, connection_name, custom_headers = nil)
-      get_async(resource_group_name, gateway_name, connection_name, custom_headers).value!
+    def get_with_http_info(gateway_name, custom_headers = nil)
+      get_async(gateway_name, custom_headers).value!
     end
 
     #
     # Retrieves the details of a vpn connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the vpn connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, gateway_name, connection_name, custom_headers = nil)
+    def get_async(gateway_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
-      fail ArgumentError, 'connection_name is nil' if connection_name.nil?
+      fail ArgumentError, '@client.connection_name is nil' if @client.connection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -85,7 +76,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'gatewayName' => gateway_name,'connectionName' => connection_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'gatewayName' => gateway_name,'connectionName' => @client.connection_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -123,10 +114,7 @@ module Azure::Network::Mgmt::V2018_12_01
     # Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
     # updates the existing connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param vpn_connection_parameters [VpnConnection] Parameters supplied to
     # create or Update a VPN Connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -134,16 +122,13 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [VpnConnection] operation results.
     #
-    def create_or_update(resource_group_name, gateway_name, connection_name, vpn_connection_parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, gateway_name, connection_name, vpn_connection_parameters, custom_headers).value!
+    def create_or_update(gateway_name, vpn_connection_parameters, custom_headers = nil)
+      response = create_or_update_async(gateway_name, vpn_connection_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param vpn_connection_parameters [VpnConnection] Parameters supplied to
     # create or Update a VPN Connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -152,9 +137,9 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, gateway_name, connection_name, vpn_connection_parameters, custom_headers = nil)
+    def create_or_update_async(gateway_name, vpn_connection_parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, gateway_name, connection_name, vpn_connection_parameters, custom_headers)
+      promise = begin_create_or_update_async(gateway_name, vpn_connection_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -173,32 +158,26 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Deletes a vpn connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, gateway_name, connection_name, custom_headers = nil)
-      response = delete_async(resource_group_name, gateway_name, connection_name, custom_headers).value!
+    def delete(gateway_name, custom_headers = nil)
+      response = delete_async(gateway_name, custom_headers).value!
       nil
     end
 
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, gateway_name, connection_name, custom_headers = nil)
+    def delete_async(gateway_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, gateway_name, connection_name, custom_headers)
+      promise = begin_delete_async(gateway_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -215,48 +194,42 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Retrieves all vpn connections for a particular virtual wan vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<VpnConnection>] operation results.
     #
-    def list_by_vpn_gateway(resource_group_name, gateway_name, custom_headers = nil)
-      first_page = list_by_vpn_gateway_as_lazy(resource_group_name, gateway_name, custom_headers)
+    def list_by_vpn_gateway(gateway_name, custom_headers = nil)
+      first_page = list_by_vpn_gateway_as_lazy(gateway_name, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Retrieves all vpn connections for a particular virtual wan vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_vpn_gateway_with_http_info(resource_group_name, gateway_name, custom_headers = nil)
-      list_by_vpn_gateway_async(resource_group_name, gateway_name, custom_headers).value!
+    def list_by_vpn_gateway_with_http_info(gateway_name, custom_headers = nil)
+      list_by_vpn_gateway_async(gateway_name, custom_headers).value!
     end
 
     #
     # Retrieves all vpn connections for a particular virtual wan vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_vpn_gateway_async(resource_group_name, gateway_name, custom_headers = nil)
+    def list_by_vpn_gateway_async(gateway_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -272,7 +245,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'gatewayName' => gateway_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'gatewayName' => gateway_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -310,10 +283,7 @@ module Azure::Network::Mgmt::V2018_12_01
     # Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
     # updates the existing connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param vpn_connection_parameters [VpnConnection] Parameters supplied to
     # create or Update a VPN Connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -321,8 +291,8 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [VpnConnection] operation results.
     #
-    def begin_create_or_update(resource_group_name, gateway_name, connection_name, vpn_connection_parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, gateway_name, connection_name, vpn_connection_parameters, custom_headers).value!
+    def begin_create_or_update(gateway_name, vpn_connection_parameters, custom_headers = nil)
+      response = begin_create_or_update_async(gateway_name, vpn_connection_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -330,10 +300,7 @@ module Azure::Network::Mgmt::V2018_12_01
     # Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
     # updates the existing connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param vpn_connection_parameters [VpnConnection] Parameters supplied to
     # create or Update a VPN Connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -341,18 +308,15 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, gateway_name, connection_name, vpn_connection_parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, gateway_name, connection_name, vpn_connection_parameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(gateway_name, vpn_connection_parameters, custom_headers = nil)
+      begin_create_or_update_async(gateway_name, vpn_connection_parameters, custom_headers).value!
     end
 
     #
     # Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
     # updates the existing connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param vpn_connection_parameters [VpnConnection] Parameters supplied to
     # create or Update a VPN Connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -360,11 +324,11 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, gateway_name, connection_name, vpn_connection_parameters, custom_headers = nil)
+    def begin_create_or_update_async(gateway_name, vpn_connection_parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
-      fail ArgumentError, 'connection_name is nil' if connection_name.nil?
+      fail ArgumentError, '@client.connection_name is nil' if @client.connection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'vpn_connection_parameters is nil' if vpn_connection_parameters.nil?
 
@@ -388,7 +352,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'gatewayName' => gateway_name,'connectionName' => connection_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'gatewayName' => gateway_name,'connectionName' => @client.connection_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -436,52 +400,43 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Deletes a vpn connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, gateway_name, connection_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, gateway_name, connection_name, custom_headers).value!
+    def begin_delete(gateway_name, custom_headers = nil)
+      response = begin_delete_async(gateway_name, custom_headers).value!
       nil
     end
 
     #
     # Deletes a vpn connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, gateway_name, connection_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, gateway_name, connection_name, custom_headers).value!
+    def begin_delete_with_http_info(gateway_name, custom_headers = nil)
+      begin_delete_async(gateway_name, custom_headers).value!
     end
 
     #
     # Deletes a vpn connection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
-    # @param connection_name [String] The name of the connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, gateway_name, connection_name, custom_headers = nil)
+    def begin_delete_async(gateway_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
-      fail ArgumentError, 'connection_name is nil' if connection_name.nil?
+      fail ArgumentError, '@client.connection_name is nil' if @client.connection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -496,7 +451,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'gatewayName' => gateway_name,'connectionName' => connection_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'gatewayName' => gateway_name,'connectionName' => @client.connection_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -610,8 +565,6 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Retrieves all vpn connections for a particular virtual wan vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -619,8 +572,8 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [ListVpnConnectionsResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_vpn_gateway_as_lazy(resource_group_name, gateway_name, custom_headers = nil)
-      response = list_by_vpn_gateway_async(resource_group_name, gateway_name, custom_headers).value!
+    def list_by_vpn_gateway_as_lazy(gateway_name, custom_headers = nil)
+      response = list_by_vpn_gateway_async(gateway_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

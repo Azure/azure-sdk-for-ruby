@@ -24,50 +24,44 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Retrieves the details of a VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [VirtualWAN] operation results.
     #
-    def get(resource_group_name, virtual_wanname, custom_headers = nil)
-      response = get_async(resource_group_name, virtual_wanname, custom_headers).value!
+    def get(virtual_wanname, custom_headers = nil)
+      response = get_async(virtual_wanname, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieves the details of a VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, virtual_wanname, custom_headers = nil)
-      get_async(resource_group_name, virtual_wanname, custom_headers).value!
+    def get_with_http_info(virtual_wanname, custom_headers = nil)
+      get_async(virtual_wanname, custom_headers).value!
     end
 
     #
     # Retrieves the details of a VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being retrieved.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, virtual_wanname, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+    def get_async(virtual_wanname, custom_headers = nil)
       fail ArgumentError, 'virtual_wanname is nil' if virtual_wanname.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
 
 
       request_headers = {}
@@ -81,7 +75,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'VirtualWANName' => virtual_wanname,'subscriptionId' => @client.subscription_id},
+          path_params: {'VirtualWANName' => virtual_wanname,'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -119,8 +113,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Creates a VirtualWAN resource if it doesn't exist else updates the existing
     # VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being created or
     # updated.
     # @param wanparameters [VirtualWAN] Parameters supplied to create or update
@@ -130,14 +122,12 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [VirtualWAN] operation results.
     #
-    def create_or_update(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, virtual_wanname, wanparameters, custom_headers).value!
+    def create_or_update(virtual_wanname, wanparameters, custom_headers = nil)
+      response = create_or_update_async(virtual_wanname, wanparameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being created or
     # updated.
     # @param wanparameters [VirtualWAN] Parameters supplied to create or update
@@ -148,9 +138,9 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
+    def create_or_update_async(virtual_wanname, wanparameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, virtual_wanname, wanparameters, custom_headers)
+      promise = begin_create_or_update_async(virtual_wanname, wanparameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -169,8 +159,6 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Updates a VirtualWAN tags.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being updated.
     # @param wanparameters [TagsObject] Parameters supplied to Update VirtualWAN
     # tags.
@@ -179,14 +167,12 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [VirtualWAN] operation results.
     #
-    def update_tags(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
-      response = update_tags_async(resource_group_name, virtual_wanname, wanparameters, custom_headers).value!
+    def update_tags(virtual_wanname, wanparameters, custom_headers = nil)
+      response = update_tags_async(virtual_wanname, wanparameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being updated.
     # @param wanparameters [TagsObject] Parameters supplied to Update VirtualWAN
     # tags.
@@ -196,9 +182,9 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_tags_async(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
+    def update_tags_async(virtual_wanname, wanparameters, custom_headers = nil)
       # Send request
-      promise = begin_update_tags_async(resource_group_name, virtual_wanname, wanparameters, custom_headers)
+      promise = begin_update_tags_async(virtual_wanname, wanparameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -217,20 +203,16 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Deletes a VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, virtual_wanname, custom_headers = nil)
-      response = delete_async(resource_group_name, virtual_wanname, custom_headers).value!
+    def delete(virtual_wanname, custom_headers = nil)
+      response = delete_async(virtual_wanname, custom_headers).value!
       nil
     end
 
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -238,9 +220,9 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, virtual_wanname, custom_headers = nil)
+    def delete_async(virtual_wanname, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, virtual_wanname, custom_headers)
+      promise = begin_delete_async(virtual_wanname, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -257,45 +239,39 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Lists all the VirtualWANs in a resource group.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<VirtualWAN>] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
+    def list_by_resource_group(custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
     #
     # Lists all the VirtualWANs in a resource group.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(custom_headers = nil)
+      list_by_resource_group_async(custom_headers).value!
     end
 
     #
     # Lists all the VirtualWANs in a resource group.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -310,7 +286,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -431,8 +407,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Creates a VirtualWAN resource if it doesn't exist else updates the existing
     # VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being created or
     # updated.
     # @param wanparameters [VirtualWAN] Parameters supplied to create or update
@@ -442,8 +416,8 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [VirtualWAN] operation results.
     #
-    def begin_create_or_update(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, virtual_wanname, wanparameters, custom_headers).value!
+    def begin_create_or_update(virtual_wanname, wanparameters, custom_headers = nil)
+      response = begin_create_or_update_async(virtual_wanname, wanparameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -451,8 +425,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Creates a VirtualWAN resource if it doesn't exist else updates the existing
     # VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being created or
     # updated.
     # @param wanparameters [VirtualWAN] Parameters supplied to create or update
@@ -462,16 +434,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, virtual_wanname, wanparameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(virtual_wanname, wanparameters, custom_headers = nil)
+      begin_create_or_update_async(virtual_wanname, wanparameters, custom_headers).value!
     end
 
     #
     # Creates a VirtualWAN resource if it doesn't exist else updates the existing
     # VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being created or
     # updated.
     # @param wanparameters [VirtualWAN] Parameters supplied to create or update
@@ -481,9 +451,9 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
+    def begin_create_or_update_async(virtual_wanname, wanparameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'virtual_wanname is nil' if virtual_wanname.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'wanparameters is nil' if wanparameters.nil?
@@ -508,7 +478,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'VirtualWANName' => virtual_wanname},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'VirtualWANName' => virtual_wanname},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -556,8 +526,6 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Updates a VirtualWAN tags.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being updated.
     # @param wanparameters [TagsObject] Parameters supplied to Update VirtualWAN
     # tags.
@@ -566,16 +534,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [VirtualWAN] operation results.
     #
-    def begin_update_tags(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
-      response = begin_update_tags_async(resource_group_name, virtual_wanname, wanparameters, custom_headers).value!
+    def begin_update_tags(virtual_wanname, wanparameters, custom_headers = nil)
+      response = begin_update_tags_async(virtual_wanname, wanparameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Updates a VirtualWAN tags.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being updated.
     # @param wanparameters [TagsObject] Parameters supplied to Update VirtualWAN
     # tags.
@@ -584,15 +550,13 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_tags_with_http_info(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
-      begin_update_tags_async(resource_group_name, virtual_wanname, wanparameters, custom_headers).value!
+    def begin_update_tags_with_http_info(virtual_wanname, wanparameters, custom_headers = nil)
+      begin_update_tags_async(virtual_wanname, wanparameters, custom_headers).value!
     end
 
     #
     # Updates a VirtualWAN tags.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being updated.
     # @param wanparameters [TagsObject] Parameters supplied to Update VirtualWAN
     # tags.
@@ -601,9 +565,9 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_tags_async(resource_group_name, virtual_wanname, wanparameters, custom_headers = nil)
+    def begin_update_tags_async(virtual_wanname, wanparameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'virtual_wanname is nil' if virtual_wanname.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'wanparameters is nil' if wanparameters.nil?
@@ -628,7 +592,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'VirtualWANName' => virtual_wanname},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'VirtualWANName' => virtual_wanname},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -676,47 +640,41 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Deletes a VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, virtual_wanname, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, virtual_wanname, custom_headers).value!
+    def begin_delete(virtual_wanname, custom_headers = nil)
+      response = begin_delete_async(virtual_wanname, custom_headers).value!
       nil
     end
 
     #
     # Deletes a VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, virtual_wanname, custom_headers = nil)
-      begin_delete_async(resource_group_name, virtual_wanname, custom_headers).value!
+    def begin_delete_with_http_info(virtual_wanname, custom_headers = nil)
+      begin_delete_async(virtual_wanname, custom_headers).value!
     end
 
     #
     # Deletes a VirtualWAN.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param virtual_wanname [String] The name of the VirtualWAN being deleted.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, virtual_wanname, custom_headers = nil)
+    def begin_delete_async(virtual_wanname, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'virtual_wanname is nil' if virtual_wanname.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -732,7 +690,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'VirtualWANName' => virtual_wanname},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'VirtualWANName' => virtual_wanname},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -933,16 +891,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Lists all the VirtualWANs in a resource group.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualWan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ListVirtualWANsResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_as_lazy(custom_headers = nil)
+      response = list_by_resource_group_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

@@ -24,48 +24,42 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Retrieves the details of a virtual wan p2s vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [P2SVpnGateway] operation results.
     #
-    def get(resource_group_name, gateway_name, custom_headers = nil)
-      response = get_async(resource_group_name, gateway_name, custom_headers).value!
+    def get(gateway_name, custom_headers = nil)
+      response = get_async(gateway_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieves the details of a virtual wan p2s vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, gateway_name, custom_headers = nil)
-      get_async(resource_group_name, gateway_name, custom_headers).value!
+    def get_with_http_info(gateway_name, custom_headers = nil)
+      get_async(gateway_name, custom_headers).value!
     end
 
     #
     # Retrieves the details of a virtual wan p2s vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, gateway_name, custom_headers = nil)
+    def get_async(gateway_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -81,7 +75,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'gatewayName' => gateway_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'gatewayName' => gateway_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -119,8 +113,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
     # existing gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [P2SVpnGateway] Parameters supplied to
     # create or Update a virtual wan p2s vpn gateway.
@@ -129,14 +121,12 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [P2SVpnGateway] operation results.
     #
-    def create_or_update(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers).value!
+    def create_or_update(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+      response = create_or_update_async(gateway_name, p2svpn_gateway_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [P2SVpnGateway] Parameters supplied to
     # create or Update a virtual wan p2s vpn gateway.
@@ -146,9 +136,9 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+    def create_or_update_async(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers)
+      promise = begin_create_or_update_async(gateway_name, p2svpn_gateway_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -167,8 +157,6 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Updates virtual wan p2s vpn gateway tags.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [TagsObject] Parameters supplied to update a
     # virtual wan p2s vpn gateway tags.
@@ -177,14 +165,12 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [P2SVpnGateway] operation results.
     #
-    def update_tags(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
-      response = update_tags_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers).value!
+    def update_tags(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+      response = update_tags_async(gateway_name, p2svpn_gateway_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [TagsObject] Parameters supplied to update a
     # virtual wan p2s vpn gateway tags.
@@ -194,9 +180,9 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_tags_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+    def update_tags_async(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
       # Send request
-      promise = begin_update_tags_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers)
+      promise = begin_update_tags_async(gateway_name, p2svpn_gateway_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -215,20 +201,16 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Deletes a virtual wan p2s vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, gateway_name, custom_headers = nil)
-      response = delete_async(resource_group_name, gateway_name, custom_headers).value!
+    def delete(gateway_name, custom_headers = nil)
+      response = delete_async(gateway_name, custom_headers).value!
       nil
     end
 
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -236,9 +218,9 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, gateway_name, custom_headers = nil)
+    def delete_async(gateway_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, gateway_name, custom_headers)
+      promise = begin_delete_async(gateway_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -255,45 +237,39 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Lists all the P2SVpnGateways in a resource group.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<P2SVpnGateway>] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
+    def list_by_resource_group(custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
     #
     # Lists all the P2SVpnGateways in a resource group.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(custom_headers = nil)
+      list_by_resource_group_async(custom_headers).value!
     end
 
     #
     # Lists all the P2SVpnGateways in a resource group.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -308,7 +284,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -429,7 +405,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Generates VPN profile for P2S client of the P2SVpnGateway in the specified
     # resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
     # @param gateway_name [String] The name of the P2SVpnGateway.
     # @param parameters [P2SVpnProfileParameters] Parameters supplied to the
     # generate P2SVpnGateway VPN client package operation.
@@ -438,13 +413,12 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [VpnProfileResponse] operation results.
     #
-    def generate_vpn_profile(resource_group_name, gateway_name, parameters, custom_headers = nil)
-      response = generate_vpn_profile_async(resource_group_name, gateway_name, parameters, custom_headers).value!
+    def generate_vpn_profile(gateway_name, parameters, custom_headers = nil)
+      response = generate_vpn_profile_async(gateway_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group.
     # @param gateway_name [String] The name of the P2SVpnGateway.
     # @param parameters [P2SVpnProfileParameters] Parameters supplied to the
     # generate P2SVpnGateway VPN client package operation.
@@ -454,9 +428,9 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def generate_vpn_profile_async(resource_group_name, gateway_name, parameters, custom_headers = nil)
+    def generate_vpn_profile_async(gateway_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_generate_vpn_profile_async(resource_group_name, gateway_name, parameters, custom_headers)
+      promise = begin_generate_vpn_profile_async(gateway_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -476,8 +450,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
     # existing gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [P2SVpnGateway] Parameters supplied to
     # create or Update a virtual wan p2s vpn gateway.
@@ -486,8 +458,8 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [P2SVpnGateway] operation results.
     #
-    def begin_create_or_update(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers).value!
+    def begin_create_or_update(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+      response = begin_create_or_update_async(gateway_name, p2svpn_gateway_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -495,8 +467,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
     # existing gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [P2SVpnGateway] Parameters supplied to
     # create or Update a virtual wan p2s vpn gateway.
@@ -505,16 +475,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+      begin_create_or_update_async(gateway_name, p2svpn_gateway_parameters, custom_headers).value!
     end
 
     #
     # Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
     # existing gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [P2SVpnGateway] Parameters supplied to
     # create or Update a virtual wan p2s vpn gateway.
@@ -523,9 +491,9 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+    def begin_create_or_update_async(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'p2svpn_gateway_parameters is nil' if p2svpn_gateway_parameters.nil?
@@ -550,7 +518,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'gatewayName' => gateway_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'gatewayName' => gateway_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -598,8 +566,6 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Updates virtual wan p2s vpn gateway tags.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [TagsObject] Parameters supplied to update a
     # virtual wan p2s vpn gateway tags.
@@ -608,16 +574,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [P2SVpnGateway] operation results.
     #
-    def begin_update_tags(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
-      response = begin_update_tags_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers).value!
+    def begin_update_tags(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+      response = begin_update_tags_async(gateway_name, p2svpn_gateway_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Updates virtual wan p2s vpn gateway tags.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [TagsObject] Parameters supplied to update a
     # virtual wan p2s vpn gateway tags.
@@ -626,15 +590,13 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_tags_with_http_info(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
-      begin_update_tags_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers).value!
+    def begin_update_tags_with_http_info(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+      begin_update_tags_async(gateway_name, p2svpn_gateway_parameters, custom_headers).value!
     end
 
     #
     # Updates virtual wan p2s vpn gateway tags.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param p2svpn_gateway_parameters [TagsObject] Parameters supplied to update a
     # virtual wan p2s vpn gateway tags.
@@ -643,9 +605,9 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_tags_async(resource_group_name, gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
+    def begin_update_tags_async(gateway_name, p2svpn_gateway_parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'p2svpn_gateway_parameters is nil' if p2svpn_gateway_parameters.nil?
@@ -670,7 +632,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'gatewayName' => gateway_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'gatewayName' => gateway_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -718,47 +680,41 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Deletes a virtual wan p2s vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, gateway_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, gateway_name, custom_headers).value!
+    def begin_delete(gateway_name, custom_headers = nil)
+      response = begin_delete_async(gateway_name, custom_headers).value!
       nil
     end
 
     #
     # Deletes a virtual wan p2s vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, gateway_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, gateway_name, custom_headers).value!
+    def begin_delete_with_http_info(gateway_name, custom_headers = nil)
+      begin_delete_async(gateway_name, custom_headers).value!
     end
 
     #
     # Deletes a virtual wan p2s vpn gateway.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param gateway_name [String] The name of the gateway.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, gateway_name, custom_headers = nil)
+    def begin_delete_async(gateway_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -774,7 +730,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'gatewayName' => gateway_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'gatewayName' => gateway_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -802,7 +758,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Generates VPN profile for P2S client of the P2SVpnGateway in the specified
     # resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
     # @param gateway_name [String] The name of the P2SVpnGateway.
     # @param parameters [P2SVpnProfileParameters] Parameters supplied to the
     # generate P2SVpnGateway VPN client package operation.
@@ -811,8 +766,8 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [VpnProfileResponse] operation results.
     #
-    def begin_generate_vpn_profile(resource_group_name, gateway_name, parameters, custom_headers = nil)
-      response = begin_generate_vpn_profile_async(resource_group_name, gateway_name, parameters, custom_headers).value!
+    def begin_generate_vpn_profile(gateway_name, parameters, custom_headers = nil)
+      response = begin_generate_vpn_profile_async(gateway_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -820,7 +775,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Generates VPN profile for P2S client of the P2SVpnGateway in the specified
     # resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
     # @param gateway_name [String] The name of the P2SVpnGateway.
     # @param parameters [P2SVpnProfileParameters] Parameters supplied to the
     # generate P2SVpnGateway VPN client package operation.
@@ -829,15 +783,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_generate_vpn_profile_with_http_info(resource_group_name, gateway_name, parameters, custom_headers = nil)
-      begin_generate_vpn_profile_async(resource_group_name, gateway_name, parameters, custom_headers).value!
+    def begin_generate_vpn_profile_with_http_info(gateway_name, parameters, custom_headers = nil)
+      begin_generate_vpn_profile_async(gateway_name, parameters, custom_headers).value!
     end
 
     #
     # Generates VPN profile for P2S client of the P2SVpnGateway in the specified
     # resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
     # @param gateway_name [String] The name of the P2SVpnGateway.
     # @param parameters [P2SVpnProfileParameters] Parameters supplied to the
     # generate P2SVpnGateway VPN client package operation.
@@ -846,8 +799,8 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_generate_vpn_profile_async(resource_group_name, gateway_name, parameters, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+    def begin_generate_vpn_profile_async(gateway_name, parameters, custom_headers = nil)
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -873,7 +826,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'gatewayName' => gateway_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => @client.resource_group_name,'gatewayName' => gateway_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -1085,16 +1038,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Lists all the P2SVpnGateways in a resource group.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # P2SVpnGateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ListP2SVpnGatewaysResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_as_lazy(custom_headers = nil)
+      response = list_by_resource_group_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
