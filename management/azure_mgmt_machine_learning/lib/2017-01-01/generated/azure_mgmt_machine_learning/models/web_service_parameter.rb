@@ -26,7 +26,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WebServiceParameter',
           type: {
@@ -34,7 +33,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'WebServiceParameter',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -42,7 +40,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               certificate_thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateThumbprint',
                 type: {
