@@ -25,7 +25,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Gives the sas-url to download the configurations for vpn-sites in a resource
     # group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param virtual_wanname [String] The name of the VirtualWAN for which
     # configuration of all vpn-sites is needed.
     # @param request [GetVpnSitesConfigurationRequest] Parameters supplied to
@@ -33,13 +32,12 @@ module Azure::Network::Mgmt::V2018_12_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def download(resource_group_name, virtual_wanname, request, custom_headers = nil)
-      response = download_async(resource_group_name, virtual_wanname, request, custom_headers).value!
+    def download(virtual_wanname, request, custom_headers = nil)
+      response = download_async(virtual_wanname, request, custom_headers).value!
       nil
     end
 
     #
-    # @param resource_group_name [String] The resource group name.
     # @param virtual_wanname [String] The name of the VirtualWAN for which
     # configuration of all vpn-sites is needed.
     # @param request [GetVpnSitesConfigurationRequest] Parameters supplied to
@@ -50,9 +48,9 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def download_async(resource_group_name, virtual_wanname, request, custom_headers = nil)
+    def download_async(virtual_wanname, request, custom_headers = nil)
       # Send request
-      promise = begin_download_async(resource_group_name, virtual_wanname, request, custom_headers)
+      promise = begin_download_async(virtual_wanname, request, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -70,7 +68,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Gives the sas-url to download the configurations for vpn-sites in a resource
     # group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param virtual_wanname [String] The name of the VirtualWAN for which
     # configuration of all vpn-sites is needed.
     # @param request [GetVpnSitesConfigurationRequest] Parameters supplied to
@@ -79,8 +76,8 @@ module Azure::Network::Mgmt::V2018_12_01
     # will be added to the HTTP request.
     #
     #
-    def begin_download(resource_group_name, virtual_wanname, request, custom_headers = nil)
-      response = begin_download_async(resource_group_name, virtual_wanname, request, custom_headers).value!
+    def begin_download(virtual_wanname, request, custom_headers = nil)
+      response = begin_download_async(virtual_wanname, request, custom_headers).value!
       nil
     end
 
@@ -88,7 +85,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # Gives the sas-url to download the configurations for vpn-sites in a resource
     # group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param virtual_wanname [String] The name of the VirtualWAN for which
     # configuration of all vpn-sites is needed.
     # @param request [GetVpnSitesConfigurationRequest] Parameters supplied to
@@ -98,15 +94,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_download_with_http_info(resource_group_name, virtual_wanname, request, custom_headers = nil)
-      begin_download_async(resource_group_name, virtual_wanname, request, custom_headers).value!
+    def begin_download_with_http_info(virtual_wanname, request, custom_headers = nil)
+      begin_download_async(virtual_wanname, request, custom_headers).value!
     end
 
     #
     # Gives the sas-url to download the configurations for vpn-sites in a resource
     # group.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param virtual_wanname [String] The name of the VirtualWAN for which
     # configuration of all vpn-sites is needed.
     # @param request [GetVpnSitesConfigurationRequest] Parameters supplied to
@@ -116,9 +111,9 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_download_async(resource_group_name, virtual_wanname, request, custom_headers = nil)
+    def begin_download_async(virtual_wanname, request, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
       fail ArgumentError, 'virtual_wanname is nil' if virtual_wanname.nil?
       fail ArgumentError, 'request is nil' if request.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -143,7 +138,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'virtualWANName' => virtual_wanname},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'virtualWANName' => virtual_wanname},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),

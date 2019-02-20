@@ -25,6 +25,15 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [String] Client API version.
     attr_reader :api_version
 
+    # @return [String] The resource group name of the Microsoft Azure resource.
+    attr_accessor :resource_group_name
+
+    # @return [String] The name of the Virtual Hub resource.
+    attr_accessor :virtual_hub_name
+
+    # @return [String] The name of the connection resource.
+    attr_accessor :connection_name
+
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -494,7 +503,6 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Gives the supported security providers for the virtual wan.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param virtual_wanname [String] The name of the VirtualWAN for which
     # supported security providers are needed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -502,15 +510,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [VirtualWanSecurityProviders] operation results.
     #
-    def supported_security_providers(resource_group_name, virtual_wanname, custom_headers = nil)
-      response = supported_security_providers_async(resource_group_name, virtual_wanname, custom_headers).value!
+    def supported_security_providers(virtual_wanname, custom_headers = nil)
+      response = supported_security_providers_async(virtual_wanname, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Gives the supported security providers for the virtual wan.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param virtual_wanname [String] The name of the VirtualWAN for which
     # supported security providers are needed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -518,14 +525,13 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def supported_security_providers_with_http_info(resource_group_name, virtual_wanname, custom_headers = nil)
-      supported_security_providers_async(resource_group_name, virtual_wanname, custom_headers).value!
+    def supported_security_providers_with_http_info(virtual_wanname, custom_headers = nil)
+      supported_security_providers_async(virtual_wanname, custom_headers).value!
     end
 
     #
     # Gives the supported security providers for the virtual wan.
     #
-    # @param resource_group_name [String] The resource group name.
     # @param virtual_wanname [String] The name of the VirtualWAN for which
     # supported security providers are needed.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -533,7 +539,7 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def supported_security_providers_async(resource_group_name, virtual_wanname, custom_headers = nil)
+    def supported_security_providers_async(virtual_wanname, custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_wanname is nil' if virtual_wanname.nil?

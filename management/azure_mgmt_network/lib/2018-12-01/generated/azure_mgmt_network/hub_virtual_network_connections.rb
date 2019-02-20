@@ -24,53 +24,41 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Retrieves the details of a HubVirtualNetworkConnection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualHub.
-    # @param virtual_hub_name [String] The name of the VirtualHub.
-    # @param connection_name [String] The name of the vpn connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [HubVirtualNetworkConnection] operation results.
     #
-    def get(resource_group_name, virtual_hub_name, connection_name, custom_headers = nil)
-      response = get_async(resource_group_name, virtual_hub_name, connection_name, custom_headers).value!
+    def get(custom_headers = nil)
+      response = get_async(custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieves the details of a HubVirtualNetworkConnection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualHub.
-    # @param virtual_hub_name [String] The name of the VirtualHub.
-    # @param connection_name [String] The name of the vpn connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, virtual_hub_name, connection_name, custom_headers = nil)
-      get_async(resource_group_name, virtual_hub_name, connection_name, custom_headers).value!
+    def get_with_http_info(custom_headers = nil)
+      get_async(custom_headers).value!
     end
 
     #
     # Retrieves the details of a HubVirtualNetworkConnection.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualHub.
-    # @param virtual_hub_name [String] The name of the VirtualHub.
-    # @param connection_name [String] The name of the vpn connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, virtual_hub_name, connection_name, custom_headers = nil)
+    def get_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_hub_name is nil' if virtual_hub_name.nil?
-      fail ArgumentError, 'connection_name is nil' if connection_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.virtual_hub_name is nil' if @client.virtual_hub_name.nil?
+      fail ArgumentError, '@client.connection_name is nil' if @client.connection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -85,7 +73,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'virtualHubName' => virtual_hub_name,'connectionName' => connection_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'virtualHubName' => @client.virtual_hub_name,'connectionName' => @client.connection_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -120,51 +108,129 @@ module Azure::Network::Mgmt::V2018_12_01
     end
 
     #
+    # Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
+    # the HubVirtualNetworkConnection if one exists.
+    #
+    # @param hub_virtual_network_connection_parameters
+    # [HubVirtualNetworkConnection] Parameters supplied to create or update
+    # HubVirtualNetworkConnection.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [HubVirtualNetworkConnection] operation results.
+    #
+    def create_or_update(hub_virtual_network_connection_parameters, custom_headers = nil)
+      response = create_or_update_async(hub_virtual_network_connection_parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param hub_virtual_network_connection_parameters
+    # [HubVirtualNetworkConnection] Parameters supplied to create or update
+    # HubVirtualNetworkConnection.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_or_update_async(hub_virtual_network_connection_parameters, custom_headers = nil)
+      # Send request
+      promise = begin_create_or_update_async(hub_virtual_network_connection_parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Network::Mgmt::V2018_12_01::Models::HubVirtualNetworkConnection.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Updates HubVirtualNetworkConnection tags.
+    #
+    # @param hub_virtual_network_connection_parameters [TagsObject] Parameters
+    # supplied to update HubVirtualNetworkConnection tags.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [HubVirtualNetworkConnection] operation results.
+    #
+    def update_tags(hub_virtual_network_connection_parameters, custom_headers = nil)
+      response = update_tags_async(hub_virtual_network_connection_parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param hub_virtual_network_connection_parameters [TagsObject] Parameters
+    # supplied to update HubVirtualNetworkConnection tags.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_tags_async(hub_virtual_network_connection_parameters, custom_headers = nil)
+      # Send request
+      promise = begin_update_tags_async(hub_virtual_network_connection_parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Network::Mgmt::V2018_12_01::Models::HubVirtualNetworkConnection.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Retrieves the details of all HubVirtualNetworkConnections.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualHub.
-    # @param virtual_hub_name [String] The name of the VirtualHub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<HubVirtualNetworkConnection>] operation results.
     #
-    def list(resource_group_name, virtual_hub_name, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, virtual_hub_name, custom_headers)
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
     #
     # Retrieves the details of all HubVirtualNetworkConnections.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualHub.
-    # @param virtual_hub_name [String] The name of the VirtualHub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, virtual_hub_name, custom_headers = nil)
-      list_async(resource_group_name, virtual_hub_name, custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
     # Retrieves the details of all HubVirtualNetworkConnections.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualHub.
-    # @param virtual_hub_name [String] The name of the VirtualHub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, virtual_hub_name, custom_headers = nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_hub_name is nil' if virtual_hub_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.virtual_hub_name is nil' if @client.virtual_hub_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -179,7 +245,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'virtualHubName' => virtual_hub_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'virtualHubName' => @client.virtual_hub_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -201,6 +267,236 @@ module Azure::Network::Mgmt::V2018_12_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Network::Mgmt::V2018_12_01::Models::ListHubVirtualNetworkConnectionsResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
+    # the HubVirtualNetworkConnection if one exists.
+    #
+    # @param hub_virtual_network_connection_parameters
+    # [HubVirtualNetworkConnection] Parameters supplied to create or update
+    # HubVirtualNetworkConnection.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [HubVirtualNetworkConnection] operation results.
+    #
+    def begin_create_or_update(hub_virtual_network_connection_parameters, custom_headers = nil)
+      response = begin_create_or_update_async(hub_virtual_network_connection_parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
+    # the HubVirtualNetworkConnection if one exists.
+    #
+    # @param hub_virtual_network_connection_parameters
+    # [HubVirtualNetworkConnection] Parameters supplied to create or update
+    # HubVirtualNetworkConnection.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_or_update_with_http_info(hub_virtual_network_connection_parameters, custom_headers = nil)
+      begin_create_or_update_async(hub_virtual_network_connection_parameters, custom_headers).value!
+    end
+
+    #
+    # Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
+    # the HubVirtualNetworkConnection if one exists.
+    #
+    # @param hub_virtual_network_connection_parameters
+    # [HubVirtualNetworkConnection] Parameters supplied to create or update
+    # HubVirtualNetworkConnection.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_or_update_async(hub_virtual_network_connection_parameters, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.virtual_hub_name is nil' if @client.virtual_hub_name.nil?
+      fail ArgumentError, '@client.connection_name is nil' if @client.connection_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'hub_virtual_network_connection_parameters is nil' if hub_virtual_network_connection_parameters.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2018_12_01::Models::HubVirtualNetworkConnection.mapper()
+      request_content = @client.serialize(request_mapper,  hub_virtual_network_connection_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'virtualHubName' => @client.virtual_hub_name,'connectionName' => @client.connection_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2018_12_01::Models::HubVirtualNetworkConnection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2018_12_01::Models::HubVirtualNetworkConnection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates HubVirtualNetworkConnection tags.
+    #
+    # @param hub_virtual_network_connection_parameters [TagsObject] Parameters
+    # supplied to update HubVirtualNetworkConnection tags.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [HubVirtualNetworkConnection] operation results.
+    #
+    def begin_update_tags(hub_virtual_network_connection_parameters, custom_headers = nil)
+      response = begin_update_tags_async(hub_virtual_network_connection_parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates HubVirtualNetworkConnection tags.
+    #
+    # @param hub_virtual_network_connection_parameters [TagsObject] Parameters
+    # supplied to update HubVirtualNetworkConnection tags.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_tags_with_http_info(hub_virtual_network_connection_parameters, custom_headers = nil)
+      begin_update_tags_async(hub_virtual_network_connection_parameters, custom_headers).value!
+    end
+
+    #
+    # Updates HubVirtualNetworkConnection tags.
+    #
+    # @param hub_virtual_network_connection_parameters [TagsObject] Parameters
+    # supplied to update HubVirtualNetworkConnection tags.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_tags_async(hub_virtual_network_connection_parameters, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.virtual_hub_name is nil' if @client.virtual_hub_name.nil?
+      fail ArgumentError, '@client.connection_name is nil' if @client.connection_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'hub_virtual_network_connection_parameters is nil' if hub_virtual_network_connection_parameters.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2018_12_01::Models::TagsObject.mapper()
+      request_content = @client.serialize(request_mapper,  hub_virtual_network_connection_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'virtualHubName' => @client.virtual_hub_name,'connectionName' => @client.connection_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2018_12_01::Models::HubVirtualNetworkConnection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2018_12_01::Models::HubVirtualNetworkConnection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -303,17 +599,14 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Retrieves the details of all HubVirtualNetworkConnections.
     #
-    # @param resource_group_name [String] The resource group name of the
-    # VirtualHub.
-    # @param virtual_hub_name [String] The name of the VirtualHub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ListHubVirtualNetworkConnectionsResult] which provide lazy access to
     # pages of the response.
     #
-    def list_as_lazy(resource_group_name, virtual_hub_name, custom_headers = nil)
-      response = list_async(resource_group_name, virtual_hub_name, custom_headers).value!
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
