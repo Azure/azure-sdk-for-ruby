@@ -7,13 +7,17 @@ require 'azure_mgmt_traffic_manager'
 module Azure::Profiles::Latest
   module TrafficManager
     module Mgmt
-      Endpoints = Azure::TrafficManager::Mgmt::V2018_04_01::Endpoints
-      Profiles = Azure::TrafficManager::Mgmt::V2018_04_01::Profiles
       GeographicHierarchies = Azure::TrafficManager::Mgmt::V2018_04_01::GeographicHierarchies
       HeatMap = Azure::TrafficManager::Mgmt::V2018_04_01::HeatMap
       TrafficManagerUserMetricsKeys = Azure::TrafficManager::Mgmt::V2018_04_01::TrafficManagerUserMetricsKeys
+      Endpoints = Azure::TrafficManager::Mgmt::V2018_04_01::Endpoints
+      Profiles = Azure::TrafficManager::Mgmt::V2018_04_01::Profiles
 
       module Models
+        CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+        TrafficManagerNameAvailability = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
+        HeatMapModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
+        UserMetricsModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
         TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerGeographicHierarchy
         EndpointStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
         EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointMonitorStatus
@@ -39,14 +43,10 @@ module Azure::Profiles::Latest
         TrafficFlow = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficFlow
         Region = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Region
         DnsConfig = Azure::TrafficManager::Mgmt::V2018_04_01::Models::DnsConfig
-        CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
-        TrafficManagerNameAvailability = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
-        HeatMapModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
-        UserMetricsModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
       end
 
       class TrafficManagerManagementClass
-        attr_reader :endpoints, :profiles, :geographic_hierarchies, :heat_map, :traffic_manager_user_metrics_keys, :configurable, :base_url, :options, :model_classes
+        attr_reader :geographic_hierarchies, :heat_map, :traffic_manager_user_metrics_keys, :endpoints, :profiles, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -56,11 +56,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @endpoints = @client_0.endpoints
-          @profiles = @client_0.profiles
           @geographic_hierarchies = @client_0.geographic_hierarchies
           @heat_map = @client_0.heat_map
           @traffic_manager_user_metrics_keys = @client_0.traffic_manager_user_metrics_keys
+          @endpoints = @client_0.endpoints
+          @profiles = @client_0.profiles
 
           @model_classes = ModelClasses.new
         end
@@ -79,6 +79,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def check_traffic_manager_relative_dns_name_availability_parameters
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+          end
+          def traffic_manager_name_availability
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
+          end
+          def heat_map_model
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
+          end
+          def user_metrics_model
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
+          end
           def traffic_manager_geographic_hierarchy
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerGeographicHierarchy
           end
@@ -153,18 +165,6 @@ module Azure::Profiles::Latest
           end
           def dns_config
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::DnsConfig
-          end
-          def check_traffic_manager_relative_dns_name_availability_parameters
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
-          end
-          def traffic_manager_name_availability
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
-          end
-          def heat_map_model
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
-          end
-          def user_metrics_model
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
           end
         end
       end

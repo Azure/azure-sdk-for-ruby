@@ -14,23 +14,23 @@ module Azure::Profiles::Latest
       Answer = Azure::CognitiveServices::EntitySearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResultsAnswer
       Thing = Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing
-      ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       CreativeWork = Azure::CognitiveServices::EntitySearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
-      SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
+      ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
+      SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
+      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
-      Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
-      ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
+      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
       Places = Azure::CognitiveServices::EntitySearch::V1_0::Models::Places
       PostalAddress = Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
-      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       Organization = Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
+      Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
       ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
       CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
@@ -51,7 +51,7 @@ module Azure::Profiles::Latest
       EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
-      Intangible = Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
+      ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
@@ -102,9 +102,6 @@ module Azure::Profiles::Latest
         def thing
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing
         end
-        def error_response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
-        end
         def creative_work
           Azure::CognitiveServices::EntitySearch::V1_0::Models::CreativeWork
         end
@@ -114,11 +111,17 @@ module Azure::Profiles::Latest
         def error_code
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
         end
-        def safe_search
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
+        def error_response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
         end
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
+        end
+        def safe_search
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
+        end
+        def response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
         end
         def image_object
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
@@ -126,14 +129,11 @@ module Azure::Profiles::Latest
         def media_object
           Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
         end
-        def response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
-        end
         def error_sub_code
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
         end
-        def contractual_rules_contractual_rule
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
+        def error
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
         end
         def entities_entity_presentation_info
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
@@ -147,11 +147,11 @@ module Azure::Profiles::Latest
         def place
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
         end
-        def error
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
-        end
         def organization
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Organization
+        end
+        def intangible
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
         end
         def contractual_rules_attribution
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
@@ -213,8 +213,8 @@ module Azure::Profiles::Latest
         def answer_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
         end
-        def intangible
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Intangible
+        def contractual_rules_contractual_rule
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
         end
         def entity_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType

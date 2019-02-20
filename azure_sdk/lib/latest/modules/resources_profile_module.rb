@@ -54,19 +54,19 @@ module Azure::Profiles::Latest
         Resource = Azure::Resources::Mgmt::V2018_05_01::Models::Resource
         ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceProviderOperationDisplayProperties
         DebugSetting = Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+        DeploymentListResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
         ProviderResourceType = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderResourceType
         ResourceGroupExportResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupExportResult
-        DeploymentListResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
-        GenericResource = Azure::Resources::Mgmt::V2018_05_01::Models::GenericResource
+        OnErrorDeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         OperationDisplay = Azure::Resources::Mgmt::V2018_05_01::Models::OperationDisplay
-        OnErrorDeploymentType = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
+        GenericResource = Azure::Resources::Mgmt::V2018_05_01::Models::GenericResource
         Operation = Azure::Resources::Mgmt::V2018_05_01::Models::Operation
+        OnErrorDeploymentType = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
         OperationListResult = Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
         SubResource = Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
         ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
         DeploymentMode = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-        OnErrorDeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
         Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
         ResourceIdentityType = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
         Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
@@ -222,8 +222,8 @@ module Azure::Profiles::Latest
           def debug_setting
             Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
           end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          def deployment_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
           end
           def provider_resource_type
             Azure::Resources::Mgmt::V2018_05_01::Models::ProviderResourceType
@@ -231,20 +231,23 @@ module Azure::Profiles::Latest
           def resource_group_export_result
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupExportResult
           end
-          def deployment_list_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
+          def on_error_deployment_extended
+            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
           end
-          def generic_resource
-            Azure::Resources::Mgmt::V2018_05_01::Models::GenericResource
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
           end
           def operation_display
             Azure::Resources::Mgmt::V2018_05_01::Models::OperationDisplay
           end
-          def on_error_deployment_type
-            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
+          def generic_resource
+            Azure::Resources::Mgmt::V2018_05_01::Models::GenericResource
           end
           def operation
             Azure::Resources::Mgmt::V2018_05_01::Models::Operation
+          end
+          def on_error_deployment_type
+            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentType
           end
           def operation_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
@@ -257,9 +260,6 @@ module Azure::Profiles::Latest
           end
           def deployment_mode
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-          end
-          def on_error_deployment_extended
-            Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
           end
           def plan
             Azure::Resources::Mgmt::V2018_05_01::Models::Plan

@@ -10,8 +10,8 @@ module Azure::Profiles::Latest
 
     module Models
       ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
-      Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
+      Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
       CropArea = Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
@@ -31,10 +31,10 @@ module Azure::Profiles::Latest
       ContentTypes = Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
       ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
+      Response = Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
       Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
-      Response = Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
       ErrorSubCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
       Error = Azure::CognitiveServices::VisualSearch::V1_0::Models::Error
       Organization = Azure::CognitiveServices::VisualSearch::V1_0::Models::Organization
@@ -91,11 +91,11 @@ module Azure::Profiles::Latest
         def response_base
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
         end
-        def thing
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
-        end
         def error_response
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
+        end
+        def thing
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
         end
         def creative_work
           Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
@@ -154,6 +154,9 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
         end
+        def response
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
+        end
         def query
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
         end
@@ -162,9 +165,6 @@ module Azure::Profiles::Latest
         end
         def media_object
           Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
-        end
-        def response
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
         end
         def error_sub_code
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
