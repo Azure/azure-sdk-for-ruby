@@ -22,7 +22,7 @@ module Azure::GraphRbac::V1_6
     attr_reader :client
 
     #
-    # Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+    # Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
     #
     # @param filter [String] This is the Service Principal ObjectId associated with
     # the app
@@ -37,7 +37,7 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+    # Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
     #
     # @param filter [String] This is the Service Principal ObjectId associated with
     # the app
@@ -51,7 +51,7 @@ module Azure::GraphRbac::V1_6
     end
 
     #
-    # Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+    # Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
     #
     # @param filter [String] This is the Service Principal ObjectId associated with
     # the app

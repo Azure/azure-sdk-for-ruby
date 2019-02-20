@@ -20,6 +20,9 @@ module Azure::GraphRbac::V1_6
       # the app
       attr_accessor :client_id
 
+      # @return [String] The objectId of the permission grant
+      attr_accessor :object_id
+
       # @return [String] Typically set to AllPrincipals
       attr_accessor :consent_type
 
@@ -61,6 +64,13 @@ module Azure::GraphRbac::V1_6
               client_id: {
                 required: false,
                 serialized_name: 'clientId',
+                type: {
+                  name: 'String'
+                }
+              },
+              object_id: {
+                required: false,
+                serialized_name: 'objectId',
                 type: {
                   name: 'String'
                 }
