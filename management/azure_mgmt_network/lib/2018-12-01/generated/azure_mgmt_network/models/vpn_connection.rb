@@ -15,7 +15,7 @@ module Azure::Network::Mgmt::V2018_12_01
       # @return [SubResource] Id of the connected vpn site.
       attr_accessor :remote_vpn_site
 
-      # @return [Integer] routing weight for vpn connection.
+      # @return [Integer] Routing weight for vpn connection.
       attr_accessor :routing_weight
 
       # @return [VpnConnectionStatus] The connection status. Possible values
