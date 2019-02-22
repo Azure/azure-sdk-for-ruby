@@ -70,9 +70,9 @@ module Azure::Profiles::Latest
         CustomHttpsProvisioningState = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningState
         CustomHttpsProvisioningSubstate = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningSubstate
         Resource = Azure::CDN::Mgmt::V2017_10_12::Models::Resource
+        ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
         OperationDisplay = Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay
         Operation = Azure::CDN::Mgmt::V2017_10_12::Models::Operation
-        ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
         SkuName = Azure::CDN::Mgmt::V2017_10_12::Models::SkuName
         Sku = Azure::CDN::Mgmt::V2017_10_12::Models::Sku
       end
@@ -275,14 +275,14 @@ module Azure::Profiles::Latest
           def resource
             Azure::CDN::Mgmt::V2017_10_12::Models::Resource
           end
+          def resource_type
+            Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
+          end
           def operation_display
             Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay
           end
           def operation
             Azure::CDN::Mgmt::V2017_10_12::Models::Operation
-          end
-          def resource_type
-            Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
           end
           def sku_name
             Azure::CDN::Mgmt::V2017_10_12::Models::SkuName
