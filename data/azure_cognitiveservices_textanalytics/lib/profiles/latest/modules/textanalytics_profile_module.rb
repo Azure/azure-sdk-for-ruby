@@ -7,6 +7,8 @@ require 'azure_cognitiveservices_textanalytics'
 module Azure::TextAnalytics::Profiles::Latest
 
   module Models
+    EntitiesBatchResultV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
+    MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
     DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
     MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageInput
     LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResultItem
@@ -23,8 +25,6 @@ module Azure::TextAnalytics::Profiles::Latest
     Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
     EntitiesBatchResultItemV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
     InternalError = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
-    EntitiesBatchResultV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
-    MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
   end
 
   #
@@ -71,6 +71,12 @@ module Azure::TextAnalytics::Profiles::Latest
   end
 
   class ModelClasses
+    def entities_batch_result_v2dot1
+      Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
+    end
+    def multi_language_batch_input
+      Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
+    end
     def detected_language
       Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
     end
@@ -118,12 +124,6 @@ module Azure::TextAnalytics::Profiles::Latest
     end
     def internal_error
       Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
-    end
-    def entities_batch_result_v2dot1
-      Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
-    end
-    def multi_language_batch_input
-      Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
     end
   end
 end
