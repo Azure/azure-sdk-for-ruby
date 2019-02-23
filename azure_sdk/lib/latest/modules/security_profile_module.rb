@@ -7,13 +7,19 @@ require 'azure_mgmt_security'
 module Azure::Profiles::Latest
   module Security
     module Mgmt
+      Pricings = Azure::Security::Mgmt::V2017_08_01_preview::Pricings
       SecurityContacts = Azure::Security::Mgmt::V2017_08_01_preview::SecurityContacts
       WorkspaceSettings = Azure::Security::Mgmt::V2017_08_01_preview::WorkspaceSettings
       AutoProvisioningSettings = Azure::Security::Mgmt::V2017_08_01_preview::AutoProvisioningSettings
       Compliances = Azure::Security::Mgmt::V2017_08_01_preview::Compliances
-      Pricings = Azure::Security::Mgmt::V2017_08_01_preview::Pricings
 
       module Models
+        WorkspaceSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
+        SecurityContact = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
+        Pricing = Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
+        WorkspaceSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
+        AutoProvisioningSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
+        Compliance = Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
         AlertNotifications = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
         AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
         PricingTier = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
@@ -24,16 +30,10 @@ module Azure::Profiles::Latest
         ComplianceSegment = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceSegment
         SecurityContactList = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContactList
         ComplianceList = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
-        WorkspaceSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
-        SecurityContact = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
-        Pricing = Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
-        WorkspaceSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
-        AutoProvisioningSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
-        Compliance = Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
       end
 
       class SecurityManagementClass
-        attr_reader :security_contacts, :workspace_settings, :auto_provisioning_settings, :compliances, :pricings, :configurable, :base_url, :options, :model_classes
+        attr_reader :pricings, :security_contacts, :workspace_settings, :auto_provisioning_settings, :compliances, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -43,11 +43,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @pricings = @client_0.pricings
           @security_contacts = @client_0.security_contacts
           @workspace_settings = @client_0.workspace_settings
           @auto_provisioning_settings = @client_0.auto_provisioning_settings
           @compliances = @client_0.compliances
-          @pricings = @client_0.pricings
 
           @model_classes = ModelClasses.new
         end
@@ -66,6 +66,24 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def workspace_setting_list
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
+          end
+          def security_contact
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
+          end
+          def pricing
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
+          end
+          def workspace_setting
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
+          end
+          def auto_provisioning_setting
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
+          end
+          def compliance
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
+          end
           def alert_notifications
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
           end
@@ -95,24 +113,6 @@ module Azure::Profiles::Latest
           end
           def compliance_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
-          end
-          def workspace_setting_list
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
-          end
-          def security_contact
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
-          end
-          def pricing
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
-          end
-          def workspace_setting
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
-          end
-          def auto_provisioning_setting
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
-          end
-          def compliance
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
           end
         end
       end
