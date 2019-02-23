@@ -10,21 +10,21 @@ module Azure::Profiles::Latest
 
     module Models
       Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
+      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
       ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
       Thing = Azure::CognitiveServices::NewsSearch::V1_0::Models::Thing
       NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
-      Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
+      NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
       Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
-      NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
+      Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
       VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
       SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
       ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
       CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
-      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
       Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
@@ -68,6 +68,9 @@ module Azure::Profiles::Latest
         def organization
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
         end
+        def error_response
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
+        end
         def response_base
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
         end
@@ -86,8 +89,8 @@ module Azure::Profiles::Latest
         def news
           Azure::CognitiveServices::NewsSearch::V1_0::Models::News
         end
-        def identifiable
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
+        def news_topic
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
         end
         def article
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
@@ -95,8 +98,8 @@ module Azure::Profiles::Latest
         def trending_topics
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
         end
-        def news_topic
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
+        def identifiable
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
         end
         def video_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
@@ -109,9 +112,6 @@ module Azure::Profiles::Latest
         end
         def creative_work
           Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
-        end
-        def error_response
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
         end
         def response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Response

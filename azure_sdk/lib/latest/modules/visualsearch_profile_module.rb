@@ -9,8 +9,9 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
-      ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
+      Person = Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
       ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
+      ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
       Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
@@ -28,10 +29,10 @@ module Azure::Profiles::Latest
       ImageRecipesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
       ImageRelatedSearchesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
       ImageShoppingSourcesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
+      Response = Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
       ContentTypes = Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
       ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
-      Response = Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
       Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
@@ -39,8 +40,8 @@ module Azure::Profiles::Latest
       Error = Azure::CognitiveServices::VisualSearch::V1_0::Models::Error
       Organization = Azure::CognitiveServices::VisualSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::VisualSearch::V1_0::Models::Intangible
-      StructuredValue = Azure::CognitiveServices::VisualSearch::V1_0::Models::StructuredValue
       Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
+      StructuredValue = Azure::CognitiveServices::VisualSearch::V1_0::Models::StructuredValue
       ImageTag = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTag
       RelatedSearchesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RelatedSearchesModule
       PropertiesItem = Azure::CognitiveServices::VisualSearch::V1_0::Models::PropertiesItem
@@ -50,12 +51,11 @@ module Azure::Profiles::Latest
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
       Offer = Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
       AggregateOffer = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
-      Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
       Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+      Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
-      Person = Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
     end
 
     class VisualSearchDataClass
@@ -88,11 +88,14 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def response_base
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
+        def person
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
         end
         def error_response
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
+        end
+        def response_base
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
         end
         def thing
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
@@ -145,6 +148,9 @@ module Azure::Profiles::Latest
         def image_shopping_sources_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
         end
+        def response
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
+        end
         def content_types
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
         end
@@ -153,9 +159,6 @@ module Azure::Profiles::Latest
         end
         def safe_search
           Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
-        end
-        def response
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
         end
         def query
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
@@ -178,11 +181,11 @@ module Azure::Profiles::Latest
         def intangible
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Intangible
         end
-        def structured_value
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::StructuredValue
-        end
         def filters
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
+        end
+        def structured_value
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::StructuredValue
         end
         def image_tag
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTag
@@ -211,11 +214,11 @@ module Azure::Profiles::Latest
         def aggregate_offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
         end
-        def recipe
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
-        end
         def action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+        end
+        def recipe
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
         end
         def rating
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
@@ -225,9 +228,6 @@ module Azure::Profiles::Latest
         end
         def item_availability
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
-        end
-        def person
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
         end
       end
     end

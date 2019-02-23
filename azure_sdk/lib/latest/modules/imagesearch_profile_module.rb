@@ -9,6 +9,8 @@ module Azure::Profiles::Latest
     ImagesOperations = Azure::CognitiveServices::ImageSearch::V1_0::ImagesOperations
 
     module Models
+      Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
+      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
@@ -16,7 +18,6 @@ module Azure::Profiles::Latest
       CreativeWork = Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::ImageSearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
       Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
@@ -66,7 +67,6 @@ module Azure::Profiles::Latest
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
       ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-      Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
     end
 
     class ImageSearchDataClass
@@ -99,6 +99,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def person
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
+        end
+        def error_response
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+        end
         def response_base
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
         end
@@ -119,9 +125,6 @@ module Azure::Profiles::Latest
         end
         def error_code
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-        end
-        def error_response
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
         end
         def safe_search
           Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
@@ -269,9 +272,6 @@ module Azure::Profiles::Latest
         end
         def image_insight_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-        end
-        def person
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
         end
       end
     end

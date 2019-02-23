@@ -9,16 +9,16 @@ module Azure::Profiles::Latest
     CustomInstance = Azure::CognitiveServices::Customimagesearch::V1_0::CustomInstance
 
     module Models
+      ErrorResponse = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
       ResponseBase = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
       Thing = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable
-      ErrorCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorCode
-      ErrorResponse = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
-      SafeSearch = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SafeSearch
       Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+      ErrorCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorCode
+      SafeSearch = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SafeSearch
       Response = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response
       Query = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageObject
@@ -65,6 +65,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def error_response
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
+        end
         def response_base
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ResponseBase
         end
@@ -83,17 +86,14 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable
         end
+        def images
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+        end
         def error_code
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorCode
         end
-        def error_response
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
-        end
         def safe_search
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::SafeSearch
-        end
-        def images
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
         end
         def response
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response

@@ -9,8 +9,11 @@ module Azure::Profiles::Latest
     Local = Azure::CognitiveServices::LocalSearch::V1_0::Local
 
     module Models
+      EntitiesEntityPresentationInfo = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
+      Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
       PostalAddress = Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
+      ErrorResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
       Intangible = Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
       QueryContext = Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
       GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
@@ -23,9 +26,8 @@ module Azure::Profiles::Latest
       SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
-      ErrorResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
-      ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
       SafeSearch = Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
+      ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
       EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
       Response = Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
       EntityType = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
@@ -33,8 +35,6 @@ module Azure::Profiles::Latest
       Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
       Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
-      EntitiesEntityPresentationInfo = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
-      Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
     end
 
     class LocalSearchDataClass
@@ -67,11 +67,20 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def entities_entity_presentation_info
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
+        end
+        def places
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
+        end
         def postal_address
           Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
         end
         def place
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
+        end
+        def error_response
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
         end
         def intangible
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
@@ -109,14 +118,11 @@ module Azure::Profiles::Latest
         def error_code
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
         end
-        def error_response
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
+        def safe_search
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
         end
         def response_format
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
-        end
-        def safe_search
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
         end
         def entity_scenario
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
@@ -138,12 +144,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
-        end
-        def entities_entity_presentation_info
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
-        end
-        def places
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
         end
       end
     end

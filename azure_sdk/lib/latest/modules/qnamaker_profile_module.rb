@@ -12,6 +12,7 @@ module Azure::Profiles::Latest
     Operations = Azure::CognitiveServices::Qnamaker::V4_0::Operations
 
     module Models
+      EnvironmentType = Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
       ErrorResponseError = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
       ErrorResponse = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponse
       Operation = Azure::CognitiveServices::Qnamaker::V4_0::Models::Operation
@@ -40,10 +41,9 @@ module Azure::Profiles::Latest
       UpdateQnaDTOQuestions = Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateQnaDTOQuestions
       UpdateQnaDTOMetadata = Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateQnaDTOMetadata
       KnowledgebaseEnvironmentType = Azure::CognitiveServices::Qnamaker::V4_0::Models::KnowledgebaseEnvironmentType
+      Error = Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
       ErrorCodeType = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorCodeType
       OperationStateType = Azure::CognitiveServices::Qnamaker::V4_0::Models::OperationStateType
-      EnvironmentType = Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
-      Error = Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
     end
 
     class QnamakerDataClass
@@ -79,6 +79,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def environment_type
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
+        end
         def error_response_error
           Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
         end
@@ -163,17 +166,14 @@ module Azure::Profiles::Latest
         def knowledgebase_environment_type
           Azure::CognitiveServices::Qnamaker::V4_0::Models::KnowledgebaseEnvironmentType
         end
+        def error
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
+        end
         def error_code_type
           Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorCodeType
         end
         def operation_state_type
           Azure::CognitiveServices::Qnamaker::V4_0::Models::OperationStateType
-        end
-        def environment_type
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
-        end
-        def error
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
         end
       end
     end

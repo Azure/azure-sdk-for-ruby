@@ -24,8 +24,7 @@ module Azure::GraphRbac::V1_6
     #
     # Creates a service principal in the directory.
     #
-    # @param parameters [ServicePrincipalCreateParameters] Parameters to create a
-    # service principal.
+    # @param parameters Parameters to create a service principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -39,8 +38,7 @@ module Azure::GraphRbac::V1_6
     #
     # Creates a service principal in the directory.
     #
-    # @param parameters [ServicePrincipalCreateParameters] Parameters to create a
-    # service principal.
+    # @param parameters Parameters to create a service principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -53,8 +51,7 @@ module Azure::GraphRbac::V1_6
     #
     # Creates a service principal in the directory.
     #
-    # @param parameters [ServicePrincipalCreateParameters] Parameters to create a
-    # service principal.
+    # @param parameters Parameters to create a service principal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -75,7 +72,20 @@ module Azure::GraphRbac::V1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::GraphRbac::V1_6::Models::ServicePrincipalCreateParameters.mapper()
+      request_mapper = {
+        required: true,
+        serialized_name: 'parameters',
+        type: {
+          name: 'Dictionary',
+          value: {
+              required: false,
+              serialized_name: 'ObjectElementType',
+              type: {
+                name: 'Object'
+              }
+          }
+        }
+      }
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -210,8 +220,8 @@ module Azure::GraphRbac::V1_6
     # Updates a service principal in the directory.
     #
     # @param object_id [String] The object ID of the service principal to delete.
-    # @param parameters [ServicePrincipalUpdateParameters] Parameters to update a
-    # service principal.
+    # @param parameters [ServicePrincipal] Parameters to update a service
+    # principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -225,8 +235,8 @@ module Azure::GraphRbac::V1_6
     # Updates a service principal in the directory.
     #
     # @param object_id [String] The object ID of the service principal to delete.
-    # @param parameters [ServicePrincipalUpdateParameters] Parameters to update a
-    # service principal.
+    # @param parameters [ServicePrincipal] Parameters to update a service
+    # principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -240,8 +250,8 @@ module Azure::GraphRbac::V1_6
     # Updates a service principal in the directory.
     #
     # @param object_id [String] The object ID of the service principal to delete.
-    # @param parameters [ServicePrincipalUpdateParameters] Parameters to update a
-    # service principal.
+    # @param parameters [ServicePrincipal] Parameters to update a service
+    # principal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -263,7 +273,7 @@ module Azure::GraphRbac::V1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::GraphRbac::V1_6::Models::ServicePrincipalUpdateParameters.mapper()
+      request_mapper = Azure::GraphRbac::V1_6::Models::ServicePrincipal.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

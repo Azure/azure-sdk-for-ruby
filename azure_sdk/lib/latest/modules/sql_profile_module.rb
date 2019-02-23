@@ -7,6 +7,7 @@ require 'azure_mgmt_sql'
 module Azure::Profiles::Latest
   module SQL
     module Mgmt
+      BackupLongTermRetentionVaults = Azure::SQL::Mgmt::V2014_04_01::BackupLongTermRetentionVaults
       RecoverableDatabases = Azure::SQL::Mgmt::V2014_04_01::RecoverableDatabases
       RestorableDroppedDatabases = Azure::SQL::Mgmt::V2014_04_01::RestorableDroppedDatabases
       ServerConnectionPolicies = Azure::SQL::Mgmt::V2014_04_01::ServerConnectionPolicies
@@ -22,21 +23,21 @@ module Azure::Profiles::Latest
       QueryTexts = Azure::SQL::Mgmt::V2014_04_01::QueryTexts
       RecommendedElasticPools = Azure::SQL::Mgmt::V2014_04_01::RecommendedElasticPools
       ReplicationLinks = Azure::SQL::Mgmt::V2014_04_01::ReplicationLinks
-      ServerCommunicationLinks = Azure::SQL::Mgmt::V2014_04_01::ServerCommunicationLinks
       ServerAzureADAdministrators = Azure::SQL::Mgmt::V2014_04_01::ServerAzureADAdministrators
-      ElasticPoolActivities = Azure::SQL::Mgmt::V2014_04_01::ElasticPoolActivities
+      ServerCommunicationLinks = Azure::SQL::Mgmt::V2014_04_01::ServerCommunicationLinks
       ServiceObjectives = Azure::SQL::Mgmt::V2014_04_01::ServiceObjectives
-      ServiceTierAdvisors = Azure::SQL::Mgmt::V2014_04_01::ServiceTierAdvisors
+      ElasticPoolActivities = Azure::SQL::Mgmt::V2014_04_01::ElasticPoolActivities
       ElasticPoolDatabaseActivities = Azure::SQL::Mgmt::V2014_04_01::ElasticPoolDatabaseActivities
+      ServiceTierAdvisors = Azure::SQL::Mgmt::V2014_04_01::ServiceTierAdvisors
       TransparentDataEncryptions = Azure::SQL::Mgmt::V2014_04_01::TransparentDataEncryptions
-      TransparentDataEncryptionActivities = Azure::SQL::Mgmt::V2014_04_01::TransparentDataEncryptionActivities
-      DatabaseTableAuditingPolicies = Azure::SQL::Mgmt::V2014_04_01::DatabaseTableAuditingPolicies
-      DatabaseConnectionPolicies = Azure::SQL::Mgmt::V2014_04_01::DatabaseConnectionPolicies
       ServerTableAuditingPolicies = Azure::SQL::Mgmt::V2014_04_01::ServerTableAuditingPolicies
+      TransparentDataEncryptionActivities = Azure::SQL::Mgmt::V2014_04_01::TransparentDataEncryptionActivities
+      DatabaseConnectionPolicies = Azure::SQL::Mgmt::V2014_04_01::DatabaseConnectionPolicies
+      DatabaseTableAuditingPolicies = Azure::SQL::Mgmt::V2014_04_01::DatabaseTableAuditingPolicies
       DatabaseUsages = Azure::SQL::Mgmt::V2014_04_01::DatabaseUsages
       ServerUsages = Azure::SQL::Mgmt::V2014_04_01::ServerUsages
-      BackupLongTermRetentionVaults = Azure::SQL::Mgmt::V2014_04_01::BackupLongTermRetentionVaults
-      Servers = Azure::SQL::Mgmt::V2015_05_01_preview::Servers
+      ServerAdvisors = Azure::SQL::Mgmt::V2015_05_01_preview::ServerAdvisors
+      DatabaseAdvisors = Azure::SQL::Mgmt::V2015_05_01_preview::DatabaseAdvisors
       DatabaseRecommendedActions = Azure::SQL::Mgmt::V2015_05_01_preview::DatabaseRecommendedActions
       DatabaseAutomaticTuningOperations = Azure::SQL::Mgmt::V2015_05_01_preview::DatabaseAutomaticTuningOperations
       EncryptionProtectors = Azure::SQL::Mgmt::V2015_05_01_preview::EncryptionProtectors
@@ -48,10 +49,10 @@ module Azure::Profiles::Latest
       SyncMembers = Azure::SQL::Mgmt::V2015_05_01_preview::SyncMembers
       SubscriptionUsages = Azure::SQL::Mgmt::V2015_05_01_preview::SubscriptionUsages
       VirtualNetworkRules = Azure::SQL::Mgmt::V2015_05_01_preview::VirtualNetworkRules
-      ServerAdvisors = Azure::SQL::Mgmt::V2015_05_01_preview::ServerAdvisors
-      DatabaseAdvisors = Azure::SQL::Mgmt::V2015_05_01_preview::DatabaseAdvisors
-      FirewallRules = Azure::SQL::Mgmt::V2015_05_01_preview::FirewallRules
       Operations = Azure::SQL::Mgmt::V2015_05_01_preview::Operations
+      Servers = Azure::SQL::Mgmt::V2015_05_01_preview::Servers
+      FirewallRules = Azure::SQL::Mgmt::V2015_05_01_preview::FirewallRules
+      BackupLongTermRetentionPolicies = Azure::SQL::Mgmt::V2017_03_01_preview::BackupLongTermRetentionPolicies
       RestorePoints = Azure::SQL::Mgmt::V2017_03_01_preview::RestorePoints
       Jobs = Azure::SQL::Mgmt::V2017_03_01_preview::Jobs
       ExtendedDatabaseBlobAuditingPolicies = Azure::SQL::Mgmt::V2017_03_01_preview::ExtendedDatabaseBlobAuditingPolicies
@@ -60,10 +61,10 @@ module Azure::Profiles::Latest
       DatabaseBlobAuditingPolicies = Azure::SQL::Mgmt::V2017_03_01_preview::DatabaseBlobAuditingPolicies
       DatabaseVulnerabilityAssessmentRuleBaselines = Azure::SQL::Mgmt::V2017_03_01_preview::DatabaseVulnerabilityAssessmentRuleBaselines
       DatabaseVulnerabilityAssessments = Azure::SQL::Mgmt::V2017_03_01_preview::DatabaseVulnerabilityAssessments
-      DataWarehouseUserActivitiesOperations = Azure::SQL::Mgmt::V2017_03_01_preview::DataWarehouseUserActivitiesOperations
-      JobCredentials = Azure::SQL::Mgmt::V2017_03_01_preview::JobCredentials
-      JobExecutions = Azure::SQL::Mgmt::V2017_03_01_preview::JobExecutions
       JobAgents = Azure::SQL::Mgmt::V2017_03_01_preview::JobAgents
+      JobCredentials = Azure::SQL::Mgmt::V2017_03_01_preview::JobCredentials
+      DataWarehouseUserActivitiesOperations = Azure::SQL::Mgmt::V2017_03_01_preview::DataWarehouseUserActivitiesOperations
+      JobExecutions = Azure::SQL::Mgmt::V2017_03_01_preview::JobExecutions
       JobStepExecutions = Azure::SQL::Mgmt::V2017_03_01_preview::JobStepExecutions
       JobSteps = Azure::SQL::Mgmt::V2017_03_01_preview::JobSteps
       JobTargetExecutions = Azure::SQL::Mgmt::V2017_03_01_preview::JobTargetExecutions
@@ -75,7 +76,6 @@ module Azure::Profiles::Latest
       ServerAutomaticTuningOperations = Azure::SQL::Mgmt::V2017_03_01_preview::ServerAutomaticTuningOperations
       ServerDnsAliases = Azure::SQL::Mgmt::V2017_03_01_preview::ServerDnsAliases
       ServerSecurityAlertPolicies = Azure::SQL::Mgmt::V2017_03_01_preview::ServerSecurityAlertPolicies
-      BackupLongTermRetentionPolicies = Azure::SQL::Mgmt::V2017_03_01_preview::BackupLongTermRetentionPolicies
       DatabaseOperations = Azure::SQL::Mgmt::V2017_10_01_preview::DatabaseOperations
       ElasticPools = Azure::SQL::Mgmt::V2017_10_01_preview::ElasticPools
       Capabilities = Azure::SQL::Mgmt::V2017_10_01_preview::Capabilities
@@ -88,17 +88,20 @@ module Azure::Profiles::Latest
       Databases = Azure::SQL::Mgmt::V2017_10_01_preview::Databases
 
       module Models
+        ElasticPoolDatabaseActivity = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDatabaseActivity
+        BackupLongTermRetentionPolicyState = Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionPolicyState
+        ServerTableAuditingPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::ServerTableAuditingPolicy
         MaxSizeUnits = Azure::SQL::Mgmt::V2014_04_01::Models::MaxSizeUnits
         CheckNameAvailabilityReason = Azure::SQL::Mgmt::V2014_04_01::Models::CheckNameAvailabilityReason
         DatabaseEdition = Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseEdition
         ServiceObjectiveName = Azure::SQL::Mgmt::V2014_04_01::Models::ServiceObjectiveName
         TransparentDataEncryptionStatus = Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionStatus
-        ServerConnectionType = Azure::SQL::Mgmt::V2014_04_01::Models::ServerConnectionType
         RecommendedIndexState = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndexState
         MetricValue = Azure::SQL::Mgmt::V2014_04_01::Models::MetricValue
-        ReadScale = Azure::SQL::Mgmt::V2014_04_01::Models::ReadScale
         RecommendedIndexAction = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndexAction
+        ServerConnectionType = Azure::SQL::Mgmt::V2014_04_01::Models::ServerConnectionType
         RecommendedIndexType = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndexType
+        ReadScale = Azure::SQL::Mgmt::V2014_04_01::Models::ReadScale
         CheckNameAvailabilityRequest = Azure::SQL::Mgmt::V2014_04_01::Models::CheckNameAvailabilityRequest
         SecurityAlertPolicyEmailAccountAdmins = Azure::SQL::Mgmt::V2014_04_01::Models::SecurityAlertPolicyEmailAccountAdmins
         SecurityAlertPolicyUseServerDefault = Azure::SQL::Mgmt::V2014_04_01::Models::SecurityAlertPolicyUseServerDefault
@@ -116,15 +119,15 @@ module Azure::Profiles::Latest
         QueryAggregationFunction = Azure::SQL::Mgmt::V2014_04_01::Models::QueryAggregationFunction
         QueryExecutionType = Azure::SQL::Mgmt::V2014_04_01::Models::QueryExecutionType
         QueryObservedMetricType = Azure::SQL::Mgmt::V2014_04_01::Models::QueryObservedMetricType
-        QueryMetricUnit = Azure::SQL::Mgmt::V2014_04_01::Models::QueryMetricUnit
+        AuthenticationType = Azure::SQL::Mgmt::V2014_04_01::Models::AuthenticationType
         UnitDefinitionType = Azure::SQL::Mgmt::V2014_04_01::Models::UnitDefinitionType
         ServerState = Azure::SQL::Mgmt::V2014_04_01::Models::ServerState
         TransparentDataEncryptionActivityStatus = Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionActivityStatus
-        ReplicationState = Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationState
-        AuthenticationType = Azure::SQL::Mgmt::V2014_04_01::Models::AuthenticationType
+        QueryMetricUnit = Azure::SQL::Mgmt::V2014_04_01::Models::QueryMetricUnit
         ServerVersion = Azure::SQL::Mgmt::V2014_04_01::Models::ServerVersion
-        ReplicationRole = Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationRole
+        ReplicationState = Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationState
         MetricName = Azure::SQL::Mgmt::V2014_04_01::Models::MetricName
+        ReplicationRole = Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationRole
         UnitType = Azure::SQL::Mgmt::V2014_04_01::Models::UnitType
         ServiceObjectiveListResult = Azure::SQL::Mgmt::V2014_04_01::Models::ServiceObjectiveListResult
         DataMaskingRuleListResult = Azure::SQL::Mgmt::V2014_04_01::Models::DataMaskingRuleListResult
@@ -147,50 +150,50 @@ module Azure::Profiles::Latest
         GeoBackupPolicyListResult = Azure::SQL::Mgmt::V2014_04_01::Models::GeoBackupPolicyListResult
         TableAuditingPolicyProperties = Azure::SQL::Mgmt::V2014_04_01::Models::TableAuditingPolicyProperties
         ImportExtensionRequest = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExtensionRequest
-        TransparentDataEncryptionActivityListResult = Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionActivityListResult
         RecommendedElasticPoolListResult = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPoolListResult
         ElasticPoolDatabaseActivityListResult = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDatabaseActivityListResult
         RecommendedElasticPoolMetric = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPoolMetric
         ElasticPoolActivityListResult = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolActivityListResult
+        ExportRequest = Azure::SQL::Mgmt::V2014_04_01::Models::ExportRequest
         QueryTextListResult = Azure::SQL::Mgmt::V2014_04_01::Models::QueryTextListResult
         BackupLongTermRetentionVaultListResult = Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionVaultListResult
         RestorableDroppedDatabaseListResult = Azure::SQL::Mgmt::V2014_04_01::Models::RestorableDroppedDatabaseListResult
         ElasticPoolPerDatabaseMinDtuCapability = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolPerDatabaseMinDtuCapability
         MetricListResult = Azure::SQL::Mgmt::V2014_04_01::Models::MetricListResult
-        ExportRequest = Azure::SQL::Mgmt::V2014_04_01::Models::ExportRequest
         ServerTableAuditingPolicyListResult = Azure::SQL::Mgmt::V2014_04_01::Models::ServerTableAuditingPolicyListResult
         OperationImpact = Azure::SQL::Mgmt::V2014_04_01::Models::OperationImpact
-        MetricDefinition = Azure::SQL::Mgmt::V2014_04_01::Models::MetricDefinition
-        BackupLongTermRetentionPolicyListResult = Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionPolicyListResult
         MetricDefinitionListResult = Azure::SQL::Mgmt::V2014_04_01::Models::MetricDefinitionListResult
+        TransparentDataEncryptionActivityListResult = Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionActivityListResult
+        BackupLongTermRetentionPolicyListResult = Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionPolicyListResult
+        MetricDefinition = Azure::SQL::Mgmt::V2014_04_01::Models::MetricDefinition
         QueryMetric = Azure::SQL::Mgmt::V2014_04_01::Models::QueryMetric
         QueryInterval = Azure::SQL::Mgmt::V2014_04_01::Models::QueryInterval
-        ServiceTierAdvisorListResult = Azure::SQL::Mgmt::V2014_04_01::Models::ServiceTierAdvisorListResult
         QueryStatistic = Azure::SQL::Mgmt::V2014_04_01::Models::QueryStatistic
-        RecoverableDatabaseListResult = Azure::SQL::Mgmt::V2014_04_01::Models::RecoverableDatabaseListResult
-        TopQueries = Azure::SQL::Mgmt::V2014_04_01::Models::TopQueries
         DatabaseTableAuditingPolicyListResult = Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseTableAuditingPolicyListResult
+        RecoverableDatabaseListResult = Azure::SQL::Mgmt::V2014_04_01::Models::RecoverableDatabaseListResult
+        ServiceTierAdvisorListResult = Azure::SQL::Mgmt::V2014_04_01::Models::ServiceTierAdvisorListResult
         TopQueriesListResult = Azure::SQL::Mgmt::V2014_04_01::Models::TopQueriesListResult
-        ElasticPoolDtuCapability = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDtuCapability
+        TopQueries = Azure::SQL::Mgmt::V2014_04_01::Models::TopQueries
         QueryStatisticListResult = Azure::SQL::Mgmt::V2014_04_01::Models::QueryStatisticListResult
         AdvisorListResult = Azure::SQL::Mgmt::V2014_04_01::Models::AdvisorListResult
-        BackupLongTermRetentionVault = Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionVault
-        RestorableDroppedDatabase = Azure::SQL::Mgmt::V2014_04_01::Models::RestorableDroppedDatabase
-        RecoverableDatabase = Azure::SQL::Mgmt::V2014_04_01::Models::RecoverableDatabase
         MetricAvailability = Azure::SQL::Mgmt::V2014_04_01::Models::MetricAvailability
-        TransparentDataEncryption = Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryption
-        ServiceTierAdvisor = Azure::SQL::Mgmt::V2014_04_01::Models::ServiceTierAdvisor
-        DatabaseSecurityAlertPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseSecurityAlertPolicy
-        DataMaskingRule = Azure::SQL::Mgmt::V2014_04_01::Models::DataMaskingRule
-        DataMaskingPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::DataMaskingPolicy
-        RecommendedIndex = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndex
+        BackupLongTermRetentionVault = Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionVault
         ServerConnectionPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::ServerConnectionPolicy
-        DisasterRecoveryConfiguration = Azure::SQL::Mgmt::V2014_04_01::Models::DisasterRecoveryConfiguration
-        ImportRequest = Azure::SQL::Mgmt::V2014_04_01::Models::ImportRequest
+        ElasticPoolDtuCapability = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDtuCapability
+        ServiceTierAdvisor = Azure::SQL::Mgmt::V2014_04_01::Models::ServiceTierAdvisor
+        TransparentDataEncryption = Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryption
+        RecoverableDatabase = Azure::SQL::Mgmt::V2014_04_01::Models::RecoverableDatabase
+        DataMaskingPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::DataMaskingPolicy
+        DatabaseSecurityAlertPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseSecurityAlertPolicy
+        RestorableDroppedDatabase = Azure::SQL::Mgmt::V2014_04_01::Models::RestorableDroppedDatabase
         GeoBackupPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::GeoBackupPolicy
+        DataMaskingRule = Azure::SQL::Mgmt::V2014_04_01::Models::DataMaskingRule
+        RecommendedIndex = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndex
+        ImportRequest = Azure::SQL::Mgmt::V2014_04_01::Models::ImportRequest
         RecommendedElasticPool = Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPool
-        ImportExportResponse = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse
         ServerAzureADAdministrator = Azure::SQL::Mgmt::V2014_04_01::Models::ServerAzureADAdministrator
+        ImportExportResponse = Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse
+        DisasterRecoveryConfiguration = Azure::SQL::Mgmt::V2014_04_01::Models::DisasterRecoveryConfiguration
         ServerCommunicationLink = Azure::SQL::Mgmt::V2014_04_01::Models::ServerCommunicationLink
         ReplicationLink = Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationLink
         ServiceObjective = Azure::SQL::Mgmt::V2014_04_01::Models::ServiceObjective
@@ -198,9 +201,10 @@ module Azure::Profiles::Latest
         TransparentDataEncryptionActivity = Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionActivity
         DatabaseConnectionPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseConnectionPolicy
         DatabaseTableAuditingPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseTableAuditingPolicy
-        ElasticPoolDatabaseActivity = Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDatabaseActivity
-        BackupLongTermRetentionPolicyState = Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionPolicyState
-        ServerTableAuditingPolicy = Azure::SQL::Mgmt::V2014_04_01::Models::ServerTableAuditingPolicy
+        VirtualNetworkRuleState = Azure::SQL::Mgmt::V2015_05_01_preview::Models::VirtualNetworkRuleState
+        SyncDirection = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncDirection
+        SyncMemberState = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberState
+        OperationOrigin = Azure::SQL::Mgmt::V2015_05_01_preview::Models::OperationOrigin
         VirtualNetworkRuleListResult = Azure::SQL::Mgmt::V2015_05_01_preview::Models::VirtualNetworkRuleListResult
         VirtualNetworkRule = Azure::SQL::Mgmt::V2015_05_01_preview::Models::VirtualNetworkRule
         OperationDisplay = Azure::SQL::Mgmt::V2015_05_01_preview::Models::OperationDisplay
@@ -244,42 +248,43 @@ module Azure::Profiles::Latest
         SyncDatabaseIdProperties = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncDatabaseIdProperties
         RecommendedAction = Azure::SQL::Mgmt::V2015_05_01_preview::Models::RecommendedAction
         DatabaseAutomaticTuning = Azure::SQL::Mgmt::V2015_05_01_preview::Models::DatabaseAutomaticTuning
-        EncryptionProtector = Azure::SQL::Mgmt::V2015_05_01_preview::Models::EncryptionProtector
+        FirewallRuleListResult = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FirewallRuleListResult
         Advisor = Azure::SQL::Mgmt::V2015_05_01_preview::Models::Advisor
         FailoverGroup = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup
+        EncryptionProtector = Azure::SQL::Mgmt::V2015_05_01_preview::Models::EncryptionProtector
         ManagedInstance = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ManagedInstance
-        ServerKey = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerKey
-        FirewallRuleListResult = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FirewallRuleListResult
-        SyncAgent = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgent
-        SyncAgentLinkedDatabase = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgentLinkedDatabase
         ProxyResourceWithWritableName = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ProxyResourceWithWritableName
-        SubscriptionUsage = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SubscriptionUsage
         FirewallRule = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FirewallRule
-        AutoExecuteStatusInheritedFrom = Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutoExecuteStatusInheritedFrom
-        RecommendedActionCurrentState = Azure::SQL::Mgmt::V2015_05_01_preview::Models::RecommendedActionCurrentState
+        ServerKey = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerKey
         SyncGroup = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncGroup
+        SyncAgentLinkedDatabase = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgentLinkedDatabase
+        AutoExecuteStatusInheritedFrom = Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutoExecuteStatusInheritedFrom
         SyncMember = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember
-        IsRetryable = Azure::SQL::Mgmt::V2015_05_01_preview::Models::IsRetryable
-        ImplementationMethod = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ImplementationMethod
-        AutomaticTuningMode = Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutomaticTuningMode
-        ServerKeyType = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerKeyType
+        RecommendedActionCurrentState = Azure::SQL::Mgmt::V2015_05_01_preview::Models::RecommendedActionCurrentState
         RecommendedActionInitiatedBy = Azure::SQL::Mgmt::V2015_05_01_preview::Models::RecommendedActionInitiatedBy
+        IsRetryable = Azure::SQL::Mgmt::V2015_05_01_preview::Models::IsRetryable
+        SyncAgent = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgent
+        AutomaticTuningMode = Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutomaticTuningMode
+        SubscriptionUsage = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SubscriptionUsage
+        AutomaticTuningDisabledReason = Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutomaticTuningDisabledReason
         FailoverGroupReplicationRole = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroupReplicationRole
+        IdentityType = Azure::SQL::Mgmt::V2015_05_01_preview::Models::IdentityType
+        SyncAgentState = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgentState
+        SyncMemberDbType = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberDbType
         Server = Azure::SQL::Mgmt::V2015_05_01_preview::Models::Server
-        ServerUpdate = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerUpdate
-        OperationOrigin = Azure::SQL::Mgmt::V2015_05_01_preview::Models::OperationOrigin
         SyncConflictResolutionPolicy = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncConflictResolutionPolicy
         SyncGroupState = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncGroupState
-        SyncGroupLogType = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncGroupLogType
-        SyncAgentState = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgentState
-        AdvisorStatus = Azure::SQL::Mgmt::V2015_05_01_preview::Models::AdvisorStatus
-        AutomaticTuningDisabledReason = Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutomaticTuningDisabledReason
+        ServerKeyType = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerKeyType
+        ServerUpdate = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerUpdate
+        ImplementationMethod = Azure::SQL::Mgmt::V2015_05_01_preview::Models::ImplementationMethod
         AutoExecuteStatus = Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutoExecuteStatus
-        SyncMemberDbType = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberDbType
-        SyncMemberState = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberState
-        IdentityType = Azure::SQL::Mgmt::V2015_05_01_preview::Models::IdentityType
-        SyncDirection = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncDirection
-        VirtualNetworkRuleState = Azure::SQL::Mgmt::V2015_05_01_preview::Models::VirtualNetworkRuleState
+        AdvisorStatus = Azure::SQL::Mgmt::V2015_05_01_preview::Models::AdvisorStatus
+        SyncGroupLogType = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncGroupLogType
+        AutomaticTuningServerOptions = Azure::SQL::Mgmt::V2017_03_01_preview::Models::AutomaticTuningServerOptions
+        JobAgentListResult = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentListResult
+        SensitivityLabelListResult = Azure::SQL::Mgmt::V2017_03_01_preview::Models::SensitivityLabelListResult
+        JobAgentUpdate = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentUpdate
+        CreateDatabaseRestorePointDefinition = Azure::SQL::Mgmt::V2017_03_01_preview::Models::CreateDatabaseRestorePointDefinition
         LongTermRetentionBackupListResult = Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionBackupListResult
         JobCredentialListResult = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobCredentialListResult
         JobExecutionTarget = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobExecutionTarget
@@ -301,38 +306,38 @@ module Azure::Profiles::Latest
         DataWarehouseUserActivities = Azure::SQL::Mgmt::V2017_03_01_preview::Models::DataWarehouseUserActivities
         JobAgent = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgent
         JobCredential = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobCredential
-        JobStep = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStep
         JobExecution = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobExecution
-        JobVersion = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobVersion
-        JobTargetGroup = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetGroup
-        ManagedDatabase = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabase
-        LongTermRetentionBackup = Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionBackup
         JobListResult = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobListResult
-        CreateDatabaseRestorePointDefinition = Azure::SQL::Mgmt::V2017_03_01_preview::Models::CreateDatabaseRestorePointDefinition
+        CompleteDatabaseRestoreDefinition = Azure::SQL::Mgmt::V2017_03_01_preview::Models::CompleteDatabaseRestoreDefinition
+        JobTargetGroup = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetGroup
+        JobVersion = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobVersion
+        JobSchedule = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobSchedule
+        ManagedDatabase = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabase
+        SensitivityLabel = Azure::SQL::Mgmt::V2017_03_01_preview::Models::SensitivityLabel
+        LongTermRetentionBackup = Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionBackup
+        JobStep = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStep
+        ServerSecurityAlertPolicy = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerSecurityAlertPolicy
         ServerAutomaticTuning = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerAutomaticTuning
         ServerDnsAlias = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerDnsAlias
-        JobSchedule = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobSchedule
-        ServerSecurityAlertPolicy = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerSecurityAlertPolicy
-        SensitivityLabel = Azure::SQL::Mgmt::V2017_03_01_preview::Models::SensitivityLabel
-        JobExecutionLifecycle = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobExecutionLifecycle
         JobAgentState = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentState
         RestorePointListResult = Azure::SQL::Mgmt::V2017_03_01_preview::Models::RestorePointListResult
         JobTargetType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetType
-        ProvisioningState = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ProvisioningState
-        JobStepActionType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStepActionType
-        JobStepOutputType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStepOutputType
         JobScheduleType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobScheduleType
-        ManagedDatabaseStatus = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabaseStatus
+        ProvisioningState = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ProvisioningState
+        JobExecutionLifecycle = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobExecutionLifecycle
+        JobStepOutputType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStepOutputType
+        JobTargetGroupMembershipType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetGroupMembershipType
+        JobStepActionType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStepActionType
         JobStepActionSource = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStepActionSource
         AutomaticTuningServerMode = Azure::SQL::Mgmt::V2017_03_01_preview::Models::AutomaticTuningServerMode
-        JobTargetGroupMembershipType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetGroupMembershipType
-        LongTermRetentionDatabaseState = Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionDatabaseState
+        RestorePointType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::RestorePointType
+        ManagedDatabaseStatus = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabaseStatus
         ManagedDatabaseCreateMode = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabaseCreateMode
         SensitivityLabelSource = Azure::SQL::Mgmt::V2017_03_01_preview::Models::SensitivityLabelSource
         AutomaticTuningServerReason = Azure::SQL::Mgmt::V2017_03_01_preview::Models::AutomaticTuningServerReason
         SecurityAlertPolicyState = Azure::SQL::Mgmt::V2017_03_01_preview::Models::SecurityAlertPolicyState
         VulnerabilityAssessmentPolicyBaselineName = Azure::SQL::Mgmt::V2017_03_01_preview::Models::VulnerabilityAssessmentPolicyBaselineName
-        RestorePointType = Azure::SQL::Mgmt::V2017_03_01_preview::Models::RestorePointType
+        LongTermRetentionDatabaseState = Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionDatabaseState
         Job = Azure::SQL::Mgmt::V2017_03_01_preview::Models::Job
         DatabaseBlobAuditingPolicy = Azure::SQL::Mgmt::V2017_03_01_preview::Models::DatabaseBlobAuditingPolicy
         BackupLongTermRetentionPolicy = Azure::SQL::Mgmt::V2017_03_01_preview::Models::BackupLongTermRetentionPolicy
@@ -344,16 +349,12 @@ module Azure::Profiles::Latest
         ManagedDatabaseUpdate = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabaseUpdate
         ManagedDatabaseListResult = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabaseListResult
         ServerDnsAliasAcquisition = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerDnsAliasAcquisition
-        CompleteDatabaseRestoreDefinition = Azure::SQL::Mgmt::V2017_03_01_preview::Models::CompleteDatabaseRestoreDefinition
-        AutomaticTuningServerOptions = Azure::SQL::Mgmt::V2017_03_01_preview::Models::AutomaticTuningServerOptions
-        JobAgentListResult = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentListResult
-        SensitivityLabelListResult = Azure::SQL::Mgmt::V2017_03_01_preview::Models::SensitivityLabelListResult
-        JobAgentUpdate = Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentUpdate
+        PerformanceLevelUnit = Azure::SQL::Mgmt::V2017_10_01_preview::Models::PerformanceLevelUnit
         ResourceMoveDefinition = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ResourceMoveDefinition
         SampleName = Azure::SQL::Mgmt::V2017_10_01_preview::Models::SampleName
         DatabaseOperationListResult = Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseOperationListResult
-        VulnerabilityAssessmentRecurringScansProperties = Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentRecurringScansProperties
         TrackedResource = Azure::SQL::Mgmt::V2017_10_01_preview::Models::TrackedResource
+        VulnerabilityAssessmentRecurringScansProperties = Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentRecurringScansProperties
         ProxyResource = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ProxyResource
         ElasticPoolState = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolState
         DatabaseOperation = Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseOperation
@@ -388,16 +389,16 @@ module Azure::Profiles::Latest
         ElasticPoolPerDatabaseSettings = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolPerDatabaseSettings
         PartnerRegionInfo = Azure::SQL::Mgmt::V2017_10_01_preview::Models::PartnerRegionInfo
         ServiceObjectiveCapability = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ServiceObjectiveCapability
-        ElasticPoolOperation = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolOperation
         VulnerabilityAssessmentScanRecord = Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentScanRecord
-        PerformanceLevelCapability = Azure::SQL::Mgmt::V2017_10_01_preview::Models::PerformanceLevelCapability
-        InstanceFailoverGroup = Azure::SQL::Mgmt::V2017_10_01_preview::Models::InstanceFailoverGroup
         DatabaseVulnerabilityAssessmentScansExport = Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseVulnerabilityAssessmentScansExport
+        ElasticPoolOperation = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolOperation
+        InstanceFailoverGroup = Azure::SQL::Mgmt::V2017_10_01_preview::Models::InstanceFailoverGroup
+        Resource = Azure::SQL::Mgmt::V2017_10_01_preview::Models::Resource
         TdeCertificate = Azure::SQL::Mgmt::V2017_10_01_preview::Models::TdeCertificate
-        BackupShortTermRetentionPolicy = Azure::SQL::Mgmt::V2017_10_01_preview::Models::BackupShortTermRetentionPolicy
+        PerformanceLevelCapability = Azure::SQL::Mgmt::V2017_10_01_preview::Models::PerformanceLevelCapability
         VulnerabilityAssessmentScanState = Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentScanState
         VulnerabilityAssessmentScanTriggerType = Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentScanTriggerType
-        Resource = Azure::SQL::Mgmt::V2017_10_01_preview::Models::Resource
+        BackupShortTermRetentionPolicy = Azure::SQL::Mgmt::V2017_10_01_preview::Models::BackupShortTermRetentionPolicy
         MaxSizeUnit = Azure::SQL::Mgmt::V2017_10_01_preview::Models::MaxSizeUnit
         LogSizeUnit = Azure::SQL::Mgmt::V2017_10_01_preview::Models::LogSizeUnit
         DatabaseLicenseType = Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseLicenseType
@@ -406,20 +407,19 @@ module Azure::Profiles::Latest
         InstanceFailoverGroupReplicationRole = Azure::SQL::Mgmt::V2017_10_01_preview::Models::InstanceFailoverGroupReplicationRole
         CapabilityGroup = Azure::SQL::Mgmt::V2017_10_01_preview::Models::CapabilityGroup
         Database = Azure::SQL::Mgmt::V2017_10_01_preview::Models::Database
-        ElasticPoolUpdate = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolUpdate
         ElasticPool = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPool
+        ElasticPoolUpdate = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolUpdate
         ReadWriteEndpointFailoverPolicy = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ReadWriteEndpointFailoverPolicy
         ReadOnlyEndpointFailoverPolicy = Azure::SQL::Mgmt::V2017_10_01_preview::Models::ReadOnlyEndpointFailoverPolicy
         DatabaseListResult = Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseListResult
         DatabaseUpdate = Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseUpdate
         CreateMode = Azure::SQL::Mgmt::V2017_10_01_preview::Models::CreateMode
-        CapabilityStatus = Azure::SQL::Mgmt::V2017_10_01_preview::Models::CapabilityStatus
         Sku = Azure::SQL::Mgmt::V2017_10_01_preview::Models::Sku
-        PerformanceLevelUnit = Azure::SQL::Mgmt::V2017_10_01_preview::Models::PerformanceLevelUnit
+        CapabilityStatus = Azure::SQL::Mgmt::V2017_10_01_preview::Models::CapabilityStatus
       end
 
       class SQLManagementClass
-        attr_reader :recoverable_databases, :restorable_dropped_databases, :server_connection_policies, :database_threat_detection_policies, :data_masking_policies, :data_masking_rules, :transparent_data_encryption_configurations, :extensions, :disaster_recovery_configurations, :geo_backup_policies, :queries, :query_statistics, :query_texts, :recommended_elastic_pools, :replication_links, :server_communication_links, :server_azure_adadministrators, :elastic_pool_activities, :service_objectives, :service_tier_advisors, :elastic_pool_database_activities, :transparent_data_encryptions, :transparent_data_encryption_activities, :database_table_auditing_policies, :database_connection_policies, :server_table_auditing_policies, :database_usages, :server_usages, :backup_long_term_retention_vaults, :servers, :database_recommended_actions, :database_automatic_tuning_operations, :encryption_protectors, :failover_groups, :managed_instances, :server_keys, :sync_agents, :sync_groups, :sync_members, :subscription_usages, :virtual_network_rules, :server_advisors, :database_advisors, :firewall_rules, :operations, :restore_points, :jobs, :extended_database_blob_auditing_policies, :extended_server_blob_auditing_policies, :server_blob_auditing_policies, :database_blob_auditing_policies, :database_vulnerability_assessment_rule_baselines, :database_vulnerability_assessments, :data_warehouse_user_activities_operations, :job_credentials, :job_executions, :job_agents, :job_step_executions, :job_steps, :job_target_executions, :job_target_groups, :job_versions, :managed_databases, :sensitivity_labels, :long_term_retention_backups, :server_automatic_tuning_operations, :server_dns_aliases, :server_security_alert_policies, :backup_long_term_retention_policies, :database_operations, :elastic_pools, :capabilities, :elastic_pool_operations, :database_vulnerability_assessment_scans, :instance_failover_groups, :backup_short_term_retention_policies, :tde_certificates, :managed_instance_tde_certificates, :databases, :configurable, :base_url, :options, :model_classes
+        attr_reader :backup_long_term_retention_vaults, :recoverable_databases, :restorable_dropped_databases, :server_connection_policies, :database_threat_detection_policies, :data_masking_policies, :data_masking_rules, :transparent_data_encryption_configurations, :extensions, :disaster_recovery_configurations, :geo_backup_policies, :queries, :query_statistics, :query_texts, :recommended_elastic_pools, :replication_links, :server_azure_adadministrators, :server_communication_links, :service_objectives, :elastic_pool_activities, :elastic_pool_database_activities, :service_tier_advisors, :transparent_data_encryptions, :server_table_auditing_policies, :transparent_data_encryption_activities, :database_connection_policies, :database_table_auditing_policies, :database_usages, :server_usages, :server_advisors, :database_advisors, :database_recommended_actions, :database_automatic_tuning_operations, :encryption_protectors, :failover_groups, :managed_instances, :server_keys, :sync_agents, :sync_groups, :sync_members, :subscription_usages, :virtual_network_rules, :operations, :servers, :firewall_rules, :backup_long_term_retention_policies, :restore_points, :jobs, :extended_database_blob_auditing_policies, :extended_server_blob_auditing_policies, :server_blob_auditing_policies, :database_blob_auditing_policies, :database_vulnerability_assessment_rule_baselines, :database_vulnerability_assessments, :job_agents, :job_credentials, :data_warehouse_user_activities_operations, :job_executions, :job_step_executions, :job_steps, :job_target_executions, :job_target_groups, :job_versions, :managed_databases, :sensitivity_labels, :long_term_retention_backups, :server_automatic_tuning_operations, :server_dns_aliases, :server_security_alert_policies, :database_operations, :elastic_pools, :capabilities, :elastic_pool_operations, :database_vulnerability_assessment_scans, :instance_failover_groups, :backup_short_term_retention_policies, :tde_certificates, :managed_instance_tde_certificates, :databases, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -429,6 +429,7 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @backup_long_term_retention_vaults = @client_0.backup_long_term_retention_vaults
           @recoverable_databases = @client_0.recoverable_databases
           @restorable_dropped_databases = @client_0.restorable_dropped_databases
           @server_connection_policies = @client_0.server_connection_policies
@@ -444,27 +445,27 @@ module Azure::Profiles::Latest
           @query_texts = @client_0.query_texts
           @recommended_elastic_pools = @client_0.recommended_elastic_pools
           @replication_links = @client_0.replication_links
-          @server_communication_links = @client_0.server_communication_links
           @server_azure_adadministrators = @client_0.server_azure_adadministrators
-          @elastic_pool_activities = @client_0.elastic_pool_activities
+          @server_communication_links = @client_0.server_communication_links
           @service_objectives = @client_0.service_objectives
-          @service_tier_advisors = @client_0.service_tier_advisors
+          @elastic_pool_activities = @client_0.elastic_pool_activities
           @elastic_pool_database_activities = @client_0.elastic_pool_database_activities
+          @service_tier_advisors = @client_0.service_tier_advisors
           @transparent_data_encryptions = @client_0.transparent_data_encryptions
-          @transparent_data_encryption_activities = @client_0.transparent_data_encryption_activities
-          @database_table_auditing_policies = @client_0.database_table_auditing_policies
-          @database_connection_policies = @client_0.database_connection_policies
           @server_table_auditing_policies = @client_0.server_table_auditing_policies
+          @transparent_data_encryption_activities = @client_0.transparent_data_encryption_activities
+          @database_connection_policies = @client_0.database_connection_policies
+          @database_table_auditing_policies = @client_0.database_table_auditing_policies
           @database_usages = @client_0.database_usages
           @server_usages = @client_0.server_usages
-          @backup_long_term_retention_vaults = @client_0.backup_long_term_retention_vaults
 
           @client_1 = Azure::SQL::Mgmt::V2015_05_01_preview::SqlManagementClient.new(configurable.credentials, base_url, options)
           if(@client_1.respond_to?(:subscription_id))
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @servers = @client_1.servers
+          @server_advisors = @client_1.server_advisors
+          @database_advisors = @client_1.database_advisors
           @database_recommended_actions = @client_1.database_recommended_actions
           @database_automatic_tuning_operations = @client_1.database_automatic_tuning_operations
           @encryption_protectors = @client_1.encryption_protectors
@@ -476,16 +477,16 @@ module Azure::Profiles::Latest
           @sync_members = @client_1.sync_members
           @subscription_usages = @client_1.subscription_usages
           @virtual_network_rules = @client_1.virtual_network_rules
-          @server_advisors = @client_1.server_advisors
-          @database_advisors = @client_1.database_advisors
-          @firewall_rules = @client_1.firewall_rules
           @operations = @client_1.operations
+          @servers = @client_1.servers
+          @firewall_rules = @client_1.firewall_rules
 
           @client_2 = Azure::SQL::Mgmt::V2017_03_01_preview::SqlManagementClient.new(configurable.credentials, base_url, options)
           if(@client_2.respond_to?(:subscription_id))
             @client_2.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_2)
+          @backup_long_term_retention_policies = @client_2.backup_long_term_retention_policies
           @restore_points = @client_2.restore_points
           @jobs = @client_2.jobs
           @extended_database_blob_auditing_policies = @client_2.extended_database_blob_auditing_policies
@@ -494,10 +495,10 @@ module Azure::Profiles::Latest
           @database_blob_auditing_policies = @client_2.database_blob_auditing_policies
           @database_vulnerability_assessment_rule_baselines = @client_2.database_vulnerability_assessment_rule_baselines
           @database_vulnerability_assessments = @client_2.database_vulnerability_assessments
-          @data_warehouse_user_activities_operations = @client_2.data_warehouse_user_activities_operations
-          @job_credentials = @client_2.job_credentials
-          @job_executions = @client_2.job_executions
           @job_agents = @client_2.job_agents
+          @job_credentials = @client_2.job_credentials
+          @data_warehouse_user_activities_operations = @client_2.data_warehouse_user_activities_operations
+          @job_executions = @client_2.job_executions
           @job_step_executions = @client_2.job_step_executions
           @job_steps = @client_2.job_steps
           @job_target_executions = @client_2.job_target_executions
@@ -509,7 +510,6 @@ module Azure::Profiles::Latest
           @server_automatic_tuning_operations = @client_2.server_automatic_tuning_operations
           @server_dns_aliases = @client_2.server_dns_aliases
           @server_security_alert_policies = @client_2.server_security_alert_policies
-          @backup_long_term_retention_policies = @client_2.backup_long_term_retention_policies
 
           @client_3 = Azure::SQL::Mgmt::V2017_10_01_preview::SqlManagementClient.new(configurable.credentials, base_url, options)
           if(@client_3.respond_to?(:subscription_id))
@@ -550,6 +550,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def elastic_pool_database_activity
+            Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDatabaseActivity
+          end
+          def backup_long_term_retention_policy_state
+            Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionPolicyState
+          end
+          def server_table_auditing_policy
+            Azure::SQL::Mgmt::V2014_04_01::Models::ServerTableAuditingPolicy
+          end
           def max_size_units
             Azure::SQL::Mgmt::V2014_04_01::Models::MaxSizeUnits
           end
@@ -565,23 +574,23 @@ module Azure::Profiles::Latest
           def transparent_data_encryption_status
             Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionStatus
           end
-          def server_connection_type
-            Azure::SQL::Mgmt::V2014_04_01::Models::ServerConnectionType
-          end
           def recommended_index_state
             Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndexState
           end
           def metric_value
             Azure::SQL::Mgmt::V2014_04_01::Models::MetricValue
           end
-          def read_scale
-            Azure::SQL::Mgmt::V2014_04_01::Models::ReadScale
-          end
           def recommended_index_action
             Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndexAction
           end
+          def server_connection_type
+            Azure::SQL::Mgmt::V2014_04_01::Models::ServerConnectionType
+          end
           def recommended_index_type
             Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndexType
+          end
+          def read_scale
+            Azure::SQL::Mgmt::V2014_04_01::Models::ReadScale
           end
           def check_name_availability_request
             Azure::SQL::Mgmt::V2014_04_01::Models::CheckNameAvailabilityRequest
@@ -634,8 +643,8 @@ module Azure::Profiles::Latest
           def query_observed_metric_type
             Azure::SQL::Mgmt::V2014_04_01::Models::QueryObservedMetricType
           end
-          def query_metric_unit
-            Azure::SQL::Mgmt::V2014_04_01::Models::QueryMetricUnit
+          def authentication_type
+            Azure::SQL::Mgmt::V2014_04_01::Models::AuthenticationType
           end
           def unit_definition_type
             Azure::SQL::Mgmt::V2014_04_01::Models::UnitDefinitionType
@@ -646,20 +655,20 @@ module Azure::Profiles::Latest
           def transparent_data_encryption_activity_status
             Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionActivityStatus
           end
-          def replication_state
-            Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationState
-          end
-          def authentication_type
-            Azure::SQL::Mgmt::V2014_04_01::Models::AuthenticationType
+          def query_metric_unit
+            Azure::SQL::Mgmt::V2014_04_01::Models::QueryMetricUnit
           end
           def server_version
             Azure::SQL::Mgmt::V2014_04_01::Models::ServerVersion
           end
-          def replication_role
-            Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationRole
+          def replication_state
+            Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationState
           end
           def metric_name
             Azure::SQL::Mgmt::V2014_04_01::Models::MetricName
+          end
+          def replication_role
+            Azure::SQL::Mgmt::V2014_04_01::Models::ReplicationRole
           end
           def unit_type
             Azure::SQL::Mgmt::V2014_04_01::Models::UnitType
@@ -727,9 +736,6 @@ module Azure::Profiles::Latest
           def import_extension_request
             Azure::SQL::Mgmt::V2014_04_01::Models::ImportExtensionRequest
           end
-          def transparent_data_encryption_activity_list_result
-            Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionActivityListResult
-          end
           def recommended_elastic_pool_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPoolListResult
           end
@@ -741,6 +747,9 @@ module Azure::Profiles::Latest
           end
           def elastic_pool_activity_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolActivityListResult
+          end
+          def export_request
+            Azure::SQL::Mgmt::V2014_04_01::Models::ExportRequest
           end
           def query_text_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::QueryTextListResult
@@ -757,23 +766,23 @@ module Azure::Profiles::Latest
           def metric_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::MetricListResult
           end
-          def export_request
-            Azure::SQL::Mgmt::V2014_04_01::Models::ExportRequest
-          end
           def server_table_auditing_policy_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::ServerTableAuditingPolicyListResult
           end
           def operation_impact
             Azure::SQL::Mgmt::V2014_04_01::Models::OperationImpact
           end
-          def metric_definition
-            Azure::SQL::Mgmt::V2014_04_01::Models::MetricDefinition
+          def metric_definition_list_result
+            Azure::SQL::Mgmt::V2014_04_01::Models::MetricDefinitionListResult
+          end
+          def transparent_data_encryption_activity_list_result
+            Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryptionActivityListResult
           end
           def backup_long_term_retention_policy_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionPolicyListResult
           end
-          def metric_definition_list_result
-            Azure::SQL::Mgmt::V2014_04_01::Models::MetricDefinitionListResult
+          def metric_definition
+            Azure::SQL::Mgmt::V2014_04_01::Models::MetricDefinition
           end
           def query_metric
             Azure::SQL::Mgmt::V2014_04_01::Models::QueryMetric
@@ -781,26 +790,23 @@ module Azure::Profiles::Latest
           def query_interval
             Azure::SQL::Mgmt::V2014_04_01::Models::QueryInterval
           end
-          def service_tier_advisor_list_result
-            Azure::SQL::Mgmt::V2014_04_01::Models::ServiceTierAdvisorListResult
-          end
           def query_statistic
             Azure::SQL::Mgmt::V2014_04_01::Models::QueryStatistic
-          end
-          def recoverable_database_list_result
-            Azure::SQL::Mgmt::V2014_04_01::Models::RecoverableDatabaseListResult
-          end
-          def top_queries
-            Azure::SQL::Mgmt::V2014_04_01::Models::TopQueries
           end
           def database_table_auditing_policy_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseTableAuditingPolicyListResult
           end
+          def recoverable_database_list_result
+            Azure::SQL::Mgmt::V2014_04_01::Models::RecoverableDatabaseListResult
+          end
+          def service_tier_advisor_list_result
+            Azure::SQL::Mgmt::V2014_04_01::Models::ServiceTierAdvisorListResult
+          end
           def top_queries_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::TopQueriesListResult
           end
-          def elastic_pool_dtu_capability
-            Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDtuCapability
+          def top_queries
+            Azure::SQL::Mgmt::V2014_04_01::Models::TopQueries
           end
           def query_statistic_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::QueryStatisticListResult
@@ -808,56 +814,59 @@ module Azure::Profiles::Latest
           def advisor_list_result
             Azure::SQL::Mgmt::V2014_04_01::Models::AdvisorListResult
           end
-          def backup_long_term_retention_vault
-            Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionVault
-          end
-          def restorable_dropped_database
-            Azure::SQL::Mgmt::V2014_04_01::Models::RestorableDroppedDatabase
-          end
-          def recoverable_database
-            Azure::SQL::Mgmt::V2014_04_01::Models::RecoverableDatabase
-          end
           def metric_availability
             Azure::SQL::Mgmt::V2014_04_01::Models::MetricAvailability
           end
-          def transparent_data_encryption
-            Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryption
-          end
-          def service_tier_advisor
-            Azure::SQL::Mgmt::V2014_04_01::Models::ServiceTierAdvisor
-          end
-          def database_security_alert_policy
-            Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseSecurityAlertPolicy
-          end
-          def data_masking_rule
-            Azure::SQL::Mgmt::V2014_04_01::Models::DataMaskingRule
-          end
-          def data_masking_policy
-            Azure::SQL::Mgmt::V2014_04_01::Models::DataMaskingPolicy
-          end
-          def recommended_index
-            Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndex
+          def backup_long_term_retention_vault
+            Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionVault
           end
           def server_connection_policy
             Azure::SQL::Mgmt::V2014_04_01::Models::ServerConnectionPolicy
           end
-          def disaster_recovery_configuration
-            Azure::SQL::Mgmt::V2014_04_01::Models::DisasterRecoveryConfiguration
+          def elastic_pool_dtu_capability
+            Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDtuCapability
           end
-          def import_request
-            Azure::SQL::Mgmt::V2014_04_01::Models::ImportRequest
+          def service_tier_advisor
+            Azure::SQL::Mgmt::V2014_04_01::Models::ServiceTierAdvisor
+          end
+          def transparent_data_encryption
+            Azure::SQL::Mgmt::V2014_04_01::Models::TransparentDataEncryption
+          end
+          def recoverable_database
+            Azure::SQL::Mgmt::V2014_04_01::Models::RecoverableDatabase
+          end
+          def data_masking_policy
+            Azure::SQL::Mgmt::V2014_04_01::Models::DataMaskingPolicy
+          end
+          def database_security_alert_policy
+            Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseSecurityAlertPolicy
+          end
+          def restorable_dropped_database
+            Azure::SQL::Mgmt::V2014_04_01::Models::RestorableDroppedDatabase
           end
           def geo_backup_policy
             Azure::SQL::Mgmt::V2014_04_01::Models::GeoBackupPolicy
           end
+          def data_masking_rule
+            Azure::SQL::Mgmt::V2014_04_01::Models::DataMaskingRule
+          end
+          def recommended_index
+            Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedIndex
+          end
+          def import_request
+            Azure::SQL::Mgmt::V2014_04_01::Models::ImportRequest
+          end
           def recommended_elastic_pool
             Azure::SQL::Mgmt::V2014_04_01::Models::RecommendedElasticPool
+          end
+          def server_azure_adadministrator
+            Azure::SQL::Mgmt::V2014_04_01::Models::ServerAzureADAdministrator
           end
           def import_export_response
             Azure::SQL::Mgmt::V2014_04_01::Models::ImportExportResponse
           end
-          def server_azure_adadministrator
-            Azure::SQL::Mgmt::V2014_04_01::Models::ServerAzureADAdministrator
+          def disaster_recovery_configuration
+            Azure::SQL::Mgmt::V2014_04_01::Models::DisasterRecoveryConfiguration
           end
           def server_communication_link
             Azure::SQL::Mgmt::V2014_04_01::Models::ServerCommunicationLink
@@ -880,14 +889,17 @@ module Azure::Profiles::Latest
           def database_table_auditing_policy
             Azure::SQL::Mgmt::V2014_04_01::Models::DatabaseTableAuditingPolicy
           end
-          def elastic_pool_database_activity
-            Azure::SQL::Mgmt::V2014_04_01::Models::ElasticPoolDatabaseActivity
+          def virtual_network_rule_state
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::VirtualNetworkRuleState
           end
-          def backup_long_term_retention_policy_state
-            Azure::SQL::Mgmt::V2014_04_01::Models::BackupLongTermRetentionPolicyState
+          def sync_direction
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncDirection
           end
-          def server_table_auditing_policy
-            Azure::SQL::Mgmt::V2014_04_01::Models::ServerTableAuditingPolicy
+          def sync_member_state
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberState
+          end
+          def operation_origin
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::OperationOrigin
           end
           def virtual_network_rule_list_result
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::VirtualNetworkRuleListResult
@@ -1018,8 +1030,8 @@ module Azure::Profiles::Latest
           def database_automatic_tuning
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::DatabaseAutomaticTuning
           end
-          def encryption_protector
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::EncryptionProtector
+          def firewall_rule_list_result
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::FirewallRuleListResult
           end
           def advisor
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::Advisor
@@ -1027,68 +1039,68 @@ module Azure::Profiles::Latest
           def failover_group
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup
           end
+          def encryption_protector
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::EncryptionProtector
+          end
           def managed_instance
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::ManagedInstance
-          end
-          def server_key
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerKey
-          end
-          def firewall_rule_list_result
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::FirewallRuleListResult
-          end
-          def sync_agent
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgent
-          end
-          def sync_agent_linked_database
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgentLinkedDatabase
           end
           def proxy_resource_with_writable_name
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::ProxyResourceWithWritableName
           end
-          def subscription_usage
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SubscriptionUsage
-          end
           def firewall_rule
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::FirewallRule
           end
-          def auto_execute_status_inherited_from
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutoExecuteStatusInheritedFrom
-          end
-          def recommended_action_current_state
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::RecommendedActionCurrentState
+          def server_key
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerKey
           end
           def sync_group
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncGroup
           end
+          def sync_agent_linked_database
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgentLinkedDatabase
+          end
+          def auto_execute_status_inherited_from
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutoExecuteStatusInheritedFrom
+          end
           def sync_member
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember
           end
-          def is_retryable
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::IsRetryable
-          end
-          def implementation_method
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::ImplementationMethod
-          end
-          def automatic_tuning_mode
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutomaticTuningMode
-          end
-          def server_key_type
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerKeyType
+          def recommended_action_current_state
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::RecommendedActionCurrentState
           end
           def recommended_action_initiated_by
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::RecommendedActionInitiatedBy
           end
+          def is_retryable
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::IsRetryable
+          end
+          def sync_agent
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgent
+          end
+          def automatic_tuning_mode
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutomaticTuningMode
+          end
+          def subscription_usage
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SubscriptionUsage
+          end
+          def automatic_tuning_disabled_reason
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutomaticTuningDisabledReason
+          end
           def failover_group_replication_role
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroupReplicationRole
           end
+          def identity_type
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::IdentityType
+          end
+          def sync_agent_state
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgentState
+          end
+          def sync_member_db_type
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberDbType
+          end
           def server
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::Server
-          end
-          def server_update
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerUpdate
-          end
-          def operation_origin
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::OperationOrigin
           end
           def sync_conflict_resolution_policy
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncConflictResolutionPolicy
@@ -1096,35 +1108,38 @@ module Azure::Profiles::Latest
           def sync_group_state
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncGroupState
           end
-          def sync_group_log_type
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncGroupLogType
+          def server_key_type
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerKeyType
           end
-          def sync_agent_state
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncAgentState
+          def server_update
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::ServerUpdate
           end
-          def advisor_status
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::AdvisorStatus
-          end
-          def automatic_tuning_disabled_reason
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutomaticTuningDisabledReason
+          def implementation_method
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::ImplementationMethod
           end
           def auto_execute_status
             Azure::SQL::Mgmt::V2015_05_01_preview::Models::AutoExecuteStatus
           end
-          def sync_member_db_type
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberDbType
+          def advisor_status
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::AdvisorStatus
           end
-          def sync_member_state
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberState
+          def sync_group_log_type
+            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncGroupLogType
           end
-          def identity_type
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::IdentityType
+          def automatic_tuning_server_options
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::AutomaticTuningServerOptions
           end
-          def sync_direction
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncDirection
+          def job_agent_list_result
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentListResult
           end
-          def virtual_network_rule_state
-            Azure::SQL::Mgmt::V2015_05_01_preview::Models::VirtualNetworkRuleState
+          def sensitivity_label_list_result
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::SensitivityLabelListResult
+          end
+          def job_agent_update
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentUpdate
+          end
+          def create_database_restore_point_definition
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::CreateDatabaseRestorePointDefinition
           end
           def long_term_retention_backup_list_result
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionBackupListResult
@@ -1189,47 +1204,44 @@ module Azure::Profiles::Latest
           def job_credential
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobCredential
           end
-          def job_step
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStep
-          end
           def job_execution
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobExecution
-          end
-          def job_version
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobVersion
-          end
-          def job_target_group
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetGroup
-          end
-          def managed_database
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabase
-          end
-          def long_term_retention_backup
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionBackup
           end
           def job_list_result
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobListResult
           end
-          def create_database_restore_point_definition
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::CreateDatabaseRestorePointDefinition
+          def complete_database_restore_definition
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::CompleteDatabaseRestoreDefinition
+          end
+          def job_target_group
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetGroup
+          end
+          def job_version
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobVersion
+          end
+          def job_schedule
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobSchedule
+          end
+          def managed_database
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabase
+          end
+          def sensitivity_label
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::SensitivityLabel
+          end
+          def long_term_retention_backup
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionBackup
+          end
+          def job_step
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStep
+          end
+          def server_security_alert_policy
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerSecurityAlertPolicy
           end
           def server_automatic_tuning
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerAutomaticTuning
           end
           def server_dns_alias
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerDnsAlias
-          end
-          def job_schedule
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobSchedule
-          end
-          def server_security_alert_policy
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerSecurityAlertPolicy
-          end
-          def sensitivity_label
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::SensitivityLabel
-          end
-          def job_execution_lifecycle
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobExecutionLifecycle
           end
           def job_agent_state
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentState
@@ -1240,20 +1252,23 @@ module Azure::Profiles::Latest
           def job_target_type
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetType
           end
+          def job_schedule_type
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobScheduleType
+          end
           def provisioning_state
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::ProvisioningState
           end
-          def job_step_action_type
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStepActionType
+          def job_execution_lifecycle
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobExecutionLifecycle
           end
           def job_step_output_type
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStepOutputType
           end
-          def job_schedule_type
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobScheduleType
+          def job_target_group_membership_type
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetGroupMembershipType
           end
-          def managed_database_status
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabaseStatus
+          def job_step_action_type
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStepActionType
           end
           def job_step_action_source
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobStepActionSource
@@ -1261,11 +1276,11 @@ module Azure::Profiles::Latest
           def automatic_tuning_server_mode
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::AutomaticTuningServerMode
           end
-          def job_target_group_membership_type
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobTargetGroupMembershipType
+          def restore_point_type
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::RestorePointType
           end
-          def long_term_retention_database_state
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionDatabaseState
+          def managed_database_status
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabaseStatus
           end
           def managed_database_create_mode
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedDatabaseCreateMode
@@ -1282,8 +1297,8 @@ module Azure::Profiles::Latest
           def vulnerability_assessment_policy_baseline_name
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::VulnerabilityAssessmentPolicyBaselineName
           end
-          def restore_point_type
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::RestorePointType
+          def long_term_retention_database_state
+            Azure::SQL::Mgmt::V2017_03_01_preview::Models::LongTermRetentionDatabaseState
           end
           def job
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::Job
@@ -1318,20 +1333,8 @@ module Azure::Profiles::Latest
           def server_dns_alias_acquisition
             Azure::SQL::Mgmt::V2017_03_01_preview::Models::ServerDnsAliasAcquisition
           end
-          def complete_database_restore_definition
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::CompleteDatabaseRestoreDefinition
-          end
-          def automatic_tuning_server_options
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::AutomaticTuningServerOptions
-          end
-          def job_agent_list_result
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentListResult
-          end
-          def sensitivity_label_list_result
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::SensitivityLabelListResult
-          end
-          def job_agent_update
-            Azure::SQL::Mgmt::V2017_03_01_preview::Models::JobAgentUpdate
+          def performance_level_unit
+            Azure::SQL::Mgmt::V2017_10_01_preview::Models::PerformanceLevelUnit
           end
           def resource_move_definition
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::ResourceMoveDefinition
@@ -1342,11 +1345,11 @@ module Azure::Profiles::Latest
           def database_operation_list_result
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseOperationListResult
           end
-          def vulnerability_assessment_recurring_scans_properties
-            Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentRecurringScansProperties
-          end
           def tracked_resource
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::TrackedResource
+          end
+          def vulnerability_assessment_recurring_scans_properties
+            Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentRecurringScansProperties
           end
           def proxy_resource
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::ProxyResource
@@ -1450,26 +1453,26 @@ module Azure::Profiles::Latest
           def service_objective_capability
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::ServiceObjectiveCapability
           end
-          def elastic_pool_operation
-            Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolOperation
-          end
           def vulnerability_assessment_scan_record
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentScanRecord
-          end
-          def performance_level_capability
-            Azure::SQL::Mgmt::V2017_10_01_preview::Models::PerformanceLevelCapability
-          end
-          def instance_failover_group
-            Azure::SQL::Mgmt::V2017_10_01_preview::Models::InstanceFailoverGroup
           end
           def database_vulnerability_assessment_scans_export
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseVulnerabilityAssessmentScansExport
           end
+          def elastic_pool_operation
+            Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolOperation
+          end
+          def instance_failover_group
+            Azure::SQL::Mgmt::V2017_10_01_preview::Models::InstanceFailoverGroup
+          end
+          def resource
+            Azure::SQL::Mgmt::V2017_10_01_preview::Models::Resource
+          end
           def tde_certificate
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::TdeCertificate
           end
-          def backup_short_term_retention_policy
-            Azure::SQL::Mgmt::V2017_10_01_preview::Models::BackupShortTermRetentionPolicy
+          def performance_level_capability
+            Azure::SQL::Mgmt::V2017_10_01_preview::Models::PerformanceLevelCapability
           end
           def vulnerability_assessment_scan_state
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentScanState
@@ -1477,8 +1480,8 @@ module Azure::Profiles::Latest
           def vulnerability_assessment_scan_trigger_type
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentScanTriggerType
           end
-          def resource
-            Azure::SQL::Mgmt::V2017_10_01_preview::Models::Resource
+          def backup_short_term_retention_policy
+            Azure::SQL::Mgmt::V2017_10_01_preview::Models::BackupShortTermRetentionPolicy
           end
           def max_size_unit
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::MaxSizeUnit
@@ -1504,11 +1507,11 @@ module Azure::Profiles::Latest
           def database
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::Database
           end
-          def elastic_pool_update
-            Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolUpdate
-          end
           def elastic_pool
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPool
+          end
+          def elastic_pool_update
+            Azure::SQL::Mgmt::V2017_10_01_preview::Models::ElasticPoolUpdate
           end
           def read_write_endpoint_failover_policy
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::ReadWriteEndpointFailoverPolicy
@@ -1525,14 +1528,11 @@ module Azure::Profiles::Latest
           def create_mode
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::CreateMode
           end
-          def capability_status
-            Azure::SQL::Mgmt::V2017_10_01_preview::Models::CapabilityStatus
-          end
           def sku
             Azure::SQL::Mgmt::V2017_10_01_preview::Models::Sku
           end
-          def performance_level_unit
-            Azure::SQL::Mgmt::V2017_10_01_preview::Models::PerformanceLevelUnit
+          def capability_status
+            Azure::SQL::Mgmt::V2017_10_01_preview::Models::CapabilityStatus
           end
         end
       end

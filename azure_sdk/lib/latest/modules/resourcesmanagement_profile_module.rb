@@ -13,6 +13,7 @@ module Azure::Profiles::Latest
       Operations = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Operations
 
       module Models
+        Type = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
         OperationResults = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationResults
         OperationDisplayProperties = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationDisplayProperties
         EntityParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityParentGroupInfo
@@ -24,22 +25,21 @@ module Azure::Profiles::Latest
         ManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupDetails
         PatchManagementGroupRequest = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::PatchManagementGroupRequest
         CreateParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateParentGroupInfo
-        ErrorResponse = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorResponse
         CreateManagementGroupDetails = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupDetails
+        ParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ParentGroupInfo
         ManagementGroup = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroup
         CreateManagementGroupChildInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupChildInfo
-        ParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ParentGroupInfo
         ManagementGroupChildInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupChildInfo
-        CreateManagementGroupRequest = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupRequest
-        ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupInfo
         CheckNameAvailabilityRequest = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityRequest
+        CreateManagementGroupRequest = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupRequest
+        ErrorResponse = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorResponse
+        ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupInfo
         ErrorDetails = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorDetails
         Operation = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Operation
         OperationListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationListResult
         CheckNameAvailabilityResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
         Status = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Status
         Reason = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
-        Type = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
       end
 
       class ResourcesManagementManagementClass
@@ -75,6 +75,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def type
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
+          end
           def operation_results
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationResults
           end
@@ -108,11 +111,11 @@ module Azure::Profiles::Latest
           def create_parent_group_info
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateParentGroupInfo
           end
-          def error_response
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorResponse
-          end
           def create_management_group_details
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupDetails
+          end
+          def parent_group_info
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ParentGroupInfo
           end
           def management_group
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroup
@@ -120,20 +123,20 @@ module Azure::Profiles::Latest
           def create_management_group_child_info
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupChildInfo
           end
-          def parent_group_info
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ParentGroupInfo
-          end
           def management_group_child_info
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupChildInfo
+          end
+          def check_name_availability_request
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityRequest
           end
           def create_management_group_request
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupRequest
           end
+          def error_response
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorResponse
+          end
           def management_group_info
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupInfo
-          end
-          def check_name_availability_request
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityRequest
           end
           def error_details
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorDetails
@@ -152,9 +155,6 @@ module Azure::Profiles::Latest
           end
           def reason
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
-          end
-          def type
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
           end
         end
       end

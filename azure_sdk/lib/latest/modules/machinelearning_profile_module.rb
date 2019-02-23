@@ -11,6 +11,11 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
+        RealtimeConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::RealtimeConfiguration
+        WebServiceProperties = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
+        MachineLearningWorkspace = Azure::MachineLearning::Mgmt::V2017_01_01::Models::MachineLearningWorkspace
+        CommitmentPlan = Azure::MachineLearning::Mgmt::V2017_01_01::Models::CommitmentPlan
+        TableSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::TableSpecification
         GraphNode = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphNode
         ExampleRequest = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ExampleRequest
         GraphEdge = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphEdge
@@ -23,34 +28,29 @@ module Azure::Profiles::Latest
         ColumnSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnSpecification
         BlobLocation = Azure::MachineLearning::Mgmt::V2017_01_01::Models::BlobLocation
         PaginatedWebServicesList = Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
+        OperationEntityListResult = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntityListResult
         ModuleAssetParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
         AsyncOperationErrorInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
-        ServiceInputOutputSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
-        DiagnosticsConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
-        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
-        OperationEntityListResult = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntityListResult
-        OperationEntity = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntity
-        AsyncOperationStatus = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
         Resource = Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
-        WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
+        DiagnosticsConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
+        ServiceInputOutputSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
+        AsyncOperationStatus = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
         OutputPort = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPort
+        OperationEntity = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntity
+        WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
+        DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
         OperationDisplayInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationDisplayInfo
         ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
-        DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
+        AssetType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
         ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
         WebService = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
-        AssetType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
+        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
         InputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
         OutputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
-        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
         ParameterType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
+        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
         AssetItem = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
         WebServiceParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
-        RealtimeConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::RealtimeConfiguration
-        WebServiceProperties = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
-        MachineLearningWorkspace = Azure::MachineLearning::Mgmt::V2017_01_01::Models::MachineLearningWorkspace
-        CommitmentPlan = Azure::MachineLearning::Mgmt::V2017_01_01::Models::CommitmentPlan
-        TableSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::TableSpecification
       end
 
       class MachineLearningManagementClass
@@ -84,6 +84,21 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def realtime_configuration
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::RealtimeConfiguration
+          end
+          def web_service_properties
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
+          end
+          def machine_learning_workspace
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::MachineLearningWorkspace
+          end
+          def commitment_plan
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::CommitmentPlan
+          end
+          def table_specification
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::TableSpecification
+          end
           def graph_node
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphNode
           end
@@ -120,38 +135,38 @@ module Azure::Profiles::Latest
           def paginated_web_services_list
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
           end
+          def operation_entity_list_result
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntityListResult
+          end
           def module_asset_parameter
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
           end
           def async_operation_error_info
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
           end
-          def service_input_output_specification
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
+          def resource
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
           end
           def diagnostics_configuration
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
           end
-          def storage_account
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
-          end
-          def operation_entity_list_result
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntityListResult
-          end
-          def operation_entity
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntity
+          def service_input_output_specification
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
           end
           def async_operation_status
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
           end
-          def resource
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
+          def output_port
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPort
+          end
+          def operation_entity
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntity
           end
           def web_service_properties_for_graph
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
           end
-          def output_port
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPort
+          def diagnostics_level
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
           end
           def operation_display_info
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationDisplayInfo
@@ -159,8 +174,8 @@ module Azure::Profiles::Latest
           def column_format
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
           end
-          def diagnostics_level
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
+          def asset_type
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
           end
           def column_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
@@ -168,8 +183,8 @@ module Azure::Profiles::Latest
           def web_service
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
           end
-          def asset_type
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
+          def provisioning_state
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
           end
           def input_port_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
@@ -177,32 +192,17 @@ module Azure::Profiles::Latest
           def output_port_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
           end
-          def provisioning_state
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
-          end
           def parameter_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
+          end
+          def storage_account
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
           end
           def asset_item
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
           end
           def web_service_parameter
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
-          end
-          def realtime_configuration
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::RealtimeConfiguration
-          end
-          def web_service_properties
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
-          end
-          def machine_learning_workspace
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::MachineLearningWorkspace
-          end
-          def commitment_plan
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::CommitmentPlan
-          end
-          def table_specification
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::TableSpecification
           end
         end
       end
