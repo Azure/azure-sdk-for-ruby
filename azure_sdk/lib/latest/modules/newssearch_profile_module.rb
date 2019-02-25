@@ -31,8 +31,8 @@ module Azure::Profiles::Latest
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
       Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
-      TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
       Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+      TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
     end
 
     class NewsSearchDataClass
@@ -131,11 +131,11 @@ module Azure::Profiles::Latest
         def freshness
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
         end
-        def text_format
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
-        end
         def error
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+        end
+        def text_format
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
         end
       end
     end

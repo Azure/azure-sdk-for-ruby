@@ -7,13 +7,12 @@ require 'azure_mgmt_kusto'
 module Azure::Profiles::Latest
   module Kusto
     module Mgmt
-      Databases = Azure::Kusto::Mgmt::V2018_09_07_preview::Databases
+      EventHubConnections = Azure::Kusto::Mgmt::V2018_09_07_preview::EventHubConnections
       Operations = Azure::Kusto::Mgmt::V2018_09_07_preview::Operations
       Clusters = Azure::Kusto::Mgmt::V2018_09_07_preview::Clusters
-      EventHubConnections = Azure::Kusto::Mgmt::V2018_09_07_preview::EventHubConnections
+      Databases = Azure::Kusto::Mgmt::V2018_09_07_preview::Databases
 
       module Models
-        DatabasePrincipalRole = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalRole
         TrackedResource = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::TrackedResource
         ProxyResource = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProxyResource
         AzureEntityResource = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureEntityResource
@@ -22,6 +21,7 @@ module Azure::Profiles::Latest
         State = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::State
         Operation = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Operation
         OperationListResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::OperationListResult
+        ProvisioningState = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProvisioningState
         DatabasePrincipalListResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalListResult
         DatabasePrincipalListRequest = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalListRequest
         AzureSku = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureSku
@@ -33,29 +33,29 @@ module Azure::Profiles::Latest
         AzureCapacity = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureCapacity
         DatabaseStatistics = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabaseStatistics
         ListResourceSkusResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ListResourceSkusResult
-        ListSkusResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ListSkusResult
         ClusterListResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ClusterListResult
+        ListSkusResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ListSkusResult
         EventHubConnectionValidationResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnectionValidationResult
         ClusterCheckNameRequest = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ClusterCheckNameRequest
         DatabasePrincipal = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipal
         DatabaseCheckNameRequest = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabaseCheckNameRequest
         DatabaseListResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabaseListResult
         CheckNameResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::CheckNameResult
-        Cluster = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Cluster
-        DatabaseUpdate = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabaseUpdate
         ClusterUpdate = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ClusterUpdate
-        EventHubConnection = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnection
-        Database = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Database
-        AzureScaleType = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
-        AzureSkuName = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureSkuName
+        DatabaseUpdate = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabaseUpdate
         EventHubConnectionUpdate = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnectionUpdate
+        Cluster = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Cluster
+        AzureSkuName = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureSkuName
+        EventHubConnection = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnection
         DataFormat = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DataFormat
-        ProvisioningState = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProvisioningState
+        AzureScaleType = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
         DatabasePrincipalType = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalType
+        DatabasePrincipalRole = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalRole
+        Database = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Database
       end
 
       class KustoManagementClass
-        attr_reader :databases, :operations, :clusters, :event_hub_connections, :configurable, :base_url, :options, :model_classes
+        attr_reader :event_hub_connections, :operations, :clusters, :databases, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -65,10 +65,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @databases = @client_0.databases
+          @event_hub_connections = @client_0.event_hub_connections
           @operations = @client_0.operations
           @clusters = @client_0.clusters
-          @event_hub_connections = @client_0.event_hub_connections
+          @databases = @client_0.databases
 
           @model_classes = ModelClasses.new
         end
@@ -87,9 +87,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def database_principal_role
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalRole
-          end
           def tracked_resource
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::TrackedResource
           end
@@ -113,6 +110,9 @@ module Azure::Profiles::Latest
           end
           def operation_list_result
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::OperationListResult
+          end
+          def provisioning_state
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProvisioningState
           end
           def database_principal_list_result
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalListResult
@@ -147,11 +147,11 @@ module Azure::Profiles::Latest
           def list_resource_skus_result
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ListResourceSkusResult
           end
-          def list_skus_result
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ListSkusResult
-          end
           def cluster_list_result
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ClusterListResult
+          end
+          def list_skus_result
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ListSkusResult
           end
           def event_hub_connection_validation_result
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnectionValidationResult
@@ -171,38 +171,38 @@ module Azure::Profiles::Latest
           def check_name_result
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::CheckNameResult
           end
-          def cluster
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Cluster
+          def cluster_update
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ClusterUpdate
           end
           def database_update
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabaseUpdate
           end
-          def cluster_update
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ClusterUpdate
+          def event_hub_connection_update
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnectionUpdate
           end
-          def event_hub_connection
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnection
-          end
-          def database
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Database
-          end
-          def azure_scale_type
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
+          def cluster
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Cluster
           end
           def azure_sku_name
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureSkuName
           end
-          def event_hub_connection_update
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnectionUpdate
+          def event_hub_connection
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::EventHubConnection
           end
           def data_format
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DataFormat
           end
-          def provisioning_state
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProvisioningState
+          def azure_scale_type
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
           end
           def database_principal_type
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalType
+          end
+          def database_principal_role
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalRole
+          end
+          def database
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Database
           end
         end
       end

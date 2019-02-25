@@ -28,8 +28,8 @@ module Azure::Profiles::Latest
       ImageModuleAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
       ImageRecipesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
       ImageRelatedSearchesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
-      ImageShoppingSourcesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
       Response = Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
+      ImageShoppingSourcesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
       ContentTypes = Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
       ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
@@ -145,11 +145,11 @@ module Azure::Profiles::Latest
         def image_related_searches_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
         end
-        def image_shopping_sources_action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
-        end
         def response
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
+        end
+        def image_shopping_sources_action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
         end
         def content_types
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes

@@ -17,36 +17,39 @@ module Azure::Profiles::Latest
     Groups = Azure::GraphRbac::V1_6::Groups
 
     module Models
-      PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
-      SignInName = Azure::GraphRbac::V1_6::Models::SignInName
-      DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
       DirectoryObjectListResult = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
+      DomainListResult = Azure::GraphRbac::V1_6::Models::DomainListResult
+      PreAuthorizedApplicationExtension = Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationExtension
+      AddOwnerParameters = Azure::GraphRbac::V1_6::Models::AddOwnerParameters
+      SignInName = Azure::GraphRbac::V1_6::Models::SignInName
+      KeyCredential = Azure::GraphRbac::V1_6::Models::KeyCredential
+      GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
+      PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
       UserGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
-      RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
-      UserGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
-      PreAuthorizedApplicationPermission = Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationPermission
-      UserListResult = Azure::GraphRbac::V1_6::Models::UserListResult
       ADGroup = Azure::GraphRbac::V1_6::Models::ADGroup
       ServicePrincipal = Azure::GraphRbac::V1_6::Models::ServicePrincipal
-      UserType = Azure::GraphRbac::V1_6::Models::UserType
+      ServicePrincipalCreateParameters = Azure::GraphRbac::V1_6::Models::ServicePrincipalCreateParameters
       UserUpdateParameters = Azure::GraphRbac::V1_6::Models::UserUpdateParameters
+      UserType = Azure::GraphRbac::V1_6::Models::UserType
       Domain = Azure::GraphRbac::V1_6::Models::Domain
       GroupCreateParameters = Azure::GraphRbac::V1_6::Models::GroupCreateParameters
       Application = Azure::GraphRbac::V1_6::Models::Application
+      ApplicationCreateParameters = Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
       User = Azure::GraphRbac::V1_6::Models::User
       Permissions = Azure::GraphRbac::V1_6::Models::Permissions
       UserCreateParameters = Azure::GraphRbac::V1_6::Models::UserCreateParameters
       InformationalUrl = Azure::GraphRbac::V1_6::Models::InformationalUrl
       PasswordCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::PasswordCredentialsUpdateParameters
+      OptionalClaim = Azure::GraphRbac::V1_6::Models::OptionalClaim
       GroupAddMemberParameters = Azure::GraphRbac::V1_6::Models::GroupAddMemberParameters
-      OptionalClaims = Azure::GraphRbac::V1_6::Models::OptionalClaims
+      PreAuthorizedApplicationPermission = Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationPermission
       OAuth2Permission = Azure::GraphRbac::V1_6::Models::OAuth2Permission
-      PreAuthorizedApplicationExtension = Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationExtension
-      GraphError = Azure::GraphRbac::V1_6::Models::GraphError
+      PreAuthorizedApplication = Azure::GraphRbac::V1_6::Models::PreAuthorizedApplication
+      DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
       GroupListResult = Azure::GraphRbac::V1_6::Models::GroupListResult
-      KeyCredential = Azure::GraphRbac::V1_6::Models::KeyCredential
+      PasswordCredential = Azure::GraphRbac::V1_6::Models::PasswordCredential
       GroupGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsParameters
-      ResourceAccess = Azure::GraphRbac::V1_6::Models::ResourceAccess
+      RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
       GroupGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsResult
       AppRole = Azure::GraphRbac::V1_6::Models::AppRole
       CheckGroupMembershipParameters = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
@@ -55,15 +58,14 @@ module Azure::Profiles::Latest
       KeyCredentialListResult = Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
       PermissionsListResult = Azure::GraphRbac::V1_6::Models::PermissionsListResult
       KeyCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
+      OptionalClaims = Azure::GraphRbac::V1_6::Models::OptionalClaims
       ServicePrincipalListResult = Azure::GraphRbac::V1_6::Models::ServicePrincipalListResult
-      OptionalClaim = Azure::GraphRbac::V1_6::Models::OptionalClaim
+      GraphError = Azure::GraphRbac::V1_6::Models::GraphError
       PasswordProfile = Azure::GraphRbac::V1_6::Models::PasswordProfile
-      PreAuthorizedApplication = Azure::GraphRbac::V1_6::Models::PreAuthorizedApplication
+      ResourceAccess = Azure::GraphRbac::V1_6::Models::ResourceAccess
       UserBase = Azure::GraphRbac::V1_6::Models::UserBase
-      PasswordCredential = Azure::GraphRbac::V1_6::Models::PasswordCredential
-      GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
-      AddOwnerParameters = Azure::GraphRbac::V1_6::Models::AddOwnerParameters
-      DomainListResult = Azure::GraphRbac::V1_6::Models::DomainListResult
+      UserListResult = Azure::GraphRbac::V1_6::Models::UserListResult
+      UserGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
     end
 
     class GraphRbacDataClass
@@ -104,32 +106,32 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def password_credential_list_result
-          Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
+        def directory_object_list_result
+          Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
+        end
+        def domain_list_result
+          Azure::GraphRbac::V1_6::Models::DomainListResult
+        end
+        def pre_authorized_application_extension
+          Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationExtension
+        end
+        def add_owner_parameters
+          Azure::GraphRbac::V1_6::Models::AddOwnerParameters
         end
         def sign_in_name
           Azure::GraphRbac::V1_6::Models::SignInName
         end
-        def directory_object
-          Azure::GraphRbac::V1_6::Models::DirectoryObject
+        def key_credential
+          Azure::GraphRbac::V1_6::Models::KeyCredential
         end
-        def directory_object_list_result
-          Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
+        def get_objects_parameters
+          Azure::GraphRbac::V1_6::Models::GetObjectsParameters
+        end
+        def password_credential_list_result
+          Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
         end
         def user_get_member_groups_parameters
           Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
-        end
-        def required_resource_access
-          Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
-        end
-        def user_get_member_groups_result
-          Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
-        end
-        def pre_authorized_application_permission
-          Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationPermission
-        end
-        def user_list_result
-          Azure::GraphRbac::V1_6::Models::UserListResult
         end
         def adgroup
           Azure::GraphRbac::V1_6::Models::ADGroup
@@ -137,11 +139,14 @@ module Azure::Profiles::Latest
         def service_principal
           Azure::GraphRbac::V1_6::Models::ServicePrincipal
         end
-        def user_type
-          Azure::GraphRbac::V1_6::Models::UserType
+        def service_principal_create_parameters
+          Azure::GraphRbac::V1_6::Models::ServicePrincipalCreateParameters
         end
         def user_update_parameters
           Azure::GraphRbac::V1_6::Models::UserUpdateParameters
+        end
+        def user_type
+          Azure::GraphRbac::V1_6::Models::UserType
         end
         def domain
           Azure::GraphRbac::V1_6::Models::Domain
@@ -151,6 +156,9 @@ module Azure::Profiles::Latest
         end
         def application
           Azure::GraphRbac::V1_6::Models::Application
+        end
+        def application_create_parameters
+          Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
         end
         def user
           Azure::GraphRbac::V1_6::Models::User
@@ -167,32 +175,35 @@ module Azure::Profiles::Latest
         def password_credentials_update_parameters
           Azure::GraphRbac::V1_6::Models::PasswordCredentialsUpdateParameters
         end
+        def optional_claim
+          Azure::GraphRbac::V1_6::Models::OptionalClaim
+        end
         def group_add_member_parameters
           Azure::GraphRbac::V1_6::Models::GroupAddMemberParameters
         end
-        def optional_claims
-          Azure::GraphRbac::V1_6::Models::OptionalClaims
+        def pre_authorized_application_permission
+          Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationPermission
         end
         def oauth2_permission
           Azure::GraphRbac::V1_6::Models::OAuth2Permission
         end
-        def pre_authorized_application_extension
-          Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationExtension
+        def pre_authorized_application
+          Azure::GraphRbac::V1_6::Models::PreAuthorizedApplication
         end
-        def graph_error
-          Azure::GraphRbac::V1_6::Models::GraphError
+        def directory_object
+          Azure::GraphRbac::V1_6::Models::DirectoryObject
         end
         def group_list_result
           Azure::GraphRbac::V1_6::Models::GroupListResult
         end
-        def key_credential
-          Azure::GraphRbac::V1_6::Models::KeyCredential
+        def password_credential
+          Azure::GraphRbac::V1_6::Models::PasswordCredential
         end
         def group_get_member_groups_parameters
           Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsParameters
         end
-        def resource_access
-          Azure::GraphRbac::V1_6::Models::ResourceAccess
+        def required_resource_access
+          Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
         end
         def group_get_member_groups_result
           Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsResult
@@ -218,32 +229,29 @@ module Azure::Profiles::Latest
         def key_credentials_update_parameters
           Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
         end
+        def optional_claims
+          Azure::GraphRbac::V1_6::Models::OptionalClaims
+        end
         def service_principal_list_result
           Azure::GraphRbac::V1_6::Models::ServicePrincipalListResult
         end
-        def optional_claim
-          Azure::GraphRbac::V1_6::Models::OptionalClaim
+        def graph_error
+          Azure::GraphRbac::V1_6::Models::GraphError
         end
         def password_profile
           Azure::GraphRbac::V1_6::Models::PasswordProfile
         end
-        def pre_authorized_application
-          Azure::GraphRbac::V1_6::Models::PreAuthorizedApplication
+        def resource_access
+          Azure::GraphRbac::V1_6::Models::ResourceAccess
         end
         def user_base
           Azure::GraphRbac::V1_6::Models::UserBase
         end
-        def password_credential
-          Azure::GraphRbac::V1_6::Models::PasswordCredential
+        def user_list_result
+          Azure::GraphRbac::V1_6::Models::UserListResult
         end
-        def get_objects_parameters
-          Azure::GraphRbac::V1_6::Models::GetObjectsParameters
-        end
-        def add_owner_parameters
-          Azure::GraphRbac::V1_6::Models::AddOwnerParameters
-        end
-        def domain_list_result
-          Azure::GraphRbac::V1_6::Models::DomainListResult
+        def user_get_member_groups_result
+          Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
         end
       end
     end

@@ -8,57 +8,16 @@ module Azure::GraphRbac::V1_6
     #
     # Request parameters for creating a new service principal.
     #
-    class ServicePrincipalCreateParameters
+    class ServicePrincipalCreateParameters < ServicePrincipal
 
       include MsRestAzure
 
-      # @return Unmatched properties from the message are deserialized this
-      # collection
-      attr_accessor :additional_properties
 
-      # @return [Boolean] Whether the account is enabled
-      attr_accessor :account_enabled
+      def initialize
+        @objectType = "ServicePrincipalCreateParameters"
+      end
 
-      # @return [String] application Id
-      attr_accessor :app_id
-
-      # @return [Boolean] Specifies whether an AppRoleAssignment to a user or
-      # group is required before Azure AD will issue a user or access token to
-      # the application.
-      attr_accessor :app_role_assignment_required
-
-      # @return [String] The display name for the service principal.
-      attr_accessor :display_name
-
-      # @return [String]
-      attr_accessor :error_url
-
-      # @return [String] The URL to the homepage of the associated application.
-      attr_accessor :homepage
-
-      # @return [Array<KeyCredential>] A collection of KeyCredential objects.
-      attr_accessor :key_credentials
-
-      # @return [Array<PasswordCredential>] A collection of PasswordCredential
-      # objects
-      attr_accessor :password_credentials
-
-      # @return [String] The display name of the tenant in which the associated
-      # application is specified.
-      attr_accessor :publisher_name
-
-      # @return [Array<String>] A collection of reply URLs for the service
-      # principal.
-      attr_accessor :reply_urls
-
-      # @return [String]
-      attr_accessor :saml_metadata_url
-
-      # @return [Array<String>] A collection of service principal names.
-      attr_accessor :service_principal_names
-
-      # @return [Array<String>]
-      attr_accessor :tags
+      attr_accessor :objectType
 
 
       #
@@ -86,16 +45,69 @@ module Azure::GraphRbac::V1_6
                   }
                 }
               },
+              object_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'objectId',
+                type: {
+                  name: 'String'
+                }
+              },
+              deletion_timestamp: {
+                required: false,
+                read_only: true,
+                serialized_name: 'deletionTimestamp',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              objectType: {
+                required: true,
+                serialized_name: 'objectType',
+                type: {
+                  name: 'String'
+                }
+              },
               account_enabled: {
                 required: false,
                 serialized_name: 'accountEnabled',
                 type: {
-                  name: 'Boolean'
+                  name: 'String'
+                }
+              },
+              alternative_names: {
+                required: false,
+                serialized_name: 'alternativeNames',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              app_display_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'appDisplayName',
+                type: {
+                  name: 'String'
                 }
               },
               app_id: {
-                required: true,
+                required: false,
                 serialized_name: 'appId',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_owner_tenant_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'appOwnerTenantId',
                 type: {
                   name: 'String'
                 }
@@ -105,6 +117,21 @@ module Azure::GraphRbac::V1_6
                 serialized_name: 'appRoleAssignmentRequired',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              app_roles: {
+                required: false,
+                serialized_name: 'appRoles',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AppRoleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AppRole'
+                      }
+                  }
                 }
               },
               display_name: {
@@ -143,6 +170,29 @@ module Azure::GraphRbac::V1_6
                   }
                 }
               },
+              logout_url: {
+                required: false,
+                serialized_name: 'logoutUrl',
+                type: {
+                  name: 'String'
+                }
+              },
+              oauth2permissions: {
+                required: false,
+                read_only: true,
+                serialized_name: 'oauth2Permissions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'OAuth2PermissionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'OAuth2Permission'
+                      }
+                  }
+                }
+              },
               password_credentials: {
                 required: false,
                 serialized_name: 'passwordCredentials',
@@ -156,6 +206,13 @@ module Azure::GraphRbac::V1_6
                         class_name: 'PasswordCredential'
                       }
                   }
+                }
+              },
+              preferred_token_signing_key_thumbprint: {
+                required: false,
+                serialized_name: 'preferredTokenSigningKeyThumbprint',
+                type: {
+                  name: 'String'
                 }
               },
               publisher_name: {
@@ -198,6 +255,13 @@ module Azure::GraphRbac::V1_6
                         name: 'String'
                       }
                   }
+                }
+              },
+              service_principal_type: {
+                required: false,
+                serialized_name: 'servicePrincipalType',
+                type: {
+                  name: 'String'
                 }
               },
               tags: {

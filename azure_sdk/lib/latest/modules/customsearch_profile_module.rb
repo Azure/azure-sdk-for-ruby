@@ -13,8 +13,8 @@ module Azure::Profiles::Latest
       ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
       Query = Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
       QueryContext = Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
-      ResponseBase = Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
       WebPage = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
+      ResponseBase = Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
       SearchResultsAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
       Answer = Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::CustomSearch::V1_0::Models::Thing
@@ -26,8 +26,8 @@ module Azure::Profiles::Latest
       WebMetaTag = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
       WebWebAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
       SearchResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
-      TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
       Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
+      TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
     end
 
     class CustomSearchDataClass
@@ -72,11 +72,11 @@ module Azure::Profiles::Latest
         def query_context
           Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
         end
-        def response_base
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
-        end
         def web_page
           Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
+        end
+        def response_base
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
         end
         def search_results_answer
           Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
@@ -111,11 +111,11 @@ module Azure::Profiles::Latest
         def search_response
           Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
         end
-        def text_format
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
-        end
         def error
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
+        end
+        def text_format
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
         end
       end
     end

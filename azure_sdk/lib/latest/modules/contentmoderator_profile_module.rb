@@ -53,8 +53,8 @@ module Azure::Profiles::Latest
       Match = Azure::CognitiveServices::ContentModerator::V1_0::Models::Match
       Body = Azure::CognitiveServices::ContentModerator::V1_0::Models::Body
       TermList = Azure::CognitiveServices::ContentModerator::V1_0::Models::TermList
-      ClassificationCategory1 = Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory1
       Job = Azure::CognitiveServices::ContentModerator::V1_0::Models::Job
+      ClassificationCategory1 = Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory1
       VideoFrameBodyItemReviewerResultTagsItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemReviewerResultTagsItem
       APIError = Azure::CognitiveServices::ContentModerator::V1_0::Models::APIError
       VideoFrameBodyItemMetadataItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemMetadataItem
@@ -224,11 +224,11 @@ module Azure::Profiles::Latest
         def term_list
           Azure::CognitiveServices::ContentModerator::V1_0::Models::TermList
         end
-        def classification_category1
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory1
-        end
         def job
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Job
+        end
+        def classification_category1
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory1
         end
         def video_frame_body_item_reviewer_result_tags_item
           Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemReviewerResultTagsItem

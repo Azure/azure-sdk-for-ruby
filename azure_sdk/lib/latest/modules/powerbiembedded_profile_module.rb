@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Workspaces = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Workspaces
 
       module Models
+        WorkspaceCollectionList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
         MigrateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::MigrateWorkspaceCollectionRequest
         ErrorDetail = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::ErrorDetail
         AccessKeyName = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::AccessKeyName
@@ -26,10 +27,9 @@ module Azure::Profiles::Latest
         CheckNameRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
         Workspace = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
         WorkspaceList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
-        CheckNameResponse = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
         Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
         Operation = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
-        WorkspaceCollectionList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
+        CheckNameResponse = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
       end
 
       class PowerBiEmbeddedManagementClass
@@ -63,6 +63,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def workspace_collection_list
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
+          end
           def migrate_workspace_collection_request
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::MigrateWorkspaceCollectionRequest
           end
@@ -108,17 +111,14 @@ module Azure::Profiles::Latest
           def workspace_list
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
           end
-          def check_name_response
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
-          end
           def error
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
           end
           def operation
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
           end
-          def workspace_collection_list
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
+          def check_name_response
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
           end
         end
       end
