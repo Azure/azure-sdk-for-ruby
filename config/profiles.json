@@ -576,6 +576,11 @@
                         "2.0": ["*"]
                     }
                 },
+                "Microsoft.CognitiveServices.LuisAuthoring": {
+                    "data": {
+                        "2.0": ["*"]
+                    }
+                },
                 "Microsoft.CognitiveServices.NewsSearch": {
                     "data": {
                         "1.0": ["*"]
@@ -2039,6 +2044,20 @@
                     }
                 },
                 "output_dir": "data/azure_cognitiveservices_luisruntime/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_luisauthoring": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.LuisAuthoring": {
+                        "data": {
+                            "2.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_luisauthoring/lib/profiles",
                 "individual_gem_profile": true
             }
         ],

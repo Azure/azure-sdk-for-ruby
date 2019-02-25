@@ -1,6 +1,7 @@
 {
     "data": [
-        "azure_cognitiveservices_luisruntime"
+        "azure_cognitiveservices_luisruntime",
+        "azure_cognitiveservices_luisauthoring"
     ],
     "rollup": [
         "azure_sdk"

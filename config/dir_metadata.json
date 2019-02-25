@@ -595,6 +595,13 @@
       "module_require": "azure_cognitiveservices_luisruntime"
     }
   },
+  "Microsoft.CognitiveServices.LuisAuthoring": {
+    "data": {
+      "path": "data/azure_cognitiveservices_luisauthoring",
+      "namespace": "Azure::CognitiveServices::LuisAuthoring",
+      "module_require": "azure_cognitiveservices_luisauthoring"
+    }
+  },
   "Microsoft.CognitiveServices.NewsSearch": {
     "data": {
       "path": "data/azure_cognitiveservices_newssearch",
