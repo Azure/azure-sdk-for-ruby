@@ -12,8 +12,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       include MsRestAzure
 
-      # @return [Integer] Lower bound on number of Application Gateway
-      # instances
+      # @return [Integer] Lower bound on number of Application Gateway capacity
       attr_accessor :min_capacity
 
       # @return [Integer] Upper bound on number of Application Gateway capacity
@@ -36,7 +35,7 @@ module Azure::Network::Mgmt::V2018_12_01
                 required: true,
                 serialized_name: 'minCapacity',
                 constraints: {
-                  InclusiveMinimum: 2
+                  InclusiveMinimum: 0
                 },
                 type: {
                   name: 'Number'
