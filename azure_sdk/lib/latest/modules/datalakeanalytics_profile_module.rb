@@ -7,13 +7,13 @@ require 'azure_mgmt_datalake_analytics'
 module Azure::Profiles::Latest
   module DataLakeAnalytics
     module Mgmt
+      Locations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Locations
+      ComputePolicies = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::ComputePolicies
       Accounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Accounts
       Operations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Operations
       DataLakeStoreAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::DataLakeStoreAccounts
       StorageAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::StorageAccounts
-      ComputePolicies = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::ComputePolicies
       FirewallRules = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::FirewallRules
-      Locations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Locations
 
       module Models
         CheckNameAvailabilityParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
@@ -67,7 +67,7 @@ module Azure::Profiles::Latest
       end
 
       class DataLakeAnalyticsManagementClass
-        attr_reader :accounts, :operations, :data_lake_store_accounts, :storage_accounts, :compute_policies, :firewall_rules, :locations, :configurable, :base_url, :options, :model_classes
+        attr_reader :locations, :compute_policies, :accounts, :operations, :data_lake_store_accounts, :storage_accounts, :firewall_rules, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -77,13 +77,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @locations = @client_0.locations
+          @compute_policies = @client_0.compute_policies
           @accounts = @client_0.accounts
           @operations = @client_0.operations
           @data_lake_store_accounts = @client_0.data_lake_store_accounts
           @storage_accounts = @client_0.storage_accounts
-          @compute_policies = @client_0.compute_policies
           @firewall_rules = @client_0.firewall_rules
-          @locations = @client_0.locations
 
           @model_classes = ModelClasses.new
         end

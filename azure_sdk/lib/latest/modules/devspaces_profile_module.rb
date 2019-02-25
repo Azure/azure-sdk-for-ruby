@@ -11,6 +11,9 @@ module Azure::Profiles::Latest
       Operations = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Operations
 
       module Models
+        Controller = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Controller
+        ProvisioningState = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
+        SkuTier = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::SkuTier
         ErrorResponse = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorResponse
         TrackedResource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::TrackedResource
         Resource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
@@ -25,9 +28,6 @@ module Azure::Profiles::Latest
         ControllerList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerList
         ErrorDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
         KubernetesConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::KubernetesConnectionDetails
-        Controller = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Controller
-        ProvisioningState = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
-        SkuTier = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::SkuTier
       end
 
       class DevSpacesManagementClass
@@ -61,6 +61,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def controller
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Controller
+          end
+          def provisioning_state
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
+          end
+          def sku_tier
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::SkuTier
+          end
           def error_response
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorResponse
           end
@@ -102,15 +111,6 @@ module Azure::Profiles::Latest
           end
           def kubernetes_connection_details
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::KubernetesConnectionDetails
-          end
-          def controller
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Controller
-          end
-          def provisioning_state
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
-          end
-          def sku_tier
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::SkuTier
           end
         end
       end

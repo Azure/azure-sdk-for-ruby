@@ -8,8 +8,8 @@ module Azure::Profiles::Latest
   module NotificationHubs
     module Mgmt
       Namespaces = Azure::NotificationHubs::Mgmt::V2017_04_01::Namespaces
-      NotificationHubs = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubs
       Operations = Azure::NotificationHubs::Mgmt::V2017_04_01::Operations
+      NotificationHubs = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubs
 
       module Models
         ErrorResponse = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
@@ -49,7 +49,7 @@ module Azure::Profiles::Latest
       end
 
       class NotificationHubsManagementClass
-        attr_reader :namespaces, :notification_hubs, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :namespaces, :operations, :notification_hubs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -60,8 +60,8 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @namespaces = @client_0.namespaces
-          @notification_hubs = @client_0.notification_hubs
           @operations = @client_0.operations
+          @notification_hubs = @client_0.notification_hubs
 
           @model_classes = ModelClasses.new
         end
