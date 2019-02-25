@@ -1,7 +1,9 @@
 {
     "data": [
         "azure_cognitiveservices_luisruntime",
-        "azure_cognitiveservices_luisauthoring",
+        "azure_cognitiveservices_luisauthoring"
+    ],
+    "management": [
         "azure_mgmt_network"
     ],
     "rollup": [
