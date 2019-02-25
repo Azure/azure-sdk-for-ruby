@@ -34,7 +34,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GroupTaskDetails',
           type: {
@@ -44,13 +43,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'GroupTaskDetails',
             model_properties: {
               child_tasks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'childTasks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ASRTaskElementType',
                       type: {

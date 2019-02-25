@@ -30,7 +30,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InMageAgentDetails',
           type: {
@@ -38,7 +37,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageAgentDetails',
             model_properties: {
               agent_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'agentVersion',
                 type: {
@@ -46,7 +44,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               agent_update_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'agentUpdateStatus',
                 type: {
@@ -54,7 +51,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               post_update_reboot_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'postUpdateRebootStatus',
                 type: {

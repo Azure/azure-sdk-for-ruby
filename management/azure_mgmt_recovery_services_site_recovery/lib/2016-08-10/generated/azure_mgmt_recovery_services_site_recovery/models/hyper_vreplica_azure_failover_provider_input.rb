@@ -40,7 +40,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HyperVReplicaAzure',
           type: {
@@ -48,7 +47,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'HyperVReplicaAzureFailoverProviderInput',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -56,7 +54,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vault_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vaultLocation',
                 type: {
@@ -64,7 +61,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_kek_certificate_pfx: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKekCertificatePfx',
                 type: {
@@ -72,7 +68,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               secondary_kek_certificate_pfx: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKekCertificatePfx',
                 type: {
@@ -80,7 +75,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_point_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointId',
                 type: {

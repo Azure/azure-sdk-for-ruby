@@ -46,7 +46,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverReplicationProtectedItemDetails',
           type: {
@@ -54,7 +53,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'FailoverReplicationProtectedItemDetails',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -62,7 +60,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -70,7 +67,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               test_vm_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'testVmName',
                 type: {
@@ -78,7 +74,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               test_vm_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'testVmFriendlyName',
                 type: {
@@ -86,7 +81,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               network_connection_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkConnectionStatus',
                 type: {
@@ -94,7 +88,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               network_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkFriendlyName',
                 type: {
@@ -102,7 +95,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               subnet: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnet',
                 type: {
@@ -110,7 +102,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_point_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointId',
                 type: {
@@ -118,7 +109,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_point_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointTime',
                 type: {

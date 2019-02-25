@@ -107,7 +107,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ReplicationProtectedItemProperties',
           type: {
@@ -115,7 +114,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ReplicationProtectedItemProperties',
             model_properties: {
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -123,7 +121,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protected_item_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemType',
                 type: {
@@ -131,7 +128,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protectable_item_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectableItemId',
                 type: {
@@ -139,7 +135,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_services_provider_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryServicesProviderId',
                 type: {
@@ -147,7 +142,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_fabric_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryFabricFriendlyName',
                 type: {
@@ -155,7 +149,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_fabric_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryFabricFriendlyName',
                 type: {
@@ -163,7 +156,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_fabric_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryFabricId',
                 type: {
@@ -171,7 +163,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_protection_container_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryProtectionContainerFriendlyName',
                 type: {
@@ -179,7 +170,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_protection_container_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryProtectionContainerFriendlyName',
                 type: {
@@ -187,7 +177,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protection_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionState',
                 type: {
@@ -195,7 +184,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protection_state_description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionStateDescription',
                 type: {
@@ -203,7 +191,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               active_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'activeLocation',
                 type: {
@@ -211,7 +198,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               test_failover_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'testFailoverState',
                 type: {
@@ -219,7 +205,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               test_failover_state_description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'testFailoverStateDescription',
                 type: {
@@ -227,13 +212,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               allowed_operations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowedOperations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -243,7 +226,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replication_health: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicationHealth',
                 type: {
@@ -251,7 +233,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               failover_health: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'failoverHealth',
                 type: {
@@ -259,13 +240,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replication_health_errors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicationHealthErrors',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorElementType',
                       type: {
@@ -276,13 +255,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               failover_health_errors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'failoverHealthErrors',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorElementType',
                       type: {
@@ -293,7 +270,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               policy_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyId',
                 type: {
@@ -301,7 +277,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               policy_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyFriendlyName',
                 type: {
@@ -309,7 +284,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_successful_failover_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastSuccessfulFailoverTime',
                 type: {
@@ -317,7 +291,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_successful_test_failover_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastSuccessfulTestFailoverTime',
                 type: {
@@ -325,7 +298,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               current_scenario: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentScenario',
                 type: {
@@ -334,7 +306,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               failover_recovery_point_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'failoverRecoveryPointId',
                 type: {
@@ -342,7 +313,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {
@@ -353,7 +323,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_container_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryContainerId',
                 type: {

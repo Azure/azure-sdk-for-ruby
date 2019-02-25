@@ -18,7 +18,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # @return [String] VCenter internal ID.
       attr_accessor :internal_id
 
-      # @return [DateTime] The time when the last heartbeat was reveived by
+      # @return [DateTime] The time when the last heartbeat was received by
       # vCenter.
       attr_accessor :last_heartbeat
 
@@ -52,7 +52,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VCenterProperties',
           type: {
@@ -60,7 +59,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'VCenterProperties',
             model_properties: {
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -68,7 +66,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               internal_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalId',
                 type: {
@@ -76,7 +73,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_heartbeat: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastHeartbeat',
                 type: {
@@ -84,7 +80,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               discovery_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'discoveryStatus',
                 type: {
@@ -92,7 +87,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               process_server_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'processServerId',
                 type: {
@@ -100,7 +94,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               ip_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipAddress',
                 type: {
@@ -108,7 +101,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               infrastructure_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'infrastructureId',
                 type: {
@@ -116,7 +108,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {
@@ -124,7 +115,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               run_as_account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'runAsAccountId',
                 type: {
@@ -132,7 +122,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_arm_resource_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricArmResourceName',
                 type: {

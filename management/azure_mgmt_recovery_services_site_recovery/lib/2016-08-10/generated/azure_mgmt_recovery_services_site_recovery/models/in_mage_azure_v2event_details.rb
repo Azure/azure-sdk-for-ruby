@@ -48,7 +48,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InMageAzureV2',
           type: {
@@ -56,7 +55,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageAzureV2EventDetails',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -64,7 +62,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               event_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventType',
                 type: {
@@ -72,7 +69,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               category: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'category',
                 type: {
@@ -80,7 +76,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               component: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'component',
                 type: {
@@ -88,7 +83,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               corrective_action: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'correctiveAction',
                 type: {
@@ -96,7 +90,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
@@ -104,7 +97,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               summary: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'summary',
                 type: {
@@ -112,7 +104,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               site_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'siteName',
                 type: {

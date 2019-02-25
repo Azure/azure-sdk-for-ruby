@@ -37,7 +37,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AutomationRunbookActionDetails',
           type: {
@@ -45,7 +44,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanAutomationRunbookActionDetails',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -53,7 +51,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               runbook_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'runbookId',
                 type: {
@@ -61,7 +58,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               timeout: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeout',
                 type: {
@@ -69,7 +65,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'fabricLocation',
                 type: {
