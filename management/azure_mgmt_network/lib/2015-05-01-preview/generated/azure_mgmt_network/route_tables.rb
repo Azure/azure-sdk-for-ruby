@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     attr_reader :client
 
     #
-    # The Delete RouteTable operation deletes the specifed Route Table
+    # The Delete RouteTable operation deletes the specified Route Table
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -155,7 +155,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put RouteTable operation creates/updates a route tablein the specified
+    # The Put RouteTable operation creates/updates a route table in the specified
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -374,7 +374,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete RouteTable operation deletes the specifed Route Table
+    # The Delete RouteTable operation deletes the specified Route Table
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -388,7 +388,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete RouteTable operation deletes the specifed Route Table
+    # The Delete RouteTable operation deletes the specified Route Table
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -402,7 +402,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete RouteTable operation deletes the specifed Route Table
+    # The Delete RouteTable operation deletes the specified Route Table
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -455,7 +455,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put RouteTable operation creates/updates a route tablein the specified
+    # The Put RouteTable operation creates/updates a route table in the specified
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -473,7 +473,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put RouteTable operation creates/updates a route tablein the specified
+    # The Put RouteTable operation creates/updates a route table in the specified
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -490,7 +490,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put RouteTable operation creates/updates a route tablein the specified
+    # The Put RouteTable operation creates/updates a route table in the specified
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.

@@ -25,7 +25,7 @@ module Azure::Network::Mgmt::V2016_09_01
       attr_accessor :local_network_gateway2
 
       # @return [VirtualNetworkGatewayConnectionType] Gateway connection type.
-      # Possible values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and
+      # Possible values are: 'IPsec','Vnet2Vnet','ExpressRoute', and
       # 'VPNClient. Possible values include: 'IPsec', 'Vnet2Vnet',
       # 'ExpressRoute', 'VPNClient'
       attr_accessor :connection_type

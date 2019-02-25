@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2018_10_01
   module Models
     #
-    # Container network interface configruation child resource.
+    # Container network interface configuration child resource.
     #
     class ContainerNetworkInterfaceConfiguration < SubResource
 

@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2016_03_30
   module Models
     #
-    # Response for GetConnectionSharedKey Api servive call
+    # Response for GetConnectionSharedKey Api service call
     #
     class ConnectionSharedKey
 

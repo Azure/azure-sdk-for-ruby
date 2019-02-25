@@ -29,7 +29,7 @@ module Azure::Network::Mgmt::V2018_08_01
       # Address/CIDR, Service Tag.
       attr_accessor :destination
 
-      # @return [String] Traffice destination port. Accepted values are '*',
+      # @return [String] Traffic destination port. Accepted values are '*',
       # port (for example, 3389) and port range (for example, 80-100).
       attr_accessor :destination_port
 

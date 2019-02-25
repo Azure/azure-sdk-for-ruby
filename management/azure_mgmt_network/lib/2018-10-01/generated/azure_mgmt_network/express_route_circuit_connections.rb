@@ -183,7 +183,7 @@ module Azure::Network::Mgmt::V2018_10_01
     # connection.
     # @param express_route_circuit_connection_parameters
     # [ExpressRouteCircuitConnection] Parameters supplied to the create or update
-    # express route circuit circuit connection operation.
+    # express route circuit connection operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -202,7 +202,7 @@ module Azure::Network::Mgmt::V2018_10_01
     # connection.
     # @param express_route_circuit_connection_parameters
     # [ExpressRouteCircuitConnection] Parameters supplied to the create or update
-    # express route circuit circuit connection operation.
+    # express route circuit connection operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -432,7 +432,7 @@ module Azure::Network::Mgmt::V2018_10_01
     # connection.
     # @param express_route_circuit_connection_parameters
     # [ExpressRouteCircuitConnection] Parameters supplied to the create or update
-    # express route circuit circuit connection operation.
+    # express route circuit connection operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -454,7 +454,7 @@ module Azure::Network::Mgmt::V2018_10_01
     # connection.
     # @param express_route_circuit_connection_parameters
     # [ExpressRouteCircuitConnection] Parameters supplied to the create or update
-    # express route circuit circuit connection operation.
+    # express route circuit connection operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -475,7 +475,7 @@ module Azure::Network::Mgmt::V2018_10_01
     # connection.
     # @param express_route_circuit_connection_parameters
     # [ExpressRouteCircuitConnection] Parameters supplied to the create or update
-    # express route circuit circuit connection operation.
+    # express route circuit connection operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

@@ -13,7 +13,7 @@ module Azure::Network::Mgmt::V2018_08_01
       include MsRestAzure
 
       # @return [Subnet] The reference of the subnet resource to create a
-      # contatainer network interface ip configruation.
+      # container network interface ip configuration.
       attr_accessor :subnet
 
       # @return [String] The provisioning state of the resource.

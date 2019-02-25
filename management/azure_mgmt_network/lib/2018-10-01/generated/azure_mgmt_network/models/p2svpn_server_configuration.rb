@@ -14,7 +14,7 @@ module Azure::Network::Mgmt::V2018_10_01
 
       # @return [String] The name of the P2SVpnServerConfiguration that is
       # unique within a VirtualWan in a resource group. This name can be used
-      # to access the resource along with Paren VirtualWan resource name.
+      # to access the resource along with Parent VirtualWan resource name.
       attr_accessor :p2svpn_server_configuration_properties_name
 
       # @return [Array<VpnGatewayTunnelingProtocol>] vpnProtocols for the
@@ -46,8 +46,7 @@ module Azure::Network::Mgmt::V2018_10_01
       attr_accessor :radius_server_address
 
       # @return [String] The radius secret property of the
-      # P2SVpnServerConfiguration resource for for point to site client
-      # connection.
+      # P2SVpnServerConfiguration resource for point to site client connection.
       attr_accessor :radius_server_secret
 
       # @return [String] The provisioning state of the

@@ -1,6 +1,8 @@
-## 2019.02.14 - Azure Ruby SDK Release
+## 2019.02.25 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_cognitiveservices_luisruntime - v0.17.0
+    - azure_cognitiveservices_luisauthoring - v0.17.0
+    - azure_mgmt_network - v0.18.4
     - azure_sdk - v0.22.2
     
 ## 2019.01.31 - Azure Ruby SDK Release

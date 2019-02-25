@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2016_03_30
   module Models
     #
-    # Pool of backend IP addresseses
+    # Pool of backend IP addresses
     #
     class BackendAddressPool < SubResource
 

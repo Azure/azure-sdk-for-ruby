@@ -31,7 +31,7 @@ module Azure::Network::Mgmt::V2018_10_01
       # physical ports. Possible values include: 'Dot1Q', 'QinQ'
       attr_accessor :encapsulation
 
-      # @return [String] Ethertype of the physical port.
+      # @return [String] Ether type of the physical port.
       attr_accessor :ether_type
 
       # @return [String] Date of the physical port allocation to be used in

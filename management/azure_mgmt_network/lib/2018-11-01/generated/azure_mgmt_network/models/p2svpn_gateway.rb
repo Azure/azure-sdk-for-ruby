@@ -30,7 +30,7 @@ module Azure::Network::Mgmt::V2018_11_01
       # which represents Address space for P2S VpnClient.
       attr_accessor :vpn_client_address_pool
 
-      # @return [VpnClientConnectionHealth] All P2S vpnclients' connection
+      # @return [VpnClientConnectionHealth] All P2S VPN clients' connection
       # health status.
       attr_accessor :vpn_client_connection_health
 

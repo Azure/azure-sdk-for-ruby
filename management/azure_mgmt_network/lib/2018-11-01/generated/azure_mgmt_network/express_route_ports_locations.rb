@@ -24,7 +24,7 @@ module Azure::Network::Mgmt::V2018_11_01
     #
     # Retrieves all ExpressRoutePort peering locations. Does not return available
     # bandwidths for each location. Available bandwidths can only be obtained when
-    # retriving a specific peering location.
+    # retrieving a specific peering location.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -39,7 +39,7 @@ module Azure::Network::Mgmt::V2018_11_01
     #
     # Retrieves all ExpressRoutePort peering locations. Does not return available
     # bandwidths for each location. Available bandwidths can only be obtained when
-    # retriving a specific peering location.
+    # retrieving a specific peering location.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -53,7 +53,7 @@ module Azure::Network::Mgmt::V2018_11_01
     #
     # Retrieves all ExpressRoutePort peering locations. Does not return available
     # bandwidths for each location. Available bandwidths can only be obtained when
-    # retriving a specific peering location.
+    # retrieving a specific peering location.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -208,7 +208,7 @@ module Azure::Network::Mgmt::V2018_11_01
     #
     # Retrieves all ExpressRoutePort peering locations. Does not return available
     # bandwidths for each location. Available bandwidths can only be obtained when
-    # retriving a specific peering location.
+    # retrieving a specific peering location.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -225,7 +225,7 @@ module Azure::Network::Mgmt::V2018_11_01
     #
     # Retrieves all ExpressRoutePort peering locations. Does not return available
     # bandwidths for each location. Available bandwidths can only be obtained when
-    # retriving a specific peering location.
+    # retrieving a specific peering location.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -241,7 +241,7 @@ module Azure::Network::Mgmt::V2018_11_01
     #
     # Retrieves all ExpressRoutePort peering locations. Does not return available
     # bandwidths for each location. Available bandwidths can only be obtained when
-    # retriving a specific peering location.
+    # retrieving a specific peering location.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -302,7 +302,7 @@ module Azure::Network::Mgmt::V2018_11_01
     #
     # Retrieves all ExpressRoutePort peering locations. Does not return available
     # bandwidths for each location. Available bandwidths can only be obtained when
-    # retriving a specific peering location.
+    # retrieving a specific peering location.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

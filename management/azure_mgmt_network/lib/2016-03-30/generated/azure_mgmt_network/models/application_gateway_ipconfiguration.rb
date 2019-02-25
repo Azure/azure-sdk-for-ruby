@@ -13,7 +13,7 @@ module Azure::Network::Mgmt::V2016_03_30
       include MsRestAzure
 
       # @return [SubResource] Gets or sets the reference of the subnet
-      # resource.A subnet from where appliation gateway gets its private
+      # resource.A subnet from where application gateway gets its private
       # address
       attr_accessor :subnet
 
