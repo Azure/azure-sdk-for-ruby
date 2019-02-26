@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_privatedns"
+        "azure_mgmt_privatedns",
+        "azure_mgmt_edgegateway"
     ],
     "rollup": [
         "azure_sdk"

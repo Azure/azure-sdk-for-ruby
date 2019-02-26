@@ -255,6 +255,11 @@
                         "2018-03-01-preview": ["*"]
                     }
                 },
+                "Microsoft.EdgeGateway": {
+                    "management": {
+                        "2019-03-01": ["*"]
+                    }
+                },
                 "Microsoft.EventGrid": {
                     "management": {
                         "2019-01-01": ["*"]
@@ -1000,6 +1005,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_dns/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_edgegateway": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.EdgeGateway": {
+                    "management": {
+                        "2019-03-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_edgegateway/lib/profiles",
             "individual_gem_profile": true
         }
         ],

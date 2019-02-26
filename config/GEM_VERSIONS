@@ -50,6 +50,7 @@
         "azure_mgmt_dev_spaces": "0.17.1",
         "azure_mgmt_devtestlabs": "0.17.2",
         "azure_mgmt_dns": "0.17.2",
+        "azure_mgmt_edgegateway": "0.17.0",
         "azure_mgmt_event_grid": "0.17.3",
         "azure_mgmt_event_hub": "0.17.1",
         "azure_mgmt_features": "0.17.1",

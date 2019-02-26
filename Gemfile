@@ -34,6 +34,7 @@ gem 'azure_mgmt_data_migration',            path: 'management/azure_mgmt_data_mi
 gem 'azure_mgmt_dev_spaces',                path: 'management/azure_mgmt_dev_spaces'
 gem 'azure_mgmt_devtestlabs',               path: 'management/azure_mgmt_devtestlabs'
 gem 'azure_mgmt_dns',                       path: 'management/azure_mgmt_dns'
+gem 'azure_mgmt_edgegateway',               path: 'management/azure_mgmt_edgegateway'
 gem 'azure_mgmt_event_grid',                path: 'management/azure_mgmt_event_grid'
 gem 'azure_mgmt_event_hub',                 path: 'management/azure_mgmt_event_hub'
 gem 'azure_mgmt_features',                  path: 'management/azure_mgmt_features'
