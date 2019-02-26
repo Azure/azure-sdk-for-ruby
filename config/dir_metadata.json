@@ -146,6 +146,13 @@
       "module_require": "azure_mgmt_dns"
     }
   },
+  "Microsoft.EdgeGateway": {
+    "management": {
+      "path": "management/azure_mgmt_edgegateway",
+      "namespace": "Azure::EdgeGateway::Mgmt",
+      "module_require": "azure_mgmt_edgegateway"
+    }
+  },
   "Microsoft.EventGrid": {
     "management": {
       "path": "management/azure_mgmt_event_grid",
@@ -289,6 +296,13 @@
       "module_require": "azure_mgmt_media_services"
     }
   },
+  "Microsoft.MixedReality": {
+    "management": {
+      "path": "management/azure_mgmt_mixedreality",
+      "namespace": "Azure::MixedReality::Mgmt",
+      "module_require": "azure_mgmt_mixedreality"
+    }
+  },
   "Microsoft.MobileEngagement": {
     "management": {
       "path": "management/azure_mgmt_mobile_engagement",
@@ -350,6 +364,13 @@
       "path": "management/azure_mgmt_powerbi_embedded",
       "namespace": "Azure::PowerBiEmbedded::Mgmt",
       "module_require": "azure_mgmt_powerbi_embedded"
+    }
+  },
+  "Microsoft.PrivateDns": {
+    "management": {
+      "path": "management/azure_mgmt_privatedns",
+      "namespace": "Azure::PrivateDns::Mgmt",
+      "module_require": "azure_mgmt_privatedns"
     }
   },
   "Microsoft.RecoveryServices": {

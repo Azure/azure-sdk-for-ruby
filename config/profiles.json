@@ -255,6 +255,11 @@
                         "2018-03-01-preview": ["*"]
                     }
                 },
+                "Microsoft.EdgeGateway": {
+                    "management": {
+                        "2019-03-01": ["*"]
+                    }
+                },
                 "Microsoft.EventGrid": {
                     "management": {
                         "2019-01-01": ["*"]
@@ -351,6 +356,11 @@
                         "2018-07-01": ["*"]
                     }
                 },
+                "Microsoft.MixedReality": {
+                    "management": {
+                        "2019-02-28-preview": ["*"]
+                    }
+                },
                 "Microsoft.Monitor": {
                     "management": {
                         "2015-04-01": ["*"],
@@ -399,6 +409,11 @@
                 "Microsoft.PowerBiEmbedded": {
                     "management": {
                         "2016-01-29": ["*"]
+                    }
+                },
+                "Microsoft.PrivateDns": {
+                    "management": {
+                        "2018-09-01": ["*"]
                     }
                 },
                 "Microsoft.RecoveryServices": {
@@ -998,6 +1013,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_edgegateway": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.EdgeGateway": {
+                    "management": {
+                        "2019-03-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_edgegateway/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_event_grid": [
         {
             "name": "Latest",
@@ -1308,6 +1337,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_mixedreality": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.MixedReality": {
+                    "management": {
+                        "2019-02-28-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_mixedreality/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_monitor": [
         {
             "name": "Latest",
@@ -1473,6 +1516,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_powerbi_embedded/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_privatedns": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.PrivateDns": {
+                    "management": {
+                        "2018-09-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_privatedns/lib/profiles",
             "individual_gem_profile": true
         }
         ],

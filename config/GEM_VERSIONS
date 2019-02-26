@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.22.2"
+        "azure_sdk": "0.22.3"
     },
     "data": {
         "azure_cognitiveservices_autosuggest": "0.17.0",
@@ -50,6 +50,7 @@
         "azure_mgmt_dev_spaces": "0.17.1",
         "azure_mgmt_devtestlabs": "0.17.2",
         "azure_mgmt_dns": "0.17.2",
+        "azure_mgmt_edgegateway": "0.17.0",
         "azure_mgmt_event_grid": "0.17.3",
         "azure_mgmt_event_hub": "0.17.1",
         "azure_mgmt_features": "0.17.1",
@@ -67,6 +68,7 @@
         "azure_mgmt_managed_applications": "0.17.1",
         "azure_mgmt_marketplace_ordering": "0.17.1",
         "azure_mgmt_media_services": "0.18.0",
+        "azure_mgmt_mixedreality": "0.17.0",
         "azure_mgmt_monitor": "0.17.1",
         "azure_mgmt_msi": "0.17.0",
         "azure_mgmt_network": "0.18.4",
@@ -75,6 +77,7 @@
         "azure_mgmt_policy": "0.17.2",
         "azure_mgmt_policy_insights": "0.17.1",
         "azure_mgmt_powerbi_embedded": "0.17.0",
+        "azure_mgmt_privatedns": "0.17.0",
         "azure_mgmt_recovery_services": "0.17.1",
         "azure_mgmt_recovery_services_backup": "0.17.1",
         "azure_mgmt_recovery_services_site_recovery": "0.17.1",

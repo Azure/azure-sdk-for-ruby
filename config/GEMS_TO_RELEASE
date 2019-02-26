@@ -1,10 +1,8 @@
 {
-    "data": [
-        "azure_cognitiveservices_luisruntime",
-        "azure_cognitiveservices_luisauthoring"
-    ],
     "management": [
-        "azure_mgmt_network"
+        "azure_mgmt_privatedns",
+        "azure_mgmt_edgegateway",
+        "azure_mgmt_mixedreality"
     ],
     "rollup": [
         "azure_sdk"
