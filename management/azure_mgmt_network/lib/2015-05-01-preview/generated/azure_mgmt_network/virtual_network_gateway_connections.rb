@@ -28,7 +28,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -45,7 +45,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -175,7 +175,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+    # The Delete VirtualNetworkGatewayConnection operation deletes the specified
     # virtual network Gateway connection through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -325,7 +325,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation through Network
     # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -342,7 +342,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation through Network
     # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -519,7 +519,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -540,7 +540,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -560,7 +560,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -641,7 +641,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+    # The Delete VirtualNetworkGatewayConnection operation deletes the specified
     # virtual network Gateway connection through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -657,7 +657,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+    # The Delete VirtualNetworkGatewayConnection operation deletes the specified
     # virtual network Gateway connection through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -673,7 +673,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+    # The Delete VirtualNetworkGatewayConnection operation deletes the specified
     # virtual network Gateway connection through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -736,7 +736,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation through Network
     # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -757,7 +757,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation through Network
     # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -777,7 +777,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation through Network
     # resource provider.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

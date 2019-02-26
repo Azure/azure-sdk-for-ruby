@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.22.1"
+        "azure_sdk": "0.22.2"
     },
     "data": {
         "azure_cognitiveservices_autosuggest": "0.17.0",
@@ -14,6 +14,8 @@
         "azure_cognitiveservices_face": "0.17.0",
         "azure_cognitiveservices_imagesearch": "0.18.0",
         "azure_cognitiveservices_localsearch": "0.17.0",
+        "azure_cognitiveservices_luisruntime": "0.17.0",
+        "azure_cognitiveservices_luisauthoring": "0.17.0",
         "azure_cognitiveservices_newssearch": "0.18.0",
         "azure_cognitiveservices_qnamaker": "0.17.0",
         "azure_cognitiveservices_spellcheck": "0.18.0",
@@ -67,7 +69,7 @@
         "azure_mgmt_media_services": "0.18.0",
         "azure_mgmt_monitor": "0.17.1",
         "azure_mgmt_msi": "0.17.0",
-        "azure_mgmt_network": "0.18.3",
+        "azure_mgmt_network": "0.18.4",
         "azure_mgmt_notification_hubs": "0.17.1",
         "azure_mgmt_operational_insights": "0.17.1",
         "azure_mgmt_policy": "0.17.2",

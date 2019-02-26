@@ -63,7 +63,7 @@ module Azure::Network::Mgmt::V2018_11_01
     # Gets the specified public IP prefix in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param public_ip_prefix_name [String] The name of the PublicIPPrefx.
+    # @param public_ip_prefix_name [String] The name of the PublicIPPrefix.
     # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -79,7 +79,7 @@ module Azure::Network::Mgmt::V2018_11_01
     # Gets the specified public IP prefix in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param public_ip_prefix_name [String] The name of the PublicIPPrefx.
+    # @param public_ip_prefix_name [String] The name of the PublicIPPrefix.
     # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -94,7 +94,7 @@ module Azure::Network::Mgmt::V2018_11_01
     # Gets the specified public IP prefix in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param public_ip_prefix_name [String] The name of the PublicIPPrefx.
+    # @param public_ip_prefix_name [String] The name of the PublicIPPrefix.
     # @param expand [String] Expands referenced resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

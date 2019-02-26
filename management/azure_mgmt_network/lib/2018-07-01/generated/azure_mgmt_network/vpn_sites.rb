@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2018_07_01
     attr_reader :client
 
     #
-    # Retrieves the details of a VPNsite.
+    # Retrieves the details of a VPN site.
     #
     # @param resource_group_name [String] The resource group name of the VpnSite.
     # @param vpn_site_name [String] The name of the VpnSite being retrieved.
@@ -37,7 +37,7 @@ module Azure::Network::Mgmt::V2018_07_01
     end
 
     #
-    # Retrieves the details of a VPNsite.
+    # Retrieves the details of a VPN site.
     #
     # @param resource_group_name [String] The resource group name of the VpnSite.
     # @param vpn_site_name [String] The name of the VpnSite being retrieved.
@@ -51,7 +51,7 @@ module Azure::Network::Mgmt::V2018_07_01
     end
 
     #
-    # Retrieves the details of a VPNsite.
+    # Retrieves the details of a VPN site.
     #
     # @param resource_group_name [String] The resource group name of the VpnSite.
     # @param vpn_site_name [String] The name of the VpnSite being retrieved.

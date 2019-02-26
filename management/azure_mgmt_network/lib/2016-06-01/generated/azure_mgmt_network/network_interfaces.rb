@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2016_06_01
     attr_reader :client
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -691,8 +691,7 @@ module Azure::Network::Mgmt::V2016_06_01
     end
 
     #
-    # The get effective routetable operation retrieves all the route tables applied
-    # on a networkInterface.
+    # Retrieves all the route tables applied on a networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -777,7 +776,7 @@ module Azure::Network::Mgmt::V2016_06_01
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -791,7 +790,7 @@ module Azure::Network::Mgmt::V2016_06_01
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -805,7 +804,7 @@ module Azure::Network::Mgmt::V2016_06_01
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -974,8 +973,7 @@ module Azure::Network::Mgmt::V2016_06_01
     end
 
     #
-    # The get effective routetable operation retrieves all the route tables applied
-    # on a networkInterface.
+    # Retrieves all the route tables applied on a networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -990,8 +988,7 @@ module Azure::Network::Mgmt::V2016_06_01
     end
 
     #
-    # The get effective routetable operation retrieves all the route tables applied
-    # on a networkInterface.
+    # Retrieves all the route tables applied on a networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -1005,8 +1002,7 @@ module Azure::Network::Mgmt::V2016_06_01
     end
 
     #
-    # The get effective routetable operation retrieves all the route tables applied
-    # on a networkInterface.
+    # Retrieves all the route tables applied on a networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.

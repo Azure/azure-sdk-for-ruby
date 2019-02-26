@@ -17,7 +17,7 @@ module Azure::Network::Mgmt::V2018_11_01
       # created.
       attr_accessor :container_network_interface_configuration
 
-      # @return [Container] Reference to the conatinaer to which this container
+      # @return [Container] Reference to the container to which this container
       # network interface is attached.
       attr_accessor :container
 

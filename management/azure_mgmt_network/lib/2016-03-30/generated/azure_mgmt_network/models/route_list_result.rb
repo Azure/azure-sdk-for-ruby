@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2016_03_30
   module Models
     #
-    # Response for ListRoute Api servive call
+    # Response for ListRoute Api service call
     #
     class RouteListResult
 

@@ -171,7 +171,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -212,7 +212,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -227,7 +227,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -241,7 +241,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -603,7 +603,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -619,7 +619,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -635,7 +635,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -805,7 +805,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -821,7 +821,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -836,7 +836,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -896,7 +896,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List VirtualNetworkGateways opertion retrieves all the virtual network
+    # The List VirtualNetworkGateways operation retrieves all the virtual network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.

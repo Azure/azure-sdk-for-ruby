@@ -62,7 +62,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get subnet operation retreives information about the specified subnet.
+    # The Get subnet operation retrieves information about the specified subnet.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -78,7 +78,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get subnet operation retreives information about the specified subnet.
+    # The Get subnet operation retrieves information about the specified subnet.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -93,7 +93,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get subnet operation retreives information about the specified subnet.
+    # The Get subnet operation retrieves information about the specified subnet.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -158,7 +158,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put Subnet operation creates/updates a subnet in thespecified virtual
+    # The Put Subnet operation creates/updates a subnet in the specified virtual
     # network
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -207,7 +207,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List subnets opertion retrieves all the subnets in a virtual network.
+    # The List subnets operation retrieves all the subnets in a virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -222,7 +222,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List subnets opertion retrieves all the subnets in a virtual network.
+    # The List subnets operation retrieves all the subnets in a virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -236,7 +236,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List subnets opertion retrieves all the subnets in a virtual network.
+    # The List subnets operation retrieves all the subnets in a virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -384,7 +384,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put Subnet operation creates/updates a subnet in thespecified virtual
+    # The Put Subnet operation creates/updates a subnet in the specified virtual
     # network
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -403,7 +403,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put Subnet operation creates/updates a subnet in thespecified virtual
+    # The Put Subnet operation creates/updates a subnet in the specified virtual
     # network
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -421,7 +421,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put Subnet operation creates/updates a subnet in thespecified virtual
+    # The Put Subnet operation creates/updates a subnet in the specified virtual
     # network
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -507,7 +507,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List subnets opertion retrieves all the subnets in a virtual network.
+    # The List subnets operation retrieves all the subnets in a virtual network.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -522,7 +522,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List subnets opertion retrieves all the subnets in a virtual network.
+    # The List subnets operation retrieves all the subnets in a virtual network.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -536,7 +536,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List subnets opertion retrieves all the subnets in a virtual network.
+    # The List subnets operation retrieves all the subnets in a virtual network.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -595,7 +595,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List subnets opertion retrieves all the subnets in a virtual network.
+    # The List subnets operation retrieves all the subnets in a virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.

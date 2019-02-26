@@ -162,8 +162,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put Authorization operation creates/updates an authorization in
-    # thespecified ExpressRouteCircuits
+    # The Put Authorization operation creates/updates an authorization in the
+    # specified ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -215,7 +215,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -231,7 +231,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -246,7 +246,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -394,8 +394,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put Authorization operation creates/updates an authorization in
-    # thespecified ExpressRouteCircuits
+    # The Put Authorization operation creates/updates an authorization in the
+    # specified ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -413,8 +413,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put Authorization operation creates/updates an authorization in
-    # thespecified ExpressRouteCircuits
+    # The Put Authorization operation creates/updates an authorization in the
+    # specified ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -431,8 +431,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Put Authorization operation creates/updates an authorization in
-    # thespecified ExpressRouteCircuits
+    # The Put Authorization operation creates/updates an authorization in the
+    # specified ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -612,7 +612,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

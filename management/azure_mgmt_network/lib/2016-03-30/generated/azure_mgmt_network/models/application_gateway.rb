@@ -61,7 +61,7 @@ module Azure::Network::Mgmt::V2016_03_30
       # request routing rules of application gateway resource
       attr_accessor :request_routing_rules
 
-      # @return [String] Gets or sets resource guid property of the
+      # @return [String] Gets or sets resource GUID property of the
       # ApplicationGateway resource
       attr_accessor :resource_guid
 

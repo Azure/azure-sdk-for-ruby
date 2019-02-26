@@ -371,7 +371,7 @@
                 "Microsoft.Network": {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2018-11-01": ["*"]
+                        "2018-12-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -569,6 +569,16 @@
                 "Microsoft.CognitiveServices.LocalSearch": {
                     "data": {
                         "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.LuisRuntime": {
+                    "data": {
+                        "2.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.LuisAuthoring": {
+                    "data": {
+                        "2.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.NewsSearch": {
@@ -1362,7 +1372,7 @@
                 "Microsoft.Network" : {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2018-11-01": ["*"]
+                        "2018-12-01": ["*"]
                     }
                 }
             },
@@ -2020,6 +2030,34 @@
                     }
                 },
                 "output_dir": "data/azure_cognitiveservices_localsearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_luisruntime": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.LuisRuntime": {
+                        "data": {
+                            "2.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_luisruntime/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_luisauthoring": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.LuisAuthoring": {
+                        "data": {
+                            "2.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_luisauthoring/lib/profiles",
                 "individual_gem_profile": true
             }
         ],

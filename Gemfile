@@ -92,6 +92,8 @@ gem 'azure_cognitiveservices_entitysearch',     path: 'data/azure_cognitiveservi
 gem 'azure_cognitiveservices_face',             path: 'data/azure_cognitiveservices_face'
 gem 'azure_cognitiveservices_imagesearch',      path: 'data/azure_cognitiveservices_imagesearch'
 gem 'azure_cognitiveservices_localsearch',      path: 'data/azure_cognitiveservices_localsearch'
+gem 'azure_cognitiveservices_luisruntime',      path: 'data/azure_cognitiveservices_luisruntime'
+gem 'azure_cognitiveservices_luisauthoring',    path: 'data/azure_cognitiveservices_luisauthoring'
 gem 'azure_cognitiveservices_newssearch',       path: 'data/azure_cognitiveservices_newssearch'
 gem 'azure_cognitiveservices_qnamaker',         path: 'data/azure_cognitiveservices_qnamaker'
 gem 'azure_cognitiveservices_spellcheck',       path: 'data/azure_cognitiveservices_spellcheck'

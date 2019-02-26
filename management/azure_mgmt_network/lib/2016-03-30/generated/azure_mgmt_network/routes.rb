@@ -62,7 +62,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Get route operation retreives information about the specified route from
+    # The Get route operation retrieves information about the specified route from
     # the route table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -79,7 +79,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Get route operation retreives information about the specified route from
+    # The Get route operation retrieves information about the specified route from
     # the route table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -95,7 +95,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Get route operation retreives information about the specified route from
+    # The Get route operation retrieves information about the specified route from
     # the route table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -167,7 +167,7 @@ module Azure::Network::Mgmt::V2016_03_30
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -183,7 +183,7 @@ module Azure::Network::Mgmt::V2016_03_30
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -209,7 +209,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -225,7 +225,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -240,7 +240,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -395,7 +395,7 @@ module Azure::Network::Mgmt::V2016_03_30
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -413,7 +413,7 @@ module Azure::Network::Mgmt::V2016_03_30
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -430,7 +430,7 @@ module Azure::Network::Mgmt::V2016_03_30
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -509,7 +509,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -525,7 +525,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -540,7 +540,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -600,7 +600,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param resource_group_name [String] The name of the resource group.

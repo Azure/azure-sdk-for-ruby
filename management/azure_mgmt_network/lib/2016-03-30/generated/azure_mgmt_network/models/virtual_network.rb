@@ -24,7 +24,7 @@ module Azure::Network::Mgmt::V2016_03_30
       # VirtualNetwork
       attr_accessor :subnets
 
-      # @return [String] Gets or sets resource guid property of the
+      # @return [String] Gets or sets resource GUID property of the
       # VirtualNetwork resource
       attr_accessor :resource_guid
 

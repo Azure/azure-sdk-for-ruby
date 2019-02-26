@@ -162,7 +162,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Put Pering operation creates/updates an peering in the specified
+    # The Put Peering operation creates/updates an peering in the specified
     # ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -215,7 +215,7 @@ module Azure::Network::Mgmt::V2016_03_30
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -231,7 +231,7 @@ module Azure::Network::Mgmt::V2016_03_30
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -246,7 +246,7 @@ module Azure::Network::Mgmt::V2016_03_30
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -394,7 +394,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Put Pering operation creates/updates an peering in the specified
+    # The Put Peering operation creates/updates an peering in the specified
     # ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -413,7 +413,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Put Pering operation creates/updates an peering in the specified
+    # The Put Peering operation creates/updates an peering in the specified
     # ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -431,7 +431,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The Put Pering operation creates/updates an peering in the specified
+    # The Put Peering operation creates/updates an peering in the specified
     # ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -612,7 +612,7 @@ module Azure::Network::Mgmt::V2016_03_30
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

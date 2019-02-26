@@ -82,6 +82,8 @@ require 'latest/modules/entitysearch_profile_module'
 require 'latest/modules/face_profile_module'
 require 'latest/modules/imagesearch_profile_module'
 require 'latest/modules/localsearch_profile_module'
+require 'latest/modules/luisruntime_profile_module'
+require 'latest/modules/luisauthoring_profile_module'
 require 'latest/modules/newssearch_profile_module'
 require 'latest/modules/qnamaker_profile_module'
 require 'latest/modules/spellcheck_profile_module'
@@ -97,7 +99,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :marketplace_ordering, :media_services, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :local_search, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :marketplace_ordering, :media_services, :monitor, :managed_service_identity, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -208,6 +210,8 @@ module Azure::Profiles::Latest
       @face = FaceAdapter.new(self, base_url, sdk_options)
       @image_search = ImageSearchAdapter.new(self, base_url, sdk_options)
       @local_search = LocalSearchAdapter.new(self, base_url, sdk_options)
+      @luis_runtime = LuisRuntimeAdapter.new(self, base_url, sdk_options)
+      @luis_authoring = LuisAuthoringAdapter.new(self, base_url, sdk_options)
       @news_search = NewsSearchAdapter.new(self, base_url, sdk_options)
       @qnamaker = QnamakerAdapter.new(self, base_url, sdk_options)
       @spell_check = SpellCheckAdapter.new(self, base_url, sdk_options)
@@ -834,6 +838,20 @@ module Azure::Profiles::Latest
     end
 
     class LocalSearchAdapter < Azure::Profiles::Latest::LocalSearch::LocalSearchDataClass
+
+      def initialize(context, base_url, options)
+        super(context)
+      end
+    end
+
+    class LuisRuntimeAdapter < Azure::Profiles::Latest::LuisRuntime::LuisRuntimeDataClass
+
+      def initialize(context, base_url, options)
+        super(context)
+      end
+    end
+
+    class LuisAuthoringAdapter < Azure::Profiles::Latest::LuisAuthoring::LuisAuthoringDataClass
 
       def initialize(context, base_url, options)
         super(context)

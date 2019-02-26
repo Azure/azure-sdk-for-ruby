@@ -46,8 +46,7 @@ module Azure::Network::Mgmt::V2018_11_01
       attr_accessor :radius_server_address
 
       # @return [String] The radius secret property of the
-      # P2SVpnServerConfiguration resource for for point to site client
-      # connection.
+      # P2SVpnServerConfiguration resource for point to site client connection.
       attr_accessor :radius_server_secret
 
       # @return [String] The provisioning state of the

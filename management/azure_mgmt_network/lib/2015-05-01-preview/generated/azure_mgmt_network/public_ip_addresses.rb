@@ -60,7 +60,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get publicIpAddress operation retreives information about the specified
+    # The Get publicIpAddress operation retrieves information about the specified
     # pubicIpAddress
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -76,7 +76,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get publicIpAddress operation retreives information about the specified
+    # The Get publicIpAddress operation retrieves information about the specified
     # pubicIpAddress
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -91,7 +91,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get publicIpAddress operation retreives information about the specified
+    # The Get publicIpAddress operation retrieves information about the specified
     # pubicIpAddress
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -202,7 +202,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -216,7 +216,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -229,7 +229,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -289,7 +289,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -304,7 +304,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -318,7 +318,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -580,7 +580,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -596,7 +596,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -611,7 +611,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -671,7 +671,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -687,7 +687,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -702,7 +702,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -762,7 +762,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -783,7 +783,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
