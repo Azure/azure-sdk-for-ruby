@@ -1,5 +1,12 @@
 ## 2019.02.25 - Azure Ruby SDK Release
 * Released the following SDKs
+    - azure_mgmt_privatedns -v0.17.0
+    - azure_mgmt_edgegateway -v0.17.0
+    - azure_mgmt_mixedreality -v0.17.0
+    - azure_sdk -v0.22.3 
+    
+## 2019.02.25 - Azure Ruby SDK Release
+* Released the following SDKs
     - azure_cognitiveservices_luisruntime - v0.17.0
     - azure_cognitiveservices_luisauthoring - v0.17.0
     - azure_mgmt_network - v0.18.4
