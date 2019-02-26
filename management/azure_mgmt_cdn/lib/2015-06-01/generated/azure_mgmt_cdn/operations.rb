@@ -32,8 +32,8 @@ module Azure::CDN::Mgmt::V2015_06_01
     #
     # @return [OperationListResult] operation results.
     #
-    def list(custom_headers:nil)
-      response = list_async(custom_headers:custom_headers).value!
+    def list(custom_headers = nil)
+      response = list_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -45,8 +45,8 @@ module Azure::CDN::Mgmt::V2015_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers:nil)
-      list_async(custom_headers:custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
@@ -57,12 +57,11 @@ module Azure::CDN::Mgmt::V2015_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers:nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

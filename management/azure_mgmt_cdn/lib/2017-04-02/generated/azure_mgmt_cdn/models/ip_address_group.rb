@@ -28,7 +28,6 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IpAddressGroup',
           type: {
@@ -36,7 +35,6 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'IpAddressGroup',
             model_properties: {
               delivery_region: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deliveryRegion',
                 type: {
@@ -44,13 +42,11 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               ipv4addresses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv4Addresses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CidrIpAddressElementType',
                       type: {
@@ -61,13 +57,11 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               ipv6addresses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv6Addresses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CidrIpAddressElementType',
                       type: {

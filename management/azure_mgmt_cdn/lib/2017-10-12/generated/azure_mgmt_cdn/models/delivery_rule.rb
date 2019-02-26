@@ -34,7 +34,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeliveryRule',
           type: {
@@ -42,7 +41,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'DeliveryRule',
             model_properties: {
               order: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'order',
                 type: {
@@ -50,13 +48,11 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               actions: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'actions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DeliveryRuleActionElementType',
                       type: {
@@ -69,13 +65,11 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               conditions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'conditions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DeliveryRuleConditionElementType',
                       type: {

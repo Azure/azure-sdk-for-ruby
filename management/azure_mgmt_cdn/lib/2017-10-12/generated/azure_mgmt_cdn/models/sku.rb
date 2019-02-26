@@ -15,7 +15,7 @@ module Azure::CDN::Mgmt::V2017_10_12
 
       # @return [SkuName] Name of the pricing tier. Possible values include:
       # 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-      # 'Standard_Akamai', 'Standard_ChinaCdn'
+      # 'Standard_Akamai', 'Standard_ChinaCdn', 'Standard_Microsoft'
       attr_accessor :name
 
 
@@ -25,7 +25,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -33,7 +32,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'Sku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

@@ -26,7 +26,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EndpointPropertiesUpdateParameters_deliveryPolicy',
           type: {
@@ -34,7 +33,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'EndpointPropertiesUpdateParametersDeliveryPolicy',
             model_properties: {
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -42,13 +40,11 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DeliveryRuleElementType',
                       type: {
