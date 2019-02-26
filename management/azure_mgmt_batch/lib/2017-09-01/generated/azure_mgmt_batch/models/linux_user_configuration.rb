@@ -41,7 +41,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LinuxUserConfiguration',
           type: {
@@ -49,7 +48,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'LinuxUserConfiguration',
             model_properties: {
               uid: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'uid',
                 type: {
@@ -57,7 +55,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               gid: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gid',
                 type: {
@@ -65,7 +62,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               ssh_private_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sshPrivateKey',
                 type: {

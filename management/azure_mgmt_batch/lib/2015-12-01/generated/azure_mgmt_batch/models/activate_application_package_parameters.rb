@@ -23,7 +23,6 @@ module Azure::Batch::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ActivateApplicationPackageParameters',
           type: {
@@ -31,7 +30,6 @@ module Azure::Batch::Mgmt::V2015_12_01
             class_name: 'ActivateApplicationPackageParameters',
             model_properties: {
               format: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'format',
                 type: {
