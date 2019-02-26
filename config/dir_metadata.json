@@ -352,6 +352,13 @@
       "module_require": "azure_mgmt_powerbi_embedded"
     }
   },
+  "Microsoft.PrivateDns": {
+    "management": {
+      "path": "management/azure_mgmt_privatedns",
+      "namespace": "Azure::PrivateDns::Mgmt",
+      "module_require": "azure_mgmt_privatedns"
+    }
+  },
   "Microsoft.RecoveryServices": {
     "management": {
       "path": "management/azure_mgmt_recovery_services",

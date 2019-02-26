@@ -59,6 +59,7 @@ gem 'azure_mgmt_operational_insights',      path: 'management/azure_mgmt_operati
 gem 'azure_mgmt_policy',                    path: 'management/azure_mgmt_policy'
 gem 'azure_mgmt_policy_insights',           path: 'management/azure_mgmt_policy_insights'
 gem 'azure_mgmt_powerbi_embedded',          path: 'management/azure_mgmt_powerbi_embedded'
+gem 'azure_mgmt_privatedns',                path: 'management/azure_mgmt_privatedns'
 gem 'azure_mgmt_recovery_services',         path: 'management/azure_mgmt_recovery_services'
 gem 'azure_mgmt_recovery_services_backup',  path: 'management/azure_mgmt_recovery_services_backup'
 gem 'azure_mgmt_recovery_services_site_recovery',  path: 'management/azure_mgmt_recovery_services_site_recovery'

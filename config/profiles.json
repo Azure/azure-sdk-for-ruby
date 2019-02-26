@@ -401,6 +401,11 @@
                         "2016-01-29": ["*"]
                     }
                 },
+                "Microsoft.PrivateDns": {
+                    "management": {
+                        "2018-09-01": ["*"]
+                    }
+                },
                 "Microsoft.RecoveryServices": {
                     "management": {
                         "2016-06-01": ["*"]
@@ -1473,6 +1478,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_powerbi_embedded/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_privatedns": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.PrivateDns": {
+                    "management": {
+                        "2018-09-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_privatedns/lib/profiles",
             "individual_gem_profile": true
         }
         ],
