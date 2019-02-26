@@ -64,6 +64,9 @@ module Azure::Network::Mgmt::V2018_12_01
       # @return [String] The GatewayManager Etag.
       attr_accessor :gateway_manager_etag
 
+      # @return [Boolean] Flag to enable Global Reach on the circuit.
+      attr_accessor :allow_global_reach
+
       # @return [Boolean] Flag denoting Global reach status.
       attr_accessor :global_reach_enabled
 
@@ -244,6 +247,13 @@ module Azure::Network::Mgmt::V2018_12_01
                 serialized_name: 'properties.gatewayManagerEtag',
                 type: {
                   name: 'String'
+                }
+              },
+              allow_global_reach: {
+                required: false,
+                serialized_name: 'properties.allowGlobalReach',
+                type: {
+                  name: 'Boolean'
                 }
               },
               global_reach_enabled: {
