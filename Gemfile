@@ -52,6 +52,7 @@ gem 'azure_mgmt_machine_learning_services', path: 'management/azure_mgmt_machine
 gem 'azure_mgmt_managed_applications',      path: 'management/azure_mgmt_managed_applications'
 gem 'azure_mgmt_marketplace_ordering',      path: 'management/azure_mgmt_marketplace_ordering'
 gem 'azure_mgmt_media_services',            path: 'management/azure_mgmt_media_services'
+gem 'azure_mgmt_mixedreality',              path: 'management/azure_mgmt_mixedreality'
 gem 'azure_mgmt_monitor',                   path: 'management/azure_mgmt_monitor'
 gem 'azure_mgmt_msi',                       path: 'management/azure_mgmt_msi'
 gem 'azure_mgmt_network',                   path: 'management/azure_mgmt_network'

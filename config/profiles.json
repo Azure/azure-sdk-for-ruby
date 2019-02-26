@@ -356,6 +356,11 @@
                         "2018-07-01": ["*"]
                     }
                 },
+                "Microsoft.MixedReality": {
+                    "management": {
+                        "2019-02-28-preview": ["*"]
+                    }
+                },
                 "Microsoft.Monitor": {
                     "management": {
                         "2015-04-01": ["*"],
@@ -1329,6 +1334,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_media_services/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_mixedreality": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.MixedReality": {
+                    "management": {
+                        "2019-02-28-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_mixedreality/lib/profiles",
             "individual_gem_profile": true
         }
         ],

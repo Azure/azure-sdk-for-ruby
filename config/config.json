@@ -750,6 +750,12 @@
       "tag": "package-2018-07"
     }
   },
+  "azure_mgmt_mixedreality": {
+    "azure_mgmt_mixedreality_2019_02_28_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f3a5ad9f80f867d1c546c101310d36a8df863b5b/specification/mixedreality/resource-manager/readme.md",
+      "namespace": "Azure::MixedReality::Mgmt::V2019_02_28_preview"
+    }
+  },
   "azure_mgmt_monitor": {
     "azure_mgmt_monitor_2018_04_16": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/monitor/resource-manager/readme.md",

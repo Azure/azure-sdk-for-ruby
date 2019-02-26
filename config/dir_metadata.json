@@ -296,6 +296,13 @@
       "module_require": "azure_mgmt_media_services"
     }
   },
+  "Microsoft.MixedReality": {
+    "management": {
+      "path": "management/azure_mgmt_mixedreality",
+      "namespace": "Azure::MixedReality::Mgmt",
+      "module_require": "azure_mgmt_mixedreality"
+    }
+  },
   "Microsoft.MobileEngagement": {
     "management": {
       "path": "management/azure_mgmt_mobile_engagement",

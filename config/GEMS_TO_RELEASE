@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_privatedns",
-        "azure_mgmt_edgegateway"
+        "azure_mgmt_edgegateway",
+        "azure_mgmt_mixedreality"
     ],
     "rollup": [
         "azure_sdk"
