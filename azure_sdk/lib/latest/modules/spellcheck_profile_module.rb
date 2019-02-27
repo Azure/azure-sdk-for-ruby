@@ -8,20 +8,20 @@ module Azure::Profiles::Latest
   module SpellCheck
 
     module Models
-      Error = Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
-      ErrorResponse = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
       ErrorCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorCode
-      Mode = Azure::CognitiveServices::SpellCheck::V1_0::Models::Mode
-      SpellingTokenSuggestion = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
+      Response = Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
       ActionType = Azure::CognitiveServices::SpellCheck::V1_0::Models::ActionType
+      Mode = Azure::CognitiveServices::SpellCheck::V1_0::Models::Mode
+      ErrorResponse = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
       SpellCheck = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellCheck
-      ErrorType = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorType
       ResponseBase = Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::SpellCheck::V1_0::Models::Answer
       ErrorSubCode = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorSubCode
-      Response = Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
+      SpellingTokenSuggestion = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
       SpellingFlaggedToken = Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingFlaggedToken
+      Error = Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
       Identifiable = Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
+      ErrorType = Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorType
     end
 
     class SpellCheckDataClass
@@ -53,29 +53,23 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def error
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
-        end
-        def error_response
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
-        end
         def error_code
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorCode
         end
-        def mode
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::Mode
-        end
-        def spelling_token_suggestion
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
+        def response
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
         end
         def action_type
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ActionType
         end
+        def mode
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::Mode
+        end
+        def error_response
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorResponse
+        end
         def spell_check
           Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellCheck
-        end
-        def error_type
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorType
         end
         def response_base
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ResponseBase
@@ -86,14 +80,20 @@ module Azure::Profiles::Latest
         def error_sub_code
           Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorSubCode
         end
-        def response
-          Azure::CognitiveServices::SpellCheck::V1_0::Models::Response
+        def spelling_token_suggestion
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingTokenSuggestion
         end
         def spelling_flagged_token
           Azure::CognitiveServices::SpellCheck::V1_0::Models::SpellingFlaggedToken
         end
+        def error
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::Error
+        end
         def identifiable
           Azure::CognitiveServices::SpellCheck::V1_0::Models::Identifiable
+        end
+        def error_type
+          Azure::CognitiveServices::SpellCheck::V1_0::Models::ErrorType
         end
       end
     end

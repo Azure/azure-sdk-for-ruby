@@ -8,14 +8,12 @@ module Azure::Profiles::Latest
   module Autosuggest
 
     module Models
-      CreativeWork = Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
-      ScenarioType = Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
-      ErrorResponse = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse
-      Response = Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
       SearchKind = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
       ErrorCode = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
+      Response = Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
       ResponseFormat = Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseFormat
+      ErrorResponse = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse
       Action = Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
       QueryContext = Azure::CognitiveServices::Autosuggest::V1_0::Models::QueryContext
       SuggestionsSuggestionGroup = Azure::CognitiveServices::Autosuggest::V1_0::Models::SuggestionsSuggestionGroup
@@ -24,9 +22,11 @@ module Azure::Profiles::Latest
       SearchResultsAnswer = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchResultsAnswer
       Suggestions = Azure::CognitiveServices::Autosuggest::V1_0::Models::Suggestions
       Thing = Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
-      Error = Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
+      CreativeWork = Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
       SearchAction = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
+      Error = Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
       Identifiable = Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
+      ScenarioType = Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
     end
 
     class AutosuggestDataClass
@@ -58,18 +58,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def creative_work
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
-        end
-        def scenario_type
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
-        end
-        def error_response
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse
-        end
-        def response
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
-        end
         def search_kind
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
         end
@@ -79,8 +67,14 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
         end
+        def response
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
+        end
         def response_format
           Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseFormat
+        end
+        def error_response
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse
         end
         def action
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
@@ -106,14 +100,20 @@ module Azure::Profiles::Latest
         def thing
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
         end
-        def error
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
+        def creative_work
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
         end
         def search_action
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
         end
+        def error
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
+        end
         def identifiable
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
+        end
+        def scenario_type
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
         end
       end
     end

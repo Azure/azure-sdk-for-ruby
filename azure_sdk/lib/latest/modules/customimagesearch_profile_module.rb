@@ -10,9 +10,16 @@ module Azure::Profiles::Latest
 
     module Models
       ErrorResponse = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
+      Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+      ResponseBase = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ResponseBase
+      Answer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Answer
+      SearchResultsAnswer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
+      Thing = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Thing
+      CreativeWork = Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
+      Identifiable = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SafeSearch
-      Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+      Response = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response
       Query = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::Customimagesearch::V1_0::Models::MediaObject
@@ -24,15 +31,8 @@ module Azure::Profiles::Latest
       ImageContent = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageContent
       ImageType = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
       ImageLicense = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
-      Response = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response
-      ImageSize = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
-      ResponseBase = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ResponseBase
-      Answer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Answer
-      SearchResultsAnswer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
-      Thing = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Thing
       Error = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Error
-      CreativeWork = Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
-      Identifiable = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable
+      ImageSize = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
     end
 
     class CustomimagesearchDataClass
@@ -68,14 +68,35 @@ module Azure::Profiles::Latest
         def error_response
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
         end
+        def images
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+        end
+        def response_base
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ResponseBase
+        end
+        def answer
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Answer
+        end
+        def search_results_answer
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
+        end
+        def thing
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Thing
+        end
+        def creative_work
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
+        end
+        def identifiable
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable
+        end
         def error_code
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorCode
         end
         def safe_search
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::SafeSearch
         end
-        def images
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+        def response
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response
         end
         def query
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Query
@@ -110,32 +131,11 @@ module Azure::Profiles::Latest
         def image_license
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
         end
-        def response
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response
-        end
-        def image_size
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
-        end
-        def response_base
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ResponseBase
-        end
-        def answer
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Answer
-        end
-        def search_results_answer
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
-        end
-        def thing
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Thing
-        end
         def error
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Error
         end
-        def creative_work
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
-        end
-        def identifiable
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable
+        def image_size
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
         end
       end
     end
