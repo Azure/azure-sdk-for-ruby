@@ -7,13 +7,13 @@ require 'azure_mgmt_data_migration'
 module Azure::Profiles::Latest
   module DataMigration
     module Mgmt
+      Usages = Azure::DataMigration::Mgmt::V2018_07_15_preview::Usages
       ResourceSkus = Azure::DataMigration::Mgmt::V2018_07_15_preview::ResourceSkus
       Services = Azure::DataMigration::Mgmt::V2018_07_15_preview::Services
       Projects = Azure::DataMigration::Mgmt::V2018_07_15_preview::Projects
       Files = Azure::DataMigration::Mgmt::V2018_07_15_preview::Files
       Operations = Azure::DataMigration::Mgmt::V2018_07_15_preview::Operations
       Tasks = Azure::DataMigration::Mgmt::V2018_07_15_preview::Tasks
-      Usages = Azure::DataMigration::Mgmt::V2018_07_15_preview::Usages
 
       module Models
         MigrateSqlServerSqlMITaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutput
@@ -257,7 +257,7 @@ module Azure::Profiles::Latest
       end
 
       class DataMigrationManagementClass
-        attr_reader :resource_skus, :services, :projects, :files, :operations, :tasks, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :usages, :resource_skus, :services, :projects, :files, :operations, :tasks, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -267,13 +267,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @usages = @client_0.usages
           @resource_skus = @client_0.resource_skus
           @services = @client_0.services
           @projects = @client_0.projects
           @files = @client_0.files
           @operations = @client_0.operations
           @tasks = @client_0.tasks
-          @usages = @client_0.usages
 
           @model_classes = ModelClasses.new
         end
