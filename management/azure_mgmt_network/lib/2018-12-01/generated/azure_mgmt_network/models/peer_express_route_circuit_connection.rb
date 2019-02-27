@@ -39,7 +39,7 @@ module Azure::Network::Mgmt::V2018_12_01
       attr_accessor :auth_resource_guid
 
       # @return [String] Provisioning state of the peer express route circuit
-      # connection resource. Possible values are: 'Succeded', 'Updating',
+      # connection resource. Possible values are: 'Succeeded', 'Updating',
       # 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
