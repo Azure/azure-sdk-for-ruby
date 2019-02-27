@@ -9,8 +9,8 @@ module Azure::Profiles::Latest
     Local = Azure::CognitiveServices::LocalSearch::V1_0::Local
 
     module Models
-      SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
       ErrorResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
+      SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
       Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
       PostalAddress = Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
@@ -67,11 +67,11 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def search_response
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
-        end
         def error_response
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
+        end
+        def search_response
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
         end
         def entities_entity_presentation_info
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo

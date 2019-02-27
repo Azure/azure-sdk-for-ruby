@@ -120,6 +120,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
     autoload :ReadOnlyEndpointFailoverPolicy,                     '2015-05-01-preview/generated/azure_mgmt_sql/models/read_only_endpoint_failover_policy.rb'
     autoload :FailoverGroupReplicationRole,                       '2015-05-01-preview/generated/azure_mgmt_sql/models/failover_group_replication_role.rb'
     autoload :IdentityType,                                       '2015-05-01-preview/generated/azure_mgmt_sql/models/identity_type.rb'
+    autoload :ManagedInstanceProxyOverride,                       '2015-05-01-preview/generated/azure_mgmt_sql/models/managed_instance_proxy_override.rb'
     autoload :OperationOrigin,                                    '2015-05-01-preview/generated/azure_mgmt_sql/models/operation_origin.rb'
     autoload :SyncAgentState,                                     '2015-05-01-preview/generated/azure_mgmt_sql/models/sync_agent_state.rb'
     autoload :SyncMemberDbType,                                   '2015-05-01-preview/generated/azure_mgmt_sql/models/sync_member_db_type.rb'
