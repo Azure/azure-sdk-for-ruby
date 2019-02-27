@@ -25,7 +25,6 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TopicSharedAccessKeys',
           type: {
@@ -33,7 +32,6 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
             class_name: 'TopicSharedAccessKeys',
             model_properties: {
               key1: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key1',
                 type: {
@@ -41,7 +39,6 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               key2: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key2',
                 type: {

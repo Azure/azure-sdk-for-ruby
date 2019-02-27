@@ -33,8 +33,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Array<ReplicationProtectedItem>] operation results.
     #
-    def list_by_replication_protection_containers(fabric_name, protection_container_name, custom_headers:nil)
-      first_page = list_by_replication_protection_containers_as_lazy(fabric_name, protection_container_name, custom_headers:custom_headers)
+    def list_by_replication_protection_containers(fabric_name, protection_container_name, custom_headers = nil)
+      first_page = list_by_replication_protection_containers_as_lazy(fabric_name, protection_container_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -50,8 +50,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_replication_protection_containers_with_http_info(fabric_name, protection_container_name, custom_headers:nil)
-      list_by_replication_protection_containers_async(fabric_name, protection_container_name, custom_headers:custom_headers).value!
+    def list_by_replication_protection_containers_with_http_info(fabric_name, protection_container_name, custom_headers = nil)
+      list_by_replication_protection_containers_async(fabric_name, protection_container_name, custom_headers).value!
     end
 
     #
@@ -66,7 +66,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_replication_protection_containers_async(fabric_name, protection_container_name, custom_headers:nil)
+    def list_by_replication_protection_containers_async(fabric_name, protection_container_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -76,7 +76,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -134,8 +133,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Array<ReplicationProtectedItem>] operation results.
     #
-    def list(skip_token:nil, filter:nil, custom_headers:nil)
-      first_page = list_as_lazy(skip_token:skip_token, filter:filter, custom_headers:custom_headers)
+    def list(skip_token = nil, filter = nil, custom_headers = nil)
+      first_page = list_as_lazy(skip_token, filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -152,8 +151,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(skip_token:nil, filter:nil, custom_headers:nil)
-      list_async(skip_token:skip_token, filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(skip_token = nil, filter = nil, custom_headers = nil)
+      list_async(skip_token, filter, custom_headers).value!
     end
 
     #
@@ -169,7 +168,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(skip_token:nil, filter:nil, custom_headers:nil)
+    def list_async(skip_token = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -177,7 +176,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -239,8 +237,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def apply_recovery_point(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers:nil)
-      response = apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers:custom_headers).value!
+    def apply_recovery_point(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers = nil)
+      response = apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -257,9 +255,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers:nil)
+    def apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers = nil)
       # Send request
-      promise = begin_apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers:custom_headers)
+      promise = begin_apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -290,8 +288,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def repair_replication(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      response = repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def repair_replication(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      response = repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -306,9 +304,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
+    def repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
       # Send request
-      promise = begin_repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers)
+      promise = begin_repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -343,8 +341,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def update_mobility_service(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers:nil)
-      response = update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers:custom_headers).value!
+    def update_mobility_service(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers = nil)
+      response = update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -363,9 +361,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers:nil)
+    def update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers = nil)
       # Send request
-      promise = begin_update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers:custom_headers)
+      promise = begin_update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -397,8 +395,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def reprotect(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers:nil)
-      response = reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers:custom_headers).value!
+    def reprotect(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers = nil)
+      response = reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -414,9 +412,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers:nil)
+    def reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers = nil)
       # Send request
-      promise = begin_reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers:custom_headers)
+      promise = begin_reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -446,8 +444,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def failover_commit(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      response = failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def failover_commit(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      response = failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -462,9 +460,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
+    def failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
       # Send request
-      promise = begin_failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers)
+      promise = begin_failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -495,8 +493,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def test_failover_cleanup(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers:nil)
-      response = test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers:custom_headers).value!
+    def test_failover_cleanup(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers = nil)
+      response = test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -512,9 +510,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers:nil)
+    def test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers = nil)
       # Send request
-      promise = begin_test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers:custom_headers)
+      promise = begin_test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -545,8 +543,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def test_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
-      response = test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers).value!
+    def test_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
+      response = test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -562,9 +560,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
+    def test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
       # Send request
-      promise = begin_test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers)
+      promise = begin_test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -595,8 +593,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def unplanned_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
-      response = unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers).value!
+    def unplanned_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
+      response = unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -612,9 +610,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
+    def unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
       # Send request
-      promise = begin_unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers)
+      promise = begin_unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -645,8 +643,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def planned_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
-      response = planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers).value!
+    def planned_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
+      response = planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -662,9 +660,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
+    def planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
       # Send request
-      promise = begin_planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers)
+      promise = begin_planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -695,8 +693,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers:nil)
-      response = delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers:custom_headers).value!
+    def delete(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers = nil)
+      response = delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers).value!
       nil
     end
 
@@ -713,9 +711,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers:nil)
+    def delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers:custom_headers)
+      promise = begin_delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -743,8 +741,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def get(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      response = get_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def get(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      response = get_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -762,8 +760,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      get_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def get_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      get_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
     end
 
     #
@@ -780,7 +778,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
+    def get_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -791,7 +789,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -852,8 +849,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def create(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers:nil)
-      response = create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers:custom_headers).value!
+    def create(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers = nil)
+      response = create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -869,9 +866,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers:nil)
+    def create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers = nil)
       # Send request
-      promise = begin_create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers:custom_headers)
+      promise = begin_create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -902,8 +899,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def purge(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      response = purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def purge(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      response = purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
       nil
     end
 
@@ -918,9 +915,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
+    def purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
       # Send request
-      promise = begin_purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers)
+      promise = begin_purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -951,8 +948,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def update(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers:nil)
-      response = update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers:custom_headers).value!
+    def update(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers = nil)
+      response = update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -969,9 +966,9 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers:nil)
+    def update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers = nil)
       # Send request
-      promise = begin_update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers:custom_headers)
+      promise = begin_update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -1004,8 +1001,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_apply_recovery_point(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers:nil)
-      response = begin_apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers:custom_headers).value!
+    def begin_apply_recovery_point(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers = nil)
+      response = begin_apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1026,8 +1023,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_apply_recovery_point_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers:nil)
-      begin_apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers:custom_headers).value!
+    def begin_apply_recovery_point_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers = nil)
+      begin_apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers).value!
     end
 
     #
@@ -1047,7 +1044,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers:nil)
+    def begin_apply_recovery_point_async(fabric_name, protection_container_name, replicated_protected_item_name, apply_recovery_point_input, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1059,11 +1056,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ApplyRecoveryPointInput.mapper()
@@ -1126,8 +1124,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_repair_replication(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      response = begin_repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def begin_repair_replication(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      response = begin_repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1146,8 +1144,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_repair_replication_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      begin_repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def begin_repair_replication_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      begin_repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
     end
 
     #
@@ -1165,7 +1163,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
+    def begin_repair_replication_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1176,7 +1174,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1240,8 +1237,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_update_mobility_service(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers:nil)
-      response = begin_update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers:custom_headers).value!
+    def begin_update_mobility_service(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers = nil)
+      response = begin_update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1264,8 +1261,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_mobility_service_with_http_info(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers:nil)
-      begin_update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers:custom_headers).value!
+    def begin_update_mobility_service_with_http_info(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers = nil)
+      begin_update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers).value!
     end
 
     #
@@ -1287,7 +1284,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers:nil)
+    def begin_update_mobility_service_async(fabric_name, protection_container_name, replication_protected_item_name, update_mobility_service_request, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1299,11 +1296,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::UpdateMobilityServiceRequest.mapper()
@@ -1367,8 +1365,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_reprotect(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers:nil)
-      response = begin_reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers:custom_headers).value!
+    def begin_reprotect(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers = nil)
+      response = begin_reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1388,8 +1386,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reprotect_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers:nil)
-      begin_reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers:custom_headers).value!
+    def begin_reprotect_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers = nil)
+      begin_reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers).value!
     end
 
     #
@@ -1408,7 +1406,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers:nil)
+    def begin_reprotect_async(fabric_name, protection_container_name, replicated_protected_item_name, rr_input, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1420,11 +1418,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReverseReplicationInput.mapper()
@@ -1486,8 +1485,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_failover_commit(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      response = begin_failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def begin_failover_commit(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      response = begin_failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1505,8 +1504,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_failover_commit_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      begin_failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def begin_failover_commit_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      begin_failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
     end
 
     #
@@ -1523,7 +1522,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
+    def begin_failover_commit_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1534,7 +1533,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1594,8 +1592,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_test_failover_cleanup(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers:nil)
-      response = begin_test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers:custom_headers).value!
+    def begin_test_failover_cleanup(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers = nil)
+      response = begin_test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1614,8 +1612,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_test_failover_cleanup_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers:nil)
-      begin_test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers:custom_headers).value!
+    def begin_test_failover_cleanup_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers = nil)
+      begin_test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers).value!
     end
 
     #
@@ -1633,7 +1631,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers:nil)
+    def begin_test_failover_cleanup_async(fabric_name, protection_container_name, replicated_protected_item_name, cleanup_input, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1645,11 +1643,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::TestFailoverCleanupInput.mapper()
@@ -1712,8 +1711,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_test_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
-      response = begin_test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers).value!
+    def begin_test_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
+      response = begin_test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1732,8 +1731,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_test_failover_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
-      begin_test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers).value!
+    def begin_test_failover_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
+      begin_test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers).value!
     end
 
     #
@@ -1751,7 +1750,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
+    def begin_test_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1763,11 +1762,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::TestFailoverInput.mapper()
@@ -1830,8 +1830,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_unplanned_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
-      response = begin_unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers).value!
+    def begin_unplanned_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
+      response = begin_unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1850,8 +1850,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_unplanned_failover_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
-      begin_unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers).value!
+    def begin_unplanned_failover_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
+      begin_unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers).value!
     end
 
     #
@@ -1869,7 +1869,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
+    def begin_unplanned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1881,11 +1881,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::UnplannedFailoverInput.mapper()
@@ -1948,8 +1949,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_planned_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
-      response = begin_planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers).value!
+    def begin_planned_failover(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
+      response = begin_planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1968,8 +1969,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_planned_failover_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
-      begin_planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:custom_headers).value!
+    def begin_planned_failover_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
+      begin_planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers).value!
     end
 
     #
@@ -1987,7 +1988,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers:nil)
+    def begin_planned_failover_async(fabric_name, protection_container_name, replicated_protected_item_name, failover_input, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -1999,11 +2000,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PlannedFailoverInput.mapper()
@@ -2067,8 +2069,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers:nil)
-      response = begin_delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers:custom_headers).value!
+    def begin_delete(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers = nil)
+      response = begin_delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers).value!
       nil
     end
 
@@ -2089,8 +2091,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers:nil)
-      begin_delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers = nil)
+      begin_delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers).value!
     end
 
     #
@@ -2110,7 +2112,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers:nil)
+    def begin_delete_async(fabric_name, protection_container_name, replicated_protected_item_name, disable_protection_input, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -2122,11 +2124,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::DisableProtectionInput.mapper()
@@ -2180,8 +2183,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_create(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers:nil)
-      response = begin_create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers:custom_headers).value!
+    def begin_create(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers = nil)
+      response = begin_create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2201,8 +2204,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers:nil)
-      begin_create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers:custom_headers).value!
+    def begin_create_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers = nil)
+      begin_create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers).value!
     end
 
     #
@@ -2221,7 +2224,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers:nil)
+    def begin_create_async(fabric_name, protection_container_name, replicated_protected_item_name, input, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -2233,11 +2236,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::EnableProtectionInput.mapper()
@@ -2301,8 +2305,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # will be added to the HTTP request.
     #
     #
-    def begin_purge(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      response = begin_purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def begin_purge(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      response = begin_purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
       nil
     end
 
@@ -2323,8 +2327,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_purge_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
-      begin_purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:custom_headers).value!
+    def begin_purge_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
+      begin_purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers).value!
     end
 
     #
@@ -2344,7 +2348,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers:nil)
+    def begin_purge_async(fabric_name, protection_container_name, replicated_protected_item_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -2355,7 +2359,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2407,8 +2410,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItem] operation results.
     #
-    def begin_update(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers:nil)
-      response = begin_update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers:custom_headers).value!
+    def begin_update(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers = nil)
+      response = begin_update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2429,8 +2432,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers:nil)
-      begin_update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers:custom_headers).value!
+    def begin_update_with_http_info(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers = nil)
+      begin_update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers).value!
     end
 
     #
@@ -2450,7 +2453,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers:nil)
+    def begin_update_async(fabric_name, protection_container_name, replicated_protected_item_name, update_protection_input, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
@@ -2462,11 +2465,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::UpdateReplicationProtectedItemInput.mapper()
@@ -2526,8 +2530,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItemCollection] operation results.
     #
-    def list_by_replication_protection_containers_next(next_page_link, custom_headers:nil)
-      response = list_by_replication_protection_containers_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_replication_protection_containers_next(next_page_link, custom_headers = nil)
+      response = list_by_replication_protection_containers_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2543,8 +2547,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_replication_protection_containers_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_replication_protection_containers_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_replication_protection_containers_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_replication_protection_containers_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2559,12 +2563,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_replication_protection_containers_next_async(next_page_link, custom_headers:nil)
+    def list_by_replication_protection_containers_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2620,8 +2623,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [ReplicationProtectedItemCollection] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2637,8 +2640,8 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2653,12 +2656,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2715,12 +2717,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [ReplicationProtectedItemCollection] which provide lazy access to
     # pages of the response.
     #
-    def list_by_replication_protection_containers_as_lazy(fabric_name, protection_container_name, custom_headers:nil)
-      response = list_by_replication_protection_containers_async(fabric_name, protection_container_name, custom_headers:custom_headers).value!
+    def list_by_replication_protection_containers_as_lazy(fabric_name, protection_container_name, custom_headers = nil)
+      response = list_by_replication_protection_containers_async(fabric_name, protection_container_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_replication_protection_containers_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_replication_protection_containers_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2740,12 +2742,12 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
     # @return [ReplicationProtectedItemCollection] which provide lazy access to
     # pages of the response.
     #
-    def list_as_lazy(skip_token:nil, filter:nil, custom_headers:nil)
-      response = list_async(skip_token:skip_token, filter:filter, custom_headers:custom_headers).value!
+    def list_as_lazy(skip_token = nil, filter = nil, custom_headers = nil)
+      response = list_async(skip_token, filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end

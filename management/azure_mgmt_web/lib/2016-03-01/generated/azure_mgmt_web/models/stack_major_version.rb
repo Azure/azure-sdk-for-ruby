@@ -33,7 +33,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StackMajorVersion',
           type: {
@@ -41,7 +40,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'StackMajorVersion',
             model_properties: {
               display_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayVersion',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               runtime_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'runtimeVersion',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               is_default: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isDefault',
                 type: {
@@ -65,13 +61,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               minor_versions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'minorVersions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StackMinorVersionElementType',
                       type: {

@@ -8,7 +8,7 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
     #
     # This is used to express the source of an input schema mapping for a
     # single target field in the Event Grid Event schema. This is currently
-    # used in the mappings for the 'id','topic' and 'eventtime' properties.
+    # used in the mappings for the 'id','topic' and 'eventTime' properties.
     # This represents a field in the input event schema.
     #
     class JsonField
@@ -26,7 +26,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JsonField',
           type: {
@@ -34,7 +33,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
             class_name: 'JsonField',
             model_properties: {
               source_field: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceField',
                 type: {

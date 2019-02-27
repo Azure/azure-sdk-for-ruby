@@ -24,14 +24,12 @@ module Azure::Search::Mgmt::V2015_08_19
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           type: {
             name: 'Composite',
             class_name: 'SearchManagementRequestOptions',
             model_properties: {
               client_request_id: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'String'

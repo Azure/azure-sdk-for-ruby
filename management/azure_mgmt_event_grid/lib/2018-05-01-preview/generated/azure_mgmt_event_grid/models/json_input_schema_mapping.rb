@@ -52,7 +52,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Json',
           type: {
@@ -60,7 +59,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
             class_name: 'JsonInputSchemaMapping',
             model_properties: {
               inputSchemaMappingType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'inputSchemaMappingType',
                 type: {
@@ -68,7 +66,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.id',
                 type: {
@@ -77,7 +74,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               topic: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.topic',
                 type: {
@@ -86,7 +82,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               event_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.eventTime',
                 type: {
@@ -95,7 +90,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               event_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.eventType',
                 type: {
@@ -104,7 +98,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               subject: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subject',
                 type: {
@@ -113,7 +106,6 @@ module Azure::EventGrid::Mgmt::V2018_05_01_preview
                 }
               },
               data_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dataVersion',
                 type: {

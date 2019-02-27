@@ -45,7 +45,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticMetricSample',
           type: {
@@ -53,7 +52,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DiagnosticMetricSample',
             model_properties: {
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timestamp',
                 type: {
@@ -61,7 +59,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               role_instance: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'roleInstance',
                 type: {
@@ -69,7 +66,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               total: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'total',
                 type: {
@@ -77,7 +73,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               maximum: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maximum',
                 type: {
@@ -85,7 +80,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               minimum: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'minimum',
                 type: {
@@ -93,7 +87,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               is_aggregated: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isAggregated',
                 type: {

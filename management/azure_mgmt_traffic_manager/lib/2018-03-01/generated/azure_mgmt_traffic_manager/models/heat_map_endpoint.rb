@@ -26,7 +26,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HeatMapEndpoint',
           type: {
@@ -34,7 +33,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
             class_name: 'HeatMapEndpoint',
             model_properties: {
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -42,7 +40,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               endpoint_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpointId',
                 type: {

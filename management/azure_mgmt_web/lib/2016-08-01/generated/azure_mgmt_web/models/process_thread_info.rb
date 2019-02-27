@@ -42,7 +42,7 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [String] User processor time.
       attr_accessor :user_processor_time
 
-      # @return [String] Priviledged processor time.
+      # @return [String] Privileged processor time.
       attr_accessor :priviledged_processor_time
 
       # @return [String] Thread state.
@@ -58,7 +58,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProcessThreadInfo',
           type: {
@@ -66,7 +65,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'ProcessThreadInfo',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -75,7 +73,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -84,7 +81,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -92,7 +88,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -101,7 +96,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               process_thread_info_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.id',
                 type: {
@@ -109,7 +103,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               href: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.href',
                 type: {
@@ -117,7 +110,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               process: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.process',
                 type: {
@@ -125,7 +117,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               start_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startAddress',
                 type: {
@@ -133,7 +124,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               current_priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.currentPriority',
                 type: {
@@ -141,7 +131,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               priority_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.priorityLevel',
                 type: {
@@ -149,7 +138,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               base_priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.basePriority',
                 type: {
@@ -157,7 +145,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -165,7 +152,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               total_processor_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.totalProcessorTime',
                 type: {
@@ -173,7 +159,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               user_processor_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userProcessorTime',
                 type: {
@@ -181,7 +166,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               priviledged_processor_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.priviledgedProcessorTime',
                 type: {
@@ -189,7 +173,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.state',
                 type: {
@@ -197,7 +180,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               wait_reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.waitReason',
                 type: {

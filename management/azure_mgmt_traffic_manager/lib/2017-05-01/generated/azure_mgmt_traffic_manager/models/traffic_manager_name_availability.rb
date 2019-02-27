@@ -37,7 +37,6 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrafficManagerNameAvailability',
           type: {
@@ -45,7 +44,6 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
             class_name: 'TrafficManagerNameAvailability',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -53,7 +51,6 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -61,7 +58,6 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               name_available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -69,7 +65,6 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -77,7 +72,6 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

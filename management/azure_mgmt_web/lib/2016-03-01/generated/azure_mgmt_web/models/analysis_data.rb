@@ -34,7 +34,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AnalysisData',
           type: {
@@ -42,7 +41,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'AnalysisData',
             model_properties: {
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'source',
                 type: {
@@ -50,7 +48,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               detector_definition: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'detectorDefinition',
                 type: {
@@ -59,13 +56,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               metrics: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metrics',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiagnosticMetricSetElementType',
                       type: {
@@ -76,19 +71,16 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'data',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'NameValuePairElementType',
                             type: {
@@ -101,7 +93,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               detector_meta_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'detectorMetaData',
                 type: {

@@ -31,7 +31,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentLocations',
           type: {
@@ -39,13 +38,11 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DeploymentLocations',
             model_properties: {
               locations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GeoRegionElementType',
                       type: {
@@ -56,13 +53,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               hosting_environments: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hostingEnvironments',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AppServiceEnvironmentElementType',
                       type: {
@@ -73,13 +68,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               hosting_environment_deployment_infos: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hostingEnvironmentDeploymentInfos',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HostingEnvironmentDeploymentInfoElementType',
                       type: {

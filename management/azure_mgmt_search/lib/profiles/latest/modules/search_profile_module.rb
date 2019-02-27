@@ -6,12 +6,18 @@ require 'azure_mgmt_search'
 
 module Azure::Search::Profiles::Latest
   module Mgmt
-    Operations = Azure::Search::Mgmt::V2015_08_19::Operations
-    AdminKeys = Azure::Search::Mgmt::V2015_08_19::AdminKeys
     QueryKeys = Azure::Search::Mgmt::V2015_08_19::QueryKeys
     Services = Azure::Search::Mgmt::V2015_08_19::Services
+    Operations = Azure::Search::Mgmt::V2015_08_19::Operations
+    AdminKeys = Azure::Search::Mgmt::V2015_08_19::AdminKeys
 
     module Models
+      UnavailableNameReason = Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
+      SkuName = Azure::Search::Mgmt::V2015_08_19::Models::SkuName
+      HostingMode = Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
+      SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
+      ProvisioningState = Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
+      AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
       Identity = Azure::Search::Mgmt::V2015_08_19::Models::Identity
       CheckNameAvailabilityOutput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityOutput
       Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
@@ -24,19 +30,13 @@ module Azure::Search::Profiles::Latest
       OperationListResult = Azure::Search::Mgmt::V2015_08_19::Models::OperationListResult
       SearchManagementRequestOptions = Azure::Search::Mgmt::V2015_08_19::Models::SearchManagementRequestOptions
       SearchService = Azure::Search::Mgmt::V2015_08_19::Models::SearchService
-      UnavailableNameReason = Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
-      SkuName = Azure::Search::Mgmt::V2015_08_19::Models::SkuName
-      HostingMode = Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
-      SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
-      ProvisioningState = Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
-      AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
     end
 
     #
     # SearchManagementClass
     #
     class SearchManagementClass
-      attr_reader :operations, :admin_keys, :query_keys, :services, :configurable, :base_url, :options, :model_classes
+      attr_reader :query_keys, :services, :operations, :admin_keys, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -56,10 +56,10 @@ module Azure::Search::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @operations = @client_0.operations
-        @admin_keys = @client_0.admin_keys
         @query_keys = @client_0.query_keys
         @services = @client_0.services
+        @operations = @client_0.operations
+        @admin_keys = @client_0.admin_keys
 
         @model_classes = ModelClasses.new
       end
@@ -80,6 +80,24 @@ module Azure::Search::Profiles::Latest
     end
 
     class ModelClasses
+      def unavailable_name_reason
+        Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
+      end
+      def sku_name
+        Azure::Search::Mgmt::V2015_08_19::Models::SkuName
+      end
+      def hosting_mode
+        Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
+      end
+      def search_service_status
+        Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
+      end
+      def provisioning_state
+        Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
+      end
+      def admin_key_kind
+        Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
+      end
       def identity
         Azure::Search::Mgmt::V2015_08_19::Models::Identity
       end
@@ -115,24 +133,6 @@ module Azure::Search::Profiles::Latest
       end
       def search_service
         Azure::Search::Mgmt::V2015_08_19::Models::SearchService
-      end
-      def unavailable_name_reason
-        Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
-      end
-      def sku_name
-        Azure::Search::Mgmt::V2015_08_19::Models::SkuName
-      end
-      def hosting_mode
-        Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
-      end
-      def search_service_status
-        Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
-      end
-      def provisioning_state
-        Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
-      end
-      def admin_key_kind
-        Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
       end
     end
   end

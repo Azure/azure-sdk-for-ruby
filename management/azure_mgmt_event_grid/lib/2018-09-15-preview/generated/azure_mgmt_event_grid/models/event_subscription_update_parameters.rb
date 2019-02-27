@@ -49,7 +49,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscriptionUpdateParameters',
           type: {
@@ -57,7 +56,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
             class_name: 'EventSubscriptionUpdateParameters',
             model_properties: {
               destination: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'destination',
                 type: {
@@ -68,7 +66,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               filter: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'filter',
                 type: {
@@ -77,13 +74,11 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               labels: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'labels',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -93,7 +88,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               expiration_time_utc: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expirationTimeUtc',
                 type: {
@@ -101,7 +95,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               event_delivery_schema: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventDeliverySchema',
                 type: {
@@ -109,7 +102,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               retry_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryPolicy',
                 type: {
@@ -118,7 +110,6 @@ module Azure::EventGrid::Mgmt::V2018_09_15_preview
                 }
               },
               dead_letter_destination: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deadLetterDestination',
                 type: {

@@ -37,7 +37,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobDetails',
           type: {
@@ -47,13 +46,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'JobDetails',
             model_properties: {
               affected_object_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'affectedObjectDetails',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
