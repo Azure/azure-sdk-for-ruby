@@ -11,14 +11,14 @@ module Azure::Profiles::V2017_03_09
       Operations = Azure::Links::Mgmt::V2016_09_01::Operations
 
       module Models
+        OperationListResult = Azure::Links::Mgmt::V2016_09_01::Models::OperationListResult
+        ResourceLink = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
+        Filter = Azure::Links::Mgmt::V2016_09_01::Models::Filter
         ResourceLinkResult = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
         OperationDisplay = Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
         ResourceLinkFilter = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
         Operation = Azure::Links::Mgmt::V2016_09_01::Models::Operation
         ResourceLinkProperties = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
-        OperationListResult = Azure::Links::Mgmt::V2016_09_01::Models::OperationListResult
-        ResourceLink = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
-        Filter = Azure::Links::Mgmt::V2016_09_01::Models::Filter
       end
 
       class LinksManagementClass
@@ -52,6 +52,15 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def operation_list_result
+            Azure::Links::Mgmt::V2016_09_01::Models::OperationListResult
+          end
+          def resource_link
+            Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
+          end
+          def filter
+            Azure::Links::Mgmt::V2016_09_01::Models::Filter
+          end
           def resource_link_result
             Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
           end
@@ -66,15 +75,6 @@ module Azure::Profiles::V2017_03_09
           end
           def resource_link_properties
             Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
-          end
-          def operation_list_result
-            Azure::Links::Mgmt::V2016_09_01::Models::OperationListResult
-          end
-          def resource_link
-            Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
-          end
-          def filter
-            Azure::Links::Mgmt::V2016_09_01::Models::Filter
           end
         end
       end
