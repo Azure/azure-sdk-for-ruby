@@ -28,7 +28,6 @@ module Azure::CDN::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProfileCreateParameters',
           type: {
@@ -36,7 +35,6 @@ module Azure::CDN::Mgmt::V2015_06_01
             class_name: 'ProfileCreateParameters',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -44,13 +42,11 @@ module Azure::CDN::Mgmt::V2015_06_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -60,7 +56,6 @@ module Azure::CDN::Mgmt::V2015_06_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.sku',
                 type: {
