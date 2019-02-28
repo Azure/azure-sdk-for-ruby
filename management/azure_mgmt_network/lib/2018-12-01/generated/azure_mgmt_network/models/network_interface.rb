@@ -19,10 +19,6 @@ module Azure::Network::Mgmt::V2018_12_01
       # NetworkSecurityGroup resource.
       attr_accessor :network_security_group
 
-      # @return [InterfaceEndpoint] A reference to the interface endpoint to
-      # which the network interface is linked.
-      attr_accessor :interface_endpoint
-
       # @return [Array<NetworkInterfaceIPConfiguration>] A list of
       # IPConfigurations of the network interface.
       attr_accessor :ip_configurations
@@ -138,15 +134,6 @@ module Azure::Network::Mgmt::V2018_12_01
                 type: {
                   name: 'Composite',
                   class_name: 'NetworkSecurityGroup'
-                }
-              },
-              interface_endpoint: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.interfaceEndpoint',
-                type: {
-                  name: 'Composite',
-                  class_name: 'InterfaceEndpoint'
                 }
               },
               ip_configurations: {

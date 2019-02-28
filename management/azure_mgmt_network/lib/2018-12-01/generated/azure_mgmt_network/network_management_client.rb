@@ -103,9 +103,6 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [ExpressRouteLinks] express_route_links
     attr_reader :express_route_links
 
-    # @return [InterfaceEndpoints] interface_endpoints
-    attr_reader :interface_endpoints
-
     # @return [LoadBalancers] load_balancers
     attr_reader :load_balancers
 
@@ -285,7 +282,6 @@ module Azure::Network::Mgmt::V2018_12_01
       @express_route_ports_locations = ExpressRoutePortsLocations.new(self)
       @express_route_ports = ExpressRoutePorts.new(self)
       @express_route_links = ExpressRouteLinks.new(self)
-      @interface_endpoints = InterfaceEndpoints.new(self)
       @load_balancers = LoadBalancers.new(self)
       @load_balancer_backend_address_pools = LoadBalancerBackendAddressPools.new(self)
       @load_balancer_frontend_ipconfigurations = LoadBalancerFrontendIPConfigurations.new(self)

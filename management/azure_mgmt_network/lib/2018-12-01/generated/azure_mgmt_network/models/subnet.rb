@@ -33,10 +33,6 @@ module Azure::Network::Mgmt::V2018_12_01
       # policies.
       attr_accessor :service_endpoint_policies
 
-      # @return [Array<InterfaceEndpoint>] An array of references to interface
-      # endpoints
-      attr_accessor :interface_endpoints
-
       # @return [Array<IPConfiguration>] Gets an array of references to the
       # network interface IP configurations using subnet.
       attr_accessor :ip_configurations
@@ -155,22 +151,6 @@ module Azure::Network::Mgmt::V2018_12_01
                       type: {
                         name: 'Composite',
                         class_name: 'ServiceEndpointPolicy'
-                      }
-                  }
-                }
-              },
-              interface_endpoints: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.interfaceEndpoints',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'InterfaceEndpointElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'InterfaceEndpoint'
                       }
                   }
                 }
