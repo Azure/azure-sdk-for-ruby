@@ -7,9 +7,9 @@ require 'azure_mgmt_signalr'
 module Azure::Profiles::Latest
   module Signalr
     module Mgmt
-      SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
       Operations = Azure::Signalr::Mgmt::V2018_03_01_preview::Operations
       Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
+      SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
 
       module Models
         SignalRResourceList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList
@@ -40,7 +40,7 @@ module Azure::Profiles::Latest
       end
 
       class SignalrManagementClass
-        attr_reader :signal_r, :operations, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :usages, :signal_r, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -50,9 +50,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @signal_r = @client_0.signal_r
           @operations = @client_0.operations
           @usages = @client_0.usages
+          @signal_r = @client_0.signal_r
 
           @model_classes = ModelClasses.new
         end
