@@ -13,8 +13,10 @@ module Azure::GraphRbac::V1_6
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["ApplicationCreateParameters"] = "ApplicationCreateParameters"
       @@discriminatorMap["Application"] = "Application"
       @@discriminatorMap["Group"] = "ADGroup"
+      @@discriminatorMap["ServicePrincipalCreateParameters"] = "ServicePrincipalCreateParameters"
       @@discriminatorMap["ServicePrincipal"] = "ServicePrincipal"
       @@discriminatorMap["User"] = "User"
 
@@ -41,7 +43,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DirectoryObject',
           type: {
@@ -51,12 +52,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'DirectoryObject',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -66,7 +65,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'objectId',
@@ -75,7 +73,6 @@ module Azure::GraphRbac::V1_6
                 }
               },
               deletion_timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'deletionTimestamp',

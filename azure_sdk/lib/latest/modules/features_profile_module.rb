@@ -10,11 +10,11 @@ module Azure::Profiles::Latest
       Features = Azure::Features::Mgmt::V2015_12_01::Features
 
       module Models
-        OperationDisplay = Azure::Features::Mgmt::V2015_12_01::Models::OperationDisplay
-        FeatureProperties = Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
-        Operation = Azure::Features::Mgmt::V2015_12_01::Models::Operation
-        FeatureOperationsListResult = Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
         OperationListResult = Azure::Features::Mgmt::V2015_12_01::Models::OperationListResult
+        FeatureProperties = Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
+        OperationDisplay = Azure::Features::Mgmt::V2015_12_01::Models::OperationDisplay
+        FeatureOperationsListResult = Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
+        Operation = Azure::Features::Mgmt::V2015_12_01::Models::Operation
         FeatureResult = Azure::Features::Mgmt::V2015_12_01::Models::FeatureResult
       end
 
@@ -48,20 +48,20 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def operation_display
-            Azure::Features::Mgmt::V2015_12_01::Models::OperationDisplay
+          def operation_list_result
+            Azure::Features::Mgmt::V2015_12_01::Models::OperationListResult
           end
           def feature_properties
             Azure::Features::Mgmt::V2015_12_01::Models::FeatureProperties
           end
-          def operation
-            Azure::Features::Mgmt::V2015_12_01::Models::Operation
+          def operation_display
+            Azure::Features::Mgmt::V2015_12_01::Models::OperationDisplay
           end
           def feature_operations_list_result
             Azure::Features::Mgmt::V2015_12_01::Models::FeatureOperationsListResult
           end
-          def operation_list_result
-            Azure::Features::Mgmt::V2015_12_01::Models::OperationListResult
+          def operation
+            Azure::Features::Mgmt::V2015_12_01::Models::Operation
           end
           def feature_result
             Azure::Features::Mgmt::V2015_12_01::Models::FeatureResult

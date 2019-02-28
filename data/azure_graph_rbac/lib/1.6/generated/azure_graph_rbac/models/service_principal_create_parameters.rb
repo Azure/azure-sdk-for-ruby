@@ -8,26 +8,16 @@ module Azure::GraphRbac::V1_6
     #
     # Request parameters for creating a new service principal.
     #
-    class ServicePrincipalCreateParameters
+    class ServicePrincipalCreateParameters < ServicePrincipal
 
       include MsRestAzure
 
-      # @return Unmatched properties from the message are deserialized this
-      # collection
-      attr_accessor :additional_properties
 
-      # @return [String] application Id
-      attr_accessor :app_id
+      def initialize
+        @objectType = "ServicePrincipalCreateParameters"
+      end
 
-      # @return [Boolean] Whether the account is enabled
-      attr_accessor :account_enabled
-
-      # @return [Array<KeyCredential>] A collection of KeyCredential objects.
-      attr_accessor :key_credentials
-
-      # @return [Array<PasswordCredential>] A collection of PasswordCredential
-      # objects
-      attr_accessor :password_credentials
+      attr_accessor :objectType
 
 
       #
@@ -36,7 +26,6 @@ module Azure::GraphRbac::V1_6
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServicePrincipalCreateParameters',
           type: {
@@ -44,12 +33,10 @@ module Azure::GraphRbac::V1_6
             class_name: 'ServicePrincipalCreateParameters',
             model_properties: {
               additional_properties: {
-                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -58,30 +45,122 @@ module Azure::GraphRbac::V1_6
                   }
                 }
               },
-              app_id: {
-                client_side_validation: true,
+              object_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'objectId',
+                type: {
+                  name: 'String'
+                }
+              },
+              deletion_timestamp: {
+                required: false,
+                read_only: true,
+                serialized_name: 'deletionTimestamp',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              objectType: {
                 required: true,
-                serialized_name: 'appId',
+                serialized_name: 'objectType',
                 type: {
                   name: 'String'
                 }
               },
               account_enabled: {
-                client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'accountEnabled',
+                type: {
+                  name: 'String'
+                }
+              },
+              alternative_names: {
+                required: false,
+                serialized_name: 'alternativeNames',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              app_display_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'appDisplayName',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_id: {
+                required: false,
+                serialized_name: 'appId',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_owner_tenant_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'appOwnerTenantId',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_role_assignment_required: {
+                required: false,
+                serialized_name: 'appRoleAssignmentRequired',
                 type: {
                   name: 'Boolean'
                 }
               },
+              app_roles: {
+                required: false,
+                serialized_name: 'appRoles',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AppRoleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AppRole'
+                      }
+                  }
+                }
+              },
+              display_name: {
+                required: false,
+                serialized_name: 'displayName',
+                type: {
+                  name: 'String'
+                }
+              },
+              error_url: {
+                required: false,
+                serialized_name: 'errorUrl',
+                type: {
+                  name: 'String'
+                }
+              },
+              homepage: {
+                required: false,
+                serialized_name: 'homepage',
+                type: {
+                  name: 'String'
+                }
+              },
               key_credentials: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyCredentials',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyCredentialElementType',
                       type: {
@@ -91,19 +170,110 @@ module Azure::GraphRbac::V1_6
                   }
                 }
               },
+              logout_url: {
+                required: false,
+                serialized_name: 'logoutUrl',
+                type: {
+                  name: 'String'
+                }
+              },
+              oauth2permissions: {
+                required: false,
+                read_only: true,
+                serialized_name: 'oauth2Permissions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'OAuth2PermissionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'OAuth2Permission'
+                      }
+                  }
+                }
+              },
               password_credentials: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'passwordCredentials',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PasswordCredentialElementType',
                       type: {
                         name: 'Composite',
                         class_name: 'PasswordCredential'
+                      }
+                  }
+                }
+              },
+              preferred_token_signing_key_thumbprint: {
+                required: false,
+                serialized_name: 'preferredTokenSigningKeyThumbprint',
+                type: {
+                  name: 'String'
+                }
+              },
+              publisher_name: {
+                required: false,
+                serialized_name: 'publisherName',
+                type: {
+                  name: 'String'
+                }
+              },
+              reply_urls: {
+                required: false,
+                serialized_name: 'replyUrls',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              saml_metadata_url: {
+                required: false,
+                serialized_name: 'samlMetadataUrl',
+                type: {
+                  name: 'String'
+                }
+              },
+              service_principal_names: {
+                required: false,
+                serialized_name: 'servicePrincipalNames',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              service_principal_type: {
+                required: false,
+                serialized_name: 'servicePrincipalType',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }
