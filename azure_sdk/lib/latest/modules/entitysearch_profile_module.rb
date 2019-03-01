@@ -10,8 +10,8 @@ module Azure::Profiles::Latest
 
     module Models
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
-      Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
+      Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
       ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::EntitySearch::V1_0::Models::Answer
@@ -90,11 +90,11 @@ module Azure::Profiles::Latest
         def search_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
         end
-        def entities
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
-        end
         def error_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
+        end
+        def entities
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
         end
         def query_context
           Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
