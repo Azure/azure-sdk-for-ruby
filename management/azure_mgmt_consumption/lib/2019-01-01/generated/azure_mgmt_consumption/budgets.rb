@@ -34,9 +34,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -59,9 +63,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -83,9 +91,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -153,9 +165,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param budget_name [String] Budget Name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -179,9 +195,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param budget_name [String] Budget Name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -204,9 +224,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param budget_name [String] Budget Name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -279,9 +303,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param budget_name [String] Budget Name.
     # @param parameters [Budget] Parameters supplied to the Create Budget
     # operation.
@@ -309,9 +337,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param budget_name [String] Budget Name.
     # @param parameters [Budget] Parameters supplied to the Create Budget
     # operation.
@@ -338,9 +370,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param budget_name [String] Budget Name.
     # @param parameters [Budget] Parameters supplied to the Create Budget
     # operation.
@@ -433,9 +469,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param budget_name [String] Budget Name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -458,9 +498,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param budget_name [String] Budget Name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -483,9 +527,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param budget_name [String] Budget Name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -633,9 +681,13 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
     # for Department scope,
     # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}'
-    # for EnrollmentAccount scope and
+    # for EnrollmentAccount scope,
     # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
-    # Management Group scope..
+    # Management Group scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
+    # for billingProfile scope,
+    # 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
+    # for invoiceSection scope..
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
