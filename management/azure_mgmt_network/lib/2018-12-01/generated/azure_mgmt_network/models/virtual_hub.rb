@@ -25,7 +25,7 @@ module Azure::Network::Mgmt::V2018_12_01
       # VirtualHub
       attr_accessor :express_route_gateway
 
-      # @return [Array<HubVirtualNetworkConnection>] list of all vnet
+      # @return [Array<HubVirtualNetworkConnection>] List of all vnet
       # connections with this VirtualHub.
       attr_accessor :virtual_network_connections
 
