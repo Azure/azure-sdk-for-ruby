@@ -75,6 +75,10 @@ module Azure::Network::Mgmt::V2018_12_01
     # express_route_circuit_connections
     attr_reader :express_route_circuit_connections
 
+    # @return [PeerExpressRouteCircuitConnections]
+    # peer_express_route_circuit_connections
+    attr_reader :peer_express_route_circuit_connections
+
     # @return [ExpressRouteCircuits] express_route_circuits
     attr_reader :express_route_circuits
 
@@ -276,6 +280,7 @@ module Azure::Network::Mgmt::V2018_12_01
       @express_route_circuit_authorizations = ExpressRouteCircuitAuthorizations.new(self)
       @express_route_circuit_peerings = ExpressRouteCircuitPeerings.new(self)
       @express_route_circuit_connections = ExpressRouteCircuitConnections.new(self)
+      @peer_express_route_circuit_connections = PeerExpressRouteCircuitConnections.new(self)
       @express_route_circuits = ExpressRouteCircuits.new(self)
       @express_route_service_providers = ExpressRouteServiceProviders.new(self)
       @express_route_cross_connections = ExpressRouteCrossConnections.new(self)
