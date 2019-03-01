@@ -8,6 +8,8 @@ module Azure::Profiles::Latest
   module RecoveryServicesBackup
     module Mgmt
       Operations = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Operations
+      SecurityPINs = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::SecurityPINs
+      BackupResourceStorageConfigs = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::BackupResourceStorageConfigs
       BackupResourceVaultConfigs = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::BackupResourceVaultConfigs
       BackupEngines = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::BackupEngines
       ProtectionContainerRefreshOperationResults = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::ProtectionContainerRefreshOperationResults
@@ -31,8 +33,6 @@ module Azure::Profiles::Latest
       ProtectionPolicyOperationStatuses = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::ProtectionPolicyOperationStatuses
       BackupProtectableItems = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::BackupProtectableItems
       BackupProtectionContainers = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::BackupProtectionContainers
-      SecurityPINs = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::SecurityPINs
-      BackupResourceStorageConfigs = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::BackupResourceStorageConfigs
       ProtectionIntentOperations = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::ProtectionIntentOperations
       BackupStatus = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::BackupStatus
       FeatureSupport = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::FeatureSupport
@@ -46,12 +46,13 @@ module Azure::Profiles::Latest
       Operation = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Operation
 
       module Models
+        ClientDiscoveryResponse = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryResponse
         ClientDiscoveryForLogSpecification = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryForLogSpecification
         ClientDiscoveryValueForSingleApi = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryValueForSingleApi
         ClientDiscoveryDisplay = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryDisplay
         ClientDiscoveryForServiceSpecification = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryForServiceSpecification
         ClientDiscoveryForProperties = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryForProperties
-        ClientDiscoveryResponse = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryResponse
+        BackupType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupType
         AzureWorkloadContainerExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureWorkloadContainerExtendedInfo
         DPMContainerExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::DPMContainerExtendedInfo
         InquiryInfo = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::InquiryInfo
@@ -98,11 +99,11 @@ module Azure::Profiles::Latest
         AzureBackupServerEngine = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureBackupServerEngine
         AzureFileShareBackupRequest = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureFileShareBackupRequest
         AzureFileShareProtectableItem = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureFileShareProtectableItem
-        OperationStatus = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatus
         AzureFileShareRecoveryPoint = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureFileShareRecoveryPoint
         AzureIaaSClassicComputeVMContainer = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureIaaSClassicComputeVMContainer
         AzureIaaSClassicComputeVMProtectableItem = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureIaaSClassicComputeVMProtectableItem
         AzureIaaSComputeVMContainer = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureIaaSComputeVMContainer
+        OperationStatus = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatus
         AzureIaaSComputeVMProtectableItem = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureIaaSComputeVMProtectableItem
         AzureSqlContainer = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureSqlContainer
         AzureStorageContainer = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureStorageContainer
@@ -152,30 +153,29 @@ module Azure::Profiles::Latest
         ProtectionContainerResourceList = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ProtectionContainerResourceList
         ProtectionContainerResource = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ProtectionContainerResource
         RecoveryPointResource = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RecoveryPointResource
-        RestoreRequestResource = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestoreRequestResource
         RecoveryPointResourceList = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RecoveryPointResourceList
+        RestoreRequestResource = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestoreRequestResource
         WorkloadItemResource = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::WorkloadItemResource
         WorkloadItemResourceList = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::WorkloadItemResourceList
         WorkloadProtectableItemResource = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::WorkloadProtectableItemResource
         AzureFileShareType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureFileShareType
         WorkloadProtectableItemResourceList = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::WorkloadProtectableItemResourceList
         InquiryStatus = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::InquiryStatus
-        RestorePointType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestorePointType
         BackupRequest = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupRequest
-        StorageTypeState = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::StorageTypeState
+        RestorePointType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestorePointType
         EnhancedSecurityState = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::EnhancedSecurityState
-        RestorePointQueryType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestorePointQueryType
         ContainerType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ContainerType
+        StorageTypeState = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::StorageTypeState
+        RestorePointQueryType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestorePointQueryType
         RecoveryPointTierType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RecoveryPointTierType
-        BackupType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupType
-        OperationStatusValues = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatusValues
         RecoveryPointTierStatus = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RecoveryPointTierStatus
         BackupItemType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupItemType
+        OperationStatusValues = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatusValues
         StorageType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::StorageType
+        ValidationStatus = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidationStatus
         SubProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SubProtectionPolicy
         AzureFileshareProtectedItemExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureFileshareProtectedItemExtendedInfo
         SchedulePolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SchedulePolicy
-        ValidationStatus = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidationStatus
         RestoreFileSpecs = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::RestoreFileSpecs
         DpmErrorInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmErrorInfo
         OperationWorkerResponse = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::OperationWorkerResponse
@@ -188,33 +188,33 @@ module Azure::Profiles::Latest
         AzureIaaSVMJobTaskDetails = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMJobTaskDetails
         DailyRetentionSchedule = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DailyRetentionSchedule
         AzureWorkloadJobExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadJobExtendedInfo
-        RetentionDuration = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::RetentionDuration
-        DailyRetentionFormat = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DailyRetentionFormat
-        ValidateOperationRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationRequest
-        ProtectionIntent = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntent
-        MabErrorInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabErrorInfo
-        ProtectedItemQueryObject = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItemQueryObject
         MabJobTaskDetails = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabJobTaskDetails
-        BackupManagementUsage = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupManagementUsage
-        AzureVMResourceFeatureSupportResponse = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVMResourceFeatureSupportResponse
+        MabErrorInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabErrorInfo
+        DailyRetentionFormat = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DailyRetentionFormat
+        RetentionDuration = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::RetentionDuration
         AzureStorageJobTaskDetails = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageJobTaskDetails
-        BackupStatusResponse = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupStatusResponse
-        AzureVmWorkloadProtectedItemExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadProtectedItemExtendedInfo
-        PreValidateEnableBackupRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::PreValidateEnableBackupRequest
-        BMSBackupSummariesQueryObject = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BMSBackupSummariesQueryObject
+        ValidateOperationRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationRequest
+        AzureVMResourceFeatureSupportResponse = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVMResourceFeatureSupportResponse
+        ProtectedItemQueryObject = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItemQueryObject
+        ProtectionIntent = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntent
         BackupManagementUsageList = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupManagementUsageList
-        FeatureSupportRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::FeatureSupportRequest
+        BackupManagementUsage = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupManagementUsage
+        AzureVmWorkloadProtectedItemExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadProtectedItemExtendedInfo
+        ProtectionPolicyQueryObject = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicyQueryObject
+        BackupStatusResponse = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupStatusResponse
         AzureStorageErrorInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageErrorInfo
-        AzureIaaSVMProtectedItemExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMProtectedItemExtendedInfo
-        DpmJobTaskDetails = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJobTaskDetails
         BackupStatusRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupStatusRequest
+        PreValidateEnableBackupRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::PreValidateEnableBackupRequest
+        AzureIaaSVMProtectedItemExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMProtectedItemExtendedInfo
+        BMSBackupSummariesQueryObject = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BMSBackupSummariesQueryObject
+        AzureIaaSVMJobExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMJobExtendedInfo
         PreValidateEnableBackupResponse = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::PreValidateEnableBackupResponse
         AzureSqlProtectedItemExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureSqlProtectedItemExtendedInfo
-        AzureIaaSVMJobExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMJobExtendedInfo
+        AzureBackupGoalFeatureSupportRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureBackupGoalFeatureSupportRequest
         ProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicy
-        AzureIaaSVMJob = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMJob
-        ResourceList = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ResourceList
-        ProtectionPolicyQueryObject = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicyQueryObject
+        DpmJobTaskDetails = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJobTaskDetails
+        FeatureSupportRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::FeatureSupportRequest
+        ValidateOperationResponse = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationResponse
         JobQueryObject = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobQueryObject
         ProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItem
         TargetAFSRestoreInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::TargetAFSRestoreInfo
@@ -225,50 +225,50 @@ module Azure::Profiles::Latest
         MonthlyRetentionSchedule = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MonthlyRetentionSchedule
         WeeklyRetentionFormat = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::WeeklyRetentionFormat
         EncryptionDetails = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::EncryptionDetails
-        AzureBackupGoalFeatureSupportRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureBackupGoalFeatureSupportRequest
+        AzureVMResourceFeatureSupportRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVMResourceFeatureSupportRequest
         DPMProtectedItemExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DPMProtectedItemExtendedInfo
         WeeklyRetentionSchedule = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::WeeklyRetentionSchedule
         SQLDataDirectoryMapping = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SQLDataDirectoryMapping
-        ValidateOperationResponse = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationResponse
+        AzureStorageJob = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageJob
         MabFileFolderProtectedItemExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabFileFolderProtectedItemExtendedInfo
         AzureWorkloadAutoProtectionIntent = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadAutoProtectionIntent
-        AzureWorkloadJob = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadJob
+        ResourceList = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ResourceList
         AzureRecoveryServiceVaultProtectionIntent = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureRecoveryServiceVaultProtectionIntent
         AzureResourceProtectionIntent = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureResourceProtectionIntent
+        DpmJobExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJobExtendedInfo
         AzureFileshareProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureFileshareProtectedItem
-        AzureFileShareProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureFileShareProtectionPolicy
         AzureStorageJobExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageJobExtendedInfo
         AzureFileShareRestoreRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureFileShareRestoreRequest
-        AzureWorkloadSQLAutoProtectionIntent = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadSQLAutoProtectionIntent
+        AzureFileShareProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureFileShareProtectionPolicy
         DpmJob = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJob
         AzureIaaSVMProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMProtectedItem
-        AzureIaaSClassicComputeVMProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSClassicComputeVMProtectedItem
-        DpmJobExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJobExtendedInfo
         Job = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Job
+        AzureIaaSClassicComputeVMProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSClassicComputeVMProtectedItem
+        MabJob = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabJob
         AzureIaaSComputeVMProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSComputeVMProtectedItem
-        AzureIaaSVMProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMProtectionPolicy
-        ProtectedItemResourceList = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItemResourceList
         Resource = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Resource
-        AzureSqlProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureSqlProtectionPolicy
-        AzureStorageJob = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageJob
+        AzureIaaSVMJob = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMJob
         AzureSqlProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureSqlProtectedItem
+        AzureIaaSVMProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMProtectionPolicy
+        AzureSqlProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureSqlProtectionPolicy
+        ValidateIaasVMRestoreOperationRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateIaasVMRestoreOperationRequest
         OperationResultInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::OperationResultInfo
-        OperationResultInfoBaseResource = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::OperationResultInfoBaseResource
-        DataSourceType = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DataSourceType
+        AzureWorkloadJob = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadJob
+        AzureWorkloadSQLAutoProtectionIntent = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadSQLAutoProtectionIntent
         AzureVmWorkloadProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadProtectedItem
         AzureVmWorkloadProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadProtectionPolicy
         JobResource = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobResource
         AzureVmWorkloadSAPHanaDatabaseProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadSAPHanaDatabaseProtectedItem
-        MabJob = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabJob
-        AzureVMResourceFeatureSupportRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVMResourceFeatureSupportRequest
-        FabricName = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::FabricName
-        Type = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Type
+        JobSupportedAction = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobSupportedAction
+        SupportStatus = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SupportStatus
+        OperationResultInfoBaseResource = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::OperationResultInfoBaseResource
+        ProtectedItemResourceList = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItemResourceList
         ProtectionIntentResource = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntentResource
         AzureVmWorkloadSQLDatabaseProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadSQLDatabaseProtectedItem
         ExportJobsOperationResultInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ExportJobsOperationResultInfo
-        ValidateIaasVMRestoreOperationRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateIaasVMRestoreOperationRequest
         JobResourceList = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobResourceList
-        SupportStatus = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SupportStatus
+        FabricName = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::FabricName
+        Type = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Type
         JobOperationType = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobOperationType
         MabServerType = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabServerType
         AzureWorkloadRestoreRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadRestoreRequest
@@ -277,10 +277,11 @@ module Azure::Profiles::Latest
         AzureWorkloadSAPHanaPointInTimeRestoreRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadSAPHanaPointInTimeRestoreRequest
         AzureWorkloadSQLPointInTimeRestoreRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadSQLPointInTimeRestoreRequest
         CreateMode = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::CreateMode
+        DataSourceType = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DataSourceType
         AzureWorkloadSQLRestoreRequest = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadSQLRestoreRequest
         HealthState = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::HealthState
         ProtectionPolicyResourceList = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicyResourceList
-        JobSupportedAction = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobSupportedAction
+        HttpStatusCode = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::HttpStatusCode
         DPMProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DPMProtectedItem
         GenericProtectedItem = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::GenericProtectedItem
         GenericProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::GenericProtectionPolicy
@@ -292,10 +293,9 @@ module Azure::Profiles::Latest
         MabProtectionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabProtectionPolicy
         ProtectedItemResource = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItemResource
         ProtectionPolicyResource = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicyResource
-        HttpStatusCode = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::HttpStatusCode
+        Settings = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Settings
         SimpleRetentionPolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SimpleRetentionPolicy
         SimpleSchedulePolicy = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SimpleSchedulePolicy
-        Settings = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Settings
         ProtectionState = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionState
         ErrorDetail = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ErrorDetail
         HealthStatus = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::HealthStatus
@@ -325,7 +325,7 @@ module Azure::Profiles::Latest
       end
 
       class RecoveryServicesBackupManagementClass
-        attr_reader :operations, :backup_resource_vault_configs, :backup_engines, :protection_container_refresh_operation_results, :protectable_containers, :protection_containers, :backup_workload_items, :protection_container_operation_results, :protected_items, :backups, :protected_item_operation_results, :protected_item_operation_statuses, :recovery_points, :item_level_recovery_connections, :restores, :job_cancellations, :job_operation_results, :backup_operation_results, :backup_operation_statuses, :protection_policies, :protection_policy_operation_results, :protection_policy_operation_statuses, :backup_protectable_items, :backup_protection_containers, :security_pins, :backup_resource_storage_configs, :protection_intent_operations, :backup_status, :feature_support, :backup_jobs, :job_details, :export_jobs_operation_results, :backup_policies, :backup_protected_items, :backup_usage_summaries, :jobs, :operation, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :security_pins, :backup_resource_storage_configs, :backup_resource_vault_configs, :backup_engines, :protection_container_refresh_operation_results, :protectable_containers, :protection_containers, :backup_workload_items, :protection_container_operation_results, :protected_items, :backups, :protected_item_operation_results, :protected_item_operation_statuses, :recovery_points, :item_level_recovery_connections, :restores, :job_cancellations, :job_operation_results, :backup_operation_results, :backup_operation_statuses, :protection_policies, :protection_policy_operation_results, :protection_policy_operation_statuses, :backup_protectable_items, :backup_protection_containers, :protection_intent_operations, :backup_status, :feature_support, :backup_jobs, :job_details, :export_jobs_operation_results, :backup_policies, :backup_protected_items, :backup_usage_summaries, :jobs, :operation, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -342,6 +342,8 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
+          @security_pins = @client_1.security_pins
+          @backup_resource_storage_configs = @client_1.backup_resource_storage_configs
           @backup_resource_vault_configs = @client_1.backup_resource_vault_configs
           @backup_engines = @client_1.backup_engines
           @protection_container_refresh_operation_results = @client_1.protection_container_refresh_operation_results
@@ -365,8 +367,6 @@ module Azure::Profiles::Latest
           @protection_policy_operation_statuses = @client_1.protection_policy_operation_statuses
           @backup_protectable_items = @client_1.backup_protectable_items
           @backup_protection_containers = @client_1.backup_protection_containers
-          @security_pins = @client_1.security_pins
-          @backup_resource_storage_configs = @client_1.backup_resource_storage_configs
 
           @client_2 = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
           if(@client_2.respond_to?(:subscription_id))
@@ -406,6 +406,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def client_discovery_response
+            Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryResponse
+          end
           def client_discovery_for_log_specification
             Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryForLogSpecification
           end
@@ -421,8 +424,8 @@ module Azure::Profiles::Latest
           def client_discovery_for_properties
             Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryForProperties
           end
-          def client_discovery_response
-            Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryResponse
+          def backup_type
+            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupType
           end
           def azure_workload_container_extended_info
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureWorkloadContainerExtendedInfo
@@ -562,9 +565,6 @@ module Azure::Profiles::Latest
           def azure_file_share_protectable_item
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureFileShareProtectableItem
           end
-          def operation_status
-            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatus
-          end
           def azure_file_share_recovery_point
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureFileShareRecoveryPoint
           end
@@ -576,6 +576,9 @@ module Azure::Profiles::Latest
           end
           def azure_iaa_scompute_vmcontainer
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureIaaSComputeVMContainer
+          end
+          def operation_status
+            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatus
           end
           def azure_iaa_scompute_vmprotectable_item
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureIaaSComputeVMProtectableItem
@@ -724,11 +727,11 @@ module Azure::Profiles::Latest
           def recovery_point_resource
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RecoveryPointResource
           end
-          def restore_request_resource
-            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestoreRequestResource
-          end
           def recovery_point_resource_list
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RecoveryPointResourceList
+          end
+          def restore_request_resource
+            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestoreRequestResource
           end
           def workload_item_resource
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::WorkloadItemResource
@@ -748,32 +751,26 @@ module Azure::Profiles::Latest
           def inquiry_status
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::InquiryStatus
           end
-          def restore_point_type
-            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestorePointType
-          end
           def backup_request
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupRequest
           end
-          def storage_type_state
-            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::StorageTypeState
+          def restore_point_type
+            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestorePointType
           end
           def enhanced_security_state
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::EnhancedSecurityState
           end
-          def restore_point_query_type
-            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestorePointQueryType
-          end
           def container_type
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ContainerType
           end
+          def storage_type_state
+            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::StorageTypeState
+          end
+          def restore_point_query_type
+            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RestorePointQueryType
+          end
           def recovery_point_tier_type
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RecoveryPointTierType
-          end
-          def backup_type
-            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupType
-          end
-          def operation_status_values
-            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatusValues
           end
           def recovery_point_tier_status
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::RecoveryPointTierStatus
@@ -781,8 +778,14 @@ module Azure::Profiles::Latest
           def backup_item_type
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupItemType
           end
+          def operation_status_values
+            Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatusValues
+          end
           def storage_type
             Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::StorageType
+          end
+          def validation_status
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidationStatus
           end
           def sub_protection_policy
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SubProtectionPolicy
@@ -792,9 +795,6 @@ module Azure::Profiles::Latest
           end
           def schedule_policy
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SchedulePolicy
-          end
-          def validation_status
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidationStatus
           end
           def restore_file_specs
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::RestoreFileSpecs
@@ -832,65 +832,65 @@ module Azure::Profiles::Latest
           def azure_workload_job_extended_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadJobExtendedInfo
           end
-          def retention_duration
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::RetentionDuration
-          end
-          def daily_retention_format
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DailyRetentionFormat
-          end
-          def validate_operation_request
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationRequest
-          end
-          def protection_intent
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntent
+          def mab_job_task_details
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabJobTaskDetails
           end
           def mab_error_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabErrorInfo
           end
-          def protected_item_query_object
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItemQueryObject
+          def daily_retention_format
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DailyRetentionFormat
           end
-          def mab_job_task_details
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabJobTaskDetails
-          end
-          def backup_management_usage
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupManagementUsage
-          end
-          def azure_vmresource_feature_support_response
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVMResourceFeatureSupportResponse
+          def retention_duration
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::RetentionDuration
           end
           def azure_storage_job_task_details
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageJobTaskDetails
           end
-          def backup_status_response
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupStatusResponse
+          def validate_operation_request
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationRequest
           end
-          def azure_vm_workload_protected_item_extended_info
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadProtectedItemExtendedInfo
+          def azure_vmresource_feature_support_response
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVMResourceFeatureSupportResponse
           end
-          def pre_validate_enable_backup_request
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::PreValidateEnableBackupRequest
+          def protected_item_query_object
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItemQueryObject
           end
-          def bmsbackup_summaries_query_object
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BMSBackupSummariesQueryObject
+          def protection_intent
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntent
           end
           def backup_management_usage_list
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupManagementUsageList
           end
-          def feature_support_request
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::FeatureSupportRequest
+          def backup_management_usage
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupManagementUsage
+          end
+          def azure_vm_workload_protected_item_extended_info
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadProtectedItemExtendedInfo
+          end
+          def protection_policy_query_object
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicyQueryObject
+          end
+          def backup_status_response
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupStatusResponse
           end
           def azure_storage_error_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageErrorInfo
           end
+          def backup_status_request
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupStatusRequest
+          end
+          def pre_validate_enable_backup_request
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::PreValidateEnableBackupRequest
+          end
           def azure_iaa_svmprotected_item_extended_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMProtectedItemExtendedInfo
           end
-          def dpm_job_task_details
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJobTaskDetails
+          def bmsbackup_summaries_query_object
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BMSBackupSummariesQueryObject
           end
-          def backup_status_request
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::BackupStatusRequest
+          def azure_iaa_svmjob_extended_info
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMJobExtendedInfo
           end
           def pre_validate_enable_backup_response
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::PreValidateEnableBackupResponse
@@ -898,20 +898,20 @@ module Azure::Profiles::Latest
           def azure_sql_protected_item_extended_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureSqlProtectedItemExtendedInfo
           end
-          def azure_iaa_svmjob_extended_info
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMJobExtendedInfo
+          def azure_backup_goal_feature_support_request
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureBackupGoalFeatureSupportRequest
           end
           def protection_policy
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicy
           end
-          def azure_iaa_svmjob
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMJob
+          def dpm_job_task_details
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJobTaskDetails
           end
-          def resource_list
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ResourceList
+          def feature_support_request
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::FeatureSupportRequest
           end
-          def protection_policy_query_object
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicyQueryObject
+          def validate_operation_response
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationResponse
           end
           def job_query_object
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobQueryObject
@@ -943,8 +943,8 @@ module Azure::Profiles::Latest
           def encryption_details
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::EncryptionDetails
           end
-          def azure_backup_goal_feature_support_request
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureBackupGoalFeatureSupportRequest
+          def azure_vmresource_feature_support_request
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVMResourceFeatureSupportRequest
           end
           def dpmprotected_item_extended_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DPMProtectedItemExtendedInfo
@@ -955,8 +955,8 @@ module Azure::Profiles::Latest
           def sqldata_directory_mapping
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SQLDataDirectoryMapping
           end
-          def validate_operation_response
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateOperationResponse
+          def azure_storage_job
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageJob
           end
           def mab_file_folder_protected_item_extended_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabFileFolderProtectedItemExtendedInfo
@@ -964,8 +964,8 @@ module Azure::Profiles::Latest
           def azure_workload_auto_protection_intent
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadAutoProtectionIntent
           end
-          def azure_workload_job
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadJob
+          def resource_list
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ResourceList
           end
           def azure_recovery_service_vault_protection_intent
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureRecoveryServiceVaultProtectionIntent
@@ -973,11 +973,11 @@ module Azure::Profiles::Latest
           def azure_resource_protection_intent
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureResourceProtectionIntent
           end
+          def dpm_job_extended_info
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJobExtendedInfo
+          end
           def azure_fileshare_protected_item
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureFileshareProtectedItem
-          end
-          def azure_file_share_protection_policy
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureFileShareProtectionPolicy
           end
           def azure_storage_job_extended_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageJobExtendedInfo
@@ -985,8 +985,8 @@ module Azure::Profiles::Latest
           def azure_file_share_restore_request
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureFileShareRestoreRequest
           end
-          def azure_workload_sqlauto_protection_intent
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadSQLAutoProtectionIntent
+          def azure_file_share_protection_policy
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureFileShareProtectionPolicy
           end
           def dpm_job
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJob
@@ -994,44 +994,44 @@ module Azure::Profiles::Latest
           def azure_iaa_svmprotected_item
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMProtectedItem
           end
+          def job
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Job
+          end
           def azure_iaa_sclassic_compute_vmprotected_item
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSClassicComputeVMProtectedItem
           end
-          def dpm_job_extended_info
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DpmJobExtendedInfo
-          end
-          def job
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Job
+          def mab_job
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabJob
           end
           def azure_iaa_scompute_vmprotected_item
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSComputeVMProtectedItem
           end
-          def azure_iaa_svmprotection_policy
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMProtectionPolicy
-          end
-          def protected_item_resource_list
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItemResourceList
-          end
           def resource
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Resource
           end
-          def azure_sql_protection_policy
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureSqlProtectionPolicy
-          end
-          def azure_storage_job
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureStorageJob
+          def azure_iaa_svmjob
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMJob
           end
           def azure_sql_protected_item
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureSqlProtectedItem
           end
+          def azure_iaa_svmprotection_policy
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureIaaSVMProtectionPolicy
+          end
+          def azure_sql_protection_policy
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureSqlProtectionPolicy
+          end
+          def validate_iaas_vmrestore_operation_request
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateIaasVMRestoreOperationRequest
+          end
           def operation_result_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::OperationResultInfo
           end
-          def operation_result_info_base_resource
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::OperationResultInfoBaseResource
+          def azure_workload_job
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadJob
           end
-          def data_source_type
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DataSourceType
+          def azure_workload_sqlauto_protection_intent
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadSQLAutoProtectionIntent
           end
           def azure_vm_workload_protected_item
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadProtectedItem
@@ -1045,17 +1045,17 @@ module Azure::Profiles::Latest
           def azure_vm_workload_saphana_database_protected_item
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVmWorkloadSAPHanaDatabaseProtectedItem
           end
-          def mab_job
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::MabJob
+          def job_supported_action
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobSupportedAction
           end
-          def azure_vmresource_feature_support_request
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVMResourceFeatureSupportRequest
+          def support_status
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SupportStatus
           end
-          def fabric_name
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::FabricName
+          def operation_result_info_base_resource
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::OperationResultInfoBaseResource
           end
-          def type
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Type
+          def protected_item_resource_list
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectedItemResourceList
           end
           def protection_intent_resource
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntentResource
@@ -1066,14 +1066,14 @@ module Azure::Profiles::Latest
           def export_jobs_operation_result_info
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ExportJobsOperationResultInfo
           end
-          def validate_iaas_vmrestore_operation_request
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ValidateIaasVMRestoreOperationRequest
-          end
           def job_resource_list
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobResourceList
           end
-          def support_status
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SupportStatus
+          def fabric_name
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::FabricName
+          end
+          def type
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Type
           end
           def job_operation_type
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobOperationType
@@ -1099,6 +1099,9 @@ module Azure::Profiles::Latest
           def create_mode
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::CreateMode
           end
+          def data_source_type
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DataSourceType
+          end
           def azure_workload_sqlrestore_request
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureWorkloadSQLRestoreRequest
           end
@@ -1108,8 +1111,8 @@ module Azure::Profiles::Latest
           def protection_policy_resource_list
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicyResourceList
           end
-          def job_supported_action
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::JobSupportedAction
+          def http_status_code
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::HttpStatusCode
           end
           def dpmprotected_item
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::DPMProtectedItem
@@ -1144,17 +1147,14 @@ module Azure::Profiles::Latest
           def protection_policy_resource
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionPolicyResource
           end
-          def http_status_code
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::HttpStatusCode
+          def settings
+            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Settings
           end
           def simple_retention_policy
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SimpleRetentionPolicy
           end
           def simple_schedule_policy
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::SimpleSchedulePolicy
-          end
-          def settings
-            Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::Settings
           end
           def protection_state
             Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionState

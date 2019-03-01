@@ -16,6 +16,8 @@ module Azure::Profiles::Latest
       Operations = Azure::RecoveryServices::Mgmt::V2016_06_01::Operations
 
       module Models
+        RawCertificateData = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::RawCertificateData
+        VaultCertificateResponse = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultCertificateResponse
         JobsSummary = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::JobsSummary
         VaultList = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultList
         ReplicationUsage = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ReplicationUsage
@@ -30,26 +32,24 @@ module Azure::Profiles::Latest
         ResourceCertificateDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateDetails
         NameInfo = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::NameInfo
         ResourceCertificateAndAadDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
-        VaultCertificateResponse = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultCertificateResponse
         ResourceCertificateAndAcsDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
         PatchTrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
-        PatchVault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
         TrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
-        AuthType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::AuthType
+        PatchVault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
         Resource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
+        AuthType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::AuthType
+        VaultExtendedInfoResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource
         TriggerType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TriggerType
         VaultUpgradeState = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUpgradeState
-        VaultExtendedInfoResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource
         UsagesUnit = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UsagesUnit
         VaultProperties = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultProperties
         Vault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Vault
         SkuName = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::SkuName
-        ClientDiscoveryValueForSingleApi = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
         Sku = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
+        ClientDiscoveryValueForSingleApi = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
         ClientDiscoveryResponse = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryResponse
         CertificateRequest = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CertificateRequest
         ClientDiscoveryForProperties = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForProperties
-        RawCertificateData = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::RawCertificateData
       end
 
       class RecoveryServicesManagementClass
@@ -88,6 +88,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def raw_certificate_data
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::RawCertificateData
+          end
+          def vault_certificate_response
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultCertificateResponse
+          end
           def jobs_summary
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::JobsSummary
           end
@@ -130,35 +136,32 @@ module Azure::Profiles::Latest
           def resource_certificate_and_aad_details
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
           end
-          def vault_certificate_response
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultCertificateResponse
-          end
           def resource_certificate_and_acs_details
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
           end
           def patch_tracked_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
           end
+          def tracked_resource
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
+          end
           def patch_vault
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
           end
-          def tracked_resource
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
+          def resource
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
           end
           def auth_type
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::AuthType
           end
-          def resource
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
+          def vault_extended_info_resource
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource
           end
           def trigger_type
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TriggerType
           end
           def vault_upgrade_state
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUpgradeState
-          end
-          def vault_extended_info_resource
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource
           end
           def usages_unit
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UsagesUnit
@@ -172,11 +175,11 @@ module Azure::Profiles::Latest
           def sku_name
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::SkuName
           end
-          def client_discovery_value_for_single_api
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
-          end
           def sku
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
+          end
+          def client_discovery_value_for_single_api
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
           end
           def client_discovery_response
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryResponse
@@ -186,9 +189,6 @@ module Azure::Profiles::Latest
           end
           def client_discovery_for_properties
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForProperties
-          end
-          def raw_certificate_data
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::RawCertificateData
           end
         end
       end
