@@ -132,7 +132,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     end
 
     #
-    # Gets an exisitng custom domain within an endpoint.
+    # Gets an existing custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -153,7 +153,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     end
 
     #
-    # Gets an exisitng custom domain within an endpoint.
+    # Gets an existing custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -173,7 +173,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     end
 
     #
-    # Gets an exisitng custom domain within an endpoint.
+    # Gets an existing custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.

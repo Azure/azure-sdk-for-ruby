@@ -282,6 +282,13 @@
       "module_require": "azure_mgmt_managed_applications"
     }
   },
+  "Microsoft.MariaDB": {
+    "management": {
+      "path": "management/azure_mgmt_mariadb",
+      "namespace": "Azure::MariaDB::Mgmt",
+      "module_require": "azure_mgmt_mariadb"
+    }
+  },
   "Microsoft.MarketplaceOrdering": {
     "management": {
       "path": "management/azure_mgmt_marketplace_ordering",
@@ -322,6 +329,13 @@
       "path": "management/azure_mgmt_msi",
       "namespace": "Azure::ManagedServiceIdentity::Mgmt",
       "module_require": "azure_mgmt_msi"
+    }
+  },
+  "Microsoft.NetApp": {
+    "management": {
+      "path": "management/azure_mgmt_netapp",
+      "namespace": "Azure::NetApp::Mgmt",
+      "module_require": "azure_mgmt_netapp"
     }
   },
   "Microsoft.Network": {

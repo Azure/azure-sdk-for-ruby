@@ -57,12 +57,12 @@ module Azure::CDN::Mgmt::V2016_10_02
       attr_accessor :optimization_type
 
       # @return [Array<GeoFilter>] List of rules defining user geo access
-      # within a CDN endpoint. Each geo filter defines an acess rule to a
+      # within a CDN endpoint. Each geo filter defines an access rule to a
       # specified path or content, e.g. block APAC for path /pictures/
       attr_accessor :geo_filters
 
       # @return [String] The host name of the endpoint structured as
-      # {endpointName}.{DNSZone}, e.g. consoto.azureedge.net
+      # {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
       attr_accessor :host_name
 
       # @return [Array<DeepCreatedOrigin>] The source of the content being

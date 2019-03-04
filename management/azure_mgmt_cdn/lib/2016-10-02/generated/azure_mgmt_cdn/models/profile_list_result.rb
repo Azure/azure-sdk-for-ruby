@@ -7,7 +7,7 @@ module Azure::CDN::Mgmt::V2016_10_02
   module Models
     #
     # Result of the request to list profiles. It contains a list of profile
-    # objects and a URL link to get the the next set of results.
+    # objects and a URL link to get the next set of results.
     #
     class ProfileListResult
 

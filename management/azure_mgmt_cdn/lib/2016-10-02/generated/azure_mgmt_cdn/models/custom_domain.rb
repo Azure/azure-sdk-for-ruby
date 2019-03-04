@@ -6,7 +6,7 @@
 module Azure::CDN::Mgmt::V2016_10_02
   module Models
     #
-    # Customer provided domain for branding purposes, e.g. www.consoto.com.
+    # Customer provided domain for branding purposes, e.g. www.contoso.com.
     #
     class CustomDomain < Resource
 
