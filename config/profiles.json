@@ -346,6 +346,11 @@
                         "2018-06-01": ["*"]
                     }
                 },
+                "Microsoft.MariaDB": {
+                    "management": {
+                        "2018-06-01": ["*"]
+                    }
+                },
                 "Microsoft.MarketplaceOrdering": {
                     "management": {
                         "2015-06-01": ["*"]
@@ -376,6 +381,11 @@
                 "Microsoft.ManagedServiceIdentity": {
                     "management": {
                         "2015-08-31-preview": ["*"]
+                    }
+                },
+                "Microsoft.NetApp": {
+                    "management": {
+                        "2017-08-15-preview": ["*"]
                     }
                 },
                 "Microsoft.Network": {
@@ -1309,6 +1319,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_mariadb": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.MariaDB": {
+                    "management": {
+                        "2018-06-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_mariadb/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_marketplace_ordering": [
         {
             "name": "Latest",
@@ -1383,6 +1407,20 @@
             "individual_gem_profile": true
         }
          ],
+        "azure_mgmt_netapp": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.NetApp": {
+                    "management": {
+                        "2017-08-15-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_netapp/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_network": [
         {
             "name": "V2018_03_01",

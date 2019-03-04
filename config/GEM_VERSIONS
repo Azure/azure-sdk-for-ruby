@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.22.3"
+        "azure_sdk": "0.22.4"
     },
     "data": {
         "azure_cognitiveservices_autosuggest": "0.17.0",
@@ -35,7 +35,7 @@
         "azure_mgmt_automation": "0.17.1",
         "azure_mgmt_batch": "0.17.1",
         "azure_mgmt_billing": "0.17.1",
-        "azure_mgmt_cdn": "0.17.1",
+        "azure_mgmt_cdn": "0.17.2",
         "azure_mgmt_cognitive_services": "0.18.0",
         "azure_mgmt_commerce": "0.17.0",
         "azure_mgmt_compute": "0.18.3",
@@ -66,11 +66,13 @@
         "azure_mgmt_machine_learning": "0.17.1",
         "azure_mgmt_machine_learning_services": "0.17.0",
         "azure_mgmt_managed_applications": "0.17.1",
+        "azure_mgmt_mariadb": "0.17.0",
         "azure_mgmt_marketplace_ordering": "0.17.1",
         "azure_mgmt_media_services": "0.18.0",
         "azure_mgmt_mixedreality": "0.17.0",
         "azure_mgmt_monitor": "0.17.1",
         "azure_mgmt_msi": "0.17.0",
+        "azure_mgmt_netapp": "0.17.0",
         "azure_mgmt_network": "0.18.4",
         "azure_mgmt_notification_hubs": "0.17.1",
         "azure_mgmt_operational_insights": "0.17.1",
