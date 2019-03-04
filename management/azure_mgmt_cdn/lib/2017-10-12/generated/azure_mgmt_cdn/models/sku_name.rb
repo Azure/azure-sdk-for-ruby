@@ -14,6 +14,7 @@ module Azure::CDN::Mgmt::V2017_10_12
       CustomVerizon = "Custom_Verizon"
       StandardAkamai = "Standard_Akamai"
       StandardChinaCdn = "Standard_ChinaCdn"
+      StandardMicrosoft = "Standard_Microsoft"
     end
   end
 end

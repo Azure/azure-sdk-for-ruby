@@ -26,8 +26,8 @@ module Azure::CDN::Mgmt::V2017_10_12
       # Default value: 'All' .
       attr_accessor :cache_type
 
-      # @return [String] The duration for which the the content needs to be
-      # cached. Allowed format is [d.]hh:mm:ss
+      # @return [String] The duration for which the content needs to be cached.
+      # Allowed format is [d.]hh:mm:ss
       attr_accessor :cache_duration
 
 

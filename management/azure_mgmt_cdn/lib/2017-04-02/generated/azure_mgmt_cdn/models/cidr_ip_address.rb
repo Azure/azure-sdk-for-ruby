@@ -12,7 +12,7 @@ module Azure::CDN::Mgmt::V2017_04_02
 
       include MsRestAzure
 
-      # @return [String] Ip adress itself.
+      # @return [String] IP address itself.
       attr_accessor :base_ip_address
 
       # @return [Integer] The length of the prefix of the ip address.

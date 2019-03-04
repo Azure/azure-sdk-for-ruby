@@ -557,7 +557,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -575,7 +575,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1564,7 +1564,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1585,7 +1585,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1606,7 +1606,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

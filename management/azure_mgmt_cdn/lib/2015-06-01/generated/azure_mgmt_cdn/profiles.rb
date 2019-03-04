@@ -25,7 +25,7 @@ module Azure::CDN::Mgmt::V2015_06_01
     attr_reader :client
 
     #
-    # Lists the CDN profiles within an Azure subscitption.
+    # Lists the CDN profiles within an Azure subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -38,7 +38,7 @@ module Azure::CDN::Mgmt::V2015_06_01
     end
 
     #
-    # Lists the CDN profiles within an Azure subscitption.
+    # Lists the CDN profiles within an Azure subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -50,7 +50,7 @@ module Azure::CDN::Mgmt::V2015_06_01
     end
 
     #
-    # Lists the CDN profiles within an Azure subscitption.
+    # Lists the CDN profiles within an Azure subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
