@@ -19,6 +19,10 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # @return [String]
       attr_accessor :text
 
+      # @return [TextRecognitionResultConfidenceClass] Possible values include:
+      # 'High', 'Low'
+      attr_accessor :confidence
+
 
       #
       # Mapper for Word class as Ruby Hash.
@@ -33,7 +37,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             class_name: 'Word',
             model_properties: {
               bounding_box: {
-                required: false,
+                required: true,
                 serialized_name: 'boundingBox',
                 type: {
                   name: 'Sequence',
@@ -47,10 +51,18 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                 }
               },
               text: {
-                required: false,
+                required: true,
                 serialized_name: 'text',
                 type: {
                   name: 'String'
+                }
+              },
+              confidence: {
+                required: false,
+                serialized_name: 'confidence',
+                type: {
+                  name: 'Enum',
+                  module: 'TextRecognitionResultConfidenceClass'
                 }
               }
             }

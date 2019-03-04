@@ -9,7 +9,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Model object.
     #
     #
-    class TextOperationResult
+    class ReadOperationResult
 
       include MsRestAzure
 
@@ -18,21 +18,21 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # 'Succeeded'
       attr_accessor :status
 
-      # @return [TextRecognitionResult]
-      attr_accessor :recognition_result
+      # @return [Array<TextRecognitionResult>]
+      attr_accessor :recognition_results
 
 
       #
-      # Mapper for TextOperationResult class as Ruby Hash.
+      # Mapper for ReadOperationResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TextOperationResult',
+          serialized_name: 'ReadOperationResult',
           type: {
             name: 'Composite',
-            class_name: 'TextOperationResult',
+            class_name: 'ReadOperationResult',
             model_properties: {
               status: {
                 required: false,
@@ -42,12 +42,19 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                   module: 'TextOperationStatusCodes'
                 }
               },
-              recognition_result: {
+              recognition_results: {
                 required: false,
-                serialized_name: 'recognitionResult',
+                serialized_name: 'recognitionResults',
                 type: {
-                  name: 'Composite',
-                  class_name: 'TextRecognitionResult'
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'TextRecognitionResultElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'TextRecognitionResult'
+                      }
+                  }
                 }
               }
             }
