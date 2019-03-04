@@ -1,3 +1,10 @@
+## 2019.03.04 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_cdn -v0.17.2
+    - azure_mgmt_mariadb -v0.17.0
+    - azure_mgmt_netapp -v0.17.0
+    - azure_sdk -v0.22.4
+
 ## 2019.02.25 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_privatedns -v0.17.0
