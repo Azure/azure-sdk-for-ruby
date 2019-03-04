@@ -8,7 +8,7 @@ module Azure::GraphRbac::V1_6
     #
     # Request parameters for creating a new application.
     #
-    class ApplicationCreateParameters < Application
+    class ApplicationCreateParameters < ApplicationBase
 
       include MsRestAzure
 
@@ -80,13 +80,6 @@ module Azure::GraphRbac::V1_6
                 serialized_name: 'allowPassthroughUsers',
                 type: {
                   name: 'Boolean'
-                }
-              },
-              app_id: {
-                required: false,
-                serialized_name: 'appId',
-                type: {
-                  name: 'String'
                 }
               },
               app_logo_url: {

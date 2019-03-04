@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Workspaces = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Workspaces
 
       module Models
+        CheckNameResponse = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
         WorkspaceCollectionList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
         MigrateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::MigrateWorkspaceCollectionRequest
         ErrorDetail = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::ErrorDetail
@@ -26,10 +27,9 @@ module Azure::Profiles::Latest
         UpdateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest
         CheckNameRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
         Workspace = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
-        WorkspaceList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
         Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
         Operation = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
-        CheckNameResponse = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
+        WorkspaceList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
       end
 
       class PowerBiEmbeddedManagementClass
@@ -63,6 +63,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def check_name_response
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
+          end
           def workspace_collection_list
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList
           end
@@ -108,17 +111,14 @@ module Azure::Profiles::Latest
           def workspace
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
           end
-          def workspace_list
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
-          end
           def error
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
           end
           def operation
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
           end
-          def check_name_response
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
+          def workspace_list
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
           end
         end
       end

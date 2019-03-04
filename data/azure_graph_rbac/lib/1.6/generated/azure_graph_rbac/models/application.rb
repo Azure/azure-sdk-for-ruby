@@ -8,7 +8,7 @@ module Azure::GraphRbac::V1_6
     #
     # Active Directory application information.
     #
-    class Application < DirectoryObject
+    class Application < ApplicationBase
 
       include MsRestAzure
 
@@ -19,131 +19,8 @@ module Azure::GraphRbac::V1_6
 
       attr_accessor :objectType
 
-      # @return [Boolean] A property on the application to indicate if the
-      # application accepts other IDPs or not or partially accepts.
-      attr_accessor :allow_guests_sign_in
-
-      # @return [Boolean] Indicates that the application supports pass through
-      # users who have no presence in the resource tenant.
-      attr_accessor :allow_passthrough_users
-
       # @return [String] The application ID.
       attr_accessor :app_id
-
-      # @return [String] The url for the application logo image stored in a
-      # CDN.
-      attr_accessor :app_logo_url
-
-      # @return [Array<AppRole>] The collection of application roles that an
-      # application may declare. These roles can be assigned to users, groups
-      # or service principals.
-      attr_accessor :app_roles
-
-      # @return [Array<String>] The application permissions.
-      attr_accessor :app_permissions
-
-      # @return [Boolean] Whether the application is available to other
-      # tenants.
-      attr_accessor :available_to_other_tenants
-
-      # @return [String] The display name of the application.
-      attr_accessor :display_name
-
-      # @return [String] A URL provided by the author of the application to
-      # report errors when using the application.
-      attr_accessor :error_url
-
-      # @return [String] The home page of the application.
-      attr_accessor :homepage
-
-      # @return [Array<String>] A collection of URIs for the application.
-      attr_accessor :identifier_uris
-
-      # @return [InformationalUrl] urls with more informations of the
-      # application.
-      attr_accessor :informational_urls
-
-      # @return [Boolean] Specifies whether this application supports device
-      # authentication without a user. The default is false.
-      attr_accessor :is_device_only_auth_supported
-
-      # @return [Array<KeyCredential>] A collection of KeyCredential objects.
-      attr_accessor :key_credentials
-
-      # @return [Array<String>] Client applications that are tied to this
-      # resource application. Consent to any of the known client applications
-      # will result in implicit consent to the resource application through a
-      # combined consent dialog (showing the OAuth permission scopes required
-      # by the client and the resource).
-      attr_accessor :known_client_applications
-
-      # @return [String] the url of the logout page
-      attr_accessor :logout_url
-
-      # @return [Boolean] Whether to allow implicit grant flow for OAuth2
-      attr_accessor :oauth2allow_implicit_flow
-
-      # @return [Boolean] Specifies whether during a token Request Azure AD
-      # will allow path matching of the redirect URI against the applications
-      # collection of replyURLs. The default is false.
-      attr_accessor :oauth2allow_url_path_matching
-
-      # @return [Array<OAuth2Permission>] The collection of OAuth 2.0
-      # permission scopes that the web API (resource) application exposes to
-      # client applications. These permission scopes may be granted to client
-      # applications during consent.
-      attr_accessor :oauth2permissions
-
-      # @return [Boolean] Specifies whether, as part of OAuth 2.0 token
-      # requests, Azure AD will allow POST requests, as opposed to GET
-      # requests. The default is false, which specifies that only GET requests
-      # will be allowed.
-      attr_accessor :oauth2require_post_response
-
-      # @return [Array<String>] A list of tenants allowed to access
-      # application.
-      attr_accessor :org_restrictions
-
-      # @return [OptionalClaims]
-      attr_accessor :optional_claims
-
-      # @return [Array<PasswordCredential>] A collection of PasswordCredential
-      # objects
-      attr_accessor :password_credentials
-
-      # @return [Array<PreAuthorizedApplication>] list of pre-authorizaed
-      # applications.
-      attr_accessor :pre_authorized_applications
-
-      # @return [Boolean] Specifies whether this application is a public client
-      # (such as an installed application running on a mobile device). Default
-      # is false.
-      attr_accessor :public_client
-
-      # @return [String] Reliable domain which can be used to identify an
-      # application.
-      attr_accessor :publisher_domain
-
-      # @return [Array<String>] A collection of reply URLs for the application.
-      attr_accessor :reply_urls
-
-      # @return [Array<RequiredResourceAccess>] Specifies resources that this
-      # application requires access to and the set of OAuth permission scopes
-      # and application roles that it needs under each of those resources. This
-      # pre-configuration of required resource access drives the consent
-      # experience.
-      attr_accessor :required_resource_access
-
-      # @return [String] The URL to the SAML metadata for the application.
-      attr_accessor :saml_metadata_url
-
-      # @return [String] Audience for signing in to the application
-      # (AzureADMyOrganizatio, AzureADAllorganizations,
-      # AzureADAndMicrosofAccounts).
-      attr_accessor :sign_in_audience
-
-      # @return [String] The primary Web page.
-      attr_accessor :www_homepage
 
 
       #
@@ -206,13 +83,6 @@ module Azure::GraphRbac::V1_6
                 serialized_name: 'allowPassthroughUsers',
                 type: {
                   name: 'Boolean'
-                }
-              },
-              app_id: {
-                required: false,
-                serialized_name: 'appId',
-                type: {
-                  name: 'String'
                 }
               },
               app_logo_url: {
@@ -492,6 +362,13 @@ module Azure::GraphRbac::V1_6
               www_homepage: {
                 required: false,
                 serialized_name: 'wwwHomepage',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_id: {
+                required: false,
+                serialized_name: 'appId',
                 type: {
                   name: 'String'
                 }

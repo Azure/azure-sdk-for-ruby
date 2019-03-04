@@ -27,10 +27,10 @@ module Azure::Profiles::Latest
       ImageEntityAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageEntityAction
       ImageModuleAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
       ImageRecipesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
-      ImageRelatedSearchesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
       Response = Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
       ImageShoppingSourcesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
       ContentTypes = Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
+      ImageRelatedSearchesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
       ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
       Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
@@ -51,8 +51,8 @@ module Azure::Profiles::Latest
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
       Offer = Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
       AggregateOffer = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
-      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
       Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
+      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
@@ -142,9 +142,6 @@ module Azure::Profiles::Latest
         def image_recipes_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
         end
-        def image_related_searches_action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
-        end
         def response
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
         end
@@ -153,6 +150,9 @@ module Azure::Profiles::Latest
         end
         def content_types
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
+        end
+        def image_related_searches_action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
         end
         def error_code
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
@@ -214,11 +214,11 @@ module Azure::Profiles::Latest
         def aggregate_offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
         end
-        def action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
-        end
         def recipe
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
+        end
+        def action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
         end
         def rating
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
