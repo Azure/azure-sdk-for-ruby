@@ -17,6 +17,7 @@ module Azure::Search::Profiles::Latest
       HostingMode = Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
       SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
       ProvisioningState = Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
+      IdentityType = Azure::Search::Mgmt::V2015_08_19::Models::IdentityType
       AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
       Identity = Azure::Search::Mgmt::V2015_08_19::Models::Identity
       CheckNameAvailabilityOutput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityOutput
@@ -94,6 +95,9 @@ module Azure::Search::Profiles::Latest
       end
       def provisioning_state
         Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
+      end
+      def identity_type
+        Azure::Search::Mgmt::V2015_08_19::Models::IdentityType
       end
       def admin_key_kind
         Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind

@@ -21,6 +21,7 @@ module Azure::Profiles::Latest
         UnavailableNameReason = Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
         AdminKeyResult = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
         SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
+        IdentityType = Azure::Search::Mgmt::V2015_08_19::Models::IdentityType
         AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
         ProvisioningState = Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
         SkuName = Azure::Search::Mgmt::V2015_08_19::Models::SkuName
@@ -89,6 +90,9 @@ module Azure::Profiles::Latest
           end
           def search_service_status
             Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
+          end
+          def identity_type
+            Azure::Search::Mgmt::V2015_08_19::Models::IdentityType
           end
           def admin_key_kind
             Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
