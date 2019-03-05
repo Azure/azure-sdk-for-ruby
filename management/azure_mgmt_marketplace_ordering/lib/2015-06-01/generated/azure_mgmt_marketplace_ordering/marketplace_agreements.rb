@@ -432,7 +432,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
     end
 
     #
-    # Get marketplace agreements.
+    # Get marketplace agreement.
     #
     # @param publisher_id [String] Publisher identifier string of image being
     # deployed.
@@ -449,7 +449,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
     end
 
     #
-    # Get marketplace agreements.
+    # Get marketplace agreement.
     #
     # @param publisher_id [String] Publisher identifier string of image being
     # deployed.
@@ -465,7 +465,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
     end
 
     #
-    # Get marketplace agreements.
+    # Get marketplace agreement.
     #
     # @param publisher_id [String] Publisher identifier string of image being
     # deployed.
@@ -530,7 +530,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
     end
 
     #
-    # List marketplace agreements.
+    # List marketplace agreements in the subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -543,7 +543,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
     end
 
     #
-    # List marketplace agreements.
+    # List marketplace agreements in the subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -555,7 +555,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
     end
 
     #
-    # List marketplace agreements.
+    # List marketplace agreements in the subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
