@@ -267,9 +267,9 @@ module Azure::Profiles::Latest
         HyperVReplicaAzureEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureEventDetails
         HyperVReplicaAzureFailbackProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailbackProviderInput
         HyperVReplicaAzureFailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailoverProviderInput
+        Resource = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Resource
         HyperVReplicaAzurePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzurePolicyDetails
         HyperVReplicaAzurePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzurePolicyInput
-        Resource = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Resource
         HyperVReplicaAzureReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureReplicationDetails
         HyperVReplicaAzureReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureReprotectInput
         HyperVReplicaAzureUpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureUpdateReplicationProtectedItemInput
@@ -360,19 +360,19 @@ module Azure::Profiles::Latest
         MultiVmGroupCreateOption = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::MultiVmGroupCreateOption
         PresenceStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PresenceStatus
         AgentVersionStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AgentVersionStatus
-        RecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPointType
-        MultiVmSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::MultiVmSyncStatus
-        A2ARpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2ARpRecoveryPointType
         HealthErrorCategory = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HealthErrorCategory
-        RecoveryPlanActionLocation = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanActionLocation
-        DataSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DataSyncStatus
+        RecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPointType
+        A2ARpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2ARpRecoveryPointType
         MultiVmSyncPointOption = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::MultiVmSyncPointOption
-        HyperVReplicaAzureRpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureRpRecoveryPointType
+        MultiVmSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::MultiVmSyncStatus
+        DataSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DataSyncStatus
         IdentityProviderType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::IdentityProviderType
-        RpInMageRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RpInMageRecoveryPointType
-        SourceSiteOperations = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::SourceSiteOperations
+        HyperVReplicaAzureRpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureRpRecoveryPointType
         InMageV2RpRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageV2RpRecoveryPointType
         AlternateLocationRecoveryOption = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AlternateLocationRecoveryOption
+        RecoveryPlanActionLocation = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanActionLocation
+        SourceSiteOperations = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::SourceSiteOperations
+        RpInMageRecoveryPointType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RpInMageRecoveryPointType
         LicenseType = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::LicenseType
       end
 
@@ -1137,14 +1137,14 @@ module Azure::Profiles::Latest
           def hyper_vreplica_azure_failover_provider_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailoverProviderInput
           end
+          def resource
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Resource
+          end
           def hyper_vreplica_azure_policy_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzurePolicyDetails
           end
           def hyper_vreplica_azure_policy_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzurePolicyInput
-          end
-          def resource
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Resource
           end
           def hyper_vreplica_azure_replication_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureReplicationDetails
@@ -1416,44 +1416,44 @@ module Azure::Profiles::Latest
           def agent_version_status
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AgentVersionStatus
           end
+          def health_error_category
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HealthErrorCategory
+          end
           def recovery_point_type
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPointType
-          end
-          def multi_vm_sync_status
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::MultiVmSyncStatus
           end
           def a2_arp_recovery_point_type
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2ARpRecoveryPointType
           end
-          def health_error_category
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HealthErrorCategory
+          def multi_vm_sync_point_option
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::MultiVmSyncPointOption
           end
-          def recovery_plan_action_location
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanActionLocation
+          def multi_vm_sync_status
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::MultiVmSyncStatus
           end
           def data_sync_status
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DataSyncStatus
           end
-          def multi_vm_sync_point_option
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::MultiVmSyncPointOption
-          end
-          def hyper_vreplica_azure_rp_recovery_point_type
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureRpRecoveryPointType
-          end
           def identity_provider_type
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::IdentityProviderType
           end
-          def rp_in_mage_recovery_point_type
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RpInMageRecoveryPointType
-          end
-          def source_site_operations
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::SourceSiteOperations
+          def hyper_vreplica_azure_rp_recovery_point_type
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureRpRecoveryPointType
           end
           def in_mage_v2_rp_recovery_point_type
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageV2RpRecoveryPointType
           end
           def alternate_location_recovery_option
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AlternateLocationRecoveryOption
+          end
+          def recovery_plan_action_location
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanActionLocation
+          end
+          def source_site_operations
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::SourceSiteOperations
+          end
+          def rp_in_mage_recovery_point_type
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RpInMageRecoveryPointType
           end
           def license_type
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::LicenseType

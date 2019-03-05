@@ -14,8 +14,8 @@ module Azure::Profiles::Latest
       Answer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SearchResultsAnswer
       Thing = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Thing
-      CreativeWork = Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
       Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+      CreativeWork = Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SafeSearch
@@ -80,11 +80,11 @@ module Azure::Profiles::Latest
         def thing
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Thing
         end
-        def creative_work
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
-        end
         def images
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
+        end
+        def creative_work
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
         end
         def identifiable
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable

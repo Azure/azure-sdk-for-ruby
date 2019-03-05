@@ -373,7 +373,8 @@ module Azure::GraphRbac::V1_6
     # Update an existing application.
     #
     # @param application_object_id [String] Application object ID.
-    # @param parameters [Application] Parameters to update an existing application.
+    # @param parameters [ApplicationUpdateParameters] Parameters to update an
+    # existing application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -387,7 +388,8 @@ module Azure::GraphRbac::V1_6
     # Update an existing application.
     #
     # @param application_object_id [String] Application object ID.
-    # @param parameters [Application] Parameters to update an existing application.
+    # @param parameters [ApplicationUpdateParameters] Parameters to update an
+    # existing application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -401,7 +403,8 @@ module Azure::GraphRbac::V1_6
     # Update an existing application.
     #
     # @param application_object_id [String] Application object ID.
-    # @param parameters [Application] Parameters to update an existing application.
+    # @param parameters [ApplicationUpdateParameters] Parameters to update an
+    # existing application.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -423,7 +426,7 @@ module Azure::GraphRbac::V1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::GraphRbac::V1_6::Models::Application.mapper()
+      request_mapper = Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

@@ -7,11 +7,13 @@ require 'azure_cognitiveservices_face'
 module Azure::Profiles::Latest
   module Face
     Face = Azure::CognitiveServices::Face::V1_0::Face
+    PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
-    PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
 
     module Models
+      NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
+      DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
       UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
       Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
       TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
@@ -24,10 +26,10 @@ module Azure::Profiles::Latest
       BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
       ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
-      Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+      Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
       Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
@@ -55,13 +57,11 @@ module Azure::Profiles::Latest
       Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
       Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
-      Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
-      NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
-      DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
+      Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
     end
 
     class FaceDataClass
-      attr_reader :face, :person_group_operations, :face_list_operations, :person_group_person, :configurable, :base_url, :options, :model_classes
+      attr_reader :face, :person_group_person, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -72,9 +72,9 @@ module Azure::Profiles::Latest
         end
         add_telemetry(@client_0)
         @face = @client_0.face
+        @person_group_person = @client_0.person_group_person
         @person_group_operations = @client_0.person_group_operations
         @face_list_operations = @client_0.face_list_operations
-        @person_group_person = @client_0.person_group_person
 
         @model_classes = ModelClasses.new
       end
@@ -93,6 +93,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def name_and_user_data_contract
+          Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
+        end
+        def detected_face
+          Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
+        end
         def update_person_face_request
           Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
         end
@@ -129,9 +135,6 @@ module Azure::Profiles::Latest
         def noise_level
           Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
         end
-        def hair
-          Azure::CognitiveServices::Face::V1_0::Models::Hair
-        end
         def find_similar_match_mode
           Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
@@ -140,6 +143,9 @@ module Azure::Profiles::Latest
         end
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+        end
+        def emotion
+          Azure::CognitiveServices::Face::V1_0::Models::Emotion
         end
         def noise
           Azure::CognitiveServices::Face::V1_0::Models::Noise
@@ -222,14 +228,8 @@ module Azure::Profiles::Latest
         def occlusion
           Azure::CognitiveServices::Face::V1_0::Models::Occlusion
         end
-        def emotion
-          Azure::CognitiveServices::Face::V1_0::Models::Emotion
-        end
-        def name_and_user_data_contract
-          Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
-        end
-        def detected_face
-          Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
+        def hair
+          Azure::CognitiveServices::Face::V1_0::Models::Hair
         end
       end
     end

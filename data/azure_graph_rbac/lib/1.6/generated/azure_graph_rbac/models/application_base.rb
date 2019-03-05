@@ -6,18 +6,12 @@
 module Azure::GraphRbac::V1_6
   module Models
     #
-    # Common properties used by GET, POST and PATCH
+    # Active Directive Application common properties shared among GET, POST and
+    # PATCH
     #
-    class ApplicationBase < DirectoryObject
+    class ApplicationBase
 
       include MsRestAzure
-
-
-      def initialize
-        @objectType = "ApplicationBase"
-      end
-
-      attr_accessor :objectType
 
       # @return [Boolean] A property on the application to indicate if the
       # application accepts other IDPs or not or partially accepts.
@@ -155,42 +149,6 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'ApplicationBase',
             model_properties: {
-              additional_properties: {
-                required: false,
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'ObjectElementType',
-                      type: {
-                        name: 'Object'
-                      }
-                  }
-                }
-              },
-              object_id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'objectId',
-                type: {
-                  name: 'String'
-                }
-              },
-              deletion_timestamp: {
-                required: false,
-                read_only: true,
-                serialized_name: 'deletionTimestamp',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              objectType: {
-                required: true,
-                serialized_name: 'objectType',
-                type: {
-                  name: 'String'
-                }
-              },
               allow_guests_sign_in: {
                 required: false,
                 serialized_name: 'allowGuestsSignIn',

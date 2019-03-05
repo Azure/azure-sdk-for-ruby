@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     ImagesOperations = Azure::CognitiveServices::ImageSearch::V1_0::ImagesOperations
 
     module Models
+      ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
       Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
@@ -66,7 +67,6 @@ module Azure::Profiles::Latest
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
-      ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
     end
 
     class ImageSearchDataClass
@@ -99,6 +99,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_insight_module
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
+        end
         def person
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
         end
@@ -269,9 +272,6 @@ module Azure::Profiles::Latest
         end
         def image_crop_type
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
-        end
-        def image_insight_module
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
         end
       end
     end

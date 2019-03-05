@@ -13,13 +13,6 @@ module Azure::GraphRbac::V1_6
       include MsRestAzure
 
 
-      def initialize
-        @objectType = "ApplicationCreateParameters"
-      end
-
-      attr_accessor :objectType
-
-
       #
       # Mapper for ApplicationCreateParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
@@ -32,42 +25,6 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'ApplicationCreateParameters',
             model_properties: {
-              additional_properties: {
-                required: false,
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'ObjectElementType',
-                      type: {
-                        name: 'Object'
-                      }
-                  }
-                }
-              },
-              object_id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'objectId',
-                type: {
-                  name: 'String'
-                }
-              },
-              deletion_timestamp: {
-                required: false,
-                read_only: true,
-                serialized_name: 'deletionTimestamp',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              objectType: {
-                required: true,
-                serialized_name: 'objectType',
-                type: {
-                  name: 'String'
-                }
-              },
               allow_guests_sign_in: {
                 required: false,
                 serialized_name: 'allowGuestsSignIn',

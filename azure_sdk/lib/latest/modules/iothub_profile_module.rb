@@ -7,12 +7,14 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
-      Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
-      IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
       ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
       Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
+      Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
+      IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
 
       module Models
+        EndpointHealthDataListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthDataListResult
+        SharedAccessSignatureAuthorizationRule = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRule
         RegistryStatistics = Azure::IotHub::Mgmt::V2018_04_01::Models::RegistryStatistics
         EventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubProperties
         JobResponse = Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponse
@@ -59,10 +61,10 @@ module Azure::Profiles::Latest
         RoutingEventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEventHubProperties
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
         ImportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
-        IotHubDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
-        AccessRights = Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
         Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         IpFilterRule = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
+        AccessRights = Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
+        IotHubDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
         RoutingSource = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
         IpFilterActionType = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
         Capabilities = Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
@@ -88,12 +90,10 @@ module Azure::Profiles::Latest
         CertificateListDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateListDescription
         EndpointHealthData = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthData
         CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificatePropertiesWithNonce
-        EndpointHealthDataListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthDataListResult
-        SharedAccessSignatureAuthorizationRule = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRule
       end
 
       class IotHubManagementClass
-        attr_reader :operations, :iot_hub_resource, :resource_provider_common, :certificates, :configurable, :base_url, :options, :model_classes
+        attr_reader :resource_provider_common, :certificates, :operations, :iot_hub_resource, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -103,10 +103,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
-          @iot_hub_resource = @client_0.iot_hub_resource
           @resource_provider_common = @client_0.resource_provider_common
           @certificates = @client_0.certificates
+          @operations = @client_0.operations
+          @iot_hub_resource = @client_0.iot_hub_resource
 
           @model_classes = ModelClasses.new
         end
@@ -125,6 +125,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def endpoint_health_data_list_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthDataListResult
+          end
+          def shared_access_signature_authorization_rule
+            Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRule
+          end
           def registry_statistics
             Azure::IotHub::Mgmt::V2018_04_01::Models::RegistryStatistics
           end
@@ -263,17 +269,17 @@ module Azure::Profiles::Latest
           def import_devices_request
             Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
           end
-          def iot_hub_description
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
-          end
-          def access_rights
-            Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
-          end
           def name
             Azure::IotHub::Mgmt::V2018_04_01::Models::Name
           end
           def ip_filter_rule
             Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
+          end
+          def access_rights
+            Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
+          end
+          def iot_hub_description
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
           end
           def routing_source
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
@@ -349,12 +355,6 @@ module Azure::Profiles::Latest
           end
           def certificate_properties_with_nonce
             Azure::IotHub::Mgmt::V2018_04_01::Models::CertificatePropertiesWithNonce
-          end
-          def endpoint_health_data_list_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthDataListResult
-          end
-          def shared_access_signature_authorization_rule
-            Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRule
           end
         end
       end

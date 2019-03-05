@@ -13,12 +13,8 @@ module Azure::GraphRbac::V1_6
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
-      @@discriminatorMap["ApplicationBase"] = "ApplicationBase"
-      @@discriminatorMap["ApplicationCreateParameters"] = "ApplicationCreateParameters"
-      @@discriminatorMap["ApplicationUpdateParameters"] = "ApplicationUpdateParameters"
       @@discriminatorMap["Application"] = "Application"
       @@discriminatorMap["Group"] = "ADGroup"
-      @@discriminatorMap["ServicePrincipalCreateParameters"] = "ServicePrincipalCreateParameters"
       @@discriminatorMap["ServicePrincipal"] = "ServicePrincipal"
       @@discriminatorMap["User"] = "User"
 
