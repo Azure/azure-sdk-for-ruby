@@ -6,8 +6,8 @@ require 'azure_mgmt_container_service'
 
 module Azure::ContainerService::Profiles::Latest
   module Mgmt
-    Operations = Azure::ContainerService::Mgmt::V2018_03_31::Operations
     ManagedClusters = Azure::ContainerService::Mgmt::V2018_03_31::ManagedClusters
+    Operations = Azure::ContainerService::Mgmt::V2018_03_31::Operations
     ContainerServices = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServices
 
     module Models
@@ -44,16 +44,16 @@ module Azure::ContainerService::Profiles::Latest
       ManagedClusterAccessProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAccessProfile
       NetworkPlugin = Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPlugin
       NetworkPolicy = Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPolicy
-      OrchestratorProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
       OrchestratorVersionProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfile
       OrchestratorVersionProfileListResult = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfileListResult
+      OrchestratorProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
     end
 
     #
     # ContainerServiceManagementClass
     #
     class ContainerServiceManagementClass
-      attr_reader :operations, :managed_clusters, :container_services, :configurable, :base_url, :options, :model_classes
+      attr_reader :managed_clusters, :operations, :container_services, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -79,8 +79,8 @@ module Azure::ContainerService::Profiles::Latest
           @client_1.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_1)
-        @operations = @client_1.operations
         @managed_clusters = @client_1.managed_clusters
+        @operations = @client_1.operations
 
         @client_2 = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServiceClient.new(configurable.credentials, base_url, options)
         if(@client_2.respond_to?(:subscription_id))
@@ -211,14 +211,14 @@ module Azure::ContainerService::Profiles::Latest
       def network_policy
         Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPolicy
       end
-      def orchestrator_profile
-        Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
-      end
       def orchestrator_version_profile
         Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfile
       end
       def orchestrator_version_profile_list_result
         Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfileListResult
+      end
+      def orchestrator_profile
+        Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
       end
     end
   end
