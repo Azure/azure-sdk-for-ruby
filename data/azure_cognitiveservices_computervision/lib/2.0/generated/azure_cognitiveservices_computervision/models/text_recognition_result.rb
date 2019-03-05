@@ -12,7 +12,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [Integer] The page number of the recognition result.
+      # @return [Integer] The 1-based page number of the recognition result.
       attr_accessor :page
 
       # @return [Float] The orientation of the image in degrees in the
