@@ -6,8 +6,7 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Model object.
-    #
+    # Result of recognition text operation.
     #
     class TextOperationResult
 
@@ -18,7 +17,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # 'Succeeded'
       attr_accessor :status
 
-      # @return [TextRecognitionResult]
+      # @return [TextRecognitionResult] Text recognition result of the text
+      # operation.
       attr_accessor :recognition_result
 
 

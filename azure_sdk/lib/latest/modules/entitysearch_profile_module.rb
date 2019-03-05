@@ -53,8 +53,8 @@ module Azure::Profiles::Latest
       Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
-      SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
+      SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
     end
 
     class EntitySearchDataClass
@@ -219,11 +219,11 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
         end
-        def search_response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
-        end
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
+        end
+        def search_response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
         end
       end
     end

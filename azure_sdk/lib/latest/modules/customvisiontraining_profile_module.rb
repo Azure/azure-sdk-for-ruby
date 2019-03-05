@@ -8,6 +8,9 @@ module Azure::Profiles::Latest
   module Customvisiontraining
 
     module Models
+      RegionProposal = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::RegionProposal
+      ImageRegionCreateEntry = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateEntry
+      ImageRegionProposal = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionProposal
       ImageRegionCreateResult = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateResult
       Prediction = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Prediction
       ImagePrediction = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImagePrediction
@@ -34,13 +37,13 @@ module Azure::Profiles::Latest
       Export = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Export
       ImageRegionCreateBatch = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateBatch
       ImageCreateStatus = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageCreateStatus
-      Classifier = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Classifier
-      ExportPlatformModel = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportPlatformModel
-      ExportStatusModel = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportStatusModel
       Domain = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Domain
       Region = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Region
-      TagType = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagType
+      ExportPlatformModel = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportPlatformModel
+      Classifier = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Classifier
       ExportFlavorModel = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportFlavorModel
+      ExportStatusModel = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportStatusModel
+      TagType = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagType
       ImageTag = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTag
       OrderBy = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::OrderBy
       ImageUrl = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageUrl
@@ -51,9 +54,6 @@ module Azure::Profiles::Latest
       ImageIdCreateBatch = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageIdCreateBatch
       BoundingBox = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::BoundingBox
       ImageTagCreateBatch = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTagCreateBatch
-      RegionProposal = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::RegionProposal
-      ImageRegionCreateEntry = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateEntry
-      ImageRegionProposal = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionProposal
     end
 
     class CustomvisiontrainingDataClass
@@ -85,6 +85,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def region_proposal
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::RegionProposal
+        end
+        def image_region_create_entry
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateEntry
+        end
+        def image_region_proposal
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionProposal
+        end
         def image_region_create_result
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateResult
         end
@@ -163,26 +172,26 @@ module Azure::Profiles::Latest
         def image_create_status
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageCreateStatus
         end
-        def classifier
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Classifier
-        end
-        def export_platform_model
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportPlatformModel
-        end
-        def export_status_model
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportStatusModel
-        end
         def domain
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Domain
         end
         def region
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Region
         end
-        def tag_type
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagType
+        def export_platform_model
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportPlatformModel
+        end
+        def classifier
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Classifier
         end
         def export_flavor_model
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportFlavorModel
+        end
+        def export_status_model
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportStatusModel
+        end
+        def tag_type
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagType
         end
         def image_tag
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTag
@@ -213,15 +222,6 @@ module Azure::Profiles::Latest
         end
         def image_tag_create_batch
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTagCreateBatch
-        end
-        def region_proposal
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::RegionProposal
-        end
-        def image_region_create_entry
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateEntry
-        end
-        def image_region_proposal
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionProposal
         end
       end
     end

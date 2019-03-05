@@ -6,31 +6,32 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Model object.
-    #
+    # Json object representing a recognized text region
     #
     class TextRecognitionResult
 
       include MsRestAzure
 
-      # @return [Array<Line>]
-      attr_accessor :lines
-
-      # @return [Integer]
+      # @return [Integer] The page number of the recognition result.
       attr_accessor :page
 
-      # @return [Float]
-      attr_accessor :width
-
-      # @return [Float]
-      attr_accessor :height
-
-      # @return [Float]
+      # @return [Float] The orientation of the image in degrees in the
+      # clockwise direction. Range between [0, 360).
       attr_accessor :clockwise_orientation
 
-      # @return [TextRecognitionResultDimensionUnit] Possible values include:
-      # 'pixel', 'inch'
+      # @return [Float] The width of the image in pixels or the PDF in inches.
+      attr_accessor :width
+
+      # @return [Float] The height of the image in pixels or the PDF in inches.
+      attr_accessor :height
+
+      # @return [TextRecognitionResultDimensionUnit] The unit used in the
+      # Width, Height and BoundingBox. For images, the unit is "pixel". For
+      # PDF, the unit is "inch". Possible values include: 'pixel', 'inch'
       attr_accessor :unit
+
+      # @return [Array<Line>] A list of recognized text lines.
+      attr_accessor :lines
 
 
       #
@@ -45,26 +46,18 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             name: 'Composite',
             class_name: 'TextRecognitionResult',
             model_properties: {
-              lines: {
-                required: true,
-                serialized_name: 'lines',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'LineElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'Line'
-                      }
-                  }
-                }
-              },
               page: {
                 required: false,
                 serialized_name: 'page',
                 type: {
                   name: 'Number'
+                }
+              },
+              clockwise_orientation: {
+                required: false,
+                serialized_name: 'clockwiseOrientation',
+                type: {
+                  name: 'Double'
                 }
               },
               width: {
@@ -81,19 +74,27 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                   name: 'Double'
                 }
               },
-              clockwise_orientation: {
-                required: false,
-                serialized_name: 'clockwiseOrientation',
-                type: {
-                  name: 'Double'
-                }
-              },
               unit: {
                 required: false,
                 serialized_name: 'unit',
                 type: {
                   name: 'Enum',
                   module: 'TextRecognitionResultDimensionUnit'
+                }
+              },
+              lines: {
+                required: true,
+                serialized_name: 'lines',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'LineElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'Line'
+                      }
+                  }
                 }
               }
             }

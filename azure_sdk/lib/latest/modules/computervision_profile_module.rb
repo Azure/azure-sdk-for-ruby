@@ -48,8 +48,8 @@ module Azure::Profiles::Latest
       AdultInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
       Gender = Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
       TextOperationStatusCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
-      TextRecognitionResultConfidenceClass = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionResultConfidenceClass
       TextRecognitionResultDimensionUnit = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionResultDimensionUnit
+      TextRecognitionResultConfidenceClass = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionResultConfidenceClass
       OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
       VisualFeatureTypes = Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
       TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
@@ -205,11 +205,11 @@ module Azure::Profiles::Latest
         def text_operation_status_codes
           Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
         end
-        def text_recognition_result_confidence_class
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionResultConfidenceClass
-        end
         def text_recognition_result_dimension_unit
           Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionResultDimensionUnit
+        end
+        def text_recognition_result_confidence_class
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionResultConfidenceClass
         end
         def ocr_languages
           Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages

@@ -3176,6 +3176,116 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       promise.execute
     end
 
+    #
+    # Use this interface to get the result of a Read operation, employing the
+    # state-of-the-art Optical Character Recognition (OCR) algorithms optimized for
+    # text-heavy documents. When you use the Read File interface, the response
+    # contains a field called "Operation-Location". The "Operation-Location" field
+    # contains the URL that you must use for your "Read Operation Result" operation
+    # to access OCR results.​
+    #
+    # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
+    # include: 'Handwritten', 'Printed'
+    # @param url [String] Publicly reachable URL of an image.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_batch_read_file(url, mode, custom_headers = nil)
+      response = begin_batch_read_file_async(url, mode, custom_headers).value!
+      nil
+    end
+
+    #
+    # Use this interface to get the result of a Read operation, employing the
+    # state-of-the-art Optical Character Recognition (OCR) algorithms optimized for
+    # text-heavy documents. When you use the Read File interface, the response
+    # contains a field called "Operation-Location". The "Operation-Location" field
+    # contains the URL that you must use for your "Read Operation Result" operation
+    # to access OCR results.​
+    #
+    # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
+    # include: 'Handwritten', 'Printed'
+    # @param url [String] Publicly reachable URL of an image.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_batch_read_file_with_http_info(url, mode, custom_headers = nil)
+      begin_batch_read_file_async(url, mode, custom_headers).value!
+    end
+
+    #
+    # Use this interface to get the result of a Read operation, employing the
+    # state-of-the-art Optical Character Recognition (OCR) algorithms optimized for
+    # text-heavy documents. When you use the Read File interface, the response
+    # contains a field called "Operation-Location". The "Operation-Location" field
+    # contains the URL that you must use for your "Read Operation Result" operation
+    # to access OCR results.​
+    #
+    # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
+    # include: 'Handwritten', 'Printed'
+    # @param url [String] Publicly reachable URL of an image.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_batch_read_file_async(url, mode, custom_headers = nil)
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
+      fail ArgumentError, 'mode is nil' if mode.nil?
+      fail ArgumentError, 'url is nil' if url.nil?
+
+      image_url = ImageUrl.new
+      unless url.nil?
+        image_url.url = url
+      end
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_content = self.serialize(request_mapper,  image_url)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'read/core/asyncBatchAnalyze'
+
+      request_url = @base_url || self.base_url
+    request_url = request_url.gsub('{Endpoint}', endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'mode' => mode},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
 
     private
     #

@@ -41,19 +41,19 @@ module Azure::Profiles::Latest
       RecipesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
       ImagesImageMetadata = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
       ImagesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
+      ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
       Offer = Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
-      ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
       AggregateOffer = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
-      Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
-      Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
+      Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
       Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+      Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
+      SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
-      SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
       ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       Person = Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
     end
@@ -184,26 +184,23 @@ module Azure::Profiles::Latest
         def images_module
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
         end
+        def response_base
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
+        end
         def aggregate_rating
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
         end
         def offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
         end
-        def response_base
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
-        end
         def aggregate_offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
         end
-        def recipe
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
-        end
-        def thing
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
-        end
         def creative_work
           Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
+        end
+        def recipe
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
         end
         def identifiable
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
@@ -211,17 +208,20 @@ module Azure::Profiles::Latest
         def action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
         end
+        def thing
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
+        end
         def rating
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
+        end
+        def safe_search
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
         end
         def currency
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
         end
         def item_availability
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
-        end
-        def safe_search
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
         end
         def error_code
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode

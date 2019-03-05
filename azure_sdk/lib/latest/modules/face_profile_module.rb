@@ -6,19 +6,22 @@ require 'azure_cognitiveservices_face'
 
 module Azure::Profiles::Latest
   module Face
+    Face = Azure::CognitiveServices::Face::V1_0::Face
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
-    Face = Azure::CognitiveServices::Face::V1_0::Face
     PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
 
     module Models
+      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
+      BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+      ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
-      APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
+      APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
@@ -55,13 +58,10 @@ module Azure::Profiles::Latest
       Person = Azure::CognitiveServices::Face::V1_0::Models::Person
       GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
       HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
-      AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
-      BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
-      ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
     end
 
     class FaceDataClass
-      attr_reader :person_group_operations, :face_list_operations, :face, :person_group_person, :configurable, :base_url, :options, :model_classes
+      attr_reader :face, :person_group_operations, :face_list_operations, :person_group_person, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -71,9 +71,9 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @face = @client_0.face
         @person_group_operations = @client_0.person_group_operations
         @face_list_operations = @client_0.face_list_operations
-        @face = @client_0.face
         @person_group_person = @client_0.person_group_person
 
         @model_classes = ModelClasses.new
@@ -93,6 +93,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def accessory_type
+          Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
+        end
+        def blur_level
+          Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+        end
+        def exposure_level
+          Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
+        end
         def noise_level
           Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
         end
@@ -108,11 +117,11 @@ module Azure::Profiles::Latest
         def face_rectangle
           Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
-        def apierror
-          Azure::CognitiveServices::Face::V1_0::Models::APIError
-        end
         def image_url
           Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
+        end
+        def apierror
+          Azure::CognitiveServices::Face::V1_0::Models::APIError
         end
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
@@ -221,15 +230,6 @@ module Azure::Profiles::Latest
         end
         def hair_color_type
           Azure::CognitiveServices::Face::V1_0::Models::HairColorType
-        end
-        def accessory_type
-          Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
-        end
-        def blur_level
-          Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
-        end
-        def exposure_level
-          Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
         end
       end
     end

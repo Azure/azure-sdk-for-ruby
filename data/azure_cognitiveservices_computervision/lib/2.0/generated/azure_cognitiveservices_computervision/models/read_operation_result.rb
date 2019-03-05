@@ -6,19 +6,19 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Model object.
-    #
+    # OCR result of the read operation.
     #
     class ReadOperationResult
 
       include MsRestAzure
 
-      # @return [TextOperationStatusCodes] Status of the text operation.
+      # @return [TextOperationStatusCodes] Status of the read operation.
       # Possible values include: 'Not Started', 'Running', 'Failed',
       # 'Succeeded'
       attr_accessor :status
 
-      # @return [Array<TextRecognitionResult>]
+      # @return [Array<TextRecognitionResult>] A array of text recognition
+      # result of the read operation.
       attr_accessor :recognition_results
 
 
