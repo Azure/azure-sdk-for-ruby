@@ -8,6 +8,12 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
+      MatchRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
+      ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
+      EntityRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
+      EntitiesBatchResultItemV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
+      InternalError = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
+      Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
       EntitiesBatchResultV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
       MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
       ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
@@ -20,12 +26,6 @@ module Azure::Profiles::Latest
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResultItem
       SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResult
       BatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
-      MatchRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
-      ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
-      EntityRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
-      EntitiesBatchResultItemV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
-      InternalError = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
-      Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
     end
 
     class TextAnalyticsDataClass
@@ -57,6 +57,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def match_record_v2dot1
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
+        end
+        def error_record
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
+        end
+        def entity_record_v2dot1
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
+        end
+        def entities_batch_result_item_v2dot1
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
+        end
+        def internal_error
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
+        end
+        def input
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
+        end
         def entities_batch_result_v2dot1
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
         end
@@ -92,24 +110,6 @@ module Azure::Profiles::Latest
         end
         def batch_input
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
-        end
-        def match_record_v2dot1
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
-        end
-        def error_record
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
-        end
-        def entity_record_v2dot1
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
-        end
-        def entities_batch_result_item_v2dot1
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
-        end
-        def internal_error
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
-        end
-        def input
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
         end
       end
     end
