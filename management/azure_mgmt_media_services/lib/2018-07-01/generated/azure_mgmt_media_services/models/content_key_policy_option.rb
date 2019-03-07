@@ -32,7 +32,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentKeyPolicyOption',
           type: {
@@ -40,7 +39,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'ContentKeyPolicyOption',
             model_properties: {
               policy_option_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'policyOptionId',
@@ -49,7 +47,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -57,7 +54,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               configuration: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'configuration',
                 type: {
@@ -68,7 +64,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               restriction: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'restriction',
                 type: {

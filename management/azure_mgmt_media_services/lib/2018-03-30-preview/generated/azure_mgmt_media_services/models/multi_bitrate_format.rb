@@ -18,10 +18,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.MultiBitrateFormat"
+        @@odatatype = "#Microsoft.Media.MultiBitrateFormat"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Array<OutputFile>] The list of output files to produce.  Each
       # entry in the list is a set of audio and video layer labels to be muxed
@@ -35,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.MultiBitrateFormat',
           type: {
@@ -43,15 +42,13 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'MultiBitrateFormat',
             model_properties: {
               filename_pattern: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'filenamePattern',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -59,13 +56,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               output_files: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputFiles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OutputFileElementType',
                       type: {

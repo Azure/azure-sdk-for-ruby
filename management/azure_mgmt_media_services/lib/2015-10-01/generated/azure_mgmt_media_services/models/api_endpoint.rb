@@ -25,7 +25,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiEndpoint',
           type: {
@@ -33,7 +32,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
             class_name: 'ApiEndpoint',
             model_properties: {
               endpoint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpoint',
                 type: {
@@ -41,7 +39,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               major_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'majorVersion',
                 type: {

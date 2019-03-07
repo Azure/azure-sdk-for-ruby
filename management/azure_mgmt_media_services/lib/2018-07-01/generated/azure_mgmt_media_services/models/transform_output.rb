@@ -39,7 +39,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TransformOutput',
           type: {
@@ -47,25 +46,20 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'TransformOutput',
             model_properties: {
               on_error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'onError',
                 type: {
-                  name: 'Enum',
-                  module: 'OnErrorType'
+                  name: 'String'
                 }
               },
               relative_priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'relativePriority',
                 type: {
-                  name: 'Enum',
-                  module: 'Priority'
+                  name: 'String'
                 }
               },
               preset: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'preset',
                 type: {

@@ -22,10 +22,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       @@discriminatorMap["#Microsoft.Media.PngLayer"] = "PngLayer"
 
       def initialize
-        @odatatype = "Layer"
+        @@odatatype = "Layer"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The width of the output video for this layer. The
       # value can be absolute (in pixels) or relative (in percentage). For
@@ -51,7 +51,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Layer',
           type: {
@@ -61,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'Layer',
             model_properties: {
               width: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'width',
                 type: {
@@ -69,7 +67,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               height: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'height',
                 type: {
@@ -77,7 +74,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {

@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.AacAudio"
+        @@odatatype = "#Microsoft.Media.AacAudio"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [AacAudioProfile] The encoding profile to be used when encoding
       # audio with AAC. Possible values include: 'AacLc', 'HeAacV1', 'HeAacV2'
@@ -30,7 +30,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.AacAudio',
           type: {
@@ -38,15 +37,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'AacAudio',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -54,7 +51,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               channels: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'channels',
                 type: {
@@ -62,7 +58,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               sampling_rate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'samplingRate',
                 type: {
@@ -70,7 +65,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               bitrate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bitrate',
                 type: {
@@ -78,12 +72,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'profile',
                 type: {
-                  name: 'Enum',
-                  module: 'AacAudioProfile'
+                  name: 'String'
                 }
               }
             }

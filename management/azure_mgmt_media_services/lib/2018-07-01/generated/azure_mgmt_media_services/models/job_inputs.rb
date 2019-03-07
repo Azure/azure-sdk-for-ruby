@@ -6,7 +6,7 @@
 module Azure::MediaServices::Mgmt::V2018_07_01
   module Models
     #
-    # Describes a list of of inputs to a Job.
+    # Describes a list of inputs to a Job.
     #
     class JobInputs < JobInput
 
@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JobInputs"
+        @@odatatype = "#Microsoft.Media.JobInputs"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Array<JobInput>] List of inputs to a Job.
       attr_accessor :inputs
@@ -29,15 +29,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JobInputs',
           type: {
             name: 'Composite',
             class_name: 'JobInputs',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -45,13 +43,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               inputs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inputs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobInputElementType',
                       type: {

@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.CopyVideo"
+        @@odatatype = "#Microsoft.Media.CopyVideo"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
 
       #
@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.CopyVideo',
           type: {
@@ -35,15 +34,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'CopyVideo',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {

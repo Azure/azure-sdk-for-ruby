@@ -22,7 +22,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SyncStorageKeysInput',
           type: {
@@ -30,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'SyncStorageKeysInput',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

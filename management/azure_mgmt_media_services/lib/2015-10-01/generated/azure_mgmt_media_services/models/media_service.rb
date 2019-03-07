@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MediaService',
           type: {
@@ -35,7 +34,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
             class_name: 'MediaService',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -44,7 +42,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -53,7 +50,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -62,7 +58,6 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -70,13 +65,11 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -86,14 +79,12 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               api_endpoints: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.apiEndpoints',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApiEndpointElementType',
                       type: {
@@ -104,13 +95,11 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               storage_accounts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccounts',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StorageAccountElementType',
                       type: {

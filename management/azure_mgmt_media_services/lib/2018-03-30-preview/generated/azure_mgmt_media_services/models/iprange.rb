@@ -28,7 +28,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IPRange',
           type: {
@@ -36,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'IPRange',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +42,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'address',
                 type: {
@@ -52,7 +49,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               subnet_prefix_length: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnetPrefixLength',
                 type: {

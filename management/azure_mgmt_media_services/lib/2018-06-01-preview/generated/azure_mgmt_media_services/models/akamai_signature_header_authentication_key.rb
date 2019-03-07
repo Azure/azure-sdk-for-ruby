@@ -28,7 +28,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AkamaiSignatureHeaderAuthenticationKey',
           type: {
@@ -36,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'AkamaiSignatureHeaderAuthenticationKey',
             model_properties: {
               identifier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'identifier',
                 type: {
@@ -44,7 +42,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               base64key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'base64Key',
                 type: {
@@ -52,7 +49,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               expiration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expiration',
                 type: {

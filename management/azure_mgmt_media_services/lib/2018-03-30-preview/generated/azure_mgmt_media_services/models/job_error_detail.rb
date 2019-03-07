@@ -25,7 +25,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobErrorDetail',
           type: {
@@ -33,7 +32,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'JobErrorDetail',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -42,7 +40,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',

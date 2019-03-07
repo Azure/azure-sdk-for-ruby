@@ -48,7 +48,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Job',
           type: {
@@ -56,7 +55,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'Job',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -65,7 +63,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -74,7 +71,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -83,7 +79,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -92,7 +87,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -102,7 +96,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -110,7 +103,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               input: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.input',
                 type: {
@@ -121,7 +113,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',
@@ -130,13 +121,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               outputs: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.outputs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobOutputElementType',
                       type: {
@@ -149,7 +138,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.priority',
                 type: {
