@@ -37,18 +37,12 @@ module Azure::GraphRbac::V1_6
       # tenants.
       attr_accessor :available_to_other_tenants
 
-      # @return [String] The display name of the application.
-      attr_accessor :display_name
-
       # @return [String] A URL provided by the author of the application to
       # report errors when using the application.
       attr_accessor :error_url
 
       # @return [String] The home page of the application.
       attr_accessor :homepage
-
-      # @return [Array<String>] A collection of URIs for the application.
-      attr_accessor :identifier_uris
 
       # @return [InformationalUrl] urls with more informations of the
       # application.
@@ -206,13 +200,6 @@ module Azure::GraphRbac::V1_6
                   name: 'Boolean'
                 }
               },
-              display_name: {
-                required: false,
-                serialized_name: 'displayName',
-                type: {
-                  name: 'String'
-                }
-              },
               error_url: {
                 required: false,
                 serialized_name: 'errorUrl',
@@ -225,20 +212,6 @@ module Azure::GraphRbac::V1_6
                 serialized_name: 'homepage',
                 type: {
                   name: 'String'
-                }
-              },
-              identifier_uris: {
-                required: false,
-                serialized_name: 'identifierUris',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               informational_urls: {
