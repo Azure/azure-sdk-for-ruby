@@ -12,6 +12,7 @@ module Azure::Profiles::Latest
       ErrorResponse = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse
       Action = Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
       QueryContext = Azure::CognitiveServices::Autosuggest::V1_0::Models::QueryContext
+      SuggestionsSuggestionGroup = Azure::CognitiveServices::Autosuggest::V1_0::Models::SuggestionsSuggestionGroup
       ResponseBase = Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::Autosuggest::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchResultsAnswer
@@ -21,7 +22,6 @@ module Azure::Profiles::Latest
       SearchAction = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
       ScenarioType = Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
-      SuggestionsSuggestionGroup = Azure::CognitiveServices::Autosuggest::V1_0::Models::SuggestionsSuggestionGroup
       SearchKind = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
       ErrorCode = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
@@ -70,6 +70,9 @@ module Azure::Profiles::Latest
         def query_context
           Azure::CognitiveServices::Autosuggest::V1_0::Models::QueryContext
         end
+        def suggestions_suggestion_group
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::SuggestionsSuggestionGroup
+        end
         def response_base
           Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseBase
         end
@@ -96,9 +99,6 @@ module Azure::Profiles::Latest
         end
         def scenario_type
           Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
-        end
-        def suggestions_suggestion_group
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::SuggestionsSuggestionGroup
         end
         def search_kind
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind

@@ -12,6 +12,7 @@ module Azure::Profiles::Latest
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
 
     module Models
+      Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
       NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
       DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
       UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
@@ -30,7 +31,7 @@ module Azure::Profiles::Latest
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
       Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
-      Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
+      Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
@@ -56,8 +57,7 @@ module Azure::Profiles::Latest
       VerifyResult = Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
       Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
-      Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
-      Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
+      Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
     end
 
     class FaceDataClass
@@ -93,6 +93,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def hair
+          Azure::CognitiveServices::Face::V1_0::Models::Hair
+        end
         def name_and_user_data_contract
           Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
         end
@@ -147,8 +150,8 @@ module Azure::Profiles::Latest
         def emotion
           Azure::CognitiveServices::Face::V1_0::Models::Emotion
         end
-        def noise
-          Azure::CognitiveServices::Face::V1_0::Models::Noise
+        def occlusion
+          Azure::CognitiveServices::Face::V1_0::Models::Occlusion
         end
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
@@ -225,11 +228,8 @@ module Azure::Profiles::Latest
         def facial_hair
           Azure::CognitiveServices::Face::V1_0::Models::FacialHair
         end
-        def occlusion
-          Azure::CognitiveServices::Face::V1_0::Models::Occlusion
-        end
-        def hair
-          Azure::CognitiveServices::Face::V1_0::Models::Hair
+        def noise
+          Azure::CognitiveServices::Face::V1_0::Models::Noise
         end
       end
     end

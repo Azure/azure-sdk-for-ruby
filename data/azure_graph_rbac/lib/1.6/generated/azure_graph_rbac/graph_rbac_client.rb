@@ -58,6 +58,10 @@ module Azure::GraphRbac::V1_6
     # @return [Domains] domains
     attr_reader :domains
 
+    # @return [OAuth2PermissionGrantOperations]
+    # oauth2permission_grant_operations
+    attr_reader :oauth2permission_grant_operations
+
     # @return [OAuth2] oauth2
     attr_reader :oauth2
 
@@ -82,6 +86,7 @@ module Azure::GraphRbac::V1_6
       @users = Users.new(self)
       @objects = Objects.new(self)
       @domains = Domains.new(self)
+      @oauth2permission_grant_operations = OAuth2PermissionGrantOperations.new(self)
       @oauth2 = OAuth2.new(self)
       @api_version = '1.6'
       @accept_language = 'en-US'

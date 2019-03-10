@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Workspaces = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Workspaces
 
       module Models
+        Workspace = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
         CheckNameRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
         WorkspaceList = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList
         CheckNameResponse = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse
@@ -29,7 +30,6 @@ module Azure::Profiles::Latest
         UpdateWorkspaceCollectionRequest = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest
         Error = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Error
         Operation = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
-        Workspace = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
       end
 
       class PowerBiEmbeddedManagementClass
@@ -63,6 +63,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def workspace
+            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
+          end
           def check_name_request
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest
           end
@@ -116,9 +119,6 @@ module Azure::Profiles::Latest
           end
           def operation
             Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Operation
-          end
-          def workspace
-            Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::Workspace
           end
         end
       end

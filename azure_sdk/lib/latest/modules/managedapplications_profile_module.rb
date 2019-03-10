@@ -11,24 +11,24 @@ module Azure::Profiles::Latest
       Applications = Azure::ManagedApplications::Mgmt::V2018_06_01::Applications
 
       module Models
-        ApplicationArtifact = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifact
-        ProvisioningState = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ProvisioningState
+        ApplicationPatchable = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationPatchable
         ApplicationDefinition = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinition
-        ApplicationLockLevel = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationLockLevel
+        ProvisioningState = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ProvisioningState
         ApplicationArtifactType = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifactType
+        ApplicationLockLevel = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationLockLevel
         ErrorResponse = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ErrorResponse
         ResourceIdentityType = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ResourceIdentityType
         Application = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Application
         Identity = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Identity
         Resource = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Resource
-        ApplicationListResult = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationListResult
         Plan = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Plan
+        ApplicationListResult = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationListResult
         GenericResource = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::GenericResource
         PlanPatchable = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::PlanPatchable
+        Sku = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Sku
         ApplicationProviderAuthorization = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationProviderAuthorization
         ApplicationDefinitionListResult = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinitionListResult
-        Sku = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Sku
-        ApplicationPatchable = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationPatchable
+        ApplicationArtifact = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifact
       end
 
       class ManagedApplicationsManagementClass
@@ -62,20 +62,20 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def application_artifact
-            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifact
-          end
-          def provisioning_state
-            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ProvisioningState
+          def application_patchable
+            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationPatchable
           end
           def application_definition
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinition
           end
-          def application_lock_level
-            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationLockLevel
+          def provisioning_state
+            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ProvisioningState
           end
           def application_artifact_type
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifactType
+          end
+          def application_lock_level
+            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationLockLevel
           end
           def error_response
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ErrorResponse
@@ -92,11 +92,11 @@ module Azure::Profiles::Latest
           def resource
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Resource
           end
-          def application_list_result
-            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationListResult
-          end
           def plan
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Plan
+          end
+          def application_list_result
+            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationListResult
           end
           def generic_resource
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::GenericResource
@@ -104,17 +104,17 @@ module Azure::Profiles::Latest
           def plan_patchable
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::PlanPatchable
           end
+          def sku
+            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Sku
+          end
           def application_provider_authorization
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationProviderAuthorization
           end
           def application_definition_list_result
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinitionListResult
           end
-          def sku
-            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Sku
-          end
-          def application_patchable
-            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationPatchable
+          def application_artifact
+            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationArtifact
           end
         end
       end

@@ -8,15 +8,18 @@ module Azure::Profiles::Latest
   module GraphRbac
     ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
     Objects = Azure::GraphRbac::V1_6::Objects
+    OAuth2PermissionGrantOperations = Azure::GraphRbac::V1_6::OAuth2PermissionGrantOperations
     OAuth2 = Azure::GraphRbac::V1_6::OAuth2
-    Users = Azure::GraphRbac::V1_6::Users
     Domains = Azure::GraphRbac::V1_6::Domains
+    Users = Azure::GraphRbac::V1_6::Users
     SignedInUser = Azure::GraphRbac::V1_6::SignedInUser
     Applications = Azure::GraphRbac::V1_6::Applications
     DeletedApplications = Azure::GraphRbac::V1_6::DeletedApplications
     Groups = Azure::GraphRbac::V1_6::Groups
 
     module Models
+      RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
+      DomainListResult = Azure::GraphRbac::V1_6::Models::DomainListResult
       AddOwnerParameters = Azure::GraphRbac::V1_6::Models::AddOwnerParameters
       ServicePrincipalListResult = Azure::GraphRbac::V1_6::Models::ServicePrincipalListResult
       OptionalClaim = Azure::GraphRbac::V1_6::Models::OptionalClaim
@@ -32,15 +35,15 @@ module Azure::Profiles::Latest
       ServicePrincipalCreateParameters = Azure::GraphRbac::V1_6::Models::ServicePrincipalCreateParameters
       ServicePrincipalUpdateParameters = Azure::GraphRbac::V1_6::Models::ServicePrincipalUpdateParameters
       ServicePrincipal = Azure::GraphRbac::V1_6::Models::ServicePrincipal
-      UserType = Azure::GraphRbac::V1_6::Models::UserType
       UserUpdateParameters = Azure::GraphRbac::V1_6::Models::UserUpdateParameters
+      UserType = Azure::GraphRbac::V1_6::Models::UserType
+      ConsentType = Azure::GraphRbac::V1_6::Models::ConsentType
       Domain = Azure::GraphRbac::V1_6::Models::Domain
       GroupCreateParameters = Azure::GraphRbac::V1_6::Models::GroupCreateParameters
       Application = Azure::GraphRbac::V1_6::Models::Application
       ApplicationCreateParameters = Azure::GraphRbac::V1_6::Models::ApplicationCreateParameters
       ApplicationUpdateParameters = Azure::GraphRbac::V1_6::Models::ApplicationUpdateParameters
       User = Azure::GraphRbac::V1_6::Models::User
-      Permissions = Azure::GraphRbac::V1_6::Models::Permissions
       UserCreateParameters = Azure::GraphRbac::V1_6::Models::UserCreateParameters
       InformationalUrl = Azure::GraphRbac::V1_6::Models::InformationalUrl
       PasswordCredentialListResult = Azure::GraphRbac::V1_6::Models::PasswordCredentialListResult
@@ -66,14 +69,13 @@ module Azure::Profiles::Latest
       KeyCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
       ServicePrincipalBase = Azure::GraphRbac::V1_6::Models::ServicePrincipalBase
       PreAuthorizedApplicationPermission = Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationPermission
-      PermissionsListResult = Azure::GraphRbac::V1_6::Models::PermissionsListResult
+      OAuth2PermissionGrantListResult = Azure::GraphRbac::V1_6::Models::OAuth2PermissionGrantListResult
       DirectoryObject = Azure::GraphRbac::V1_6::Models::DirectoryObject
-      RequiredResourceAccess = Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
-      DomainListResult = Azure::GraphRbac::V1_6::Models::DomainListResult
+      OAuth2PermissionGrant = Azure::GraphRbac::V1_6::Models::OAuth2PermissionGrant
     end
 
     class GraphRbacDataClass
-      attr_reader :service_principals, :objects, :oauth2, :users, :domains, :signed_in_user, :applications, :deleted_applications, :groups, :configurable, :base_url, :options, :model_classes
+      attr_reader :service_principals, :objects, :oauth2_permission_grant_operations, :oauth2, :domains, :users, :signed_in_user, :applications, :deleted_applications, :groups, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -85,9 +87,10 @@ module Azure::Profiles::Latest
         add_telemetry(@client_0)
         @service_principals = @client_0.service_principals
         @objects = @client_0.objects
+        @oauth2_permission_grant_operations = @client_0.oauth2_permission_grant_operations
         @oauth2 = @client_0.oauth2
-        @users = @client_0.users
         @domains = @client_0.domains
+        @users = @client_0.users
         @signed_in_user = @client_0.signed_in_user
         @applications = @client_0.applications
         @deleted_applications = @client_0.deleted_applications
@@ -110,6 +113,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def required_resource_access
+          Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
+        end
+        def domain_list_result
+          Azure::GraphRbac::V1_6::Models::DomainListResult
+        end
         def add_owner_parameters
           Azure::GraphRbac::V1_6::Models::AddOwnerParameters
         end
@@ -155,11 +164,14 @@ module Azure::Profiles::Latest
         def service_principal
           Azure::GraphRbac::V1_6::Models::ServicePrincipal
         end
+        def user_update_parameters
+          Azure::GraphRbac::V1_6::Models::UserUpdateParameters
+        end
         def user_type
           Azure::GraphRbac::V1_6::Models::UserType
         end
-        def user_update_parameters
-          Azure::GraphRbac::V1_6::Models::UserUpdateParameters
+        def consent_type
+          Azure::GraphRbac::V1_6::Models::ConsentType
         end
         def domain
           Azure::GraphRbac::V1_6::Models::Domain
@@ -178,9 +190,6 @@ module Azure::Profiles::Latest
         end
         def user
           Azure::GraphRbac::V1_6::Models::User
-        end
-        def permissions
-          Azure::GraphRbac::V1_6::Models::Permissions
         end
         def user_create_parameters
           Azure::GraphRbac::V1_6::Models::UserCreateParameters
@@ -257,17 +266,14 @@ module Azure::Profiles::Latest
         def pre_authorized_application_permission
           Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationPermission
         end
-        def permissions_list_result
-          Azure::GraphRbac::V1_6::Models::PermissionsListResult
+        def oauth2_permission_grant_list_result
+          Azure::GraphRbac::V1_6::Models::OAuth2PermissionGrantListResult
         end
         def directory_object
           Azure::GraphRbac::V1_6::Models::DirectoryObject
         end
-        def required_resource_access
-          Azure::GraphRbac::V1_6::Models::RequiredResourceAccess
-        end
-        def domain_list_result
-          Azure::GraphRbac::V1_6::Models::DomainListResult
+        def oauth2_permission_grant
+          Azure::GraphRbac::V1_6::Models::OAuth2PermissionGrant
         end
       end
     end

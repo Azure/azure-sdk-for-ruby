@@ -12,7 +12,8 @@ module Azure::Profiles::Latest
       Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
 
       module Models
-        MetricSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
+        SignalRUsage = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
+        SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
         TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
         RegenerateKeyParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
         Resource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
@@ -28,15 +29,14 @@ module Azure::Profiles::Latest
         NameAvailabilityParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
         SignalRCreateOrUpdateProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateOrUpdateProperties
         SignalRKeys = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys
-        OperationProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
         Dimension = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
-        NameAvailability = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
+        OperationProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
+        MetricSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
         SignalRUpdateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
         SignalRUsageName = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageName
         SignalRResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
         SignalRCreateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
-        SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
-        SignalRUsage = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
+        NameAvailability = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
       end
 
       class SignalrManagementClass
@@ -71,8 +71,11 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def metric_specification
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
+          def signal_rusage
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
+          end
+          def signal_rsku_tier
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
           end
           def tracked_resource
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
@@ -119,14 +122,14 @@ module Azure::Profiles::Latest
           def signal_rkeys
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys
           end
-          def operation_properties
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
-          end
           def dimension
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
           end
-          def name_availability
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
+          def operation_properties
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
+          end
+          def metric_specification
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
           end
           def signal_rupdate_parameters
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
@@ -140,11 +143,8 @@ module Azure::Profiles::Latest
           def signal_rcreate_parameters
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
           end
-          def signal_rsku_tier
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
-          end
-          def signal_rusage
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
+          def name_availability
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
           end
         end
       end

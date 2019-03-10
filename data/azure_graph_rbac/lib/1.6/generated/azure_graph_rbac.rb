@@ -28,6 +28,7 @@ module Azure::GraphRbac::V1_6
   autoload :Users,                                              '1.6/generated/azure_graph_rbac/users.rb'
   autoload :Objects,                                            '1.6/generated/azure_graph_rbac/objects.rb'
   autoload :Domains,                                            '1.6/generated/azure_graph_rbac/domains.rb'
+  autoload :OAuth2PermissionGrantOperations,                    '1.6/generated/azure_graph_rbac/oauth2permission_grant_operations.rb'
   autoload :OAuth2,                                             '1.6/generated/azure_graph_rbac/oauth2.rb'
   autoload :GraphRbacClient,                                    '1.6/generated/azure_graph_rbac/graph_rbac_client.rb'
 
@@ -57,9 +58,9 @@ module Azure::GraphRbac::V1_6
     autoload :KeyCredentialsUpdateParameters,                     '1.6/generated/azure_graph_rbac/models/key_credentials_update_parameters.rb'
     autoload :ServicePrincipalBase,                               '1.6/generated/azure_graph_rbac/models/service_principal_base.rb'
     autoload :PreAuthorizedApplicationPermission,                 '1.6/generated/azure_graph_rbac/models/pre_authorized_application_permission.rb'
-    autoload :PermissionsListResult,                              '1.6/generated/azure_graph_rbac/models/permissions_list_result.rb'
+    autoload :OAuth2PermissionGrantListResult,                    '1.6/generated/azure_graph_rbac/models/oauth2permission_grant_list_result.rb'
     autoload :DirectoryObject,                                    '1.6/generated/azure_graph_rbac/models/directory_object.rb'
-    autoload :Permissions,                                        '1.6/generated/azure_graph_rbac/models/permissions.rb'
+    autoload :OAuth2PermissionGrant,                              '1.6/generated/azure_graph_rbac/models/oauth2permission_grant.rb'
     autoload :RequiredResourceAccess,                             '1.6/generated/azure_graph_rbac/models/required_resource_access.rb'
     autoload :DomainListResult,                                   '1.6/generated/azure_graph_rbac/models/domain_list_result.rb'
     autoload :AddOwnerParameters,                                 '1.6/generated/azure_graph_rbac/models/add_owner_parameters.rb'
@@ -85,5 +86,6 @@ module Azure::GraphRbac::V1_6
     autoload :UserUpdateParameters,                               '1.6/generated/azure_graph_rbac/models/user_update_parameters.rb'
     autoload :User,                                               '1.6/generated/azure_graph_rbac/models/user.rb'
     autoload :UserType,                                           '1.6/generated/azure_graph_rbac/models/user_type.rb'
+    autoload :ConsentType,                                        '1.6/generated/azure_graph_rbac/models/consent_type.rb'
   end
 end
