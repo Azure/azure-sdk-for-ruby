@@ -9,7 +9,6 @@ module Azure::Profiles::Latest
     Local = Azure::CognitiveServices::LocalSearch::V1_0::Local
 
     module Models
-      SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
       Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
       PostalAddress = Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
@@ -32,8 +31,9 @@ module Azure::Profiles::Latest
       EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
       Response = Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
       EntityType = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
-      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       ErrorSubCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
+      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
+      SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
       Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
     end
 
@@ -67,9 +67,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def search_response
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
-        end
         def entities_entity_presentation_info
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
         end
@@ -136,11 +133,14 @@ module Azure::Profiles::Latest
         def entity_type
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
         end
+        def error_sub_code
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
+        end
         def action
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
         end
-        def error_sub_code
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
+        def search_response
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
         end
         def error
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Error

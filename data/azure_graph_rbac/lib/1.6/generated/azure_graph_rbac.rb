@@ -29,7 +29,6 @@ module Azure::GraphRbac::V1_6
   autoload :Objects,                                            '1.6/generated/azure_graph_rbac/objects.rb'
   autoload :Domains,                                            '1.6/generated/azure_graph_rbac/domains.rb'
   autoload :OAuth2PermissionGrantOperations,                    '1.6/generated/azure_graph_rbac/oauth2permission_grant_operations.rb'
-  autoload :OAuth2,                                             '1.6/generated/azure_graph_rbac/oauth2.rb'
   autoload :GraphRbacClient,                                    '1.6/generated/azure_graph_rbac/graph_rbac_client.rb'
 
   module Models

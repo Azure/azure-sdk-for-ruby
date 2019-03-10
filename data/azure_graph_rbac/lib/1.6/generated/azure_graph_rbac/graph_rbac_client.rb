@@ -62,9 +62,6 @@ module Azure::GraphRbac::V1_6
     # oauth2permission_grant_operations
     attr_reader :oauth2permission_grant_operations
 
-    # @return [OAuth2] oauth2
-    attr_reader :oauth2
-
     #
     # Creates initializes a new instance of the GraphRbacClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -87,7 +84,6 @@ module Azure::GraphRbac::V1_6
       @objects = Objects.new(self)
       @domains = Domains.new(self)
       @oauth2permission_grant_operations = OAuth2PermissionGrantOperations.new(self)
-      @oauth2 = OAuth2.new(self)
       @api_version = '1.6'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
