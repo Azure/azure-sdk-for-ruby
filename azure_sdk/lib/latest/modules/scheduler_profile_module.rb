@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       JobCollections = Azure::Scheduler::Mgmt::V2016_03_01::JobCollections
 
       module Models
+        Sku = Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
         JobRecurrence = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrence
         JobCollectionQuota = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionQuota
         JobCollectionDefinition = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionDefinition
@@ -54,7 +55,6 @@ module Azure::Profiles::Latest
         JobProperties = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobProperties
         BasicAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::BasicAuthentication
         JobStatus = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStatus
-        Sku = Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
       end
 
       class SchedulerManagementClass
@@ -88,6 +88,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
+          end
           def job_recurrence
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrence
           end
@@ -216,9 +219,6 @@ module Azure::Profiles::Latest
           end
           def job_status
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStatus
-          end
-          def sku
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
           end
         end
       end
