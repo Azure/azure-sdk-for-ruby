@@ -7,10 +7,15 @@ require 'azure_mgmt_dns'
 module Azure::Profiles::Latest
   module Dns
     module Mgmt
-      RecordSets = Azure::Dns::Mgmt::V2018_03_01_preview::RecordSets
       Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
+      RecordSets = Azure::Dns::Mgmt::V2018_03_01_preview::RecordSets
 
       module Models
+        SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
+        CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
+        RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
+        ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
+        TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
         NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
         SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
         TrackedResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
@@ -29,15 +34,10 @@ module Azure::Profiles::Latest
         ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
         MxRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
         PtrRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
-        SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
-        CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
-        RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
-        ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
-        TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
       end
 
       class DnsManagementClass
-        attr_reader :record_sets, :zones, :configurable, :base_url, :options, :model_classes
+        attr_reader :zones, :record_sets, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -47,8 +47,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @record_sets = @client_0.record_sets
           @zones = @client_0.zones
+          @record_sets = @client_0.record_sets
 
           @model_classes = ModelClasses.new
         end
@@ -67,6 +67,21 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def srv_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
+          end
+          def cname_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
+          end
+          def record_set
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
+          end
+          def zone_list_result
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
+          end
+          def txt_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
+          end
           def ns_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
           end
@@ -120,21 +135,6 @@ module Azure::Profiles::Latest
           end
           def ptr_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
-          end
-          def srv_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
-          end
-          def cname_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
-          end
-          def record_set
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
-          end
-          def zone_list_result
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
-          end
-          def txt_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
           end
         end
       end

@@ -11,6 +11,12 @@ module Azure::Profiles::Latest
       Operations = Azure::AnalysisServices::Mgmt::V2017_08_01::Operations
 
       module Models
+        GatewayDetails = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayDetails
+        CheckServerNameAvailabilityResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
+        IPv4FirewallSettings = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
+        ErrorResponse = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
+        ServerAdministrators = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
+        SkuEnumerationForNewResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
         SkuDetailsForExistingResource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuDetailsForExistingResource
         IPv4FirewallRule = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallRule
         SkuEnumerationForExistingResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForExistingResourceResult
@@ -18,9 +24,9 @@ module Azure::Profiles::Latest
         ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
         OperationStatus = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
         Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
+        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
         ProvisioningState = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
         OperationDisplay = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
-        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
         Operation = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
         OperationListResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
         Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
@@ -32,12 +38,6 @@ module Azure::Profiles::Latest
         GatewayListStatusError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusError
         AnalysisServicesServers = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServers
         CheckServerNameAvailabilityParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityParameters
-        GatewayDetails = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayDetails
-        CheckServerNameAvailabilityResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
-        IPv4FirewallSettings = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
-        ErrorResponse = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
-        ServerAdministrators = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
-        SkuEnumerationForNewResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
       end
 
       class AnalysisServicesManagementClass
@@ -71,6 +71,24 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def gateway_details
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayDetails
+          end
+          def check_server_name_availability_result
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
+          end
+          def ipv4_firewall_settings
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
+          end
+          def error_response
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
+          end
+          def server_administrators
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
+          end
+          def sku_enumeration_for_new_resource_result
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
+          end
           def sku_details_for_existing_resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuDetailsForExistingResource
           end
@@ -92,14 +110,14 @@ module Azure::Profiles::Latest
           def resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
           end
+          def state
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
+          end
           def provisioning_state
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
           end
           def operation_display
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
-          end
-          def state
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
           end
           def operation
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
@@ -133,24 +151,6 @@ module Azure::Profiles::Latest
           end
           def check_server_name_availability_parameters
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityParameters
-          end
-          def gateway_details
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayDetails
-          end
-          def check_server_name_availability_result
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
-          end
-          def ipv4_firewall_settings
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
-          end
-          def error_response
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
-          end
-          def server_administrators
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
-          end
-          def sku_enumeration_for_new_resource_result
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
           end
         end
       end
