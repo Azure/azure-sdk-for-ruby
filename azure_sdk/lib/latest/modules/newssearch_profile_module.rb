@@ -9,14 +9,15 @@ module Azure::Profiles::Latest
     NewsOperations = Azure::CognitiveServices::NewsSearch::V1_0::NewsOperations
 
     module Models
+      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
       Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
       TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
-      Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+      Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
@@ -32,7 +33,6 @@ module Azure::Profiles::Latest
       ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
       CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
       Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-      ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
     end
 
     class NewsSearchDataClass
@@ -65,6 +65,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def error_response
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
+        end
         def query
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
         end
@@ -83,11 +86,11 @@ module Azure::Profiles::Latest
         def text_format
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
         end
-        def organization
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
-        end
         def response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+        end
+        def organization
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
         end
         def response_base
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
@@ -133,9 +136,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-        end
-        def error_response
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
         end
       end
     end
