@@ -47,6 +47,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @return [CheckSkuAvailability] check_sku_availability
     attr_reader :check_sku_availability
 
+    # @return [Account] account
+    attr_reader :account
+
     #
     # Creates initializes a new instance of the CognitiveServicesManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -64,6 +67,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       @resource_skus = ResourceSkus.new(self)
       @operations = Operations.new(self)
       @check_sku_availability = CheckSkuAvailability.new(self)
+      @account = Account.new(self)
       @api_version = '2017-04-18'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

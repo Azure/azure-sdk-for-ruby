@@ -11,6 +11,8 @@ module Azure::Profiles::Latest
       RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
 
       module Models
+        RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
+        AggregationGranularity = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
         ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
         MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
         ResourceRateCardInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
@@ -21,8 +23,6 @@ module Azure::Profiles::Latest
         RateCardQueryParameters = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
         MonetaryCredit = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
         MonetaryCommitment = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
-        RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
-        AggregationGranularity = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
       end
 
       class CommerceManagementClass
@@ -56,6 +56,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def recurring_charge
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
+          end
+          def aggregation_granularity
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
+          end
           def error_response
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
           end
@@ -85,12 +91,6 @@ module Azure::Profiles::Latest
           end
           def monetary_commitment
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
-          end
-          def recurring_charge
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
-          end
-          def aggregation_granularity
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
           end
         end
       end

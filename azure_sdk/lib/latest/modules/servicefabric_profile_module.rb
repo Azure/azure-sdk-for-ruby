@@ -7,7 +7,6 @@ require 'azure_service_fabric'
 
 module Azure::Profiles::Latest
   module ServiceFabric
-    MeshSecret = Azure::ServiceFabric::V6_4_0_36::MeshSecret
     MeshSecretValue = Azure::ServiceFabric::V6_4_0_36::MeshSecretValue
     MeshVolume = Azure::ServiceFabric::V6_4_0_36::MeshVolume
     MeshNetwork = Azure::ServiceFabric::V6_4_0_36::MeshNetwork
@@ -16,8 +15,24 @@ module Azure::Profiles::Latest
     MeshCodePackage = Azure::ServiceFabric::V6_4_0_36::MeshCodePackage
     MeshServiceReplica = Azure::ServiceFabric::V6_4_0_36::MeshServiceReplica
     MeshGateway = Azure::ServiceFabric::V6_4_0_36::MeshGateway
+    MeshSecret = Azure::ServiceFabric::V6_4_0_36::MeshSecret
 
     module Models
+      ResourceLimits = Azure::ServiceFabric::V6_4_0_36::Models::ResourceLimits
+      ChaosCodePackageRestartScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosCodePackageRestartScheduledEvent
+      ChaosStoppedEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosStoppedEvent
+      ChaosStartedEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosStartedEvent
+      EnvironmentVariable = Azure::ServiceFabric::V6_4_0_36::Models::EnvironmentVariable
+      ChaosReplicaRemovalScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosReplicaRemovalScheduledEvent
+      ChaosPartitionSecondaryMoveScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosPartitionSecondaryMoveScheduledEvent
+      ChaosPartitionPrimaryMoveScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosPartitionPrimaryMoveScheduledEvent
+      ChaosReplicaRestartScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosReplicaRestartScheduledEvent
+      ChaosNodeRestartScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosNodeRestartScheduledEvent
+      SecretResourceProperties = Azure::ServiceFabric::V6_4_0_36::Models::SecretResourceProperties
+      InlinedValueSecretResourceProperties = Azure::ServiceFabric::V6_4_0_36::Models::InlinedValueSecretResourceProperties
+      ApplicationScopedVolume = Azure::ServiceFabric::V6_4_0_36::Models::ApplicationScopedVolume
+      ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk = Azure::ServiceFabric::V6_4_0_36::Models::ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk
+      NetworkResourceProperties = Azure::ServiceFabric::V6_4_0_36::Models::NetworkResourceProperties
       LocalNetworkResourceProperties = Azure::ServiceFabric::V6_4_0_36::Models::LocalNetworkResourceProperties
       AzureInternalMonitoringPipelineSinkDescription = Azure::ServiceFabric::V6_4_0_36::Models::AzureInternalMonitoringPipelineSinkDescription
       AddRemoveReplicaScalingMechanism = Azure::ServiceFabric::V6_4_0_36::Models::AddRemoveReplicaScalingMechanism
@@ -33,20 +48,20 @@ module Azure::Profiles::Latest
       UpgradeKind = Azure::ServiceFabric::V6_4_0_36::Models::UpgradeKind
       FailureAction = Azure::ServiceFabric::V6_4_0_36::Models::FailureAction
       UpgradeDomainState = Azure::ServiceFabric::V6_4_0_36::Models::UpgradeDomainState
-      UpgradeMode = Azure::ServiceFabric::V6_4_0_36::Models::UpgradeMode
+      NodeUpgradePhase = Azure::ServiceFabric::V6_4_0_36::Models::NodeUpgradePhase
       FailureReason = Azure::ServiceFabric::V6_4_0_36::Models::FailureReason
       DeactivationIntent = Azure::ServiceFabric::V6_4_0_36::Models::DeactivationIntent
       DeployedApplicationStatus = Azure::ServiceFabric::V6_4_0_36::Models::DeployedApplicationStatus
-      NodeUpgradePhase = Azure::ServiceFabric::V6_4_0_36::Models::NodeUpgradePhase
+      ReplicaStatus = Azure::ServiceFabric::V6_4_0_36::Models::ReplicaStatus
       ReplicaRole = Azure::ServiceFabric::V6_4_0_36::Models::ReplicaRole
       ReconfigurationPhase = Azure::ServiceFabric::V6_4_0_36::Models::ReconfigurationPhase
       ReconfigurationType = Azure::ServiceFabric::V6_4_0_36::Models::ReconfigurationType
       UpgradeState = Azure::ServiceFabric::V6_4_0_36::Models::UpgradeState
-      FabricEventKind = Azure::ServiceFabric::V6_4_0_36::Models::FabricEventKind
+      UpgradeMode = Azure::ServiceFabric::V6_4_0_36::Models::UpgradeMode
       HealthEvaluationKind = Azure::ServiceFabric::V6_4_0_36::Models::HealthEvaluationKind
       NodeDeactivationIntent = Azure::ServiceFabric::V6_4_0_36::Models::NodeDeactivationIntent
       EntityKind = Azure::ServiceFabric::V6_4_0_36::Models::EntityKind
-      ReplicaStatus = Azure::ServiceFabric::V6_4_0_36::Models::ReplicaStatus
+      FabricEventKind = Azure::ServiceFabric::V6_4_0_36::Models::FabricEventKind
       NodeStatus = Azure::ServiceFabric::V6_4_0_36::Models::NodeStatus
       ServicePartitionStatus = Azure::ServiceFabric::V6_4_0_36::Models::ServicePartitionStatus
       NodeDeactivationStatus = Azure::ServiceFabric::V6_4_0_36::Models::NodeDeactivationStatus
@@ -59,39 +74,39 @@ module Azure::Profiles::Latest
       ServicePartitionKind = Azure::ServiceFabric::V6_4_0_36::Models::ServicePartitionKind
       CreateFabricDump = Azure::ServiceFabric::V6_4_0_36::Models::CreateFabricDump
       ServicePackageActivationMode = Azure::ServiceFabric::V6_4_0_36::Models::ServicePackageActivationMode
-      HostType = Azure::ServiceFabric::V6_4_0_36::Models::HostType
+      HostIsolationMode = Azure::ServiceFabric::V6_4_0_36::Models::HostIsolationMode
       DeploymentStatus = Azure::ServiceFabric::V6_4_0_36::Models::DeploymentStatus
       ServicePlacementPolicyType = Azure::ServiceFabric::V6_4_0_36::Models::ServicePlacementPolicyType
       ServiceLoadMetricWeight = Azure::ServiceFabric::V6_4_0_36::Models::ServiceLoadMetricWeight
-      HostIsolationMode = Azure::ServiceFabric::V6_4_0_36::Models::HostIsolationMode
+      ChaosScheduleStatus = Azure::ServiceFabric::V6_4_0_36::Models::ChaosScheduleStatus
       ChaosEventKind = Azure::ServiceFabric::V6_4_0_36::Models::ChaosEventKind
       EntryPointStatus = Azure::ServiceFabric::V6_4_0_36::Models::EntryPointStatus
       ChaosStatus = Azure::ServiceFabric::V6_4_0_36::Models::ChaosStatus
-      ChaosScheduleStatus = Azure::ServiceFabric::V6_4_0_36::Models::ChaosScheduleStatus
+      ServiceCorrelationScheme = Azure::ServiceFabric::V6_4_0_36::Models::ServiceCorrelationScheme
       MoveCost = Azure::ServiceFabric::V6_4_0_36::Models::MoveCost
       ComposeDeploymentStatus = Azure::ServiceFabric::V6_4_0_36::Models::ComposeDeploymentStatus
       ComposeDeploymentUpgradeState = Azure::ServiceFabric::V6_4_0_36::Models::ComposeDeploymentUpgradeState
-      ServiceCorrelationScheme = Azure::ServiceFabric::V6_4_0_36::Models::ServiceCorrelationScheme
+      ReplicatorOperationName = Azure::ServiceFabric::V6_4_0_36::Models::ReplicatorOperationName
       PartitionAccessStatus = Azure::ServiceFabric::V6_4_0_36::Models::PartitionAccessStatus
       PartitionScheme = Azure::ServiceFabric::V6_4_0_36::Models::PartitionScheme
       ServiceOperationName = Azure::ServiceFabric::V6_4_0_36::Models::ServiceOperationName
-      ReplicatorOperationName = Azure::ServiceFabric::V6_4_0_36::Models::ReplicatorOperationName
+      ServiceTypeRegistrationStatus = Azure::ServiceFabric::V6_4_0_36::Models::ServiceTypeRegistrationStatus
       ServiceEndpointRole = Azure::ServiceFabric::V6_4_0_36::Models::ServiceEndpointRole
       FabricReplicaStatus = Azure::ServiceFabric::V6_4_0_36::Models::FabricReplicaStatus
       ReplicaKind = Azure::ServiceFabric::V6_4_0_36::Models::ReplicaKind
-      ServiceTypeRegistrationStatus = Azure::ServiceFabric::V6_4_0_36::Models::ServiceTypeRegistrationStatus
-      PropertyValueKind = Azure::ServiceFabric::V6_4_0_36::Models::PropertyValueKind
-      OperationState = Azure::ServiceFabric::V6_4_0_36::Models::OperationState
-      OperationType = Azure::ServiceFabric::V6_4_0_36::Models::OperationType
       PackageSharingPolicyScope = Azure::ServiceFabric::V6_4_0_36::Models::PackageSharingPolicyScope
+      PropertyValueKind = Azure::ServiceFabric::V6_4_0_36::Models::PropertyValueKind
+      HostType = Azure::ServiceFabric::V6_4_0_36::Models::HostType
+      OperationType = Azure::ServiceFabric::V6_4_0_36::Models::OperationType
+      RetentionPolicyType = Azure::ServiceFabric::V6_4_0_36::Models::RetentionPolicyType
       BackupStorageKind = Azure::ServiceFabric::V6_4_0_36::Models::BackupStorageKind
       PropertyBatchOperationKind = Azure::ServiceFabric::V6_4_0_36::Models::PropertyBatchOperationKind
-      PropertyBatchInfoKind = Azure::ServiceFabric::V6_4_0_36::Models::PropertyBatchInfoKind
-      RetentionPolicyType = Azure::ServiceFabric::V6_4_0_36::Models::RetentionPolicyType
+      OperationState = Azure::ServiceFabric::V6_4_0_36::Models::OperationState
+      BackupSuspensionScope = Azure::ServiceFabric::V6_4_0_36::Models::BackupSuspensionScope
       RestoreState = Azure::ServiceFabric::V6_4_0_36::Models::RestoreState
       BackupScheduleKind = Azure::ServiceFabric::V6_4_0_36::Models::BackupScheduleKind
       BackupPolicyScope = Azure::ServiceFabric::V6_4_0_36::Models::BackupPolicyScope
-      BackupSuspensionScope = Azure::ServiceFabric::V6_4_0_36::Models::BackupSuspensionScope
+      PropertyBatchInfoKind = Azure::ServiceFabric::V6_4_0_36::Models::PropertyBatchInfoKind
       DayOfWeek = Azure::ServiceFabric::V6_4_0_36::Models::DayOfWeek
       BackupScheduleFrequencyType = Azure::ServiceFabric::V6_4_0_36::Models::BackupScheduleFrequencyType
       BackupState = Azure::ServiceFabric::V6_4_0_36::Models::BackupState
@@ -579,25 +594,10 @@ module Azure::Profiles::Latest
       ClusterUpgradeRollbackStartedEvent = Azure::ServiceFabric::V6_4_0_36::Models::ClusterUpgradeRollbackStartedEvent
       ClusterUpgradeStartedEvent = Azure::ServiceFabric::V6_4_0_36::Models::ClusterUpgradeStartedEvent
       ImageRegistryCredential = Azure::ServiceFabric::V6_4_0_36::Models::ImageRegistryCredential
-      ResourceLimits = Azure::ServiceFabric::V6_4_0_36::Models::ResourceLimits
-      ChaosCodePackageRestartScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosCodePackageRestartScheduledEvent
-      ChaosStoppedEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosStoppedEvent
-      ChaosStartedEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosStartedEvent
-      EnvironmentVariable = Azure::ServiceFabric::V6_4_0_36::Models::EnvironmentVariable
-      ChaosReplicaRemovalScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosReplicaRemovalScheduledEvent
-      ChaosPartitionSecondaryMoveScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosPartitionSecondaryMoveScheduledEvent
-      ChaosPartitionPrimaryMoveScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosPartitionPrimaryMoveScheduledEvent
-      ChaosReplicaRestartScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosReplicaRestartScheduledEvent
-      ChaosNodeRestartScheduledEvent = Azure::ServiceFabric::V6_4_0_36::Models::ChaosNodeRestartScheduledEvent
-      SecretResourceProperties = Azure::ServiceFabric::V6_4_0_36::Models::SecretResourceProperties
-      InlinedValueSecretResourceProperties = Azure::ServiceFabric::V6_4_0_36::Models::InlinedValueSecretResourceProperties
-      ApplicationScopedVolume = Azure::ServiceFabric::V6_4_0_36::Models::ApplicationScopedVolume
-      ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk = Azure::ServiceFabric::V6_4_0_36::Models::ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk
-      NetworkResourceProperties = Azure::ServiceFabric::V6_4_0_36::Models::NetworkResourceProperties
     end
 
     class ServiceFabricDataClass
-      attr_reader :mesh_secret, :mesh_secret_value, :mesh_volume, :mesh_network, :mesh_application, :mesh_service, :mesh_code_package, :mesh_service_replica, :mesh_gateway, :configurable, :base_url, :options, :model_classes
+      attr_reader :mesh_secret_value, :mesh_volume, :mesh_network, :mesh_application, :mesh_service, :mesh_code_package, :mesh_service_replica, :mesh_gateway, :mesh_secret, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -607,7 +607,6 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @mesh_secret = @client_0.mesh_secret
         @mesh_secret_value = @client_0.mesh_secret_value
         @mesh_volume = @client_0.mesh_volume
         @mesh_network = @client_0.mesh_network
@@ -616,6 +615,7 @@ module Azure::Profiles::Latest
         @mesh_code_package = @client_0.mesh_code_package
         @mesh_service_replica = @client_0.mesh_service_replica
         @mesh_gateway = @client_0.mesh_gateway
+        @mesh_secret = @client_0.mesh_secret
 
         @model_classes = ModelClasses.new
       end
@@ -634,6 +634,51 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def resource_limits
+          Azure::ServiceFabric::V6_4_0_36::Models::ResourceLimits
+        end
+        def chaos_code_package_restart_scheduled_event
+          Azure::ServiceFabric::V6_4_0_36::Models::ChaosCodePackageRestartScheduledEvent
+        end
+        def chaos_stopped_event
+          Azure::ServiceFabric::V6_4_0_36::Models::ChaosStoppedEvent
+        end
+        def chaos_started_event
+          Azure::ServiceFabric::V6_4_0_36::Models::ChaosStartedEvent
+        end
+        def environment_variable
+          Azure::ServiceFabric::V6_4_0_36::Models::EnvironmentVariable
+        end
+        def chaos_replica_removal_scheduled_event
+          Azure::ServiceFabric::V6_4_0_36::Models::ChaosReplicaRemovalScheduledEvent
+        end
+        def chaos_partition_secondary_move_scheduled_event
+          Azure::ServiceFabric::V6_4_0_36::Models::ChaosPartitionSecondaryMoveScheduledEvent
+        end
+        def chaos_partition_primary_move_scheduled_event
+          Azure::ServiceFabric::V6_4_0_36::Models::ChaosPartitionPrimaryMoveScheduledEvent
+        end
+        def chaos_replica_restart_scheduled_event
+          Azure::ServiceFabric::V6_4_0_36::Models::ChaosReplicaRestartScheduledEvent
+        end
+        def chaos_node_restart_scheduled_event
+          Azure::ServiceFabric::V6_4_0_36::Models::ChaosNodeRestartScheduledEvent
+        end
+        def secret_resource_properties
+          Azure::ServiceFabric::V6_4_0_36::Models::SecretResourceProperties
+        end
+        def inlined_value_secret_resource_properties
+          Azure::ServiceFabric::V6_4_0_36::Models::InlinedValueSecretResourceProperties
+        end
+        def application_scoped_volume
+          Azure::ServiceFabric::V6_4_0_36::Models::ApplicationScopedVolume
+        end
+        def application_scoped_volume_creation_parameters_service_fabric_volume_disk
+          Azure::ServiceFabric::V6_4_0_36::Models::ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk
+        end
+        def network_resource_properties
+          Azure::ServiceFabric::V6_4_0_36::Models::NetworkResourceProperties
+        end
         def local_network_resource_properties
           Azure::ServiceFabric::V6_4_0_36::Models::LocalNetworkResourceProperties
         end
@@ -679,8 +724,8 @@ module Azure::Profiles::Latest
         def upgrade_domain_state
           Azure::ServiceFabric::V6_4_0_36::Models::UpgradeDomainState
         end
-        def upgrade_mode
-          Azure::ServiceFabric::V6_4_0_36::Models::UpgradeMode
+        def node_upgrade_phase
+          Azure::ServiceFabric::V6_4_0_36::Models::NodeUpgradePhase
         end
         def failure_reason
           Azure::ServiceFabric::V6_4_0_36::Models::FailureReason
@@ -691,8 +736,8 @@ module Azure::Profiles::Latest
         def deployed_application_status
           Azure::ServiceFabric::V6_4_0_36::Models::DeployedApplicationStatus
         end
-        def node_upgrade_phase
-          Azure::ServiceFabric::V6_4_0_36::Models::NodeUpgradePhase
+        def replica_status
+          Azure::ServiceFabric::V6_4_0_36::Models::ReplicaStatus
         end
         def replica_role
           Azure::ServiceFabric::V6_4_0_36::Models::ReplicaRole
@@ -706,8 +751,8 @@ module Azure::Profiles::Latest
         def upgrade_state
           Azure::ServiceFabric::V6_4_0_36::Models::UpgradeState
         end
-        def fabric_event_kind
-          Azure::ServiceFabric::V6_4_0_36::Models::FabricEventKind
+        def upgrade_mode
+          Azure::ServiceFabric::V6_4_0_36::Models::UpgradeMode
         end
         def health_evaluation_kind
           Azure::ServiceFabric::V6_4_0_36::Models::HealthEvaluationKind
@@ -718,8 +763,8 @@ module Azure::Profiles::Latest
         def entity_kind
           Azure::ServiceFabric::V6_4_0_36::Models::EntityKind
         end
-        def replica_status
-          Azure::ServiceFabric::V6_4_0_36::Models::ReplicaStatus
+        def fabric_event_kind
+          Azure::ServiceFabric::V6_4_0_36::Models::FabricEventKind
         end
         def node_status
           Azure::ServiceFabric::V6_4_0_36::Models::NodeStatus
@@ -757,8 +802,8 @@ module Azure::Profiles::Latest
         def service_package_activation_mode
           Azure::ServiceFabric::V6_4_0_36::Models::ServicePackageActivationMode
         end
-        def host_type
-          Azure::ServiceFabric::V6_4_0_36::Models::HostType
+        def host_isolation_mode
+          Azure::ServiceFabric::V6_4_0_36::Models::HostIsolationMode
         end
         def deployment_status
           Azure::ServiceFabric::V6_4_0_36::Models::DeploymentStatus
@@ -769,8 +814,8 @@ module Azure::Profiles::Latest
         def service_load_metric_weight
           Azure::ServiceFabric::V6_4_0_36::Models::ServiceLoadMetricWeight
         end
-        def host_isolation_mode
-          Azure::ServiceFabric::V6_4_0_36::Models::HostIsolationMode
+        def chaos_schedule_status
+          Azure::ServiceFabric::V6_4_0_36::Models::ChaosScheduleStatus
         end
         def chaos_event_kind
           Azure::ServiceFabric::V6_4_0_36::Models::ChaosEventKind
@@ -781,8 +826,8 @@ module Azure::Profiles::Latest
         def chaos_status
           Azure::ServiceFabric::V6_4_0_36::Models::ChaosStatus
         end
-        def chaos_schedule_status
-          Azure::ServiceFabric::V6_4_0_36::Models::ChaosScheduleStatus
+        def service_correlation_scheme
+          Azure::ServiceFabric::V6_4_0_36::Models::ServiceCorrelationScheme
         end
         def move_cost
           Azure::ServiceFabric::V6_4_0_36::Models::MoveCost
@@ -793,8 +838,8 @@ module Azure::Profiles::Latest
         def compose_deployment_upgrade_state
           Azure::ServiceFabric::V6_4_0_36::Models::ComposeDeploymentUpgradeState
         end
-        def service_correlation_scheme
-          Azure::ServiceFabric::V6_4_0_36::Models::ServiceCorrelationScheme
+        def replicator_operation_name
+          Azure::ServiceFabric::V6_4_0_36::Models::ReplicatorOperationName
         end
         def partition_access_status
           Azure::ServiceFabric::V6_4_0_36::Models::PartitionAccessStatus
@@ -805,8 +850,8 @@ module Azure::Profiles::Latest
         def service_operation_name
           Azure::ServiceFabric::V6_4_0_36::Models::ServiceOperationName
         end
-        def replicator_operation_name
-          Azure::ServiceFabric::V6_4_0_36::Models::ReplicatorOperationName
+        def service_type_registration_status
+          Azure::ServiceFabric::V6_4_0_36::Models::ServiceTypeRegistrationStatus
         end
         def service_endpoint_role
           Azure::ServiceFabric::V6_4_0_36::Models::ServiceEndpointRole
@@ -817,20 +862,20 @@ module Azure::Profiles::Latest
         def replica_kind
           Azure::ServiceFabric::V6_4_0_36::Models::ReplicaKind
         end
-        def service_type_registration_status
-          Azure::ServiceFabric::V6_4_0_36::Models::ServiceTypeRegistrationStatus
+        def package_sharing_policy_scope
+          Azure::ServiceFabric::V6_4_0_36::Models::PackageSharingPolicyScope
         end
         def property_value_kind
           Azure::ServiceFabric::V6_4_0_36::Models::PropertyValueKind
         end
-        def operation_state
-          Azure::ServiceFabric::V6_4_0_36::Models::OperationState
+        def host_type
+          Azure::ServiceFabric::V6_4_0_36::Models::HostType
         end
         def operation_type
           Azure::ServiceFabric::V6_4_0_36::Models::OperationType
         end
-        def package_sharing_policy_scope
-          Azure::ServiceFabric::V6_4_0_36::Models::PackageSharingPolicyScope
+        def retention_policy_type
+          Azure::ServiceFabric::V6_4_0_36::Models::RetentionPolicyType
         end
         def backup_storage_kind
           Azure::ServiceFabric::V6_4_0_36::Models::BackupStorageKind
@@ -838,11 +883,11 @@ module Azure::Profiles::Latest
         def property_batch_operation_kind
           Azure::ServiceFabric::V6_4_0_36::Models::PropertyBatchOperationKind
         end
-        def property_batch_info_kind
-          Azure::ServiceFabric::V6_4_0_36::Models::PropertyBatchInfoKind
+        def operation_state
+          Azure::ServiceFabric::V6_4_0_36::Models::OperationState
         end
-        def retention_policy_type
-          Azure::ServiceFabric::V6_4_0_36::Models::RetentionPolicyType
+        def backup_suspension_scope
+          Azure::ServiceFabric::V6_4_0_36::Models::BackupSuspensionScope
         end
         def restore_state
           Azure::ServiceFabric::V6_4_0_36::Models::RestoreState
@@ -853,8 +898,8 @@ module Azure::Profiles::Latest
         def backup_policy_scope
           Azure::ServiceFabric::V6_4_0_36::Models::BackupPolicyScope
         end
-        def backup_suspension_scope
-          Azure::ServiceFabric::V6_4_0_36::Models::BackupSuspensionScope
+        def property_batch_info_kind
+          Azure::ServiceFabric::V6_4_0_36::Models::PropertyBatchInfoKind
         end
         def day_of_week
           Azure::ServiceFabric::V6_4_0_36::Models::DayOfWeek
@@ -2317,70 +2362,30 @@ module Azure::Profiles::Latest
         def image_registry_credential
           Azure::ServiceFabric::V6_4_0_36::Models::ImageRegistryCredential
         end
-        def resource_limits
-          Azure::ServiceFabric::V6_4_0_36::Models::ResourceLimits
-        end
-        def chaos_code_package_restart_scheduled_event
-          Azure::ServiceFabric::V6_4_0_36::Models::ChaosCodePackageRestartScheduledEvent
-        end
-        def chaos_stopped_event
-          Azure::ServiceFabric::V6_4_0_36::Models::ChaosStoppedEvent
-        end
-        def chaos_started_event
-          Azure::ServiceFabric::V6_4_0_36::Models::ChaosStartedEvent
-        end
-        def environment_variable
-          Azure::ServiceFabric::V6_4_0_36::Models::EnvironmentVariable
-        end
-        def chaos_replica_removal_scheduled_event
-          Azure::ServiceFabric::V6_4_0_36::Models::ChaosReplicaRemovalScheduledEvent
-        end
-        def chaos_partition_secondary_move_scheduled_event
-          Azure::ServiceFabric::V6_4_0_36::Models::ChaosPartitionSecondaryMoveScheduledEvent
-        end
-        def chaos_partition_primary_move_scheduled_event
-          Azure::ServiceFabric::V6_4_0_36::Models::ChaosPartitionPrimaryMoveScheduledEvent
-        end
-        def chaos_replica_restart_scheduled_event
-          Azure::ServiceFabric::V6_4_0_36::Models::ChaosReplicaRestartScheduledEvent
-        end
-        def chaos_node_restart_scheduled_event
-          Azure::ServiceFabric::V6_4_0_36::Models::ChaosNodeRestartScheduledEvent
-        end
-        def secret_resource_properties
-          Azure::ServiceFabric::V6_4_0_36::Models::SecretResourceProperties
-        end
-        def inlined_value_secret_resource_properties
-          Azure::ServiceFabric::V6_4_0_36::Models::InlinedValueSecretResourceProperties
-        end
-        def application_scoped_volume
-          Azure::ServiceFabric::V6_4_0_36::Models::ApplicationScopedVolume
-        end
-        def application_scoped_volume_creation_parameters_service_fabric_volume_disk
-          Azure::ServiceFabric::V6_4_0_36::Models::ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk
-        end
-        def network_resource_properties
-          Azure::ServiceFabric::V6_4_0_36::Models::NetworkResourceProperties
-        end
       end
     end
     module Mgmt
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
       Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
-      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
       Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
-      Clusters = Azure::ServiceFabric::Mgmt::V2018_02_01::Clusters
+      Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2018_02_01::ClusterVersions
       Operations = Azure::ServiceFabric::Mgmt::V2018_02_01::Operations
+      Clusters = Azure::ServiceFabric::Mgmt::V2018_02_01::Clusters
 
       module Models
-        ApplicationUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationUpgradePolicy
-        VersionResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResourceList
-        ServiceResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceList
+        ServiceLoadMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
+        PartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
+        RollingUpgradeMonitoringPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
+        ApplicationTypeResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
+        ApplicationResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
         ProxyResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
-        NamedPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NamedPartitionSchemeDescription
+        ApplicationUpgradePolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationUpgradePolicy
+        ServiceResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceList
+        VersionResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResourceList
         SingletonPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SingletonPartitionSchemeDescription
         UniformInt64RangePartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::UniformInt64RangePartitionSchemeDescription
+        NamedPartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NamedPartitionSchemeDescription
         ApplicationTypeResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResource
         VersionResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResource
         ApplicationResource = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResource
@@ -2399,33 +2404,9 @@ module Azure::Profiles::Latest
         ServiceCorrelationDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceCorrelationDescription
         ServicePlacementPolicyDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServicePlacementPolicyDescription
         ApplicationParameter = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
-        ServiceLoadMetricDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
-        PartitionSchemeDescription = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
-        RollingUpgradeMonitoringPolicy = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
-        ApplicationTypeResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
-        ApplicationResourceList = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
-        ClusterVersionDetails = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterVersionDetails
-        SettingsParameterDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsParameterDescription
-        ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
-        SettingsSectionDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsSectionDescription
-        EndpointRangeDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::EndpointRangeDescription
-        NodeTypeDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::NodeTypeDescription
-        Resource = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Resource
-        OperationListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationListResult
-        ProvisioningState = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ProvisioningState
-        OperationResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationResult
-        ClusterListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterListResult
-        CertificateDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::CertificateDescription
-        ErrorModel = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModel
-        Cluster = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Cluster
-        ServerCertificateCommonNames = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonNames
-        ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
-        ApplicationDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
-        ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpdateParameters
         ErrorModelError = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModelError
-        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
         ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsResult
-        ServerCertificateCommonName = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonName
+        ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
         DiagnosticsStorageAccountConfig = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::DiagnosticsStorageAccountConfig
         ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradePolicy
         AvailableOperationDisplay = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AvailableOperationDisplay
@@ -2435,10 +2416,29 @@ module Azure::Profiles::Latest
         ClientCertificateCommonName = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
         ClientCertificateThumbprint = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateThumbprint
         ClusterUpgradeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradeDeltaHealthPolicy
+        ClusterVersionDetails = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterVersionDetails
+        SettingsParameterDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsParameterDescription
+        SettingsSectionDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsSectionDescription
+        EndpointRangeDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::EndpointRangeDescription
+        Resource = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Resource
+        NodeTypeDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::NodeTypeDescription
+        OperationListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationListResult
+        ProvisioningState = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ProvisioningState
+        OperationResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationResult
+        ClusterListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterListResult
+        CertificateDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::CertificateDescription
+        ErrorModel = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModel
+        Cluster = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Cluster
+        ServerCertificateCommonNames = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonNames
+        ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
+        ServerCertificateCommonName = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonName
+        ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpdateParameters
+        ApplicationDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
+        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
       end
 
       class ServiceFabricManagementClass
-        attr_reader :application_type, :service, :application, :version, :clusters, :cluster_versions, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :application_type, :service, :version, :application, :cluster_versions, :operations, :clusters, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -2450,17 +2450,17 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @application_type = @client_0.application_type
           @service = @client_0.service
-          @application = @client_0.application
           @version = @client_0.version
+          @application = @client_0.application
 
           @client_1 = Azure::ServiceFabric::Mgmt::V2018_02_01::ServiceFabricManagementClient.new(configurable.credentials, base_url, options)
           if(@client_1.respond_to?(:subscription_id))
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @clusters = @client_1.clusters
           @cluster_versions = @client_1.cluster_versions
           @operations = @client_1.operations
+          @clusters = @client_1.clusters
 
           @model_classes = ModelClasses.new
         end
@@ -2481,26 +2481,41 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def application_upgrade_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationUpgradePolicy
+          def service_load_metric_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
           end
-          def version_resource_list
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResourceList
+          def partition_scheme_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
           end
-          def service_resource_list
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceList
+          def rolling_upgrade_monitoring_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
+          end
+          def application_type_resource_list
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
+          end
+          def application_resource_list
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
           end
           def proxy_resource
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ProxyResource
           end
-          def named_partition_scheme_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NamedPartitionSchemeDescription
+          def application_upgrade_policy
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationUpgradePolicy
+          end
+          def service_resource_list
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceResourceList
+          end
+          def version_resource_list
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::VersionResourceList
           end
           def singleton_partition_scheme_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::SingletonPartitionSchemeDescription
           end
           def uniform_int64_range_partition_scheme_description
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::UniformInt64RangePartitionSchemeDescription
+          end
+          def named_partition_scheme_description
+            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::NamedPartitionSchemeDescription
           end
           def application_type_resource
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResource
@@ -2556,20 +2571,41 @@ module Azure::Profiles::Latest
           def application_parameter
             Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationParameter
           end
-          def service_load_metric_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ServiceLoadMetricDescription
+          def error_model_error
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModelError
           end
-          def partition_scheme_description
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::PartitionSchemeDescription
+          def cluster_code_versions_result
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsResult
           end
-          def rolling_upgrade_monitoring_policy
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::RollingUpgradeMonitoringPolicy
+          def application_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
           end
-          def application_type_resource_list
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationTypeResourceList
+          def diagnostics_storage_account_config
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::DiagnosticsStorageAccountConfig
           end
-          def application_resource_list
-            Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Models::ApplicationResourceList
+          def cluster_upgrade_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradePolicy
+          end
+          def available_operation_display
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AvailableOperationDisplay
+          end
+          def cluster_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterHealthPolicy
+          end
+          def azure_active_directory
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AzureActiveDirectory
+          end
+          def service_type_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeHealthPolicy
+          end
+          def client_certificate_common_name
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
+          end
+          def client_certificate_thumbprint
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateThumbprint
+          end
+          def cluster_upgrade_delta_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradeDeltaHealthPolicy
           end
           def cluster_version_details
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterVersionDetails
@@ -2577,20 +2613,17 @@ module Azure::Profiles::Latest
           def settings_parameter_description
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsParameterDescription
           end
-          def application_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
-          end
           def settings_section_description
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::SettingsSectionDescription
           end
           def endpoint_range_description
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::EndpointRangeDescription
           end
-          def node_type_description
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::NodeTypeDescription
-          end
           def resource
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Resource
+          end
+          def node_type_description
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::NodeTypeDescription
           end
           def operation_list_result
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationListResult
@@ -2619,50 +2652,17 @@ module Azure::Profiles::Latest
           def service_type_delta_health_policy
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
           end
-          def application_delta_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
+          def server_certificate_common_name
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonName
           end
           def cluster_update_parameters
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpdateParameters
           end
-          def error_model_error
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModelError
+          def application_delta_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
           end
           def cluster_code_versions_list_result
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
-          end
-          def cluster_code_versions_result
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsResult
-          end
-          def server_certificate_common_name
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonName
-          end
-          def diagnostics_storage_account_config
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::DiagnosticsStorageAccountConfig
-          end
-          def cluster_upgrade_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradePolicy
-          end
-          def available_operation_display
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AvailableOperationDisplay
-          end
-          def cluster_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterHealthPolicy
-          end
-          def azure_active_directory
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::AzureActiveDirectory
-          end
-          def service_type_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeHealthPolicy
-          end
-          def client_certificate_common_name
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateCommonName
-          end
-          def client_certificate_thumbprint
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClientCertificateThumbprint
-          end
-          def cluster_upgrade_delta_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradeDeltaHealthPolicy
           end
         end
       end
