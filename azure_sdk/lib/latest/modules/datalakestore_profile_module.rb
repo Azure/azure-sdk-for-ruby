@@ -7,12 +7,12 @@ require 'azure_mgmt_datalake_store'
 module Azure::Profiles::Latest
   module DataLakeStore
     module Mgmt
-      FirewallRules = Azure::DataLakeStore::Mgmt::V2016_11_01::FirewallRules
-      Accounts = Azure::DataLakeStore::Mgmt::V2016_11_01::Accounts
-      Locations = Azure::DataLakeStore::Mgmt::V2016_11_01::Locations
       VirtualNetworkRules = Azure::DataLakeStore::Mgmt::V2016_11_01::VirtualNetworkRules
       TrustedIdProviders = Azure::DataLakeStore::Mgmt::V2016_11_01::TrustedIdProviders
       Operations = Azure::DataLakeStore::Mgmt::V2016_11_01::Operations
+      FirewallRules = Azure::DataLakeStore::Mgmt::V2016_11_01::FirewallRules
+      Accounts = Azure::DataLakeStore::Mgmt::V2016_11_01::Accounts
+      Locations = Azure::DataLakeStore::Mgmt::V2016_11_01::Locations
 
       module Models
         EncryptionIdentity = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionIdentity
@@ -38,9 +38,9 @@ module Azure::Profiles::Latest
         DataLakeStoreAccountBasic = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountBasic
         TrustedIdProvider = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
         EncryptionConfigType = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
-        EncryptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
         EncryptionProvisioningState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionProvisioningState
         TrustedIdProviderState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
+        EncryptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
         DataLakeStoreAccountStatus = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
         DataLakeStoreAccountState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
         SubscriptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubscriptionState
@@ -65,7 +65,7 @@ module Azure::Profiles::Latest
       end
 
       class DataLakeStoreManagementClass
-        attr_reader :firewall_rules, :accounts, :locations, :virtual_network_rules, :trusted_id_providers, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :virtual_network_rules, :trusted_id_providers, :operations, :firewall_rules, :accounts, :locations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -75,12 +75,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @firewall_rules = @client_0.firewall_rules
-          @accounts = @client_0.accounts
-          @locations = @client_0.locations
           @virtual_network_rules = @client_0.virtual_network_rules
           @trusted_id_providers = @client_0.trusted_id_providers
           @operations = @client_0.operations
+          @firewall_rules = @client_0.firewall_rules
+          @accounts = @client_0.accounts
+          @locations = @client_0.locations
 
           @model_classes = ModelClasses.new
         end
@@ -168,14 +168,14 @@ module Azure::Profiles::Latest
           def encryption_config_type
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
           end
-          def encryption_state
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
-          end
           def encryption_provisioning_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionProvisioningState
           end
           def trusted_id_provider_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
+          end
+          def encryption_state
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
           end
           def data_lake_store_account_status
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus

@@ -7,15 +7,16 @@ require 'azure_mgmt_recovery_services'
 module Azure::Profiles::Latest
   module RecoveryServices
     module Mgmt
+      Vaults = Azure::RecoveryServices::Mgmt::V2016_06_01::Vaults
+      Operations = Azure::RecoveryServices::Mgmt::V2016_06_01::Operations
       VaultCertificates = Azure::RecoveryServices::Mgmt::V2016_06_01::VaultCertificates
       RegisteredIdentities = Azure::RecoveryServices::Mgmt::V2016_06_01::RegisteredIdentities
       ReplicationUsages = Azure::RecoveryServices::Mgmt::V2016_06_01::ReplicationUsages
       VaultExtendedInfoOperations = Azure::RecoveryServices::Mgmt::V2016_06_01::VaultExtendedInfoOperations
       Usages = Azure::RecoveryServices::Mgmt::V2016_06_01::Usages
-      Vaults = Azure::RecoveryServices::Mgmt::V2016_06_01::Vaults
-      Operations = Azure::RecoveryServices::Mgmt::V2016_06_01::Operations
 
       module Models
+        Sku = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
         TrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
         Resource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
         ClientDiscoveryValueForSingleApi = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
@@ -49,11 +50,10 @@ module Azure::Profiles::Latest
         VaultUpgradeState = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUpgradeState
         TriggerType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TriggerType
         UsagesUnit = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UsagesUnit
-        Sku = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
       end
 
       class RecoveryServicesManagementClass
-        attr_reader :vault_certificates, :registered_identities, :replication_usages, :vault_extended_info_operations, :usages, :vaults, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :vaults, :operations, :vault_certificates, :registered_identities, :replication_usages, :vault_extended_info_operations, :usages, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -63,13 +63,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @vaults = @client_0.vaults
+          @operations = @client_0.operations
           @vault_certificates = @client_0.vault_certificates
           @registered_identities = @client_0.registered_identities
           @replication_usages = @client_0.replication_usages
           @vault_extended_info_operations = @client_0.vault_extended_info_operations
           @usages = @client_0.usages
-          @vaults = @client_0.vaults
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -88,6 +88,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
+          end
           def tracked_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
           end
@@ -186,9 +189,6 @@ module Azure::Profiles::Latest
           end
           def usages_unit
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UsagesUnit
-          end
-          def sku
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
           end
         end
       end

@@ -7,6 +7,10 @@ require 'azure_mgmt_logic'
 module Azure::Profiles::Latest
   module Logic
     module Mgmt
+      Workflows = Azure::Logic::Mgmt::V2018_07_01_preview::Workflows
+      WorkflowVersions = Azure::Logic::Mgmt::V2018_07_01_preview::WorkflowVersions
+      WorkflowTriggers = Azure::Logic::Mgmt::V2018_07_01_preview::WorkflowTriggers
+      WorkflowVersionTriggers = Azure::Logic::Mgmt::V2018_07_01_preview::WorkflowVersionTriggers
       WorkflowTriggerHistories = Azure::Logic::Mgmt::V2018_07_01_preview::WorkflowTriggerHistories
       WorkflowRuns = Azure::Logic::Mgmt::V2018_07_01_preview::WorkflowRuns
       WorkflowRunActions = Azure::Logic::Mgmt::V2018_07_01_preview::WorkflowRunActions
@@ -25,10 +29,6 @@ module Azure::Profiles::Latest
       IntegrationAccountCertificates = Azure::Logic::Mgmt::V2018_07_01_preview::IntegrationAccountCertificates
       IntegrationAccountSessions = Azure::Logic::Mgmt::V2018_07_01_preview::IntegrationAccountSessions
       Operations = Azure::Logic::Mgmt::V2018_07_01_preview::Operations
-      Workflows = Azure::Logic::Mgmt::V2018_07_01_preview::Workflows
-      WorkflowVersions = Azure::Logic::Mgmt::V2018_07_01_preview::WorkflowVersions
-      WorkflowTriggers = Azure::Logic::Mgmt::V2018_07_01_preview::WorkflowTriggers
-      WorkflowVersionTriggers = Azure::Logic::Mgmt::V2018_07_01_preview::WorkflowVersionTriggers
 
       module Models
         ErrorResponse = Azure::Logic::Mgmt::V2018_07_01_preview::Models::ErrorResponse
@@ -162,53 +162,53 @@ module Azure::Profiles::Latest
         IntegrationAccountCertificate = Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountCertificate
         IntegrationAccountPartner = Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountPartner
         ExpressionRoot = Azure::Logic::Mgmt::V2018_07_01_preview::Models::ExpressionRoot
-        AzureResourceErrorInfo = Azure::Logic::Mgmt::V2018_07_01_preview::Models::AzureResourceErrorInfo
+        Request = Azure::Logic::Mgmt::V2018_07_01_preview::Models::Request
         IntegrationAccountSession = Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountSession
         RunActionCorrelation = Azure::Logic::Mgmt::V2018_07_01_preview::Models::RunActionCorrelation
-        AssemblyDefinition = Azure::Logic::Mgmt::V2018_07_01_preview::Models::AssemblyDefinition
+        AzureResourceErrorInfo = Azure::Logic::Mgmt::V2018_07_01_preview::Models::AzureResourceErrorInfo
         WorkflowRunActionRepetitionDefinition = Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowRunActionRepetitionDefinition
         AssemblyProperties = Azure::Logic::Mgmt::V2018_07_01_preview::Models::AssemblyProperties
-        Request = Azure::Logic::Mgmt::V2018_07_01_preview::Models::Request
+        AssemblyDefinition = Azure::Logic::Mgmt::V2018_07_01_preview::Models::AssemblyDefinition
         BatchConfigurationProperties = Azure::Logic::Mgmt::V2018_07_01_preview::Models::BatchConfigurationProperties
         RequestHistory = Azure::Logic::Mgmt::V2018_07_01_preview::Models::RequestHistory
         WorkflowProvisioningState = Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowProvisioningState
         KeyVaultReference = Azure::Logic::Mgmt::V2018_07_01_preview::Models::KeyVaultReference
         WorkflowState = Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowState
-        WorkflowTriggerProvisioningState = Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowTriggerProvisioningState
+        ParameterType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::ParameterType
         BatchConfiguration = Azure::Logic::Mgmt::V2018_07_01_preview::Models::BatchConfiguration
         ArtifactContentPropertiesDefinition = Azure::Logic::Mgmt::V2018_07_01_preview::Models::ArtifactContentPropertiesDefinition
         RecurrenceFrequency = Azure::Logic::Mgmt::V2018_07_01_preview::Models::RecurrenceFrequency
         WorkflowStatus = Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowStatus
-        ParameterType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::ParameterType
         IntegrationAccountSkuName = Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountSkuName
-        DayOfWeek = Azure::Logic::Mgmt::V2018_07_01_preview::Models::DayOfWeek
+        Response = Azure::Logic::Mgmt::V2018_07_01_preview::Models::Response
+        SchemaType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SchemaType
         MapType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::MapType
         DaysOfWeek = Azure::Logic::Mgmt::V2018_07_01_preview::Models::DaysOfWeek
+        DayOfWeek = Azure::Logic::Mgmt::V2018_07_01_preview::Models::DayOfWeek
+        HashingAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::HashingAlgorithm
         AgreementType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::AgreementType
-        EncryptionAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EncryptionAlgorithm
-        Response = Azure::Logic::Mgmt::V2018_07_01_preview::Models::Response
-        TrailingSeparatorPolicy = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrailingSeparatorPolicy
-        PartnerType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::PartnerType
         SigningAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SigningAlgorithm
-        SchemaType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SchemaType
+        EncryptionAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EncryptionAlgorithm
+        WorkflowTriggerProvisioningState = Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowTriggerProvisioningState
+        SegmentTerminatorSuffix = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SegmentTerminatorSuffix
         X12CharacterSet = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12CharacterSet
         KeyType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::KeyType
         X12DateFormat = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12DateFormat
         OperationResult = Azure::Logic::Mgmt::V2018_07_01_preview::Models::OperationResult
-        UsageIndicator = Azure::Logic::Mgmt::V2018_07_01_preview::Models::UsageIndicator
-        MessageFilterType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::MessageFilterType
-        X12TimeFormat = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12TimeFormat
-        EdifactDecimalIndicator = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactDecimalIndicator
-        HashingAlgorithm = Azure::Logic::Mgmt::V2018_07_01_preview::Models::HashingAlgorithm
         EdifactCharacterSet = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactCharacterSet
-        TrackingRecordType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackingRecordType
+        MessageFilterType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::MessageFilterType
+        PartnerType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::PartnerType
+        EdifactDecimalIndicator = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactDecimalIndicator
         TrackEventsOperationOptions = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackEventsOperationOptions
         EventLevel = Azure::Logic::Mgmt::V2018_07_01_preview::Models::EventLevel
-        SegmentTerminatorSuffix = Azure::Logic::Mgmt::V2018_07_01_preview::Models::SegmentTerminatorSuffix
+        X12TimeFormat = Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12TimeFormat
+        TrailingSeparatorPolicy = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrailingSeparatorPolicy
+        TrackingRecordType = Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackingRecordType
+        UsageIndicator = Azure::Logic::Mgmt::V2018_07_01_preview::Models::UsageIndicator
       end
 
       class LogicManagementClass
-        attr_reader :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :workflow_run_action_repetitions, :workflow_run_action_repetitions_request_histories, :workflow_run_action_request_histories, :workflow_run_action_scope_repetitions, :workflow_run_operations, :integration_accounts, :integration_account_assemblies, :integration_account_batch_configurations, :integration_account_schemas, :integration_account_maps, :integration_account_partners, :integration_account_agreements, :integration_account_certificates, :integration_account_sessions, :operations, :workflows, :workflow_versions, :workflow_triggers, :workflow_version_triggers, :configurable, :base_url, :options, :model_classes
+        attr_reader :workflows, :workflow_versions, :workflow_triggers, :workflow_version_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :workflow_run_action_repetitions, :workflow_run_action_repetitions_request_histories, :workflow_run_action_request_histories, :workflow_run_action_scope_repetitions, :workflow_run_operations, :integration_accounts, :integration_account_assemblies, :integration_account_batch_configurations, :integration_account_schemas, :integration_account_maps, :integration_account_partners, :integration_account_agreements, :integration_account_certificates, :integration_account_sessions, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -218,6 +218,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @workflows = @client_0.workflows
+          @workflow_versions = @client_0.workflow_versions
+          @workflow_triggers = @client_0.workflow_triggers
+          @workflow_version_triggers = @client_0.workflow_version_triggers
           @workflow_trigger_histories = @client_0.workflow_trigger_histories
           @workflow_runs = @client_0.workflow_runs
           @workflow_run_actions = @client_0.workflow_run_actions
@@ -236,10 +240,6 @@ module Azure::Profiles::Latest
           @integration_account_certificates = @client_0.integration_account_certificates
           @integration_account_sessions = @client_0.integration_account_sessions
           @operations = @client_0.operations
-          @workflows = @client_0.workflows
-          @workflow_versions = @client_0.workflow_versions
-          @workflow_triggers = @client_0.workflow_triggers
-          @workflow_version_triggers = @client_0.workflow_version_triggers
 
           @model_classes = ModelClasses.new
         end
@@ -651,8 +651,8 @@ module Azure::Profiles::Latest
           def expression_root
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::ExpressionRoot
           end
-          def azure_resource_error_info
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::AzureResourceErrorInfo
+          def request
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::Request
           end
           def integration_account_session
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountSession
@@ -660,8 +660,8 @@ module Azure::Profiles::Latest
           def run_action_correlation
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::RunActionCorrelation
           end
-          def assembly_definition
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::AssemblyDefinition
+          def azure_resource_error_info
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::AzureResourceErrorInfo
           end
           def workflow_run_action_repetition_definition
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowRunActionRepetitionDefinition
@@ -669,8 +669,8 @@ module Azure::Profiles::Latest
           def assembly_properties
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::AssemblyProperties
           end
-          def request
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::Request
+          def assembly_definition
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::AssemblyDefinition
           end
           def batch_configuration_properties
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::BatchConfigurationProperties
@@ -687,8 +687,8 @@ module Azure::Profiles::Latest
           def workflow_state
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowState
           end
-          def workflow_trigger_provisioning_state
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowTriggerProvisioningState
+          def parameter_type
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::ParameterType
           end
           def batch_configuration
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::BatchConfiguration
@@ -702,14 +702,14 @@ module Azure::Profiles::Latest
           def workflow_status
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowStatus
           end
-          def parameter_type
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::ParameterType
-          end
           def integration_account_sku_name
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::IntegrationAccountSkuName
           end
-          def day_of_week
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::DayOfWeek
+          def response
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::Response
+          end
+          def schema_type
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::SchemaType
           end
           def map_type
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::MapType
@@ -717,26 +717,26 @@ module Azure::Profiles::Latest
           def days_of_week
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::DaysOfWeek
           end
+          def day_of_week
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::DayOfWeek
+          end
+          def hashing_algorithm
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::HashingAlgorithm
+          end
           def agreement_type
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::AgreementType
-          end
-          def encryption_algorithm
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::EncryptionAlgorithm
-          end
-          def response
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::Response
-          end
-          def trailing_separator_policy
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrailingSeparatorPolicy
-          end
-          def partner_type
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::PartnerType
           end
           def signing_algorithm
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::SigningAlgorithm
           end
-          def schema_type
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::SchemaType
+          def encryption_algorithm
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::EncryptionAlgorithm
+          end
+          def workflow_trigger_provisioning_state
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::WorkflowTriggerProvisioningState
+          end
+          def segment_terminator_suffix
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::SegmentTerminatorSuffix
           end
           def x12_character_set
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12CharacterSet
@@ -750,26 +750,17 @@ module Azure::Profiles::Latest
           def operation_result
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::OperationResult
           end
-          def usage_indicator
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::UsageIndicator
+          def edifact_character_set
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactCharacterSet
           end
           def message_filter_type
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::MessageFilterType
           end
-          def x12_time_format
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12TimeFormat
+          def partner_type
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::PartnerType
           end
           def edifact_decimal_indicator
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactDecimalIndicator
-          end
-          def hashing_algorithm
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::HashingAlgorithm
-          end
-          def edifact_character_set
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::EdifactCharacterSet
-          end
-          def tracking_record_type
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackingRecordType
           end
           def track_events_operation_options
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackEventsOperationOptions
@@ -777,8 +768,17 @@ module Azure::Profiles::Latest
           def event_level
             Azure::Logic::Mgmt::V2018_07_01_preview::Models::EventLevel
           end
-          def segment_terminator_suffix
-            Azure::Logic::Mgmt::V2018_07_01_preview::Models::SegmentTerminatorSuffix
+          def x12_time_format
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::X12TimeFormat
+          end
+          def trailing_separator_policy
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrailingSeparatorPolicy
+          end
+          def tracking_record_type
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::TrackingRecordType
+          end
+          def usage_indicator
+            Azure::Logic::Mgmt::V2018_07_01_preview::Models::UsageIndicator
           end
         end
       end

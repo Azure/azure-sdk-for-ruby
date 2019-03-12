@@ -187,12 +187,12 @@ module Azure::Profiles::Latest
       end
     end
     module Mgmt
-      Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
       DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
       Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
+      Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
 
       module Models
         TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
@@ -204,8 +204,8 @@ module Azure::Profiles::Latest
         DomainSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainSharedAccessKeys
         EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionUpdateParameters
         TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicRegenerateKeyRequest
+        OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
         DomainTopicsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopicsListResult
-        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
         AdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::AdvancedFilter
         JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::JsonFieldWithDefault
         RetryPolicy = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::RetryPolicy
@@ -219,8 +219,8 @@ module Azure::Profiles::Latest
         EventTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventTypesListResult
         EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
         TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
-        OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
         Domain = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
+        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
         DomainTopic = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
         NumberInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberInAdvancedFilter
         StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageBlobDeadLetterDestination
@@ -256,7 +256,7 @@ module Azure::Profiles::Latest
       end
 
       class EventGridManagementClass
-        attr_reader :domains, :domain_topics, :event_subscriptions, :operations, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
+        attr_reader :domain_topics, :event_subscriptions, :operations, :topics, :topic_types, :domains, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -266,12 +266,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @domains = @client_0.domains
           @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
           @operations = @client_0.operations
           @topics = @client_0.topics
           @topic_types = @client_0.topic_types
+          @domains = @client_0.domains
 
           @model_classes = ModelClasses.new
         end
@@ -317,11 +317,11 @@ module Azure::Profiles::Latest
           def topic_regenerate_key_request
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicRegenerateKeyRequest
           end
+          def operations_list_result
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
+          end
           def domain_topics_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopicsListResult
-          end
-          def topic_update_parameters
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
           end
           def advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::AdvancedFilter
@@ -362,11 +362,11 @@ module Azure::Profiles::Latest
           def topic_types_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
           end
-          def operations_list_result
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
-          end
           def domain
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
+          end
+          def topic_update_parameters
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicUpdateParameters
           end
           def domain_topic
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic

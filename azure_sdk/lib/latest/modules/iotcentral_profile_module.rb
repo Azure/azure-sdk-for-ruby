@@ -11,6 +11,9 @@ module Azure::Profiles::Latest
       Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
 
       module Models
+        ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
+        OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
+        Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
         ErrorResponseBody = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
         OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
         AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
@@ -21,9 +24,6 @@ module Azure::Profiles::Latest
         App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
         AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
         Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
-        ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
-        OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
-        Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
       end
 
       class IotCentralManagementClass
@@ -57,6 +57,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_details
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
+          end
+          def operation_display
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
+          end
+          def operation
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
+          end
           def error_response_body
             Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
           end
@@ -86,15 +95,6 @@ module Azure::Profiles::Latest
           end
           def resource
             Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
-          end
-          def error_details
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
-          end
-          def operation_display
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
-          end
-          def operation
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
           end
         end
       end

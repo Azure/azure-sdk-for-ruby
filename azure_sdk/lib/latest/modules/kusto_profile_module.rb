@@ -7,10 +7,10 @@ require 'azure_mgmt_kusto'
 module Azure::Profiles::Latest
   module Kusto
     module Mgmt
-      Databases = Azure::Kusto::Mgmt::V2018_09_07_preview::Databases
       EventHubConnections = Azure::Kusto::Mgmt::V2018_09_07_preview::EventHubConnections
       Operations = Azure::Kusto::Mgmt::V2018_09_07_preview::Operations
       Clusters = Azure::Kusto::Mgmt::V2018_09_07_preview::Clusters
+      Databases = Azure::Kusto::Mgmt::V2018_09_07_preview::Databases
 
       module Models
         DatabasePrincipalListResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalListResult
@@ -42,11 +42,11 @@ module Azure::Profiles::Latest
         Operation = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Operation
         DataFormat = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DataFormat
         OperationListResult = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::OperationListResult
-        ProvisioningState = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProvisioningState
         State = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::State
+        ProvisioningState = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProvisioningState
+        DatabasePrincipalRole = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalRole
         AzureEntityResource = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureEntityResource
         AzureScaleType = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
-        DatabasePrincipalRole = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalRole
         DatabasePrincipalType = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalType
         AzureSkuName = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureSkuName
         Database = Azure::Kusto::Mgmt::V2018_09_07_preview::Models::Database
@@ -55,7 +55,7 @@ module Azure::Profiles::Latest
       end
 
       class KustoManagementClass
-        attr_reader :databases, :event_hub_connections, :operations, :clusters, :configurable, :base_url, :options, :model_classes
+        attr_reader :event_hub_connections, :operations, :clusters, :databases, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -65,10 +65,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @databases = @client_0.databases
           @event_hub_connections = @client_0.event_hub_connections
           @operations = @client_0.operations
           @clusters = @client_0.clusters
+          @databases = @client_0.databases
 
           @model_classes = ModelClasses.new
         end
@@ -174,20 +174,20 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::OperationListResult
           end
+          def state
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::State
+          end
           def provisioning_state
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::ProvisioningState
           end
-          def state
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::State
+          def database_principal_role
+            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalRole
           end
           def azure_entity_resource
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureEntityResource
           end
           def azure_scale_type
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::AzureScaleType
-          end
-          def database_principal_role
-            Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalRole
           end
           def database_principal_type
             Azure::Kusto::Mgmt::V2018_09_07_preview::Models::DatabasePrincipalType
