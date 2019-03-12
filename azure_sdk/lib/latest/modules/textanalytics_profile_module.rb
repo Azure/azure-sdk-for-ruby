@@ -8,6 +8,11 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
+      EntitiesBatchResultItemV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
+      InternalError = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
+      Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
+      EntitiesBatchResultV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
+      MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
       ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
       DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
       MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageInput
@@ -21,11 +26,6 @@ module Azure::Profiles::Latest
       MatchRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
       EntityRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
-      EntitiesBatchResultItemV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
-      InternalError = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
-      Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
-      EntitiesBatchResultV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
-      MultiLanguageBatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
     end
 
     class TextAnalyticsDataClass
@@ -57,6 +57,21 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def entities_batch_result_item_v2dot1
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
+        end
+        def internal_error
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
+        end
+        def input
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
+        end
+        def entities_batch_result_v2dot1
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
+        end
+        def multi_language_batch_input
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
+        end
         def error_response
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
         end
@@ -95,21 +110,6 @@ module Azure::Profiles::Latest
         end
         def entity_record_v2dot1
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
-        end
-        def entities_batch_result_item_v2dot1
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
-        end
-        def internal_error
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
-        end
-        def input
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
-        end
-        def entities_batch_result_v2dot1
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
-        end
-        def multi_language_batch_input
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageBatchInput
         end
       end
     end

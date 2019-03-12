@@ -9,6 +9,10 @@ module Azure::Profiles::Latest
     VideosOperations = Azure::CognitiveServices::VideoSearch::V1_0::VideosOperations
 
     module Models
+      Query = Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
+      ImageObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
+      MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
+      ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
       Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
       TrendingVideosCategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosCategory
       TrendingVideosSubcategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosSubcategory
@@ -26,21 +30,17 @@ module Azure::Profiles::Latest
       TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
       QueryContext = Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
       ResponseBase = Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
+      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       Answer = Azure::CognitiveServices::VideoSearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
       Thing = Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VideoSearch::V1_0::Models::CreativeWork
-      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       Identifiable = Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
       VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
       ErrorCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
       PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
-      Query = Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
-      ImageObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
-      MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-      ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
     end
 
     class VideoSearchDataClass
@@ -73,6 +73,18 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def query
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
+        end
+        def image_object
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
+        end
+        def media_object
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
+        end
+        def error_sub_code
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
+        end
         def freshness
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
         end
@@ -124,6 +136,9 @@ module Azure::Profiles::Latest
         def response_base
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
         end
+        def response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+        end
         def answer
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Answer
         end
@@ -135,9 +150,6 @@ module Azure::Profiles::Latest
         end
         def creative_work
           Azure::CognitiveServices::VideoSearch::V1_0::Models::CreativeWork
-        end
-        def response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
         end
         def identifiable
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
@@ -154,20 +166,8 @@ module Azure::Profiles::Latest
         def pivot_suggestions
           Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
         end
-        def query
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
-        end
-        def image_object
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
-        end
-        def media_object
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
-        end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-        end
-        def error_sub_code
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
         end
       end
     end

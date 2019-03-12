@@ -64,7 +64,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       # @return [String] Id of the timezone. Allowed values are timezones
       # supported by Windows.
-      # Winodws keeps details on supported timezones, including the id, in
+      # Windows keeps details on supported timezones, including the id, in
       # registry under
       # KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time
       # Zones.
