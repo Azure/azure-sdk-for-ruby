@@ -25,6 +25,20 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'ServicePrincipalUpdateParameters',
             model_properties: {
+              account_enabled: {
+                required: false,
+                serialized_name: 'accountEnabled',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_role_assignment_required: {
+                required: false,
+                serialized_name: 'appRoleAssignmentRequired',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               key_credentials: {
                 required: false,
                 serialized_name: 'keyCredentials',
@@ -58,13 +72,6 @@ module Azure::GraphRbac::V1_6
               service_principal_type: {
                 required: false,
                 serialized_name: 'servicePrincipalType',
-                type: {
-                  name: 'String'
-                }
-              },
-              account_enabled: {
-                required: false,
-                serialized_name: 'accountEnabled',
                 type: {
                   name: 'String'
                 }

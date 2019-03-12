@@ -11,6 +11,10 @@ module Azure::Profiles::Latest
       Operations = Azure::MachineLearning::Mgmt::V2017_01_01::Operations
 
       module Models
+        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
+        AssetItem = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
+        WebServiceParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
+        RealtimeConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::RealtimeConfiguration
         WebServiceProperties = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
         MachineLearningWorkspace = Azure::MachineLearning::Mgmt::V2017_01_01::Models::MachineLearningWorkspace
         CommitmentPlan = Azure::MachineLearning::Mgmt::V2017_01_01::Models::CommitmentPlan
@@ -47,10 +51,6 @@ module Azure::Profiles::Latest
         ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
         OutputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
         ParameterType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
-        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
-        AssetItem = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
-        WebServiceParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
-        RealtimeConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::RealtimeConfiguration
       end
 
       class MachineLearningManagementClass
@@ -84,6 +84,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def storage_account
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
+          end
+          def asset_item
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
+          end
+          def web_service_parameter
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
+          end
+          def realtime_configuration
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::RealtimeConfiguration
+          end
           def web_service_properties
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceProperties
           end
@@ -191,18 +203,6 @@ module Azure::Profiles::Latest
           end
           def parameter_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
-          end
-          def storage_account
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
-          end
-          def asset_item
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
-          end
-          def web_service_parameter
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
-          end
-          def realtime_configuration
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::RealtimeConfiguration
           end
         end
       end

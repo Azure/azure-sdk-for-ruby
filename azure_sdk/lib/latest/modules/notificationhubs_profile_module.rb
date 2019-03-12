@@ -12,6 +12,7 @@ module Azure::Profiles::Latest
       Namespaces = Azure::NotificationHubs::Mgmt::V2017_04_01::Namespaces
 
       module Models
+        Sku = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
         ErrorResponse = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
         ResourceListKeys = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ResourceListKeys
         PolicykeyResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::PolicykeyResource
@@ -45,7 +46,6 @@ module Azure::Profiles::Latest
         PnsCredentialsResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::PnsCredentialsResource
         AccessRights = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
         SkuName = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
-        Sku = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
       end
 
       class NotificationHubsManagementClass
@@ -80,6 +80,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
+          end
           def error_response
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
           end
@@ -178,9 +181,6 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
-          end
-          def sku
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
           end
         end
       end

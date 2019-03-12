@@ -49,9 +49,9 @@ module Azure::Profiles::Latest
       ExportFlavorModel = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportFlavorModel
       Region = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Region
       OrderBy = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::OrderBy
+      Tag = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Tag
       ImageTag = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTag
       Image = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Image
-      Tag = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Tag
       ImageUrl = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageUrl
       Project = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Project
     end
@@ -208,14 +208,14 @@ module Azure::Profiles::Latest
         def order_by
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::OrderBy
         end
+        def tag
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Tag
+        end
         def image_tag
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTag
         end
         def image
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Image
-        end
-        def tag
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Tag
         end
         def image_url
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageUrl

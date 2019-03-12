@@ -13,6 +13,15 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
+      # @return [String] whether or not the service principal account is
+      # enabled
+      attr_accessor :account_enabled
+
+      # @return [Boolean] Specifies whether an AppRoleAssignment to a user or
+      # group is required before Azure AD will issue a user or access token to
+      # the application.
+      attr_accessor :app_role_assignment_required
+
       # @return [Array<KeyCredential>] The collection of key credentials
       # associated with the service principal.
       attr_accessor :key_credentials
@@ -23,10 +32,6 @@ module Azure::GraphRbac::V1_6
 
       # @return [String] the type of the servie principal
       attr_accessor :service_principal_type
-
-      # @return [String] whether or not the service principal account is
-      # enabled
-      attr_accessor :account_enabled
 
       # @return [Array<String>] Optional list of tags that you can apply to
       # your service principals. Not nullable.
@@ -45,6 +50,20 @@ module Azure::GraphRbac::V1_6
             name: 'Composite',
             class_name: 'ServicePrincipalBase',
             model_properties: {
+              account_enabled: {
+                required: false,
+                serialized_name: 'accountEnabled',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_role_assignment_required: {
+                required: false,
+                serialized_name: 'appRoleAssignmentRequired',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               key_credentials: {
                 required: false,
                 serialized_name: 'keyCredentials',
@@ -78,13 +97,6 @@ module Azure::GraphRbac::V1_6
               service_principal_type: {
                 required: false,
                 serialized_name: 'servicePrincipalType',
-                type: {
-                  name: 'String'
-                }
-              },
-              account_enabled: {
-                required: false,
-                serialized_name: 'accountEnabled',
                 type: {
                   name: 'String'
                 }

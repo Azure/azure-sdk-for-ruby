@@ -7,17 +7,23 @@ require 'azure_service_fabric'
 
 module Azure::Profiles::Latest
   module ServiceFabric
-    MeshService = Azure::ServiceFabric::V6_4_0_36::MeshService
-    MeshCodePackage = Azure::ServiceFabric::V6_4_0_36::MeshCodePackage
-    MeshServiceReplica = Azure::ServiceFabric::V6_4_0_36::MeshServiceReplica
-    MeshGateway = Azure::ServiceFabric::V6_4_0_36::MeshGateway
     MeshSecret = Azure::ServiceFabric::V6_4_0_36::MeshSecret
     MeshSecretValue = Azure::ServiceFabric::V6_4_0_36::MeshSecretValue
     MeshVolume = Azure::ServiceFabric::V6_4_0_36::MeshVolume
     MeshNetwork = Azure::ServiceFabric::V6_4_0_36::MeshNetwork
     MeshApplication = Azure::ServiceFabric::V6_4_0_36::MeshApplication
+    MeshService = Azure::ServiceFabric::V6_4_0_36::MeshService
+    MeshCodePackage = Azure::ServiceFabric::V6_4_0_36::MeshCodePackage
+    MeshServiceReplica = Azure::ServiceFabric::V6_4_0_36::MeshServiceReplica
+    MeshGateway = Azure::ServiceFabric::V6_4_0_36::MeshGateway
 
     module Models
+      DeployedApplicationHealthReportExpiredEvent = Azure::ServiceFabric::V6_4_0_36::Models::DeployedApplicationHealthReportExpiredEvent
+      EnvironmentVariable = Azure::ServiceFabric::V6_4_0_36::Models::EnvironmentVariable
+      ApplicationContainerInstanceExitedEvent = Azure::ServiceFabric::V6_4_0_36::Models::ApplicationContainerInstanceExitedEvent
+      NodeAbortedEvent = Azure::ServiceFabric::V6_4_0_36::Models::NodeAbortedEvent
+      NodeAddedToClusterEvent = Azure::ServiceFabric::V6_4_0_36::Models::NodeAddedToClusterEvent
+      NodeClosedEvent = Azure::ServiceFabric::V6_4_0_36::Models::NodeClosedEvent
       NodeDeactivateCompletedEvent = Azure::ServiceFabric::V6_4_0_36::Models::NodeDeactivateCompletedEvent
       NodeDeactivateStartedEvent = Azure::ServiceFabric::V6_4_0_36::Models::NodeDeactivateStartedEvent
       NodeDownEvent = Azure::ServiceFabric::V6_4_0_36::Models::NodeDownEvent
@@ -588,16 +594,10 @@ module Azure::Profiles::Latest
       ResourceLimits = Azure::ServiceFabric::V6_4_0_36::Models::ResourceLimits
       ApplicationProcessExitedEvent = Azure::ServiceFabric::V6_4_0_36::Models::ApplicationProcessExitedEvent
       DeployedApplicationNewHealthReportEvent = Azure::ServiceFabric::V6_4_0_36::Models::DeployedApplicationNewHealthReportEvent
-      DeployedApplicationHealthReportExpiredEvent = Azure::ServiceFabric::V6_4_0_36::Models::DeployedApplicationHealthReportExpiredEvent
-      EnvironmentVariable = Azure::ServiceFabric::V6_4_0_36::Models::EnvironmentVariable
-      ApplicationContainerInstanceExitedEvent = Azure::ServiceFabric::V6_4_0_36::Models::ApplicationContainerInstanceExitedEvent
-      NodeAbortedEvent = Azure::ServiceFabric::V6_4_0_36::Models::NodeAbortedEvent
-      NodeAddedToClusterEvent = Azure::ServiceFabric::V6_4_0_36::Models::NodeAddedToClusterEvent
-      NodeClosedEvent = Azure::ServiceFabric::V6_4_0_36::Models::NodeClosedEvent
     end
 
     class ServiceFabricDataClass
-      attr_reader :mesh_service, :mesh_code_package, :mesh_service_replica, :mesh_gateway, :mesh_secret, :mesh_secret_value, :mesh_volume, :mesh_network, :mesh_application, :configurable, :base_url, :options, :model_classes
+      attr_reader :mesh_secret, :mesh_secret_value, :mesh_volume, :mesh_network, :mesh_application, :mesh_service, :mesh_code_package, :mesh_service_replica, :mesh_gateway, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -607,15 +607,15 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @mesh_service = @client_0.mesh_service
-        @mesh_code_package = @client_0.mesh_code_package
-        @mesh_service_replica = @client_0.mesh_service_replica
-        @mesh_gateway = @client_0.mesh_gateway
         @mesh_secret = @client_0.mesh_secret
         @mesh_secret_value = @client_0.mesh_secret_value
         @mesh_volume = @client_0.mesh_volume
         @mesh_network = @client_0.mesh_network
         @mesh_application = @client_0.mesh_application
+        @mesh_service = @client_0.mesh_service
+        @mesh_code_package = @client_0.mesh_code_package
+        @mesh_service_replica = @client_0.mesh_service_replica
+        @mesh_gateway = @client_0.mesh_gateway
 
         @model_classes = ModelClasses.new
       end
@@ -634,6 +634,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def deployed_application_health_report_expired_event
+          Azure::ServiceFabric::V6_4_0_36::Models::DeployedApplicationHealthReportExpiredEvent
+        end
+        def environment_variable
+          Azure::ServiceFabric::V6_4_0_36::Models::EnvironmentVariable
+        end
+        def application_container_instance_exited_event
+          Azure::ServiceFabric::V6_4_0_36::Models::ApplicationContainerInstanceExitedEvent
+        end
+        def node_aborted_event
+          Azure::ServiceFabric::V6_4_0_36::Models::NodeAbortedEvent
+        end
+        def node_added_to_cluster_event
+          Azure::ServiceFabric::V6_4_0_36::Models::NodeAddedToClusterEvent
+        end
+        def node_closed_event
+          Azure::ServiceFabric::V6_4_0_36::Models::NodeClosedEvent
+        end
         def node_deactivate_completed_event
           Azure::ServiceFabric::V6_4_0_36::Models::NodeDeactivateCompletedEvent
         end
@@ -2344,31 +2362,13 @@ module Azure::Profiles::Latest
         def deployed_application_new_health_report_event
           Azure::ServiceFabric::V6_4_0_36::Models::DeployedApplicationNewHealthReportEvent
         end
-        def deployed_application_health_report_expired_event
-          Azure::ServiceFabric::V6_4_0_36::Models::DeployedApplicationHealthReportExpiredEvent
-        end
-        def environment_variable
-          Azure::ServiceFabric::V6_4_0_36::Models::EnvironmentVariable
-        end
-        def application_container_instance_exited_event
-          Azure::ServiceFabric::V6_4_0_36::Models::ApplicationContainerInstanceExitedEvent
-        end
-        def node_aborted_event
-          Azure::ServiceFabric::V6_4_0_36::Models::NodeAbortedEvent
-        end
-        def node_added_to_cluster_event
-          Azure::ServiceFabric::V6_4_0_36::Models::NodeAddedToClusterEvent
-        end
-        def node_closed_event
-          Azure::ServiceFabric::V6_4_0_36::Models::NodeClosedEvent
-        end
       end
     end
     module Mgmt
-      Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
-      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Application = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Application
       ApplicationType = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::ApplicationType
+      Service = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Service
+      Version = Azure::ServiceFabric::Mgmt::V2017_07_01_preview::Version
       Operations = Azure::ServiceFabric::Mgmt::V2018_02_01::Operations
       ClusterVersions = Azure::ServiceFabric::Mgmt::V2018_02_01::ClusterVersions
       Clusters = Azure::ServiceFabric::Mgmt::V2018_02_01::Clusters
@@ -2409,12 +2409,13 @@ module Azure::Profiles::Latest
         Resource = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Resource
         ServerCertificateCommonNames = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonNames
         ServiceTypeDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
-        ApplicationDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
-        ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpdateParameters
-        ErrorModelError = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModelError
-        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
-        ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsResult
         ServerCertificateCommonName = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonName
+        ClusterUpdateParameters = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpdateParameters
+        ApplicationDeltaHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
+        ClusterCodeVersionsListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
+        ErrorModelError = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModelError
+        ClusterCodeVersionsResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsResult
+        ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
         DiagnosticsStorageAccountConfig = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::DiagnosticsStorageAccountConfig
         OperationListResult = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::OperationListResult
         ClusterUpgradePolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpgradePolicy
@@ -2433,12 +2434,11 @@ module Azure::Profiles::Latest
         Cluster = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::Cluster
         EndpointRangeDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::EndpointRangeDescription
         NodeTypeDescription = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::NodeTypeDescription
-        ApplicationHealthPolicy = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
         ProvisioningState = Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ProvisioningState
       end
 
       class ServiceFabricManagementClass
-        attr_reader :service, :version, :application, :application_type, :operations, :cluster_versions, :clusters, :configurable, :base_url, :options, :model_classes
+        attr_reader :application, :application_type, :service, :version, :operations, :cluster_versions, :clusters, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -2448,10 +2448,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @service = @client_0.service
-          @version = @client_0.version
           @application = @client_0.application
           @application_type = @client_0.application_type
+          @service = @client_0.service
+          @version = @client_0.version
 
           @client_1 = Azure::ServiceFabric::Mgmt::V2018_02_01::ServiceFabricManagementClient.new(configurable.credentials, base_url, options)
           if(@client_1.respond_to?(:subscription_id))
@@ -2586,23 +2586,26 @@ module Azure::Profiles::Latest
           def service_type_delta_health_policy
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServiceTypeDeltaHealthPolicy
           end
-          def application_delta_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
+          def server_certificate_common_name
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonName
           end
           def cluster_update_parameters
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterUpdateParameters
           end
-          def error_model_error
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModelError
+          def application_delta_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationDeltaHealthPolicy
           end
           def cluster_code_versions_list_result
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsListResult
           end
+          def error_model_error
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ErrorModelError
+          end
           def cluster_code_versions_result
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ClusterCodeVersionsResult
           end
-          def server_certificate_common_name
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ServerCertificateCommonName
+          def application_health_policy
+            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
           end
           def diagnostics_storage_account_config
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::DiagnosticsStorageAccountConfig
@@ -2657,9 +2660,6 @@ module Azure::Profiles::Latest
           end
           def node_type_description
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::NodeTypeDescription
-          end
-          def application_health_policy
-            Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ApplicationHealthPolicy
           end
           def provisioning_state
             Azure::ServiceFabric::Mgmt::V2018_02_01::Models::ProvisioningState

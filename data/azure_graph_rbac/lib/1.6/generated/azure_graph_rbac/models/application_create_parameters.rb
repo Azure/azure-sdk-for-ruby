@@ -95,6 +95,13 @@ module Azure::GraphRbac::V1_6
                   name: 'String'
                 }
               },
+              group_membership_claims: {
+                required: false,
+                serialized_name: 'groupMembershipClaims',
+                type: {
+                  name: 'Object'
+                }
+              },
               homepage: {
                 required: false,
                 serialized_name: 'homepage',

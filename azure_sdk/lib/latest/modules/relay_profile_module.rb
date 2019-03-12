@@ -13,6 +13,8 @@ module Azure::Profiles::Latest
       Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
 
       module Models
+        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+        SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
         RelayNamespaceListResult = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
         CheckNameAvailability = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailability
         HybridConnectionListResult = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnectionListResult
@@ -38,8 +40,6 @@ module Azure::Profiles::Latest
         KeyType = Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
         CheckNameAvailabilityResult = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
         AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
-        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
-        SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
       end
 
       class RelayManagementClass
@@ -75,6 +75,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+          end
+          def sku_tier
+            Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
+          end
           def relay_namespace_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
           end
@@ -149,12 +155,6 @@ module Azure::Profiles::Latest
           end
           def access_rights
             Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
-          end
-          def sku
-            Azure::Relay::Mgmt::V2017_04_01::Models::Sku
-          end
-          def sku_tier
-            Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
           end
         end
       end

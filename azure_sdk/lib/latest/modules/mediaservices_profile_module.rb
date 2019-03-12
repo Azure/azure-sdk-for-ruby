@@ -7,6 +7,9 @@ require 'azure_mgmt_media_services'
 module Azure::Profiles::Latest
   module MediaServices
     module Mgmt
+      StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_07_01::StreamingEndpoints
+      Operations = Azure::MediaServices::Mgmt::V2018_07_01::Operations
+      Locations = Azure::MediaServices::Mgmt::V2018_07_01::Locations
       AccountFilters = Azure::MediaServices::Mgmt::V2018_07_01::AccountFilters
       Mediaservices = Azure::MediaServices::Mgmt::V2018_07_01::Mediaservices
       Assets = Azure::MediaServices::Mgmt::V2018_07_01::Assets
@@ -18,9 +21,6 @@ module Azure::Profiles::Latest
       StreamingLocators = Azure::MediaServices::Mgmt::V2018_07_01::StreamingLocators
       LiveEvents = Azure::MediaServices::Mgmt::V2018_07_01::LiveEvents
       LiveOutputs = Azure::MediaServices::Mgmt::V2018_07_01::LiveOutputs
-      StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_07_01::StreamingEndpoints
-      Operations = Azure::MediaServices::Mgmt::V2018_07_01::Operations
-      Locations = Azure::MediaServices::Mgmt::V2018_07_01::Locations
 
       module Models
         CheckNameAvailabilityInput = Azure::MediaServices::Mgmt::V2018_07_01::Models::CheckNameAvailabilityInput
@@ -220,7 +220,7 @@ module Azure::Profiles::Latest
       end
 
       class MediaServicesManagementClass
-        attr_reader :account_filters, :mediaservices, :assets, :asset_filters, :content_key_policies, :transforms, :jobs, :streaming_policies, :streaming_locators, :live_events, :live_outputs, :streaming_endpoints, :operations, :locations, :configurable, :base_url, :options, :model_classes
+        attr_reader :streaming_endpoints, :operations, :locations, :account_filters, :mediaservices, :assets, :asset_filters, :content_key_policies, :transforms, :jobs, :streaming_policies, :streaming_locators, :live_events, :live_outputs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -230,6 +230,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @streaming_endpoints = @client_0.streaming_endpoints
+          @operations = @client_0.operations
+          @locations = @client_0.locations
           @account_filters = @client_0.account_filters
           @mediaservices = @client_0.mediaservices
           @assets = @client_0.assets
@@ -241,9 +244,6 @@ module Azure::Profiles::Latest
           @streaming_locators = @client_0.streaming_locators
           @live_events = @client_0.live_events
           @live_outputs = @client_0.live_outputs
-          @streaming_endpoints = @client_0.streaming_endpoints
-          @operations = @client_0.operations
-          @locations = @client_0.locations
 
           @model_classes = ModelClasses.new
         end

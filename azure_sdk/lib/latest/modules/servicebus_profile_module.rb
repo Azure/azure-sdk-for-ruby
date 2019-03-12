@@ -7,9 +7,10 @@ require 'azure_mgmt_service_bus'
 module Azure::Profiles::Latest
   module ServiceBus
     module Mgmt
+      Operations = Azure::ServiceBus::Mgmt::V2017_04_01::Operations
+      Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
       Topics = Azure::ServiceBus::Mgmt::V2017_04_01::Topics
       Namespaces = Azure::ServiceBus::Mgmt::V2017_04_01::Namespaces
-      Subscriptions = Azure::ServiceBus::Mgmt::V2017_04_01::Subscriptions
       Regions = Azure::ServiceBus::Mgmt::V2017_04_01::Regions
       DisasterRecoveryConfigs = Azure::ServiceBus::Mgmt::V2017_04_01::DisasterRecoveryConfigs
       MigrationConfigs = Azure::ServiceBus::Mgmt::V2017_04_01::MigrationConfigs
@@ -17,7 +18,6 @@ module Azure::Profiles::Latest
       Rules = Azure::ServiceBus::Mgmt::V2017_04_01::Rules
       PremiumMessagingRegionsOperations = Azure::ServiceBus::Mgmt::V2017_04_01::PremiumMessagingRegionsOperations
       EventHubs = Azure::ServiceBus::Mgmt::V2017_04_01::EventHubs
-      Operations = Azure::ServiceBus::Mgmt::V2017_04_01::Operations
 
       module Models
         ErrorResponse = Azure::ServiceBus::Mgmt::V2017_04_01::Models::ErrorResponse
@@ -69,13 +69,13 @@ module Azure::Profiles::Latest
         Operation = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Operation
         OperationListResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::OperationListResult
         CheckNameAvailabilityResult = Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
-        SkuTier = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuTier
         Action = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Action
+        SkuTier = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuTier
         SkuName = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuName
       end
 
       class ServiceBusManagementClass
-        attr_reader :topics, :namespaces, :subscriptions, :regions, :disaster_recovery_configs, :migration_configs, :queues, :rules, :premium_messaging_regions_operations, :event_hubs, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :subscriptions, :topics, :namespaces, :regions, :disaster_recovery_configs, :migration_configs, :queues, :rules, :premium_messaging_regions_operations, :event_hubs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -85,9 +85,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
+          @subscriptions = @client_0.subscriptions
           @topics = @client_0.topics
           @namespaces = @client_0.namespaces
-          @subscriptions = @client_0.subscriptions
           @regions = @client_0.regions
           @disaster_recovery_configs = @client_0.disaster_recovery_configs
           @migration_configs = @client_0.migration_configs
@@ -95,7 +96,6 @@ module Azure::Profiles::Latest
           @rules = @client_0.rules
           @premium_messaging_regions_operations = @client_0.premium_messaging_regions_operations
           @event_hubs = @client_0.event_hubs
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -261,11 +261,11 @@ module Azure::Profiles::Latest
           def check_name_availability_result
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
           end
-          def sku_tier
-            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuTier
-          end
           def action
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::Action
+          end
+          def sku_tier
+            Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuTier
           end
           def sku_name
             Azure::ServiceBus::Mgmt::V2017_04_01::Models::SkuName

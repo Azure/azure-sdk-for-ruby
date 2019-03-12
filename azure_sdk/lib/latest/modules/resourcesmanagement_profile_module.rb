@@ -7,10 +7,10 @@ require 'azure_mgmt_resources_management'
 module Azure::Profiles::Latest
   module ResourcesManagement
     module Mgmt
-      ManagementGroups = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::ManagementGroups
-      ManagementGroupSubscriptions = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::ManagementGroupSubscriptions
       Entities = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Entities
       Operations = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Operations
+      ManagementGroups = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::ManagementGroups
+      ManagementGroupSubscriptions = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::ManagementGroupSubscriptions
 
       module Models
         Type = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
@@ -37,13 +37,13 @@ module Azure::Profiles::Latest
         ErrorDetails = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ErrorDetails
         Operation = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Operation
         OperationListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationListResult
-        CheckNameAvailabilityResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
         Status = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Status
+        CheckNameAvailabilityResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
         Reason = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
       end
 
       class ResourcesManagementManagementClass
-        attr_reader :management_groups, :management_group_subscriptions, :entities, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :entities, :operations, :management_groups, :management_group_subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -53,10 +53,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @management_groups = @client_0.management_groups
-          @management_group_subscriptions = @client_0.management_group_subscriptions
           @entities = @client_0.entities
           @operations = @client_0.operations
+          @management_groups = @client_0.management_groups
+          @management_group_subscriptions = @client_0.management_group_subscriptions
 
           @model_classes = ModelClasses.new
         end
@@ -147,11 +147,11 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationListResult
           end
-          def check_name_availability_result
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
-          end
           def status
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Status
+          end
+          def check_name_availability_result
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityResult
           end
           def reason
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason

@@ -12,6 +12,9 @@ module Azure::Profiles::Latest
       Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
 
       module Models
+        MetricSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
+        SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
+        NameAvailability = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
         TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
         RegenerateKeyParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
         OperationList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
@@ -34,9 +37,6 @@ module Azure::Profiles::Latest
         SignalRResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
         SignalRCreateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
         Dimension = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
-        MetricSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
-        SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
-        NameAvailability = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
       end
 
       class SignalrManagementClass
@@ -71,6 +71,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def metric_specification
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
+          end
+          def signal_rsku_tier
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
+          end
+          def name_availability
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
+          end
           def tracked_resource
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
           end
@@ -136,15 +145,6 @@ module Azure::Profiles::Latest
           end
           def dimension
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
-          end
-          def metric_specification
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
-          end
-          def signal_rsku_tier
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
-          end
-          def name_availability
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
           end
         end
       end

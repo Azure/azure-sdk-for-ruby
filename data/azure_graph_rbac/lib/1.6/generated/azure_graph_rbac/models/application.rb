@@ -53,6 +53,10 @@ module Azure::GraphRbac::V1_6
       # report errors when using the application.
       attr_accessor :error_url
 
+      # @return Configures the groups claim issued in a user or OAuth 2.0
+      # access token that the app expects.
+      attr_accessor :group_membership_claims
+
       # @return [String] The home page of the application.
       attr_accessor :homepage
 
@@ -270,6 +274,13 @@ module Azure::GraphRbac::V1_6
                 serialized_name: 'errorUrl',
                 type: {
                   name: 'String'
+                }
+              },
+              group_membership_claims: {
+                required: false,
+                serialized_name: 'groupMembershipClaims',
+                type: {
+                  name: 'Object'
                 }
               },
               homepage: {

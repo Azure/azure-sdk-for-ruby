@@ -9,6 +9,12 @@ module Azure::Profiles::Latest
     VideosOperations = Azure::CognitiveServices::VideoSearch::V1_0::VideosOperations
 
     module Models
+      Videos = Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
+      TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
+      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
+      VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
+      VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
+      TrendingVideosTile = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
       VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
       VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
       VideoInsightModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
@@ -33,14 +39,8 @@ module Azure::Profiles::Latest
       Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
       TrendingVideosCategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosCategory
       TrendingVideosSubcategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosSubcategory
-      VideosModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideosModule
-      TrendingVideosTile = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
-      Videos = Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
-      TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
-      VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-      VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
-      VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
+      VideosModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideosModule
     end
 
     class VideoSearchDataClass
@@ -73,6 +73,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def videos
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
+        end
+        def trending_videos
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
+        end
+        def video_details
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
+        end
+        def video_query_scenario
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
+        end
+        def video_length
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
+        end
+        def trending_videos_tile
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
+        end
         def video_pricing
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
         end
@@ -145,29 +163,11 @@ module Azure::Profiles::Latest
         def trending_videos_subcategory
           Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosSubcategory
         end
-        def videos_module
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideosModule
-        end
-        def trending_videos_tile
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosTile
-        end
-        def videos
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
-        end
-        def trending_videos
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
-        end
-        def video_details
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
-        end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
         end
-        def video_query_scenario
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
-        end
-        def video_length
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
+        def videos_module
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::VideosModule
         end
       end
     end
