@@ -13,8 +13,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       include MsRestAzure
 
       # @return [SecurityAlertPolicyState] Specifies the state of the policy,
-      # whether it is enabled or disabled. Possible values include: 'New',
-      # 'Enabled', 'Disabled'
+      # whether it is enabled or disabled or a policy has not been applied yet
+      # on the specific database. Possible values include: 'New', 'Enabled',
+      # 'Disabled'
       attr_accessor :state
 
       # @return [Array<String>] Specifies an array of alerts that are disabled.
