@@ -8,7 +8,7 @@ module Azure::CognitiveServices::Profiles::Latest
   module Mgmt
     Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
     CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
-    Account = Azure::CognitiveServices::Mgmt::V2017_04_18::Account
+    Locations = Azure::CognitiveServices::Mgmt::V2017_04_18::Locations
     Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
     ResourceSkus = Azure::CognitiveServices::Mgmt::V2017_04_18::ResourceSkus
 
@@ -52,7 +52,7 @@ module Azure::CognitiveServices::Profiles::Latest
     # CognitiveServicesManagementClass
     #
     class CognitiveServicesManagementClass
-      attr_reader :operations, :check_sku_availability, :account, :accounts, :resource_skus, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :check_sku_availability, :locations, :accounts, :resource_skus, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -74,7 +74,7 @@ module Azure::CognitiveServices::Profiles::Latest
         add_telemetry(@client_0)
         @operations = @client_0.operations
         @check_sku_availability = @client_0.check_sku_availability
-        @account = @client_0.account
+        @locations = @client_0.locations
         @accounts = @client_0.accounts
         @resource_skus = @client_0.resource_skus
 

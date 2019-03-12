@@ -11,12 +11,10 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
-        WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
-        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
-        DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
-        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
-        ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
         ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
+        ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
+        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
         InputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
         AssetType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
         OutputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
@@ -51,6 +49,8 @@ module Azure::Profiles::Latest
         DiagnosticsConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
         OutputPort = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPort
         WebService = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
+        WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
+        DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
       end
 
       class MachineLearningManagementClass
@@ -84,23 +84,17 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def web_service_properties_for_graph
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
+          def column_type
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
           end
           def storage_account
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
           end
-          def diagnostics_level
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
-          end
-          def provisioning_state
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
-          end
           def column_format
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
           end
-          def column_type
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+          def provisioning_state
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
           end
           def input_port_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
@@ -203,6 +197,12 @@ module Azure::Profiles::Latest
           end
           def web_service
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
+          end
+          def web_service_properties_for_graph
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
+          end
+          def diagnostics_level
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
           end
         end
       end

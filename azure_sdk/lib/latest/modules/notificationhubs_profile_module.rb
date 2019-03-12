@@ -8,14 +8,12 @@ module Azure::Profiles::Latest
   module NotificationHubs
     module Mgmt
       Operations = Azure::NotificationHubs::Mgmt::V2017_04_01::Operations
-      NotificationHubs = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubs
       Namespaces = Azure::NotificationHubs::Mgmt::V2017_04_01::Namespaces
+      NotificationHubs = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubs
 
       module Models
-        NamespaceListResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
-        Sku = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
-        BaiduCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
         CheckAvailabilityResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::CheckAvailabilityResult
+        Sku = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
         NamespaceCreateOrUpdateParameters = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceCreateOrUpdateParameters
         NamespaceResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceResource
         SharedAccessAuthorizationRuleResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SharedAccessAuthorizationRuleResource
@@ -24,9 +22,9 @@ module Azure::Profiles::Latest
         NotificationHubResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NotificationHubResource
         DebugSendResponse = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::DebugSendResponse
         PnsCredentialsResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::PnsCredentialsResource
+        SkuName = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
         NamespaceType = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceType
         ErrorResponse = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
-        SkuName = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
         AccessRights = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
         Resource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Resource
         OperationDisplay = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::OperationDisplay
@@ -46,10 +44,12 @@ module Azure::Profiles::Latest
         MpnsCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::MpnsCredential
         NamespacePatchParameters = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespacePatchParameters
         AdmCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AdmCredential
+        NamespaceListResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
+        BaiduCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
       end
 
       class NotificationHubsManagementClass
-        attr_reader :operations, :notification_hubs, :namespaces, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :namespaces, :notification_hubs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -60,8 +60,8 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @notification_hubs = @client_0.notification_hubs
           @namespaces = @client_0.namespaces
+          @notification_hubs = @client_0.notification_hubs
 
           @model_classes = ModelClasses.new
         end
@@ -80,17 +80,11 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def namespace_list_result
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
+          def check_availability_result
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::CheckAvailabilityResult
           end
           def sku
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
-          end
-          def baidu_credential
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
-          end
-          def check_availability_result
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::CheckAvailabilityResult
           end
           def namespace_create_or_update_parameters
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceCreateOrUpdateParameters
@@ -116,14 +110,14 @@ module Azure::Profiles::Latest
           def pns_credentials_resource
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::PnsCredentialsResource
           end
+          def sku_name
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
+          end
           def namespace_type
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceType
           end
           def error_response
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
-          end
-          def sku_name
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
           end
           def access_rights
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
@@ -181,6 +175,12 @@ module Azure::Profiles::Latest
           end
           def adm_credential
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AdmCredential
+          end
+          def namespace_list_result
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
+          end
+          def baidu_credential
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
           end
         end
       end

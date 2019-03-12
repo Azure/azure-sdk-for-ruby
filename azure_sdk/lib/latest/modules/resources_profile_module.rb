@@ -34,14 +34,14 @@ module Azure::Profiles::Latest
         ResourceGroupListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
         ResourcesMoveInfo = Azure::Resources::Mgmt::V2018_05_01::Models::ResourcesMoveInfo
         DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
-        ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
-        DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
         IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+        ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
         TagCount = Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
-        TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
-        ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
         ProviderListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
+        DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
+        ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
         TagDetails = Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
+        TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
         TagsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
         AliasPathType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
         TargetResource = Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
@@ -162,29 +162,29 @@ module Azure::Profiles::Latest
           def deployment_properties_extended
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
           end
-          def export_template_request
-            Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
-          end
-          def deployment_extended
-            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
-          end
           def identity_user_assigned_identities_value
             Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
+          def export_template_request
+            Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
           end
           def tag_count
             Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
           end
-          def tag_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
+          def provider_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
+          end
+          def deployment_extended
+            Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
           end
           def resource_group_filter
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
           end
-          def provider_list_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
-          end
           def tag_details
             Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
+          end
+          def tag_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
           end
           def tags_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult

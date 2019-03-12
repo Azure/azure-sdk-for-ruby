@@ -24,7 +24,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
   autoload :ResourceSkus,                                       '2017-04-18/generated/azure_mgmt_cognitive_services/resource_skus.rb'
   autoload :Operations,                                         '2017-04-18/generated/azure_mgmt_cognitive_services/operations.rb'
   autoload :CheckSkuAvailability,                               '2017-04-18/generated/azure_mgmt_cognitive_services/check_sku_availability.rb'
-  autoload :Account,                                            '2017-04-18/generated/azure_mgmt_cognitive_services/account.rb'
+  autoload :Locations,                                          '2017-04-18/generated/azure_mgmt_cognitive_services/locations.rb'
   autoload :CognitiveServicesManagementClient,                  '2017-04-18/generated/azure_mgmt_cognitive_services/cognitive_services_management_client.rb'
 
   module Models

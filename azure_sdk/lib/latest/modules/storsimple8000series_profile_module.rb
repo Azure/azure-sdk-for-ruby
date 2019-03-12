@@ -25,17 +25,15 @@ module Azure::Profiles::Latest
       Jobs = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Jobs
 
       module Models
-        SecuritySettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecuritySettings
-        StorageAccountCredential = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::StorageAccountCredential
-        ManagerExtendedInfo = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerExtendedInfo
-        Updates = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Updates
-        VolumeContainer = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeContainer
-        EncryptionSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::EncryptionSettings
         TimeSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::TimeSettings
-        AlertStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertStatus
-        Volume = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Volume
-        AlertScope = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertScope
+        Updates = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Updates
+        SecuritySettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecuritySettings
+        HardwareComponentGroup = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::HardwareComponentGroup
         AlertSourceType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSourceType
+        AlertStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertStatus
+        VolumeContainer = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeContainer
+        AlertScope = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertScope
+        Volume = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Volume
         ScheduledBackupStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ScheduledBackupStatus
         AlertEmailNotificationStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertEmailNotificationStatus
         BackupJobCreationType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupJobCreationType
@@ -45,7 +43,7 @@ module Azure::Profiles::Latest
         EncryptionAlgorithm = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::EncryptionAlgorithm
         ScheduleStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ScheduleStatus
         ControllerPowerStateAction = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerPowerStateAction
-        ControllerId = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerId
+        Kind = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Kind
         ControllerStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerStatus
         RecurrenceType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::RecurrenceType
         DeviceStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DeviceStatus
@@ -56,30 +54,30 @@ module Azure::Profiles::Latest
         InEligibilityCategory = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::InEligibilityCategory
         EncryptionStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::EncryptionStatus
         VirtualMachineApiType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VirtualMachineApiType
-        Kind = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Kind
+        ControllerId = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerId
         AuthorizationStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AuthorizationStatus
         FeatureSupportStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::FeatureSupportStatus
         HardwareComponentStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::HardwareComponentStatus
         KeyRolloverStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::KeyRolloverStatus
         TargetEligibilityStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::TargetEligibilityStatus
         Alert = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Alert
-        JobStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobStatus
+        ISCSIAndCloudStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ISCSIAndCloudStatus
         MetricUnit = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricUnit
-        JobType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobType
+        JobStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobStatus
         NetInterfaceId = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetInterfaceId
         NetInterfaceStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetInterfaceStatus
         TargetEligibilityResultCode = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::TargetEligibilityResultCode
         NetworkMode = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetworkMode
-        RemoteManagementModeConfiguration = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::RemoteManagementModeConfiguration
+        JobType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobType
         ManagerType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerType
         MetricAggregationType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricAggregationType
         MonitoringStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MonitoringStatus
-        ISCSIAndCloudStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ISCSIAndCloudStatus
-        OperationStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::OperationStatus
+        OwnerShipStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::OwnerShipStatus
+        RemoteManagementModeConfiguration = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::RemoteManagementModeConfiguration
         SslStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SslStatus
         VolumeStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeStatus
         AuthenticationType = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AuthenticationType
-        OwnerShipStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::OwnerShipStatus
+        OperationStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::OperationStatus
         AlertSeverity = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSeverity
         BackupStatus = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupStatus
         Job = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Job
@@ -132,58 +130,60 @@ module Azure::Profiles::Latest
         DNSSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DNSSettings
         JobFilter = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobFilter
         JobList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobList
-        Time = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
-        JobErrorDetails = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobErrorDetails
-        BackupList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupList
         AvailableProviderOperationList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AvailableProviderOperationList
-        BackupScheduleList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupScheduleList
+        JobErrorDetails = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobErrorDetails
+        Time = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
         ListFailoverTargetsRequest = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ListFailoverTargetsRequest
-        Key = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Key
+        BackupList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupList
         ManagerIntrinsicSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerIntrinsicSettings
-        BandwidthSettingList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSettingList
+        BackupScheduleList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupScheduleList
         ManagerSku = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerSku
-        CloneRequest = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloneRequest
+        Key = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Key
         NetworkAdapterList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetworkAdapterList
+        CloneRequest = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloneRequest
+        BandwidthSettingList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSettingList
         CloudApplianceConfigurationList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloudApplianceConfigurationList
         NetworkAdapters = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetworkAdapters
-        DeviceRolloverDetails = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DeviceRolloverDetails
+        SecuritySettingsPatch = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecuritySettingsPatch
         ManagerList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerList
         DimensionFilter = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DimensionFilter
-        SecuritySettingsPatch = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecuritySettingsPatch
+        ManagerPatch = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerPatch
+        AvailableProviderOperationDisplay = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AvailableProviderOperationDisplay
+        DeviceRolloverDetails = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DeviceRolloverDetails
+        ChapSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ChapSettings
         MetricData = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricData
         MetricAvailablity = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricAvailablity
-        ManagerPatch = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerPatch
+        MetricDefinitionList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricDefinitionList
         SecondaryDNSSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecondaryDNSSettings
         BackupPolicyList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupPolicyList
-        AvailableProviderOperationDisplay = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AvailableProviderOperationDisplay
-        MetricDefinitionList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricDefinitionList
-        DeviceList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DeviceList
-        ChapSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ChapSettings
-        MetricName = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricName
         MetricNameFilter = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricNameFilter
-        AlertFilter = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertFilter
         VolumeList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeList
+        DeviceList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DeviceList
+        MetricName = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricName
+        MetricFilter = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricFilter
         MetricList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricList
         VmImage = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VmImage
-        MetricFilter = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricFilter
-        BandwidthSchedule = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSchedule
+        NicIPv4 = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NicIPv4
+        AlertFilter = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertFilter
         DataStatistics = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DataStatistics
         AccessControlRecord = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AccessControlRecord
-        MetricDefinition = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricDefinition
-        NicIPv4 = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NicIPv4
-        Metrics = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Metrics
-        AlertSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSettings
+        BandwidthSchedule = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSchedule
         Backup = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Backup
+        MetricDefinition = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricDefinition
+        Metrics = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Metrics
+        CloudApplianceConfiguration = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloudApplianceConfiguration
         BackupPolicy = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupPolicy
         BandwidthSetting = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSetting
-        CloudApplianceConfiguration = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloudApplianceConfiguration
+        AlertSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSettings
         ConfigureDeviceRequest = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ConfigureDeviceRequest
-        BackupSchedule = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupSchedule
-        Device = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Device
-        HardwareComponentGroup = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::HardwareComponentGroup
-        Manager = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Manager
         ControllerPowerStateChangeRequest = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerPowerStateChangeRequest
+        Device = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Device
+        BackupSchedule = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupSchedule
+        Manager = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Manager
+        ManagerExtendedInfo = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerExtendedInfo
         NetworkSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetworkSettings
+        EncryptionSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::EncryptionSettings
+        StorageAccountCredential = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::StorageAccountCredential
       end
 
       class StorSimple8000SeriesManagementClass
@@ -231,38 +231,32 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def security_settings
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecuritySettings
-          end
-          def storage_account_credential
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::StorageAccountCredential
-          end
-          def manager_extended_info
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerExtendedInfo
+          def time_settings
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::TimeSettings
           end
           def updates
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Updates
           end
-          def volume_container
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeContainer
+          def security_settings
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecuritySettings
           end
-          def encryption_settings
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::EncryptionSettings
+          def hardware_component_group
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::HardwareComponentGroup
           end
-          def time_settings
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::TimeSettings
+          def alert_source_type
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSourceType
           end
           def alert_status
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertStatus
           end
-          def volume
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Volume
+          def volume_container
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeContainer
           end
           def alert_scope
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertScope
           end
-          def alert_source_type
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSourceType
+          def volume
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Volume
           end
           def scheduled_backup_status
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ScheduledBackupStatus
@@ -291,8 +285,8 @@ module Azure::Profiles::Latest
           def controller_power_state_action
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerPowerStateAction
           end
-          def controller_id
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerId
+          def kind
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Kind
           end
           def controller_status
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerStatus
@@ -324,8 +318,8 @@ module Azure::Profiles::Latest
           def virtual_machine_api_type
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VirtualMachineApiType
           end
-          def kind
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Kind
+          def controller_id
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerId
           end
           def authorization_status
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AuthorizationStatus
@@ -345,14 +339,14 @@ module Azure::Profiles::Latest
           def alert
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Alert
           end
-          def job_status
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobStatus
+          def iscsiand_cloud_status
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ISCSIAndCloudStatus
           end
           def metric_unit
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricUnit
           end
-          def job_type
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobType
+          def job_status
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobStatus
           end
           def net_interface_id
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetInterfaceId
@@ -366,8 +360,8 @@ module Azure::Profiles::Latest
           def network_mode
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetworkMode
           end
-          def remote_management_mode_configuration
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::RemoteManagementModeConfiguration
+          def job_type
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobType
           end
           def manager_type
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerType
@@ -378,11 +372,11 @@ module Azure::Profiles::Latest
           def monitoring_status
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MonitoringStatus
           end
-          def iscsiand_cloud_status
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ISCSIAndCloudStatus
+          def owner_ship_status
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::OwnerShipStatus
           end
-          def operation_status
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::OperationStatus
+          def remote_management_mode_configuration
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::RemoteManagementModeConfiguration
           end
           def ssl_status
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SslStatus
@@ -393,8 +387,8 @@ module Azure::Profiles::Latest
           def authentication_type
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AuthenticationType
           end
-          def owner_ship_status
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::OwnerShipStatus
+          def operation_status
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::OperationStatus
           end
           def alert_severity
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSeverity
@@ -552,41 +546,41 @@ module Azure::Profiles::Latest
           def job_list
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobList
           end
-          def time
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
+          def available_provider_operation_list
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AvailableProviderOperationList
           end
           def job_error_details
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::JobErrorDetails
           end
-          def backup_list
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupList
-          end
-          def available_provider_operation_list
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AvailableProviderOperationList
-          end
-          def backup_schedule_list
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupScheduleList
+          def time
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
           end
           def list_failover_targets_request
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ListFailoverTargetsRequest
           end
-          def key
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Key
+          def backup_list
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupList
           end
           def manager_intrinsic_settings
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerIntrinsicSettings
           end
-          def bandwidth_setting_list
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSettingList
+          def backup_schedule_list
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupScheduleList
           end
           def manager_sku
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerSku
           end
-          def clone_request
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloneRequest
+          def key
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Key
           end
           def network_adapter_list
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetworkAdapterList
+          end
+          def clone_request
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloneRequest
+          end
+          def bandwidth_setting_list
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSettingList
           end
           def cloud_appliance_configuration_list
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloudApplianceConfigurationList
@@ -594,8 +588,8 @@ module Azure::Profiles::Latest
           def network_adapters
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetworkAdapters
           end
-          def device_rollover_details
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DeviceRolloverDetails
+          def security_settings_patch
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecuritySettingsPatch
           end
           def manager_list
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerList
@@ -603,8 +597,17 @@ module Azure::Profiles::Latest
           def dimension_filter
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DimensionFilter
           end
-          def security_settings_patch
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecuritySettingsPatch
+          def manager_patch
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerPatch
+          end
+          def available_provider_operation_display
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AvailableProviderOperationDisplay
+          end
+          def device_rollover_details
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DeviceRolloverDetails
+          end
+          def chap_settings
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ChapSettings
           end
           def metric_data
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricData
@@ -612,8 +615,8 @@ module Azure::Profiles::Latest
           def metric_availablity
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricAvailablity
           end
-          def manager_patch
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerPatch
+          def metric_definition_list
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricDefinitionList
           end
           def secondary_dnssettings
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SecondaryDNSSettings
@@ -621,29 +624,20 @@ module Azure::Profiles::Latest
           def backup_policy_list
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupPolicyList
           end
-          def available_provider_operation_display
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AvailableProviderOperationDisplay
+          def metric_name_filter
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricNameFilter
           end
-          def metric_definition_list
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricDefinitionList
+          def volume_list
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeList
           end
           def device_list
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DeviceList
           end
-          def chap_settings
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ChapSettings
-          end
           def metric_name
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricName
           end
-          def metric_name_filter
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricNameFilter
-          end
-          def alert_filter
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertFilter
-          end
-          def volume_list
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeList
+          def metric_filter
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricFilter
           end
           def metric_list
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricList
@@ -651,11 +645,11 @@ module Azure::Profiles::Latest
           def vm_image
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VmImage
           end
-          def metric_filter
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricFilter
+          def nic_ipv4
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NicIPv4
           end
-          def bandwidth_schedule
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSchedule
+          def alert_filter
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertFilter
           end
           def data_statistics
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::DataStatistics
@@ -663,20 +657,20 @@ module Azure::Profiles::Latest
           def access_control_record
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AccessControlRecord
           end
+          def bandwidth_schedule
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSchedule
+          end
+          def backup
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Backup
+          end
           def metric_definition
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::MetricDefinition
-          end
-          def nic_ipv4
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NicIPv4
           end
           def metrics
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Metrics
           end
-          def alert_settings
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSettings
-          end
-          def backup
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Backup
+          def cloud_appliance_configuration
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloudApplianceConfiguration
           end
           def backup_policy
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupPolicy
@@ -684,29 +678,35 @@ module Azure::Profiles::Latest
           def bandwidth_setting
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BandwidthSetting
           end
-          def cloud_appliance_configuration
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::CloudApplianceConfiguration
+          def alert_settings
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertSettings
           end
           def configure_device_request
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ConfigureDeviceRequest
           end
-          def backup_schedule
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupSchedule
+          def controller_power_state_change_request
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerPowerStateChangeRequest
           end
           def device
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Device
           end
-          def hardware_component_group
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::HardwareComponentGroup
+          def backup_schedule
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::BackupSchedule
           end
           def manager
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Manager
           end
-          def controller_power_state_change_request
-            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ControllerPowerStateChangeRequest
+          def manager_extended_info
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ManagerExtendedInfo
           end
           def network_settings
             Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NetworkSettings
+          end
+          def encryption_settings
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::EncryptionSettings
+          end
+          def storage_account_credential
+            Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::StorageAccountCredential
           end
         end
       end

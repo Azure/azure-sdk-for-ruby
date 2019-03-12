@@ -12,13 +12,14 @@ module Azure::Profiles::Latest
 
       module Models
         ZoneUpdate = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
-        RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
+        CaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
         ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
+        RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
         RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
         AaaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
+        ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
         MxRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
         PtrRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
-        ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
         SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
         CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
         RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
@@ -27,7 +28,6 @@ module Azure::Profiles::Latest
         NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
         SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
         TrackedResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
-        CaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
         Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
         ProxyResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
         AzureEntityResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
@@ -70,11 +70,14 @@ module Azure::Profiles::Latest
           def zone_update
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
           end
-          def record_set_update_parameters
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
+          def caa_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
           end
           def zone_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
+          end
+          def record_set_update_parameters
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
           end
           def record_set_list_result
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
@@ -82,14 +85,14 @@ module Azure::Profiles::Latest
           def aaaa_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
           end
+          def arecord
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
+          end
           def mx_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
           end
           def ptr_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
-          end
-          def arecord
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
           end
           def srv_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
@@ -114,9 +117,6 @@ module Azure::Profiles::Latest
           end
           def tracked_resource
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
-          end
-          def caa_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
           end
           def zone
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone

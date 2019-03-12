@@ -7,10 +7,10 @@ require 'azure_mgmt_relay'
 module Azure::Profiles::Latest
   module Relay
     module Mgmt
-      WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
       Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
       HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
+      WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
 
       module Models
         Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
@@ -27,23 +27,23 @@ module Azure::Profiles::Latest
         RelayNamespaceListResult = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
         CheckNameAvailability = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailability
         HybridConnectionListResult = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnectionListResult
-        CheckNameAvailabilityResult = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
-        AuthorizationRuleListResult = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-        AccessKeys = Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
         WcfRelaysListResult = Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelaysListResult
+        AuthorizationRuleListResult = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
+        CheckNameAvailabilityResult = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
         RegenerateAccessKeyParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
         ResourceNamespacePatch = Azure::Relay::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
+        AccessKeys = Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
         WcfRelay = Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelay
-        RelayNamespace = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
         RelayUpdateParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
         AuthorizationRule = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
+        RelayNamespace = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
         Relaytype = Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
         ProvisioningStateEnum = Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
         UnavailableReason = Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
       end
 
       class RelayManagementClass
-        attr_reader :wcfrelays, :operations, :namespaces, :hybrid_connections, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :namespaces, :hybrid_connections, :wcfrelays, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -53,10 +53,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @wcfrelays = @client_0.wcfrelays
           @operations = @client_0.operations
           @namespaces = @client_0.namespaces
           @hybrid_connections = @client_0.hybrid_connections
+          @wcfrelays = @client_0.wcfrelays
 
           @model_classes = ModelClasses.new
         end
@@ -117,17 +117,14 @@ module Azure::Profiles::Latest
           def hybrid_connection_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnectionListResult
           end
-          def check_name_availability_result
-            Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
+          def wcf_relays_list_result
+            Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelaysListResult
           end
           def authorization_rule_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
           end
-          def access_keys
-            Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
-          end
-          def wcf_relays_list_result
-            Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelaysListResult
+          def check_name_availability_result
+            Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
           end
           def regenerate_access_key_parameters
             Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
@@ -135,17 +132,20 @@ module Azure::Profiles::Latest
           def resource_namespace_patch
             Azure::Relay::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
           end
+          def access_keys
+            Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
+          end
           def wcf_relay
             Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelay
-          end
-          def relay_namespace
-            Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
           end
           def relay_update_parameters
             Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
           end
           def authorization_rule
             Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
+          end
+          def relay_namespace
+            Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
           end
           def relaytype
             Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype

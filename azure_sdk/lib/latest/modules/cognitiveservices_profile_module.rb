@@ -7,7 +7,7 @@ require 'azure_mgmt_cognitive_services'
 module Azure::Profiles::Latest
   module CognitiveServices
     module Mgmt
-      Account = Azure::CognitiveServices::Mgmt::V2017_04_18::Account
+      Locations = Azure::CognitiveServices::Mgmt::V2017_04_18::Locations
       Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
       ResourceSkus = Azure::CognitiveServices::Mgmt::V2017_04_18::ResourceSkus
       Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
@@ -50,7 +50,7 @@ module Azure::Profiles::Latest
       end
 
       class CognitiveServicesManagementClass
-        attr_reader :account, :operations, :resource_skus, :accounts, :check_sku_availability, :configurable, :base_url, :options, :model_classes
+        attr_reader :locations, :operations, :resource_skus, :accounts, :check_sku_availability, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -60,7 +60,7 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @account = @client_0.account
+          @locations = @client_0.locations
           @operations = @client_0.operations
           @resource_skus = @client_0.resource_skus
           @accounts = @client_0.accounts

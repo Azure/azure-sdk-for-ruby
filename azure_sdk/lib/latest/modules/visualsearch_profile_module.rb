@@ -9,8 +9,6 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
-      ImageTagRegion = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
-      KnowledgeRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
       VisualSearchRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
       Point2D = Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
       NormalizedQuadrilateral = Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
@@ -22,13 +20,13 @@ module Azure::Profiles::Latest
       ImageRelatedSearchesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
       ImageShoppingSourcesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
       ContentTypes = Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
-      ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
+      ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
+      ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
       Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
-      ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       Response = Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
       Organization = Azure::CognitiveServices::VisualSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::VisualSearch::V1_0::Models::Intangible
@@ -56,6 +54,8 @@ module Azure::Profiles::Latest
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
       CropArea = Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
       ImageInfo = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
+      ImageTagRegion = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
+      KnowledgeRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
     end
 
     class VisualSearchDataClass
@@ -88,12 +88,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def image_tag_region
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
-        end
-        def knowledge_request
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
-        end
         def visual_search_request
           Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
         end
@@ -127,11 +121,14 @@ module Azure::Profiles::Latest
         def content_types
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
         end
-        def error_response
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
+        def error_code
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
         end
         def safe_search
           Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
+        end
+        def error_response
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
         end
         def query
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
@@ -144,9 +141,6 @@ module Azure::Profiles::Latest
         end
         def error_sub_code
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
-        end
-        def error_code
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
         end
         def response
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
@@ -228,6 +222,12 @@ module Azure::Profiles::Latest
         end
         def image_info
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
+        end
+        def image_tag_region
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
+        end
+        def knowledge_request
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
         end
       end
     end
