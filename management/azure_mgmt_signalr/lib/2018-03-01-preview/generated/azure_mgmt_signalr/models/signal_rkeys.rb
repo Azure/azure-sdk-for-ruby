@@ -33,7 +33,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SignalRKeys',
           type: {
@@ -41,7 +40,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
             class_name: 'SignalRKeys',
             model_properties: {
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               primary_connection_string: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryConnectionString',
                 type: {
@@ -65,7 +61,6 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
                 }
               },
               secondary_connection_string: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryConnectionString',
                 type: {
