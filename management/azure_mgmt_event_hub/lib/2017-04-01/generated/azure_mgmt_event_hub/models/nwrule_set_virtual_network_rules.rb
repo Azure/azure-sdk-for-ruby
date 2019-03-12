@@ -15,7 +15,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       # @return [Subnet] Subnet properties
       attr_accessor :subnet
 
-      # @return [Boolean] Value that indicates whether to ignore missing Vnet
+      # @return [Boolean] Value that indicates whether to ignore missing VNet
       # Service Endpoint
       attr_accessor :ignore_missing_vnet_service_endpoint
 
