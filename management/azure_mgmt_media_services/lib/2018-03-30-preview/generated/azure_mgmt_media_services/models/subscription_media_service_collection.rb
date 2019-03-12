@@ -32,7 +32,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       def get_all_items
         items = @value
         page = self
-        while page.odatanext_link != nil do
+        while page.odatanext_link != nil && !page.odatanext_link.strip.empty? do
           page = page.get_next_page
           items.concat(page.value)
         end

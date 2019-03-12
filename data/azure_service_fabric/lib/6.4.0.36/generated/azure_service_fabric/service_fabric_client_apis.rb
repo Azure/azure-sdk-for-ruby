@@ -29626,7 +29626,7 @@ module Azure::ServiceFabric::V6_4_0_36
     #
     def add_telemetry
         sdk_information = 'azure_service_fabric'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end

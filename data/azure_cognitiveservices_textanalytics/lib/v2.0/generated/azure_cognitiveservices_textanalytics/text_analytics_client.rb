@@ -561,7 +561,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_textanalytics'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end
