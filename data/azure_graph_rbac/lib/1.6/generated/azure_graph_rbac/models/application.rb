@@ -115,7 +115,7 @@ module Azure::GraphRbac::V1_6
       # objects
       attr_accessor :password_credentials
 
-      # @return [Array<PreAuthorizedApplication>] list of pre-authorizaed
+      # @return [Array<PreAuthorizedApplication>] list of pre-authorized
       # applications.
       attr_accessor :pre_authorized_applications
 
@@ -142,8 +142,8 @@ module Azure::GraphRbac::V1_6
       attr_accessor :saml_metadata_url
 
       # @return [String] Audience for signing in to the application
-      # (AzureADMyOrganizatio, AzureADAllorganizations,
-      # AzureADAndMicrosofAccounts).
+      # (AzureADMyOrganization, AzureADAllOrganizations,
+      # AzureADAndMicrosoftAccounts).
       attr_accessor :sign_in_audience
 
       # @return [String] The primary Web page.

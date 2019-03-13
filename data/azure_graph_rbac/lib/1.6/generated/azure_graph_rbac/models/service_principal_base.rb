@@ -6,7 +6,7 @@
 module Azure::GraphRbac::V1_6
   module Models
     #
-    # Active Directory service principal common perperties shared among GET,
+    # Active Directory service principal common properties shared among GET,
     # POST and PATCH
     #
     class ServicePrincipalBase
@@ -30,7 +30,7 @@ module Azure::GraphRbac::V1_6
       # credentials associated with the service principal.
       attr_accessor :password_credentials
 
-      # @return [String] the type of the servie principal
+      # @return [String] the type of the service principal
       attr_accessor :service_principal_type
 
       # @return [Array<String>] Optional list of tags that you can apply to

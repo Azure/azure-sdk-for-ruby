@@ -23,7 +23,7 @@ module Azure::GraphRbac::V1_6
       # enabled
       attr_accessor :account_enabled
 
-      # @return [Array<String>] altenative names
+      # @return [Array<String>] alterative names
       attr_accessor :alternative_names
 
       # @return [String] The display name exposed by the associated
@@ -72,7 +72,7 @@ module Azure::GraphRbac::V1_6
       # credentials associated with the service principal.
       attr_accessor :password_credentials
 
-      # @return [String] The thubmbprint of preferred certificate to sign the
+      # @return [String] The thumbprint of preferred certificate to sign the
       # token
       attr_accessor :preferred_token_signing_key_thumbprint
 
@@ -92,7 +92,7 @@ module Azure::GraphRbac::V1_6
       # @return [Array<String>] A collection of service principal names.
       attr_accessor :service_principal_names
 
-      # @return [String] the type of the servie principal
+      # @return [String] the type of the service principal
       attr_accessor :service_principal_type
 
       # @return [Array<String>] Optional list of tags that you can apply to

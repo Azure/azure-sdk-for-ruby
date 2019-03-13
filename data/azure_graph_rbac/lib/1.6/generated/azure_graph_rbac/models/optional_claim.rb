@@ -18,7 +18,7 @@ module Azure::GraphRbac::V1_6
       # @return [String] Claim source.
       attr_accessor :source
 
-      # @return [Boolean] Is this a requied claim.
+      # @return [Boolean] Is this a required claim.
       attr_accessor :essential
 
       # @return
