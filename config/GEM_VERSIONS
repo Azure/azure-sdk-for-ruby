@@ -71,7 +71,7 @@
         "azure_mgmt_marketplace_ordering": "0.17.3",
         "azure_mgmt_media_services": "0.18.1",
         "azure_mgmt_mixedreality": "0.17.1",
-        "azure_mgmt_monitor": "0.17.2",
+        "azure_mgmt_monitor": "0.17.3",
         "azure_mgmt_msi": "0.17.1",
         "azure_mgmt_netapp": "0.17.1",
         "azure_mgmt_network": "0.18.5",
