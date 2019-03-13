@@ -1,3 +1,13 @@
+## 2019.03.13 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_advisor - v0.17.0
+    - azure_mgmt_event_grid - v0.17.5
+    - azure_mgmt_marketplace_ordering - v0.17.3
+    - azure_mgmt_monitor - v0.17.3
+    - azure_cognitiveservices_computervision - v0.19.0
+    - azure_cognitiveservices_textanalytics - v0.17.3
+    - azure_sdk - v0.23.0
+    
 ## 2019.03.12 - Azure Ruby SDK Release
 * Released all management, data and rollup SDKs to fix the empty value in nextLink. 
   Refer [Issue #2316](https://github.com/Azure/azure-sdk-for-ruby/issues/2316) for more details.

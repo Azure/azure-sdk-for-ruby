@@ -1,11 +1,11 @@
 {
     "rollup": {
-        "azure_sdk": "0.22.5"
+        "azure_sdk": "0.23.0"
     },
     "data": {
         "azure_cognitiveservices_autosuggest": "0.17.1",
         "azure_cognitiveservices_customimagesearch": "0.17.1",
-        "azure_cognitiveservices_computervision": "0.18.1",
+        "azure_cognitiveservices_computervision": "0.19.0",
         "azure_cognitiveservices_contentmoderator": "0.17.2",
         "azure_cognitiveservices_customsearch": "0.18.1",
         "azure_cognitiveservices_customvisiontraining": "0.17.1",
@@ -19,7 +19,7 @@
         "azure_cognitiveservices_newssearch": "0.18.1",
         "azure_cognitiveservices_qnamaker": "0.17.1",
         "azure_cognitiveservices_spellcheck": "0.18.1",
-        "azure_cognitiveservices_textanalytics": "0.17.2",
+        "azure_cognitiveservices_textanalytics": "0.17.3",
         "azure_cognitiveservices_videosearch": "0.18.1",
         "azure_cognitiveservices_websearch": "0.18.1",
         "azure_cognitiveservices_visualsearch": "0.18.1",
@@ -29,6 +29,7 @@
         "azure_service_fabric": "0.17.1"
     },
     "management" : {
+        "azure_mgmt_advisor": "0.17.0",
         "azure_mgmt_analysis_services": "0.17.2",
         "azure_mgmt_api_management": "0.18.2",
         "azure_mgmt_authorization": "0.18.3",
@@ -51,7 +52,7 @@
         "azure_mgmt_devtestlabs": "0.17.3",
         "azure_mgmt_dns": "0.17.3",
         "azure_mgmt_edgegateway": "0.17.1",
-        "azure_mgmt_event_grid": "0.17.4",
+        "azure_mgmt_event_grid": "0.17.5",
         "azure_mgmt_event_hub": "0.17.2",
         "azure_mgmt_features": "0.17.2",
         "azure_mgmt_hdinsight": "0.17.2",
@@ -67,10 +68,10 @@
         "azure_mgmt_machine_learning_services": "0.17.1",
         "azure_mgmt_managed_applications": "0.17.2",
         "azure_mgmt_mariadb": "0.17.1",
-        "azure_mgmt_marketplace_ordering": "0.17.2",
+        "azure_mgmt_marketplace_ordering": "0.17.3",
         "azure_mgmt_media_services": "0.18.1",
         "azure_mgmt_mixedreality": "0.17.1",
-        "azure_mgmt_monitor": "0.17.2",
+        "azure_mgmt_monitor": "0.17.3",
         "azure_mgmt_msi": "0.17.1",
         "azure_mgmt_netapp": "0.17.1",
         "azure_mgmt_network": "0.18.5",

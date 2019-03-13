@@ -141,6 +141,11 @@
         {
             "name": "Latest",
             "resourceTypes": {
+                "Microsoft.Advisor": {
+                    "management": {
+                        "2017-04-19": ["*"]
+                    }
+                },
                 "Microsoft.AnalysisServices": {
                     "management": {
                         "2017-08-01": ["*"]
@@ -262,7 +267,7 @@
                 },
                 "Microsoft.EventGrid": {
                     "management": {
-                        "2019-01-01": ["*"]
+                        "2019-02-01-preview": ["*"]
                     },
                     "data": {
                         "2018-01-01": ["*"]
@@ -373,9 +378,12 @@
                         "2017-04-01": ["*"],
                         "2017-05-01-preview": ["*"],
                         "2017-11-01-preview": ["*"],
+                        "2017-12-01-preview": ["*"],
                         "2018-01-01": ["*"],
                         "2018-03-01": ["*"],
-                        "2018-04-16": ["*"]
+                        "2018-04-16": ["*"],
+                        "2018-11-27-preview": ["*"],
+                        "2019-03-01": ["*"]
                     }
                 },
                 "Microsoft.ManagedServiceIdentity": {
@@ -623,7 +631,7 @@
                 },
                 "Microsoft.CognitiveServices.TextAnalytics": {
                     "data": {
-                        "v2.1-preview": ["*"]
+                        "v2.1": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.VideoSearch": {
@@ -647,6 +655,20 @@
         ]
     },
     "management" : {
+        "azure_mgmt_advisor": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Advisor": {
+                    "management": {
+                        "2017-04-19": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_advisor/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_analysis_services": [
         {
             "name": "Latest",
@@ -1043,7 +1065,7 @@
             "resourceTypes": {
                 "Microsoft.EventGrid" : {
                     "management": {
-                        "2019-01-01": ["*"]
+                        "2019-02-01-preview": ["*"]
                     }
                 }
             },
@@ -1385,7 +1407,13 @@
                         "2016-03-01": ["*"],
                         "2017-04-01": ["*"],
                         "2017-05-01-preview": ["*"],
-                        "2017-11-01-preview": ["*"]
+                        "2017-11-01-preview": ["*"],
+                        "2017-12-01-preview": ["*"],
+                        "2018-01-01": ["*"],
+                        "2018-03-01": ["*"],
+                        "2018-04-16": ["*"],
+                        "2018-11-27-preview": ["*"],
+                        "2019-03-01": ["*"]
                     }
                 }
             },
@@ -2204,7 +2232,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.TextAnalytics" : {
                         "data": {
-                            "v2.1-preview": ["*"]
+                            "v2.1": ["*"]
                         }
                     }
                 },

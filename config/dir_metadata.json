@@ -1,4 +1,11 @@
 {
+  "Microsoft.Advisor": {
+    "management": {
+      "path": "management/azure_mgmt_advisor",
+      "namespace": "Azure::Advisor::Mgmt",
+      "module_require": "azure_mgmt_advisor"
+    }
+  },
   "Microsoft.AnalysisServices": {
     "management": {
       "path": "management/azure_mgmt_analysis_services",

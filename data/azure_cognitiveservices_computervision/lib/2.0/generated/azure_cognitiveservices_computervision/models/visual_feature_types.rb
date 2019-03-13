@@ -17,6 +17,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       Tags = "Tags"
       Description = "Description"
       Objects = "Objects"
+      Brands = "Brands"
     end
   end
 end
