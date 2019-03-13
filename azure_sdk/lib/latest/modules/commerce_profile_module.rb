@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
 
       module Models
+        ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
         MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
         ResourceRateCardInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
         UsageAggregation = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
@@ -18,7 +19,6 @@ module Azure::Profiles::Latest
         UsageAggregationListResult = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
         OfferTermInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
         RateCardQueryParameters = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
-        ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
         MonetaryCredit = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
         MonetaryCommitment = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
         RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
@@ -56,6 +56,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_response
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+          end
           def meter_info
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
           end
@@ -76,9 +79,6 @@ module Azure::Profiles::Latest
           end
           def rate_card_query_parameters
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
-          end
-          def error_response
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
           end
           def monetary_credit
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit

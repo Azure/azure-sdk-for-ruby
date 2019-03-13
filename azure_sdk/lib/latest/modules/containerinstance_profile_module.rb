@@ -7,41 +7,13 @@ require 'azure_mgmt_container_instance'
 module Azure::Profiles::Latest
   module ContainerInstance
     module Mgmt
-      ContainerGroups = Azure::ContainerInstance::Mgmt::V2018_10_01::ContainerGroups
       Operations = Azure::ContainerInstance::Mgmt::V2018_10_01::Operations
+      ContainerGroups = Azure::ContainerInstance::Mgmt::V2018_10_01::ContainerGroups
       ContainerGroupUsage = Azure::ContainerInstance::Mgmt::V2018_10_01::ContainerGroupUsage
       ContainerOperations = Azure::ContainerInstance::Mgmt::V2018_10_01::ContainerOperations
       ServiceAssociationLink = Azure::ContainerInstance::Mgmt::V2018_10_01::ServiceAssociationLink
 
       module Models
-        Port = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Port
-        ContainerPort = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerPort
-        IpAddress = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::IpAddress
-        ContainerState = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerState
-        ContainerGroupPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupPropertiesInstanceView
-        ContainerPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerPropertiesInstanceView
-        LogAnalytics = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::LogAnalytics
-        ResourceRequests = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequests
-        ContainerGroupDiagnostics = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupDiagnostics
-        ResourceRequirements = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequirements
-        ContainerGroupNetworkProfile = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProfile
-        ContainerExec = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerExec
-        DnsConfiguration = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::DnsConfiguration
-        ContainerProbe = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerProbe
-        Container = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Container
-        GitRepoVolume = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::GitRepoVolume
-        OperationDisplay = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperationDisplay
-        ContainerGroupIdentityUserAssignedIdentitiesValue = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupIdentityUserAssignedIdentitiesValue
-        Operation = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Operation
-        ImageRegistryCredential = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ImageRegistryCredential
-        OperationListResult = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperationListResult
-        Event = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Event
-        UsageName = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::UsageName
-        ResourceLimits = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceLimits
-        Usage = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Usage
-        ContainerHttpGet = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerHttpGet
-        UsageListResult = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::UsageListResult
-        Volume = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Volume
         ContainerGroupListResult = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupListResult
         EnvironmentVariable = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::EnvironmentVariable
         Logs = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Logs
@@ -52,21 +24,49 @@ module Azure::Profiles::Latest
         AzureFileVolume = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::AzureFileVolume
         ContainerExecResponse = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerExecResponse
         GpuResource = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::GpuResource
-        Resource = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Resource
         ContainerGroup = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroup
         ContainerNetworkProtocol = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerNetworkProtocol
         GpuSku = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::GpuSku
-        ResourceIdentityType = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceIdentityType
+        ContainerHttpGet = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerHttpGet
         ContainerGroupRestartPolicy = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupRestartPolicy
-        ContainerGroupNetworkProtocol = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProtocol
+        ResourceIdentityType = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceIdentityType
         ContainerGroupIpAddressType = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupIpAddressType
-        OperatingSystemTypes = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperatingSystemTypes
-        LogAnalyticsLogType = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::LogAnalyticsLogType
+        ContainerGroupNetworkProtocol = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProtocol
         ContainerInstanceOperationsOrigin = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerInstanceOperationsOrigin
+        Event = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Event
+        LogAnalyticsLogType = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::LogAnalyticsLogType
+        OperatingSystemTypes = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperatingSystemTypes
+        UsageListResult = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::UsageListResult
+        UsageName = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::UsageName
+        LogAnalytics = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::LogAnalytics
+        Resource = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Resource
+        OperationDisplay = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperationDisplay
+        Operation = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Operation
+        OperationListResult = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperationListResult
+        Port = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Port
+        ContainerPort = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerPort
+        IpAddress = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::IpAddress
+        ContainerState = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerState
+        ContainerGroupPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupPropertiesInstanceView
+        ContainerPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerPropertiesInstanceView
+        ResourceRequests = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequests
+        ContainerGroupDiagnostics = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupDiagnostics
+        ResourceRequirements = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequirements
+        ContainerGroupNetworkProfile = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProfile
+        ContainerExec = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerExec
+        DnsConfiguration = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::DnsConfiguration
+        ContainerProbe = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerProbe
+        Container = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Container
+        GitRepoVolume = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::GitRepoVolume
+        ContainerGroupIdentityUserAssignedIdentitiesValue = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupIdentityUserAssignedIdentitiesValue
+        ImageRegistryCredential = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ImageRegistryCredential
+        ResourceLimits = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceLimits
+        Usage = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Usage
+        Volume = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Volume
       end
 
       class ContainerInstanceManagementClass
-        attr_reader :container_groups, :operations, :container_group_usage, :container_operations, :service_association_link, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :container_groups, :container_group_usage, :container_operations, :service_association_link, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -76,8 +76,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @container_groups = @client_0.container_groups
           @operations = @client_0.operations
+          @container_groups = @client_0.container_groups
           @container_group_usage = @client_0.container_group_usage
           @container_operations = @client_0.container_operations
           @service_association_link = @client_0.service_association_link
@@ -99,90 +99,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def port
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Port
-          end
-          def container_port
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerPort
-          end
-          def ip_address
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::IpAddress
-          end
-          def container_state
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerState
-          end
-          def container_group_properties_instance_view
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupPropertiesInstanceView
-          end
-          def container_properties_instance_view
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerPropertiesInstanceView
-          end
-          def log_analytics
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::LogAnalytics
-          end
-          def resource_requests
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequests
-          end
-          def container_group_diagnostics
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupDiagnostics
-          end
-          def resource_requirements
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequirements
-          end
-          def container_group_network_profile
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProfile
-          end
-          def container_exec
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerExec
-          end
-          def dns_configuration
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::DnsConfiguration
-          end
-          def container_probe
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerProbe
-          end
-          def container
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Container
-          end
-          def git_repo_volume
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::GitRepoVolume
-          end
-          def operation_display
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperationDisplay
-          end
-          def container_group_identity_user_assigned_identities_value
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupIdentityUserAssignedIdentitiesValue
-          end
-          def operation
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Operation
-          end
-          def image_registry_credential
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ImageRegistryCredential
-          end
-          def operation_list_result
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperationListResult
-          end
-          def event
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Event
-          end
-          def usage_name
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::UsageName
-          end
-          def resource_limits
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceLimits
-          end
-          def usage
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Usage
-          end
-          def container_http_get
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerHttpGet
-          end
-          def usage_list_result
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::UsageListResult
-          end
-          def volume
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Volume
-          end
           def container_group_list_result
             Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupListResult
           end
@@ -213,9 +129,6 @@ module Azure::Profiles::Latest
           def gpu_resource
             Azure::ContainerInstance::Mgmt::V2018_10_01::Models::GpuResource
           end
-          def resource
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Resource
-          end
           def container_group
             Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroup
           end
@@ -225,26 +138,113 @@ module Azure::Profiles::Latest
           def gpu_sku
             Azure::ContainerInstance::Mgmt::V2018_10_01::Models::GpuSku
           end
-          def resource_identity_type
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceIdentityType
+          def container_http_get
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerHttpGet
           end
           def container_group_restart_policy
             Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupRestartPolicy
           end
-          def container_group_network_protocol
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProtocol
+          def resource_identity_type
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceIdentityType
           end
           def container_group_ip_address_type
             Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupIpAddressType
           end
-          def operating_system_types
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperatingSystemTypes
+          def container_group_network_protocol
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProtocol
+          end
+          def container_instance_operations_origin
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerInstanceOperationsOrigin
+          end
+          def event
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Event
           end
           def log_analytics_log_type
             Azure::ContainerInstance::Mgmt::V2018_10_01::Models::LogAnalyticsLogType
           end
-          def container_instance_operations_origin
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerInstanceOperationsOrigin
+          def operating_system_types
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperatingSystemTypes
+          end
+          def usage_list_result
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::UsageListResult
+          end
+          def usage_name
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::UsageName
+          end
+          def log_analytics
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::LogAnalytics
+          end
+          def resource
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Resource
+          end
+          def operation_display
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperationDisplay
+          end
+          def operation
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Operation
+          end
+          def operation_list_result
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::OperationListResult
+          end
+          def port
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Port
+          end
+          def container_port
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerPort
+          end
+          def ip_address
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::IpAddress
+          end
+          def container_state
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerState
+          end
+          def container_group_properties_instance_view
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupPropertiesInstanceView
+          end
+          def container_properties_instance_view
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerPropertiesInstanceView
+          end
+          def resource_requests
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequests
+          end
+          def container_group_diagnostics
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupDiagnostics
+          end
+          def resource_requirements
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequirements
+          end
+          def container_group_network_profile
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProfile
+          end
+          def container_exec
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerExec
+          end
+          def dns_configuration
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::DnsConfiguration
+          end
+          def container_probe
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerProbe
+          end
+          def container
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Container
+          end
+          def git_repo_volume
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::GitRepoVolume
+          end
+          def container_group_identity_user_assigned_identities_value
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupIdentityUserAssignedIdentitiesValue
+          end
+          def image_registry_credential
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ImageRegistryCredential
+          end
+          def resource_limits
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceLimits
+          end
+          def usage
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Usage
+          end
+          def volume
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::Volume
           end
         end
       end

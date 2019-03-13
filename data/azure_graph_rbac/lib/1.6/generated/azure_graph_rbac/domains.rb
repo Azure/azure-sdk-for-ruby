@@ -30,8 +30,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [DomainListResult] operation results.
     #
-    def list(filter:nil, custom_headers:nil)
-      response = list_async(filter:filter, custom_headers:custom_headers).value!
+    def list(filter = nil, custom_headers = nil)
+      response = list_async(filter, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -44,8 +44,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(filter:nil, custom_headers:nil)
-      list_async(filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(filter = nil, custom_headers = nil)
+      list_async(filter, custom_headers).value!
     end
 
     #
@@ -57,13 +57,12 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(filter:nil, custom_headers:nil)
+    def list_async(filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -117,8 +116,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Domain] operation results.
     #
-    def get(domain_name, custom_headers:nil)
-      response = get_async(domain_name, custom_headers:custom_headers).value!
+    def get(domain_name, custom_headers = nil)
+      response = get_async(domain_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -131,8 +130,8 @@ module Azure::GraphRbac::V1_6
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(domain_name, custom_headers:nil)
-      get_async(domain_name, custom_headers:custom_headers).value!
+    def get_with_http_info(domain_name, custom_headers = nil)
+      get_async(domain_name, custom_headers).value!
     end
 
     #
@@ -144,14 +143,13 @@ module Azure::GraphRbac::V1_6
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(domain_name, custom_headers:nil)
+    def get_async(domain_name, custom_headers = nil)
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
