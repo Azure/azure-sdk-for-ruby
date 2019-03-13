@@ -4,6 +4,9 @@
         "azure_mgmt_event_grid",
         "azure_mgmt_marketplace_ordering"
     ],
+    "data": [
+        "azure_cognitiveservices_computervision"
+    ],
     "rollup": [
         "azure_sdk"
     ]

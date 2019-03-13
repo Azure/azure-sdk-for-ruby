@@ -1673,14 +1673,14 @@
   },
   "azure_cognitiveservices_computervision":{
     "azure_cognitiveservices_computervision_v2.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/cognitiveservices/data-plane/ComputerVision/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/cognitiveservices/data-plane/ComputerVision/readme.md",
       "namespace": "Azure::CognitiveServices::ComputerVision::V2_0",
       "title": "ComputerVisionClient",
       "tag": "release_2_0"
     },
     "azure_cognitiveservices_computervision_v1.0": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/cognitiveservices/data-plane/ComputerVision/stable/v1.0/ComputerVision.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/cognitiveservices/data-plane/ComputerVision/stable/v1.0/ComputerVision.json"
       ],
       "namespace": "Azure::CognitiveServices::ComputerVision::V1_0",
       "title": "ComputerVisionClient"
