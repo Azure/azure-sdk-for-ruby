@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_advisor",
-        "azure_mgmt_event_grid"
+        "azure_mgmt_event_grid",
+        "azure_mgmt_marketplace_ordering"
     ],
     "rollup": [
         "azure_sdk"
