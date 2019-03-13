@@ -6,8 +6,8 @@
 module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
   module Models
     #
-    # Error reponse indicates Microsoft.MarketplaceOrdering service is not able
-    # to process the incoming request. The reason is provided in the error
+    # Error response indicates Microsoft.MarketplaceOrdering service is not
+    # able to process the incoming request. The reason is provided in the error
     # message.
     #
     class ErrorResponse
