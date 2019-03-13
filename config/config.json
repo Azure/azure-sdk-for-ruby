@@ -515,33 +515,38 @@
     }
   },
   "azure_mgmt_event_grid": {
+    "azure_mgmt_event_grid_2019_02_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/eventgrid/resource-manager/readme.md",
+      "namespace": "Azure::EventGrid::Mgmt::V2019_02_01_preview",
+      "tag": "package-2019-02-preview"
+    },
     "azure_mgmt_event_grid_2019_01_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b980271c6202dd77735373cd172a89fad1d244d7/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2019_01_01",
       "tag": "package-2019-01"
     },
     "azure_mgmt_event_grid_2018_09_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b980271c6202dd77735373cd172a89fad1d244d7/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2018_09_15_preview",
       "tag": "package-2018-09-preview"
     },
     "azure_mgmt_event_grid_2018_05_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b980271c6202dd77735373cd172a89fad1d244d7/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2018_05_01_preview",
       "tag": "package-2018-05-preview"
     },
     "azure_mgmt_event_grid_2018_01_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b980271c6202dd77735373cd172a89fad1d244d7/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2018_01_01",
       "tag": "package-2018-01"
     },
     "azure_mgmt_event_grid_2017_09_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b980271c6202dd77735373cd172a89fad1d244d7/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2017_09_15_preview",
       "tag": "package-2017-09-preview"
     },
     "azure_mgmt_event_grid_2017_06_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b980271c6202dd77735373cd172a89fad1d244d7/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2017_06_15_preview",
       "tag": "package-2017-06-preview"
     }
