@@ -8,6 +8,10 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      VisualFeatureTypes = Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
+      OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
+      TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
+      Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
       ImageType = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
       FaceDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
       ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
@@ -42,10 +46,6 @@ module Azure::Profiles::Latest
       TextOperationStatusCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
       Gender = Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
       ComputerVisionErrorCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionErrorCodes
-      VisualFeatureTypes = Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
-      OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
-      TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
-      Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,18 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def visual_feature_types
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
+        end
+        def ocr_languages
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
+        end
+        def text_recognition_mode
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
+        end
+        def details
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
+        end
         def image_type
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
         end
@@ -178,18 +190,6 @@ module Azure::Profiles::Latest
         end
         def computer_vision_error_codes
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionErrorCodes
-        end
-        def visual_feature_types
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
-        end
-        def ocr_languages
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
-        end
-        def text_recognition_mode
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
-        end
-        def details
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
         end
       end
     end
