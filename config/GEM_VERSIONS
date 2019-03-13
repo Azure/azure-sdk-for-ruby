@@ -19,7 +19,7 @@
         "azure_cognitiveservices_newssearch": "0.18.1",
         "azure_cognitiveservices_qnamaker": "0.17.1",
         "azure_cognitiveservices_spellcheck": "0.18.1",
-        "azure_cognitiveservices_textanalytics": "0.17.2",
+        "azure_cognitiveservices_textanalytics": "0.17.3",
         "azure_cognitiveservices_videosearch": "0.18.1",
         "azure_cognitiveservices_websearch": "0.18.1",
         "azure_cognitiveservices_visualsearch": "0.18.1",

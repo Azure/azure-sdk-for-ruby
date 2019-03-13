@@ -628,7 +628,7 @@
                 },
                 "Microsoft.CognitiveServices.TextAnalytics": {
                     "data": {
-                        "v2.1-preview": ["*"]
+                        "v2.1": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.VideoSearch": {
@@ -2223,7 +2223,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.TextAnalytics" : {
                         "data": {
-                            "v2.1-preview": ["*"]
+                            "v2.1": ["*"]
                         }
                     }
                 },

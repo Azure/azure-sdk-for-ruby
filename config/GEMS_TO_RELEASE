@@ -5,7 +5,8 @@
         "azure_mgmt_marketplace_ordering"
     ],
     "data": [
-        "azure_cognitiveservices_computervision"
+        "azure_cognitiveservices_computervision",
+        "azure_cognitiveservices_textanalytics"
     ],
     "rollup": [
         "azure_sdk"
