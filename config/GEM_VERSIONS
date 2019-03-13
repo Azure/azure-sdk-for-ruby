@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.22.5"
+        "azure_sdk": "0.22.6"
     },
     "data": {
         "azure_cognitiveservices_autosuggest": "0.17.1",
@@ -29,6 +29,7 @@
         "azure_service_fabric": "0.17.1"
     },
     "management" : {
+        "azure_mgmt_advisor": "0.17.0",
         "azure_mgmt_analysis_services": "0.17.2",
         "azure_mgmt_api_management": "0.18.2",
         "azure_mgmt_authorization": "0.18.3",

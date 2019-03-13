@@ -141,6 +141,11 @@
         {
             "name": "Latest",
             "resourceTypes": {
+                "Microsoft.Advisor": {
+                    "management": {
+                        "2017-04-19": ["*"]
+                    }
+                },
                 "Microsoft.AnalysisServices": {
                     "management": {
                         "2017-08-01": ["*"]
@@ -647,6 +652,20 @@
         ]
     },
     "management" : {
+        "azure_mgmt_advisor": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Advisor": {
+                    "management": {
+                        "2017-04-19": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_advisor/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_analysis_services": [
         {
             "name": "Latest",
