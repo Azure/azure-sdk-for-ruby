@@ -1,3 +1,7 @@
+## 2019.03.12 - Azure Ruby SDK Release
+* Released all management, data and rollup SDKs to fix the empty value in nextLink. 
+  Refer [Issue #2316](https://github.com/Azure/azure-sdk-for-ruby/issues/2316) for more details.
+
 ## 2019.03.04 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_cdn -v0.17.2

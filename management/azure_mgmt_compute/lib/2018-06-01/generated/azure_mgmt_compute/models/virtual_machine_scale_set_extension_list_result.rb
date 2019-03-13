@@ -33,7 +33,7 @@ module Azure::Compute::Mgmt::V2018_06_01
       def get_all_items
         items = @value
         page = self
-        while page.next_link != nil do
+        while page.next_link != nil && !page.next_link.strip.empty? do
           page = page.get_next_page
           items.concat(page.value)
         end

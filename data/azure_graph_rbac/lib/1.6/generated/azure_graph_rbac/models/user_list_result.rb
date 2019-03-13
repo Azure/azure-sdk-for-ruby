@@ -30,7 +30,7 @@ module Azure::GraphRbac::V1_6
       def get_all_items
         items = @value
         page = self
-        while page.odatanext_link != nil do
+        while page.odatanext_link != nil && !page.odatanext_link.strip.empty? do
           page = page.get_next_page
           items.concat(page.value)
         end
