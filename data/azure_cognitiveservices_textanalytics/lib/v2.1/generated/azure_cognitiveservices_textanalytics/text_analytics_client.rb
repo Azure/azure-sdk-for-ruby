@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::TextAnalytics::V2_0
+module Azure::CognitiveServices::TextAnalytics::V2_1
   #
   # A service client - single point of access to the REST API.
   #
@@ -44,7 +44,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     #
     def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = '{Endpoint}/text/analytics/v2.0'
+      @base_url = '{Endpoint}/text/analytics/v2.1'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
@@ -114,133 +114,22 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     end
 
     #
-    # The API returns a list of strings denoting the key talking points in the
-    # input text.
-    #
-    # See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-    # Analytics Documentation</a> for details about the languages that are
-    # supported by key phrase extraction.
-    #
-    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
-    # Documents can now contain a language field to indicate the text language
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [KeyPhraseBatchResult] operation results.
-    #
-    def key_phrases(input, custom_headers:nil)
-      response = key_phrases_async(input, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # The API returns a list of strings denoting the key talking points in the
-    # input text.
-    #
-    # See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-    # Analytics Documentation</a> for details about the languages that are
-    # supported by key phrase extraction.
-    #
-    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
-    # Documents can now contain a language field to indicate the text language
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def key_phrases_with_http_info(input, custom_headers:nil)
-      key_phrases_async(input, custom_headers:custom_headers).value!
-    end
-
-    #
-    # The API returns a list of strings denoting the key talking points in the
-    # input text.
-    #
-    # See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-    # Analytics Documentation</a> for details about the languages that are
-    # supported by key phrase extraction.
-    #
-    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
-    # Documents can now contain a language field to indicate the text language
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def key_phrases_async(input, custom_headers:nil)
-      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
-      fail ArgumentError, 'input is nil' if input.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput.mapper()
-      request_content = self.serialize(request_mapper,  input)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'keyPhrases'
-
-      request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{Endpoint}', endpoint)
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = self.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::KeyPhraseBatchResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
     # The API returns the detected language and a numeric score between 0 and 1.
     #
     # Scores close to 1 indicate 100% certainty that the identified language is
     # true. A total of 120 languages are supported.
     #
-    # @param input [BatchInput] Collection of documents to analyze.
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param language_batch_input [LanguageBatchInput] Collection of documents to
+    # analyze.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [LanguageBatchResult] operation results.
     #
-    def detect_language(input, custom_headers:nil)
-      response = detect_language_async(input, custom_headers:custom_headers).value!
+    def detect_language(show_stats:nil, language_batch_input:nil, custom_headers:nil)
+      response = detect_language_async(show_stats:show_stats, language_batch_input:language_batch_input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -250,14 +139,17 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # Scores close to 1 indicate 100% certainty that the identified language is
     # true. A total of 120 languages are supported.
     #
-    # @param input [BatchInput] Collection of documents to analyze.
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param language_batch_input [LanguageBatchInput] Collection of documents to
+    # analyze.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_language_with_http_info(input, custom_headers:nil)
-      detect_language_async(input, custom_headers:custom_headers).value!
+    def detect_language_with_http_info(show_stats:nil, language_batch_input:nil, custom_headers:nil)
+      detect_language_async(show_stats:show_stats, language_batch_input:language_batch_input, custom_headers:custom_headers).value!
     end
 
     #
@@ -266,15 +158,17 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # Scores close to 1 indicate 100% certainty that the identified language is
     # true. A total of 120 languages are supported.
     #
-    # @param input [BatchInput] Collection of documents to analyze.
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param language_batch_input [LanguageBatchInput] Collection of documents to
+    # analyze.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_language_async(input, custom_headers:nil)
+    def detect_language_async(show_stats:nil, language_batch_input:nil, custom_headers:nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
-      fail ArgumentError, 'input is nil' if input.nil?
 
 
       request_headers = {}
@@ -285,8 +179,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::BatchInput.mapper()
-      request_content = self.serialize(request_mapper,  input)
+      request_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::LanguageBatchInput.mapper()
+      request_content = self.serialize(request_mapper,  language_batch_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'languages'
@@ -296,6 +190,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'showStats' => show_stats},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -316,121 +211,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::LanguageBatchResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # The API returns a numeric score between 0 and 1.
-    #
-    # Scores close to 1 indicate positive sentiment, while scores close to 0
-    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
-    # (e.g. a factoid statement). See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-    # Analytics Documentation</a> for details about the languages that are
-    # supported by sentiment analysis.
-    #
-    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [SentimentBatchResult] operation results.
-    #
-    def sentiment(input, custom_headers:nil)
-      response = sentiment_async(input, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # The API returns a numeric score between 0 and 1.
-    #
-    # Scores close to 1 indicate positive sentiment, while scores close to 0
-    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
-    # (e.g. a factoid statement). See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-    # Analytics Documentation</a> for details about the languages that are
-    # supported by sentiment analysis.
-    #
-    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def sentiment_with_http_info(input, custom_headers:nil)
-      sentiment_async(input, custom_headers:custom_headers).value!
-    end
-
-    #
-    # The API returns a numeric score between 0 and 1.
-    #
-    # Scores close to 1 indicate positive sentiment, while scores close to 0
-    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
-    # (e.g. a factoid statement). See the <a
-    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-    # Analytics Documentation</a> for details about the languages that are
-    # supported by sentiment analysis.
-    #
-    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def sentiment_async(input, custom_headers:nil)
-      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
-      fail ArgumentError, 'input is nil' if input.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput.mapper()
-      request_content = self.serialize(request_mapper,  input)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'sentiment'
-
-      request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{Endpoint}', endpoint)
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = self.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::SentimentBatchResult.mapper()
+            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::LanguageBatchResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -452,14 +233,17 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
     # languages in Text Analytics API</a> for the list of enabled languages.
     #
-    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param multi_language_batch_input [MultiLanguageBatchInput] Collection of
+    # documents to analyze.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [EntitiesBatchResult] operation results.
     #
-    def entities(input, custom_headers:nil)
-      response = entities_async(input, custom_headers:custom_headers).value!
+    def entities(show_stats:nil, multi_language_batch_input:nil, custom_headers:nil)
+      response = entities_async(show_stats:show_stats, multi_language_batch_input:multi_language_batch_input, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -472,14 +256,17 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
     # languages in Text Analytics API</a> for the list of enabled languages.
     #
-    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param multi_language_batch_input [MultiLanguageBatchInput] Collection of
+    # documents to analyze.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def entities_with_http_info(input, custom_headers:nil)
-      entities_async(input, custom_headers:custom_headers).value!
+    def entities_with_http_info(show_stats:nil, multi_language_batch_input:nil, custom_headers:nil)
+      entities_async(show_stats:show_stats, multi_language_batch_input:multi_language_batch_input, custom_headers:custom_headers).value!
     end
 
     #
@@ -491,15 +278,17 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
     # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
     # languages in Text Analytics API</a> for the list of enabled languages.
     #
-    # @param input [MultiLanguageBatchInput] Collection of documents to analyze.
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param multi_language_batch_input [MultiLanguageBatchInput] Collection of
+    # documents to analyze.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def entities_async(input, custom_headers:nil)
+    def entities_async(show_stats:nil, multi_language_batch_input:nil, custom_headers:nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
-      fail ArgumentError, 'input is nil' if input.nil?
 
 
       request_headers = {}
@@ -510,8 +299,8 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::MultiLanguageBatchInput.mapper()
-      request_content = self.serialize(request_mapper,  input)
+      request_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::MultiLanguageBatchInput.mapper()
+      request_content = self.serialize(request_mapper,  multi_language_batch_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'entities'
@@ -521,6 +310,7 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'showStats' => show_stats},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -541,7 +331,263 @@ module Azure::CognitiveServices::TextAnalytics::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_0::Models::EntitiesBatchResult.mapper()
+            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::EntitiesBatchResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # The API returns a list of strings denoting the key talking points in the
+    # input text.
+    #
+    # See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by key phrase extraction.
+    #
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param multi_language_batch_input [MultiLanguageBatchInput] Collection of
+    # documents to analyze. Documents can now contain a language field to indicate
+    # the text language
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [KeyPhraseBatchResult] operation results.
+    #
+    def key_phrases(show_stats:nil, multi_language_batch_input:nil, custom_headers:nil)
+      response = key_phrases_async(show_stats:show_stats, multi_language_batch_input:multi_language_batch_input, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The API returns a list of strings denoting the key talking points in the
+    # input text.
+    #
+    # See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by key phrase extraction.
+    #
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param multi_language_batch_input [MultiLanguageBatchInput] Collection of
+    # documents to analyze. Documents can now contain a language field to indicate
+    # the text language
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def key_phrases_with_http_info(show_stats:nil, multi_language_batch_input:nil, custom_headers:nil)
+      key_phrases_async(show_stats:show_stats, multi_language_batch_input:multi_language_batch_input, custom_headers:custom_headers).value!
+    end
+
+    #
+    # The API returns a list of strings denoting the key talking points in the
+    # input text.
+    #
+    # See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by key phrase extraction.
+    #
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param multi_language_batch_input [MultiLanguageBatchInput] Collection of
+    # documents to analyze. Documents can now contain a language field to indicate
+    # the text language
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def key_phrases_async(show_stats:nil, multi_language_batch_input:nil, custom_headers:nil)
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::MultiLanguageBatchInput.mapper()
+      request_content = self.serialize(request_mapper,  multi_language_batch_input)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'keyPhrases'
+
+      request_url = @base_url || self.base_url
+    request_url = request_url.gsub('{Endpoint}', endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'showStats' => show_stats},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::KeyPhraseBatchResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # The API returns a numeric score between 0 and 1.
+    #
+    # Scores close to 1 indicate positive sentiment, while scores close to 0
+    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+    # (e.g. a factoid statement). See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by sentiment analysis.
+    #
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param multi_language_batch_input [MultiLanguageBatchInput] Collection of
+    # documents to analyze.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def sentiment(show_stats:nil, multi_language_batch_input:nil, custom_headers:nil)
+      response = sentiment_async(show_stats:show_stats, multi_language_batch_input:multi_language_batch_input, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The API returns a numeric score between 0 and 1.
+    #
+    # Scores close to 1 indicate positive sentiment, while scores close to 0
+    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+    # (e.g. a factoid statement). See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by sentiment analysis.
+    #
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param multi_language_batch_input [MultiLanguageBatchInput] Collection of
+    # documents to analyze.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def sentiment_with_http_info(show_stats:nil, multi_language_batch_input:nil, custom_headers:nil)
+      sentiment_async(show_stats:show_stats, multi_language_batch_input:multi_language_batch_input, custom_headers:custom_headers).value!
+    end
+
+    #
+    # The API returns a numeric score between 0 and 1.
+    #
+    # Scores close to 1 indicate positive sentiment, while scores close to 0
+    # indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+    # (e.g. a factoid statement). See the <a
+    # href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+    # Analytics Documentation</a> for details about the languages that are
+    # supported by sentiment analysis.
+    #
+    # @param show_stats [Boolean] (optional) if set to true, response will contain
+    # input and document level statistics.
+    # @param multi_language_batch_input [MultiLanguageBatchInput] Collection of
+    # documents to analyze.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def sentiment_async(show_stats:nil, multi_language_batch_input:nil, custom_headers:nil)
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::MultiLanguageBatchInput.mapper()
+      request_content = self.serialize(request_mapper,  multi_language_batch_input)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'sentiment'
+
+      request_url = @base_url || self.base_url
+    request_url = request_url.gsub('{Endpoint}', endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'showStats' => show_stats},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 500
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::SentimentBatchResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 500
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CognitiveServices::TextAnalytics::V2_1::Models::ErrorResponse.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
