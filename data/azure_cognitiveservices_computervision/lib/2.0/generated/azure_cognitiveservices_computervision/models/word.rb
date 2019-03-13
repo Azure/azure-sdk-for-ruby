@@ -6,18 +6,21 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Model object.
-    #
+    # Json object representing a recognized word.
     #
     class Word
 
       include MsRestAzure
 
-      # @return [Array<Integer>]
+      # @return [Array<Integer>] Bounding box of a recognized word.
       attr_accessor :bounding_box
 
-      # @return [String]
+      # @return [String] The text content of the word.
       attr_accessor :text
+
+      # @return [TextRecognitionResultConfidenceClass] Qualitative confidence
+      # measure. Possible values include: 'High', 'Low'
+      attr_accessor :confidence
 
 
       #
@@ -35,7 +38,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
             model_properties: {
               bounding_box: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'boundingBox',
                 type: {
                   name: 'Sequence',
@@ -51,10 +54,19 @@ module Azure::CognitiveServices::ComputerVision::V2_0
               },
               text: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'text',
                 type: {
                   name: 'String'
+                }
+              },
+              confidence: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'confidence',
+                type: {
+                  name: 'Enum',
+                  module: 'TextRecognitionResultConfidenceClass'
                 }
               }
             }

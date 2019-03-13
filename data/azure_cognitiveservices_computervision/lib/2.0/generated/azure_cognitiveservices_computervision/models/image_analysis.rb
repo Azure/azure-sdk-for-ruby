@@ -42,6 +42,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # detected in the image.
       attr_accessor :objects
 
+      # @return [Array<DetectedBrand>] Array of brands detected in the image.
+      attr_accessor :brands
+
       # @return [String] Id of the REST API request.
       attr_accessor :request_id
 
@@ -162,6 +165,23 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                       type: {
                         name: 'Composite',
                         class_name: 'DetectedObject'
+                      }
+                  }
+                }
+              },
+              brands: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'brands',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'DetectedBrandElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'DetectedBrand'
                       }
                   }
                 }

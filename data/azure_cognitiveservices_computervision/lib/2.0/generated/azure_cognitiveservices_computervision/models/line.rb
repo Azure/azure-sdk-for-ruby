@@ -6,20 +6,19 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Model object.
-    #
+    # Json object representing a recognized text line.
     #
     class Line
 
       include MsRestAzure
 
-      # @return [Array<Integer>]
+      # @return [Array<Integer>] Bounding box of a recognized line.
       attr_accessor :bounding_box
 
-      # @return [String]
+      # @return [String] The text content of the line.
       attr_accessor :text
 
-      # @return [Array<Word>]
+      # @return [Array<Word>] List of words in the text line.
       attr_accessor :words
 
 

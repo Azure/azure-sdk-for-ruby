@@ -6,34 +6,34 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Result of recognition text operation.
+    # OCR result of the read operation.
     #
-    class TextOperationResult
+    class ReadOperationResult
 
       include MsRestAzure
 
-      # @return [TextOperationStatusCodes] Status of the text operation.
+      # @return [TextOperationStatusCodes] Status of the read operation.
       # Possible values include: 'Not Started', 'Running', 'Failed',
       # 'Succeeded'
       attr_accessor :status
 
-      # @return [TextRecognitionResult] Text recognition result of the text
-      # operation.
-      attr_accessor :recognition_result
+      # @return [Array<TextRecognitionResult>] A array of text recognition
+      # result of the read operation.
+      attr_accessor :recognition_results
 
 
       #
-      # Mapper for TextOperationResult class as Ruby Hash.
+      # Mapper for ReadOperationResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TextOperationResult',
+          serialized_name: 'ReadOperationResult',
           type: {
             name: 'Composite',
-            class_name: 'TextOperationResult',
+            class_name: 'ReadOperationResult',
             model_properties: {
               status: {
                 client_side_validation: true,
@@ -44,13 +44,21 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                   module: 'TextOperationStatusCodes'
                 }
               },
-              recognition_result: {
+              recognition_results: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'recognitionResult',
+                serialized_name: 'recognitionResults',
                 type: {
-                  name: 'Composite',
-                  class_name: 'TextRecognitionResult'
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'TextRecognitionResultElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'TextRecognitionResult'
+                      }
+                  }
                 }
               }
             }
