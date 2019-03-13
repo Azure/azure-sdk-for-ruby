@@ -7,14 +7,16 @@ require 'azure_mgmt_resources'
 module Azure::Profiles::V2017_03_09
   module Resources
     module Mgmt
-      Resources = Azure::Resources::Mgmt::V2016_02_01::Resources
       Deployments = Azure::Resources::Mgmt::V2016_02_01::Deployments
       Providers = Azure::Resources::Mgmt::V2016_02_01::Providers
       ResourceGroups = Azure::Resources::Mgmt::V2016_02_01::ResourceGroups
+      Resources = Azure::Resources::Mgmt::V2016_02_01::Resources
       Tags = Azure::Resources::Mgmt::V2016_02_01::Tags
       DeploymentOperations = Azure::Resources::Mgmt::V2016_02_01::DeploymentOperations
 
       module Models
+        ResourceIdentityType = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceIdentityType
+        Sku = Azure::Resources::Mgmt::V2016_02_01::Models::Sku
         Dependency = Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
         GenericResourceFilter = Azure::Resources::Mgmt::V2016_02_01::Models::GenericResourceFilter
         Identity = Azure::Resources::Mgmt::V2016_02_01::Models::Identity
@@ -59,12 +61,10 @@ module Azure::Profiles::V2017_03_09
         SubResource = Azure::Resources::Mgmt::V2016_02_01::Models::SubResource
         ResourceListResult = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceListResult
         Plan = Azure::Resources::Mgmt::V2016_02_01::Models::Plan
-        ResourceIdentityType = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceIdentityType
-        Sku = Azure::Resources::Mgmt::V2016_02_01::Models::Sku
       end
 
       class ResourcesManagementClass
-        attr_reader :resources, :deployments, :providers, :resource_groups, :tags, :deployment_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :deployments, :providers, :resource_groups, :resources, :tags, :deployment_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -74,10 +74,10 @@ module Azure::Profiles::V2017_03_09
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @resources = @client_0.resources
           @deployments = @client_0.deployments
           @providers = @client_0.providers
           @resource_groups = @client_0.resource_groups
+          @resources = @client_0.resources
           @tags = @client_0.tags
           @deployment_operations = @client_0.deployment_operations
 
@@ -98,6 +98,12 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def resource_identity_type
+            Azure::Resources::Mgmt::V2016_02_01::Models::ResourceIdentityType
+          end
+          def sku
+            Azure::Resources::Mgmt::V2016_02_01::Models::Sku
+          end
           def dependency
             Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
           end
@@ -229,12 +235,6 @@ module Azure::Profiles::V2017_03_09
           end
           def plan
             Azure::Resources::Mgmt::V2016_02_01::Models::Plan
-          end
-          def resource_identity_type
-            Azure::Resources::Mgmt::V2016_02_01::Models::ResourceIdentityType
-          end
-          def sku
-            Azure::Resources::Mgmt::V2016_02_01::Models::Sku
           end
         end
       end

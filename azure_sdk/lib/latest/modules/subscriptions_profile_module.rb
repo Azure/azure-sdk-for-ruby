@@ -7,27 +7,27 @@ require 'azure_mgmt_subscriptions'
 module Azure::Profiles::Latest
   module Subscriptions
     module Mgmt
-      Subscriptions = Azure::Subscriptions::Mgmt::V2016_06_01::Subscriptions
       Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
       Operations = Azure::Subscriptions::Mgmt::V2016_06_01::Operations
+      Subscriptions = Azure::Subscriptions::Mgmt::V2016_06_01::Subscriptions
 
       module Models
         Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
-        SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
-        OperationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
         OperationDisplay = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
         TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
         TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
         SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
         Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
-        LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
+        OperationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
         Operation = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
         SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
+        LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
+        SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
       end
 
       class SubscriptionsManagementClass
-        attr_reader :subscriptions, :tenants, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :tenants, :operations, :subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -37,9 +37,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @subscriptions = @client_0.subscriptions
           @tenants = @client_0.tenants
           @operations = @client_0.operations
+          @subscriptions = @client_0.subscriptions
 
           @model_classes = ModelClasses.new
         end
@@ -61,12 +61,6 @@ module Azure::Profiles::Latest
           def location
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
           end
-          def spending_limit
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
-          end
-          def operation_list_result
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
-          end
           def operation_display
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
           end
@@ -85,14 +79,20 @@ module Azure::Profiles::Latest
           def subscription
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
           end
-          def location_list_result
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
+          def operation_list_result
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
           end
           def operation
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
           end
           def subscription_state
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
+          end
+          def location_list_result
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
+          end
+          def spending_limit
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
           end
         end
       end
