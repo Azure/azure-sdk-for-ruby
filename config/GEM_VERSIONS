@@ -97,7 +97,7 @@
         "azure_mgmt_sql": "0.17.2",
         "azure_mgmt_sqlvirtualmachine": "0.17.2",
         "azure_mgmt_stor_simple8000_series": "0.17.2",
-        "azure_mgmt_storage": "0.17.6",
+        "azure_mgmt_storage": "0.17.7",
         "azure_mgmt_stream_analytics": "0.17.2",
         "azure_mgmt_subscriptions": "0.17.2",
         "azure_mgmt_traffic_manager": "0.17.2",
