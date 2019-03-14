@@ -23,7 +23,7 @@ module Azure::GraphRbac::V1_6
       # enabled
       attr_accessor :account_enabled
 
-      # @return [Array<String>] alterative names
+      # @return [Array<String>] alternative names
       attr_accessor :alternative_names
 
       # @return [String] The display name exposed by the associated
