@@ -10,8 +10,8 @@ module Azure::ContainerRegistry::Profiles::Latest
     Webhooks = Azure::ContainerRegistry::Mgmt::V2017_10_01::Webhooks
     Operations = Azure::ContainerRegistry::Mgmt::V2017_10_01::Operations
     Runs = Azure::ContainerRegistry::Mgmt::V2018_09_01::Runs
-    Registries = Azure::ContainerRegistry::Mgmt::V2018_09_01::Registries
     Tasks = Azure::ContainerRegistry::Mgmt::V2018_09_01::Tasks
+    Registries = Azure::ContainerRegistry::Mgmt::V2018_09_01::Registries
 
     module Models
       Event = Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::Event
@@ -132,7 +132,7 @@ module Azure::ContainerRegistry::Profiles::Latest
     # ContainerRegistryManagementClass
     #
     class ContainerRegistryManagementClass
-      attr_reader :replications, :webhooks, :operations, :runs, :registries, :tasks, :configurable, :base_url, :options, :model_classes
+      attr_reader :replications, :webhooks, :operations, :runs, :tasks, :registries, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -162,8 +162,8 @@ module Azure::ContainerRegistry::Profiles::Latest
         end
         add_telemetry(@client_1)
         @runs = @client_1.runs
-        @registries = @client_1.registries
         @tasks = @client_1.tasks
+        @registries = @client_1.registries
 
         @model_classes = ModelClasses.new
       end
