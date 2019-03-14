@@ -12,6 +12,8 @@ module Azure::Profiles::Latest
     Operations = Azure::CognitiveServices::Qnamaker::V4_0::Operations
 
     module Models
+      CreateKbInputDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::CreateKbInputDTO
+      DeleteKbContentsDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::DeleteKbContentsDTO
       QnADTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::QnADTO
       EndpointKeysDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::EndpointKeysDTO
       FileDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::FileDTO
@@ -42,8 +44,6 @@ module Azure::Profiles::Latest
       Operation = Azure::CognitiveServices::Qnamaker::V4_0::Models::Operation
       ErrorResponseError = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
       Error = Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
-      CreateKbInputDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::CreateKbInputDTO
-      DeleteKbContentsDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::DeleteKbContentsDTO
     end
 
     class QnamakerDataClass
@@ -79,6 +79,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def create_kb_input_dto
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::CreateKbInputDTO
+        end
+        def delete_kb_contents_dto
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::DeleteKbContentsDTO
+        end
         def qn_adto
           Azure::CognitiveServices::Qnamaker::V4_0::Models::QnADTO
         end
@@ -168,12 +174,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
-        end
-        def create_kb_input_dto
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::CreateKbInputDTO
-        end
-        def delete_kb_contents_dto
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::DeleteKbContentsDTO
         end
       end
     end
