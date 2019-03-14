@@ -14,16 +14,16 @@ module Azure::Profiles::Latest
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
       ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
+      Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
       NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
       Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
       VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
-      Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
       TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
-      Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+      Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::NewsSearch::V1_0::Models::SearchResultsAnswer
@@ -80,6 +80,9 @@ module Azure::Profiles::Latest
         def error_response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
         end
+        def freshness
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
+        end
         def news_article
           Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
         end
@@ -98,17 +101,14 @@ module Azure::Profiles::Latest
         def video_object
           Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
         end
-        def freshness
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
-        end
         def text_format
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
         end
-        def organization
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
-        end
         def response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+        end
+        def organization
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
         end
         def response_base
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase

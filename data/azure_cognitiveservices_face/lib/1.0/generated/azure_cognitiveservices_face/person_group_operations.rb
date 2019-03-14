@@ -22,57 +22,154 @@ module Azure::CognitiveServices::Face::V1_0
     attr_reader :client
 
     #
-    # Create a new person group with specified personGroupId, name and
-    # user-provided userData.
+    # Create a new person group with specified personGroupId, name, user-provided
+    # userData and recognitionModel.
+    # <br /> A person group is the container of the uploaded person data, including
+    # face images and face recognition features.
+    # <br /> After creation, use [PersonGroup Person -
+    # Create](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
+    # to add persons into the group, and then call [PersonGroup -
+    # Train](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+    # to get this group ready for [Face -
+    # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+    # <br /> The person's face, image, and userData will be stored on server until
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br />
+    # * Free-tier subscription quota: 1,000 person groups. Each holds up to 1,000
+    # persons.
+    # * S0-tier subscription quota: 1,000,000 person groups. Each holds up to
+    # 10,000 persons.
+    # * to handle larger scale face identification problem, please consider using
+    # [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d).
+    # <br />
+    # 'recognitionModel' should be specified to associate with this person group.
+    # The default value for 'recognitionModel' is 'recognition_01', if the latest
+    # model needed, please explicitly specify the model you need in this parameter.
+    # New faces that are added to an existing person group will use the recognition
+    # model that's already associated with the collection. Existing face features
+    # in a person group can't be updated to features extracted by another version
+    # of recognition model.
+    #
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
+    # @param recognition_model [RecognitionModel] Possible values include:
+    # 'recognition_01', 'recognition_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def create(person_group_id, name = nil, user_data = nil, custom_headers = nil)
-      response = create_async(person_group_id, name, user_data, custom_headers).value!
+    def create(person_group_id, name = nil, user_data = nil, recognition_model = nil, custom_headers = nil)
+      response = create_async(person_group_id, name, user_data, recognition_model, custom_headers).value!
       nil
     end
 
     #
-    # Create a new person group with specified personGroupId, name and
-    # user-provided userData.
+    # Create a new person group with specified personGroupId, name, user-provided
+    # userData and recognitionModel.
+    # <br /> A person group is the container of the uploaded person data, including
+    # face images and face recognition features.
+    # <br /> After creation, use [PersonGroup Person -
+    # Create](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
+    # to add persons into the group, and then call [PersonGroup -
+    # Train](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+    # to get this group ready for [Face -
+    # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+    # <br /> The person's face, image, and userData will be stored on server until
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br />
+    # * Free-tier subscription quota: 1,000 person groups. Each holds up to 1,000
+    # persons.
+    # * S0-tier subscription quota: 1,000,000 person groups. Each holds up to
+    # 10,000 persons.
+    # * to handle larger scale face identification problem, please consider using
+    # [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d).
+    # <br />
+    # 'recognitionModel' should be specified to associate with this person group.
+    # The default value for 'recognitionModel' is 'recognition_01', if the latest
+    # model needed, please explicitly specify the model you need in this parameter.
+    # New faces that are added to an existing person group will use the recognition
+    # model that's already associated with the collection. Existing face features
+    # in a person group can't be updated to features extracted by another version
+    # of recognition model.
+    #
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
+    # @param recognition_model [RecognitionModel] Possible values include:
+    # 'recognition_01', 'recognition_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(person_group_id, name = nil, user_data = nil, custom_headers = nil)
-      create_async(person_group_id, name, user_data, custom_headers).value!
+    def create_with_http_info(person_group_id, name = nil, user_data = nil, recognition_model = nil, custom_headers = nil)
+      create_async(person_group_id, name, user_data, recognition_model, custom_headers).value!
     end
 
     #
-    # Create a new person group with specified personGroupId, name and
-    # user-provided userData.
+    # Create a new person group with specified personGroupId, name, user-provided
+    # userData and recognitionModel.
+    # <br /> A person group is the container of the uploaded person data, including
+    # face images and face recognition features.
+    # <br /> After creation, use [PersonGroup Person -
+    # Create](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
+    # to add persons into the group, and then call [PersonGroup -
+    # Train](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+    # to get this group ready for [Face -
+    # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+    # <br /> The person's face, image, and userData will be stored on server until
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br />
+    # * Free-tier subscription quota: 1,000 person groups. Each holds up to 1,000
+    # persons.
+    # * S0-tier subscription quota: 1,000,000 person groups. Each holds up to
+    # 10,000 persons.
+    # * to handle larger scale face identification problem, please consider using
+    # [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d).
+    # <br />
+    # 'recognitionModel' should be specified to associate with this person group.
+    # The default value for 'recognitionModel' is 'recognition_01', if the latest
+    # model needed, please explicitly specify the model you need in this parameter.
+    # New faces that are added to an existing person group will use the recognition
+    # model that's already associated with the collection. Existing face features
+    # in a person group can't be updated to features extracted by another version
+    # of recognition model.
+    #
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
+    # @param recognition_model [RecognitionModel] Possible values include:
+    # 'recognition_01', 'recognition_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(person_group_id, name = nil, user_data = nil, custom_headers = nil)
+    def create_async(person_group_id, name = nil, user_data = nil, recognition_model = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
 
-      body = NameAndUserDataContract.new
-      unless name.nil? && user_data.nil?
+      body = MetaDataContract.new
+      unless name.nil? && user_data.nil? && recognition_model.nil?
         body.name = name
         body.user_data = user_data
+        body.recognition_model = recognition_model
       end
 
       request_headers = {}
@@ -84,7 +181,7 @@ module Azure::CognitiveServices::Face::V1_0
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract.mapper()
+      request_mapper = Azure::CognitiveServices::Face::V1_0::Models::MetaDataContract.mapper()
       request_content = @client.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -198,7 +295,9 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Retrieve the information of a person group, including its name and userData.
+    # Retrieve person group name, userData and recognitionModel. To get person
+    # information under this personGroup, use [PersonGroup Person -
+    # List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -212,7 +311,9 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Retrieve the information of a person group, including its name and userData.
+    # Retrieve person group name, userData and recognitionModel. To get person
+    # information under this personGroup, use [PersonGroup Person -
+    # List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -225,7 +326,9 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Retrieve the information of a person group, including its name and userData.
+    # Retrieve person group name, userData and recognitionModel. To get person
+    # information under this personGroup, use [PersonGroup Person -
+    # List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -468,7 +571,20 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # List person groups and their information.
+    # List person groups’s pesonGroupId, name, userData and recognitionModel.<br />
+    # * Person groups are stored in alphabetical order of personGroupId.
+    # * "start" parameter (string, optional) is a user-provided personGroupId value
+    # that returned entries have larger ids by string comparison. "start" set to
+    # empty to indicate return from the first item.
+    # * "top" parameter (int, optional) specifies the number of entries to return.
+    # A maximal of 1000 entries can be returned in one call. To fetch more, you can
+    # specify "start" with the last retuned entry’s Id of the current call.
+    # <br />
+    # For example, total 5 person groups: "group1", ..., "group5".
+    # <br /> "start=&top=" will return all 5 groups.
+    # <br /> "start=&top=2" will return "group1", "group2".
+    # <br /> "start=group2&top=3" will return "group3", "group4", "group5".
+    #
     #
     # @param start [String] List person groups from the least personGroupId greater
     # than the "start".
@@ -484,7 +600,20 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # List person groups and their information.
+    # List person groups’s pesonGroupId, name, userData and recognitionModel.<br />
+    # * Person groups are stored in alphabetical order of personGroupId.
+    # * "start" parameter (string, optional) is a user-provided personGroupId value
+    # that returned entries have larger ids by string comparison. "start" set to
+    # empty to indicate return from the first item.
+    # * "top" parameter (int, optional) specifies the number of entries to return.
+    # A maximal of 1000 entries can be returned in one call. To fetch more, you can
+    # specify "start" with the last retuned entry’s Id of the current call.
+    # <br />
+    # For example, total 5 person groups: "group1", ..., "group5".
+    # <br /> "start=&top=" will return all 5 groups.
+    # <br /> "start=&top=2" will return "group1", "group2".
+    # <br /> "start=group2&top=3" will return "group3", "group4", "group5".
+    #
     #
     # @param start [String] List person groups from the least personGroupId greater
     # than the "start".
@@ -499,7 +628,20 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # List person groups and their information.
+    # List person groups’s pesonGroupId, name, userData and recognitionModel.<br />
+    # * Person groups are stored in alphabetical order of personGroupId.
+    # * "start" parameter (string, optional) is a user-provided personGroupId value
+    # that returned entries have larger ids by string comparison. "start" set to
+    # empty to indicate return from the first item.
+    # * "top" parameter (int, optional) specifies the number of entries to return.
+    # A maximal of 1000 entries can be returned in one call. To fetch more, you can
+    # specify "start" with the last retuned entry’s Id of the current call.
+    # <br />
+    # For example, total 5 person groups: "group1", ..., "group5".
+    # <br /> "start=&top=" will return all 5 groups.
+    # <br /> "start=&top=2" will return "group1", "group2".
+    # <br /> "start=group2&top=3" will return "group3", "group4", "group5".
+    #
     #
     # @param start [String] List person groups from the least personGroupId greater
     # than the "start".

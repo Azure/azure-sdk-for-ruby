@@ -10,8 +10,8 @@ module Azure::Profiles::Latest
 
     module Models
       GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
-      ErrorSubCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
       ErrorResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
+      ErrorSubCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
       SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
       Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
@@ -23,13 +23,13 @@ module Azure::Profiles::Latest
       EntityType = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
       ResponseBase = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
+      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       SearchResultsAnswer = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResultsAnswer
-      StructuredValue = Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
       Thing = Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
       SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
-      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
+      StructuredValue = Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
       ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
       ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
@@ -70,11 +70,11 @@ module Azure::Profiles::Latest
         def geo_coordinates
           Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
         end
-        def error_sub_code
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
-        end
         def error_response
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
+        end
+        def error_sub_code
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
         end
         def search_response
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
@@ -109,11 +109,11 @@ module Azure::Profiles::Latest
         def answer
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
         end
+        def action
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
+        end
         def search_results_answer
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResultsAnswer
-        end
-        def structured_value
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
         end
         def thing
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
@@ -127,8 +127,8 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
         end
-        def action
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
+        def structured_value
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
         end
         def error_code
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode

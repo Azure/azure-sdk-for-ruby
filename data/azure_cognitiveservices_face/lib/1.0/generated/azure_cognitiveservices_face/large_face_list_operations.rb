@@ -22,60 +22,163 @@ module Azure::CognitiveServices::Face::V1_0
     attr_reader :client
 
     #
-    # Create an empty large face list. Up to 64 large face lists are allowed to
-    # exist in one subscription.
+    # Create an empty large face list with user-specified largeFaceListId, name, an
+    # optional userData and recognitionModel.
+    # <br /> Large face list is a list of faces, up to 1,000,000 faces, and used by
+    # [Face - Find
+    # Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+    # <br /> After creation, user should use [LargeFaceList Face -
+    # Add](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)
+    # to import the faces and [LargeFaceList -
+    # Train](/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1)
+    # to make it ready for [Face -
+    # FindSimilar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+    # Faces are stored on server until [LargeFaceList -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a1580d5d2de3616c086f2cd)
+    # is called.
+    # <br /> Find Similar is used for scenario like finding celebrity-like faces,
+    # similar face filtering, or as a light way face identification. But if the
+    # actual use is to identify person, please use
+    # [PersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+    # /
+    # [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
+    # and [Face -
+    # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+    # <br />
+    # * Free-tier subscription quota: 64 large face lists.
+    # * S0-tier subscription quota: 1,000,000 large face lists.
+    # <br />
+    # 'recognitionModel' should be specified to associate with this large face
+    # list. The default value for 'recognitionModel' is 'recognition_01', if the
+    # latest model needed, please explicitly specify the model you need in this
+    # parameter. New faces that are added to an existing large face list will use
+    # the recognition model that's already associated with the collection. Existing
+    # face features in a large face list can't be updated to features extracted by
+    # another version of recognition model.
+    #
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
+    # @param recognition_model [RecognitionModel] Possible values include:
+    # 'recognition_01', 'recognition_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def create(large_face_list_id, name = nil, user_data = nil, custom_headers = nil)
-      response = create_async(large_face_list_id, name, user_data, custom_headers).value!
+    def create(large_face_list_id, name = nil, user_data = nil, recognition_model = nil, custom_headers = nil)
+      response = create_async(large_face_list_id, name, user_data, recognition_model, custom_headers).value!
       nil
     end
 
     #
-    # Create an empty large face list. Up to 64 large face lists are allowed to
-    # exist in one subscription.
+    # Create an empty large face list with user-specified largeFaceListId, name, an
+    # optional userData and recognitionModel.
+    # <br /> Large face list is a list of faces, up to 1,000,000 faces, and used by
+    # [Face - Find
+    # Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+    # <br /> After creation, user should use [LargeFaceList Face -
+    # Add](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)
+    # to import the faces and [LargeFaceList -
+    # Train](/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1)
+    # to make it ready for [Face -
+    # FindSimilar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+    # Faces are stored on server until [LargeFaceList -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a1580d5d2de3616c086f2cd)
+    # is called.
+    # <br /> Find Similar is used for scenario like finding celebrity-like faces,
+    # similar face filtering, or as a light way face identification. But if the
+    # actual use is to identify person, please use
+    # [PersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+    # /
+    # [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
+    # and [Face -
+    # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+    # <br />
+    # * Free-tier subscription quota: 64 large face lists.
+    # * S0-tier subscription quota: 1,000,000 large face lists.
+    # <br />
+    # 'recognitionModel' should be specified to associate with this large face
+    # list. The default value for 'recognitionModel' is 'recognition_01', if the
+    # latest model needed, please explicitly specify the model you need in this
+    # parameter. New faces that are added to an existing large face list will use
+    # the recognition model that's already associated with the collection. Existing
+    # face features in a large face list can't be updated to features extracted by
+    # another version of recognition model.
+    #
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
+    # @param recognition_model [RecognitionModel] Possible values include:
+    # 'recognition_01', 'recognition_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(large_face_list_id, name = nil, user_data = nil, custom_headers = nil)
-      create_async(large_face_list_id, name, user_data, custom_headers).value!
+    def create_with_http_info(large_face_list_id, name = nil, user_data = nil, recognition_model = nil, custom_headers = nil)
+      create_async(large_face_list_id, name, user_data, recognition_model, custom_headers).value!
     end
 
     #
-    # Create an empty large face list. Up to 64 large face lists are allowed to
-    # exist in one subscription.
+    # Create an empty large face list with user-specified largeFaceListId, name, an
+    # optional userData and recognitionModel.
+    # <br /> Large face list is a list of faces, up to 1,000,000 faces, and used by
+    # [Face - Find
+    # Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+    # <br /> After creation, user should use [LargeFaceList Face -
+    # Add](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)
+    # to import the faces and [LargeFaceList -
+    # Train](/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1)
+    # to make it ready for [Face -
+    # FindSimilar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+    # Faces are stored on server until [LargeFaceList -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a1580d5d2de3616c086f2cd)
+    # is called.
+    # <br /> Find Similar is used for scenario like finding celebrity-like faces,
+    # similar face filtering, or as a light way face identification. But if the
+    # actual use is to identify person, please use
+    # [PersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+    # /
+    # [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
+    # and [Face -
+    # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+    # <br />
+    # * Free-tier subscription quota: 64 large face lists.
+    # * S0-tier subscription quota: 1,000,000 large face lists.
+    # <br />
+    # 'recognitionModel' should be specified to associate with this large face
+    # list. The default value for 'recognitionModel' is 'recognition_01', if the
+    # latest model needed, please explicitly specify the model you need in this
+    # parameter. New faces that are added to an existing large face list will use
+    # the recognition model that's already associated with the collection. Existing
+    # face features in a large face list can't be updated to features extracted by
+    # another version of recognition model.
+    #
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
+    # @param recognition_model [RecognitionModel] Possible values include:
+    # 'recognition_01', 'recognition_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(large_face_list_id, name = nil, user_data = nil, custom_headers = nil)
+    def create_async(large_face_list_id, name = nil, user_data = nil, recognition_model = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'large_face_list_id is nil' if large_face_list_id.nil?
 
-      body = NameAndUserDataContract.new
-      unless name.nil? && user_data.nil?
+      body = MetaDataContract.new
+      unless name.nil? && user_data.nil? && recognition_model.nil?
         body.name = name
         body.user_data = user_data
+        body.recognition_model = recognition_model
       end
 
       request_headers = {}
@@ -87,7 +190,7 @@ module Azure::CognitiveServices::Face::V1_0
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract.mapper()
+      request_mapper = Azure::CognitiveServices::Face::V1_0::Models::MetaDataContract.mapper()
       request_content = @client.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -123,7 +226,8 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Retrieve a large face list's information.
+    # Retrieve a large face list’s largeFaceListId, name, userData and
+    # recognitionModel.
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
@@ -138,7 +242,8 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Retrieve a large face list's information.
+    # Retrieve a large face list’s largeFaceListId, name, userData and
+    # recognitionModel.
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
@@ -152,7 +257,8 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Retrieve a large face list's information.
+    # Retrieve a large face list’s largeFaceListId, name, userData and
+    # recognitionModel.
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
@@ -480,8 +586,24 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Retrieve information about all existing large face lists. Only
-    # largeFaceListId, name and userData will be returned.
+    # List large face lists’ information of largeFaceListId, name, userData and
+    # recognitionModel. <br />
+    # To get face information inside largeFaceList use [LargeFaceList Face -
+    # Get](/docs/services/563879b61984550e40cbbe8d/operations/5a158cf2d2de3616c086f2d5)<br
+    # />
+    # * Large face lists are stored in alphabetical order of largeFaceListId.
+    # * "start" parameter (string, optional) is a user-provided largeFaceListId
+    # value that returned entries have larger ids by string comparison. "start" set
+    # to empty to indicate return from the first item.
+    # * "top" parameter (int, optional) specifies the number of entries to return.
+    # A maximal of 1000 entries can be returned in one call. To fetch more, you can
+    # specify "start" with the last retuned entry’s Id of the current call.
+    # <br />
+    # For example, total 5 large person lists: "list1", ..., "list5".
+    # <br /> "start=&top=" will return all 5 lists.
+    # <br /> "start=&top=2" will return "list1", "list2".
+    # <br /> "start=list2&top=3" will return "list3", "list4", "list5".
+    #
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -494,8 +616,24 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Retrieve information about all existing large face lists. Only
-    # largeFaceListId, name and userData will be returned.
+    # List large face lists’ information of largeFaceListId, name, userData and
+    # recognitionModel. <br />
+    # To get face information inside largeFaceList use [LargeFaceList Face -
+    # Get](/docs/services/563879b61984550e40cbbe8d/operations/5a158cf2d2de3616c086f2d5)<br
+    # />
+    # * Large face lists are stored in alphabetical order of largeFaceListId.
+    # * "start" parameter (string, optional) is a user-provided largeFaceListId
+    # value that returned entries have larger ids by string comparison. "start" set
+    # to empty to indicate return from the first item.
+    # * "top" parameter (int, optional) specifies the number of entries to return.
+    # A maximal of 1000 entries can be returned in one call. To fetch more, you can
+    # specify "start" with the last retuned entry’s Id of the current call.
+    # <br />
+    # For example, total 5 large person lists: "list1", ..., "list5".
+    # <br /> "start=&top=" will return all 5 lists.
+    # <br /> "start=&top=2" will return "list1", "list2".
+    # <br /> "start=list2&top=3" will return "list3", "list4", "list5".
+    #
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -507,8 +645,24 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Retrieve information about all existing large face lists. Only
-    # largeFaceListId, name and userData will be returned.
+    # List large face lists’ information of largeFaceListId, name, userData and
+    # recognitionModel. <br />
+    # To get face information inside largeFaceList use [LargeFaceList Face -
+    # Get](/docs/services/563879b61984550e40cbbe8d/operations/5a158cf2d2de3616c086f2d5)<br
+    # />
+    # * Large face lists are stored in alphabetical order of largeFaceListId.
+    # * "start" parameter (string, optional) is a user-provided largeFaceListId
+    # value that returned entries have larger ids by string comparison. "start" set
+    # to empty to indicate return from the first item.
+    # * "top" parameter (int, optional) specifies the number of entries to return.
+    # A maximal of 1000 entries can be returned in one call. To fetch more, you can
+    # specify "start" with the last retuned entry’s Id of the current call.
+    # <br />
+    # For example, total 5 large person lists: "list1", ..., "list5".
+    # <br /> "start=&top=" will return all 5 lists.
+    # <br /> "start=&top=2" will return "list1", "list2".
+    # <br /> "start=list2&top=3" will return "list3", "list4", "list5".
+    #
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

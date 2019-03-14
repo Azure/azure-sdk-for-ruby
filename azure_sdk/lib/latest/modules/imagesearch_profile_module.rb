@@ -9,6 +9,14 @@ module Azure::Profiles::Latest
     ImagesOperations = Azure::CognitiveServices::ImageSearch::V1_0::ImagesOperations
 
     module Models
+      RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
+      Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
+      NormalizedRectangle = Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
+      ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
+      ErrorCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
+      SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
+      ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
@@ -22,10 +30,9 @@ module Azure::Profiles::Latest
       ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
       ImageLicense = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
       ImageSize = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
-      ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
+      Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
       Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
-      Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
       StructuredValue = Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
       Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
       Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
@@ -39,34 +46,27 @@ module Azure::Profiles::Latest
       RelatedCollectionsModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedCollectionsModule
       ImageTagsModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageTagsModule
       RecipesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecipesModule
+      Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       ImagesImageMetadata = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesImageMetadata
       ImageInsightsImageCaption = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightsImageCaption
       TrendingImagesTile = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesTile
       ImagesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesModule
-      AggregateRating = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateRating
-      ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
-      Offer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Offer
-      AggregateOffer = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
-      SearchResultsAnswer = Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
       Thing = Azure::CognitiveServices::ImageSearch::V1_0::Models::Thing
-      CreativeWork = Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
-      Recipe = Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
+      Offer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Offer
+      ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
       Identifiable = Azure::CognitiveServices::ImageSearch::V1_0::Models::Identifiable
-      ImageGallery = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
-      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
-      NormalizedRectangle = Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
-      Answer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
-      RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
-      ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
-      Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+      AggregateOffer = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
       RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
-      CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
-      SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
-      ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
-      Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
-      ErrorCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-      ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
+      Recipe = Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
+      ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
+      ImageGallery = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
       Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+      CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
+      CreativeWork = Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
+      Answer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
+      SearchResultsAnswer = Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
+      AggregateRating = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateRating
+      ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
     end
 
     class ImageSearchDataClass
@@ -99,6 +99,30 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def recognized_entity_region
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
+        end
+        def currency
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+        end
+        def trending_images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
+        end
+        def normalized_rectangle
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
+        end
+        def image_insight_module
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
+        end
+        def error_code
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
+        end
+        def safe_search
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
+        end
+        def image_crop_type
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
+        end
         def query
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
         end
@@ -138,17 +162,14 @@ module Azure::Profiles::Latest
         def image_size
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
         end
-        def image_insight_module
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
+        def response
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
         end
         def organization
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
         end
         def intangible
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
-        end
-        def response
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
         end
         def structured_value
           Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
@@ -189,6 +210,9 @@ module Azure::Profiles::Latest
         def recipes_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecipesModule
         end
+        def person
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
+        end
         def images_image_metadata
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesImageMetadata
         end
@@ -201,77 +225,53 @@ module Azure::Profiles::Latest
         def images_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImagesModule
         end
-        def aggregate_rating
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateRating
-        end
-        def response_base
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
+        def thing
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Thing
         end
         def offer
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Offer
         end
-        def aggregate_offer
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
-        end
-        def search_results_answer
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
-        end
-        def thing
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Thing
-        end
-        def creative_work
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
-        end
-        def recipe
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
+        def response_base
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
         end
         def identifiable
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Identifiable
         end
-        def image_gallery
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
-        end
-        def trending_images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
-        end
-        def normalized_rectangle
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
-        end
-        def answer
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
-        end
-        def recognized_entity_region
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
-        end
-        def image_insights
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
-        end
-        def currency
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+        def aggregate_offer
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
         end
         def recognized_entity
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
         end
-        def collection_page
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
+        def recipe
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
         end
-        def safe_search
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
+        def image_insights
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
         end
-        def item_availability
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
-        end
-        def person
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
-        end
-        def error_code
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-        end
-        def image_crop_type
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
+        def image_gallery
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
         end
         def rating
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+        end
+        def collection_page
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
+        end
+        def creative_work
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
+        end
+        def answer
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
+        end
+        def search_results_answer
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::SearchResultsAnswer
+        end
+        def aggregate_rating
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateRating
+        end
+        def item_availability
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
         end
       end
     end
