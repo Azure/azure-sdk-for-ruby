@@ -1,13 +1,7 @@
 {
     "management": [
-        "azure_mgmt_advisor",
-        "azure_mgmt_event_grid",
-        "azure_mgmt_marketplace_ordering",
-        "azure_mgmt_monitor"
-    ],
-    "data": [
-        "azure_cognitiveservices_computervision",
-        "azure_cognitiveservices_textanalytics"
+        "azure_mgmt_policy_insights",
+        "azure_mgmt_storage"
     ],
     "rollup": [
         "azure_sdk"

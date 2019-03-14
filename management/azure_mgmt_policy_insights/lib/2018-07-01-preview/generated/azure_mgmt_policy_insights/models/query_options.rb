@@ -18,6 +18,33 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       # @return [String] OData filter expression.
       attr_accessor :filter
 
+      # @return [String] Ordering expression using OData notation. One or more
+      # comma-separated column names with an optional "desc" (the default) or
+      # "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+      attr_accessor :order_by
+
+      # @return [String] Select expression using OData notation. Limits the
+      # columns on each record to just those requested, e.g.
+      # "$select=PolicyAssignmentId, ResourceId".
+      attr_accessor :select
+
+      # @return [DateTime] ISO 8601 formatted timestamp specifying the start
+      # time of the interval to query. When not specified, the service uses
+      # ($to - 1-day).
+      attr_accessor :from
+
+      # @return [DateTime] ISO 8601 formatted timestamp specifying the end time
+      # of the interval to query. When not specified, the service uses request
+      # time.
+      attr_accessor :to
+
+      # @return [String] OData apply expression for aggregations.
+      attr_accessor :apply
+
+      # @return [String] The $expand query parameter. For example, to expand
+      # policyEvaluationDetails, use $expand=policyEvaluationDetails
+      attr_accessor :expand
+
 
       #
       # Mapper for QueryOptions class as Ruby Hash.
@@ -39,6 +66,48 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
                 }
               },
               filter: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'String'
+                }
+              },
+              order_by: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'String'
+                }
+              },
+              select: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'String'
+                }
+              },
+              from: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              to: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              apply: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'String'
+                }
+              },
+              expand: {
                 client_side_validation: true,
                 required: false,
                 type: {

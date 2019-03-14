@@ -41,6 +41,12 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     # @return [Remediations] remediations
     attr_reader :remediations
 
+    # @return [PolicyStates] policy_states
+    attr_reader :policy_states
+
+    # @return [Operations] operations
+    attr_reader :operations
+
     #
     # Creates initializes a new instance of the PolicyInsightsClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -56,6 +62,8 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
 
       @policy_tracked_resources = PolicyTrackedResources.new(self)
       @remediations = Remediations.new(self)
+      @policy_states = PolicyStates.new(self)
+      @operations = Operations.new(self)
       @api_version = '2018-07-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -128,7 +136,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_policy_insights'
-        sdk_information = "#{sdk_information}/0.17.2"
+        sdk_information = "#{sdk_information}/0.17.3"
         add_user_agent_information(sdk_information)
     end
   end

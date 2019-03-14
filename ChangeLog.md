@@ -1,3 +1,9 @@
+## 2019.03.14 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_policy_insights -v0.17.3
+    - azure_mgmt_storage -v0.17.7
+    - azure_sdk - v0.23.1
+
 ## 2019.03.13 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_advisor - v0.17.0
