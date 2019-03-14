@@ -11,6 +11,8 @@ module Azure::Profiles::Latest
       Servers = Azure::AnalysisServices::Mgmt::V2017_08_01::Servers
 
       module Models
+        SkuTier = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
+        AnalysisServicesServerUpdateParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
         GatewayListStatusLive = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusLive
         GatewayError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayError
         GatewayListStatusError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusError
@@ -29,15 +31,13 @@ module Azure::Profiles::Latest
         ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
         OperationStatus = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
         Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
-        OperationDisplay = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
         State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
+        OperationDisplay = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
         Operation = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
         OperationListResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
         ProvisioningState = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
         Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
         ResourceSku = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
-        SkuTier = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
-        AnalysisServicesServerUpdateParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
       end
 
       class AnalysisServicesManagementClass
@@ -71,6 +71,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku_tier
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
+          end
+          def analysis_services_server_update_parameters
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
+          end
           def gateway_list_status_live
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusLive
           end
@@ -125,11 +131,11 @@ module Azure::Profiles::Latest
           def resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
           end
-          def operation_display
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
-          end
           def state
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
+          end
+          def operation_display
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
           end
           def operation
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
@@ -145,12 +151,6 @@ module Azure::Profiles::Latest
           end
           def resource_sku
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
-          end
-          def sku_tier
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
-          end
-          def analysis_services_server_update_parameters
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
           end
         end
       end
