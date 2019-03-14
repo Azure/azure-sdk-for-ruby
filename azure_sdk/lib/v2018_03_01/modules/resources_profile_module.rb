@@ -15,6 +15,8 @@ module Azure::Profiles::V2018_03_01
       DeploymentOperations = Azure::Resources::Mgmt::V2018_02_01::DeploymentOperations
 
       module Models
+        ResourceIdentityType = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceIdentityType
+        Sku = Azure::Resources::Mgmt::V2018_02_01::Models::Sku
         Dependency = Azure::Resources::Mgmt::V2018_02_01::Models::Dependency
         GenericResourceFilter = Azure::Resources::Mgmt::V2018_02_01::Models::GenericResourceFilter
         Identity = Azure::Resources::Mgmt::V2018_02_01::Models::Identity
@@ -63,8 +65,6 @@ module Azure::Profiles::V2018_03_01
         SubResource = Azure::Resources::Mgmt::V2018_02_01::Models::SubResource
         ResourceListResult = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceListResult
         Plan = Azure::Resources::Mgmt::V2018_02_01::Models::Plan
-        ResourceIdentityType = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceIdentityType
-        Sku = Azure::Resources::Mgmt::V2018_02_01::Models::Sku
       end
 
       class ResourcesManagementClass
@@ -102,6 +102,12 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def resource_identity_type
+            Azure::Resources::Mgmt::V2018_02_01::Models::ResourceIdentityType
+          end
+          def sku
+            Azure::Resources::Mgmt::V2018_02_01::Models::Sku
+          end
           def dependency
             Azure::Resources::Mgmt::V2018_02_01::Models::Dependency
           end
@@ -245,12 +251,6 @@ module Azure::Profiles::V2018_03_01
           end
           def plan
             Azure::Resources::Mgmt::V2018_02_01::Models::Plan
-          end
-          def resource_identity_type
-            Azure::Resources::Mgmt::V2018_02_01::Models::ResourceIdentityType
-          end
-          def sku
-            Azure::Resources::Mgmt::V2018_02_01::Models::Sku
           end
         end
       end

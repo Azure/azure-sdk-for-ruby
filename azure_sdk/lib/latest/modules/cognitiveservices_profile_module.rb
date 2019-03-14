@@ -13,6 +13,8 @@ module Azure::Profiles::Latest
       CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
 
       module Models
+        Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
+        ResourceSkuRestrictionsType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsType
         ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
         CognitiveServicesAccountUpdateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
         OperationDisplayInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
@@ -43,9 +45,7 @@ module Azure::Profiles::Latest
         ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
         Kind = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
         SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
-        Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
         Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
-        ResourceSkuRestrictionsType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsType
       end
 
       class CognitiveServicesManagementClass
@@ -81,6 +81,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
+          end
+          def resource_sku_restrictions_type
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsType
+          end
           def error_body
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
           end
@@ -171,14 +177,8 @@ module Azure::Profiles::Latest
           def sku_tier
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
           end
-          def sku
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
-          end
           def error
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
-          end
-          def resource_sku_restrictions_type
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsType
           end
         end
       end
