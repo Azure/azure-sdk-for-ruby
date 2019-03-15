@@ -29,7 +29,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'Subnet',
             model_properties: {
               id: {
-                required: false,
+                required: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'

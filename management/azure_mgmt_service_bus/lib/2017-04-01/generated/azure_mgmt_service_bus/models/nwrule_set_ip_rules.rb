@@ -6,7 +6,7 @@
 module Azure::ServiceBus::Mgmt::V2017_04_01
   module Models
     #
-    # The response from the List namespace operation.
+    # Description of NetWorkRuleSet - IpRules resource.
     #
     class NWRuleSetIpRules
 
