@@ -22,14 +22,15 @@ module Azure::Profiles::Latest
       ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
       ImageLicense = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
       ImageSize = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
-      Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
       Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+      Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
       StructuredValue = Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
+      Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
       RelatedSearchesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
       InsightsTag = Azure::CognitiveServices::ImageSearch::V1_0::Models::InsightsTag
-      Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
       RecognizedEntitiesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntitiesModule
+      PropertiesItem = Azure::CognitiveServices::ImageSearch::V1_0::Models::PropertiesItem
       RecognizedEntityGroup = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityGroup
       TrendingImagesCategory = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesCategory
       PivotSuggestions = Azure::CognitiveServices::ImageSearch::V1_0::Models::PivotSuggestions
@@ -57,7 +58,6 @@ module Azure::Profiles::Latest
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
       ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-      PropertiesItem = Azure::CognitiveServices::ImageSearch::V1_0::Models::PropertiesItem
       Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::ImageSearch::V1_0::Models::Answer
@@ -138,11 +138,11 @@ module Azure::Profiles::Latest
         def image_size
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
         end
-        def organization
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
-        end
         def response
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+        end
+        def organization
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
         end
         def intangible
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
@@ -150,17 +150,20 @@ module Azure::Profiles::Latest
         def structured_value
           Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
         end
+        def error
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+        end
         def related_searches_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
         end
         def insights_tag
           Azure::CognitiveServices::ImageSearch::V1_0::Models::InsightsTag
         end
-        def error
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
-        end
         def recognized_entities_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntitiesModule
+        end
+        def properties_item
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::PropertiesItem
         end
         def recognized_entity_group
           Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityGroup
@@ -242,9 +245,6 @@ module Azure::Profiles::Latest
         end
         def image_insight_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
-        end
-        def properties_item
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::PropertiesItem
         end
         def person
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Person

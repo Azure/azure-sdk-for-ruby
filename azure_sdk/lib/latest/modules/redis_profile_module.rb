@@ -7,13 +7,18 @@ require 'azure_mgmt_redis'
 module Azure::Profiles::Latest
   module Redis
     module Mgmt
+      Operations = Azure::Redis::Mgmt::V2018_03_01::Operations
       PatchSchedules = Azure::Redis::Mgmt::V2018_03_01::PatchSchedules
       Redis = Azure::Redis::Mgmt::V2018_03_01::Redis
-      Operations = Azure::Redis::Mgmt::V2018_03_01::Operations
-      LinkedServer = Azure::Redis::Mgmt::V2018_03_01::LinkedServer
       FirewallRules = Azure::Redis::Mgmt::V2018_03_01::FirewallRules
+      LinkedServer = Azure::Redis::Mgmt::V2018_03_01::LinkedServer
 
       module Models
+        RedisKeyType = Azure::Redis::Mgmt::V2018_03_01::Models::RedisKeyType
+        Sku = Azure::Redis::Mgmt::V2018_03_01::Models::Sku
+        ReplicationRole = Azure::Redis::Mgmt::V2018_03_01::Models::ReplicationRole
+        ProvisioningState = Azure::Redis::Mgmt::V2018_03_01::Models::ProvisioningState
+        RebootType = Azure::Redis::Mgmt::V2018_03_01::Models::RebootType
         TrackedResource = Azure::Redis::Mgmt::V2018_03_01::Models::TrackedResource
         ProxyResource = Azure::Redis::Mgmt::V2018_03_01::Models::ProxyResource
         DayOfWeek = Azure::Redis::Mgmt::V2018_03_01::Models::DayOfWeek
@@ -47,15 +52,10 @@ module Azure::Profiles::Latest
         TlsVersion = Azure::Redis::Mgmt::V2018_03_01::Models::TlsVersion
         SkuFamily = Azure::Redis::Mgmt::V2018_03_01::Models::SkuFamily
         SkuName = Azure::Redis::Mgmt::V2018_03_01::Models::SkuName
-        RedisKeyType = Azure::Redis::Mgmt::V2018_03_01::Models::RedisKeyType
-        Sku = Azure::Redis::Mgmt::V2018_03_01::Models::Sku
-        ReplicationRole = Azure::Redis::Mgmt::V2018_03_01::Models::ReplicationRole
-        ProvisioningState = Azure::Redis::Mgmt::V2018_03_01::Models::ProvisioningState
-        RebootType = Azure::Redis::Mgmt::V2018_03_01::Models::RebootType
       end
 
       class RedisManagementClass
-        attr_reader :patch_schedules, :redis, :operations, :linked_server, :firewall_rules, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :patch_schedules, :redis, :firewall_rules, :linked_server, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -65,11 +65,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @patch_schedules = @client_0.patch_schedules
           @redis = @client_0.redis
-          @operations = @client_0.operations
-          @linked_server = @client_0.linked_server
           @firewall_rules = @client_0.firewall_rules
+          @linked_server = @client_0.linked_server
 
           @model_classes = ModelClasses.new
         end
@@ -88,6 +88,21 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def redis_key_type
+            Azure::Redis::Mgmt::V2018_03_01::Models::RedisKeyType
+          end
+          def sku
+            Azure::Redis::Mgmt::V2018_03_01::Models::Sku
+          end
+          def replication_role
+            Azure::Redis::Mgmt::V2018_03_01::Models::ReplicationRole
+          end
+          def provisioning_state
+            Azure::Redis::Mgmt::V2018_03_01::Models::ProvisioningState
+          end
+          def reboot_type
+            Azure::Redis::Mgmt::V2018_03_01::Models::RebootType
+          end
           def tracked_resource
             Azure::Redis::Mgmt::V2018_03_01::Models::TrackedResource
           end
@@ -186,21 +201,6 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::Redis::Mgmt::V2018_03_01::Models::SkuName
-          end
-          def redis_key_type
-            Azure::Redis::Mgmt::V2018_03_01::Models::RedisKeyType
-          end
-          def sku
-            Azure::Redis::Mgmt::V2018_03_01::Models::Sku
-          end
-          def replication_role
-            Azure::Redis::Mgmt::V2018_03_01::Models::ReplicationRole
-          end
-          def provisioning_state
-            Azure::Redis::Mgmt::V2018_03_01::Models::ProvisioningState
-          end
-          def reboot_type
-            Azure::Redis::Mgmt::V2018_03_01::Models::RebootType
           end
         end
       end

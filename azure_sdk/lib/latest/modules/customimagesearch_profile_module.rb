@@ -17,10 +17,10 @@ module Azure::Profiles::Latest
       ImageAspect = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageColor
       ErrorSubCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorSubCode
-      Freshness = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
-      ImageType = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
-      ImageLicense = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
       ImageContent = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageContent
+      ImageType = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
+      Freshness = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
+      ImageLicense = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
       ImageSize = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
       Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
       Response = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response
@@ -89,17 +89,17 @@ module Azure::Profiles::Latest
         def error_sub_code
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorSubCode
         end
-        def freshness
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
+        def image_content
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageContent
         end
         def image_type
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
         end
+        def freshness
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
+        end
         def image_license
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
-        end
-        def image_content
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageContent
         end
         def image_size
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
