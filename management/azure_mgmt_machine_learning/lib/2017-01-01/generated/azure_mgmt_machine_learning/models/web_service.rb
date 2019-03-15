@@ -6,7 +6,7 @@
 module Azure::MachineLearning::Mgmt::V2017_01_01
   module Models
     #
-    # Instance of an Patched Azure ML web service resource.
+    # Instance of an Azure ML web service resource.
     #
     class WebService < Resource
 
