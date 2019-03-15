@@ -18,10 +18,10 @@ module Azure::Profiles::Latest
         Type = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Type
         Operation = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Operation
         OperationResults = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationResults
+        OperationListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationListResult
         OperationDisplayProperties = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationDisplayProperties
         EntityParentGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityParentGroupInfo
         EntityInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityInfo
-        OperationListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationListResult
         TenantBackfillStatusResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::TenantBackfillStatusResult
         EntityListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityListResult
         ManagementGroupListResult = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupListResult
@@ -38,8 +38,8 @@ module Azure::Profiles::Latest
         ManagementGroupInfo = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::ManagementGroupInfo
         CheckNameAvailabilityRequest = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CheckNameAvailabilityRequest
         CreateManagementGroupRequest = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupRequest
-        Reason = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
         Status = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Status
+        Reason = Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
       end
 
       class ResourcesManagementManagementClass
@@ -90,6 +90,9 @@ module Azure::Profiles::Latest
           def operation_results
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationResults
           end
+          def operation_list_result
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationListResult
+          end
           def operation_display_properties
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationDisplayProperties
           end
@@ -98,9 +101,6 @@ module Azure::Profiles::Latest
           end
           def entity_info
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::EntityInfo
-          end
-          def operation_list_result
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::OperationListResult
           end
           def tenant_backfill_status_result
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::TenantBackfillStatusResult
@@ -150,11 +150,11 @@ module Azure::Profiles::Latest
           def create_management_group_request
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::CreateManagementGroupRequest
           end
-          def reason
-            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
-          end
           def status
             Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Status
+          end
+          def reason
+            Azure::ResourcesManagement::Mgmt::V2018_03_01_preview::Models::Reason
           end
         end
       end
