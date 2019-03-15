@@ -6,8 +6,8 @@ require 'azure_mgmt_container_service'
 
 module Azure::ContainerService::Profiles::Latest
   module Mgmt
-    ManagedClusters = Azure::ContainerService::Mgmt::V2018_03_31::ManagedClusters
     Operations = Azure::ContainerService::Mgmt::V2018_03_31::Operations
+    ManagedClusters = Azure::ContainerService::Mgmt::V2018_03_31::ManagedClusters
     ContainerServices = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServices
 
     module Models
@@ -17,6 +17,11 @@ module Azure::ContainerService::Profiles::Latest
       ContainerServiceOrchestratorProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorProfile
       ContainerServiceAgentPoolProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceAgentPoolProfile
       ContainerServiceListResult = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceListResult
+      ManagedClusterPoolUpgradeProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterPoolUpgradeProfile
+      ManagedCluster = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedCluster
+      ManagedClusterAccessProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAccessProfile
+      NetworkPlugin = Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPlugin
+      NetworkPolicy = Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPolicy
       ContainerServiceWindowsProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceWindowsProfile
       ContainerServiceSshPublicKey = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshPublicKey
       ContainerServiceSshConfiguration = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshConfiguration
@@ -39,21 +44,16 @@ module Azure::ContainerService::Profiles::Latest
       OperationValue = Azure::ContainerService::Mgmt::V2018_03_31::Models::OperationValue
       ManagedClusterListResult = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterListResult
       ManagedClusterUpgradeProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterUpgradeProfile
-      ManagedClusterPoolUpgradeProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterPoolUpgradeProfile
-      ManagedCluster = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedCluster
-      ManagedClusterAccessProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAccessProfile
-      NetworkPlugin = Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPlugin
-      NetworkPolicy = Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPolicy
+      OrchestratorProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
       OrchestratorVersionProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfile
       OrchestratorVersionProfileListResult = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfileListResult
-      OrchestratorProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
     end
 
     #
     # ContainerServiceManagementClass
     #
     class ContainerServiceManagementClass
-      attr_reader :managed_clusters, :operations, :container_services, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :managed_clusters, :container_services, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -79,8 +79,8 @@ module Azure::ContainerService::Profiles::Latest
           @client_1.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_1)
-        @managed_clusters = @client_1.managed_clusters
         @operations = @client_1.operations
+        @managed_clusters = @client_1.managed_clusters
 
         @client_2 = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServiceClient.new(configurable.credentials, base_url, options)
         if(@client_2.respond_to?(:subscription_id))
@@ -129,6 +129,21 @@ module Azure::ContainerService::Profiles::Latest
       end
       def container_service_list_result
         Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceListResult
+      end
+      def managed_cluster_pool_upgrade_profile
+        Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterPoolUpgradeProfile
+      end
+      def managed_cluster
+        Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedCluster
+      end
+      def managed_cluster_access_profile
+        Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAccessProfile
+      end
+      def network_plugin
+        Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPlugin
+      end
+      def network_policy
+        Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPolicy
       end
       def container_service_windows_profile
         Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceWindowsProfile
@@ -196,29 +211,14 @@ module Azure::ContainerService::Profiles::Latest
       def managed_cluster_upgrade_profile
         Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterUpgradeProfile
       end
-      def managed_cluster_pool_upgrade_profile
-        Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterPoolUpgradeProfile
-      end
-      def managed_cluster
-        Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedCluster
-      end
-      def managed_cluster_access_profile
-        Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAccessProfile
-      end
-      def network_plugin
-        Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPlugin
-      end
-      def network_policy
-        Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPolicy
+      def orchestrator_profile
+        Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
       end
       def orchestrator_version_profile
         Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfile
       end
       def orchestrator_version_profile_list_result
         Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfileListResult
-      end
-      def orchestrator_profile
-        Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
       end
     end
   end
