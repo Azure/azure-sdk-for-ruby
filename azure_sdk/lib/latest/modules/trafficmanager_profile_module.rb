@@ -29,12 +29,12 @@ module Azure::Profiles::Latest
         TrafficFlow = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficFlow
         Region = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Region
         DnsConfig = Azure::TrafficManager::Mgmt::V2018_04_01::Models::DnsConfig
+        CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
         TrafficManagerNameAvailability = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
         HeatMapModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::HeatMapModel
         UserMetricsModel = Azure::TrafficManager::Mgmt::V2018_04_01::Models::UserMetricsModel
         TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerGeographicHierarchy
         EndpointStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
-        CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
         EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointMonitorStatus
         ProfileMonitorStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileMonitorStatus
         MonitorProtocol = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorProtocol
@@ -124,6 +124,9 @@ module Azure::Profiles::Latest
           def dns_config
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::DnsConfig
           end
+          def check_traffic_manager_relative_dns_name_availability_parameters
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+          end
           def traffic_manager_name_availability
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficManagerNameAvailability
           end
@@ -138,9 +141,6 @@ module Azure::Profiles::Latest
           end
           def endpoint_status
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointStatus
-          end
-          def check_traffic_manager_relative_dns_name_availability_parameters
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
           end
           def endpoint_monitor_status
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::EndpointMonitorStatus

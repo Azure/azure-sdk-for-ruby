@@ -8,7 +8,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # Instance of an Patched Azure ML web service resource.
     #
-    class WebService < Resource
+    class PatchedWebService < PatchedResource
 
       include MsRestAzure
 
@@ -18,16 +18,16 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
 
       #
-      # Mapper for WebService class as Ruby Hash.
+      # Mapper for PatchedWebService class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'WebService',
+          serialized_name: 'PatchedWebService',
           type: {
             name: 'Composite',
-            class_name: 'WebService',
+            class_name: 'PatchedWebService',
             model_properties: {
               id: {
                 required: false,
@@ -46,7 +46,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               location: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -75,7 +76,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               properties: {
-                required: true,
+                required: false,
                 serialized_name: 'properties',
                 type: {
                   name: 'Composite',

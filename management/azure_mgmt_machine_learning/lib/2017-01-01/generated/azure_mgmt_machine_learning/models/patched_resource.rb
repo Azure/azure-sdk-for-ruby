@@ -6,28 +6,40 @@
 module Azure::MachineLearning::Mgmt::V2017_01_01
   module Models
     #
-    # Instance of an Patched Azure ML web service resource.
+    # Azure resource.
     #
-    class WebService < Resource
+    class PatchedResource
 
       include MsRestAzure
 
-      # @return [WebServiceProperties] Contains the property payload that
-      # describes the web service.
-      attr_accessor :properties
+      # @return [String] Specifies the resource ID.
+      attr_accessor :id
+
+      # @return [String] Specifies the name of the resource.
+      attr_accessor :name
+
+      # @return [String] Specifies the location of the resource.
+      attr_accessor :location
+
+      # @return [String] Specifies the type of the resource.
+      attr_accessor :type
+
+      # @return [Hash{String => String}] Contains resource tags defined as
+      # key/value pairs.
+      attr_accessor :tags
 
 
       #
-      # Mapper for WebService class as Ruby Hash.
+      # Mapper for PatchedResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'WebService',
+          serialized_name: 'PatchedResource',
           type: {
             name: 'Composite',
-            class_name: 'WebService',
+            class_name: 'PatchedResource',
             model_properties: {
               id: {
                 required: false,
@@ -46,7 +58,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               location: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -72,16 +85,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                         name: 'String'
                       }
                   }
-                }
-              },
-              properties: {
-                required: true,
-                serialized_name: 'properties',
-                type: {
-                  name: 'Composite',
-                  polymorphic_discriminator: 'packageType',
-                  uber_parent: 'WebServiceProperties',
-                  class_name: 'WebServiceProperties'
                 }
               }
             }

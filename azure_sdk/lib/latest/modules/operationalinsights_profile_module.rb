@@ -15,6 +15,11 @@ module Azure::Profiles::Latest
       LinkedServices = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::LinkedServices
 
       module Models
+        StorageInsight = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsight
+        StorageAccount = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
+        SearchSortEnum = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
+        StorageInsightState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
+        PurgeState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::PurgeState
         Tag = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::Tag
         SearchSchemaValue = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSchemaValue
         SearchGetSchemaResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchGetSchemaResponse
@@ -35,11 +40,7 @@ module Azure::Profiles::Latest
         WorkspacePurgeResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeResponse
         SearchMetadata = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadata
         WorkspacePurgeStatusResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
-        StorageInsight = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsight
-        SearchSortEnum = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
-        StorageInsightState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
-        StorageAccount = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
-        PurgeState = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::PurgeState
+        Sku = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Sku
         ProxyResource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::ProxyResource
         Resource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Resource
         DataSource = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSource
@@ -62,7 +63,6 @@ module Azure::Profiles::Latest
         Workspace = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace
         DataSourceKind = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceKind
         EntityStatus = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::EntityStatus
-        Sku = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Sku
       end
 
       class OperationalInsightsManagementClass
@@ -108,6 +108,21 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def storage_insight
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsight
+          end
+          def storage_account
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
+          end
+          def search_sort_enum
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
+          end
+          def storage_insight_state
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
+          end
+          def purge_state
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::PurgeState
+          end
           def tag
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::Tag
           end
@@ -168,20 +183,8 @@ module Azure::Profiles::Latest
           def workspace_purge_status_response
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::WorkspacePurgeStatusResponse
           end
-          def storage_insight
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsight
-          end
-          def search_sort_enum
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSortEnum
-          end
-          def storage_insight_state
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightState
-          end
-          def storage_account
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageAccount
-          end
-          def purge_state
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::PurgeState
+          def sku
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Sku
           end
           def proxy_resource
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::ProxyResource
@@ -248,9 +251,6 @@ module Azure::Profiles::Latest
           end
           def entity_status
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::EntityStatus
-          end
-          def sku
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Sku
           end
         end
       end
