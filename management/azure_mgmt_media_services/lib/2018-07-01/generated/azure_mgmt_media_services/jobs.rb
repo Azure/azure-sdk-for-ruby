@@ -31,19 +31,15 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param top [Integer] Specifies a non-negative integer n that limits the
-    # number of items returned from a collection. The service returns the number of
-    # available items up to but not greater than the specified value n.
-    # @param skip [Integer] Specifies a non-negative integer n that excludes the
-    # first n items of the queried collection from the result. The service returns
-    # items starting at position n+1.
+    # @param orderby [String] Specifies the the key by which the result collection
+    # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Job>] operation results.
     #
-    def list(resource_group_name, account_name, transform_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, account_name, transform_name, filter:filter, top:top, skip:skip, custom_headers:custom_headers)
+    def list(resource_group_name, account_name, transform_name, filter = nil, orderby = nil, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, account_name, transform_name, filter, orderby, custom_headers)
       first_page.get_all_items
     end
 
@@ -57,19 +53,15 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param top [Integer] Specifies a non-negative integer n that limits the
-    # number of items returned from a collection. The service returns the number of
-    # available items up to but not greater than the specified value n.
-    # @param skip [Integer] Specifies a non-negative integer n that excludes the
-    # first n items of the queried collection from the result. The service returns
-    # items starting at position n+1.
+    # @param orderby [String] Specifies the the key by which the result collection
+    # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, account_name, transform_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
-      list_async(resource_group_name, account_name, transform_name, filter:filter, top:top, skip:skip, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, account_name, transform_name, filter = nil, orderby = nil, custom_headers = nil)
+      list_async(resource_group_name, account_name, transform_name, filter, orderby, custom_headers).value!
     end
 
     #
@@ -82,18 +74,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param top [Integer] Specifies a non-negative integer n that limits the
-    # number of items returned from a collection. The service returns the number of
-    # available items up to but not greater than the specified value n.
-    # @param skip [Integer] Specifies a non-negative integer n that excludes the
-    # first n items of the queried collection from the result. The service returns
-    # items starting at position n+1.
+    # @param orderby [String] Specifies the the key by which the result collection
+    # should be ordered.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, account_name, transform_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
+    def list_async(resource_group_name, account_name, transform_name, filter = nil, orderby = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -102,7 +90,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -114,7 +101,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'transformName' => transform_name},
-          query_params: {'api-version' => @client.api_version,'$filter' => filter,'$top' => top,'$skip' => skip},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter,'$orderby' => orderby},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -162,8 +149,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [Job] operation results.
     #
-    def get(resource_group_name, account_name, transform_name, job_name, custom_headers:nil)
-      response = get_async(resource_group_name, account_name, transform_name, job_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, account_name, transform_name, job_name, custom_headers = nil)
+      response = get_async(resource_group_name, account_name, transform_name, job_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -182,8 +169,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, account_name, transform_name, job_name, custom_headers:nil)
-      get_async(resource_group_name, account_name, transform_name, job_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, account_name, transform_name, job_name, custom_headers = nil)
+      get_async(resource_group_name, account_name, transform_name, job_name, custom_headers).value!
     end
 
     #
@@ -201,7 +188,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, account_name, transform_name, job_name, custom_headers:nil)
+    def get_async(resource_group_name, account_name, transform_name, job_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -211,7 +198,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -272,8 +258,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [Job] operation results.
     #
-    def create(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:nil)
-      response = create_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:custom_headers).value!
+    def create(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers = nil)
+      response = create_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -293,8 +279,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:nil)
-      create_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:custom_headers).value!
+    def create_with_http_info(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers = nil)
+      create_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers).value!
     end
 
     #
@@ -313,7 +299,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:nil)
+    def create_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -324,11 +310,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::MediaServices::Mgmt::V2018_07_01::Models::Job.mapper()
@@ -390,8 +377,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, account_name, transform_name, job_name, custom_headers:nil)
-      response = delete_async(resource_group_name, account_name, transform_name, job_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, account_name, transform_name, job_name, custom_headers = nil)
+      response = delete_async(resource_group_name, account_name, transform_name, job_name, custom_headers).value!
       nil
     end
 
@@ -410,8 +397,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, account_name, transform_name, job_name, custom_headers:nil)
-      delete_async(resource_group_name, account_name, transform_name, job_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, account_name, transform_name, job_name, custom_headers = nil)
+      delete_async(resource_group_name, account_name, transform_name, job_name, custom_headers).value!
     end
 
     #
@@ -429,7 +416,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, account_name, transform_name, job_name, custom_headers:nil)
+    def delete_async(resource_group_name, account_name, transform_name, job_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -439,7 +426,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -477,7 +463,9 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # Update Job
     #
-    # Updates a Job.
+    # Update is only supported for description and priority. Updating Priority will
+    # take effect when the Job state is Queued or Scheduled and depending on the
+    # timing the priority update may be ignored.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # Azure subscription.
@@ -490,15 +478,17 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [Job] operation results.
     #
-    def update(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:nil)
-      response = update_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:custom_headers).value!
+    def update(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers = nil)
+      response = update_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Update Job
     #
-    # Updates a Job.
+    # Update is only supported for description and priority. Updating Priority will
+    # take effect when the Job state is Queued or Scheduled and depending on the
+    # timing the priority update may be ignored.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # Azure subscription.
@@ -511,14 +501,16 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:nil)
-      update_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers = nil)
+      update_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers).value!
     end
 
     #
     # Update Job
     #
-    # Updates a Job.
+    # Update is only supported for description and priority. Updating Priority will
+    # take effect when the Job state is Queued or Scheduled and depending on the
+    # timing the priority update may be ignored.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # Azure subscription.
@@ -531,7 +523,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers:nil)
+    def update_async(resource_group_name, account_name, transform_name, job_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -542,11 +534,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::MediaServices::Mgmt::V2018_07_01::Models::Job.mapper()
@@ -608,8 +601,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # will be added to the HTTP request.
     #
     #
-    def cancel_job(resource_group_name, account_name, transform_name, job_name, custom_headers:nil)
-      response = cancel_job_async(resource_group_name, account_name, transform_name, job_name, custom_headers:custom_headers).value!
+    def cancel_job(resource_group_name, account_name, transform_name, job_name, custom_headers = nil)
+      response = cancel_job_async(resource_group_name, account_name, transform_name, job_name, custom_headers).value!
       nil
     end
 
@@ -628,8 +621,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def cancel_job_with_http_info(resource_group_name, account_name, transform_name, job_name, custom_headers:nil)
-      cancel_job_async(resource_group_name, account_name, transform_name, job_name, custom_headers:custom_headers).value!
+    def cancel_job_with_http_info(resource_group_name, account_name, transform_name, job_name, custom_headers = nil)
+      cancel_job_async(resource_group_name, account_name, transform_name, job_name, custom_headers).value!
     end
 
     #
@@ -647,7 +640,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def cancel_job_async(resource_group_name, account_name, transform_name, job_name, custom_headers:nil)
+    def cancel_job_async(resource_group_name, account_name, transform_name, job_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
@@ -657,7 +650,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -704,8 +696,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [JobCollection] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -721,8 +713,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -737,12 +729,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -796,23 +787,19 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param top [Integer] Specifies a non-negative integer n that limits the
-    # number of items returned from a collection. The service returns the number of
-    # available items up to but not greater than the specified value n.
-    # @param skip [Integer] Specifies a non-negative integer n that excludes the
-    # first n items of the queried collection from the result. The service returns
-    # items starting at position n+1.
+    # @param orderby [String] Specifies the the key by which the result collection
+    # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [JobCollection] which provide lazy access to pages of the response.
     #
-    def list_as_lazy(resource_group_name, account_name, transform_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
-      response = list_async(resource_group_name, account_name, transform_name, filter:filter, top:top, skip:skip, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, account_name, transform_name, filter = nil, orderby = nil, custom_headers = nil)
+      response = list_async(resource_group_name, account_name, transform_name, filter, orderby, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end

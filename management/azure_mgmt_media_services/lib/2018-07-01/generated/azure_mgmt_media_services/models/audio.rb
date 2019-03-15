@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.Audio"
+        @@odatatype = "#Microsoft.Media.Audio"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Integer] The number of channels in the audio.
       attr_accessor :channels
@@ -36,7 +36,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.Audio',
           type: {
@@ -44,15 +43,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'Audio',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -60,7 +57,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               channels: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'channels',
                 type: {
@@ -68,7 +64,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               sampling_rate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'samplingRate',
                 type: {
@@ -76,7 +71,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               bitrate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bitrate',
                 type: {

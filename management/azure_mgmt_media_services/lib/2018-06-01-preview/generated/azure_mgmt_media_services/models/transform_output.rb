@@ -38,7 +38,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TransformOutput',
           type: {
@@ -46,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'TransformOutput',
             model_properties: {
               on_error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'onError',
                 type: {
@@ -55,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               relative_priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'relativePriority',
                 type: {
@@ -64,7 +61,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               preset: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'preset',
                 type: {

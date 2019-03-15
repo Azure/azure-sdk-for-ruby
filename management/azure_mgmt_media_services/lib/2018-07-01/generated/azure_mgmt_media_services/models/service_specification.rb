@@ -22,7 +22,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceSpecification',
           type: {
@@ -30,14 +29,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'ServiceSpecification',
             model_properties: {
               metric_specifications: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'metricSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricElementType',
                       type: {

@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.ContentKeyPolicyTokenRestriction"
+        @@odatatype = "#Microsoft.Media.ContentKeyPolicyTokenRestriction"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The token issuer.
       attr_accessor :issuer
@@ -52,15 +52,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.ContentKeyPolicyTokenRestriction',
           type: {
             name: 'Composite',
             class_name: 'ContentKeyPolicyTokenRestriction',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -68,7 +66,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               issuer: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'issuer',
                 type: {
@@ -76,7 +73,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               audience: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'audience',
                 type: {
@@ -84,7 +80,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               primary_verification_key: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'primaryVerificationKey',
                 type: {
@@ -95,13 +90,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               alternate_verification_keys: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'alternateVerificationKeys',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContentKeyPolicyRestrictionTokenKeyElementType',
                       type: {
@@ -114,13 +107,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               required_claims: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requiredClaims',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContentKeyPolicyTokenClaimElementType',
                       type: {
@@ -131,16 +122,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               restriction_token_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'restrictionTokenType',
                 type: {
-                  name: 'Enum',
-                  module: 'ContentKeyPolicyRestrictionTokenType'
+                  name: 'String'
                 }
               },
               open_id_connect_discovery_document: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'openIdConnectDiscoveryDocument',
                 type: {

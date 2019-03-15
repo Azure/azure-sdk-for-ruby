@@ -37,7 +37,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingPolicy',
           type: {
@@ -45,7 +44,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'StreamingPolicy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -54,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -81,7 +76,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               default_content_key_policy_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.defaultContentKeyPolicyName',
                 type: {
@@ -89,7 +83,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               envelope_encryption: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.envelopeEncryption',
                 type: {
@@ -98,7 +91,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               common_encryption_cenc: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.commonEncryptionCenc',
                 type: {
@@ -107,7 +99,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               common_encryption_cbcs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.commonEncryptionCbcs',
                 type: {
@@ -116,7 +107,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               no_encryption: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.noEncryption',
                 type: {

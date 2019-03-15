@@ -22,7 +22,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FirstQuality',
           type: {
@@ -30,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'FirstQuality',
             model_properties: {
               bitrate: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'bitrate',
                 type: {

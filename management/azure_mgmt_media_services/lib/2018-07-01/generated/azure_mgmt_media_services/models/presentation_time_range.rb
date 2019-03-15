@@ -38,7 +38,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PresentationTimeRange',
           type: {
@@ -46,48 +45,42 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'PresentationTimeRange',
             model_properties: {
               start_timestamp: {
-                client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'startTimestamp',
                 type: {
                   name: 'Number'
                 }
               },
               end_timestamp: {
-                client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'endTimestamp',
                 type: {
                   name: 'Number'
                 }
               },
               presentation_window_duration: {
-                client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'presentationWindowDuration',
                 type: {
                   name: 'Number'
                 }
               },
               live_backoff_duration: {
-                client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'liveBackoffDuration',
                 type: {
                   name: 'Number'
                 }
               },
               timescale: {
-                client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'timescale',
                 type: {
                   name: 'Number'
                 }
               },
               force_end_timestamp: {
-                client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'forceEndTimestamp',
                 type: {
                   name: 'Boolean'

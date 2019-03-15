@@ -28,7 +28,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Deinterlace',
           type: {
@@ -36,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'Deinterlace',
             model_properties: {
               parity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parity',
                 type: {
@@ -45,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 type: {

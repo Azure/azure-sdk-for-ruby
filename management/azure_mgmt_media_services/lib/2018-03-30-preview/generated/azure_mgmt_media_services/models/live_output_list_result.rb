@@ -62,7 +62,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveOutputListResult',
           type: {
@@ -70,13 +69,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'LiveOutputListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LiveOutputElementType',
                       type: {
@@ -87,7 +84,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               odatacount: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: '@odata\\.count',
                 type: {
@@ -95,7 +91,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               odatanext_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: '@odata\\.nextLink',
                 type: {

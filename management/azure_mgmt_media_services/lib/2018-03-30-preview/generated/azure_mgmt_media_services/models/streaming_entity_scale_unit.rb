@@ -23,7 +23,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingEntityScaleUnit',
           type: {
@@ -31,7 +30,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'StreamingEntityScaleUnit',
             model_properties: {
               scale_unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scaleUnit',
                 type: {

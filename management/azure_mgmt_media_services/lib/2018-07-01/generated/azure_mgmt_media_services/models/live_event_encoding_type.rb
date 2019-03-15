@@ -11,6 +11,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     module LiveEventEncodingType
       None = "None"
       Basic = "Basic"
+      Standard = "Standard"
     end
   end
 end

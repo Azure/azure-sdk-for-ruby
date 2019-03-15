@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ListPathsResponse',
           type: {
@@ -35,13 +34,11 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'ListPathsResponse',
             model_properties: {
               streaming_paths: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'streamingPaths',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StreamingPathElementType',
                       type: {
@@ -52,13 +49,11 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               download_paths: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'downloadPaths',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OutputFile',
           type: {
@@ -35,13 +34,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'OutputFile',
             model_properties: {
               labels: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'labels',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

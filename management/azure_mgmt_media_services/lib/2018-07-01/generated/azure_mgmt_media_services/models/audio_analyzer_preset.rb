@@ -16,21 +16,28 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.AudioAnalyzerPreset"
+        @@odatatype = "#Microsoft.Media.AudioAnalyzerPreset"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The language for the audio payload in the input using
-      # the BCP-47 format of 'language tag-region' (e.g: 'en-US'). The list of
-      # supported languages are, 'en-US', 'en-GB', 'es-ES', 'es-MX', 'fr-FR',
-      # 'it-IT', 'ja-JP', 'pt-BR', 'zh-CN', 'de-DE', 'ar-EG', 'ru-RU', 'hi-IN'.
-      # If not specified, automatic language detection would be employed. This
-      # feature currently supports English, Chinese, French, German, Italian,
-      # Japanese, Spanish, Russian, and Portuguese. The automatic detection
-      # works best with audio recordings with clearly discernable speech. If
-      # automatic detection fails to find the language, transcription would
-      # fallback to English.
+      # the BCP-47 format of 'language tag-region' (e.g: 'en-US').  The list of
+      # supported languages are English ('en-US' and 'en-GB'), Spanish ('es-ES'
+      # and 'es-MX'), French ('fr-FR'), Italian ('it-IT'), Japanese ('ja-JP'),
+      # Portuguese ('pt-BR'), Chinese ('zh-CN'), German ('de-DE'), Arabic
+      # ('ar-EG'), Russian ('ru-RU'), Hindi ('hi-IN'), and Korean ('ko-KR'). If
+      # you know the language of your content, it is recommended that you
+      # specify it. If the language isn't specified or set to null, automatic
+      # language detection will choose the first language detected and process
+      # with the selected language for the duration of the file. This language
+      # detection feature currently supports English, Chinese, French, German,
+      # Italian, Japanese, Spanish, Russian, and Portuguese. It does not
+      # currently support dynamically switching between languages after the
+      # first language is detected. The automatic detection works best with
+      # audio recordings with clearly discernable speech. If automatic
+      # detection fails to find the language, transcription would fallback to
+      # 'en-US'."
       attr_accessor :audio_language
 
 
@@ -40,15 +47,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.AudioAnalyzerPreset',
           type: {
             name: 'Composite',
             class_name: 'AudioAnalyzerPreset',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -56,7 +61,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               audio_language: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audioLanguage',
                 type: {

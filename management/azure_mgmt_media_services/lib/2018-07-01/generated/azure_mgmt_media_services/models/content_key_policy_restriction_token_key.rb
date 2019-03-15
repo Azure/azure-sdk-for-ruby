@@ -19,10 +19,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       @@discriminatorMap["#Microsoft.Media.ContentKeyPolicyX509CertificateTokenKey"] = "ContentKeyPolicyX509CertificateTokenKey"
 
       def initialize
-        @odatatype = "ContentKeyPolicyRestrictionTokenKey"
+        @@odatatype = "ContentKeyPolicyRestrictionTokenKey"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
 
       #
@@ -31,7 +31,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContentKeyPolicyRestrictionTokenKey',
           type: {

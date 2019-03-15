@@ -24,8 +24,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # tracks
       attr_accessor :content_keys
 
-      # @return [String] KeyAcquistionUrlTemplate is used to point to user
-      # specified service to delivery content keys
+      # @return [String] Template for the URL of the custom service delivering
+      # keys to end user players.  Not required when using Azure Media Services
+      # for issuing keys.  The template supports replaceable tokens that the
+      # service will update at runtime with the value specific to the request.
+      # The currently supported token values are {AlternativeMediaId}, which is
+      # replaced with the value of StreamingLocatorId.AlternativeMediaId, and
+      # {ContentKeyId}, which is replaced with the value of identifier of the
+      # key being requested.
       attr_accessor :custom_key_acquisition_url_template
 
 
@@ -35,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EnvelopeEncryption',
           type: {
@@ -43,7 +48,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'EnvelopeEncryption',
             model_properties: {
               enabled_protocols: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabledProtocols',
                 type: {
@@ -52,13 +56,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               clear_tracks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clearTracks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrackSelectionElementType',
                       type: {
@@ -69,7 +71,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               content_keys: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentKeys',
                 type: {
@@ -78,7 +79,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               custom_key_acquisition_url_template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customKeyAcquisitionUrlTemplate',
                 type: {

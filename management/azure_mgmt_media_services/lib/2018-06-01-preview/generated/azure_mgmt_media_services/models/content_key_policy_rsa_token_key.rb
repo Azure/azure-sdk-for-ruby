@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.ContentKeyPolicyRsaTokenKey"
+        @@odatatype = "#Microsoft.Media.ContentKeyPolicyRsaTokenKey"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Array<Integer>] The RSA Parameter exponent
       attr_accessor :exponent
@@ -32,15 +32,13 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.ContentKeyPolicyRsaTokenKey',
           type: {
             name: 'Composite',
             class_name: 'ContentKeyPolicyRsaTokenKey',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -48,7 +46,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               exponent: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'exponent',
                 type: {
@@ -56,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               modulus: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'modulus',
                 type: {

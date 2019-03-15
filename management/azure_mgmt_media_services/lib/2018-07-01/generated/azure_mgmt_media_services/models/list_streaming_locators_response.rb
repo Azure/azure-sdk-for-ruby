@@ -22,7 +22,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ListStreamingLocatorsResponse',
           type: {
@@ -30,14 +29,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'ListStreamingLocatorsResponse',
             model_properties: {
               streaming_locators: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'streamingLocators',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AssetStreamingLocatorElementType',
                       type: {

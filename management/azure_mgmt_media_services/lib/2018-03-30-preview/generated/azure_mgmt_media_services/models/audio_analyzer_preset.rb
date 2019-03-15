@@ -16,10 +16,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.AudioAnalyzerPreset"
+        @@odatatype = "#Microsoft.Media.AudioAnalyzerPreset"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] The language for the audio payload in the input using
       # the BCP-47 format of 'language tag-region' (e.g: 'en-US'). The list of
@@ -34,15 +34,13 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.AudioAnalyzerPreset',
           type: {
             name: 'Composite',
             class_name: 'AudioAnalyzerPreset',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -50,7 +48,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               audio_language: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audioLanguage',
                 type: {
