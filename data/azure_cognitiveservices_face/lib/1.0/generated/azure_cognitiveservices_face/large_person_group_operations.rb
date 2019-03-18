@@ -586,8 +586,8 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # List all existing large person groups’s largePesonGroupId, name, userData and
-    # recognitionModel.<br />
+    # List all existing large person groups’s largePersonGroupId, name, userData
+    # and recognitionModel.<br />
     # * Large person groups are stored in alphabetical order of largePersonGroupId.
     # * "start" parameter (string, optional) is a user-provided largePersonGroupId
     # value that returned entries have larger ids by string comparison. "start" set
@@ -616,8 +616,8 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # List all existing large person groups’s largePesonGroupId, name, userData and
-    # recognitionModel.<br />
+    # List all existing large person groups’s largePersonGroupId, name, userData
+    # and recognitionModel.<br />
     # * Large person groups are stored in alphabetical order of largePersonGroupId.
     # * "start" parameter (string, optional) is a user-provided largePersonGroupId
     # value that returned entries have larger ids by string comparison. "start" set
@@ -645,8 +645,8 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # List all existing large person groups’s largePesonGroupId, name, userData and
-    # recognitionModel.<br />
+    # List all existing large person groups’s largePersonGroupId, name, userData
+    # and recognitionModel.<br />
     # * Large person groups are stored in alphabetical order of largePersonGroupId.
     # * "start" parameter (string, optional) is a user-provided largePersonGroupId
     # value that returned entries have larger ids by string comparison. "start" set
