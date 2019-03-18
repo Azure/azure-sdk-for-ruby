@@ -31,8 +31,8 @@ module Azure::Profiles::Latest
       VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
       SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
       ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
-      CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
       Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+      CreativeWork = Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
     end
 
     class NewsSearchDataClass
@@ -131,11 +131,11 @@ module Azure::Profiles::Latest
         def error_code
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
         end
-        def creative_work
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
-        end
         def error
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+        end
+        def creative_work
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::CreativeWork
         end
       end
     end

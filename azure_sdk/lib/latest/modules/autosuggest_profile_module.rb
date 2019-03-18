@@ -8,23 +8,23 @@ module Azure::Profiles::Latest
   module Autosuggest
 
     module Models
+      SafeSearch = Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
       Response = Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
       QueryContext = Azure::CognitiveServices::Autosuggest::V1_0::Models::QueryContext
       SuggestionsSuggestionGroup = Azure::CognitiveServices::Autosuggest::V1_0::Models::SuggestionsSuggestionGroup
-      ResponseBase = Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseBase
+      Action = Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
       Answer = Azure::CognitiveServices::Autosuggest::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchResultsAnswer
       Suggestions = Azure::CognitiveServices::Autosuggest::V1_0::Models::Suggestions
       Thing = Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
-      Action = Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
+      CreativeWork = Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
       SearchAction = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
-      CreativeWork = Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
-      ErrorResponse = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse
-      SearchKind = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
       ScenarioType = Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
-      SafeSearch = Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
+      ErrorResponse = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse
+      ResponseBase = Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseBase
       ErrorCode = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorCode
+      SearchKind = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
       ResponseFormat = Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseFormat
       Error = Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
     end
@@ -58,6 +58,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def safe_search
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
+        end
         def response
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
         end
@@ -67,8 +70,8 @@ module Azure::Profiles::Latest
         def suggestions_suggestion_group
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SuggestionsSuggestionGroup
         end
-        def response_base
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseBase
+        def action
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
         end
         def answer
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Answer
@@ -82,8 +85,8 @@ module Azure::Profiles::Latest
         def thing
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
         end
-        def action
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Action
+        def creative_work
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
         end
         def search_action
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
@@ -91,23 +94,20 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
         end
-        def creative_work
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
+        def scenario_type
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
         end
         def error_response
           Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse
         end
-        def search_kind
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
-        end
-        def scenario_type
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
-        end
-        def safe_search
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
+        def response_base
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseBase
         end
         def error_code
           Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorCode
+        end
+        def search_kind
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
         end
         def response_format
           Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseFormat

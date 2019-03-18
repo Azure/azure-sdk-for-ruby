@@ -25,11 +25,11 @@ module Azure::Profiles::Latest
       VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
       VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
       VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
+      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
       VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
-      TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
       VideoInsightModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
-      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+      TextFormat = Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
       QueryContext = Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
       ResponseBase = Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::VideoSearch::V1_0::Models::Answer
@@ -121,20 +121,20 @@ module Azure::Profiles::Latest
         def video_length
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
         end
+        def response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+        end
         def video_pricing
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
         end
         def video_resolution
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
         end
-        def text_format
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
-        end
         def video_insight_module
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
         end
-        def response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+        def text_format
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::TextFormat
         end
         def query_context
           Azure::CognitiveServices::VideoSearch::V1_0::Models::QueryContext
