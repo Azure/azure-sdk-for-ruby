@@ -9,43 +9,42 @@ module Azure::Profiles::Latest
   module KeyVault
 
     module Models
-      SasTokenType = Azure::KeyVault::V7_0::Models::SasTokenType
       Action = Azure::KeyVault::V7_0::Models::Action
       KeyOperationsParameters = Azure::KeyVault::V7_0::Models::KeyOperationsParameters
       KeySignParameters = Azure::KeyVault::V7_0::Models::KeySignParameters
       JsonWebKey = Azure::KeyVault::V7_0::Models::JsonWebKey
       KeyVerifyParameters = Azure::KeyVault::V7_0::Models::KeyVerifyParameters
-      BackupCertificateResult = Azure::KeyVault::V7_0::Models::BackupCertificateResult
+      KeyBundle = Azure::KeyVault::V7_0::Models::KeyBundle
       KeyUpdateParameters = Azure::KeyVault::V7_0::Models::KeyUpdateParameters
-      StorageRestoreParameters = Azure::KeyVault::V7_0::Models::StorageRestoreParameters
+      KeyImportParameters = Azure::KeyVault::V7_0::Models::KeyImportParameters
       Attributes = Azure::KeyVault::V7_0::Models::Attributes
       KeyVaultError = Azure::KeyVault::V7_0::Models::KeyVaultError
-      SecretBundle = Azure::KeyVault::V7_0::Models::SecretBundle
-      KeyBundle = Azure::KeyVault::V7_0::Models::KeyBundle
+      BackupCertificateResult = Azure::KeyVault::V7_0::Models::BackupCertificateResult
+      DeletedSasDefinitionListResult = Azure::KeyVault::V7_0::Models::DeletedSasDefinitionListResult
       SasDefinitionUpdateParameters = Azure::KeyVault::V7_0::Models::SasDefinitionUpdateParameters
       KeyItem = Azure::KeyVault::V7_0::Models::KeyItem
       SecretRestoreParameters = Azure::KeyVault::V7_0::Models::SecretRestoreParameters
       SasDefinitionAttributes = Azure::KeyVault::V7_0::Models::SasDefinitionAttributes
-      CertificateItem = Azure::KeyVault::V7_0::Models::CertificateItem
+      SecretBundle = Azure::KeyVault::V7_0::Models::SecretBundle
       KeyRestoreParameters = Azure::KeyVault::V7_0::Models::KeyRestoreParameters
-      KeyProperties = Azure::KeyVault::V7_0::Models::KeyProperties
+      StorageRestoreParameters = Azure::KeyVault::V7_0::Models::StorageRestoreParameters
       SecretSetParameters = Azure::KeyVault::V7_0::Models::SecretSetParameters
-      DeletedSasDefinitionListResult = Azure::KeyVault::V7_0::Models::DeletedSasDefinitionListResult
+      SubjectAlternativeNames = Azure::KeyVault::V7_0::Models::SubjectAlternativeNames
       SecretUpdateParameters = Azure::KeyVault::V7_0::Models::SecretUpdateParameters
       Trigger = Azure::KeyVault::V7_0::Models::Trigger
       CertificateCreateParameters = Azure::KeyVault::V7_0::Models::CertificateCreateParameters
-      LifetimeAction = Azure::KeyVault::V7_0::Models::LifetimeAction
+      KeyProperties = Azure::KeyVault::V7_0::Models::KeyProperties
       CertificateImportParameters = Azure::KeyVault::V7_0::Models::CertificateImportParameters
       CertificatePolicy = Azure::KeyVault::V7_0::Models::CertificatePolicy
       CertificateUpdateParameters = Azure::KeyVault::V7_0::Models::CertificateUpdateParameters
       BackupStorageResult = Azure::KeyVault::V7_0::Models::BackupStorageResult
       CertificateMergeParameters = Azure::KeyVault::V7_0::Models::CertificateMergeParameters
       CertificateIssuerSetParameters = Azure::KeyVault::V7_0::Models::CertificateIssuerSetParameters
-      SasDefinitionItem = Azure::KeyVault::V7_0::Models::SasDefinitionItem
+      CertificateItem = Azure::KeyVault::V7_0::Models::CertificateItem
       CertificateIssuerUpdateParameters = Azure::KeyVault::V7_0::Models::CertificateIssuerUpdateParameters
       OrganizationDetails = Azure::KeyVault::V7_0::Models::OrganizationDetails
       CertificateOperationUpdateParameter = Azure::KeyVault::V7_0::Models::CertificateOperationUpdateParameter
-      KeyImportParameters = Azure::KeyVault::V7_0::Models::KeyImportParameters
+      IssuerBundle = Azure::KeyVault::V7_0::Models::IssuerBundle
       KeyOperationResult = Azure::KeyVault::V7_0::Models::KeyOperationResult
       Contacts = Azure::KeyVault::V7_0::Models::Contacts
       KeyVerifyResult = Azure::KeyVault::V7_0::Models::KeyVerifyResult
@@ -79,34 +78,35 @@ module Azure::Profiles::Latest
       StorageAccountRegenerteKeyParameters = Azure::KeyVault::V7_0::Models::StorageAccountRegenerteKeyParameters
       KeyCreateParameters = Azure::KeyVault::V7_0::Models::KeyCreateParameters
       StorageAccountItem = Azure::KeyVault::V7_0::Models::StorageAccountItem
-      SasDefinitionBundle = Azure::KeyVault::V7_0::Models::SasDefinitionBundle
-      KeyAttributes = Azure::KeyVault::V7_0::Models::KeyAttributes
-      IssuerBundle = Azure::KeyVault::V7_0::Models::IssuerBundle
-      DeletedKeyItem = Azure::KeyVault::V7_0::Models::DeletedKeyItem
+      LifetimeAction = Azure::KeyVault::V7_0::Models::LifetimeAction
+      DeletedStorageListResult = Azure::KeyVault::V7_0::Models::DeletedStorageListResult
       DeletedKeyBundle = Azure::KeyVault::V7_0::Models::DeletedKeyBundle
-      CertificateRestoreParameters = Azure::KeyVault::V7_0::Models::CertificateRestoreParameters
-      SubjectAlternativeNames = Azure::KeyVault::V7_0::Models::SubjectAlternativeNames
+      KeyAttributes = Azure::KeyVault::V7_0::Models::KeyAttributes
+      SasDefinitionItem = Azure::KeyVault::V7_0::Models::SasDefinitionItem
+      DeletedKeyItem = Azure::KeyVault::V7_0::Models::DeletedKeyItem
+      SecretAttributes = Azure::KeyVault::V7_0::Models::SecretAttributes
       IssuerCredentials = Azure::KeyVault::V7_0::Models::IssuerCredentials
       StorageListResult = Azure::KeyVault::V7_0::Models::StorageListResult
-      SecretAttributes = Azure::KeyVault::V7_0::Models::SecretAttributes
-      DeletedSecretBundle = Azure::KeyVault::V7_0::Models::DeletedSecretBundle
-      DeletedSecretItem = Azure::KeyVault::V7_0::Models::DeletedSecretItem
       CertificateAttributes = Azure::KeyVault::V7_0::Models::CertificateAttributes
+      DeletedSecretBundle = Azure::KeyVault::V7_0::Models::DeletedSecretBundle
+      CertificateRestoreParameters = Azure::KeyVault::V7_0::Models::CertificateRestoreParameters
+      JsonWebKeyType = Azure::KeyVault::V7_0::Models::JsonWebKeyType
       DeletedCertificateBundle = Azure::KeyVault::V7_0::Models::DeletedCertificateBundle
       DeletedCertificateItem = Azure::KeyVault::V7_0::Models::DeletedCertificateItem
-      JsonWebKeyType = Azure::KeyVault::V7_0::Models::JsonWebKeyType
-      JsonWebKeyCurveName = Azure::KeyVault::V7_0::Models::JsonWebKeyCurveName
+      SasDefinitionBundle = Azure::KeyVault::V7_0::Models::SasDefinitionBundle
+      DeletedSasDefinitionItem = Azure::KeyVault::V7_0::Models::DeletedSasDefinitionItem
       DeletionRecoveryLevel = Azure::KeyVault::V7_0::Models::DeletionRecoveryLevel
-      DeletedStorageListResult = Azure::KeyVault::V7_0::Models::DeletedStorageListResult
+      KeyUsageType = Azure::KeyVault::V7_0::Models::KeyUsageType
+      ActionType = Azure::KeyVault::V7_0::Models::ActionType
+      DeletedSecretItem = Azure::KeyVault::V7_0::Models::DeletedSecretItem
+      JsonWebKeyEncryptionAlgorithm = Azure::KeyVault::V7_0::Models::JsonWebKeyEncryptionAlgorithm
+      JsonWebKeySignatureAlgorithm = Azure::KeyVault::V7_0::Models::JsonWebKeySignatureAlgorithm
+      JsonWebKeyOperation = Azure::KeyVault::V7_0::Models::JsonWebKeyOperation
       DeletedStorageBundle = Azure::KeyVault::V7_0::Models::DeletedStorageBundle
       DeletedStorageAccountItem = Azure::KeyVault::V7_0::Models::DeletedStorageAccountItem
       DeletedSasDefinitionBundle = Azure::KeyVault::V7_0::Models::DeletedSasDefinitionBundle
-      DeletedSasDefinitionItem = Azure::KeyVault::V7_0::Models::DeletedSasDefinitionItem
-      ActionType = Azure::KeyVault::V7_0::Models::ActionType
-      JsonWebKeyOperation = Azure::KeyVault::V7_0::Models::JsonWebKeyOperation
-      JsonWebKeyEncryptionAlgorithm = Azure::KeyVault::V7_0::Models::JsonWebKeyEncryptionAlgorithm
-      JsonWebKeySignatureAlgorithm = Azure::KeyVault::V7_0::Models::JsonWebKeySignatureAlgorithm
-      KeyUsageType = Azure::KeyVault::V7_0::Models::KeyUsageType
+      SasTokenType = Azure::KeyVault::V7_0::Models::SasTokenType
+      JsonWebKeyCurveName = Azure::KeyVault::V7_0::Models::JsonWebKeyCurveName
     end
 
     class KeyVaultDataClass
@@ -138,9 +138,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def sas_token_type
-          Azure::KeyVault::V7_0::Models::SasTokenType
-        end
         def action
           Azure::KeyVault::V7_0::Models::Action
         end
@@ -156,14 +153,14 @@ module Azure::Profiles::Latest
         def key_verify_parameters
           Azure::KeyVault::V7_0::Models::KeyVerifyParameters
         end
-        def backup_certificate_result
-          Azure::KeyVault::V7_0::Models::BackupCertificateResult
+        def key_bundle
+          Azure::KeyVault::V7_0::Models::KeyBundle
         end
         def key_update_parameters
           Azure::KeyVault::V7_0::Models::KeyUpdateParameters
         end
-        def storage_restore_parameters
-          Azure::KeyVault::V7_0::Models::StorageRestoreParameters
+        def key_import_parameters
+          Azure::KeyVault::V7_0::Models::KeyImportParameters
         end
         def attributes
           Azure::KeyVault::V7_0::Models::Attributes
@@ -171,11 +168,11 @@ module Azure::Profiles::Latest
         def key_vault_error
           Azure::KeyVault::V7_0::Models::KeyVaultError
         end
-        def secret_bundle
-          Azure::KeyVault::V7_0::Models::SecretBundle
+        def backup_certificate_result
+          Azure::KeyVault::V7_0::Models::BackupCertificateResult
         end
-        def key_bundle
-          Azure::KeyVault::V7_0::Models::KeyBundle
+        def deleted_sas_definition_list_result
+          Azure::KeyVault::V7_0::Models::DeletedSasDefinitionListResult
         end
         def sas_definition_update_parameters
           Azure::KeyVault::V7_0::Models::SasDefinitionUpdateParameters
@@ -189,20 +186,20 @@ module Azure::Profiles::Latest
         def sas_definition_attributes
           Azure::KeyVault::V7_0::Models::SasDefinitionAttributes
         end
-        def certificate_item
-          Azure::KeyVault::V7_0::Models::CertificateItem
+        def secret_bundle
+          Azure::KeyVault::V7_0::Models::SecretBundle
         end
         def key_restore_parameters
           Azure::KeyVault::V7_0::Models::KeyRestoreParameters
         end
-        def key_properties
-          Azure::KeyVault::V7_0::Models::KeyProperties
+        def storage_restore_parameters
+          Azure::KeyVault::V7_0::Models::StorageRestoreParameters
         end
         def secret_set_parameters
           Azure::KeyVault::V7_0::Models::SecretSetParameters
         end
-        def deleted_sas_definition_list_result
-          Azure::KeyVault::V7_0::Models::DeletedSasDefinitionListResult
+        def subject_alternative_names
+          Azure::KeyVault::V7_0::Models::SubjectAlternativeNames
         end
         def secret_update_parameters
           Azure::KeyVault::V7_0::Models::SecretUpdateParameters
@@ -213,8 +210,8 @@ module Azure::Profiles::Latest
         def certificate_create_parameters
           Azure::KeyVault::V7_0::Models::CertificateCreateParameters
         end
-        def lifetime_action
-          Azure::KeyVault::V7_0::Models::LifetimeAction
+        def key_properties
+          Azure::KeyVault::V7_0::Models::KeyProperties
         end
         def certificate_import_parameters
           Azure::KeyVault::V7_0::Models::CertificateImportParameters
@@ -234,8 +231,8 @@ module Azure::Profiles::Latest
         def certificate_issuer_set_parameters
           Azure::KeyVault::V7_0::Models::CertificateIssuerSetParameters
         end
-        def sas_definition_item
-          Azure::KeyVault::V7_0::Models::SasDefinitionItem
+        def certificate_item
+          Azure::KeyVault::V7_0::Models::CertificateItem
         end
         def certificate_issuer_update_parameters
           Azure::KeyVault::V7_0::Models::CertificateIssuerUpdateParameters
@@ -246,8 +243,8 @@ module Azure::Profiles::Latest
         def certificate_operation_update_parameter
           Azure::KeyVault::V7_0::Models::CertificateOperationUpdateParameter
         end
-        def key_import_parameters
-          Azure::KeyVault::V7_0::Models::KeyImportParameters
+        def issuer_bundle
+          Azure::KeyVault::V7_0::Models::IssuerBundle
         end
         def key_operation_result
           Azure::KeyVault::V7_0::Models::KeyOperationResult
@@ -348,26 +345,26 @@ module Azure::Profiles::Latest
         def storage_account_item
           Azure::KeyVault::V7_0::Models::StorageAccountItem
         end
-        def sas_definition_bundle
-          Azure::KeyVault::V7_0::Models::SasDefinitionBundle
+        def lifetime_action
+          Azure::KeyVault::V7_0::Models::LifetimeAction
         end
-        def key_attributes
-          Azure::KeyVault::V7_0::Models::KeyAttributes
-        end
-        def issuer_bundle
-          Azure::KeyVault::V7_0::Models::IssuerBundle
-        end
-        def deleted_key_item
-          Azure::KeyVault::V7_0::Models::DeletedKeyItem
+        def deleted_storage_list_result
+          Azure::KeyVault::V7_0::Models::DeletedStorageListResult
         end
         def deleted_key_bundle
           Azure::KeyVault::V7_0::Models::DeletedKeyBundle
         end
-        def certificate_restore_parameters
-          Azure::KeyVault::V7_0::Models::CertificateRestoreParameters
+        def key_attributes
+          Azure::KeyVault::V7_0::Models::KeyAttributes
         end
-        def subject_alternative_names
-          Azure::KeyVault::V7_0::Models::SubjectAlternativeNames
+        def sas_definition_item
+          Azure::KeyVault::V7_0::Models::SasDefinitionItem
+        end
+        def deleted_key_item
+          Azure::KeyVault::V7_0::Models::DeletedKeyItem
+        end
+        def secret_attributes
+          Azure::KeyVault::V7_0::Models::SecretAttributes
         end
         def issuer_credentials
           Azure::KeyVault::V7_0::Models::IssuerCredentials
@@ -375,17 +372,17 @@ module Azure::Profiles::Latest
         def storage_list_result
           Azure::KeyVault::V7_0::Models::StorageListResult
         end
-        def secret_attributes
-          Azure::KeyVault::V7_0::Models::SecretAttributes
+        def certificate_attributes
+          Azure::KeyVault::V7_0::Models::CertificateAttributes
         end
         def deleted_secret_bundle
           Azure::KeyVault::V7_0::Models::DeletedSecretBundle
         end
-        def deleted_secret_item
-          Azure::KeyVault::V7_0::Models::DeletedSecretItem
+        def certificate_restore_parameters
+          Azure::KeyVault::V7_0::Models::CertificateRestoreParameters
         end
-        def certificate_attributes
-          Azure::KeyVault::V7_0::Models::CertificateAttributes
+        def json_web_key_type
+          Azure::KeyVault::V7_0::Models::JsonWebKeyType
         end
         def deleted_certificate_bundle
           Azure::KeyVault::V7_0::Models::DeletedCertificateBundle
@@ -393,17 +390,32 @@ module Azure::Profiles::Latest
         def deleted_certificate_item
           Azure::KeyVault::V7_0::Models::DeletedCertificateItem
         end
-        def json_web_key_type
-          Azure::KeyVault::V7_0::Models::JsonWebKeyType
+        def sas_definition_bundle
+          Azure::KeyVault::V7_0::Models::SasDefinitionBundle
         end
-        def json_web_key_curve_name
-          Azure::KeyVault::V7_0::Models::JsonWebKeyCurveName
+        def deleted_sas_definition_item
+          Azure::KeyVault::V7_0::Models::DeletedSasDefinitionItem
         end
         def deletion_recovery_level
           Azure::KeyVault::V7_0::Models::DeletionRecoveryLevel
         end
-        def deleted_storage_list_result
-          Azure::KeyVault::V7_0::Models::DeletedStorageListResult
+        def key_usage_type
+          Azure::KeyVault::V7_0::Models::KeyUsageType
+        end
+        def action_type
+          Azure::KeyVault::V7_0::Models::ActionType
+        end
+        def deleted_secret_item
+          Azure::KeyVault::V7_0::Models::DeletedSecretItem
+        end
+        def json_web_key_encryption_algorithm
+          Azure::KeyVault::V7_0::Models::JsonWebKeyEncryptionAlgorithm
+        end
+        def json_web_key_signature_algorithm
+          Azure::KeyVault::V7_0::Models::JsonWebKeySignatureAlgorithm
+        end
+        def json_web_key_operation
+          Azure::KeyVault::V7_0::Models::JsonWebKeyOperation
         end
         def deleted_storage_bundle
           Azure::KeyVault::V7_0::Models::DeletedStorageBundle
@@ -414,23 +426,11 @@ module Azure::Profiles::Latest
         def deleted_sas_definition_bundle
           Azure::KeyVault::V7_0::Models::DeletedSasDefinitionBundle
         end
-        def deleted_sas_definition_item
-          Azure::KeyVault::V7_0::Models::DeletedSasDefinitionItem
+        def sas_token_type
+          Azure::KeyVault::V7_0::Models::SasTokenType
         end
-        def action_type
-          Azure::KeyVault::V7_0::Models::ActionType
-        end
-        def json_web_key_operation
-          Azure::KeyVault::V7_0::Models::JsonWebKeyOperation
-        end
-        def json_web_key_encryption_algorithm
-          Azure::KeyVault::V7_0::Models::JsonWebKeyEncryptionAlgorithm
-        end
-        def json_web_key_signature_algorithm
-          Azure::KeyVault::V7_0::Models::JsonWebKeySignatureAlgorithm
-        end
-        def key_usage_type
-          Azure::KeyVault::V7_0::Models::KeyUsageType
+        def json_web_key_curve_name
+          Azure::KeyVault::V7_0::Models::JsonWebKeyCurveName
         end
       end
     end
@@ -443,10 +443,10 @@ module Azure::Profiles::Latest
         Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
         VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
         Permissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
+        Resource = Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
         IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
         NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
         NetworkRuleAction = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
-        Resource = Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
         OperationDisplay = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay
         DeletedVault = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVault
         VaultListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::VaultListResult
@@ -520,6 +520,9 @@ module Azure::Profiles::Latest
           def permissions
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
           end
+          def resource
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
+          end
           def iprule
             Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
           end
@@ -528,9 +531,6 @@ module Azure::Profiles::Latest
           end
           def network_rule_action
             Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
-          end
-          def resource
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
           end
           def operation_display
             Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay

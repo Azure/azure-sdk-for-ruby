@@ -7,8 +7,8 @@ require 'azure_mgmt_iot_central'
 module Azure::Profiles::Latest
   module IotCentral
     module Mgmt
-      Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
       Operations = Azure::IotCentral::Mgmt::V2018_09_01::Operations
+      Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
 
       module Models
         ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
@@ -27,7 +27,7 @@ module Azure::Profiles::Latest
       end
 
       class IotCentralManagementClass
-        attr_reader :apps, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :apps, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -37,8 +37,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @apps = @client_0.apps
           @operations = @client_0.operations
+          @apps = @client_0.apps
 
           @model_classes = ModelClasses.new
         end

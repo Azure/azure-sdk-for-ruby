@@ -28,8 +28,8 @@ module Azure::Profiles::Latest
         AlertNotifications = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
         AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
         PricingTier = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
-        AutoProvision = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
         Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
+        AutoProvision = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
       end
 
       class SecurityManagementClass
@@ -108,11 +108,11 @@ module Azure::Profiles::Latest
           def pricing_tier
             Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
           end
-          def auto_provision
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
-          end
           def resource
             Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
+          end
+          def auto_provision
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
           end
         end
       end

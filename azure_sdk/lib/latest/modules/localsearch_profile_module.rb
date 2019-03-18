@@ -28,9 +28,9 @@ module Azure::Profiles::Latest
       Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
+      Response = Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
       ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
       EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
-      Response = Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
       EntityType = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
       Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       ErrorSubCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
@@ -124,14 +124,14 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
         end
+        def response
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
+        end
         def response_format
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
         end
         def entity_scenario
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
-        end
-        def response
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
         end
         def entity_type
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
