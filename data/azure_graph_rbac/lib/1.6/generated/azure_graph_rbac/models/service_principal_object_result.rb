@@ -12,7 +12,7 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
-      # @return [String] Service Principal Application Object Id
+      # @return [Array<String>] A collection of Application Objects.
       attr_accessor :value
 
       # @return [String] The URL representing edm equivalent.
@@ -35,7 +35,14 @@ module Azure::GraphRbac::V1_6
                 required: false,
                 serialized_name: 'value',
                 type: {
-                  name: 'String'
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               odatametadata: {
