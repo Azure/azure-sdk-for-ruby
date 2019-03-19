@@ -26,9 +26,10 @@ module Azure::Profiles::Latest
       Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
       StructuredValue = Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
-      RelatedSearchesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
       Error = Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
+      RelatedSearchesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
       InsightsTag = Azure::CognitiveServices::ImageSearch::V1_0::Models::InsightsTag
+      RecognizedEntitiesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntitiesModule
       PropertiesItem = Azure::CognitiveServices::ImageSearch::V1_0::Models::PropertiesItem
       RecognizedEntityGroup = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityGroup
       TrendingImagesCategory = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImagesCategory
@@ -56,7 +57,6 @@ module Azure::Profiles::Latest
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
-      RecognizedEntitiesModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntitiesModule
       ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
       Person = Azure::CognitiveServices::ImageSearch::V1_0::Models::Person
       ResponseBase = Azure::CognitiveServices::ImageSearch::V1_0::Models::ResponseBase
@@ -150,14 +150,17 @@ module Azure::Profiles::Latest
         def structured_value
           Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
         end
-        def related_searches_module
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
-        end
         def error
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Error
         end
+        def related_searches_module
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::RelatedSearchesModule
+        end
         def insights_tag
           Azure::CognitiveServices::ImageSearch::V1_0::Models::InsightsTag
+        end
+        def recognized_entities_module
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntitiesModule
         end
         def properties_item
           Azure::CognitiveServices::ImageSearch::V1_0::Models::PropertiesItem
@@ -239,9 +242,6 @@ module Azure::Profiles::Latest
         end
         def image_crop_type
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
-        end
-        def recognized_entities_module
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntitiesModule
         end
         def image_insight_module
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
