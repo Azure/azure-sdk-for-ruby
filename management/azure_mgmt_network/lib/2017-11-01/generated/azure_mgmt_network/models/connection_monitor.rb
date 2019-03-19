@@ -38,7 +38,6 @@ module Azure::Network::Mgmt::V2017_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionMonitor',
           type: {
@@ -46,7 +45,6 @@ module Azure::Network::Mgmt::V2017_11_01
             class_name: 'ConnectionMonitor',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -54,13 +52,11 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -70,7 +66,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               source: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.source',
                 type: {
@@ -79,7 +74,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               destination: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.destination',
                 type: {
@@ -88,7 +82,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               auto_start: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoStart',
                 default_value: true,
@@ -97,7 +90,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               monitoring_interval_in_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.monitoringIntervalInSeconds',
                 default_value: 60,

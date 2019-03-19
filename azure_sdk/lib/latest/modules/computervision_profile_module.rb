@@ -8,6 +8,19 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      ColorInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
+      ComputerVisionError = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
+      LandmarksModel = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
+      ImageUrl = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
+      ImageDescriptionDetails = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
+      TextOperationStatusCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
+      Gender = Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
+      ComputerVisionErrorCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionErrorCodes
+      VisualFeatureTypes = Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
+      OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
+      TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
+      Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
+      ImageType = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
       FaceDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
       ImageMetadata = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageMetadata
       Line = Azure::CognitiveServices::ComputerVision::V2_0::Models::Line
@@ -20,7 +33,6 @@ module Azure::Profiles::Latest
       OcrRegion = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrRegion
       AdultInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
       OcrResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
-      ImageType = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
       ModelDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
       ImageCaption = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageCaption
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::ListModelsResult
@@ -34,18 +46,6 @@ module Azure::Profiles::Latest
       ImageDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
       RecognitionResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
       TagResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
-      ColorInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
-      ComputerVisionError = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
-      LandmarksModel = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
-      ImageUrl = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
-      ImageDescriptionDetails = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
-      TextOperationStatusCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
-      Gender = Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
-      ComputerVisionErrorCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionErrorCodes
-      VisualFeatureTypes = Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
-      OcrLanguages = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
-      TextRecognitionMode = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
-      Details = Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,45 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def color_info
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
+        end
+        def computer_vision_error
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
+        end
+        def landmarks_model
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
+        end
+        def image_url
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
+        end
+        def image_description_details
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
+        end
+        def text_operation_status_codes
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
+        end
+        def gender
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
+        end
+        def computer_vision_error_codes
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionErrorCodes
+        end
+        def visual_feature_types
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
+        end
+        def ocr_languages
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
+        end
+        def text_recognition_mode
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
+        end
+        def details
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
+        end
+        def image_type
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
+        end
         def face_description
           Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceDescription
         end
@@ -112,9 +151,6 @@ module Azure::Profiles::Latest
         end
         def ocr_result
           Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
-        end
-        def image_type
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageType
         end
         def model_description
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
@@ -154,42 +190,6 @@ module Azure::Profiles::Latest
         end
         def tag_result
           Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
-        end
-        def color_info
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
-        end
-        def computer_vision_error
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
-        end
-        def landmarks_model
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
-        end
-        def image_url
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
-        end
-        def image_description_details
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
-        end
-        def text_operation_status_codes
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
-        end
-        def gender
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
-        end
-        def computer_vision_error_codes
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionErrorCodes
-        end
-        def visual_feature_types
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::VisualFeatureTypes
-        end
-        def ocr_languages
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLanguages
-        end
-        def text_recognition_mode
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TextRecognitionMode
-        end
-        def details
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Details
         end
       end
     end

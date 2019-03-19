@@ -24,7 +24,7 @@ module Azure::Network::Mgmt::V2016_03_30
       # the domainNameLabel and the regionalized DNS zone.
       attr_accessor :fqdn
 
-      # @return [String] Gets or Sests the Reverse FQDN. A user-visible, fully
+      # @return [String] Gets or Sets the Reverse FQDN. A user-visible, fully
       # qualified domain name that resolves to this public IP address. If the
       # reverseFqdn is specified, then a PTR DNS record is created pointing
       # from the IP address in the in-addr.arpa domain to the reverse FQDN.
@@ -37,7 +37,6 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PublicIPAddressDnsSettings',
           type: {
@@ -45,7 +44,6 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'PublicIPAddressDnsSettings',
             model_properties: {
               domain_name_label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'domainNameLabel',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               fqdn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fqdn',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               reverse_fqdn: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reverseFqdn',
                 type: {
