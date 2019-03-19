@@ -52,9 +52,6 @@ module Azure::GraphRbac::V1_6
     # @return [ServicePrincipals] service_principals
     attr_reader :service_principals
 
-    # @return [ServicePrincipalsByAppId] service_principals_by_app_id
-    attr_reader :service_principals_by_app_id
-
     # @return [Users] users
     attr_reader :users
 
@@ -86,7 +83,6 @@ module Azure::GraphRbac::V1_6
       @deleted_applications = DeletedApplications.new(self)
       @groups = Groups.new(self)
       @service_principals = ServicePrincipals.new(self)
-      @service_principals_by_app_id = ServicePrincipalsByAppId.new(self)
       @users = Users.new(self)
       @objects = Objects.new(self)
       @domains = Domains.new(self)

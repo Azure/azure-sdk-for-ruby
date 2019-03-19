@@ -25,7 +25,6 @@ module Azure::GraphRbac::V1_6
   autoload :DeletedApplications,                                '1.6/generated/azure_graph_rbac/deleted_applications.rb'
   autoload :Groups,                                             '1.6/generated/azure_graph_rbac/groups.rb'
   autoload :ServicePrincipals,                                  '1.6/generated/azure_graph_rbac/service_principals.rb'
-  autoload :ServicePrincipalsByAppId,                           '1.6/generated/azure_graph_rbac/service_principals_by_app_id.rb'
   autoload :Users,                                              '1.6/generated/azure_graph_rbac/users.rb'
   autoload :Objects,                                            '1.6/generated/azure_graph_rbac/objects.rb'
   autoload :Domains,                                            '1.6/generated/azure_graph_rbac/domains.rb'

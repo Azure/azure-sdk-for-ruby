@@ -11,14 +11,12 @@ module Azure::Profiles::Latest
     DeletedApplications = Azure::GraphRbac::V1_6::DeletedApplications
     Groups = Azure::GraphRbac::V1_6::Groups
     ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
-    ServicePrincipalsByAppId = Azure::GraphRbac::V1_6::ServicePrincipalsByAppId
     Objects = Azure::GraphRbac::V1_6::Objects
     OAuth2PermissionGrantOperations = Azure::GraphRbac::V1_6::OAuth2PermissionGrantOperations
-    Domains = Azure::GraphRbac::V1_6::Domains
     Users = Azure::GraphRbac::V1_6::Users
+    Domains = Azure::GraphRbac::V1_6::Domains
 
     module Models
-      CheckGroupMembershipResult = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipResult
       KeyCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
       ServicePrincipalBase = Azure::GraphRbac::V1_6::Models::ServicePrincipalBase
       PreAuthorizedApplicationExtension = Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationExtension
@@ -42,9 +40,9 @@ module Azure::Profiles::Latest
       ServicePrincipalCreateParameters = Azure::GraphRbac::V1_6::Models::ServicePrincipalCreateParameters
       ServicePrincipalUpdateParameters = Azure::GraphRbac::V1_6::Models::ServicePrincipalUpdateParameters
       ServicePrincipal = Azure::GraphRbac::V1_6::Models::ServicePrincipal
+      UserUpdateParameters = Azure::GraphRbac::V1_6::Models::UserUpdateParameters
       UserType = Azure::GraphRbac::V1_6::Models::UserType
       ConsentType = Azure::GraphRbac::V1_6::Models::ConsentType
-      UserUpdateParameters = Azure::GraphRbac::V1_6::Models::UserUpdateParameters
       Domain = Azure::GraphRbac::V1_6::Models::Domain
       GroupCreateParameters = Azure::GraphRbac::V1_6::Models::GroupCreateParameters
       Application = Azure::GraphRbac::V1_6::Models::Application
@@ -73,10 +71,11 @@ module Azure::Profiles::Latest
       ServicePrincipalObjectResult = Azure::GraphRbac::V1_6::Models::ServicePrincipalObjectResult
       CheckGroupMembershipParameters = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
       KeyCredentialListResult = Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
+      CheckGroupMembershipResult = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipResult
     end
 
     class GraphRbacDataClass
-      attr_reader :signed_in_user, :applications, :deleted_applications, :groups, :service_principals, :service_principals_by_app_id, :objects, :oauth2_permission_grant_operations, :domains, :users, :configurable, :base_url, :options, :model_classes
+      attr_reader :signed_in_user, :applications, :deleted_applications, :groups, :service_principals, :objects, :oauth2_permission_grant_operations, :users, :domains, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -91,11 +90,10 @@ module Azure::Profiles::Latest
         @deleted_applications = @client_0.deleted_applications
         @groups = @client_0.groups
         @service_principals = @client_0.service_principals
-        @service_principals_by_app_id = @client_0.service_principals_by_app_id
         @objects = @client_0.objects
         @oauth2_permission_grant_operations = @client_0.oauth2_permission_grant_operations
-        @domains = @client_0.domains
         @users = @client_0.users
+        @domains = @client_0.domains
 
         @model_classes = ModelClasses.new
       end
@@ -114,9 +112,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def check_group_membership_result
-          Azure::GraphRbac::V1_6::Models::CheckGroupMembershipResult
-        end
         def key_credentials_update_parameters
           Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
         end
@@ -186,14 +181,14 @@ module Azure::Profiles::Latest
         def service_principal
           Azure::GraphRbac::V1_6::Models::ServicePrincipal
         end
+        def user_update_parameters
+          Azure::GraphRbac::V1_6::Models::UserUpdateParameters
+        end
         def user_type
           Azure::GraphRbac::V1_6::Models::UserType
         end
         def consent_type
           Azure::GraphRbac::V1_6::Models::ConsentType
-        end
-        def user_update_parameters
-          Azure::GraphRbac::V1_6::Models::UserUpdateParameters
         end
         def domain
           Azure::GraphRbac::V1_6::Models::Domain
@@ -278,6 +273,9 @@ module Azure::Profiles::Latest
         end
         def key_credential_list_result
           Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
+        end
+        def check_group_membership_result
+          Azure::GraphRbac::V1_6::Models::CheckGroupMembershipResult
         end
       end
     end
