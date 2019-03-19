@@ -66,8 +66,8 @@ module Azure::Profiles::Latest
         Operation = Azure::Resources::Mgmt::V2018_05_01::Models::Operation
         OperationListResult = Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
         SubResource = Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
-        ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
         IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+        ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
         DeploymentMode = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
         Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
       end
@@ -258,11 +258,11 @@ module Azure::Profiles::Latest
           def sub_resource
             Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
           end
-          def resource_list_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
-          end
           def identity_user_assigned_identities_value
             Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
+          def resource_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
           end
           def deployment_mode
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode

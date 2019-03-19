@@ -1099,40 +1099,43 @@ module Azure::GraphRbac::V1_6
     #
     # Gets an object id for a given application id from the current tenant.
     #
+    # @param application_id [String] The application ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ServicePrincipalObjectResult] operation results.
     #
-    def get_service_principals_id_by_app_id(custom_headers = nil)
-      response = get_service_principals_id_by_app_id_async(custom_headers).value!
+    def get_service_principals_id_by_app_id(application_id, custom_headers = nil)
+      response = get_service_principals_id_by_app_id_async(application_id, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Gets an object id for a given application id from the current tenant.
     #
+    # @param application_id [String] The application ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_service_principals_id_by_app_id_with_http_info(custom_headers = nil)
-      get_service_principals_id_by_app_id_async(custom_headers).value!
+    def get_service_principals_id_by_app_id_with_http_info(application_id, custom_headers = nil)
+      get_service_principals_id_by_app_id_async(application_id, custom_headers).value!
     end
 
     #
     # Gets an object id for a given application id from the current tenant.
     #
+    # @param application_id [String] The application ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_service_principals_id_by_app_id_async(custom_headers = nil)
+    def get_service_principals_id_by_app_id_async(application_id, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
-      fail ArgumentError, '@client.application_id is nil' if @client.application_id.nil?
+      fail ArgumentError, 'application_id is nil' if application_id.nil?
 
 
       request_headers = {}
@@ -1146,7 +1149,7 @@ module Azure::GraphRbac::V1_6
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'tenantID' => @client.tenant_id,'applicationID' => @client.application_id},
+          path_params: {'tenantID' => @client.tenant_id,'applicationID' => application_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

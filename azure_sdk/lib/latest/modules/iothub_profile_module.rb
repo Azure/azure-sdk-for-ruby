@@ -8,12 +8,11 @@ module Azure::Profiles::Latest
   module IotHub
     module Mgmt
       Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
-      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
       IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
       ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
+      Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
 
       module Models
-        IotHubQuotaMetricInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
         CertificateProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
         IotHubQuotaMetricInfoListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfoListResult
         CertificateListDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateListDescription
@@ -60,15 +59,15 @@ module Azure::Profiles::Latest
         RouteErrorRange = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorRange
         IotHubSkuInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuInfo
         RouteCompilationError = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteCompilationError
-        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         CertificateBodyDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateBodyDescription
         TestRouteResultDetails = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResultDetails
+        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         FeedbackProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FeedbackProperties
         TestRouteResult = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResult
         RoutingEventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEventHubProperties
-        IpFilterRule = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
-        ImportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
+        ImportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
+        IpFilterRule = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
         AccessRights = Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
         IotHubDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
         RoutingSource = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
@@ -90,10 +89,11 @@ module Azure::Profiles::Latest
         OperationListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
         JobStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
         OperationInputs = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
+        IotHubQuotaMetricInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
       end
 
       class IotHubManagementClass
-        attr_reader :operations, :certificates, :iot_hub_resource, :resource_provider_common, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :iot_hub_resource, :resource_provider_common, :certificates, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -104,9 +104,9 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @certificates = @client_0.certificates
           @iot_hub_resource = @client_0.iot_hub_resource
           @resource_provider_common = @client_0.resource_provider_common
+          @certificates = @client_0.certificates
 
           @model_classes = ModelClasses.new
         end
@@ -125,9 +125,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def iot_hub_quota_metric_info
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
-          end
           def certificate_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
           end
@@ -266,14 +263,14 @@ module Azure::Profiles::Latest
           def route_compilation_error
             Azure::IotHub::Mgmt::V2018_04_01::Models::RouteCompilationError
           end
-          def name
-            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
-          end
           def certificate_body_description
             Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateBodyDescription
           end
           def test_route_result_details
             Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResultDetails
+          end
+          def name
+            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
           end
           def feedback_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::FeedbackProperties
@@ -284,14 +281,14 @@ module Azure::Profiles::Latest
           def routing_event_hub_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEventHubProperties
           end
-          def ip_filter_rule
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
+          def export_devices_request
+            Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
           end
           def import_devices_request
             Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
           end
-          def export_devices_request
-            Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
+          def ip_filter_rule
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
           end
           def access_rights
             Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
@@ -355,6 +352,9 @@ module Azure::Profiles::Latest
           end
           def operation_inputs
             Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
+          end
+          def iot_hub_quota_metric_info
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
           end
         end
       end

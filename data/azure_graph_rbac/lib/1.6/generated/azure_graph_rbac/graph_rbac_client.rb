@@ -23,9 +23,6 @@ module Azure::GraphRbac::V1_6
     # @return [String] The tenant ID.
     attr_accessor :tenant_id
 
-    # @return [String] The application ID.
-    attr_accessor :application_id
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 

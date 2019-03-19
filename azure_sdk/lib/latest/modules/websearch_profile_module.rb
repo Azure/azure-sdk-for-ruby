@@ -14,8 +14,8 @@ module Azure::Profiles::Latest
       SearchResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::SearchResponse
       Videos = Azure::CognitiveServices::WebSearch::V1_0::Models::Videos
       TextFormat = Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
-      ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
       Places = Azure::CognitiveServices::WebSearch::V1_0::Models::Places
+      ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
       RankingRankingItem = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
       RankingRankingGroup = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingGroup
       RankingRankingResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingResponse
@@ -26,16 +26,16 @@ module Azure::Profiles::Latest
       SearchResultsAnswer = Azure::CognitiveServices::WebSearch::V1_0::Models::SearchResultsAnswer
       SpellSuggestions = Azure::CognitiveServices::WebSearch::V1_0::Models::SpellSuggestions
       Thing = Azure::CognitiveServices::WebSearch::V1_0::Models::Thing
-      NewsArticle = Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
       CreativeWork = Azure::CognitiveServices::WebSearch::V1_0::Models::CreativeWork
+      NewsArticle = Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
       Answer = Azure::CognitiveServices::WebSearch::V1_0::Models::Answer
-      QueryContext = Azure::CognitiveServices::WebSearch::V1_0::Models::QueryContext
-      News = Azure::CognitiveServices::WebSearch::V1_0::Models::News
-      VideoObject = Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
-      RelatedSearchesRelatedSearchAnswer = Azure::CognitiveServices::WebSearch::V1_0::Models::RelatedSearchesRelatedSearchAnswer
-      Response = Azure::CognitiveServices::WebSearch::V1_0::Models::Response
       Identifiable = Azure::CognitiveServices::WebSearch::V1_0::Models::Identifiable
       Images = Azure::CognitiveServices::WebSearch::V1_0::Models::Images
+      VideoObject = Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
+      RelatedSearchesRelatedSearchAnswer = Azure::CognitiveServices::WebSearch::V1_0::Models::RelatedSearchesRelatedSearchAnswer
+      News = Azure::CognitiveServices::WebSearch::V1_0::Models::News
+      QueryContext = Azure::CognitiveServices::WebSearch::V1_0::Models::QueryContext
+      Response = Azure::CognitiveServices::WebSearch::V1_0::Models::Response
       AnswerType = Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
       Intangible = Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
       TimeZone = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
@@ -97,11 +97,11 @@ module Azure::Profiles::Latest
         def text_format
           Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
         end
-        def error_response
-          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
-        end
         def places
           Azure::CognitiveServices::WebSearch::V1_0::Models::Places
+        end
+        def error_response
+          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
         end
         def ranking_ranking_item
           Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
@@ -133,20 +133,20 @@ module Azure::Profiles::Latest
         def thing
           Azure::CognitiveServices::WebSearch::V1_0::Models::Thing
         end
-        def news_article
-          Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
-        end
         def creative_work
           Azure::CognitiveServices::WebSearch::V1_0::Models::CreativeWork
+        end
+        def news_article
+          Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
         end
         def answer
           Azure::CognitiveServices::WebSearch::V1_0::Models::Answer
         end
-        def query_context
-          Azure::CognitiveServices::WebSearch::V1_0::Models::QueryContext
+        def identifiable
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Identifiable
         end
-        def news
-          Azure::CognitiveServices::WebSearch::V1_0::Models::News
+        def images
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Images
         end
         def video_object
           Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
@@ -154,14 +154,14 @@ module Azure::Profiles::Latest
         def related_searches_related_search_answer
           Azure::CognitiveServices::WebSearch::V1_0::Models::RelatedSearchesRelatedSearchAnswer
         end
+        def news
+          Azure::CognitiveServices::WebSearch::V1_0::Models::News
+        end
+        def query_context
+          Azure::CognitiveServices::WebSearch::V1_0::Models::QueryContext
+        end
         def response
           Azure::CognitiveServices::WebSearch::V1_0::Models::Response
-        end
-        def identifiable
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Identifiable
-        end
-        def images
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Images
         end
         def answer_type
           Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
