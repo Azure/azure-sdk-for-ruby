@@ -320,7 +320,7 @@ module Azure::GraphRbac::V1_6
                 }
               },
               identifier_uris: {
-                required: true,
+                required: false,
                 serialized_name: 'identifierUris',
                 type: {
                   name: 'Sequence',
