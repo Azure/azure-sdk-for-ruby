@@ -6,7 +6,7 @@
 module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # Description of topic resource.
+    # Description of NetworkRuleSet resource.
     #
     class NetworkRuleSet < Resource
 

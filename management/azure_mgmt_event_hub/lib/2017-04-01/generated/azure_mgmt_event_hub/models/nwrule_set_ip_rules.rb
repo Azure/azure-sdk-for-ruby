@@ -6,7 +6,7 @@
 module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # The response from the List namespace operation.
+    # Description of NetWorkRuleSet - IpRules resource.
     #
     class NWRuleSetIpRules
 
@@ -16,7 +16,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       attr_accessor :ip_mask
 
       # @return [NetworkRuleIPAction] The IP Filter Action. Possible values
-      # include: 'Allow'
+      # include: 'Allow'. Default value: 'Allow' .
       attr_accessor :action
 
 
@@ -42,6 +42,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
               action: {
                 required: false,
                 serialized_name: 'action',
+                default_value: 'Allow',
                 type: {
                   name: 'String'
                 }
