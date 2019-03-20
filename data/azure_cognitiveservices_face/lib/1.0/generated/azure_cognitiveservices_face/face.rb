@@ -861,13 +861,15 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def detect_with_url(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, custom_headers = nil)
-      response = detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, custom_headers).value!
+    def detect_with_url(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
+      response = detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -929,13 +931,15 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_with_url_with_http_info(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, custom_headers = nil)
-      detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, custom_headers).value!
+    def detect_with_url_with_http_info(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
+      detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, custom_headers).value!
     end
 
     #
@@ -996,12 +1000,14 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_with_url_async(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, custom_headers = nil)
+    def detect_with_url_async(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -1030,7 +1036,7 @@ module Azure::CognitiveServices::Face::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'returnFaceId' => return_face_id,'returnFaceLandmarks' => return_face_landmarks,'returnFaceAttributes' => return_face_attributes.nil? ? nil : return_face_attributes.join(','),'recognitionModel' => recognition_model},
+          query_params: {'returnFaceId' => return_face_id,'returnFaceLandmarks' => return_face_landmarks,'returnFaceAttributes' => return_face_attributes.nil? ? nil : return_face_attributes.join(','),'recognitionModel' => recognition_model,'returnRecognitionModel' => return_recognition_model},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1237,13 +1243,15 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def detect_with_stream(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, custom_headers = nil)
-      response = detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, custom_headers).value!
+    def detect_with_stream(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
+      response = detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1268,13 +1276,15 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_with_stream_with_http_info(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, custom_headers = nil)
-      detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, custom_headers).value!
+    def detect_with_stream_with_http_info(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
+      detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, custom_headers).value!
     end
 
     #
@@ -1298,12 +1308,14 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_with_stream_async(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, custom_headers = nil)
+    def detect_with_stream_async(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
@@ -1334,7 +1346,7 @@ module Azure::CognitiveServices::Face::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'returnFaceId' => return_face_id,'returnFaceLandmarks' => return_face_landmarks,'returnFaceAttributes' => return_face_attributes.nil? ? nil : return_face_attributes.join(','),'recognitionModel' => recognition_model},
+          query_params: {'returnFaceId' => return_face_id,'returnFaceLandmarks' => return_face_landmarks,'returnFaceAttributes' => return_face_attributes.nil? ? nil : return_face_attributes.join(','),'recognitionModel' => recognition_model,'returnRecognitionModel' => return_recognition_model},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

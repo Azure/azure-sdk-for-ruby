@@ -300,13 +300,15 @@ module Azure::CognitiveServices::Face::V1_0
     # List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
     #
     # @param person_group_id [String] Id referencing a particular person group.
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PersonGroup] operation results.
     #
-    def get(person_group_id, custom_headers = nil)
-      response = get_async(person_group_id, custom_headers).value!
+    def get(person_group_id, return_recognition_model = false, custom_headers = nil)
+      response = get_async(person_group_id, return_recognition_model, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -316,13 +318,15 @@ module Azure::CognitiveServices::Face::V1_0
     # List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
     #
     # @param person_group_id [String] Id referencing a particular person group.
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(person_group_id, custom_headers = nil)
-      get_async(person_group_id, custom_headers).value!
+    def get_with_http_info(person_group_id, return_recognition_model = false, custom_headers = nil)
+      get_async(person_group_id, return_recognition_model, custom_headers).value!
     end
 
     #
@@ -331,12 +335,14 @@ module Azure::CognitiveServices::Face::V1_0
     # List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
     #
     # @param person_group_id [String] Id referencing a particular person group.
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(person_group_id, custom_headers = nil)
+    def get_async(person_group_id, return_recognition_model = false, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
 
@@ -354,6 +360,7 @@ module Azure::CognitiveServices::Face::V1_0
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'personGroupId' => person_group_id},
+          query_params: {'returnRecognitionModel' => return_recognition_model},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -590,13 +597,15 @@ module Azure::CognitiveServices::Face::V1_0
     # @param start [String] List person groups from the least personGroupId greater
     # than the "start".
     # @param top [Integer] The number of person groups to list.
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def list(start = nil, top = 1000, custom_headers = nil)
-      response = list_async(start, top, custom_headers).value!
+    def list(start = nil, top = 1000, return_recognition_model = false, custom_headers = nil)
+      response = list_async(start, top, return_recognition_model, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -620,13 +629,15 @@ module Azure::CognitiveServices::Face::V1_0
     # @param start [String] List person groups from the least personGroupId greater
     # than the "start".
     # @param top [Integer] The number of person groups to list.
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(start = nil, top = 1000, custom_headers = nil)
-      list_async(start, top, custom_headers).value!
+    def list_with_http_info(start = nil, top = 1000, return_recognition_model = false, custom_headers = nil)
+      list_async(start, top, return_recognition_model, custom_headers).value!
     end
 
     #
@@ -649,12 +660,14 @@ module Azure::CognitiveServices::Face::V1_0
     # @param start [String] List person groups from the least personGroupId greater
     # than the "start".
     # @param top [Integer] The number of person groups to list.
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(start = nil, top = 1000, custom_headers = nil)
+    def list_async(start = nil, top = 1000, return_recognition_model = false, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
@@ -670,7 +683,7 @@ module Azure::CognitiveServices::Face::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'start' => start,'top' => top},
+          query_params: {'start' => start,'top' => top,'returnRecognitionModel' => return_recognition_model},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

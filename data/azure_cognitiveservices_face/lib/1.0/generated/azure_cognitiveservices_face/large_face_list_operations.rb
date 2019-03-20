@@ -231,13 +231,15 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [LargeFaceList] operation results.
     #
-    def get(large_face_list_id, custom_headers = nil)
-      response = get_async(large_face_list_id, custom_headers).value!
+    def get(large_face_list_id, return_recognition_model = false, custom_headers = nil)
+      response = get_async(large_face_list_id, return_recognition_model, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -247,13 +249,15 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(large_face_list_id, custom_headers = nil)
-      get_async(large_face_list_id, custom_headers).value!
+    def get_with_http_info(large_face_list_id, return_recognition_model = false, custom_headers = nil)
+      get_async(large_face_list_id, return_recognition_model, custom_headers).value!
     end
 
     #
@@ -262,12 +266,14 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(large_face_list_id, custom_headers = nil)
+    def get_async(large_face_list_id, return_recognition_model = false, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'large_face_list_id is nil' if large_face_list_id.nil?
 
@@ -285,6 +291,7 @@ module Azure::CognitiveServices::Face::V1_0
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'largeFaceListId' => large_face_list_id},
+          query_params: {'returnRecognitionModel' => return_recognition_model},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -605,13 +612,15 @@ module Azure::CognitiveServices::Face::V1_0
     # <br /> "start=list2&top=3" will return "list3", "list4", "list5".
     #
     #
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def list(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list(return_recognition_model = false, custom_headers = nil)
+      response = list_async(return_recognition_model, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -635,13 +644,15 @@ module Azure::CognitiveServices::Face::V1_0
     # <br /> "start=list2&top=3" will return "list3", "list4", "list5".
     #
     #
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def list_with_http_info(return_recognition_model = false, custom_headers = nil)
+      list_async(return_recognition_model, custom_headers).value!
     end
 
     #
@@ -664,12 +675,14 @@ module Azure::CognitiveServices::Face::V1_0
     # <br /> "start=list2&top=3" will return "list3", "list4", "list5".
     #
     #
+    # @param return_recognition_model [Boolean] Whether to return the
+    # 'RecognitionModel' required for the current operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def list_async(return_recognition_model = false, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
@@ -685,6 +698,7 @@ module Azure::CognitiveServices::Face::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'returnRecognitionModel' => return_recognition_model},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

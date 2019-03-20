@@ -49,7 +49,7 @@ module Azure::CognitiveServices::Face::V1_0
                 }
               },
               recognition_model: {
-                required: true,
+                required: false,
                 serialized_name: 'recognitionModel',
                 default_value: 'recognition_01',
                 type: {

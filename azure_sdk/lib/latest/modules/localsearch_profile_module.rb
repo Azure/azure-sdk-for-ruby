@@ -9,9 +9,9 @@ module Azure::Profiles::Latest
     Local = Azure::CognitiveServices::LocalSearch::V1_0::Local
 
     module Models
+      ErrorSubCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
       GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
       ErrorResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
-      ErrorSubCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
       SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
       Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
@@ -67,14 +67,14 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def error_sub_code
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
+        end
         def geo_coordinates
           Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
         end
         def error_response
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
-        end
-        def error_sub_code
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
         end
         def search_response
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
