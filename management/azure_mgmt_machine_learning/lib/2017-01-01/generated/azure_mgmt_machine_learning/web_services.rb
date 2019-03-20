@@ -194,7 +194,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -210,7 +210,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -739,7 +739,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -759,7 +759,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -778,7 +778,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -802,7 +802,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService.mapper()
+      request_mapper = Azure::MachineLearning::Mgmt::V2017_01_01::Models::PatchedWebService.mapper()
       request_content = @client.serialize(request_mapper,  patch_payload)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
