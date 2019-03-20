@@ -17,7 +17,7 @@ module Azure::Network::Mgmt::V2018_12_01
       # to access the resource along with Paren VirtualWan resource name.
       attr_accessor :p2svpn_server_configuration_properties_name
 
-      # @return [Array<VpnGatewayTunnelingProtocol>] vpnProtocols for the
+      # @return [Array<VpnGatewayTunnelingProtocol>] VPN protocols for the
       # P2SVpnServerConfiguration.
       attr_accessor :vpn_protocols
 

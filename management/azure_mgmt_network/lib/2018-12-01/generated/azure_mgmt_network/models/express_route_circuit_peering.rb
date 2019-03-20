@@ -77,6 +77,11 @@ module Azure::Network::Mgmt::V2018_12_01
       # connections associated with Azure Private Peering for this circuit.
       attr_accessor :connections
 
+      # @return [Array<PeerExpressRouteCircuitConnection>] The list of peered
+      # circuit connections associated with Azure Private Peering for this
+      # circuit.
+      attr_accessor :peered_connections
+
       # @return [String] Gets name of the resource that is unique within a
       # resource group. This name can be used to access the resource.
       attr_accessor :name
@@ -251,6 +256,22 @@ module Azure::Network::Mgmt::V2018_12_01
                       type: {
                         name: 'Composite',
                         class_name: 'ExpressRouteCircuitConnection'
+                      }
+                  }
+                }
+              },
+              peered_connections: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.peeredConnections',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'PeerExpressRouteCircuitConnectionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PeerExpressRouteCircuitConnection'
                       }
                   }
                 }

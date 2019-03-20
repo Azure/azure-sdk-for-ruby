@@ -107,6 +107,9 @@ module Azure::Network::Mgmt::V2018_12_01
       # application firewall configuration.
       attr_accessor :web_application_firewall_configuration
 
+      # @return [SubResource] Reference of the FirewallPolicy resource.
+      attr_accessor :firewall_policy
+
       # @return [Boolean] Whether HTTP2 is enabled on the application gateway
       # resource.
       attr_accessor :enable_http2
@@ -440,6 +443,14 @@ module Azure::Network::Mgmt::V2018_12_01
                 type: {
                   name: 'Composite',
                   class_name: 'ApplicationGatewayWebApplicationFirewallConfiguration'
+                }
+              },
+              firewall_policy: {
+                required: false,
+                serialized_name: 'properties.firewallPolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
                 }
               },
               enable_http2: {

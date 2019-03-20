@@ -24,7 +24,7 @@ module Azure::Network::Mgmt::V2018_12_01
       def self.mapper()
         {
           required: false,
-          serialized_name: 'virtualNetworkConnectionGatewayReference',
+          serialized_name: 'VirtualNetworkConnectionGatewayReference',
           type: {
             name: 'Composite',
             class_name: 'VirtualNetworkConnectionGatewayReference',
