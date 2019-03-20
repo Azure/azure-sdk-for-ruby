@@ -15,22 +15,22 @@ module Azure::Profiles::Latest
       PostalAddress = Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
       Intangible = Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
-      ErrorResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
       QueryContext = Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
       GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
       ResponseBase = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResultsAnswer
-      StructuredValue = Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
+      ErrorResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
       Thing = Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
       SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
+      StructuredValue = Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
       ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
       ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
-      EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
       Response = Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
+      EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
       EntityType = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
       Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       ErrorSubCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorSubCode
@@ -85,9 +85,6 @@ module Azure::Profiles::Latest
         def intangible
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
         end
-        def error_response
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
-        end
         def query_context
           Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
         end
@@ -103,8 +100,8 @@ module Azure::Profiles::Latest
         def search_results_answer
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResultsAnswer
         end
-        def structured_value
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
+        def error_response
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorResponse
         end
         def thing
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
@@ -118,6 +115,9 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
         end
+        def structured_value
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
+        end
         def error_code
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
         end
@@ -127,11 +127,11 @@ module Azure::Profiles::Latest
         def response_format
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
         end
-        def entity_scenario
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
-        end
         def response
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
+        end
+        def entity_scenario
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
         end
         def entity_type
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
