@@ -6,12 +6,13 @@ require 'azure_mgmt_billing'
 
 module Azure::Billing::Profiles::Latest
   module Mgmt
-    EnrollmentAccounts = Azure::Billing::Mgmt::V2018_03_01_preview::EnrollmentAccounts
-    BillingPeriods = Azure::Billing::Mgmt::V2018_03_01_preview::BillingPeriods
     Invoices = Azure::Billing::Mgmt::V2018_03_01_preview::Invoices
     Operations = Azure::Billing::Mgmt::V2018_03_01_preview::Operations
+    EnrollmentAccounts = Azure::Billing::Mgmt::V2018_03_01_preview::EnrollmentAccounts
+    BillingPeriods = Azure::Billing::Mgmt::V2018_03_01_preview::BillingPeriods
 
     module Models
+      Invoice = Azure::Billing::Mgmt::V2018_03_01_preview::Models::Invoice
       ErrorResponse = Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorResponse
       ErrorDetails = Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorDetails
       OperationListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationListResult
@@ -24,14 +25,13 @@ module Azure::Billing::Profiles::Latest
       Operation = Azure::Billing::Mgmt::V2018_03_01_preview::Models::Operation
       EnrollmentAccount = Azure::Billing::Mgmt::V2018_03_01_preview::Models::EnrollmentAccount
       BillingPeriod = Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriod
-      Invoice = Azure::Billing::Mgmt::V2018_03_01_preview::Models::Invoice
     end
 
     #
     # BillingManagementClass
     #
     class BillingManagementClass
-      attr_reader :enrollment_accounts, :billing_periods, :invoices, :operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :invoices, :operations, :enrollment_accounts, :billing_periods, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -51,10 +51,10 @@ module Azure::Billing::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @enrollment_accounts = @client_0.enrollment_accounts
-        @billing_periods = @client_0.billing_periods
         @invoices = @client_0.invoices
         @operations = @client_0.operations
+        @enrollment_accounts = @client_0.enrollment_accounts
+        @billing_periods = @client_0.billing_periods
 
         @model_classes = ModelClasses.new
       end
@@ -75,6 +75,9 @@ module Azure::Billing::Profiles::Latest
     end
 
     class ModelClasses
+      def invoice
+        Azure::Billing::Mgmt::V2018_03_01_preview::Models::Invoice
+      end
       def error_response
         Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorResponse
       end
@@ -110,9 +113,6 @@ module Azure::Billing::Profiles::Latest
       end
       def billing_period
         Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriod
-      end
-      def invoice
-        Azure::Billing::Mgmt::V2018_03_01_preview::Models::Invoice
       end
     end
   end

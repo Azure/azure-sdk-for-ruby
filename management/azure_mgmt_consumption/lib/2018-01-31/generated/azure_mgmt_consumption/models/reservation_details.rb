@@ -26,7 +26,7 @@ module Azure::Consumption::Mgmt::V2018_01_31
       attr_accessor :reservation_id
 
       # @return [String] This is the ARM Sku name. It can be used to join with
-      # the servicetype field in additoinalinfo in usage records.
+      # the serviceType field in additional info in usage records.
       attr_accessor :sku_name
 
       # @return This is the total hours reserved for the day. E.g. if
@@ -45,7 +45,7 @@ module Azure::Consumption::Mgmt::V2018_01_31
       attr_accessor :instance_id
 
       # @return This is the total count of instances that are reserved for the
-      # reservationid.
+      # reservationId.
       attr_accessor :total_reserved_quantity
 
 
@@ -55,7 +55,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ReservationDetails',
           type: {
@@ -63,7 +62,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
             class_name: 'ReservationDetails',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -72,7 +70,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -81,7 +78,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -90,14 +86,12 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -107,7 +101,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               reservation_order_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.reservationOrderId',
@@ -116,7 +109,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               reservation_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.reservationId',
@@ -125,7 +117,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               sku_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.skuName',
@@ -134,7 +125,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               reserved_hours: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.reservedHours',
@@ -143,7 +133,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               usage_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.usageDate',
@@ -152,7 +141,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               used_hours: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.usedHours',
@@ -161,7 +149,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               instance_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.instanceId',
@@ -170,7 +157,6 @@ module Azure::Consumption::Mgmt::V2018_01_31
                 }
               },
               total_reserved_quantity: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.totalReservedQuantity',
