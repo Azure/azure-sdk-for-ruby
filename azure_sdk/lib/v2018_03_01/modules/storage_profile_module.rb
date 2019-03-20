@@ -11,11 +11,17 @@ module Azure::Profiles::V2018_03_01
       StorageAccounts = Azure::Storage::Mgmt::V2016_01_01::StorageAccounts
 
       module Models
-        AccountStatus = Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
+        UsageListResult = Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
+        Sku = Azure::Storage::Mgmt::V2016_01_01::Models::Sku
         UsageName = Azure::Storage::Mgmt::V2016_01_01::Models::UsageName
-        UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
-        KeyPermission = Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
+        SkuTier = Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
+        StorageAccount = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
         Kind = Azure::Storage::Mgmt::V2016_01_01::Models::Kind
+        AccessTier = Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
+        KeyPermission = Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
+        CustomDomain = Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
+        UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
+        AccountStatus = Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
         StorageAccountCreateParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCreateParameters
         StorageAccountUpdateParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountUpdateParameters
         Resource = Azure::Storage::Mgmt::V2016_01_01::Models::Resource
@@ -32,12 +38,6 @@ module Azure::Profiles::V2018_03_01
         Encryption = Azure::Storage::Mgmt::V2016_01_01::Models::Encryption
         StorageAccountRegenerateKeyParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountRegenerateKeyParameters
         Endpoints = Azure::Storage::Mgmt::V2016_01_01::Models::Endpoints
-        CustomDomain = Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
-        UsageListResult = Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
-        StorageAccount = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
-        SkuTier = Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
-        AccessTier = Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
-        Sku = Azure::Storage::Mgmt::V2016_01_01::Models::Sku
         EncryptionServices = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
       end
 
@@ -72,20 +72,38 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
-          def account_status
-            Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
+          def usage_list_result
+            Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
+          end
+          def sku
+            Azure::Storage::Mgmt::V2016_01_01::Models::Sku
           end
           def usage_name
             Azure::Storage::Mgmt::V2016_01_01::Models::UsageName
           end
-          def usage_unit
-            Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
+          def sku_tier
+            Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
+          end
+          def storage_account
+            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
+          end
+          def kind
+            Azure::Storage::Mgmt::V2016_01_01::Models::Kind
+          end
+          def access_tier
+            Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
           end
           def key_permission
             Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
           end
-          def kind
-            Azure::Storage::Mgmt::V2016_01_01::Models::Kind
+          def custom_domain
+            Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
+          end
+          def usage_unit
+            Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
+          end
+          def account_status
+            Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
           end
           def storage_account_create_parameters
             Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCreateParameters
@@ -134,24 +152,6 @@ module Azure::Profiles::V2018_03_01
           end
           def endpoints
             Azure::Storage::Mgmt::V2016_01_01::Models::Endpoints
-          end
-          def custom_domain
-            Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
-          end
-          def usage_list_result
-            Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
-          end
-          def storage_account
-            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
-          end
-          def sku_tier
-            Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
-          end
-          def access_tier
-            Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
-          end
-          def sku
-            Azure::Storage::Mgmt::V2016_01_01::Models::Sku
           end
           def encryption_services
             Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
