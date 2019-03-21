@@ -23,8 +23,9 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # @return [EncoderNamedPreset] The built-in preset to be used for
       # encoding videos. Possible values include: 'H264SingleBitrateSD',
       # 'H264SingleBitrate720p', 'H264SingleBitrate1080p', 'AdaptiveStreaming',
-      # 'AACGoodQualityAudio', 'H264MultipleBitrate1080p',
-      # 'H264MultipleBitrate720p', 'H264MultipleBitrateSD'
+      # 'AACGoodQualityAudio', 'ContentAwareEncodingExperimental',
+      # 'H264MultipleBitrate1080p', 'H264MultipleBitrate720p',
+      # 'H264MultipleBitrateSD'
       attr_accessor :preset_name
 
 
