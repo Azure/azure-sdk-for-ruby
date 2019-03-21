@@ -36,6 +36,12 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       # @return [String] The tag name.
       attr_accessor :tag
 
+      # @return [String] The name of the artifact.
+      attr_accessor :name
+
+      # @return [String] The version of the artifact.
+      attr_accessor :version
+
 
       #
       # Mapper for Target class as Ruby Hash.
@@ -94,6 +100,20 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
               tag: {
                 required: false,
                 serialized_name: 'tag',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              version: {
+                required: false,
+                serialized_name: 'version',
                 type: {
                   name: 'String'
                 }

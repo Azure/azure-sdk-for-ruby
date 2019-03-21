@@ -11,6 +11,14 @@ module Azure::Profiles::V2018_03_01
       Zones = Azure::Dns::Mgmt::V2016_04_01::Zones
 
       module Models
+        RecordSetUpdateParameters = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
+        RecordSetListResult = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
+        AaaaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
+        ARecord = Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
+        MxRecord = Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
+        PtrRecord = Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
+        SrvRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
+        CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
         ZoneDeleteResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
         RecordSet = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
         ZoneListResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
@@ -25,14 +33,6 @@ module Azure::Profiles::V2018_03_01
         HttpStatusCode = Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
         RecordType = Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
         Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
-        RecordSetUpdateParameters = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
-        RecordSetListResult = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
-        AaaaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
-        ARecord = Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
-        MxRecord = Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
-        PtrRecord = Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
-        SrvRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
-        CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
       end
 
       class DnsManagementClass
@@ -66,6 +66,30 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def record_set_update_parameters
+            Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
+          end
+          def record_set_list_result
+            Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
+          end
+          def aaaa_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
+          end
+          def arecord
+            Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
+          end
+          def mx_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
+          end
+          def ptr_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
+          end
+          def srv_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
+          end
+          def cname_record
+            Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
+          end
           def zone_delete_result
             Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
           end
@@ -107,30 +131,6 @@ module Azure::Profiles::V2018_03_01
           end
           def resource
             Azure::Dns::Mgmt::V2016_04_01::Models::Resource
-          end
-          def record_set_update_parameters
-            Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
-          end
-          def record_set_list_result
-            Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
-          end
-          def aaaa_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
-          end
-          def arecord
-            Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
-          end
-          def mx_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
-          end
-          def ptr_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
-          end
-          def srv_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
-          end
-          def cname_record
-            Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
           end
         end
       end
