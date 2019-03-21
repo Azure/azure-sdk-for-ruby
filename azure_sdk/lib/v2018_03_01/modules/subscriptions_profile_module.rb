@@ -13,17 +13,17 @@ module Azure::Profiles::V2018_03_01
 
       module Models
         Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+        SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
+        OperationDisplay = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
+        Operation = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
         OperationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
+        SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
         TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
         TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
         SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
         Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
         LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
-        SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
-        SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
-        OperationDisplay = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
-        Operation = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
       end
 
       class SubscriptionsManagementClass
@@ -61,8 +61,20 @@ module Azure::Profiles::V2018_03_01
           def location
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
           end
+          def subscription_state
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
+          end
+          def operation_display
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
+          end
+          def operation
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
+          end
           def operation_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
+          end
+          def spending_limit
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
           end
           def tenant_id_description
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
@@ -81,18 +93,6 @@ module Azure::Profiles::V2018_03_01
           end
           def location_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
-          end
-          def subscription_state
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
-          end
-          def spending_limit
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
-          end
-          def operation_display
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
-          end
-          def operation
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
           end
         end
       end

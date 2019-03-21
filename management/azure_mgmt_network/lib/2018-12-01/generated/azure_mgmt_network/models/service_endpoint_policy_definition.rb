@@ -15,7 +15,7 @@ module Azure::Network::Mgmt::V2018_12_01
       # @return [String] A description for this rule. Restricted to 140 chars.
       attr_accessor :description
 
-      # @return [String] service endpoint name.
+      # @return [String] Service endpoint name.
       attr_accessor :service
 
       # @return [Array<String>] A list of service resources.

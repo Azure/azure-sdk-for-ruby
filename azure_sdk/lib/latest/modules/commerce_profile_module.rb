@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
 
       module Models
+        ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
         MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
         ResourceRateCardInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
         UsageAggregation = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
@@ -22,7 +23,6 @@ module Azure::Profiles::Latest
         MonetaryCommitment = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
         RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
         AggregationGranularity = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
-        ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
       end
 
       class CommerceManagementClass
@@ -56,6 +56,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_response
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+          end
           def meter_info
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
           end
@@ -88,9 +91,6 @@ module Azure::Profiles::Latest
           end
           def aggregation_granularity
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
-          end
-          def error_response
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
           end
         end
       end

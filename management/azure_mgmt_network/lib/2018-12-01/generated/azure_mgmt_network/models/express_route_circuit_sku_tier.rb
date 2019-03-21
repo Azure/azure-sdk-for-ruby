@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2018_12_01
       Standard = "Standard"
       Premium = "Premium"
       Basic = "Basic"
+      Local = "Local"
     end
   end
 end

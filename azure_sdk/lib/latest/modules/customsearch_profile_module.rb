@@ -9,9 +9,10 @@ module Azure::Profiles::Latest
     CustomInstance = Azure::CognitiveServices::CustomSearch::V1_0::CustomInstance
 
     module Models
+      Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
+      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
       Query = Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
       QueryContext = Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
-      Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
       ResponseBase = Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
       WebPage = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
       SearchResultsAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
@@ -27,7 +28,6 @@ module Azure::Profiles::Latest
       SearchResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
       TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
       Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
-      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
     end
 
     class CustomSearchDataClass
@@ -60,14 +60,17 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
+        end
+        def error_response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
+        end
         def query
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
         end
         def query_context
           Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
-        end
-        def response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
         end
         def response_base
           Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
@@ -113,9 +116,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
-        end
-        def error_response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
         end
       end
     end

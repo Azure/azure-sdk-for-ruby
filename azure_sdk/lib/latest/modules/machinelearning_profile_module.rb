@@ -27,16 +27,16 @@ module Azure::Profiles::Latest
         ExampleRequest = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ExampleRequest
         GraphEdge = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphEdge
         GraphNode = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphNode
-        InputPort = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPort
+        GraphParameterLink = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphParameterLink
         ModeValueInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModeValueInfo
         GraphParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphParameter
-        GraphParameterLink = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphParameterLink
+        WebServiceKeys = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceKeys
         GraphPackage = Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphPackage
         ColumnSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnSpecification
         BlobLocation = Azure::MachineLearning::Mgmt::V2017_01_01::Models::BlobLocation
         PaginatedWebServicesList = Azure::MachineLearning::Mgmt::V2017_01_01::Models::PaginatedWebServicesList
         ModuleAssetParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
-        WebServiceKeys = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceKeys
+        InputPort = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPort
         AsyncOperationErrorInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo
         ServiceInputOutputSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
         DiagnosticsConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
@@ -132,8 +132,8 @@ module Azure::Profiles::Latest
           def graph_node
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphNode
           end
-          def input_port
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPort
+          def graph_parameter_link
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphParameterLink
           end
           def mode_value_info
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModeValueInfo
@@ -141,8 +141,8 @@ module Azure::Profiles::Latest
           def graph_parameter
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphParameter
           end
-          def graph_parameter_link
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphParameterLink
+          def web_service_keys
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceKeys
           end
           def graph_package
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::GraphPackage
@@ -159,8 +159,8 @@ module Azure::Profiles::Latest
           def module_asset_parameter
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModuleAssetParameter
           end
-          def web_service_keys
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceKeys
+          def input_port
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPort
           end
           def async_operation_error_info
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationErrorInfo

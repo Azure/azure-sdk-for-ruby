@@ -7,6 +7,8 @@ require 'azure_mgmt_consumption'
 module Azure::Profiles::Latest
   module Consumption
     module Mgmt
+      Forecasts = Azure::Consumption::Mgmt::V2018_06_30::Forecasts
+      Operations = Azure::Consumption::Mgmt::V2018_06_30::Operations
       Tags = Azure::Consumption::Mgmt::V2018_06_30::Tags
       UsageDetails = Azure::Consumption::Mgmt::V2018_06_30::UsageDetails
       Marketplaces = Azure::Consumption::Mgmt::V2018_06_30::Marketplaces
@@ -17,10 +19,9 @@ module Azure::Profiles::Latest
       Budgets = Azure::Consumption::Mgmt::V2018_06_30::Budgets
       PriceSheet = Azure::Consumption::Mgmt::V2018_06_30::PriceSheet
       CostTags = Azure::Consumption::Mgmt::V2018_06_30::CostTags
-      Forecasts = Azure::Consumption::Mgmt::V2018_06_30::Forecasts
-      Operations = Azure::Consumption::Mgmt::V2018_06_30::Operations
 
       module Models
+        ErrorResponse = Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorResponse
         ProxyResource = Azure::Consumption::Mgmt::V2018_06_30::Models::ProxyResource
         Notification = Azure::Consumption::Mgmt::V2018_06_30::Models::Notification
         MeterDetails = Azure::Consumption::Mgmt::V2018_06_30::Models::MeterDetails
@@ -53,24 +54,23 @@ module Azure::Profiles::Latest
         Balance = Azure::Consumption::Mgmt::V2018_06_30::Models::Balance
         Forecast = Azure::Consumption::Mgmt::V2018_06_30::Models::Forecast
         BillingFrequency = Azure::Consumption::Mgmt::V2018_06_30::Models::BillingFrequency
-        TagsResult = Azure::Consumption::Mgmt::V2018_06_30::Models::TagsResult
-        CategoryType = Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
+        Tag = Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
+        TimeGrainType = Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
         OperationDisplay = Azure::Consumption::Mgmt::V2018_06_30::Models::OperationDisplay
         PriceSheetResult = Azure::Consumption::Mgmt::V2018_06_30::Models::PriceSheetResult
         Operation = Azure::Consumption::Mgmt::V2018_06_30::Models::Operation
         OperatorType = Azure::Consumption::Mgmt::V2018_06_30::Models::OperatorType
         OperationListResult = Azure::Consumption::Mgmt::V2018_06_30::Models::OperationListResult
-        Tag = Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
-        Bound = Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
-        Grain = Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
         ChargeType = Azure::Consumption::Mgmt::V2018_06_30::Models::ChargeType
-        TimeGrainType = Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
+        Bound = Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
+        TagsResult = Azure::Consumption::Mgmt::V2018_06_30::Models::TagsResult
+        CategoryType = Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
         Datagrain = Azure::Consumption::Mgmt::V2018_06_30::Models::Datagrain
-        ErrorResponse = Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorResponse
+        Grain = Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
       end
 
       class ConsumptionManagementClass
-        attr_reader :tags, :usage_details, :marketplaces, :balances, :reservations_summaries, :reservations_details, :reservation_recommendations, :budgets, :price_sheet, :cost_tags, :forecasts, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :forecasts, :operations, :tags, :usage_details, :marketplaces, :balances, :reservations_summaries, :reservations_details, :reservation_recommendations, :budgets, :price_sheet, :cost_tags, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -80,6 +80,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @forecasts = @client_0.forecasts
+          @operations = @client_0.operations
           @tags = @client_0.tags
           @usage_details = @client_0.usage_details
           @marketplaces = @client_0.marketplaces
@@ -90,8 +92,6 @@ module Azure::Profiles::Latest
           @budgets = @client_0.budgets
           @price_sheet = @client_0.price_sheet
           @cost_tags = @client_0.cost_tags
-          @forecasts = @client_0.forecasts
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -110,6 +110,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_response
+            Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorResponse
+          end
           def proxy_resource
             Azure::Consumption::Mgmt::V2018_06_30::Models::ProxyResource
           end
@@ -206,11 +209,11 @@ module Azure::Profiles::Latest
           def billing_frequency
             Azure::Consumption::Mgmt::V2018_06_30::Models::BillingFrequency
           end
-          def tags_result
-            Azure::Consumption::Mgmt::V2018_06_30::Models::TagsResult
+          def tag
+            Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
           end
-          def category_type
-            Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
+          def time_grain_type
+            Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
           end
           def operation_display
             Azure::Consumption::Mgmt::V2018_06_30::Models::OperationDisplay
@@ -227,26 +230,23 @@ module Azure::Profiles::Latest
           def operation_list_result
             Azure::Consumption::Mgmt::V2018_06_30::Models::OperationListResult
           end
-          def tag
-            Azure::Consumption::Mgmt::V2018_06_30::Models::Tag
+          def charge_type
+            Azure::Consumption::Mgmt::V2018_06_30::Models::ChargeType
           end
           def bound
             Azure::Consumption::Mgmt::V2018_06_30::Models::Bound
           end
-          def grain
-            Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
+          def tags_result
+            Azure::Consumption::Mgmt::V2018_06_30::Models::TagsResult
           end
-          def charge_type
-            Azure::Consumption::Mgmt::V2018_06_30::Models::ChargeType
-          end
-          def time_grain_type
-            Azure::Consumption::Mgmt::V2018_06_30::Models::TimeGrainType
+          def category_type
+            Azure::Consumption::Mgmt::V2018_06_30::Models::CategoryType
           end
           def datagrain
             Azure::Consumption::Mgmt::V2018_06_30::Models::Datagrain
           end
-          def error_response
-            Azure::Consumption::Mgmt::V2018_06_30::Models::ErrorResponse
+          def grain
+            Azure::Consumption::Mgmt::V2018_06_30::Models::Grain
           end
         end
       end
