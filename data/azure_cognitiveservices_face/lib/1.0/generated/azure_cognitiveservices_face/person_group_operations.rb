@@ -300,8 +300,8 @@ module Azure::CognitiveServices::Face::V1_0
     # List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
     #
     # @param person_group_id [String] Id referencing a particular person group.
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -318,8 +318,8 @@ module Azure::CognitiveServices::Face::V1_0
     # List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
     #
     # @param person_group_id [String] Id referencing a particular person group.
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -335,8 +335,8 @@ module Azure::CognitiveServices::Face::V1_0
     # List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
     #
     # @param person_group_id [String] Id referencing a particular person group.
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -597,8 +597,8 @@ module Azure::CognitiveServices::Face::V1_0
     # @param start [String] List person groups from the least personGroupId greater
     # than the "start".
     # @param top [Integer] The number of person groups to list.
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -629,8 +629,8 @@ module Azure::CognitiveServices::Face::V1_0
     # @param start [String] List person groups from the least personGroupId greater
     # than the "start".
     # @param top [Integer] The number of person groups to list.
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -660,8 +660,8 @@ module Azure::CognitiveServices::Face::V1_0
     # @param start [String] List person groups from the least personGroupId greater
     # than the "start".
     # @param top [Integer] The number of person groups to list.
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

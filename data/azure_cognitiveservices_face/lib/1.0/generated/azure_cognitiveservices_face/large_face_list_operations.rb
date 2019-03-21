@@ -231,8 +231,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -249,8 +249,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -266,8 +266,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -612,8 +612,8 @@ module Azure::CognitiveServices::Face::V1_0
     # <br /> "start=list2&top=3" will return "list3", "list4", "list5".
     #
     #
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -644,8 +644,8 @@ module Azure::CognitiveServices::Face::V1_0
     # <br /> "start=list2&top=3" will return "list3", "list4", "list5".
     #
     #
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -675,8 +675,8 @@ module Azure::CognitiveServices::Face::V1_0
     # <br /> "start=list2&top=3" will return "list3", "list4", "list5".
     #
     #
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

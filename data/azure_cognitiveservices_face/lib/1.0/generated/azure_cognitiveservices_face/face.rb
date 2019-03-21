@@ -861,8 +861,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -931,8 +931,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1000,8 +1000,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1243,8 +1243,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1276,8 +1276,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1308,8 +1308,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Create or (Large)PersonGroup - Create. The default value is 'recognition_01',
     # if latest model needed, please explicitly specify the model you need.
     # Possible values include: 'recognition_01', 'recognition_02'
-    # @param return_recognition_model [Boolean] Whether to return the
-    # 'RecognitionModel' required for the current operation.
+    # @param return_recognition_model [Boolean] A value indicating whether the
+    # operation should return 'recognitionModel' in response.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
