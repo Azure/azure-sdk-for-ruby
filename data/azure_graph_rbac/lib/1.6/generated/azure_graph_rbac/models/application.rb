@@ -63,7 +63,7 @@ module Azure::GraphRbac::V1_6
       # @return [Array<String>] A collection of URIs for the application.
       attr_accessor :identifier_uris
 
-      # @return [InformationalUrl] urls with more informations of the
+      # @return [InformationalUrl] URLs with more information about the
       # application.
       attr_accessor :informational_urls
 
