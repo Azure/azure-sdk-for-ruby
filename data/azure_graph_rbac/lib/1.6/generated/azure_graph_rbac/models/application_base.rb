@@ -48,7 +48,7 @@ module Azure::GraphRbac::V1_6
       # @return [String] The home page of the application.
       attr_accessor :homepage
 
-      # @return [InformationalUrl] urls with more informations of the
+      # @return [InformationalUrl] URLs with more information about the
       # application.
       attr_accessor :informational_urls
 
