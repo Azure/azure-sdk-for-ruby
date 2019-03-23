@@ -26,13 +26,13 @@ module Azure::Profiles::Latest
         ResourceType = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ResourceType
         ProviderOperationsMetadataListResult = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadataListResult
         RoleDefinition = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
-        DenyAssignmentFilter = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentFilter
         Principal = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::Principal
         DenyAssignment = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignment
         DenyAssignmentPermission = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentPermission
         DenyAssignmentListResult = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult
-        PrincipalType = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::PrincipalType
+        DenyAssignmentFilter = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentFilter
         RoleAssignmentCreateParameters = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentCreateParameters
+        PrincipalType = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::PrincipalType
         RoleAssignment = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment
         RoleAssignmentListResult = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult
         RoleAssignmentFilter = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentFilter
@@ -130,9 +130,6 @@ module Azure::Profiles::Latest
           def role_definition
             Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
           end
-          def deny_assignment_filter
-            Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentFilter
-          end
           def principal
             Azure::Authorization::Mgmt::V2018_07_01_preview::Models::Principal
           end
@@ -145,11 +142,14 @@ module Azure::Profiles::Latest
           def deny_assignment_list_result
             Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult
           end
-          def principal_type
-            Azure::Authorization::Mgmt::V2018_09_01_preview::Models::PrincipalType
+          def deny_assignment_filter
+            Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentFilter
           end
           def role_assignment_create_parameters
             Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentCreateParameters
+          end
+          def principal_type
+            Azure::Authorization::Mgmt::V2018_09_01_preview::Models::PrincipalType
           end
           def role_assignment
             Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment
