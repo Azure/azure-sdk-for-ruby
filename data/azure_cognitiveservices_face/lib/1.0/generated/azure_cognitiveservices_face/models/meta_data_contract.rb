@@ -6,27 +6,30 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # Large person group object.
+    # A combination of user defined name and user specified data and
+    # recognition model name for largePersonGroup/personGroup, and
+    # largeFaceList/faceList.
     #
-    class LargePersonGroup < MetaDataContract
+    class MetaDataContract < NameAndUserDataContract
 
       include MsRestAzure
 
-      # @return [String] LargePersonGroupId of the target large person groups
-      attr_accessor :large_person_group_id
+      # @return [RecognitionModel] Possible values include: 'recognition_01',
+      # 'recognition_02'. Default value: 'recognition_01' .
+      attr_accessor :recognition_model
 
 
       #
-      # Mapper for LargePersonGroup class as Ruby Hash.
+      # Mapper for MetaDataContract class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'LargePersonGroup',
+          serialized_name: 'MetaDataContract',
           type: {
             name: 'Composite',
-            class_name: 'LargePersonGroup',
+            class_name: 'MetaDataContract',
             model_properties: {
               name: {
                 required: false,
@@ -52,17 +55,6 @@ module Azure::CognitiveServices::Face::V1_0
                 required: false,
                 serialized_name: 'recognitionModel',
                 default_value: 'recognition_01',
-                type: {
-                  name: 'String'
-                }
-              },
-              large_person_group_id: {
-                required: true,
-                serialized_name: 'largePersonGroupId',
-                constraints: {
-                  MaxLength: 64,
-                  Pattern: '^[a-z0-9-_]+$'
-                },
                 type: {
                   name: 'String'
                 }
