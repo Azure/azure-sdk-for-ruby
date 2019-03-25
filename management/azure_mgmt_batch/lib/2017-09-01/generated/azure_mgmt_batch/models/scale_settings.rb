@@ -35,7 +35,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ScaleSettings',
           type: {
@@ -43,7 +42,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'ScaleSettings',
             model_properties: {
               fixed_scale: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fixedScale',
                 type: {
@@ -52,7 +50,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               auto_scale: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'autoScale',
                 type: {
