@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2016_03_30
     attr_reader :client
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -30,13 +30,13 @@ module Azure::Network::Mgmt::V2016_03_30
     #
     # @return [Array<ExpressRouteServiceProvider>] operation results.
     #
-    def list(custom_headers:nil)
-      first_page = list_as_lazy(custom_headers:custom_headers)
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -44,12 +44,12 @@ module Azure::Network::Mgmt::V2016_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers:nil)
-      list_async(custom_headers:custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -57,13 +57,12 @@ module Azure::Network::Mgmt::V2016_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers:nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -109,7 +108,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -119,13 +118,13 @@ module Azure::Network::Mgmt::V2016_03_30
     #
     # @return [ExpressRouteServiceProviderListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -135,12 +134,12 @@ module Azure::Network::Mgmt::V2016_03_30
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -150,12 +149,11 @@ module Azure::Network::Mgmt::V2016_03_30
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -200,7 +198,7 @@ module Azure::Network::Mgmt::V2016_03_30
     end
 
     #
-    # The List ExpressRouteServiceProvider opertion retrieves all the available
+    # The List ExpressRouteServiceProvider operation retrieves all the available
     # ExpressRouteServiceProviders.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -209,12 +207,12 @@ module Azure::Network::Mgmt::V2016_03_30
     # @return [ExpressRouteServiceProviderListResult] which provide lazy access to
     # pages of the response.
     #
-    def list_as_lazy(custom_headers:nil)
-      response = list_async(custom_headers:custom_headers).value!
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end

@@ -8,38 +8,38 @@ module Azure::Profiles::Latest
   module Authorization
     module Mgmt
       ClassicAdministrators = Azure::Authorization::Mgmt::V2015_06_01_preview::ClassicAdministrators
-      ProviderOperationsMetadataOperations = Azure::Authorization::Mgmt::V2018_01_01_preview::ProviderOperationsMetadataOperations
-      Permissions = Azure::Authorization::Mgmt::V2018_01_01_preview::Permissions
       RoleDefinitions = Azure::Authorization::Mgmt::V2018_01_01_preview::RoleDefinitions
+      Permissions = Azure::Authorization::Mgmt::V2018_01_01_preview::Permissions
+      ProviderOperationsMetadataOperations = Azure::Authorization::Mgmt::V2018_01_01_preview::ProviderOperationsMetadataOperations
       DenyAssignments = Azure::Authorization::Mgmt::V2018_07_01_preview::DenyAssignments
       RoleAssignments = Azure::Authorization::Mgmt::V2018_09_01_preview::RoleAssignments
 
       module Models
-        ClassicAdministratorListResult = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
         ClassicAdministrator = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministrator
-        ResourceType = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ResourceType
-        RoleDefinitionFilter = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
-        ProviderOperationsMetadataListResult = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadataListResult
-        Permission = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::Permission
-        RoleDefinition = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
-        ProviderOperationsMetadata = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadata
+        ClassicAdministratorListResult = Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
         RoleDefinitionListResult = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionListResult
         ProviderOperation = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperation
+        ProviderOperationsMetadata = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadata
+        Permission = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::Permission
+        RoleDefinitionFilter = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
         PermissionGetResult = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::PermissionGetResult
-        Principal = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::Principal
+        ResourceType = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ResourceType
+        ProviderOperationsMetadataListResult = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadataListResult
+        RoleDefinition = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
         DenyAssignment = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignment
         DenyAssignmentPermission = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentPermission
         DenyAssignmentListResult = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentListResult
         DenyAssignmentFilter = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentFilter
-        RoleAssignmentListResult = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult
-        RoleAssignmentFilter = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentFilter
+        Principal = Azure::Authorization::Mgmt::V2018_07_01_preview::Models::Principal
+        PrincipalType = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::PrincipalType
         RoleAssignmentCreateParameters = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentCreateParameters
         RoleAssignment = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment
-        PrincipalType = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::PrincipalType
+        RoleAssignmentListResult = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult
+        RoleAssignmentFilter = Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentFilter
       end
 
       class AuthorizationManagementClass
-        attr_reader :classic_administrators, :provider_operations_metadata_operations, :permissions, :role_definitions, :deny_assignments, :role_assignments, :configurable, :base_url, :options, :model_classes
+        attr_reader :classic_administrators, :role_definitions, :permissions, :provider_operations_metadata_operations, :deny_assignments, :role_assignments, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -56,9 +56,9 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @provider_operations_metadata_operations = @client_1.provider_operations_metadata_operations
-          @permissions = @client_1.permissions
           @role_definitions = @client_1.role_definitions
+          @permissions = @client_1.permissions
+          @provider_operations_metadata_operations = @client_1.provider_operations_metadata_operations
 
           @client_2 = Azure::Authorization::Mgmt::V2018_07_01_preview::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
           if(@client_2.respond_to?(:subscription_id))
@@ -97,29 +97,11 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def classic_administrator_list_result
-            Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
-          end
           def classic_administrator
             Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministrator
           end
-          def resource_type
-            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ResourceType
-          end
-          def role_definition_filter
-            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
-          end
-          def provider_operations_metadata_list_result
-            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadataListResult
-          end
-          def permission
-            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::Permission
-          end
-          def role_definition
-            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
-          end
-          def provider_operations_metadata
-            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadata
+          def classic_administrator_list_result
+            Azure::Authorization::Mgmt::V2015_06_01_preview::Models::ClassicAdministratorListResult
           end
           def role_definition_list_result
             Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionListResult
@@ -127,11 +109,26 @@ module Azure::Profiles::Latest
           def provider_operation
             Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperation
           end
+          def provider_operations_metadata
+            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadata
+          end
+          def permission
+            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::Permission
+          end
+          def role_definition_filter
+            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinitionFilter
+          end
           def permission_get_result
             Azure::Authorization::Mgmt::V2018_01_01_preview::Models::PermissionGetResult
           end
-          def principal
-            Azure::Authorization::Mgmt::V2018_07_01_preview::Models::Principal
+          def resource_type
+            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ResourceType
+          end
+          def provider_operations_metadata_list_result
+            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::ProviderOperationsMetadataListResult
+          end
+          def role_definition
+            Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition
           end
           def deny_assignment
             Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignment
@@ -145,11 +142,11 @@ module Azure::Profiles::Latest
           def deny_assignment_filter
             Azure::Authorization::Mgmt::V2018_07_01_preview::Models::DenyAssignmentFilter
           end
-          def role_assignment_list_result
-            Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult
+          def principal
+            Azure::Authorization::Mgmt::V2018_07_01_preview::Models::Principal
           end
-          def role_assignment_filter
-            Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentFilter
+          def principal_type
+            Azure::Authorization::Mgmt::V2018_09_01_preview::Models::PrincipalType
           end
           def role_assignment_create_parameters
             Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentCreateParameters
@@ -157,8 +154,11 @@ module Azure::Profiles::Latest
           def role_assignment
             Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignment
           end
-          def principal_type
-            Azure::Authorization::Mgmt::V2018_09_01_preview::Models::PrincipalType
+          def role_assignment_list_result
+            Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentListResult
+          end
+          def role_assignment_filter
+            Azure::Authorization::Mgmt::V2018_09_01_preview::Models::RoleAssignmentFilter
           end
         end
       end

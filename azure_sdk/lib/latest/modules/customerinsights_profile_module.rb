@@ -7,36 +7,36 @@ require 'azure_mgmt_customer_insights'
 module Azure::Profiles::Latest
   module CustomerInsights
     module Mgmt
+      Connectors = Azure::CustomerInsights::Mgmt::V2017_04_26::Connectors
+      ConnectorMappings = Azure::CustomerInsights::Mgmt::V2017_04_26::ConnectorMappings
       Operations = Azure::CustomerInsights::Mgmt::V2017_04_26::Operations
-      Hubs = Azure::CustomerInsights::Mgmt::V2017_04_26::Hubs
       Profiles = Azure::CustomerInsights::Mgmt::V2017_04_26::Profiles
+      WidgetTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::WidgetTypes
+      Kpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Kpi
+      Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
+      Views = Azure::CustomerInsights::Mgmt::V2017_04_26::Views
+      Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
+      Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
+      Images = Azure::CustomerInsights::Mgmt::V2017_04_26::Images
+      RoleAssignments = Azure::CustomerInsights::Mgmt::V2017_04_26::RoleAssignments
+      Hubs = Azure::CustomerInsights::Mgmt::V2017_04_26::Hubs
       Interactions = Azure::CustomerInsights::Mgmt::V2017_04_26::Interactions
       Relationships = Azure::CustomerInsights::Mgmt::V2017_04_26::Relationships
       RelationshipLinks = Azure::CustomerInsights::Mgmt::V2017_04_26::RelationshipLinks
       AuthorizationPolicies = Azure::CustomerInsights::Mgmt::V2017_04_26::AuthorizationPolicies
-      Connectors = Azure::CustomerInsights::Mgmt::V2017_04_26::Connectors
-      ConnectorMappings = Azure::CustomerInsights::Mgmt::V2017_04_26::ConnectorMappings
-      Kpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Kpi
-      WidgetTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::WidgetTypes
-      Views = Azure::CustomerInsights::Mgmt::V2017_04_26::Views
-      Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
-      Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
-      RoleAssignments = Azure::CustomerInsights::Mgmt::V2017_04_26::RoleAssignments
-      Images = Azure::CustomerInsights::Mgmt::V2017_04_26::Images
-      Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
 
       module Models
         KpiListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiListResult
         HubBillingInfoFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubBillingInfoFormat
         Participant = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Participant
+        ProfileListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileListResult
         StrongId = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::StrongId
         MetadataDefinitionBase = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::MetadataDefinitionBase
         PredictionSystemGeneratedEntities = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionSystemGeneratedEntities
         DataSourcePrecedence = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::DataSourcePrecedence
-        ProfileListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileListResult
-        SuggestRelationshipLinksResponse = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SuggestRelationshipLinksResponse
         AuthorizationPolicy = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicy
         PredictionGradesItem = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionGradesItem
+        SuggestRelationshipLinksResponse = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SuggestRelationshipLinksResponse
         SalesforceTable = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceTable
         InteractionListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InteractionListResult
         AzureBlobConnectorProperties = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AzureBlobConnectorProperties
@@ -46,94 +46,94 @@ module Azure::Profiles::Latest
         RelationshipsLookup = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipsLookup
         ConnectorMappingAvailability = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingAvailability
         ConnectorMappingCompleteOperation = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingCompleteOperation
-        OperationListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::OperationListResult
         KpiThresholds = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiThresholds
         ConnectorListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorListResult
         KpiParticipantProfilesMetadata = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiParticipantProfilesMetadata
-        Operation = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Operation
         KpiExtract = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiExtract
         ConnectorMappingListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingListResult
-        Resource = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Resource
-        OperationDisplay = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::OperationDisplay
         TypePropertiesMapping = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::TypePropertiesMapping
-        AuthorizationPolicyListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicyListResult
         RelationshipTypeFieldMapping = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipTypeFieldMapping
         PredictionListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionListResult
         RelationshipLinkFieldMapping = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipLinkFieldMapping
         LinkListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::LinkListResult
         HubListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult
+        AuthorizationPolicyListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicyListResult
         PredictionModelStatus = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionModelStatus
         PropertyDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PropertyDefinition
         RelationshipListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipListResult
-        SalesforceConnectorProperties = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceConnectorProperties
         PredictionTrainingResults = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionTrainingResults
         ConnectorMappingFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingFormat
+        SalesforceConnectorProperties = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceConnectorProperties
         RelationshipLinkListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipLinkListResult
         ConnectorMappingProperties = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingProperties
         CanonicalProfileDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CanonicalProfileDefinition
         KpiAlias = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiAlias
         ViewListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ViewListResult
-        ProxyResource = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProxyResource
         CanonicalProfileDefinitionPropertiesItem = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CanonicalProfileDefinitionPropertiesItem
         RelationshipTypeMapping = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipTypeMapping
         WidgetTypeListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::WidgetTypeListResult
         ProfileEnumValidValuesFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileEnumValidValuesFormat
-        AssignmentPrincipal = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AssignmentPrincipal
+        ProxyResource = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProxyResource
         CrmConnectorEntities = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CrmConnectorEntities
-        ResourceSetDescription = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ResourceSetDescription
+        AssignmentPrincipal = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AssignmentPrincipal
         KpiGroupByMetadata = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiGroupByMetadata
-        PredictionDistributionDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionDistributionDefinition
+        ResourceSetDescription = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ResourceSetDescription
         ParticipantPropertyReference = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantPropertyReference
-        RoleAssignmentListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult
-        SalesforceDiscoverSetting = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceDiscoverSetting
+        PredictionDistributionDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionDistributionDefinition
         PredictionDistributionDefinitionDistributionsItem = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionDistributionDefinitionDistributionsItem
-        KpiDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiDefinition
+        SalesforceDiscoverSetting = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceDiscoverSetting
         RoleListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleListResult
-        ConnectorMappingStructure = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStructure
+        KpiDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiDefinition
         GetImageUploadUrlInput = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::GetImageUploadUrlInput
-        ParticipantProfilePropertyReference = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantProfilePropertyReference
+        ConnectorMappingStructure = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStructure
         ImageDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ImageDefinition
-        Hub = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
+        ParticipantProfilePropertyReference = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantProfilePropertyReference
         EntityTypeDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypeDefinition
-        ProfileResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileResourceFormat
+        Hub = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
         InteractionResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InteractionResourceFormat
-        KpiResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiResourceFormat
+        ProfileResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileResourceFormat
         EnrichingKpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EnrichingKpi
-        ConnectorResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorResourceFormat
+        KpiResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiResourceFormat
         ConnectorMappingResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingResourceFormat
-        AuthorizationPolicyResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicyResourceFormat
+        ConnectorResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorResourceFormat
         LinkResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::LinkResourceFormat
-        RelationshipResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipResourceFormat
+        AuthorizationPolicyResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicyResourceFormat
         RelationshipLinkResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipLinkResourceFormat
-        ViewResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ViewResourceFormat
+        RelationshipResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipResourceFormat
         WidgetTypeResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::WidgetTypeResourceFormat
-        RoleAssignmentResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat
+        ViewResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ViewResourceFormat
         RoleResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleResourceFormat
+        RoleAssignmentResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat
+        RoleAssignmentListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult
         PredictionResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat
         EntityTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypes
         DataSourceType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::DataSourceType
-        Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
-        ProvisioningStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
+        Resource = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Resource
         PermissionTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PermissionTypes
         ConnectorTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorTypes
-        ConnectorStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
+        ProvisioningStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
         ErrorManagementTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
         FrequencyTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
-        CompletionOperationTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CompletionOperationTypes
+        ConnectorStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
         ConnectorMappingStates = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStates
+        OperationDisplay = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::OperationDisplay
+        CompletionOperationTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CompletionOperationTypes
+        Operation = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Operation
         CalculationWindowTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CalculationWindowTypes
-        KpiFunctions = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiFunctions
+        OperationListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::OperationListResult
         EntityType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityType
         LinkTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::LinkTypes
         InstanceOperationType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InstanceOperationType
-        CardinalityTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CardinalityTypes
+        KpiFunctions = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiFunctions
         RoleTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleTypes
         CanonicalPropertyValueType = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CanonicalPropertyValueType
         PredictionModelLifeCycle = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionModelLifeCycle
+        CardinalityTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CardinalityTypes
+        Status = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
       end
 
       class CustomerInsightsManagementClass
-        attr_reader :operations, :hubs, :profiles, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :links, :roles, :role_assignments, :images, :predictions, :configurable, :base_url, :options, :model_classes
+        attr_reader :connectors, :connector_mappings, :operations, :profiles, :widget_types, :kpi, :links, :views, :roles, :predictions, :images, :role_assignments, :hubs, :interactions, :relationships, :relationship_links, :authorization_policies, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -143,23 +143,23 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @connectors = @client_0.connectors
+          @connector_mappings = @client_0.connector_mappings
           @operations = @client_0.operations
-          @hubs = @client_0.hubs
           @profiles = @client_0.profiles
+          @widget_types = @client_0.widget_types
+          @kpi = @client_0.kpi
+          @links = @client_0.links
+          @views = @client_0.views
+          @roles = @client_0.roles
+          @predictions = @client_0.predictions
+          @images = @client_0.images
+          @role_assignments = @client_0.role_assignments
+          @hubs = @client_0.hubs
           @interactions = @client_0.interactions
           @relationships = @client_0.relationships
           @relationship_links = @client_0.relationship_links
           @authorization_policies = @client_0.authorization_policies
-          @connectors = @client_0.connectors
-          @connector_mappings = @client_0.connector_mappings
-          @kpi = @client_0.kpi
-          @widget_types = @client_0.widget_types
-          @views = @client_0.views
-          @links = @client_0.links
-          @roles = @client_0.roles
-          @role_assignments = @client_0.role_assignments
-          @images = @client_0.images
-          @predictions = @client_0.predictions
 
           @model_classes = ModelClasses.new
         end
@@ -187,6 +187,9 @@ module Azure::Profiles::Latest
           def participant
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Participant
           end
+          def profile_list_result
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileListResult
+          end
           def strong_id
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::StrongId
           end
@@ -199,17 +202,14 @@ module Azure::Profiles::Latest
           def data_source_precedence
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::DataSourcePrecedence
           end
-          def profile_list_result
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileListResult
-          end
-          def suggest_relationship_links_response
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SuggestRelationshipLinksResponse
-          end
           def authorization_policy
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicy
           end
           def prediction_grades_item
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionGradesItem
+          end
+          def suggest_relationship_links_response
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SuggestRelationshipLinksResponse
           end
           def salesforce_table
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceTable
@@ -238,9 +238,6 @@ module Azure::Profiles::Latest
           def connector_mapping_complete_operation
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingCompleteOperation
           end
-          def operation_list_result
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::OperationListResult
-          end
           def kpi_thresholds
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiThresholds
           end
@@ -250,26 +247,14 @@ module Azure::Profiles::Latest
           def kpi_participant_profiles_metadata
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiParticipantProfilesMetadata
           end
-          def operation
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Operation
-          end
           def kpi_extract
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiExtract
           end
           def connector_mapping_list_result
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingListResult
           end
-          def resource
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Resource
-          end
-          def operation_display
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::OperationDisplay
-          end
           def type_properties_mapping
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::TypePropertiesMapping
-          end
-          def authorization_policy_list_result
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicyListResult
           end
           def relationship_type_field_mapping
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipTypeFieldMapping
@@ -286,6 +271,9 @@ module Azure::Profiles::Latest
           def hub_list_result
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult
           end
+          def authorization_policy_list_result
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicyListResult
+          end
           def prediction_model_status
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionModelStatus
           end
@@ -295,14 +283,14 @@ module Azure::Profiles::Latest
           def relationship_list_result
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipListResult
           end
-          def salesforce_connector_properties
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceConnectorProperties
-          end
           def prediction_training_results
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionTrainingResults
           end
           def connector_mapping_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingFormat
+          end
+          def salesforce_connector_properties
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceConnectorProperties
           end
           def relationship_link_list_result
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipLinkListResult
@@ -319,9 +307,6 @@ module Azure::Profiles::Latest
           def view_list_result
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ViewListResult
           end
-          def proxy_resource
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProxyResource
-          end
           def canonical_profile_definition_properties_item
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CanonicalProfileDefinitionPropertiesItem
           end
@@ -334,98 +319,101 @@ module Azure::Profiles::Latest
           def profile_enum_valid_values_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileEnumValidValuesFormat
           end
-          def assignment_principal
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AssignmentPrincipal
+          def proxy_resource
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProxyResource
           end
           def crm_connector_entities
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CrmConnectorEntities
           end
-          def resource_set_description
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ResourceSetDescription
+          def assignment_principal
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AssignmentPrincipal
           end
           def kpi_group_by_metadata
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiGroupByMetadata
           end
-          def prediction_distribution_definition
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionDistributionDefinition
+          def resource_set_description
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ResourceSetDescription
           end
           def participant_property_reference
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantPropertyReference
           end
-          def role_assignment_list_result
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult
-          end
-          def salesforce_discover_setting
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceDiscoverSetting
+          def prediction_distribution_definition
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionDistributionDefinition
           end
           def prediction_distribution_definition_distributions_item
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionDistributionDefinitionDistributionsItem
           end
-          def kpi_definition
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiDefinition
+          def salesforce_discover_setting
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceDiscoverSetting
           end
           def role_list_result
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleListResult
           end
-          def connector_mapping_structure
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStructure
+          def kpi_definition
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiDefinition
           end
           def get_image_upload_url_input
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::GetImageUploadUrlInput
           end
-          def participant_profile_property_reference
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantProfilePropertyReference
+          def connector_mapping_structure
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStructure
           end
           def image_definition
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ImageDefinition
           end
-          def hub
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
+          def participant_profile_property_reference
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantProfilePropertyReference
           end
           def entity_type_definition
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypeDefinition
           end
-          def profile_resource_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileResourceFormat
+          def hub
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
           end
           def interaction_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InteractionResourceFormat
           end
-          def kpi_resource_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiResourceFormat
+          def profile_resource_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileResourceFormat
           end
           def enriching_kpi
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EnrichingKpi
           end
-          def connector_resource_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorResourceFormat
+          def kpi_resource_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiResourceFormat
           end
           def connector_mapping_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingResourceFormat
           end
-          def authorization_policy_resource_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicyResourceFormat
+          def connector_resource_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorResourceFormat
           end
           def link_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::LinkResourceFormat
           end
-          def relationship_resource_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipResourceFormat
+          def authorization_policy_resource_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::AuthorizationPolicyResourceFormat
           end
           def relationship_link_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipLinkResourceFormat
           end
-          def view_resource_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ViewResourceFormat
+          def relationship_resource_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RelationshipResourceFormat
           end
           def widget_type_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::WidgetTypeResourceFormat
           end
-          def role_assignment_resource_format
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat
+          def view_resource_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ViewResourceFormat
           end
           def role_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleResourceFormat
+          end
+          def role_assignment_resource_format
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat
+          end
+          def role_assignment_list_result
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult
           end
           def prediction_resource_format
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat
@@ -436,11 +424,8 @@ module Azure::Profiles::Latest
           def data_source_type
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::DataSourceType
           end
-          def status
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
-          end
-          def provisioning_states
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
+          def resource
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Resource
           end
           def permission_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PermissionTypes
@@ -448,8 +433,8 @@ module Azure::Profiles::Latest
           def connector_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorTypes
           end
-          def connector_states
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
+          def provisioning_states
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProvisioningStates
           end
           def error_management_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ErrorManagementTypes
@@ -457,17 +442,26 @@ module Azure::Profiles::Latest
           def frequency_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::FrequencyTypes
           end
-          def completion_operation_types
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CompletionOperationTypes
+          def connector_states
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorStates
           end
           def connector_mapping_states
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ConnectorMappingStates
           end
+          def operation_display
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::OperationDisplay
+          end
+          def completion_operation_types
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CompletionOperationTypes
+          end
+          def operation
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Operation
+          end
           def calculation_window_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CalculationWindowTypes
           end
-          def kpi_functions
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiFunctions
+          def operation_list_result
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::OperationListResult
           end
           def entity_type
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityType
@@ -478,8 +472,8 @@ module Azure::Profiles::Latest
           def instance_operation_type
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::InstanceOperationType
           end
-          def cardinality_types
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CardinalityTypes
+          def kpi_functions
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiFunctions
           end
           def role_types
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleTypes
@@ -489,6 +483,12 @@ module Azure::Profiles::Latest
           end
           def prediction_model_life_cycle
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionModelLifeCycle
+          end
+          def cardinality_types
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::CardinalityTypes
+          end
+          def status
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Status
           end
         end
       end
