@@ -7,10 +7,14 @@ require 'azure_mgmt_analysis_services'
 module Azure::Profiles::Latest
   module AnalysisServices
     module Mgmt
-      Servers = Azure::AnalysisServices::Mgmt::V2017_08_01::Servers
       Operations = Azure::AnalysisServices::Mgmt::V2017_08_01::Operations
+      Servers = Azure::AnalysisServices::Mgmt::V2017_08_01::Servers
 
       module Models
+        IPv4FirewallSettings = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
+        ErrorResponse = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
+        ServerAdministrators = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
+        SkuEnumerationForNewResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
         SkuDetailsForExistingResource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuDetailsForExistingResource
         IPv4FirewallRule = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallRule
         SkuEnumerationForExistingResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForExistingResourceResult
@@ -18,14 +22,14 @@ module Azure::Profiles::Latest
         ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
         OperationStatus = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
         Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
+        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
         ProvisioningState = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
         OperationDisplay = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
-        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
         Operation = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
         OperationListResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
         Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
-        ResourceSku = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
         SkuTier = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
+        ResourceSku = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
         AnalysisServicesServerUpdateParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
         GatewayListStatusLive = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusLive
         GatewayError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayError
@@ -34,14 +38,10 @@ module Azure::Profiles::Latest
         CheckServerNameAvailabilityParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityParameters
         GatewayDetails = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayDetails
         CheckServerNameAvailabilityResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
-        IPv4FirewallSettings = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
-        ErrorResponse = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
-        ServerAdministrators = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
-        SkuEnumerationForNewResourceResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
       end
 
       class AnalysisServicesManagementClass
-        attr_reader :servers, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :servers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -51,8 +51,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @servers = @client_0.servers
           @operations = @client_0.operations
+          @servers = @client_0.servers
 
           @model_classes = ModelClasses.new
         end
@@ -71,6 +71,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def ipv4_firewall_settings
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
+          end
+          def error_response
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
+          end
+          def server_administrators
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
+          end
+          def sku_enumeration_for_new_resource_result
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
+          end
           def sku_details_for_existing_resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuDetailsForExistingResource
           end
@@ -92,14 +104,14 @@ module Azure::Profiles::Latest
           def resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
           end
+          def state
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
+          end
           def provisioning_state
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
           end
           def operation_display
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
-          end
-          def state
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
           end
           def operation
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
@@ -110,11 +122,11 @@ module Azure::Profiles::Latest
           def status
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
           end
-          def resource_sku
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
-          end
           def sku_tier
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
+          end
+          def resource_sku
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
           end
           def analysis_services_server_update_parameters
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
@@ -139,18 +151,6 @@ module Azure::Profiles::Latest
           end
           def check_server_name_availability_result
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
-          end
-          def ipv4_firewall_settings
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
-          end
-          def error_response
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
-          end
-          def server_administrators
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
-          end
-          def sku_enumeration_for_new_resource_result
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuEnumerationForNewResourceResult
           end
         end
       end

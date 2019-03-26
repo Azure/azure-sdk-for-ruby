@@ -14,6 +14,8 @@ module Azure::Profiles::Latest
     Users = Azure::GraphRbac::V1_6::Users
 
     module Models
+      User = Azure::GraphRbac::V1_6::Models::User
+      Application = Azure::GraphRbac::V1_6::Models::Application
       UserUpdateParameters = Azure::GraphRbac::V1_6::Models::UserUpdateParameters
       UserCreateParameters = Azure::GraphRbac::V1_6::Models::UserCreateParameters
       Domain = Azure::GraphRbac::V1_6::Models::Domain
@@ -54,8 +56,6 @@ module Azure::Profiles::Latest
       UserGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
       UserType = Azure::GraphRbac::V1_6::Models::UserType
       ServicePrincipal = Azure::GraphRbac::V1_6::Models::ServicePrincipal
-      User = Azure::GraphRbac::V1_6::Models::User
-      Application = Azure::GraphRbac::V1_6::Models::Application
     end
 
     class GraphRbacDataClass
@@ -93,6 +93,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def user
+          Azure::GraphRbac::V1_6::Models::User
+        end
+        def application
+          Azure::GraphRbac::V1_6::Models::Application
+        end
         def user_update_parameters
           Azure::GraphRbac::V1_6::Models::UserUpdateParameters
         end
@@ -212,12 +218,6 @@ module Azure::Profiles::Latest
         end
         def service_principal
           Azure::GraphRbac::V1_6::Models::ServicePrincipal
-        end
-        def user
-          Azure::GraphRbac::V1_6::Models::User
-        end
-        def application
-          Azure::GraphRbac::V1_6::Models::Application
         end
       end
     end

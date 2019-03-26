@@ -7,9 +7,9 @@ require 'azure_mgmt_signalr'
 module Azure::Profiles::Latest
   module Signalr
     module Mgmt
-      Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
       Operations = Azure::Signalr::Mgmt::V2018_03_01_preview::Operations
       SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
+      Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
 
       module Models
         TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
@@ -26,10 +26,10 @@ module Azure::Profiles::Latest
         SignalRUsageName = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageName
         SignalRResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
         SignalRCreateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
-        SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
         Resource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
-        KeyType = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
+        SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
         ProvisioningState = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ProvisioningState
+        KeyType = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
         OperationDisplay = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay
         Operation = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
         ServiceSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
@@ -40,7 +40,7 @@ module Azure::Profiles::Latest
       end
 
       class SignalrManagementClass
-        attr_reader :usages, :operations, :signal_r, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :signal_r, :usages, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -50,9 +50,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @usages = @client_0.usages
           @operations = @client_0.operations
           @signal_r = @client_0.signal_r
+          @usages = @client_0.usages
 
           @model_classes = ModelClasses.new
         end
@@ -113,17 +113,17 @@ module Azure::Profiles::Latest
           def signal_rcreate_parameters
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
           end
-          def signal_rsku_tier
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
-          end
           def resource
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
           end
-          def key_type
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
+          def signal_rsku_tier
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
           end
           def provisioning_state
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ProvisioningState
+          end
+          def key_type
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
           end
           def operation_display
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay

@@ -11,6 +11,9 @@ module Azure::Profiles::Latest
       Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
 
       module Models
+        RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
+        ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
+        TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
         NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
         SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
         TrackedResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
@@ -31,9 +34,6 @@ module Azure::Profiles::Latest
         PtrRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
         SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
         CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
-        RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
-        ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
-        TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
       end
 
       class DnsManagementClass
@@ -67,6 +67,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def record_set
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
+          end
+          def zone_list_result
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
+          end
+          def txt_record
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
+          end
           def ns_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
           end
@@ -126,15 +135,6 @@ module Azure::Profiles::Latest
           end
           def cname_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
-          end
-          def record_set
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
-          end
-          def zone_list_result
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
-          end
-          def txt_record
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
           end
         end
       end

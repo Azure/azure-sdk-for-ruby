@@ -7,12 +7,14 @@ require 'azure_mgmt_subscriptions'
 module Azure::Profiles::V2017_03_09
   module Subscriptions
     module Mgmt
-      Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
       Operations = Azure::Subscriptions::Mgmt::V2016_06_01::Operations
+      Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
       Subscriptions = Azure::Subscriptions::Mgmt::V2016_06_01::Subscriptions
 
       module Models
         Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+        OperationDisplay = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
+        Operation = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
         OperationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
         TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
         TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
@@ -22,12 +24,10 @@ module Azure::Profiles::V2017_03_09
         LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
         SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
         SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
-        OperationDisplay = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
-        Operation = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
       end
 
       class SubscriptionsManagementClass
-        attr_reader :tenants, :operations, :subscriptions, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :tenants, :subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -37,8 +37,8 @@ module Azure::Profiles::V2017_03_09
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @tenants = @client_0.tenants
           @operations = @client_0.operations
+          @tenants = @client_0.tenants
           @subscriptions = @client_0.subscriptions
 
           @model_classes = ModelClasses.new
@@ -60,6 +60,12 @@ module Azure::Profiles::V2017_03_09
         class ModelClasses
           def location
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+          end
+          def operation_display
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
+          end
+          def operation
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
           end
           def operation_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
@@ -87,12 +93,6 @@ module Azure::Profiles::V2017_03_09
           end
           def spending_limit
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
-          end
-          def operation_display
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
-          end
-          def operation
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
           end
         end
       end

@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     CustomInstance = Azure::CognitiveServices::Customimagesearch::V1_0::CustomInstance
 
     module Models
+      ErrorResponse = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
       Query = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::Customimagesearch::V1_0::Models::MediaObject
@@ -32,7 +33,6 @@ module Azure::Profiles::Latest
       ErrorCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SafeSearch
       Error = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Error
-      ErrorResponse = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
     end
 
     class CustomimagesearchDataClass
@@ -65,6 +65,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def error_response
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
+        end
         def query
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Query
         end
@@ -133,9 +136,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Error
-        end
-        def error_response
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
         end
       end
     end
