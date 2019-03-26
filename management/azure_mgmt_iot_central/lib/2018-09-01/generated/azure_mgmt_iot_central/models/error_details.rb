@@ -32,7 +32,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorDetails',
           type: {
@@ -40,7 +39,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             class_name: 'ErrorDetails',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error.code',
@@ -49,7 +47,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error.message',
@@ -58,7 +55,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error.target',
@@ -67,13 +63,11 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 }
               },
               details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error.details',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ErrorResponseBodyElementType',
                       type: {

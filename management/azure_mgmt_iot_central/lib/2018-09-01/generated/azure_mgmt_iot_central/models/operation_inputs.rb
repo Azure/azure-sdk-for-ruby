@@ -27,7 +27,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationInputs',
           type: {
@@ -35,7 +34,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             class_name: 'OperationInputs',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -46,7 +44,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 default_value: 'IoTApps',
