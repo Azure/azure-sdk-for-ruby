@@ -31,7 +31,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationDisplay',
           type: {
@@ -39,7 +38,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
@@ -48,7 +46,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               resource: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resource',
@@ -57,7 +54,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operation',
@@ -66,7 +62,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',

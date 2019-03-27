@@ -60,7 +60,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationListResult',
           type: {
@@ -68,7 +67,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
             class_name: 'OperationListResult',
             model_properties: {
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
@@ -76,14 +74,12 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationElementType',
                       type: {
