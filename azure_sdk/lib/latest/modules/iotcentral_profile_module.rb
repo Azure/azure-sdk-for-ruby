@@ -9,27 +9,28 @@ module Azure::Profiles::Latest
     module Mgmt
       Operations = Azure::IotCentral::Mgmt::V2018_09_01::Operations
       Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
+      AppOperations = Azure::IotCentral::Mgmt::V2018_09_01::AppOperations
 
       module Models
         ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
         OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
         Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
-        AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
         ErrorResponseBody = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
-        AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
-        OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
         OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
-        AppTemplate = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplate
+        AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
+        AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
         AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
+        OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
+        AppTemplate = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplate
         AppAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
         App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
-        AppTemplates = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplates
+        AppTemplatesResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplatesResult
         AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
         Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
       end
 
       class IotCentralManagementClass
-        attr_reader :operations, :apps, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :apps, :app_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -41,6 +42,7 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @operations = @client_0.operations
           @apps = @client_0.apps
+          @app_operations = @client_0.app_operations
 
           @model_classes = ModelClasses.new
         end
@@ -68,26 +70,26 @@ module Azure::Profiles::Latest
           def operation
             Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
           end
-          def app_sku_info
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
-          end
           def error_response_body
             Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
-          end
-          def app_patch
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
-          end
-          def operation_inputs
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
           end
           def operation_list_result
             Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
           end
-          def app_template
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplate
+          def app_patch
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
+          end
+          def app_sku_info
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
           end
           def app_list_result
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
+          end
+          def operation_inputs
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
+          end
+          def app_template
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplate
           end
           def app_availability_info
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
@@ -95,8 +97,8 @@ module Azure::Profiles::Latest
           def app
             Azure::IotCentral::Mgmt::V2018_09_01::Models::App
           end
-          def app_templates
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplates
+          def app_templates_result
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplatesResult
           end
           def app_sku
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku

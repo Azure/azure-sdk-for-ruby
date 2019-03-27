@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
@@ -43,8 +44,8 @@ module Azure::Profiles::Latest
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
-      Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
+      Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
       ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::EntitySearch::V1_0::Models::Answer
@@ -54,7 +55,6 @@ module Azure::Profiles::Latest
       Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
-      ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def response_format
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
+        end
         def error_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
         end
@@ -189,11 +192,11 @@ module Azure::Profiles::Latest
         def search_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
         end
-        def entities
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
-        end
         def entity_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
+        end
+        def entities
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
         end
         def query_context
           Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
@@ -221,9 +224,6 @@ module Azure::Profiles::Latest
         end
         def safe_search
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
-        end
-        def response_format
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
         end
       end
     end

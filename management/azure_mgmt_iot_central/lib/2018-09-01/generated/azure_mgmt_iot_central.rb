@@ -21,6 +21,7 @@ require 'ms_rest_azure'
 
 module Azure::IotCentral::Mgmt::V2018_09_01
   autoload :Apps,                                               '2018-09-01/generated/azure_mgmt_iot_central/apps.rb'
+  autoload :AppOperations,                                      '2018-09-01/generated/azure_mgmt_iot_central/app_operations.rb'
   autoload :Operations,                                         '2018-09-01/generated/azure_mgmt_iot_central/operations.rb'
   autoload :IotCentralClient,                                   '2018-09-01/generated/azure_mgmt_iot_central/iot_central_client.rb'
 
@@ -37,7 +38,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     autoload :Resource,                                           '2018-09-01/generated/azure_mgmt_iot_central/models/resource.rb'
     autoload :AppTemplate,                                        '2018-09-01/generated/azure_mgmt_iot_central/models/app_template.rb'
     autoload :ErrorDetails,                                       '2018-09-01/generated/azure_mgmt_iot_central/models/error_details.rb'
-    autoload :AppTemplates,                                       '2018-09-01/generated/azure_mgmt_iot_central/models/app_templates.rb'
+    autoload :AppTemplatesResult,                                 '2018-09-01/generated/azure_mgmt_iot_central/models/app_templates_result.rb'
     autoload :App,                                                '2018-09-01/generated/azure_mgmt_iot_central/models/app.rb'
     autoload :AppSku,                                             '2018-09-01/generated/azure_mgmt_iot_central/models/app_sku.rb'
   end

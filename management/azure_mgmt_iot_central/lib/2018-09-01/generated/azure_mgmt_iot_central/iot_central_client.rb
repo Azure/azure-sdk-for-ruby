@@ -37,6 +37,9 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     # @return [Apps] apps
     attr_reader :apps
 
+    # @return [AppOperations] app_operations
+    attr_reader :app_operations
+
     # @return [Operations] operations
     attr_reader :operations
 
@@ -54,6 +57,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       @credentials = credentials
 
       @apps = Apps.new(self)
+      @app_operations = AppOperations.new(self)
       @operations = Operations.new(self)
       @api_version = '2018-09-01'
       @accept_language = 'en-US'

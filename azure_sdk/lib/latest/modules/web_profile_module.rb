@@ -9,12 +9,12 @@ module Azure::Profiles::Latest
     module Mgmt
       Provider = Azure::Web::Mgmt::V2018_02_01::Provider
       Domains = Azure::Web::Mgmt::V2018_02_01::Domains
+      AppServiceCertificateOrders = Azure::Web::Mgmt::V2018_02_01::AppServiceCertificateOrders
       CertificateRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::CertificateRegistrationProvider
       TopLevelDomains = Azure::Web::Mgmt::V2018_02_01::TopLevelDomains
       DomainRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::DomainRegistrationProvider
-      AppServiceEnvironments = Azure::Web::Mgmt::V2018_02_01::AppServiceEnvironments
-      AppServiceCertificateOrders = Azure::Web::Mgmt::V2018_02_01::AppServiceCertificateOrders
       AppServicePlans = Azure::Web::Mgmt::V2018_02_01::AppServicePlans
+      AppServiceEnvironments = Azure::Web::Mgmt::V2018_02_01::AppServiceEnvironments
       WebApps = Azure::Web::Mgmt::V2018_02_01::WebApps
       Certificates = Azure::Web::Mgmt::V2018_02_01::Certificates
       DeletedWebApps = Azure::Web::Mgmt::V2018_02_01::DeletedWebApps
@@ -189,6 +189,7 @@ module Azure::Profiles::Latest
         WorkerPoolResource = Azure::Web::Mgmt::V2018_02_01::Models::WorkerPoolResource
         AppServicePlanPatchResource = Azure::Web::Mgmt::V2018_02_01::Models::AppServicePlanPatchResource
         HybridConnectionLimits = Azure::Web::Mgmt::V2018_02_01::Models::HybridConnectionLimits
+        Contact = Azure::Web::Mgmt::V2018_02_01::Models::Contact
         TopLevelDomainCollection = Azure::Web::Mgmt::V2018_02_01::Models::TopLevelDomainCollection
         CertificateDetails = Azure::Web::Mgmt::V2018_02_01::Models::CertificateDetails
         AppServiceCertificateOrderCollection = Azure::Web::Mgmt::V2018_02_01::Models::AppServiceCertificateOrderCollection
@@ -196,7 +197,6 @@ module Azure::Profiles::Latest
         SiteSealRequest = Azure::Web::Mgmt::V2018_02_01::Models::SiteSealRequest
         AppServiceCertificate = Azure::Web::Mgmt::V2018_02_01::Models::AppServiceCertificate
         AzureStorageInfoValue = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageInfoValue
-        Contact = Azure::Web::Mgmt::V2018_02_01::Models::Contact
         DomainPurchaseConsent = Azure::Web::Mgmt::V2018_02_01::Models::DomainPurchaseConsent
         DomainAvailablilityCheckResult = Azure::Web::Mgmt::V2018_02_01::Models::DomainAvailablilityCheckResult
         DomainControlCenterSsoRequest = Azure::Web::Mgmt::V2018_02_01::Models::DomainControlCenterSsoRequest
@@ -210,12 +210,12 @@ module Azure::Profiles::Latest
         DomainCollection = Azure::Web::Mgmt::V2018_02_01::Models::DomainCollection
         TldLegalAgreementCollection = Azure::Web::Mgmt::V2018_02_01::Models::TldLegalAgreementCollection
         PrivateAccessSubnet = Azure::Web::Mgmt::V2018_02_01::Models::PrivateAccessSubnet
+        SiteSeal = Azure::Web::Mgmt::V2018_02_01::Models::SiteSeal
         NameIdentifierCollection = Azure::Web::Mgmt::V2018_02_01::Models::NameIdentifierCollection
         Address = Azure::Web::Mgmt::V2018_02_01::Models::Address
         TopLevelDomainAgreementOption = Azure::Web::Mgmt::V2018_02_01::Models::TopLevelDomainAgreementOption
         AppServiceCertificateResource = Azure::Web::Mgmt::V2018_02_01::Models::AppServiceCertificateResource
         AppServiceCertificateOrder = Azure::Web::Mgmt::V2018_02_01::Models::AppServiceCertificateOrder
-        SiteSeal = Azure::Web::Mgmt::V2018_02_01::Models::SiteSeal
         AppServiceCertificateOrderPatchResource = Azure::Web::Mgmt::V2018_02_01::Models::AppServiceCertificateOrderPatchResource
         AppServiceCertificatePatchResource = Azure::Web::Mgmt::V2018_02_01::Models::AppServiceCertificatePatchResource
         CertificateEmail = Azure::Web::Mgmt::V2018_02_01::Models::CertificateEmail
@@ -233,17 +233,17 @@ module Azure::Profiles::Latest
         SwiftVirtualNetwork = Azure::Web::Mgmt::V2018_02_01::Models::SwiftVirtualNetwork
         CertificateProductType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateProductType
         CertificateOrderStatus = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
+        Usage = Azure::Web::Mgmt::V2018_02_01::Models::Usage
         CertificateOrderActionType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderActionType
         IpFilterTag = Azure::Web::Mgmt::V2018_02_01::Models::IpFilterTag
-        Usage = Azure::Web::Mgmt::V2018_02_01::Models::Usage
-        AzureStorageState = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageState
         AzureStorageType = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageType
-        DomainStatus = Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
+        AzureStorageState = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageState
         FtpsState = Azure::Web::Mgmt::V2018_02_01::Models::FtpsState
-        DomainType = Azure::Web::Mgmt::V2018_02_01::Models::DomainType
         Dimension = Azure::Web::Mgmt::V2018_02_01::Models::Dimension
-        MetricSpecification = Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
         DnsType = Azure::Web::Mgmt::V2018_02_01::Models::DnsType
+        MetricSpecification = Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
+        DomainType = Azure::Web::Mgmt::V2018_02_01::Models::DomainType
+        DomainStatus = Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
         OperationStatus = Azure::Web::Mgmt::V2018_02_01::Models::OperationStatus
         Deployment = Azure::Web::Mgmt::V2018_02_01::Models::Deployment
         Resource = Azure::Web::Mgmt::V2018_02_01::Models::Resource
@@ -362,7 +362,7 @@ module Azure::Profiles::Latest
       end
 
       class WebManagementClass
-        attr_reader :provider, :domains, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :app_service_environments, :app_service_certificate_orders, :app_service_plans, :web_apps, :certificates, :deleted_web_apps, :diagnostics, :recommendations, :resource_health_metadata_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :provider, :domains, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :app_service_plans, :app_service_environments, :web_apps, :certificates, :deleted_web_apps, :diagnostics, :recommendations, :resource_health_metadata_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -374,12 +374,12 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @provider = @client_0.provider
           @domains = @client_0.domains
+          @app_service_certificate_orders = @client_0.app_service_certificate_orders
           @certificate_registration_provider = @client_0.certificate_registration_provider
           @top_level_domains = @client_0.top_level_domains
           @domain_registration_provider = @client_0.domain_registration_provider
-          @app_service_environments = @client_0.app_service_environments
-          @app_service_certificate_orders = @client_0.app_service_certificate_orders
           @app_service_plans = @client_0.app_service_plans
+          @app_service_environments = @client_0.app_service_environments
           @web_apps = @client_0.web_apps
           @certificates = @client_0.certificates
           @deleted_web_apps = @client_0.deleted_web_apps
@@ -902,6 +902,9 @@ module Azure::Profiles::Latest
           def hybrid_connection_limits
             Azure::Web::Mgmt::V2018_02_01::Models::HybridConnectionLimits
           end
+          def contact
+            Azure::Web::Mgmt::V2018_02_01::Models::Contact
+          end
           def top_level_domain_collection
             Azure::Web::Mgmt::V2018_02_01::Models::TopLevelDomainCollection
           end
@@ -922,9 +925,6 @@ module Azure::Profiles::Latest
           end
           def azure_storage_info_value
             Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageInfoValue
-          end
-          def contact
-            Azure::Web::Mgmt::V2018_02_01::Models::Contact
           end
           def domain_purchase_consent
             Azure::Web::Mgmt::V2018_02_01::Models::DomainPurchaseConsent
@@ -965,6 +965,9 @@ module Azure::Profiles::Latest
           def private_access_subnet
             Azure::Web::Mgmt::V2018_02_01::Models::PrivateAccessSubnet
           end
+          def site_seal
+            Azure::Web::Mgmt::V2018_02_01::Models::SiteSeal
+          end
           def name_identifier_collection
             Azure::Web::Mgmt::V2018_02_01::Models::NameIdentifierCollection
           end
@@ -979,9 +982,6 @@ module Azure::Profiles::Latest
           end
           def app_service_certificate_order
             Azure::Web::Mgmt::V2018_02_01::Models::AppServiceCertificateOrder
-          end
-          def site_seal
-            Azure::Web::Mgmt::V2018_02_01::Models::SiteSeal
           end
           def app_service_certificate_order_patch_resource
             Azure::Web::Mgmt::V2018_02_01::Models::AppServiceCertificateOrderPatchResource
@@ -1034,38 +1034,38 @@ module Azure::Profiles::Latest
           def certificate_order_status
             Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
           end
+          def usage
+            Azure::Web::Mgmt::V2018_02_01::Models::Usage
+          end
           def certificate_order_action_type
             Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderActionType
           end
           def ip_filter_tag
             Azure::Web::Mgmt::V2018_02_01::Models::IpFilterTag
           end
-          def usage
-            Azure::Web::Mgmt::V2018_02_01::Models::Usage
+          def azure_storage_type
+            Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageType
           end
           def azure_storage_state
             Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageState
           end
-          def azure_storage_type
-            Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageType
-          end
-          def domain_status
-            Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
-          end
           def ftps_state
             Azure::Web::Mgmt::V2018_02_01::Models::FtpsState
-          end
-          def domain_type
-            Azure::Web::Mgmt::V2018_02_01::Models::DomainType
           end
           def dimension
             Azure::Web::Mgmt::V2018_02_01::Models::Dimension
           end
+          def dns_type
+            Azure::Web::Mgmt::V2018_02_01::Models::DnsType
+          end
           def metric_specification
             Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
           end
-          def dns_type
-            Azure::Web::Mgmt::V2018_02_01::Models::DnsType
+          def domain_type
+            Azure::Web::Mgmt::V2018_02_01::Models::DomainType
+          end
+          def domain_status
+            Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
           end
           def operation_status
             Azure::Web::Mgmt::V2018_02_01::Models::OperationStatus

@@ -21,7 +21,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # @return [String] The name of the template.
       attr_accessor :name
 
-      # @return [String] The localized title of the template.
+      # @return [String] The title of the template.
       attr_accessor :title
 
       # @return [Float] The order of the template in the templates list.

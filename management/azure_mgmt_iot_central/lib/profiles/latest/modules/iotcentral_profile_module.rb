@@ -6,10 +6,12 @@ require 'azure_mgmt_iot_central'
 
 module Azure::IotCentral::Profiles::Latest
   module Mgmt
-    Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
     Operations = Azure::IotCentral::Mgmt::V2018_09_01::Operations
+    Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
+    AppOperations = Azure::IotCentral::Mgmt::V2018_09_01::AppOperations
 
     module Models
+      App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
       AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
       OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
       AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
@@ -23,15 +25,14 @@ module Azure::IotCentral::Profiles::Latest
       Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
       AppTemplate = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplate
       ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
-      AppTemplates = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplates
-      App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
+      AppTemplatesResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplatesResult
     end
 
     #
     # IotCentralManagementClass
     #
     class IotCentralManagementClass
-      attr_reader :apps, :operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :apps, :app_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -51,8 +52,9 @@ module Azure::IotCentral::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @apps = @client_0.apps
         @operations = @client_0.operations
+        @apps = @client_0.apps
+        @app_operations = @client_0.app_operations
 
         @model_classes = ModelClasses.new
       end
@@ -73,6 +75,9 @@ module Azure::IotCentral::Profiles::Latest
     end
 
     class ModelClasses
+      def app
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::App
+      end
       def app_sku
         Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
       end
@@ -112,11 +117,8 @@ module Azure::IotCentral::Profiles::Latest
       def error_details
         Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
       end
-      def app_templates
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplates
-      end
-      def app
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::App
+      def app_templates_result
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplatesResult
       end
     end
   end

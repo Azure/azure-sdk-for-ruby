@@ -440,11 +440,11 @@ module Azure::Profiles::Latest
 
       module Models
         Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
-        NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
         Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
         VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
-        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
+        NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
         Permissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
+        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
         Resource = Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
         OperationDisplay = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay
         DeletedVault = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVault
@@ -466,12 +466,12 @@ module Azure::Profiles::Latest
         Vault = Azure::KeyVault::Mgmt::V2018_02_14::Models::Vault
         NetworkRuleSet = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleSet
         SkuName = Azure::KeyVault::Mgmt::V2018_02_14::Models::SkuName
-        IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
+        KeyPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
         SecretPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
         Operation = Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
-        StoragePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
+        IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
         OperationListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult
-        KeyPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
+        StoragePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
         CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
         CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
         NetworkRuleAction = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
@@ -511,20 +511,20 @@ module Azure::Profiles::Latest
           def sku
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
           end
-          def network_rule_bypass_options
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
-          end
           def reason
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
           end
           def virtual_network_rule
             Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
           end
-          def access_policy_update_kind
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
+          def network_rule_bypass_options
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
           end
           def permissions
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
+          end
+          def access_policy_update_kind
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
           end
           def resource
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
@@ -589,8 +589,8 @@ module Azure::Profiles::Latest
           def sku_name
             Azure::KeyVault::Mgmt::V2018_02_14::Models::SkuName
           end
-          def iprule
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
+          def key_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
           end
           def secret_permissions
             Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
@@ -598,14 +598,14 @@ module Azure::Profiles::Latest
           def operation
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
           end
-          def storage_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
+          def iprule
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
           end
           def operation_list_result
             Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult
           end
-          def key_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
+          def storage_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
           end
           def create_mode
             Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
