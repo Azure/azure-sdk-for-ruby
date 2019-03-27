@@ -7,8 +7,8 @@ require 'azure_mgmt_policy'
 module Azure::Profiles::V2017_03_09
   module Policy
     module Mgmt
-      PolicyAssignments = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyAssignments
       PolicyDefinitions = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyDefinitions
+      PolicyAssignments = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyAssignments
 
       module Models
         PolicyAssignment = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
@@ -19,7 +19,7 @@ module Azure::Profiles::V2017_03_09
       end
 
       class PolicyManagementClass
-        attr_reader :policy_assignments, :policy_definitions, :configurable, :base_url, :options, :model_classes
+        attr_reader :policy_definitions, :policy_assignments, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -29,8 +29,8 @@ module Azure::Profiles::V2017_03_09
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @policy_assignments = @client_0.policy_assignments
           @policy_definitions = @client_0.policy_definitions
+          @policy_assignments = @client_0.policy_assignments
 
           @model_classes = ModelClasses.new
         end
