@@ -49,35 +49,35 @@ module Azure::Storage::Mgmt::V2018_02_01
             model_properties: {
               action: {
                 required: true,
-                serialized_name: 'Action',
+                serialized_name: 'action',
                 type: {
                   name: 'String'
                 }
               },
               lease_id: {
                 required: false,
-                serialized_name: 'LeaseId',
+                serialized_name: 'leaseId',
                 type: {
                   name: 'String'
                 }
               },
               break_period: {
                 required: false,
-                serialized_name: 'BreakPeriod',
+                serialized_name: 'breakPeriod',
                 type: {
                   name: 'Number'
                 }
               },
               lease_duration: {
                 required: false,
-                serialized_name: 'LeaseDuration',
+                serialized_name: 'leaseDuration',
                 type: {
                   name: 'Number'
                 }
               },
               proposed_lease_id: {
                 required: false,
-                serialized_name: 'ProposedLeaseId',
+                serialized_name: 'proposedLeaseId',
                 type: {
                   name: 'String'
                 }

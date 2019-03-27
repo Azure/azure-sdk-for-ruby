@@ -36,14 +36,14 @@ module Azure::Storage::Mgmt::V2018_02_01
             model_properties: {
               lease_id: {
                 required: false,
-                serialized_name: 'LeaseId',
+                serialized_name: 'leaseId',
                 type: {
                   name: 'String'
                 }
               },
               lease_time_seconds: {
                 required: false,
-                serialized_name: 'LeaseTimeSeconds',
+                serialized_name: 'leaseTimeSeconds',
                 type: {
                   name: 'String'
                 }
