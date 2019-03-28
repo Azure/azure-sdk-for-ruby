@@ -914,7 +914,7 @@
   },
   "azure_mgmt_netapp": {
     "azure_mgmt_netapp_2017_08_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1e7a3ce32b5ed2ecf968507eb3388aa07fbaff81/specification/netapp/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/netapp/resource-manager/readme.md",
       "namespace": "Azure::NetApp::Mgmt::V2017_08_15_preview",
       "tag": "package-2017-08-15"
     }

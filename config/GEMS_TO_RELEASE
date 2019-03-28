@@ -4,7 +4,8 @@
         "azure_mgmt_network",
         "azure_mgmt_container_service",
         "azure_mgmt_marketplace_ordering",
-        "azure_mgmt_edgegateway"
+        "azure_mgmt_edgegateway",
+        "azure_mgmt_netapp"
     ],
     "data": [
         "azure_cognitiveservices_customvisionprediction",

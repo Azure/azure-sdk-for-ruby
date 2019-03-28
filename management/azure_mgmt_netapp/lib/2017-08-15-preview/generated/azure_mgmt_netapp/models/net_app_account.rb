@@ -30,6 +30,9 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
       # @return [String] Azure lifecycle management
       attr_accessor :provisioning_state
 
+      # @return [Array<ActiveDirectory>] Active Directories
+      attr_accessor :active_directories
+
 
       #
       # Mapper for NetAppAccount class as Ruby Hash.
@@ -94,6 +97,23 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              active_directories: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.activeDirectories',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ActiveDirectoryElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ActiveDirectory'
+                      }
+                  }
                 }
               }
             }
