@@ -27,7 +27,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_2
       # @return [DateTime] Gets the date this project was created.
       attr_accessor :created
 
-      # @return [DateTime] Gets the date this project was last modifed.
+      # @return [DateTime] Gets the date this project was last modified.
       attr_accessor :last_modified
 
       # @return [String] Gets the thumbnail url representing the project.

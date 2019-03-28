@@ -1802,30 +1802,42 @@
   },
   "azure_cognitiveservices_customvisiontraining":{
     "azure_cognitiveservices_customvisiontraining_v2.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4342342fca475d5098bcec806e7d87acaf191dc4/specification/cognitiveservices/data-plane/CustomVision/Training/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/cognitiveservices/data-plane/CustomVision/Training/readme.md",
       "namespace": "Azure::CognitiveServices::Customvisiontraining::V2_0",
       "title": "CustomvisiontrainingClient",
       "tag": "release_1_0"
     },
     "azure_cognitiveservices_customvisiontraining_v2.1": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4342342fca475d5098bcec806e7d87acaf191dc4/specification/cognitiveservices/data-plane/CustomVision/Training/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/cognitiveservices/data-plane/CustomVision/Training/readme.md",
       "namespace": "Azure::CognitiveServices::Customvisiontraining::V2_1",
       "title": "CustomvisiontrainingClient",
       "tag": "release_2_1"
     },
     "azure_cognitiveservices_customvisiontraining_v2.2": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4342342fca475d5098bcec806e7d87acaf191dc4/specification/cognitiveservices/data-plane/CustomVision/Training/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/cognitiveservices/data-plane/CustomVision/Training/readme.md",
       "namespace": "Azure::CognitiveServices::Customvisiontraining::V2_2",
       "title": "CustomvisiontrainingClient",
       "tag": "release_2_2"
+    },
+    "azure_cognitiveservices_customvisiontraining_v3.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/cognitiveservices/data-plane/CustomVision/Training/readme.md",
+      "namespace": "Azure::CognitiveServices::Customvisiontraining::V3_0",
+      "title": "CustomvisiontrainingClient",
+      "tag": "release_3_0"
     }
   },
   "azure_cognitiveservices_customvisionprediction":{
     "azure_cognitiveservices_customvisionprediction_v2.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4342342fca475d5098bcec806e7d87acaf191dc4/specification/cognitiveservices/data-plane/CustomVision/Prediction/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/cognitiveservices/data-plane/CustomVision/Prediction/readme.md",
       "namespace": "Azure::CognitiveServices::Customvisionprediction::V2_0",
       "title": "CustomvisionpredictionClient",
       "tag": "release_1_0"
+    },
+    "azure_cognitiveservices_customvisionprediction_v3.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/cognitiveservices/data-plane/CustomVision/Prediction/readme.md",
+      "namespace": "Azure::CognitiveServices::Customvisionprediction::V3_0",
+      "title": "CustomvisionpredictionClient",
+      "tag": "release_3_0"
     }
   },
   "azure_cognitiveservices_entitysearch":{

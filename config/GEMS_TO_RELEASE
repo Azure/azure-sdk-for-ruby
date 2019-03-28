@@ -5,6 +5,10 @@
         "azure_mgmt_container_service",
         "azure_mgmt_marketplace_ordering"
     ],
+    "data": [
+        "azure_cognitiveservices_customvisionprediction",
+        "azure_cognitiveservices_customvisiontraining"
+    ],
     "rollup": [
         "azure_sdk"
     ]

@@ -576,12 +576,12 @@
                 },
                 "Microsoft.CognitiveServices.Customvisiontraining": {
                     "data": {
-                        "2.2": ["*"]
+                        "3.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.Customvisionprediction": {
                     "data": {
-                        "2.0": ["*"]
+                        "3.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.EntitySearch": {
@@ -2078,7 +2078,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.Customvisiontraining": {
                         "data": {
-                            "2.2": ["*"]
+                            "3.0": ["*"]
                         }
                     }
                 },
@@ -2092,7 +2092,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.Customvisionprediction": {
                         "data": {
-                            "2.0": ["*"]
+                            "3.0": ["*"]
                         }
                     }
                 },
