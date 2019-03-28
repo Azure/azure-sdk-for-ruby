@@ -30,7 +30,7 @@ module Azure::Profiles::Latest
         CertificateRequest = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CertificateRequest
         ReplicationUsage = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ReplicationUsage
         ClientDiscoveryDisplay = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryDisplay
-        ResourceNameAvailabilityResponse = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResponse
+        ResourceNameAvailabilityResult = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResult
         ClientDiscoveryForServiceSpecification = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForServiceSpecification
         VaultUsage = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsage
         VaultCertificateResponse = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultCertificateResponse
@@ -45,7 +45,7 @@ module Azure::Profiles::Latest
         ResourceCertificateAndAcsDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
         VaultUsageList = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsageList
         PatchTrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
-        ResourceNameAvailabilityResponseResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResponseResource
+        ResourceNameAvailabilityResultResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResultResource
         VaultExtendedInfoResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource
         PatchVault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
         VaultUpgradeState = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUpgradeState
@@ -132,8 +132,8 @@ module Azure::Profiles::Latest
           def client_discovery_display
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryDisplay
           end
-          def resource_name_availability_response
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResponse
+          def resource_name_availability_result
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResult
           end
           def client_discovery_for_service_specification
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForServiceSpecification
@@ -177,8 +177,8 @@ module Azure::Profiles::Latest
           def patch_tracked_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
           end
-          def resource_name_availability_response_resource
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResponseResource
+          def resource_name_availability_result_resource
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResultResource
           end
           def vault_extended_info_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource

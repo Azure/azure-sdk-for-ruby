@@ -36,7 +36,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ResourceNameAvailabilityResponseResource] operation results.
+    # @return [ResourceNameAvailabilityResultResource] operation results.
     #
     def check_name_availability(resource_group_name, location, input, custom_headers = nil)
       response = check_name_availability_async(resource_group_name, location, input, custom_headers).value!
@@ -130,7 +130,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResponseResource.mapper()
+            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResultResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
