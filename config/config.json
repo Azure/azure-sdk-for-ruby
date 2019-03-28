@@ -530,7 +530,7 @@
   },
   "azure_mgmt_edgegateway": {
     "azure_mgmt_edgegateway_2019_03_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f3a5ad9f80f867d1c546c101310d36a8df863b5b/specification/edgegateway/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/edgegateway/resource-manager/readme.md",
       "namespace": "Azure::EdgeGateway::Mgmt::V2019_03_01",
       "tag": "package-2019-03"
     }
