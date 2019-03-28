@@ -778,7 +778,7 @@
   },
   "azure_mgmt_marketplace_ordering": {
     "azure_mgmt_marketplace_ordering_2015_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/marketplaceordering/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/marketplaceordering/resource-manager/readme.md",
       "namespace": "Azure::MarketplaceOrdering::Mgmt::V2015_06_01",
       "tag": "package-2015-06-01"
     }

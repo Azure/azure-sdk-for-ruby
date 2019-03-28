@@ -2,7 +2,8 @@
     "management": [
         "azure_mgmt_media_services",
         "azure_mgmt_network",
-        "azure_mgmt_container_service"
+        "azure_mgmt_container_service",
+        "azure_mgmt_marketplace_ordering"
     ],
     "rollup": [
         "azure_sdk"
