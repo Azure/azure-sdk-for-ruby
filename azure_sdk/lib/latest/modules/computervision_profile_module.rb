@@ -8,7 +8,6 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
-      Category = Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
       LandmarkResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
       ImageTag = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
       ImageDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
@@ -46,6 +45,7 @@ module Azure::Profiles::Latest
       DomainModelResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::DomainModelResults
       FaceRectangle = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceRectangle
       CelebrityResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
+      Category = Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
     end
 
     class ComputerVisionDataClass
@@ -77,9 +77,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def category
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
-        end
         def landmark_results
           Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
         end
@@ -190,6 +187,9 @@ module Azure::Profiles::Latest
         end
         def celebrity_results
           Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
+        end
+        def category
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
         end
       end
     end

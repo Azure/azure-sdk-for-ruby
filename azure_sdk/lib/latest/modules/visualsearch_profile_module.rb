@@ -9,7 +9,6 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
-      NormalizedQuadrilateral = Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
       ImageAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
       ImageKnowledge = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
       ImageEntityAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageEntityAction
@@ -36,10 +35,10 @@ module Azure::Profiles::Latest
       RecipesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
       ImagesImageMetadata = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
       ImagesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
-      Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
-      AggregateOffer = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
+      Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
       Offer = Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
+      AggregateOffer = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
       Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
@@ -56,6 +55,7 @@ module Azure::Profiles::Latest
       KnowledgeRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
       VisualSearchRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
       Point2D = Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
+      NormalizedQuadrilateral = Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
     end
 
     class VisualSearchDataClass
@@ -88,9 +88,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def normalized_quadrilateral
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
-        end
         def image_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
         end
@@ -169,17 +166,17 @@ module Azure::Profiles::Latest
         def images_module
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
         end
-        def filters
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
-        end
         def aggregate_rating
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
         end
-        def aggregate_offer
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
+        def filters
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
         end
         def offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
+        end
+        def aggregate_offer
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
         end
         def recipe
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
@@ -228,6 +225,9 @@ module Azure::Profiles::Latest
         end
         def point2_d
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
+        end
+        def normalized_quadrilateral
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
         end
       end
     end

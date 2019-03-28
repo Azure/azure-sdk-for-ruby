@@ -31,8 +31,8 @@ module Azure::Profiles::Latest
         AliasType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasType
         ResourceGroupPatchable = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
         Provider = Azure::Resources::Mgmt::V2018_05_01::Models::Provider
-        ResourceGroupListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
         IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+        ResourceGroupListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
         ResourcesMoveInfo = Azure::Resources::Mgmt::V2018_05_01::Models::ResourcesMoveInfo
         ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
         DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
@@ -153,11 +153,11 @@ module Azure::Profiles::Latest
           def provider
             Azure::Resources::Mgmt::V2018_05_01::Models::Provider
           end
-          def resource_group_list_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
-          end
           def identity_user_assigned_identities_value
             Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
+          def resource_group_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
           end
           def resources_move_info
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourcesMoveInfo

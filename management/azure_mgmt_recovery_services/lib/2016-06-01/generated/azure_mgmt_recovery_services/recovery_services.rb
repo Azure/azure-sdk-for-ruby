@@ -25,7 +25,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # API to check for resource name availability.
     # A name is available if no other resource exists that has the same
     # SubscriptionId, Resource Name and Type
-    # or if one or more such resources exist, each of these must be GCed and their
+    # or if one or more such resources exist, each of these must be GC'd and their
     # time of deletion be more than 24 Hours Ago
     #
     # @param resource_group_name [String] The name of the resource group where the
@@ -36,7 +36,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ResourceNameAvailabilityResultResource] operation results.
+    # @return [CheckNameAvailabilityResultResource] operation results.
     #
     def check_name_availability(resource_group_name, location, input, custom_headers = nil)
       response = check_name_availability_async(resource_group_name, location, input, custom_headers).value!
@@ -47,7 +47,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # API to check for resource name availability.
     # A name is available if no other resource exists that has the same
     # SubscriptionId, Resource Name and Type
-    # or if one or more such resources exist, each of these must be GCed and their
+    # or if one or more such resources exist, each of these must be GC'd and their
     # time of deletion be more than 24 Hours Ago
     #
     # @param resource_group_name [String] The name of the resource group where the
@@ -68,7 +68,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # API to check for resource name availability.
     # A name is available if no other resource exists that has the same
     # SubscriptionId, Resource Name and Type
-    # or if one or more such resources exist, each of these must be GCed and their
+    # or if one or more such resources exist, each of these must be GC'd and their
     # time of deletion be more than 24 Hours Ago
     #
     # @param resource_group_name [String] The name of the resource group where the
@@ -130,7 +130,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResultResource.mapper()
+            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CheckNameAvailabilityResultResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

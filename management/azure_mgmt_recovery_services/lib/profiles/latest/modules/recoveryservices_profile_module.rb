@@ -16,33 +16,33 @@ module Azure::RecoveryServices::Profiles::Latest
     RegisteredIdentities = Azure::RecoveryServices::Mgmt::V2016_06_01::RegisteredIdentities
 
     module Models
-      Resource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
-      RawCertificateData = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::RawCertificateData
-      ResourceNameAvailabilityParameters = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityParameters
-      ClientDiscoveryForProperties = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForProperties
       ClientDiscoveryValueForSingleApi = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
-      ResourceCertificateDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateDetails
+      RawCertificateData = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::RawCertificateData
       ClientDiscoveryResponse = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryResponse
+      ClientDiscoveryForLogSpecification = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForLogSpecification
+      ClientDiscoveryForServiceSpecification = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForServiceSpecification
+      ResourceCertificateDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateDetails
+      ClientDiscoveryForProperties = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForProperties
       JobsSummary = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::JobsSummary
       CertificateRequest = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CertificateRequest
       ReplicationUsage = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ReplicationUsage
-      VaultUsageList = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsageList
-      ClientDiscoveryDisplay = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryDisplay
-      ResourceNameAvailabilityResult = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResult
-      ClientDiscoveryForServiceSpecification = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForServiceSpecification
       VaultUsage = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsage
+      CheckNameAvailabilityResult = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CheckNameAvailabilityResult
+      Resource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
+      ClientDiscoveryDisplay = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryDisplay
+      ResourceNameAvailabilityParameters = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityParameters
       VaultCertificateResponse = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultCertificateResponse
       Sku = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
       ReplicationUsageList = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ReplicationUsageList
       NameInfo = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::NameInfo
       VaultList = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultList
-      ClientDiscoveryForLogSpecification = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForLogSpecification
+      VaultUsageList = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsageList
       UpgradeDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UpgradeDetails
       MonitoringSummary = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::MonitoringSummary
       VaultProperties = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultProperties
       ResourceCertificateAndAadDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
       ResourceCertificateAndAcsDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
-      ResourceNameAvailabilityResultResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResultResource
+      CheckNameAvailabilityResultResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CheckNameAvailabilityResultResource
       TrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
       PatchTrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
       Vault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Vault
@@ -107,26 +107,26 @@ module Azure::RecoveryServices::Profiles::Latest
     end
 
     class ModelClasses
-      def resource
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
+      def client_discovery_value_for_single_api
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
       end
       def raw_certificate_data
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::RawCertificateData
       end
-      def resource_name_availability_parameters
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityParameters
+      def client_discovery_response
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryResponse
       end
-      def client_discovery_for_properties
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForProperties
+      def client_discovery_for_log_specification
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForLogSpecification
       end
-      def client_discovery_value_for_single_api
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
+      def client_discovery_for_service_specification
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForServiceSpecification
       end
       def resource_certificate_details
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateDetails
       end
-      def client_discovery_response
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryResponse
+      def client_discovery_for_properties
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForProperties
       end
       def jobs_summary
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::JobsSummary
@@ -137,20 +137,20 @@ module Azure::RecoveryServices::Profiles::Latest
       def replication_usage
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ReplicationUsage
       end
-      def vault_usage_list
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsageList
+      def vault_usage
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsage
+      end
+      def check_name_availability_result
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CheckNameAvailabilityResult
+      end
+      def resource
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Resource
       end
       def client_discovery_display
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryDisplay
       end
-      def resource_name_availability_result
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResult
-      end
-      def client_discovery_for_service_specification
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForServiceSpecification
-      end
-      def vault_usage
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsage
+      def resource_name_availability_parameters
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityParameters
       end
       def vault_certificate_response
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultCertificateResponse
@@ -167,8 +167,8 @@ module Azure::RecoveryServices::Profiles::Latest
       def vault_list
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultList
       end
-      def client_discovery_for_log_specification
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForLogSpecification
+      def vault_usage_list
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsageList
       end
       def upgrade_details
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UpgradeDetails
@@ -185,8 +185,8 @@ module Azure::RecoveryServices::Profiles::Latest
       def resource_certificate_and_acs_details
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
       end
-      def resource_name_availability_result_resource
-        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResultResource
+      def check_name_availability_result_resource
+        Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CheckNameAvailabilityResultResource
       end
       def tracked_resource
         Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource

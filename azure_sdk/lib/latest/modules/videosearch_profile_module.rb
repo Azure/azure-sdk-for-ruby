@@ -12,8 +12,8 @@ module Azure::Profiles::Latest
       PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
       Query = Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
-      MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
       ErrorResponse = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+      MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
       Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
       TrendingVideosCategory = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideosCategory
@@ -23,8 +23,8 @@ module Azure::Profiles::Latest
       Videos = Azure::CognitiveServices::VideoSearch::V1_0::Models::Videos
       TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
       VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
-      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
+      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
       VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
       VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
@@ -39,8 +39,8 @@ module Azure::Profiles::Latest
       Identifiable = Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
       VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
       ErrorCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
-      Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
       SafeSearch = Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
+      Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
     end
 
     class VideoSearchDataClass
@@ -82,11 +82,11 @@ module Azure::Profiles::Latest
         def image_object
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
         end
-        def media_object
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
-        end
         def error_response
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorResponse
+        end
+        def media_object
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
         end
         def error_sub_code
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
@@ -115,11 +115,11 @@ module Azure::Profiles::Latest
         def video_details
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
         end
-        def response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
-        end
         def video_query_scenario
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
+        end
+        def response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
         end
         def video_length
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
@@ -163,11 +163,11 @@ module Azure::Profiles::Latest
         def error_code
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
         end
-        def error
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
-        end
         def safe_search
           Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
+        end
+        def error
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
         end
       end
     end

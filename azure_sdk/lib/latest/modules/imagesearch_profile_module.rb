@@ -10,10 +10,10 @@ module Azure::Profiles::Latest
 
     module Models
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
-      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+      ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
       WebPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
-      ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
+      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       ErrorSubCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
       ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
@@ -50,8 +50,8 @@ module Azure::Profiles::Latest
       RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
       RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
       ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
-      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
+      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
@@ -102,8 +102,8 @@ module Azure::Profiles::Latest
         def query
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
         end
-        def error_response
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+        def image_object
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
         end
         def media_object
           Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
@@ -111,8 +111,8 @@ module Azure::Profiles::Latest
         def web_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
         end
-        def image_object
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
+        def error_response
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
         end
         def error_sub_code
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
@@ -222,11 +222,11 @@ module Azure::Profiles::Latest
         def image_insights
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
         end
-        def images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
-        end
         def trending_images
           Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
+        end
+        def images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
         end
         def rating
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating

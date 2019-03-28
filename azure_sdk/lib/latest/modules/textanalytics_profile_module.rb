@@ -19,8 +19,8 @@ module Azure::Profiles::Latest
       MatchRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
       EntityRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
-      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
       EntitiesBatchResultItemV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
+      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
       Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
       EntitiesBatchResultV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
       InternalError = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::InternalError
@@ -90,11 +90,11 @@ module Azure::Profiles::Latest
         def entity_record_v2dot1
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
         end
-        def error_response
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
-        end
         def entities_batch_result_item_v2dot1
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
+        end
+        def error_response
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
         end
         def input
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input

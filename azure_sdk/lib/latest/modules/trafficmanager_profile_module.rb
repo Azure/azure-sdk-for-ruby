@@ -40,9 +40,9 @@ module Azure::Profiles::Latest
         MonitorProtocol = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorProtocol
         ProfileStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::ProfileStatus
         TrafficRoutingMethod = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficRoutingMethod
+        TrafficViewEnrollmentStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficViewEnrollmentStatus
         Profile = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Profile
         Endpoint = Azure::TrafficManager::Mgmt::V2018_04_01::Models::Endpoint
-        TrafficViewEnrollmentStatus = Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficViewEnrollmentStatus
       end
 
       class TrafficManagerManagementClass
@@ -157,14 +157,14 @@ module Azure::Profiles::Latest
           def traffic_routing_method
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficRoutingMethod
           end
+          def traffic_view_enrollment_status
+            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficViewEnrollmentStatus
+          end
           def profile
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::Profile
           end
           def endpoint
             Azure::TrafficManager::Mgmt::V2018_04_01::Models::Endpoint
-          end
-          def traffic_view_enrollment_status
-            Azure::TrafficManager::Mgmt::V2018_04_01::Models::TrafficViewEnrollmentStatus
           end
         end
       end

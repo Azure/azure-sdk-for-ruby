@@ -9,8 +9,8 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
-      ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
+      ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
@@ -40,8 +40,8 @@ module Azure::Profiles::Latest
       Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
       EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
-      AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+      AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
@@ -87,11 +87,11 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def error_response
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
-        end
         def image_object
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
+        end
+        def error_response
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
         end
         def media_object
           Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
@@ -180,11 +180,11 @@ module Azure::Profiles::Latest
         def entity_scenario
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
         end
-        def answer_type
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
-        end
         def error
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+        end
+        def answer_type
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
         end
         def search_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
