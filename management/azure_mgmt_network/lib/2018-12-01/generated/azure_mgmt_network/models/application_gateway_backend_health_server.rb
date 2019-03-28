@@ -24,6 +24,9 @@ module Azure::Network::Mgmt::V2018_12_01
       # 'Draining'
       attr_accessor :health
 
+      # @return [String] Health Probe Log.
+      attr_accessor :health_probe_log
+
 
       #
       # Mapper for ApplicationGatewayBackendHealthServer class as Ruby Hash.
@@ -59,6 +62,14 @@ module Azure::Network::Mgmt::V2018_12_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'health',
+                type: {
+                  name: 'String'
+                }
+              },
+              health_probe_log: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'healthProbeLog',
                 type: {
                   name: 'String'
                 }

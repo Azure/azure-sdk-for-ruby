@@ -25,7 +25,7 @@ module Azure::Network::Mgmt::V2018_12_01
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'virtualNetworkConnectionGatewayReference',
+          serialized_name: 'VirtualNetworkConnectionGatewayReference',
           type: {
             name: 'Composite',
             class_name: 'VirtualNetworkConnectionGatewayReference',

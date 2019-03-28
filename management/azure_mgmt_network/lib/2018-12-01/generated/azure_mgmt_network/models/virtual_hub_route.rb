@@ -12,7 +12,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       include MsRestAzure
 
-      # @return [Array<String>] list of all addressPrefixes.
+      # @return [Array<String>] List of all addressPrefixes.
       attr_accessor :address_prefixes
 
       # @return [String] NextHop ip address.

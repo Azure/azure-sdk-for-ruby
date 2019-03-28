@@ -76,6 +76,10 @@ module Azure::Network::Mgmt::V2018_12_01
     # express_route_circuit_connections
     attr_reader :express_route_circuit_connections
 
+    # @return [PeerExpressRouteCircuitConnections]
+    # peer_express_route_circuit_connections
+    attr_reader :peer_express_route_circuit_connections
+
     # @return [ExpressRouteCircuits] express_route_circuits
     attr_reader :express_route_circuits
 
@@ -252,6 +256,10 @@ module Azure::Network::Mgmt::V2018_12_01
     # @return [P2sVpnGateways] p2s_vpn_gateways
     attr_reader :p2s_vpn_gateways
 
+    # @return [WebApplicationFirewallPolicies]
+    # web_application_firewall_policies
+    attr_reader :web_application_firewall_policies
+
     #
     # Creates initializes a new instance of the NetworkManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -277,6 +285,7 @@ module Azure::Network::Mgmt::V2018_12_01
       @express_route_circuit_authorizations = ExpressRouteCircuitAuthorizations.new(self)
       @express_route_circuit_peerings = ExpressRouteCircuitPeerings.new(self)
       @express_route_circuit_connections = ExpressRouteCircuitConnections.new(self)
+      @peer_express_route_circuit_connections = PeerExpressRouteCircuitConnections.new(self)
       @express_route_circuits = ExpressRouteCircuits.new(self)
       @express_route_service_providers = ExpressRouteServiceProviders.new(self)
       @express_route_cross_connections = ExpressRouteCrossConnections.new(self)
@@ -333,6 +342,7 @@ module Azure::Network::Mgmt::V2018_12_01
       @vpn_connections = VpnConnections.new(self)
       @p2s_vpn_server_configurations = P2sVpnServerConfigurations.new(self)
       @p2s_vpn_gateways = P2sVpnGateways.new(self)
+      @web_application_firewall_policies = WebApplicationFirewallPolicies.new(self)
       @api_version = '2018-12-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -598,7 +608,7 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.18.5"
+        sdk_information = "#{sdk_information}/0.18.6"
         add_user_agent_information(sdk_information)
     end
   end

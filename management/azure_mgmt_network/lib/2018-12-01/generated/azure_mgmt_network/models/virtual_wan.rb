@@ -34,7 +34,7 @@ module Azure::Network::Mgmt::V2018_12_01
       # Possible values include: 'Optimize', 'OptimizeAndAllow', 'All', 'None'
       attr_accessor :office365local_breakout_category
 
-      # @return [Array<P2SVpnServerConfiguration>] list of all
+      # @return [Array<P2SVpnServerConfiguration>] List of all
       # P2SVpnServerConfigurations associated with the virtual wan.
       attr_accessor :p2svpn_server_configurations
 
