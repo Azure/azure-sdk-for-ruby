@@ -6,45 +6,46 @@
 module Azure::RecoveryServices::Mgmt::V2016_06_01
   module Models
     #
-    # Properties of the vault.
+    # Resource Name availability input parameters - Resource type and resource
+    # name
     #
-    class VaultProperties
+    class ResourceNameAvailabilityParameters
 
       include MsRestAzure
 
-      # @return [String] Provisioning State.
-      attr_accessor :provisioning_state
+      # @return [String] Describes the Resource type:
+      # Microsoft.RecoveryServices/Vaults
+      attr_accessor :type
 
-      # @return [UpgradeDetails]
-      attr_accessor :upgrade_details
+      # @return [String] Resource name for which availability needs to be
+      # checked
+      attr_accessor :name
 
 
       #
-      # Mapper for VaultProperties class as Ruby Hash.
+      # Mapper for ResourceNameAvailabilityParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VaultProperties',
+          serialized_name: 'ResourceNameAvailabilityParameters',
           type: {
             name: 'Composite',
-            class_name: 'VaultProperties',
+            class_name: 'ResourceNameAvailabilityParameters',
             model_properties: {
-              provisioning_state: {
+              type: {
                 required: false,
-                read_only: true,
-                serialized_name: 'provisioningState',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              upgrade_details: {
+              name: {
                 required: false,
-                serialized_name: 'upgradeDetails',
+                serialized_name: 'name',
                 type: {
-                  name: 'Composite',
-                  class_name: 'UpgradeDetails'
+                  name: 'String'
                 }
               }
             }

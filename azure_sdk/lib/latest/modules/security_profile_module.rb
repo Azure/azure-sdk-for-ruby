@@ -19,7 +19,6 @@ module Azure::Profiles::Latest
         ComplianceSegment = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceSegment
         SecurityContactList = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContactList
         ComplianceList = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
-        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
         WorkspaceSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
         SecurityContact = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
         Pricing = Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
@@ -30,6 +29,7 @@ module Azure::Profiles::Latest
         AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
         PricingTier = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
         AutoProvision = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
+        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
       end
 
       class SecurityManagementClass
@@ -81,9 +81,6 @@ module Azure::Profiles::Latest
           def compliance_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
           end
-          def resource
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
-          end
           def workspace_setting_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
           end
@@ -113,6 +110,9 @@ module Azure::Profiles::Latest
           end
           def auto_provision
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
+          end
+          def resource
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
           end
         end
       end

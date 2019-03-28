@@ -7,11 +7,11 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
   #
   # Recovery Services Client
   #
-  class VaultCertificates
+  class RecoveryServices
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the VaultCertificates class.
+    # Creates and initializes a new instance of the RecoveryServices class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,63 +22,71 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     attr_reader :client
 
     #
-    # Uploads a certificate for a resource.
+    # API to check for resource name availability.
+    # A name is available if no other resource exists that has the same
+    # SubscriptionId, Resource Name and Type
+    # or if one or more such resources exist, each of these must be GCed and their
+    # time of deletion be more than 24 Hours Ago
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param certificate_name [String] Certificate friendly name.
-    # @param certificate_request [CertificateRequest] Input parameters for
-    # uploading the vault certificate.
+    # @param location [String] Location of the resource
+    # @param input [ResourceNameAvailabilityParameters] Contains information about
+    # Resource type and Resource name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VaultCertificateResponse] operation results.
+    # @return [ResourceNameAvailabilityResponseResource] operation results.
     #
-    def create(resource_group_name, vault_name, certificate_name, certificate_request, custom_headers = nil)
-      response = create_async(resource_group_name, vault_name, certificate_name, certificate_request, custom_headers).value!
+    def check_name_availability(resource_group_name, location, input, custom_headers = nil)
+      response = check_name_availability_async(resource_group_name, location, input, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Uploads a certificate for a resource.
+    # API to check for resource name availability.
+    # A name is available if no other resource exists that has the same
+    # SubscriptionId, Resource Name and Type
+    # or if one or more such resources exist, each of these must be GCed and their
+    # time of deletion be more than 24 Hours Ago
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param certificate_name [String] Certificate friendly name.
-    # @param certificate_request [CertificateRequest] Input parameters for
-    # uploading the vault certificate.
+    # @param location [String] Location of the resource
+    # @param input [ResourceNameAvailabilityParameters] Contains information about
+    # Resource type and Resource name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, vault_name, certificate_name, certificate_request, custom_headers = nil)
-      create_async(resource_group_name, vault_name, certificate_name, certificate_request, custom_headers).value!
+    def check_name_availability_with_http_info(resource_group_name, location, input, custom_headers = nil)
+      check_name_availability_async(resource_group_name, location, input, custom_headers).value!
     end
 
     #
-    # Uploads a certificate for a resource.
+    # API to check for resource name availability.
+    # A name is available if no other resource exists that has the same
+    # SubscriptionId, Resource Name and Type
+    # or if one or more such resources exist, each of these must be GCed and their
+    # time of deletion be more than 24 Hours Ago
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param certificate_name [String] Certificate friendly name.
-    # @param certificate_request [CertificateRequest] Input parameters for
-    # uploading the vault certificate.
+    # @param location [String] Location of the resource
+    # @param input [ResourceNameAvailabilityParameters] Contains information about
+    # Resource type and Resource name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, vault_name, certificate_name, certificate_request, custom_headers = nil)
+    def check_name_availability_async(resource_group_name, location, input, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
-      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
-      fail ArgumentError, 'certificate_request is nil' if certificate_request.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'input is nil' if input.nil?
 
 
       request_headers = {}
@@ -90,23 +98,23 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CertificateRequest.mapper()
-      request_content = @client.serialize(request_mapper,  certificate_request)
+      request_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityParameters.mapper()
+      request_content = @client.serialize(request_mapper,  input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/certificates/{certificateName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/locations/{location}/checkNameAvailability'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'certificateName' => certificate_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'location' => location},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:put, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -122,7 +130,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultCertificateResponse.mapper()
+            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityResponseResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
