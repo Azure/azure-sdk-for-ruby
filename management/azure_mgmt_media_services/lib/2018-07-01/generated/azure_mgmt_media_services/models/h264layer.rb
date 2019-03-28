@@ -20,15 +20,15 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
       attr_accessor :odatatype
 
-      # @return [H264VideoProfile] Which profile of the H.264 standard should
-      # be used when encoding this layer. Default is Auto. Possible values
-      # include: 'Auto', 'Baseline', 'Main', 'High', 'High422', 'High444'
+      # @return [H264VideoProfile] We currently support Baseline, Main, High,
+      # High422, High444. Default is Auto. Possible values include: 'Auto',
+      # 'Baseline', 'Main', 'High', 'High422', 'High444'
       attr_accessor :profile
 
-      # @return [String] Which level of the H.264 standard should be used when
-      # encoding this layer. The value can be Auto, or a number that matches
-      # the H.264 profile. If not specified, the default is Auto, which lets
-      # the encoder choose the Level that is appropriate for this layer.
+      # @return [String] We currently support Level up to 6.2. The value can be
+      # Auto, or a number that matches the H.264 profile. If not specified, the
+      # default is Auto, which lets the encoder choose the Level that is
+      # appropriate for this layer.
       attr_accessor :level
 
       # @return [Duration] The VBV buffer window length. The value should be in
@@ -94,7 +94,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               bitrate: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'bitrate',
                 type: {
                   name: 'Number'

@@ -65,7 +65,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               codecs: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'codecs',
                 type: {
                   name: 'Sequence',
@@ -84,7 +84,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               formats: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'formats',
                 type: {
                   name: 'Sequence',

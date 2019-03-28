@@ -77,7 +77,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             model_properties: {
               input_label: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'inputLabel',
                 type: {
                   name: 'String'

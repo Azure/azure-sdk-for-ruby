@@ -36,7 +36,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             model_properties: {
               labels: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'labels',
                 type: {
                   name: 'Sequence',

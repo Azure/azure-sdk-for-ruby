@@ -41,7 +41,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # 'High'
       attr_accessor :priority
 
-      # @return [Hash{String => String}] Customer provided correlation data
+      # @return [Hash{String => String}] Customer provided key, value pairs
       # that will be returned in Job and JobOutput state events.
       attr_accessor :correlation_data
 

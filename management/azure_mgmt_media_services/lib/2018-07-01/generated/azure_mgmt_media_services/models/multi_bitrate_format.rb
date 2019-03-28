@@ -44,7 +44,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             model_properties: {
               filename_pattern: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'filenamePattern',
                 type: {
                   name: 'String'

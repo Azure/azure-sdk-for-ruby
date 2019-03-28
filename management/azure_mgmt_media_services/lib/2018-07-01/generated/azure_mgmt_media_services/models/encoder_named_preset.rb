@@ -14,6 +14,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       H264SingleBitrate1080p = "H264SingleBitrate1080p"
       AdaptiveStreaming = "AdaptiveStreaming"
       AACGoodQualityAudio = "AACGoodQualityAudio"
+      ContentAwareEncodingExperimental = "ContentAwareEncodingExperimental"
       H264MultipleBitrate1080p = "H264MultipleBitrate1080p"
       H264MultipleBitrate720p = "H264MultipleBitrate720p"
       H264MultipleBitrateSD = "H264MultipleBitrateSD"

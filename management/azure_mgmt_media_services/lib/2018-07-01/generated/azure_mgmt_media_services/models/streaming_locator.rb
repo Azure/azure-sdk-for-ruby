@@ -47,6 +47,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # @return [String] Alternative Media ID of this Streaming Locator
       attr_accessor :alternative_media_id
 
+      # @return [Array<String>] A list of asset or account filters which apply
+      # to this streaming locator
+      attr_accessor :filters
+
 
       #
       # Mapper for StreamingLocator class as Ruby Hash.
@@ -168,6 +172,22 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 serialized_name: 'properties.alternativeMediaId',
                 type: {
                   name: 'String'
+                }
+              },
+              filters: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.filters',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }
