@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_media_services",
-        "azure_mgmt_network"
+        "azure_mgmt_network",
+        "azure_mgmt_container_service"
     ],
     "rollup": [
         "azure_sdk"

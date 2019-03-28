@@ -3,14 +3,13 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerService::Mgmt::V2018_03_31
+module Azure::ContainerService::Mgmt::V2018_08_01_preview
   module Models
     #
     # Information about a service principal identity for the cluster to use for
-    # manipulating Azure APIs. Either secret or keyVaultSecretRef must be
-    # specified.
+    # manipulating Azure APIs.
     #
-    class ContainerServiceServicePrincipalProfile
+    class ManagedClusterServicePrincipalProfile
 
       include MsRestAzure
 
@@ -21,23 +20,19 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       # principal in plain text.
       attr_accessor :secret
 
-      # @return [KeyVaultSecretRef] Reference to a secret stored in Azure Key
-      # Vault.
-      attr_accessor :key_vault_secret_ref
-
 
       #
-      # Mapper for ContainerServiceServicePrincipalProfile class as Ruby Hash.
+      # Mapper for ManagedClusterServicePrincipalProfile class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ContainerServiceServicePrincipalProfile',
+          serialized_name: 'ManagedClusterServicePrincipalProfile',
           type: {
             name: 'Composite',
-            class_name: 'ContainerServiceServicePrincipalProfile',
+            class_name: 'ManagedClusterServicePrincipalProfile',
             model_properties: {
               client_id: {
                 client_side_validation: true,
@@ -53,15 +48,6 @@ module Azure::ContainerService::Mgmt::V2018_03_31
                 serialized_name: 'secret',
                 type: {
                   name: 'String'
-                }
-              },
-              key_vault_secret_ref: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'keyVaultSecretRef',
-                type: {
-                  name: 'Composite',
-                  class_name: 'KeyVaultSecretRef'
                 }
               }
             }

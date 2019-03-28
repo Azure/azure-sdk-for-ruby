@@ -41,7 +41,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
       # pool.
       attr_accessor :dns_prefix
 
-      # @return [String] FDQN for the agent pool.
+      # @return [String] FQDN for the agent pool.
       attr_accessor :fqdn
 
 

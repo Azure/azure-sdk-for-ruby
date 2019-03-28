@@ -163,6 +163,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
 
 
       request_headers = {}
@@ -263,6 +264,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
 
 
@@ -370,6 +372,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'role_name is nil' if role_name.nil?
 
@@ -408,6 +411,210 @@ module Azure::ContainerService::Mgmt::V2018_03_31
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAccessProfile.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets cluster admin credential of a managed cluster.
+    #
+    # Gets cluster admin credential of the managed cluster with a specified
+    # resource group and name.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CredentialResults] operation results.
+    #
+    def list_cluster_admin_credentials(resource_group_name, resource_name, custom_headers:nil)
+      response = list_cluster_admin_credentials_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets cluster admin credential of a managed cluster.
+    #
+    # Gets cluster admin credential of the managed cluster with a specified
+    # resource group and name.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_cluster_admin_credentials_with_http_info(resource_group_name, resource_name, custom_headers:nil)
+      list_cluster_admin_credentials_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets cluster admin credential of a managed cluster.
+    #
+    # Gets cluster admin credential of the managed cluster with a specified
+    # resource group and name.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_cluster_admin_credentials_async(resource_group_name, resource_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterAdminCredential'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ContainerService::Mgmt::V2018_03_31::Models::CredentialResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets cluster user credential of a managed cluster.
+    #
+    # Gets cluster user credential of the managed cluster with a specified resource
+    # group and name.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CredentialResults] operation results.
+    #
+    def list_cluster_user_credentials(resource_group_name, resource_name, custom_headers:nil)
+      response = list_cluster_user_credentials_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets cluster user credential of a managed cluster.
+    #
+    # Gets cluster user credential of the managed cluster with a specified resource
+    # group and name.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_cluster_user_credentials_with_http_info(resource_group_name, resource_name, custom_headers:nil)
+      list_cluster_user_credentials_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets cluster user credential of a managed cluster.
+    #
+    # Gets cluster user credential of the managed cluster with a specified resource
+    # group and name.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_cluster_user_credentials_async(resource_group_name, resource_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterUserCredential'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ContainerService::Mgmt::V2018_03_31::Models::CredentialResults.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -472,6 +679,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
 
 
@@ -659,6 +867,94 @@ module Azure::ContainerService::Mgmt::V2018_03_31
     end
 
     #
+    # Reset Service Principal Profile of a managed cluster.
+    #
+    # Update the service principal Profile for a managed cluster.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterServicePrincipalProfile] Parameters supplied
+    # to the Reset Service Principal Profile operation for a Managed Cluster.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def reset_service_principal_profile(resource_group_name, resource_name, parameters, custom_headers:nil)
+      response = reset_service_principal_profile_async(resource_group_name, resource_name, parameters, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterServicePrincipalProfile] Parameters supplied
+    # to the Reset Service Principal Profile operation for a Managed Cluster.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def reset_service_principal_profile_async(resource_group_name, resource_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_reset_service_principal_profile_async(resource_group_name, resource_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Reset AAD Profile of a managed cluster.
+    #
+    # Update the AAD Profile for a managed cluster.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterAADProfile] Parameters supplied to the Reset
+    # AAD Profile operation for a Managed Cluster.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def reset_aadprofile(resource_group_name, resource_name, parameters, custom_headers:nil)
+      response = reset_aadprofile_async(resource_group_name, resource_name, parameters, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterAADProfile] Parameters supplied to the Reset
+    # AAD Profile operation for a Managed Cluster.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def reset_aadprofile_async(resource_group_name, resource_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_reset_aadprofile_async(resource_group_name, resource_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Creates or updates a managed cluster.
     #
     # Creates or updates a managed cluster with the specified configuration for
@@ -716,6 +1012,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -838,6 +1135,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -943,6 +1241,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
 
 
@@ -970,6 +1269,210 @@ module Azure::ContainerService::Mgmt::V2018_03_31
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Reset Service Principal Profile of a managed cluster.
+    #
+    # Update the service principal Profile for a managed cluster.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterServicePrincipalProfile] Parameters supplied
+    # to the Reset Service Principal Profile operation for a Managed Cluster.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_reset_service_principal_profile(resource_group_name, resource_name, parameters, custom_headers:nil)
+      response = begin_reset_service_principal_profile_async(resource_group_name, resource_name, parameters, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Reset Service Principal Profile of a managed cluster.
+    #
+    # Update the service principal Profile for a managed cluster.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterServicePrincipalProfile] Parameters supplied
+    # to the Reset Service Principal Profile operation for a Managed Cluster.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_reset_service_principal_profile_with_http_info(resource_group_name, resource_name, parameters, custom_headers:nil)
+      begin_reset_service_principal_profile_async(resource_group_name, resource_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Reset Service Principal Profile of a managed cluster.
+    #
+    # Update the service principal Profile for a managed cluster.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterServicePrincipalProfile] Parameters supplied
+    # to the Reset Service Principal Profile operation for a Managed Cluster.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_reset_service_principal_profile_async(resource_group_name, resource_name, parameters, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterServicePrincipalProfile.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resetServicePrincipalProfile'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Reset AAD Profile of a managed cluster.
+    #
+    # Update the AAD Profile for a managed cluster.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterAADProfile] Parameters supplied to the Reset
+    # AAD Profile operation for a Managed Cluster.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_reset_aadprofile(resource_group_name, resource_name, parameters, custom_headers:nil)
+      response = begin_reset_aadprofile_async(resource_group_name, resource_name, parameters, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Reset AAD Profile of a managed cluster.
+    #
+    # Update the AAD Profile for a managed cluster.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterAADProfile] Parameters supplied to the Reset
+    # AAD Profile operation for a Managed Cluster.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_reset_aadprofile_with_http_info(resource_group_name, resource_name, parameters, custom_headers:nil)
+      begin_reset_aadprofile_async(resource_group_name, resource_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Reset AAD Profile of a managed cluster.
+    #
+    # Update the AAD Profile for a managed cluster.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_name [String] The name of the managed cluster resource.
+    # @param parameters [ManagedClusterAADProfile] Parameters supplied to the Reset
+    # AAD Profile operation for a Managed Cluster.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_reset_aadprofile_async(resource_group_name, resource_name, parameters, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAADProfile.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resetAADProfile'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end

@@ -82,7 +82,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       # will apply the default osDisk size according to the vmSize specified.
       attr_accessor :os_disk_size_gb
 
-      # @return [String] VNet SubnetID specifies the vnet's subnet identifier.
+      # @return [String] VNet SubnetID specifies the VNet's subnet identifier.
       attr_accessor :vnet_subnet_id
 
       # @return [String] FirstConsecutiveStaticIP used to specify the first
@@ -95,7 +95,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       # choice. Possible values include: 'StorageAccount', 'ManagedDisks'
       attr_accessor :storage_profile
 
-      # @return [String] FDQN for the master pool.
+      # @return [String] FQDN for the master pool.
       attr_accessor :fqdn
 
 

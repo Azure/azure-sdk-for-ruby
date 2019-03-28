@@ -43,7 +43,7 @@
         "azure_mgmt_consumption": "0.17.2",
         "azure_mgmt_container_instance": "0.17.4",
         "azure_mgmt_container_registry": "0.18.1",
-        "azure_mgmt_container_service": "0.18.2",
+        "azure_mgmt_container_service": "0.18.3",
         "azure_mgmt_customer_insights": "0.17.2",
         "azure_mgmt_datalake_analytics": "0.17.2",
         "azure_mgmt_datalake_store": "0.17.2",

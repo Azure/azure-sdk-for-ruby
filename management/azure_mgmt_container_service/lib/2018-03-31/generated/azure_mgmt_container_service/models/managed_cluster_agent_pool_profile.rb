@@ -82,25 +82,12 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       # will apply the default osDisk size according to the vmSize specified.
       attr_accessor :os_disk_size_gb
 
-      # @return [String] DNS prefix to be used to create the FQDN for the agent
-      # pool.
-      attr_accessor :dns_prefix
-
-      # @return [String] FDQN for the agent pool.
-      attr_accessor :fqdn
-
-      # @return [Array<Integer>] Ports number array used to expose on this
-      # agent pool. The default opened ports are different based on your choice
-      # of orchestrator.
-      attr_accessor :ports
-
       # @return [ContainerServiceStorageProfileTypes] Storage profile specifies
-      # what kind of storage used. Choose from StorageAccount and ManagedDisks.
-      # Leave it empty, we will choose for you based on the orchestrator
-      # choice. Possible values include: 'StorageAccount', 'ManagedDisks'
+      # what kind of storage used. Defaults to ManagedDisks. Possible values
+      # include: 'StorageAccount', 'ManagedDisks'
       attr_accessor :storage_profile
 
-      # @return [String] VNet SubnetID specifies the vnet's subnet identifier.
+      # @return [String] VNet SubnetID specifies the VNet's subnet identifier.
       attr_accessor :vnet_subnet_id
 
       # @return [Integer] Maximum number of pods that can run on a node.
@@ -129,6 +116,9 @@ module Azure::ContainerService::Mgmt::V2018_03_31
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
+                constraints: {
+                  Pattern: '^[a-z][a-z0-9]{0,11}$'
+                },
                 type: {
                   name: 'String'
                 }
@@ -162,42 +152,10 @@ module Azure::ContainerService::Mgmt::V2018_03_31
                   name: 'Number'
                 }
               },
-              dns_prefix: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'dnsPrefix',
-                type: {
-                  name: 'String'
-                }
-              },
-              fqdn: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'fqdn',
-                type: {
-                  name: 'String'
-                }
-              },
-              ports: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'ports',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'NumberElementType',
-                      type: {
-                        name: 'Number'
-                      }
-                  }
-                }
-              },
               storage_profile: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'storageProfile',
                 type: {
                   name: 'String'
