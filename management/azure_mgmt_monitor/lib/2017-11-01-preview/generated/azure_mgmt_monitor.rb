@@ -20,7 +20,7 @@ require '2017-11-01-preview/generated/azure_mgmt_monitor/module_definition'
 require 'ms_rest_azure'
 
 module Azure::Monitor::Mgmt::V2017_11_01_preview
-  autoload :MetricBaseline,                                     '2017-11-01-preview/generated/azure_mgmt_monitor/metric_baseline.rb'
+  autoload :BaselineOperations,                                 '2017-11-01-preview/generated/azure_mgmt_monitor/baseline_operations.rb'
   autoload :MonitorManagementClient,                            '2017-11-01-preview/generated/azure_mgmt_monitor/monitor_management_client.rb'
 
   module Models
