@@ -24,8 +24,8 @@ module Azure::Profiles::Latest
       TrendingVideos = Azure::CognitiveServices::VideoSearch::V1_0::Models::TrendingVideos
       VideoDetails = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoDetails
       VideoQueryScenario = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
-      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       VideoLength = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
+      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       VideoPricing = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing
       VideoResolution = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoResolution
       VideoInsightModule = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoInsightModule
@@ -118,11 +118,11 @@ module Azure::Profiles::Latest
         def video_query_scenario
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoQueryScenario
         end
-        def response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
-        end
         def video_length
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoLength
+        end
+        def response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
         end
         def video_pricing
           Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoPricing

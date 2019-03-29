@@ -16,12 +16,12 @@ module Azure::Profiles::Latest
       ErrorSubCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorSubCode
       ImageAspect = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageColor
-      ErrorResponse = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
       Freshness = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
-      ImageType = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
-      ImageLicense = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
+      ErrorResponse = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
       ImageContent = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageContent
+      ImageLicense = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
       ImageSize = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
+      ImageType = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
       Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
       Response = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response
       ResponseBase = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ResponseBase
@@ -86,23 +86,23 @@ module Azure::Profiles::Latest
         def image_color
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageColor
         end
-        def error_response
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
-        end
         def freshness
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
         end
-        def image_type
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
-        end
-        def image_license
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
+        def error_response
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
         end
         def image_content
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageContent
         end
+        def image_license
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
+        end
         def image_size
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
+        end
+        def image_type
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
         end
         def images
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images

@@ -31,7 +31,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
     # @param location [String] Location of the resource
-    # @param input [ResourceNameAvailabilityParameters] Contains information about
+    # @param input [CheckNameAvailabilityParameters] Contains information about
     # Resource type and Resource name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -53,7 +53,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
     # @param location [String] Location of the resource
-    # @param input [ResourceNameAvailabilityParameters] Contains information about
+    # @param input [CheckNameAvailabilityParameters] Contains information about
     # Resource type and Resource name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -74,7 +74,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
     # @param location [String] Location of the resource
-    # @param input [ResourceNameAvailabilityParameters] Contains information about
+    # @param input [CheckNameAvailabilityParameters] Contains information about
     # Resource type and Resource name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -98,7 +98,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceNameAvailabilityParameters.mapper()
+      request_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::CheckNameAvailabilityParameters.mapper()
       request_content = @client.serialize(request_mapper,  input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

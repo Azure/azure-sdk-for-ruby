@@ -12,8 +12,8 @@ module Azure::Profiles::Latest
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
-      WebPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
       ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+      WebPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
       ErrorSubCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
       ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
@@ -51,8 +51,8 @@ module Azure::Profiles::Latest
       RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
       ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
       TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
-      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
@@ -108,11 +108,11 @@ module Azure::Profiles::Latest
         def media_object
           Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
         end
-        def web_page
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
-        end
         def error_response
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
+        end
+        def web_page
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
         end
         def error_sub_code
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
@@ -225,11 +225,11 @@ module Azure::Profiles::Latest
         def trending_images
           Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
         end
-        def images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
-        end
         def rating
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
+        end
+        def images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
         end
         def collection_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage

@@ -9,9 +9,8 @@ module Azure::Profiles::Latest
     Web = Azure::CognitiveServices::WebSearch::V1_0::Web
 
     module Models
-      AnswerType = Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
       Intangible = Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
-      TimeZone = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
+      Article = Azure::CognitiveServices::WebSearch::V1_0::Models::Article
       ErrorCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
       StructuredValue = Azure::CognitiveServices::WebSearch::V1_0::Models::StructuredValue
@@ -48,8 +47,9 @@ module Azure::Profiles::Latest
       VideoObject = Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
       RelatedSearchesRelatedSearchAnswer = Azure::CognitiveServices::WebSearch::V1_0::Models::RelatedSearchesRelatedSearchAnswer
       SpellSuggestions = Azure::CognitiveServices::WebSearch::V1_0::Models::SpellSuggestions
+      TimeZone = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
       Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
-      Article = Azure::CognitiveServices::WebSearch::V1_0::Models::Article
+      AnswerType = Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
     end
 
     class WebSearchDataClass
@@ -82,14 +82,11 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def answer_type
-          Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
-        end
         def intangible
           Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
         end
-        def time_zone
-          Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
+        def article
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Article
         end
         def error_code
           Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
@@ -199,11 +196,14 @@ module Azure::Profiles::Latest
         def spell_suggestions
           Azure::CognitiveServices::WebSearch::V1_0::Models::SpellSuggestions
         end
+        def time_zone
+          Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZone
+        end
         def error
           Azure::CognitiveServices::WebSearch::V1_0::Models::Error
         end
-        def article
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Article
+        def answer_type
+          Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
         end
       end
     end

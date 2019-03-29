@@ -40,8 +40,8 @@ module Azure::Profiles::Latest
       Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
       EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
-      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
@@ -180,11 +180,11 @@ module Azure::Profiles::Latest
         def entity_scenario
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
         end
-        def error
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
-        end
         def answer_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+        end
+        def error
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
         end
         def search_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
