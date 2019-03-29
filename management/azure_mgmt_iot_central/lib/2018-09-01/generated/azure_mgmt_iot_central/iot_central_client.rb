@@ -23,10 +23,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     # @return [String] The version of the API.
     attr_reader :api_version
 
-    # @return [String] The combination id of manifestId and manifestVersion of
-    # the IoT Central application template.
-    attr_accessor :application_template_id
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 

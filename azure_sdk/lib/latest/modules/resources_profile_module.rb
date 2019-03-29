@@ -39,9 +39,9 @@ module Azure::Profiles::Latest
         TagCount = Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
         ProviderListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
         TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
         TagDetails = Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         TagsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
         AliasPathType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
         TargetResource = Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
@@ -177,14 +177,14 @@ module Azure::Profiles::Latest
           def tag_value
             Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
           end
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
           def resource_group_filter
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
           end
           def tag_details
             Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
-          end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
           end
           def tags_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult

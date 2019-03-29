@@ -641,40 +641,46 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     #
     # Get a single application template.
     #
+    # @param application_template_id [String] The combination id of manifestId and
+    # manifestVersion of the IoT Central application template.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AppTemplate] operation results.
     #
-    def template(custom_headers = nil)
-      response = template_async(custom_headers).value!
+    def template(application_template_id, custom_headers = nil)
+      response = template_async(application_template_id, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Get a single application template.
     #
+    # @param application_template_id [String] The combination id of manifestId and
+    # manifestVersion of the IoT Central application template.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def template_with_http_info(custom_headers = nil)
-      template_async(custom_headers).value!
+    def template_with_http_info(application_template_id, custom_headers = nil)
+      template_async(application_template_id, custom_headers).value!
     end
 
     #
     # Get a single application template.
     #
+    # @param application_template_id [String] The combination id of manifestId and
+    # manifestVersion of the IoT Central application template.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def template_async(custom_headers = nil)
+    def template_async(application_template_id, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.application_template_id is nil' if @client.application_template_id.nil?
+      fail ArgumentError, 'application_template_id is nil' if application_template_id.nil?
 
 
       request_headers = {}
@@ -688,7 +694,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'applicationTemplateId' => @client.application_template_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'applicationTemplateId' => application_template_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

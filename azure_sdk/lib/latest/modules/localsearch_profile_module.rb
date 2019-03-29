@@ -9,8 +9,6 @@ module Azure::Profiles::Latest
     Local = Azure::CognitiveServices::LocalSearch::V1_0::Local
 
     module Models
-      SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
-      Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
       CreativeWork = Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
       ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
@@ -33,8 +31,10 @@ module Azure::Profiles::Latest
       Answer = Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResultsAnswer
       StructuredValue = Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
-      Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
       Thing = Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
+      Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
+      SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
+      Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
     end
 
     class LocalSearchDataClass
@@ -67,12 +67,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def search_action
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
-        end
-        def identifiable
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
-        end
         def creative_work
           Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
         end
@@ -139,11 +133,17 @@ module Azure::Profiles::Latest
         def structured_value
           Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
         end
+        def thing
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
+        end
         def error
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
         end
-        def thing
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
+        def search_action
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
+        end
+        def identifiable
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
         end
       end
     end

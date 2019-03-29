@@ -9,7 +9,6 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
-      Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
       CropArea = Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
       ImageInfo = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
       ImageTagRegion = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
@@ -21,9 +20,9 @@ module Azure::Profiles::Latest
       ImageKnowledge = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
       ImageEntityAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageEntityAction
       ImageModuleAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
-      ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
       ImageRecipesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
       ImageRelatedSearchesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
+      ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
       ImageShoppingSourcesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
       ContentTypes = Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
       ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
@@ -56,6 +55,7 @@ module Azure::Profiles::Latest
       ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
       Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
+      Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
     end
 
     class VisualSearchDataClass
@@ -88,9 +88,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def identifiable
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
-        end
         def crop_area
           Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
         end
@@ -124,14 +121,14 @@ module Azure::Profiles::Latest
         def image_module_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
         end
-        def error_response
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
-        end
         def image_recipes_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
         end
         def image_related_searches_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
+        end
+        def error_response
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
         end
         def image_shopping_sources_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
@@ -228,6 +225,9 @@ module Azure::Profiles::Latest
         end
         def creative_work
           Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
+        end
+        def identifiable
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
         end
       end
     end

@@ -8,8 +8,6 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
-      AdultInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
-      OcrResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
       ModelDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
       ImageCaption = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageCaption
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::ListModelsResult
@@ -46,6 +44,8 @@ module Azure::Profiles::Latest
       OcrLine = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrLine
       CategoryDetail = Azure::CognitiveServices::ComputerVision::V2_0::Models::CategoryDetail
       OcrRegion = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrRegion
+      AdultInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
+      OcrResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
     end
 
     class ComputerVisionDataClass
@@ -77,12 +77,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def adult_info
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
-        end
-        def ocr_result
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
-        end
         def model_description
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
         end
@@ -190,6 +184,12 @@ module Azure::Profiles::Latest
         end
         def ocr_region
           Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrRegion
+        end
+        def adult_info
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
+        end
+        def ocr_result
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
         end
       end
     end

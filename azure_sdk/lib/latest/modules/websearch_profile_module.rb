@@ -9,8 +9,6 @@ module Azure::Profiles::Latest
     Web = Azure::CognitiveServices::WebSearch::V1_0::Web
 
     module Models
-      Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
-      Identifiable = Azure::CognitiveServices::WebSearch::V1_0::Models::Identifiable
       QueryContext = Azure::CognitiveServices::WebSearch::V1_0::Models::QueryContext
       News = Azure::CognitiveServices::WebSearch::V1_0::Models::News
       VideoObject = Azure::CognitiveServices::WebSearch::V1_0::Models::VideoObject
@@ -22,15 +20,15 @@ module Azure::Profiles::Latest
       Intangible = Azure::CognitiveServices::WebSearch::V1_0::Models::Intangible
       StructuredValue = Azure::CognitiveServices::WebSearch::V1_0::Models::StructuredValue
       AnswerType = Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
-      ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
-      SafeSearch = Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
       ErrorCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
+      SafeSearch = Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
+      ErrorResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
       Query = Azure::CognitiveServices::WebSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::WebSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::WebSearch::V1_0::Models::MediaObject
       WebPage = Azure::CognitiveServices::WebSearch::V1_0::Models::WebPage
-      Images = Azure::CognitiveServices::WebSearch::V1_0::Models::Images
       ErrorSubCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
+      Images = Azure::CognitiveServices::WebSearch::V1_0::Models::Images
       Freshness = Azure::CognitiveServices::WebSearch::V1_0::Models::Freshness
       Response = Azure::CognitiveServices::WebSearch::V1_0::Models::Response
       WebMetaTag = Azure::CognitiveServices::WebSearch::V1_0::Models::WebMetaTag
@@ -50,6 +48,8 @@ module Azure::Profiles::Latest
       ResponseBase = Azure::CognitiveServices::WebSearch::V1_0::Models::ResponseBase
       Thing = Azure::CognitiveServices::WebSearch::V1_0::Models::Thing
       NewsArticle = Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
+      Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
+      Identifiable = Azure::CognitiveServices::WebSearch::V1_0::Models::Identifiable
     end
 
     class WebSearchDataClass
@@ -82,12 +82,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def error
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Error
-        end
-        def identifiable
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Identifiable
-        end
         def query_context
           Azure::CognitiveServices::WebSearch::V1_0::Models::QueryContext
         end
@@ -121,14 +115,14 @@ module Azure::Profiles::Latest
         def answer_type
           Azure::CognitiveServices::WebSearch::V1_0::Models::AnswerType
         end
-        def error_response
-          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
+        def error_code
+          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
         end
         def safe_search
           Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
         end
-        def error_code
-          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
+        def error_response
+          Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorResponse
         end
         def query
           Azure::CognitiveServices::WebSearch::V1_0::Models::Query
@@ -142,11 +136,11 @@ module Azure::Profiles::Latest
         def web_page
           Azure::CognitiveServices::WebSearch::V1_0::Models::WebPage
         end
-        def images
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Images
-        end
         def error_sub_code
           Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorSubCode
+        end
+        def images
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Images
         end
         def freshness
           Azure::CognitiveServices::WebSearch::V1_0::Models::Freshness
@@ -204,6 +198,12 @@ module Azure::Profiles::Latest
         end
         def news_article
           Azure::CognitiveServices::WebSearch::V1_0::Models::NewsArticle
+        end
+        def error
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Error
+        end
+        def identifiable
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Identifiable
         end
       end
     end

@@ -439,12 +439,11 @@ module Azure::Profiles::Latest
       Operations = Azure::KeyVault::Mgmt::V2018_02_14::Operations
 
       module Models
-        IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
-        Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
-        NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
         NetworkRuleAction = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
-        VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
+        Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
+        CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
         Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
+        VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
         Permissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
         Resource = Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
         OperationDisplay = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay
@@ -474,7 +473,8 @@ module Azure::Profiles::Latest
         OperationListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult
         AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
         CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
-        CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
+        IPRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
+        NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
       end
 
       class KeyVaultManagementClass
@@ -508,23 +508,20 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def iprule
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
+          def network_rule_action
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
           end
           def sku
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
           end
-          def network_rule_bypass_options
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
-          end
-          def network_rule_action
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
-          end
-          def virtual_network_rule
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
+          def certificate_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
           end
           def reason
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
+          end
+          def virtual_network_rule
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
           end
           def permissions
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
@@ -613,8 +610,11 @@ module Azure::Profiles::Latest
           def create_mode
             Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
           end
-          def certificate_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
+          def iprule
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::IPRule
+          end
+          def network_rule_bypass_options
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
           end
         end
       end

@@ -11,16 +11,16 @@ module Azure::Profiles::Latest
       DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
       MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageInput
       LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResultItem
-      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
       KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResultItem
+      LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResult
+      ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
       KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResult
-      SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResultItem
       SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResult
       BatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
       MatchRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
-      LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResult
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
       EntityRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
+      SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResultItem
       EntitiesBatchResultItemV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
       Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
       EntitiesBatchResultV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultV2dot1
@@ -66,17 +66,17 @@ module Azure::Profiles::Latest
         def language_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResultItem
         end
-        def error_response
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
-        end
         def key_phrase_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResultItem
         end
+        def language_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResult
+        end
+        def error_response
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
+        end
         def key_phrase_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResult
-        end
-        def sentiment_batch_result_item
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResultItem
         end
         def sentiment_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResult
@@ -87,14 +87,14 @@ module Azure::Profiles::Latest
         def match_record_v2dot1
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
         end
-        def language_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResult
-        end
         def error_record
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
         end
         def entity_record_v2dot1
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
+        end
+        def sentiment_batch_result_item
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResultItem
         end
         def entities_batch_result_item_v2dot1
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1

@@ -232,12 +232,12 @@ module Azure::Profiles::Latest
         SnapshotRestoreRequest = Azure::Web::Mgmt::V2018_02_01::Models::SnapshotRestoreRequest
         SwiftVirtualNetwork = Azure::Web::Mgmt::V2018_02_01::Models::SwiftVirtualNetwork
         CertificateProductType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateProductType
-        CertificateOrderStatus = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
-        Dimension = Azure::Web::Mgmt::V2018_02_01::Models::Dimension
-        CertificateOrderActionType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderActionType
-        MetricSpecification = Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
-        AzureStorageType = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageType
         Usage = Azure::Web::Mgmt::V2018_02_01::Models::Usage
+        CertificateOrderStatus = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
+        CertificateOrderActionType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderActionType
+        Dimension = Azure::Web::Mgmt::V2018_02_01::Models::Dimension
+        AzureStorageType = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageType
+        MetricSpecification = Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
         FtpsState = Azure::Web::Mgmt::V2018_02_01::Models::FtpsState
         AzureStorageState = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageState
         IpFilterTag = Azure::Web::Mgmt::V2018_02_01::Models::IpFilterTag
@@ -1031,23 +1031,23 @@ module Azure::Profiles::Latest
           def certificate_product_type
             Azure::Web::Mgmt::V2018_02_01::Models::CertificateProductType
           end
+          def usage
+            Azure::Web::Mgmt::V2018_02_01::Models::Usage
+          end
           def certificate_order_status
             Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
-          end
-          def dimension
-            Azure::Web::Mgmt::V2018_02_01::Models::Dimension
           end
           def certificate_order_action_type
             Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderActionType
           end
-          def metric_specification
-            Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
+          def dimension
+            Azure::Web::Mgmt::V2018_02_01::Models::Dimension
           end
           def azure_storage_type
             Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageType
           end
-          def usage
-            Azure::Web::Mgmt::V2018_02_01::Models::Usage
+          def metric_specification
+            Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
           end
           def ftps_state
             Azure::Web::Mgmt::V2018_02_01::Models::FtpsState

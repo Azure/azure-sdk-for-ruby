@@ -13,7 +13,6 @@ module Azure::Profiles::Latest
       module Models
         GenericResource = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::GenericResource
         Sku = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Sku
-        ResourceIdentityType = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ResourceIdentityType
         PlanPatchable = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::PlanPatchable
         ApplicationProviderAuthorization = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationProviderAuthorization
         ApplicationDefinitionListResult = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationDefinitionListResult
@@ -26,6 +25,7 @@ module Azure::Profiles::Latest
         ErrorResponse = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ErrorResponse
         ApplicationListResult = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ApplicationListResult
         Application = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Application
+        ResourceIdentityType = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ResourceIdentityType
         Identity = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Identity
         Resource = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Resource
         Plan = Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Plan
@@ -68,9 +68,6 @@ module Azure::Profiles::Latest
           def sku
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Sku
           end
-          def resource_identity_type
-            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ResourceIdentityType
-          end
           def plan_patchable
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::PlanPatchable
           end
@@ -106,6 +103,9 @@ module Azure::Profiles::Latest
           end
           def application
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Application
+          end
+          def resource_identity_type
+            Azure::ManagedApplications::Mgmt::V2018_06_01::Models::ResourceIdentityType
           end
           def identity
             Azure::ManagedApplications::Mgmt::V2018_06_01::Models::Identity

@@ -8,12 +8,10 @@ module Azure::Profiles::Latest
   module Autosuggest
 
     module Models
-      SearchAction = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
-      Thing = Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
-      Identifiable = Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
-      Response = Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
-      SearchKind = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
+      CreativeWork = Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
       ScenarioType = Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
+      SearchKind = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
+      Response = Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
       SafeSearch = Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
       ErrorCode = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorCode
       ResponseFormat = Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseFormat
@@ -24,9 +22,11 @@ module Azure::Profiles::Latest
       ResponseBase = Azure::CognitiveServices::Autosuggest::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::Autosuggest::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchResultsAnswer
-      Error = Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
       Suggestions = Azure::CognitiveServices::Autosuggest::V1_0::Models::Suggestions
-      CreativeWork = Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
+      Thing = Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
+      Error = Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
+      SearchAction = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
+      Identifiable = Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
     end
 
     class AutosuggestDataClass
@@ -58,23 +58,17 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def search_action
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
+        def creative_work
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
         end
-        def thing
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
-        end
-        def identifiable
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
-        end
-        def response
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
+        def scenario_type
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
         end
         def search_kind
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
         end
-        def scenario_type
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
+        def response
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
         end
         def safe_search
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
@@ -106,14 +100,20 @@ module Azure::Profiles::Latest
         def search_results_answer
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchResultsAnswer
         end
-        def error
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
-        end
         def suggestions
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Suggestions
         end
-        def creative_work
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
+        def thing
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
+        end
+        def error
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
+        end
+        def search_action
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
+        end
+        def identifiable
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
         end
       end
     end
