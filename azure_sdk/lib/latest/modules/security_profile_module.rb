@@ -25,11 +25,11 @@ module Azure::Profiles::Latest
         WorkspaceSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSetting
         AutoProvisioningSetting = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSetting
         Compliance = Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
+        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
         AlertNotifications = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
         AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
         PricingTier = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
         AutoProvision = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
-        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
       end
 
       class SecurityManagementClass
@@ -99,6 +99,9 @@ module Azure::Profiles::Latest
           def compliance
             Azure::Security::Mgmt::V2017_08_01_preview::Models::Compliance
           end
+          def resource
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
+          end
           def alert_notifications
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertNotifications
           end
@@ -110,9 +113,6 @@ module Azure::Profiles::Latest
           end
           def auto_provision
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
-          end
-          def resource
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
           end
         end
       end

@@ -36,12 +36,12 @@ module Azure::Profiles::Latest
         DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
         ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
         DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         TagCount = Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
+        ProviderListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
         TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
         ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
-        ProviderListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
         TagDetails = Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         TagsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
         AliasPathType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
         TargetResource = Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
@@ -168,11 +168,11 @@ module Azure::Profiles::Latest
           def deployment_extended
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
           end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
-          end
           def tag_count
             Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
+          end
+          def provider_list_result
+            Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
           end
           def tag_value
             Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
@@ -180,11 +180,11 @@ module Azure::Profiles::Latest
           def resource_group_filter
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
           end
-          def provider_list_result
-            Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
-          end
           def tag_details
             Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
+          end
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
           end
           def tags_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult

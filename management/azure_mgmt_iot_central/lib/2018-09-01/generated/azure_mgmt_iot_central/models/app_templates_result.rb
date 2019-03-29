@@ -14,7 +14,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
 
       include MsRest::JSONable
       # @return [String] The link used to get the next page of IoT Central
-      # description objects.
+      # application templates.
       attr_accessor :next_link
 
       # @return [Array<AppTemplate>] A list of IoT Central Application
