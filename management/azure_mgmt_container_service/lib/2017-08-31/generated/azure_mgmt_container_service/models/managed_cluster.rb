@@ -20,7 +20,7 @@ module Azure::ContainerService::Mgmt::V2017_08_31
       # cluster.
       attr_accessor :dns_prefix
 
-      # @return [String] FDQN for the master pool.
+      # @return [String] FQDN for the master pool.
       attr_accessor :fqdn
 
       # @return [String] Version of Kubernetes specified when creating the

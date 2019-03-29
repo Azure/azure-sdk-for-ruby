@@ -67,6 +67,9 @@ module Azure::Network::Mgmt::V2018_12_01
       # @return [Boolean] Flag to enable Global Reach on the circuit.
       attr_accessor :allow_global_reach
 
+      # @return [Boolean] Flag denoting Global reach status.
+      attr_accessor :global_reach_enabled
+
       # @return [String] Gets a unique read-only string that changes whenever
       # the resource is updated.
       attr_accessor :etag
@@ -273,6 +276,14 @@ module Azure::Network::Mgmt::V2018_12_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.allowGlobalReach',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              global_reach_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.globalReachEnabled',
                 type: {
                   name: 'Boolean'
                 }

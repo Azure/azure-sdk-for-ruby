@@ -208,7 +208,7 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
     #
     # Creates or updates an order.
     #
-    # @param device_name [String] The order details of a device.
+    # @param device_name [String] The device name.
     # @param order [Order] The order to be created or updated.
     # @param resource_group_name [String] The resource group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -222,7 +222,7 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
     end
 
     #
-    # @param device_name [String] The order details of a device.
+    # @param device_name [String] The device name.
     # @param order [Order] The order to be created or updated.
     # @param resource_group_name [String] The resource group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -290,7 +290,7 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
     #
     # Creates or updates an order.
     #
-    # @param device_name [String] The order details of a device.
+    # @param device_name [String] The device name.
     # @param order [Order] The order to be created or updated.
     # @param resource_group_name [String] The resource group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -306,7 +306,7 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
     #
     # Creates or updates an order.
     #
-    # @param device_name [String] The order details of a device.
+    # @param device_name [String] The device name.
     # @param order [Order] The order to be created or updated.
     # @param resource_group_name [String] The resource group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -321,7 +321,7 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
     #
     # Creates or updates an order.
     #
-    # @param device_name [String] The order details of a device.
+    # @param device_name [String] The device name.
     # @param order [Order] The order to be created or updated.
     # @param resource_group_name [String] The resource group name.
     # @param [Hash{String => String}] A hash of custom headers that will be added

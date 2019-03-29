@@ -24,8 +24,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # tracks
       attr_accessor :content_keys
 
-      # @return [String] KeyAcquisitionUrlTemplate is used to point to user
-      # specified service to delivery content keys
+      # @return [String] Template for the URL of the custom service delivering
+      # keys to end user players.  Not required when using Azure Media Services
+      # for issuing keys.  The template supports replaceable tokens that the
+      # service will update at runtime with the value specific to the request.
+      # The currently supported token values are {AlternativeMediaId}, which is
+      # replaced with the value of StreamingLocatorId.AlternativeMediaId, and
+      # {ContentKeyId}, which is replaced with the value of identifier of the
+      # key being requested.
       attr_accessor :custom_key_acquisition_url_template
 
 

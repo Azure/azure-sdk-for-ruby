@@ -4,5 +4,6 @@
 
 require '2.0/generated/azure_cognitiveservices_customvisiontraining'
 require '2.1/generated/azure_cognitiveservices_customvisiontraining'
+require '3.0/generated/azure_cognitiveservices_customvisiontraining'
 require '2.2/generated/azure_cognitiveservices_customvisiontraining'
 require 'profiles/latest/customvisiontraining_latest_profile_client'

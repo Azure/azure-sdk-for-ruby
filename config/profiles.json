@@ -221,8 +221,9 @@
                 "Microsoft.ContainerService": {
                     "management": {
                         "2017-07-01": ["*"],
-                        "2018-03-31": ["*"],
-                        "2017-09-30": ["*"]
+                        "2017-09-30": ["*"],
+                        "2018-09-30-preview": ["*"],
+                        "2019-02-01": ["*"]
                     }
                 },
                 "Microsoft.CustomerInsights": {
@@ -575,12 +576,12 @@
                 },
                 "Microsoft.CognitiveServices.Customvisiontraining": {
                     "data": {
-                        "2.2": ["*"]
+                        "3.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.Customvisionprediction": {
                     "data": {
-                        "2.0": ["*"]
+                        "3.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.EntitySearch": {
@@ -913,8 +914,9 @@
                 "Microsoft.ContainerService" : {
                     "management": {
                         "2017-07-01": ["*"],
-                        "2018-03-31": ["*"],
-                        "2017-09-30": ["*"]
+                        "2017-09-30": ["*"],
+                        "2018-09-30-preview": ["*"],
+                        "2019-02-01": ["*"]
                     }
                 }
             },
@@ -2076,7 +2078,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.Customvisiontraining": {
                         "data": {
-                            "2.2": ["*"]
+                            "3.0": ["*"]
                         }
                     }
                 },
@@ -2090,7 +2092,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.Customvisionprediction": {
                         "data": {
-                            "2.0": ["*"]
+                            "3.0": ["*"]
                         }
                     }
                 },

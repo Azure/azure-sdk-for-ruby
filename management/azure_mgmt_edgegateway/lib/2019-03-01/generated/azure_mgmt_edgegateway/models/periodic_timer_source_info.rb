@@ -13,7 +13,9 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
       include MsRestAzure
 
       # @return [DateTime] The time of the day that results in a valid trigger.
-      # Schedule is computed with reference to the time specified.
+      # Schedule is computed with reference to the time specified up to
+      # seconds. If timezone is not specified the time will considered to be in
+      # device timezone. The value will always be returned as UTC time.
       attr_accessor :start_time
 
       # @return [String] Periodic frequency at which timer event needs to be

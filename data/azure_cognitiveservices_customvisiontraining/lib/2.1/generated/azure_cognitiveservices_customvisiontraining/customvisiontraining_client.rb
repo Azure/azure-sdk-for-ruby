@@ -1060,7 +1060,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     # Delete images from the set of training images
     #
     # @param project_id The project id
-    # @param image_ids [Array<String>] Ids of the images to be deleted. Limted to
+    # @param image_ids [Array<String>] Ids of the images to be deleted. Limited to
     # 256 images per batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1075,7 +1075,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     # Delete images from the set of training images
     #
     # @param project_id The project id
-    # @param image_ids [Array<String>] Ids of the images to be deleted. Limted to
+    # @param image_ids [Array<String>] Ids of the images to be deleted. Limited to
     # 256 images per batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1090,7 +1090,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     # Delete images from the set of training images
     #
     # @param project_id The project id
-    # @param image_ids [Array<String>] Ids of the images to be deleted. Limted to
+    # @param image_ids [Array<String>] Ids of the images to be deleted. Limited to
     # 256 images per batch
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1367,7 +1367,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     # a limit of 64 images and 20 tags.
     #
     # @param project_id The project id
-    # @param batch [ImageIdCreateBatch] Image and tag ids. Limted to 64 images and
+    # @param batch [ImageIdCreateBatch] Image and tag ids. Limited to 64 images and
     # 20 tags per batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1386,7 +1386,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     # a limit of 64 images and 20 tags.
     #
     # @param project_id The project id
-    # @param batch [ImageIdCreateBatch] Image and tag ids. Limted to 64 images and
+    # @param batch [ImageIdCreateBatch] Image and tag ids. Limited to 64 images and
     # 20 tags per batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1404,7 +1404,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     # a limit of 64 images and 20 tags.
     #
     # @param project_id The project id
-    # @param batch [ImageIdCreateBatch] Image and tag ids. Limted to 64 images and
+    # @param batch [ImageIdCreateBatch] Image and tag ids. Limited to 64 images and
     # 20 tags per batch
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1577,7 +1577,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     # @param project_id The project id
     # @param image_ids [Array<String>] Image ids. Limited to 64 images
     # @param tag_ids [Array<String>] Tags to be deleted from the specified images.
-    # Limted to 20 tags
+    # Limited to 20 tags
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1593,7 +1593,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     # @param project_id The project id
     # @param image_ids [Array<String>] Image ids. Limited to 64 images
     # @param tag_ids [Array<String>] Tags to be deleted from the specified images.
-    # Limted to 20 tags
+    # Limited to 20 tags
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1609,7 +1609,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     # @param project_id The project id
     # @param image_ids [Array<String>] Image ids. Limited to 64 images
     # @param tag_ids [Array<String>] Tags to be deleted from the specified images.
-    # Limted to 20 tags
+    # Limited to 20 tags
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4361,7 +4361,7 @@ module Azure::CognitiveServices::Customvisiontraining::V2_1
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_customvisiontraining'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end

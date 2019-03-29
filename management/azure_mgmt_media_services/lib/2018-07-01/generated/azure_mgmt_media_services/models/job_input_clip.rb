@@ -20,6 +20,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       attr_accessor :odatatype
 
       # @return [Array<String>] List of files. Required for JobInputHttp.
+      # Maximum of 4000 characters each.
       attr_accessor :files
 
       # @return [String] A label that is assigned to a JobInputClip, that is

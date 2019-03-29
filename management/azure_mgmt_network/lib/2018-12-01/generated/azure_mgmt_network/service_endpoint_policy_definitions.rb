@@ -5,7 +5,7 @@
 
 module Azure::Network::Mgmt::V2018_12_01
   #
-  # Network Client
+  # ServiceEndpointPolicyDefinitions
   #
   class ServiceEndpointPolicyDefinitions
     include MsRestAzure

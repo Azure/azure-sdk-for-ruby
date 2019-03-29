@@ -36,7 +36,7 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
       attr_accessor :size
 
       # @return [ServiceLevel] serviceLevel. The service level of the file
-      # system. Possible values include: 'Standard', 'Premium', 'Extreme'.
+      # system. Possible values include: 'Standard', 'Premium', 'Ultra'.
       # Default value: 'Premium' .
       attr_accessor :service_level
 

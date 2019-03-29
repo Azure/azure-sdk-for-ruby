@@ -11,7 +11,7 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
     module ServiceLevel
       Standard = "Standard"
       Premium = "Premium"
-      Extreme = "Extreme"
+      Ultra = "Ultra"
     end
   end
 end

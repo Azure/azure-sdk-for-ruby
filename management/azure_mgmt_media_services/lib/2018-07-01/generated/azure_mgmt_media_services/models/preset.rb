@@ -14,6 +14,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["#Microsoft.Media.FaceDetectorPreset"] = "FaceDetectorPreset"
       @@discriminatorMap["#Microsoft.Media.AudioAnalyzerPreset"] = "AudioAnalyzerPreset"
       @@discriminatorMap["#Microsoft.Media.BuiltInStandardEncoderPreset"] = "BuiltInStandardEncoderPreset"
       @@discriminatorMap["#Microsoft.Media.StandardEncoderPreset"] = "StandardEncoderPreset"

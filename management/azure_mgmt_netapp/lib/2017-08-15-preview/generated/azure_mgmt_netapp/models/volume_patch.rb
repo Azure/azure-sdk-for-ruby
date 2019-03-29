@@ -28,7 +28,7 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
       attr_accessor :tags
 
       # @return [ServiceLevel] serviceLevel. The service level of the file
-      # system. Possible values include: 'Standard', 'Premium', 'Extreme'.
+      # system. Possible values include: 'Standard', 'Premium', 'Ultra'.
       # Default value: 'Premium' .
       attr_accessor :service_level
 
@@ -37,6 +37,9 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
       # Minimum size is 100 GiB. Upper limit is 100TiB. Default value:
       # 107374182400 .
       attr_accessor :usage_threshold
+
+      # @return [VolumePatchPropertiesExportPolicy] Export policy rule
+      attr_accessor :export_policy
 
 
       #
@@ -115,6 +118,15 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              export_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.exportPolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'VolumePatchPropertiesExportPolicy'
                 }
               }
             }

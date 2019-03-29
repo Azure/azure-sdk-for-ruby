@@ -12,7 +12,7 @@ module Azure::Network::Mgmt::V2018_12_01
 
       include MsRestAzure
 
-      # @return [Array<VirtualHubRoute>] list of all routes.
+      # @return [Array<VirtualHubRoute>] List of all routes.
       attr_accessor :routes
 
 

@@ -101,7 +101,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
               },
               bitrate: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'bitrate',
                 type: {
                   name: 'Number'

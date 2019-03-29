@@ -34,14 +34,14 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
       # @return [String] ipAddress. The mount target's IPv4 address
       attr_accessor :ip_address
 
-      # @return [Integer] vlanid. Vlan Id
-      attr_accessor :vlan_id
+      # @return [String] subnet. The subnet
+      attr_accessor :subnet
 
       # @return [String] startIp. The start of IPv4 address range to use when
       # creating a new mount target
       attr_accessor :start_ip
 
-      # @return [String] startIp. The end of IPv4 address range to use when
+      # @return [String] endIp. The end of IPv4 address range to use when
       # creating a new mount target
       attr_accessor :end_ip
 
@@ -52,6 +52,10 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
       # @return [String] netmask. The netmask of the IPv4 address range to use
       # when creating a new mount target
       attr_accessor :netmask
+
+      # @return [String] smbServerFQDN. The SMB server's Fully Qualified Domain
+      # Name, FQDN
+      attr_accessor :smb_server_fqdn
 
       # @return [String] Azure lifecycle management
       attr_accessor :provisioning_state
@@ -140,12 +144,12 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
                   name: 'String'
                 }
               },
-              vlan_id: {
+              subnet: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.vlanId',
+                serialized_name: 'properties.subnet',
                 type: {
-                  name: 'Number'
+                  name: 'String'
                 }
               },
               start_ip: {
@@ -176,6 +180,14 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.netmask',
+                type: {
+                  name: 'String'
+                }
+              },
+              smb_server_fqdn: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.smbServerFqdn',
                 type: {
                   name: 'String'
                 }

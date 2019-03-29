@@ -26,13 +26,15 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
     #
     # @param device_name [String] The device name.
     # @param resource_group_name [String] The resource group name.
+    # @param expand [String] Specify $filter='CustomContextTag eq <tag>' to filter
+    # on custom context tag property
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Trigger>] operation results.
     #
-    def list_by_data_box_edge_device(device_name, resource_group_name, custom_headers:nil)
-      first_page = list_by_data_box_edge_device_as_lazy(device_name, resource_group_name, custom_headers:custom_headers)
+    def list_by_data_box_edge_device(device_name, resource_group_name, expand:nil, custom_headers:nil)
+      first_page = list_by_data_box_edge_device_as_lazy(device_name, resource_group_name, expand:expand, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -41,13 +43,15 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
     #
     # @param device_name [String] The device name.
     # @param resource_group_name [String] The resource group name.
+    # @param expand [String] Specify $filter='CustomContextTag eq <tag>' to filter
+    # on custom context tag property
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_data_box_edge_device_with_http_info(device_name, resource_group_name, custom_headers:nil)
-      list_by_data_box_edge_device_async(device_name, resource_group_name, custom_headers:custom_headers).value!
+    def list_by_data_box_edge_device_with_http_info(device_name, resource_group_name, expand:nil, custom_headers:nil)
+      list_by_data_box_edge_device_async(device_name, resource_group_name, expand:expand, custom_headers:custom_headers).value!
     end
 
     #
@@ -55,12 +59,14 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
     #
     # @param device_name [String] The device name.
     # @param resource_group_name [String] The resource group name.
+    # @param expand [String] Specify $filter='CustomContextTag eq <tag>' to filter
+    # on custom context tag property
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_data_box_edge_device_async(device_name, resource_group_name, custom_headers:nil)
+    def list_by_data_box_edge_device_async(device_name, resource_group_name, expand:nil, custom_headers:nil)
       fail ArgumentError, 'device_name is nil' if device_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -80,7 +86,7 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'deviceName' => device_name,'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$expand' => expand},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -580,13 +586,15 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
     #
     # @param device_name [String] The device name.
     # @param resource_group_name [String] The resource group name.
+    # @param expand [String] Specify $filter='CustomContextTag eq <tag>' to filter
+    # on custom context tag property
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TriggerList] which provide lazy access to pages of the response.
     #
-    def list_by_data_box_edge_device_as_lazy(device_name, resource_group_name, custom_headers:nil)
-      response = list_by_data_box_edge_device_async(device_name, resource_group_name, custom_headers:custom_headers).value!
+    def list_by_data_box_edge_device_as_lazy(device_name, resource_group_name, expand:nil, custom_headers:nil)
+      response = list_by_data_box_edge_device_async(device_name, resource_group_name, expand:expand, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

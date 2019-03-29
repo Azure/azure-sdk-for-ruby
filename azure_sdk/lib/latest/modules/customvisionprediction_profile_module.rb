@@ -8,10 +8,12 @@ module Azure::Profiles::Latest
   module Customvisionprediction
 
     module Models
-      Prediction = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::Prediction
-      ImageUrl = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImageUrl
-      ImagePrediction = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImagePrediction
-      BoundingBox = Azure::CognitiveServices::Customvisionprediction::V2_0::Models::BoundingBox
+      Prediction = Azure::CognitiveServices::Customvisionprediction::V3_0::Models::Prediction
+      ImagePrediction = Azure::CognitiveServices::Customvisionprediction::V3_0::Models::ImagePrediction
+      BoundingBox = Azure::CognitiveServices::Customvisionprediction::V3_0::Models::BoundingBox
+      CustomVisionError = Azure::CognitiveServices::Customvisionprediction::V3_0::Models::CustomVisionError
+      ImageUrl = Azure::CognitiveServices::Customvisionprediction::V3_0::Models::ImageUrl
+      CustomVisionErrorCodes = Azure::CognitiveServices::Customvisionprediction::V3_0::Models::CustomVisionErrorCodes
     end
 
     class CustomvisionpredictionDataClass
@@ -20,7 +22,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        @client_0 = Azure::CognitiveServices::Customvisionprediction::V2_0::CustomvisionpredictionClient.new(configurable.credentials, options)
+        @client_0 = Azure::CognitiveServices::Customvisionprediction::V3_0::CustomvisionpredictionClient.new(configurable.credentials, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
@@ -44,16 +46,22 @@ module Azure::Profiles::Latest
 
       class ModelClasses
         def prediction
-          Azure::CognitiveServices::Customvisionprediction::V2_0::Models::Prediction
-        end
-        def image_url
-          Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImageUrl
+          Azure::CognitiveServices::Customvisionprediction::V3_0::Models::Prediction
         end
         def image_prediction
-          Azure::CognitiveServices::Customvisionprediction::V2_0::Models::ImagePrediction
+          Azure::CognitiveServices::Customvisionprediction::V3_0::Models::ImagePrediction
         end
         def bounding_box
-          Azure::CognitiveServices::Customvisionprediction::V2_0::Models::BoundingBox
+          Azure::CognitiveServices::Customvisionprediction::V3_0::Models::BoundingBox
+        end
+        def custom_vision_error
+          Azure::CognitiveServices::Customvisionprediction::V3_0::Models::CustomVisionError
+        end
+        def image_url
+          Azure::CognitiveServices::Customvisionprediction::V3_0::Models::ImageUrl
+        end
+        def custom_vision_error_codes
+          Azure::CognitiveServices::Customvisionprediction::V3_0::Models::CustomVisionErrorCodes
         end
       end
     end

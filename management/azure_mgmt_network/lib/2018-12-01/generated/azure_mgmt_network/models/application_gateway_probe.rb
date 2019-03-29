@@ -29,7 +29,7 @@ module Azure::Network::Mgmt::V2018_12_01
       # second to 86400 seconds.
       attr_accessor :interval
 
-      # @return [Integer] the probe timeout in seconds. Probe marked as failed
+      # @return [Integer] The probe timeout in seconds. Probe marked as failed
       # if valid response is not received with this timeout period. Acceptable
       # values are from 1 second to 86400 seconds.
       attr_accessor :timeout

@@ -5,7 +5,7 @@
 
 module Azure::Network::Mgmt::V2018_12_01
   #
-  # Network Client
+  # AzureFirewallFqdnTags
   #
   class AzureFirewallFqdnTags
     include MsRestAzure

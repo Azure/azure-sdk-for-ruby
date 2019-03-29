@@ -57,7 +57,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
               },
               server_app_secret: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'serverAppSecret',
                 type: {
                   name: 'String'

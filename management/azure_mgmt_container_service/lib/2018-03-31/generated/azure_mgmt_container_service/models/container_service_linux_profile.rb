@@ -38,7 +38,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
                 required: true,
                 serialized_name: 'adminUsername',
                 constraints: {
-                  Pattern: '^[a-z][a-z0-9_-]*$'
+                  Pattern: '^[A-Za-z][-A-Za-z0-9_]*$'
                 },
                 type: {
                   name: 'String'

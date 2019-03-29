@@ -12,14 +12,11 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
 
       include MsRestAzure
 
-      # @return [String] The Channel Integrity Key (CIK) of the device.
-      attr_accessor :integrity_key
-
-      # @return [String] The certificate thumbprint that was used to encrypt
-      # the Channel Integrity Key (CIK).
+      # @return [String] The digital signature of encrypted certificate.
       attr_accessor :encryption_key_thumbprint
 
-      # @return [String] The Channel Integrity Key (CIK) of the device.
+      # @return [String] The public part of the encryption certificate. Client
+      # uses this to encrypt any secret.
       attr_accessor :encryption_key
 
       # @return [String] The Resource ID of the Resource.
@@ -62,14 +59,6 @@ module Azure::EdgeGateway::Mgmt::V2019_03_01
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              integrity_key: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.integrityKey',
                 type: {
                   name: 'String'
                 }

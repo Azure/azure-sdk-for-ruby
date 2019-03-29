@@ -24,20 +24,20 @@ module Azure::ContainerService::Mgmt::V2018_03_31
       # cluster.
       attr_accessor :dns_prefix
 
-      # @return [String] FDQN for the master pool.
+      # @return [String] FQDN for the master pool.
       attr_accessor :fqdn
 
       # @return [Array<ManagedClusterAgentPoolProfile>] Properties of the agent
-      # pool.
+      # pool. Currently only one agent pool can exist.
       attr_accessor :agent_pool_profiles
 
       # @return [ContainerServiceLinuxProfile] Profile for Linux VMs in the
       # container service cluster.
       attr_accessor :linux_profile
 
-      # @return [ContainerServiceServicePrincipalProfile] Information about a
+      # @return [ManagedClusterServicePrincipalProfile] Information about a
       # service principal identity for the cluster to use for manipulating
-      # Azure APIs. Either secret or keyVaultSecretRef must be specified.
+      # Azure APIs.
       attr_accessor :service_principal_profile
 
       # @return [Hash{String => ManagedClusterAddonProfile}] Profile of managed
@@ -191,7 +191,7 @@ module Azure::ContainerService::Mgmt::V2018_03_31
                 serialized_name: 'properties.servicePrincipalProfile',
                 type: {
                   name: 'Composite',
-                  class_name: 'ContainerServiceServicePrincipalProfile'
+                  class_name: 'ManagedClusterServicePrincipalProfile'
                 }
               },
               addon_profiles: {

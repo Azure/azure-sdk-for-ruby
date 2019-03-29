@@ -25,7 +25,7 @@ module Azure::ContainerService::Mgmt::V2017_09_30
     # Gets a list of supported orchestrators in the specified subscription.
     #
     # Gets a list of supported orchestrators in the specified subscription. The
-    # operation returns properties of each orchestrator including verison and
+    # operation returns properties of each orchestrator including version and
     # available upgrades.
     #
     # @param location [String] The name of a supported Azure region.
@@ -45,7 +45,7 @@ module Azure::ContainerService::Mgmt::V2017_09_30
     # Gets a list of supported orchestrators in the specified subscription.
     #
     # Gets a list of supported orchestrators in the specified subscription. The
-    # operation returns properties of each orchestrator including verison and
+    # operation returns properties of each orchestrator including version and
     # available upgrades.
     #
     # @param location [String] The name of a supported Azure region.
@@ -64,7 +64,7 @@ module Azure::ContainerService::Mgmt::V2017_09_30
     # Gets a list of supported orchestrators in the specified subscription.
     #
     # Gets a list of supported orchestrators in the specified subscription. The
-    # operation returns properties of each orchestrator including verison and
+    # operation returns properties of each orchestrator including version and
     # available upgrades.
     #
     # @param location [String] The name of a supported Azure region.

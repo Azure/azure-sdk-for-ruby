@@ -5,7 +5,7 @@
 
 module Azure::Network::Mgmt::V2018_12_01
   #
-  # Network Client
+  # VirtualNetworkTaps
   #
   class VirtualNetworkTaps
     include MsRestAzure

@@ -5,7 +5,7 @@
 
 module Azure::Network::Mgmt::V2018_12_01
   #
-  # Network Client
+  # ExpressRouteCircuitConnections
   #
   class ExpressRouteCircuitConnections
     include MsRestAzure

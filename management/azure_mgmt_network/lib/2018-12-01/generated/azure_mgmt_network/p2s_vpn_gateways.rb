@@ -5,7 +5,7 @@
 
 module Azure::Network::Mgmt::V2018_12_01
   #
-  # Network Client
+  # P2sVpnGateways
   #
   class P2sVpnGateways
     include MsRestAzure

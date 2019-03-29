@@ -15,7 +15,7 @@ module Azure::Network::Mgmt::V2018_12_01
       # @return [SubResource] The VirtualHub to which the gateway belongs
       attr_accessor :virtual_hub
 
-      # @return [Array<VpnConnection>] list of all vpn connections to the
+      # @return [Array<VpnConnection>] List of all vpn connections to the
       # gateway.
       attr_accessor :connections
 

@@ -86,7 +86,7 @@ module Azure::ContainerService::Mgmt::V2017_08_31
       # pool.
       attr_accessor :dns_prefix
 
-      # @return [String] FDQN for the agent pool.
+      # @return [String] FQDN for the agent pool.
       attr_accessor :fqdn
 
       # @return [Array<Integer>] Ports number array used to expose on this
@@ -100,7 +100,7 @@ module Azure::ContainerService::Mgmt::V2017_08_31
       # choice. Possible values include: 'StorageAccount', 'ManagedDisks'
       attr_accessor :storage_profile
 
-      # @return [String] VNet SubnetID specifies the vnet's subnet identifier.
+      # @return [String] VNet SubnetID specifies the VNet's subnet identifier.
       attr_accessor :vnet_subnet_id
 
       # @return [OSType] OsType to be used to specify os type. Choose from

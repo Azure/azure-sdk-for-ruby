@@ -3,58 +3,59 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerService::Mgmt::V2018_03_31
+module Azure::ContainerService::Mgmt::V2018_09_30_preview
   module Models
     #
-    # Reference to a secret stored in Azure Key Vault.
+    # Represents an OpenShift router
     #
-    class KeyVaultSecretRef
+    class OpenShiftRouterProfile
 
       include MsRestAzure
 
-      # @return [String] Key vault identifier.
-      attr_accessor :vault_id
+      # @return [String] Name of the router profile.
+      attr_accessor :name
 
-      # @return [String] The secret name.
-      attr_accessor :secret_name
+      # @return [String] DNS subdomain for OpenShift router.
+      attr_accessor :public_subdomain
 
-      # @return [String] The secret version.
-      attr_accessor :version
+      # @return [String] Auto-allocated FQDN for the OpenShift router.
+      attr_accessor :fqdn
 
 
       #
-      # Mapper for KeyVaultSecretRef class as Ruby Hash.
+      # Mapper for OpenShiftRouterProfile class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'KeyVaultSecretRef',
+          serialized_name: 'OpenShiftRouterProfile',
           type: {
             name: 'Composite',
-            class_name: 'KeyVaultSecretRef',
+            class_name: 'OpenShiftRouterProfile',
             model_properties: {
-              vault_id: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'vaultID',
-                type: {
-                  name: 'String'
-                }
-              },
-              secret_name: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'secretName',
-                type: {
-                  name: 'String'
-                }
-              },
-              version: {
+              name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'version',
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              public_subdomain: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'publicSubdomain',
+                type: {
+                  name: 'String'
+                }
+              },
+              fqdn: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'fqdn',
                 type: {
                   name: 'String'
                 }
