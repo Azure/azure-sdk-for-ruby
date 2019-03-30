@@ -20,7 +20,7 @@ module Azure::Monitor::Profiles::Latest
     DiagnosticSettingsCategoryOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsCategoryOperations
     Metrics = Azure::Monitor::Mgmt::V2017_05_01_preview::Metrics
     MetricDefinitions = Azure::Monitor::Mgmt::V2017_05_01_preview::MetricDefinitions
-    BaselineOperations = Azure::Monitor::Mgmt::V2017_11_01_preview::BaselineOperations
+    MetricBaseline = Azure::Monitor::Mgmt::V2017_11_01_preview::MetricBaseline
 
     module Models
       RecurrentSchedule = Azure::Monitor::Mgmt::V2015_04_01::Models::RecurrentSchedule
@@ -127,7 +127,7 @@ module Azure::Monitor::Profiles::Latest
     # MonitorManagementClass
     #
     class MonitorManagementClass
-      attr_reader :event_categories, :operations, :tenant_activity_logs, :activity_logs, :autoscale_settings, :alert_rules, :alert_rule_incidents, :log_profiles, :action_groups, :activity_log_alerts, :diagnostic_settings_operations, :diagnostic_settings_category_operations, :metrics, :metric_definitions, :baseline_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :event_categories, :operations, :tenant_activity_logs, :activity_logs, :autoscale_settings, :alert_rules, :alert_rule_incidents, :log_profiles, :action_groups, :activity_log_alerts, :diagnostic_settings_operations, :diagnostic_settings_category_operations, :metrics, :metric_definitions, :metric_baseline, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -185,7 +185,7 @@ module Azure::Monitor::Profiles::Latest
           @client_4.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_4)
-        @baseline_operations = @client_4.baseline_operations
+        @metric_baseline = @client_4.metric_baseline
 
         @model_classes = ModelClasses.new
       end

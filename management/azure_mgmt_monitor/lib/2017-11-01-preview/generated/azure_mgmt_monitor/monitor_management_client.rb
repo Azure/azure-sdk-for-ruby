@@ -31,8 +31,8 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [BaselineOperations] baseline_operations
-    attr_reader :baseline_operations
+    # @return [MetricBaseline] metric_baseline
+    attr_reader :metric_baseline
 
     #
     # Creates initializes a new instance of the MonitorManagementClient class.
@@ -47,7 +47,7 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @baseline_operations = BaselineOperations.new(self)
+      @metric_baseline = MetricBaseline.new(self)
       @api_version = '2017-11-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

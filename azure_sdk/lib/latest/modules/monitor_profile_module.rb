@@ -18,7 +18,7 @@ module Azure::Profiles::Latest
       ActivityLogAlerts = Azure::Monitor::Mgmt::V2017_04_01::ActivityLogAlerts
       DiagnosticSettingsOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsOperations
       DiagnosticSettingsCategoryOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsCategoryOperations
-      BaselineOperations = Azure::Monitor::Mgmt::V2017_11_01_preview::BaselineOperations
+      MetricBaseline = Azure::Monitor::Mgmt::V2017_11_01_preview::MetricBaseline
       MetricDefinitions = Azure::Monitor::Mgmt::V2018_01_01::MetricDefinitions
       Metrics = Azure::Monitor::Mgmt::V2018_01_01::Metrics
       MetricAlerts = Azure::Monitor::Mgmt::V2018_03_01::MetricAlerts
@@ -158,7 +158,7 @@ module Azure::Profiles::Latest
       end
 
       class MonitorManagementClass
-        attr_reader :autoscale_settings, :event_categories, :operations, :tenant_activity_logs, :activity_logs, :log_profiles, :alert_rules, :alert_rule_incidents, :activity_log_alerts, :diagnostic_settings_operations, :diagnostic_settings_category_operations, :baseline_operations, :metric_definitions, :metrics, :metric_alerts, :metric_alerts_status, :action_groups, :scheduled_query_rules, :configurable, :base_url, :options, :model_classes
+        attr_reader :autoscale_settings, :event_categories, :operations, :tenant_activity_logs, :activity_logs, :log_profiles, :alert_rules, :alert_rule_incidents, :activity_log_alerts, :diagnostic_settings_operations, :diagnostic_settings_category_operations, :metric_baseline, :metric_definitions, :metrics, :metric_alerts, :metric_alerts_status, :action_groups, :scheduled_query_rules, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -203,7 +203,7 @@ module Azure::Profiles::Latest
             @client_4.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_4)
-          @baseline_operations = @client_4.baseline_operations
+          @metric_baseline = @client_4.metric_baseline
 
           @client_5 = Azure::Monitor::Mgmt::V2018_01_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
           if(@client_5.respond_to?(:subscription_id))
