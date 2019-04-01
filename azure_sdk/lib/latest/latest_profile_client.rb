@@ -73,6 +73,7 @@ require 'latest/modules/sql_profile_module'
 require 'latest/modules/sqlvirtualmachine_profile_module'
 require 'latest/modules/storsimple8000series_profile_module'
 require 'latest/modules/storage_profile_module'
+require 'latest/modules/storagesync_profile_module'
 require 'latest/modules/streamanalytics_profile_module'
 require 'latest/modules/subscriptions_profile_module'
 require 'latest/modules/trafficmanager_profile_module'
@@ -106,7 +107,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :advisor, :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :advisor, :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -208,6 +209,7 @@ module Azure::Profiles::Latest
       @sqlvirtualmachine = SqlvirtualmachineAdapter.new(self, base_url, sdk_options)
       @stor_simple8000_series = StorSimple8000SeriesAdapter.new(self, base_url, sdk_options)
       @storage = StorageAdapter.new(self, base_url, sdk_options)
+      @storage_sync = StorageSyncAdapter.new(self, base_url, sdk_options)
       @stream_analytics = StreamAnalyticsAdapter.new(self, base_url, sdk_options)
       @subscriptions = SubscriptionsAdapter.new(self, base_url, sdk_options)
       @traffic_manager = TrafficManagerAdapter.new(self, base_url, sdk_options)
@@ -794,6 +796,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::Storage::Mgmt::StorageManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class StorageSyncAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::StorageSync::Mgmt::StorageSyncManagementClass.new(context, base_url, options)
       end
     end
 
