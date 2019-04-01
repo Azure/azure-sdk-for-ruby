@@ -429,6 +429,13 @@
       "module_require": "azure_mgmt_relay"
     }
   },
+  "Microsoft.ResourceGraph": {
+    "management": {
+      "path": "management/azure_mgmt_resourcegraph",
+      "namespace": "Azure::ResourceGraph::Mgmt",
+      "module_require": "azure_mgmt_resourcegraph"
+    }
+  },
   "Microsoft.Resources": {
     "management": {
       "path": "management/azure_mgmt_resources",
@@ -523,6 +530,13 @@
       "path": "management/azure_mgmt_storage",
       "namespace": "Azure::Storage::Mgmt",
       "module_require": "azure_mgmt_storage"
+    }
+  },
+  "Microsoft.StorageSync": {
+    "management": {
+      "path": "management/azure_mgmt_storagesync",
+      "namespace": "Azure::StorageSync::Mgmt",
+      "module_require": "azure_mgmt_storagesync"
     }
   },
   "Microsoft.StreamAnalytics": {

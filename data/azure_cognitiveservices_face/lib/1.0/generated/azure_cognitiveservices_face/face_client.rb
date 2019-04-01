@@ -12,10 +12,14 @@ module Azure::CognitiveServices::Face::V1_0
     include MsRestAzure::Serialization
 
     # @return [String] the base URI of the service.
-    attr_accessor :base_url
+    attr_reader :base_url
 
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials1
+
+    # @return [String] Supported Cognitive Services endpoints (protocol and
+    # hostname, for example: https://westus.api.cognitive.microsoft.com).
+    attr_accessor :endpoint
 
     # @return Subscription credentials which uniquely identify client
     # subscription.
@@ -45,15 +49,26 @@ module Azure::CognitiveServices::Face::V1_0
     # @return [FaceListOperations] face_list_operations
     attr_reader :face_list_operations
 
+    # @return [LargePersonGroupPerson] large_person_group_person
+    attr_reader :large_person_group_person
+
+    # @return [LargePersonGroupOperations] large_person_group_operations
+    attr_reader :large_person_group_operations
+
+    # @return [LargeFaceListOperations] large_face_list_operations
+    attr_reader :large_face_list_operations
+
+    # @return [SnapshotOperations] snapshot_operations
+    attr_reader :snapshot_operations
+
     #
     # Creates initializes a new instance of the FaceClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
-    # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
     #
-    def initialize(credentials = nil, base_url = nil, options = nil)
+    def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = base_url || 'https://api.cognitive.microsoft.com/face/v1.0'
+      @base_url = '{Endpoint}/face/v1.0'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
@@ -62,6 +77,10 @@ module Azure::CognitiveServices::Face::V1_0
       @person_group_person = PersonGroupPerson.new(self)
       @person_group_operations = PersonGroupOperations.new(self)
       @face_list_operations = FaceListOperations.new(self)
+      @large_person_group_person = LargePersonGroupPerson.new(self)
+      @large_person_group_operations = LargePersonGroupOperations.new(self)
+      @large_face_list_operations = LargeFaceListOperations.new(self)
+      @snapshot_operations = SnapshotOperations.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -133,7 +152,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_face'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

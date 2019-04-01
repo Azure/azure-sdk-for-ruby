@@ -8,7 +8,7 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # Face list object.
     #
-    class FaceList < NameAndUserDataContract
+    class FaceList < MetaDataContract
 
       include MsRestAzure
 
@@ -50,6 +50,15 @@ module Azure::CognitiveServices::Face::V1_0
                 constraints: {
                   MaxLength: 16384
                 },
+                type: {
+                  name: 'String'
+                }
+              },
+              recognition_model: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'recognitionModel',
+                default_value: 'recognition_01',
                 type: {
                   name: 'String'
                 }

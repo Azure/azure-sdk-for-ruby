@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.24.0"
+        "azure_sdk": "0.25.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -12,7 +12,7 @@
         "azure_cognitiveservices_customvisiontraining": "0.17.2",
         "azure_cognitiveservices_customvisionprediction": "0.17.2",
         "azure_cognitiveservices_entitysearch": "0.18.1",
-        "azure_cognitiveservices_face": "0.17.1",
+        "azure_cognitiveservices_face": "0.18.0",
         "azure_cognitiveservices_imagesearch": "0.18.1",
         "azure_cognitiveservices_localsearch": "0.17.1",
         "azure_cognitiveservices_luisruntime": "0.17.1",
@@ -87,6 +87,7 @@
         "azure_mgmt_recovery_services_site_recovery": "0.17.2",
         "azure_mgmt_redis": "0.17.3",
         "azure_mgmt_relay": "0.17.2",
+        "azure_mgmt_resourcegraph": "0.17.0",
         "azure_mgmt_resources": "0.17.3",
         "azure_mgmt_resources_management": "0.17.1",
         "azure_mgmt_scheduler": "0.17.1",
@@ -99,6 +100,7 @@
         "azure_mgmt_sqlvirtualmachine": "0.17.2",
         "azure_mgmt_stor_simple8000_series": "0.17.2",
         "azure_mgmt_storage": "0.17.7",
+        "azure_mgmt_storagesync": "0.17.0",
         "azure_mgmt_stream_analytics": "0.17.2",
         "azure_mgmt_subscriptions": "0.17.2",
         "azure_mgmt_traffic_manager": "0.17.2",

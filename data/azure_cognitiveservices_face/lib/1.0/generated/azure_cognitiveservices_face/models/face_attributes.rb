@@ -16,7 +16,7 @@ module Azure::CognitiveServices::Face::V1_0
       attr_accessor :age
 
       # @return [Gender] Possible gender of the face. Possible values include:
-      # 'male', 'female', 'genderless'
+      # 'male', 'female'
       attr_accessor :gender
 
       # @return [Float] Smile intensity, a number between [0,1]

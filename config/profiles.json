@@ -462,6 +462,11 @@
                         "2017-04-01": ["*"]
                     }
                 },
+                "Microsoft.ResourceGraph": {
+                    "management": {
+                        "2019-04-01": ["*"]
+                    }
+                },
                 "Microsoft.Resources": {
                     "management": {
                         "2018-05-01": ["*"]
@@ -527,6 +532,11 @@
                 "Microsoft.Storage": {
                     "management": {
                         "2018-11-01": ["*"]
+                    }
+                },
+                "Microsoft.StorageSync": {
+                    "management": {
+                        "2019-02-01": ["*"]
                     }
                 },
                 "Microsoft.StreamAnalytics": {
@@ -1677,6 +1687,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_resourcegraph": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.ResourceGraph": {
+                    "management": {
+                        "2019-04-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_resourcegraph/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_resources_management": [
         {
             "name": "Latest",
@@ -1894,6 +1918,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_storage/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_storagesync": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.StorageSync": {
+                    "management": {
+                        "2019-02-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_storagesync/lib/profiles",
             "individual_gem_profile": true
         }
         ],

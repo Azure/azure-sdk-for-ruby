@@ -3,40 +3,36 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::Face::V1_0
+module Azure::StorageSync::Mgmt::V2019_02_01
   module Models
     #
-    # Request to update person face data.
+    # Trigger Rollover Request.
     #
-    class UpdatePersonFaceRequest
+    class TriggerRolloverRequest
 
       include MsRestAzure
 
-      # @return [String] User-provided data attached to the face. The size
-      # limit is 1KB.
-      attr_accessor :user_data
+      # @return [String] Certificate Data
+      attr_accessor :server_certificate
 
 
       #
-      # Mapper for UpdatePersonFaceRequest class as Ruby Hash.
+      # Mapper for TriggerRolloverRequest class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'UpdatePersonFaceRequest',
+          serialized_name: 'TriggerRolloverRequest',
           type: {
             name: 'Composite',
-            class_name: 'UpdatePersonFaceRequest',
+            class_name: 'TriggerRolloverRequest',
             model_properties: {
-              user_data: {
+              server_certificate: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'userData',
-                constraints: {
-                  MaxLength: 1024
-                },
+                serialized_name: 'serverCertificate',
                 type: {
                   name: 'String'
                 }
