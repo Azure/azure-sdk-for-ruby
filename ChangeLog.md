@@ -1,3 +1,10 @@
+## 2019.04.01 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_storagesync -v0.17.0
+    - azure_mgmt_resourcegraph -v0.17.0
+    - azure_cognitiveservices_face -v0.18.0
+    - azure_sdk -v0.25.0
+    
 ## 2019.03.31 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_media_services -v0.19.0
