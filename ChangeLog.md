@@ -1,4 +1,4 @@
-## 2019.03.29 - Azure Ruby SDK Release
+## 2019.03.31 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_media_services -v0.19.0
     - azure_mgmt_network -v0.18.6
@@ -8,6 +8,7 @@
     - azure_mgmt_netapp -v0.17.2
     - azure_cognitiveservices_customvisionprediction -v0.17.2
     - azure_cognitiveservices_customvisiontraining -v0.17.2
+    - azure_cognitiveservices_anomalydetector - v0.17.0
     - azure_sdk -v0.24.0
 
 ## 2019.03.14 - Azure Ruby SDK Release
