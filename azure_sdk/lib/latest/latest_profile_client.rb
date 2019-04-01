@@ -61,6 +61,7 @@ require 'latest/modules/recoveryservicesbackup_profile_module'
 require 'latest/modules/recoveryservicessiterecovery_profile_module'
 require 'latest/modules/redis_profile_module'
 require 'latest/modules/relay_profile_module'
+require 'latest/modules/resourcegraph_profile_module'
 require 'latest/modules/resources_profile_module'
 require 'latest/modules/resourcesmanagement_profile_module'
 require 'latest/modules/scheduler_profile_module'
@@ -107,7 +108,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :advisor, :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :advisor, :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -197,6 +198,7 @@ module Azure::Profiles::Latest
       @recovery_services_site_recovery = RecoveryServicesSiteRecoveryAdapter.new(self, base_url, sdk_options)
       @redis = RedisAdapter.new(self, base_url, sdk_options)
       @relay = RelayAdapter.new(self, base_url, sdk_options)
+      @resource_graph = ResourceGraphAdapter.new(self, base_url, sdk_options)
       @resources = ResourcesAdapter.new(self, base_url, sdk_options)
       @resources_management = ResourcesManagementAdapter.new(self, base_url, sdk_options)
       @scheduler = SchedulerAdapter.new(self, base_url, sdk_options)
@@ -699,6 +701,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::Relay::Mgmt::RelayManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class ResourceGraphAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ResourceGraph::Mgmt::ResourceGraphManagementClass.new(context, base_url, options)
       end
     end
 
