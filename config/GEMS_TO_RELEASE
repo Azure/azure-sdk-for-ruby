@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_storagesync"
+        "azure_mgmt_storagesync",
+        "azure_mgmt_resourcegraph"
     ],
     "rollup": [
         "azure_sdk"

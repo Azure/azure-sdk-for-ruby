@@ -429,6 +429,13 @@
       "module_require": "azure_mgmt_relay"
     }
   },
+  "Microsoft.ResourceGraph": {
+    "management": {
+      "path": "management/azure_mgmt_resourcegraph",
+      "namespace": "Azure::ResourceGraph::Mgmt",
+      "module_require": "azure_mgmt_resourcegraph"
+    }
+  },
   "Microsoft.Resources": {
     "management": {
       "path": "management/azure_mgmt_resources",

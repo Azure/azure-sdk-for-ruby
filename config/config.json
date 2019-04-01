@@ -1436,6 +1436,13 @@
       "tag": "package-2016-07"
     }
   },
+  "azure_mgmt_resourcegraph": {
+    "azure_mgmt_resourcegraph_2019_04_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/223f0cb75e64e0e61a67b8a2d95c15c4d537c6e9/specification/resourcegraph/resource-manager/readme.md",
+      "namespace": "Azure::ResourceGraph::Mgmt::V2019_04_01",
+      "tag": "package-2019-04"
+    }
+  },
   "azure_mgmt_resources": {
     "azure_mgmt_resources_2018_05_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/resources/resource-manager/readme.md",

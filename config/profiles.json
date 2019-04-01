@@ -462,6 +462,11 @@
                         "2017-04-01": ["*"]
                     }
                 },
+                "Microsoft.ResourceGraph": {
+                    "management": {
+                        "2019-04-01": ["*"]
+                    }
+                },
                 "Microsoft.Resources": {
                     "management": {
                         "2018-05-01": ["*"]
@@ -1679,6 +1684,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_relay/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_resourcegraph": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.ResourceGraph": {
+                    "management": {
+                        "2019-04-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_resourcegraph/lib/profiles",
             "individual_gem_profile": true
         }
         ],
