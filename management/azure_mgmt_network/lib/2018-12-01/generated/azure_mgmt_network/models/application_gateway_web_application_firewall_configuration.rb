@@ -137,8 +137,7 @@ module Azure::Network::Mgmt::V2018_12_01
                 required: false,
                 serialized_name: 'fileUploadLimitInMb',
                 constraints: {
-                  InclusiveMaximum: 500,
-                  InclusiveMinimum: 0
+                  InclusiveMinimum: 1
                 },
                 type: {
                   name: 'Number'
