@@ -529,6 +529,11 @@
                         "2018-11-01": ["*"]
                     }
                 },
+                "Microsoft.StorageSync": {
+                    "management": {
+                        "2019-02-01": ["*"]
+                    }
+                },
                 "Microsoft.StreamAnalytics": {
                     "management": {
                         "2016-03-01": ["*"]
@@ -1894,6 +1899,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_storage/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_storagesync": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.StorageSync": {
+                    "management": {
+                        "2019-02-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_storagesync/lib/profiles",
             "individual_gem_profile": true
         }
         ],

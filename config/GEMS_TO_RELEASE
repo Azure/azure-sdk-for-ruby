@@ -1,16 +1,6 @@
 {
     "management": [
-        "azure_mgmt_media_services",
-        "azure_mgmt_network",
-        "azure_mgmt_container_service",
-        "azure_mgmt_marketplace_ordering",
-        "azure_mgmt_edgegateway",
-        "azure_mgmt_netapp"
-    ],
-    "data": [
-        "azure_cognitiveservices_customvisionprediction",
-        "azure_cognitiveservices_customvisiontraining",
-        "azure_cognitiveservices_anomalydetector"
+        "azure_mgmt_storagesync"
     ],
     "rollup": [
         "azure_sdk"

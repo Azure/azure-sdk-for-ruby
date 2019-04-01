@@ -525,6 +525,13 @@
       "module_require": "azure_mgmt_storage"
     }
   },
+  "Microsoft.StorageSync": {
+    "management": {
+      "path": "management/azure_mgmt_storagesync",
+      "namespace": "Azure::StorageSync::Mgmt",
+      "module_require": "azure_mgmt_storagesync"
+    }
+  },
   "Microsoft.StreamAnalytics": {
     "management": {
       "path": "management/azure_mgmt_stream_analytics",
