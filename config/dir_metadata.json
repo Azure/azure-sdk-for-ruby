@@ -553,6 +553,13 @@
       "module_require": "azure_mgmt_web"
     }
   },
+  "Microsoft.CognitiveServices.AnomalyDetector": {
+    "data": {
+      "path": "data/azure_cognitiveservices_anomalydetector",
+      "namespace": "Azure::CognitiveServices::AnomalyDetector",
+      "module_require": "azure_cognitiveservices_anomalydetector"
+    }
+  },
   "Microsoft.CognitiveServices.Autosuggest": {
     "data": {
       "path": "data/azure_cognitiveservices_autosuggest",

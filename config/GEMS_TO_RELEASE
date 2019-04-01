@@ -9,7 +9,8 @@
     ],
     "data": [
         "azure_cognitiveservices_customvisionprediction",
-        "azure_cognitiveservices_customvisiontraining"
+        "azure_cognitiveservices_customvisiontraining",
+        "azure_cognitiveservices_anomalydetector"
     ],
     "rollup": [
         "azure_sdk"

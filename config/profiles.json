@@ -549,6 +549,11 @@
                         "2018-02-01": ["*"]
                     }
                 },
+                "Microsoft.CognitiveServices.AnomalyDetector": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                },
                 "Microsoft.CognitiveServices.Autosuggest": {
                     "data": {
                         "1.0": ["*"]
@@ -2001,6 +2006,20 @@
                 "output_dir": "data/azure_graph_rbac/lib/profiles",
                 "individual_gem_profile": true
             }
+        ],
+        "azure_cognitiveservices_anomalydetector": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.CognitiveServices.AnomalyDetector": {
+                    "data": {
+                        "1.0": ["*"]
+                    }
+                }
+            },
+            "output_dir": "data/azure_cognitiveservices_anomalydetector/lib/profiles",
+            "individual_gem_profile": true
+        }
         ],
         "azure_cognitiveservices_autosuggest": [
             {
