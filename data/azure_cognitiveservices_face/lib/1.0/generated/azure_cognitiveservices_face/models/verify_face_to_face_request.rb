@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # Request body for verify operation.
+    # Request body for face to face verification.
     #
     class VerifyFaceToFaceRequest
 

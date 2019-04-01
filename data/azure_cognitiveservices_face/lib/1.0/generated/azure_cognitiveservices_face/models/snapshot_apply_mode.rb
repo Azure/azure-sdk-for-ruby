@@ -6,11 +6,10 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # Defines values for Gender
+    # Defines values for SnapshotApplyMode
     #
-    module Gender
-      Male = "male"
-      Female = "female"
+    module SnapshotApplyMode
+      CreateNew = "CreateNew"
     end
   end
 end

@@ -7,11 +7,11 @@ module Azure::CognitiveServices::Face::V1_0
   #
   # An API for face detection, verification, and identification.
   #
-  class PersonGroupPerson
+  class LargePersonGroupPerson
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the PersonGroupPerson class.
+    # Creates and initializes a new instance of the LargePersonGroupPerson class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,9 +22,10 @@ module Azure::CognitiveServices::Face::V1_0
     attr_reader :client
 
     #
-    # Create a new person in a specified person group.
+    # Create a new person in a specified large person group.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -32,15 +33,16 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Person] operation results.
     #
-    def create(person_group_id, name:nil, user_data:nil, custom_headers:nil)
-      response = create_async(person_group_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
+    def create(large_person_group_id, name:nil, user_data:nil, custom_headers:nil)
+      response = create_async(large_person_group_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create a new person in a specified person group.
+    # Create a new person in a specified large person group.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -48,14 +50,15 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(person_group_id, name:nil, user_data:nil, custom_headers:nil)
-      create_async(person_group_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
+    def create_with_http_info(large_person_group_id, name:nil, user_data:nil, custom_headers:nil)
+      create_async(large_person_group_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
     end
 
     #
-    # Create a new person in a specified person group.
+    # Create a new person in a specified large person group.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -63,11 +66,11 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(person_group_id, name:nil, user_data:nil, custom_headers:nil)
+    def create_async(large_person_group_id, name:nil, user_data:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, "'name' should satisfy the constraint - 'MaxLength': '128'" if !name.nil? && name.length > 128
       fail ArgumentError, "'user_data' should satisfy the constraint - 'MaxLength': '16384'" if !user_data.nil? && user_data.length > 16384
 
@@ -89,14 +92,14 @@ module Azure::CognitiveServices::Face::V1_0
       request_content = @client.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'persongroups/{personGroupId}/persons'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id},
+          path_params: {'largePersonGroupId' => large_person_group_id},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -131,11 +134,12 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # List all persons in a person group, and retrieve person information
+    # List all persons in a large person group, and retrieve person information
     # (including personId, name, userData and persistedFaceIds of registered faces
     # of the person).
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param start [String] Starting person id to return (used to list a range of
     # persons).
     # @param top [Integer] Number of persons to return starting with the person id
@@ -145,17 +149,18 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Array] operation results.
     #
-    def list(person_group_id, start:nil, top:nil, custom_headers:nil)
-      response = list_async(person_group_id, start:start, top:top, custom_headers:custom_headers).value!
+    def list(large_person_group_id, start:nil, top:nil, custom_headers:nil)
+      response = list_async(large_person_group_id, start:start, top:top, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # List all persons in a person group, and retrieve person information
+    # List all persons in a large person group, and retrieve person information
     # (including personId, name, userData and persistedFaceIds of registered faces
     # of the person).
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param start [String] Starting person id to return (used to list a range of
     # persons).
     # @param top [Integer] Number of persons to return starting with the person id
@@ -165,16 +170,17 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(person_group_id, start:nil, top:nil, custom_headers:nil)
-      list_async(person_group_id, start:start, top:top, custom_headers:custom_headers).value!
+    def list_with_http_info(large_person_group_id, start:nil, top:nil, custom_headers:nil)
+      list_async(large_person_group_id, start:start, top:top, custom_headers:custom_headers).value!
     end
 
     #
-    # List all persons in a person group, and retrieve person information
+    # List all persons in a large person group, and retrieve person information
     # (including personId, name, userData and persistedFaceIds of registered faces
     # of the person).
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param start [String] Starting person id to return (used to list a range of
     # persons).
     # @param top [Integer] Number of persons to return starting with the person id
@@ -184,11 +190,11 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(person_group_id, start:nil, top:nil, custom_headers:nil)
+    def list_async(large_person_group_id, start:nil, top:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
@@ -199,14 +205,14 @@ module Azure::CognitiveServices::Face::V1_0
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'persongroups/{personGroupId}/persons'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id},
+          path_params: {'largePersonGroupId' => large_person_group_id},
           query_params: {'start' => start,'top' => top},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -257,51 +263,54 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete an existing person from a person group. All stored person data, and
-    # face features in the person entry will be deleted.
+    # Delete an existing person from a large person group. All stored person data,
+    # and face features in the person entry will be deleted.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(person_group_id, person_id, custom_headers:nil)
-      response = delete_async(person_group_id, person_id, custom_headers:custom_headers).value!
+    def delete(large_person_group_id, person_id, custom_headers:nil)
+      response = delete_async(large_person_group_id, person_id, custom_headers:custom_headers).value!
       nil
     end
 
     #
-    # Delete an existing person from a person group. All stored person data, and
-    # face features in the person entry will be deleted.
+    # Delete an existing person from a large person group. All stored person data,
+    # and face features in the person entry will be deleted.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(person_group_id, person_id, custom_headers:nil)
-      delete_async(person_group_id, person_id, custom_headers:custom_headers).value!
+    def delete_with_http_info(large_person_group_id, person_id, custom_headers:nil)
+      delete_async(large_person_group_id, person_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Delete an existing person from a person group. All stored person data, and
-    # face features in the person entry will be deleted.
+    # Delete an existing person from a large person group. All stored person data,
+    # and face features in the person entry will be deleted.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(person_group_id, person_id, custom_headers:nil)
+    def delete_async(large_person_group_id, person_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
 
 
@@ -311,14 +320,14 @@ module Azure::CognitiveServices::Face::V1_0
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'persongroups/{personGroupId}/persons/{personId}'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons/{personId}'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id,'personId' => person_id},
+          path_params: {'largePersonGroupId' => large_person_group_id,'personId' => person_id},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -345,15 +354,16 @@ module Azure::CognitiveServices::Face::V1_0
     # Retrieve a person's information, including registered persisted faces, name
     # and userData.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Person] operation results.
     #
-    def get(person_group_id, person_id, custom_headers:nil)
-      response = get_async(person_group_id, person_id, custom_headers:custom_headers).value!
+    def get(large_person_group_id, person_id, custom_headers:nil)
+      response = get_async(large_person_group_id, person_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -361,33 +371,35 @@ module Azure::CognitiveServices::Face::V1_0
     # Retrieve a person's information, including registered persisted faces, name
     # and userData.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(person_group_id, person_id, custom_headers:nil)
-      get_async(person_group_id, person_id, custom_headers:custom_headers).value!
+    def get_with_http_info(large_person_group_id, person_id, custom_headers:nil)
+      get_async(large_person_group_id, person_id, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve a person's information, including registered persisted faces, name
     # and userData.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(person_group_id, person_id, custom_headers:nil)
+    def get_async(large_person_group_id, person_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
 
 
@@ -397,14 +409,14 @@ module Azure::CognitiveServices::Face::V1_0
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'persongroups/{personGroupId}/persons/{personId}'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons/{personId}'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id,'personId' => person_id},
+          path_params: {'largePersonGroupId' => large_person_group_id,'personId' => person_id},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -440,7 +452,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # Update name or userData of a person.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
@@ -448,15 +461,16 @@ module Azure::CognitiveServices::Face::V1_0
     # will be added to the HTTP request.
     #
     #
-    def update(person_group_id, person_id, name:nil, user_data:nil, custom_headers:nil)
-      response = update_async(person_group_id, person_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
+    def update(large_person_group_id, person_id, name:nil, user_data:nil, custom_headers:nil)
+      response = update_async(large_person_group_id, person_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # Update name or userData of a person.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
@@ -465,14 +479,15 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(person_group_id, person_id, name:nil, user_data:nil, custom_headers:nil)
-      update_async(person_group_id, person_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
+    def update_with_http_info(large_person_group_id, person_id, name:nil, user_data:nil, custom_headers:nil)
+      update_async(large_person_group_id, person_id, name:name, user_data:user_data, custom_headers:custom_headers).value!
     end
 
     #
     # Update name or userData of a person.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param name [String] User defined name, maximum length is 128.
     # @param user_data [String] User specified data. Length should not exceed 16KB.
@@ -481,11 +496,11 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(person_group_id, person_id, name:nil, user_data:nil, custom_headers:nil)
+    def update_async(large_person_group_id, person_id, name:nil, user_data:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
       fail ArgumentError, "'name' should satisfy the constraint - 'MaxLength': '128'" if !name.nil? && name.length > 128
       fail ArgumentError, "'user_data' should satisfy the constraint - 'MaxLength': '16384'" if !user_data.nil? && user_data.length > 16384
@@ -508,14 +523,14 @@ module Azure::CognitiveServices::Face::V1_0
       request_content = @client.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'persongroups/{personGroupId}/persons/{personId}'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons/{personId}'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id,'personId' => person_id},
+          path_params: {'largePersonGroupId' => large_person_group_id,'personId' => person_id},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -543,7 +558,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Delete a face from a person. Relative feature for the persisted face will
     # also be deleted.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param persisted_face_id Id referencing a particular persistedFaceId of an
     # existing face.
@@ -551,8 +567,8 @@ module Azure::CognitiveServices::Face::V1_0
     # will be added to the HTTP request.
     #
     #
-    def delete_face(person_group_id, person_id, persisted_face_id, custom_headers:nil)
-      response = delete_face_async(person_group_id, person_id, persisted_face_id, custom_headers:custom_headers).value!
+    def delete_face(large_person_group_id, person_id, persisted_face_id, custom_headers:nil)
+      response = delete_face_async(large_person_group_id, person_id, persisted_face_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -560,7 +576,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Delete a face from a person. Relative feature for the persisted face will
     # also be deleted.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param persisted_face_id Id referencing a particular persistedFaceId of an
     # existing face.
@@ -569,15 +586,16 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_face_with_http_info(person_group_id, person_id, persisted_face_id, custom_headers:nil)
-      delete_face_async(person_group_id, person_id, persisted_face_id, custom_headers:custom_headers).value!
+    def delete_face_with_http_info(large_person_group_id, person_id, persisted_face_id, custom_headers:nil)
+      delete_face_async(large_person_group_id, person_id, persisted_face_id, custom_headers:custom_headers).value!
     end
 
     #
     # Delete a face from a person. Relative feature for the persisted face will
     # also be deleted.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param persisted_face_id Id referencing a particular persistedFaceId of an
     # existing face.
@@ -586,11 +604,11 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_face_async(person_group_id, person_id, persisted_face_id, custom_headers:nil)
+    def delete_face_async(large_person_group_id, person_id, persisted_face_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
       fail ArgumentError, 'persisted_face_id is nil' if persisted_face_id.nil?
 
@@ -601,14 +619,14 @@ module Azure::CognitiveServices::Face::V1_0
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'persongroups/{personGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id,'personId' => person_id,'persistedFaceId' => persisted_face_id},
+          path_params: {'largePersonGroupId' => large_person_group_id,'personId' => person_id,'persistedFaceId' => persisted_face_id},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -633,9 +651,10 @@ module Azure::CognitiveServices::Face::V1_0
 
     #
     # Retrieve information about a persisted face (specified by persistedFaceId,
-    # personId and its belonging personGroupId).
+    # personId and its belonging largePersonGroupId).
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param persisted_face_id Id referencing a particular persistedFaceId of an
     # existing face.
@@ -644,16 +663,17 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [PersistedFace] operation results.
     #
-    def get_face(person_group_id, person_id, persisted_face_id, custom_headers:nil)
-      response = get_face_async(person_group_id, person_id, persisted_face_id, custom_headers:custom_headers).value!
+    def get_face(large_person_group_id, person_id, persisted_face_id, custom_headers:nil)
+      response = get_face_async(large_person_group_id, person_id, persisted_face_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieve information about a persisted face (specified by persistedFaceId,
-    # personId and its belonging personGroupId).
+    # personId and its belonging largePersonGroupId).
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param persisted_face_id Id referencing a particular persistedFaceId of an
     # existing face.
@@ -662,15 +682,16 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_face_with_http_info(person_group_id, person_id, persisted_face_id, custom_headers:nil)
-      get_face_async(person_group_id, person_id, persisted_face_id, custom_headers:custom_headers).value!
+    def get_face_with_http_info(large_person_group_id, person_id, persisted_face_id, custom_headers:nil)
+      get_face_async(large_person_group_id, person_id, persisted_face_id, custom_headers:custom_headers).value!
     end
 
     #
     # Retrieve information about a persisted face (specified by persistedFaceId,
-    # personId and its belonging personGroupId).
+    # personId and its belonging largePersonGroupId).
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param persisted_face_id Id referencing a particular persistedFaceId of an
     # existing face.
@@ -679,11 +700,11 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_face_async(person_group_id, person_id, persisted_face_id, custom_headers:nil)
+    def get_face_async(large_person_group_id, person_id, persisted_face_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
       fail ArgumentError, 'persisted_face_id is nil' if persisted_face_id.nil?
 
@@ -694,14 +715,14 @@ module Azure::CognitiveServices::Face::V1_0
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'persongroups/{personGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id,'personId' => person_id,'persistedFaceId' => persisted_face_id},
+          path_params: {'largePersonGroupId' => large_person_group_id,'personId' => person_id,'persistedFaceId' => persisted_face_id},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -737,7 +758,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # Update a person persisted face's userData field.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param persisted_face_id Id referencing a particular persistedFaceId of an
     # existing face.
@@ -747,15 +769,16 @@ module Azure::CognitiveServices::Face::V1_0
     # will be added to the HTTP request.
     #
     #
-    def update_face(person_group_id, person_id, persisted_face_id, user_data:nil, custom_headers:nil)
-      response = update_face_async(person_group_id, person_id, persisted_face_id, user_data:user_data, custom_headers:custom_headers).value!
+    def update_face(large_person_group_id, person_id, persisted_face_id, user_data:nil, custom_headers:nil)
+      response = update_face_async(large_person_group_id, person_id, persisted_face_id, user_data:user_data, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # Update a person persisted face's userData field.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param persisted_face_id Id referencing a particular persistedFaceId of an
     # existing face.
@@ -766,14 +789,15 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_face_with_http_info(person_group_id, person_id, persisted_face_id, user_data:nil, custom_headers:nil)
-      update_face_async(person_group_id, person_id, persisted_face_id, user_data:user_data, custom_headers:custom_headers).value!
+    def update_face_with_http_info(large_person_group_id, person_id, persisted_face_id, user_data:nil, custom_headers:nil)
+      update_face_async(large_person_group_id, person_id, persisted_face_id, user_data:user_data, custom_headers:custom_headers).value!
     end
 
     #
     # Update a person persisted face's userData field.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param persisted_face_id Id referencing a particular persistedFaceId of an
     # existing face.
@@ -784,11 +808,11 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_face_async(person_group_id, person_id, persisted_face_id, user_data:nil, custom_headers:nil)
+    def update_face_async(large_person_group_id, person_id, persisted_face_id, user_data:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
       fail ArgumentError, 'persisted_face_id is nil' if persisted_face_id.nil?
       fail ArgumentError, "'user_data' should satisfy the constraint - 'MaxLength': '1024'" if !user_data.nil? && user_data.length > 1024
@@ -810,14 +834,14 @@ module Azure::CognitiveServices::Face::V1_0
       request_content = @client.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'persongroups/{personGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id,'personId' => person_id,'persistedFaceId' => persisted_face_id},
+          path_params: {'largePersonGroupId' => large_person_group_id,'personId' => person_id,'persistedFaceId' => persisted_face_id},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -845,7 +869,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Add a representative face to a person for identification. The input face is
     # specified as an image with a targetFace rectangle.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param url [String] Publicly reachable URL of an image
     # @param user_data [String] User-specified data about the face for any purpose.
@@ -861,8 +886,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [PersistedFace] operation results.
     #
-    def add_face_from_url(person_group_id, person_id, url, user_data:nil, target_face:nil, custom_headers:nil)
-      response = add_face_from_url_async(person_group_id, person_id, url, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
+    def add_face_from_url(large_person_group_id, person_id, url, user_data:nil, target_face:nil, custom_headers:nil)
+      response = add_face_from_url_async(large_person_group_id, person_id, url, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -870,7 +895,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Add a representative face to a person for identification. The input face is
     # specified as an image with a targetFace rectangle.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param url [String] Publicly reachable URL of an image
     # @param user_data [String] User-specified data about the face for any purpose.
@@ -886,15 +912,16 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_face_from_url_with_http_info(person_group_id, person_id, url, user_data:nil, target_face:nil, custom_headers:nil)
-      add_face_from_url_async(person_group_id, person_id, url, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
+    def add_face_from_url_with_http_info(large_person_group_id, person_id, url, user_data:nil, target_face:nil, custom_headers:nil)
+      add_face_from_url_async(large_person_group_id, person_id, url, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
     end
 
     #
     # Add a representative face to a person for identification. The input face is
     # specified as an image with a targetFace rectangle.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param url [String] Publicly reachable URL of an image
     # @param user_data [String] User-specified data about the face for any purpose.
@@ -910,11 +937,11 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_face_from_url_async(person_group_id, person_id, url, user_data:nil, target_face:nil, custom_headers:nil)
+    def add_face_from_url_async(large_person_group_id, person_id, url, user_data:nil, target_face:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
       fail ArgumentError, "'user_data' should satisfy the constraint - 'MaxLength': '1024'" if !user_data.nil? && user_data.length > 1024
       fail ArgumentError, 'url is nil' if url.nil?
@@ -936,14 +963,14 @@ module Azure::CognitiveServices::Face::V1_0
       request_content = @client.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'persongroups/{personGroupId}/persons/{personId}/persistedfaces'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons/{personId}/persistedfaces'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id,'personId' => person_id},
+          path_params: {'largePersonGroupId' => large_person_group_id,'personId' => person_id},
           query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(',')},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -982,7 +1009,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Add a representative face to a person for identification. The input face is
     # specified as an image with a targetFace rectangle.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param image An image stream.
     # @param user_data [String] User-specified data about the face for any purpose.
@@ -998,8 +1026,8 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [PersistedFace] operation results.
     #
-    def add_face_from_stream(person_group_id, person_id, image, user_data:nil, target_face:nil, custom_headers:nil)
-      response = add_face_from_stream_async(person_group_id, person_id, image, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
+    def add_face_from_stream(large_person_group_id, person_id, image, user_data:nil, target_face:nil, custom_headers:nil)
+      response = add_face_from_stream_async(large_person_group_id, person_id, image, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1007,7 +1035,8 @@ module Azure::CognitiveServices::Face::V1_0
     # Add a representative face to a person for identification. The input face is
     # specified as an image with a targetFace rectangle.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param image An image stream.
     # @param user_data [String] User-specified data about the face for any purpose.
@@ -1023,15 +1052,16 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_face_from_stream_with_http_info(person_group_id, person_id, image, user_data:nil, target_face:nil, custom_headers:nil)
-      add_face_from_stream_async(person_group_id, person_id, image, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
+    def add_face_from_stream_with_http_info(large_person_group_id, person_id, image, user_data:nil, target_face:nil, custom_headers:nil)
+      add_face_from_stream_async(large_person_group_id, person_id, image, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
     end
 
     #
     # Add a representative face to a person for identification. The input face is
     # specified as an image with a targetFace rectangle.
     #
-    # @param person_group_id [String] Id referencing a particular person group.
+    # @param large_person_group_id [String] Id referencing a particular large
+    # person group.
     # @param person_id Id referencing a particular person.
     # @param image An image stream.
     # @param user_data [String] User-specified data about the face for any purpose.
@@ -1047,11 +1077,11 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_face_from_stream_async(person_group_id, person_id, image, user_data:nil, target_face:nil, custom_headers:nil)
+    def add_face_from_stream_async(large_person_group_id, person_id, image, user_data:nil, target_face:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
-      fail ArgumentError, "'person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !person_group_id.nil? && person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
+      fail ArgumentError, 'large_person_group_id is nil' if large_person_group_id.nil?
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !large_person_group_id.nil? && large_person_group_id.length > 64
+      fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
       fail ArgumentError, "'user_data' should satisfy the constraint - 'MaxLength': '1024'" if !user_data.nil? && user_data.length > 1024
       fail ArgumentError, 'image is nil' if image.nil?
@@ -1075,14 +1105,14 @@ module Azure::CognitiveServices::Face::V1_0
       }
       request_content = @client.serialize(request_mapper,  image)
 
-      path_template = 'persongroups/{personGroupId}/persons/{personId}/persistedfaces'
+      path_template = 'largepersongroups/{largePersonGroupId}/persons/{personId}/persistedfaces'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'personGroupId' => person_group_id,'personId' => person_id},
+          path_params: {'largePersonGroupId' => large_person_group_id,'personId' => person_id},
           query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(',')},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),

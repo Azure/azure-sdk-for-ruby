@@ -6,11 +6,13 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # Defines values for Gender
+    # Defines values for SnapshotObjectType
     #
-    module Gender
-      Male = "male"
-      Female = "female"
+    module SnapshotObjectType
+      FaceList = "FaceList"
+      LargeFaceList = "LargeFaceList"
+      LargePersonGroup = "LargePersonGroup"
+      PersonGroup = "PersonGroup"
     end
   end
 end

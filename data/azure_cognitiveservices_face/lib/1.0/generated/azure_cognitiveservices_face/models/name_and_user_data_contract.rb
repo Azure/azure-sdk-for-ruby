@@ -7,7 +7,7 @@ module Azure::CognitiveServices::Face::V1_0
   module Models
     #
     # A combination of user defined name and user specified data for the
-    # person, personGroup, and faceList
+    # person, largePersonGroup/personGroup, and largeFaceList/faceList.
     #
     class NameAndUserDataContract
 

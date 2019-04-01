@@ -8,11 +8,11 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # Person group object.
     #
-    class PersonGroup < NameAndUserDataContract
+    class PersonGroup < MetaDataContract
 
       include MsRestAzure
 
-      # @return [String] PersonGroupId of the existing person groups.
+      # @return [String] PersonGroupId of the target person group.
       attr_accessor :person_group_id
 
 
@@ -47,6 +47,15 @@ module Azure::CognitiveServices::Face::V1_0
                 constraints: {
                   MaxLength: 16384
                 },
+                type: {
+                  name: 'String'
+                }
+              },
+              recognition_model: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'recognitionModel',
+                default_value: 'recognition_01',
                 type: {
                   name: 'String'
                 }

@@ -6,11 +6,13 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # Defines values for Gender
+    # Defines values for OperationStatusType
     #
-    module Gender
-      Male = "male"
-      Female = "female"
+    module OperationStatusType
+      Notstarted = "notstarted"
+      Running = "running"
+      Succeeded = "succeeded"
+      Failed = "failed"
     end
   end
 end

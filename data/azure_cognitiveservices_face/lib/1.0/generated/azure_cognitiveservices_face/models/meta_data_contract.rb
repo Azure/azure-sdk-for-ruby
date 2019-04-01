@@ -6,31 +6,31 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # Face list object.
+    # A combination of user defined name and user specified data and
+    # recognition model name for largePersonGroup/personGroup, and
+    # largeFaceList/faceList.
     #
-    class FaceList < MetaDataContract
+    class MetaDataContract < NameAndUserDataContract
 
       include MsRestAzure
 
-      # @return [String] FaceListId of the target face list.
-      attr_accessor :face_list_id
-
-      # @return [Array<PersistedFace>] Persisted faces within the face list.
-      attr_accessor :persisted_faces
+      # @return [RecognitionModel] Possible values include: 'recognition_01',
+      # 'recognition_02'. Default value: 'recognition_01' .
+      attr_accessor :recognition_model
 
 
       #
-      # Mapper for FaceList class as Ruby Hash.
+      # Mapper for MetaDataContract class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'FaceList',
+          serialized_name: 'MetaDataContract',
           type: {
             name: 'Composite',
-            class_name: 'FaceList',
+            class_name: 'MetaDataContract',
             model_properties: {
               name: {
                 client_side_validation: true,
@@ -61,35 +61,6 @@ module Azure::CognitiveServices::Face::V1_0
                 default_value: 'recognition_01',
                 type: {
                   name: 'String'
-                }
-              },
-              face_list_id: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'faceListId',
-                constraints: {
-                  MaxLength: 64,
-                  Pattern: '^[a-z0-9-_]+$'
-                },
-                type: {
-                  name: 'String'
-                }
-              },
-              persisted_faces: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'persistedFaces',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'PersistedFaceElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'PersistedFace'
-                      }
-                  }
                 }
               }
             }

@@ -6,11 +6,11 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # Defines values for Gender
+    # Defines values for RecognitionModel
     #
-    module Gender
-      Male = "male"
-      Female = "female"
+    module RecognitionModel
+      Recognition01 = "recognition_01"
+      Recognition02 = "recognition_02"
     end
   end
 end

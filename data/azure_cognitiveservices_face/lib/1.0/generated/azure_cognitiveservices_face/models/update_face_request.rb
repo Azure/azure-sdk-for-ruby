@@ -6,9 +6,9 @@
 module Azure::CognitiveServices::Face::V1_0
   module Models
     #
-    # Request to update person face data.
+    # Request to update face data.
     #
-    class UpdatePersonFaceRequest
+    class UpdateFaceRequest
 
       include MsRestAzure
 
@@ -18,17 +18,17 @@ module Azure::CognitiveServices::Face::V1_0
 
 
       #
-      # Mapper for UpdatePersonFaceRequest class as Ruby Hash.
+      # Mapper for UpdateFaceRequest class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'UpdatePersonFaceRequest',
+          serialized_name: 'UpdateFaceRequest',
           type: {
             name: 'Composite',
-            class_name: 'UpdatePersonFaceRequest',
+            class_name: 'UpdateFaceRequest',
             model_properties: {
               user_data: {
                 client_side_validation: true,

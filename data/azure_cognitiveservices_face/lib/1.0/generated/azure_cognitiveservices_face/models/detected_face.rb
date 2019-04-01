@@ -15,6 +15,10 @@ module Azure::CognitiveServices::Face::V1_0
       # @return
       attr_accessor :face_id
 
+      # @return [RecognitionModel] Possible values include: 'recognition_01',
+      # 'recognition_02'. Default value: 'recognition_01' .
+      attr_accessor :recognition_model
+
       # @return [FaceRectangle]
       attr_accessor :face_rectangle
 
@@ -42,6 +46,15 @@ module Azure::CognitiveServices::Face::V1_0
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'faceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              recognition_model: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'recognitionModel',
+                default_value: 'recognition_01',
                 type: {
                   name: 'String'
                 }
