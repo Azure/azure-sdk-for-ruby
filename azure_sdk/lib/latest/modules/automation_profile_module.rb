@@ -7,6 +7,9 @@ require 'azure_mgmt_automation'
 module Azure::Profiles::Latest
   module Automation
     module Mgmt
+      ScheduleOperations = Azure::Automation::Mgmt::V2015_10_31::ScheduleOperations
+      VariableOperations = Azure::Automation::Mgmt::V2015_10_31::VariableOperations
+      WebhookOperations = Azure::Automation::Mgmt::V2015_10_31::WebhookOperations
       Usages = Azure::Automation::Mgmt::V2015_10_31::Usages
       Operations = Azure::Automation::Mgmt::V2015_10_31::Operations
       AutomationAccountOperations = Azure::Automation::Mgmt::V2015_10_31::AutomationAccountOperations
@@ -36,11 +39,12 @@ module Azure::Profiles::Latest
       RunbookOperations = Azure::Automation::Mgmt::V2015_10_31::RunbookOperations
       TestJobStreams = Azure::Automation::Mgmt::V2015_10_31::TestJobStreams
       TestJobOperations = Azure::Automation::Mgmt::V2015_10_31::TestJobOperations
-      ScheduleOperations = Azure::Automation::Mgmt::V2015_10_31::ScheduleOperations
-      VariableOperations = Azure::Automation::Mgmt::V2015_10_31::VariableOperations
-      WebhookOperations = Azure::Automation::Mgmt::V2015_10_31::WebhookOperations
 
       module Models
+        ModuleProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
+        Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
+        ScheduleDay = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
+        ScheduleFrequency = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
         RunbookTypeEnum = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookTypeEnum
         ErrorResponse = Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
         TrackedResource = Azure::Automation::Mgmt::V2015_10_31::Models::TrackedResource
@@ -151,17 +155,17 @@ module Azure::Profiles::Latest
         AutomationAccount = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccount
         DscNode = Azure::Automation::Mgmt::V2015_10_31::Models::DscNode
         DscCompilationJob = Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
-        Certificate = Azure::Automation::Mgmt::V2015_10_31::Models::Certificate
-        Runbook = Azure::Automation::Mgmt::V2015_10_31::Models::Runbook
-        DscNodeConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
-        ModuleModel = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
         DscConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration
-        Schedule = Azure::Automation::Mgmt::V2015_10_31::Models::Schedule
-        Variable = Azure::Automation::Mgmt::V2015_10_31::Models::Variable
-        Webhook = Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
+        Runbook = Azure::Automation::Mgmt::V2015_10_31::Models::Runbook
         Connection = Azure::Automation::Mgmt::V2015_10_31::Models::Connection
-        AutomationAccountState = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
+        ModuleModel = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
+        Webhook = Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
+        Schedule = Azure::Automation::Mgmt::V2015_10_31::Models::Schedule
+        DscNodeConfiguration = Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
         AutomationKeyName = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyName
+        Certificate = Azure::Automation::Mgmt::V2015_10_31::Models::Certificate
+        AutomationAccountState = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
+        Variable = Azure::Automation::Mgmt::V2015_10_31::Models::Variable
         AutomationKeyPermissions = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyPermissions
         SkuNameEnum = Azure::Automation::Mgmt::V2015_10_31::Models::SkuNameEnum
         JobStatus = Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
@@ -175,14 +179,10 @@ module Azure::Profiles::Latest
         JobProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
         RunbookState = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookState
         RunbookProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookProvisioningState
-        ModuleProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
-        Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
-        ScheduleDay = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
-        ScheduleFrequency = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
       end
 
       class AutomationManagementClass
-        attr_reader :usages, :operations, :automation_account_operations, :statistics_operations, :keys, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_compilation_job_stream, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :job_stream_operations, :job_schedule_operations, :linked_workspace_operations, :activity_operations, :module_model_operations, :object_data_types, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_job_operations, :schedule_operations, :variable_operations, :webhook_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :schedule_operations, :variable_operations, :webhook_operations, :usages, :operations, :automation_account_operations, :statistics_operations, :keys, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_compilation_job_stream, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :job_stream_operations, :job_schedule_operations, :linked_workspace_operations, :activity_operations, :module_model_operations, :object_data_types, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_job_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -192,6 +192,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @schedule_operations = @client_0.schedule_operations
+          @variable_operations = @client_0.variable_operations
+          @webhook_operations = @client_0.webhook_operations
           @usages = @client_0.usages
           @operations = @client_0.operations
           @automation_account_operations = @client_0.automation_account_operations
@@ -221,9 +224,6 @@ module Azure::Profiles::Latest
           @runbook_operations = @client_0.runbook_operations
           @test_job_streams = @client_0.test_job_streams
           @test_job_operations = @client_0.test_job_operations
-          @schedule_operations = @client_0.schedule_operations
-          @variable_operations = @client_0.variable_operations
-          @webhook_operations = @client_0.webhook_operations
 
           @model_classes = ModelClasses.new
         end
@@ -242,6 +242,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def module_provisioning_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
+          end
+          def sku
+            Azure::Automation::Mgmt::V2015_10_31::Models::Sku
+          end
+          def schedule_day
+            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
+          end
+          def schedule_frequency
+            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
+          end
           def runbook_type_enum
             Azure::Automation::Mgmt::V2015_10_31::Models::RunbookTypeEnum
           end
@@ -572,38 +584,38 @@ module Azure::Profiles::Latest
           def dsc_compilation_job
             Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob
           end
-          def certificate
-            Azure::Automation::Mgmt::V2015_10_31::Models::Certificate
+          def dsc_configuration
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration
           end
           def runbook
             Azure::Automation::Mgmt::V2015_10_31::Models::Runbook
           end
-          def dsc_node_configuration
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
+          def connection
+            Azure::Automation::Mgmt::V2015_10_31::Models::Connection
           end
           def module_model
             Azure::Automation::Mgmt::V2015_10_31::Models::ModuleModel
           end
-          def dsc_configuration
-            Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration
+          def webhook
+            Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
           end
           def schedule
             Azure::Automation::Mgmt::V2015_10_31::Models::Schedule
           end
-          def variable
-            Azure::Automation::Mgmt::V2015_10_31::Models::Variable
+          def dsc_node_configuration
+            Azure::Automation::Mgmt::V2015_10_31::Models::DscNodeConfiguration
           end
-          def webhook
-            Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
+          def automation_key_name
+            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyName
           end
-          def connection
-            Azure::Automation::Mgmt::V2015_10_31::Models::Connection
+          def certificate
+            Azure::Automation::Mgmt::V2015_10_31::Models::Certificate
           end
           def automation_account_state
             Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
           end
-          def automation_key_name
-            Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyName
+          def variable
+            Azure::Automation::Mgmt::V2015_10_31::Models::Variable
           end
           def automation_key_permissions
             Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyPermissions
@@ -643,18 +655,6 @@ module Azure::Profiles::Latest
           end
           def runbook_provisioning_state
             Azure::Automation::Mgmt::V2015_10_31::Models::RunbookProvisioningState
-          end
-          def module_provisioning_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
-          end
-          def sku
-            Azure::Automation::Mgmt::V2015_10_31::Models::Sku
-          end
-          def schedule_day
-            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
-          end
-          def schedule_frequency
-            Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
           end
         end
       end

@@ -7,18 +7,19 @@ require 'azure_mgmt_container_service'
 module Azure::Profiles::Latest
   module ContainerService
     module Mgmt
-      ManagedClusters = Azure::ContainerService::Mgmt::V2018_03_31::ManagedClusters
       Operations = Azure::ContainerService::Mgmt::V2018_03_31::Operations
+      ManagedClusters = Azure::ContainerService::Mgmt::V2018_03_31::ManagedClusters
       ContainerServices = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServices
 
       module Models
+        ContainerServiceOrchestratorProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorProfile
+        ContainerServiceAgentPoolProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceAgentPoolProfile
         ContainerServiceListResult = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceListResult
         ContainerServiceOrchestratorTypes = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorTypes
         ContainerService = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerService
         ContainerServiceCustomProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceCustomProfile
-        ContainerServiceOrchestratorProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorProfile
-        ContainerServiceAgentPoolProfile = Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceAgentPoolProfile
         TagsObject = Azure::ContainerService::Mgmt::V2018_03_31::Models::TagsObject
+        Resource = Azure::ContainerService::Mgmt::V2018_03_31::Models::Resource
         ContainerServiceWindowsProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceWindowsProfile
         ContainerServiceSshPublicKey = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshPublicKey
         ContainerServiceSshConfiguration = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceSshConfiguration
@@ -27,7 +28,6 @@ module Azure::Profiles::Latest
         ContainerServiceMasterProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceMasterProfile
         ContainerServiceVMDiagnostics = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceVMDiagnostics
         ContainerServiceDiagnosticsProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceDiagnosticsProfile
-        Resource = Azure::ContainerService::Mgmt::V2018_03_31::Models::Resource
         KeyVaultSecretRef = Azure::ContainerService::Mgmt::V2018_03_31::Models::KeyVaultSecretRef
         OperationListResult = Azure::ContainerService::Mgmt::V2018_03_31::Models::OperationListResult
         ContainerServiceStorageProfileTypes = Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceStorageProfileTypes
@@ -45,13 +45,13 @@ module Azure::Profiles::Latest
         ManagedClusterAccessProfile = Azure::ContainerService::Mgmt::V2018_03_31::Models::ManagedClusterAccessProfile
         NetworkPlugin = Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPlugin
         NetworkPolicy = Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPolicy
+        OrchestratorVersionProfileListResult = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfileListResult
         OrchestratorProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
         OrchestratorVersionProfile = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfile
-        OrchestratorVersionProfileListResult = Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfileListResult
       end
 
       class ContainerServiceManagementClass
-        attr_reader :managed_clusters, :operations, :container_services, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :managed_clusters, :container_services, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -67,8 +67,8 @@ module Azure::Profiles::Latest
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @managed_clusters = @client_1.managed_clusters
           @operations = @client_1.operations
+          @managed_clusters = @client_1.managed_clusters
 
           @client_2 = Azure::ContainerService::Mgmt::V2017_09_30::ContainerServiceClient.new(configurable.credentials, base_url, options)
           if(@client_2.respond_to?(:subscription_id))
@@ -98,6 +98,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def container_service_orchestrator_profile
+            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorProfile
+          end
+          def container_service_agent_pool_profile
+            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceAgentPoolProfile
+          end
           def container_service_list_result
             Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceListResult
           end
@@ -110,14 +116,11 @@ module Azure::Profiles::Latest
           def container_service_custom_profile
             Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceCustomProfile
           end
-          def container_service_orchestrator_profile
-            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceOrchestratorProfile
-          end
-          def container_service_agent_pool_profile
-            Azure::ContainerService::Mgmt::V2017_07_01::Models::ContainerServiceAgentPoolProfile
-          end
           def tags_object
             Azure::ContainerService::Mgmt::V2018_03_31::Models::TagsObject
+          end
+          def resource
+            Azure::ContainerService::Mgmt::V2018_03_31::Models::Resource
           end
           def container_service_windows_profile
             Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceWindowsProfile
@@ -142,9 +145,6 @@ module Azure::Profiles::Latest
           end
           def container_service_diagnostics_profile
             Azure::ContainerService::Mgmt::V2018_03_31::Models::ContainerServiceDiagnosticsProfile
-          end
-          def resource
-            Azure::ContainerService::Mgmt::V2018_03_31::Models::Resource
           end
           def key_vault_secret_ref
             Azure::ContainerService::Mgmt::V2018_03_31::Models::KeyVaultSecretRef
@@ -197,14 +197,14 @@ module Azure::Profiles::Latest
           def network_policy
             Azure::ContainerService::Mgmt::V2018_03_31::Models::NetworkPolicy
           end
+          def orchestrator_version_profile_list_result
+            Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfileListResult
+          end
           def orchestrator_profile
             Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorProfile
           end
           def orchestrator_version_profile
             Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfile
-          end
-          def orchestrator_version_profile_list_result
-            Azure::ContainerService::Mgmt::V2017_09_30::Models::OrchestratorVersionProfileListResult
           end
         end
       end

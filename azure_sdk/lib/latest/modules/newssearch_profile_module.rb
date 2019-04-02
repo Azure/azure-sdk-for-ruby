@@ -9,14 +9,18 @@ module Azure::Profiles::Latest
     NewsOperations = Azure::CognitiveServices::NewsSearch::V1_0::NewsOperations
 
     module Models
+      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+      Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
+      SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
+      VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
       ErrorResponse = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorSubCode
       Freshness = Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
-      TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
       Response = Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+      TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
       Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       ResponseBase = Azure::CognitiveServices::NewsSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::NewsSearch::V1_0::Models::Answer
@@ -26,13 +30,9 @@ module Azure::Profiles::Latest
       NewsArticle = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsArticle
       News = Azure::CognitiveServices::NewsSearch::V1_0::Models::News
       NewsTopic = Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
-      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
       TrendingTopics = Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
-      VideoObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
-      SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
-      Identifiable = Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
-      Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
       ErrorCode = Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
+      Article = Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
     end
 
     class NewsSearchDataClass
@@ -65,6 +65,18 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def error
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
+        end
+        def identifiable
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
+        end
+        def safe_search
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
+        end
+        def video_object
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
+        end
         def error_response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorResponse
         end
@@ -83,11 +95,11 @@ module Azure::Profiles::Latest
         def freshness
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Freshness
         end
-        def text_format
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
-        end
         def response
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Response
+        end
+        def text_format
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
         end
         def organization
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
@@ -116,26 +128,14 @@ module Azure::Profiles::Latest
         def news_topic
           Azure::CognitiveServices::NewsSearch::V1_0::Models::NewsTopic
         end
-        def article
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
-        end
         def trending_topics
           Azure::CognitiveServices::NewsSearch::V1_0::Models::TrendingTopics
         end
-        def video_object
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::VideoObject
-        end
-        def safe_search
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
-        end
-        def identifiable
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Identifiable
-        end
-        def error
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-        end
         def error_code
           Azure::CognitiveServices::NewsSearch::V1_0::Models::ErrorCode
+        end
+        def article
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Article
         end
       end
     end
