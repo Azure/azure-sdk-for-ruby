@@ -187,12 +187,12 @@ module Azure::Profiles::Latest
       end
     end
     module Mgmt
-      Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
-      DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
+      Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
+      DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
 
       module Models
         TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
@@ -256,7 +256,7 @@ module Azure::Profiles::Latest
       end
 
       class EventGridManagementClass
-        attr_reader :domains, :domain_topics, :event_subscriptions, :topics, :operations, :topic_types, :configurable, :base_url, :options, :model_classes
+        attr_reader :event_subscriptions, :topics, :operations, :topic_types, :domains, :domain_topics, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -266,12 +266,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @domains = @client_0.domains
-          @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
           @operations = @client_0.operations
           @topic_types = @client_0.topic_types
+          @domains = @client_0.domains
+          @domain_topics = @client_0.domain_topics
 
           @model_classes = ModelClasses.new
         end
