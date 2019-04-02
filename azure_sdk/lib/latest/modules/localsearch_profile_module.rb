@@ -9,8 +9,6 @@ module Azure::Profiles::Latest
     Local = Azure::CognitiveServices::LocalSearch::V1_0::Local
 
     module Models
-      CreativeWork = Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
-      ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
       ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
       EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
@@ -19,11 +17,11 @@ module Azure::Profiles::Latest
       Response = Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
       SearchResponse = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResponse
       EntityType = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
-      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
       Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
-      PostalAddress = Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
+      Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
       Place = Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
+      PostalAddress = Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
       Intangible = Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
       QueryContext = Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
       GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
@@ -32,9 +30,11 @@ module Azure::Profiles::Latest
       SearchResultsAnswer = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResultsAnswer
       StructuredValue = Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
       Thing = Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
-      Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
+      CreativeWork = Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
       SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
+      Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
+      ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
     end
 
     class LocalSearchDataClass
@@ -67,12 +67,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def creative_work
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
-        end
-        def error_code
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
-        end
         def safe_search
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
         end
@@ -97,20 +91,20 @@ module Azure::Profiles::Latest
         def entity_type
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
         end
-        def action
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
-        end
         def entities_entity_presentation_info
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntitiesEntityPresentationInfo
         end
         def places
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
         end
-        def postal_address
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
+        def action
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
         end
         def place
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
+        end
+        def postal_address
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
         end
         def intangible
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
@@ -136,14 +130,20 @@ module Azure::Profiles::Latest
         def thing
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
         end
-        def error
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
+        def creative_work
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
         end
         def search_action
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
         end
         def identifiable
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
+        end
+        def error
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
+        end
+        def error_code
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
         end
       end
     end

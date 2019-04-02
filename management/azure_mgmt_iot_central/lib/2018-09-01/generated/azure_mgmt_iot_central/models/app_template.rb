@@ -12,23 +12,17 @@ module Azure::IotCentral::Mgmt::V2018_09_01
 
       include MsRestAzure
 
-      # @return [String] The ID of the template.
-      attr_accessor :manifest_id
+      # @return [String] The application template identifier.
+      attr_accessor :id
 
-      # @return [String] The version of the template.
-      attr_accessor :manifest_version
-
-      # @return [String] The name of the template.
+      # @return [String] The application template name.
       attr_accessor :name
 
-      # @return [String] The title of the template.
-      attr_accessor :title
+      # @return [Hash{String => String}] The extra template properties.
+      attr_accessor :properties
 
-      # @return [Float] The order of the template in the templates list.
-      attr_accessor :order
-
-      # @return [String] The description of the template.
-      attr_accessor :description
+      # @return [String] the resource type.
+      attr_accessor :type
 
 
       #
@@ -43,18 +37,10 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             name: 'Composite',
             class_name: 'AppTemplate',
             model_properties: {
-              manifest_id: {
+              id: {
                 required: false,
                 read_only: true,
-                serialized_name: 'manifestId',
-                type: {
-                  name: 'String'
-                }
-              },
-              manifest_version: {
-                required: false,
-                read_only: true,
-                serialized_name: 'manifestVersion',
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
@@ -67,26 +53,24 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                   name: 'String'
                 }
               },
-              title: {
+              properties: {
                 required: false,
-                read_only: true,
-                serialized_name: 'title',
+                serialized_name: 'properties',
                 type: {
-                  name: 'String'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
-              order: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'order',
-                type: {
-                  name: 'Double'
-                }
-              },
-              description: {
-                required: false,
-                read_only: true,
-                serialized_name: 'description',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

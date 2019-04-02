@@ -6,8 +6,8 @@ require 'azure_cognitiveservices_face'
 
 module Azure::Profiles::Latest
   module Face
-    Face = Azure::CognitiveServices::Face::V1_0::Face
     PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
+    Face = Azure::CognitiveServices::Face::V1_0::Face
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
 
@@ -61,7 +61,7 @@ module Azure::Profiles::Latest
     end
 
     class FaceDataClass
-      attr_reader :face, :person_group_person, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :person_group_person, :face, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -71,8 +71,8 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @face = @client_0.face
         @person_group_person = @client_0.person_group_person
+        @face = @client_0.face
         @person_group_operations = @client_0.person_group_operations
         @face_list_operations = @client_0.face_list_operations
 
