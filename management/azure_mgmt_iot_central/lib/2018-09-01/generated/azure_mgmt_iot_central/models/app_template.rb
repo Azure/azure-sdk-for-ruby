@@ -18,7 +18,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # @return [String] The application template name.
       attr_accessor :name
 
-      # @return [Hash{String => String}] The extra template properties.
+      # @return [AppTemplateProperties]
       attr_accessor :properties
 
       # @return [String] the resource type.
@@ -57,14 +57,8 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 required: false,
                 serialized_name: 'properties',
                 type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
+                  name: 'Composite',
+                  class_name: 'AppTemplateProperties'
                 }
               },
               type: {

@@ -36,8 +36,8 @@ module Azure::Profiles::Latest
         DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentPropertiesExtended
         ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
         DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         TagCount = Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
         ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
         ProviderListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
@@ -168,11 +168,11 @@ module Azure::Profiles::Latest
           def deployment_extended
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
           end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
-          end
           def tag_count
             Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
+          end
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
           end
           def tag_value
             Azure::Resources::Mgmt::V2018_05_01::Models::TagValue

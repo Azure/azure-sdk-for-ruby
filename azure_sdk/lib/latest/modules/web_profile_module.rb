@@ -13,9 +13,9 @@ module Azure::Profiles::Latest
       CertificateRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::CertificateRegistrationProvider
       TopLevelDomains = Azure::Web::Mgmt::V2018_02_01::TopLevelDomains
       DomainRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::DomainRegistrationProvider
-      AppServiceEnvironments = Azure::Web::Mgmt::V2018_02_01::AppServiceEnvironments
       AppServicePlans = Azure::Web::Mgmt::V2018_02_01::AppServicePlans
       WebApps = Azure::Web::Mgmt::V2018_02_01::WebApps
+      AppServiceEnvironments = Azure::Web::Mgmt::V2018_02_01::AppServiceEnvironments
       Certificates = Azure::Web::Mgmt::V2018_02_01::Certificates
       DeletedWebApps = Azure::Web::Mgmt::V2018_02_01::DeletedWebApps
       Diagnostics = Azure::Web::Mgmt::V2018_02_01::Diagnostics
@@ -231,19 +231,19 @@ module Azure::Profiles::Latest
         PrivateAccess = Azure::Web::Mgmt::V2018_02_01::Models::PrivateAccess
         SnapshotRestoreRequest = Azure::Web::Mgmt::V2018_02_01::Models::SnapshotRestoreRequest
         SwiftVirtualNetwork = Azure::Web::Mgmt::V2018_02_01::Models::SwiftVirtualNetwork
-        CertificateProductType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateProductType
         Usage = Azure::Web::Mgmt::V2018_02_01::Models::Usage
+        CertificateProductType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateProductType
         CertificateOrderStatus = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
         CertificateOrderActionType = Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderActionType
         IpFilterTag = Azure::Web::Mgmt::V2018_02_01::Models::IpFilterTag
         AzureStorageType = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageType
-        AzureStorageState = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageState
         Dimension = Azure::Web::Mgmt::V2018_02_01::Models::Dimension
-        DomainStatus = Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
-        MetricSpecification = Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
-        DomainType = Azure::Web::Mgmt::V2018_02_01::Models::DomainType
-        DnsType = Azure::Web::Mgmt::V2018_02_01::Models::DnsType
         FtpsState = Azure::Web::Mgmt::V2018_02_01::Models::FtpsState
+        MetricSpecification = Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
+        DnsType = Azure::Web::Mgmt::V2018_02_01::Models::DnsType
+        DomainStatus = Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
+        AzureStorageState = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageState
+        DomainType = Azure::Web::Mgmt::V2018_02_01::Models::DomainType
         OperationStatus = Azure::Web::Mgmt::V2018_02_01::Models::OperationStatus
         Deployment = Azure::Web::Mgmt::V2018_02_01::Models::Deployment
         Resource = Azure::Web::Mgmt::V2018_02_01::Models::Resource
@@ -362,7 +362,7 @@ module Azure::Profiles::Latest
       end
 
       class WebManagementClass
-        attr_reader :provider, :domains, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :app_service_environments, :app_service_plans, :web_apps, :certificates, :deleted_web_apps, :diagnostics, :recommendations, :resource_health_metadata_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :provider, :domains, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :app_service_plans, :web_apps, :app_service_environments, :certificates, :deleted_web_apps, :diagnostics, :recommendations, :resource_health_metadata_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -378,9 +378,9 @@ module Azure::Profiles::Latest
           @certificate_registration_provider = @client_0.certificate_registration_provider
           @top_level_domains = @client_0.top_level_domains
           @domain_registration_provider = @client_0.domain_registration_provider
-          @app_service_environments = @client_0.app_service_environments
           @app_service_plans = @client_0.app_service_plans
           @web_apps = @client_0.web_apps
+          @app_service_environments = @client_0.app_service_environments
           @certificates = @client_0.certificates
           @deleted_web_apps = @client_0.deleted_web_apps
           @diagnostics = @client_0.diagnostics
@@ -1028,11 +1028,11 @@ module Azure::Profiles::Latest
           def swift_virtual_network
             Azure::Web::Mgmt::V2018_02_01::Models::SwiftVirtualNetwork
           end
-          def certificate_product_type
-            Azure::Web::Mgmt::V2018_02_01::Models::CertificateProductType
-          end
           def usage
             Azure::Web::Mgmt::V2018_02_01::Models::Usage
+          end
+          def certificate_product_type
+            Azure::Web::Mgmt::V2018_02_01::Models::CertificateProductType
           end
           def certificate_order_status
             Azure::Web::Mgmt::V2018_02_01::Models::CertificateOrderStatus
@@ -1046,26 +1046,26 @@ module Azure::Profiles::Latest
           def azure_storage_type
             Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageType
           end
-          def azure_storage_state
-            Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageState
-          end
           def dimension
             Azure::Web::Mgmt::V2018_02_01::Models::Dimension
           end
-          def domain_status
-            Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
+          def ftps_state
+            Azure::Web::Mgmt::V2018_02_01::Models::FtpsState
           end
           def metric_specification
             Azure::Web::Mgmt::V2018_02_01::Models::MetricSpecification
           end
-          def domain_type
-            Azure::Web::Mgmt::V2018_02_01::Models::DomainType
-          end
           def dns_type
             Azure::Web::Mgmt::V2018_02_01::Models::DnsType
           end
-          def ftps_state
-            Azure::Web::Mgmt::V2018_02_01::Models::FtpsState
+          def domain_status
+            Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
+          end
+          def azure_storage_state
+            Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageState
+          end
+          def domain_type
+            Azure::Web::Mgmt::V2018_02_01::Models::DomainType
           end
           def operation_status
             Azure::Web::Mgmt::V2018_02_01::Models::OperationStatus

@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
+      ImageInfo = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
       ImageTagRegion = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
       KnowledgeRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
       VisualSearchRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
@@ -23,12 +24,12 @@ module Azure::Profiles::Latest
       ImageShoppingSourcesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
       ContentTypes = Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
       ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
+      ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
       Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
-      ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       Response = Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
       Organization = Azure::CognitiveServices::VisualSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::VisualSearch::V1_0::Models::Intangible
@@ -37,9 +38,9 @@ module Azure::Profiles::Latest
       ImageTag = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTag
       RelatedSearchesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RelatedSearchesModule
       PropertiesItem = Azure::CognitiveServices::VisualSearch::V1_0::Models::PropertiesItem
-      RecipesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
-      ImagesImageMetadata = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
       Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
+      ImagesImageMetadata = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
+      RecipesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
       ImagesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
       Offer = Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
@@ -55,7 +56,6 @@ module Azure::Profiles::Latest
       CreativeWork = Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
       CropArea = Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
-      ImageInfo = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
     end
 
     class VisualSearchDataClass
@@ -88,6 +88,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_info
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
+        end
         def image_tag_region
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
         end
@@ -130,6 +133,9 @@ module Azure::Profiles::Latest
         def error_response
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
         end
+        def error_code
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
+        end
         def safe_search
           Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
         end
@@ -144,9 +150,6 @@ module Azure::Profiles::Latest
         end
         def error_sub_code
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
-        end
-        def error_code
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
         end
         def response
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
@@ -172,14 +175,14 @@ module Azure::Profiles::Latest
         def properties_item
           Azure::CognitiveServices::VisualSearch::V1_0::Models::PropertiesItem
         end
-        def recipes_module
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
+        def filters
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
         end
         def images_image_metadata
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
         end
-        def filters
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
+        def recipes_module
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
         end
         def images_module
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
@@ -225,9 +228,6 @@ module Azure::Profiles::Latest
         end
         def crop_area
           Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
-        end
-        def image_info
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
         end
       end
     end
