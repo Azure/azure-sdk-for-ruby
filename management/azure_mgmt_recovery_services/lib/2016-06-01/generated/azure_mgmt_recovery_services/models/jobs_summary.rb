@@ -28,7 +28,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobsSummary',
           type: {
@@ -36,7 +35,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'JobsSummary',
             model_properties: {
               failed_jobs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'failedJobs',
                 type: {
@@ -44,7 +42,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               suspended_jobs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'suspendedJobs',
                 type: {
@@ -52,7 +49,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               in_progress_jobs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inProgressJobs',
                 type: {
