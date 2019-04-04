@@ -13,8 +13,8 @@ module Azure::Profiles::Latest
 
       module Models
         PolicyMode = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
-        PolicyDefinitionReference = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
         ErrorResponse = Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
+        PolicyDefinitionReference = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
         PolicySetDefinition = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinition
         PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinitionListResult
         PolicySku = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
@@ -60,11 +60,11 @@ module Azure::Profiles::Latest
           def policy_mode
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
           end
-          def policy_definition_reference
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
-          end
           def error_response
             Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
+          end
+          def policy_definition_reference
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
           end
           def policy_set_definition
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinition
