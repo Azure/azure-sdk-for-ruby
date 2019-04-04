@@ -39,7 +39,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserAccount',
           type: {
@@ -47,7 +46,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'UserAccount',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -55,7 +53,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'password',
                 type: {
@@ -63,7 +60,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               elevation_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'elevationLevel',
                 type: {
@@ -72,7 +68,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               linux_user_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'linuxUserConfiguration',
                 type: {

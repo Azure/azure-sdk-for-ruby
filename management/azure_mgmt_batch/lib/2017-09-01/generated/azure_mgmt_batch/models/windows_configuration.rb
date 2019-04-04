@@ -24,7 +24,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WindowsConfiguration',
           type: {
@@ -32,7 +31,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'WindowsConfiguration',
             model_properties: {
               enable_automatic_updates: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enableAutomaticUpdates',
                 type: {

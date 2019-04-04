@@ -32,7 +32,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationPackageReference',
           type: {
@@ -40,7 +39,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'ApplicationPackageReference',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -48,7 +46,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {

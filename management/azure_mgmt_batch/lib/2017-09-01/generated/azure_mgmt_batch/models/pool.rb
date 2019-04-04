@@ -166,7 +166,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Pool',
           type: {
@@ -174,7 +173,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'Pool',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -183,7 +181,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -192,7 +189,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -201,7 +197,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
@@ -210,7 +205,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -218,7 +212,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',
@@ -227,7 +220,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationTime',
@@ -236,7 +228,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -246,7 +237,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               provisioning_state_transition_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningStateTransitionTime',
@@ -255,7 +245,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               allocation_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.allocationState',
@@ -265,7 +254,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               allocation_state_transition_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.allocationStateTransitionTime',
@@ -274,7 +262,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               vm_size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vmSize',
                 type: {
@@ -282,7 +269,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               deployment_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deploymentConfiguration',
                 type: {
@@ -291,7 +277,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               current_dedicated_nodes: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentDedicatedNodes',
@@ -300,7 +285,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               current_low_priority_nodes: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentLowPriorityNodes',
@@ -309,7 +293,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               scale_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scaleSettings',
                 type: {
@@ -318,7 +301,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               auto_scale_run: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.autoScaleRun',
@@ -328,7 +310,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               inter_node_communication: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.interNodeCommunication',
                 type: {
@@ -337,7 +318,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               network_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkConfiguration',
                 type: {
@@ -346,7 +326,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               max_tasks_per_node: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxTasksPerNode',
                 type: {
@@ -354,7 +333,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               task_scheduling_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.taskSchedulingPolicy',
                 type: {
@@ -363,13 +341,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               user_accounts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userAccounts',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UserAccountElementType',
                       type: {
@@ -380,13 +356,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metadata',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetadataItemElementType',
                       type: {
@@ -397,7 +371,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               start_task: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTask',
                 type: {
@@ -406,13 +379,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               certificates: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.certificates',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CertificateReferenceElementType',
                       type: {
@@ -423,13 +394,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               application_packages: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.applicationPackages',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationPackageReferenceElementType',
                       type: {
@@ -440,13 +409,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               application_licenses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.applicationLicenses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -456,7 +423,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               resize_operation_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resizeOperationStatus',

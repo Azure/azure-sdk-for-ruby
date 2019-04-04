@@ -34,7 +34,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateBaseProperties',
           type: {
@@ -42,7 +41,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'CertificateBaseProperties',
             model_properties: {
               thumbprint_algorithm: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'thumbprintAlgorithm',
                 type: {
@@ -50,7 +48,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'thumbprint',
                 type: {
@@ -58,7 +55,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               format: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'format',
                 type: {

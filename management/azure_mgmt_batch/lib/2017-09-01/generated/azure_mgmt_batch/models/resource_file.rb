@@ -39,7 +39,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceFile',
           type: {
@@ -47,7 +46,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'ResourceFile',
             model_properties: {
               blob_source: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'blobSource',
                 type: {
@@ -55,7 +53,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               file_path: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'filePath',
                 type: {
@@ -63,7 +60,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               file_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fileMode',
                 type: {

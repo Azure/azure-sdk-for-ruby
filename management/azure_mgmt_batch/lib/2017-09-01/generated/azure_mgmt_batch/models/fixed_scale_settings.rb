@@ -44,7 +44,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FixedScaleSettings',
           type: {
@@ -52,7 +51,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'FixedScaleSettings',
             model_properties: {
               resize_timeout: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resizeTimeout',
                 type: {
@@ -60,7 +58,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               target_dedicated_nodes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetDedicatedNodes',
                 type: {
@@ -68,7 +65,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               target_low_priority_nodes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetLowPriorityNodes',
                 type: {
@@ -76,7 +72,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               node_deallocation_option: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nodeDeallocationOption',
                 type: {
