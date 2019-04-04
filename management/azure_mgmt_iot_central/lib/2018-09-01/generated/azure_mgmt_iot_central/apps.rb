@@ -681,7 +681,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/IoTAppTemplates'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/iotAppTemplates'
 
       request_url = @base_url || @client.base_url
 
