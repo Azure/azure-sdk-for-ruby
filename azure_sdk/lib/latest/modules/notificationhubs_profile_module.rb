@@ -12,11 +12,10 @@ module Azure::Profiles::Latest
       Namespaces = Azure::NotificationHubs::Mgmt::V2017_04_01::Namespaces
 
       module Models
-        AdmCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AdmCredential
+        NamespaceListResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
         Sku = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
         BaiduCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
         CheckAvailabilityResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::CheckAvailabilityResult
-        NamespaceListResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
         NamespaceCreateOrUpdateParameters = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceCreateOrUpdateParameters
         NamespaceResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceResource
         SharedAccessAuthorizationRuleResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SharedAccessAuthorizationRuleResource
@@ -46,6 +45,7 @@ module Azure::Profiles::Latest
         SharedAccessAuthorizationRuleProperties = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SharedAccessAuthorizationRuleProperties
         MpnsCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::MpnsCredential
         NamespacePatchParameters = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespacePatchParameters
+        AdmCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AdmCredential
       end
 
       class NotificationHubsManagementClass
@@ -80,8 +80,8 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def adm_credential
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AdmCredential
+          def namespace_list_result
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
           end
           def sku
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
@@ -91,9 +91,6 @@ module Azure::Profiles::Latest
           end
           def check_availability_result
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::CheckAvailabilityResult
-          end
-          def namespace_list_result
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
           end
           def namespace_create_or_update_parameters
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceCreateOrUpdateParameters
@@ -181,6 +178,9 @@ module Azure::Profiles::Latest
           end
           def namespace_patch_parameters
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespacePatchParameters
+          end
+          def adm_credential
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AdmCredential
           end
         end
       end

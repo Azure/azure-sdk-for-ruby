@@ -11,14 +11,14 @@ module Azure::Profiles::Latest
       WebServices = Azure::MachineLearning::Mgmt::V2017_01_01::WebServices
 
       module Models
-        WebService = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
-        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
         WebServicePropertiesForGraph = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
+        StorageAccount = Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
         DiagnosticsLevel = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
-        ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
         ColumnFormat = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
-        AssetType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
+        ColumnType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
         InputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
+        AssetType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
         OutputPortType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
         AsyncOperationStatus = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AsyncOperationStatus
         OperationDisplayInfo = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationDisplayInfo
@@ -26,7 +26,6 @@ module Azure::Profiles::Latest
         OperationEntityListResult = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OperationEntityListResult
         Resource = Azure::MachineLearning::Mgmt::V2017_01_01::Models::Resource
         ParameterType = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
-        ProvisioningState = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
         AssetItem = Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
         WebServiceParameter = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServiceParameter
         RealtimeConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::RealtimeConfiguration
@@ -51,6 +50,7 @@ module Azure::Profiles::Latest
         ServiceInputOutputSpecification = Azure::MachineLearning::Mgmt::V2017_01_01::Models::ServiceInputOutputSpecification
         DiagnosticsConfiguration = Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsConfiguration
         OutputPort = Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPort
+        WebService = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
       end
 
       class MachineLearningManagementClass
@@ -84,29 +84,29 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def web_service
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
+          def web_service_properties_for_graph
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
           end
           def storage_account
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::StorageAccount
           end
-          def web_service_properties_for_graph
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebServicePropertiesForGraph
-          end
           def diagnostics_level
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::DiagnosticsLevel
           end
-          def column_type
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
+          def provisioning_state
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
           end
           def column_format
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnFormat
           end
-          def asset_type
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
+          def column_type
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ColumnType
           end
           def input_port_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::InputPortType
+          end
+          def asset_type
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetType
           end
           def output_port_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPortType
@@ -128,9 +128,6 @@ module Azure::Profiles::Latest
           end
           def parameter_type
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::ParameterType
-          end
-          def provisioning_state
-            Azure::MachineLearning::Mgmt::V2017_01_01::Models::ProvisioningState
           end
           def asset_item
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::AssetItem
@@ -203,6 +200,9 @@ module Azure::Profiles::Latest
           end
           def output_port
             Azure::MachineLearning::Mgmt::V2017_01_01::Models::OutputPort
+          end
+          def web_service
+            Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService
           end
         end
       end

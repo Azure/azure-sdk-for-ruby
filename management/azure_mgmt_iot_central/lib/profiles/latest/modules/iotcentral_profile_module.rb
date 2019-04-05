@@ -10,9 +10,9 @@ module Azure::IotCentral::Profiles::Latest
     Operations = Azure::IotCentral::Mgmt::V2018_09_01::Operations
 
     module Models
-      App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
       AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
       OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
+      AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
       Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
       AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
       OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
@@ -21,11 +21,10 @@ module Azure::IotCentral::Profiles::Latest
       AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
       AppAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
       Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
-      AppTemplateProperties = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplateProperties
-      AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
       AppTemplate = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplate
       ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
       AppTemplatesResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplatesResult
+      App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
     end
 
     #
@@ -74,14 +73,14 @@ module Azure::IotCentral::Profiles::Latest
     end
 
     class ModelClasses
-      def app
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::App
-      end
       def app_sku
         Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
       end
       def operation_display
         Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
+      end
+      def app_sku_info
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
       end
       def operation
         Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
@@ -107,12 +106,6 @@ module Azure::IotCentral::Profiles::Latest
       def resource
         Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
       end
-      def app_template_properties
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplateProperties
-      end
-      def app_sku_info
-        Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
-      end
       def app_template
         Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplate
       end
@@ -121,6 +114,9 @@ module Azure::IotCentral::Profiles::Latest
       end
       def app_templates_result
         Azure::IotCentral::Mgmt::V2018_09_01::Models::AppTemplatesResult
+      end
+      def app
+        Azure::IotCentral::Mgmt::V2018_09_01::Models::App
       end
     end
   end

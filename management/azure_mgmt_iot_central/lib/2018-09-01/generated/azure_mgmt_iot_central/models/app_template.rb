@@ -12,17 +12,23 @@ module Azure::IotCentral::Mgmt::V2018_09_01
 
       include MsRestAzure
 
-      # @return [String] The application template identifier.
-      attr_accessor :id
+      # @return [String] The ID of the template.
+      attr_accessor :manifest_id
 
-      # @return [String] The application template name.
-      attr_accessor :name
+      # @return [String] The version of the template.
+      attr_accessor :manifest_version
 
-      # @return [AppTemplateProperties]
-      attr_accessor :properties
+      # @return [String] The name of the template.
+      attr_accessor :app_template_name
 
-      # @return [String] the resource type.
-      attr_accessor :type
+      # @return [String] The title of the template.
+      attr_accessor :title
+
+      # @return [Float] The order of the template in the templates list.
+      attr_accessor :order
+
+      # @return [String] The description of the template.
+      attr_accessor :description
 
 
       #
@@ -37,34 +43,50 @@ module Azure::IotCentral::Mgmt::V2018_09_01
             name: 'Composite',
             class_name: 'AppTemplate',
             model_properties: {
-              id: {
+              manifest_id: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'manifestId',
                 type: {
                   name: 'String'
                 }
               },
-              name: {
+              manifest_version: {
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'manifestVersion',
                 type: {
                   name: 'String'
                 }
               },
-              properties: {
-                required: false,
-                serialized_name: 'properties',
-                type: {
-                  name: 'Composite',
-                  class_name: 'AppTemplateProperties'
-                }
-              },
-              type: {
+              app_template_name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'appTemplateName',
+                type: {
+                  name: 'String'
+                }
+              },
+              title: {
+                required: false,
+                read_only: true,
+                serialized_name: 'title',
+                type: {
+                  name: 'String'
+                }
+              },
+              order: {
+                required: false,
+                read_only: true,
+                serialized_name: 'order',
+                type: {
+                  name: 'Double'
+                }
+              },
+              description: {
+                required: false,
+                read_only: true,
+                serialized_name: 'description',
                 type: {
                   name: 'String'
                 }

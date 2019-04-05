@@ -12,8 +12,8 @@ module Azure::Profiles::Latest
 
       module Models
         ErrorResponseError = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponseError
-        OperationDisplay = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
         AgreementTerms = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::AgreementTerms
+        OperationDisplay = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
         Operation = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Operation
         OperationListResult = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationListResult
         Resource = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Resource
@@ -54,11 +54,11 @@ module Azure::Profiles::Latest
           def error_response_error
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponseError
           end
-          def operation_display
-            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
-          end
           def agreement_terms
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::AgreementTerms
+          end
+          def operation_display
+            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
           end
           def operation
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Operation

@@ -201,15 +201,14 @@ module Azure::Profiles::Latest
         ProtectionContainerFabricSpecificDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectionContainerFabricSpecificDetails
         CreateProtectionContainerMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::CreateProtectionContainerMappingInput
         NetworkCollection = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkCollection
-        Subnet = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Subnet
         DataStore = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DataStore
         NetworkMappingFabricSpecificSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMappingFabricSpecificSettings
+        NetworkMappingProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMappingProperties
         HealthError = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HealthError
         ProtectedItemsQueryParameter = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectedItemsQueryParameter
         TestFailoverCleanupInputProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::TestFailoverCleanupInputProperties
         NetworkMappingCollection = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMappingCollection
         A2AProtectedManagedDiskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AProtectedManagedDiskDetails
-        NetworkMappingProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMappingProperties
         OperationsDiscovery = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::OperationsDiscovery
         UpdatePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::UpdatePolicyInput
         OperationsDiscoveryCollection = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::OperationsDiscoveryCollection
@@ -220,6 +219,7 @@ module Azure::Profiles::Latest
         DiscoverProtectableItemRequestProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DiscoverProtectableItemRequestProperties
         PlannedFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PlannedFailoverInput
         EventQueryParameter = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::EventQueryParameter
+        Subnet = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Subnet
         PolicyProviderSpecificDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PolicyProviderSpecificDetails
         UpdateRecoveryPlanInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::UpdateRecoveryPlanInput
         PolicyProperties = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PolicyProperties
@@ -241,40 +241,40 @@ module Azure::Profiles::Latest
         A2AProtectionContainerMappingDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AProtectionContainerMappingDetails
         A2ARecoveryPointDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2ARecoveryPointDetails
         A2APolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2APolicyDetails
-        A2AReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AReplicationDetails
+        A2AReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AReprotectInput
         A2ASwitchProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2ASwitchProtectionInput
-        A2AUpdateContainerMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AUpdateContainerMappingInput
+        A2AReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AReplicationDetails
+        A2AUpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AUpdateReplicationProtectedItemInput
         PolicyCollection = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PolicyCollection
+        A2AUpdateContainerMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AUpdateContainerMappingInput
+        AutomationRunbookTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AutomationRunbookTaskDetails
         Alert = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Alert
         AsrJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AsrJobDetails
-        A2AReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AReprotectInput
+        AzureToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureToAzureCreateNetworkMappingInput
         AzureFabricCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureFabricCreationInput
         AzureFabricSpecificDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureFabricSpecificDetails
-        A2AUpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AUpdateReplicationProtectedItemInput
+        ConsistencyCheckTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ConsistencyCheckTaskDetails
         AzureToAzureNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureToAzureNetworkMappingSettings
         AzureToAzureUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureToAzureUpdateNetworkMappingInput
-        AutomationRunbookTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AutomationRunbookTaskDetails
+        FabricReplicationGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::FabricReplicationGroupTaskDetails
         ExportJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ExportJobDetails
         Fabric = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Fabric
-        AzureToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureToAzureCreateNetworkMappingInput
+        HyperVReplica2012R2EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplica2012R2EventDetails
         FailoverJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::FailoverJobDetails
         HyperVReplica2012EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplica2012EventDetails
-        ConsistencyCheckTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ConsistencyCheckTaskDetails
+        HyperVReplicaAzureEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureEventDetails
         HyperVReplicaAzureApplyRecoveryPointInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureApplyRecoveryPointInput
         HyperVReplicaAzureEnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureEnableProtectionInput
-        FabricReplicationGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::FabricReplicationGroupTaskDetails
-        HyperVReplicaAzureFailbackProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailbackProviderInput
-        HyperVReplicaAzureFailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailoverProviderInput
-        HyperVReplica2012R2EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplica2012R2EventDetails
         HyperVReplicaAzurePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzurePolicyDetails
+        HyperVReplicaAzureFailbackProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailbackProviderInput
         HyperVReplicaAzurePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzurePolicyInput
-        HyperVReplicaAzureEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureEventDetails
         HyperVReplicaAzureReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureReprotectInput
+        HyperVReplicaAzureUpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureUpdateReplicationProtectedItemInput
         HyperVReplicaAzureReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureReplicationDetails
         HyperVReplicaBaseEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBaseEventDetails
-        HyperVReplicaAzureUpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureUpdateReplicationProtectedItemInput
-        HyperVReplicaBaseReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBaseReplicationDetails
         HyperVReplicaBasePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBasePolicyDetails
+        HyperVReplicaBaseReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBaseReplicationDetails
+        HyperVReplicaAzureFailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailoverProviderInput
         HyperVReplicaBluePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBluePolicyInput
         HyperVReplicaBluePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBluePolicyDetails
         HyperVReplicaPolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaPolicyDetails
@@ -287,67 +287,67 @@ module Azure::Profiles::Latest
         InlineWorkflowTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InlineWorkflowTaskDetails
         InMageAzureV2EventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2EventDetails
         InMageAzureV2EnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2EnableProtectionInput
-        InMageAzureV2PolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2PolicyInput
+        InMageAzureV2PolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2PolicyDetails
         InMageAzureV2FailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2FailoverProviderInput
         InMageAzureV2RecoveryPointDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2RecoveryPointDetails
         InMageAzureV2ReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2ReplicationDetails
         InMageAzureV2ReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2ReprotectInput
-        InMageAzureV2PolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2PolicyDetails
-        InMageBasePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageBasePolicyDetails
+        InMageAzureV2UpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2UpdateReplicationProtectedItemInput
+        InMageAzureV2PolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2PolicyInput
         InMageDisableProtectionProviderSpecificInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageDisableProtectionProviderSpecificInput
         InMageEnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageEnableProtectionInput
-        InMagePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMagePolicyDetails
-        Resource = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Resource
-        InMagePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMagePolicyInput
-        InMageReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageReplicationDetails
-        JobStatusEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::JobStatusEventDetails
-        InMageAzureV2UpdateReplicationProtectedItemInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2UpdateReplicationProtectedItemInput
-        JobTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::JobTaskDetails
-        LogicalNetwork = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::LogicalNetwork
-        NetworkMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMapping
         InMageFailoverProviderInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageFailoverProviderInput
-        ProtectableItem = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectableItem
-        ProtectionContainerMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectionContainerMapping
-        RecoveryPlan = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlan
+        InMagePolicyInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMagePolicyInput
+        Resource = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Resource
+        InMageReplicationDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageReplicationDetails
         InMageReprotectInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageReprotectInput
-        RecoveryPlanA2AFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanA2AFailoverInput
-        RecoveryPlanAutomationRunbookActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanAutomationRunbookActionDetails
-        RecoveryPlanHyperVReplicaAzureFailbackInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanHyperVReplicaAzureFailbackInput
+        JobTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::JobTaskDetails
+        InMageBasePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageBasePolicyDetails
+        LogicalNetwork = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::LogicalNetwork
         ManualActionTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ManualActionTaskDetails
-        RecoveryPlanGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanGroupTaskDetails
-        RecoveryPlanInMageAzureV2FailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanInMageAzureV2FailoverInput
-        RecoveryPlanManualActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanManualActionDetails
+        ProtectableItem = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectableItem
+        InMagePolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMagePolicyDetails
+        ProtectionContainerMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectionContainerMapping
         RcmAzureMigrationPolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RcmAzureMigrationPolicyDetails
-        RecoveryPlanInMageFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanInMageFailoverInput
+        RecoveryPlanA2AFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanA2AFailoverInput
+        JobStatusEventDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::JobStatusEventDetails
+        RecoveryPlanAutomationRunbookActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanAutomationRunbookActionDetails
+        RecoveryPlanGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanGroupTaskDetails
+        RecoveryPlanHyperVReplicaAzureFailbackInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanHyperVReplicaAzureFailbackInput
+        NetworkMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMapping
+        RecoveryPlanInMageAzureV2FailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanInMageAzureV2FailoverInput
         RecoveryPlanHyperVReplicaAzureFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanHyperVReplicaAzureFailoverInput
-        ReplicationGroupDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ReplicationGroupDetails
+        RecoveryPlanManualActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanManualActionDetails
+        RecoveryPlan = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlan
         RecoveryPlanShutdownGroupTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanShutdownGroupTaskDetails
-        RecoveryServicesProvider = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryServicesProvider
         RecoveryPlanScriptActionDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanScriptActionDetails
-        StorageClassification = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::StorageClassification
+        RecoveryPlanInMageFailoverInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanInMageFailoverInput
         SanEnableProtectionInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::SanEnableProtectionInput
-        ScriptActionTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ScriptActionTaskDetails
+        ReplicationGroupDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ReplicationGroupDetails
         ReplicationProtectedItem = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ReplicationProtectedItem
-        VaultHealthDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VaultHealthDetails
+        RecoveryServicesProvider = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryServicesProvider
         SwitchProtectionJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::SwitchProtectionJobDetails
-        TestFailoverJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::TestFailoverJobDetails
+        StorageClassification = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::StorageClassification
         StorageClassificationMapping = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::StorageClassificationMapping
-        VmmToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureCreateNetworkMappingInput
+        ScriptActionTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ScriptActionTaskDetails
         VirtualMachineTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VirtualMachineTaskDetails
-        VmmDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmDetails
+        VaultHealthDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VaultHealthDetails
         VCenter = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VCenter
-        VmmToAzureNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureNetworkMappingSettings
+        TestFailoverJobDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::TestFailoverJobDetails
         VmmToAzureUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureUpdateNetworkMappingInput
         VmmToVmmCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmCreateNetworkMappingInput
-        VmmToVmmNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmNetworkMappingSettings
-        VmmToVmmUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmUpdateNetworkMappingInput
+        VmmToAzureNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureNetworkMappingSettings
+        VmmDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmDetails
         VmmVirtualMachineDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmVirtualMachineDetails
+        VmmToVmmNetworkMappingSettings = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmNetworkMappingSettings
         VmNicUpdatesTaskDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmNicUpdatesTaskDetails
         VMwareCbtPolicyCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareCbtPolicyCreationInput
-        VmwareCbtPolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmwareCbtPolicyDetails
+        VmmToAzureCreateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureCreateNetworkMappingInput
         VMwareDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareDetails
-        VMwareV2FabricCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareV2FabricCreationInput
+        VmwareCbtPolicyDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmwareCbtPolicyDetails
         VMwareV2FabricSpecificDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareV2FabricSpecificDetails
+        VMwareV2FabricCreationInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareV2FabricCreationInput
+        VmmToVmmUpdateNetworkMappingInput = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmUpdateNetworkMappingInput
         VMwareVirtualMachineDetails = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareVirtualMachineDetails
         AgentAutoUpdateStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AgentAutoUpdateStatus
         SetMultiVmSyncStatus = Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::SetMultiVmSyncStatus
@@ -939,14 +939,14 @@ module Azure::Profiles::Latest
           def network_collection
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkCollection
           end
-          def subnet
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Subnet
-          end
           def data_store
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::DataStore
           end
           def network_mapping_fabric_specific_settings
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMappingFabricSpecificSettings
+          end
+          def network_mapping_properties
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMappingProperties
           end
           def health_error
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HealthError
@@ -962,9 +962,6 @@ module Azure::Profiles::Latest
           end
           def a2_aprotected_managed_disk_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AProtectedManagedDiskDetails
-          end
-          def network_mapping_properties
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMappingProperties
           end
           def operations_discovery
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::OperationsDiscovery
@@ -995,6 +992,9 @@ module Azure::Profiles::Latest
           end
           def event_query_parameter
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::EventQueryParameter
+          end
+          def subnet
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Subnet
           end
           def policy_provider_specific_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PolicyProviderSpecificDetails
@@ -1059,17 +1059,26 @@ module Azure::Profiles::Latest
           def a2_apolicy_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2APolicyDetails
           end
-          def a2_areplication_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AReplicationDetails
+          def a2_areprotect_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AReprotectInput
           end
           def a2_aswitch_protection_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2ASwitchProtectionInput
           end
-          def a2_aupdate_container_mapping_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AUpdateContainerMappingInput
+          def a2_areplication_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AReplicationDetails
+          end
+          def a2_aupdate_replication_protected_item_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AUpdateReplicationProtectedItemInput
           end
           def policy_collection
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::PolicyCollection
+          end
+          def a2_aupdate_container_mapping_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AUpdateContainerMappingInput
+          end
+          def automation_runbook_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AutomationRunbookTaskDetails
           end
           def alert
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Alert
@@ -1077,8 +1086,8 @@ module Azure::Profiles::Latest
           def asr_job_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AsrJobDetails
           end
-          def a2_areprotect_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AReprotectInput
+          def azure_to_azure_create_network_mapping_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureToAzureCreateNetworkMappingInput
           end
           def azure_fabric_creation_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureFabricCreationInput
@@ -1086,8 +1095,8 @@ module Azure::Profiles::Latest
           def azure_fabric_specific_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureFabricSpecificDetails
           end
-          def a2_aupdate_replication_protected_item_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::A2AUpdateReplicationProtectedItemInput
+          def consistency_check_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ConsistencyCheckTaskDetails
           end
           def azure_to_azure_network_mapping_settings
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureToAzureNetworkMappingSettings
@@ -1095,8 +1104,8 @@ module Azure::Profiles::Latest
           def azure_to_azure_update_network_mapping_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureToAzureUpdateNetworkMappingInput
           end
-          def automation_runbook_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AutomationRunbookTaskDetails
+          def fabric_replication_group_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::FabricReplicationGroupTaskDetails
           end
           def export_job_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ExportJobDetails
@@ -1104,8 +1113,8 @@ module Azure::Profiles::Latest
           def fabric
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Fabric
           end
-          def azure_to_azure_create_network_mapping_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::AzureToAzureCreateNetworkMappingInput
+          def hyper_vreplica2012_r2_event_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplica2012R2EventDetails
           end
           def failover_job_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::FailoverJobDetails
@@ -1113,8 +1122,8 @@ module Azure::Profiles::Latest
           def hyper_vreplica2012_event_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplica2012EventDetails
           end
-          def consistency_check_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ConsistencyCheckTaskDetails
+          def hyper_vreplica_azure_event_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureEventDetails
           end
           def hyper_vreplica_azure_apply_recovery_point_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureApplyRecoveryPointInput
@@ -1122,29 +1131,20 @@ module Azure::Profiles::Latest
           def hyper_vreplica_azure_enable_protection_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureEnableProtectionInput
           end
-          def fabric_replication_group_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::FabricReplicationGroupTaskDetails
+          def hyper_vreplica_azure_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzurePolicyDetails
           end
           def hyper_vreplica_azure_failback_provider_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailbackProviderInput
           end
-          def hyper_vreplica_azure_failover_provider_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailoverProviderInput
-          end
-          def hyper_vreplica2012_r2_event_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplica2012R2EventDetails
-          end
-          def hyper_vreplica_azure_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzurePolicyDetails
-          end
           def hyper_vreplica_azure_policy_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzurePolicyInput
           end
-          def hyper_vreplica_azure_event_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureEventDetails
-          end
           def hyper_vreplica_azure_reprotect_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureReprotectInput
+          end
+          def hyper_vreplica_azure_update_replication_protected_item_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureUpdateReplicationProtectedItemInput
           end
           def hyper_vreplica_azure_replication_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureReplicationDetails
@@ -1152,14 +1152,14 @@ module Azure::Profiles::Latest
           def hyper_vreplica_base_event_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBaseEventDetails
           end
-          def hyper_vreplica_azure_update_replication_protected_item_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureUpdateReplicationProtectedItemInput
+          def hyper_vreplica_base_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBasePolicyDetails
           end
           def hyper_vreplica_base_replication_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBaseReplicationDetails
           end
-          def hyper_vreplica_base_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBasePolicyDetails
+          def hyper_vreplica_azure_failover_provider_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaAzureFailoverProviderInput
           end
           def hyper_vreplica_blue_policy_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::HyperVReplicaBluePolicyInput
@@ -1197,8 +1197,8 @@ module Azure::Profiles::Latest
           def in_mage_azure_v2_enable_protection_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2EnableProtectionInput
           end
-          def in_mage_azure_v2_policy_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2PolicyInput
+          def in_mage_azure_v2_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2PolicyDetails
           end
           def in_mage_azure_v2_failover_provider_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2FailoverProviderInput
@@ -1212,11 +1212,11 @@ module Azure::Profiles::Latest
           def in_mage_azure_v2_reprotect_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2ReprotectInput
           end
-          def in_mage_azure_v2_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2PolicyDetails
+          def in_mage_azure_v2_update_replication_protected_item_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2UpdateReplicationProtectedItemInput
           end
-          def in_mage_base_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageBasePolicyDetails
+          def in_mage_azure_v2_policy_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2PolicyInput
           end
           def in_mage_disable_protection_provider_specific_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageDisableProtectionProviderSpecificInput
@@ -1224,128 +1224,119 @@ module Azure::Profiles::Latest
           def in_mage_enable_protection_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageEnableProtectionInput
           end
-          def in_mage_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMagePolicyDetails
-          end
-          def resource
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Resource
+          def in_mage_failover_provider_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageFailoverProviderInput
           end
           def in_mage_policy_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMagePolicyInput
           end
+          def resource
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::Resource
+          end
           def in_mage_replication_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageReplicationDetails
-          end
-          def job_status_event_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::JobStatusEventDetails
-          end
-          def in_mage_azure_v2_update_replication_protected_item_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageAzureV2UpdateReplicationProtectedItemInput
-          end
-          def job_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::JobTaskDetails
-          end
-          def logical_network
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::LogicalNetwork
-          end
-          def network_mapping
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMapping
-          end
-          def in_mage_failover_provider_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageFailoverProviderInput
-          end
-          def protectable_item
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectableItem
-          end
-          def protection_container_mapping
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectionContainerMapping
-          end
-          def recovery_plan
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlan
           end
           def in_mage_reprotect_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageReprotectInput
           end
-          def recovery_plan_a2_afailover_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanA2AFailoverInput
+          def job_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::JobTaskDetails
           end
-          def recovery_plan_automation_runbook_action_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanAutomationRunbookActionDetails
+          def in_mage_base_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMageBasePolicyDetails
           end
-          def recovery_plan_hyper_vreplica_azure_failback_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanHyperVReplicaAzureFailbackInput
+          def logical_network
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::LogicalNetwork
           end
           def manual_action_task_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ManualActionTaskDetails
           end
-          def recovery_plan_group_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanGroupTaskDetails
+          def protectable_item
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectableItem
           end
-          def recovery_plan_in_mage_azure_v2_failover_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanInMageAzureV2FailoverInput
+          def in_mage_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::InMagePolicyDetails
           end
-          def recovery_plan_manual_action_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanManualActionDetails
+          def protection_container_mapping
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ProtectionContainerMapping
           end
           def rcm_azure_migration_policy_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RcmAzureMigrationPolicyDetails
           end
-          def recovery_plan_in_mage_failover_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanInMageFailoverInput
+          def recovery_plan_a2_afailover_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanA2AFailoverInput
+          end
+          def job_status_event_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::JobStatusEventDetails
+          end
+          def recovery_plan_automation_runbook_action_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanAutomationRunbookActionDetails
+          end
+          def recovery_plan_group_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanGroupTaskDetails
+          end
+          def recovery_plan_hyper_vreplica_azure_failback_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanHyperVReplicaAzureFailbackInput
+          end
+          def network_mapping
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::NetworkMapping
+          end
+          def recovery_plan_in_mage_azure_v2_failover_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanInMageAzureV2FailoverInput
           end
           def recovery_plan_hyper_vreplica_azure_failover_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanHyperVReplicaAzureFailoverInput
           end
-          def replication_group_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ReplicationGroupDetails
+          def recovery_plan_manual_action_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanManualActionDetails
+          end
+          def recovery_plan
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlan
           end
           def recovery_plan_shutdown_group_task_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanShutdownGroupTaskDetails
           end
-          def recovery_services_provider
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryServicesProvider
-          end
           def recovery_plan_script_action_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanScriptActionDetails
           end
-          def storage_classification
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::StorageClassification
+          def recovery_plan_in_mage_failover_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryPlanInMageFailoverInput
           end
           def san_enable_protection_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::SanEnableProtectionInput
           end
-          def script_action_task_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ScriptActionTaskDetails
+          def replication_group_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ReplicationGroupDetails
           end
           def replication_protected_item
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ReplicationProtectedItem
           end
-          def vault_health_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VaultHealthDetails
+          def recovery_services_provider
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::RecoveryServicesProvider
           end
           def switch_protection_job_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::SwitchProtectionJobDetails
           end
-          def test_failover_job_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::TestFailoverJobDetails
+          def storage_classification
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::StorageClassification
           end
           def storage_classification_mapping
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::StorageClassificationMapping
           end
-          def vmm_to_azure_create_network_mapping_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureCreateNetworkMappingInput
+          def script_action_task_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::ScriptActionTaskDetails
           end
           def virtual_machine_task_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VirtualMachineTaskDetails
           end
-          def vmm_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmDetails
+          def vault_health_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VaultHealthDetails
           end
           def vcenter
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VCenter
           end
-          def vmm_to_azure_network_mapping_settings
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureNetworkMappingSettings
+          def test_failover_job_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::TestFailoverJobDetails
           end
           def vmm_to_azure_update_network_mapping_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureUpdateNetworkMappingInput
@@ -1353,14 +1344,17 @@ module Azure::Profiles::Latest
           def vmm_to_vmm_create_network_mapping_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmCreateNetworkMappingInput
           end
-          def vmm_to_vmm_network_mapping_settings
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmNetworkMappingSettings
+          def vmm_to_azure_network_mapping_settings
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureNetworkMappingSettings
           end
-          def vmm_to_vmm_update_network_mapping_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmUpdateNetworkMappingInput
+          def vmm_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmDetails
           end
           def vmm_virtual_machine_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmVirtualMachineDetails
+          end
+          def vmm_to_vmm_network_mapping_settings
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmNetworkMappingSettings
           end
           def vm_nic_updates_task_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmNicUpdatesTaskDetails
@@ -1368,17 +1362,23 @@ module Azure::Profiles::Latest
           def vmware_cbt_policy_creation_input
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareCbtPolicyCreationInput
           end
-          def vmware_cbt_policy_details
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmwareCbtPolicyDetails
+          def vmm_to_azure_create_network_mapping_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToAzureCreateNetworkMappingInput
           end
           def vmware_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareDetails
           end
-          def vmware_v2_fabric_creation_input
-            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareV2FabricCreationInput
+          def vmware_cbt_policy_details
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmwareCbtPolicyDetails
           end
           def vmware_v2_fabric_specific_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareV2FabricSpecificDetails
+          end
+          def vmware_v2_fabric_creation_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareV2FabricCreationInput
+          end
+          def vmm_to_vmm_update_network_mapping_input
+            Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VmmToVmmUpdateNetworkMappingInput
           end
           def vmware_virtual_machine_details
             Azure::RecoveryServicesSiteRecovery::Mgmt::V2018_01_10::Models::VMwareVirtualMachineDetails
