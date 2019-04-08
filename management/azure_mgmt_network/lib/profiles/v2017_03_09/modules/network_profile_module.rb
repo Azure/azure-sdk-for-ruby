@@ -136,8 +136,8 @@ module Azure::Network::Profiles::V2017_03_09
       ExpressRouteCircuitPeeringConfig = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitPeeringConfig
       ExpressRouteCircuitsStatsListResult = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitsStatsListResult
       ConnectionSharedKeyResult = Azure::Network::Mgmt::V2015_06_15::Models::ConnectionSharedKeyResult
-      ExpressRouteCircuitRoutesTable = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitRoutesTable
       ExpressRouteCircuitServiceProviderProperties = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitServiceProviderProperties
+      ExpressRouteCircuitRoutesTable = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitRoutesTable
       ExpressRouteCircuitListResult = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitListResult
       VpnClientParameters = Azure::Network::Mgmt::V2015_06_15::Models::VpnClientParameters
       ExpressRouteCircuitStats = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitStats
@@ -538,11 +538,11 @@ module Azure::Network::Profiles::V2017_03_09
       def connection_shared_key_result
         Azure::Network::Mgmt::V2015_06_15::Models::ConnectionSharedKeyResult
       end
-      def express_route_circuit_routes_table
-        Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitRoutesTable
-      end
       def express_route_circuit_service_provider_properties
         Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitServiceProviderProperties
+      end
+      def express_route_circuit_routes_table
+        Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitRoutesTable
       end
       def express_route_circuit_list_result
         Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitListResult
