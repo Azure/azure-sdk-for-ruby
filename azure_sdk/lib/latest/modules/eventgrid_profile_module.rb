@@ -9,59 +9,64 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
-      EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
-      ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
-      ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
-      MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
-      ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
-      MediaJobErrorDetail = Azure::EventGrid::V2018_01_01::Models::MediaJobErrorDetail
-      ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
-      MediaJobError = Azure::EventGrid::V2018_01_01::Models::MediaJobError
-      ResourceActionFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceActionFailureData
-      MediaJobOutput = Azure::EventGrid::V2018_01_01::Models::MediaJobOutput
-      EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
       ContainerRegistryArtifactEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventTarget
+      StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
+      ContainerRegistryArtifactEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventData
+      EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
+      ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
+      ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
+      ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
+      ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
+      MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
+      ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
+      MediaJobErrorDetail = Azure::EventGrid::V2018_01_01::Models::MediaJobErrorDetail
+      ResourceActionFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceActionFailureData
+      MediaJobError = Azure::EventGrid::V2018_01_01::Models::MediaJobError
+      EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
+      MediaJobOutput = Azure::EventGrid::V2018_01_01::Models::MediaJobOutput
       SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
       StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+      ContainerRegistryEventRequest = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
+      MediaLiveEventEncoderConnectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderConnectedEventData
       ContainerRegistryEventActor = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
+      MediaLiveEventEncoderDisconnectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderDisconnectedEventData
       ContainerRegistryEventSource = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
-      MediaLiveEventConnectionRejectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventConnectionRejectedEventData
-      ContainerRegistryEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
       DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-      SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+      ContainerRegistryEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
       DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
-      MediaLiveEventIngestHeartbeatEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIngestHeartbeatEventData
+      MediaLiveEventTrackDiscontinuityDetectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventTrackDiscontinuityDetectedEventData
       DeviceTwinInfo = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
       ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
       DeviceConnectionStateEventInfo = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventInfo
       ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
-      MediaLiveEventIncomingStreamReceivedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamReceivedEventData
+      DeviceTelemetryEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTelemetryEventProperties
       ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
       MediaLiveEventIncomingVideoStreamsOutOfSyncEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingVideoStreamsOutOfSyncEventData
       ResourceActionSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceActionSuccessData
-      ContainerRegistryEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
+      MediaLiveEventIngestHeartbeatEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIngestHeartbeatEventData
       ResourceActionCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceActionCancelData
-      MediaLiveEventEncoderConnectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderConnectedEventData
+      MediaLiveEventConnectionRejectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventConnectionRejectedEventData
       SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
       DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+      SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
       DeviceLifeCycleEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
-      MediaJobOutputProgressEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputProgressEventData
       MediaLiveEventIncomingStreamsOutOfSyncEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamsOutOfSyncEventData
+      MediaJobOutputProgressEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputProgressEventData
+      ContainerRegistryEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
       MediaJobOutputStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputStateChangeEventData
-      ContainerRegistryEventRequest = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
-      AppConfigurationKeyValueDeletedEventData = Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueDeletedEventData
       DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
-      AppConfigurationKeyValueModifiedEventData = Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueModifiedEventData
+      AppConfigurationKeyValueDeletedEventData = Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueDeletedEventData
       MediaLiveEventIncomingDataChunkDroppedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingDataChunkDroppedEventData
-      MapsGeofenceEventProperties = Azure::EventGrid::V2018_01_01::Models::MapsGeofenceEventProperties
+      AppConfigurationKeyValueModifiedEventData = Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueModifiedEventData
       DeviceConnectionStateEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
+      MapsGeofenceEventProperties = Azure::EventGrid::V2018_01_01::Models::MapsGeofenceEventProperties
+      MediaLiveEventIncomingStreamReceivedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamReceivedEventData
       MapsGeofenceGeometry = Azure::EventGrid::V2018_01_01::Models::MapsGeofenceGeometry
-      MediaLiveEventEncoderDisconnectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderDisconnectedEventData
-      MediaLiveEventTrackDiscontinuityDetectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventTrackDiscontinuityDetectedEventData
       IotHubDeviceCreatedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceCreatedEventData
       IotHubDeviceDeletedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDeletedEventData
       IotHubDeviceConnectedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceConnectedEventData
       IotHubDeviceDisconnectedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDisconnectedEventData
+      IotHubDeviceTelemetryEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceTelemetryEventData
       ContainerRegistryImagePushedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData
       ContainerRegistryImageDeletedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImageDeletedEventData
       ContainerRegistryChartPushedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryChartPushedEventData
@@ -86,9 +91,6 @@ module Azure::Profiles::Latest
       MediaJobErrorCode = Azure::EventGrid::V2018_01_01::Models::MediaJobErrorCode
       MediaJobErrorCategory = Azure::EventGrid::V2018_01_01::Models::MediaJobErrorCategory
       MediaJobRetry = Azure::EventGrid::V2018_01_01::Models::MediaJobRetry
-      ContainerRegistryArtifactEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventData
-      StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
-      ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
     end
 
     class EventGridDataClass
@@ -120,41 +122,50 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def container_registry_artifact_event_target
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventTarget
+        end
+        def storage_blob_created_event_data
+          Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
+        end
+        def container_registry_artifact_event_data
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventData
+        end
         def event_hub_capture_file_created_event_data
           Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
         end
-        def service_bus_deadletter_messages_available_with_no_listeners_event_data
-          Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
+        def service_bus_active_messages_available_with_no_listeners_event_data
+          Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
         end
         def resource_write_failure_data
           Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
         end
-        def media_job_state_change_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
+        def service_bus_deadletter_messages_available_with_no_listeners_event_data
+          Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
         end
         def resource_delete_success_data
           Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
         end
-        def media_job_error_detail
-          Azure::EventGrid::V2018_01_01::Models::MediaJobErrorDetail
+        def media_job_state_change_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
         end
         def resource_delete_cancel_data
           Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
         end
-        def media_job_error
-          Azure::EventGrid::V2018_01_01::Models::MediaJobError
+        def media_job_error_detail
+          Azure::EventGrid::V2018_01_01::Models::MediaJobErrorDetail
         end
         def resource_action_failure_data
           Azure::EventGrid::V2018_01_01::Models::ResourceActionFailureData
         end
-        def media_job_output
-          Azure::EventGrid::V2018_01_01::Models::MediaJobOutput
+        def media_job_error
+          Azure::EventGrid::V2018_01_01::Models::MediaJobError
         end
         def event_grid_event
           Azure::EventGrid::V2018_01_01::Models::EventGridEvent
         end
-        def container_registry_artifact_event_target
-          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventTarget
+        def media_job_output
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutput
         end
         def subscription_validation_response
           Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
@@ -162,29 +173,32 @@ module Azure::Profiles::Latest
         def storage_blob_deleted_event_data
           Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
         end
+        def container_registry_event_request
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
+        end
+        def media_live_event_encoder_connected_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderConnectedEventData
+        end
         def container_registry_event_actor
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
+        end
+        def media_live_event_encoder_disconnected_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderDisconnectedEventData
         end
         def container_registry_event_source
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
         end
-        def media_live_event_connection_rejected_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventConnectionRejectedEventData
+        def device_twin_metadata
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
         end
         def container_registry_event_data
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
         end
-        def device_twin_metadata
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-        end
-        def subscription_deleted_event_data
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
-        end
         def device_twin_info_properties
           Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
         end
-        def media_live_event_ingest_heartbeat_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIngestHeartbeatEventData
+        def media_live_event_track_discontinuity_detected_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventTrackDiscontinuityDetectedEventData
         end
         def device_twin_info
           Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
@@ -198,8 +212,8 @@ module Azure::Profiles::Latest
         def resource_write_cancel_data
           Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
         end
-        def media_live_event_incoming_stream_received_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamReceivedEventData
+        def device_telemetry_event_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceTelemetryEventProperties
         end
         def resource_delete_failure_data
           Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
@@ -210,14 +224,14 @@ module Azure::Profiles::Latest
         def resource_action_success_data
           Azure::EventGrid::V2018_01_01::Models::ResourceActionSuccessData
         end
-        def container_registry_event_target
-          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
+        def media_live_event_ingest_heartbeat_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIngestHeartbeatEventData
         end
         def resource_action_cancel_data
           Azure::EventGrid::V2018_01_01::Models::ResourceActionCancelData
         end
-        def media_live_event_encoder_connected_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderConnectedEventData
+        def media_live_event_connection_rejected_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventConnectionRejectedEventData
         end
         def subscription_validation_event_data
           Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
@@ -225,47 +239,47 @@ module Azure::Profiles::Latest
         def device_twin_properties
           Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
         end
+        def subscription_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+        end
         def device_life_cycle_event_properties
           Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
-        end
-        def media_job_output_progress_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputProgressEventData
         end
         def media_live_event_incoming_streams_out_of_sync_event_data
           Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamsOutOfSyncEventData
         end
+        def media_job_output_progress_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputProgressEventData
+        end
+        def container_registry_event_target
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
+        end
         def media_job_output_state_change_event_data
           Azure::EventGrid::V2018_01_01::Models::MediaJobOutputStateChangeEventData
-        end
-        def container_registry_event_request
-          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
-        end
-        def app_configuration_key_value_deleted_event_data
-          Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueDeletedEventData
         end
         def device_twin_info_x509_thumbprint
           Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
         end
-        def app_configuration_key_value_modified_event_data
-          Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueModifiedEventData
+        def app_configuration_key_value_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueDeletedEventData
         end
         def media_live_event_incoming_data_chunk_dropped_event_data
           Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingDataChunkDroppedEventData
         end
-        def maps_geofence_event_properties
-          Azure::EventGrid::V2018_01_01::Models::MapsGeofenceEventProperties
+        def app_configuration_key_value_modified_event_data
+          Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueModifiedEventData
         end
         def device_connection_state_event_properties
           Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
         end
+        def maps_geofence_event_properties
+          Azure::EventGrid::V2018_01_01::Models::MapsGeofenceEventProperties
+        end
+        def media_live_event_incoming_stream_received_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamReceivedEventData
+        end
         def maps_geofence_geometry
           Azure::EventGrid::V2018_01_01::Models::MapsGeofenceGeometry
-        end
-        def media_live_event_encoder_disconnected_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderDisconnectedEventData
-        end
-        def media_live_event_track_discontinuity_detected_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventTrackDiscontinuityDetectedEventData
         end
         def iot_hub_device_created_event_data
           Azure::EventGrid::V2018_01_01::Models::IotHubDeviceCreatedEventData
@@ -278,6 +292,9 @@ module Azure::Profiles::Latest
         end
         def iot_hub_device_disconnected_event_data
           Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDisconnectedEventData
+        end
+        def iot_hub_device_telemetry_event_data
+          Azure::EventGrid::V2018_01_01::Models::IotHubDeviceTelemetryEventData
         end
         def container_registry_image_pushed_event_data
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData
@@ -351,24 +368,15 @@ module Azure::Profiles::Latest
         def media_job_retry
           Azure::EventGrid::V2018_01_01::Models::MediaJobRetry
         end
-        def container_registry_artifact_event_data
-          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventData
-        end
-        def storage_blob_created_event_data
-          Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
-        end
-        def service_bus_active_messages_available_with_no_listeners_event_data
-          Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
-        end
       end
     end
     module Mgmt
+      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
       DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
-      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
 
       module Models
         TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
@@ -389,16 +397,16 @@ module Azure::Profiles::Latest
         EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionDestination
         OperationInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationInfo
         OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
-        DeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
-        DomainRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainRegenerateKeyRequest
-        EventTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventTypesListResult
         EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionsListResult
-        EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
+        DomainRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainRegenerateKeyRequest
+        DeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
+        EventTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventTypesListResult
         TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
         Domain = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
         DomainTopic = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
         NumberInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberInAdvancedFilter
         StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageBlobDeadLetterDestination
+        EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
         NumberNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
         NumberLessThanAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanAdvancedFilter
         NumberGreaterThanAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberGreaterThanAdvancedFilter
@@ -432,7 +440,7 @@ module Azure::Profiles::Latest
       end
 
       class EventGridManagementClass
-        attr_reader :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -442,12 +450,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @domains = @client_0.domains
           @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
           @topic_types = @client_0.topic_types
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -520,20 +528,17 @@ module Azure::Profiles::Latest
           def operations_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
           end
-          def dead_letter_destination
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
+          def event_subscriptions_list_result
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionsListResult
           end
           def domain_regenerate_key_request
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainRegenerateKeyRequest
           end
+          def dead_letter_destination
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
+          end
           def event_types_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventTypesListResult
-          end
-          def event_subscriptions_list_result
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionsListResult
-          end
-          def event_subscription_filter
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
           end
           def topic_types_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
@@ -549,6 +554,9 @@ module Azure::Profiles::Latest
           end
           def storage_blob_dead_letter_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageBlobDeadLetterDestination
+          end
+          def event_subscription_filter
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
           end
           def number_not_in_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
