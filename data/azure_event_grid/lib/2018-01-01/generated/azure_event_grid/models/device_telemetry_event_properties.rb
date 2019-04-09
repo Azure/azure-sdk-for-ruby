@@ -16,12 +16,13 @@ module Azure::EventGrid::V2018_01_01
       # @return The content of the message from the device.
       attr_accessor :body
 
-      # @return Application properties are user-defined strings that can be
-      # added to the message. These fields are optional.
+      # @return [Hash{String => String}] Application properties are
+      # user-defined strings that can be added to the message. These fields are
+      # optional.
       attr_accessor :properties
 
-      # @return System properties help identify contents and source of the
-      # messages.
+      # @return [Hash{String => String}] System properties help identify
+      # contents and source of the messages.
       attr_accessor :system_properties
 
 
@@ -48,14 +49,28 @@ module Azure::EventGrid::V2018_01_01
                 required: false,
                 serialized_name: 'properties',
                 type: {
-                  name: 'Object'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               system_properties: {
                 required: false,
                 serialized_name: 'systemProperties',
                 type: {
-                  name: 'Object'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

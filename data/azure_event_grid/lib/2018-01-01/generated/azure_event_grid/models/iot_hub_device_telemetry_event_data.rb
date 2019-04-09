@@ -36,14 +36,28 @@ module Azure::EventGrid::V2018_01_01
                 required: false,
                 serialized_name: 'properties',
                 type: {
-                  name: 'Object'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               system_properties: {
                 required: false,
                 serialized_name: 'systemProperties',
                 type: {
-                  name: 'Object'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }
