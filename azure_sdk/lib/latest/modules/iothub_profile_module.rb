@@ -8,11 +8,15 @@ module Azure::Profiles::Latest
   module IotHub
     module Mgmt
       IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
-      ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
       Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
+      ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
       Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
 
       module Models
+        IotHubQuotaMetricInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
+        CertificateProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
+        IotHubQuotaMetricInfoListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfoListResult
+        CertificateListDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateListDescription
         EndpointHealthData = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthData
         CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificatePropertiesWithNonce
         EndpointHealthDataListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthDataListResult
@@ -53,6 +57,7 @@ module Azure::Profiles::Latest
         TestRouteInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteInput
         RouteErrorPosition = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorPosition
         FallbackRouteProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FallbackRouteProperties
+        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         RouteErrorRange = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorRange
         IotHubSkuInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuInfo
         RouteCompilationError = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteCompilationError
@@ -61,7 +66,6 @@ module Azure::Profiles::Latest
         FeedbackProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FeedbackProperties
         TestRouteResult = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResult
         RoutingEventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEventHubProperties
-        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         ExportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
         ImportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
         IotHubDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
@@ -86,14 +90,10 @@ module Azure::Profiles::Latest
         OperationListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
         JobStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
         OperationInputs = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
-        IotHubQuotaMetricInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
-        CertificateProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
-        IotHubQuotaMetricInfoListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfoListResult
-        CertificateListDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateListDescription
       end
 
       class IotHubManagementClass
-        attr_reader :iot_hub_resource, :resource_provider_common, :operations, :certificates, :configurable, :base_url, :options, :model_classes
+        attr_reader :iot_hub_resource, :operations, :resource_provider_common, :certificates, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -104,8 +104,8 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @iot_hub_resource = @client_0.iot_hub_resource
-          @resource_provider_common = @client_0.resource_provider_common
           @operations = @client_0.operations
+          @resource_provider_common = @client_0.resource_provider_common
           @certificates = @client_0.certificates
 
           @model_classes = ModelClasses.new
@@ -125,6 +125,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def iot_hub_quota_metric_info
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
+          end
+          def certificate_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
+          end
+          def iot_hub_quota_metric_info_list_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfoListResult
+          end
+          def certificate_list_description
+            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateListDescription
+          end
           def endpoint_health_data
             Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthData
           end
@@ -245,6 +257,9 @@ module Azure::Profiles::Latest
           def fallback_route_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::FallbackRouteProperties
           end
+          def name
+            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+          end
           def route_error_range
             Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorRange
           end
@@ -268,9 +283,6 @@ module Azure::Profiles::Latest
           end
           def routing_event_hub_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEventHubProperties
-          end
-          def name
-            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
           end
           def export_devices_request
             Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
@@ -343,18 +355,6 @@ module Azure::Profiles::Latest
           end
           def operation_inputs
             Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
-          end
-          def iot_hub_quota_metric_info
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
-          end
-          def certificate_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
-          end
-          def iot_hub_quota_metric_info_list_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfoListResult
-          end
-          def certificate_list_description
-            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateListDescription
           end
         end
       end
