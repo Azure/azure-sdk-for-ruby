@@ -66,6 +66,20 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       # 'Redirect', 'Default'
       attr_accessor :proxy_override
 
+      # @return [String] Id of the timezone. Allowed values are timezones
+      # supported by Windows.
+      # Windows keeps details on supported timezones, including the id, in
+      # registry under
+      # KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time
+      # Zones.
+      # You can get those registry values via SQL Server by querying SELECT
+      # name AS timezone_id FROM sys.time_zone_info.
+      # List of Ids can also be obtained by executing
+      # [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell.
+      # An example of valid timezone id is "Pacific Standard Time" or "W.
+      # Europe Standard Time".
+      attr_accessor :timezone_id
+
 
       #
       # Mapper for ManagedInstance class as Ruby Hash.
@@ -230,6 +244,13 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
               proxy_override: {
                 required: false,
                 serialized_name: 'properties.proxyOverride',
+                type: {
+                  name: 'String'
+                }
+              },
+              timezone_id: {
+                required: false,
+                serialized_name: 'properties.timezoneId',
                 type: {
                   name: 'String'
                 }

@@ -9,25 +9,25 @@ module Azure::Profiles::Latest
     CustomInstance = Azure::CognitiveServices::CustomSearch::V1_0::CustomInstance
 
     module Models
-      WebMetaTag = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
-      WebWebAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
-      SearchResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
-      Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
-      TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
-      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
-      ErrorSubCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
       Query = Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
       QueryContext = Azure::CognitiveServices::CustomSearch::V1_0::Models::QueryContext
       ResponseBase = Azure::CognitiveServices::CustomSearch::V1_0::Models::ResponseBase
       WebPage = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebPage
       SearchResultsAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
+      Response = Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
       Answer = Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
       Thing = Azure::CognitiveServices::CustomSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::CustomSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
-      Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
       ErrorCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorCode
+      ErrorResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
       SafeSearch = Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
+      WebMetaTag = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
+      WebWebAnswer = Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
+      SearchResponse = Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
+      ErrorSubCode = Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
+      TextFormat = Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
+      Error = Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
     end
 
     class CustomSearchDataClass
@@ -60,27 +60,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def web_meta_tag
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
-        end
-        def web_web_answer
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
-        end
-        def search_response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
-        end
-        def response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
-        end
-        def text_format
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
-        end
-        def error_response
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
-        end
-        def error_sub_code
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
-        end
         def query
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Query
         end
@@ -96,6 +75,9 @@ module Azure::Profiles::Latest
         def search_results_answer
           Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResultsAnswer
         end
+        def response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::Response
+        end
         def answer
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Answer
         end
@@ -108,14 +90,32 @@ module Azure::Profiles::Latest
         def identifiable
           Azure::CognitiveServices::CustomSearch::V1_0::Models::Identifiable
         end
-        def error
-          Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
-        end
         def error_code
           Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorCode
         end
+        def error_response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorResponse
+        end
         def safe_search
           Azure::CognitiveServices::CustomSearch::V1_0::Models::SafeSearch
+        end
+        def web_meta_tag
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebMetaTag
+        end
+        def web_web_answer
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::WebWebAnswer
+        end
+        def search_response
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::SearchResponse
+        end
+        def error_sub_code
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::ErrorSubCode
+        end
+        def text_format
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::TextFormat
+        end
+        def error
+          Azure::CognitiveServices::CustomSearch::V1_0::Models::Error
         end
       end
     end
