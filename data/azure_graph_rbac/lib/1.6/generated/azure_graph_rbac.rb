@@ -22,6 +22,7 @@ require 'ms_rest_azure'
 module Azure::GraphRbac::V1_6
   autoload :SignedInUser,                                       '1.6/generated/azure_graph_rbac/signed_in_user.rb'
   autoload :Applications,                                       '1.6/generated/azure_graph_rbac/applications.rb'
+  autoload :ApplicationOperations,                              '1.6/generated/azure_graph_rbac/application_operations.rb'
   autoload :DeletedApplications,                                '1.6/generated/azure_graph_rbac/deleted_applications.rb'
   autoload :Groups,                                             '1.6/generated/azure_graph_rbac/groups.rb'
   autoload :ServicePrincipals,                                  '1.6/generated/azure_graph_rbac/service_principals.rb'

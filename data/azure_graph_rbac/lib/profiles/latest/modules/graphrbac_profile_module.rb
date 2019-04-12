@@ -5,6 +5,9 @@
 require 'azure_graph_rbac'
 
 module Azure::GraphRbac::Profiles::Latest
+  SignedInUser = Azure::GraphRbac::V1_6::SignedInUser
+  Applications = Azure::GraphRbac::V1_6::Applications
+  ApplicationOperations = Azure::GraphRbac::V1_6::ApplicationOperations
   DeletedApplications = Azure::GraphRbac::V1_6::DeletedApplications
   Groups = Azure::GraphRbac::V1_6::Groups
   ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
@@ -12,10 +15,9 @@ module Azure::GraphRbac::Profiles::Latest
   Objects = Azure::GraphRbac::V1_6::Objects
   Domains = Azure::GraphRbac::V1_6::Domains
   OAuth2PermissionGrantOperations = Azure::GraphRbac::V1_6::OAuth2PermissionGrantOperations
-  SignedInUser = Azure::GraphRbac::V1_6::SignedInUser
-  Applications = Azure::GraphRbac::V1_6::Applications
 
   module Models
+    Domain = Azure::GraphRbac::V1_6::Models::Domain
     ApplicationListResult = Azure::GraphRbac::V1_6::Models::ApplicationListResult
     GetObjectsParameters = Azure::GraphRbac::V1_6::Models::GetObjectsParameters
     GraphError = Azure::GraphRbac::V1_6::Models::GraphError
@@ -70,14 +72,13 @@ module Azure::GraphRbac::Profiles::Latest
     ResourceAccess = Azure::GraphRbac::V1_6::Models::ResourceAccess
     UserBase = Azure::GraphRbac::V1_6::Models::UserBase
     DirectoryObjectListResult = Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
-    Domain = Azure::GraphRbac::V1_6::Models::Domain
   end
 
   #
   # GraphRbacDataClass
   #
   class GraphRbacDataClass
-    attr_reader :deleted_applications, :groups, :service_principals, :users, :objects, :domains, :oauth2_permission_grant_operations, :signed_in_user, :applications, :configurable, :base_url, :options, :model_classes
+    attr_reader :signed_in_user, :applications, :application_operations, :deleted_applications, :groups, :service_principals, :users, :objects, :domains, :oauth2_permission_grant_operations, :configurable, :base_url, :options, :model_classes
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -97,6 +98,9 @@ module Azure::GraphRbac::Profiles::Latest
         @client_0.subscription_id = configurable.subscription_id
       end
       add_telemetry(@client_0)
+      @signed_in_user = @client_0.signed_in_user
+      @applications = @client_0.applications
+      @application_operations = @client_0.application_operations
       @deleted_applications = @client_0.deleted_applications
       @groups = @client_0.groups
       @service_principals = @client_0.service_principals
@@ -104,8 +108,6 @@ module Azure::GraphRbac::Profiles::Latest
       @objects = @client_0.objects
       @domains = @client_0.domains
       @oauth2_permission_grant_operations = @client_0.oauth2_permission_grant_operations
-      @signed_in_user = @client_0.signed_in_user
-      @applications = @client_0.applications
 
       @model_classes = ModelClasses.new
     end
@@ -126,6 +128,9 @@ module Azure::GraphRbac::Profiles::Latest
   end
 
   class ModelClasses
+    def domain
+      Azure::GraphRbac::V1_6::Models::Domain
+    end
     def application_list_result
       Azure::GraphRbac::V1_6::Models::ApplicationListResult
     end
@@ -287,9 +292,6 @@ module Azure::GraphRbac::Profiles::Latest
     end
     def directory_object_list_result
       Azure::GraphRbac::V1_6::Models::DirectoryObjectListResult
-    end
-    def domain
-      Azure::GraphRbac::V1_6::Models::Domain
     end
   end
 end

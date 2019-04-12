@@ -6,12 +6,15 @@ require 'azure_cognitiveservices_face'
 
 module Azure::Profiles::Latest
   module Face
-    PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
     Face = Azure::CognitiveServices::Face::V1_0::Face
+    PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
 
     module Models
+      VerifyResult = Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
+      PersistedFace = Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
+      FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
       Coordinate = Azure::CognitiveServices::Face::V1_0::Models::Coordinate
       Emotion = Azure::CognitiveServices::Face::V1_0::Models::Emotion
       Occlusion = Azure::CognitiveServices::Face::V1_0::Models::Occlusion
@@ -34,8 +37,8 @@ module Azure::Profiles::Latest
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
-      VerifyFaceToFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest
-      VerifyResult = Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
+      Exposure = Azure::CognitiveServices::Face::V1_0::Models::Exposure
+      FaceAttributes = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
@@ -53,15 +56,12 @@ module Azure::Profiles::Latest
       IdentifyCandidate = Azure::CognitiveServices::Face::V1_0::Models::IdentifyCandidate
       Accessory = Azure::CognitiveServices::Face::V1_0::Models::Accessory
       IdentifyResult = Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
-      Exposure = Azure::CognitiveServices::Face::V1_0::Models::Exposure
+      VerifyFaceToFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest
       VerifyFaceToPersonRequest = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToPersonRequest
-      FaceAttributes = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
-      PersistedFace = Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
-      FacialHair = Azure::CognitiveServices::Face::V1_0::Models::FacialHair
     end
 
     class FaceDataClass
-      attr_reader :person_group_person, :face, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :face, :person_group_person, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -71,8 +71,8 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @person_group_person = @client_0.person_group_person
         @face = @client_0.face
+        @person_group_person = @client_0.person_group_person
         @person_group_operations = @client_0.person_group_operations
         @face_list_operations = @client_0.face_list_operations
 
@@ -93,6 +93,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def verify_result
+          Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
+        end
+        def persisted_face
+          Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
+        end
+        def facial_hair
+          Azure::CognitiveServices::Face::V1_0::Models::FacialHair
+        end
         def coordinate
           Azure::CognitiveServices::Face::V1_0::Models::Coordinate
         end
@@ -159,11 +168,11 @@ module Azure::Profiles::Latest
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
         end
-        def verify_face_to_face_request
-          Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest
+        def exposure
+          Azure::CognitiveServices::Face::V1_0::Models::Exposure
         end
-        def verify_result
-          Azure::CognitiveServices::Face::V1_0::Models::VerifyResult
+        def face_attributes
+          Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
         end
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
@@ -216,20 +225,11 @@ module Azure::Profiles::Latest
         def identify_result
           Azure::CognitiveServices::Face::V1_0::Models::IdentifyResult
         end
-        def exposure
-          Azure::CognitiveServices::Face::V1_0::Models::Exposure
+        def verify_face_to_face_request
+          Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToFaceRequest
         end
         def verify_face_to_person_request
           Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToPersonRequest
-        end
-        def face_attributes
-          Azure::CognitiveServices::Face::V1_0::Models::FaceAttributes
-        end
-        def persisted_face
-          Azure::CognitiveServices::Face::V1_0::Models::PersistedFace
-        end
-        def facial_hair
-          Azure::CognitiveServices::Face::V1_0::Models::FacialHair
         end
       end
     end

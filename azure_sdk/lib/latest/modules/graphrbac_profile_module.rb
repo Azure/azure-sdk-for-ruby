@@ -13,8 +13,9 @@ module Azure::Profiles::Latest
     ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
     Objects = Azure::GraphRbac::V1_6::Objects
     OAuth2PermissionGrantOperations = Azure::GraphRbac::V1_6::OAuth2PermissionGrantOperations
-    Users = Azure::GraphRbac::V1_6::Users
     Domains = Azure::GraphRbac::V1_6::Domains
+    ApplicationOperations = Azure::GraphRbac::V1_6::ApplicationOperations
+    Users = Azure::GraphRbac::V1_6::Users
 
     module Models
       KeyCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
@@ -75,7 +76,7 @@ module Azure::Profiles::Latest
     end
 
     class GraphRbacDataClass
-      attr_reader :signed_in_user, :applications, :deleted_applications, :groups, :service_principals, :objects, :oauth2_permission_grant_operations, :users, :domains, :configurable, :base_url, :options, :model_classes
+      attr_reader :signed_in_user, :applications, :deleted_applications, :groups, :service_principals, :objects, :oauth2_permission_grant_operations, :domains, :application_operations, :users, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -92,8 +93,9 @@ module Azure::Profiles::Latest
         @service_principals = @client_0.service_principals
         @objects = @client_0.objects
         @oauth2_permission_grant_operations = @client_0.oauth2_permission_grant_operations
-        @users = @client_0.users
         @domains = @client_0.domains
+        @application_operations = @client_0.application_operations
+        @users = @client_0.users
 
         @model_classes = ModelClasses.new
       end
