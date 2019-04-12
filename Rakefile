@@ -187,7 +187,7 @@ namespace :arm do
   end
 
   desc 'Regen code for each sdk with all its api versions'
-  task :regen_sdk_versions, [:gem_name] => :clean_generated do |_, args|
+  task :regen_sdk_versions, [:gem_name] => [:regen_folder_structure_if_required, :clean_generated] do |_, args|
     json = get_config_file
     each_gem do |dir| # dir corresponds to each azure_* folder
       if REGEN_EXCLUDES.include?(dir.to_s)
@@ -347,12 +347,14 @@ namespace :arm do
   end
 
   task :regen_folder_structure_if_required, [:gem_name] do |_, args|
-    plane = 'data'
-    if(args[:gem_name].include?'_mgmt_')
-      plane = 'management'
+    if args[:gem_name] && !REGEN_EXCLUDES.include?(args[:gem_name])
+      plane = 'data'
+      if(args[:gem_name].include?'_mgmt_')
+        plane = 'management'
+      end
+      command = "bundle exec ruby #{__dir__}/generators/metadatagen/src/metadatagen.rb --plane=#{plane} --gem_name=#{args[:gem_name]} --sdk_path=#{__dir__}"
+      execute_and_stream(command)
     end
-    command = "bundle exec ruby #{__dir__}/generators/metadatagen/src/metadatagen.rb --plane=#{plane} --gem_name=#{args[:gem_name]} --sdk_path=#{__dir__}"
-    execute_and_stream(command)
   end
 
   desc 'Generate all require files'
