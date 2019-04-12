@@ -21,7 +21,8 @@ module Azure::Consumption::Mgmt::V2019_01_01
 
       # @return [TimeGrainType] The time covered by a budget. Tracking of the
       # amount will be reset based on the time grain. Possible values include:
-      # 'Monthly', 'Quarterly', 'Annually'
+      # 'Monthly', 'Quarterly', 'Annually', 'BillingMonth', 'BillingQuarter',
+      # 'BillingAnnual'
       attr_accessor :time_grain
 
       # @return [BudgetTimePeriod] Has start and end date of the budget. The

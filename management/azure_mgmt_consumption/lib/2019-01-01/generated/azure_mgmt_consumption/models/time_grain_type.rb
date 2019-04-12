@@ -12,6 +12,9 @@ module Azure::Consumption::Mgmt::V2019_01_01
       Monthly = "Monthly"
       Quarterly = "Quarterly"
       Annually = "Annually"
+      BillingMonth = "BillingMonth"
+      BillingQuarter = "BillingQuarter"
+      BillingAnnual = "BillingAnnual"
     end
   end
 end
