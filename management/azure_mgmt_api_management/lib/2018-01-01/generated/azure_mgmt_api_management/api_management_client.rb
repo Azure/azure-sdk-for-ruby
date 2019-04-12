@@ -120,6 +120,9 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
     # @return [IdentityProvider] identity_provider
     attr_reader :identity_provider
 
+    # @return [Issue] issue
+    attr_reader :issue
+
     # @return [Logger] logger
     attr_reader :logger
 
@@ -257,6 +260,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
       @group = Group.new(self)
       @group_user = GroupUser.new(self)
       @identity_provider = IdentityProvider.new(self)
+      @issue = Issue.new(self)
       @logger = Logger.new(self)
       @notification = Notification.new(self)
       @notification_recipient_user = NotificationRecipientUser.new(self)

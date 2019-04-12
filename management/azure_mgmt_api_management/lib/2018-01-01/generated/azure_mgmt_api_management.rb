@@ -48,6 +48,7 @@ module Azure::ApiManagement::Mgmt::V2018_01_01_preview
   autoload :Group,                                              '2018-01-01/generated/azure_mgmt_api_management/group.rb'
   autoload :GroupUser,                                          '2018-01-01/generated/azure_mgmt_api_management/group_user.rb'
   autoload :IdentityProvider,                                   '2018-01-01/generated/azure_mgmt_api_management/identity_provider.rb'
+  autoload :Issue,                                              '2018-01-01/generated/azure_mgmt_api_management/issue.rb'
   autoload :Logger,                                             '2018-01-01/generated/azure_mgmt_api_management/logger.rb'
   autoload :Notification,                                       '2018-01-01/generated/azure_mgmt_api_management/notification.rb'
   autoload :NotificationRecipientUser,                          '2018-01-01/generated/azure_mgmt_api_management/notification_recipient_user.rb'
