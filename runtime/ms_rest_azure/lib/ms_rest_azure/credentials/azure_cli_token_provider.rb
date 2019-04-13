@@ -1,3 +1,4 @@
+require 'time'
 # encoding: utf-8
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
@@ -84,9 +85,9 @@ module MsRestAzure
     def acquire_token()
       response_body = JSON.load(`#{cli_path} account get-access-token -o json --resource #{@settings.token_audience}`)
       
-      @token_expires_on = Time.at(Integer(response_body['expires_on']))
-      @token_type = response_body['token_type']
-      @token = response_body['access_token']
+      @token_expires_on = Time.parse(response_body['expiresOn'])
+      @token_type = response_body['tokenType']
+      @token = response_body['accessToken']
     rescue
       raise AzureCliError, 'Error acquiring token from the Azure CLI'
     end
