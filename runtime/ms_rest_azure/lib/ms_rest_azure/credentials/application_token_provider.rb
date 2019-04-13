@@ -7,7 +7,7 @@ module MsRestAzure
   # Class that provides access to authentication token.
   #
   class ApplicationTokenProvider < MsRest::TokenProvider
-    
+
     private
 
     TOKEN_ACQUIRE_URL = '{authentication_endpoint}{tenant_id}/oauth2/token'
