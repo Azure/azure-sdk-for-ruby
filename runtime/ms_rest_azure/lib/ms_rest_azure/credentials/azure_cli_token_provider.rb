@@ -47,7 +47,7 @@ module MsRestAzure
     # @param settings [ActiveDirectoryServiceSettings] active directory settings.
     #
     # @return [String] The authenticaiton header string
-    def get_authentication_header(settings = ActiveDirectoryServiceSettings.get_azure_settings)
+    def get_authentication_header
       acquire_token if token_expired?
       "#{token_type} #{token}"
     end
