@@ -45,9 +45,17 @@ module MsRestAzure
 
       let(:response_body) do
         {
-          'access_token': access_token,
-          'token_type': token_type,
-          'expires_on': Time.new.to_i + 1000
+          'accessToken': access_token,
+          'tokenType': token_type,
+          'expiresOn': DateTime.now
+        }.to_json
+      end
+
+      let(:expired_response_body) do
+        {
+          'accessToken': access_token,
+          'tokenType': token_type,
+          'expiresOn': (DateTime.now - 90)
         }.to_json
       end
 
@@ -67,6 +75,14 @@ module MsRestAzure
 
         expect(azure_cli_token_provider).to_not receive(:`).with(expected_command)
         
+        azure_cli_token_provider.get_authentication_header
+      end
+
+      it 'should request a new access token if the current one is expired' do
+        expect(azure_cli_token_provider).to receive(:`).with(expected_command).and_return(expired_response_body)
+        azure_cli_token_provider.get_authentication_header
+
+        expect(azure_cli_token_provider).to receive(:`).with(expected_command).and_return(response_body)
         azure_cli_token_provider.get_authentication_header
       end
 
