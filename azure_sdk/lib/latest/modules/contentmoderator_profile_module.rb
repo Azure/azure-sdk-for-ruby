@@ -15,16 +15,18 @@ module Azure::Profiles::Latest
     Reviews = Azure::CognitiveServices::ContentModerator::V1_0::Reviews
 
     module Models
+      ImageUrl = Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageUrl
       Address = Azure::CognitiveServices::ContentModerator::V1_0::Models::Address
       Face = Azure::CognitiveServices::ContentModerator::V1_0::Models::Face
       JobListResult = Azure::CognitiveServices::ContentModerator::V1_0::Models::JobListResult
+      Error = Azure::CognitiveServices::ContentModerator::V1_0::Models::Error
       ImageAdditionalInfoItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageAdditionalInfoItem
       ImageIds = Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageIds
       Frames = Azure::CognitiveServices::ContentModerator::V1_0::Models::Frames
       TermsInList = Azure::CognitiveServices::ContentModerator::V1_0::Models::TermsInList
-      Error = Azure::CognitiveServices::ContentModerator::V1_0::Models::Error
       ClassificationCategory2 = Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory2
       TermsData = Azure::CognitiveServices::ContentModerator::V1_0::Models::TermsData
+      Classification = Azure::CognitiveServices::ContentModerator::V1_0::Models::Classification
       TermsPaging = Azure::CognitiveServices::ContentModerator::V1_0::Models::TermsPaging
       Email = Azure::CognitiveServices::ContentModerator::V1_0::Models::Email
       Terms = Azure::CognitiveServices::ContentModerator::V1_0::Models::Terms
@@ -35,43 +37,41 @@ module Azure::Profiles::Latest
       Candidate = Azure::CognitiveServices::ContentModerator::V1_0::Models::Candidate
       JobId = Azure::CognitiveServices::ContentModerator::V1_0::Models::JobId
       Evaluate = Azure::CognitiveServices::ContentModerator::V1_0::Models::Evaluate
+      Job = Azure::CognitiveServices::ContentModerator::V1_0::Models::Job
       MatchResponse = Azure::CognitiveServices::ContentModerator::V1_0::Models::MatchResponse
       APIError = Azure::CognitiveServices::ContentModerator::V1_0::Models::APIError
       ImageList = Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageList
-      TranscriptModerationBodyItemTermsItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::TranscriptModerationBodyItemTermsItem
       RefreshIndex = Azure::CognitiveServices::ContentModerator::V1_0::Models::RefreshIndex
       TranscriptModerationBodyItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::TranscriptModerationBodyItem
-      Job = Azure::CognitiveServices::ContentModerator::V1_0::Models::Job
-      Frame = Azure::CognitiveServices::ContentModerator::V1_0::Models::Frame
+      Tag = Azure::CognitiveServices::ContentModerator::V1_0::Models::Tag
       CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem
       ClassificationCategory3 = Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory3
-      CreateVideoReviewsBodyItemVideoFramesItemMetadataItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItemMetadataItem
+      TranscriptModerationBodyItemTermsItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::TranscriptModerationBodyItemTermsItem
       SSN = Azure::CognitiveServices::ContentModerator::V1_0::Models::SSN
       CreateVideoReviewsBodyItemVideoFramesItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItem
+      Image = Azure::CognitiveServices::ContentModerator::V1_0::Models::Image
       PII = Azure::CognitiveServices::ContentModerator::V1_0::Models::PII
+      CreateVideoReviewsBodyItemMetadataItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemMetadataItem
+      CreateVideoReviewsBodyItemVideoFramesItemMetadataItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItemMetadataItem
+      Frame = Azure::CognitiveServices::ContentModerator::V1_0::Models::Frame
       FoundFaces = Azure::CognitiveServices::ContentModerator::V1_0::Models::FoundFaces
       CreateVideoReviewsBodyItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItem
-      CreateVideoReviewsBodyItemMetadataItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemMetadataItem
+      Match = Azure::CognitiveServices::ContentModerator::V1_0::Models::Match
       Body = Azure::CognitiveServices::ContentModerator::V1_0::Models::Body
       TermList = Azure::CognitiveServices::ContentModerator::V1_0::Models::TermList
-      Match = Azure::CognitiveServices::ContentModerator::V1_0::Models::Match
       ClassificationCategory1 = Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory1
       VideoFrameBodyItemReviewerResultTagsItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemReviewerResultTagsItem
-      Image = Azure::CognitiveServices::ContentModerator::V1_0::Models::Image
-      Tag = Azure::CognitiveServices::ContentModerator::V1_0::Models::Tag
       Phone = Azure::CognitiveServices::ContentModerator::V1_0::Models::Phone
-      Classification = Azure::CognitiveServices::ContentModerator::V1_0::Models::Classification
+      VideoFrameBodyItemMetadataItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemMetadataItem
       OCR = Azure::CognitiveServices::ContentModerator::V1_0::Models::OCR
       VideoFrameBodyItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItem
-      VideoFrameBodyItemMetadataItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemMetadataItem
+      KeyValuePair = Azure::CognitiveServices::ContentModerator::V1_0::Models::KeyValuePair
       CreateReviewBodyItemMetadataItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateReviewBodyItemMetadataItem
       Screen = Azure::CognitiveServices::ContentModerator::V1_0::Models::Screen
-      KeyValuePair = Azure::CognitiveServices::ContentModerator::V1_0::Models::KeyValuePair
-      Content = Azure::CognitiveServices::ContentModerator::V1_0::Models::Content
-      DetectedLanguage = Azure::CognitiveServices::ContentModerator::V1_0::Models::DetectedLanguage
       CreateReviewBodyItem = Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateReviewBodyItem
+      Content = Azure::CognitiveServices::ContentModerator::V1_0::Models::Content
       Status = Azure::CognitiveServices::ContentModerator::V1_0::Models::Status
-      ImageUrl = Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageUrl
+      DetectedLanguage = Azure::CognitiveServices::ContentModerator::V1_0::Models::DetectedLanguage
     end
 
     class ContentModeratorDataClass
@@ -110,6 +110,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_url
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageUrl
+        end
         def address
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Address
         end
@@ -118,6 +121,9 @@ module Azure::Profiles::Latest
         end
         def job_list_result
           Azure::CognitiveServices::ContentModerator::V1_0::Models::JobListResult
+        end
+        def error
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::Error
         end
         def image_additional_info_item
           Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageAdditionalInfoItem
@@ -131,14 +137,14 @@ module Azure::Profiles::Latest
         def terms_in_list
           Azure::CognitiveServices::ContentModerator::V1_0::Models::TermsInList
         end
-        def error
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::Error
-        end
         def classification_category2
           Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory2
         end
         def terms_data
           Azure::CognitiveServices::ContentModerator::V1_0::Models::TermsData
+        end
+        def classification
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::Classification
         end
         def terms_paging
           Azure::CognitiveServices::ContentModerator::V1_0::Models::TermsPaging
@@ -170,6 +176,9 @@ module Azure::Profiles::Latest
         def evaluate
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Evaluate
         end
+        def job
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::Job
+        end
         def match_response
           Azure::CognitiveServices::ContentModerator::V1_0::Models::MatchResponse
         end
@@ -179,20 +188,14 @@ module Azure::Profiles::Latest
         def image_list
           Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageList
         end
-        def transcript_moderation_body_item_terms_item
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::TranscriptModerationBodyItemTermsItem
-        end
         def refresh_index
           Azure::CognitiveServices::ContentModerator::V1_0::Models::RefreshIndex
         end
         def transcript_moderation_body_item
           Azure::CognitiveServices::ContentModerator::V1_0::Models::TranscriptModerationBodyItem
         end
-        def job
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::Job
-        end
-        def frame
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::Frame
+        def tag
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::Tag
         end
         def create_video_reviews_body_item_video_frames_item_reviewer_result_tags_item
           Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem
@@ -200,8 +203,8 @@ module Azure::Profiles::Latest
         def classification_category3
           Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory3
         end
-        def create_video_reviews_body_item_video_frames_item_metadata_item
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItemMetadataItem
+        def transcript_moderation_body_item_terms_item
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::TranscriptModerationBodyItemTermsItem
         end
         def ssn
           Azure::CognitiveServices::ContentModerator::V1_0::Models::SSN
@@ -209,8 +212,20 @@ module Azure::Profiles::Latest
         def create_video_reviews_body_item_video_frames_item
           Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItem
         end
+        def image
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::Image
+        end
         def pii
           Azure::CognitiveServices::ContentModerator::V1_0::Models::PII
+        end
+        def create_video_reviews_body_item_metadata_item
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemMetadataItem
+        end
+        def create_video_reviews_body_item_video_frames_item_metadata_item
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemVideoFramesItemMetadataItem
+        end
+        def frame
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::Frame
         end
         def found_faces
           Azure::CognitiveServices::ContentModerator::V1_0::Models::FoundFaces
@@ -218,8 +233,8 @@ module Azure::Profiles::Latest
         def create_video_reviews_body_item
           Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItem
         end
-        def create_video_reviews_body_item_metadata_item
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateVideoReviewsBodyItemMetadataItem
+        def match
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::Match
         end
         def body
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Body
@@ -227,26 +242,17 @@ module Azure::Profiles::Latest
         def term_list
           Azure::CognitiveServices::ContentModerator::V1_0::Models::TermList
         end
-        def match
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::Match
-        end
         def classification_category1
           Azure::CognitiveServices::ContentModerator::V1_0::Models::ClassificationCategory1
         end
         def video_frame_body_item_reviewer_result_tags_item
           Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemReviewerResultTagsItem
         end
-        def image
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::Image
-        end
-        def tag
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::Tag
-        end
         def phone
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Phone
         end
-        def classification
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::Classification
+        def video_frame_body_item_metadata_item
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemMetadataItem
         end
         def ocr
           Azure::CognitiveServices::ContentModerator::V1_0::Models::OCR
@@ -254,8 +260,8 @@ module Azure::Profiles::Latest
         def video_frame_body_item
           Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItem
         end
-        def video_frame_body_item_metadata_item
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::VideoFrameBodyItemMetadataItem
+        def key_value_pair
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::KeyValuePair
         end
         def create_review_body_item_metadata_item
           Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateReviewBodyItemMetadataItem
@@ -263,23 +269,17 @@ module Azure::Profiles::Latest
         def screen
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Screen
         end
-        def key_value_pair
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::KeyValuePair
+        def create_review_body_item
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateReviewBodyItem
         end
         def content
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Content
         end
-        def detected_language
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::DetectedLanguage
-        end
-        def create_review_body_item
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::CreateReviewBodyItem
-        end
         def status
           Azure::CognitiveServices::ContentModerator::V1_0::Models::Status
         end
-        def image_url
-          Azure::CognitiveServices::ContentModerator::V1_0::Models::ImageUrl
+        def detected_language
+          Azure::CognitiveServices::ContentModerator::V1_0::Models::DetectedLanguage
         end
       end
     end
