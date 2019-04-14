@@ -7,12 +7,14 @@ require 'azure_mgmt_relay'
 module Azure::Profiles::Latest
   module Relay
     module Mgmt
-      Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
-      WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
       Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
+      Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
+      WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
 
       module Models
+        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+        SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
         HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
         AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
         ErrorResponse = Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
@@ -38,12 +40,10 @@ module Azure::Profiles::Latest
         Relaytype = Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
         ProvisioningStateEnum = Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
         UnavailableReason = Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
-        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
-        SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
       end
 
       class RelayManagementClass
-        attr_reader :namespaces, :wcfrelays, :operations, :hybrid_connections, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :hybrid_connections, :namespaces, :wcfrelays, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -53,10 +53,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @namespaces = @client_0.namespaces
-          @wcfrelays = @client_0.wcfrelays
           @operations = @client_0.operations
           @hybrid_connections = @client_0.hybrid_connections
+          @namespaces = @client_0.namespaces
+          @wcfrelays = @client_0.wcfrelays
 
           @model_classes = ModelClasses.new
         end
@@ -75,6 +75,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+          end
+          def sku_tier
+            Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
+          end
           def hybrid_connection
             Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
           end
@@ -149,12 +155,6 @@ module Azure::Profiles::Latest
           end
           def unavailable_reason
             Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
-          end
-          def sku
-            Azure::Relay::Mgmt::V2017_04_01::Models::Sku
-          end
-          def sku_tier
-            Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
           end
         end
       end

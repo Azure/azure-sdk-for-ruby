@@ -12,7 +12,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       Free = "Free"
       Standard = "Standard"
       Premium = "Premium"
-      Unlimited = "Unlimited"
       PerNode = "PerNode"
       PerGB2018 = "PerGB2018"
       Standalone = "Standalone"

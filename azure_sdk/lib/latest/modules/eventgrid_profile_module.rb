@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
+      DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
+      DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+      StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
       DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
       ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
       DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
@@ -42,9 +45,6 @@ module Azure::Profiles::Latest
       ContainerRegistryImagePushedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData
       ContainerRegistryImageDeletedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImageDeletedEventData
       JobState = Azure::EventGrid::V2018_01_01::Models::JobState
-      DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-      DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
-      StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
     end
 
     class EventGridDataClass
@@ -76,6 +76,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def device_twin_metadata
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
+        end
+        def device_twin_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+        end
+        def storage_blob_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+        end
         def device_twin_info_properties
           Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
         end
@@ -175,24 +184,15 @@ module Azure::Profiles::Latest
         def job_state
           Azure::EventGrid::V2018_01_01::Models::JobState
         end
-        def device_twin_metadata
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-        end
-        def device_twin_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
-        end
-        def storage_blob_deleted_event_data
-          Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
-        end
       end
     end
     module Mgmt
+      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
       DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
-      Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
 
       module Models
         TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
@@ -213,16 +213,16 @@ module Azure::Profiles::Latest
         EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionDestination
         OperationInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationInfo
         OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
-        DeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
-        DomainRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainRegenerateKeyRequest
-        EventTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventTypesListResult
         EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionsListResult
-        EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
+        DomainRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainRegenerateKeyRequest
+        DeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
+        EventTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventTypesListResult
         TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
         Domain = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
         DomainTopic = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
         NumberInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberInAdvancedFilter
         StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageBlobDeadLetterDestination
+        EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
         NumberNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
         NumberLessThanAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberLessThanAdvancedFilter
         NumberGreaterThanAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberGreaterThanAdvancedFilter
@@ -256,7 +256,7 @@ module Azure::Profiles::Latest
       end
 
       class EventGridManagementClass
-        attr_reader :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -266,12 +266,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @domains = @client_0.domains
           @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
           @topic_types = @client_0.topic_types
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -344,20 +344,17 @@ module Azure::Profiles::Latest
           def operations_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
           end
-          def dead_letter_destination
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
+          def event_subscriptions_list_result
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionsListResult
           end
           def domain_regenerate_key_request
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainRegenerateKeyRequest
           end
+          def dead_letter_destination
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DeadLetterDestination
+          end
           def event_types_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventTypesListResult
-          end
-          def event_subscriptions_list_result
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionsListResult
-          end
-          def event_subscription_filter
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
           end
           def topic_types_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
@@ -373,6 +370,9 @@ module Azure::Profiles::Latest
           end
           def storage_blob_dead_letter_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageBlobDeadLetterDestination
+          end
+          def event_subscription_filter
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
           end
           def number_not_in_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
