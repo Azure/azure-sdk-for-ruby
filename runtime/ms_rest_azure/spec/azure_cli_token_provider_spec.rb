@@ -45,17 +45,17 @@ module MsRestAzure
 
       let(:response_body) do
         {
-          'accessToken': access_token,
-          'tokenType': token_type,
-          'expiresOn': DateTime.now
+          'accessToken' => access_token,
+          'tokenType' => token_type,
+          'expiresOn' => DateTime.now
         }.to_json
       end
 
       let(:expired_response_body) do
         {
-          'accessToken': access_token,
-          'tokenType': token_type,
-          'expiresOn': (DateTime.now - 90)
+          'accessToken' => access_token,
+          'tokenType' => token_type,
+          'expiresOn' => (DateTime.now - 90)
         }.to_json
       end
 
