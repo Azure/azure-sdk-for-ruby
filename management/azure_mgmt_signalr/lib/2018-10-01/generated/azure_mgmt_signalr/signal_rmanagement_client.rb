@@ -17,8 +17,7 @@ module Azure::Signalr::Mgmt::V2018_10_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [Enum] Client Api Version. Possible values include:
-    # '2018-03-01-preview', '2018-10-01'
+    # @return [String] Client Api Version.
     attr_reader :api_version
 
     # @return [String] Gets subscription Id which uniquely identify the

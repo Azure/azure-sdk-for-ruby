@@ -18,6 +18,18 @@ module Azure::Signalr::Mgmt::V2018_10_01
       # &lt;hostNamePrefix&gt;.service.signalr.net.
       attr_accessor :host_name_prefix
 
+      # @return [Array<SignalRFeature>] List of SignalR featureFlags. e.g.
+      # ServiceMode.
+      #
+      # When updating featureFlags, if certain featureFlag is not included in
+      # parameters, SignalR service will remain it unchanged.
+      # And when you GET a SignalR resource, the response will include only
+      # those featureFlags explicitly set by you. For other featureFlags,
+      # SignalR service will use its globally default value. Note that, default
+      # value doesn't mean "false". It varies in terms of different
+      # FeatureFlags.
+      attr_accessor :features
+
 
       #
       # Mapper for SignalRCreateOrUpdateProperties class as Ruby Hash.
@@ -36,6 +48,21 @@ module Azure::Signalr::Mgmt::V2018_10_01
                 serialized_name: 'hostNamePrefix',
                 type: {
                   name: 'String'
+                }
+              },
+              features: {
+                required: false,
+                serialized_name: 'features',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'SignalRFeatureElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SignalRFeature'
+                      }
+                  }
                 }
               }
             }
