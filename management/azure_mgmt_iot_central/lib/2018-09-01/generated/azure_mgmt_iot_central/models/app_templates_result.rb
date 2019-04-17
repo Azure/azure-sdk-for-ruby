@@ -3,23 +3,22 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
+module Azure::IotCentral::Mgmt::V2018_09_01
   module Models
     #
-    # A list of IoT Central operations. It contains a list of operations and a
-    # URL link to get the next set of results.
+    # A list of IoT Central Application Templates with a next link.
     #
-    class OperationListResult
+    class AppTemplatesResult
 
       include MsRestAzure
 
       include MsRest::JSONable
       # @return [String] The link used to get the next page of IoT Central
-      # description objects.
+      # application templates.
       attr_accessor :next_link
 
-      # @return [Array<Operation>] A list of operations supported by the
-      # Microsoft.IoTCentral resource provider.
+      # @return [Array<AppTemplate>] A list of IoT Central Application
+      # Templates.
       attr_accessor :value
 
       # return [Proc] with next page method call.
@@ -28,7 +27,7 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<Operation>] operation results.
+      # @return [Array<AppTemplate>] operation results.
       #
       def get_all_items
         items = @value
@@ -43,7 +42,7 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
       #
       # Gets the next page of results.
       #
-      # @return [OperationListResult] with next page content.
+      # @return [AppTemplatesResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -55,16 +54,16 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
       end
 
       #
-      # Mapper for OperationListResult class as Ruby Hash.
+      # Mapper for AppTemplatesResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'OperationListResult',
+          serialized_name: 'AppTemplatesResult',
           type: {
             name: 'Composite',
-            class_name: 'OperationListResult',
+            class_name: 'AppTemplatesResult',
             model_properties: {
               next_link: {
                 required: false,
@@ -81,10 +80,10 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'OperationElementType',
+                      serialized_name: 'AppTemplateElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Operation'
+                        class_name: 'AppTemplate'
                       }
                   }
                 }

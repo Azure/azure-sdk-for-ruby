@@ -37,7 +37,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'App',
           type: {
@@ -45,7 +44,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
             class_name: 'App',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -54,7 +52,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -66,7 +63,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -75,7 +71,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -83,13 +78,11 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -99,7 +92,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               application_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.applicationId',
@@ -108,7 +100,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 constraints: {
@@ -119,7 +110,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               subdomain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subdomain',
                 constraints: {
@@ -130,7 +120,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.template',
                 type: {
@@ -138,7 +127,6 @@ module Azure::IotCentral::Mgmt::V2017_07_01_privatepreview
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
