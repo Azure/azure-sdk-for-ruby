@@ -24,7 +24,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AutoStorageProperties',
           type: {
@@ -32,7 +31,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'AutoStorageProperties',
             model_properties: {
               storage_account_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageAccountId',
                 type: {
@@ -40,7 +38,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               last_key_sync: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'lastKeySync',
                 type: {

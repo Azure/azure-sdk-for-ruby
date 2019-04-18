@@ -68,7 +68,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StartTask',
           type: {
@@ -76,7 +75,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'StartTask',
             model_properties: {
               command_line: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'commandLine',
                 type: {
@@ -84,13 +82,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               resource_files: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceFiles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceFileElementType',
                       type: {
@@ -101,13 +97,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               environment_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'environmentSettings',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EnvironmentSettingElementType',
                       type: {
@@ -118,7 +112,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               user_identity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userIdentity',
                 type: {
@@ -127,7 +120,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               max_task_retry_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxTaskRetryCount',
                 type: {
@@ -135,7 +127,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               wait_for_success: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'waitForSuccess',
                 type: {
