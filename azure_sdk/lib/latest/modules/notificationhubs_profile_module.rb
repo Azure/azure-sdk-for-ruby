@@ -7,17 +7,18 @@ require 'azure_mgmt_notification_hubs'
 module Azure::Profiles::Latest
   module NotificationHubs
     module Mgmt
-      Operations = Azure::NotificationHubs::Mgmt::V2017_04_01::Operations
       Namespaces = Azure::NotificationHubs::Mgmt::V2017_04_01::Namespaces
+      Operations = Azure::NotificationHubs::Mgmt::V2017_04_01::Operations
       NotificationHubs = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubs
 
       module Models
-        PnsCredentialsResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::PnsCredentialsResource
+        DebugSendResponse = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::DebugSendResponse
+        ErrorResponse = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
         Sku = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
         NamespaceType = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceType
-        ErrorResponse = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
-        SkuName = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
+        PnsCredentialsResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::PnsCredentialsResource
         AccessRights = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
+        SkuName = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
         Resource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Resource
         OperationDisplay = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::OperationDisplay
         Operation = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Operation
@@ -45,11 +46,10 @@ module Azure::Profiles::Latest
         NotificationHubCreateOrUpdateParameters = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NotificationHubCreateOrUpdateParameters
         NotificationHubPatchParameters = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NotificationHubPatchParameters
         NotificationHubResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NotificationHubResource
-        DebugSendResponse = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::DebugSendResponse
       end
 
       class NotificationHubsManagementClass
-        attr_reader :operations, :namespaces, :notification_hubs, :configurable, :base_url, :options, :model_classes
+        attr_reader :namespaces, :operations, :notification_hubs, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -59,8 +59,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @namespaces = @client_0.namespaces
+          @operations = @client_0.operations
           @notification_hubs = @client_0.notification_hubs
 
           @model_classes = ModelClasses.new
@@ -80,8 +80,11 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def pns_credentials_resource
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::PnsCredentialsResource
+          def debug_send_response
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::DebugSendResponse
+          end
+          def error_response
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
           end
           def sku
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
@@ -89,14 +92,14 @@ module Azure::Profiles::Latest
           def namespace_type
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceType
           end
-          def error_response
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ErrorResponse
-          end
-          def sku_name
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
+          def pns_credentials_resource
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::PnsCredentialsResource
           end
           def access_rights
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AccessRights
+          end
+          def sku_name
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::SkuName
           end
           def resource
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Resource
@@ -178,9 +181,6 @@ module Azure::Profiles::Latest
           end
           def notification_hub_resource
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NotificationHubResource
-          end
-          def debug_send_response
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::DebugSendResponse
           end
         end
       end

@@ -9,10 +9,11 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
+      ImageRecipesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
+      ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
       ImageRelatedSearchesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
       ImageShoppingSourcesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageShoppingSourcesAction
       ContentTypes = Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
-      ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
       ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
       Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
@@ -23,12 +24,12 @@ module Azure::Profiles::Latest
       Organization = Azure::CognitiveServices::VisualSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::VisualSearch::V1_0::Models::Intangible
       StructuredValue = Azure::CognitiveServices::VisualSearch::V1_0::Models::StructuredValue
-      ImageTag = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTag
       Error = Azure::CognitiveServices::VisualSearch::V1_0::Models::Error
+      ImageTag = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTag
       RelatedSearchesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RelatedSearchesModule
       PropertiesItem = Azure::CognitiveServices::VisualSearch::V1_0::Models::PropertiesItem
-      RecipesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
       Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
+      RecipesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
       ImagesImageMetadata = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
       ImagesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
@@ -55,7 +56,6 @@ module Azure::Profiles::Latest
       ImageKnowledge = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
       ImageEntityAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageEntityAction
       ImageModuleAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
-      ImageRecipesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
     end
 
     class VisualSearchDataClass
@@ -88,6 +88,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_recipes_action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
+        end
+        def error_response
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
+        end
         def image_related_searches_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRelatedSearchesAction
         end
@@ -96,9 +102,6 @@ module Azure::Profiles::Latest
         end
         def content_types
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ContentTypes
-        end
-        def error_response
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
         end
         def error_code
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
@@ -130,11 +133,11 @@ module Azure::Profiles::Latest
         def structured_value
           Azure::CognitiveServices::VisualSearch::V1_0::Models::StructuredValue
         end
-        def image_tag
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTag
-        end
         def error
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Error
+        end
+        def image_tag
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTag
         end
         def related_searches_module
           Azure::CognitiveServices::VisualSearch::V1_0::Models::RelatedSearchesModule
@@ -142,11 +145,11 @@ module Azure::Profiles::Latest
         def properties_item
           Azure::CognitiveServices::VisualSearch::V1_0::Models::PropertiesItem
         end
-        def recipes_module
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
-        end
         def filters
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
+        end
+        def recipes_module
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::RecipesModule
         end
         def images_image_metadata
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
@@ -225,9 +228,6 @@ module Azure::Profiles::Latest
         end
         def image_module_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
-        end
-        def image_recipes_action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
         end
       end
     end

@@ -8,6 +8,7 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      TagResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
       ColorInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
       ComputerVisionError = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
       LandmarksModel = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
@@ -45,7 +46,6 @@ module Azure::Profiles::Latest
       ImageTag = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
       ImageDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
       RecognitionResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
-      TagResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def tag_result
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
+        end
         def color_info
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
         end
@@ -187,9 +190,6 @@ module Azure::Profiles::Latest
         end
         def recognition_result
           Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
-        end
-        def tag_result
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
         end
       end
     end
