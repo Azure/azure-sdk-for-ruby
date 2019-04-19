@@ -7,12 +7,12 @@ require 'azure_mgmt_marketplace_ordering'
 module Azure::Profiles::Latest
   module MarketplaceOrdering
     module Mgmt
-      Operations = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Operations
       MarketplaceAgreements = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::MarketplaceAgreements
+      Operations = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Operations
 
       module Models
-        OperationDisplay = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
         ErrorResponse = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
+        OperationDisplay = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
         Operation = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Operation
         OperationListResult = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationListResult
         Resource = Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Resource
@@ -21,7 +21,7 @@ module Azure::Profiles::Latest
       end
 
       class MarketplaceOrderingManagementClass
-        attr_reader :operations, :marketplace_agreements, :configurable, :base_url, :options, :model_classes
+        attr_reader :marketplace_agreements, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -31,8 +31,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
           @marketplace_agreements = @client_0.marketplace_agreements
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -51,11 +51,11 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def operation_display
-            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
-          end
           def error_response
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::ErrorResponse
+          end
+          def operation_display
+            Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::OperationDisplay
           end
           def operation
             Azure::MarketplaceOrdering::Mgmt::V2015_06_01::Models::Operation

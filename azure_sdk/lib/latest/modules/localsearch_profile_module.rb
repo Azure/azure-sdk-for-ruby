@@ -17,8 +17,8 @@ module Azure::Profiles::Latest
       Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
       PostalAddress = Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
-      Response = Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
       Intangible = Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
+      Response = Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
       QueryContext = Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
       GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
       ResponseBase = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseBase
@@ -91,11 +91,11 @@ module Azure::Profiles::Latest
         def place
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
         end
-        def response
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
-        end
         def intangible
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
+        end
+        def response
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Response
         end
         def query_context
           Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
