@@ -1,5 +1,5 @@
 ##2019.04.19 ms_rest_azure version 0.11.1
-* Set unf_ext dependency version to 0.0.7.2.
+* Set unf_ext dependency version to 0.0.7.2. This change has been done to accomodate the changes made to unf_ext. Refer [Issue #604](https://github.com/meew0/discordrb/issues/604) for further details.
 
 ##2018.07.31 ms_rest_azure version 0.11.0
 * Added USER_DEFINED_IMDS_MAX_RETRY_TIME to msi_token_provider. Refer [PR #1539](https://github.com/Azure/azure-sdk-for-ruby/pull/1539) and [Issue #1344](https://github.com/Azure/azure-sdk-for-ruby/issues/1344) for further details.
