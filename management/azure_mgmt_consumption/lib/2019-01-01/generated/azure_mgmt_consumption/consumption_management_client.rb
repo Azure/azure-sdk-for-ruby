@@ -38,6 +38,9 @@ module Azure::Consumption::Mgmt::V2019_01_01
     # @return [UsageDetails] usage_details
     attr_reader :usage_details
 
+    # @return [UsageDetailsList] usage_details_list
+    attr_reader :usage_details_list
+
     # @return [Marketplaces] marketplaces
     attr_reader :marketplaces
 
@@ -88,6 +91,7 @@ module Azure::Consumption::Mgmt::V2019_01_01
       @credentials = credentials
 
       @usage_details = UsageDetails.new(self)
+      @usage_details_list = UsageDetailsList.new(self)
       @marketplaces = Marketplaces.new(self)
       @budgets = Budgets.new(self)
       @tags = Tags.new(self)
