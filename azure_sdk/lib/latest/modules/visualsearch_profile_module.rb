@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
+      Person = Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
       Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
@@ -45,17 +46,16 @@ module Azure::Profiles::Latest
       Offer = Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
       ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
       AggregateOffer = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
+      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
       Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
       Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
-      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
       ErrorCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
-      Person = Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
     end
 
     class VisualSearchDataClass
@@ -88,6 +88,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def person
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
+        end
         def query
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
         end
@@ -196,6 +199,9 @@ module Azure::Profiles::Latest
         def aggregate_offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
         end
+        def action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+        end
         def recipe
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
         end
@@ -207,9 +213,6 @@ module Azure::Profiles::Latest
         end
         def identifiable
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
-        end
-        def action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
         end
         def rating
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
@@ -225,9 +228,6 @@ module Azure::Profiles::Latest
         end
         def error_code
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorCode
-        end
-        def person
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
         end
       end
     end

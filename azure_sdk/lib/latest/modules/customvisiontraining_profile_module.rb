@@ -8,6 +8,12 @@ module Azure::Profiles::Latest
   module Customvisiontraining
 
     module Models
+      ImageIdCreateBatch = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageIdCreateBatch
+      BoundingBox = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::BoundingBox
+      ImageTagCreateBatch = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTagCreateBatch
+      RegionProposal = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::RegionProposal
+      ImageRegionCreateEntry = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateEntry
+      ImageRegionProposal = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionProposal
       ImageRegionCreateResult = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateResult
       Prediction = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Prediction
       ImagePrediction = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImagePrediction
@@ -44,16 +50,10 @@ module Azure::Profiles::Latest
       ImageTag = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTag
       OrderBy = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::OrderBy
       ImageUrl = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageUrl
-      Image = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Image
       Tag = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Tag
+      Image = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Image
       Project = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Project
       DomainType = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::DomainType
-      ImageIdCreateBatch = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageIdCreateBatch
-      BoundingBox = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::BoundingBox
-      ImageTagCreateBatch = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTagCreateBatch
-      RegionProposal = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::RegionProposal
-      ImageRegionCreateEntry = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateEntry
-      ImageRegionProposal = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionProposal
     end
 
     class CustomvisiontrainingDataClass
@@ -85,6 +85,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_id_create_batch
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageIdCreateBatch
+        end
+        def bounding_box
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::BoundingBox
+        end
+        def image_tag_create_batch
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTagCreateBatch
+        end
+        def region_proposal
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::RegionProposal
+        end
+        def image_region_create_entry
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateEntry
+        end
+        def image_region_proposal
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionProposal
+        end
         def image_region_create_result
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateResult
         end
@@ -193,35 +211,17 @@ module Azure::Profiles::Latest
         def image_url
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageUrl
         end
-        def image
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Image
-        end
         def tag
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Tag
+        end
+        def image
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Image
         end
         def project
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Project
         end
         def domain_type
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::DomainType
-        end
-        def image_id_create_batch
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageIdCreateBatch
-        end
-        def bounding_box
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::BoundingBox
-        end
-        def image_tag_create_batch
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTagCreateBatch
-        end
-        def region_proposal
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::RegionProposal
-        end
-        def image_region_create_entry
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateEntry
-        end
-        def image_region_proposal
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionProposal
         end
       end
     end

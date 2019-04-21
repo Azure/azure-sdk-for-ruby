@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
     Web = Azure::CognitiveServices::WebSearch::V1_0::Web
 
     module Models
+      Places = Azure::CognitiveServices::WebSearch::V1_0::Models::Places
+      RankingRankingItem = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
+      RankingRankingGroup = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingGroup
       RankingRankingResponse = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingResponse
       WebWebGrouping = Azure::CognitiveServices::WebSearch::V1_0::Models::WebWebGrouping
       TimeZoneTimeZoneInformation = Azure::CognitiveServices::WebSearch::V1_0::Models::TimeZoneTimeZoneInformation
@@ -45,11 +48,8 @@ module Azure::Profiles::Latest
       Videos = Azure::CognitiveServices::WebSearch::V1_0::Models::Videos
       SafeSearch = Azure::CognitiveServices::WebSearch::V1_0::Models::SafeSearch
       ErrorCode = Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
-      TextFormat = Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
-      Places = Azure::CognitiveServices::WebSearch::V1_0::Models::Places
       Error = Azure::CognitiveServices::WebSearch::V1_0::Models::Error
-      RankingRankingItem = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
-      RankingRankingGroup = Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingGroup
+      TextFormat = Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
     end
 
     class WebSearchDataClass
@@ -82,6 +82,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def places
+          Azure::CognitiveServices::WebSearch::V1_0::Models::Places
+        end
+        def ranking_ranking_item
+          Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
+        end
+        def ranking_ranking_group
+          Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingGroup
+        end
         def ranking_ranking_response
           Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingResponse
         end
@@ -190,20 +199,11 @@ module Azure::Profiles::Latest
         def error_code
           Azure::CognitiveServices::WebSearch::V1_0::Models::ErrorCode
         end
-        def text_format
-          Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
-        end
-        def places
-          Azure::CognitiveServices::WebSearch::V1_0::Models::Places
-        end
         def error
           Azure::CognitiveServices::WebSearch::V1_0::Models::Error
         end
-        def ranking_ranking_item
-          Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingItem
-        end
-        def ranking_ranking_group
-          Azure::CognitiveServices::WebSearch::V1_0::Models::RankingRankingGroup
+        def text_format
+          Azure::CognitiveServices::WebSearch::V1_0::Models::TextFormat
         end
       end
     end

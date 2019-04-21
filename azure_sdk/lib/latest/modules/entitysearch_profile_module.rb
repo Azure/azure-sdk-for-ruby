@@ -14,6 +14,7 @@ module Azure::Profiles::Latest
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
       Places = Azure::CognitiveServices::EntitySearch::V1_0::Models::Places
@@ -41,7 +42,6 @@ module Azure::Profiles::Latest
       EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
-      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
       EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
@@ -101,6 +101,9 @@ module Azure::Profiles::Latest
         end
         def response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
+        end
+        def error
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
         end
         def contractual_rules_contractual_rule
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
@@ -182,9 +185,6 @@ module Azure::Profiles::Latest
         end
         def answer_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
-        end
-        def error
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
         end
         def entities
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities

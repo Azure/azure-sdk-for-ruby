@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     NewsOperations = Azure::CognitiveServices::NewsSearch::V1_0::NewsOperations
 
     module Models
+      Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
       Query = Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::NewsSearch::V1_0::Models::MediaObject
@@ -32,7 +33,6 @@ module Azure::Profiles::Latest
       SafeSearch = Azure::CognitiveServices::NewsSearch::V1_0::Models::SafeSearch
       TextFormat = Azure::CognitiveServices::NewsSearch::V1_0::Models::TextFormat
       Error = Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-      Organization = Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
     end
 
     class NewsSearchDataClass
@@ -65,6 +65,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def organization
+          Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
+        end
         def query
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Query
         end
@@ -133,9 +136,6 @@ module Azure::Profiles::Latest
         end
         def error
           Azure::CognitiveServices::NewsSearch::V1_0::Models::Error
-        end
-        def organization
-          Azure::CognitiveServices::NewsSearch::V1_0::Models::Organization
         end
       end
     end
