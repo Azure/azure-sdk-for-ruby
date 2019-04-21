@@ -3065,14 +3065,12 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Read Result operation' to access OCR results.​
     #
     # @param image An image stream.
-    # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
-    # include: 'Handwritten', 'Printed'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def batch_read_file_in_stream(image, mode, custom_headers = nil)
-      response = batch_read_file_in_stream_async(image, mode, custom_headers).value!
+    def batch_read_file_in_stream(image, custom_headers = nil)
+      response = batch_read_file_in_stream_async(image, custom_headers).value!
       nil
     end
 
@@ -3085,15 +3083,13 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Read Result operation' to access OCR results.​
     #
     # @param image An image stream.
-    # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
-    # include: 'Handwritten', 'Printed'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def batch_read_file_in_stream_with_http_info(image, mode, custom_headers = nil)
-      batch_read_file_in_stream_async(image, mode, custom_headers).value!
+    def batch_read_file_in_stream_with_http_info(image, custom_headers = nil)
+      batch_read_file_in_stream_async(image, custom_headers).value!
     end
 
     #
@@ -3105,17 +3101,14 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Read Result operation' to access OCR results.​
     #
     # @param image An image stream.
-    # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
-    # include: 'Handwritten', 'Printed'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def batch_read_file_in_stream_async(image, mode, custom_headers = nil)
+    def batch_read_file_in_stream_async(image, custom_headers = nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
-      fail ArgumentError, 'mode is nil' if mode.nil?
 
 
       request_headers = {}
@@ -3144,7 +3137,6 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'mode' => mode},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
