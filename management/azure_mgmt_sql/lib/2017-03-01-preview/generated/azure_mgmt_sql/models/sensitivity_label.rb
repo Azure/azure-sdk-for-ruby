@@ -24,6 +24,12 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # @return [String] The information type ID.
       attr_accessor :information_type_id
 
+      # @return [Boolean] Is sensitivity recommendation disabled. Applicable
+      # for recommended sensitivity label only. Specifies whether the
+      # sensitivity recommendation on this column is disabled (dismissed) or
+      # not.
+      attr_accessor :is_disabled
+
 
       #
       # Mapper for SensitivityLabel class as Ruby Hash.
@@ -87,6 +93,14 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 serialized_name: 'properties.informationTypeId',
                 type: {
                   name: 'String'
+                }
+              },
+              is_disabled: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.isDisabled',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

@@ -12,6 +12,11 @@ module Azure::Profiles::Latest
     EndpointKeys = Azure::CognitiveServices::Qnamaker::V4_0::EndpointKeys
 
     module Models
+      CreateKbInputDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::CreateKbInputDTO
+      DeleteKbContentsDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::DeleteKbContentsDTO
+      QnADTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::QnADTO
+      EndpointKeysDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::EndpointKeysDTO
+      FileDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::FileDTO
       WordAlterationsDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::WordAlterationsDTO
       KnowledgebasesDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::KnowledgebasesDTO
       UpdateQnaDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateQnaDTO
@@ -26,24 +31,19 @@ module Azure::Profiles::Latest
       InnerErrorModel = Azure::CognitiveServices::Qnamaker::V4_0::Models::InnerErrorModel
       MetadataDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::MetadataDTO
       AlterationsDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::AlterationsDTO
-      ErrorResponse = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponse
       UpdateKbOperationDTOAdd = Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateKbOperationDTOAdd
       UpdateKbOperationDTODelete = Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateKbOperationDTODelete
       UpdateKbOperationDTOUpdate = Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateKbOperationDTOUpdate
       UpdateQnaDTOQuestions = Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateQnaDTOQuestions
       UpdateQnaDTOMetadata = Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateQnaDTOMetadata
-      FileDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::FileDTO
+      ErrorResponse = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponse
+      Operation = Azure::CognitiveServices::Qnamaker::V4_0::Models::Operation
       ErrorCodeType = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorCodeType
       KnowledgebaseEnvironmentType = Azure::CognitiveServices::Qnamaker::V4_0::Models::KnowledgebaseEnvironmentType
-      EnvironmentType = Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
-      OperationStateType = Azure::CognitiveServices::Qnamaker::V4_0::Models::OperationStateType
-      Operation = Azure::CognitiveServices::Qnamaker::V4_0::Models::Operation
       ErrorResponseError = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
-      CreateKbInputDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::CreateKbInputDTO
-      DeleteKbContentsDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::DeleteKbContentsDTO
+      OperationStateType = Azure::CognitiveServices::Qnamaker::V4_0::Models::OperationStateType
+      EnvironmentType = Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
       Error = Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
-      QnADTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::QnADTO
-      EndpointKeysDTO = Azure::CognitiveServices::Qnamaker::V4_0::Models::EndpointKeysDTO
     end
 
     class QnamakerDataClass
@@ -79,6 +79,21 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def create_kb_input_dto
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::CreateKbInputDTO
+        end
+        def delete_kb_contents_dto
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::DeleteKbContentsDTO
+        end
+        def qn_adto
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::QnADTO
+        end
+        def endpoint_keys_dto
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::EndpointKeysDTO
+        end
+        def file_dto
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::FileDTO
+        end
         def word_alterations_dto
           Azure::CognitiveServices::Qnamaker::V4_0::Models::WordAlterationsDTO
         end
@@ -121,9 +136,6 @@ module Azure::Profiles::Latest
         def alterations_dto
           Azure::CognitiveServices::Qnamaker::V4_0::Models::AlterationsDTO
         end
-        def error_response
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponse
-        end
         def update_kb_operation_dtoadd
           Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateKbOperationDTOAdd
         end
@@ -139,8 +151,11 @@ module Azure::Profiles::Latest
         def update_qna_dtometadata
           Azure::CognitiveServices::Qnamaker::V4_0::Models::UpdateQnaDTOMetadata
         end
-        def file_dto
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::FileDTO
+        def error_response
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponse
+        end
+        def operation
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::Operation
         end
         def error_code_type
           Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorCodeType
@@ -148,32 +163,17 @@ module Azure::Profiles::Latest
         def knowledgebase_environment_type
           Azure::CognitiveServices::Qnamaker::V4_0::Models::KnowledgebaseEnvironmentType
         end
-        def environment_type
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
+        def error_response_error
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
         end
         def operation_state_type
           Azure::CognitiveServices::Qnamaker::V4_0::Models::OperationStateType
         end
-        def operation
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::Operation
-        end
-        def error_response_error
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
-        end
-        def create_kb_input_dto
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::CreateKbInputDTO
-        end
-        def delete_kb_contents_dto
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::DeleteKbContentsDTO
+        def environment_type
+          Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
         end
         def error
           Azure::CognitiveServices::Qnamaker::V4_0::Models::Error
-        end
-        def qn_adto
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::QnADTO
-        end
-        def endpoint_keys_dto
-          Azure::CognitiveServices::Qnamaker::V4_0::Models::EndpointKeysDTO
         end
       end
     end

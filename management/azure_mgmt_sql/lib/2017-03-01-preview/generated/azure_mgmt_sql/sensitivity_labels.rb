@@ -139,6 +139,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database.
+    # @param include_disabled_recommendations [Boolean] Specifies whether to
+    # include disabled recommendations or not.
     # @param skip_token [String]
     # @param filter [String] An OData filter expression that filters elements in
     # the collection.
@@ -147,8 +149,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [Array<SensitivityLabel>] operation results.
     #
-    def list_recommended_by_database(resource_group_name, server_name, database_name, skip_token = nil, filter = nil, custom_headers = nil)
-      first_page = list_recommended_by_database_as_lazy(resource_group_name, server_name, database_name, skip_token, filter, custom_headers)
+    def list_recommended_by_database(resource_group_name, server_name, database_name, include_disabled_recommendations = nil, skip_token = nil, filter = nil, custom_headers = nil)
+      first_page = list_recommended_by_database_as_lazy(resource_group_name, server_name, database_name, include_disabled_recommendations, skip_token, filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -160,6 +162,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database.
+    # @param include_disabled_recommendations [Boolean] Specifies whether to
+    # include disabled recommendations or not.
     # @param skip_token [String]
     # @param filter [String] An OData filter expression that filters elements in
     # the collection.
@@ -168,8 +172,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_recommended_by_database_with_http_info(resource_group_name, server_name, database_name, skip_token = nil, filter = nil, custom_headers = nil)
-      list_recommended_by_database_async(resource_group_name, server_name, database_name, skip_token, filter, custom_headers).value!
+    def list_recommended_by_database_with_http_info(resource_group_name, server_name, database_name, include_disabled_recommendations = nil, skip_token = nil, filter = nil, custom_headers = nil)
+      list_recommended_by_database_async(resource_group_name, server_name, database_name, include_disabled_recommendations, skip_token, filter, custom_headers).value!
     end
 
     #
@@ -180,6 +184,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database.
+    # @param include_disabled_recommendations [Boolean] Specifies whether to
+    # include disabled recommendations or not.
     # @param skip_token [String]
     # @param filter [String] An OData filter expression that filters elements in
     # the collection.
@@ -188,7 +194,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_recommended_by_database_async(resource_group_name, server_name, database_name, skip_token = nil, filter = nil, custom_headers = nil)
+    def list_recommended_by_database_async(resource_group_name, server_name, database_name, include_disabled_recommendations = nil, skip_token = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
@@ -208,7 +214,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$skipToken' => skip_token,'$filter' => filter,'api-version' => @client.api_version},
+          query_params: {'includeDisabledRecommendations' => include_disabled_recommendations,'$skipToken' => skip_token,'$filter' => filter,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -234,6 +240,215 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Enables sensitivity recommendations on a given column (recommendations are
+    # enabled by default on all columns)
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
+    # @param schema_name [String] The name of the schema.
+    # @param table_name [String] The name of the table.
+    # @param column_name [String] The name of the column.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def enable_recommendation(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers = nil)
+      response = enable_recommendation_async(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Enables sensitivity recommendations on a given column (recommendations are
+    # enabled by default on all columns)
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
+    # @param schema_name [String] The name of the schema.
+    # @param table_name [String] The name of the table.
+    # @param column_name [String] The name of the column.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def enable_recommendation_with_http_info(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers = nil)
+      enable_recommendation_async(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers).value!
+    end
+
+    #
+    # Enables sensitivity recommendations on a given column (recommendations are
+    # enabled by default on all columns)
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
+    # @param schema_name [String] The name of the schema.
+    # @param table_name [String] The name of the table.
+    # @param column_name [String] The name of the column.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def enable_recommendation_async(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'schema_name is nil' if schema_name.nil?
+      fail ArgumentError, 'table_name is nil' if table_name.nil?
+      fail ArgumentError, 'column_name is nil' if column_name.nil?
+      sensitivity_label_source = 'recommended'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/enable'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name,'schemaName' => schema_name,'tableName' => table_name,'columnName' => column_name,'sensitivityLabelSource' => sensitivity_label_source,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Disables sensitivity recommendations on a given column
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
+    # @param schema_name [String] The name of the schema.
+    # @param table_name [String] The name of the table.
+    # @param column_name [String] The name of the column.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def disable_recommendation(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers = nil)
+      response = disable_recommendation_async(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Disables sensitivity recommendations on a given column
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
+    # @param schema_name [String] The name of the schema.
+    # @param table_name [String] The name of the table.
+    # @param column_name [String] The name of the column.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def disable_recommendation_with_http_info(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers = nil)
+      disable_recommendation_async(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers).value!
+    end
+
+    #
+    # Disables sensitivity recommendations on a given column
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
+    # @param schema_name [String] The name of the schema.
+    # @param table_name [String] The name of the table.
+    # @param column_name [String] The name of the column.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def disable_recommendation_async(resource_group_name, server_name, database_name, schema_name, table_name, column_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'schema_name is nil' if schema_name.nil?
+      fail ArgumentError, 'table_name is nil' if table_name.nil?
+      fail ArgumentError, 'column_name is nil' if column_name.nil?
+      sensitivity_label_source = 'recommended'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/disable'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name,'schemaName' => schema_name,'tableName' => table_name,'columnName' => column_name,'sensitivityLabelSource' => sensitivity_label_source,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
       end
@@ -810,6 +1025,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database.
+    # @param include_disabled_recommendations [Boolean] Specifies whether to
+    # include disabled recommendations or not.
     # @param skip_token [String]
     # @param filter [String] An OData filter expression that filters elements in
     # the collection.
@@ -819,8 +1036,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # @return [SensitivityLabelListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_recommended_by_database_as_lazy(resource_group_name, server_name, database_name, skip_token = nil, filter = nil, custom_headers = nil)
-      response = list_recommended_by_database_async(resource_group_name, server_name, database_name, skip_token, filter, custom_headers).value!
+    def list_recommended_by_database_as_lazy(resource_group_name, server_name, database_name, include_disabled_recommendations = nil, skip_token = nil, filter = nil, custom_headers = nil)
+      response = list_recommended_by_database_async(resource_group_name, server_name, database_name, include_disabled_recommendations, skip_token, filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
