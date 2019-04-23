@@ -31,7 +31,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitArpTable',
           type: {
@@ -39,7 +38,6 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'ExpressRouteCircuitArpTable',
             model_properties: {
               age: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'age',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               interface: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'interface',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               ip_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipAddress',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               mac_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'macAddress',
                 type: {
