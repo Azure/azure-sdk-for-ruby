@@ -159,13 +159,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # this resource (across resource groups). A maximum of 15 tags can be provided
     # for a resource. Each tag must have a key no greater than 128 characters and
     # value no greater than 256 characters.
+    # @param properties Additional properties for Account. Only provided fields
+    # will be updated.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CognitiveServicesAccount] operation results.
     #
-    def update(resource_group_name, account_name, sku = nil, tags = nil, custom_headers = nil)
-      response = update_async(resource_group_name, account_name, sku, tags, custom_headers).value!
+    def update(resource_group_name, account_name, sku = nil, tags = nil, properties = nil, custom_headers = nil)
+      response = update_async(resource_group_name, account_name, sku, tags, properties, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -181,13 +183,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # this resource (across resource groups). A maximum of 15 tags can be provided
     # for a resource. Each tag must have a key no greater than 128 characters and
     # value no greater than 256 characters.
+    # @param properties Additional properties for Account. Only provided fields
+    # will be updated.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, account_name, sku = nil, tags = nil, custom_headers = nil)
-      update_async(resource_group_name, account_name, sku, tags, custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, sku = nil, tags = nil, properties = nil, custom_headers = nil)
+      update_async(resource_group_name, account_name, sku, tags, properties, custom_headers).value!
     end
 
     #
@@ -202,21 +206,24 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # this resource (across resource groups). A maximum of 15 tags can be provided
     # for a resource. Each tag must have a key no greater than 128 characters and
     # value no greater than 256 characters.
+    # @param properties Additional properties for Account. Only provided fields
+    # will be updated.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, account_name, sku = nil, tags = nil, custom_headers = nil)
+    def update_async(resource_group_name, account_name, sku = nil, tags = nil, properties = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
       parameters = CognitiveServicesAccountUpdateParameters.new
-      unless sku.nil? && tags.nil?
+      unless sku.nil? && tags.nil? && properties.nil?
         parameters.sku = sku
         parameters.tags = tags
+        parameters.properties = properties
       end
 
       request_headers = {}

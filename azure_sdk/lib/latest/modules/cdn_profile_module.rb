@@ -7,15 +7,16 @@ require 'azure_mgmt_cdn'
 module Azure::Profiles::Latest
   module CDN
     module Mgmt
-      Endpoints = Azure::CDN::Mgmt::V2017_10_12::Endpoints
-      Profiles = Azure::CDN::Mgmt::V2017_10_12::Profiles
-      Origins = Azure::CDN::Mgmt::V2017_10_12::Origins
       CustomDomains = Azure::CDN::Mgmt::V2017_10_12::CustomDomains
       ResourceUsageOperations = Azure::CDN::Mgmt::V2017_10_12::ResourceUsageOperations
       Operations = Azure::CDN::Mgmt::V2017_10_12::Operations
       EdgeNodes = Azure::CDN::Mgmt::V2017_10_12::EdgeNodes
+      Endpoints = Azure::CDN::Mgmt::V2017_10_12::Endpoints
+      Profiles = Azure::CDN::Mgmt::V2017_10_12::Profiles
+      Origins = Azure::CDN::Mgmt::V2017_10_12::Origins
 
       module Models
+        Sku = Azure::CDN::Mgmt::V2017_10_12::Models::Sku
         ErrorResponse = Azure::CDN::Mgmt::V2017_10_12::Models::ErrorResponse
         TrackedResource = Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
         OriginUpdateParameters = Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
@@ -70,15 +71,14 @@ module Azure::Profiles::Latest
         CustomHttpsProvisioningState = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningState
         CustomHttpsProvisioningSubstate = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningSubstate
         Resource = Azure::CDN::Mgmt::V2017_10_12::Models::Resource
+        ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
         OperationDisplay = Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay
         Operation = Azure::CDN::Mgmt::V2017_10_12::Models::Operation
-        ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
         SkuName = Azure::CDN::Mgmt::V2017_10_12::Models::SkuName
-        Sku = Azure::CDN::Mgmt::V2017_10_12::Models::Sku
       end
 
       class CDNManagementClass
-        attr_reader :endpoints, :profiles, :origins, :custom_domains, :resource_usage_operations, :operations, :edge_nodes, :configurable, :base_url, :options, :model_classes
+        attr_reader :custom_domains, :resource_usage_operations, :operations, :edge_nodes, :endpoints, :profiles, :origins, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -88,13 +88,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @endpoints = @client_0.endpoints
-          @profiles = @client_0.profiles
-          @origins = @client_0.origins
           @custom_domains = @client_0.custom_domains
           @resource_usage_operations = @client_0.resource_usage_operations
           @operations = @client_0.operations
           @edge_nodes = @client_0.edge_nodes
+          @endpoints = @client_0.endpoints
+          @profiles = @client_0.profiles
+          @origins = @client_0.origins
 
           @model_classes = ModelClasses.new
         end
@@ -113,6 +113,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::CDN::Mgmt::V2017_10_12::Models::Sku
+          end
           def error_response
             Azure::CDN::Mgmt::V2017_10_12::Models::ErrorResponse
           end
@@ -275,20 +278,17 @@ module Azure::Profiles::Latest
           def resource
             Azure::CDN::Mgmt::V2017_10_12::Models::Resource
           end
+          def resource_type
+            Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
+          end
           def operation_display
             Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay
           end
           def operation
             Azure::CDN::Mgmt::V2017_10_12::Models::Operation
           end
-          def resource_type
-            Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
-          end
           def sku_name
             Azure::CDN::Mgmt::V2017_10_12::Models::SkuName
-          end
-          def sku
-            Azure::CDN::Mgmt::V2017_10_12::Models::Sku
           end
         end
       end
