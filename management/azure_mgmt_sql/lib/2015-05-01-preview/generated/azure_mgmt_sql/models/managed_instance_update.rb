@@ -61,7 +61,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       # @return [String] Collation of the managed instance.
       attr_accessor :collation
 
-      # @return [String] The Dns Zone taht the managed instance is in.
+      # @return [String] The Dns Zone that the managed instance is in.
       attr_accessor :dns_zone
 
       # @return [String] The resource id of another managed instance whose DNS
@@ -84,7 +84,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       # @return [String] Id of the timezone. Allowed values are timezones
       # supported by Windows.
-      # Winodws keeps details on supported timezones, including the id, in
+      # Windows keeps details on supported timezones, including the id, in
       # registry under
       # KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time
       # Zones.
