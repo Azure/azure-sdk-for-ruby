@@ -159,7 +159,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # this resource (across resource groups). A maximum of 15 tags can be provided
     # for a resource. Each tag must have a key no greater than 128 characters and
     # value no greater than 256 characters.
-    # @param properties Additional properties for Account. Only provided fileds
+    # @param properties Additional properties for Account. Only provided fields
     # will be updated.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -183,7 +183,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # this resource (across resource groups). A maximum of 15 tags can be provided
     # for a resource. Each tag must have a key no greater than 128 characters and
     # value no greater than 256 characters.
-    # @param properties Additional properties for Account. Only provided fileds
+    # @param properties Additional properties for Account. Only provided fields
     # will be updated.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -206,7 +206,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # this resource (across resource groups). A maximum of 15 tags can be provided
     # for a resource. Each tag must have a key no greater than 128 characters and
     # value no greater than 256 characters.
-    # @param properties Additional properties for Account. Only provided fileds
+    # @param properties Additional properties for Account. Only provided fields
     # will be updated.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
