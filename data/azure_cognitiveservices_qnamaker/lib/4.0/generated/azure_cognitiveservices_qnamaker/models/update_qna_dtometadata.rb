@@ -19,7 +19,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateQnaDTO_metadata',
           type: {
@@ -27,13 +26,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'UpdateQnaDTOMetadata',
             model_properties: {
               delete: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'delete',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetadataDTOElementType',
                       type: {
@@ -44,13 +41,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               add: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'add',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetadataDTOElementType',
                       type: {

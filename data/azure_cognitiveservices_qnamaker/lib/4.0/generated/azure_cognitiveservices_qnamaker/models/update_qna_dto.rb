@@ -30,6 +30,10 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # answer to be updated
       attr_accessor :metadata
 
+      # @return [UpdateQnaDTOContext] Context associated with Qna to be
+      # updated.
+      attr_accessor :context
+
 
       #
       # Mapper for UpdateQnaDTO class as Ruby Hash.
@@ -37,7 +41,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateQnaDTO',
           type: {
@@ -45,7 +48,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'UpdateQnaDTO',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 constraints: {
@@ -57,7 +59,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               answer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'answer',
                 type: {
@@ -65,7 +66,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'source',
                 constraints: {
@@ -76,7 +76,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               questions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'questions',
                 type: {
@@ -85,12 +84,19 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
                   name: 'Composite',
                   class_name: 'UpdateQnaDTOMetadata'
+                }
+              },
+              context: {
+                required: false,
+                serialized_name: 'context',
+                type: {
+                  name: 'Composite',
+                  class_name: 'UpdateQnaDTOContext'
                 }
               }
             }

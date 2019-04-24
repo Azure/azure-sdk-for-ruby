@@ -26,7 +26,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateQuestionsDTO',
           type: {
@@ -34,13 +33,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'UpdateQuestionsDTO',
             model_properties: {
               add: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'add',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -50,13 +47,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               delete: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'delete',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

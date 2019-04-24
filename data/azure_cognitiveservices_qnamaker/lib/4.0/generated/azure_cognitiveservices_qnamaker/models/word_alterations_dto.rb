@@ -22,7 +22,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WordAlterationsDTO',
           type: {
@@ -30,13 +29,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'WordAlterationsDTO',
             model_properties: {
               word_alterations: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'wordAlterations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AlterationsDTOElementType',
                       type: {

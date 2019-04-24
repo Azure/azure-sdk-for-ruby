@@ -25,7 +25,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetadataDTO',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'MetadataDTO',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -45,7 +43,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 constraints: {
