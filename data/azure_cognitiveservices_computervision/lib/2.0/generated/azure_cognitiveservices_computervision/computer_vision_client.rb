@@ -1574,9 +1574,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Use this interface to get the result of a Read operation, employing the
     # state-of-the-art Optical Character Recognition (OCR) algorithms optimized for
     # text-heavy documents. When you use the Read File interface, the response
-    # contains a field called "Operation-Location". The "Operation-Location" field
-    # contains the URL that you must use for your "Read Operation Result" operation
-    # to access OCR results.​
+    # contains a field called 'Operation-Location'. The 'Operation-Location' field
+    # contains the URL that you must use for your 'GetReadOperationResult'
+    # operation to access OCR results.​
     #
     # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
     # include: 'Handwritten', 'Printed'
@@ -1594,9 +1594,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Use this interface to get the result of a Read operation, employing the
     # state-of-the-art Optical Character Recognition (OCR) algorithms optimized for
     # text-heavy documents. When you use the Read File interface, the response
-    # contains a field called "Operation-Location". The "Operation-Location" field
-    # contains the URL that you must use for your "Read Operation Result" operation
-    # to access OCR results.​
+    # contains a field called 'Operation-Location'. The 'Operation-Location' field
+    # contains the URL that you must use for your 'GetReadOperationResult'
+    # operation to access OCR results.​
     #
     # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
     # include: 'Handwritten', 'Printed'
@@ -1614,9 +1614,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Use this interface to get the result of a Read operation, employing the
     # state-of-the-art Optical Character Recognition (OCR) algorithms optimized for
     # text-heavy documents. When you use the Read File interface, the response
-    # contains a field called "Operation-Location". The "Operation-Location" field
-    # contains the URL that you must use for your "Read Operation Result" operation
-    # to access OCR results.​
+    # contains a field called 'Operation-Location'. The 'Operation-Location' field
+    # contains the URL that you must use for your 'GetReadOperationResult'
+    # operation to access OCR results.​
     #
     # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
     # include: 'Handwritten', 'Printed'
@@ -1682,11 +1682,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
     #
     # This interface is used for getting OCR results of Read operation. The URL to
-    # this interface should be retrieved from "Operation-Location" field returned
+    # this interface should be retrieved from 'Operation-Location' field returned
     # from Batch Read File interface.
     #
     # @param operation_id [String] Id of read operation returned in the response of
-    # the "Batch Read File" interface.
+    # the 'Batch Read File' interface.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1699,11 +1699,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
     #
     # This interface is used for getting OCR results of Read operation. The URL to
-    # this interface should be retrieved from "Operation-Location" field returned
+    # this interface should be retrieved from 'Operation-Location' field returned
     # from Batch Read File interface.
     #
     # @param operation_id [String] Id of read operation returned in the response of
-    # the "Batch Read File" interface.
+    # the 'Batch Read File' interface.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1715,11 +1715,11 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
     #
     # This interface is used for getting OCR results of Read operation. The URL to
-    # this interface should be retrieved from "Operation-Location" field returned
+    # this interface should be retrieved from 'Operation-Location' field returned
     # from Batch Read File interface.
     #
     # @param operation_id [String] Id of read operation returned in the response of
-    # the "Batch Read File" interface.
+    # the 'Batch Read File' interface.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3068,9 +3068,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Use this interface to get the result of a Read Document operation, employing
     # the state-of-the-art Optical Character Recognition (OCR) algorithms optimized
     # for text-heavy documents. When you use the Read Document interface, the
-    # response contains a field called "Operation-Location". The
-    # "Operation-Location" field contains the URL that you must use for your "Get
-    # Read Result operation" to access OCR results.​
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your 'Get
+    # Read Result operation' to access OCR results.​
     #
     # @param image An image stream.
     # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
@@ -3088,9 +3088,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Use this interface to get the result of a Read Document operation, employing
     # the state-of-the-art Optical Character Recognition (OCR) algorithms optimized
     # for text-heavy documents. When you use the Read Document interface, the
-    # response contains a field called "Operation-Location". The
-    # "Operation-Location" field contains the URL that you must use for your "Get
-    # Read Result operation" to access OCR results.​
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your 'Get
+    # Read Result operation' to access OCR results.​
     #
     # @param image An image stream.
     # @param mode [TextRecognitionMode] Type of text to recognize. Possible values
@@ -3108,9 +3108,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Use this interface to get the result of a Read Document operation, employing
     # the state-of-the-art Optical Character Recognition (OCR) algorithms optimized
     # for text-heavy documents. When you use the Read Document interface, the
-    # response contains a field called "Operation-Location". The
-    # "Operation-Location" field contains the URL that you must use for your "Get
-    # Read Result operation" to access OCR results.​
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your 'Get
+    # Read Result operation' to access OCR results.​
     #
     # @param image An image stream.
     # @param mode [TextRecognitionMode] Type of text to recognize. Possible values

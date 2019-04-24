@@ -17,7 +17,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       # 'Succeeded'
       attr_accessor :status
 
-      # @return [Array<TextRecognitionResult>] A array of text recognition
+      # @return [Array<TextRecognitionResult>] An array of text recognition
       # result of the read operation.
       attr_accessor :recognition_results
 

@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Json object representing a recognized word.
+    # An object representing a recognized word.
     #
     class Word
 
