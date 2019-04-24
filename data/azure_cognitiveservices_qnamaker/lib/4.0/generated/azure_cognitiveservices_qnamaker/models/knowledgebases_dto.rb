@@ -22,7 +22,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KnowledgebasesDTO',
           type: {
@@ -30,13 +29,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'KnowledgebasesDTO',
             model_properties: {
               knowledgebases: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'knowledgebases',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KnowledgebaseDTOElementType',
                       type: {

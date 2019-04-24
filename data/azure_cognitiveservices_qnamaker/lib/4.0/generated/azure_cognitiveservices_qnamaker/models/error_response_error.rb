@@ -19,7 +19,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse_error',
           type: {
@@ -27,7 +26,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'ErrorResponseError',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 type: {
@@ -35,7 +33,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -43,7 +40,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -51,13 +47,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ErrorElementType',
                       type: {
@@ -68,7 +62,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               inner_error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'innerError',
                 type: {

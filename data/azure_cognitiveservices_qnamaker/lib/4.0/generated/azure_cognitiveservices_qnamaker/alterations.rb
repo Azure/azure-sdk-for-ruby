@@ -18,7 +18,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       @client = client
     end
 
-    # @return [QnamakerClient] reference to the QnamakerClient
+    # @return [QnAMakerClient] reference to the QnAMakerClient
     attr_reader :client
 
     #
@@ -29,8 +29,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [WordAlterationsDTO] operation results.
     #
-    def get(custom_headers:nil)
-      response = get_async(custom_headers:custom_headers).value!
+    def get(custom_headers = nil)
+      response = get_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -42,8 +42,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(custom_headers:nil)
-      get_async(custom_headers:custom_headers).value!
+    def get_with_http_info(custom_headers = nil)
+      get_async(custom_headers).value!
     end
 
     #
@@ -54,12 +54,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(custom_headers:nil)
+    def get_async(custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -111,8 +110,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     # will be added to the HTTP request.
     #
     #
-    def replace(word_alterations, custom_headers:nil)
-      response = replace_async(word_alterations, custom_headers:custom_headers).value!
+    def replace(word_alterations, custom_headers = nil)
+      response = replace_async(word_alterations, custom_headers).value!
       nil
     end
 
@@ -125,8 +124,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def replace_with_http_info(word_alterations, custom_headers:nil)
-      replace_async(word_alterations, custom_headers:custom_headers).value!
+    def replace_with_http_info(word_alterations, custom_headers = nil)
+      replace_async(word_alterations, custom_headers).value!
     end
 
     #
@@ -138,17 +137,18 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def replace_async(word_alterations, custom_headers:nil)
+    def replace_async(word_alterations, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'word_alterations is nil' if word_alterations.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CognitiveServices::Qnamaker::V4_0::Models::WordAlterationsDTO.mapper()

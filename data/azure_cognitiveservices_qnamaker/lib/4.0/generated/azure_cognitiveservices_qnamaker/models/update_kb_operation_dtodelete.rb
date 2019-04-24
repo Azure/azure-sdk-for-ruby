@@ -19,7 +19,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateKbOperationDTO_delete',
           type: {
@@ -27,13 +26,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'UpdateKbOperationDTODelete',
             model_properties: {
               ids: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ids',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NumberElementType',
                       type: {
@@ -43,13 +40,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               sources: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sources',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
