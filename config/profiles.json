@@ -2,7 +2,7 @@
     "rollup": {
         "azure_sdk": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Authorization": {
                     "management": {
@@ -790,7 +790,7 @@
         ],
         "azure_mgmt_authorization": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Authorization": {
                     "management": {
@@ -928,7 +928,7 @@
         ],
         "azure_mgmt_compute": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Compute" : {
                     "management": {
@@ -1126,7 +1126,7 @@
         ],
         "azure_mgmt_dns": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Dns": {
                     "management": {
@@ -1286,7 +1286,7 @@
         ],
         "azure_mgmt_key_vault": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.KeyVault" : {
                     "management": {
@@ -1390,7 +1390,7 @@
         ],
         "azure_mgmt_locks": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Locks" : {
                     "management": {
@@ -1552,7 +1552,7 @@
         ],
         "azure_mgmt_monitor": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Monitor" : {
                     "management": {
@@ -1619,7 +1619,7 @@
         ],
         "azure_mgmt_network": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Network" : {
                   "management": {
@@ -1700,7 +1700,7 @@
         ],
         "azure_mgmt_policy": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Policy" : {
                     "management": {
@@ -1893,7 +1893,7 @@
         ],
         "azure_mgmt_resources": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Resources" : {
                     "management": {
@@ -2073,7 +2073,7 @@
         ],
         "azure_mgmt_storage": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Storage" : {
                     "management": {
@@ -2151,7 +2151,7 @@
         ],
         "azure_mgmt_subscriptions": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Subscriptions" : {
                   "management": {
@@ -2215,7 +2215,7 @@
         ],
         "azure_mgmt_web": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Web": {
                     "management": {
@@ -2582,7 +2582,7 @@
         ],
         "azure_key_vault": [
         {
-            "name": "V2019_03_01",
+            "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.KeyVault" : {
                     "data": {

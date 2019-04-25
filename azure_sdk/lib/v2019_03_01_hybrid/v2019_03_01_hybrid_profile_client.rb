@@ -2,23 +2,23 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'v2019_03_01/module_definition'
-require 'v2019_03_01/modules/authorization_profile_module'
-require 'v2019_03_01/modules/locks_profile_module'
-require 'v2019_03_01/modules/policy_profile_module'
-require 'v2019_03_01/modules/compute_profile_module'
-require 'v2019_03_01/modules/keyvault_profile_module'
-require 'v2019_03_01/modules/network_profile_module'
-require 'v2019_03_01/modules/dns_profile_module'
-require 'v2019_03_01/modules/resources_profile_module'
-require 'v2019_03_01/modules/subscriptions_profile_module'
-require 'v2019_03_01/modules/storage_profile_module'
-require 'v2019_03_01/modules/monitor_profile_module'
-require 'v2019_03_01/modules/web_profile_module'
+require 'v2019_03_01_hybrid/module_definition'
+require 'v2019_03_01_hybrid/modules/authorization_profile_module'
+require 'v2019_03_01_hybrid/modules/locks_profile_module'
+require 'v2019_03_01_hybrid/modules/policy_profile_module'
+require 'v2019_03_01_hybrid/modules/compute_profile_module'
+require 'v2019_03_01_hybrid/modules/keyvault_profile_module'
+require 'v2019_03_01_hybrid/modules/network_profile_module'
+require 'v2019_03_01_hybrid/modules/dns_profile_module'
+require 'v2019_03_01_hybrid/modules/resources_profile_module'
+require 'v2019_03_01_hybrid/modules/subscriptions_profile_module'
+require 'v2019_03_01_hybrid/modules/storage_profile_module'
+require 'v2019_03_01_hybrid/modules/monitor_profile_module'
+require 'v2019_03_01_hybrid/modules/web_profile_module'
 
-module Azure::Profiles::V2019_03_01
+module Azure::Profiles::V2019_03_01_Hybrid
   #
-  # Client class for the V2019_03_01 profile SDK.
+  # Client class for the V2019_03_01_Hybrid profile SDK.
   #
   class Client
     include MsRestAzure::Common::Configurable
@@ -73,7 +73,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Authorization::Mgmt::AuthorizationManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Authorization::Mgmt::AuthorizationManagementClass.new(context, base_url, options)
       end
     end
 
@@ -81,7 +81,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Locks::Mgmt::LocksManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Locks::Mgmt::LocksManagementClass.new(context, base_url, options)
       end
     end
 
@@ -89,7 +89,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Policy::Mgmt::PolicyManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Policy::Mgmt::PolicyManagementClass.new(context, base_url, options)
       end
     end
 
@@ -97,16 +97,16 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Compute::Mgmt::ComputeManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Compute::Mgmt::ComputeManagementClass.new(context, base_url, options)
       end
     end
 
-    class KeyVaultAdapter < Azure::Profiles::V2019_03_01::KeyVault::KeyVaultDataClass
+    class KeyVaultAdapter < Azure::Profiles::V2019_03_01_Hybrid::KeyVault::KeyVaultDataClass
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
         super(context)
-        @mgmt = Azure::Profiles::V2019_03_01::KeyVault::Mgmt::KeyVaultManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::KeyVault::Mgmt::KeyVaultManagementClass.new(context, base_url, options)
       end
     end
 
@@ -114,7 +114,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Network::Mgmt::NetworkManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Network::Mgmt::NetworkManagementClass.new(context, base_url, options)
       end
     end
 
@@ -122,7 +122,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Dns::Mgmt::DnsManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Dns::Mgmt::DnsManagementClass.new(context, base_url, options)
       end
     end
 
@@ -130,7 +130,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Resources::Mgmt::ResourcesManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Resources::Mgmt::ResourcesManagementClass.new(context, base_url, options)
       end
     end
 
@@ -138,7 +138,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Subscriptions::Mgmt::SubscriptionsManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Subscriptions::Mgmt::SubscriptionsManagementClass.new(context, base_url, options)
       end
     end
 
@@ -146,7 +146,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Storage::Mgmt::StorageManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Storage::Mgmt::StorageManagementClass.new(context, base_url, options)
       end
     end
 
@@ -154,7 +154,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Monitor::Mgmt::MonitorManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Monitor::Mgmt::MonitorManagementClass.new(context, base_url, options)
       end
     end
 
@@ -162,7 +162,7 @@ module Azure::Profiles::V2019_03_01
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
-        @mgmt = Azure::Profiles::V2019_03_01::Web::Mgmt::WebManagementClass.new(context, base_url, options)
+        @mgmt = Azure::Profiles::V2019_03_01_Hybrid::Web::Mgmt::WebManagementClass.new(context, base_url, options)
       end
     end
 

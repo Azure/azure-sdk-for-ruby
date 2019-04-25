@@ -4,7 +4,7 @@
 
 require 'azure_mgmt_subscriptions'
 
-module Azure::Profiles::V2019_03_01
+module Azure::Profiles::V2019_03_01_Hybrid
   module Subscriptions
     module Mgmt
       Operations = Azure::Subscriptions::Mgmt::V2016_06_01::Operations
@@ -45,7 +45,7 @@ module Azure::Profiles::V2019_03_01
         end
 
         def add_telemetry(client)
-          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01/Subscriptions/Mgmt"
+          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01_Hybrid/Subscriptions/Mgmt"
           client.add_user_agent_information(profile_information)
         end
 

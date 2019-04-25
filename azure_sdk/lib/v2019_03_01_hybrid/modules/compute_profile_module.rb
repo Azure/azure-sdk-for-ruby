@@ -4,7 +4,7 @@
 
 require 'azure_mgmt_compute'
 
-module Azure::Profiles::V2019_03_01
+module Azure::Profiles::V2019_03_01_Hybrid
   module Compute
     module Mgmt
       ResourceSkus = Azure::Compute::Mgmt::V2017_03_30::ResourceSkus
@@ -260,7 +260,7 @@ module Azure::Profiles::V2019_03_01
         end
 
         def add_telemetry(client)
-          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01/Compute/Mgmt"
+          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01_Hybrid/Compute/Mgmt"
           client.add_user_agent_information(profile_information)
         end
 

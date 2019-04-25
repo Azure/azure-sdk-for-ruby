@@ -4,7 +4,7 @@
 
 require 'azure_mgmt_resources'
 
-module Azure::Profiles::V2019_03_01
+module Azure::Profiles::V2019_03_01_Hybrid
   module Resources
     module Mgmt
       Operations = Azure::Resources::Mgmt::V2018_05_01::Operations
@@ -95,7 +95,7 @@ module Azure::Profiles::V2019_03_01
         end
 
         def add_telemetry(client)
-          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01/Resources/Mgmt"
+          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01_Hybrid/Resources/Mgmt"
           client.add_user_agent_information(profile_information)
         end
 

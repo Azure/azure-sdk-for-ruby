@@ -4,4 +4,4 @@
 
 module Azure end
 module Azure::Profiles end
-module Azure::Profiles::V2019_03_01 end
+module Azure::Profiles::V2019_03_01_Hybrid end

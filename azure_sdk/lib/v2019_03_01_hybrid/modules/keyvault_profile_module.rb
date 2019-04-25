@@ -5,7 +5,7 @@
 require 'azure_mgmt_key_vault'
 require 'azure_key_vault'
 
-module Azure::Profiles::V2019_03_01
+module Azure::Profiles::V2019_03_01_Hybrid
   module KeyVault
 
     module Models
@@ -114,7 +114,7 @@ module Azure::Profiles::V2019_03_01
       end
 
       def add_telemetry(client)
-        profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01/KeyVault"
+        profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01_Hybrid/KeyVault"
         client.add_user_agent_information(profile_information)
       end
 
@@ -446,7 +446,7 @@ module Azure::Profiles::V2019_03_01
         end
 
         def add_telemetry(client)
-          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01/KeyVault/Mgmt"
+          profile_information = "Profiles/azure_sdk/#{Azure::VERSION}/V2019_03_01_Hybrid/KeyVault/Mgmt"
           client.add_user_agent_information(profile_information)
         end
 
