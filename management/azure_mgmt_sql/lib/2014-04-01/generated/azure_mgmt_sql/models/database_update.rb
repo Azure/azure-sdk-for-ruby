@@ -108,13 +108,21 @@ module Azure::SQL::Mgmt::V2014_04_01
       # @return [DatabaseEdition] The edition of the database. The
       # DatabaseEditions enumeration contains all the valid editions. If
       # createMode is NonReadableSecondary or OnlineSecondary, this value is
-      # ignored. To see possible values, query the capabilities API
-      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-      # referred to by operationId: "Capabilities_ListByLocation." or use the
-      # Azure CLI command `az sql db list-editions -l westus --query [].name`.
-      # Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+      # ignored.
+      #
+      # To determine the editions that are available to your subscription in an
+      # Azure location, use the `Capabilities_ListByLocation` REST API or one
+      # of the following commands:
+      #
+      # ```azurecli
+      # az sql db list-editions -l <location> -o table
+      # ````
+      #
+      # ```powershell
+      # Get-AzSqlServerServiceObjective -Location <location>
+      # ````. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
       # 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
-      # 'System2'
+      # 'System2', 'GeneralPurpose', 'BusinessCritical', 'Hyperscale'
       attr_accessor :edition
 
       # @return [String] The max size of the database expressed in bytes. If
