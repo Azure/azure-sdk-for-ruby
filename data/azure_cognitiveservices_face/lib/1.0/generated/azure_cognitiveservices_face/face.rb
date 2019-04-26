@@ -809,7 +809,7 @@ module Azure::CognitiveServices::Face::V1_0
     # * Optional parameters including faceId, landmarks, and attributes. Attributes
     # include age, gender, headPose, smile, facialHair, glasses, emotion, hair,
     # makeup, occlusion, accessories, blur, exposure and noise.
-    # * The extracted face feature, instead of the actual image, will be stored on
+    # * No image will be stored. Only the extracted face feature will be stored on
     # server. The faceId is an identifier of the face feature and will be used in
     # [Face -
     # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239),
@@ -832,8 +832,7 @@ module Azure::CognitiveServices::Face::V1_0
     # or being occluded, or wrong image orientation.
     # * Attributes (age, gender, headPose, smile, facialHair, glasses, emotion,
     # hair, makeup, occlusion, accessories, blur, exposure and noise) may not be
-    # perfectly accurate. HeadPose's pitch value is a reserved field and will
-    # always return 0.
+    # perfectly accurate.
     # * Different 'recognitionModel' values are provided. If follow-up operations
     # like Verify, Identify, Find Similar are needed, please specify the
     # recognition model with 'recognitionModel' parameter. The default value for
@@ -842,7 +841,6 @@ module Azure::CognitiveServices::Face::V1_0
     # detected faceIds will be associated with the specified recognition model.
     # More details, please refer to [How to specify a recognition
     # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)
-    #
     #
     # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
@@ -879,7 +877,7 @@ module Azure::CognitiveServices::Face::V1_0
     # * Optional parameters including faceId, landmarks, and attributes. Attributes
     # include age, gender, headPose, smile, facialHair, glasses, emotion, hair,
     # makeup, occlusion, accessories, blur, exposure and noise.
-    # * The extracted face feature, instead of the actual image, will be stored on
+    # * No image will be stored. Only the extracted face feature will be stored on
     # server. The faceId is an identifier of the face feature and will be used in
     # [Face -
     # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239),
@@ -902,8 +900,7 @@ module Azure::CognitiveServices::Face::V1_0
     # or being occluded, or wrong image orientation.
     # * Attributes (age, gender, headPose, smile, facialHair, glasses, emotion,
     # hair, makeup, occlusion, accessories, blur, exposure and noise) may not be
-    # perfectly accurate. HeadPose's pitch value is a reserved field and will
-    # always return 0.
+    # perfectly accurate.
     # * Different 'recognitionModel' values are provided. If follow-up operations
     # like Verify, Identify, Find Similar are needed, please specify the
     # recognition model with 'recognitionModel' parameter. The default value for
@@ -912,7 +909,6 @@ module Azure::CognitiveServices::Face::V1_0
     # detected faceIds will be associated with the specified recognition model.
     # More details, please refer to [How to specify a recognition
     # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)
-    #
     #
     # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
@@ -948,7 +944,7 @@ module Azure::CognitiveServices::Face::V1_0
     # * Optional parameters including faceId, landmarks, and attributes. Attributes
     # include age, gender, headPose, smile, facialHair, glasses, emotion, hair,
     # makeup, occlusion, accessories, blur, exposure and noise.
-    # * The extracted face feature, instead of the actual image, will be stored on
+    # * No image will be stored. Only the extracted face feature will be stored on
     # server. The faceId is an identifier of the face feature and will be used in
     # [Face -
     # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239),
@@ -971,8 +967,7 @@ module Azure::CognitiveServices::Face::V1_0
     # or being occluded, or wrong image orientation.
     # * Attributes (age, gender, headPose, smile, facialHair, glasses, emotion,
     # hair, makeup, occlusion, accessories, blur, exposure and noise) may not be
-    # perfectly accurate. HeadPose's pitch value is a reserved field and will
-    # always return 0.
+    # perfectly accurate.
     # * Different 'recognitionModel' values are provided. If follow-up operations
     # like Verify, Identify, Find Similar are needed, please specify the
     # recognition model with 'recognitionModel' parameter. The default value for
@@ -981,7 +976,6 @@ module Azure::CognitiveServices::Face::V1_0
     # detected faceIds will be associated with the specified recognition model.
     # More details, please refer to [How to specify a recognition
     # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)
-    #
     #
     # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
