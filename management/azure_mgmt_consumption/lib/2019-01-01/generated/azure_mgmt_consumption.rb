@@ -21,7 +21,6 @@ require 'ms_rest_azure'
 
 module Azure::Consumption::Mgmt::V2019_01_01
   autoload :UsageDetails,                                       '2019-01-01/generated/azure_mgmt_consumption/usage_details.rb'
-  autoload :UsageDetailsList,                                   '2019-01-01/generated/azure_mgmt_consumption/usage_details_list.rb'
   autoload :Marketplaces,                                       '2019-01-01/generated/azure_mgmt_consumption/marketplaces.rb'
   autoload :Budgets,                                            '2019-01-01/generated/azure_mgmt_consumption/budgets.rb'
   autoload :Tags,                                               '2019-01-01/generated/azure_mgmt_consumption/tags.rb'

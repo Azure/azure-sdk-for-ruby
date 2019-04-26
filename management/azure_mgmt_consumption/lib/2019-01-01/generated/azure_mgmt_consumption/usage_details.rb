@@ -212,6 +212,207 @@ module Azure::Consumption::Mgmt::V2019_01_01
     end
 
     #
+    # Download usage details data.
+    #
+    # @param scope [String] The scope associated with usage details operations.
+    # This includes '/subscriptions/{subscriptionId}/' for subscription scope,
+    # '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+    # resourceGroup scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing
+    # Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for
+    # Department scope,
+    # '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for
+    # EnrollmentAccount scope and
+    # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
+    # Management Group scope. For subscription, billing account, department,
+    # enrollment account and management group, you can also add billing period to
+    # the scope using
+    # '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g.
+    # to specify billing period at department scope use
+    # '/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [UsageDetailsDownloadResponse] operation results.
+    #
+    def download(scope, custom_headers = nil)
+      response = download_async(scope, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param scope [String] The scope associated with usage details operations.
+    # This includes '/subscriptions/{subscriptionId}/' for subscription scope,
+    # '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+    # resourceGroup scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing
+    # Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for
+    # Department scope,
+    # '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for
+    # EnrollmentAccount scope and
+    # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
+    # Management Group scope. For subscription, billing account, department,
+    # enrollment account and management group, you can also add billing period to
+    # the scope using
+    # '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g.
+    # to specify billing period at department scope use
+    # '/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def download_async(scope, custom_headers = nil)
+      # Send request
+      promise = begin_download_async(scope, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Consumption::Mgmt::V2019_01_01::Models::UsageDetailsDownloadResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Download usage details data.
+    #
+    # @param scope [String] The scope associated with usage details operations.
+    # This includes '/subscriptions/{subscriptionId}/' for subscription scope,
+    # '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+    # resourceGroup scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing
+    # Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for
+    # Department scope,
+    # '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for
+    # EnrollmentAccount scope and
+    # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
+    # Management Group scope. For subscription, billing account, department,
+    # enrollment account and management group, you can also add billing period to
+    # the scope using
+    # '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g.
+    # to specify billing period at department scope use
+    # '/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [UsageDetailsDownloadResponse] operation results.
+    #
+    def begin_download(scope, custom_headers = nil)
+      response = begin_download_async(scope, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Download usage details data.
+    #
+    # @param scope [String] The scope associated with usage details operations.
+    # This includes '/subscriptions/{subscriptionId}/' for subscription scope,
+    # '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+    # resourceGroup scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing
+    # Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for
+    # Department scope,
+    # '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for
+    # EnrollmentAccount scope and
+    # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
+    # Management Group scope. For subscription, billing account, department,
+    # enrollment account and management group, you can also add billing period to
+    # the scope using
+    # '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g.
+    # to specify billing period at department scope use
+    # '/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_download_with_http_info(scope, custom_headers = nil)
+      begin_download_async(scope, custom_headers).value!
+    end
+
+    #
+    # Download usage details data.
+    #
+    # @param scope [String] The scope associated with usage details operations.
+    # This includes '/subscriptions/{subscriptionId}/' for subscription scope,
+    # '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for
+    # resourceGroup scope,
+    # '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing
+    # Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for
+    # Department scope,
+    # '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for
+    # EnrollmentAccount scope and
+    # '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for
+    # Management Group scope. For subscription, billing account, department,
+    # enrollment account and management group, you can also add billing period to
+    # the scope using
+    # '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g.
+    # to specify billing period at department scope use
+    # '/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_download_async(scope, custom_headers = nil)
+      fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{scope}/providers/Microsoft.Consumption/usageDetails/download'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'scope' => scope},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Consumption::Mgmt::V2019_01_01::Models::UsageDetailsDownloadResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Lists the usage details for the defined scope. Usage details are available
     # via this API only for May 1, 2014 or later.
     #
