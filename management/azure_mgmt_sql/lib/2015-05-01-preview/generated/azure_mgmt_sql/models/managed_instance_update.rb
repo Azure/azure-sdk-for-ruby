@@ -79,7 +79,9 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       # source database that will be restored to create the new database.
       attr_accessor :restore_point_in_time
 
-      # @return [String] Proxy override of the managed instance.
+      # @return [ManagedInstanceProxyOverride] Connection type used for
+      # connecting to the instance. Possible values include: 'Proxy',
+      # 'Redirect', 'Default'
       attr_accessor :proxy_override
 
       # @return [String] Id of the timezone. Allowed values are timezones
