@@ -1,10 +1,20 @@
 {
     "management": [
-        "azure_mgmt_storagesync",
-        "azure_mgmt_resourcegraph"
+        "azure_mgmt_authorization",
+        "azure_mgmt_compute",
+        "azure_mgmt_dns",
+        "azure_mgmt_key_vault",
+        "azure_mgmt_locks",
+        "azure_mgmt_monitor",
+        "azure_mgmt_network",
+        "azure_mgmt_policy",
+        "azure_mgmt_resources",
+        "azure_mgmt_storage",
+        "azure_mgmt_subscriptions",
+        "azure_mgmt_web"
     ],
     "data": [
-        "azure_cognitiveservices_face"
+        "azure_key_vault"
     ],
     "rollup": [
         "azure_sdk"

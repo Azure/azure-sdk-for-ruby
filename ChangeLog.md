@@ -1,3 +1,21 @@
+## 2019.04.25 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_authorization - v0.18.4
+    - azure_mgmt_compute - v0.18.5
+    - azure_mgmt_dns - v0.17.4
+    - azure_mgmt_key_vault - v0.17.4
+    - azure_mgmt_locks - v0.17.3
+    - azure_mgmt_monitor - v0.17.4
+    - azure_mgmt_network - v0.18.7
+    - azure_mgmt_policy - v0.17.4
+    - azure_mgmt_resources - v0.17.4
+    - azure_mgmt_storage - v0.17.8
+    - azure_mgmt_subscriptions - v0.17.3
+    - azure_mgmt_web - v0.17.4
+    - azure_key_vault - v0.17.3
+    - azure_sdk - v0.25.1
+The changes include V2019_03_01 version of Azure Stack Profile. 
+
 ## 2019.04.01 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_storagesync -v0.17.0
