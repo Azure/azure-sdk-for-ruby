@@ -8,6 +8,12 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      FaceRectangle = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceRectangle
+      CelebrityResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
+      Category = Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
+      LandmarkResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
+      ImageTag = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
+      ImageDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
       RecognitionResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
       TagResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
       ColorInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
@@ -40,12 +46,6 @@ module Azure::Profiles::Latest
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::ListModelsResult
       Word = Azure::CognitiveServices::ComputerVision::V2_0::Models::Word
       DomainModelResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::DomainModelResults
-      FaceRectangle = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceRectangle
-      CelebrityResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
-      Category = Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
-      LandmarkResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
-      ImageTag = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
-      ImageDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def face_rectangle
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceRectangle
+        end
+        def celebrity_results
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
+        end
+        def category
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
+        end
+        def landmark_results
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
+        end
+        def image_tag
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
+        end
+        def image_description
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
+        end
         def recognition_result
           Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
         end
@@ -172,24 +190,6 @@ module Azure::Profiles::Latest
         end
         def domain_model_results
           Azure::CognitiveServices::ComputerVision::V2_0::Models::DomainModelResults
-        end
-        def face_rectangle
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceRectangle
-        end
-        def celebrity_results
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
-        end
-        def category
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
-        end
-        def landmark_results
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
-        end
-        def image_tag
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
-        end
-        def image_description
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
         end
       end
     end
