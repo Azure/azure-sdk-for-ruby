@@ -26,7 +26,6 @@ module Azure::Network::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionMonitorSource',
           type: {
@@ -34,7 +33,6 @@ module Azure::Network::Mgmt::V2017_10_01
             class_name: 'ConnectionMonitorSource',
             model_properties: {
               resource_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'resourceId',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {

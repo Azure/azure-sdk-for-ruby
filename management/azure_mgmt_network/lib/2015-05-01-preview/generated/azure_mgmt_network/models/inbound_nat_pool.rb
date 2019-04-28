@@ -15,19 +15,19 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       # @return [SubResource] Gets or sets a reference to frontend IP Addresses
       attr_accessor :frontend_ipconfiguration
 
-      # @return [TransportProtocol] Gets or sets the transport potocol for the
+      # @return [TransportProtocol] Gets or sets the transport protocol for the
       # external endpoint. Possible values are Udp or Tcp. Possible values
       # include: 'Udp', 'Tcp'
       attr_accessor :protocol
 
       # @return [Integer] Gets or sets the starting port range for the NAT
-      # pool. You can spcify any port number you choose, but the port numbers
+      # pool. You can specify any port number you choose, but the port numbers
       # specified for each role in the service must be unique. Possible values
       # range between 1 and 65535, inclusive
       attr_accessor :frontend_port_range_start
 
       # @return [Integer] Gets or sets the ending port range for the NAT pool.
-      # You can spcify any port number you choose, but the port numbers
+      # You can specify any port number you choose, but the port numbers
       # specified for each role in the service must be unique. Possible values
       # range between 1 and 65535, inclusive
       attr_accessor :frontend_port_range_end
@@ -35,7 +35,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       # @return [Integer] Gets or sets a port used for internal connections on
       # the endpoint. The localPort attribute maps the eternal port of the
       # endpoint to an internal port on a role. This is useful in scenarios
-      # where a role must communicate to an internal compotnent on a port that
+      # where a role must communicate to an internal component on a port that
       # is different from the one that is exposed externally. If not specified,
       # the value of localPort is the same as the port attribute. Set the value
       # of localPort to '*' to automatically assign an unallocated port that is
@@ -61,7 +61,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InboundNatPool',
           type: {
@@ -69,7 +68,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'InboundNatPool',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -77,7 +75,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               frontend_ipconfiguration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendIPConfiguration',
                 type: {
@@ -86,7 +83,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -94,7 +90,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               frontend_port_range_start: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.frontendPortRangeStart',
                 type: {
@@ -102,7 +97,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               frontend_port_range_end: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.frontendPortRangeEnd',
                 type: {
@@ -110,7 +104,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               backend_port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.backendPort',
                 type: {
@@ -118,7 +111,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -126,7 +118,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -134,7 +125,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

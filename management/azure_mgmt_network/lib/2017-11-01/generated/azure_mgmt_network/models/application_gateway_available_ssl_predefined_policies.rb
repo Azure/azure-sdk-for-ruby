@@ -61,7 +61,6 @@ module Azure::Network::Mgmt::V2017_11_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayAvailableSslPredefinedPolicies',
           type: {
@@ -69,13 +68,11 @@ module Azure::Network::Mgmt::V2017_11_01
             class_name: 'ApplicationGatewayAvailableSslPredefinedPolicies',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewaySslPredefinedPolicyElementType',
                       type: {
@@ -86,7 +83,6 @@ module Azure::Network::Mgmt::V2017_11_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

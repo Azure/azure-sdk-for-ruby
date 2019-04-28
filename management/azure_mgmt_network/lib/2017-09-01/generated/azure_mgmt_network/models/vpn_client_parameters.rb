@@ -40,7 +40,6 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VpnClientParameters',
           type: {
@@ -48,7 +47,6 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'VpnClientParameters',
             model_properties: {
               processor_architecture: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'processorArchitecture',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               authentication_method: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authenticationMethod',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               radius_server_auth_certificate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'radiusServerAuthCertificate',
                 type: {
@@ -72,13 +68,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               client_root_certificates: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientRootCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
