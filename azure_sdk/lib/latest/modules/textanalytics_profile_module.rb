@@ -17,8 +17,8 @@ module Azure::Profiles::Latest
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResultItem
       SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResult
       BatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
-      MatchRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
       ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
+      MatchRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
       EntityRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
       EntitiesBatchResultItemV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
@@ -84,11 +84,11 @@ module Azure::Profiles::Latest
         def batch_input
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
         end
-        def match_record_v2dot1
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
-        end
         def error_response
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
+        end
+        def match_record_v2dot1
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
         end
         def error_record
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
