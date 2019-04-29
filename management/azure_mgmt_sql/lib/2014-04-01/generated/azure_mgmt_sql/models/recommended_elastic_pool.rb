@@ -14,7 +14,8 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       # @return [ElasticPoolEdition] The edition of the recommended elastic
       # pool. The ElasticPoolEdition enumeration contains all the valid
-      # editions. Possible values include: 'Basic', 'Standard', 'Premium'
+      # editions. Possible values include: 'Basic', 'Standard', 'Premium',
+      # 'GeneralPurpose', 'BusinessCritical'
       attr_accessor :database_edition
 
       # @return [Float] The DTU for the recommended elastic pool.
