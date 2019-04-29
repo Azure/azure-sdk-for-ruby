@@ -61,6 +61,7 @@ module Azure::Network::Mgmt::V2017_03_30
     autoload :ServiceEndpointPolicy,                              '2017-03-30/generated/azure_mgmt_network/models/service_endpoint_policy.rb'
     autoload :IPConfigurationProfile,                             '2017-03-30/generated/azure_mgmt_network/models/ipconfiguration_profile.rb'
     autoload :Subnet,                                             '2017-03-30/generated/azure_mgmt_network/models/subnet.rb'
+    autoload :DdosSettingsProtectionCoverage,                     '2017-03-30/generated/azure_mgmt_network/models/ddos_settings_protection_coverage.rb'
     autoload :SecurityRuleProtocol,                               '2017-03-30/generated/azure_mgmt_network/models/security_rule_protocol.rb'
     autoload :SecurityRuleAccess,                                 '2017-03-30/generated/azure_mgmt_network/models/security_rule_access.rb'
     autoload :SecurityRuleDirection,                              '2017-03-30/generated/azure_mgmt_network/models/security_rule_direction.rb'

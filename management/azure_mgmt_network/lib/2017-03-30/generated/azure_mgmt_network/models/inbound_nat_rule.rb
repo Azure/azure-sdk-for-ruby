@@ -21,7 +21,8 @@ module Azure::Network::Mgmt::V2017_03_30
       # the backend IP.
       attr_accessor :backend_ipconfiguration
 
-      # @return [TransportProtocol] Possible values include: 'Udp', 'Tcp',
+      # @return [TransportProtocol] The reference to the transport protocol
+      # used by the load balancing rule. Possible values include: 'Udp', 'Tcp',
       # 'All'
       attr_accessor :protocol
 
