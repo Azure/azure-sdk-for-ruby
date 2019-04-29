@@ -6,7 +6,7 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # Definition of runas credential to use for hybrid worker.
+    # Definition of RunAs credential to use for hybrid worker.
     #
     class RunAsCredentialAssociationProperty
 
@@ -22,7 +22,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RunAsCredentialAssociationProperty',
           type: {
@@ -30,7 +29,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'RunAsCredentialAssociationProperty',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

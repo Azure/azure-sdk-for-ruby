@@ -45,7 +45,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Activity',
           type: {
@@ -53,7 +52,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Activity',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -61,7 +59,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -70,7 +67,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               definition: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.definition',
                 type: {
@@ -78,13 +74,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameter_sets: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameterSets',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ActivityParameterSetElementType',
                       type: {
@@ -95,13 +89,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               output_types: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outputTypes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ActivityOutputTypeElementType',
                       type: {
@@ -112,7 +104,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationTime',
                 type: {
@@ -120,7 +111,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
@@ -128,7 +118,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
