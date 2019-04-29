@@ -111,9 +111,11 @@ module Azure::SQL::Mgmt::V2014_04_01
       # createMode is NonReadableSecondary or OnlineSecondary, this value is
       # ignored.
       #
-      # To determine the editions that are available to your subscription in an
-      # Azure location, use the `Capabilities_ListByLocation` REST API or one
-      # of the following commands:
+      # The list of SKUs may vary by region and support offer. To determine the
+      # SKUs (including the SKU name, tier/edition, family, and capacity) that
+      # are available to your subscription in an Azure region, use the
+      # `Capabilities_ListByLocation` REST API or one of the following
+      # commands:
       #
       # ```azurecli
       # az sql db list-editions -l <location> -o table
@@ -121,7 +123,8 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       # ```powershell
       # Get-AzSqlServerServiceObjective -Location <location>
-      # ````. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+      # ````
+      # . Possible values include: 'Web', 'Business', 'Basic', 'Standard',
       # 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
       # 'System2', 'GeneralPurpose', 'BusinessCritical', 'Hyperscale'
       attr_accessor :edition
@@ -139,32 +142,41 @@ module Azure::SQL::Mgmt::V2014_04_01
       # currentServiceObjectiveId property. If requestedServiceObjectiveId and
       # requestedServiceObjectiveName are both updated, the value of
       # requestedServiceObjectiveId overrides the value of
-      # requestedServiceObjectiveName. To see possible values, query the
-      # capabilities API
-      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-      # referred to by operationId: "Capabilities_ListByLocation." or use the
-      # Azure CLI command `az sql db list-editions --location <location>
-      # --query [].supportedServiceLevelObjectives[].name` .
+      # requestedServiceObjectiveName.
+      #
+      # The list of SKUs may vary by region and support offer. To determine the
+      # service objective ids that are available to your subscription in an
+      # Azure region, use the `Capabilities_ListByLocation` REST API.
       attr_accessor :requested_service_objective_id
 
       # @return [ServiceObjectiveName] The name of the configured service level
       # objective of the database. This is the service level objective that is
       # in the process of being applied to the database. Once successfully
-      # updated, it will match the value of serviceLevelObjective property. To
-      # see possible values, query the capabilities API
-      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-      # referred to by operationId: "Capabilities_ListByLocation." or use the
-      # Azure CLI command `az sql db list-editions --location <location>
-      # --query [].supportedServiceLevelObjectives[].name`. Possible values
-      # include: 'System', 'System0', 'System1', 'System2', 'System3',
-      # 'System4', 'System2L', 'System3L', 'System4L', 'Free', 'Basic', 'S0',
-      # 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12', 'P1', 'P2', 'P3',
-      # 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4', 'PRS6', 'DW100',
-      # 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000', 'DW1200',
-      # 'DW1000c', 'DW1500', 'DW1500c', 'DW2000', 'DW2000c', 'DW3000',
-      # 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c',
-      # 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400',
-      # 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
+      # updated, it will match the value of serviceLevelObjective property.
+      #
+      # The list of SKUs may vary by region and support offer. To determine the
+      # SKUs (including the SKU name, tier/edition, family, and capacity) that
+      # are available to your subscription in an Azure region, use the
+      # `Capabilities_ListByLocation` REST API or one of the following
+      # commands:
+      #
+      # ```azurecli
+      # az sql db list-editions -l <location> -o table
+      # ````
+      #
+      # ```powershell
+      # Get-AzSqlServerServiceObjective -Location <location>
+      # ````
+      # . Possible values include: 'System', 'System0', 'System1', 'System2',
+      # 'System3', 'System4', 'System2L', 'System3L', 'System4L', 'Free',
+      # 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12', 'P1',
+      # 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4', 'PRS6',
+      # 'DW100', 'DW200', 'DW300', 'DW400', 'DW500', 'DW600', 'DW1000',
+      # 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000', 'DW2000c',
+      # 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
+      # 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200',
+      # 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500',
+      # 'DS2000', 'ElasticPool'
       attr_accessor :requested_service_objective_name
 
       # @return [ServiceObjectiveName] The current service level objective of
