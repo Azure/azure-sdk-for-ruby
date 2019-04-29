@@ -32,6 +32,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database.
+    # @param skip_token [String]
+    # @param count [Boolean]
     # @param filter [String] An OData filter expression that filters elements in
     # the collection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -39,8 +41,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [Array<SensitivityLabel>] operation results.
     #
-    def list_current_by_database(resource_group_name, server_name, database_name, filter = nil, custom_headers = nil)
-      first_page = list_current_by_database_as_lazy(resource_group_name, server_name, database_name, filter, custom_headers)
+    def list_current_by_database(resource_group_name, server_name, database_name, skip_token = nil, count = nil, filter = nil, custom_headers = nil)
+      first_page = list_current_by_database_as_lazy(resource_group_name, server_name, database_name, skip_token, count, filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -52,6 +54,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database.
+    # @param skip_token [String]
+    # @param count [Boolean]
     # @param filter [String] An OData filter expression that filters elements in
     # the collection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -59,8 +63,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_current_by_database_with_http_info(resource_group_name, server_name, database_name, filter = nil, custom_headers = nil)
-      list_current_by_database_async(resource_group_name, server_name, database_name, filter, custom_headers).value!
+    def list_current_by_database_with_http_info(resource_group_name, server_name, database_name, skip_token = nil, count = nil, filter = nil, custom_headers = nil)
+      list_current_by_database_async(resource_group_name, server_name, database_name, skip_token, count, filter, custom_headers).value!
     end
 
     #
@@ -71,6 +75,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database.
+    # @param skip_token [String]
+    # @param count [Boolean]
     # @param filter [String] An OData filter expression that filters elements in
     # the collection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -78,7 +84,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_current_by_database_async(resource_group_name, server_name, database_name, filter = nil, custom_headers = nil)
+    def list_current_by_database_async(resource_group_name, server_name, database_name, skip_token = nil, count = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
@@ -98,7 +104,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => @client.api_version},
+          query_params: {'$skipToken' => skip_token,'$count' => count,'$filter' => filter,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -998,6 +1004,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database.
+    # @param skip_token [String]
+    # @param count [Boolean]
     # @param filter [String] An OData filter expression that filters elements in
     # the collection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1006,8 +1014,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # @return [SensitivityLabelListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_current_by_database_as_lazy(resource_group_name, server_name, database_name, filter = nil, custom_headers = nil)
-      response = list_current_by_database_async(resource_group_name, server_name, database_name, filter, custom_headers).value!
+    def list_current_by_database_as_lazy(resource_group_name, server_name, database_name, skip_token = nil, count = nil, filter = nil, custom_headers = nil)
+      response = list_current_by_database_async(resource_group_name, server_name, database_name, skip_token, count, filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
