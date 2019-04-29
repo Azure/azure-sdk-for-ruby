@@ -476,7 +476,7 @@
                 "Microsoft.Network": {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2018-12-01": ["*"]
+                        "2019-02-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -1661,7 +1661,7 @@
                 "Microsoft.Network" : {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2018-12-01": ["*"]
+                        "2019-02-01": ["*"]
                     }
                 }
             },

@@ -16,8 +16,8 @@ module Azure::Network::Mgmt::V2017_03_30
       attr_accessor :description
 
       # @return [SecurityRuleProtocol] Network protocol this rule applies to.
-      # Possible values are 'Tcp', 'Udp', and '*'. Possible values include:
-      # 'Tcp', 'Udp', '*'
+      # Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'. Possible
+      # values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*'
       attr_accessor :protocol
 
       # @return [String] The source port or range. Integer or range between 0
@@ -62,8 +62,7 @@ module Azure::Network::Mgmt::V2017_03_30
       attr_accessor :destination_port_ranges
 
       # @return [SecurityRuleAccess] The network traffic is allowed or denied.
-      # Possible values are: 'Allow' and 'Deny'. Possible values include:
-      # 'Allow', 'Deny'
+      # Possible values include: 'Allow', 'Deny'
       attr_accessor :access
 
       # @return [Integer] The priority of the rule. The value can be between
@@ -74,8 +73,7 @@ module Azure::Network::Mgmt::V2017_03_30
 
       # @return [SecurityRuleDirection] The direction of the rule. The
       # direction specifies if rule will be evaluated on incoming or outgoing
-      # traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
-      # include: 'Inbound', 'Outbound'
+      # traffic. Possible values include: 'Inbound', 'Outbound'
       attr_accessor :direction
 
       # @return [String] The provisioning state of the public IP resource.

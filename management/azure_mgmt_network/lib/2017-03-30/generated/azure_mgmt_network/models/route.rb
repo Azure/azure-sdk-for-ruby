@@ -16,10 +16,8 @@ module Azure::Network::Mgmt::V2017_03_30
       attr_accessor :address_prefix
 
       # @return [RouteNextHopType] The type of Azure hop the packet should be
-      # sent to. Possible values are: 'VirtualNetworkGateway', 'VnetLocal',
-      # 'Internet', 'VirtualAppliance', and 'None'. Possible values include:
-      # 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance',
-      # 'None'
+      # sent to. Possible values include: 'VirtualNetworkGateway', 'VnetLocal',
+      # 'Internet', 'VirtualAppliance', 'None'
       attr_accessor :next_hop_type
 
       # @return [String] The IP address packets should be forwarded to. Next

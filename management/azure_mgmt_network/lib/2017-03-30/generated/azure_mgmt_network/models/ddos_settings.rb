@@ -16,9 +16,9 @@ module Azure::Network::Mgmt::V2017_03_30
       # IP.
       attr_accessor :ddos_custom_policy
 
-      # @return [Enum] The DDoS protection policy customizability of the public
-      # IP. Only standard coverage will have the ability to be customized.
-      # Possible values include: 'Basic', 'Standard'
+      # @return [DdosSettingsProtectionCoverage] The DDoS protection policy
+      # customizability of the public IP. Only standard coverage will have the
+      # ability to be customized. Possible values include: 'Basic', 'Standard'
       attr_accessor :protection_coverage
 
 
