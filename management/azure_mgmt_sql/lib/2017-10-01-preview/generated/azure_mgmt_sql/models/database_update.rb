@@ -78,7 +78,8 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       # include: 'Online', 'Restoring', 'RecoveryPending', 'Recovering',
       # 'Suspect', 'Offline', 'Standby', 'Shutdown', 'EmergencyMode',
       # 'AutoClosed', 'Copying', 'Creating', 'Inaccessible',
-      # 'OfflineSecondary', 'Pausing', 'Paused', 'Resuming', 'Scaling'
+      # 'OfflineSecondary', 'Pausing', 'Paused', 'Resuming', 'Scaling',
+      # 'OfflineChangingDwPerformanceTiers', 'OnlineChangingDwPerformanceTiers'
       attr_accessor :status
 
       # @return The ID of the database.
@@ -154,6 +155,14 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
 
       # @return [Sku] The name and tier of the SKU.
       attr_accessor :current_sku
+
+      # @return [Integer] Time in minutes after which database is automatically
+      # paused. A value of -1 means that automatic pause is disabled
+      attr_accessor :auto_pause_delay
+
+      # @return [Float] Minimal capacity that database will always have
+      # allocated, if not paused
+      attr_accessor :min_capacity
 
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
@@ -398,6 +407,22 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'
+                }
+              },
+              auto_pause_delay: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.autoPauseDelay',
+                type: {
+                  name: 'Number'
+                }
+              },
+              min_capacity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.minCapacity',
+                type: {
+                  name: 'Double'
                 }
               },
               tags: {

@@ -21,7 +21,8 @@ module Azure::SQL::Mgmt::V2014_04_01
       attr_accessor :state
 
       # @return [ElasticPoolEdition] The edition of the elastic pool. Possible
-      # values include: 'Basic', 'Standard', 'Premium'
+      # values include: 'Basic', 'Standard', 'Premium', 'GeneralPurpose',
+      # 'BusinessCritical'
       attr_accessor :edition
 
       # @return [Integer] The total shared DTU for the database elastic pool.

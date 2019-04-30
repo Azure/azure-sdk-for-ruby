@@ -564,7 +564,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     end
 
     #
-    # Creates or updatess a job execution.
+    # Creates or updates a job execution.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -724,7 +724,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     end
 
     #
-    # Creates or updatess a job execution.
+    # Creates or updates a job execution.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -745,7 +745,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     end
 
     #
-    # Creates or updatess a job execution.
+    # Creates or updates a job execution.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -765,7 +765,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     end
 
     #
-    # Creates or updatess a job execution.
+    # Creates or updates a job execution.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource

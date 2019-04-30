@@ -20,6 +20,9 @@ module Azure::SQL::Mgmt::V2014_04_01
       DataWarehouse = "DataWarehouse"
       System = "System"
       System2 = "System2"
+      GeneralPurpose = "GeneralPurpose"
+      BusinessCritical = "BusinessCritical"
+      Hyperscale = "Hyperscale"
     end
   end
 end

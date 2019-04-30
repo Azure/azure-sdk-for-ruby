@@ -27,6 +27,8 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       Paused = "Paused"
       Resuming = "Resuming"
       Scaling = "Scaling"
+      OfflineChangingDwPerformanceTiers = "OfflineChangingDwPerformanceTiers"
+      OnlineChangingDwPerformanceTiers = "OnlineChangingDwPerformanceTiers"
     end
   end
 end
