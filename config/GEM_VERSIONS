@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.25.1"
+        "azure_sdk": "0.25.2"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -82,7 +82,7 @@
         "azure_mgmt_policy_insights": "0.17.3",
         "azure_mgmt_powerbi_embedded": "0.17.1",
         "azure_mgmt_privatedns": "0.17.1",
-        "azure_mgmt_recovery_services": "0.17.2",
+        "azure_mgmt_recovery_services": "0.17.3",
         "azure_mgmt_recovery_services_backup": "0.17.2",
         "azure_mgmt_recovery_services_site_recovery": "0.17.2",
         "azure_mgmt_redis": "0.17.3",

@@ -26,7 +26,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # string.
       attr_accessor :certificate
 
-      # @return [String] Certificate friendlyname.
+      # @return [String] Certificate friendly name.
       attr_accessor :friendly_name
 
       # @return [String] Certificate issuer.
