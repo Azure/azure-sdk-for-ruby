@@ -6,7 +6,7 @@
 module Microsoft.CustomProviders
   module Models
     #
-    # A validation to apply on custom resource provider requets.
+    # A validation to apply on custom resource provider requests.
     #
     class CustomRPValidations
 

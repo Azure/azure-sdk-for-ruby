@@ -12,7 +12,7 @@ module Microsoft.CustomProviders
 
       include MsRestAzure
 
-      # @return [Hash{String => String}] resouce tags
+      # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
 
