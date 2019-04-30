@@ -352,7 +352,7 @@ namespace :arm do
       if(args[:gem_name].include?'_mgmt_')
         plane = 'management'
       end
-      command = "bundle exec ruby #{__dir__}/generators/metadatagen/src/metadatagen.rb --plane=#{plane} --gem_name=#{args[:gem_name]} --sdk_path=#{__dir__}"
+      command = "ruby #{__dir__}/generators/metadatagen/src/metadatagen.rb --plane=#{plane} --gem_name=#{args[:gem_name]} --sdk_path=#{__dir__}"
       execute_and_stream(command)
     end
   end
