@@ -5,6 +5,10 @@
         "azure_mgmt_container_registry",
         "azure_mgmt_cognitive_services"
     ],
+    "data": [
+        "azure_cognitiveservices_luisauthoring",
+        "azure_cognitiveservices_luisruntime"
+    ],
     "rollup": [
         "azure_sdk"
     ]

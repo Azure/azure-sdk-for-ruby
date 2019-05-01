@@ -698,7 +698,7 @@
                 },
                 "Microsoft.CognitiveServices.LuisRuntime": {
                     "data": {
-                        "2.0": ["*"]
+                        "3.0-preview": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.LuisAuthoring": {
@@ -2448,7 +2448,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.LuisRuntime": {
                         "data": {
-                            "2.0": ["*"]
+                            "3.0-preview": ["*"]
                         }
                     }
                 },

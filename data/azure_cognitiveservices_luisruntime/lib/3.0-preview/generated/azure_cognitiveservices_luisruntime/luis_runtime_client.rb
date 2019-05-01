@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V2_0
+module Azure::CognitiveServices::LuisRuntime::V3_0_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -37,8 +37,8 @@ module Azure::CognitiveServices::LuisRuntime::V2_0
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Prediction] prediction
-    attr_reader :prediction
+    # @return [PredictionOperations] prediction_operations
+    attr_reader :prediction_operations
 
     #
     # Creates initializes a new instance of the LuisRuntimeClient class.
@@ -47,12 +47,12 @@ module Azure::CognitiveServices::LuisRuntime::V2_0
     #
     def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = '{Endpoint}/luis/v2.0'
+      @base_url = '{Endpoint}/luis/v3.0-preview'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @prediction = Prediction.new(self)
+      @prediction_operations = PredictionOperations.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

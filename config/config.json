@@ -1970,8 +1970,14 @@
     }
   },
   "azure_cognitiveservices_luisruntime": {
+    "azure_cognitiveservices_luisruntime_v3.0_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/cognitiveservices/data-plane/LUIS/Runtime/readme.md",
+      "namespace": "Azure::CognitiveServices::LuisRuntime::V3_0_preview",
+      "title": "LuisRuntimeClient",
+      "tag": "runtime_3_0_preview"
+    },
     "azure_cognitiveservices_luisruntime_v2.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9fa29f6afbbdabb94d5c56ed6a38ac2307d0cc34/specification/cognitiveservices/data-plane/LUIS/Runtime/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/cognitiveservices/data-plane/LUIS/Runtime/readme.md",
       "namespace": "Azure::CognitiveServices::LuisRuntime::V2_0",
       "title": "LuisRuntimeClient",
       "tag": "runtime_2_0"
@@ -1979,7 +1985,7 @@
   },
   "azure_cognitiveservices_luisauthoring": {
     "azure_cognitiveservices_luisauthoring_v2.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9fa29f6afbbdabb94d5c56ed6a38ac2307d0cc34/specification/cognitiveservices/data-plane/LUIS/Authoring/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/cognitiveservices/data-plane/LUIS/Authoring/readme.md",
       "namespace": "Azure::CognitiveServices::LuisAuthoring::V2_0",
       "title": "LuisAuthoringClient",
       "tag": "authoring_2_0"
