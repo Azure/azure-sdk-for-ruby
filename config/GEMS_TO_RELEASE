@@ -2,7 +2,8 @@
     "management": [
         "azure_mgmt_recovery_services",
         "azure_mgmt_sql",
-        "azure_mgmt_container_registry"
+        "azure_mgmt_container_registry",
+        "azure_mgmt_cognitive_services"
     ],
     "rollup": [
         "azure_sdk"
