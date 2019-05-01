@@ -6,7 +6,7 @@
 module Azure::ApiManagement::Mgmt::V2016_07_07
   module Models
     #
-    # Paged Subsctions list representation.
+    # Paged Subscriptions list representation.
     #
     class SubscriptionCollection
 

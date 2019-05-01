@@ -381,7 +381,7 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
     end
 
     #
-    # Updates the details of a subscription specificied by its identifier.
+    # Updates the details of a subscription specified by its identifier.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -401,7 +401,7 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
     end
 
     #
-    # Updates the details of a subscription specificied by its identifier.
+    # Updates the details of a subscription specified by its identifier.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -421,7 +421,7 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
     end
 
     #
-    # Updates the details of a subscription specificied by its identifier.
+    # Updates the details of a subscription specified by its identifier.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.

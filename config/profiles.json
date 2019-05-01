@@ -229,7 +229,7 @@
                 },
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2019-01-01": ["*"]
                     }
                 },
                 "Microsoft.Authorization": {
@@ -781,7 +781,7 @@
             "resourceTypes": {
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2019-01-01": ["*"]
                     }
                 }
             },
