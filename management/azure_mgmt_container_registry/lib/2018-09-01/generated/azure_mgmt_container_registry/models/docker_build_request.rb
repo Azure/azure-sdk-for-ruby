@@ -35,6 +35,10 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       # @return [String] The Docker file path relative to the source location.
       attr_accessor :docker_file_path
 
+      # @return [String] The name of the target build stage for the docker
+      # build.
+      attr_accessor :target
+
       # @return [Array<Argument>] The collection of override arguments to be
       # used when executing the run.
       attr_accessor :arguments
@@ -54,6 +58,10 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       # If it is relative URL, the relative path should be obtained from
       # calling listBuildSourceUploadUrl API.
       attr_accessor :source_location
+
+      # @return [Credentials] The properties that describes a set of
+      # credentials that will be used when this run is invoked.
+      attr_accessor :credentials
 
 
       #
@@ -128,6 +136,14 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                   name: 'String'
                 }
               },
+              target: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'target',
+                type: {
+                  name: 'String'
+                }
+              },
               arguments: {
                 client_side_validation: true,
                 required: false,
@@ -182,6 +198,15 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                 serialized_name: 'sourceLocation',
                 type: {
                   name: 'String'
+                }
+              },
+              credentials: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'credentials',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Credentials'
                 }
               }
             }

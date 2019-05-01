@@ -52,10 +52,6 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       # run.
       attr_accessor :source_trigger
 
-      # @return [Boolean] The value that indicates whether archiving is enabled
-      # or not. Default value: false .
-      attr_accessor :is_archive_enabled
-
       # @return [PlatformProperties] The platform properties against which the
       # run will happen.
       attr_accessor :platform
@@ -63,10 +59,26 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       # @return [AgentProperties] The machine configuration of the run agent.
       attr_accessor :agent_configuration
 
+      # @return [String] The scope of the credentials that were used to login
+      # to the source registry during this run.
+      attr_accessor :source_registry_auth
+
+      # @return [Array<String>] The list of custom registries that were logged
+      # in during this run.
+      attr_accessor :custom_registries
+
+      # @return [String] The error message received from backend systems after
+      # the run is scheduled.
+      attr_accessor :run_error_message
+
       # @return [ProvisioningState] The provisioning state of a run. Possible
       # values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
       # 'Failed', 'Canceled'
       attr_accessor :provisioning_state
+
+      # @return [Boolean] The value that indicates whether archiving is enabled
+      # or not. Default value: false .
+      attr_accessor :is_archive_enabled
 
 
       #
@@ -208,15 +220,6 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                   class_name: 'SourceTriggerDescriptor'
                 }
               },
-              is_archive_enabled: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.isArchiveEnabled',
-                default_value: false,
-                type: {
-                  name: 'Boolean'
-                }
-              },
               platform: {
                 client_side_validation: true,
                 required: false,
@@ -235,12 +238,54 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                   class_name: 'AgentProperties'
                 }
               },
+              source_registry_auth: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.sourceRegistryAuth',
+                type: {
+                  name: 'String'
+                }
+              },
+              custom_registries: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.customRegistries',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              run_error_message: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.runErrorMessage',
+                type: {
+                  name: 'String'
+                }
+              },
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              is_archive_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.isArchiveEnabled',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

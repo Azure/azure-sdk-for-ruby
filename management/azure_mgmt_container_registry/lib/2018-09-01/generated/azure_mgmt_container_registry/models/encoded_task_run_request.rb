@@ -47,6 +47,10 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       # calling listBuildSourceUploadUrl API.
       attr_accessor :source_location
 
+      # @return [Credentials] The properties that describes a set of
+      # credentials that will be used when this run is invoked.
+      attr_accessor :credentials
+
 
       #
       # Mapper for EncodedTaskRunRequest class as Ruby Hash.
@@ -148,6 +152,15 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                 serialized_name: 'sourceLocation',
                 type: {
                   name: 'String'
+                }
+              },
+              credentials: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'credentials',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Credentials'
                 }
               }
             }
