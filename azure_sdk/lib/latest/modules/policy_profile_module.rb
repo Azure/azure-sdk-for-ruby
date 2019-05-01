@@ -13,16 +13,16 @@ module Azure::Profiles::Latest
 
       module Models
         PolicyType = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
+        PolicySku = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
         PolicyMode = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
         PolicyDefinitionReference = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionReference
         PolicySetDefinition = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinition
         PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinitionListResult
-        PolicySku = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
         PolicyAssignment = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
         PolicyDefinition = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinition
         PolicyAssignmentListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignmentListResult
-        ErrorResponse = Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
         PolicyDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionListResult
+        ErrorResponse = Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
       end
 
       class PolicyManagementClass
@@ -60,6 +60,9 @@ module Azure::Profiles::Latest
           def policy_type
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyType
           end
+          def policy_sku
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
+          end
           def policy_mode
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyMode
           end
@@ -72,9 +75,6 @@ module Azure::Profiles::Latest
           def policy_set_definition_list_result
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinitionListResult
           end
-          def policy_sku
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
-          end
           def policy_assignment
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
           end
@@ -84,11 +84,11 @@ module Azure::Profiles::Latest
           def policy_assignment_list_result
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignmentListResult
           end
-          def error_response
-            Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
-          end
           def policy_definition_list_result
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionListResult
+          end
+          def error_response
+            Azure::Policy::Mgmt::V2018_03_01::Models::ErrorResponse
           end
         end
       end

@@ -9,6 +9,8 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
+      ImageAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
+      ImageKnowledge = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
       ImageEntityAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageEntityAction
       ImageModuleAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
       ImageRecipesAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageRecipesAction
@@ -34,16 +36,16 @@ module Azure::Profiles::Latest
       ImagesImageMetadata = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesImageMetadata
       ImagesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
+      Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
       Offer = Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
       AggregateOffer = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
-      Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
       Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
       Person = Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
-      ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
       Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+      ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
       Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
@@ -54,8 +56,6 @@ module Azure::Profiles::Latest
       VisualSearchRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
       Point2D = Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
       NormalizedQuadrilateral = Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
-      ImageAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
-      ImageKnowledge = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
     end
 
     class VisualSearchDataClass
@@ -88,6 +88,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
+        end
+        def image_knowledge
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
+        end
         def image_entity_action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageEntityAction
         end
@@ -163,14 +169,14 @@ module Azure::Profiles::Latest
         def aggregate_rating
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
         end
+        def filters
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
+        end
         def offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
         end
         def aggregate_offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
-        end
-        def filters
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
         end
         def recipe
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
@@ -187,11 +193,11 @@ module Azure::Profiles::Latest
         def person
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
         end
-        def response_base
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
-        end
         def action
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
+        end
+        def response_base
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
         end
         def thing
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
@@ -222,12 +228,6 @@ module Azure::Profiles::Latest
         end
         def normalized_quadrilateral
           Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
-        end
-        def image_action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
-        end
-        def image_knowledge
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
         end
       end
     end

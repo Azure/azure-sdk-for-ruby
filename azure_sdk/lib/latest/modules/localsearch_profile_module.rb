@@ -17,24 +17,24 @@ module Azure::Profiles::Latest
       Places = Azure::CognitiveServices::LocalSearch::V1_0::Models::Places
       PostalAddress = Azure::CognitiveServices::LocalSearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
-      Intangible = Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
       EntityType = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
-      QueryContext = Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
-      GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
+      Intangible = Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
       Action = Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
+      QueryContext = Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
       ResponseBase = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseBase
+      Answer = Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResultsAnswer
       StructuredValue = Azure::CognitiveServices::LocalSearch::V1_0::Models::StructuredValue
       Thing = Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
+      GeoCoordinates = Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
       CreativeWork = Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
-      SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
       Identifiable = Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
+      SearchAction = Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
       ErrorCode = Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
-      Answer = Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
-      ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
       SafeSearch = Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
-      EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
+      ResponseFormat = Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
       Error = Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
+      EntityScenario = Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
     end
 
     class LocalSearchDataClass
@@ -91,23 +91,23 @@ module Azure::Profiles::Latest
         def place
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Place
         end
-        def intangible
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
-        end
         def entity_type
           Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityType
         end
-        def query_context
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
-        end
-        def geo_coordinates
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
+        def intangible
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Intangible
         end
         def action
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Action
         end
+        def query_context
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::QueryContext
+        end
         def response_base
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseBase
+        end
+        def answer
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
         end
         def search_results_answer
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchResultsAnswer
@@ -118,32 +118,32 @@ module Azure::Profiles::Latest
         def thing
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Thing
         end
+        def geo_coordinates
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::GeoCoordinates
+        end
         def creative_work
           Azure::CognitiveServices::LocalSearch::V1_0::Models::CreativeWork
-        end
-        def search_action
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
         end
         def identifiable
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Identifiable
         end
+        def search_action
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::SearchAction
+        end
         def error_code
           Azure::CognitiveServices::LocalSearch::V1_0::Models::ErrorCode
-        end
-        def answer
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::Answer
-        end
-        def response_format
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
         end
         def safe_search
           Azure::CognitiveServices::LocalSearch::V1_0::Models::SafeSearch
         end
-        def entity_scenario
-          Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
+        def response_format
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::ResponseFormat
         end
         def error
           Azure::CognitiveServices::LocalSearch::V1_0::Models::Error
+        end
+        def entity_scenario
+          Azure::CognitiveServices::LocalSearch::V1_0::Models::EntityScenario
         end
       end
     end

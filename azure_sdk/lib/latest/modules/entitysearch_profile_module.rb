@@ -10,8 +10,8 @@ module Azure::Profiles::Latest
 
     module Models
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
-      MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
+      MediaObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
@@ -90,11 +90,11 @@ module Azure::Profiles::Latest
         def image_object
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
         end
-        def media_object
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
-        end
         def error_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
+        end
+        def media_object
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::MediaObject
         end
         def error_sub_code
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
