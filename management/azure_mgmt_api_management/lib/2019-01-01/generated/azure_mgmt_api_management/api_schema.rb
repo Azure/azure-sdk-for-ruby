@@ -390,7 +390,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
     # where n is the revision number.
     # @param schema_id [String] Schema identifier within an API. Must be unique in
     # the current API Management service instance.
-    # @param parameters [SchemaContract] The schema contents to apply.
+    # @param parameters [SchemaCreateOrUpdateContract] The schema contents to
+    # apply.
     # @param if_match [String] ETag of the Entity. Not required when creating an
     # entity, but required when updating an entity.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -413,7 +414,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
     # where n is the revision number.
     # @param schema_id [String] Schema identifier within an API. Must be unique in
     # the current API Management service instance.
-    # @param parameters [SchemaContract] The schema contents to apply.
+    # @param parameters [SchemaCreateOrUpdateContract] The schema contents to
+    # apply.
     # @param if_match [String] ETag of the Entity. Not required when creating an
     # entity, but required when updating an entity.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -435,7 +437,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
     # where n is the revision number.
     # @param schema_id [String] Schema identifier within an API. Must be unique in
     # the current API Management service instance.
-    # @param parameters [SchemaContract] The schema contents to apply.
+    # @param parameters [SchemaCreateOrUpdateContract] The schema contents to
+    # apply.
     # @param if_match [String] ETag of the Entity. Not required when creating an
     # entity, but required when updating an entity.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -471,7 +474,7 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::ApiManagement::Mgmt::V2019_01_01::Models::SchemaContract.mapper()
+      request_mapper = Azure::ApiManagement::Mgmt::V2019_01_01::Models::SchemaCreateOrUpdateContract.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

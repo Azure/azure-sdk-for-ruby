@@ -40,17 +40,17 @@
   },
   "azure_mgmt_api_management": {
     "azure_mgmt_api_management_2016_07_07": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/apimanagement/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/876236110d3a5c1c6680154cd58f924c9d819c03/specification/apimanagement/resource-manager/readme.md",
       "namespace": "Azure::ApiManagement::Mgmt::V2016_07_07",
       "tag": "package-2016-07"
     },
     "azure_mgmt_api_management_2016_10_10": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/apimanagement/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/876236110d3a5c1c6680154cd58f924c9d819c03/specification/apimanagement/resource-manager/readme.md",
       "namespace": "Azure::ApiManagement::Mgmt::V2016_10_10",
       "tag": "package-2016-10"
     },
     "azure_mgmt_api_management_2017_03_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/apimanagement/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/876236110d3a5c1c6680154cd58f924c9d819c03/specification/apimanagement/resource-manager/readme.md",
       "namespace": "Azure::ApiManagement::Mgmt::V2017_03_01",
       "tag": "package-2017-03"
     },
@@ -60,7 +60,7 @@
       "tag": "package-2018-01"
     },
     "azure_mgmt_api_management_2018_01_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/apimanagement/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/876236110d3a5c1c6680154cd58f924c9d819c03/specification/apimanagement/resource-manager/readme.md",
       "namespace": "Azure::ApiManagement::Mgmt::V2018_01_01",
       "tag": "package-2018-01"
     },
@@ -70,7 +70,7 @@
       "tag": "package-2018-06-preview"
     },
     "azure_mgmt_api_management_2019_01_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/apimanagement/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/876236110d3a5c1c6680154cd58f924c9d819c03/specification/apimanagement/resource-manager/readme.md",
       "namespace": "Azure::ApiManagement::Mgmt::V2019_01_01",
       "tag": "package-2019-01"
     }

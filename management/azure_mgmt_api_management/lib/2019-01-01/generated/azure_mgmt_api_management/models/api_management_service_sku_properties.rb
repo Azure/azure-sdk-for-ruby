@@ -17,7 +17,7 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
       attr_accessor :name
 
       # @return [Integer] Capacity of the SKU (number of deployed units of the
-      # SKU). The default value is 1. Default value: 1 .
+      # SKU).
       attr_accessor :capacity
 
 
@@ -46,7 +46,6 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
-                default_value: 1,
                 type: {
                   name: 'Number'
                 }

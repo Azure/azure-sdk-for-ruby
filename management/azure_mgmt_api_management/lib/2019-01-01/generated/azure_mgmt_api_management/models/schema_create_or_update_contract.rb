@@ -8,7 +8,7 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
     #
     # Schema Contract details.
     #
-    class SchemaContract < Resource
+    class SchemaCreateOrUpdateContract < Resource
 
       include MsRestAzure
 
@@ -21,22 +21,23 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
       # Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.
       attr_accessor :content_type
 
-      # @return Properties of the Schema Document.
-      attr_accessor :document
+      # @return [String] Json escaped string defining the document representing
+      # the Schema.
+      attr_accessor :value
 
 
       #
-      # Mapper for SchemaContract class as Ruby Hash.
+      # Mapper for SchemaCreateOrUpdateContract class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SchemaContract',
+          serialized_name: 'SchemaCreateOrUpdateContract',
           type: {
             name: 'Composite',
-            class_name: 'SchemaContract',
+            class_name: 'SchemaCreateOrUpdateContract',
             model_properties: {
               id: {
                 client_side_validation: true,
@@ -73,12 +74,12 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
                   name: 'String'
                 }
               },
-              document: {
+              value: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.document',
+                serialized_name: 'properties.document.value',
                 type: {
-                  name: 'Object'
+                  name: 'String'
                 }
               }
             }
