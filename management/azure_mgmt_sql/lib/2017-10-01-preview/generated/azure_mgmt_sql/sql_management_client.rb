@@ -46,6 +46,18 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     # database_vulnerability_assessment_scans
     attr_reader :database_vulnerability_assessment_scans
 
+    # @return [ManagedDatabaseVulnerabilityAssessmentRuleBaselines]
+    # managed_database_vulnerability_assessment_rule_baselines
+    attr_reader :managed_database_vulnerability_assessment_rule_baselines
+
+    # @return [ManagedDatabaseVulnerabilityAssessmentScans]
+    # managed_database_vulnerability_assessment_scans
+    attr_reader :managed_database_vulnerability_assessment_scans
+
+    # @return [ManagedDatabaseVulnerabilityAssessments]
+    # managed_database_vulnerability_assessments
+    attr_reader :managed_database_vulnerability_assessments
+
     # @return [Capabilities] capabilities
     attr_reader :capabilities
 
@@ -69,6 +81,16 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     # managed_instance_tde_certificates
     attr_reader :managed_instance_tde_certificates
 
+    # @return [ManagedInstanceKeys] managed_instance_keys
+    attr_reader :managed_instance_keys
+
+    # @return [ManagedInstanceEncryptionProtectors]
+    # managed_instance_encryption_protectors
+    attr_reader :managed_instance_encryption_protectors
+
+    # @return [RecoverableManagedDatabases] recoverable_managed_databases
+    attr_reader :recoverable_managed_databases
+
     #
     # Creates initializes a new instance of the SqlManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -85,6 +107,9 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       @database_operations = DatabaseOperations.new(self)
       @elastic_pool_operations = ElasticPoolOperations.new(self)
       @database_vulnerability_assessment_scans = DatabaseVulnerabilityAssessmentScans.new(self)
+      @managed_database_vulnerability_assessment_rule_baselines = ManagedDatabaseVulnerabilityAssessmentRuleBaselines.new(self)
+      @managed_database_vulnerability_assessment_scans = ManagedDatabaseVulnerabilityAssessmentScans.new(self)
+      @managed_database_vulnerability_assessments = ManagedDatabaseVulnerabilityAssessments.new(self)
       @capabilities = Capabilities.new(self)
       @databases = Databases.new(self)
       @elastic_pools = ElasticPools.new(self)
@@ -92,6 +117,9 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       @backup_short_term_retention_policies = BackupShortTermRetentionPolicies.new(self)
       @tde_certificates = TdeCertificates.new(self)
       @managed_instance_tde_certificates = ManagedInstanceTdeCertificates.new(self)
+      @managed_instance_keys = ManagedInstanceKeys.new(self)
+      @managed_instance_encryption_protectors = ManagedInstanceEncryptionProtectors.new(self)
+      @recoverable_managed_databases = RecoverableManagedDatabases.new(self)
       @api_version = '2017-10-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -164,7 +192,7 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_sql'
-        sdk_information = "#{sdk_information}/0.17.2"
+        sdk_information = "#{sdk_information}/0.17.3"
         add_user_agent_information(sdk_information)
     end
   end

@@ -29,7 +29,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       attr_accessor :unit
 
       # @return [Array<MetricAvailability>] The list of database metric
-      # availabities for the metric.
+      # availabilities for the metric.
       attr_accessor :metric_availabilities
 
 

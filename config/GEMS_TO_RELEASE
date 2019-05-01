@@ -1,20 +1,14 @@
 {
     "management": [
-        "azure_mgmt_authorization",
-        "azure_mgmt_compute",
-        "azure_mgmt_dns",
-        "azure_mgmt_key_vault",
-        "azure_mgmt_locks",
-        "azure_mgmt_monitor",
-        "azure_mgmt_network",
-        "azure_mgmt_policy",
-        "azure_mgmt_resources",
-        "azure_mgmt_storage",
-        "azure_mgmt_subscriptions",
-        "azure_mgmt_web"
+        "azure_mgmt_recovery_services",
+        "azure_mgmt_sql",
+        "azure_mgmt_container_registry",
+        "azure_mgmt_cognitive_services",
+        "azure_mgmt_api_management"
     ],
     "data": [
-        "azure_key_vault"
+        "azure_cognitiveservices_luisauthoring",
+        "azure_cognitiveservices_luisruntime"
     ],
     "rollup": [
         "azure_sdk"

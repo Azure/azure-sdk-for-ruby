@@ -6,7 +6,7 @@
 module Azure::ApiManagement::Mgmt::V2017_03_01
   module Models
     #
-    # Sampling settigs contract.
+    # Sampling settings contract.
     #
     class LoggerSamplingContract
 

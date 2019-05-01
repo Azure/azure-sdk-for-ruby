@@ -22,7 +22,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     attr_reader :client
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of an API.
+    # Lists all loggers associated with the specified Diagnostic of an API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -48,7 +48,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of an API.
+    # Lists all loggers associated with the specified Diagnostic of an API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -73,7 +73,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of an API.
+    # Lists all loggers associated with the specified Diagnostic of an API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -276,7 +276,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     end
 
     #
-    # Attaches a logger to a dignostic for an API.
+    # Attaches a logger to a diagnostic for an API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -297,7 +297,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     end
 
     #
-    # Attaches a logger to a dignostic for an API.
+    # Attaches a logger to a diagnostic for an API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -317,7 +317,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     end
 
     #
-    # Attaches a logger to a dignostic for an API.
+    # Attaches a logger to a diagnostic for an API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -523,7 +523,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of an API.
+    # Lists all loggers associated with the specified Diagnostic of an API.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -538,7 +538,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of an API.
+    # Lists all loggers associated with the specified Diagnostic of an API.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -552,7 +552,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of an API.
+    # Lists all loggers associated with the specified Diagnostic of an API.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -611,7 +611,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
     end
 
     #
-    # Lists all loggers assosiated with the specified Diagnostic of an API.
+    # Lists all loggers associated with the specified Diagnostic of an API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.

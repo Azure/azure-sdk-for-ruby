@@ -25,7 +25,7 @@ module Azure::CognitiveServices::LuisRuntime::V2_0
     # Gets predictions for a given utterance, in the form of intents and entities.
     # The current maximum query size is 500 characters.
     #
-    # @param app_id [String] The LUIS application ID (Guid).
+    # @param app_id The LUIS application ID (Guid).
     # @param query [String] The utterance to predict.
     # @param timezone_offset [Float] The timezone offset for the location of the
     # request.
@@ -34,7 +34,7 @@ module Azure::CognitiveServices::LuisRuntime::V2_0
     # @param staging [Boolean] Use the staging endpoint slot.
     # @param spell_check [Boolean] Enable spell checking.
     # @param bing_spell_check_subscription_key [String] The subscription key to use
-    # when enabling bing spell check
+    # when enabling Bing spell check
     # @param log [Boolean] Log query (default is true)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -50,7 +50,7 @@ module Azure::CognitiveServices::LuisRuntime::V2_0
     # Gets predictions for a given utterance, in the form of intents and entities.
     # The current maximum query size is 500 characters.
     #
-    # @param app_id [String] The LUIS application ID (Guid).
+    # @param app_id The LUIS application ID (Guid).
     # @param query [String] The utterance to predict.
     # @param timezone_offset [Float] The timezone offset for the location of the
     # request.
@@ -59,7 +59,7 @@ module Azure::CognitiveServices::LuisRuntime::V2_0
     # @param staging [Boolean] Use the staging endpoint slot.
     # @param spell_check [Boolean] Enable spell checking.
     # @param bing_spell_check_subscription_key [String] The subscription key to use
-    # when enabling bing spell check
+    # when enabling Bing spell check
     # @param log [Boolean] Log query (default is true)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -74,7 +74,7 @@ module Azure::CognitiveServices::LuisRuntime::V2_0
     # Gets predictions for a given utterance, in the form of intents and entities.
     # The current maximum query size is 500 characters.
     #
-    # @param app_id [String] The LUIS application ID (Guid).
+    # @param app_id The LUIS application ID (Guid).
     # @param query [String] The utterance to predict.
     # @param timezone_offset [Float] The timezone offset for the location of the
     # request.
@@ -83,7 +83,7 @@ module Azure::CognitiveServices::LuisRuntime::V2_0
     # @param staging [Boolean] Use the staging endpoint slot.
     # @param spell_check [Boolean] Enable spell checking.
     # @param bing_spell_check_subscription_key [String] The subscription key to use
-    # when enabling bing spell check
+    # when enabling Bing spell check
     # @param log [Boolean] Log query (default is true)
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

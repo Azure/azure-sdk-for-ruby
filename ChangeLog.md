@@ -1,3 +1,14 @@
+## 2019.05.01 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_recovery_services - v0.17.3
+    - azure_mgmt_sql - v0.17.3
+    - azure_mgmt_container_registry - v0.18.2
+    - azure_mgmt_cognitive_services - v0.18.2
+    - azure_mgmt_api_management - v0.18.3
+    - azure_cognitiveservices_luisauthoring - v0.17.2
+    - azure_cognitiveservices_luisruntime - v0.17.2
+    - azure_sdk - v0.25.2
+    
 ## 2019.04.25 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_authorization - v0.18.4

@@ -229,7 +229,7 @@
                 },
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2019-01-01": ["*"]
                     }
                 },
                 "Microsoft.Authorization": {
@@ -291,7 +291,7 @@
                 "Microsoft.ContainerRegistry": {
                     "management": {
                         "2017-10-01": ["*"],
-                        "2018-09-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 },
                 "Microsoft.ContainerService": {
@@ -592,7 +592,8 @@
                         "2014-04-01": ["*"],
                         "2015-05-01-preview": ["*"],
                         "2017-03-01-preview": ["*"],
-                        "2017-10-01-preview": ["*"]
+                        "2017-10-01-preview": ["*"],
+                        "2018-06-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Sqlvirtualmachine": {
@@ -697,7 +698,7 @@
                 },
                 "Microsoft.CognitiveServices.LuisRuntime": {
                     "data": {
-                        "2.0": ["*"]
+                        "3.0-preview": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.LuisAuthoring": {
@@ -780,7 +781,7 @@
             "resourceTypes": {
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2019-01-01": ["*"]
                     }
                 }
             },
@@ -1015,7 +1016,7 @@
                 "Microsoft.ContainerRegistry" : {
                     "management": {
                         "2017-10-01": ["*"],
-                        "2018-09-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 }
             },
@@ -2035,7 +2036,8 @@
                         "2014-04-01": ["*"],
                         "2015-05-01-preview": ["*"],
                         "2017-03-01-preview": ["*"],
-                        "2017-10-01-preview": ["*"]
+                        "2017-10-01-preview": ["*"],
+                        "2018-06-01-preview": ["*"]
                     }
                 }
             },
@@ -2446,7 +2448,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.LuisRuntime": {
                         "data": {
-                            "2.0": ["*"]
+                            "3.0-preview": ["*"]
                         }
                     }
                 },

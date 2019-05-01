@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.25.1"
+        "azure_sdk": "0.25.2"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -15,8 +15,8 @@
         "azure_cognitiveservices_face": "0.18.0",
         "azure_cognitiveservices_imagesearch": "0.18.1",
         "azure_cognitiveservices_localsearch": "0.17.1",
-        "azure_cognitiveservices_luisruntime": "0.17.1",
-        "azure_cognitiveservices_luisauthoring": "0.17.1",
+        "azure_cognitiveservices_luisruntime": "0.17.2",
+        "azure_cognitiveservices_luisauthoring": "0.17.2",
         "azure_cognitiveservices_newssearch": "0.18.1",
         "azure_cognitiveservices_qnamaker": "0.17.1",
         "azure_cognitiveservices_spellcheck": "0.18.1",
@@ -32,18 +32,18 @@
     "management" : {
         "azure_mgmt_advisor": "0.17.0",
         "azure_mgmt_analysis_services": "0.17.2",
-        "azure_mgmt_api_management": "0.18.2",
+        "azure_mgmt_api_management": "0.18.3",
         "azure_mgmt_authorization": "0.18.4",
         "azure_mgmt_automation": "0.17.2",
         "azure_mgmt_batch": "0.17.2",
         "azure_mgmt_billing": "0.17.2",
         "azure_mgmt_cdn": "0.17.3",
-        "azure_mgmt_cognitive_services": "0.18.1",
+        "azure_mgmt_cognitive_services": "0.18.2",
         "azure_mgmt_commerce": "0.17.1",
         "azure_mgmt_compute": "0.18.5",
         "azure_mgmt_consumption": "0.17.2",
         "azure_mgmt_container_instance": "0.17.4",
-        "azure_mgmt_container_registry": "0.18.1",
+        "azure_mgmt_container_registry": "0.18.2",
         "azure_mgmt_container_service": "0.18.3",
         "azure_mgmt_customer_insights": "0.17.2",
         "azure_mgmt_datalake_analytics": "0.17.2",
@@ -82,7 +82,7 @@
         "azure_mgmt_policy_insights": "0.17.3",
         "azure_mgmt_powerbi_embedded": "0.17.1",
         "azure_mgmt_privatedns": "0.17.1",
-        "azure_mgmt_recovery_services": "0.17.2",
+        "azure_mgmt_recovery_services": "0.17.3",
         "azure_mgmt_recovery_services_backup": "0.17.2",
         "azure_mgmt_recovery_services_site_recovery": "0.17.2",
         "azure_mgmt_redis": "0.17.3",
@@ -96,7 +96,7 @@
         "azure_mgmt_service_bus": "0.17.2",
         "azure_mgmt_service_fabric": "0.17.2",
         "azure_mgmt_signalr": "0.17.3",
-        "azure_mgmt_sql": "0.17.2",
+        "azure_mgmt_sql": "0.17.3",
         "azure_mgmt_sqlvirtualmachine": "0.17.2",
         "azure_mgmt_stor_simple8000_series": "0.17.2",
         "azure_mgmt_storage": "0.17.8",
