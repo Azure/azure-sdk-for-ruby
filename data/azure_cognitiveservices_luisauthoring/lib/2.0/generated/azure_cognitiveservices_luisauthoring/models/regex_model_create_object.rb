@@ -6,13 +6,13 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Model object for creating a regex entity model.
+    # Model object for creating a regular expression entity model.
     #
     class RegexModelCreateObject
 
       include MsRestAzure
 
-      # @return [String] The regex entity pattern.
+      # @return [String] The regular expression entity pattern.
       attr_accessor :regex_pattern
 
       # @return [String] The model name.

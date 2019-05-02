@@ -22,7 +22,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     attr_reader :client
 
     #
-    # Adds one pattern to the specified application.
+    # Adds a pattern to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -38,7 +38,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds one pattern to the specified application.
+    # Adds a pattern to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -53,7 +53,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds one pattern to the specified application.
+    # Adds a pattern to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -124,7 +124,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Returns an application version's patterns.
+    # Gets patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -136,13 +136,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_patterns(app_id, version_id, skip:0, take:100, custom_headers:nil)
-      response = get_patterns_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
+    def list_patterns(app_id, version_id, skip:0, take:100, custom_headers:nil)
+      response = list_patterns_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Returns an application version's patterns.
+    # Gets patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -154,12 +154,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_patterns_with_http_info(app_id, version_id, skip:0, take:100, custom_headers:nil)
-      get_patterns_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
+    def list_patterns_with_http_info(app_id, version_id, skip:0, take:100, custom_headers:nil)
+      list_patterns_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
     end
 
     #
-    # Returns an application version's patterns.
+    # Gets patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -171,7 +171,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_patterns_async(app_id, version_id, skip:0, take:100, custom_headers:nil)
+    def list_patterns_async(app_id, version_id, skip:0, take:100, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -244,7 +244,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates patterns
+    # Updates patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -261,7 +261,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates patterns
+    # Updates patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -277,7 +277,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates patterns
+    # Updates patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -381,7 +381,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a batch of patterns to the specified application.
+    # Adds a batch of patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -398,7 +398,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a batch of patterns to the specified application.
+    # Adds a batch of patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -414,7 +414,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a batch of patterns to the specified application.
+    # Adds a batch of patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -518,7 +518,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes the patterns with the specified IDs.
+    # Deletes a list of patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -534,7 +534,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes the patterns with the specified IDs.
+    # Deletes a list of patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -549,7 +549,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes the patterns with the specified IDs.
+    # Deletes a list of patterns in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -635,7 +635,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates a pattern
+    # Updates a pattern in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -652,7 +652,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates a pattern
+    # Updates a pattern in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -668,7 +668,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates a pattern
+    # Updates a pattern in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -741,7 +741,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes the pattern with the specified ID.
+    # Deletes the pattern with the specified ID from a version of the application..
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -757,7 +757,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes the pattern with the specified ID.
+    # Deletes the pattern with the specified ID from a version of the application..
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -772,7 +772,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes the pattern with the specified ID.
+    # Deletes the pattern with the specified ID from a version of the application..
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -836,7 +836,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Returns patterns to be retrieved for the specific intent.
+    # Returns patterns for the specific intent in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -849,13 +849,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_intent_patterns(app_id, version_id, intent_id, skip:0, take:100, custom_headers:nil)
-      response = get_intent_patterns_async(app_id, version_id, intent_id, skip:skip, take:take, custom_headers:custom_headers).value!
+    def list_intent_patterns(app_id, version_id, intent_id, skip:0, take:100, custom_headers:nil)
+      response = list_intent_patterns_async(app_id, version_id, intent_id, skip:skip, take:take, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Returns patterns to be retrieved for the specific intent.
+    # Returns patterns for the specific intent in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -868,12 +868,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_intent_patterns_with_http_info(app_id, version_id, intent_id, skip:0, take:100, custom_headers:nil)
-      get_intent_patterns_async(app_id, version_id, intent_id, skip:skip, take:take, custom_headers:custom_headers).value!
+    def list_intent_patterns_with_http_info(app_id, version_id, intent_id, skip:0, take:100, custom_headers:nil)
+      list_intent_patterns_async(app_id, version_id, intent_id, skip:skip, take:take, custom_headers:custom_headers).value!
     end
 
     #
-    # Returns patterns to be retrieved for the specific intent.
+    # Returns patterns for the specific intent in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -886,7 +886,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_intent_patterns_async(app_id, version_id, intent_id, skip:0, take:100, custom_headers:nil)
+    def list_intent_patterns_async(app_id, version_id, intent_id, skip:0, take:100, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?

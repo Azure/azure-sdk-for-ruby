@@ -6,20 +6,21 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # A labeled example.
+    # A labeled example utterance.
     #
     class ExampleLabelObject
 
       include MsRestAzure
 
-      # @return [String] The sample's utterance.
+      # @return [String] The example utterance.
       attr_accessor :text
 
       # @return [Array<EntityLabelObject>] The identified entities within the
-      # utterance.
+      # example utterance.
       attr_accessor :entity_labels
 
-      # @return [String] The identified intent representing the utterance.
+      # @return [String] The identified intent representing the example
+      # utterance.
       attr_accessor :intent_name
 
 

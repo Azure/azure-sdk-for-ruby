@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # A composite entity.
+    # A composite entity extractor.
     #
     class CompositeEntityModel
 

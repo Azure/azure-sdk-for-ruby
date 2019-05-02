@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # A Hierarchical Entity Extractor.
+    # A hierarchical entity extractor.
     #
     class HierarchicalEntityModel
 

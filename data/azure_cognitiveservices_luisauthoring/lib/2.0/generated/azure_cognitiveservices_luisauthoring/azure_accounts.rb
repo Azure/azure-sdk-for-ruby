@@ -22,12 +22,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     attr_reader :client
 
     #
-    # apps - Assign a LUIS azure account to an application
+    # apps - Assign a LUIS Azure account to an application
     #
-    # Assigns an azure account to the application.
+    # Assigns an Azure account to the application.
     #
     # @param app_id The application ID.
-    # @param azure_account_info_object [AzureAccountInfoObject] The azure account
+    # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -40,12 +40,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # apps - Assign a LUIS azure account to an application
+    # apps - Assign a LUIS Azure account to an application
     #
-    # Assigns an azure account to the application.
+    # Assigns an Azure account to the application.
     #
     # @param app_id The application ID.
-    # @param azure_account_info_object [AzureAccountInfoObject] The azure account
+    # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -57,12 +57,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # apps - Assign a LUIS azure account to an application
+    # apps - Assign a LUIS Azure account to an application
     #
-    # Assigns an azure account to the application.
+    # Assigns an Azure account to the application.
     #
     # @param app_id The application ID.
-    # @param azure_account_info_object [AzureAccountInfoObject] The azure account
+    # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -128,9 +128,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # apps - Get LUIS azure accounts assigned to the application
+    # apps - Get LUIS Azure accounts assigned to the application
     #
-    # Gets the LUIS azure accounts assigned to the application for the user using
+    # Gets the LUIS Azure accounts assigned to the application for the user using
     # his ARM token.
     #
     # @param app_id The application ID.
@@ -145,9 +145,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # apps - Get LUIS azure accounts assigned to the application
+    # apps - Get LUIS Azure accounts assigned to the application
     #
-    # Gets the LUIS azure accounts assigned to the application for the user using
+    # Gets the LUIS Azure accounts assigned to the application for the user using
     # his ARM token.
     #
     # @param app_id The application ID.
@@ -161,9 +161,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # apps - Get LUIS azure accounts assigned to the application
+    # apps - Get LUIS Azure accounts assigned to the application
     #
-    # Gets the LUIS azure accounts assigned to the application for the user using
+    # Gets the LUIS Azure accounts assigned to the application for the user using
     # his ARM token.
     #
     # @param app_id The application ID.
@@ -240,12 +240,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # apps - Removes an assigned LUIS azure account from an application
+    # apps - Removes an assigned LUIS Azure account from an application
     #
-    # Removes assigned azure account from the application.
+    # Removes assigned Azure account from the application.
     #
     # @param app_id The application ID.
-    # @param azure_account_info_object [AzureAccountInfoObject] The azure account
+    # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -258,12 +258,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # apps - Removes an assigned LUIS azure account from an application
+    # apps - Removes an assigned LUIS Azure account from an application
     #
-    # Removes assigned azure account from the application.
+    # Removes assigned Azure account from the application.
     #
     # @param app_id The application ID.
-    # @param azure_account_info_object [AzureAccountInfoObject] The azure account
+    # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -275,12 +275,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # apps - Removes an assigned LUIS azure account from an application
+    # apps - Removes an assigned LUIS Azure account from an application
     #
-    # Removes assigned azure account from the application.
+    # Removes assigned Azure account from the application.
     #
     # @param app_id The application ID.
-    # @param azure_account_info_object [AzureAccountInfoObject] The azure account
+    # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -346,45 +346,45 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # user - Get LUIS azure accounts
+    # user - Get LUIS Azure accounts
     #
-    # Gets the LUIS azure accounts for the user using his ARM token.
+    # Gets the LUIS Azure accounts for the user using his ARM token.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def get_user_luisaccounts(custom_headers:nil)
-      response = get_user_luisaccounts_async(custom_headers:custom_headers).value!
+    def list_user_luisaccounts(custom_headers:nil)
+      response = list_user_luisaccounts_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # user - Get LUIS azure accounts
+    # user - Get LUIS Azure accounts
     #
-    # Gets the LUIS azure accounts for the user using his ARM token.
+    # Gets the LUIS Azure accounts for the user using his ARM token.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_user_luisaccounts_with_http_info(custom_headers:nil)
-      get_user_luisaccounts_async(custom_headers:custom_headers).value!
+    def list_user_luisaccounts_with_http_info(custom_headers:nil)
+      list_user_luisaccounts_async(custom_headers:custom_headers).value!
     end
 
     #
-    # user - Get LUIS azure accounts
+    # user - Get LUIS Azure accounts
     #
-    # Gets the LUIS azure accounts for the user using his ARM token.
+    # Gets the LUIS Azure accounts for the user using his ARM token.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_user_luisaccounts_async(custom_headers:nil)
+    def list_user_luisaccounts_async(custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 

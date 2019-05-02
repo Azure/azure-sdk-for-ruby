@@ -6,16 +6,16 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Exported Model - A Closed List.
+    # Exported Model - A list entity.
     #
     class ClosedList
 
       include MsRestAzure
 
-      # @return [String] Name of the closed list feature.
+      # @return [String] Name of the list entity.
       attr_accessor :name
 
-      # @return [Array<SubClosedList>] Sublists for the feature.
+      # @return [Array<SubClosedList>] Sublists for the list entity.
       attr_accessor :sub_lists
 
       # @return [Array<String>]

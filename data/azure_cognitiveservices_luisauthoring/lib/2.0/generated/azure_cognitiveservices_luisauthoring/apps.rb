@@ -24,11 +24,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # Creates a new LUIS app.
     #
-    # @param application_create_object [ApplicationCreateObject] A model containing
-    # Name, Description (optional), Culture, Usage Scenario (optional), Domain
-    # (optional) and initial version ID (optional) of the application. Default
-    # value for the version ID is 0.1. Note: the culture cannot be changed after
-    # the app is created.
+    # @param application_create_object [ApplicationCreateObject] An application
+    # containing Name, Description (optional), Culture, Usage Scenario (optional),
+    # Domain (optional) and initial version ID (optional) of the application.
+    # Default value for the version ID is "0.1". Note: the culture cannot be
+    # changed after the app is created.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,11 +42,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # Creates a new LUIS app.
     #
-    # @param application_create_object [ApplicationCreateObject] A model containing
-    # Name, Description (optional), Culture, Usage Scenario (optional), Domain
-    # (optional) and initial version ID (optional) of the application. Default
-    # value for the version ID is 0.1. Note: the culture cannot be changed after
-    # the app is created.
+    # @param application_create_object [ApplicationCreateObject] An application
+    # containing Name, Description (optional), Culture, Usage Scenario (optional),
+    # Domain (optional) and initial version ID (optional) of the application.
+    # Default value for the version ID is "0.1". Note: the culture cannot be
+    # changed after the app is created.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -59,11 +59,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # Creates a new LUIS app.
     #
-    # @param application_create_object [ApplicationCreateObject] A model containing
-    # Name, Description (optional), Culture, Usage Scenario (optional), Domain
-    # (optional) and initial version ID (optional) of the application. Default
-    # value for the version ID is 0.1. Note: the culture cannot be changed after
-    # the app is created.
+    # @param application_create_object [ApplicationCreateObject] An application
+    # containing Name, Description (optional), Culture, Usage Scenario (optional),
+    # Domain (optional) and initial version ID (optional) of the application.
+    # Default value for the version ID is "0.1". Note: the culture cannot be
+    # changed after the app is created.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -134,7 +134,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Lists all of the user applications.
+    # Lists all of the user's applications.
     #
     # @param skip [Integer] The number of entries to skip. Default value is 0.
     # @param take [Integer] The number of entries to return. Maximum page size is
@@ -150,7 +150,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Lists all of the user applications.
+    # Lists all of the user's applications.
     #
     # @param skip [Integer] The number of entries to skip. Default value is 0.
     # @param take [Integer] The number of entries to return. Maximum page size is
@@ -165,7 +165,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Lists all of the user applications.
+    # Lists all of the user's applications.
     #
     # @param skip [Integer] The number of entries to skip. Default value is 0.
     # @param take [Integer] The number of entries to return. Maximum page size is
@@ -245,12 +245,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Imports an application to LUIS, the application's structure should be
-    # included in the request body.
+    # Imports an application to LUIS, the application's structure is included in
+    # the request body.
     #
     # @param luis_app [LuisApp] A LUIS application structure.
     # @param app_name [String] The application name to create. If not specified,
-    # the application name will be read from the imported object.
+    # the application name will be read from the imported object. If the
+    # application name already exists, an error is returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -262,12 +263,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Imports an application to LUIS, the application's structure should be
-    # included in the request body.
+    # Imports an application to LUIS, the application's structure is included in
+    # the request body.
     #
     # @param luis_app [LuisApp] A LUIS application structure.
     # @param app_name [String] The application name to create. If not specified,
-    # the application name will be read from the imported object.
+    # the application name will be read from the imported object. If the
+    # application name already exists, an error is returned.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -278,12 +280,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Imports an application to LUIS, the application's structure should be
-    # included in the request body.
+    # Imports an application to LUIS, the application's structure is included in
+    # the request body.
     #
     # @param luis_app [LuisApp] A LUIS application structure.
     # @param app_name [String] The application name to create. If not specified,
-    # the application name will be read from the imported object.
+    # the application name will be read from the imported object. If the
+    # application name already exists, an error is returned.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -631,7 +634,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the supported application cultures.
+    # Gets a list of supported cultures. Cultures are equivalent to the written
+    # language and locale. For example,"en-us" represents the U.S. variation of
+    # English.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -644,7 +649,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the supported application cultures.
+    # Gets a list of supported cultures. Cultures are equivalent to the written
+    # language and locale. For example,"en-us" represents the U.S. variation of
+    # English.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -656,7 +663,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the supported application cultures.
+    # Gets a list of supported cultures. Cultures are equivalent to the written
+    # language and locale. For example,"en-us" represents the U.S. variation of
+    # English.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -729,7 +738,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the query logs of the past month for the application.
+    # Gets the logs of the past month's endpoint queries for the application.
     #
     # @param app_id The application ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -743,7 +752,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the query logs of the past month for the application.
+    # Gets the logs of the past month's endpoint queries for the application.
     #
     # @param app_id The application ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -756,7 +765,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the query logs of the past month for the application.
+    # Gets the logs of the past month's endpoint queries for the application.
     #
     # @param app_id The application ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1216,7 +1225,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the application settings.
+    # Get the application settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1230,7 +1239,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the application settings.
+    # Get the application settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1243,7 +1252,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the application settings.
+    # Get the application settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1303,7 +1312,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the application settings.
+    # Updates the application settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param application_setting_update_object [ApplicationSettingUpdateObject] An
@@ -1319,7 +1328,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the application settings.
+    # Updates the application settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param application_setting_update_object [ApplicationSettingUpdateObject] An
@@ -1334,7 +1343,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the application settings.
+    # Updates the application settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param application_setting_update_object [ApplicationSettingUpdateObject] An
@@ -1404,7 +1413,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the application publish settings.
+    # Get the application publish settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1418,7 +1427,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the application publish settings.
+    # Get the application publish settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1431,7 +1440,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the application publish settings.
+    # Get the application publish settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1491,7 +1500,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the application publish settings.
+    # Updates the application publish settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param publish_setting_update_object [PublishSettingUpdateObject] An object
@@ -1507,7 +1516,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the application publish settings.
+    # Updates the application publish settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param publish_setting_update_object [PublishSettingUpdateObject] An object
@@ -1522,7 +1531,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the application publish settings.
+    # Updates the application publish settings including 'UseAllTrainingData'.
     #
     # @param app_id The application ID.
     # @param publish_setting_update_object [PublishSettingUpdateObject] An object
@@ -1792,7 +1801,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a prebuilt domain along with its models as a new application.
+    # Adds a prebuilt domain along with its intent and entity models as a new
+    # application.
     #
     # @param prebuilt_domain_create_object [PrebuiltDomainCreateObject] A prebuilt
     # domain create object containing the name and culture of the domain.
@@ -1807,7 +1817,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a prebuilt domain along with its models as a new application.
+    # Adds a prebuilt domain along with its intent and entity models as a new
+    # application.
     #
     # @param prebuilt_domain_create_object [PrebuiltDomainCreateObject] A prebuilt
     # domain create object containing the name and culture of the domain.
@@ -1821,7 +1832,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a prebuilt domain along with its models as a new application.
+    # Adds a prebuilt domain along with its intent and entity models as a new
+    # application.
     #
     # @param prebuilt_domain_create_object [PrebuiltDomainCreateObject] A prebuilt
     # domain create object containing the name and culture of the domain.
@@ -1895,7 +1907,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the available custom prebuilt domains for a specific culture.
+    # Gets all the available prebuilt domains for a specific culture.
     #
     # @param culture [String] Culture.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1909,7 +1921,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the available custom prebuilt domains for a specific culture.
+    # Gets all the available prebuilt domains for a specific culture.
     #
     # @param culture [String] Culture.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1922,7 +1934,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the available custom prebuilt domains for a specific culture.
+    # Gets all the available prebuilt domains for a specific culture.
     #
     # @param culture [String] Culture.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -2001,10 +2013,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     # package - Gets published LUIS application package in binary stream GZip
     # format
     #
-    # Packages published LUIS application as GZip.
+    # Packages a published LUIS application as a GZip file to be used in the LUIS
+    # container.
     #
     # @param app_id The application ID.
-    # @param slot_name The publishing slot name.
+    # @param slot_name [String] The publishing slot name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2019,10 +2032,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     # package - Gets published LUIS application package in binary stream GZip
     # format
     #
-    # Packages published LUIS application as GZip.
+    # Packages a published LUIS application as a GZip file to be used in the LUIS
+    # container.
     #
     # @param app_id The application ID.
-    # @param slot_name The publishing slot name.
+    # @param slot_name [String] The publishing slot name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2036,10 +2050,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     # package - Gets published LUIS application package in binary stream GZip
     # format
     #
-    # Packages published LUIS application as GZip.
+    # Packages a published LUIS application as a GZip file to be used in the LUIS
+    # container.
     #
     # @param app_id The application ID.
-    # @param slot_name The publishing slot name.
+    # @param slot_name [String] The publishing slot name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2107,7 +2122,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # package - Gets trained LUIS application package in binary stream GZip format
     #
-    # Packages trained LUIS application as GZip.
+    # Packages trained LUIS application as GZip file to be used in the LUIS
+    # container.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2124,7 +2140,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # package - Gets trained LUIS application package in binary stream GZip format
     #
-    # Packages trained LUIS application as GZip.
+    # Packages trained LUIS application as GZip file to be used in the LUIS
+    # container.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2140,7 +2157,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # package - Gets trained LUIS application package in binary stream GZip format
     #
-    # Packages trained LUIS application as GZip.
+    # Packages trained LUIS application as GZip file to be used in the LUIS
+    # container.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.

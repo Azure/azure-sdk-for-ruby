@@ -22,8 +22,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     attr_reader :client
 
     #
-    # Creates a new version using the current snapshot of the selected application
-    # version.
+    # Creates a new version from the selected version.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -34,14 +33,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [String] operation results.
     #
-    def clone(app_id, version_id, version_clone_object:nil, custom_headers:nil)
-      response = clone_async(app_id, version_id, version_clone_object:version_clone_object, custom_headers:custom_headers).value!
+    def clone(app_id, version_id, version_clone_object, custom_headers:nil)
+      response = clone_async(app_id, version_id, version_clone_object, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates a new version using the current snapshot of the selected application
-    # version.
+    # Creates a new version from the selected version.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -52,13 +50,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def clone_with_http_info(app_id, version_id, version_clone_object:nil, custom_headers:nil)
-      clone_async(app_id, version_id, version_clone_object:version_clone_object, custom_headers:custom_headers).value!
+    def clone_with_http_info(app_id, version_id, version_clone_object, custom_headers:nil)
+      clone_async(app_id, version_id, version_clone_object, custom_headers:custom_headers).value!
     end
 
     #
-    # Creates a new version using the current snapshot of the selected application
-    # version.
+    # Creates a new version from the selected version.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -69,10 +66,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def clone_async(app_id, version_id, version_clone_object:nil, custom_headers:nil)
+    def clone_async(app_id, version_id, version_clone_object, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
+      fail ArgumentError, 'version_clone_object is nil' if version_clone_object.nil?
 
 
       request_headers = {}
@@ -136,7 +134,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the application versions info.
+    # Gets a list of versions for this application ID.
     #
     # @param app_id The application ID.
     # @param skip [Integer] The number of entries to skip. Default value is 0.
@@ -153,7 +151,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the application versions info.
+    # Gets a list of versions for this application ID.
     #
     # @param app_id The application ID.
     # @param skip [Integer] The number of entries to skip. Default value is 0.
@@ -169,7 +167,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the application versions info.
+    # Gets a list of versions for this application ID.
     #
     # @param app_id The application ID.
     # @param skip [Integer] The number of entries to skip. Default value is 0.
@@ -252,7 +250,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the version info.
+    # Gets the version information such as date created, last modified date,
+    # endpoint URL, count of intents and entities, training and publishing status.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -267,7 +266,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the version info.
+    # Gets the version information such as date created, last modified date,
+    # endpoint URL, count of intents and entities, training and publishing status.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -281,7 +281,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the version info.
+    # Gets the version information such as date created, last modified date,
+    # endpoint URL, count of intents and entities, training and publishing status.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -742,7 +743,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deleted an unlabelled utterance.
+    # Deleted an unlabelled utterance in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -758,7 +759,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deleted an unlabelled utterance.
+    # Deleted an unlabelled utterance in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -773,7 +774,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deleted an unlabelled utterance.
+    # Deleted an unlabelled utterance in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
