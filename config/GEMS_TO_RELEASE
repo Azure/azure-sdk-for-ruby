@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_container_service",
-        "azure_mgmt_hanaonazure"
+        "azure_mgmt_hanaonazure",
+        "azure_mgmt_netapp"
     ],
     "rollup": [
         "azure_sdk"
