@@ -186,6 +186,13 @@
       "module_require": "azure_mgmt_features"
     }
   },
+  "Microsoft.Hanaonazure": {
+    "management": {
+      "path": "management/azure_mgmt_hanaonazure",
+      "namespace": "Azure::Hanaonazure::Mgmt",
+      "module_require": "azure_mgmt_hanaonazure"
+    }
+  },
   "Microsoft.Hdinsight": {
     "management": {
       "path": "management/azure_mgmt_hdinsight",

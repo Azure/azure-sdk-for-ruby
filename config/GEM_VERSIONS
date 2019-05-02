@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.25.2"
+        "azure_sdk": "0.25.3"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -44,7 +44,7 @@
         "azure_mgmt_consumption": "0.17.2",
         "azure_mgmt_container_instance": "0.17.4",
         "azure_mgmt_container_registry": "0.18.2",
-        "azure_mgmt_container_service": "0.18.3",
+        "azure_mgmt_container_service": "0.18.4",
         "azure_mgmt_customer_insights": "0.17.2",
         "azure_mgmt_datalake_analytics": "0.17.2",
         "azure_mgmt_datalake_store": "0.17.2",
@@ -56,6 +56,7 @@
         "azure_mgmt_event_grid": "0.17.5",
         "azure_mgmt_event_hub": "0.17.2",
         "azure_mgmt_features": "0.17.2",
+        "azure_mgmt_hanaonazure": "0.17.0",
         "azure_mgmt_hdinsight": "0.17.2",
         "azure_mgmt_iot_central": "0.17.3",
         "azure_mgmt_iot_hub": "0.17.2",

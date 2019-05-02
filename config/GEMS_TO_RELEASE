@@ -1,14 +1,7 @@
 {
     "management": [
-        "azure_mgmt_recovery_services",
-        "azure_mgmt_sql",
-        "azure_mgmt_container_registry",
-        "azure_mgmt_cognitive_services",
-        "azure_mgmt_api_management"
-    ],
-    "data": [
-        "azure_cognitiveservices_luisauthoring",
-        "azure_cognitiveservices_luisruntime"
+        "azure_mgmt_container_service",
+        "azure_mgmt_hanaonazure"
     ],
     "rollup": [
         "azure_sdk"
