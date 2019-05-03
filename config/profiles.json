@@ -504,6 +504,11 @@
                         "2018-07-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Postgresql": {
+                    "management": {
+                        "2017-12-01": ["*"]
+                    }
+                },
                 "Microsoft.PowerBiEmbedded": {
                     "management": {
                         "2016-01-29": ["*"]
@@ -1786,6 +1791,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_policy_insights/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_postgresql": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Postgresql": {
+                    "management": {
+                        "2017-12-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_postgresql/lib/profiles",
             "individual_gem_profile": true
         }
         ],

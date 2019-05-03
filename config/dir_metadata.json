@@ -387,6 +387,13 @@
       "module_require": "azure_mgmt_policy_insights"
     }
   },
+  "Microsoft.Postgresql": {
+    "management": {
+      "path": "management/azure_mgmt_postgresql",
+      "namespace": "Azure::Postgresql::Mgmt",
+      "module_require": "azure_mgmt_postgresql"
+    }
+  },
   "Microsoft.PowerBiEmbedded": {
     "management": {
       "path": "management/azure_mgmt_powerbi_embedded",

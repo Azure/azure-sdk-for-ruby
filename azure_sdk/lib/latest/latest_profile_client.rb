@@ -55,6 +55,7 @@ require 'latest/modules/notificationhubs_profile_module'
 require 'latest/modules/operationalinsights_profile_module'
 require 'latest/modules/policy_profile_module'
 require 'latest/modules/policyinsights_profile_module'
+require 'latest/modules/postgresql_profile_module'
 require 'latest/modules/powerbiembedded_profile_module'
 require 'latest/modules/privatedns_profile_module'
 require 'latest/modules/recoveryservices_profile_module'
@@ -111,7 +112,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :advisor, :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :advisor, :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :postgresql, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -195,6 +196,7 @@ module Azure::Profiles::Latest
       @operational_insights = OperationalInsightsAdapter.new(self, base_url, sdk_options)
       @policy = PolicyAdapter.new(self, base_url, sdk_options)
       @policy_insights = PolicyInsightsAdapter.new(self, base_url, sdk_options)
+      @postgresql = PostgresqlAdapter.new(self, base_url, sdk_options)
       @power_bi_embedded = PowerBiEmbeddedAdapter.new(self, base_url, sdk_options)
       @private_dns = PrivateDnsAdapter.new(self, base_url, sdk_options)
       @recovery_services = RecoveryServicesAdapter.new(self, base_url, sdk_options)
@@ -659,6 +661,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::PolicyInsights::Mgmt::PolicyInsightsManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class PostgresqlAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Postgresql::Mgmt::PostgresqlManagementClass.new(context, base_url, options)
       end
     end
 

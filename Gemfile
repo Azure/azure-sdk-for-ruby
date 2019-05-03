@@ -64,6 +64,7 @@ gem 'azure_mgmt_notification_hubs',         path: 'management/azure_mgmt_notific
 gem 'azure_mgmt_operational_insights',      path: 'management/azure_mgmt_operational_insights'
 gem 'azure_mgmt_policy',                    path: 'management/azure_mgmt_policy'
 gem 'azure_mgmt_policy_insights',           path: 'management/azure_mgmt_policy_insights'
+gem 'azure_mgmt_postgresql',                path: 'management/azure_mgmt_postgresql'
 gem 'azure_mgmt_powerbi_embedded',          path: 'management/azure_mgmt_powerbi_embedded'
 gem 'azure_mgmt_privatedns',                path: 'management/azure_mgmt_privatedns'
 gem 'azure_mgmt_recovery_services',         path: 'management/azure_mgmt_recovery_services'
