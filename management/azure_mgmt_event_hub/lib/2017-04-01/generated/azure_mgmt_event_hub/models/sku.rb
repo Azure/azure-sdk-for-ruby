@@ -20,7 +20,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       # values include: 'Basic', 'Standard'
       attr_accessor :tier
 
-      # @return [Integer] The Event Hubs throughput units, vaule should be 0 to
+      # @return [Integer] The Event Hubs throughput units, value should be 0 to
       # 20 throughput units.
       attr_accessor :capacity
 

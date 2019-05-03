@@ -6,47 +6,48 @@
 module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # Error response indicates EventHub service is not able to process the
-    # incoming request. The reason is provided in the error message.
+    # Description of VirtualNetworkRules - NetworkRules resource.
     #
-    class ErrorResponse
+    class NWRuleSetVirtualNetworkRules
 
       include MsRestAzure
 
-      # @return [String] Error code.
-      attr_accessor :code
+      # @return [Subnet] Subnet properties
+      attr_accessor :subnet
 
-      # @return [String] Error message indicating why the operation failed.
-      attr_accessor :message
+      # @return [Boolean] Value that indicates whether to ignore missing VNet
+      # Service Endpoint
+      attr_accessor :ignore_missing_vnet_service_endpoint
 
 
       #
-      # Mapper for ErrorResponse class as Ruby Hash.
+      # Mapper for NWRuleSetVirtualNetworkRules class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ErrorResponse',
+          serialized_name: 'NWRuleSetVirtualNetworkRules',
           type: {
             name: 'Composite',
-            class_name: 'ErrorResponse',
+            class_name: 'NWRuleSetVirtualNetworkRules',
             model_properties: {
-              code: {
+              subnet: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'code',
+                serialized_name: 'subnet',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'Subnet'
                 }
               },
-              message: {
+              ignore_missing_vnet_service_endpoint: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'message',
+                serialized_name: 'ignoreMissingVnetServiceEndpoint',
                 type: {
-                  name: 'String'
+                  name: 'Boolean'
                 }
               }
             }

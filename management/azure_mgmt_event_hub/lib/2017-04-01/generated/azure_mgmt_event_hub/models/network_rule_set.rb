@@ -6,37 +6,35 @@
 module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # Single item in List or Get Consumer group operation
+    # Description of NetworkRuleSet resource.
     #
-    class ConsumerGroup < Resource
+    class NetworkRuleSet < Resource
 
       include MsRestAzure
 
-      # @return [DateTime] Exact time the message was created.
-      attr_accessor :created_at
+      # @return [DefaultAction] Default Action for Network Rule Set. Possible
+      # values include: 'Allow', 'Deny'
+      attr_accessor :default_action
 
-      # @return [DateTime] The exact time the message was updated.
-      attr_accessor :updated_at
+      # @return [Array<NWRuleSetVirtualNetworkRules>] List VirtualNetwork Rules
+      attr_accessor :virtual_network_rules
 
-      # @return [String] User Metadata is a placeholder to store user-defined
-      # string data with maximum length 1024. e.g. it can be used to store
-      # descriptive data, such as list of teams and their contact information
-      # also user-defined configuration settings can be stored.
-      attr_accessor :user_metadata
+      # @return [Array<NWRuleSetIpRules>] List of IpRules
+      attr_accessor :ip_rules
 
 
       #
-      # Mapper for ConsumerGroup class as Ruby Hash.
+      # Mapper for NetworkRuleSet class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ConsumerGroup',
+          serialized_name: 'NetworkRuleSet',
           type: {
             name: 'Composite',
-            class_name: 'ConsumerGroup',
+            class_name: 'NetworkRuleSet',
             model_properties: {
               id: {
                 client_side_validation: true,
@@ -65,30 +63,46 @@ module Azure::EventHub::Mgmt::V2017_04_01
                   name: 'String'
                 }
               },
-              created_at: {
+              default_action: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.createdAt',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              updated_at: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.updatedAt',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              user_metadata: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.userMetadata',
+                serialized_name: 'properties.defaultAction',
                 type: {
                   name: 'String'
+                }
+              },
+              virtual_network_rules: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.virtualNetworkRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'NWRuleSetVirtualNetworkRulesElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'NWRuleSetVirtualNetworkRules'
+                      }
+                  }
+                }
+              },
+              ip_rules: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.ipRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'NWRuleSetIpRulesElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'NWRuleSetIpRules'
+                      }
+                  }
                 }
               }
             }

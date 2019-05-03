@@ -3,48 +3,48 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::EventHub::Mgmt::V2017_04_01
+module Azure::EventHub::Mgmt::V2018_01_01_preview
   module Models
     #
-    # Error response indicates EventHub service is not able to process the
-    # incoming request. The reason is provided in the error message.
+    # The response from the List namespace operation.
     #
-    class ErrorResponse
+    class NWRuleSetIpRules
 
       include MsRestAzure
 
-      # @return [String] Error code.
-      attr_accessor :code
+      # @return [String] IP Mask
+      attr_accessor :ip_mask
 
-      # @return [String] Error message indicating why the operation failed.
-      attr_accessor :message
+      # @return [NetworkRuleIPAction] The IP Filter Action. Possible values
+      # include: 'Allow'
+      attr_accessor :action
 
 
       #
-      # Mapper for ErrorResponse class as Ruby Hash.
+      # Mapper for NWRuleSetIpRules class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ErrorResponse',
+          serialized_name: 'NWRuleSetIpRules',
           type: {
             name: 'Composite',
-            class_name: 'ErrorResponse',
+            class_name: 'NWRuleSetIpRules',
             model_properties: {
-              code: {
+              ip_mask: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'code',
+                serialized_name: 'ipMask',
                 type: {
                   name: 'String'
                 }
               },
-              message: {
+              action: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'message',
+                serialized_name: 'action',
                 type: {
                   name: 'String'
                 }
