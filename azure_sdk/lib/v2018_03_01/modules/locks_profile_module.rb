@@ -7,8 +7,8 @@ require 'azure_mgmt_locks'
 module Azure::Profiles::V2018_03_01
   module Locks
     module Mgmt
-      AuthorizationOperations = Azure::Locks::Mgmt::V2016_09_01::AuthorizationOperations
       ManagementLocks = Azure::Locks::Mgmt::V2016_09_01::ManagementLocks
+      AuthorizationOperations = Azure::Locks::Mgmt::V2016_09_01::AuthorizationOperations
 
       module Models
         OperationDisplay = Azure::Locks::Mgmt::V2016_09_01::Models::OperationDisplay
@@ -21,7 +21,7 @@ module Azure::Profiles::V2018_03_01
       end
 
       class LocksManagementClass
-        attr_reader :authorization_operations, :management_locks, :configurable, :base_url, :options, :model_classes
+        attr_reader :management_locks, :authorization_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -31,8 +31,8 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @authorization_operations = @client_0.authorization_operations
           @management_locks = @client_0.management_locks
+          @authorization_operations = @client_0.authorization_operations
 
           @model_classes = ModelClasses.new
         end
