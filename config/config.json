@@ -212,43 +212,67 @@
     }
   },
   "azure_mgmt_compute": {
+    "azure_mgmt_compute_2019_04_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2019_04_01",
+      "tag": "package-2019-04-01-only",
+      "title": "ComputeManagementClient"
+    },
+    "azure_mgmt_compute_2019_03_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2019_03_01",
+      "tag": "package-2019-03-01-only",
+      "title": "ComputeManagementClient"
+    },
+    "azure_mgmt_compute_2018_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2018_10_01",
+      "tag": "package-2018-10-01-only",
+      "title": "ComputeManagementClient"
+    },
+    "azure_mgmt_compute_2018_09_30": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2018_09_30",
+      "tag": "package-2018-09-30-only",
+      "title": "ComputeManagementClient"
+    },
     "azure_mgmt_compute_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2018_06_01",
       "tag": "package-compute-only-2018-06"
     },
     "azure_mgmt_compute_2018_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2018_04_01",
       "tag": "package-compute-2018-04"
     },
     "azure_mgmt_compute_2017_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2017_12_01",
       "tag": "package-compute-only-2017-12"
     },
     "azure_mgmt_compute_2017_09_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2017_09_01",
       "tag": "package-skus-2017-09"
     },
     "azure_mgmt_compute_2017_03_30": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2017_03_30",
       "tag": "package-compute-2017-03"
     },
     "azure_mgmt_compute_2016_04_30_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2016_04_30_preview",
       "tag": "package-compute-2016-04-preview"
     },
     "azure_mgmt_compute_2016_03_30": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2016_03_30",
       "tag": "package-compute-2016-03"
     },
     "azure_mgmt_compute_2015_06_15": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2015_06_15",
       "tag": "package-compute-2015-06"
     }
@@ -1525,19 +1549,19 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/reservations/resource-manager/readme.md",
       "namespace": "Azure::Reservations::Mgmt::V2017_11_01",
       "tag": "package-2017-11",
-      "title": "ReservationsClient"
+      "title": "ReservationsManagementClient"
     },
     "azure_mgmt_reservations_2018_06_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/reservations/resource-manager/readme.md",
       "namespace": "Azure::Reservations::Mgmt::V2018_06_01_preview",
       "tag": "package-2018-06",
-      "title": "ReservationsClient"
+      "title": "ReservationsManagementClient"
     },
     "azure_mgmt_reservations_2019_04_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/reservations/resource-manager/readme.md",
       "namespace": "Azure::Reservations::Mgmt::V2019_04_01_preview",
       "tag": "package-preview-2019-04",
-      "title": "ReservationsClient"
+      "title": "ReservationsManagementClient"
     }
   },
   "azure_mgmt_resourcegraph": {

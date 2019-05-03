@@ -48,12 +48,16 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       # @return [Integer] The number of IOPS allowed for this disk; only
       # settable for UltraSSD disks. One operation can transfer between 4k and
-      # 256k bytes.
+      # 256k bytes. For a description of the range of values you can set, see
+      # [Ultra SSD Managed Disk
+      # Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
       attr_accessor :disk_iopsread_write
 
       # @return [Integer] The bandwidth allowed for this disk; only settable
       # for UltraSSD disks. MBps means millions of bytes per second - MB here
-      # uses the ISO notation, of powers of 10.
+      # uses the ISO notation, of powers of 10. For a description of the range
+      # of values you can set, see [Ultra SSD Managed Disk
+      # Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
       attr_accessor :disk_mbps_read_write
 
 

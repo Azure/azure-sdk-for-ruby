@@ -14,7 +14,7 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       # @return [Integer] The number of replicas of the Image Version to be
       # created per region. This property would take effect for a region when
-      # regionalReplicaCount is not specified. This property is updateable.
+      # regionalReplicaCount is not specified. This property is updatable.
       attr_accessor :replica_count
 
       # @return [Boolean] If set to true, Virtual Machines deployed from the
@@ -27,7 +27,7 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       # @return [DateTime] The end of life date of the gallery Image Version.
       # This property can be used for decommissioning purposes. This property
-      # is updateable.
+      # is updatable.
       attr_accessor :end_of_life_date
 
 

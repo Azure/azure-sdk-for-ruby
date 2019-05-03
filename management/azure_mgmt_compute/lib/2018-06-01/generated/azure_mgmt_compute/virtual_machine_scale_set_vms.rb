@@ -28,11 +28,14 @@ module Azure::Compute::Mgmt::V2018_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
+    # @param vm_scale_set_vmreimage_input
+    # [VirtualMachineScaleSetVMReimageParameters] Parameters for the Reimaging
+    # Virtual machine in ScaleSet.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def reimage(resource_group_name, vm_scale_set_name, instance_id, custom_headers:nil)
-      response = reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers:custom_headers).value!
+    def reimage(resource_group_name, vm_scale_set_name, instance_id, vm_scale_set_vmreimage_input:nil, custom_headers:nil)
+      response = reimage_async(resource_group_name, vm_scale_set_name, instance_id, vm_scale_set_vmreimage_input:vm_scale_set_vmreimage_input, custom_headers:custom_headers).value!
       nil
     end
 
@@ -40,15 +43,18 @@ module Azure::Compute::Mgmt::V2018_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
+    # @param vm_scale_set_vmreimage_input
+    # [VirtualMachineScaleSetVMReimageParameters] Parameters for the Reimaging
+    # Virtual machine in ScaleSet.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers:nil)
+    def reimage_async(resource_group_name, vm_scale_set_name, instance_id, vm_scale_set_vmreimage_input:nil, custom_headers:nil)
       # Send request
-      promise = begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers:custom_headers)
+      promise = begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, vm_scale_set_vmreimage_input:vm_scale_set_vmreimage_input, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -786,12 +792,15 @@ module Azure::Compute::Mgmt::V2018_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
+    # @param vm_scale_set_vmreimage_input
+    # [VirtualMachineScaleSetVMReimageParameters] Parameters for the Reimaging
+    # Virtual machine in ScaleSet.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_reimage(resource_group_name, vm_scale_set_name, instance_id, custom_headers:nil)
-      response = begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers:custom_headers).value!
+    def begin_reimage(resource_group_name, vm_scale_set_name, instance_id, vm_scale_set_vmreimage_input:nil, custom_headers:nil)
+      response = begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, vm_scale_set_vmreimage_input:vm_scale_set_vmreimage_input, custom_headers:custom_headers).value!
       nil
     end
 
@@ -802,13 +811,16 @@ module Azure::Compute::Mgmt::V2018_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
+    # @param vm_scale_set_vmreimage_input
+    # [VirtualMachineScaleSetVMReimageParameters] Parameters for the Reimaging
+    # Virtual machine in ScaleSet.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reimage_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers:nil)
-      begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers:custom_headers).value!
+    def begin_reimage_with_http_info(resource_group_name, vm_scale_set_name, instance_id, vm_scale_set_vmreimage_input:nil, custom_headers:nil)
+      begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, vm_scale_set_vmreimage_input:vm_scale_set_vmreimage_input, custom_headers:custom_headers).value!
     end
 
     #
@@ -818,12 +830,15 @@ module Azure::Compute::Mgmt::V2018_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
+    # @param vm_scale_set_vmreimage_input
+    # [VirtualMachineScaleSetVMReimageParameters] Parameters for the Reimaging
+    # Virtual machine in ScaleSet.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers:nil)
+    def begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, vm_scale_set_vmreimage_input:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -837,6 +852,12 @@ module Azure::Compute::Mgmt::V2018_06_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVMReimageParameters.mapper()
+      request_content = @client.serialize(request_mapper,  vm_scale_set_vmreimage_input)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage'
 
       request_url = @base_url || @client.base_url
@@ -845,6 +866,7 @@ module Azure::Compute::Mgmt::V2018_06_01
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

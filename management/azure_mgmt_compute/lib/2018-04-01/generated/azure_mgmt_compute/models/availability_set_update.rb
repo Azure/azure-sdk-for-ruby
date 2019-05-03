@@ -23,6 +23,11 @@ module Azure::Compute::Mgmt::V2018_04_01
       # machines in the availability set.
       attr_accessor :virtual_machines
 
+      # @return [SubResource] Specifies information about the proximity
+      # placement group that the availability set should be assigned to.
+      # <br><br>Minimum api-version: 2018-04-01.
+      attr_accessor :proximity_placement_group
+
       # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :statuses
 
@@ -90,6 +95,15 @@ module Azure::Compute::Mgmt::V2018_04_01
                         class_name: 'SubResource'
                       }
                   }
+                }
+              },
+              proximity_placement_group: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.proximityPlacementGroup',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
                 }
               },
               statuses: {

@@ -51,12 +51,17 @@ module Azure::Compute::Mgmt::V2018_06_01
       # to maximize availability. For more information about availability sets,
       # see [Manage the availability of virtual
       # machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-      # <br><br> For more information on Azure planned maintainance, see
+      # <br><br> For more information on Azure planned maintenance, see
       # [Planned maintenance for virtual machines in
       # Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
       # <br><br> Currently, a VM can only be added to availability set at
       # creation time. An existing VM cannot be added to an availability set.
       attr_accessor :availability_set
+
+      # @return [SubResource] Specifies information about the proximity
+      # placement group that the virtual machine should be assigned to.
+      # <br><br>Minimum api-version: 2018-04-01.
+      attr_accessor :proximity_placement_group
 
       # @return [String] The provisioning state, which only appears in the
       # response.
@@ -224,6 +229,15 @@ module Azure::Compute::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.availabilitySet',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
+              proximity_placement_group: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.proximityPlacementGroup',
                 type: {
                   name: 'Composite',
                   class_name: 'SubResource'

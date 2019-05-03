@@ -35,7 +35,7 @@ module Azure::Compute::Mgmt::V2018_06_01
       # Possible values include: 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
-      # @return [DiffDiskSettings] Specifies the differencing Disk Settings for
+      # @return [DiffDiskSettings] Specifies the ephemeral disk Settings for
       # the operating system disk used by the virtual machine scale set.
       attr_accessor :diff_disk_settings
 

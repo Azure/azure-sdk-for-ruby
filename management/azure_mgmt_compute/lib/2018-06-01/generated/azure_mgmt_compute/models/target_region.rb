@@ -16,7 +16,7 @@ module Azure::Compute::Mgmt::V2018_06_01
       attr_accessor :name
 
       # @return [Integer] The number of replicas of the Image Version to be
-      # created per region. This property is updateable.
+      # created per region. This property is updatable.
       attr_accessor :regional_replica_count
 
 
