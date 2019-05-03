@@ -2,7 +2,8 @@
     "management": [
         "azure_mgmt_serialconsole",
         "azure_mgmt_reservations",
-        "azure_mgmt_compute"
+        "azure_mgmt_compute",
+        "azure_mgmt_policy_insights"
     ],
     "rollup": [
         "azure_sdk"

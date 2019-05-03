@@ -22,10 +22,10 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       # alias.
       attr_accessor :path
 
-      # @return [String] Value of the expression.
+      # @return Value of the expression.
       attr_accessor :expression_value
 
-      # @return [String] Target value to be compared with the expression value.
+      # @return Target value to be compared with the expression value.
       attr_accessor :target_value
 
       # @return [String] Operator to compare the expression value and the
@@ -75,7 +75,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
                 required: false,
                 serialized_name: 'expressionValue',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               target_value: {
@@ -83,7 +83,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
                 required: false,
                 serialized_name: 'targetValue',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               operator: {
