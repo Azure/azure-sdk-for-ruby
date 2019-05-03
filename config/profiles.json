@@ -572,6 +572,11 @@
                         "2017-08-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Serialconsole": {
+                    "management": {
+                        "2018-05-01": ["*"]
+                    }
+                },
                 "Microsoft.ServiceBus": {
                     "management": {
                         "2017-04-01": ["*"]
@@ -1998,6 +2003,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_security/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_serialconsole": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Serialconsole": {
+                    "management": {
+                        "2018-05-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_serialconsole/lib/profiles",
             "individual_gem_profile": true
         }
         ],

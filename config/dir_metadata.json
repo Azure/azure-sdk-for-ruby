@@ -478,6 +478,13 @@
       "module_require": "azure_mgmt_security"
     }
   },
+  "Microsoft.Serialconsole": {
+    "management": {
+      "path": "management/azure_mgmt_serialconsole",
+      "namespace": "Azure::Serialconsole::Mgmt",
+      "module_require": "azure_mgmt_serialconsole"
+    }
+  },
   "Microsoft.ServerManagement": {
     "management": {
       "path": "management/azure_mgmt_server_management",
