@@ -652,7 +652,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     end
 
     #
-    # envokes GEO DR failover and reconfigure the alias to point to the secondary
+    # Invokes GEO DR failover and reconfigure the alias to point to the secondary
     # namespace
     #
     # @param resource_group_name [String] Name of the Resource group within the
@@ -669,7 +669,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     end
 
     #
-    # envokes GEO DR failover and reconfigure the alias to point to the secondary
+    # Invokes GEO DR failover and reconfigure the alias to point to the secondary
     # namespace
     #
     # @param resource_group_name [String] Name of the Resource group within the
@@ -686,7 +686,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     end
 
     #
-    # envokes GEO DR failover and reconfigure the alias to point to the secondary
+    # Invokes GEO DR failover and reconfigure the alias to point to the secondary
     # namespace
     #
     # @param resource_group_name [String] Name of the Resource group within the
@@ -860,7 +860,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param alias_parameter [String] The Disaster Recovery configuration name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -878,7 +878,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param alias_parameter [String] The Disaster Recovery configuration name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -895,7 +895,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param alias_parameter [String] The Disaster Recovery configuration name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -971,7 +971,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param alias_parameter [String] The Disaster Recovery configuration name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -989,7 +989,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param alias_parameter [String] The Disaster Recovery configuration name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1006,7 +1006,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param alias_parameter [String] The Disaster Recovery configuration name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

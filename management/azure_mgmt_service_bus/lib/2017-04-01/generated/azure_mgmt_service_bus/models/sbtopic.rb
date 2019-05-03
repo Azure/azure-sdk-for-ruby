@@ -28,7 +28,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       # @return [Integer] Number of subscriptions.
       attr_accessor :subscription_count
 
-      # @return [MessageCountDetails] Message count deatils
+      # @return [MessageCountDetails] Message count details
       attr_accessor :count_details
 
       # @return [Duration] ISO 8601 Default message timespan to live value.
