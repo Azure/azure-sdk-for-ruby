@@ -59,7 +59,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AnalysisServicesServer',
           type: {
@@ -67,7 +66,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
             class_name: 'AnalysisServicesServer',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -76,7 +74,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -85,7 +82,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -94,7 +90,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -102,7 +97,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
@@ -111,13 +105,11 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -127,7 +119,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               as_administrators: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.asAdministrators',
                 type: {
@@ -136,7 +127,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               backup_blob_container_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backupBlobContainerUri',
                 type: {
@@ -144,7 +134,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               gateway_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gatewayDetails',
                 type: {
@@ -153,7 +142,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               ip_v4firewall_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipV4FirewallSettings',
                 type: {
@@ -162,7 +150,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               querypool_connection_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.querypoolConnectionMode',
                 default_value: 'All',
@@ -172,7 +159,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -181,7 +167,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -190,7 +175,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               server_full_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serverFullName',

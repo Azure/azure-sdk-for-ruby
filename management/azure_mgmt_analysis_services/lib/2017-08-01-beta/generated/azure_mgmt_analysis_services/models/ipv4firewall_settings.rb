@@ -15,7 +15,7 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
       # @return [Array<IPv4FirewallRule>] An array of firewall rules.
       attr_accessor :firewall_rules
 
-      # @return [String] The indicator of enableing PBI service.
+      # @return [String] The indicator of enabling PBI service.
       attr_accessor :enable_power_biservice
 
 
@@ -25,7 +25,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IPv4FirewallSettings',
           type: {
@@ -33,13 +32,11 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
             class_name: 'IPv4FirewallSettings',
             model_properties: {
               firewall_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'firewallRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IPv4FirewallRuleElementType',
                       type: {
@@ -50,7 +47,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01_beta
                 }
               },
               enable_power_biservice: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enablePowerBIService',
                 type: {
