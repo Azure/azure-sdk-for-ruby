@@ -1,3 +1,11 @@
+## 2019.05.02 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_container_service - v0.18.4
+    - azure_mgmt_hanaonazure - v0.17.0
+    - azure_mgmt_netapp - v0.17.3
+    - azure_mgmt_storage - v0.17.9
+    - azure_sdk - v0.25.3
+
 ## 2019.05.01 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_recovery_services - v0.17.3

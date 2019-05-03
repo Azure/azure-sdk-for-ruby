@@ -297,9 +297,8 @@
                 "Microsoft.ContainerService": {
                     "management": {
                         "2017-07-01": ["*"],
-                        "2017-09-30": ["*"],
-                        "2018-09-30-preview": ["*"],
-                        "2019-02-01": ["*"]
+                        "2019-04-01": ["*"],
+                        "2019-04-30": ["*"]
                     }
                 },
                 "Microsoft.CustomerInsights": {
@@ -358,6 +357,11 @@
                 "Microsoft.Features": {
                     "management": {
                         "2015-12-01": ["*"]
+                    }
+                },
+                "Microsoft.Hanaonazure": {
+                    "management": {
+                        "2017-11-03-preview": ["*"]
                     }
                 },
                 "Microsoft.Hdinsight": {
@@ -470,7 +474,7 @@
                 },
                 "Microsoft.NetApp": {
                     "management": {
-                        "2017-08-15-preview": ["*"]
+                        "2019-05-01": ["*"]
                     }
                 },
                 "Microsoft.Network": {
@@ -608,7 +612,7 @@
                 },
                 "Microsoft.Storage": {
                     "management": {
-                        "2018-11-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 },
                 "Microsoft.StorageSync": {
@@ -1031,9 +1035,8 @@
                 "Microsoft.ContainerService" : {
                     "management": {
                         "2017-07-01": ["*"],
-                        "2017-09-30": ["*"],
-                        "2018-09-30-preview": ["*"],
-                        "2019-02-01": ["*"]
+                        "2019-04-01": ["*"],
+                        "2019-04-30": ["*"]
                     }
                 }
             },
@@ -1240,6 +1243,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_features/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_hanaonazure": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Hanaonazure": {
+                    "management": {
+                        "2017-11-03-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_hanaonazure/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -1610,7 +1627,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2017-08-15-preview": ["*"]
+                        "2019-05-01": ["*"]
                     }
                 }
             },
@@ -2115,7 +2132,7 @@
             "resourceTypes": {
                 "Microsoft.Storage" : {
                     "management": {
-                        "2018-11-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 }
             },
