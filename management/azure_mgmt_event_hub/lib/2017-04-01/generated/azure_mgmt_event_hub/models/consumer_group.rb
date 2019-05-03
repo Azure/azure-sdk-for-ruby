@@ -18,7 +18,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       # @return [DateTime] The exact time the message was updated.
       attr_accessor :updated_at
 
-      # @return [String] Usermetadata is a placeholder to store user-defined
+      # @return [String] User Metadata is a placeholder to store user-defined
       # string data with maximum length 1024. e.g. it can be used to store
       # descriptive data, such as list of teams and their contact information
       # also user-defined configuration settings can be stored.

@@ -652,7 +652,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
     end
 
     #
-    # envokes GEO DR failover and reconfigure the alias to point to the secondary
+    # Invokes GEO DR failover and reconfigure the alias to point to the secondary
     # namespace
     #
     # @param resource_group_name [String] Name of the resource group within the
@@ -669,7 +669,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
     end
 
     #
-    # envokes GEO DR failover and reconfigure the alias to point to the secondary
+    # Invokes GEO DR failover and reconfigure the alias to point to the secondary
     # namespace
     #
     # @param resource_group_name [String] Name of the resource group within the
@@ -686,7 +686,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
     end
 
     #
-    # envokes GEO DR failover and reconfigure the alias to point to the secondary
+    # Invokes GEO DR failover and reconfigure the alias to point to the secondary
     # namespace
     #
     # @param resource_group_name [String] Name of the resource group within the

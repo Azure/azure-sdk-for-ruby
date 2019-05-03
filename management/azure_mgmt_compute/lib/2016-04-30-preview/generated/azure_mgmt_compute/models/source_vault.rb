@@ -6,7 +6,7 @@
 module Azure::Compute::Mgmt::V2016_04_30_preview
   module Models
     #
-    # The vault id is an Azure Resource Manager Resoure id in the form
+    # The vault id is an Azure Resource Manager Resource id in the form
     # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
     #
     class SourceVault

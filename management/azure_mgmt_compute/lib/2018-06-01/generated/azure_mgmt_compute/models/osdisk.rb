@@ -49,7 +49,7 @@ module Azure::Compute::Mgmt::V2018_06_01
       # or disabled on the disk.
       attr_accessor :write_accelerator_enabled
 
-      # @return [DiffDiskSettings] Specifies the differencing Disk Settings for
+      # @return [DiffDiskSettings] Specifies the ephemeral Disk Settings for
       # the operating system disk used by the virtual machine.
       attr_accessor :diff_disk_settings
 

@@ -46,12 +46,17 @@ module Azure::Compute::Mgmt::V2018_06_01
       # placement group, of max size 100 virtual machines.
       attr_accessor :single_placement_group
 
-      # @return [Boolean] Whether to force stictly even Virtual Machine
+      # @return [Boolean] Whether to force strictly even Virtual Machine
       # distribution cross x-zones in case there is zone outage.
       attr_accessor :zone_balance
 
       # @return [Integer] Fault Domain count for each placement group.
       attr_accessor :platform_fault_domain_count
+
+      # @return [SubResource] Specifies information about the proximity
+      # placement group that the virtual machine scale set should be assigned
+      # to. <br><br>Minimum api-version: 2018-04-01.
+      attr_accessor :proximity_placement_group
 
       # @return [VirtualMachineScaleSetIdentity] The identity of the virtual
       # machine scale set, if configured.
@@ -209,6 +214,15 @@ module Azure::Compute::Mgmt::V2018_06_01
                 serialized_name: 'properties.platformFaultDomainCount',
                 type: {
                   name: 'Number'
+                }
+              },
+              proximity_placement_group: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.proximityPlacementGroup',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
                 }
               },
               identity: {

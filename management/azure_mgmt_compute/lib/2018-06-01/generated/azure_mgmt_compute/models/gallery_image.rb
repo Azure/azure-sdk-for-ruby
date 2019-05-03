@@ -14,7 +14,7 @@ module Azure::Compute::Mgmt::V2018_06_01
       include MsRestAzure
 
       # @return [String] The description of this gallery Image Definition
-      # resource. This property is updateable.
+      # resource. This property is updatable.
       attr_accessor :description
 
       # @return [String] The Eula agreement for the gallery Image Definition.
@@ -38,7 +38,7 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       # @return [DateTime] The end of life date of the gallery Image
       # Definition. This property can be used for decommissioning purposes.
-      # This property is updateable.
+      # This property is updatable.
       attr_accessor :end_of_life_date
 
       # @return [GalleryImageIdentifier]

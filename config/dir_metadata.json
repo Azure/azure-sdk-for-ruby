@@ -387,6 +387,13 @@
       "module_require": "azure_mgmt_policy_insights"
     }
   },
+  "Microsoft.Postgresql": {
+    "management": {
+      "path": "management/azure_mgmt_postgresql",
+      "namespace": "Azure::Postgresql::Mgmt",
+      "module_require": "azure_mgmt_postgresql"
+    }
+  },
   "Microsoft.PowerBiEmbedded": {
     "management": {
       "path": "management/azure_mgmt_powerbi_embedded",
@@ -436,6 +443,13 @@
       "module_require": "azure_mgmt_relay"
     }
   },
+  "Microsoft.Reservations": {
+    "management": {
+      "path": "management/azure_mgmt_reservations",
+      "namespace": "Azure::Reservations::Mgmt",
+      "module_require": "azure_mgmt_reservations"
+    }
+  },
   "Microsoft.ResourceGraph": {
     "management": {
       "path": "management/azure_mgmt_resourcegraph",
@@ -476,6 +490,13 @@
       "path": "management/azure_mgmt_security",
       "namespace": "Azure::Security::Mgmt",
       "module_require": "azure_mgmt_security"
+    }
+  },
+  "Microsoft.Serialconsole": {
+    "management": {
+      "path": "management/azure_mgmt_serialconsole",
+      "namespace": "Azure::Serialconsole::Mgmt",
+      "module_require": "azure_mgmt_serialconsole"
     }
   },
   "Microsoft.ServerManagement": {

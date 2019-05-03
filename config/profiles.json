@@ -272,10 +272,9 @@
                 },
                 "Microsoft.Compute": {
                     "management": {
-                        "2017-09-01": ["*"],
-                        "2017-12-01": ["*"],
-                        "2018-04-01": ["*"],
-                        "2018-06-01": ["*"]
+                        "2018-09-30": ["*"],
+                        "2019-03-01": ["*"],
+                        "2019-04-01": ["*"]
                     }
                 },
                 "Microsoft.Consumption": {
@@ -505,6 +504,11 @@
                         "2018-07-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Postgresql": {
+                    "management": {
+                        "2017-12-01": ["*"]
+                    }
+                },
                 "Microsoft.PowerBiEmbedded": {
                     "management": {
                         "2016-01-29": ["*"]
@@ -542,6 +546,11 @@
                         "2017-04-01": ["*"]
                     }
                 },
+                "Microsoft.Reservations": {
+                    "management": {
+                        "2019-04-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.ResourceGraph": {
                     "management": {
                         "2019-04-01": ["*"]
@@ -570,6 +579,11 @@
                 "Microsoft.Security": {
                     "management": {
                         "2017-08-01-preview": ["*"]
+                    }
+                },
+                "Microsoft.Serialconsole": {
+                    "management": {
+                        "2018-05-01": ["*"]
                     }
                 },
                 "Microsoft.ServiceBus": {
@@ -974,10 +988,9 @@
             "resourceTypes": {
                 "Microsoft.Compute" : {
                     "management": {
-                        "2017-09-01": ["*"],
-                        "2017-12-01": ["*"],
-                        "2018-04-01": ["*"],
-                        "2018-06-01": ["*"]
+                        "2018-09-30": ["*"],
+                        "2019-03-01": ["*"],
+                        "2019-04-01": ["*"]
                     }
                 }
             },
@@ -1781,6 +1794,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_postgresql": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Postgresql": {
+                    "management": {
+                        "2017-12-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_postgresql/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_powerbi_embedded": [
         {
             "name": "Latest",
@@ -1878,6 +1905,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_relay/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_reservations": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Reservations": {
+                    "management": {
+                        "2019-04-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_reservations/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -1998,6 +2039,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_security/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_serialconsole": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Serialconsole": {
+                    "management": {
+                        "2018-05-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_serialconsole/lib/profiles",
             "individual_gem_profile": true
         }
         ],
