@@ -22,7 +22,6 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SkuDetailsForExistingResource',
           type: {
@@ -30,7 +29,6 @@ module Azure::AnalysisServices::Mgmt::V2016_05_16
             class_name: 'SkuDetailsForExistingResource',
             model_properties: {
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

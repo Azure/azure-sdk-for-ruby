@@ -26,7 +26,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckServerNameAvailabilityParameters',
           type: {
@@ -34,7 +33,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
             class_name: 'CheckServerNameAvailabilityParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -47,7 +45,6 @@ module Azure::AnalysisServices::Mgmt::V2017_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 default_value: 'Microsoft.AnalysisServices/servers',

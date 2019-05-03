@@ -29,7 +29,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayDetails',
           type: {
@@ -37,7 +36,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
             class_name: 'GatewayDetails',
             model_properties: {
               gateway_resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'gatewayResourceId',
                 type: {
@@ -45,7 +43,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               gateway_object_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'gatewayObjectId',
@@ -54,7 +51,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               dmts_cluster_uri: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dmtsClusterUri',

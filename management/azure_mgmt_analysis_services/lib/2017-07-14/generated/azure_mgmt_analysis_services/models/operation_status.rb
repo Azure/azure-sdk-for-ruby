@@ -37,7 +37,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationStatus',
           type: {
@@ -45,7 +44,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
             class_name: 'OperationStatus',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -53,7 +51,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -61,7 +58,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -69,7 +65,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -77,7 +72,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -85,7 +79,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

@@ -23,7 +23,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayListStatusLive',
           type: {
@@ -31,7 +30,6 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
             class_name: 'GatewayListStatusLive',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
