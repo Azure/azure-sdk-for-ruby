@@ -18,7 +18,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       # @return [String] A query operator to evaluate over the provided column
       # and value(s). Supported operators are ==, =~, in, in~, >, >=, <, <=,
-      # between, and have the same behaviour as they would in a KQL query.
+      # between, and have the same behavior as they would in a KQL query.
       attr_accessor :operator
 
       # @return the value for the operator to function over. This can be a
