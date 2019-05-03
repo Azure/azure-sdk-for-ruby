@@ -17,13 +17,18 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       attr_accessor :column
 
       # @return [String] A query operator to evaluate over the provided column
-      # and value(s).
+      # and value(s). Supported operators are ==, =~, in, in~, >, >=, <, <=,
+      # between, and have the same behaviour as they would in a KQL query.
       attr_accessor :operator
 
       # @return the value for the operator to function over. This can be a
       # number (e.g., > 100), a string (timestamp >= '2017-09-01') or array of
       # values.
       attr_accessor :value
+
+      # @return [String] When filtering over custom dimensions, this key will
+      # be used as the name of the custom dimension.
+      attr_accessor :key
 
 
       #
@@ -32,7 +37,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkspacePurgeBodyFilters',
           type: {
@@ -40,7 +44,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'WorkspacePurgeBodyFilters',
             model_properties: {
               column: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'column',
                 type: {
@@ -48,7 +51,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               operator: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operator',
                 type: {
@@ -56,11 +58,17 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Object'
+                }
+              },
+              key: {
+                required: false,
+                serialized_name: 'key',
+                type: {
+                  name: 'String'
                 }
               }
             }
