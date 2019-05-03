@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_serialconsole"
+        "azure_mgmt_serialconsole",
+        "azure_mgmt_reservations"
     ],
     "rollup": [
         "azure_sdk"

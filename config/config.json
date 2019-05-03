@@ -1520,6 +1520,26 @@
       "tag": "package-2016-07"
     }
   },
+  "azure_mgmt_reservations": {
+    "azure_mgmt_reservations_2017_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/reservations/resource-manager/readme.md",
+      "namespace": "Azure::Reservations::Mgmt::V2017_11_01",
+      "tag": "package-2017-11",
+      "title": "ReservationsClient"
+    },
+    "azure_mgmt_reservations_2018_06_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/reservations/resource-manager/readme.md",
+      "namespace": "Azure::Reservations::Mgmt::V2018_06_01_preview",
+      "tag": "package-2018-06",
+      "title": "ReservationsClient"
+    },
+    "azure_mgmt_reservations_2019_04_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/reservations/resource-manager/readme.md",
+      "namespace": "Azure::Reservations::Mgmt::V2019_04_01_preview",
+      "tag": "package-preview-2019-04",
+      "title": "ReservationsClient"
+    }
+  },
   "azure_mgmt_resourcegraph": {
     "azure_mgmt_resourcegraph_2019_04_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/223f0cb75e64e0e61a67b8a2d95c15c4d537c6e9/specification/resourcegraph/resource-manager/readme.md",

@@ -542,6 +542,11 @@
                         "2017-04-01": ["*"]
                     }
                 },
+                "Microsoft.Reservations": {
+                    "management": {
+                        "2019-04-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.ResourceGraph": {
                     "management": {
                         "2019-04-01": ["*"]
@@ -1883,6 +1888,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_relay/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_reservations": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Reservations": {
+                    "management": {
+                        "2019-04-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_reservations/lib/profiles",
             "individual_gem_profile": true
         }
         ],

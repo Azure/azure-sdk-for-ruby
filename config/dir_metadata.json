@@ -436,6 +436,13 @@
       "module_require": "azure_mgmt_relay"
     }
   },
+  "Microsoft.Reservations": {
+    "management": {
+      "path": "management/azure_mgmt_reservations",
+      "namespace": "Azure::Reservations::Mgmt",
+      "module_require": "azure_mgmt_reservations"
+    }
+  },
   "Microsoft.ResourceGraph": {
     "management": {
       "path": "management/azure_mgmt_resourcegraph",

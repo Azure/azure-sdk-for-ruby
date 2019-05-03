@@ -71,6 +71,7 @@ gem 'azure_mgmt_recovery_services_backup',  path: 'management/azure_mgmt_recover
 gem 'azure_mgmt_recovery_services_site_recovery',  path: 'management/azure_mgmt_recovery_services_site_recovery'
 gem 'azure_mgmt_redis',                     path: 'management/azure_mgmt_redis'
 gem 'azure_mgmt_relay',                     path: 'management/azure_mgmt_relay'
+gem 'azure_mgmt_reservations',              path: 'management/azure_mgmt_reservations'
 gem 'azure_mgmt_resourcegraph',             path: 'management/azure_mgmt_resourcegraph'
 gem 'azure_mgmt_resources',                 path: 'management/azure_mgmt_resources'
 gem 'azure_mgmt_resources_management',      path: 'management/azure_mgmt_resources_management'
