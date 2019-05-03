@@ -18,7 +18,7 @@ module Azure::Reservations::Mgmt::V2017_11_01
       @client = client
     end
 
-    # @return [ReservationsClient] reference to the ReservationsClient
+    # @return [ReservationsManagementClient] reference to the ReservationsManagementClient
     attr_reader :client
 
     #

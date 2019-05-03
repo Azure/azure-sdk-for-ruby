@@ -23,7 +23,7 @@ module Azure::Reservations::Mgmt::V2018_06_01_preview
   autoload :ReservationOrder,                                   '2018-06-01-preview/generated/azure_mgmt_reservations/reservation_order.rb'
   autoload :Reservation,                                        '2018-06-01-preview/generated/azure_mgmt_reservations/reservation.rb'
   autoload :Operation,                                          '2018-06-01-preview/generated/azure_mgmt_reservations/operation.rb'
-  autoload :ReservationsClient,                                 '2018-06-01-preview/generated/azure_mgmt_reservations/reservations_client.rb'
+  autoload :ReservationsManagementClient,                       '2018-06-01-preview/generated/azure_mgmt_reservations/reservations_management_client.rb'
 
   module Models
     autoload :Patch,                                              '2018-06-01-preview/generated/azure_mgmt_reservations/models/patch.rb'

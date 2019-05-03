@@ -7,7 +7,7 @@ module Azure::Reservations::Mgmt::V2017_11_01
   #
   # A service client - single point of access to the REST API.
   #
-  class ReservationsClient < MsRestAzure::AzureServiceClient
+  class ReservationsManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -42,7 +42,7 @@ module Azure::Reservations::Mgmt::V2017_11_01
     attr_reader :operation
 
     #
-    # Creates initializes a new instance of the ReservationsClient class.
+    # Creates initializes a new instance of the ReservationsManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.

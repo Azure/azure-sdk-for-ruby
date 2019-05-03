@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Reservations::Mgmt::V2018_06_01_preview
+module Azure::Reservations::Mgmt::V2019_04_01_preview
   #
   # A service client - single point of access to the REST API.
   #
-  class ReservationsClient < MsRestAzure::AzureServiceClient
+  class ReservationsManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -17,7 +17,7 @@ module Azure::Reservations::Mgmt::V2018_06_01_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Supported version.
+    # @return [String] Supported version for this document is 2019-04-01
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -42,7 +42,7 @@ module Azure::Reservations::Mgmt::V2018_06_01_preview
     attr_reader :operation
 
     #
-    # Creates initializes a new instance of the ReservationsClient class.
+    # Creates initializes a new instance of the ReservationsManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -57,7 +57,7 @@ module Azure::Reservations::Mgmt::V2018_06_01_preview
       @reservation_order = ReservationOrder.new(self)
       @reservation = Reservation.new(self)
       @operation = Operation.new(self)
-      @api_version = '2018-06-01'
+      @api_version = '2019-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -321,7 +321,7 @@ module Azure::Reservations::Mgmt::V2018_06_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Reservations::Mgmt::V2018_06_01_preview::Models::AppliedReservations.mapper()
+            result_mapper = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedReservations.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

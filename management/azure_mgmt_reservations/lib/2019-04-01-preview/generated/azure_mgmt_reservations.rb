@@ -23,7 +23,7 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
   autoload :ReservationOrder,                                   '2019-04-01-preview/generated/azure_mgmt_reservations/reservation_order.rb'
   autoload :Reservation,                                        '2019-04-01-preview/generated/azure_mgmt_reservations/reservation.rb'
   autoload :Operation,                                          '2019-04-01-preview/generated/azure_mgmt_reservations/operation.rb'
-  autoload :ReservationsClient,                                 '2019-04-01-preview/generated/azure_mgmt_reservations/reservations_client.rb'
+  autoload :ReservationsManagementClient,                       '2019-04-01-preview/generated/azure_mgmt_reservations/reservations_management_client.rb'
 
   module Models
     autoload :PurchaseRequestPropertiesReservedResourceProperties, '2019-04-01-preview/generated/azure_mgmt_reservations/models/purchase_request_properties_reserved_resource_properties.rb'
