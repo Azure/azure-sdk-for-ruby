@@ -13,7 +13,7 @@ module Azure::GraphRbac::V1_6
 
       include MsRestAzure
 
-      # @return [String] whether or not the service principal account is
+      # @return [Boolean] whether or not the service principal account is
       # enabled
       attr_accessor :account_enabled
 
@@ -54,7 +54,7 @@ module Azure::GraphRbac::V1_6
                 required: false,
                 serialized_name: 'accountEnabled',
                 type: {
-                  name: 'String'
+                  name: 'Boolean'
                 }
               },
               app_role_assignment_required: {

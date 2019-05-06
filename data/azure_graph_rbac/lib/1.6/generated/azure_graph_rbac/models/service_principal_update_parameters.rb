@@ -29,7 +29,7 @@ module Azure::GraphRbac::V1_6
                 required: false,
                 serialized_name: 'accountEnabled',
                 type: {
-                  name: 'String'
+                  name: 'Boolean'
                 }
               },
               app_role_assignment_required: {
