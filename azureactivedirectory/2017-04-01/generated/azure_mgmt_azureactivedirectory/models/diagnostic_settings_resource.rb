@@ -39,7 +39,7 @@ module Microsoft.Aadiam
       # @return [Array<LogSettings>] The list of logs settings.
       attr_accessor :logs
 
-      # @return [String] The type of log analyitics destination.
+      # @return [String] The type of log analytics destination.
       attr_accessor :log_analytics_destination_type
 
 
