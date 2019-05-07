@@ -12,8 +12,9 @@ module Azure::Profiles::Latest
       Namespaces = Azure::NotificationHubs::Mgmt::V2017_04_01::Namespaces
 
       module Models
-        BaiduCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
+        NamespaceListResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
         Sku = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
+        BaiduCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
         CheckAvailabilityResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::CheckAvailabilityResult
         NamespaceCreateOrUpdateParameters = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceCreateOrUpdateParameters
         NamespaceResource = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceResource
@@ -45,7 +46,6 @@ module Azure::Profiles::Latest
         MpnsCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::MpnsCredential
         NamespacePatchParameters = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespacePatchParameters
         AdmCredential = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AdmCredential
-        NamespaceListResult = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
       end
 
       class NotificationHubsManagementClass
@@ -80,11 +80,14 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def baidu_credential
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
+          def namespace_list_result
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
           end
           def sku
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::Sku
+          end
+          def baidu_credential
+            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::BaiduCredential
           end
           def check_availability_result
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::CheckAvailabilityResult
@@ -178,9 +181,6 @@ module Azure::Profiles::Latest
           end
           def adm_credential
             Azure::NotificationHubs::Mgmt::V2017_04_01::Models::AdmCredential
-          end
-          def namespace_list_result
-            Azure::NotificationHubs::Mgmt::V2017_04_01::Models::NamespaceListResult
           end
         end
       end

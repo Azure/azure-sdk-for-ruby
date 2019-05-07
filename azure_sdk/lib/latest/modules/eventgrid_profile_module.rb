@@ -187,12 +187,12 @@ module Azure::Profiles::Latest
       end
     end
     module Mgmt
+      DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
-      Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
+      Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
       Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
-      DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
 
       module Models
         TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
@@ -221,6 +221,7 @@ module Azure::Profiles::Latest
         TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
         Domain = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
         DomainTopic = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
+        OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
         NumberInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberInAdvancedFilter
         StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageBlobDeadLetterDestination
         NumberNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
@@ -230,7 +231,6 @@ module Azure::Profiles::Latest
         NumberGreaterThanOrEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberGreaterThanOrEqualsAdvancedFilter
         BoolEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::BoolEqualsAdvancedFilter
         StringInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringInAdvancedFilter
-        OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
         StringNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringNotInAdvancedFilter
         StringBeginsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringBeginsWithAdvancedFilter
         StringEndsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringEndsWithAdvancedFilter
@@ -256,7 +256,7 @@ module Azure::Profiles::Latest
       end
 
       class EventGridManagementClass
-        attr_reader :event_subscriptions, :topics, :operations, :topic_types, :domains, :domain_topics, :configurable, :base_url, :options, :model_classes
+        attr_reader :domain_topics, :event_subscriptions, :operations, :topics, :topic_types, :domains, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -266,12 +266,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
-          @topics = @client_0.topics
           @operations = @client_0.operations
+          @topics = @client_0.topics
           @topic_types = @client_0.topic_types
           @domains = @client_0.domains
-          @domain_topics = @client_0.domain_topics
 
           @model_classes = ModelClasses.new
         end
@@ -368,6 +368,9 @@ module Azure::Profiles::Latest
           def domain_topic
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
           end
+          def operations_list_result
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
+          end
           def number_in_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberInAdvancedFilter
           end
@@ -394,9 +397,6 @@ module Azure::Profiles::Latest
           end
           def string_in_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringInAdvancedFilter
-          end
-          def operations_list_result
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
           end
           def string_not_in_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringNotInAdvancedFilter

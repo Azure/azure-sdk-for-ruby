@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     ImagesOperations = Azure::CognitiveServices::ImageSearch::V1_0::ImagesOperations
 
     module Models
+      SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
       ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
@@ -46,15 +47,15 @@ module Azure::Profiles::Latest
       AggregateOffer = Azure::CognitiveServices::ImageSearch::V1_0::Models::AggregateOffer
       ImageGallery = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageGallery
       Recipe = Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
-      NormalizedRectangle = Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
       Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
-      RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
-      ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
+      NormalizedRectangle = Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
       RecognizedEntity = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
+      ImageInsights = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
+      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
       Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
-      TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+      RecognizedEntityRegion = Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
       ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
@@ -66,7 +67,6 @@ module Azure::Profiles::Latest
       CreativeWork = Azure::CognitiveServices::ImageSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::ImageSearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-      SafeSearch = Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
     end
 
     class ImageSearchDataClass
@@ -99,6 +99,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def safe_search
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
+        end
         def error_response
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
         end
@@ -210,20 +213,20 @@ module Azure::Profiles::Latest
         def recipe
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Recipe
         end
-        def normalized_rectangle
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
-        end
         def images
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
         end
-        def recognized_entity_region
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
+        def normalized_rectangle
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::NormalizedRectangle
+        end
+        def recognized_entity
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
         end
         def image_insights
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsights
         end
-        def recognized_entity
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntity
+        def trending_images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
         end
         def rating
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
@@ -231,11 +234,11 @@ module Azure::Profiles::Latest
         def collection_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
         end
-        def trending_images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
-        end
         def currency
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+        end
+        def recognized_entity_region
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::RecognizedEntityRegion
         end
         def item_availability
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
@@ -269,9 +272,6 @@ module Azure::Profiles::Latest
         end
         def error_code
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorCode
-        end
-        def safe_search
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::SafeSearch
         end
       end
     end

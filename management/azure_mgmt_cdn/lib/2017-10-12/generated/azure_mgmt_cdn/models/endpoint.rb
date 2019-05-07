@@ -77,6 +77,12 @@ module Azure::CDN::Mgmt::V2017_10_12
       # that specifies the delivery rules to be used for an endpoint.
       attr_accessor :delivery_policy
 
+      # @return
+      # [EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink]
+      # Defines the Web Application Firewall policy for the endpoint (if
+      # applicable)
+      attr_accessor :web_application_firewall_policy_link
+
       # @return [String] The host name of the endpoint structured as
       # {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
       attr_accessor :host_name
@@ -243,6 +249,14 @@ module Azure::CDN::Mgmt::V2017_10_12
                 type: {
                   name: 'Composite',
                   class_name: 'EndpointPropertiesUpdateParametersDeliveryPolicy'
+                }
+              },
+              web_application_firewall_policy_link: {
+                required: false,
+                serialized_name: 'properties.webApplicationFirewallPolicyLink',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink'
                 }
               },
               host_name: {
