@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.25.4"
+        "azure_sdk": "0.25.5"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
