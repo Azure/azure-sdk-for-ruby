@@ -47,7 +47,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventHubCaptureFileCreatedEventData',
           type: {
@@ -55,7 +54,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'EventHubCaptureFileCreatedEventData',
             model_properties: {
               fileurl: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fileurl',
                 type: {
@@ -63,7 +61,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               file_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fileType',
                 type: {
@@ -71,7 +68,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               partition_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'partitionId',
                 type: {
@@ -79,7 +75,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               size_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sizeInBytes',
                 type: {
@@ -87,7 +82,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               event_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventCount',
                 type: {
@@ -95,7 +89,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               first_sequence_number: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'firstSequenceNumber',
                 type: {
@@ -103,7 +96,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               last_sequence_number: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastSequenceNumber',
                 type: {
@@ -111,7 +103,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               first_enqueue_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'firstEnqueueTime',
                 type: {
@@ -119,7 +110,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               last_enqueue_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastEnqueueTime',
                 type: {

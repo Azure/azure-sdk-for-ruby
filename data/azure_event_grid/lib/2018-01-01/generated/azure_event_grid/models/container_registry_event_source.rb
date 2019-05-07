@@ -29,7 +29,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerRegistryEventSource',
           type: {
@@ -37,7 +36,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'ContainerRegistryEventSource',
             model_properties: {
               addr: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'addr',
                 type: {
@@ -45,7 +43,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               instance_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'instanceID',
                 type: {
