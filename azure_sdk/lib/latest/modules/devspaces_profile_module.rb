@@ -12,6 +12,7 @@ module Azure::Profiles::Latest
 
       module Models
         Sku = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Sku
+        ErrorDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
         ControllerConnectionDetailsList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
         ControllerUpdateParameters = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerUpdateParameters
         ResourceProviderOperationDisplay = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDisplay
@@ -21,7 +22,6 @@ module Azure::Profiles::Latest
         ControllerConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetails
         ControllerList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerList
         Controller = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Controller
-        ErrorDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
         KubernetesConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::KubernetesConnectionDetails
         ProvisioningState = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ProvisioningState
         ErrorResponse = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorResponse
@@ -64,6 +64,9 @@ module Azure::Profiles::Latest
           def sku
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Sku
           end
+          def error_details
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
+          end
           def controller_connection_details_list
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
           end
@@ -90,9 +93,6 @@ module Azure::Profiles::Latest
           end
           def controller
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Controller
-          end
-          def error_details
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorDetails
           end
           def kubernetes_connection_details
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::KubernetesConnectionDetails

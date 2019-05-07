@@ -8,6 +8,7 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      Word = Azure::CognitiveServices::ComputerVision::V2_0::Models::Word
       DomainModelResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::DomainModelResults
       FaceRectangle = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceRectangle
       CelebrityResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
@@ -45,7 +46,6 @@ module Azure::Profiles::Latest
       ModelDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
       ImageCaption = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageCaption
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::ListModelsResult
-      Word = Azure::CognitiveServices::ComputerVision::V2_0::Models::Word
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def word
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Word
+        end
         def domain_model_results
           Azure::CognitiveServices::ComputerVision::V2_0::Models::DomainModelResults
         end
@@ -187,9 +190,6 @@ module Azure::Profiles::Latest
         end
         def list_models_result
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ListModelsResult
-        end
-        def word
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Word
         end
       end
     end

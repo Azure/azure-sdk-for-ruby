@@ -16,10 +16,10 @@ module Azure::Profiles::Latest
       KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResult
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResultItem
       SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResult
-      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
       ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
       MatchRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MatchRecordV2dot1
       ErrorRecord = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
+      BatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
       EntityRecordV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
       EntitiesBatchResultItemV2dot1 = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntitiesBatchResultItemV2dot1
       Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
@@ -81,9 +81,6 @@ module Azure::Profiles::Latest
         def sentiment_batch_result
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResult
         end
-        def batch_input
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
-        end
         def error_response
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
         end
@@ -92,6 +89,9 @@ module Azure::Profiles::Latest
         end
         def error_record
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorRecord
+        end
+        def batch_input
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
         end
         def entity_record_v2dot1
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::EntityRecordV2dot1
