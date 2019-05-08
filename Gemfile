@@ -103,6 +103,7 @@ gem 'azure_cognitiveservices_customvisiontraining',   path: 'data/azure_cognitiv
 gem 'azure_cognitiveservices_customvisionprediction', path: 'data/azure_cognitiveservices_customvisionprediction'
 gem 'azure_cognitiveservices_entitysearch',     path: 'data/azure_cognitiveservices_entitysearch'
 gem 'azure_cognitiveservices_face',             path: 'data/azure_cognitiveservices_face'
+gem 'azure_cognitiveservices_formrecognizer',   path: 'data/azure_cognitiveservices_formrecognizer'
 gem 'azure_cognitiveservices_imagesearch',      path: 'data/azure_cognitiveservices_imagesearch'
 gem 'azure_cognitiveservices_localsearch',      path: 'data/azure_cognitiveservices_localsearch'
 gem 'azure_cognitiveservices_luisruntime',      path: 'data/azure_cognitiveservices_luisruntime'

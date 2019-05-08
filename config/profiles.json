@@ -704,6 +704,11 @@
                         "1.0": ["*"]
                     }
                 },
+                "Microsoft.CognitiveServices.FormRecognizer": {
+                    "data": {
+                        "1.0-preview": ["*"]
+                    }
+                },
                 "Microsoft.CognitiveServices.ImageSearch": {
                     "data": {
                         "1.0": ["*"]
@@ -2485,6 +2490,20 @@
                 "output_dir": "data/azure_cognitiveservices_face/lib/profiles",
                 "individual_gem_profile": true
             }
+        ],
+        "azure_cognitiveservices_formrecognizer": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.CognitiveServices.FormRecognizer": {
+                    "data": {
+                        "1.0-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "data/azure_cognitiveservices_formrecognizer/lib/profiles",
+            "individual_gem_profile": true
+        }
         ],
         "azure_cognitiveservices_imagesearch": [
             {

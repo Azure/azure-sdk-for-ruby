@@ -665,6 +665,13 @@
       "module_require": "azure_cognitiveservices_face"
     }
   },
+  "Microsoft.CognitiveServices.FormRecognizer": {
+    "data": {
+      "path": "data/azure_cognitiveservices_formrecognizer",
+      "namespace": "Azure::CognitiveServices::FormRecognizer",
+      "module_require": "azure_cognitiveservices_formrecognizer"
+    }
+  },
   "Microsoft.CognitiveServices.ImageSearch": {
     "data": {
       "path": "data/azure_cognitiveservices_imagesearch",
