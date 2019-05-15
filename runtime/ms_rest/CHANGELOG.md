@@ -1,3 +1,6 @@
+##2019.05.15 ms_rest version 0.7.4
+* [Bug Fix] Fix timeliness version to 0.3.10 to fix the issue with parse method.
+
 ##2018.09.25 ms_rest version 0.7.3
 * [Enhancement] Added code to check for service response and retry if the code is 429 and retry header is provided. Refer [PR #1694](https://github.com/Azure/azure-sdk-for-ruby/pull/1694) for more details.
 
