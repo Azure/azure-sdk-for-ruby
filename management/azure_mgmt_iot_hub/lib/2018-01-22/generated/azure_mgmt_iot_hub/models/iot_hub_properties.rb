@@ -22,7 +22,7 @@ module Azure::IotHub::Mgmt::V2018_01_22
       # @return [String] The provisioning state.
       attr_accessor :provisioning_state
 
-      # @return [String] Thehub state state.
+      # @return [String] The hub state.
       attr_accessor :state
 
       # @return [String] The name of the host.

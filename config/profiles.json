@@ -300,6 +300,11 @@
                         "2019-04-30": ["*"]
                     }
                 },
+                "Microsoft.Cosmosdb": {
+                    "management": {
+                        "2015-04-08": ["*"]
+                    }
+                },
                 "Microsoft.CustomerInsights": {
                     "management": {
                         "2017-04-26": ["*"]
@@ -380,7 +385,7 @@
                 },
                 "Microsoft.IotHub": {
                     "management": {
-                        "2018-04-01": ["*"]
+                        "2019-03-22-preview": ["*"]
                     }
                 },
                 "Microsoft.KeyVault": {
@@ -1062,6 +1067,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_cosmosdb": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Cosmosdb": {
+                    "management": {
+                        "2015-04-08": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_cosmosdb/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_customer_insights": [
         {
             "name": "Latest",
@@ -1312,7 +1331,7 @@
             "resourceTypes": {
                 "Microsoft.IotHub" : {
                     "management": {
-                        "2018-04-01": ["*"]
+                        "2019-03-22-preview": ["*"]
                     }
                 }
             },

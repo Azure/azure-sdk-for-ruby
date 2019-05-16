@@ -2,6 +2,8 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
+require '2018-12-01-preview/generated/azure_mgmt_iot_hub'
+require '2019-03-22-preview/generated/azure_mgmt_iot_hub'
 require '2016-02-03/generated/azure_mgmt_iot_hub'
 require '2018-04-01/generated/azure_mgmt_iot_hub'
 require '2018-01-22/generated/azure_mgmt_iot_hub'

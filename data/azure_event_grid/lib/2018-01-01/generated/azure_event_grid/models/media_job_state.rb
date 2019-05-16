@@ -6,9 +6,9 @@
 module Azure::EventGrid::V2018_01_01
   module Models
     #
-    # Defines values for JobState
+    # Defines values for MediaJobState
     #
-    module JobState
+    module MediaJobState
       Canceled = "Canceled"
       Canceling = "Canceling"
       Error = "Error"

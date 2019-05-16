@@ -28,6 +28,7 @@ gem 'azure_mgmt_consumption',               path: 'management/azure_mgmt_consump
 gem 'azure_mgmt_container_instance',        path: 'management/azure_mgmt_container_instance'
 gem 'azure_mgmt_container_registry',        path: 'management/azure_mgmt_container_registry'
 gem 'azure_mgmt_container_service',         path: 'management/azure_mgmt_container_service'
+gem 'azure_mgmt_cosmosdb',                  path: 'management/azure_mgmt_cosmosdb'
 gem 'azure_mgmt_customer_insights',         path: 'management/azure_mgmt_customer_insights'
 gem 'azure_mgmt_datalake_analytics',        path: 'management/azure_mgmt_datalake_analytics'
 gem 'azure_mgmt_datalake_store',            path: 'management/azure_mgmt_datalake_store'
