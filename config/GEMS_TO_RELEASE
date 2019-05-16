@@ -1,6 +1,10 @@
 {
+    "management": [
+        "azure_mgmt_cosmosdb",
+        "azure_mgmt_iot_hub"
+    ],
     "data": [
-        "azure_cognitiveservices_formrecognizer"
+        "azure_event_grid"
     ],
     "rollup": [
         "azure_sdk"

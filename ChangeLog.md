@@ -1,3 +1,10 @@
+## 2019.05.16 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_cosmosdb - v0.17.0
+    - azure_mgmt_iot_hub - v0.17.3
+    - azure_event_grid - v0.18.0
+    - azure_sdk - v0.26.0
+    
 ## 2019.05.02 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_container_service - v0.18.4

@@ -104,6 +104,13 @@
       "module_require": "azure_mgmt_container_service"
     }
   },
+  "Microsoft.Cosmosdb": {
+    "management": {
+      "path": "management/azure_mgmt_cosmosdb",
+      "namespace": "Azure::Cosmosdb::Mgmt",
+      "module_require": "azure_mgmt_cosmosdb"
+    }
+  },
   "Microsoft.CustomerInsights": {
     "management": {
       "path": "management/azure_mgmt_customer_insights",
