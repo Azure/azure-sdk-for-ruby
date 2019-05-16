@@ -6,39 +6,28 @@
 module Azure::EventGrid::V2018_01_01
   module Models
     #
-    # Schema of the Data property of an EventGridEvent for a
-    # Microsoft.Media.JobStateChange event.
+    # Job finished event data
     #
-    class MediaJobStateChangeEventData
+    class MediaJobFinishedEventData < MediaJobStateChangeEventData
 
       include MsRestAzure
 
-      # @return [MediaJobState] The previous state of the Job. Possible values
-      # include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
-      # 'Queued', 'Scheduled'
-      attr_accessor :previous_state
-
-      # @return [MediaJobState] The new state of the Job. Possible values
-      # include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
-      # 'Queued', 'Scheduled'
-      attr_accessor :state
-
-      # @return [Hash{String => String}] Gets the Job correlation data.
-      attr_accessor :correlation_data
+      # @return [Array<MediaJobOutput>] Gets the Job outputs.
+      attr_accessor :outputs
 
 
       #
-      # Mapper for MediaJobStateChangeEventData class as Ruby Hash.
+      # Mapper for MediaJobFinishedEventData class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'MediaJobStateChangeEventData',
+          serialized_name: '#Microsoft.Media.JobFinished',
           type: {
             name: 'Composite',
-            class_name: 'MediaJobStateChangeEventData',
+            class_name: 'MediaJobFinishedEventData',
             model_properties: {
               previous_state: {
                 client_side_validation: true,
@@ -72,6 +61,25 @@ module Azure::EventGrid::V2018_01_01
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
+                      }
+                  }
+                }
+              },
+              outputs: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'outputs',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'MediaJobOutputElementType',
+                      type: {
+                        name: 'Composite',
+                        polymorphic_discriminator: '@odata.type',
+                        uber_parent: 'MediaJobOutput',
+                        class_name: 'MediaJobOutput'
                       }
                   }
                 }

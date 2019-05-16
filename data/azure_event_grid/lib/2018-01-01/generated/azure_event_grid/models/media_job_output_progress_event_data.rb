@@ -6,64 +6,55 @@
 module Azure::EventGrid::V2018_01_01
   module Models
     #
-    # Schema of the Data property of an EventGridEvent for a
-    # Microsoft.Media.JobStateChange event.
+    # Job Output Progress Event Data.
     #
-    class MediaJobStateChangeEventData
+    class MediaJobOutputProgressEventData
 
       include MsRestAzure
 
-      # @return [MediaJobState] The previous state of the Job. Possible values
-      # include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
-      # 'Queued', 'Scheduled'
-      attr_accessor :previous_state
+      # @return [String] Gets the Job output label.
+      attr_accessor :label
 
-      # @return [MediaJobState] The new state of the Job. Possible values
-      # include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
-      # 'Queued', 'Scheduled'
-      attr_accessor :state
+      # @return [Integer] Gets the Job output progress.
+      attr_accessor :progress
 
       # @return [Hash{String => String}] Gets the Job correlation data.
-      attr_accessor :correlation_data
+      attr_accessor :job_correlation_data
 
 
       #
-      # Mapper for MediaJobStateChangeEventData class as Ruby Hash.
+      # Mapper for MediaJobOutputProgressEventData class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'MediaJobStateChangeEventData',
+          serialized_name: '#Microsoft.Media.JobOutputProgress',
           type: {
             name: 'Composite',
-            class_name: 'MediaJobStateChangeEventData',
+            class_name: 'MediaJobOutputProgressEventData',
             model_properties: {
-              previous_state: {
+              label: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'previousState',
+                serialized_name: 'label',
                 type: {
-                  name: 'Enum',
-                  module: 'MediaJobState'
+                  name: 'String'
                 }
               },
-              state: {
+              progress: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'state',
+                serialized_name: 'progress',
                 type: {
-                  name: 'Enum',
-                  module: 'MediaJobState'
+                  name: 'Number'
                 }
               },
-              correlation_data: {
+              job_correlation_data: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'correlationData',
+                serialized_name: 'jobCorrelationData',
                 type: {
                   name: 'Dictionary',
                   value: {

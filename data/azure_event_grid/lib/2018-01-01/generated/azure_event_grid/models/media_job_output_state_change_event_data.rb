@@ -7,9 +7,9 @@ module Azure::EventGrid::V2018_01_01
   module Models
     #
     # Schema of the Data property of an EventGridEvent for a
-    # Microsoft.Media.JobStateChange event.
+    # Microsoft.Media.JobOutputStateChange event.
     #
-    class MediaJobStateChangeEventData
+    class MediaJobOutputStateChangeEventData
 
       include MsRestAzure
 
@@ -18,27 +18,25 @@ module Azure::EventGrid::V2018_01_01
       # 'Queued', 'Scheduled'
       attr_accessor :previous_state
 
-      # @return [MediaJobState] The new state of the Job. Possible values
-      # include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
-      # 'Queued', 'Scheduled'
-      attr_accessor :state
+      # @return [MediaJobOutput] Gets the output.
+      attr_accessor :output
 
       # @return [Hash{String => String}] Gets the Job correlation data.
-      attr_accessor :correlation_data
+      attr_accessor :job_correlation_data
 
 
       #
-      # Mapper for MediaJobStateChangeEventData class as Ruby Hash.
+      # Mapper for MediaJobOutputStateChangeEventData class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'MediaJobStateChangeEventData',
+          serialized_name: 'MediaJobOutputStateChangeEventData',
           type: {
             name: 'Composite',
-            class_name: 'MediaJobStateChangeEventData',
+            class_name: 'MediaJobOutputStateChangeEventData',
             model_properties: {
               previous_state: {
                 client_side_validation: true,
@@ -50,20 +48,21 @@ module Azure::EventGrid::V2018_01_01
                   module: 'MediaJobState'
                 }
               },
-              state: {
+              output: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'state',
+                serialized_name: 'output',
                 type: {
-                  name: 'Enum',
-                  module: 'MediaJobState'
+                  name: 'Composite',
+                  polymorphic_discriminator: '@odata.type',
+                  uber_parent: 'MediaJobOutput',
+                  class_name: 'MediaJobOutput'
                 }
               },
-              correlation_data: {
+              job_correlation_data: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'correlationData',
+                serialized_name: 'jobCorrelationData',
                 type: {
                   name: 'Dictionary',
                   value: {

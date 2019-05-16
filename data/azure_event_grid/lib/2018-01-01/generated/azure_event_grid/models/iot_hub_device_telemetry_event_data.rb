@@ -6,64 +6,54 @@
 module Azure::EventGrid::V2018_01_01
   module Models
     #
-    # Schema of the Data property of an EventGridEvent for a
-    # Microsoft.Media.JobStateChange event.
+    # Event data for Microsoft.Devices.DeviceTelemetry event.
     #
-    class MediaJobStateChangeEventData
+    class IotHubDeviceTelemetryEventData < DeviceTelemetryEventProperties
 
       include MsRestAzure
 
-      # @return [MediaJobState] The previous state of the Job. Possible values
-      # include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
-      # 'Queued', 'Scheduled'
-      attr_accessor :previous_state
-
-      # @return [MediaJobState] The new state of the Job. Possible values
-      # include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
-      # 'Queued', 'Scheduled'
-      attr_accessor :state
-
-      # @return [Hash{String => String}] Gets the Job correlation data.
-      attr_accessor :correlation_data
-
 
       #
-      # Mapper for MediaJobStateChangeEventData class as Ruby Hash.
+      # Mapper for IotHubDeviceTelemetryEventData class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'MediaJobStateChangeEventData',
+          serialized_name: 'IotHubDeviceTelemetryEventData',
           type: {
             name: 'Composite',
-            class_name: 'MediaJobStateChangeEventData',
+            class_name: 'IotHubDeviceTelemetryEventData',
             model_properties: {
-              previous_state: {
+              body: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'previousState',
+                serialized_name: 'body',
                 type: {
-                  name: 'Enum',
-                  module: 'MediaJobState'
+                  name: 'Object'
                 }
               },
-              state: {
+              properties: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'state',
+                serialized_name: 'properties',
                 type: {
-                  name: 'Enum',
-                  module: 'MediaJobState'
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
-              correlation_data: {
+              system_properties: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'correlationData',
+                serialized_name: 'systemProperties',
                 type: {
                   name: 'Dictionary',
                   value: {
