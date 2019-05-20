@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.26.0"
+        "azure_sdk": "0.26.1"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -41,7 +41,7 @@
         "azure_mgmt_cdn": "0.17.3",
         "azure_mgmt_cognitive_services": "0.18.2",
         "azure_mgmt_commerce": "0.17.1",
-        "azure_mgmt_compute": "0.18.6",
+        "azure_mgmt_compute": "0.18.7",
         "azure_mgmt_consumption": "0.17.2",
         "azure_mgmt_container_instance": "0.17.4",
         "azure_mgmt_container_registry": "0.18.2",
@@ -78,7 +78,7 @@
         "azure_mgmt_monitor": "0.17.4",
         "azure_mgmt_msi": "0.17.1",
         "azure_mgmt_netapp": "0.17.3",
-        "azure_mgmt_network": "0.18.7",
+        "azure_mgmt_network": "0.18.8",
         "azure_mgmt_notification_hubs": "0.17.2",
         "azure_mgmt_operational_insights": "0.17.2",
         "azure_mgmt_policy": "0.17.4",
@@ -93,7 +93,7 @@
         "azure_mgmt_relay": "0.17.2",
         "azure_mgmt_reservations": "0.17.0",
         "azure_mgmt_resourcegraph": "0.17.0",
-        "azure_mgmt_resources": "0.17.4",
+        "azure_mgmt_resources": "0.17.5",
         "azure_mgmt_resources_management": "0.17.1",
         "azure_mgmt_scheduler": "0.17.1",
         "azure_mgmt_search": "0.17.2",
@@ -105,7 +105,7 @@
         "azure_mgmt_sql": "0.17.3",
         "azure_mgmt_sqlvirtualmachine": "0.17.2",
         "azure_mgmt_stor_simple8000_series": "0.17.2",
-        "azure_mgmt_storage": "0.17.9",
+        "azure_mgmt_storage": "0.17.10",
         "azure_mgmt_storagesync": "0.17.0",
         "azure_mgmt_stream_analytics": "0.17.2",
         "azure_mgmt_subscriptions": "0.17.3",
