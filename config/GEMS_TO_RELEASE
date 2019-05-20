@@ -4,8 +4,5 @@
         "azure_mgmt_network",
         "azure_mgmt_storage",
         "azure_mgmt_compute"
-    ],
-    "rollup": [
-        "azure_sdk"
     ]
 }
