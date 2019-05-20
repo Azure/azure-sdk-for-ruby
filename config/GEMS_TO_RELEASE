@@ -1,12 +1,8 @@
 {
     "management": [
-        "azure_mgmt_cosmosdb",
-        "azure_mgmt_iot_hub"
-    ],
-    "data": [
-        "azure_event_grid"
-    ],
-    "rollup": [
-        "azure_sdk"
+        "azure_mgmt_resources",
+        "azure_mgmt_network",
+        "azure_mgmt_storage",
+        "azure_mgmt_compute"
     ]
 }
