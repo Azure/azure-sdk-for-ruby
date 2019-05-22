@@ -22,7 +22,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerGroupNetworkProfile',
           type: {
@@ -30,7 +29,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
             class_name: 'ContainerGroupNetworkProfile',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {

@@ -25,7 +25,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerExecResponse',
           type: {
@@ -33,7 +32,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'ContainerExecResponse',
             model_properties: {
               web_socket_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'webSocketUri',
                 type: {
@@ -41,7 +39,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {

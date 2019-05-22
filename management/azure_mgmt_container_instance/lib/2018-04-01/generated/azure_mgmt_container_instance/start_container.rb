@@ -37,8 +37,8 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
     #
     # @return [ContainerExecResponse] operation results.
     #
-    def launch_exec(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:nil)
-      response = launch_exec_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:custom_headers).value!
+    def launch_exec(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers = nil)
+      response = launch_exec_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -58,8 +58,8 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def launch_exec_with_http_info(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:nil)
-      launch_exec_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:custom_headers).value!
+    def launch_exec_with_http_info(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers = nil)
+      launch_exec_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers).value!
     end
 
     #
@@ -78,7 +78,7 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def launch_exec_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:nil)
+    def launch_exec_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -88,11 +88,12 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::ContainerInstance::Mgmt::V2018_04_01::Models::ContainerExecRequest.mapper()

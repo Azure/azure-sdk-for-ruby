@@ -25,7 +25,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LogAnalytics',
           type: {
@@ -33,7 +32,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'LogAnalytics',
             model_properties: {
               workspace_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'workspaceId',
                 type: {
@@ -41,7 +39,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               workspace_key: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'workspaceKey',
                 type: {

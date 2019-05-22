@@ -29,7 +29,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DnsConfiguration',
           type: {
@@ -37,13 +36,11 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
             class_name: 'DnsConfiguration',
             model_properties: {
               name_servers: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'nameServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -53,7 +50,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 }
               },
               search_domains: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'searchDomains',
                 type: {
@@ -61,7 +57,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 }
               },
               options: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'options',
                 type: {

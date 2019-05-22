@@ -30,7 +30,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VolumeMount',
           type: {
@@ -38,7 +37,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'VolumeMount',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -46,7 +44,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               mount_path: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'mountPath',
                 type: {
@@ -54,7 +51,6 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               read_only: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'readOnly',
                 type: {

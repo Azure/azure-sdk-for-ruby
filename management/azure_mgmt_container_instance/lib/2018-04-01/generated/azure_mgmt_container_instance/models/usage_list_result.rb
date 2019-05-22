@@ -22,7 +22,6 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UsageListResult',
           type: {
@@ -30,14 +29,12 @@ module Azure::ContainerInstance::Mgmt::V2018_04_01
             class_name: 'UsageListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UsageElementType',
                       type: {

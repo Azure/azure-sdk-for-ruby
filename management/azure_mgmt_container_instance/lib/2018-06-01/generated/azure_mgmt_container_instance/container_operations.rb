@@ -38,8 +38,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # @return [Logs] operation results.
     #
-    def list_logs(resource_group_name, container_group_name, container_name, tail:nil, custom_headers:nil)
-      response = list_logs_async(resource_group_name, container_group_name, container_name, tail:tail, custom_headers:custom_headers).value!
+    def list_logs(resource_group_name, container_group_name, container_name, tail = nil, custom_headers = nil)
+      response = list_logs_async(resource_group_name, container_group_name, container_name, tail, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -60,8 +60,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_logs_with_http_info(resource_group_name, container_group_name, container_name, tail:nil, custom_headers:nil)
-      list_logs_async(resource_group_name, container_group_name, container_name, tail:tail, custom_headers:custom_headers).value!
+    def list_logs_with_http_info(resource_group_name, container_group_name, container_name, tail = nil, custom_headers = nil)
+      list_logs_async(resource_group_name, container_group_name, container_name, tail, custom_headers).value!
     end
 
     #
@@ -81,7 +81,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_logs_async(resource_group_name, container_group_name, container_name, tail:nil, custom_headers:nil)
+    def list_logs_async(resource_group_name, container_group_name, container_name, tail = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -90,7 +90,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -151,8 +150,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # @return [ContainerExecResponse] operation results.
     #
-    def execute_command(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:nil)
-      response = execute_command_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:custom_headers).value!
+    def execute_command(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers = nil)
+      response = execute_command_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -172,8 +171,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def execute_command_with_http_info(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:nil)
-      execute_command_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:custom_headers).value!
+    def execute_command_with_http_info(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers = nil)
+      execute_command_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers).value!
     end
 
     #
@@ -192,7 +191,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def execute_command_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers:nil)
+    def execute_command_async(resource_group_name, container_group_name, container_name, container_exec_request, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -202,11 +201,12 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::ContainerInstance::Mgmt::V2018_06_01::Models::ContainerExecRequest.mapper()

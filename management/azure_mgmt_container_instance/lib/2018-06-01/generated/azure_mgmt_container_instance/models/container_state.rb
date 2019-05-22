@@ -38,7 +38,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerState',
           type: {
@@ -46,7 +45,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'ContainerState',
             model_properties: {
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -54,7 +52,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -62,7 +59,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               exit_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exitCode',
                 type: {
@@ -70,7 +66,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               finish_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'finishTime',
                 type: {
@@ -78,7 +73,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               detail_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'detailStatus',
                 type: {
