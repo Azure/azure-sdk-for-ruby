@@ -24,12 +24,12 @@ module Azure::Profiles::Latest
       NetworkInterfaceIPConfigurations = Azure::Network::Mgmt::V2018_10_01::NetworkInterfaceIPConfigurations
       NetworkInterfaceLoadBalancers = Azure::Network::Mgmt::V2018_10_01::NetworkInterfaceLoadBalancers
       NetworkSecurityGroups = Azure::Network::Mgmt::V2018_10_01::NetworkSecurityGroups
-      SecurityRules = Azure::Network::Mgmt::V2018_10_01::SecurityRules
-      DefaultSecurityRules = Azure::Network::Mgmt::V2018_10_01::DefaultSecurityRules
-      NetworkWatchers = Azure::Network::Mgmt::V2018_10_01::NetworkWatchers
-      PacketCaptures = Azure::Network::Mgmt::V2018_10_01::PacketCaptures
-      ConnectionMonitors = Azure::Network::Mgmt::V2018_10_01::ConnectionMonitors
+      AvailableDelegations = Azure::Network::Mgmt::V2018_10_01::AvailableDelegations
+      AvailableResourceGroupDelegations = Azure::Network::Mgmt::V2018_10_01::AvailableResourceGroupDelegations
       AzureFirewalls = Azure::Network::Mgmt::V2018_10_01::AzureFirewalls
+      AzureFirewallFqdnTags = Azure::Network::Mgmt::V2018_10_01::AzureFirewallFqdnTags
+      DdosProtectionPlans = Azure::Network::Mgmt::V2018_10_01::DdosProtectionPlans
+      ExpressRouteCircuitConnections = Azure::Network::Mgmt::V2018_10_01::ExpressRouteCircuitConnections
       ExpressRouteCrossConnections = Azure::Network::Mgmt::V2018_10_01::ExpressRouteCrossConnections
       ExpressRouteCrossConnectionPeerings = Azure::Network::Mgmt::V2018_10_01::ExpressRouteCrossConnectionPeerings
       ExpressRouteGateways = Azure::Network::Mgmt::V2018_10_01::ExpressRouteGateways
@@ -42,43 +42,46 @@ module Azure::Profiles::Latest
       NetworkInterfaces = Azure::Network::Mgmt::V2018_10_01::NetworkInterfaces
       NetworkInterfaceTapConfigurations = Azure::Network::Mgmt::V2018_10_01::NetworkInterfaceTapConfigurations
       NetworkProfiles = Azure::Network::Mgmt::V2018_10_01::NetworkProfiles
+      PacketCaptures = Azure::Network::Mgmt::V2018_10_01::PacketCaptures
+      ConnectionMonitors = Azure::Network::Mgmt::V2018_10_01::ConnectionMonitors
       PublicIPPrefixes = Azure::Network::Mgmt::V2018_10_01::PublicIPPrefixes
+      SecurityRules = Azure::Network::Mgmt::V2018_10_01::SecurityRules
+      DefaultSecurityRules = Azure::Network::Mgmt::V2018_10_01::DefaultSecurityRules
+      NetworkWatchers = Azure::Network::Mgmt::V2018_10_01::NetworkWatchers
+      BgpServiceCommunities = Azure::Network::Mgmt::V2018_10_01::BgpServiceCommunities
+      ServiceEndpointPolicyDefinitions = Azure::Network::Mgmt::V2018_10_01::ServiceEndpointPolicyDefinitions
       PublicIPAddresses = Azure::Network::Mgmt::V2018_10_01::PublicIPAddresses
-      ExpressRouteCircuitConnections = Azure::Network::Mgmt::V2018_10_01::ExpressRouteCircuitConnections
-      AvailableDelegations = Azure::Network::Mgmt::V2018_10_01::AvailableDelegations
-      AvailableResourceGroupDelegations = Azure::Network::Mgmt::V2018_10_01::AvailableResourceGroupDelegations
-      Routes = Azure::Network::Mgmt::V2018_10_01::Routes
-      AzureFirewallFqdnTags = Azure::Network::Mgmt::V2018_10_01::AzureFirewallFqdnTags
-      DdosProtectionPlans = Azure::Network::Mgmt::V2018_10_01::DdosProtectionPlans
-      RouteFilters = Azure::Network::Mgmt::V2018_10_01::RouteFilters
       RouteFilterRules = Azure::Network::Mgmt::V2018_10_01::RouteFilterRules
       RouteTables = Azure::Network::Mgmt::V2018_10_01::RouteTables
-      ServiceEndpointPolicyDefinitions = Azure::Network::Mgmt::V2018_10_01::ServiceEndpointPolicyDefinitions
-      BgpServiceCommunities = Azure::Network::Mgmt::V2018_10_01::BgpServiceCommunities
+      Routes = Azure::Network::Mgmt::V2018_10_01::Routes
+      VirtualNetworkGatewayConnections = Azure::Network::Mgmt::V2018_10_01::VirtualNetworkGatewayConnections
       Usages = Azure::Network::Mgmt::V2018_10_01::Usages
       VirtualNetworks = Azure::Network::Mgmt::V2018_10_01::VirtualNetworks
-      ServiceEndpointPolicies = Azure::Network::Mgmt::V2018_10_01::ServiceEndpointPolicies
+      RouteFilters = Azure::Network::Mgmt::V2018_10_01::RouteFilters
       Operations = Azure::Network::Mgmt::V2018_10_01::Operations
       VirtualNetworkGateways = Azure::Network::Mgmt::V2018_10_01::VirtualNetworkGateways
-      VirtualNetworkGatewayConnections = Azure::Network::Mgmt::V2018_10_01::VirtualNetworkGatewayConnections
+      VirtualWans = Azure::Network::Mgmt::V2018_10_01::VirtualWans
       LocalNetworkGateways = Azure::Network::Mgmt::V2018_10_01::LocalNetworkGateways
       VpnSitesConfiguration = Azure::Network::Mgmt::V2018_10_01::VpnSitesConfiguration
-      VirtualHubs = Azure::Network::Mgmt::V2018_10_01::VirtualHubs
+      ServiceEndpointPolicies = Azure::Network::Mgmt::V2018_10_01::ServiceEndpointPolicies
       Subnets = Azure::Network::Mgmt::V2018_10_01::Subnets
       VirtualNetworkPeerings = Azure::Network::Mgmt::V2018_10_01::VirtualNetworkPeerings
-      VirtualWans = Azure::Network::Mgmt::V2018_10_01::VirtualWans
+      VpnConnections = Azure::Network::Mgmt::V2018_10_01::VpnConnections
       VpnSites = Azure::Network::Mgmt::V2018_10_01::VpnSites
       P2sVpnGateways = Azure::Network::Mgmt::V2018_10_01::P2sVpnGateways
+      VirtualHubs = Azure::Network::Mgmt::V2018_10_01::VirtualHubs
       HubVirtualNetworkConnections = Azure::Network::Mgmt::V2018_10_01::HubVirtualNetworkConnections
       VpnGateways = Azure::Network::Mgmt::V2018_10_01::VpnGateways
       VirtualNetworkTaps = Azure::Network::Mgmt::V2018_10_01::VirtualNetworkTaps
       P2sVpnServerConfigurations = Azure::Network::Mgmt::V2018_10_01::P2sVpnServerConfigurations
-      VpnConnections = Azure::Network::Mgmt::V2018_10_01::VpnConnections
 
       module Models
+        Container = Azure::Network::Mgmt::V2018_10_01::Models::Container
+        PfsGroup = Azure::Network::Mgmt::V2018_10_01::Models::PfsGroup
+        BgpPeerState = Azure::Network::Mgmt::V2018_10_01::Models::BgpPeerState
         VirtualNetworkGatewayConnectionProtocol = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnectionProtocol
+        OfficeTrafficCategory = Azure::Network::Mgmt::V2018_10_01::Models::OfficeTrafficCategory
         TunnelConnectionStatus = Azure::Network::Mgmt::V2018_10_01::Models::TunnelConnectionStatus
-        HubVirtualNetworkConnectionStatus = Azure::Network::Mgmt::V2018_10_01::Models::HubVirtualNetworkConnectionStatus
         LogSpecification = Azure::Network::Mgmt::V2018_10_01::Models::LogSpecification
         HTTPHeader = Azure::Network::Mgmt::V2018_10_01::Models::HTTPHeader
         Severity = Azure::Network::Mgmt::V2018_10_01::Models::Severity
@@ -102,27 +105,27 @@ module Azure::Profiles::Latest
         ExpressRouteCrossConnectionPeeringList = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionPeeringList
         VpnClientConnectionHealth = Azure::Network::Mgmt::V2018_10_01::Models::VpnClientConnectionHealth
         VirtualHubId = Azure::Network::Mgmt::V2018_10_01::Models::VirtualHubId
+        Operation = Azure::Network::Mgmt::V2018_10_01::Models::Operation
         VirtualWanSecurityProviders = Azure::Network::Mgmt::V2018_10_01::Models::VirtualWanSecurityProviders
-        ExpressRouteCircuitPeeringId = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitPeeringId
+        OperationListResult = Azure::Network::Mgmt::V2018_10_01::Models::OperationListResult
         VirtualWanSecurityProvider = Azure::Network::Mgmt::V2018_10_01::Models::VirtualWanSecurityProvider
-        ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds
+        ExpressRouteCircuitPeeringId = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitPeeringId
         ExpressRouteGatewayPropertiesAutoScaleConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayPropertiesAutoScaleConfiguration
-        ListVpnConnectionsResult = Azure::Network::Mgmt::V2018_10_01::Models::ListVpnConnectionsResult
+        ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds
         ListVirtualHubsResult = Azure::Network::Mgmt::V2018_10_01::Models::ListVirtualHubsResult
-        ExpressRouteGatewayList = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayList
-        VirtualHubRoute = Azure::Network::Mgmt::V2018_10_01::Models::VirtualHubRoute
+        ListVpnConnectionsResult = Azure::Network::Mgmt::V2018_10_01::Models::ListVpnConnectionsResult
         ExpressRouteConnectionList = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteConnectionList
+        ExpressRouteGatewayList = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayList
         ListVpnSitesResult = Azure::Network::Mgmt::V2018_10_01::Models::ListVpnSitesResult
-        ExpressRoutePortsLocationBandwidths = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortsLocationBandwidths
         ListVirtualWANsResult = Azure::Network::Mgmt::V2018_10_01::Models::ListVirtualWANsResult
         PublicIPPrefixListResult = Azure::Network::Mgmt::V2018_10_01::Models::PublicIPPrefixListResult
+        VirtualHubRoute = Azure::Network::Mgmt::V2018_10_01::Models::VirtualHubRoute
         ExpressRoutePortsLocationListResult = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortsLocationListResult
-        ReferencedPublicIpAddress = Azure::Network::Mgmt::V2018_10_01::Models::ReferencedPublicIpAddress
         ExpressRouteLinkListResult = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteLinkListResult
-        PublicIPPrefixSku = Azure::Network::Mgmt::V2018_10_01::Models::PublicIPPrefixSku
+        ExpressRoutePortsLocationBandwidths = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortsLocationBandwidths
         ExpressRoutePortListResult = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortListResult
         InterfaceEndpointListResult = Azure::Network::Mgmt::V2018_10_01::Models::InterfaceEndpointListResult
-        VpnClientIPsecParameters = Azure::Network::Mgmt::V2018_10_01::Models::VpnClientIPsecParameters
+        PublicIPPrefixSku = Azure::Network::Mgmt::V2018_10_01::Models::PublicIPPrefixSku
         ApplicationGatewayRewriteRuleActionSet = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRewriteRuleActionSet
         ApplicationGatewayFirewallExclusion = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayFirewallExclusion
         ApplicationGatewayAutoscaleConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayAutoscaleConfiguration
@@ -132,79 +135,79 @@ module Azure::Profiles::Latest
         AzureFirewallRCAction = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallRCAction
         AzureFirewallApplicationRule = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallApplicationRule
         AzureFirewallNatRCAction = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNatRCAction
-        OperationListResult = Azure::Network::Mgmt::V2018_10_01::Models::OperationListResult
+        ReferencedPublicIpAddress = Azure::Network::Mgmt::V2018_10_01::Models::ReferencedPublicIpAddress
         AzureFirewallListResult = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallListResult
         DdosProtectionPlan = Azure::Network::Mgmt::V2018_10_01::Models::DdosProtectionPlan
         NetworkConfigurationDiagnosticResponse = Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticResponse
         AzureFirewallFqdnTagListResult = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallFqdnTagListResult
-        NetworkProfileListResult = Azure::Network::Mgmt::V2018_10_01::Models::NetworkProfileListResult
-        Operation = Azure::Network::Mgmt::V2018_10_01::Models::Operation
-        NetworkConfigurationDiagnosticResult = Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticResult
+        VpnClientIPsecParameters = Azure::Network::Mgmt::V2018_10_01::Models::VpnClientIPsecParameters
         ServiceEndpointPolicyDefinitionListResult = Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyDefinitionListResult
-        ListP2SVpnServerConfigurationsResult = Azure::Network::Mgmt::V2018_10_01::Models::ListP2SVpnServerConfigurationsResult
-        VpnSiteId = Azure::Network::Mgmt::V2018_10_01::Models::VpnSiteId
+        NetworkConfigurationDiagnosticResult = Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticResult
         P2SVpnProfileParameters = Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnProfileParameters
+        ListP2SVpnServerConfigurationsResult = Azure::Network::Mgmt::V2018_10_01::Models::ListP2SVpnServerConfigurationsResult
+        NetworkProfileListResult = Azure::Network::Mgmt::V2018_10_01::Models::NetworkProfileListResult
+        ListHubVirtualNetworkConnectionsResult = Azure::Network::Mgmt::V2018_10_01::Models::ListHubVirtualNetworkConnectionsResult
         VirtualHubRouteTable = Azure::Network::Mgmt::V2018_10_01::Models::VirtualHubRouteTable
         OperationDisplay = Azure::Network::Mgmt::V2018_10_01::Models::OperationDisplay
         DeviceProperties = Azure::Network::Mgmt::V2018_10_01::Models::DeviceProperties
-        ApplicationGatewayCustomError = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayCustomError
-        ManagedServiceIdentityUserAssignedIdentitiesValue = Azure::Network::Mgmt::V2018_10_01::Models::ManagedServiceIdentityUserAssignedIdentitiesValue
+        ApplicationGatewayRewriteRule = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRewriteRule
+        VpnSiteId = Azure::Network::Mgmt::V2018_10_01::Models::VpnSiteId
         ExpressRouteCrossConnectionRoutesTableSummary = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionRoutesTableSummary
         AzureFirewallNetworkRule = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNetworkRule
+        ManagedServiceIdentityUserAssignedIdentitiesValue = Azure::Network::Mgmt::V2018_10_01::Models::ManagedServiceIdentityUserAssignedIdentitiesValue
         FlowLogFormatParameters = Azure::Network::Mgmt::V2018_10_01::Models::FlowLogFormatParameters
-        ExpressRouteConnectionId = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteConnectionId
-        ListHubVirtualNetworkConnectionsResult = Azure::Network::Mgmt::V2018_10_01::Models::ListHubVirtualNetworkConnectionsResult
-        TrafficAnalyticsConfigurationProperties = Azure::Network::Mgmt::V2018_10_01::Models::TrafficAnalyticsConfigurationProperties
-        ExpressRouteCrossConnectionsRoutesTableSummaryListResult = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionsRoutesTableSummaryListResult
         DdosProtectionPlanListResult = Azure::Network::Mgmt::V2018_10_01::Models::DdosProtectionPlanListResult
-        ApplicationGatewayRewriteRule = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRewriteRule
-        HTTPConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::HTTPConfiguration
-        ListP2SVpnGatewaysResult = Azure::Network::Mgmt::V2018_10_01::Models::ListP2SVpnGatewaysResult
         TrafficAnalyticsProperties = Azure::Network::Mgmt::V2018_10_01::Models::TrafficAnalyticsProperties
-        ProtocolConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::ProtocolConfiguration
+        ExpressRouteConnectionId = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteConnectionId
+        ApplicationGatewayCustomError = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayCustomError
+        HTTPConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::HTTPConfiguration
+        ExpressRouteCrossConnectionsRoutesTableSummaryListResult = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionsRoutesTableSummaryListResult
+        TrafficAnalyticsConfigurationProperties = Azure::Network::Mgmt::V2018_10_01::Models::TrafficAnalyticsConfigurationProperties
         GetVpnSitesConfigurationRequest = Azure::Network::Mgmt::V2018_10_01::Models::GetVpnSitesConfigurationRequest
-        VirtualNetworkTapListResult = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkTapListResult
-        ServiceEndpointPolicyListResult = Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyListResult
-        NetworkConfigurationDiagnosticProfile = Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticProfile
+        ProtocolConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::ProtocolConfiguration
+        ListP2SVpnGatewaysResult = Azure::Network::Mgmt::V2018_10_01::Models::ListP2SVpnGatewaysResult
         AzureFirewallApplicationRuleProtocol = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallApplicationRuleProtocol
+        ServiceEndpointPolicyListResult = Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyListResult
         VpnProfileResponse = Azure::Network::Mgmt::V2018_10_01::Models::VpnProfileResponse
-        MatchedRule = Azure::Network::Mgmt::V2018_10_01::Models::MatchedRule
         AvailableDelegation = Azure::Network::Mgmt::V2018_10_01::Models::AvailableDelegation
         ListVpnGatewaysResult = Azure::Network::Mgmt::V2018_10_01::Models::ListVpnGatewaysResult
-        ApplicationGatewayHeaderConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayHeaderConfiguration
+        VirtualNetworkTapListResult = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkTapListResult
         NetworkConfigurationDiagnosticParameters = Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticParameters
         NetworkSecurityRulesEvaluationResult = Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityRulesEvaluationResult
-        NetworkSecurityGroupResult = Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityGroupResult
+        NetworkConfigurationDiagnosticProfile = Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticProfile
         AzureFirewallNatRule = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNatRule
-        NetworkSecurityGroup = Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityGroup
-        InterfaceEndpoint = Azure::Network::Mgmt::V2018_10_01::Models::InterfaceEndpoint
+        NetworkSecurityGroupResult = Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityGroupResult
+        MatchedRule = Azure::Network::Mgmt::V2018_10_01::Models::MatchedRule
         EvaluatedNetworkSecurityGroup = Azure::Network::Mgmt::V2018_10_01::Models::EvaluatedNetworkSecurityGroup
-        IPConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::IPConfiguration
+        NetworkSecurityGroup = Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityGroup
+        ApplicationGatewayHeaderConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayHeaderConfiguration
+        NetworkInterfaceTapConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceTapConfiguration
+        ServiceEndpointPolicyDefinition = Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyDefinition
         ServiceEndpointPolicy = Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicy
         IPConfigurationProfile = Azure::Network::Mgmt::V2018_10_01::Models::IPConfigurationProfile
         Subnet = Azure::Network::Mgmt::V2018_10_01::Models::Subnet
         ApplicationGatewayBackendAddressPool = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayBackendAddressPool
-        BackendAddressPool = Azure::Network::Mgmt::V2018_10_01::Models::BackendAddressPool
+        Error = Azure::Network::Mgmt::V2018_10_01::Models::Error
         InboundNatRule = Azure::Network::Mgmt::V2018_10_01::Models::InboundNatRule
         NetworkInterfaceIPConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceIPConfiguration
         NetworkInterface = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterface
         AzureFirewallNatRuleCollection = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNatRuleCollection
         SecurityRule = Azure::Network::Mgmt::V2018_10_01::Models::SecurityRule
-        RouteTable = Azure::Network::Mgmt::V2018_10_01::Models::RouteTable
-        NetworkInterfaceTapConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceTapConfiguration
-        AzureFirewallApplicationRuleCollection = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallApplicationRuleCollection
+        InterfaceEndpoint = Azure::Network::Mgmt::V2018_10_01::Models::InterfaceEndpoint
+        AzureFirewallIPConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallIPConfiguration
+        IPConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::IPConfiguration
         PublicIPAddress = Azure::Network::Mgmt::V2018_10_01::Models::PublicIPAddress
         FrontendIPConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::FrontendIPConfiguration
         VirtualNetworkTap = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkTap
         ApplicationGatewayRewriteRuleSet = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRewriteRuleSet
-        Error = Azure::Network::Mgmt::V2018_10_01::Models::Error
-        ExpressRouteLink = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteLink
+        BackendAddressPool = Azure::Network::Mgmt::V2018_10_01::Models::BackendAddressPool
+        AzureFirewallApplicationRuleCollection = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallApplicationRuleCollection
         ExpressRouteCrossConnection = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnection
         AzureFirewallNetworkRuleCollection = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNetworkRuleCollection
         ServiceAssociationLink = Azure::Network::Mgmt::V2018_10_01::Models::ServiceAssociationLink
         Route = Azure::Network::Mgmt::V2018_10_01::Models::Route
-        ExpressRouteCircuitConnection = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitConnection
-        ServiceEndpointPolicyDefinition = Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyDefinition
+        RouteTable = Azure::Network::Mgmt::V2018_10_01::Models::RouteTable
+        ExpressRouteCrossConnectionPeering = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionPeering
         OutboundRule = Azure::Network::Mgmt::V2018_10_01::Models::OutboundRule
         ExpressRouteConnection = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteConnection
         ExpressRouteGateway = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGateway
@@ -216,7 +219,7 @@ module Azure::Profiles::Latest
         OperationPropertiesFormatServiceSpecification = Azure::Network::Mgmt::V2018_10_01::Models::OperationPropertiesFormatServiceSpecification
         VirtualNetworkConnectionGatewayReference = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkConnectionGatewayReference
         LoadBalancerListResult = Azure::Network::Mgmt::V2018_10_01::Models::LoadBalancerListResult
-        ConnectionSharedKey = Azure::Network::Mgmt::V2018_10_01::Models::ConnectionSharedKey
+        ExpressRouteLink = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteLink
         InboundNatRuleListResult = Azure::Network::Mgmt::V2018_10_01::Models::InboundNatRuleListResult
         LoadBalancerBackendAddressPoolListResult = Azure::Network::Mgmt::V2018_10_01::Models::LoadBalancerBackendAddressPoolListResult
         ConnectionResetSharedKey = Azure::Network::Mgmt::V2018_10_01::Models::ConnectionResetSharedKey
@@ -386,19 +389,19 @@ module Azure::Profiles::Latest
         ExpressRouteCircuit = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuit
         InboundNatPool = Azure::Network::Mgmt::V2018_10_01::Models::InboundNatPool
         LoadBalancingRule = Azure::Network::Mgmt::V2018_10_01::Models::LoadBalancingRule
-        AzureFirewallIPConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallIPConfiguration
+        Probe = Azure::Network::Mgmt::V2018_10_01::Models::Probe
         NetworkWatcher = Azure::Network::Mgmt::V2018_10_01::Models::NetworkWatcher
         PatchRouteFilterRule = Azure::Network::Mgmt::V2018_10_01::Models::PatchRouteFilterRule
         LoadBalancer = Azure::Network::Mgmt::V2018_10_01::Models::LoadBalancer
-        Probe = Azure::Network::Mgmt::V2018_10_01::Models::Probe
+        BgpServiceCommunity = Azure::Network::Mgmt::V2018_10_01::Models::BgpServiceCommunity
         VirtualNetworkPeering = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkPeering
-        PatchRouteFilter = Azure::Network::Mgmt::V2018_10_01::Models::PatchRouteFilter
-        ExpressRouteCrossConnectionPeering = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionPeering
+        ExpressRouteCircuitConnection = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitConnection
+        VpnClientRevokedCertificate = Azure::Network::Mgmt::V2018_10_01::Models::VpnClientRevokedCertificate
         VpnClientRootCertificate = Azure::Network::Mgmt::V2018_10_01::Models::VpnClientRootCertificate
         VirtualNetwork = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetwork
         NetworkProfile = Azure::Network::Mgmt::V2018_10_01::Models::NetworkProfile
         ExpressRoutePortsLocation = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortsLocation
-        VpnClientRevokedCertificate = Azure::Network::Mgmt::V2018_10_01::Models::VpnClientRevokedCertificate
+        VirtualNetworkGatewayConnection = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnection
         ExpressRoutePort = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePort
         LocalNetworkGateway = Azure::Network::Mgmt::V2018_10_01::Models::LocalNetworkGateway
         ContainerNetworkInterfaceConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::ContainerNetworkInterfaceConfiguration
@@ -406,15 +409,15 @@ module Azure::Profiles::Latest
         PublicIPPrefix = Azure::Network::Mgmt::V2018_10_01::Models::PublicIPPrefix
         P2SVpnServerConfigVpnClientRootCertificate = Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfigVpnClientRootCertificate
         VirtualNetworkGatewayIPConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayIPConfiguration
-        VirtualNetworkGatewayConnectionListEntity = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnectionListEntity
-        P2SVpnServerConfigRadiusClientRootCertificate = Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfigRadiusClientRootCertificate
-        BgpServiceCommunity = Azure::Network::Mgmt::V2018_10_01::Models::BgpServiceCommunity
+        ConnectionSharedKey = Azure::Network::Mgmt::V2018_10_01::Models::ConnectionSharedKey
+        PatchRouteFilter = Azure::Network::Mgmt::V2018_10_01::Models::PatchRouteFilter
+        VirtualNetworkGateway = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGateway
         VirtualWAN = Azure::Network::Mgmt::V2018_10_01::Models::VirtualWAN
-        VirtualNetworkGatewayConnection = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnection
-        HubVirtualNetworkConnection = Azure::Network::Mgmt::V2018_10_01::Models::HubVirtualNetworkConnection
+        VpnSite = Azure::Network::Mgmt::V2018_10_01::Models::VpnSite
+        VirtualNetworkGatewayConnectionListEntity = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnectionListEntity
         VirtualHub = Azure::Network::Mgmt::V2018_10_01::Models::VirtualHub
         VpnConnection = Azure::Network::Mgmt::V2018_10_01::Models::VpnConnection
-        VirtualNetworkGateway = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGateway
+        VpnGateway = Azure::Network::Mgmt::V2018_10_01::Models::VpnGateway
         P2SVpnGateway = Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnGateway
         ApplicationGatewayTier = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayTier
         SecurityRuleProtocol = Azure::Network::Mgmt::V2018_10_01::Models::SecurityRuleProtocol
@@ -428,25 +431,25 @@ module Azure::Profiles::Latest
         ApplicationGatewayProtocol = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayProtocol
         P2SVpnServerConfigVpnClientRevokedCertificate = Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfigVpnClientRevokedCertificate
         P2SVpnServerConfigRadiusServerRootCertificate = Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfigRadiusServerRootCertificate
-        ApplicationGatewaySkuName = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySkuName
+        P2SVpnServerConfigRadiusClientRootCertificate = Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfigRadiusClientRootCertificate
         P2SVpnServerConfiguration = Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfiguration
         ApplicationGatewaySslProtocol = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySslProtocol
-        VpnSite = Azure::Network::Mgmt::V2018_10_01::Models::VpnSite
-        ApplicationGatewaySslPolicyName = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySslPolicyName
+        ResourceIdentityType = Azure::Network::Mgmt::V2018_10_01::Models::ResourceIdentityType
+        HubVirtualNetworkConnection = Azure::Network::Mgmt::V2018_10_01::Models::HubVirtualNetworkConnection
         ApplicationGatewaySslCipherSuite = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySslCipherSuite
         ApplicationGatewayCookieBasedAffinity = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayCookieBasedAffinity
-        VpnGateway = Azure::Network::Mgmt::V2018_10_01::Models::VpnGateway
-        ApplicationGatewayOperationalState = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayOperationalState
+        ApplicationGatewayBackendHealthServerHealth = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayBackendHealthServerHealth
+        ApplicationGatewaySkuName = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySkuName
         ApplicationGatewayCustomErrorStatusCode = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayCustomErrorStatusCode
         IPVersion = Azure::Network::Mgmt::V2018_10_01::Models::IPVersion
         AzureFirewallApplicationRuleProtocolType = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallApplicationRuleProtocolType
-        ProvisioningState = Azure::Network::Mgmt::V2018_10_01::Models::ProvisioningState
-        ResourceIdentityType = Azure::Network::Mgmt::V2018_10_01::Models::ResourceIdentityType
+        ApplicationGatewaySslPolicyName = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySslPolicyName
+        AzureFirewallNetworkRuleProtocol = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNetworkRuleProtocol
         ApplicationGatewayRequestRoutingRuleType = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRequestRoutingRuleType
         ApplicationGatewayRedirectType = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRedirectType
-        ApplicationGatewayBackendHealthServerHealth = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayBackendHealthServerHealth
+        ApplicationGatewayOperationalState = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayOperationalState
         ApplicationGatewayFirewallMode = Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayFirewallMode
-        AuthorizationUseStatus = Azure::Network::Mgmt::V2018_10_01::Models::AuthorizationUseStatus
+        ProvisioningState = Azure::Network::Mgmt::V2018_10_01::Models::ProvisioningState
         ExpressRouteCircuitPeeringAdvertisedPublicPrefixState = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
         Access = Azure::Network::Mgmt::V2018_10_01::Models::Access
         NetworkOperationStatus = Azure::Network::Mgmt::V2018_10_01::Models::NetworkOperationStatus
@@ -455,15 +458,15 @@ module Azure::Profiles::Latest
         ExpressRouteCircuitSkuFamily = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitSkuFamily
         ServiceProviderProvisioningState = Azure::Network::Mgmt::V2018_10_01::Models::ServiceProviderProvisioningState
         LoadBalancerSkuName = Azure::Network::Mgmt::V2018_10_01::Models::LoadBalancerSkuName
-        LoadDistribution = Azure::Network::Mgmt::V2018_10_01::Models::LoadDistribution
+        AuthorizationUseStatus = Azure::Network::Mgmt::V2018_10_01::Models::AuthorizationUseStatus
         ProbeProtocol = Azure::Network::Mgmt::V2018_10_01::Models::ProbeProtocol
         PcProtocol = Azure::Network::Mgmt::V2018_10_01::Models::PcProtocol
         EffectiveSecurityRuleProtocol = Azure::Network::Mgmt::V2018_10_01::Models::EffectiveSecurityRuleProtocol
         EffectiveRouteSource = Azure::Network::Mgmt::V2018_10_01::Models::EffectiveRouteSource
         AzureFirewallRCActionType = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallRCActionType
-        Protocol = Azure::Network::Mgmt::V2018_10_01::Models::Protocol
+        IssueType = Azure::Network::Mgmt::V2018_10_01::Models::IssueType
         AzureFirewallNatRCActionType = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNatRCActionType
-        AzureFirewallNetworkRuleProtocol = Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNetworkRuleProtocol
+        Direction = Azure::Network::Mgmt::V2018_10_01::Models::Direction
         ExpressRoutePeeringType = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePeeringType
         ExpressRoutePeeringState = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePeeringState
         CircuitConnectionStatus = Azure::Network::Mgmt::V2018_10_01::Models::CircuitConnectionStatus
@@ -472,13 +475,13 @@ module Azure::Profiles::Latest
         ExpressRoutePortsEncapsulation = Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortsEncapsulation
         IpFlowProtocol = Azure::Network::Mgmt::V2018_10_01::Models::IpFlowProtocol
         AssociationType = Azure::Network::Mgmt::V2018_10_01::Models::AssociationType
-        Direction = Azure::Network::Mgmt::V2018_10_01::Models::Direction
+        HTTPMethod = Azure::Network::Mgmt::V2018_10_01::Models::HTTPMethod
         NextHopType = Azure::Network::Mgmt::V2018_10_01::Models::NextHopType
-        VerbosityLevel = Azure::Network::Mgmt::V2018_10_01::Models::VerbosityLevel
+        LoadDistribution = Azure::Network::Mgmt::V2018_10_01::Models::LoadDistribution
         PcStatus = Azure::Network::Mgmt::V2018_10_01::Models::PcStatus
         PcError = Azure::Network::Mgmt::V2018_10_01::Models::PcError
         Origin = Azure::Network::Mgmt::V2018_10_01::Models::Origin
-        IssueType = Azure::Network::Mgmt::V2018_10_01::Models::IssueType
+        VpnClientProtocol = Azure::Network::Mgmt::V2018_10_01::Models::VpnClientProtocol
         EffectiveRouteState = Azure::Network::Mgmt::V2018_10_01::Models::EffectiveRouteState
         ConnectionState = Azure::Network::Mgmt::V2018_10_01::Models::ConnectionState
         EvaluationState = Azure::Network::Mgmt::V2018_10_01::Models::EvaluationState
@@ -487,32 +490,29 @@ module Azure::Profiles::Latest
         VpnType = Azure::Network::Mgmt::V2018_10_01::Models::VpnType
         VirtualNetworkGatewaySkuName = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewaySkuName
         VirtualNetworkGatewaySkuTier = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewaySkuTier
-        VpnClientProtocol = Azure::Network::Mgmt::V2018_10_01::Models::VpnClientProtocol
+        IkeIntegrity = Azure::Network::Mgmt::V2018_10_01::Models::IkeIntegrity
         DhGroup = Azure::Network::Mgmt::V2018_10_01::Models::DhGroup
         ConnectionStatus = Azure::Network::Mgmt::V2018_10_01::Models::ConnectionStatus
-        AuthenticationMethod = Azure::Network::Mgmt::V2018_10_01::Models::AuthenticationMethod
+        Protocol = Azure::Network::Mgmt::V2018_10_01::Models::Protocol
         VirtualNetworkGatewayConnectionStatus = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnectionStatus
         VirtualNetworkGatewayConnectionType = Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnectionType
         IpsecEncryption = Azure::Network::Mgmt::V2018_10_01::Models::IpsecEncryption
         FlowLogFormatType = Azure::Network::Mgmt::V2018_10_01::Models::FlowLogFormatType
-        HTTPMethod = Azure::Network::Mgmt::V2018_10_01::Models::HTTPMethod
+        IkeEncryption = Azure::Network::Mgmt::V2018_10_01::Models::IkeEncryption
         ConnectionMonitorSourceStatus = Azure::Network::Mgmt::V2018_10_01::Models::ConnectionMonitorSourceStatus
+        VerbosityLevel = Azure::Network::Mgmt::V2018_10_01::Models::VerbosityLevel
         PublicIPPrefixSkuName = Azure::Network::Mgmt::V2018_10_01::Models::PublicIPPrefixSkuName
         ProcessorArchitecture = Azure::Network::Mgmt::V2018_10_01::Models::ProcessorArchitecture
-        OfficeTrafficCategory = Azure::Network::Mgmt::V2018_10_01::Models::OfficeTrafficCategory
+        AuthenticationMethod = Azure::Network::Mgmt::V2018_10_01::Models::AuthenticationMethod
         VpnGatewayTunnelingProtocol = Azure::Network::Mgmt::V2018_10_01::Models::VpnGatewayTunnelingProtocol
         VpnConnectionStatus = Azure::Network::Mgmt::V2018_10_01::Models::VpnConnectionStatus
         VirtualWanSecurityProviderType = Azure::Network::Mgmt::V2018_10_01::Models::VirtualWanSecurityProviderType
         IpsecIntegrity = Azure::Network::Mgmt::V2018_10_01::Models::IpsecIntegrity
-        IkeEncryption = Azure::Network::Mgmt::V2018_10_01::Models::IkeEncryption
-        IkeIntegrity = Azure::Network::Mgmt::V2018_10_01::Models::IkeIntegrity
-        Container = Azure::Network::Mgmt::V2018_10_01::Models::Container
-        PfsGroup = Azure::Network::Mgmt::V2018_10_01::Models::PfsGroup
-        BgpPeerState = Azure::Network::Mgmt::V2018_10_01::Models::BgpPeerState
+        HubVirtualNetworkConnectionStatus = Azure::Network::Mgmt::V2018_10_01::Models::HubVirtualNetworkConnectionStatus
       end
 
       class NetworkManagementClass
-        attr_reader :application_gateways, :application_security_groups, :available_endpoint_services, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :express_route_service_providers, :load_balancers, :load_balancer_backend_address_pools, :load_balancer_frontend_ipconfigurations, :inbound_nat_rules, :load_balancer_load_balancing_rules, :load_balancer_network_interfaces, :load_balancer_probes, :network_interface_ipconfigurations, :network_interface_load_balancers, :network_security_groups, :security_rules, :default_security_rules, :network_watchers, :packet_captures, :connection_monitors, :azure_firewalls, :express_route_cross_connections, :express_route_cross_connection_peerings, :express_route_gateways, :express_route_connections, :express_route_ports_locations, :express_route_ports, :express_route_links, :interface_endpoints, :load_balancer_outbound_rules, :network_interfaces, :network_interface_tap_configurations, :network_profiles, :public_ipprefixes, :public_ipaddresses, :express_route_circuit_connections, :available_delegations, :available_resource_group_delegations, :routes, :azure_firewall_fqdn_tags, :ddos_protection_plans, :route_filters, :route_filter_rules, :route_tables, :service_endpoint_policy_definitions, :bgp_service_communities, :usages, :virtual_networks, :service_endpoint_policies, :operations, :virtual_network_gateways, :virtual_network_gateway_connections, :local_network_gateways, :vpn_sites_configuration, :virtual_hubs, :subnets, :virtual_network_peerings, :virtual_wans, :vpn_sites, :p2s_vpn_gateways, :hub_virtual_network_connections, :vpn_gateways, :virtual_network_taps, :p2s_vpn_server_configurations, :vpn_connections, :configurable, :base_url, :options, :model_classes
+        attr_reader :application_gateways, :application_security_groups, :available_endpoint_services, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :express_route_service_providers, :load_balancers, :load_balancer_backend_address_pools, :load_balancer_frontend_ipconfigurations, :inbound_nat_rules, :load_balancer_load_balancing_rules, :load_balancer_network_interfaces, :load_balancer_probes, :network_interface_ipconfigurations, :network_interface_load_balancers, :network_security_groups, :available_delegations, :available_resource_group_delegations, :azure_firewalls, :azure_firewall_fqdn_tags, :ddos_protection_plans, :express_route_circuit_connections, :express_route_cross_connections, :express_route_cross_connection_peerings, :express_route_gateways, :express_route_connections, :express_route_ports_locations, :express_route_ports, :express_route_links, :interface_endpoints, :load_balancer_outbound_rules, :network_interfaces, :network_interface_tap_configurations, :network_profiles, :packet_captures, :connection_monitors, :public_ipprefixes, :security_rules, :default_security_rules, :network_watchers, :bgp_service_communities, :service_endpoint_policy_definitions, :public_ipaddresses, :route_filter_rules, :route_tables, :routes, :virtual_network_gateway_connections, :usages, :virtual_networks, :route_filters, :operations, :virtual_network_gateways, :virtual_wans, :local_network_gateways, :vpn_sites_configuration, :service_endpoint_policies, :subnets, :virtual_network_peerings, :vpn_connections, :vpn_sites, :p2s_vpn_gateways, :virtual_hubs, :hub_virtual_network_connections, :vpn_gateways, :virtual_network_taps, :p2s_vpn_server_configurations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -545,12 +545,12 @@ module Azure::Profiles::Latest
           @network_interface_ipconfigurations = @client_1.network_interface_ipconfigurations
           @network_interface_load_balancers = @client_1.network_interface_load_balancers
           @network_security_groups = @client_1.network_security_groups
-          @security_rules = @client_1.security_rules
-          @default_security_rules = @client_1.default_security_rules
-          @network_watchers = @client_1.network_watchers
-          @packet_captures = @client_1.packet_captures
-          @connection_monitors = @client_1.connection_monitors
+          @available_delegations = @client_1.available_delegations
+          @available_resource_group_delegations = @client_1.available_resource_group_delegations
           @azure_firewalls = @client_1.azure_firewalls
+          @azure_firewall_fqdn_tags = @client_1.azure_firewall_fqdn_tags
+          @ddos_protection_plans = @client_1.ddos_protection_plans
+          @express_route_circuit_connections = @client_1.express_route_circuit_connections
           @express_route_cross_connections = @client_1.express_route_cross_connections
           @express_route_cross_connection_peerings = @client_1.express_route_cross_connection_peerings
           @express_route_gateways = @client_1.express_route_gateways
@@ -563,38 +563,38 @@ module Azure::Profiles::Latest
           @network_interfaces = @client_1.network_interfaces
           @network_interface_tap_configurations = @client_1.network_interface_tap_configurations
           @network_profiles = @client_1.network_profiles
+          @packet_captures = @client_1.packet_captures
+          @connection_monitors = @client_1.connection_monitors
           @public_ipprefixes = @client_1.public_ipprefixes
+          @security_rules = @client_1.security_rules
+          @default_security_rules = @client_1.default_security_rules
+          @network_watchers = @client_1.network_watchers
+          @bgp_service_communities = @client_1.bgp_service_communities
+          @service_endpoint_policy_definitions = @client_1.service_endpoint_policy_definitions
           @public_ipaddresses = @client_1.public_ipaddresses
-          @express_route_circuit_connections = @client_1.express_route_circuit_connections
-          @available_delegations = @client_1.available_delegations
-          @available_resource_group_delegations = @client_1.available_resource_group_delegations
-          @routes = @client_1.routes
-          @azure_firewall_fqdn_tags = @client_1.azure_firewall_fqdn_tags
-          @ddos_protection_plans = @client_1.ddos_protection_plans
-          @route_filters = @client_1.route_filters
           @route_filter_rules = @client_1.route_filter_rules
           @route_tables = @client_1.route_tables
-          @service_endpoint_policy_definitions = @client_1.service_endpoint_policy_definitions
-          @bgp_service_communities = @client_1.bgp_service_communities
+          @routes = @client_1.routes
+          @virtual_network_gateway_connections = @client_1.virtual_network_gateway_connections
           @usages = @client_1.usages
           @virtual_networks = @client_1.virtual_networks
-          @service_endpoint_policies = @client_1.service_endpoint_policies
+          @route_filters = @client_1.route_filters
           @operations = @client_1.operations
           @virtual_network_gateways = @client_1.virtual_network_gateways
-          @virtual_network_gateway_connections = @client_1.virtual_network_gateway_connections
+          @virtual_wans = @client_1.virtual_wans
           @local_network_gateways = @client_1.local_network_gateways
           @vpn_sites_configuration = @client_1.vpn_sites_configuration
-          @virtual_hubs = @client_1.virtual_hubs
+          @service_endpoint_policies = @client_1.service_endpoint_policies
           @subnets = @client_1.subnets
           @virtual_network_peerings = @client_1.virtual_network_peerings
-          @virtual_wans = @client_1.virtual_wans
+          @vpn_connections = @client_1.vpn_connections
           @vpn_sites = @client_1.vpn_sites
           @p2s_vpn_gateways = @client_1.p2s_vpn_gateways
+          @virtual_hubs = @client_1.virtual_hubs
           @hub_virtual_network_connections = @client_1.hub_virtual_network_connections
           @vpn_gateways = @client_1.vpn_gateways
           @virtual_network_taps = @client_1.virtual_network_taps
           @p2s_vpn_server_configurations = @client_1.p2s_vpn_server_configurations
-          @vpn_connections = @client_1.vpn_connections
 
           @model_classes = ModelClasses.new
         end
@@ -615,14 +615,23 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def container
+            Azure::Network::Mgmt::V2018_10_01::Models::Container
+          end
+          def pfs_group
+            Azure::Network::Mgmt::V2018_10_01::Models::PfsGroup
+          end
+          def bgp_peer_state
+            Azure::Network::Mgmt::V2018_10_01::Models::BgpPeerState
+          end
           def virtual_network_gateway_connection_protocol
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnectionProtocol
           end
+          def office_traffic_category
+            Azure::Network::Mgmt::V2018_10_01::Models::OfficeTrafficCategory
+          end
           def tunnel_connection_status
             Azure::Network::Mgmt::V2018_10_01::Models::TunnelConnectionStatus
-          end
-          def hub_virtual_network_connection_status
-            Azure::Network::Mgmt::V2018_10_01::Models::HubVirtualNetworkConnectionStatus
           end
           def log_specification
             Azure::Network::Mgmt::V2018_10_01::Models::LogSpecification
@@ -693,41 +702,41 @@ module Azure::Profiles::Latest
           def virtual_hub_id
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualHubId
           end
+          def operation
+            Azure::Network::Mgmt::V2018_10_01::Models::Operation
+          end
           def virtual_wan_security_providers
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualWanSecurityProviders
           end
-          def express_route_circuit_peering_id
-            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitPeeringId
+          def operation_list_result
+            Azure::Network::Mgmt::V2018_10_01::Models::OperationListResult
           end
           def virtual_wan_security_provider
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualWanSecurityProvider
           end
-          def express_route_gateway_properties_auto_scale_configuration_bounds
-            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds
+          def express_route_circuit_peering_id
+            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitPeeringId
           end
           def express_route_gateway_properties_auto_scale_configuration
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayPropertiesAutoScaleConfiguration
           end
-          def list_vpn_connections_result
-            Azure::Network::Mgmt::V2018_10_01::Models::ListVpnConnectionsResult
+          def express_route_gateway_properties_auto_scale_configuration_bounds
+            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds
           end
           def list_virtual_hubs_result
             Azure::Network::Mgmt::V2018_10_01::Models::ListVirtualHubsResult
           end
-          def express_route_gateway_list
-            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayList
-          end
-          def virtual_hub_route
-            Azure::Network::Mgmt::V2018_10_01::Models::VirtualHubRoute
+          def list_vpn_connections_result
+            Azure::Network::Mgmt::V2018_10_01::Models::ListVpnConnectionsResult
           end
           def express_route_connection_list
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteConnectionList
           end
+          def express_route_gateway_list
+            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteGatewayList
+          end
           def list_vpn_sites_result
             Azure::Network::Mgmt::V2018_10_01::Models::ListVpnSitesResult
-          end
-          def express_route_ports_location_bandwidths
-            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortsLocationBandwidths
           end
           def list_virtual_wans_result
             Azure::Network::Mgmt::V2018_10_01::Models::ListVirtualWANsResult
@@ -735,17 +744,17 @@ module Azure::Profiles::Latest
           def public_ipprefix_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::PublicIPPrefixListResult
           end
+          def virtual_hub_route
+            Azure::Network::Mgmt::V2018_10_01::Models::VirtualHubRoute
+          end
           def express_route_ports_location_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortsLocationListResult
-          end
-          def referenced_public_ip_address
-            Azure::Network::Mgmt::V2018_10_01::Models::ReferencedPublicIpAddress
           end
           def express_route_link_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteLinkListResult
           end
-          def public_ipprefix_sku
-            Azure::Network::Mgmt::V2018_10_01::Models::PublicIPPrefixSku
+          def express_route_ports_location_bandwidths
+            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortsLocationBandwidths
           end
           def express_route_port_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortListResult
@@ -753,8 +762,8 @@ module Azure::Profiles::Latest
           def interface_endpoint_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::InterfaceEndpointListResult
           end
-          def vpn_client_ipsec_parameters
-            Azure::Network::Mgmt::V2018_10_01::Models::VpnClientIPsecParameters
+          def public_ipprefix_sku
+            Azure::Network::Mgmt::V2018_10_01::Models::PublicIPPrefixSku
           end
           def application_gateway_rewrite_rule_action_set
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRewriteRuleActionSet
@@ -783,8 +792,8 @@ module Azure::Profiles::Latest
           def azure_firewall_nat_rcaction
             Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNatRCAction
           end
-          def operation_list_result
-            Azure::Network::Mgmt::V2018_10_01::Models::OperationListResult
+          def referenced_public_ip_address
+            Azure::Network::Mgmt::V2018_10_01::Models::ReferencedPublicIpAddress
           end
           def azure_firewall_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallListResult
@@ -798,26 +807,26 @@ module Azure::Profiles::Latest
           def azure_firewall_fqdn_tag_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallFqdnTagListResult
           end
-          def network_profile_list_result
-            Azure::Network::Mgmt::V2018_10_01::Models::NetworkProfileListResult
-          end
-          def operation
-            Azure::Network::Mgmt::V2018_10_01::Models::Operation
-          end
-          def network_configuration_diagnostic_result
-            Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticResult
+          def vpn_client_ipsec_parameters
+            Azure::Network::Mgmt::V2018_10_01::Models::VpnClientIPsecParameters
           end
           def service_endpoint_policy_definition_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyDefinitionListResult
           end
-          def list_p2_svpn_server_configurations_result
-            Azure::Network::Mgmt::V2018_10_01::Models::ListP2SVpnServerConfigurationsResult
-          end
-          def vpn_site_id
-            Azure::Network::Mgmt::V2018_10_01::Models::VpnSiteId
+          def network_configuration_diagnostic_result
+            Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticResult
           end
           def p2_svpn_profile_parameters
             Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnProfileParameters
+          end
+          def list_p2_svpn_server_configurations_result
+            Azure::Network::Mgmt::V2018_10_01::Models::ListP2SVpnServerConfigurationsResult
+          end
+          def network_profile_list_result
+            Azure::Network::Mgmt::V2018_10_01::Models::NetworkProfileListResult
+          end
+          def list_hub_virtual_network_connections_result
+            Azure::Network::Mgmt::V2018_10_01::Models::ListHubVirtualNetworkConnectionsResult
           end
           def virtual_hub_route_table
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualHubRouteTable
@@ -828,11 +837,11 @@ module Azure::Profiles::Latest
           def device_properties
             Azure::Network::Mgmt::V2018_10_01::Models::DeviceProperties
           end
-          def application_gateway_custom_error
-            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayCustomError
+          def application_gateway_rewrite_rule
+            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRewriteRule
           end
-          def managed_service_identity_user_assigned_identities_value
-            Azure::Network::Mgmt::V2018_10_01::Models::ManagedServiceIdentityUserAssignedIdentitiesValue
+          def vpn_site_id
+            Azure::Network::Mgmt::V2018_10_01::Models::VpnSiteId
           end
           def express_route_cross_connection_routes_table_summary
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionRoutesTableSummary
@@ -840,59 +849,50 @@ module Azure::Profiles::Latest
           def azure_firewall_network_rule
             Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNetworkRule
           end
+          def managed_service_identity_user_assigned_identities_value
+            Azure::Network::Mgmt::V2018_10_01::Models::ManagedServiceIdentityUserAssignedIdentitiesValue
+          end
           def flow_log_format_parameters
             Azure::Network::Mgmt::V2018_10_01::Models::FlowLogFormatParameters
-          end
-          def express_route_connection_id
-            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteConnectionId
-          end
-          def list_hub_virtual_network_connections_result
-            Azure::Network::Mgmt::V2018_10_01::Models::ListHubVirtualNetworkConnectionsResult
-          end
-          def traffic_analytics_configuration_properties
-            Azure::Network::Mgmt::V2018_10_01::Models::TrafficAnalyticsConfigurationProperties
-          end
-          def express_route_cross_connections_routes_table_summary_list_result
-            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionsRoutesTableSummaryListResult
           end
           def ddos_protection_plan_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::DdosProtectionPlanListResult
           end
-          def application_gateway_rewrite_rule
-            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRewriteRule
+          def traffic_analytics_properties
+            Azure::Network::Mgmt::V2018_10_01::Models::TrafficAnalyticsProperties
+          end
+          def express_route_connection_id
+            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteConnectionId
+          end
+          def application_gateway_custom_error
+            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayCustomError
           end
           def httpconfiguration
             Azure::Network::Mgmt::V2018_10_01::Models::HTTPConfiguration
           end
-          def list_p2_svpn_gateways_result
-            Azure::Network::Mgmt::V2018_10_01::Models::ListP2SVpnGatewaysResult
+          def express_route_cross_connections_routes_table_summary_list_result
+            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionsRoutesTableSummaryListResult
           end
-          def traffic_analytics_properties
-            Azure::Network::Mgmt::V2018_10_01::Models::TrafficAnalyticsProperties
-          end
-          def protocol_configuration
-            Azure::Network::Mgmt::V2018_10_01::Models::ProtocolConfiguration
+          def traffic_analytics_configuration_properties
+            Azure::Network::Mgmt::V2018_10_01::Models::TrafficAnalyticsConfigurationProperties
           end
           def get_vpn_sites_configuration_request
             Azure::Network::Mgmt::V2018_10_01::Models::GetVpnSitesConfigurationRequest
           end
-          def virtual_network_tap_list_result
-            Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkTapListResult
+          def protocol_configuration
+            Azure::Network::Mgmt::V2018_10_01::Models::ProtocolConfiguration
           end
-          def service_endpoint_policy_list_result
-            Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyListResult
-          end
-          def network_configuration_diagnostic_profile
-            Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticProfile
+          def list_p2_svpn_gateways_result
+            Azure::Network::Mgmt::V2018_10_01::Models::ListP2SVpnGatewaysResult
           end
           def azure_firewall_application_rule_protocol
             Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallApplicationRuleProtocol
           end
+          def service_endpoint_policy_list_result
+            Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyListResult
+          end
           def vpn_profile_response
             Azure::Network::Mgmt::V2018_10_01::Models::VpnProfileResponse
-          end
-          def matched_rule
-            Azure::Network::Mgmt::V2018_10_01::Models::MatchedRule
           end
           def available_delegation
             Azure::Network::Mgmt::V2018_10_01::Models::AvailableDelegation
@@ -900,8 +900,8 @@ module Azure::Profiles::Latest
           def list_vpn_gateways_result
             Azure::Network::Mgmt::V2018_10_01::Models::ListVpnGatewaysResult
           end
-          def application_gateway_header_configuration
-            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayHeaderConfiguration
+          def virtual_network_tap_list_result
+            Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkTapListResult
           end
           def network_configuration_diagnostic_parameters
             Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticParameters
@@ -909,23 +909,32 @@ module Azure::Profiles::Latest
           def network_security_rules_evaluation_result
             Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityRulesEvaluationResult
           end
-          def network_security_group_result
-            Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityGroupResult
+          def network_configuration_diagnostic_profile
+            Azure::Network::Mgmt::V2018_10_01::Models::NetworkConfigurationDiagnosticProfile
           end
           def azure_firewall_nat_rule
             Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNatRule
           end
-          def network_security_group
-            Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityGroup
+          def network_security_group_result
+            Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityGroupResult
           end
-          def interface_endpoint
-            Azure::Network::Mgmt::V2018_10_01::Models::InterfaceEndpoint
+          def matched_rule
+            Azure::Network::Mgmt::V2018_10_01::Models::MatchedRule
           end
           def evaluated_network_security_group
             Azure::Network::Mgmt::V2018_10_01::Models::EvaluatedNetworkSecurityGroup
           end
-          def ipconfiguration
-            Azure::Network::Mgmt::V2018_10_01::Models::IPConfiguration
+          def network_security_group
+            Azure::Network::Mgmt::V2018_10_01::Models::NetworkSecurityGroup
+          end
+          def application_gateway_header_configuration
+            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayHeaderConfiguration
+          end
+          def network_interface_tap_configuration
+            Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceTapConfiguration
+          end
+          def service_endpoint_policy_definition
+            Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyDefinition
           end
           def service_endpoint_policy
             Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicy
@@ -939,8 +948,8 @@ module Azure::Profiles::Latest
           def application_gateway_backend_address_pool
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayBackendAddressPool
           end
-          def backend_address_pool
-            Azure::Network::Mgmt::V2018_10_01::Models::BackendAddressPool
+          def error
+            Azure::Network::Mgmt::V2018_10_01::Models::Error
           end
           def inbound_nat_rule
             Azure::Network::Mgmt::V2018_10_01::Models::InboundNatRule
@@ -957,14 +966,14 @@ module Azure::Profiles::Latest
           def security_rule
             Azure::Network::Mgmt::V2018_10_01::Models::SecurityRule
           end
-          def route_table
-            Azure::Network::Mgmt::V2018_10_01::Models::RouteTable
+          def interface_endpoint
+            Azure::Network::Mgmt::V2018_10_01::Models::InterfaceEndpoint
           end
-          def network_interface_tap_configuration
-            Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceTapConfiguration
+          def azure_firewall_ipconfiguration
+            Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallIPConfiguration
           end
-          def azure_firewall_application_rule_collection
-            Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallApplicationRuleCollection
+          def ipconfiguration
+            Azure::Network::Mgmt::V2018_10_01::Models::IPConfiguration
           end
           def public_ipaddress
             Azure::Network::Mgmt::V2018_10_01::Models::PublicIPAddress
@@ -978,11 +987,11 @@ module Azure::Profiles::Latest
           def application_gateway_rewrite_rule_set
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRewriteRuleSet
           end
-          def error
-            Azure::Network::Mgmt::V2018_10_01::Models::Error
+          def backend_address_pool
+            Azure::Network::Mgmt::V2018_10_01::Models::BackendAddressPool
           end
-          def express_route_link
-            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteLink
+          def azure_firewall_application_rule_collection
+            Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallApplicationRuleCollection
           end
           def express_route_cross_connection
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnection
@@ -996,11 +1005,11 @@ module Azure::Profiles::Latest
           def route
             Azure::Network::Mgmt::V2018_10_01::Models::Route
           end
-          def express_route_circuit_connection
-            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitConnection
+          def route_table
+            Azure::Network::Mgmt::V2018_10_01::Models::RouteTable
           end
-          def service_endpoint_policy_definition
-            Azure::Network::Mgmt::V2018_10_01::Models::ServiceEndpointPolicyDefinition
+          def express_route_cross_connection_peering
+            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionPeering
           end
           def outbound_rule
             Azure::Network::Mgmt::V2018_10_01::Models::OutboundRule
@@ -1035,8 +1044,8 @@ module Azure::Profiles::Latest
           def load_balancer_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::LoadBalancerListResult
           end
-          def connection_shared_key
-            Azure::Network::Mgmt::V2018_10_01::Models::ConnectionSharedKey
+          def express_route_link
+            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteLink
           end
           def inbound_nat_rule_list_result
             Azure::Network::Mgmt::V2018_10_01::Models::InboundNatRuleListResult
@@ -1545,8 +1554,8 @@ module Azure::Profiles::Latest
           def load_balancing_rule
             Azure::Network::Mgmt::V2018_10_01::Models::LoadBalancingRule
           end
-          def azure_firewall_ipconfiguration
-            Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallIPConfiguration
+          def probe
+            Azure::Network::Mgmt::V2018_10_01::Models::Probe
           end
           def network_watcher
             Azure::Network::Mgmt::V2018_10_01::Models::NetworkWatcher
@@ -1557,17 +1566,17 @@ module Azure::Profiles::Latest
           def load_balancer
             Azure::Network::Mgmt::V2018_10_01::Models::LoadBalancer
           end
-          def probe
-            Azure::Network::Mgmt::V2018_10_01::Models::Probe
+          def bgp_service_community
+            Azure::Network::Mgmt::V2018_10_01::Models::BgpServiceCommunity
           end
           def virtual_network_peering
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkPeering
           end
-          def patch_route_filter
-            Azure::Network::Mgmt::V2018_10_01::Models::PatchRouteFilter
+          def express_route_circuit_connection
+            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitConnection
           end
-          def express_route_cross_connection_peering
-            Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCrossConnectionPeering
+          def vpn_client_revoked_certificate
+            Azure::Network::Mgmt::V2018_10_01::Models::VpnClientRevokedCertificate
           end
           def vpn_client_root_certificate
             Azure::Network::Mgmt::V2018_10_01::Models::VpnClientRootCertificate
@@ -1581,8 +1590,8 @@ module Azure::Profiles::Latest
           def express_route_ports_location
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePortsLocation
           end
-          def vpn_client_revoked_certificate
-            Azure::Network::Mgmt::V2018_10_01::Models::VpnClientRevokedCertificate
+          def virtual_network_gateway_connection
+            Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnection
           end
           def express_route_port
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePort
@@ -1605,23 +1614,23 @@ module Azure::Profiles::Latest
           def virtual_network_gateway_ipconfiguration
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayIPConfiguration
           end
-          def virtual_network_gateway_connection_list_entity
-            Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnectionListEntity
+          def connection_shared_key
+            Azure::Network::Mgmt::V2018_10_01::Models::ConnectionSharedKey
           end
-          def p2_svpn_server_config_radius_client_root_certificate
-            Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfigRadiusClientRootCertificate
+          def patch_route_filter
+            Azure::Network::Mgmt::V2018_10_01::Models::PatchRouteFilter
           end
-          def bgp_service_community
-            Azure::Network::Mgmt::V2018_10_01::Models::BgpServiceCommunity
+          def virtual_network_gateway
+            Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGateway
           end
           def virtual_wan
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualWAN
           end
-          def virtual_network_gateway_connection
-            Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnection
+          def vpn_site
+            Azure::Network::Mgmt::V2018_10_01::Models::VpnSite
           end
-          def hub_virtual_network_connection
-            Azure::Network::Mgmt::V2018_10_01::Models::HubVirtualNetworkConnection
+          def virtual_network_gateway_connection_list_entity
+            Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnectionListEntity
           end
           def virtual_hub
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualHub
@@ -1629,8 +1638,8 @@ module Azure::Profiles::Latest
           def vpn_connection
             Azure::Network::Mgmt::V2018_10_01::Models::VpnConnection
           end
-          def virtual_network_gateway
-            Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGateway
+          def vpn_gateway
+            Azure::Network::Mgmt::V2018_10_01::Models::VpnGateway
           end
           def p2_svpn_gateway
             Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnGateway
@@ -1671,8 +1680,8 @@ module Azure::Profiles::Latest
           def p2_svpn_server_config_radius_server_root_certificate
             Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfigRadiusServerRootCertificate
           end
-          def application_gateway_sku_name
-            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySkuName
+          def p2_svpn_server_config_radius_client_root_certificate
+            Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfigRadiusClientRootCertificate
           end
           def p2_svpn_server_configuration
             Azure::Network::Mgmt::V2018_10_01::Models::P2SVpnServerConfiguration
@@ -1680,11 +1689,11 @@ module Azure::Profiles::Latest
           def application_gateway_ssl_protocol
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySslProtocol
           end
-          def vpn_site
-            Azure::Network::Mgmt::V2018_10_01::Models::VpnSite
+          def resource_identity_type
+            Azure::Network::Mgmt::V2018_10_01::Models::ResourceIdentityType
           end
-          def application_gateway_ssl_policy_name
-            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySslPolicyName
+          def hub_virtual_network_connection
+            Azure::Network::Mgmt::V2018_10_01::Models::HubVirtualNetworkConnection
           end
           def application_gateway_ssl_cipher_suite
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySslCipherSuite
@@ -1692,11 +1701,11 @@ module Azure::Profiles::Latest
           def application_gateway_cookie_based_affinity
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayCookieBasedAffinity
           end
-          def vpn_gateway
-            Azure::Network::Mgmt::V2018_10_01::Models::VpnGateway
+          def application_gateway_backend_health_server_health
+            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayBackendHealthServerHealth
           end
-          def application_gateway_operational_state
-            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayOperationalState
+          def application_gateway_sku_name
+            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySkuName
           end
           def application_gateway_custom_error_status_code
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayCustomErrorStatusCode
@@ -1707,11 +1716,11 @@ module Azure::Profiles::Latest
           def azure_firewall_application_rule_protocol_type
             Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallApplicationRuleProtocolType
           end
-          def provisioning_state
-            Azure::Network::Mgmt::V2018_10_01::Models::ProvisioningState
+          def application_gateway_ssl_policy_name
+            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewaySslPolicyName
           end
-          def resource_identity_type
-            Azure::Network::Mgmt::V2018_10_01::Models::ResourceIdentityType
+          def azure_firewall_network_rule_protocol
+            Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNetworkRuleProtocol
           end
           def application_gateway_request_routing_rule_type
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRequestRoutingRuleType
@@ -1719,14 +1728,14 @@ module Azure::Profiles::Latest
           def application_gateway_redirect_type
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayRedirectType
           end
-          def application_gateway_backend_health_server_health
-            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayBackendHealthServerHealth
+          def application_gateway_operational_state
+            Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayOperationalState
           end
           def application_gateway_firewall_mode
             Azure::Network::Mgmt::V2018_10_01::Models::ApplicationGatewayFirewallMode
           end
-          def authorization_use_status
-            Azure::Network::Mgmt::V2018_10_01::Models::AuthorizationUseStatus
+          def provisioning_state
+            Azure::Network::Mgmt::V2018_10_01::Models::ProvisioningState
           end
           def express_route_circuit_peering_advertised_public_prefix_state
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
@@ -1752,8 +1761,8 @@ module Azure::Profiles::Latest
           def load_balancer_sku_name
             Azure::Network::Mgmt::V2018_10_01::Models::LoadBalancerSkuName
           end
-          def load_distribution
-            Azure::Network::Mgmt::V2018_10_01::Models::LoadDistribution
+          def authorization_use_status
+            Azure::Network::Mgmt::V2018_10_01::Models::AuthorizationUseStatus
           end
           def probe_protocol
             Azure::Network::Mgmt::V2018_10_01::Models::ProbeProtocol
@@ -1770,14 +1779,14 @@ module Azure::Profiles::Latest
           def azure_firewall_rcaction_type
             Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallRCActionType
           end
-          def protocol
-            Azure::Network::Mgmt::V2018_10_01::Models::Protocol
+          def issue_type
+            Azure::Network::Mgmt::V2018_10_01::Models::IssueType
           end
           def azure_firewall_nat_rcaction_type
             Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNatRCActionType
           end
-          def azure_firewall_network_rule_protocol
-            Azure::Network::Mgmt::V2018_10_01::Models::AzureFirewallNetworkRuleProtocol
+          def direction
+            Azure::Network::Mgmt::V2018_10_01::Models::Direction
           end
           def express_route_peering_type
             Azure::Network::Mgmt::V2018_10_01::Models::ExpressRoutePeeringType
@@ -1803,14 +1812,14 @@ module Azure::Profiles::Latest
           def association_type
             Azure::Network::Mgmt::V2018_10_01::Models::AssociationType
           end
-          def direction
-            Azure::Network::Mgmt::V2018_10_01::Models::Direction
+          def httpmethod
+            Azure::Network::Mgmt::V2018_10_01::Models::HTTPMethod
           end
           def next_hop_type
             Azure::Network::Mgmt::V2018_10_01::Models::NextHopType
           end
-          def verbosity_level
-            Azure::Network::Mgmt::V2018_10_01::Models::VerbosityLevel
+          def load_distribution
+            Azure::Network::Mgmt::V2018_10_01::Models::LoadDistribution
           end
           def pc_status
             Azure::Network::Mgmt::V2018_10_01::Models::PcStatus
@@ -1821,8 +1830,8 @@ module Azure::Profiles::Latest
           def origin
             Azure::Network::Mgmt::V2018_10_01::Models::Origin
           end
-          def issue_type
-            Azure::Network::Mgmt::V2018_10_01::Models::IssueType
+          def vpn_client_protocol
+            Azure::Network::Mgmt::V2018_10_01::Models::VpnClientProtocol
           end
           def effective_route_state
             Azure::Network::Mgmt::V2018_10_01::Models::EffectiveRouteState
@@ -1848,8 +1857,8 @@ module Azure::Profiles::Latest
           def virtual_network_gateway_sku_tier
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewaySkuTier
           end
-          def vpn_client_protocol
-            Azure::Network::Mgmt::V2018_10_01::Models::VpnClientProtocol
+          def ike_integrity
+            Azure::Network::Mgmt::V2018_10_01::Models::IkeIntegrity
           end
           def dh_group
             Azure::Network::Mgmt::V2018_10_01::Models::DhGroup
@@ -1857,8 +1866,8 @@ module Azure::Profiles::Latest
           def connection_status
             Azure::Network::Mgmt::V2018_10_01::Models::ConnectionStatus
           end
-          def authentication_method
-            Azure::Network::Mgmt::V2018_10_01::Models::AuthenticationMethod
+          def protocol
+            Azure::Network::Mgmt::V2018_10_01::Models::Protocol
           end
           def virtual_network_gateway_connection_status
             Azure::Network::Mgmt::V2018_10_01::Models::VirtualNetworkGatewayConnectionStatus
@@ -1872,11 +1881,14 @@ module Azure::Profiles::Latest
           def flow_log_format_type
             Azure::Network::Mgmt::V2018_10_01::Models::FlowLogFormatType
           end
-          def httpmethod
-            Azure::Network::Mgmt::V2018_10_01::Models::HTTPMethod
+          def ike_encryption
+            Azure::Network::Mgmt::V2018_10_01::Models::IkeEncryption
           end
           def connection_monitor_source_status
             Azure::Network::Mgmt::V2018_10_01::Models::ConnectionMonitorSourceStatus
+          end
+          def verbosity_level
+            Azure::Network::Mgmt::V2018_10_01::Models::VerbosityLevel
           end
           def public_ipprefix_sku_name
             Azure::Network::Mgmt::V2018_10_01::Models::PublicIPPrefixSkuName
@@ -1884,8 +1896,8 @@ module Azure::Profiles::Latest
           def processor_architecture
             Azure::Network::Mgmt::V2018_10_01::Models::ProcessorArchitecture
           end
-          def office_traffic_category
-            Azure::Network::Mgmt::V2018_10_01::Models::OfficeTrafficCategory
+          def authentication_method
+            Azure::Network::Mgmt::V2018_10_01::Models::AuthenticationMethod
           end
           def vpn_gateway_tunneling_protocol
             Azure::Network::Mgmt::V2018_10_01::Models::VpnGatewayTunnelingProtocol
@@ -1899,20 +1911,8 @@ module Azure::Profiles::Latest
           def ipsec_integrity
             Azure::Network::Mgmt::V2018_10_01::Models::IpsecIntegrity
           end
-          def ike_encryption
-            Azure::Network::Mgmt::V2018_10_01::Models::IkeEncryption
-          end
-          def ike_integrity
-            Azure::Network::Mgmt::V2018_10_01::Models::IkeIntegrity
-          end
-          def container
-            Azure::Network::Mgmt::V2018_10_01::Models::Container
-          end
-          def pfs_group
-            Azure::Network::Mgmt::V2018_10_01::Models::PfsGroup
-          end
-          def bgp_peer_state
-            Azure::Network::Mgmt::V2018_10_01::Models::BgpPeerState
+          def hub_virtual_network_connection_status
+            Azure::Network::Mgmt::V2018_10_01::Models::HubVirtualNetworkConnectionStatus
           end
         end
       end

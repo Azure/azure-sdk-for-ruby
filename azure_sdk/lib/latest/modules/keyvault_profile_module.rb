@@ -51,7 +51,7 @@ module Azure::Profiles::Latest
       SasDefinitionItem = Azure::KeyVault::V7_0::Models::SasDefinitionItem
       CertificateMergeParameters = Azure::KeyVault::V7_0::Models::CertificateMergeParameters
       CertificateIssuerSetParameters = Azure::KeyVault::V7_0::Models::CertificateIssuerSetParameters
-      IssuerCredentials = Azure::KeyVault::V7_0::Models::IssuerCredentials
+      Error = Azure::KeyVault::V7_0::Models::Error
       CertificateIssuerUpdateParameters = Azure::KeyVault::V7_0::Models::CertificateIssuerUpdateParameters
       OrganizationDetails = Azure::KeyVault::V7_0::Models::OrganizationDetails
       CertificateOperationUpdateParameter = Azure::KeyVault::V7_0::Models::CertificateOperationUpdateParameter
@@ -79,17 +79,16 @@ module Azure::Profiles::Latest
       SecretProperties = Azure::KeyVault::V7_0::Models::SecretProperties
       PendingCertificateSigningRequestResult = Azure::KeyVault::V7_0::Models::PendingCertificateSigningRequestResult
       CertificateBundle = Azure::KeyVault::V7_0::Models::CertificateBundle
-      Error = Azure::KeyVault::V7_0::Models::Error
+      StorageAccountAttributes = Azure::KeyVault::V7_0::Models::StorageAccountAttributes
       IssuerAttributes = Azure::KeyVault::V7_0::Models::IssuerAttributes
       StorageBundle = Azure::KeyVault::V7_0::Models::StorageBundle
       SasDefinitionListResult = Azure::KeyVault::V7_0::Models::SasDefinitionListResult
       StorageAccountCreateParameters = Azure::KeyVault::V7_0::Models::StorageAccountCreateParameters
       CertificateOperation = Azure::KeyVault::V7_0::Models::CertificateOperation
-      StorageAccountAttributes = Azure::KeyVault::V7_0::Models::StorageAccountAttributes
       StorageAccountUpdateParameters = Azure::KeyVault::V7_0::Models::StorageAccountUpdateParameters
+      StorageAccountRegenerteKeyParameters = Azure::KeyVault::V7_0::Models::StorageAccountRegenerteKeyParameters
       KeyCreateParameters = Azure::KeyVault::V7_0::Models::KeyCreateParameters
       StorageAccountItem = Azure::KeyVault::V7_0::Models::StorageAccountItem
-      StorageAccountRegenerteKeyParameters = Azure::KeyVault::V7_0::Models::StorageAccountRegenerteKeyParameters
       KeyAttributes = Azure::KeyVault::V7_0::Models::KeyAttributes
       DeletedKeyBundle = Azure::KeyVault::V7_0::Models::DeletedKeyBundle
       DeletedKeyItem = Azure::KeyVault::V7_0::Models::DeletedKeyItem
@@ -97,6 +96,7 @@ module Azure::Profiles::Latest
       DeletedSecretBundle = Azure::KeyVault::V7_0::Models::DeletedSecretBundle
       DeletedSecretItem = Azure::KeyVault::V7_0::Models::DeletedSecretItem
       CertificateAttributes = Azure::KeyVault::V7_0::Models::CertificateAttributes
+      IssuerCredentials = Azure::KeyVault::V7_0::Models::IssuerCredentials
       DeletedCertificateBundle = Azure::KeyVault::V7_0::Models::DeletedCertificateBundle
       DeletedCertificateItem = Azure::KeyVault::V7_0::Models::DeletedCertificateItem
       JsonWebKeyType = Azure::KeyVault::V7_0::Models::JsonWebKeyType
@@ -264,8 +264,8 @@ module Azure::Profiles::Latest
         def certificate_issuer_set_parameters
           Azure::KeyVault::V7_0::Models::CertificateIssuerSetParameters
         end
-        def issuer_credentials
-          Azure::KeyVault::V7_0::Models::IssuerCredentials
+        def error
+          Azure::KeyVault::V7_0::Models::Error
         end
         def certificate_issuer_update_parameters
           Azure::KeyVault::V7_0::Models::CertificateIssuerUpdateParameters
@@ -348,8 +348,8 @@ module Azure::Profiles::Latest
         def certificate_bundle
           Azure::KeyVault::V7_0::Models::CertificateBundle
         end
-        def error
-          Azure::KeyVault::V7_0::Models::Error
+        def storage_account_attributes
+          Azure::KeyVault::V7_0::Models::StorageAccountAttributes
         end
         def issuer_attributes
           Azure::KeyVault::V7_0::Models::IssuerAttributes
@@ -366,20 +366,17 @@ module Azure::Profiles::Latest
         def certificate_operation
           Azure::KeyVault::V7_0::Models::CertificateOperation
         end
-        def storage_account_attributes
-          Azure::KeyVault::V7_0::Models::StorageAccountAttributes
-        end
         def storage_account_update_parameters
           Azure::KeyVault::V7_0::Models::StorageAccountUpdateParameters
+        end
+        def storage_account_regenerte_key_parameters
+          Azure::KeyVault::V7_0::Models::StorageAccountRegenerteKeyParameters
         end
         def key_create_parameters
           Azure::KeyVault::V7_0::Models::KeyCreateParameters
         end
         def storage_account_item
           Azure::KeyVault::V7_0::Models::StorageAccountItem
-        end
-        def storage_account_regenerte_key_parameters
-          Azure::KeyVault::V7_0::Models::StorageAccountRegenerteKeyParameters
         end
         def key_attributes
           Azure::KeyVault::V7_0::Models::KeyAttributes
@@ -401,6 +398,9 @@ module Azure::Profiles::Latest
         end
         def certificate_attributes
           Azure::KeyVault::V7_0::Models::CertificateAttributes
+        end
+        def issuer_credentials
+          Azure::KeyVault::V7_0::Models::IssuerCredentials
         end
         def deleted_certificate_bundle
           Azure::KeyVault::V7_0::Models::DeletedCertificateBundle
@@ -439,9 +439,19 @@ module Azure::Profiles::Latest
       Operations = Azure::KeyVault::Mgmt::V2018_02_14::Operations
 
       module Models
-        Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
-        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
+        Operation = Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
+        SecretPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
+        OperationListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult
+        StoragePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
+        CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
+        CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
+        Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
+        NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
+        NetworkRuleAction = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
+        VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
         Permissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
+        AccessPolicyUpdateKind = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
+        Reason = Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
         Resource = Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
         OperationDisplay = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationDisplay
         DeletedVault = Azure::KeyVault::Mgmt::V2018_02_14::Models::DeletedVault
@@ -465,16 +475,6 @@ module Azure::Profiles::Latest
         SkuName = Azure::KeyVault::Mgmt::V2018_02_14::Models::SkuName
         KeyPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::KeyPermissions
         AccessPolicyEntry = Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyEntry
-        Operation = Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
-        SecretPermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
-        OperationListResult = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult
-        StoragePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
-        CreateMode = Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
-        CertificatePermissions = Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
-        Sku = Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
-        NetworkRuleBypassOptions = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
-        NetworkRuleAction = Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
-        VirtualNetworkRule = Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
       end
 
       class KeyVaultManagementClass
@@ -508,14 +508,44 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def reason
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
+          def operation
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
+          end
+          def secret_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
+          end
+          def operation_list_result
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult
+          end
+          def storage_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
+          end
+          def create_mode
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
+          end
+          def certificate_permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
+          end
+          def sku
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
+          end
+          def network_rule_bypass_options
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
+          end
+          def network_rule_action
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
+          end
+          def virtual_network_rule
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
+          end
+          def permissions
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
           end
           def access_policy_update_kind
             Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyUpdateKind
           end
-          def permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::Permissions
+          def reason
+            Azure::KeyVault::Mgmt::V2018_02_14::Models::Reason
           end
           def resource
             Azure::KeyVault::Mgmt::V2018_02_14::Models::Resource
@@ -585,36 +615,6 @@ module Azure::Profiles::Latest
           end
           def access_policy_entry
             Azure::KeyVault::Mgmt::V2018_02_14::Models::AccessPolicyEntry
-          end
-          def operation
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::Operation
-          end
-          def secret_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::SecretPermissions
-          end
-          def operation_list_result
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult
-          end
-          def storage_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::StoragePermissions
-          end
-          def create_mode
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::CreateMode
-          end
-          def certificate_permissions
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::CertificatePermissions
-          end
-          def sku
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::Sku
-          end
-          def network_rule_bypass_options
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleBypassOptions
-          end
-          def network_rule_action
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::NetworkRuleAction
-          end
-          def virtual_network_rule
-            Azure::KeyVault::Mgmt::V2018_02_14::Models::VirtualNetworkRule
           end
         end
       end

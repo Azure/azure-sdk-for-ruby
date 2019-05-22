@@ -11,11 +11,12 @@ module Azure::Profiles::Latest
       VaultCertificates = Azure::RecoveryServices::Mgmt::V2016_06_01::VaultCertificates
       RegisteredIdentities = Azure::RecoveryServices::Mgmt::V2016_06_01::RegisteredIdentities
       ReplicationUsages = Azure::RecoveryServices::Mgmt::V2016_06_01::ReplicationUsages
-      VaultExtendedInfoOperations = Azure::RecoveryServices::Mgmt::V2016_06_01::VaultExtendedInfoOperations
-      Vaults = Azure::RecoveryServices::Mgmt::V2016_06_01::Vaults
       Operations = Azure::RecoveryServices::Mgmt::V2016_06_01::Operations
+      Vaults = Azure::RecoveryServices::Mgmt::V2016_06_01::Vaults
+      VaultExtendedInfoOperations = Azure::RecoveryServices::Mgmt::V2016_06_01::VaultExtendedInfoOperations
 
       module Models
+        Sku = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
         TrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
         ClientDiscoveryValueForSingleApi = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryValueForSingleApi
         ClientDiscoveryResponse = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryResponse
@@ -32,28 +33,27 @@ module Azure::Profiles::Latest
         MonitoringSummary = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::MonitoringSummary
         VaultUsage = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsage
         VaultUsageList = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsageList
-        UpgradeDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UpgradeDetails
+        ClientDiscoveryForLogSpecification = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForLogSpecification
         ReplicationUsageList = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ReplicationUsageList
         ResourceCertificateDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateDetails
+        UpgradeDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UpgradeDetails
         VaultProperties = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultProperties
-        NameInfo = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::NameInfo
-        ClientDiscoveryForLogSpecification = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForLogSpecification
-        ResourceCertificateAndAcsDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
         ResourceCertificateAndAadDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
-        PatchVault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
+        NameInfo = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::NameInfo
         PatchTrackedResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
-        AuthType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::AuthType
+        ResourceCertificateAndAcsDetails = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
         VaultExtendedInfoResource = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource
-        TriggerType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TriggerType
+        PatchVault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
         VaultUpgradeState = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUpgradeState
+        AuthType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::AuthType
         UsagesUnit = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UsagesUnit
+        TriggerType = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TriggerType
         Vault = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Vault
         SkuName = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::SkuName
-        Sku = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
       end
 
       class RecoveryServicesManagementClass
-        attr_reader :usages, :vault_certificates, :registered_identities, :replication_usages, :vault_extended_info_operations, :vaults, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :usages, :vault_certificates, :registered_identities, :replication_usages, :operations, :vaults, :vault_extended_info_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -67,9 +67,9 @@ module Azure::Profiles::Latest
           @vault_certificates = @client_0.vault_certificates
           @registered_identities = @client_0.registered_identities
           @replication_usages = @client_0.replication_usages
-          @vault_extended_info_operations = @client_0.vault_extended_info_operations
-          @vaults = @client_0.vaults
           @operations = @client_0.operations
+          @vaults = @client_0.vaults
+          @vault_extended_info_operations = @client_0.vault_extended_info_operations
 
           @model_classes = ModelClasses.new
         end
@@ -88,6 +88,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
+          end
           def tracked_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TrackedResource
           end
@@ -136,8 +139,8 @@ module Azure::Profiles::Latest
           def vault_usage_list
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUsageList
           end
-          def upgrade_details
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UpgradeDetails
+          def client_discovery_for_log_specification
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForLogSpecification
           end
           def replication_usage_list
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ReplicationUsageList
@@ -145,50 +148,47 @@ module Azure::Profiles::Latest
           def resource_certificate_details
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateDetails
           end
+          def upgrade_details
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UpgradeDetails
+          end
           def vault_properties
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultProperties
-          end
-          def name_info
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::NameInfo
-          end
-          def client_discovery_for_log_specification
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ClientDiscoveryForLogSpecification
-          end
-          def resource_certificate_and_acs_details
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
           end
           def resource_certificate_and_aad_details
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAadDetails
           end
-          def patch_vault
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
+          def name_info
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::NameInfo
           end
           def patch_tracked_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchTrackedResource
           end
-          def auth_type
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::AuthType
+          def resource_certificate_and_acs_details
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::ResourceCertificateAndAcsDetails
           end
           def vault_extended_info_resource
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource
           end
-          def trigger_type
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TriggerType
+          def patch_vault
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PatchVault
           end
           def vault_upgrade_state
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultUpgradeState
           end
+          def auth_type
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::AuthType
+          end
           def usages_unit
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::UsagesUnit
+          end
+          def trigger_type
+            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::TriggerType
           end
           def vault
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Vault
           end
           def sku_name
             Azure::RecoveryServices::Mgmt::V2016_06_01::Models::SkuName
-          end
-          def sku
-            Azure::RecoveryServices::Mgmt::V2016_06_01::Models::Sku
           end
         end
       end

@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       JobCollections = Azure::Scheduler::Mgmt::V2016_03_01::JobCollections
 
       module Models
+        Sku = Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
         JobRecurrence = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrence
         JobCollectionQuota = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionQuota
         JobCollectionDefinition = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionDefinition
@@ -26,18 +27,18 @@ module Azure::Profiles::Latest
         JobCollectionProperties = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionProperties
         JobHistoryListResult = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryListResult
         JobErrorAction = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobErrorAction
-        RetryPolicy = Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryPolicy
         JobHistoryFilter = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryFilter
         JobMaxRecurrence = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobMaxRecurrence
-        JobRecurrenceScheduleMonthlyOccurrence = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrenceScheduleMonthlyOccurrence
-        ServiceBusMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusMessage
         JobStateFilter = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStateFilter
+        RetryPolicy = Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryPolicy
+        JobRecurrenceScheduleMonthlyOccurrence = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrenceScheduleMonthlyOccurrence
         JobCollectionListResult = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionListResult
-        ServiceBusQueueMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusQueueMessage
-        ServiceBusTopicMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTopicMessage
         ServiceBusAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusAuthentication
+        ServiceBusMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusMessage
+        ServiceBusQueueMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusQueueMessage
         ClientCertAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::ClientCertAuthentication
         OAuthAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
+        ServiceBusTopicMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTopicMessage
         SkuDefinition = Azure::Scheduler::Mgmt::V2016_03_01::Models::SkuDefinition
         JobCollectionState = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionState
         RetryType = Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryType
@@ -54,7 +55,6 @@ module Azure::Profiles::Latest
         JobProperties = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobProperties
         BasicAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::BasicAuthentication
         JobStatus = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStatus
-        Sku = Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
       end
 
       class SchedulerManagementClass
@@ -88,6 +88,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def sku
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
+          end
           def job_recurrence
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrence
           end
@@ -133,41 +136,41 @@ module Azure::Profiles::Latest
           def job_error_action
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobErrorAction
           end
-          def retry_policy
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryPolicy
-          end
           def job_history_filter
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryFilter
           end
           def job_max_recurrence
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobMaxRecurrence
           end
-          def job_recurrence_schedule_monthly_occurrence
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrenceScheduleMonthlyOccurrence
-          end
-          def service_bus_message
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusMessage
-          end
           def job_state_filter
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStateFilter
+          end
+          def retry_policy
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryPolicy
+          end
+          def job_recurrence_schedule_monthly_occurrence
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::JobRecurrenceScheduleMonthlyOccurrence
           end
           def job_collection_list_result
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionListResult
           end
-          def service_bus_queue_message
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusQueueMessage
-          end
-          def service_bus_topic_message
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTopicMessage
-          end
           def service_bus_authentication
             Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusAuthentication
+          end
+          def service_bus_message
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusMessage
+          end
+          def service_bus_queue_message
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusQueueMessage
           end
           def client_cert_authentication
             Azure::Scheduler::Mgmt::V2016_03_01::Models::ClientCertAuthentication
           end
           def oauth_authentication
             Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
+          end
+          def service_bus_topic_message
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTopicMessage
           end
           def sku_definition
             Azure::Scheduler::Mgmt::V2016_03_01::Models::SkuDefinition
@@ -216,9 +219,6 @@ module Azure::Profiles::Latest
           end
           def job_status
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobStatus
-          end
-          def sku
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::Sku
           end
         end
       end
