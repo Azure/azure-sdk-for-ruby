@@ -26,7 +26,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GpuResource',
           type: {
@@ -34,7 +33,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
             class_name: 'GpuResource',
             model_properties: {
               count: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'count',
                 type: {
@@ -42,7 +40,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {

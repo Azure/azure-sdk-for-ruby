@@ -31,7 +31,6 @@ module Azure::ContainerInstance::Mgmt::V2017_12_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Usage',
           type: {
@@ -39,7 +38,6 @@ module Azure::ContainerInstance::Mgmt::V2017_12_01_preview
             class_name: 'Usage',
             model_properties: {
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -48,7 +46,6 @@ module Azure::ContainerInstance::Mgmt::V2017_12_01_preview
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'currentValue',
@@ -57,7 +54,6 @@ module Azure::ContainerInstance::Mgmt::V2017_12_01_preview
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'limit',
@@ -66,7 +62,6 @@ module Azure::ContainerInstance::Mgmt::V2017_12_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',

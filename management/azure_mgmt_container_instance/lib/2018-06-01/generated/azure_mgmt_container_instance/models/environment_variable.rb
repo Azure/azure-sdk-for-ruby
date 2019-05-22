@@ -28,7 +28,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EnvironmentVariable',
           type: {
@@ -36,7 +35,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
             class_name: 'EnvironmentVariable',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +42,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -52,7 +49,6 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
                 }
               },
               secure_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secureValue',
                 type: {

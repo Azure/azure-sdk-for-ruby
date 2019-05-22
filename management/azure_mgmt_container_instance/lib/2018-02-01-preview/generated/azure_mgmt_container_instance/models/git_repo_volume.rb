@@ -32,7 +32,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GitRepoVolume',
           type: {
@@ -40,7 +39,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
             class_name: 'GitRepoVolume',
             model_properties: {
               directory: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'directory',
                 type: {
@@ -48,7 +46,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               repository: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'repository',
                 type: {
@@ -56,7 +53,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               revision: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'revision',
                 type: {

@@ -18,6 +18,9 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       # @return [OperationDisplay] The display information of the operation.
       attr_accessor :display
 
+      # @return The additional properties.
+      attr_accessor :properties
+
       # @return [ContainerInstanceOperationsOrigin] The intended executor of
       # the operation. Possible values include: 'User', 'System'
       attr_accessor :origin
@@ -29,7 +32,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -37,7 +39,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
             class_name: 'Operation',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -45,7 +46,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 }
               },
               display: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'display',
                 type: {
@@ -53,8 +53,14 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                   class_name: 'OperationDisplay'
                 }
               },
+              properties: {
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Object'
+                }
+              },
               origin: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {

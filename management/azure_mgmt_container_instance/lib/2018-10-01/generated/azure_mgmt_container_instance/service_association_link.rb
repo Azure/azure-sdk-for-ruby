@@ -34,8 +34,8 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, virtual_network_name, subnet_name, custom_headers:nil)
-      response = delete_async(resource_group_name, virtual_network_name, subnet_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, virtual_network_name, subnet_name, custom_headers = nil)
+      response = delete_async(resource_group_name, virtual_network_name, subnet_name, custom_headers).value!
       nil
     end
 
@@ -53,8 +53,8 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, virtual_network_name, subnet_name, custom_headers:nil)
-      delete_async(resource_group_name, virtual_network_name, subnet_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, virtual_network_name, subnet_name, custom_headers = nil)
+      delete_async(resource_group_name, virtual_network_name, subnet_name, custom_headers).value!
     end
 
     #
@@ -71,7 +71,7 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, virtual_network_name, subnet_name, custom_headers:nil)
+    def delete_async(resource_group_name, virtual_network_name, subnet_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -80,7 +80,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

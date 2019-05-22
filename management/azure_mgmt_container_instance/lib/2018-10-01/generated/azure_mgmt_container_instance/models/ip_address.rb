@@ -36,7 +36,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IpAddress',
           type: {
@@ -44,13 +43,11 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
             class_name: 'IpAddress',
             model_properties: {
               ports: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ports',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PortElementType',
                       type: {
@@ -61,7 +58,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -69,7 +65,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 }
               },
               ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ip',
                 type: {
@@ -77,7 +72,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 }
               },
               dns_name_label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dnsNameLabel',
                 type: {
@@ -85,7 +79,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 }
               },
               fqdn: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'fqdn',

@@ -37,7 +37,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Event',
           type: {
@@ -45,7 +44,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
             class_name: 'Event',
             model_properties: {
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -53,7 +51,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               first_timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'firstTimestamp',
                 type: {
@@ -61,7 +58,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               last_timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastTimestamp',
                 type: {
@@ -69,7 +65,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -77,7 +72,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -85,7 +79,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

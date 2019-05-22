@@ -27,7 +27,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerGroupIdentity_userAssignedIdentitiesValue',
           type: {
@@ -35,7 +34,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
             class_name: 'ContainerGroupIdentityUserAssignedIdentitiesValue',
             model_properties: {
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'principalId',
@@ -44,7 +42,6 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 }
               },
               client_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'clientId',

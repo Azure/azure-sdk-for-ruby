@@ -32,7 +32,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerProperties_instanceView',
           type: {
@@ -40,7 +39,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
             class_name: 'ContainerPropertiesInstanceView',
             model_properties: {
               restart_count: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'restartCount',
@@ -49,7 +47,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               current_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'currentState',
@@ -59,7 +56,6 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               previous_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'previousState',
@@ -69,14 +65,12 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
                 }
               },
               events: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'events',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EventElementType',
                       type: {
