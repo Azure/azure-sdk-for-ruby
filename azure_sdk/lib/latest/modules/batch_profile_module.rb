@@ -8,16 +8,18 @@ module Azure::Profiles::Latest
   module Batch
     module Mgmt
       Location = Azure::Batch::Mgmt::V2017_09_01::Location
-      CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
       BatchAccountOperations = Azure::Batch::Mgmt::V2017_09_01::BatchAccountOperations
       ApplicationPackageOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationPackageOperations
       ApplicationOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationOperations
       PoolOperations = Azure::Batch::Mgmt::V2017_09_01::PoolOperations
       Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
+      CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
 
       module Models
-        WindowsConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::WindowsConfiguration
         Certificate = Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
+        InboundNatPool = Azure::Batch::Mgmt::V2017_09_01::Models::InboundNatPool
+        OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
+        WindowsConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::WindowsConfiguration
         ProxyResource = Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
         FixedScaleSettings = Azure::Batch::Mgmt::V2017_09_01::Models::FixedScaleSettings
         AutoStorageBaseProperties = Azure::Batch::Mgmt::V2017_09_01::Models::AutoStorageBaseProperties
@@ -51,9 +53,9 @@ module Azure::Profiles::Latest
         Application = Azure::Batch::Mgmt::V2017_09_01::Models::Application
         AutoUserSpecification = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
         UserIdentity = Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
-        StartTask = Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
         CertificateReference = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateReference
         VirtualMachineConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
+        StartTask = Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
         ApplicationPackageReference = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
         ApplicationCreateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationCreateParameters
         ResizeError = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
@@ -93,12 +95,10 @@ module Azure::Profiles::Latest
         OperationListResult = Azure::Batch::Mgmt::V2017_09_01::Models::OperationListResult
         CheckNameAvailabilityResult = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityResult
         NameAvailabilityReason = Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
-        InboundNatPool = Azure::Batch::Mgmt::V2017_09_01::Models::InboundNatPool
-        OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
       end
 
       class BatchManagementClass
-        attr_reader :location, :certificate_operations, :batch_account_operations, :application_package_operations, :application_operations, :pool_operations, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :location, :batch_account_operations, :application_package_operations, :application_operations, :pool_operations, :operations, :certificate_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -109,12 +109,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @location = @client_0.location
-          @certificate_operations = @client_0.certificate_operations
           @batch_account_operations = @client_0.batch_account_operations
           @application_package_operations = @client_0.application_package_operations
           @application_operations = @client_0.application_operations
           @pool_operations = @client_0.pool_operations
           @operations = @client_0.operations
+          @certificate_operations = @client_0.certificate_operations
 
           @model_classes = ModelClasses.new
         end
@@ -133,11 +133,17 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def windows_configuration
-            Azure::Batch::Mgmt::V2017_09_01::Models::WindowsConfiguration
-          end
           def certificate
             Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
+          end
+          def inbound_nat_pool
+            Azure::Batch::Mgmt::V2017_09_01::Models::InboundNatPool
+          end
+          def osdisk
+            Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
+          end
+          def windows_configuration
+            Azure::Batch::Mgmt::V2017_09_01::Models::WindowsConfiguration
           end
           def proxy_resource
             Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
@@ -238,14 +244,14 @@ module Azure::Profiles::Latest
           def user_identity
             Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
           end
-          def start_task
-            Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
-          end
           def certificate_reference
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateReference
           end
           def virtual_machine_configuration
             Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
+          end
+          def start_task
+            Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
           end
           def application_package_reference
             Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
@@ -363,12 +369,6 @@ module Azure::Profiles::Latest
           end
           def name_availability_reason
             Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
-          end
-          def inbound_nat_pool
-            Azure::Batch::Mgmt::V2017_09_01::Models::InboundNatPool
-          end
-          def osdisk
-            Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
           end
         end
       end

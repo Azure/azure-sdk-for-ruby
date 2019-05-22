@@ -12,22 +12,22 @@ module Azure::Profiles::Latest
       PolicyStates = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyStates
 
       module Models
-        PolicyEvent = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
-        PolicyState = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
-        PolicyStatesQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
-        QueryFailure = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
-        QueryFailureError = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
-        OperationsListResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
-        PolicyStatesResource = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
-        SummaryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
-        QueryOptions = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryOptions
         PolicyDefinitionSummary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyDefinitionSummary
         PolicyAssignmentSummary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyAssignmentSummary
         PolicyEventsQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
-        OperationDisplay = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
         Summary = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Summary
-        Operation = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
+        QueryFailure = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
         SummarizeResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
+        PolicyStatesQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
+        PolicyEvent = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
+        PolicyState = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
+        OperationDisplay = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
+        OperationsListResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
+        Operation = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
+        SummaryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
+        QueryFailureError = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
+        PolicyStatesResource = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
+        QueryOptions = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryOptions
       end
 
       class PolicyInsightsManagementClass
@@ -62,33 +62,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def policy_event
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
-          end
-          def policy_state
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
-          end
-          def policy_states_query_results
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
-          end
-          def query_failure
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
-          end
-          def query_failure_error
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
-          end
-          def operations_list_results
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
-          end
-          def policy_states_resource
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
-          end
-          def summary_results
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
-          end
-          def query_options
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryOptions
-          end
           def policy_definition_summary
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyDefinitionSummary
           end
@@ -98,17 +71,44 @@ module Azure::Profiles::Latest
           def policy_events_query_results
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
           end
+          def summary
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Summary
+          end
+          def query_failure
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailure
+          end
+          def summarize_results
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
+          end
+          def policy_states_query_results
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesQueryResults
+          end
+          def policy_event
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
+          end
+          def policy_state
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyState
+          end
           def operation_display
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationDisplay
           end
-          def summary
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Summary
+          def operations_list_results
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::OperationsListResults
           end
           def operation
             Azure::PolicyInsights::Mgmt::V2018_04_04::Models::Operation
           end
-          def summarize_results
-            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummarizeResults
+          def summary_results
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::SummaryResults
+          end
+          def query_failure_error
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryFailureError
+          end
+          def policy_states_resource
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyStatesResource
+          end
+          def query_options
+            Azure::PolicyInsights::Mgmt::V2018_04_04::Models::QueryOptions
           end
         end
       end

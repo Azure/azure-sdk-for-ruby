@@ -8,6 +8,18 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
+      CelebrityResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
+      Category = Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
+      LandmarkResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
+      ImageTag = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
+      ImageDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
+      RecognitionResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
+      TagResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
+      ColorInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
+      ComputerVisionError = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
+      LandmarksModel = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
+      ImageUrl = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
+      ImageDescriptionDetails = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
       TextOperationStatusCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
       Gender = Azure::CognitiveServices::ComputerVision::V2_0::Models::Gender
       ComputerVisionErrorCodes = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionErrorCodes
@@ -34,18 +46,6 @@ module Azure::Profiles::Latest
       Word = Azure::CognitiveServices::ComputerVision::V2_0::Models::Word
       DomainModelResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::DomainModelResults
       FaceRectangle = Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceRectangle
-      CelebrityResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
-      Category = Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
-      LandmarkResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
-      ImageTag = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
-      ImageDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
-      RecognitionResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
-      TagResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
-      ColorInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
-      ComputerVisionError = Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
-      LandmarksModel = Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
-      ImageUrl = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
-      ImageDescriptionDetails = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
     end
 
     class ComputerVisionDataClass
@@ -77,6 +77,42 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def celebrity_results
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
+        end
+        def category
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
+        end
+        def landmark_results
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
+        end
+        def image_tag
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
+        end
+        def image_description
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
+        end
+        def recognition_result
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
+        end
+        def tag_result
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
+        end
+        def color_info
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
+        end
+        def computer_vision_error
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
+        end
+        def landmarks_model
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
+        end
+        def image_url
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
+        end
+        def image_description_details
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
+        end
         def text_operation_status_codes
           Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationStatusCodes
         end
@@ -154,42 +190,6 @@ module Azure::Profiles::Latest
         end
         def face_rectangle
           Azure::CognitiveServices::ComputerVision::V2_0::Models::FaceRectangle
-        end
-        def celebrity_results
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::CelebrityResults
-        end
-        def category
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::Category
-        end
-        def landmark_results
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarkResults
-        end
-        def image_tag
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageTag
-        end
-        def image_description
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription
-        end
-        def recognition_result
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::RecognitionResult
-        end
-        def tag_result
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult
-        end
-        def color_info
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ColorInfo
-        end
-        def computer_vision_error
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ComputerVisionError
-        end
-        def landmarks_model
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::LandmarksModel
-        end
-        def image_url
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl
-        end
-        def image_description_details
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescriptionDetails
         end
       end
     end
