@@ -13,13 +13,20 @@ module Azure::Profiles::Latest
       Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
 
       module Models
-        SharedAccessSignatureAuthorizationRuleListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
+        StorageEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
+        TestAllRoutesInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
+        OperationsMonitoringProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
+        MatchedRoute = Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
+        CertificateWithNonceDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateWithNonceDescription
+        Resource = Azure::IotHub::Mgmt::V2018_04_01::Models::Resource
         TestAllRoutesResult = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesResult
-        CertificateVerificationDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateVerificationDescription
-        UserSubscriptionQuota = Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuota
-        RouteErrorPosition = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorPosition
-        FallbackRouteProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FallbackRouteProperties
+        SharedAccessSignatureAuthorizationRuleListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
         TestRouteInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteInput
+        OperationListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
+        FallbackRouteProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FallbackRouteProperties
+        RouteErrorPosition = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorPosition
+        CertificateVerificationDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateVerificationDescription
+        OperationDisplay = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationDisplay
         IotHubSkuInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuInfo
         RouteCompilationError = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteCompilationError
         RouteErrorRange = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorRange
@@ -78,18 +85,11 @@ module Azure::Profiles::Latest
         IotHubDescriptionListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescriptionListResult
         IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameAvailabilityInfo
         CertificateDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateDescription
-        CertificateWithNonceDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateWithNonceDescription
-        OperationListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
-        Resource = Azure::IotHub::Mgmt::V2018_04_01::Models::Resource
-        OperationDisplay = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationDisplay
+        UserSubscriptionQuota = Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuota
         RoutingServiceBusQueueEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusQueueEndpointProperties
         UserSubscriptionQuotaListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuotaListResult
-        TestAllRoutesInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
-        OperationsMonitoringProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
-        StorageEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
         RoutingEndpoints = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
         RoutingMessage = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingMessage
-        MatchedRoute = Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
       end
 
       class IotHubManagementClass
@@ -125,26 +125,47 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def shared_access_signature_authorization_rule_list_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
+          def storage_endpoint_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
+          end
+          def test_all_routes_input
+            Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
+          end
+          def operations_monitoring_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
+          end
+          def matched_route
+            Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
+          end
+          def certificate_with_nonce_description
+            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateWithNonceDescription
+          end
+          def resource
+            Azure::IotHub::Mgmt::V2018_04_01::Models::Resource
           end
           def test_all_routes_result
             Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesResult
           end
-          def certificate_verification_description
-            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateVerificationDescription
+          def shared_access_signature_authorization_rule_list_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
           end
-          def user_subscription_quota
-            Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuota
+          def test_route_input
+            Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteInput
           end
-          def route_error_position
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorPosition
+          def operation_list_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
           end
           def fallback_route_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::FallbackRouteProperties
           end
-          def test_route_input
-            Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteInput
+          def route_error_position
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorPosition
+          end
+          def certificate_verification_description
+            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateVerificationDescription
+          end
+          def operation_display
+            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationDisplay
           end
           def iot_hub_sku_info
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuInfo
@@ -320,17 +341,8 @@ module Azure::Profiles::Latest
           def certificate_description
             Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateDescription
           end
-          def certificate_with_nonce_description
-            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateWithNonceDescription
-          end
-          def operation_list_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
-          end
-          def resource
-            Azure::IotHub::Mgmt::V2018_04_01::Models::Resource
-          end
-          def operation_display
-            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationDisplay
+          def user_subscription_quota
+            Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuota
           end
           def routing_service_bus_queue_endpoint_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusQueueEndpointProperties
@@ -338,23 +350,11 @@ module Azure::Profiles::Latest
           def user_subscription_quota_list_result
             Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuotaListResult
           end
-          def test_all_routes_input
-            Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
-          end
-          def operations_monitoring_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
-          end
-          def storage_endpoint_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
-          end
           def routing_endpoints
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
           end
           def routing_message
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingMessage
-          end
-          def matched_route
-            Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
           end
         end
       end
