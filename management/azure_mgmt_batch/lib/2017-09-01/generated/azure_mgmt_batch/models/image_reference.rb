@@ -52,7 +52,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageReference',
           type: {
@@ -60,7 +59,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'ImageReference',
             model_properties: {
               publisher: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'publisher',
                 type: {
@@ -68,7 +66,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               offer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'offer',
                 type: {
@@ -76,7 +73,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -84,7 +80,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {
@@ -92,7 +87,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

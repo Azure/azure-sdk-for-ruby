@@ -41,7 +41,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkSecurityGroupRule',
           type: {
@@ -49,7 +48,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'NetworkSecurityGroupRule',
             model_properties: {
               priority: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'priority',
                 type: {
@@ -57,7 +55,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               access: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'access',
                 type: {
@@ -66,7 +63,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               source_address_prefix: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceAddressPrefix',
                 type: {
