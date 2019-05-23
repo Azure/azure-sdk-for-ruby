@@ -9,13 +9,14 @@ module Azure::Profiles::Latest
     module Mgmt
       Resources = Azure::Resources::Mgmt::V2018_05_01::Resources
       Operations = Azure::Resources::Mgmt::V2018_05_01::Operations
+      Deployments = Azure::Resources::Mgmt::V2018_05_01::Deployments
       Providers = Azure::Resources::Mgmt::V2018_05_01::Providers
       ResourceGroups = Azure::Resources::Mgmt::V2018_05_01::ResourceGroups
       Tags = Azure::Resources::Mgmt::V2018_05_01::Tags
       DeploymentOperations = Azure::Resources::Mgmt::V2018_05_01::DeploymentOperations
-      Deployments = Azure::Resources::Mgmt::V2018_05_01::Deployments
 
       module Models
+        Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
         ResourceIdentityType = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
         Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
         Dependency = Azure::Resources::Mgmt::V2018_05_01::Models::Dependency
@@ -69,11 +70,10 @@ module Azure::Profiles::Latest
         IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
         DeploymentMode = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-        Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
       end
 
       class ResourcesManagementClass
-        attr_reader :resources, :operations, :providers, :resource_groups, :tags, :deployment_operations, :deployments, :configurable, :base_url, :options, :model_classes
+        attr_reader :resources, :operations, :deployments, :providers, :resource_groups, :tags, :deployment_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -85,11 +85,11 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @resources = @client_0.resources
           @operations = @client_0.operations
+          @deployments = @client_0.deployments
           @providers = @client_0.providers
           @resource_groups = @client_0.resource_groups
           @tags = @client_0.tags
           @deployment_operations = @client_0.deployment_operations
-          @deployments = @client_0.deployments
 
           @model_classes = ModelClasses.new
         end
@@ -108,6 +108,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def plan
+            Azure::Resources::Mgmt::V2018_05_01::Models::Plan
+          end
           def resource_identity_type
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceIdentityType
           end
@@ -266,9 +269,6 @@ module Azure::Profiles::Latest
           end
           def deployment_mode
             Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentMode
-          end
-          def plan
-            Azure::Resources::Mgmt::V2018_05_01::Models::Plan
           end
         end
       end

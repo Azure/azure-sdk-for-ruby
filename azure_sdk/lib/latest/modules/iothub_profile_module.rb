@@ -13,6 +13,7 @@ module Azure::Profiles::Latest
       Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
 
       module Models
+        IotHubQuotaMetricInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
         CertificateProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
         IotHubQuotaMetricInfoListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfoListResult
         CertificateListDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateListDescription
@@ -48,6 +49,7 @@ module Azure::Profiles::Latest
         RoutingMessage = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingMessage
         StorageEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
         TestAllRoutesInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
+        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         OperationsMonitoringProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
         MatchedRoute = Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
         SharedAccessSignatureAuthorizationRuleListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
@@ -61,7 +63,6 @@ module Azure::Profiles::Latest
         RouteCompilationError = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteCompilationError
         CertificateBodyDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateBodyDescription
         TestRouteResultDetails = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResultDetails
-        Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
         FeedbackProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FeedbackProperties
         TestRouteResult = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResult
         RoutingEventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEventHubProperties
@@ -89,7 +90,6 @@ module Azure::Profiles::Latest
         OperationListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
         JobStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
         OperationInputs = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
-        IotHubQuotaMetricInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
       end
 
       class IotHubManagementClass
@@ -125,6 +125,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def iot_hub_quota_metric_info
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
+          end
           def certificate_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
           end
@@ -230,6 +233,9 @@ module Azure::Profiles::Latest
           def test_all_routes_input
             Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
           end
+          def name
+            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+          end
           def operations_monitoring_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
           end
@@ -268,9 +274,6 @@ module Azure::Profiles::Latest
           end
           def test_route_result_details
             Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResultDetails
-          end
-          def name
-            Azure::IotHub::Mgmt::V2018_04_01::Models::Name
           end
           def feedback_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::FeedbackProperties
@@ -352,9 +355,6 @@ module Azure::Profiles::Latest
           end
           def operation_inputs
             Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
-          end
-          def iot_hub_quota_metric_info
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
           end
         end
       end

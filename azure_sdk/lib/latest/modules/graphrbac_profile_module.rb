@@ -6,6 +6,8 @@ require 'azure_graph_rbac'
 
 module Azure::Profiles::Latest
   module GraphRbac
+    Users = Azure::GraphRbac::V1_6::Users
+    Domains = Azure::GraphRbac::V1_6::Domains
     SignedInUser = Azure::GraphRbac::V1_6::SignedInUser
     Applications = Azure::GraphRbac::V1_6::Applications
     DeletedApplications = Azure::GraphRbac::V1_6::DeletedApplications
@@ -13,10 +15,15 @@ module Azure::Profiles::Latest
     ServicePrincipals = Azure::GraphRbac::V1_6::ServicePrincipals
     Objects = Azure::GraphRbac::V1_6::Objects
     OAuth2PermissionGrantOperations = Azure::GraphRbac::V1_6::OAuth2PermissionGrantOperations
-    Users = Azure::GraphRbac::V1_6::Users
-    Domains = Azure::GraphRbac::V1_6::Domains
 
     module Models
+      UserListResult = Azure::GraphRbac::V1_6::Models::UserListResult
+      UserGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
+      UserGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
+      ServicePrincipalObjectResult = Azure::GraphRbac::V1_6::Models::ServicePrincipalObjectResult
+      CheckGroupMembershipParameters = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
+      KeyCredentialListResult = Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
+      CheckGroupMembershipResult = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipResult
       KeyCredentialsUpdateParameters = Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
       ServicePrincipalBase = Azure::GraphRbac::V1_6::Models::ServicePrincipalBase
       PreAuthorizedApplicationExtension = Azure::GraphRbac::V1_6::Models::PreAuthorizedApplicationExtension
@@ -65,17 +72,10 @@ module Azure::Profiles::Latest
       GroupGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsParameters
       ApplicationBase = Azure::GraphRbac::V1_6::Models::ApplicationBase
       GroupGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsResult
-      UserListResult = Azure::GraphRbac::V1_6::Models::UserListResult
-      UserGetMemberGroupsResult = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
-      UserGetMemberGroupsParameters = Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
-      ServicePrincipalObjectResult = Azure::GraphRbac::V1_6::Models::ServicePrincipalObjectResult
-      CheckGroupMembershipParameters = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
-      KeyCredentialListResult = Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
-      CheckGroupMembershipResult = Azure::GraphRbac::V1_6::Models::CheckGroupMembershipResult
     end
 
     class GraphRbacDataClass
-      attr_reader :signed_in_user, :applications, :deleted_applications, :groups, :service_principals, :objects, :oauth2_permission_grant_operations, :users, :domains, :configurable, :base_url, :options, :model_classes
+      attr_reader :users, :domains, :signed_in_user, :applications, :deleted_applications, :groups, :service_principals, :objects, :oauth2_permission_grant_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -85,6 +85,8 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @users = @client_0.users
+        @domains = @client_0.domains
         @signed_in_user = @client_0.signed_in_user
         @applications = @client_0.applications
         @deleted_applications = @client_0.deleted_applications
@@ -92,8 +94,6 @@ module Azure::Profiles::Latest
         @service_principals = @client_0.service_principals
         @objects = @client_0.objects
         @oauth2_permission_grant_operations = @client_0.oauth2_permission_grant_operations
-        @users = @client_0.users
-        @domains = @client_0.domains
 
         @model_classes = ModelClasses.new
       end
@@ -112,6 +112,27 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def user_list_result
+          Azure::GraphRbac::V1_6::Models::UserListResult
+        end
+        def user_get_member_groups_result
+          Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
+        end
+        def user_get_member_groups_parameters
+          Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
+        end
+        def service_principal_object_result
+          Azure::GraphRbac::V1_6::Models::ServicePrincipalObjectResult
+        end
+        def check_group_membership_parameters
+          Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
+        end
+        def key_credential_list_result
+          Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
+        end
+        def check_group_membership_result
+          Azure::GraphRbac::V1_6::Models::CheckGroupMembershipResult
+        end
         def key_credentials_update_parameters
           Azure::GraphRbac::V1_6::Models::KeyCredentialsUpdateParameters
         end
@@ -255,27 +276,6 @@ module Azure::Profiles::Latest
         end
         def group_get_member_groups_result
           Azure::GraphRbac::V1_6::Models::GroupGetMemberGroupsResult
-        end
-        def user_list_result
-          Azure::GraphRbac::V1_6::Models::UserListResult
-        end
-        def user_get_member_groups_result
-          Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsResult
-        end
-        def user_get_member_groups_parameters
-          Azure::GraphRbac::V1_6::Models::UserGetMemberGroupsParameters
-        end
-        def service_principal_object_result
-          Azure::GraphRbac::V1_6::Models::ServicePrincipalObjectResult
-        end
-        def check_group_membership_parameters
-          Azure::GraphRbac::V1_6::Models::CheckGroupMembershipParameters
-        end
-        def key_credential_list_result
-          Azure::GraphRbac::V1_6::Models::KeyCredentialListResult
-        end
-        def check_group_membership_result
-          Azure::GraphRbac::V1_6::Models::CheckGroupMembershipResult
         end
       end
     end

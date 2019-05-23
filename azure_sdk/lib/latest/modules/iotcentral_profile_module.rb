@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
 
       module Models
+        Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
         ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
         OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
         Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
@@ -23,7 +24,6 @@ module Azure::Profiles::Latest
         AppAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
         App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
         AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
-        Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
       end
 
       class IotCentralManagementClass
@@ -57,6 +57,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
+          end
           def error_details
             Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
           end
@@ -92,9 +95,6 @@ module Azure::Profiles::Latest
           end
           def app_sku
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
-          end
-          def resource
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
           end
         end
       end
