@@ -8,12 +8,12 @@ module Azure::Profiles::Latest
   module CDN
     module Mgmt
       Profiles = Azure::CDN::Mgmt::V2017_10_12::Profiles
-      Operations = Azure::CDN::Mgmt::V2017_10_12::Operations
-      Origins = Azure::CDN::Mgmt::V2017_10_12::Origins
       Endpoints = Azure::CDN::Mgmt::V2017_10_12::Endpoints
-      ResourceUsageOperations = Azure::CDN::Mgmt::V2017_10_12::ResourceUsageOperations
+      Origins = Azure::CDN::Mgmt::V2017_10_12::Origins
       CustomDomains = Azure::CDN::Mgmt::V2017_10_12::CustomDomains
+      ResourceUsageOperations = Azure::CDN::Mgmt::V2017_10_12::ResourceUsageOperations
       EdgeNodes = Azure::CDN::Mgmt::V2017_10_12::EdgeNodes
+      Operations = Azure::CDN::Mgmt::V2017_10_12::Operations
 
       module Models
         Sku = Azure::CDN::Mgmt::V2017_10_12::Models::Sku
@@ -70,15 +70,15 @@ module Azure::Profiles::Latest
         CustomDomainResourceState = Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomainResourceState
         CustomHttpsProvisioningState = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningState
         CustomHttpsProvisioningSubstate = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningSubstate
-        Resource = Azure::CDN::Mgmt::V2017_10_12::Models::Resource
         ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
+        Resource = Azure::CDN::Mgmt::V2017_10_12::Models::Resource
         OperationDisplay = Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay
         Operation = Azure::CDN::Mgmt::V2017_10_12::Models::Operation
         SkuName = Azure::CDN::Mgmt::V2017_10_12::Models::SkuName
       end
 
       class CDNManagementClass
-        attr_reader :profiles, :operations, :origins, :endpoints, :resource_usage_operations, :custom_domains, :edge_nodes, :configurable, :base_url, :options, :model_classes
+        attr_reader :profiles, :endpoints, :origins, :custom_domains, :resource_usage_operations, :edge_nodes, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -89,12 +89,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @profiles = @client_0.profiles
-          @operations = @client_0.operations
-          @origins = @client_0.origins
           @endpoints = @client_0.endpoints
-          @resource_usage_operations = @client_0.resource_usage_operations
+          @origins = @client_0.origins
           @custom_domains = @client_0.custom_domains
+          @resource_usage_operations = @client_0.resource_usage_operations
           @edge_nodes = @client_0.edge_nodes
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -275,11 +275,11 @@ module Azure::Profiles::Latest
           def custom_https_provisioning_substate
             Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningSubstate
           end
-          def resource
-            Azure::CDN::Mgmt::V2017_10_12::Models::Resource
-          end
           def resource_type
             Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
+          end
+          def resource
+            Azure::CDN::Mgmt::V2017_10_12::Models::Resource
           end
           def operation_display
             Azure::CDN::Mgmt::V2017_10_12::Models::OperationDisplay

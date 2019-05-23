@@ -11,6 +11,13 @@ module Azure::Profiles::Latest
       Servers = Azure::AnalysisServices::Mgmt::V2017_08_01::Servers
 
       module Models
+        GatewayListStatusLive = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusLive
+        GatewayError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayError
+        GatewayListStatusError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusError
+        AnalysisServicesServers = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServers
+        CheckServerNameAvailabilityParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityParameters
+        GatewayDetails = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayDetails
+        CheckServerNameAvailabilityResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
         IPv4FirewallSettings = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
         ErrorResponse = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ErrorResponse
         ServerAdministrators = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ServerAdministrators
@@ -22,22 +29,15 @@ module Azure::Profiles::Latest
         ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
         OperationStatus = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
         Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
-        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
         ProvisioningState = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
+        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
         OperationDisplay = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
         Operation = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
-        OperationListResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
         Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
+        OperationListResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
         SkuTier = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
         ResourceSku = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
         AnalysisServicesServerUpdateParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
-        GatewayListStatusLive = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusLive
-        GatewayError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayError
-        GatewayListStatusError = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusError
-        AnalysisServicesServers = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServers
-        CheckServerNameAvailabilityParameters = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityParameters
-        GatewayDetails = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayDetails
-        CheckServerNameAvailabilityResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
       end
 
       class AnalysisServicesManagementClass
@@ -71,6 +71,27 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def gateway_list_status_live
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusLive
+          end
+          def gateway_error
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayError
+          end
+          def gateway_list_status_error
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusError
+          end
+          def analysis_services_servers
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServers
+          end
+          def check_server_name_availability_parameters
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityParameters
+          end
+          def gateway_details
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayDetails
+          end
+          def check_server_name_availability_result
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
+          end
           def ipv4_firewall_settings
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::IPv4FirewallSettings
           end
@@ -104,11 +125,11 @@ module Azure::Profiles::Latest
           def resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
           end
-          def state
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
-          end
           def provisioning_state
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
+          end
+          def state
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
           end
           def operation_display
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
@@ -116,11 +137,11 @@ module Azure::Profiles::Latest
           def operation
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
           end
-          def operation_list_result
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
-          end
           def status
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
+          end
+          def operation_list_result
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
           end
           def sku_tier
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::SkuTier
@@ -130,27 +151,6 @@ module Azure::Profiles::Latest
           end
           def analysis_services_server_update_parameters
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServerUpdateParameters
-          end
-          def gateway_list_status_live
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusLive
-          end
-          def gateway_error
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayError
-          end
-          def gateway_list_status_error
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayListStatusError
-          end
-          def analysis_services_servers
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServers
-          end
-          def check_server_name_availability_parameters
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityParameters
-          end
-          def gateway_details
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::GatewayDetails
-          end
-          def check_server_name_availability_result
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::CheckServerNameAvailabilityResult
           end
         end
       end

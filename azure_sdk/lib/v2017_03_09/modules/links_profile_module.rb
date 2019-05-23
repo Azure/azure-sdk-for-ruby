@@ -11,14 +11,14 @@ module Azure::Profiles::V2017_03_09
       ResourceLinks = Azure::Links::Mgmt::V2016_09_01::ResourceLinks
 
       module Models
+        Filter = Azure::Links::Mgmt::V2016_09_01::Models::Filter
+        Operation = Azure::Links::Mgmt::V2016_09_01::Models::Operation
         OperationDisplay = Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
         ResourceLinkResult = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
         ResourceLinkProperties = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
         OperationListResult = Azure::Links::Mgmt::V2016_09_01::Models::OperationListResult
         ResourceLinkFilter = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
         ResourceLink = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
-        Filter = Azure::Links::Mgmt::V2016_09_01::Models::Filter
-        Operation = Azure::Links::Mgmt::V2016_09_01::Models::Operation
       end
 
       class LinksManagementClass
@@ -52,6 +52,12 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def filter
+            Azure::Links::Mgmt::V2016_09_01::Models::Filter
+          end
+          def operation
+            Azure::Links::Mgmt::V2016_09_01::Models::Operation
+          end
           def operation_display
             Azure::Links::Mgmt::V2016_09_01::Models::OperationDisplay
           end
@@ -69,12 +75,6 @@ module Azure::Profiles::V2017_03_09
           end
           def resource_link
             Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
-          end
-          def filter
-            Azure::Links::Mgmt::V2016_09_01::Models::Filter
-          end
-          def operation
-            Azure::Links::Mgmt::V2016_09_01::Models::Operation
           end
         end
       end

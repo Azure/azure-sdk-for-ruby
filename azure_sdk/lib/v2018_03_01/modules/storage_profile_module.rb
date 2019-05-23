@@ -7,17 +7,23 @@ require 'azure_mgmt_storage'
 module Azure::Profiles::V2018_03_01
   module Storage
     module Mgmt
-      StorageAccounts = Azure::Storage::Mgmt::V2016_01_01::StorageAccounts
       UsageOperations = Azure::Storage::Mgmt::V2016_01_01::UsageOperations
+      StorageAccounts = Azure::Storage::Mgmt::V2016_01_01::StorageAccounts
 
       module Models
+        Kind = Azure::Storage::Mgmt::V2016_01_01::Models::Kind
+        AccessTier = Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
+        StorageAccount = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
+        AccountStatus = Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
         KeyPermission = Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
+        UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
         Sku = Azure::Storage::Mgmt::V2016_01_01::Models::Sku
         UsageName = Azure::Storage::Mgmt::V2016_01_01::Models::UsageName
         StorageAccountCreateParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCreateParameters
         StorageAccountUpdateParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountUpdateParameters
         Resource = Azure::Storage::Mgmt::V2016_01_01::Models::Resource
         ProvisioningState = Azure::Storage::Mgmt::V2016_01_01::Models::ProvisioningState
+        Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
         StorageAccountCheckNameAvailabilityParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCheckNameAvailabilityParameters
         StorageAccountKey = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountKey
         StorageAccountListResult = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListResult
@@ -29,20 +35,14 @@ module Azure::Profiles::V2018_03_01
         CustomDomain = Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
         EncryptionServices = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
         UsageListResult = Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
-        StorageAccount = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
         SkuName = Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
+        SkuTier = Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
         CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2016_01_01::Models::CheckNameAvailabilityResult
         Usage = Azure::Storage::Mgmt::V2016_01_01::Models::Usage
-        SkuTier = Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
-        AccessTier = Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
-        Kind = Azure::Storage::Mgmt::V2016_01_01::Models::Kind
-        AccountStatus = Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
-        Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
-        UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
       end
 
       class StorageManagementClass
-        attr_reader :storage_accounts, :usage_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :usage_operations, :storage_accounts, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -52,8 +52,8 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @storage_accounts = @client_0.storage_accounts
           @usage_operations = @client_0.usage_operations
+          @storage_accounts = @client_0.storage_accounts
 
           @model_classes = ModelClasses.new
         end
@@ -72,8 +72,23 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def kind
+            Azure::Storage::Mgmt::V2016_01_01::Models::Kind
+          end
+          def access_tier
+            Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
+          end
+          def storage_account
+            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
+          end
+          def account_status
+            Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
+          end
           def key_permission
             Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
+          end
+          def usage_unit
+            Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
           end
           def sku
             Azure::Storage::Mgmt::V2016_01_01::Models::Sku
@@ -92,6 +107,9 @@ module Azure::Profiles::V2018_03_01
           end
           def provisioning_state
             Azure::Storage::Mgmt::V2016_01_01::Models::ProvisioningState
+          end
+          def reason
+            Azure::Storage::Mgmt::V2016_01_01::Models::Reason
           end
           def storage_account_check_name_availability_parameters
             Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCheckNameAvailabilityParameters
@@ -126,35 +144,17 @@ module Azure::Profiles::V2018_03_01
           def usage_list_result
             Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
           end
-          def storage_account
-            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
-          end
           def sku_name
             Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
+          end
+          def sku_tier
+            Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
           end
           def check_name_availability_result
             Azure::Storage::Mgmt::V2016_01_01::Models::CheckNameAvailabilityResult
           end
           def usage
             Azure::Storage::Mgmt::V2016_01_01::Models::Usage
-          end
-          def sku_tier
-            Azure::Storage::Mgmt::V2016_01_01::Models::SkuTier
-          end
-          def access_tier
-            Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
-          end
-          def kind
-            Azure::Storage::Mgmt::V2016_01_01::Models::Kind
-          end
-          def account_status
-            Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
-          end
-          def reason
-            Azure::Storage::Mgmt::V2016_01_01::Models::Reason
-          end
-          def usage_unit
-            Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
           end
         end
       end
