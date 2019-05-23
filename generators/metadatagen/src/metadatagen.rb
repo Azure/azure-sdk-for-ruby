@@ -31,6 +31,7 @@ class MetaDataGenerator
   end
 
   def process
+    check_and_create_directory "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}"
     check_and_create_directory "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec"
     check_and_create_directory "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/lib"
     check_and_create_directory "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/lib/profiles"
@@ -38,7 +39,10 @@ class MetaDataGenerator
     check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/.rspec", '.rspec', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}")
     check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/LICENSE.txt",'LICENSE.txt', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}")
     check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/Rakefile", 'Rakefile', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}")
-    if Dir["#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec"].empty?
+    spec_entries = Dir.entries "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec"
+    spec_entries.delete "."
+    spec_entries.delete ".."
+    if spec_entries.empty?
       check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec/spec_helper.rb", 'spec_helper.rb', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/spec")
     end
     check_and_create_file("#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/lib/#{@gem_name}.rb",'require_file.rb', "#{@azure_sdk_for_ruby_location}/#{@plane}/#{@gem_name}/lib/#{@gem_name}.rb")
@@ -63,7 +67,18 @@ class MetaDataGenerator
 
   def get_module_name
     gem_array = @gem_name.split '_'
-    gem_array[gem_array.length - 1].capitalize
+    if @plane == 'management'
+      index = 2
+    else
+      index = 1
+    end
+
+    module_name = ''
+    gem_array[index..gem_array.length-1].each do |element|
+      module_name.concat(element.capitalize)
+    end
+
+    module_name
   end
 
   def get_module_definition_renderer_template

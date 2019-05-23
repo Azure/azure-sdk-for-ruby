@@ -15,8 +15,8 @@ module Azure::IotHub::Mgmt::V2018_04_01
       # @return [String] Id of the endpoint
       attr_accessor :endpoint_id
 
-      # @return [EndpointHealthStatus] Health status. Possible values include:
-      # 'unknown', 'healthy', 'unhealthy', 'dead'
+      # @return [EndpointHealthStatus] The health status code of the endpoint.
+      # Possible values include: 'unknown', 'healthy', 'unhealthy', 'dead'
       attr_accessor :health_status
 
 

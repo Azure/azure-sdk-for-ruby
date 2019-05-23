@@ -17,7 +17,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
       attr_accessor :user_id
 
       # @return [String] Product (product id path) for which subscription is
-      # being created in form /products/{productid}
+      # being created in form /products/{productId}
       attr_accessor :product_id
 
       # @return [String] Subscription name.

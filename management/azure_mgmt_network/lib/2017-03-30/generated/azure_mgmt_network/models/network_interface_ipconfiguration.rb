@@ -31,15 +31,13 @@ module Azure::Network::Mgmt::V2017_03_30
       # @return [String] Private IP address of the IP configuration.
       attr_accessor :private_ipaddress
 
-      # @return [IPAllocationMethod] Defines how a private IP address is
-      # assigned. Possible values are: 'Static' and 'Dynamic'. Possible values
-      # include: 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] The private IP address allocation method.
+      # Possible values include: 'Static', 'Dynamic'
       attr_accessor :private_ipallocation_method
 
       # @return [IPVersion] Available from Api-Version 2016-03-30 onwards, it
       # represents whether the specific ipconfiguration is IPv4 or IPv6.
-      # Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
-      # Possible values include: 'IPv4', 'IPv6'
+      # Default is taken as IPv4. Possible values include: 'IPv4', 'IPv6'
       attr_accessor :private_ipaddress_version
 
       # @return [Subnet] Subnet bound to the IP configuration.

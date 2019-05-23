@@ -38,6 +38,10 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       # used when executing this build step.
       attr_accessor :arguments
 
+      # @return [String] The name of the target build stage for the docker
+      # build.
+      attr_accessor :target
+
 
       #
       # Mapper for DockerBuildStepUpdateParameters class as Ruby Hash.
@@ -131,6 +135,14 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                         class_name: 'Argument'
                       }
                   }
+                }
+              },
+              target: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'target',
+                type: {
+                  name: 'String'
                 }
               }
             }

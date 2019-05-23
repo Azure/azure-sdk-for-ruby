@@ -2,6 +2,82 @@
     "rollup": {
         "azure_sdk": [
         {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Authorization": {
+                    "management": {
+                        "2015-07-01": ["*"]
+                    }
+                },
+                "Microsoft.Locks" : {
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
+                },
+                "Microsoft.Policy" : {
+                    "management": {
+                        "2016-12-01": ["*"]
+                    }
+                },
+                "Microsoft.Compute" : {
+                    "management": {
+                        "2017-03-30": ["*"],
+                        "2017-12-01": ["*"]
+                    }
+                },
+                "Microsoft.KeyVault" : {
+                    "management": {
+                        "2016-10-01": ["*"]
+                    },
+                    "data": {
+                        "2016-10-01": ["*"]
+                    }
+                },
+                "Microsoft.Network" : {
+                    "management": {
+                        "2017-10-01": ["*"]
+                    }
+                },
+                "Microsoft.Dns": {
+                    "management": {
+                        "2016-04-01": ["*"]
+                    }
+                },
+                "Microsoft.Resources" : {
+                    "management": {
+                        "2018-05-01": ["*"]
+                    }
+                },
+                "Microsoft.Subscriptions" : {
+                    "management": {
+                        "2016-06-01": ["*"]
+                    }
+                },
+                "Microsoft.Storage" : {
+                    "management": {
+                        "2017-10-01": ["*"]
+                    }
+                },
+                "Microsoft.Monitor" : {
+                    "management": {
+                        "2015-04-01": ["*"],
+                        "2017-05-01-preview": ["*"],
+                        "2018-01-01": ["*"]
+
+                    }
+                },
+                "Microsoft.Web": {
+                    "management": {
+                        "2016-03-01": ["*"],
+                        "2016-08-01": ["*"],
+                        "2016-09-01": ["*"],
+                        "2018-02-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "azure_sdk/lib"
+        },
+        {
             "name": "V2018_03_01",
             "resourceTypes": {
                 "Microsoft.Authorization" : {
@@ -153,7 +229,7 @@
                 },
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2019-01-01": ["*"]
                     }
                 },
                 "Microsoft.Authorization": {
@@ -196,10 +272,9 @@
                 },
                 "Microsoft.Compute": {
                     "management": {
-                        "2017-09-01": ["*"],
-                        "2017-12-01": ["*"],
-                        "2018-04-01": ["*"],
-                        "2018-06-01": ["*"]
+                        "2018-09-30": ["*"],
+                        "2019-03-01": ["*"],
+                        "2019-04-01": ["*"]
                     }
                 },
                 "Microsoft.Consumption": {
@@ -215,15 +290,19 @@
                 "Microsoft.ContainerRegistry": {
                     "management": {
                         "2017-10-01": ["*"],
-                        "2018-09-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 },
                 "Microsoft.ContainerService": {
                     "management": {
                         "2017-07-01": ["*"],
-                        "2017-09-30": ["*"],
-                        "2018-09-30-preview": ["*"],
-                        "2019-02-01": ["*"]
+                        "2019-04-01": ["*"],
+                        "2019-04-30": ["*"]
+                    }
+                },
+                "Microsoft.Cosmosdb": {
+                    "management": {
+                        "2015-04-08": ["*"]
                     }
                 },
                 "Microsoft.CustomerInsights": {
@@ -284,6 +363,11 @@
                         "2015-12-01": ["*"]
                     }
                 },
+                "Microsoft.Hanaonazure": {
+                    "management": {
+                        "2017-11-03-preview": ["*"]
+                    }
+                },
                 "Microsoft.Hdinsight": {
                     "management": {
                         "2018-06-01-preview": ["*"]
@@ -301,7 +385,7 @@
                 },
                 "Microsoft.IotHub": {
                     "management": {
-                        "2018-04-01": ["*"]
+                        "2019-03-22-preview": ["*"]
                     }
                 },
                 "Microsoft.KeyVault": {
@@ -394,13 +478,13 @@
                 },
                 "Microsoft.NetApp": {
                     "management": {
-                        "2017-08-15-preview": ["*"]
+                        "2019-05-01": ["*"]
                     }
                 },
                 "Microsoft.Network": {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2018-12-01": ["*"]
+                        "2019-02-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -423,6 +507,11 @@
                     "management": {
                         "2018-04-04": ["*"],
                         "2018-07-01-preview": ["*"]
+                    }
+                },
+                "Microsoft.Postgresql": {
+                    "management": {
+                        "2017-12-01": ["*"]
                     }
                 },
                 "Microsoft.PowerBiEmbedded": {
@@ -462,6 +551,11 @@
                         "2017-04-01": ["*"]
                     }
                 },
+                "Microsoft.Reservations": {
+                    "management": {
+                        "2019-04-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.ResourceGraph": {
                     "management": {
                         "2019-04-01": ["*"]
@@ -492,6 +586,11 @@
                         "2017-08-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Serialconsole": {
+                    "management": {
+                        "2018-05-01": ["*"]
+                    }
+                },
                 "Microsoft.ServiceBus": {
                     "management": {
                         "2017-04-01": ["*"]
@@ -516,7 +615,8 @@
                         "2014-04-01": ["*"],
                         "2015-05-01-preview": ["*"],
                         "2017-03-01-preview": ["*"],
-                        "2017-10-01-preview": ["*"]
+                        "2017-10-01-preview": ["*"],
+                        "2018-06-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Sqlvirtualmachine": {
@@ -531,7 +631,7 @@
                 },
                 "Microsoft.Storage": {
                     "management": {
-                        "2018-11-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 },
                 "Microsoft.StorageSync": {
@@ -609,6 +709,11 @@
                         "1.0": ["*"]
                     }
                 },
+                "Microsoft.CognitiveServices.FormRecognizer": {
+                    "data": {
+                        "1.0-preview": ["*"]
+                    }
+                },
                 "Microsoft.CognitiveServices.ImageSearch": {
                     "data": {
                         "1.0": ["*"]
@@ -621,7 +726,7 @@
                 },
                 "Microsoft.CognitiveServices.LuisRuntime": {
                     "data": {
-                        "2.0": ["*"]
+                        "3.0-preview": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.LuisAuthoring": {
@@ -704,7 +809,7 @@
             "resourceTypes": {
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2018-06-01-preview": ["*"]
+                        "2019-01-01": ["*"]
                     }
                 }
             },
@@ -713,6 +818,18 @@
         }
         ],
         "azure_mgmt_authorization": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Authorization": {
+                    "management": {
+                        "2015-07-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_authorization/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2018_03_01",
             "resourceTypes": {
@@ -840,6 +957,19 @@
         ],
         "azure_mgmt_compute": [
         {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Compute" : {
+                    "management": {
+                        "2017-03-30": ["*"],
+                        "2017-12-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_compute/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
             "name": "V2018_03_01",
             "resourceTypes": {
                 "Microsoft.Compute" : {
@@ -868,10 +998,9 @@
             "resourceTypes": {
                 "Microsoft.Compute" : {
                     "management": {
-                        "2017-09-01": ["*"],
-                        "2017-12-01": ["*"],
-                        "2018-04-01": ["*"],
-                        "2018-06-01": ["*"]
+                        "2018-09-30": ["*"],
+                        "2019-03-01": ["*"],
+                        "2019-04-01": ["*"]
                     }
                 }
             },
@@ -914,7 +1043,7 @@
                 "Microsoft.ContainerRegistry" : {
                     "management": {
                         "2017-10-01": ["*"],
-                        "2018-09-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 }
             },
@@ -929,13 +1058,26 @@
                 "Microsoft.ContainerService" : {
                     "management": {
                         "2017-07-01": ["*"],
-                        "2017-09-30": ["*"],
-                        "2018-09-30-preview": ["*"],
-                        "2019-02-01": ["*"]
+                        "2019-04-01": ["*"],
+                        "2019-04-30": ["*"]
                     }
                 }
             },
             "output_dir": "management/azure_mgmt_container_service/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_cosmosdb": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Cosmosdb": {
+                    "management": {
+                        "2015-04-08": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_cosmosdb/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -1024,6 +1166,18 @@
         }
         ],
         "azure_mgmt_dns": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Dns": {
+                    "management": {
+                        "2016-04-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_dns/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2018_03_01",
             "resourceTypes": {
@@ -1129,6 +1283,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_hanaonazure": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Hanaonazure": {
+                    "management": {
+                        "2017-11-03-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_hanaonazure/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_hdinsight": [
         {
             "name": "Latest",
@@ -1163,7 +1331,7 @@
             "resourceTypes": {
                 "Microsoft.IotHub" : {
                     "management": {
-                        "2018-04-01": ["*"]
+                        "2019-03-22-preview": ["*"]
                     }
                 }
             },
@@ -1172,6 +1340,18 @@
         }
         ],
         "azure_mgmt_key_vault": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.KeyVault" : {
+                    "management": {
+                        "2016-10-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2018_03_01",
             "resourceTypes": {
@@ -1264,6 +1444,18 @@
         }
         ],
         "azure_mgmt_locks": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Locks" : {
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_locks/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2018_03_01",
             "resourceTypes": {
@@ -1415,6 +1607,21 @@
         ],
         "azure_mgmt_monitor": [
         {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Monitor" : {
+                    "management": {
+                        "2015-04-01": ["*"],
+                        "2017-05-01-preview": ["*"],
+                        "2018-01-01": ["*"]
+
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_monitor/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Monitor" : {
@@ -1457,7 +1664,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2017-08-15-preview": ["*"]
+                        "2019-05-01": ["*"]
                     }
                 }
             },
@@ -1466,6 +1673,18 @@
         }
         ],
         "azure_mgmt_network": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Network" : {
+                  "management": {
+                    "2017-10-01": ["*"]
+                  }
+                }
+            },
+            "output_dir": "management/azure_mgmt_network/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2018_03_01",
             "resourceTypes": {
@@ -1497,7 +1716,7 @@
                 "Microsoft.Network" : {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2018-12-01": ["*"]
+                        "2019-02-01": ["*"]
                     }
                 }
             },
@@ -1535,6 +1754,18 @@
         }
         ],
         "azure_mgmt_policy": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Policy" : {
+                    "management": {
+                        "2016-12-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_policy/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2017_03_09",
             "resourceTypes": {
@@ -1584,6 +1815,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_policy_insights/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_postgresql": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Postgresql": {
+                    "management": {
+                        "2017-12-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_postgresql/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -1687,6 +1932,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_reservations": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Reservations": {
+                    "management": {
+                        "2019-04-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_reservations/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_resourcegraph": [
         {
             "name": "Latest",
@@ -1716,6 +1975,18 @@
         }
         ],
         "azure_mgmt_resources": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Resources" : {
+                    "management": {
+                        "2018-05-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_resources/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2018_03_01",
             "resourceTypes": {
@@ -1795,6 +2066,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_serialconsole": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Serialconsole": {
+                    "management": {
+                        "2018-05-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_serialconsole/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_service_bus": [
         {
             "name": "Latest",
@@ -1847,7 +2132,8 @@
                         "2014-04-01": ["*"],
                         "2015-05-01-preview": ["*"],
                         "2017-03-01-preview": ["*"],
-                        "2017-10-01-preview": ["*"]
+                        "2017-10-01-preview": ["*"],
+                        "2018-06-01-preview": ["*"]
                     }
                 }
             },
@@ -1885,6 +2171,18 @@
         ],
         "azure_mgmt_storage": [
         {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Storage" : {
+                    "management": {
+                        "2017-10-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_storage/lib/profiles",
+            "individual_gem_profile": true
+        },
+        {
             "name": "V2018_03_01",
             "resourceTypes": {
                 "Microsoft.Storage" : {
@@ -1913,7 +2211,7 @@
             "resourceTypes": {
                 "Microsoft.Storage" : {
                     "management": {
-                        "2018-11-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 }
             },
@@ -1950,6 +2248,18 @@
         }
         ],
         "azure_mgmt_subscriptions": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Subscriptions" : {
+                  "management": {
+                    "2016-06-01": ["*"]
+                  }
+                }
+            },
+            "output_dir": "management/azure_mgmt_subscriptions/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2018_03_01",
             "resourceTypes": {
@@ -2002,6 +2312,21 @@
         }
         ],
         "azure_mgmt_web": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Web": {
+                    "management": {
+                        "2016-03-01": ["*"],
+                        "2016-08-01": ["*"],
+                        "2016-09-01": ["*"],
+                        "2018-02-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_web/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
           "name": "V2018_03_01",
           "resourceTypes": {
@@ -2185,6 +2510,20 @@
                 "individual_gem_profile": true
             }
         ],
+        "azure_cognitiveservices_formrecognizer": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.CognitiveServices.FormRecognizer": {
+                    "data": {
+                        "1.0-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "data/azure_cognitiveservices_formrecognizer/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_cognitiveservices_imagesearch": [
             {
                 "name": "Latest",
@@ -2219,7 +2558,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.LuisRuntime": {
                         "data": {
-                            "2.0": ["*"]
+                            "3.0-preview": ["*"]
                         }
                     }
                 },
@@ -2354,6 +2693,18 @@
             }
         ],
         "azure_key_vault": [
+        {
+            "name": "V2019_03_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.KeyVault" : {
+                    "data": {
+                        "2016-10-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "data/azure_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        },
         {
             "name": "V2018_03_01",
             "resourceTypes": {

@@ -21,15 +21,15 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       # @return [String] The description of the application.
       attr_accessor :description
 
-      # @return [String] The culture of the application. E.g.: en-us.
+      # @return [String] The culture of the application. For example, "en-us".
       attr_accessor :culture
 
       # @return [String] Defines the scenario for the new application.
-      # Optional. E.g.: IoT.
+      # Optional. For example, IoT.
       attr_accessor :usage_scenario
 
-      # @return [String] The domain for the new application. Optional. E.g.:
-      # Comics.
+      # @return [String] The domain for the new application. Optional. For
+      # example, Comics.
       attr_accessor :domain
 
       # @return [Integer] Amount of model versions within the application.

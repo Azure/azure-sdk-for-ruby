@@ -12,7 +12,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
 
       include MsRestAzure
 
-      # @return [String] The Name to check the namespce name availability and
+      # @return [String] The Name to check the namespace name availability and
       # The namespace name can contain only letters, numbers, and hyphens. The
       # namespace must start with a letter, and it must end with a letter or
       # number.

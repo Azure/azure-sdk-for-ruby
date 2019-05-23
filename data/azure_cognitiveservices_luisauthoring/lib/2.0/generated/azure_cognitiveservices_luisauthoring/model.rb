@@ -22,12 +22,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     attr_reader :client
 
     #
-    # Adds an intent classifier to the application.
+    # Adds an intent to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param intent_create_object [ModelCreateObject] A model object containing the
-    # name of the new intent classifier.
+    # name of the new intent.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -39,12 +39,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds an intent classifier to the application.
+    # Adds an intent to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param intent_create_object [ModelCreateObject] A model object containing the
-    # name of the new intent classifier.
+    # name of the new intent.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -55,12 +55,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds an intent classifier to the application.
+    # Adds an intent to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param intent_create_object [ModelCreateObject] A model object containing the
-    # name of the new intent classifier.
+    # name of the new intent.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -105,7 +105,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
         response_content = http_response.body
         unless status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -134,7 +134,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the intent models.
+    # Gets information about the intent models in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -152,7 +152,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the intent models.
+    # Gets information about the intent models in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -169,7 +169,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the intent models.
+    # Gets information about the intent models in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -254,7 +254,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a simple entity extractor to the application.
+    # Adds a simple entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -271,7 +271,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a simple entity extractor to the application.
+    # Adds a simple entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -287,7 +287,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a simple entity extractor to the application.
+    # Adds a simple entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -366,7 +366,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the entity models.
+    # Gets information about all the simple entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -384,7 +385,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the entity models.
+    # Gets information about all the simple entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -401,7 +403,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the entity models.
+    # Gets information about all the simple entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -486,7 +489,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a hierarchical entity extractor to the application version.
+    # Adds a hierarchical entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -503,7 +506,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a hierarchical entity extractor to the application version.
+    # Adds a hierarchical entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -519,7 +522,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a hierarchical entity extractor to the application version.
+    # Adds a hierarchical entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -598,7 +601,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the hierarchical entity models.
+    # Gets information about all the hierarchical entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -616,7 +620,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the hierarchical entity models.
+    # Gets information about all the hierarchical entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -633,7 +638,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the hierarchical entity models.
+    # Gets information about all the hierarchical entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -718,7 +724,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a composite entity extractor to the application.
+    # Adds a composite entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -735,7 +741,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a composite entity extractor to the application.
+    # Adds a composite entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -751,7 +757,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a composite entity extractor to the application.
+    # Adds a composite entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -830,7 +836,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the composite entity models.
+    # Gets information about all the composite entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -848,7 +855,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the composite entity models.
+    # Gets information about all the composite entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -865,7 +873,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the composite entity models.
+    # Gets information about all the composite entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -950,7 +959,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the closedlist models.
+    # Gets information about all the list entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -968,7 +978,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the closedlist models.
+    # Gets information about all the list entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -985,7 +996,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the closedlist models.
+    # Gets information about all the list entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1070,12 +1082,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a closed list model to the application.
+    # Adds a list entity model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param closed_list_model_create_object [ClosedListModelCreateObject] A model
-    # containing the name and words for the new closed list entity extractor.
+    # containing the name and words for the new list entity extractor.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1087,12 +1099,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a closed list model to the application.
+    # Adds a list entity model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param closed_list_model_create_object [ClosedListModelCreateObject] A model
-    # containing the name and words for the new closed list entity extractor.
+    # containing the name and words for the new list entity extractor.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1103,12 +1115,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a closed list model to the application.
+    # Adds a list entity model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param closed_list_model_create_object [ClosedListModelCreateObject] A model
-    # containing the name and words for the new closed list entity extractor.
+    # containing the name and words for the new list entity extractor.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1182,7 +1194,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a list of prebuilt entity extractors to the application.
+    # Adds a list of prebuilt entities to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1199,7 +1211,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a list of prebuilt entity extractors to the application.
+    # Adds a list of prebuilt entities to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1215,7 +1227,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a list of prebuilt entity extractors to the application.
+    # Adds a list of prebuilt entities to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1318,7 +1330,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the prebuilt entity models.
+    # Gets information about all the prebuilt entities in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1336,7 +1349,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the prebuilt entity models.
+    # Gets information about all the prebuilt entities in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1353,7 +1367,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the prebuilt entity models.
+    # Gets information about all the prebuilt entities in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1438,7 +1453,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the available prebuilt entity extractors for the application.
+    # Gets all the available prebuilt entities in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1453,7 +1468,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the available prebuilt entity extractors for the application.
+    # Gets all the available prebuilt entities in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1467,7 +1482,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the available prebuilt entity extractors for the application.
+    # Gets all the available prebuilt entities in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1545,7 +1560,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the application version models.
+    # Gets information about all the intent and entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1563,7 +1579,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the application version models.
+    # Gets information about all the intent and entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1580,7 +1597,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the application version models.
+    # Gets information about all the intent and entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1665,7 +1683,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the utterances for the given model in the given app version.
+    # Gets the example utterances for the given intent or entity model in a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1684,7 +1703,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the utterances for the given model in the given app version.
+    # Gets the example utterances for the given intent or entity model in a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1702,7 +1722,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the utterances for the given model in the given app version.
+    # Gets the example utterances for the given intent or entity model in a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1789,7 +1810,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the intent model.
+    # Gets information about the intent model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1805,7 +1826,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the intent model.
+    # Gets information about the intent model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1820,7 +1841,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the intent model.
+    # Gets information about the intent model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -1884,13 +1905,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name of an intent classifier.
+    # Updates the name of an intent in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param intent_id The intent classifier ID.
     # @param model_update_object [ModelUpdateObject] A model object containing the
-    # new intent classifier name.
+    # new intent name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1902,13 +1923,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name of an intent classifier.
+    # Updates the name of an intent in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param intent_id The intent classifier ID.
     # @param model_update_object [ModelUpdateObject] A model object containing the
-    # new intent classifier name.
+    # new intent name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1919,13 +1940,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name of an intent classifier.
+    # Updates the name of an intent in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param intent_id The intent classifier ID.
     # @param model_update_object [ModelUpdateObject] A model object containing the
-    # new intent classifier name.
+    # new intent name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1993,14 +2014,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes an intent classifier from the application.
+    # Deletes an intent from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param intent_id The intent classifier ID.
-    # @param delete_utterances [Boolean] Also delete the intent's utterances
-    # (true). Or move the utterances to the None intent (false - the default
-    # value).
+    # @param delete_utterances [Boolean] If true, deletes the intent's example
+    # utterances. If false, moves the example utterances to the None intent. The
+    # default value is false.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2012,14 +2033,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes an intent classifier from the application.
+    # Deletes an intent from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param intent_id The intent classifier ID.
-    # @param delete_utterances [Boolean] Also delete the intent's utterances
-    # (true). Or move the utterances to the None intent (false - the default
-    # value).
+    # @param delete_utterances [Boolean] If true, deletes the intent's example
+    # utterances. If false, moves the example utterances to the None intent. The
+    # default value is false.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2030,14 +2051,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes an intent classifier from the application.
+    # Deletes an intent from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param intent_id The intent classifier ID.
-    # @param delete_utterances [Boolean] Also delete the intent's utterances
-    # (true). Or move the utterances to the None intent (false - the default
-    # value).
+    # @param delete_utterances [Boolean] If true, deletes the intent's example
+    # utterances. If false, moves the example utterances to the None intent. The
+    # default value is false.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2098,7 +2119,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the entity model.
+    # Gets information about an entity model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2114,7 +2135,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the entity model.
+    # Gets information about an entity model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2129,7 +2150,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the entity model.
+    # Gets information about an entity model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2193,7 +2214,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name of an entity extractor.
+    # Updates the name of an entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2211,7 +2232,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name of an entity extractor.
+    # Updates the name of an entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2228,7 +2249,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name of an entity extractor.
+    # Updates the name of an entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2302,7 +2323,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes an entity extractor from the application.
+    # Deletes an entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2318,7 +2339,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes an entity extractor from the application.
+    # Deletes an entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2333,7 +2354,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes an entity extractor from the application.
+    # Deletes an entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2397,7 +2418,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the hierarchical entity model.
+    # Gets information about a hierarchical entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2413,7 +2434,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the hierarchical entity model.
+    # Gets information about a hierarchical entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2428,7 +2449,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the hierarchical entity model.
+    # Gets information about a hierarchical entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2492,7 +2513,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name and children of a hierarchical entity model.
+    # Updates the name and children of a hierarchical entity model in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2510,7 +2532,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name and children of a hierarchical entity model.
+    # Updates the name and children of a hierarchical entity model in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2527,7 +2550,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name and children of a hierarchical entity model.
+    # Updates the name and children of a hierarchical entity model in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2601,7 +2625,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a hierarchical entity extractor from the application version.
+    # Deletes a hierarchical entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2617,7 +2641,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a hierarchical entity extractor from the application version.
+    # Deletes a hierarchical entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2632,7 +2656,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a hierarchical entity extractor from the application version.
+    # Deletes a hierarchical entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2696,7 +2720,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the composite entity model.
+    # Gets information about a composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2712,7 +2736,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the composite entity model.
+    # Gets information about a composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2727,7 +2751,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the composite entity model.
+    # Gets information about a composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2791,7 +2815,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the composite entity extractor.
+    # Updates a composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2809,7 +2833,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the composite entity extractor.
+    # Updates a composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2826,7 +2850,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the composite entity extractor.
+    # Updates a composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2900,7 +2924,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a composite entity extractor from the application.
+    # Deletes a composite entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2916,7 +2940,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a composite entity extractor from the application.
+    # Deletes a composite entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2931,7 +2955,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a composite entity extractor from the application.
+    # Deletes a composite entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -2995,11 +3019,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information of a closed list model.
+    # Gets information about a list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list model ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3011,11 +3035,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information of a closed list model.
+    # Gets information about a list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list model ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3026,11 +3050,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information of a closed list model.
+    # Gets information about a list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list model ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3090,13 +3114,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the closed list model.
+    # Updates the list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list model ID.
     # @param closed_list_model_update_object [ClosedListModelUpdateObject] The new
-    # entity name and words list.
+    # list entity name and words list.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3108,13 +3132,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the closed list model.
+    # Updates the list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list model ID.
     # @param closed_list_model_update_object [ClosedListModelUpdateObject] The new
-    # entity name and words list.
+    # list entity name and words list.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3125,13 +3149,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the closed list model.
+    # Updates the list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list model ID.
     # @param closed_list_model_update_object [ClosedListModelUpdateObject] The new
-    # entity name and words list.
+    # list entity name and words list.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3199,11 +3223,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a batch of sublists to an existing closedlist.
+    # Adds a batch of sublists to an existing list entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list entity model ID.
     # @param closed_list_model_patch_object [ClosedListModelPatchObject] A words
     # list batch.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -3217,11 +3242,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a batch of sublists to an existing closedlist.
+    # Adds a batch of sublists to an existing list entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list entity model ID.
     # @param closed_list_model_patch_object [ClosedListModelPatchObject] A words
     # list batch.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -3234,11 +3260,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a batch of sublists to an existing closedlist.
+    # Adds a batch of sublists to an existing list entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list entity model ID.
     # @param closed_list_model_patch_object [ClosedListModelPatchObject] A words
     # list batch.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -3308,11 +3335,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a closed list model from the application.
+    # Deletes a list entity model from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list entity model ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3324,11 +3351,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a closed list model from the application.
+    # Deletes a list entity model from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list entity model ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3339,11 +3366,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a closed list model from the application.
+    # Deletes a list entity model from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list model ID.
+    # @param cl_entity_id The list entity model ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3403,7 +3430,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the prebuilt entity model.
+    # Gets information about a prebuilt entity model in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3419,7 +3447,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the prebuilt entity model.
+    # Gets information about a prebuilt entity model in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3434,7 +3463,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the prebuilt entity model.
+    # Gets information about a prebuilt entity model in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3498,7 +3528,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a prebuilt entity extractor from the application.
+    # Deletes a prebuilt entity extractor from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3514,7 +3544,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a prebuilt entity extractor from the application.
+    # Deletes a prebuilt entity extractor from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3529,7 +3559,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a prebuilt entity extractor from the application.
+    # Deletes a prebuilt entity extractor from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3593,11 +3623,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a sublist of a specific closed list model.
+    # Deletes a sublist of a specific list entity model from a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list entity extractor ID.
+    # @param cl_entity_id The list entity extractor ID.
     # @param sub_list_id [Integer] The sublist ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -3610,11 +3641,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a sublist of a specific closed list model.
+    # Deletes a sublist of a specific list entity model from a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list entity extractor ID.
+    # @param cl_entity_id The list entity extractor ID.
     # @param sub_list_id [Integer] The sublist ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -3626,11 +3658,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a sublist of a specific closed list model.
+    # Deletes a sublist of a specific list entity model from a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list entity extractor ID.
+    # @param cl_entity_id The list entity extractor ID.
     # @param sub_list_id [Integer] The sublist ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -3692,11 +3725,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates one of the closed list's sublists.
+    # Updates one of the list entity's sublists in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list entity extractor ID.
+    # @param cl_entity_id The list entity extractor ID.
     # @param sub_list_id [Integer] The sublist ID.
     # @param word_list_base_update_object [WordListBaseUpdateObject] A sublist
     # update object containing the new canonical form and the list of words.
@@ -3711,11 +3744,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates one of the closed list's sublists.
+    # Updates one of the list entity's sublists in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list entity extractor ID.
+    # @param cl_entity_id The list entity extractor ID.
     # @param sub_list_id [Integer] The sublist ID.
     # @param word_list_base_update_object [WordListBaseUpdateObject] A sublist
     # update object containing the new canonical form and the list of words.
@@ -3729,11 +3762,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates one of the closed list's sublists.
+    # Updates one of the list entity's sublists in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list entity extractor ID.
+    # @param cl_entity_id The list entity extractor ID.
     # @param sub_list_id [Integer] The sublist ID.
     # @param word_list_base_update_object [WordListBaseUpdateObject] A sublist
     # update object containing the new canonical form and the list of words.
@@ -3805,7 +3838,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Suggests examples that would improve the accuracy of the intent model.
+    # Suggests example utterances that would improve the accuracy of the intent
+    # model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3817,13 +3851,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_intent_suggestions(app_id, version_id, intent_id, take:100, custom_headers:nil)
-      response = get_intent_suggestions_async(app_id, version_id, intent_id, take:take, custom_headers:custom_headers).value!
+    def list_intent_suggestions(app_id, version_id, intent_id, take:100, custom_headers:nil)
+      response = list_intent_suggestions_async(app_id, version_id, intent_id, take:take, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Suggests examples that would improve the accuracy of the intent model.
+    # Suggests example utterances that would improve the accuracy of the intent
+    # model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3835,12 +3870,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_intent_suggestions_with_http_info(app_id, version_id, intent_id, take:100, custom_headers:nil)
-      get_intent_suggestions_async(app_id, version_id, intent_id, take:take, custom_headers:custom_headers).value!
+    def list_intent_suggestions_with_http_info(app_id, version_id, intent_id, take:100, custom_headers:nil)
+      list_intent_suggestions_async(app_id, version_id, intent_id, take:take, custom_headers:custom_headers).value!
     end
 
     #
-    # Suggests examples that would improve the accuracy of the intent model.
+    # Suggests example utterances that would improve the accuracy of the intent
+    # model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3852,7 +3888,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_intent_suggestions_async(app_id, version_id, intent_id, take:100, custom_headers:nil)
+    def list_intent_suggestions_async(app_id, version_id, intent_id, take:100, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -3925,7 +3961,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get suggestion examples that would improve the accuracy of the entity model.
+    # Get suggested example utterances that would improve the accuracy of the
+    # entity model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3937,13 +3974,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_entity_suggestions(app_id, version_id, entity_id, take:100, custom_headers:nil)
-      response = get_entity_suggestions_async(app_id, version_id, entity_id, take:take, custom_headers:custom_headers).value!
+    def list_entity_suggestions(app_id, version_id, entity_id, take:100, custom_headers:nil)
+      response = list_entity_suggestions_async(app_id, version_id, entity_id, take:take, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get suggestion examples that would improve the accuracy of the entity model.
+    # Get suggested example utterances that would improve the accuracy of the
+    # entity model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3955,12 +3993,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_entity_suggestions_with_http_info(app_id, version_id, entity_id, take:100, custom_headers:nil)
-      get_entity_suggestions_async(app_id, version_id, entity_id, take:take, custom_headers:custom_headers).value!
+    def list_entity_suggestions_with_http_info(app_id, version_id, entity_id, take:100, custom_headers:nil)
+      list_entity_suggestions_async(app_id, version_id, entity_id, take:take, custom_headers:custom_headers).value!
     end
 
     #
-    # Get suggestion examples that would improve the accuracy of the entity model.
+    # Get suggested example utterances that would improve the accuracy of the
+    # entity model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -3972,7 +4011,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_entity_suggestions_async(app_id, version_id, entity_id, take:100, custom_headers:nil)
+    def list_entity_suggestions_async(app_id, version_id, entity_id, take:100, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -4045,16 +4084,16 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a list to an existing closed list.
+    # Adds a sublist to an existing list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list entity extractor ID.
+    # @param cl_entity_id The list entity extractor ID.
     # @param word_list_create_object [WordListObject] Words list.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Number] operation results.
+    # @return [Bignum] operation results.
     #
     def add_sub_list(app_id, version_id, cl_entity_id, word_list_create_object, custom_headers:nil)
       response = add_sub_list_async(app_id, version_id, cl_entity_id, word_list_create_object, custom_headers:custom_headers).value!
@@ -4062,11 +4101,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a list to an existing closed list.
+    # Adds a sublist to an existing list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list entity extractor ID.
+    # @param cl_entity_id The list entity extractor ID.
     # @param word_list_create_object [WordListObject] Words list.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -4078,11 +4117,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a list to an existing closed list.
+    # Adds a sublist to an existing list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param cl_entity_id The closed list entity extractor ID.
+    # @param cl_entity_id The list entity extractor ID.
     # @param word_list_create_object [WordListObject] Words list.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -4158,8 +4197,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a customizable prebuilt domain along with all of its models to this
-    # application.
+    # Adds a customizable prebuilt domain along with all of its intent and entity
+    # models in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4176,8 +4215,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a customizable prebuilt domain along with all of its models to this
-    # application.
+    # Adds a customizable prebuilt domain along with all of its intent and entity
+    # models in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4193,8 +4232,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a customizable prebuilt domain along with all of its models to this
-    # application.
+    # Adds a customizable prebuilt domain along with all of its intent and entity
+    # models in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4281,13 +4320,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a custom prebuilt intent model to the application.
+    # Adds a customizable prebuilt intent model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param prebuilt_domain_model_create_object [PrebuiltDomainModelCreateObject]
-    # A model object containing the name of the custom prebuilt intent and the name
-    # of the domain to which this model belongs.
+    # A model object containing the name of the customizable prebuilt intent and
+    # the name of the domain to which this model belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4299,13 +4338,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a custom prebuilt intent model to the application.
+    # Adds a customizable prebuilt intent model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param prebuilt_domain_model_create_object [PrebuiltDomainModelCreateObject]
-    # A model object containing the name of the custom prebuilt intent and the name
-    # of the domain to which this model belongs.
+    # A model object containing the name of the customizable prebuilt intent and
+    # the name of the domain to which this model belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4316,13 +4355,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a custom prebuilt intent model to the application.
+    # Adds a customizable prebuilt intent model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param prebuilt_domain_model_create_object [PrebuiltDomainModelCreateObject]
-    # A model object containing the name of the custom prebuilt intent and the name
-    # of the domain to which this model belongs.
+    # A model object containing the name of the customizable prebuilt intent and
+    # the name of the domain to which this model belongs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4396,7 +4435,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets custom prebuilt intents information of this application.
+    # Gets information about customizable prebuilt intents added to a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4411,7 +4451,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets custom prebuilt intents information of this application.
+    # Gets information about customizable prebuilt intents added to a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4425,7 +4466,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets custom prebuilt intents information of this application.
+    # Gets information about customizable prebuilt intents added to a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4503,13 +4545,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a custom prebuilt entity model to the application.
+    # Adds a prebuilt entity model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param prebuilt_domain_model_create_object [PrebuiltDomainModelCreateObject]
-    # A model object containing the name of the custom prebuilt entity and the name
-    # of the domain to which this model belongs.
+    # A model object containing the name of the prebuilt entity and the name of the
+    # domain to which this model belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4521,13 +4563,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a custom prebuilt entity model to the application.
+    # Adds a prebuilt entity model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param prebuilt_domain_model_create_object [PrebuiltDomainModelCreateObject]
-    # A model object containing the name of the custom prebuilt entity and the name
-    # of the domain to which this model belongs.
+    # A model object containing the name of the prebuilt entity and the name of the
+    # domain to which this model belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4538,13 +4580,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a custom prebuilt entity model to the application.
+    # Adds a prebuilt entity model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param prebuilt_domain_model_create_object [PrebuiltDomainModelCreateObject]
-    # A model object containing the name of the custom prebuilt entity and the name
-    # of the domain to which this model belongs.
+    # A model object containing the name of the prebuilt entity and the name of the
+    # domain to which this model belongs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4618,7 +4660,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all custom prebuilt entities information of this application.
+    # Gets all prebuilt entities used in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4633,7 +4675,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all custom prebuilt entities information of this application.
+    # Gets all prebuilt entities used in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4647,7 +4689,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all custom prebuilt entities information of this application.
+    # Gets all prebuilt entities used in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4725,7 +4767,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all custom prebuilt models information of this application.
+    # Gets all prebuilt intent and entity model information used in a version of
+    # this application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4740,7 +4783,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all custom prebuilt models information of this application.
+    # Gets all prebuilt intent and entity model information used in a version of
+    # this application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4754,7 +4798,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all custom prebuilt models information of this application.
+    # Gets all prebuilt intent and entity model information used in a version of
+    # this application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4832,7 +4877,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a prebuilt domain's models from the application.
+    # Deletes a prebuilt domain's models in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4848,7 +4893,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a prebuilt domain's models from the application.
+    # Deletes a prebuilt domain's models in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4863,7 +4908,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a prebuilt domain's models from the application.
+    # Deletes a prebuilt domain's models in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4927,7 +4972,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the hierarchical entity child model.
+    # Gets information about the child's model contained in an hierarchical entity
+    # child model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4944,7 +4990,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the hierarchical entity child model.
+    # Gets information about the child's model contained in an hierarchical entity
+    # child model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -4960,7 +5007,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the hierarchical entity child model.
+    # Gets information about the child's model contained in an hierarchical entity
+    # child model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5026,7 +5074,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Renames a single child in an existing hierarchical entity model.
+    # Renames a single child in an existing hierarchical entity model in a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5046,7 +5095,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Renames a single child in an existing hierarchical entity model.
+    # Renames a single child in an existing hierarchical entity model in a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5065,7 +5115,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Renames a single child in an existing hierarchical entity model.
+    # Renames a single child in an existing hierarchical entity model in a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5142,7 +5193,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a hierarchical entity extractor child from the application.
+    # Deletes a hierarchical entity extractor child in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5159,7 +5211,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a hierarchical entity extractor child from the application.
+    # Deletes a hierarchical entity extractor child in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5175,7 +5228,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a hierarchical entity extractor child from the application.
+    # Deletes a hierarchical entity extractor child in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5241,7 +5295,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Creates a single child in an existing hierarchical entity model.
+    # Creates a single child in an existing hierarchical entity model in a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5260,7 +5315,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Creates a single child in an existing hierarchical entity model.
+    # Creates a single child in an existing hierarchical entity model in a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5278,7 +5334,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Creates a single child in an existing hierarchical entity model.
+    # Creates a single child in an existing hierarchical entity model in a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5360,7 +5417,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Creates a single child in an existing composite entity model.
+    # Creates a single child in an existing composite entity model in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5378,7 +5436,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Creates a single child in an existing composite entity model.
+    # Creates a single child in an existing composite entity model in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5395,7 +5454,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Creates a single child in an existing composite entity model.
+    # Creates a single child in an existing composite entity model in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5476,7 +5536,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a composite entity extractor child from the application.
+    # Deletes a composite entity extractor child from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5493,7 +5553,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a composite entity extractor child from the application.
+    # Deletes a composite entity extractor child from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5509,7 +5569,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a composite entity extractor child from the application.
+    # Deletes a composite entity extractor child from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5575,7 +5635,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the regex entity models.
+    # Gets information about the regular expression entity models in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5587,13 +5648,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_regex_entity_infos(app_id, version_id, skip:0, take:100, custom_headers:nil)
-      response = get_regex_entity_infos_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
+    def list_regex_entity_infos(app_id, version_id, skip:0, take:100, custom_headers:nil)
+      response = list_regex_entity_infos_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets information about the regex entity models.
+    # Gets information about the regular expression entity models in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5605,12 +5667,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_regex_entity_infos_with_http_info(app_id, version_id, skip:0, take:100, custom_headers:nil)
-      get_regex_entity_infos_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
+    def list_regex_entity_infos_with_http_info(app_id, version_id, skip:0, take:100, custom_headers:nil)
+      list_regex_entity_infos_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
     end
 
     #
-    # Gets information about the regex entity models.
+    # Gets information about the regular expression entity models in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5622,7 +5685,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_regex_entity_infos_async(app_id, version_id, skip:0, take:100, custom_headers:nil)
+    def list_regex_entity_infos_async(app_id, version_id, skip:0, take:100, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -5695,13 +5758,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a regex entity model to the application version.
+    # Adds a regular expression entity model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param regex_entity_extractor_create_obj [RegexModelCreateObject] A model
-    # object containing the name and regex pattern for the new regex entity
-    # extractor.
+    # object containing the name and regex pattern for the new regular expression
+    # entity extractor.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5713,13 +5776,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a regex entity model to the application version.
+    # Adds a regular expression entity model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param regex_entity_extractor_create_obj [RegexModelCreateObject] A model
-    # object containing the name and regex pattern for the new regex entity
-    # extractor.
+    # object containing the name and regex pattern for the new regular expression
+    # entity extractor.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5730,13 +5793,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a regex entity model to the application version.
+    # Adds a regular expression entity model to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param regex_entity_extractor_create_obj [RegexModelCreateObject] A model
-    # object containing the name and regex pattern for the new regex entity
-    # extractor.
+    # object containing the name and regex pattern for the new regular expression
+    # entity extractor.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5810,7 +5873,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get information about the Pattern.Any entity models.
+    # Get information about the Pattern.Any entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5822,13 +5886,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_pattern_any_entity_infos(app_id, version_id, skip:0, take:100, custom_headers:nil)
-      response = get_pattern_any_entity_infos_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
+    def list_pattern_any_entity_infos(app_id, version_id, skip:0, take:100, custom_headers:nil)
+      response = list_pattern_any_entity_infos_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get information about the Pattern.Any entity models.
+    # Get information about the Pattern.Any entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5840,12 +5905,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_pattern_any_entity_infos_with_http_info(app_id, version_id, skip:0, take:100, custom_headers:nil)
-      get_pattern_any_entity_infos_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
+    def list_pattern_any_entity_infos_with_http_info(app_id, version_id, skip:0, take:100, custom_headers:nil)
+      list_pattern_any_entity_infos_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
     end
 
     #
-    # Get information about the Pattern.Any entity models.
+    # Get information about the Pattern.Any entity models in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5857,7 +5923,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_pattern_any_entity_infos_async(app_id, version_id, skip:0, take:100, custom_headers:nil)
+    def list_pattern_any_entity_infos_async(app_id, version_id, skip:0, take:100, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -5930,7 +5996,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a pattern.any entity extractor to the application.
+    # Adds a pattern.any entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5948,7 +6014,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a pattern.any entity extractor to the application.
+    # Adds a pattern.any entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -5965,7 +6031,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a pattern.any entity extractor to the application.
+    # Adds a pattern.any entity extractor to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6045,7 +6111,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for an entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6055,13 +6121,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
-      response = get_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
+      response = list_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for an entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6071,12 +6137,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
-      get_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
+      list_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for an entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6086,7 +6152,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
+    def list_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -6156,7 +6222,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create an entity role in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6174,7 +6240,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create an entity role in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6191,7 +6257,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create an entity role in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6272,7 +6338,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get a prebuilt entity's roles in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6282,13 +6348,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_prebuilt_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
-      response = get_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_prebuilt_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
+      response = list_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get a prebuilt entity's roles in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6298,12 +6364,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_prebuilt_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
-      get_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_prebuilt_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
+      list_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get a prebuilt entity's roles in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6313,7 +6379,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
+    def list_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -6383,7 +6449,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6401,7 +6467,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6418,7 +6484,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6499,7 +6565,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6509,13 +6575,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_closed_list_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
-      response = get_closed_list_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_closed_list_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
+      response = list_closed_list_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6525,12 +6591,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_closed_list_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
-      get_closed_list_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_closed_list_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
+      list_closed_list_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6540,7 +6606,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_closed_list_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
+    def list_closed_list_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -6610,7 +6676,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6628,7 +6694,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6645,7 +6711,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6726,7 +6792,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6736,13 +6803,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_regex_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
-      response = get_regex_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_regex_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
+      response = list_regex_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6752,12 +6820,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_regex_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
-      get_regex_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_regex_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
+      list_regex_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6767,7 +6836,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_regex_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
+    def list_regex_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -6837,7 +6906,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for an regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6855,7 +6925,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for an regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6872,7 +6943,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for an regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6953,7 +7025,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a composite entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6963,13 +7035,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_composite_entity_roles(app_id, version_id, c_entity_id, custom_headers:nil)
-      response = get_composite_entity_roles_async(app_id, version_id, c_entity_id, custom_headers:custom_headers).value!
+    def list_composite_entity_roles(app_id, version_id, c_entity_id, custom_headers:nil)
+      response = list_composite_entity_roles_async(app_id, version_id, c_entity_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a composite entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6979,12 +7051,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_composite_entity_roles_with_http_info(app_id, version_id, c_entity_id, custom_headers:nil)
-      get_composite_entity_roles_async(app_id, version_id, c_entity_id, custom_headers:custom_headers).value!
+    def list_composite_entity_roles_with_http_info(app_id, version_id, c_entity_id, custom_headers:nil)
+      list_composite_entity_roles_async(app_id, version_id, c_entity_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a composite entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -6994,7 +7066,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_composite_entity_roles_async(app_id, version_id, c_entity_id, custom_headers:nil)
+    def list_composite_entity_roles_async(app_id, version_id, c_entity_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -7064,7 +7136,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7082,7 +7154,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7099,7 +7171,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7180,7 +7252,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a Pattern.any entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7190,13 +7262,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_pattern_any_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
-      response = get_pattern_any_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_pattern_any_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
+      response = list_pattern_any_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a Pattern.any entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7206,12 +7278,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_pattern_any_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
-      get_pattern_any_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_pattern_any_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
+      list_pattern_any_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a Pattern.any entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7221,7 +7293,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_pattern_any_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
+    def list_pattern_any_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -7291,7 +7363,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for an Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7309,7 +7381,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for an Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7326,7 +7398,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for an Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7407,7 +7479,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a hierarchical entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7417,13 +7489,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_hierarchical_entity_roles(app_id, version_id, h_entity_id, custom_headers:nil)
-      response = get_hierarchical_entity_roles_async(app_id, version_id, h_entity_id, custom_headers:custom_headers).value!
+    def list_hierarchical_entity_roles(app_id, version_id, h_entity_id, custom_headers:nil)
+      response = list_hierarchical_entity_roles_async(app_id, version_id, h_entity_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a hierarchical entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7433,12 +7505,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_hierarchical_entity_roles_with_http_info(app_id, version_id, h_entity_id, custom_headers:nil)
-      get_hierarchical_entity_roles_async(app_id, version_id, h_entity_id, custom_headers:custom_headers).value!
+    def list_hierarchical_entity_roles_with_http_info(app_id, version_id, h_entity_id, custom_headers:nil)
+      list_hierarchical_entity_roles_async(app_id, version_id, h_entity_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a hierarchical entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7448,7 +7520,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_hierarchical_entity_roles_async(app_id, version_id, h_entity_id, custom_headers:nil)
+    def list_hierarchical_entity_roles_async(app_id, version_id, h_entity_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -7518,7 +7590,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for an hierarchical entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7536,7 +7608,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for an hierarchical entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7553,7 +7625,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for an hierarchical entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7634,7 +7706,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a prebuilt entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7644,13 +7716,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Array] operation results.
     #
-    def get_custom_prebuilt_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
-      response = get_custom_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_custom_prebuilt_entity_roles(app_id, version_id, entity_id, custom_headers:nil)
+      response = list_custom_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a prebuilt entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7660,12 +7732,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_custom_prebuilt_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
-      get_custom_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
+    def list_custom_prebuilt_entity_roles_with_http_info(app_id, version_id, entity_id, custom_headers:nil)
+      list_custom_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Get All Entity Roles for a given entity
+    # Get all roles for a prebuilt entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7675,7 +7747,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_custom_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
+    def list_custom_prebuilt_entity_roles_async(app_id, version_id, entity_id, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
@@ -7745,7 +7817,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7763,7 +7835,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7780,7 +7852,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Create an entity role for an entity in the application.
+    # Create a role for a prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7861,7 +7933,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the explicit list of the pattern.any entity.
+    # Get the explicit (exception) list of the pattern.any entity in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7877,7 +7950,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the explicit list of the pattern.any entity.
+    # Get the explicit (exception) list of the pattern.any entity in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7892,7 +7966,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the explicit list of the pattern.any entity.
+    # Get the explicit (exception) list of the pattern.any entity in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7972,7 +8047,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Add a new item to the explicit list for the Pattern.Any entity.
+    # Add a new exception to the explicit list for the Pattern.Any entity in a
+    # version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -7989,7 +8065,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Add a new item to the explicit list for the Pattern.Any entity.
+    # Add a new exception to the explicit list for the Pattern.Any entity in a
+    # version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8005,7 +8082,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Add a new item to the explicit list for the Pattern.Any entity.
+    # Add a new exception to the explicit list for the Pattern.Any entity in a
+    # version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8085,11 +8163,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information of a regex entity model.
+    # Gets information about a regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param regex_entity_id The regex entity model ID.
+    # @param regex_entity_id The regular expression entity model ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8101,11 +8180,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information of a regex entity model.
+    # Gets information about a regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param regex_entity_id The regex entity model ID.
+    # @param regex_entity_id The regular expression entity model ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8116,11 +8196,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information of a regex entity model.
+    # Gets information about a regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param regex_entity_id The regex entity model ID.
+    # @param regex_entity_id The regular expression entity model ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -8180,11 +8261,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the regex entity model .
+    # Updates the regular expression entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param regex_entity_id The regex entity extractor ID.
+    # @param regex_entity_id The regular expression entity extractor ID.
     # @param regex_entity_update_object [RegexModelUpdateObject] An object
     # containing the new entity name and regex pattern.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -8198,11 +8279,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the regex entity model .
+    # Updates the regular expression entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param regex_entity_id The regex entity extractor ID.
+    # @param regex_entity_id The regular expression entity extractor ID.
     # @param regex_entity_update_object [RegexModelUpdateObject] An object
     # containing the new entity name and regex pattern.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -8215,11 +8296,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the regex entity model .
+    # Updates the regular expression entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param regex_entity_id The regex entity extractor ID.
+    # @param regex_entity_id The regular expression entity extractor ID.
     # @param regex_entity_update_object [RegexModelUpdateObject] An object
     # containing the new entity name and regex pattern.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -8289,11 +8370,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a regex entity model from the application.
+    # Deletes a regular expression entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param regex_entity_id The regex entity extractor ID.
+    # @param regex_entity_id The regular expression entity extractor ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8305,11 +8386,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a regex entity model from the application.
+    # Deletes a regular expression entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param regex_entity_id The regex entity extractor ID.
+    # @param regex_entity_id The regular expression entity extractor ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8320,11 +8401,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a regex entity model from the application.
+    # Deletes a regular expression entity from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param regex_entity_id The regex entity extractor ID.
+    # @param regex_entity_id The regular expression entity extractor ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -8384,7 +8465,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the application version's Pattern.Any model.
+    # Gets information about the Pattern.Any model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8400,7 +8481,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the application version's Pattern.Any model.
+    # Gets information about the Pattern.Any model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8415,7 +8496,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets information about the application version's Pattern.Any model.
+    # Gets information about the Pattern.Any model in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8479,7 +8560,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name and explicit list of a Pattern.Any entity model.
+    # Updates the name and explicit (exception) list of a Pattern.Any entity model
+    # in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8497,7 +8579,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name and explicit list of a Pattern.Any entity model.
+    # Updates the name and explicit (exception) list of a Pattern.Any entity model
+    # in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8514,7 +8597,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the name and explicit list of a Pattern.Any entity model.
+    # Updates the name and explicit (exception) list of a Pattern.Any entity model
+    # in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8588,7 +8672,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a Pattern.Any entity extractor from the application.
+    # Deletes a Pattern.Any entity extractor from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8604,7 +8688,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a Pattern.Any entity extractor from the application.
+    # Deletes a Pattern.Any entity extractor from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8619,7 +8703,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a Pattern.Any entity extractor from the application.
+    # Deletes a Pattern.Any entity extractor from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8683,7 +8767,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8700,7 +8784,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8716,7 +8800,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8782,7 +8866,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8801,7 +8885,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8819,7 +8903,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8895,7 +8979,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete an entity role in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8912,7 +8996,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete an entity role in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8928,7 +9012,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete an entity role in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -8994,7 +9078,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given prebuilt entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9011,7 +9095,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given prebuilt entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9027,7 +9111,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given prebuilt entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9093,7 +9177,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given prebuilt entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9112,7 +9196,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given prebuilt entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9130,7 +9214,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given prebuilt entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9206,7 +9290,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role in a prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9223,7 +9307,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role in a prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9239,7 +9323,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role in a prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9305,7 +9389,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9322,7 +9406,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9338,7 +9422,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9404,7 +9488,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9423,7 +9507,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9441,7 +9525,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9517,7 +9601,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9534,7 +9618,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9550,7 +9634,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given list entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9616,7 +9700,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9633,7 +9718,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9649,7 +9735,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given regular expression entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9715,7 +9802,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given regular expression entity in a version of the
+    # application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9734,7 +9822,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given regular expression entity in a version of the
+    # application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9752,7 +9841,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given regular expression entity in a version of the
+    # application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9828,7 +9918,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given regular expression in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9845,7 +9935,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given regular expression in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9861,7 +9951,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given regular expression in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9927,7 +10017,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given composite entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9944,7 +10034,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given composite entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -9960,7 +10050,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given composite entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10026,7 +10116,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given composite entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10045,7 +10135,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given composite entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10063,7 +10153,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given composite entity in a version of the application
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10139,7 +10229,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10156,7 +10246,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10172,7 +10262,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given composite entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10238,7 +10328,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10255,7 +10345,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10271,7 +10361,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10337,7 +10427,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10356,7 +10446,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10374,7 +10464,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10450,7 +10540,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10467,7 +10557,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10483,7 +10573,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given Pattern.any entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10549,7 +10639,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given hierarchical entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10566,7 +10656,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given hierarchical entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10582,7 +10672,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given hierarchical entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10648,7 +10738,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given hierarchical entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10667,7 +10758,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given hierarchical entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10685,7 +10777,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given hierarchical entity in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10761,7 +10854,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given hierarchical role in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10778,7 +10871,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given hierarchical role in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10794,7 +10887,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given hierarchical role in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10860,7 +10953,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10877,7 +10970,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10893,7 +10986,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get one entity role for a given entity
+    # Get one role for a given prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10959,7 +11052,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10978,7 +11071,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -10996,7 +11089,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Update an entity role for a given entity
+    # Update a role for a given prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11072,7 +11165,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11089,7 +11182,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11105,7 +11198,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete an entity role.
+    # Delete a role for a given prebuilt entity in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11171,7 +11264,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the explicit list of the pattern.any entity.
+    # Get the explicit (exception) list of the pattern.any entity in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11188,7 +11282,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the explicit list of the pattern.any entity.
+    # Get the explicit (exception) list of the pattern.any entity in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11204,7 +11299,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Get the explicit list of the pattern.any entity.
+    # Get the explicit (exception) list of the pattern.any entity in a version of
+    # the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11270,7 +11366,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates an explicit list item for a Pattern.Any entity.
+    # Updates an explicit (exception) list item for a Pattern.Any entity in a
+    # version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11288,7 +11385,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates an explicit list item for a Pattern.Any entity.
+    # Updates an explicit (exception) list item for a Pattern.Any entity in a
+    # version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11305,7 +11403,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates an explicit list item for a Pattern.Any entity.
+    # Updates an explicit (exception) list item for a Pattern.Any entity in a
+    # version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11380,7 +11479,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete the explicit list item from the Pattern.any explicit list.
+    # Delete an item from the explicit (exception) list for a Pattern.any entity in
+    # a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11397,7 +11497,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete the explicit list item from the Pattern.any explicit list.
+    # Delete an item from the explicit (exception) list for a Pattern.any entity in
+    # a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -11413,7 +11514,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Delete the explicit list item from the Pattern.any explicit list.
+    # Delete an item from the explicit (exception) list for a Pattern.any entity in
+    # a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.

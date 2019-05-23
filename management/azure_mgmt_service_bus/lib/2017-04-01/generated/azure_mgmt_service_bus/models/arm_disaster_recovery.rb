@@ -22,11 +22,11 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       attr_accessor :pending_replication_operations_count
 
       # @return [String] ARM Id of the Primary/Secondary eventhub namespace
-      # name, which is part of GEO DR pairning
+      # name, which is part of GEO DR pairing
       attr_accessor :partner_namespace
 
       # @return [String] Primary/Secondary eventhub namespace name, which is
-      # part of GEO DR pairning
+      # part of GEO DR pairing
       attr_accessor :alternate_name
 
       # @return [RoleDisasterRecovery] role of namespace in GEO DR - possible

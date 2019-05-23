@@ -15,13 +15,12 @@ module Azure::Network::Mgmt::V2017_03_30
       # @return [PublicIPAddressSku] The public IP address SKU.
       attr_accessor :sku
 
-      # @return [IPAllocationMethod] The public IP allocation method. Possible
-      # values are: 'Static' and 'Dynamic'. Possible values include: 'Static',
-      # 'Dynamic'
+      # @return [IPAllocationMethod] The public IP address allocation method.
+      # Possible values include: 'Static', 'Dynamic'
       attr_accessor :public_ipallocation_method
 
-      # @return [IPVersion] The public IP address version. Possible values are:
-      # 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
+      # @return [IPVersion] The public IP address version. Possible values
+      # include: 'IPv4', 'IPv6'
       attr_accessor :public_ipaddress_version
 
       # @return [IPConfiguration] The IP configuration associated with the

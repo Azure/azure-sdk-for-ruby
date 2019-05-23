@@ -39,6 +39,10 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # @return [String] The internal identifier.
       attr_accessor :internal_id
 
+      # @return [String] Optional subdomain name used for token-based
+      # authentication.
+      attr_accessor :custom_sub_domain_name
+
       # @return [Sku] The SKU of Cognitive Services account.
       attr_accessor :sku
 
@@ -129,6 +133,14 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.internalId',
+                type: {
+                  name: 'String'
+                }
+              },
+              custom_sub_domain_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.customSubDomainName',
                 type: {
                   name: 'String'
                 }

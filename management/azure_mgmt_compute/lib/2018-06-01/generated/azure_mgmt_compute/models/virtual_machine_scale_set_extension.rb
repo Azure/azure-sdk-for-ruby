@@ -47,6 +47,10 @@ module Azure::Compute::Mgmt::V2018_06_01
       # response.
       attr_accessor :provisioning_state
 
+      # @return [Array<String>] Collection of extension names after which this
+      # extension needs to be provisioned.
+      attr_accessor :provision_after_extensions
+
 
       #
       # Mapper for VirtualMachineScaleSetExtension class as Ruby Hash.
@@ -141,6 +145,22 @@ module Azure::Compute::Mgmt::V2018_06_01
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              provision_after_extensions: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.provisionAfterExtensions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

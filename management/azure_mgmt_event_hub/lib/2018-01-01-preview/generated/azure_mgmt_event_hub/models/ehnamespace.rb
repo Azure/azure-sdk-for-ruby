@@ -36,7 +36,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       attr_accessor :is_auto_inflate_enabled
 
       # @return [Integer] Upper limit of throughput units when AutoInflate is
-      # enabled, vaule should be within 0 to 20 throughput units. ( '0' if
+      # enabled, value should be within 0 to 20 throughput units. ( '0' if
       # AutoInflateEnabled = true)
       attr_accessor :maximum_throughput_units
 

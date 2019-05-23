@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Closed List Entity Extractor.
+    # List Entity Extractor.
     #
     class ClosedListEntityExtractor
 
@@ -23,15 +23,15 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
 
       # @return [Enum] Possible values include: 'Entity Extractor',
       # 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
-      # 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
-      # Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
-      # 'Regex Entity Extractor'
+      # 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt Entity
+      # Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
+      # 'Closed List Entity Extractor', 'Regex Entity Extractor'
       attr_accessor :readable_type
 
       # @return [Array<EntityRole>]
       attr_accessor :roles
 
-      # @return [Array<SubClosedListResponse>] List of sub-lists.
+      # @return [Array<SubClosedListResponse>] List of sublists.
       attr_accessor :sub_lists
 
 
@@ -43,7 +43,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Closed List Entity Extractor',
+          serialized_name: 'List Entity Extractor',
           type: {
             name: 'Composite',
             class_name: 'ClosedListEntityExtractor',

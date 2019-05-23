@@ -57,6 +57,7 @@ module Azure::Profiles::V2018_03_01
         ServiceEndpointPolicyDefinition = Azure::Network::Mgmt::V2017_03_30::Models::ServiceEndpointPolicyDefinition
         ServiceEndpointPolicy = Azure::Network::Mgmt::V2017_03_30::Models::ServiceEndpointPolicy
         IPConfigurationProfile = Azure::Network::Mgmt::V2017_03_30::Models::IPConfigurationProfile
+        DdosSettingsProtectionCoverage = Azure::Network::Mgmt::V2017_03_30::Models::DdosSettingsProtectionCoverage
         TopologyAssociation = Azure::Network::Mgmt::V2017_10_01::Models::TopologyAssociation
         SubResource = Azure::Network::Mgmt::V2017_10_01::Models::SubResource
         TopologyResource = Azure::Network::Mgmt::V2017_10_01::Models::TopologyResource
@@ -450,6 +451,9 @@ module Azure::Profiles::V2018_03_01
           end
           def ipconfiguration_profile
             Azure::Network::Mgmt::V2017_03_30::Models::IPConfigurationProfile
+          end
+          def ddos_settings_protection_coverage
+            Azure::Network::Mgmt::V2017_03_30::Models::DdosSettingsProtectionCoverage
           end
           def topology_association
             Azure::Network::Mgmt::V2017_10_01::Models::TopologyAssociation

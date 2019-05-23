@@ -1,12 +1,8 @@
 {
     "management": [
-        "azure_mgmt_storagesync",
-        "azure_mgmt_resourcegraph"
-    ],
-    "data": [
-        "azure_cognitiveservices_face"
-    ],
-    "rollup": [
-        "azure_sdk"
+        "azure_mgmt_resources",
+        "azure_mgmt_network",
+        "azure_mgmt_storage",
+        "azure_mgmt_compute"
     ]
 }

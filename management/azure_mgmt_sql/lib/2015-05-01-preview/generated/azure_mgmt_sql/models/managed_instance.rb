@@ -16,8 +16,19 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       # managed instance.
       attr_accessor :identity
 
-      # @return [Sku] Managed instance sku
+      # @return [Sku] Managed instance SKU. Allowed values for sku.name:
+      # GP_Gen4, GP_Gen5, BC_Gen4, BC_Gen5
       attr_accessor :sku
+
+      # @return [ManagedServerCreateMode] Specifies the mode of database
+      # creation.
+      #
+      # Default: Regular instance creation.
+      #
+      # Restore: Creates an instance by restoring a set of backups to specific
+      # point in time. RestorePointInTime and SourceManagedInstanceId must be
+      # specified. Possible values include: 'Default', 'PointInTimeRestore'
+      attr_accessor :managed_instance_create_mode
 
       # @return [String] The fully qualified domain name of the managed
       # instance.
@@ -38,15 +49,63 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       # @return [String] The state of the managed instance.
       attr_accessor :state
 
-      # @return [String] The license type. Possible values are
-      # 'LicenseIncluded' and 'BasePrice'.
+      # @return [ManagedInstanceLicenseType] The license type. Possible values
+      # are 'LicenseIncluded' (regular price inclusive of a new SQL license)
+      # and 'BasePrice' (discounted AHB price for bringing your own SQL
+      # licenses). Possible values include: 'LicenseIncluded', 'BasePrice'
       attr_accessor :license_type
 
-      # @return [Integer] The number of VCores.
+      # @return [Integer] The number of vCores. Allowed values: 8, 16, 24, 32,
+      # 40, 64, 80.
       attr_accessor :v_cores
 
-      # @return [Integer] The maximum storage size in GB.
+      # @return [Integer] Storage size in GB. Minimum value: 32. Maximum value:
+      # 8192. Increments of 32 GB allowed only.
       attr_accessor :storage_size_in_gb
+
+      # @return [String] Collation of the managed instance.
+      attr_accessor :collation
+
+      # @return [String] The Dns Zone that the managed instance is in.
+      attr_accessor :dns_zone
+
+      # @return [String] The resource id of another managed instance whose DNS
+      # zone this managed instance will share after creation.
+      attr_accessor :dns_zone_partner
+
+      # @return [Boolean] Whether or not the public data endpoint is enabled.
+      attr_accessor :public_data_endpoint_enabled
+
+      # @return [String] The resource identifier of the source managed instance
+      # associated with create operation of this instance.
+      attr_accessor :source_managed_instance_id
+
+      # @return [DateTime] Specifies the point in time (ISO8601 format) of the
+      # source database that will be restored to create the new database.
+      attr_accessor :restore_point_in_time
+
+      # @return [ManagedInstanceProxyOverride] Connection type used for
+      # connecting to the instance. Possible values include: 'Proxy',
+      # 'Redirect', 'Default'
+      attr_accessor :proxy_override
+
+      # @return [String] Id of the timezone. Allowed values are timezones
+      # supported by Windows.
+      # Windows keeps details on supported timezones, including the id, in
+      # registry under
+      # KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time
+      # Zones.
+      # You can get those registry values via SQL Server by querying SELECT
+      # name AS timezone_id FROM sys.time_zone_info.
+      # List of Ids can also be obtained by executing
+      # [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell.
+      # An example of valid timezone id is "Pacific Standard Time" or "W.
+      # Europe Standard Time".
+      attr_accessor :timezone_id
+
+      # @return [String] The Id of the instance pool this managed server
+      # belongs to.
+      attr_accessor :instance_pool_id
 
 
       #
@@ -131,6 +190,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                   class_name: 'Sku'
                 }
               },
+              managed_instance_create_mode: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.managedInstanceCreateMode',
+                type: {
+                  name: 'String'
+                }
+              },
               fully_qualified_domain_name: {
                 client_side_validation: true,
                 required: false,
@@ -195,6 +262,79 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 serialized_name: 'properties.storageSizeInGB',
                 type: {
                   name: 'Number'
+                }
+              },
+              collation: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.collation',
+                type: {
+                  name: 'String'
+                }
+              },
+              dns_zone: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.dnsZone',
+                type: {
+                  name: 'String'
+                }
+              },
+              dns_zone_partner: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.dnsZonePartner',
+                type: {
+                  name: 'String'
+                }
+              },
+              public_data_endpoint_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.publicDataEndpointEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              source_managed_instance_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.sourceManagedInstanceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              restore_point_in_time: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.restorePointInTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              proxy_override: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.proxyOverride',
+                type: {
+                  name: 'String'
+                }
+              },
+              timezone_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.timezoneId',
+                type: {
+                  name: 'String'
+                }
+              },
+              instance_pool_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.instancePoolId',
+                type: {
+                  name: 'String'
                 }
               }
             }

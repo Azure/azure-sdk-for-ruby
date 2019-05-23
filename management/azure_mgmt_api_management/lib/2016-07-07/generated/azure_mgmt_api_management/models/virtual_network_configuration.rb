@@ -21,7 +21,7 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       attr_accessor :subnetname
 
       # @return [String] The name of the subnet Resource ID. This has format
-      # /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/{virtual
+      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/{virtual
       # network name}/subnets/{subnet name}.
       attr_accessor :subnet_resource_id
 

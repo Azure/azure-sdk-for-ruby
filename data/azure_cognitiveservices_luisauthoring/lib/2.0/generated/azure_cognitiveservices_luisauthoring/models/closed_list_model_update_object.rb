@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Object model for updating a closed list.
+    # Object model for updating a list entity.
     #
     class ClosedListModelUpdateObject
 
@@ -15,7 +15,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       # @return [Array<WordListObject>] The new sublists for the feature.
       attr_accessor :sub_lists
 
-      # @return [String] The new name of the closed list feature.
+      # @return [String] The new name of the list entity.
       attr_accessor :name
 
 

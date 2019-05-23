@@ -6,19 +6,19 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Defines the azure account information object.
+    # Defines the Azure account information object.
     #
     class AzureAccountInfoObject
 
       include MsRestAzure
 
-      # @return [String] The id for the azure subscription.
+      # @return [String] The id for the Azure subscription.
       attr_accessor :azure_subscription_id
 
-      # @return [String] The azure resource group name.
+      # @return [String] The Azure resource group name.
       attr_accessor :resource_group
 
-      # @return [String] The azure account name.
+      # @return [String] The Azure account name.
       attr_accessor :account_name
 
 

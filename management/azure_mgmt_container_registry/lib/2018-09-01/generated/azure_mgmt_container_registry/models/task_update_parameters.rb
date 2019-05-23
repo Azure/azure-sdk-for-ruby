@@ -34,6 +34,10 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       # properties.
       attr_accessor :trigger
 
+      # @return [Credentials] The parameters that describes a set of
+      # credentials that will be used when this run is invoked.
+      attr_accessor :credentials
+
       # @return [Hash{String => String}] The ARM resource tags.
       attr_accessor :tags
 
@@ -103,6 +107,15 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                 type: {
                   name: 'Composite',
                   class_name: 'TriggerUpdateParameters'
+                }
+              },
+              credentials: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.credentials',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Credentials'
                 }
               },
               tags: {
