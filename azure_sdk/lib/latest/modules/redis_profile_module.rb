@@ -7,11 +7,11 @@ require 'azure_mgmt_redis'
 module Azure::Profiles::Latest
   module Redis
     module Mgmt
-      Operations = Azure::Redis::Mgmt::V2018_03_01::Operations
-      Redis = Azure::Redis::Mgmt::V2018_03_01::Redis
-      FirewallRules = Azure::Redis::Mgmt::V2018_03_01::FirewallRules
       PatchSchedules = Azure::Redis::Mgmt::V2018_03_01::PatchSchedules
       LinkedServer = Azure::Redis::Mgmt::V2018_03_01::LinkedServer
+      Redis = Azure::Redis::Mgmt::V2018_03_01::Redis
+      Operations = Azure::Redis::Mgmt::V2018_03_01::Operations
+      FirewallRules = Azure::Redis::Mgmt::V2018_03_01::FirewallRules
 
       module Models
         Sku = Azure::Redis::Mgmt::V2018_03_01::Models::Sku
@@ -55,7 +55,7 @@ module Azure::Profiles::Latest
       end
 
       class RedisManagementClass
-        attr_reader :operations, :redis, :firewall_rules, :patch_schedules, :linked_server, :configurable, :base_url, :options, :model_classes
+        attr_reader :patch_schedules, :linked_server, :redis, :operations, :firewall_rules, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -65,11 +65,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
-          @redis = @client_0.redis
-          @firewall_rules = @client_0.firewall_rules
           @patch_schedules = @client_0.patch_schedules
           @linked_server = @client_0.linked_server
+          @redis = @client_0.redis
+          @operations = @client_0.operations
+          @firewall_rules = @client_0.firewall_rules
 
           @model_classes = ModelClasses.new
         end

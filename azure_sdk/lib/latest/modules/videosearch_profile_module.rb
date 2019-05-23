@@ -27,20 +27,20 @@ module Azure::Profiles::Latest
       ResponseBase = Azure::CognitiveServices::VideoSearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::VideoSearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
+      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       Thing = Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VideoSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::VideoSearch::V1_0::Models::Identifiable
       VideoObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::VideoObject
       ErrorCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
-      Response = Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
       PivotSuggestions = Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
       Query = Azure::CognitiveServices::VideoSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::VideoSearch::V1_0::Models::MediaObject
       ErrorSubCode = Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
-      Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
       Error = Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
+      Freshness = Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
     end
 
     class VideoSearchDataClass
@@ -127,6 +127,9 @@ module Azure::Profiles::Latest
         def search_results_answer
           Azure::CognitiveServices::VideoSearch::V1_0::Models::SearchResultsAnswer
         end
+        def response
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
+        end
         def thing
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Thing
         end
@@ -145,9 +148,6 @@ module Azure::Profiles::Latest
         def safe_search
           Azure::CognitiveServices::VideoSearch::V1_0::Models::SafeSearch
         end
-        def response
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Response
-        end
         def pivot_suggestions
           Azure::CognitiveServices::VideoSearch::V1_0::Models::PivotSuggestions
         end
@@ -163,11 +163,11 @@ module Azure::Profiles::Latest
         def error_sub_code
           Azure::CognitiveServices::VideoSearch::V1_0::Models::ErrorSubCode
         end
-        def freshness
-          Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
-        end
         def error
           Azure::CognitiveServices::VideoSearch::V1_0::Models::Error
+        end
+        def freshness
+          Azure::CognitiveServices::VideoSearch::V1_0::Models::Freshness
         end
       end
     end
