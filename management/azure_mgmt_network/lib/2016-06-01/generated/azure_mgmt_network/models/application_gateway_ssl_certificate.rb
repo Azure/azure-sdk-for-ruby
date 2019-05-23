@@ -40,7 +40,6 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewaySslCertificate',
           type: {
@@ -48,7 +47,6 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'ApplicationGatewaySslCertificate',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.data',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.password',
                 type: {
@@ -72,7 +68,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               public_cert_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicCertData',
                 type: {
@@ -80,7 +75,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -88,7 +82,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -96,7 +89,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

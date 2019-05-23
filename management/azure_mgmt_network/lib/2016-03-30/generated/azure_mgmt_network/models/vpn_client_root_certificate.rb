@@ -34,7 +34,6 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VpnClientRootCertificate',
           type: {
@@ -42,7 +41,6 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'VpnClientRootCertificate',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -50,7 +48,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               public_cert_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicCertData',
                 type: {
@@ -58,7 +55,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -66,7 +62,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -74,7 +69,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

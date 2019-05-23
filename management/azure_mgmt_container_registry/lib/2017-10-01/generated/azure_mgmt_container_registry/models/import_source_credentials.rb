@@ -27,7 +27,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImportSourceCredentials',
           type: {
@@ -35,7 +34,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'ImportSourceCredentials',
             model_properties: {
               username: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'username',
                 type: {
@@ -43,7 +41,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'password',
                 type: {
