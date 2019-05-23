@@ -13,8 +13,9 @@ module Azure::Profiles::Latest
       WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
 
       module Models
-        ErrorResponse = Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
+        HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
         Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+        ErrorResponse = Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
         AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
         TrackedResource = Azure::Relay::Mgmt::V2017_04_01::Models::TrackedResource
         Resource = Azure::Relay::Mgmt::V2017_04_01::Models::Resource
@@ -39,7 +40,6 @@ module Azure::Profiles::Latest
         ProvisioningStateEnum = Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
         RelayUpdateParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
         SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
-        HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
       end
 
       class RelayManagementClass
@@ -75,11 +75,14 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def error_response
-            Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
+          def hybrid_connection
+            Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
           end
           def sku
             Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+          end
+          def error_response
+            Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
           end
           def access_rights
             Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
@@ -152,9 +155,6 @@ module Azure::Profiles::Latest
           end
           def sku_tier
             Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
-          end
-          def hybrid_connection
-            Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
           end
         end
       end

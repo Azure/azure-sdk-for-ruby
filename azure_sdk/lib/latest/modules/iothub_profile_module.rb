@@ -7,34 +7,41 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::Latest
   module IotHub
     module Mgmt
-      ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
       Certificates = Azure::IotHub::Mgmt::V2018_04_01::Certificates
       Operations = Azure::IotHub::Mgmt::V2018_04_01::Operations
       IotHubResource = Azure::IotHub::Mgmt::V2018_04_01::IotHubResource
+      ResourceProviderCommon = Azure::IotHub::Mgmt::V2018_04_01::ResourceProviderCommon
 
       module Models
+        RouteErrorRange = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorRange
+        IotHubSkuInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuInfo
+        FallbackRouteProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FallbackRouteProperties
+        CertificateBodyDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateBodyDescription
         TestRouteResultDetails = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResultDetails
-        ExportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
-        ImportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
+        RouteCompilationError = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteCompilationError
+        TestRouteResult = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResult
         RoutingEventHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEventHubProperties
-        AccessRights = Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
-        IpFilterActionType = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
+        FeedbackProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FeedbackProperties
+        ImportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
         IotHubDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
-        OperationMonitoringLevel = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
-        Operation = Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
+        ExportDevicesRequest = Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
+        IpFilterActionType = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
         RoutingSource = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
-        IotHubSkuTier = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuTier
-        Capabilities = Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
+        AccessRights = Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
+        Operation = Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
         IotHubSku = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSku
-        IotHubScaleType = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
-        EndpointHealthStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthStatus
+        OperationMonitoringLevel = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
+        Capabilities = Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
         JobType = Azure::IotHub::Mgmt::V2018_04_01::Models::JobType
-        RouteErrorSeverity = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
+        IotHubSkuTier = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuTier
+        EndpointHealthStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthStatus
+        JobStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
+        IotHubScaleType = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
         IotHubNameUnavailabilityReason = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameUnavailabilityReason
         TestResultStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::TestResultStatus
-        JobStatus = Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
-        IpFilterRule = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
+        RouteErrorSeverity = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
         Name = Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+        IpFilterRule = Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
         OperationInputs = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
         IotHubQuotaMetricInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubQuotaMetricInfo
         CertificateProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateProperties
@@ -50,7 +57,6 @@ module Azure::Profiles::Latest
         RoutingServiceBusTopicEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusTopicEndpointProperties
         ErrorDetails = Azure::IotHub::Mgmt::V2018_04_01::Models::ErrorDetails
         JobResponseListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponseListResult
-        RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingStorageContainerProperties
         IotHubCapacity = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubCapacity
         RouteProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteProperties
         IotHubSkuDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuDescription
@@ -60,6 +66,7 @@ module Azure::Profiles::Latest
         EventHubConsumerGroupInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubConsumerGroupInfo
         CloudToDeviceProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::CloudToDeviceProperties
         EventHubConsumerGroupsListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubConsumerGroupsListResult
+        RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingStorageContainerProperties
         IotHubProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubProperties
         IotHubSkuDescriptionListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuDescriptionListResult
         Resource = Azure::IotHub::Mgmt::V2018_04_01::Models::Resource
@@ -67,33 +74,26 @@ module Azure::Profiles::Latest
         IotHubDescriptionListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescriptionListResult
         OperationListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationListResult
         CertificateDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateDescription
-        CertificateWithNonceDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateWithNonceDescription
-        IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameAvailabilityInfo
         RoutingServiceBusQueueEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusQueueEndpointProperties
-        UserSubscriptionQuotaListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuotaListResult
-        UserSubscriptionQuota = Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuota
+        IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameAvailabilityInfo
         RoutingMessage = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingMessage
+        CertificateWithNonceDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateWithNonceDescription
+        UserSubscriptionQuota = Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuota
+        OperationsMonitoringProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
+        UserSubscriptionQuotaListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuotaListResult
+        RoutingEndpoints = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
+        SharedAccessSignatureAuthorizationRuleListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
         StorageEndpointProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
         TestAllRoutesInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
-        OperationsMonitoringProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
-        MatchedRoute = Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
-        SharedAccessSignatureAuthorizationRuleListResult = Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
-        RoutingEndpoints = Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
-        CertificateVerificationDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateVerificationDescription
-        TestRouteInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteInput
         TestAllRoutesResult = Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesResult
-        FallbackRouteProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FallbackRouteProperties
-        RouteErrorRange = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorRange
+        MatchedRoute = Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
+        TestRouteInput = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteInput
         RouteErrorPosition = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorPosition
-        RouteCompilationError = Azure::IotHub::Mgmt::V2018_04_01::Models::RouteCompilationError
-        CertificateBodyDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateBodyDescription
-        IotHubSkuInfo = Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuInfo
-        FeedbackProperties = Azure::IotHub::Mgmt::V2018_04_01::Models::FeedbackProperties
-        TestRouteResult = Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResult
+        CertificateVerificationDescription = Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateVerificationDescription
       end
 
       class IotHubManagementClass
-        attr_reader :resource_provider_common, :certificates, :operations, :iot_hub_resource, :configurable, :base_url, :options, :model_classes
+        attr_reader :certificates, :operations, :iot_hub_resource, :resource_provider_common, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -103,10 +103,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @resource_provider_common = @client_0.resource_provider_common
           @certificates = @client_0.certificates
           @operations = @client_0.operations
           @iot_hub_resource = @client_0.iot_hub_resource
+          @resource_provider_common = @client_0.resource_provider_common
 
           @model_classes = ModelClasses.new
         end
@@ -125,56 +125,77 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def route_error_range
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorRange
+          end
+          def iot_hub_sku_info
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuInfo
+          end
+          def fallback_route_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::FallbackRouteProperties
+          end
+          def certificate_body_description
+            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateBodyDescription
+          end
           def test_route_result_details
             Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResultDetails
           end
-          def export_devices_request
-            Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
+          def route_compilation_error
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteCompilationError
           end
-          def import_devices_request
-            Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
+          def test_route_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResult
           end
           def routing_event_hub_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEventHubProperties
           end
-          def access_rights
-            Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
+          def feedback_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::FeedbackProperties
           end
-          def ip_filter_action_type
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
+          def import_devices_request
+            Azure::IotHub::Mgmt::V2018_04_01::Models::ImportDevicesRequest
           end
           def iot_hub_description
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubDescription
           end
-          def operation_monitoring_level
-            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
+          def export_devices_request
+            Azure::IotHub::Mgmt::V2018_04_01::Models::ExportDevicesRequest
           end
-          def operation
-            Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
+          def ip_filter_action_type
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterActionType
           end
           def routing_source
             Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingSource
           end
-          def iot_hub_sku_tier
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuTier
+          def access_rights
+            Azure::IotHub::Mgmt::V2018_04_01::Models::AccessRights
           end
-          def capabilities
-            Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
+          def operation
+            Azure::IotHub::Mgmt::V2018_04_01::Models::Operation
           end
           def iot_hub_sku
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSku
           end
-          def iot_hub_scale_type
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
+          def operation_monitoring_level
+            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationMonitoringLevel
           end
-          def endpoint_health_status
-            Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthStatus
+          def capabilities
+            Azure::IotHub::Mgmt::V2018_04_01::Models::Capabilities
           end
           def job_type
             Azure::IotHub::Mgmt::V2018_04_01::Models::JobType
           end
-          def route_error_severity
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
+          def iot_hub_sku_tier
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuTier
+          end
+          def endpoint_health_status
+            Azure::IotHub::Mgmt::V2018_04_01::Models::EndpointHealthStatus
+          end
+          def job_status
+            Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
+          end
+          def iot_hub_scale_type
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubScaleType
           end
           def iot_hub_name_unavailability_reason
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameUnavailabilityReason
@@ -182,14 +203,14 @@ module Azure::Profiles::Latest
           def test_result_status
             Azure::IotHub::Mgmt::V2018_04_01::Models::TestResultStatus
           end
-          def job_status
-            Azure::IotHub::Mgmt::V2018_04_01::Models::JobStatus
-          end
-          def ip_filter_rule
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
+          def route_error_severity
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorSeverity
           end
           def name
             Azure::IotHub::Mgmt::V2018_04_01::Models::Name
+          end
+          def ip_filter_rule
+            Azure::IotHub::Mgmt::V2018_04_01::Models::IpFilterRule
           end
           def operation_inputs
             Azure::IotHub::Mgmt::V2018_04_01::Models::OperationInputs
@@ -236,9 +257,6 @@ module Azure::Profiles::Latest
           def job_response_list_result
             Azure::IotHub::Mgmt::V2018_04_01::Models::JobResponseListResult
           end
-          def routing_storage_container_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingStorageContainerProperties
-          end
           def iot_hub_capacity
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubCapacity
           end
@@ -266,6 +284,9 @@ module Azure::Profiles::Latest
           def event_hub_consumer_groups_list_result
             Azure::IotHub::Mgmt::V2018_04_01::Models::EventHubConsumerGroupsListResult
           end
+          def routing_storage_container_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingStorageContainerProperties
+          end
           def iot_hub_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubProperties
           end
@@ -287,23 +308,32 @@ module Azure::Profiles::Latest
           def certificate_description
             Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateDescription
           end
-          def certificate_with_nonce_description
-            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateWithNonceDescription
+          def routing_service_bus_queue_endpoint_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusQueueEndpointProperties
           end
           def iot_hub_name_availability_info
             Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubNameAvailabilityInfo
           end
-          def routing_service_bus_queue_endpoint_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingServiceBusQueueEndpointProperties
+          def routing_message
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingMessage
           end
-          def user_subscription_quota_list_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuotaListResult
+          def certificate_with_nonce_description
+            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateWithNonceDescription
           end
           def user_subscription_quota
             Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuota
           end
-          def routing_message
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingMessage
+          def operations_monitoring_properties
+            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
+          end
+          def user_subscription_quota_list_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::UserSubscriptionQuotaListResult
+          end
+          def routing_endpoints
+            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
+          end
+          def shared_access_signature_authorization_rule_list_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
           end
           def storage_endpoint_properties
             Azure::IotHub::Mgmt::V2018_04_01::Models::StorageEndpointProperties
@@ -311,50 +341,20 @@ module Azure::Profiles::Latest
           def test_all_routes_input
             Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesInput
           end
-          def operations_monitoring_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::OperationsMonitoringProperties
+          def test_all_routes_result
+            Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesResult
           end
           def matched_route
             Azure::IotHub::Mgmt::V2018_04_01::Models::MatchedRoute
           end
-          def shared_access_signature_authorization_rule_list_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::SharedAccessSignatureAuthorizationRuleListResult
-          end
-          def routing_endpoints
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RoutingEndpoints
-          end
-          def certificate_verification_description
-            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateVerificationDescription
-          end
           def test_route_input
             Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteInput
-          end
-          def test_all_routes_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::TestAllRoutesResult
-          end
-          def fallback_route_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::FallbackRouteProperties
-          end
-          def route_error_range
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorRange
           end
           def route_error_position
             Azure::IotHub::Mgmt::V2018_04_01::Models::RouteErrorPosition
           end
-          def route_compilation_error
-            Azure::IotHub::Mgmt::V2018_04_01::Models::RouteCompilationError
-          end
-          def certificate_body_description
-            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateBodyDescription
-          end
-          def iot_hub_sku_info
-            Azure::IotHub::Mgmt::V2018_04_01::Models::IotHubSkuInfo
-          end
-          def feedback_properties
-            Azure::IotHub::Mgmt::V2018_04_01::Models::FeedbackProperties
-          end
-          def test_route_result
-            Azure::IotHub::Mgmt::V2018_04_01::Models::TestRouteResult
+          def certificate_verification_description
+            Azure::IotHub::Mgmt::V2018_04_01::Models::CertificateVerificationDescription
           end
         end
       end

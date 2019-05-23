@@ -7,13 +7,13 @@ require 'azure_mgmt_data_migration'
 module Azure::Profiles::Latest
   module DataMigration
     module Mgmt
+      Tasks = Azure::DataMigration::Mgmt::V2018_07_15_preview::Tasks
+      ResourceSkus = Azure::DataMigration::Mgmt::V2018_07_15_preview::ResourceSkus
+      Usages = Azure::DataMigration::Mgmt::V2018_07_15_preview::Usages
       Operations = Azure::DataMigration::Mgmt::V2018_07_15_preview::Operations
       Services = Azure::DataMigration::Mgmt::V2018_07_15_preview::Services
       Projects = Azure::DataMigration::Mgmt::V2018_07_15_preview::Projects
       Files = Azure::DataMigration::Mgmt::V2018_07_15_preview::Files
-      Tasks = Azure::DataMigration::Mgmt::V2018_07_15_preview::Tasks
-      ResourceSkus = Azure::DataMigration::Mgmt::V2018_07_15_preview::ResourceSkus
-      Usages = Azure::DataMigration::Mgmt::V2018_07_15_preview::Usages
 
       module Models
         MigrateSqlServerSqlMITaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutput
@@ -168,6 +168,7 @@ module Azure::Profiles::Latest
         MigrateSqlServerSqlDbTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbTaskInput
         MigrateSqlServerSqlDbTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbTaskProperties
         MigrateSqlServerSqlMITaskOutputError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutputError
+        ValidationError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidationError
         MigrateSqlServerSqlMITaskOutputLoginLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutputLoginLevel
         MigrateSqlServerSqlMITaskOutputAgentJobLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutputAgentJobLevel
         MigrateSqlServerSqlMITaskOutputDatabaseLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutputDatabaseLevel
@@ -181,7 +182,6 @@ module Azure::Profiles::Latest
         GetUserTablesSqlTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlTaskProperties
         ConnectToTargetSqlSqlDbSyncTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlSqlDbSyncTaskProperties
         ConnectToTargetSqlDbTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskProperties
-        ValidationError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidationError
         ConnectToSourceSqlServerTaskOutputAgentJobLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskOutputAgentJobLevel
         ConnectToSourceSqlServerTaskOutputLoginLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskOutputLoginLevel
         ConnectToSourceSqlServerTaskOutputDatabaseLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskOutputDatabaseLevel
@@ -224,27 +224,27 @@ module Azure::Profiles::Latest
         ValidationStatus = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidationStatus
         BackupMode = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupMode
         TrackedResource = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::TrackedResource
-        MigrationState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationState
+        Severity = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Severity
         DatabaseMigrationStage = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseMigrationStage
         UpdateActionType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UpdateActionType
         ObjectType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ObjectType
-        LoginType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::LoginType
+        MigrationState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationState
         DatabaseState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseState
         MigrationStatus = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationStatus
         LoginMigrationStage = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::LoginMigrationStage
-        ServerLevelPermissionsGroup = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServerLevelPermissionsGroup
+        LoginType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::LoginType
         MongoDbClusterType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbClusterType
-        Severity = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Severity
+        DatabaseCompatLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseCompatLevel
         DatabaseFileType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileType
-        ProjectTargetPlatform = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectTargetPlatform
+        ServerLevelPermissionsGroup = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServerLevelPermissionsGroup
         ProjectSourcePlatform = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectSourcePlatform
         TaskState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::TaskState
-        DatabaseCompatLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseCompatLevel
-        ServiceScalability = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceScalability
+        ServiceProvisioningState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceProvisioningState
+        ProjectTargetPlatform = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectTargetPlatform
         MySqlTargetPlatformType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MySqlTargetPlatformType
         ProjectProvisioningState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectProvisioningState
         NameCheckFailureReason = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameCheckFailureReason
-        ServiceProvisioningState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceProvisioningState
+        ServiceScalability = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceScalability
         ErrorType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ErrorType
         SchemaMigrationOption = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaMigrationOption
         SchemaMigrationStage = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaMigrationStage
@@ -257,7 +257,7 @@ module Azure::Profiles::Latest
       end
 
       class DataMigrationManagementClass
-        attr_reader :operations, :services, :projects, :files, :tasks, :resource_skus, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :tasks, :resource_skus, :usages, :operations, :services, :projects, :files, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -267,13 +267,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @tasks = @client_0.tasks
+          @resource_skus = @client_0.resource_skus
+          @usages = @client_0.usages
           @operations = @client_0.operations
           @services = @client_0.services
           @projects = @client_0.projects
           @files = @client_0.files
-          @tasks = @client_0.tasks
-          @resource_skus = @client_0.resource_skus
-          @usages = @client_0.usages
 
           @model_classes = ModelClasses.new
         end
@@ -748,6 +748,9 @@ module Azure::Profiles::Latest
           def migrate_sql_server_sql_mitask_output_error
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutputError
           end
+          def validation_error
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidationError
+          end
           def migrate_sql_server_sql_mitask_output_login_level
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutputLoginLevel
           end
@@ -786,9 +789,6 @@ module Azure::Profiles::Latest
           end
           def connect_to_target_sql_db_task_properties
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskProperties
-          end
-          def validation_error
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidationError
           end
           def connect_to_source_sql_server_task_output_agent_job_level
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskOutputAgentJobLevel
@@ -916,8 +916,8 @@ module Azure::Profiles::Latest
           def tracked_resource
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::TrackedResource
           end
-          def migration_state
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationState
+          def severity
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Severity
           end
           def database_migration_stage
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseMigrationStage
@@ -928,8 +928,8 @@ module Azure::Profiles::Latest
           def object_type
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ObjectType
           end
-          def login_type
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::LoginType
+          def migration_state
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationState
           end
           def database_state
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseState
@@ -940,20 +940,20 @@ module Azure::Profiles::Latest
           def login_migration_stage
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::LoginMigrationStage
           end
-          def server_level_permissions_group
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServerLevelPermissionsGroup
+          def login_type
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::LoginType
           end
           def mongo_db_cluster_type
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbClusterType
           end
-          def severity
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Severity
+          def database_compat_level
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseCompatLevel
           end
           def database_file_type
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileType
           end
-          def project_target_platform
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectTargetPlatform
+          def server_level_permissions_group
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServerLevelPermissionsGroup
           end
           def project_source_platform
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectSourcePlatform
@@ -961,11 +961,11 @@ module Azure::Profiles::Latest
           def task_state
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::TaskState
           end
-          def database_compat_level
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseCompatLevel
+          def service_provisioning_state
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceProvisioningState
           end
-          def service_scalability
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceScalability
+          def project_target_platform
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectTargetPlatform
           end
           def my_sql_target_platform_type
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MySqlTargetPlatformType
@@ -976,8 +976,8 @@ module Azure::Profiles::Latest
           def name_check_failure_reason
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameCheckFailureReason
           end
-          def service_provisioning_state
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceProvisioningState
+          def service_scalability
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceScalability
           end
           def error_type
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ErrorType

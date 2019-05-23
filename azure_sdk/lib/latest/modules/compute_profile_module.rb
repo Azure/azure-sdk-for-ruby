@@ -8,6 +8,12 @@ module Azure::Profiles::Latest
   module Compute
     module Mgmt
       ResourceSkus = Azure::Compute::Mgmt::V2017_09_01::ResourceSkus
+      UsageOperations = Azure::Compute::Mgmt::V2018_06_01::UsageOperations
+      VirtualMachineSizes = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineSizes
+      Images = Azure::Compute::Mgmt::V2018_06_01::Images
+      VirtualMachineScaleSets = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSets
+      VirtualMachineScaleSetExtensions = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetExtensions
+      VirtualMachineScaleSetRollingUpgrades = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetRollingUpgrades
       VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetVMs
       Disks = Azure::Compute::Mgmt::V2018_06_01::Disks
       Operations = Azure::Compute::Mgmt::V2018_06_01::Operations
@@ -22,14 +28,12 @@ module Azure::Profiles::Latest
       VirtualMachineExtensions = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineExtensions
       VirtualMachines = Azure::Compute::Mgmt::V2018_06_01::VirtualMachines
       VirtualMachineImages = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineImages
-      UsageOperations = Azure::Compute::Mgmt::V2018_06_01::UsageOperations
-      VirtualMachineSizes = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineSizes
-      Images = Azure::Compute::Mgmt::V2018_06_01::Images
-      VirtualMachineScaleSets = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSets
-      VirtualMachineScaleSetExtensions = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetExtensions
-      VirtualMachineScaleSetRollingUpgrades = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetRollingUpgrades
 
       module Models
+        ResourceSkusResult = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
+        ResourceSkuLocationInfo = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuLocationInfo
+        ResourceSkuRestrictionsReasonCode = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
+        ResourceSkuCapacity = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacity
         ResourceSkuCosts = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCosts
         ResourceSkuRestrictionInfo = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionInfo
         ResourceSkuCapabilities = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapabilities
@@ -37,10 +41,6 @@ module Azure::Profiles::Latest
         ResourceSkuRestrictions = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictions
         ResourceSkuRestrictionsType = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsType
         ResourceSku = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSku
-        ResourceSkusResult = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
-        ResourceSkuLocationInfo = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuLocationInfo
-        ResourceSkuRestrictionsReasonCode = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
-        ResourceSkuCapacity = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacity
         OperationStatusResponse = Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse
         ComputeLongRunningOperationProperties = Azure::Compute::Mgmt::V2017_12_01::Models::ComputeLongRunningOperationProperties
         ComputeOperationValue = Azure::Compute::Mgmt::V2018_06_01::Models::ComputeOperationValue
@@ -72,33 +72,33 @@ module Azure::Profiles::Latest
         EncryptionSettings = Azure::Compute::Mgmt::V2018_06_01::Models::EncryptionSettings
         AvailabilitySetListResult = Azure::Compute::Mgmt::V2018_06_01::Models::AvailabilitySetListResult
         ImageListResult = Azure::Compute::Mgmt::V2018_06_01::Models::ImageListResult
-        VirtualMachineSizeListResult = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineSizeListResult
         VirtualMachineScaleSetIpTag = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetIpTag
+        VirtualMachineSizeListResult = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineSizeListResult
         VirtualMachineScaleSetIdentity = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetIdentity
         RunCommandListResult = Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandListResult
         SnapshotSku = Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotSku
         RunCommandDocumentBase = Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandDocumentBase
         VirtualMachineExtensionsListResult = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtensionsListResult
         GalleryList = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryList
-        GalleryDiskImage = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryDiskImage
+        OSDiskImage = Azure::Compute::Mgmt::V2018_06_01::Models::OSDiskImage
         GalleryArtifactSource = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryArtifactSource
         RunCommandInput = Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandInput
-        TargetRegion = Azure::Compute::Mgmt::V2018_06_01::Models::TargetRegion
+        GalleryDiskImage = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryDiskImage
         Disallowed = Azure::Compute::Mgmt::V2018_06_01::Models::Disallowed
-        Usage = Azure::Compute::Mgmt::V2018_06_01::Models::Usage
+        AdditionalCapabilities = Azure::Compute::Mgmt::V2018_06_01::Models::AdditionalCapabilities
         VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineCaptureParameters
-        VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetOSProfile
-        DiffDiskSettings = Azure::Compute::Mgmt::V2018_06_01::Models::DiffDiskSettings
-        ReplicationStatus = Azure::Compute::Mgmt::V2018_06_01::Models::ReplicationStatus
-        VirtualMachineIdentityUserAssignedIdentitiesValue = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineIdentityUserAssignedIdentitiesValue
+        GalleryImageVersionStorageProfile = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionStorageProfile
+        Plan = Azure::Compute::Mgmt::V2018_06_01::Models::Plan
+        VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateOSProfile
+        SnapshotList = Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotList
         InstanceViewStatus = Azure::Compute::Mgmt::V2018_06_01::Models::InstanceViewStatus
         KeyVaultKeyReference = Azure::Compute::Mgmt::V2018_06_01::Models::KeyVaultKeyReference
         Sku = Azure::Compute::Mgmt::V2018_06_01::Models::Sku
         VirtualHardDisk = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualHardDisk
-        GalleryImageList = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageList
-        KeyVaultAndKeyReference = Azure::Compute::Mgmt::V2018_06_01::Models::KeyVaultAndKeyReference
+        ReplicationStatus = Azure::Compute::Mgmt::V2018_06_01::Models::ReplicationStatus
+        VirtualMachineIdentityUserAssignedIdentitiesValue = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineIdentityUserAssignedIdentitiesValue
         VirtualMachineScaleSetDataDisk = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetDataDisk
-        StorageProfile = Azure::Compute::Mgmt::V2018_06_01::Models::StorageProfile
+        DiffDiskSettings = Azure::Compute::Mgmt::V2018_06_01::Models::DiffDiskSettings
         VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetStorageProfile
         WinRMListener = Azure::Compute::Mgmt::V2018_06_01::Models::WinRMListener
         VirtualMachineScaleSetUpdateStorageProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateStorageProfile
@@ -119,23 +119,23 @@ module Azure::Profiles::Latest
         BootDiagnosticsInstanceView = Azure::Compute::Mgmt::V2018_06_01::Models::BootDiagnosticsInstanceView
         CreationData = Azure::Compute::Mgmt::V2018_06_01::Models::CreationData
         MaintenanceRedeployStatus = Azure::Compute::Mgmt::V2018_06_01::Models::MaintenanceRedeployStatus
+        StorageProfile = Azure::Compute::Mgmt::V2018_06_01::Models::StorageProfile
         ImageDiskReference = Azure::Compute::Mgmt::V2018_06_01::Models::ImageDiskReference
-        DiskList = Azure::Compute::Mgmt::V2018_06_01::Models::DiskList
         VirtualMachineScaleSetNetworkProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetNetworkProfile
         RollingUpgradePolicy = Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradePolicy
         VirtualMachineScaleSetUpdateNetworkProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateNetworkProfile
         OSDisk = Azure::Compute::Mgmt::V2018_06_01::Models::OSDisk
         GalleryImageIdentifier = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageIdentifier
-        ImageStorageProfile = Azure::Compute::Mgmt::V2018_06_01::Models::ImageStorageProfile
+        DiskList = Azure::Compute::Mgmt::V2018_06_01::Models::DiskList
         VirtualMachineScaleSetExtensionListResult = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetExtensionListResult
         VirtualMachineScaleSetExtensionProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetExtensionProfile
-        GalleryImageVersionList = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionList
+        ImageStorageProfile = Azure::Compute::Mgmt::V2018_06_01::Models::ImageStorageProfile
         VirtualMachineScaleSetVMProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVMProfile
-        DataDiskImage = Azure::Compute::Mgmt::V2018_06_01::Models::DataDiskImage
+        GalleryImageList = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageList
         VirtualMachineScaleSetUpdateVMProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateVMProfile
         ListUsagesResult = Azure::Compute::Mgmt::V2018_06_01::Models::ListUsagesResult
         DiskSku = Azure::Compute::Mgmt::V2018_06_01::Models::DiskSku
-        HardwareProfile = Azure::Compute::Mgmt::V2018_06_01::Models::HardwareProfile
+        RunCommandParameterDefinition = Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandParameterDefinition
         RegionalReplicationStatus = Azure::Compute::Mgmt::V2018_06_01::Models::RegionalReplicationStatus
         VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue
         VirtualMachineScaleSetVMInstanceIDs = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVMInstanceIDs
@@ -165,7 +165,7 @@ module Azure::Profiles::Latest
         VirtualMachineScaleSetVMInstanceView = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVMInstanceView
         VaultSecretGroup = Azure::Compute::Mgmt::V2018_06_01::Models::VaultSecretGroup
         SubResourceReadOnly = Azure::Compute::Mgmt::V2018_06_01::Models::SubResourceReadOnly
-        DiskEncryptionSettings = Azure::Compute::Mgmt::V2018_06_01::Models::DiskEncryptionSettings
+        ManagedArtifact = Azure::Compute::Mgmt::V2018_06_01::Models::ManagedArtifact
         VirtualMachineScaleSetVMListResult = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVMListResult
         UpgradePolicy = Azure::Compute::Mgmt::V2018_06_01::Models::UpgradePolicy
         RollingUpgradeRunningStatus = Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradeRunningStatus
@@ -173,7 +173,7 @@ module Azure::Profiles::Latest
         RollingUpgradeProgressInfo = Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradeProgressInfo
         AccessUri = Azure::Compute::Mgmt::V2018_06_01::Models::AccessUri
         ApiErrorBase = Azure::Compute::Mgmt::V2018_06_01::Models::ApiErrorBase
-        BootDiagnostics = Azure::Compute::Mgmt::V2018_06_01::Models::BootDiagnostics
+        DiskEncryptionSettings = Azure::Compute::Mgmt::V2018_06_01::Models::DiskEncryptionSettings
         InnerError = Azure::Compute::Mgmt::V2018_06_01::Models::InnerError
         VirtualMachineSize = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineSize
         ApiError = Azure::Compute::Mgmt::V2018_06_01::Models::ApiError
@@ -183,86 +183,86 @@ module Azure::Profiles::Latest
         DiskInstanceView = Azure::Compute::Mgmt::V2018_06_01::Models::DiskInstanceView
         VirtualMachineInstanceView = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineInstanceView
         Resource = Azure::Compute::Mgmt::V2018_06_01::Models::Resource
-        AvailabilitySet = Azure::Compute::Mgmt::V2018_06_01::Models::AvailabilitySet
-        VirtualMachineExtensionImage = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtensionImage
+        BootDiagnostics = Azure::Compute::Mgmt::V2018_06_01::Models::BootDiagnostics
+        GalleryImageVersionList = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionList
         GalleryArtifactPublishingProfileBase = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryArtifactPublishingProfileBase
+        KeyVaultAndKeyReference = Azure::Compute::Mgmt::V2018_06_01::Models::KeyVaultAndKeyReference
+        VirtualMachineExtensionImage = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtensionImage
         VirtualMachineImageResource = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineImageResource
-        VirtualMachineExtension = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtension
-        VirtualMachineExtensionUpdate = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtensionUpdate
         KeyVaultAndSecretReference = Azure::Compute::Mgmt::V2018_06_01::Models::KeyVaultAndSecretReference
-        VirtualMachineCaptureResult = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineCaptureResult
+        HardwareProfile = Azure::Compute::Mgmt::V2018_06_01::Models::HardwareProfile
         VirtualMachineImage = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineImage
-        ManagedDiskParameters = Azure::Compute::Mgmt::V2018_06_01::Models::ManagedDiskParameters
-        ImageReference = Azure::Compute::Mgmt::V2018_06_01::Models::ImageReference
+        VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetOSProfile
+        AvailabilitySet = Azure::Compute::Mgmt::V2018_06_01::Models::AvailabilitySet
         VirtualMachine = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachine
-        RunCommandParameterDefinition = Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandParameterDefinition
+        VirtualMachineCaptureResult = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineCaptureResult
+        VirtualMachineExtension = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtension
+        DataDiskImage = Azure::Compute::Mgmt::V2018_06_01::Models::DataDiskImage
         VirtualMachineScaleSetIPConfiguration = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetIPConfiguration
         VirtualMachineScaleSetUpdateIPConfiguration = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateIPConfiguration
-        VirtualMachineScaleSetNetworkConfiguration = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetNetworkConfiguration
-        VirtualMachineScaleSetExtension = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetExtension
-        Image = Azure::Compute::Mgmt::V2018_06_01::Models::Image
-        VirtualMachineScaleSetUpdate = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdate
+        ImageReference = Azure::Compute::Mgmt::V2018_06_01::Models::ImageReference
+        ManagedDiskParameters = Azure::Compute::Mgmt::V2018_06_01::Models::ManagedDiskParameters
         ImageOSDisk = Azure::Compute::Mgmt::V2018_06_01::Models::ImageOSDisk
         ResourceRange = Azure::Compute::Mgmt::V2018_06_01::Models::ResourceRange
         RecommendedMachineConfiguration = Azure::Compute::Mgmt::V2018_06_01::Models::RecommendedMachineConfiguration
         DiskUpdate = Azure::Compute::Mgmt::V2018_06_01::Models::DiskUpdate
         RollingUpgradeStatusInfo = Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradeStatusInfo
         SnapshotUpdate = Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotUpdate
-        VirtualMachineScaleSetVM = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVM
+        VirtualMachineExtensionUpdate = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtensionUpdate
         RunCommandResult = Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandResult
         VirtualMachineScaleSet = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSet
-        RunCommandDocument = Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandDocument
-        Snapshot = Azure::Compute::Mgmt::V2018_06_01::Models::Snapshot
+        VirtualMachineScaleSetUpdate = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdate
+        VirtualMachineScaleSetNetworkConfiguration = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetNetworkConfiguration
         NetworkInterfaceReference = Azure::Compute::Mgmt::V2018_06_01::Models::NetworkInterfaceReference
-        Disk = Azure::Compute::Mgmt::V2018_06_01::Models::Disk
-        VirtualMachineSizeTypes = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineSizeTypes
-        OSDiskImage = Azure::Compute::Mgmt::V2018_06_01::Models::OSDiskImage
-        OperatingSystemTypes = Azure::Compute::Mgmt::V2018_06_01::Models::OperatingSystemTypes
-        StorageAccountTypes = Azure::Compute::Mgmt::V2018_06_01::Models::StorageAccountTypes
+        VirtualMachineScaleSetExtension = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetExtension
+        Image = Azure::Compute::Mgmt::V2018_06_01::Models::Image
+        Snapshot = Azure::Compute::Mgmt::V2018_06_01::Models::Snapshot
+        VirtualMachineScaleSetVM = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVM
+        TargetRegion = Azure::Compute::Mgmt::V2018_06_01::Models::TargetRegion
         VirtualMachineScaleSetUpdateNetworkConfiguration = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateNetworkConfiguration
-        Gallery = Azure::Compute::Mgmt::V2018_06_01::Models::Gallery
-        AdditionalCapabilities = Azure::Compute::Mgmt::V2018_06_01::Models::AdditionalCapabilities
-        GalleryImageVersionStorageProfile = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionStorageProfile
-        ManagedArtifact = Azure::Compute::Mgmt::V2018_06_01::Models::ManagedArtifact
-        Plan = Azure::Compute::Mgmt::V2018_06_01::Models::Plan
-        VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateOSProfile
-        SnapshotList = Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotList
-        DiffDiskOptions = Azure::Compute::Mgmt::V2018_06_01::Models::DiffDiskOptions
-        CachingTypes = Azure::Compute::Mgmt::V2018_06_01::Models::CachingTypes
-        DiskCreateOptionTypes = Azure::Compute::Mgmt::V2018_06_01::Models::DiskCreateOptionTypes
-        ResourceIdentityType = Azure::Compute::Mgmt::V2018_06_01::Models::ResourceIdentityType
-        StatusLevelTypes = Azure::Compute::Mgmt::V2018_06_01::Models::StatusLevelTypes
-        ComponentNames = Azure::Compute::Mgmt::V2018_06_01::Models::ComponentNames
-        SettingNames = Azure::Compute::Mgmt::V2018_06_01::Models::SettingNames
-        ProtocolTypes = Azure::Compute::Mgmt::V2018_06_01::Models::ProtocolTypes
-        RollingUpgradeStatusCode = Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradeStatusCode
-        ImagePurchasePlan = Azure::Compute::Mgmt::V2018_06_01::Models::ImagePurchasePlan
+        Usage = Azure::Compute::Mgmt::V2018_06_01::Models::Usage
         GalleryImage = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImage
         GalleryImageVersionPublishingProfile = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionPublishingProfile
-        GalleryOSDiskImage = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryOSDiskImage
+        RunCommandDocument = Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandDocument
         GalleryDataDiskImage = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryDataDiskImage
         GalleryImageVersion = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersion
         AvailabilitySetSkuTypes = Azure::Compute::Mgmt::V2018_06_01::Models::AvailabilitySetSkuTypes
-        UpgradeMode = Azure::Compute::Mgmt::V2018_06_01::Models::UpgradeMode
+        VirtualMachineSizeTypes = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineSizeTypes
+        CachingTypes = Azure::Compute::Mgmt::V2018_06_01::Models::CachingTypes
+        DiskCreateOptionTypes = Azure::Compute::Mgmt::V2018_06_01::Models::DiskCreateOptionTypes
+        StorageAccountTypes = Azure::Compute::Mgmt::V2018_06_01::Models::StorageAccountTypes
+        StatusLevelTypes = Azure::Compute::Mgmt::V2018_06_01::Models::StatusLevelTypes
+        Disk = Azure::Compute::Mgmt::V2018_06_01::Models::Disk
+        SettingNames = Azure::Compute::Mgmt::V2018_06_01::Models::SettingNames
+        ProtocolTypes = Azure::Compute::Mgmt::V2018_06_01::Models::ProtocolTypes
+        ResourceIdentityType = Azure::Compute::Mgmt::V2018_06_01::Models::ResourceIdentityType
+        ImagePurchasePlan = Azure::Compute::Mgmt::V2018_06_01::Models::ImagePurchasePlan
         PassNames = Azure::Compute::Mgmt::V2018_06_01::Models::PassNames
+        ComponentNames = Azure::Compute::Mgmt::V2018_06_01::Models::ComponentNames
+        GalleryOSDiskImage = Azure::Compute::Mgmt::V2018_06_01::Models::GalleryOSDiskImage
         RollingUpgradeActionType = Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradeActionType
-        HostCaching = Azure::Compute::Mgmt::V2018_06_01::Models::HostCaching
-        DiskStorageAccountTypes = Azure::Compute::Mgmt::V2018_06_01::Models::DiskStorageAccountTypes
-        IPVersion = Azure::Compute::Mgmt::V2018_06_01::Models::IPVersion
-        MaintenanceOperationResultCodeTypes = Azure::Compute::Mgmt::V2018_06_01::Models::MaintenanceOperationResultCodeTypes
-        OperatingSystemStateTypes = Azure::Compute::Mgmt::V2018_06_01::Models::OperatingSystemStateTypes
         DiskCreateOption = Azure::Compute::Mgmt::V2018_06_01::Models::DiskCreateOption
-        AccessLevel = Azure::Compute::Mgmt::V2018_06_01::Models::AccessLevel
-        InstanceViewTypes = Azure::Compute::Mgmt::V2018_06_01::Models::InstanceViewTypes
-        VirtualMachineScaleSetSkuScaleType = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetSkuScaleType
-        AggregatedReplicationState = Azure::Compute::Mgmt::V2018_06_01::Models::AggregatedReplicationState
+        MaintenanceOperationResultCodeTypes = Azure::Compute::Mgmt::V2018_06_01::Models::MaintenanceOperationResultCodeTypes
+        DiffDiskOptions = Azure::Compute::Mgmt::V2018_06_01::Models::DiffDiskOptions
+        OperatingSystemStateTypes = Azure::Compute::Mgmt::V2018_06_01::Models::OperatingSystemStateTypes
         ReplicationState = Azure::Compute::Mgmt::V2018_06_01::Models::ReplicationState
-        SnapshotStorageAccountTypes = Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotStorageAccountTypes
+        HostCaching = Azure::Compute::Mgmt::V2018_06_01::Models::HostCaching
+        OperatingSystemTypes = Azure::Compute::Mgmt::V2018_06_01::Models::OperatingSystemTypes
+        IPVersion = Azure::Compute::Mgmt::V2018_06_01::Models::IPVersion
+        VirtualMachineScaleSetSkuScaleType = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetSkuScaleType
+        UpgradeMode = Azure::Compute::Mgmt::V2018_06_01::Models::UpgradeMode
+        Gallery = Azure::Compute::Mgmt::V2018_06_01::Models::Gallery
+        InstanceViewTypes = Azure::Compute::Mgmt::V2018_06_01::Models::InstanceViewTypes
+        RollingUpgradeStatusCode = Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradeStatusCode
+        AccessLevel = Azure::Compute::Mgmt::V2018_06_01::Models::AccessLevel
+        AggregatedReplicationState = Azure::Compute::Mgmt::V2018_06_01::Models::AggregatedReplicationState
+        DiskStorageAccountTypes = Azure::Compute::Mgmt::V2018_06_01::Models::DiskStorageAccountTypes
         ReplicationStatusTypes = Azure::Compute::Mgmt::V2018_06_01::Models::ReplicationStatusTypes
+        SnapshotStorageAccountTypes = Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotStorageAccountTypes
       end
 
       class ComputeManagementClass
-        attr_reader :resource_skus, :virtual_machine_scale_set_vms, :disks, :operations, :log_analytics, :virtual_machine_run_commands, :snapshots, :galleries, :gallery_images, :gallery_image_versions, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :configurable, :base_url, :options, :model_classes
+        attr_reader :resource_skus, :usage_operations, :virtual_machine_sizes, :images, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :virtual_machine_scale_set_vms, :disks, :operations, :log_analytics, :virtual_machine_run_commands, :snapshots, :galleries, :gallery_images, :gallery_image_versions, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -291,6 +291,12 @@ module Azure::Profiles::Latest
             @client_3.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_3)
+          @usage_operations = @client_3.usage_operations
+          @virtual_machine_sizes = @client_3.virtual_machine_sizes
+          @images = @client_3.images
+          @virtual_machine_scale_sets = @client_3.virtual_machine_scale_sets
+          @virtual_machine_scale_set_extensions = @client_3.virtual_machine_scale_set_extensions
+          @virtual_machine_scale_set_rolling_upgrades = @client_3.virtual_machine_scale_set_rolling_upgrades
           @virtual_machine_scale_set_vms = @client_3.virtual_machine_scale_set_vms
           @disks = @client_3.disks
           @operations = @client_3.operations
@@ -305,12 +311,6 @@ module Azure::Profiles::Latest
           @virtual_machine_extensions = @client_3.virtual_machine_extensions
           @virtual_machines = @client_3.virtual_machines
           @virtual_machine_images = @client_3.virtual_machine_images
-          @usage_operations = @client_3.usage_operations
-          @virtual_machine_sizes = @client_3.virtual_machine_sizes
-          @images = @client_3.images
-          @virtual_machine_scale_sets = @client_3.virtual_machine_scale_sets
-          @virtual_machine_scale_set_extensions = @client_3.virtual_machine_scale_set_extensions
-          @virtual_machine_scale_set_rolling_upgrades = @client_3.virtual_machine_scale_set_rolling_upgrades
 
           @model_classes = ModelClasses.new
         end
@@ -335,6 +335,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource_skus_result
+            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
+          end
+          def resource_sku_location_info
+            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuLocationInfo
+          end
+          def resource_sku_restrictions_reason_code
+            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
+          end
+          def resource_sku_capacity
+            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacity
+          end
           def resource_sku_costs
             Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCosts
           end
@@ -355,18 +367,6 @@ module Azure::Profiles::Latest
           end
           def resource_sku
             Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSku
-          end
-          def resource_skus_result
-            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
-          end
-          def resource_sku_location_info
-            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuLocationInfo
-          end
-          def resource_sku_restrictions_reason_code
-            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
-          end
-          def resource_sku_capacity
-            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacity
           end
           def operation_status_response
             Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse
@@ -461,11 +461,11 @@ module Azure::Profiles::Latest
           def image_list_result
             Azure::Compute::Mgmt::V2018_06_01::Models::ImageListResult
           end
-          def virtual_machine_size_list_result
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineSizeListResult
-          end
           def virtual_machine_scale_set_ip_tag
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetIpTag
+          end
+          def virtual_machine_size_list_result
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineSizeListResult
           end
           def virtual_machine_scale_set_identity
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetIdentity
@@ -485,8 +485,8 @@ module Azure::Profiles::Latest
           def gallery_list
             Azure::Compute::Mgmt::V2018_06_01::Models::GalleryList
           end
-          def gallery_disk_image
-            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryDiskImage
+          def osdisk_image
+            Azure::Compute::Mgmt::V2018_06_01::Models::OSDiskImage
           end
           def gallery_artifact_source
             Azure::Compute::Mgmt::V2018_06_01::Models::GalleryArtifactSource
@@ -494,29 +494,29 @@ module Azure::Profiles::Latest
           def run_command_input
             Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandInput
           end
-          def target_region
-            Azure::Compute::Mgmt::V2018_06_01::Models::TargetRegion
+          def gallery_disk_image
+            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryDiskImage
           end
           def disallowed
             Azure::Compute::Mgmt::V2018_06_01::Models::Disallowed
           end
-          def usage
-            Azure::Compute::Mgmt::V2018_06_01::Models::Usage
+          def additional_capabilities
+            Azure::Compute::Mgmt::V2018_06_01::Models::AdditionalCapabilities
           end
           def virtual_machine_capture_parameters
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineCaptureParameters
           end
-          def virtual_machine_scale_set_osprofile
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetOSProfile
+          def gallery_image_version_storage_profile
+            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionStorageProfile
           end
-          def diff_disk_settings
-            Azure::Compute::Mgmt::V2018_06_01::Models::DiffDiskSettings
+          def plan
+            Azure::Compute::Mgmt::V2018_06_01::Models::Plan
           end
-          def replication_status
-            Azure::Compute::Mgmt::V2018_06_01::Models::ReplicationStatus
+          def virtual_machine_scale_set_update_osprofile
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateOSProfile
           end
-          def virtual_machine_identity_user_assigned_identities_value
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineIdentityUserAssignedIdentitiesValue
+          def snapshot_list
+            Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotList
           end
           def instance_view_status
             Azure::Compute::Mgmt::V2018_06_01::Models::InstanceViewStatus
@@ -530,17 +530,17 @@ module Azure::Profiles::Latest
           def virtual_hard_disk
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualHardDisk
           end
-          def gallery_image_list
-            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageList
+          def replication_status
+            Azure::Compute::Mgmt::V2018_06_01::Models::ReplicationStatus
           end
-          def key_vault_and_key_reference
-            Azure::Compute::Mgmt::V2018_06_01::Models::KeyVaultAndKeyReference
+          def virtual_machine_identity_user_assigned_identities_value
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineIdentityUserAssignedIdentitiesValue
           end
           def virtual_machine_scale_set_data_disk
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetDataDisk
           end
-          def storage_profile
-            Azure::Compute::Mgmt::V2018_06_01::Models::StorageProfile
+          def diff_disk_settings
+            Azure::Compute::Mgmt::V2018_06_01::Models::DiffDiskSettings
           end
           def virtual_machine_scale_set_storage_profile
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetStorageProfile
@@ -602,11 +602,11 @@ module Azure::Profiles::Latest
           def maintenance_redeploy_status
             Azure::Compute::Mgmt::V2018_06_01::Models::MaintenanceRedeployStatus
           end
+          def storage_profile
+            Azure::Compute::Mgmt::V2018_06_01::Models::StorageProfile
+          end
           def image_disk_reference
             Azure::Compute::Mgmt::V2018_06_01::Models::ImageDiskReference
-          end
-          def disk_list
-            Azure::Compute::Mgmt::V2018_06_01::Models::DiskList
           end
           def virtual_machine_scale_set_network_profile
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetNetworkProfile
@@ -623,8 +623,8 @@ module Azure::Profiles::Latest
           def gallery_image_identifier
             Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageIdentifier
           end
-          def image_storage_profile
-            Azure::Compute::Mgmt::V2018_06_01::Models::ImageStorageProfile
+          def disk_list
+            Azure::Compute::Mgmt::V2018_06_01::Models::DiskList
           end
           def virtual_machine_scale_set_extension_list_result
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetExtensionListResult
@@ -632,14 +632,14 @@ module Azure::Profiles::Latest
           def virtual_machine_scale_set_extension_profile
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetExtensionProfile
           end
-          def gallery_image_version_list
-            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionList
+          def image_storage_profile
+            Azure::Compute::Mgmt::V2018_06_01::Models::ImageStorageProfile
           end
           def virtual_machine_scale_set_vmprofile
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVMProfile
           end
-          def data_disk_image
-            Azure::Compute::Mgmt::V2018_06_01::Models::DataDiskImage
+          def gallery_image_list
+            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageList
           end
           def virtual_machine_scale_set_update_vmprofile
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateVMProfile
@@ -650,8 +650,8 @@ module Azure::Profiles::Latest
           def disk_sku
             Azure::Compute::Mgmt::V2018_06_01::Models::DiskSku
           end
-          def hardware_profile
-            Azure::Compute::Mgmt::V2018_06_01::Models::HardwareProfile
+          def run_command_parameter_definition
+            Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandParameterDefinition
           end
           def regional_replication_status
             Azure::Compute::Mgmt::V2018_06_01::Models::RegionalReplicationStatus
@@ -740,8 +740,8 @@ module Azure::Profiles::Latest
           def sub_resource_read_only
             Azure::Compute::Mgmt::V2018_06_01::Models::SubResourceReadOnly
           end
-          def disk_encryption_settings
-            Azure::Compute::Mgmt::V2018_06_01::Models::DiskEncryptionSettings
+          def managed_artifact
+            Azure::Compute::Mgmt::V2018_06_01::Models::ManagedArtifact
           end
           def virtual_machine_scale_set_vmlist_result
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVMListResult
@@ -764,8 +764,8 @@ module Azure::Profiles::Latest
           def api_error_base
             Azure::Compute::Mgmt::V2018_06_01::Models::ApiErrorBase
           end
-          def boot_diagnostics
-            Azure::Compute::Mgmt::V2018_06_01::Models::BootDiagnostics
+          def disk_encryption_settings
+            Azure::Compute::Mgmt::V2018_06_01::Models::DiskEncryptionSettings
           end
           def inner_error
             Azure::Compute::Mgmt::V2018_06_01::Models::InnerError
@@ -794,44 +794,50 @@ module Azure::Profiles::Latest
           def resource
             Azure::Compute::Mgmt::V2018_06_01::Models::Resource
           end
-          def availability_set
-            Azure::Compute::Mgmt::V2018_06_01::Models::AvailabilitySet
+          def boot_diagnostics
+            Azure::Compute::Mgmt::V2018_06_01::Models::BootDiagnostics
           end
-          def virtual_machine_extension_image
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtensionImage
+          def gallery_image_version_list
+            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionList
           end
           def gallery_artifact_publishing_profile_base
             Azure::Compute::Mgmt::V2018_06_01::Models::GalleryArtifactPublishingProfileBase
           end
+          def key_vault_and_key_reference
+            Azure::Compute::Mgmt::V2018_06_01::Models::KeyVaultAndKeyReference
+          end
+          def virtual_machine_extension_image
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtensionImage
+          end
           def virtual_machine_image_resource
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineImageResource
-          end
-          def virtual_machine_extension
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtension
-          end
-          def virtual_machine_extension_update
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtensionUpdate
           end
           def key_vault_and_secret_reference
             Azure::Compute::Mgmt::V2018_06_01::Models::KeyVaultAndSecretReference
           end
-          def virtual_machine_capture_result
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineCaptureResult
+          def hardware_profile
+            Azure::Compute::Mgmt::V2018_06_01::Models::HardwareProfile
           end
           def virtual_machine_image
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineImage
           end
-          def managed_disk_parameters
-            Azure::Compute::Mgmt::V2018_06_01::Models::ManagedDiskParameters
+          def virtual_machine_scale_set_osprofile
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetOSProfile
           end
-          def image_reference
-            Azure::Compute::Mgmt::V2018_06_01::Models::ImageReference
+          def availability_set
+            Azure::Compute::Mgmt::V2018_06_01::Models::AvailabilitySet
           end
           def virtual_machine
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachine
           end
-          def run_command_parameter_definition
-            Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandParameterDefinition
+          def virtual_machine_capture_result
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineCaptureResult
+          end
+          def virtual_machine_extension
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtension
+          end
+          def data_disk_image
+            Azure::Compute::Mgmt::V2018_06_01::Models::DataDiskImage
           end
           def virtual_machine_scale_set_ipconfiguration
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetIPConfiguration
@@ -839,17 +845,11 @@ module Azure::Profiles::Latest
           def virtual_machine_scale_set_update_ipconfiguration
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateIPConfiguration
           end
-          def virtual_machine_scale_set_network_configuration
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetNetworkConfiguration
+          def image_reference
+            Azure::Compute::Mgmt::V2018_06_01::Models::ImageReference
           end
-          def virtual_machine_scale_set_extension
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetExtension
-          end
-          def image
-            Azure::Compute::Mgmt::V2018_06_01::Models::Image
-          end
-          def virtual_machine_scale_set_update
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdate
+          def managed_disk_parameters
+            Azure::Compute::Mgmt::V2018_06_01::Models::ManagedDiskParameters
           end
           def image_osdisk
             Azure::Compute::Mgmt::V2018_06_01::Models::ImageOSDisk
@@ -869,8 +869,8 @@ module Azure::Profiles::Latest
           def snapshot_update
             Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotUpdate
           end
-          def virtual_machine_scale_set_vm
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVM
+          def virtual_machine_extension_update
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineExtensionUpdate
           end
           def run_command_result
             Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandResult
@@ -878,83 +878,35 @@ module Azure::Profiles::Latest
           def virtual_machine_scale_set
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSet
           end
-          def run_command_document
-            Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandDocument
+          def virtual_machine_scale_set_update
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdate
           end
-          def snapshot
-            Azure::Compute::Mgmt::V2018_06_01::Models::Snapshot
+          def virtual_machine_scale_set_network_configuration
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetNetworkConfiguration
           end
           def network_interface_reference
             Azure::Compute::Mgmt::V2018_06_01::Models::NetworkInterfaceReference
           end
-          def disk
-            Azure::Compute::Mgmt::V2018_06_01::Models::Disk
+          def virtual_machine_scale_set_extension
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetExtension
           end
-          def virtual_machine_size_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineSizeTypes
+          def image
+            Azure::Compute::Mgmt::V2018_06_01::Models::Image
           end
-          def osdisk_image
-            Azure::Compute::Mgmt::V2018_06_01::Models::OSDiskImage
+          def snapshot
+            Azure::Compute::Mgmt::V2018_06_01::Models::Snapshot
           end
-          def operating_system_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::OperatingSystemTypes
+          def virtual_machine_scale_set_vm
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVM
           end
-          def storage_account_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::StorageAccountTypes
+          def target_region
+            Azure::Compute::Mgmt::V2018_06_01::Models::TargetRegion
           end
           def virtual_machine_scale_set_update_network_configuration
             Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateNetworkConfiguration
           end
-          def gallery
-            Azure::Compute::Mgmt::V2018_06_01::Models::Gallery
-          end
-          def additional_capabilities
-            Azure::Compute::Mgmt::V2018_06_01::Models::AdditionalCapabilities
-          end
-          def gallery_image_version_storage_profile
-            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionStorageProfile
-          end
-          def managed_artifact
-            Azure::Compute::Mgmt::V2018_06_01::Models::ManagedArtifact
-          end
-          def plan
-            Azure::Compute::Mgmt::V2018_06_01::Models::Plan
-          end
-          def virtual_machine_scale_set_update_osprofile
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetUpdateOSProfile
-          end
-          def snapshot_list
-            Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotList
-          end
-          def diff_disk_options
-            Azure::Compute::Mgmt::V2018_06_01::Models::DiffDiskOptions
-          end
-          def caching_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::CachingTypes
-          end
-          def disk_create_option_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::DiskCreateOptionTypes
-          end
-          def resource_identity_type
-            Azure::Compute::Mgmt::V2018_06_01::Models::ResourceIdentityType
-          end
-          def status_level_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::StatusLevelTypes
-          end
-          def component_names
-            Azure::Compute::Mgmt::V2018_06_01::Models::ComponentNames
-          end
-          def setting_names
-            Azure::Compute::Mgmt::V2018_06_01::Models::SettingNames
-          end
-          def protocol_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::ProtocolTypes
-          end
-          def rolling_upgrade_status_code
-            Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradeStatusCode
-          end
-          def image_purchase_plan
-            Azure::Compute::Mgmt::V2018_06_01::Models::ImagePurchasePlan
+          def usage
+            Azure::Compute::Mgmt::V2018_06_01::Models::Usage
           end
           def gallery_image
             Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImage
@@ -962,8 +914,8 @@ module Azure::Profiles::Latest
           def gallery_image_version_publishing_profile
             Azure::Compute::Mgmt::V2018_06_01::Models::GalleryImageVersionPublishingProfile
           end
-          def gallery_osdisk_image
-            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryOSDiskImage
+          def run_command_document
+            Azure::Compute::Mgmt::V2018_06_01::Models::RunCommandDocument
           end
           def gallery_data_disk_image
             Azure::Compute::Mgmt::V2018_06_01::Models::GalleryDataDiskImage
@@ -974,53 +926,101 @@ module Azure::Profiles::Latest
           def availability_set_sku_types
             Azure::Compute::Mgmt::V2018_06_01::Models::AvailabilitySetSkuTypes
           end
-          def upgrade_mode
-            Azure::Compute::Mgmt::V2018_06_01::Models::UpgradeMode
+          def virtual_machine_size_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineSizeTypes
+          end
+          def caching_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::CachingTypes
+          end
+          def disk_create_option_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::DiskCreateOptionTypes
+          end
+          def storage_account_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::StorageAccountTypes
+          end
+          def status_level_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::StatusLevelTypes
+          end
+          def disk
+            Azure::Compute::Mgmt::V2018_06_01::Models::Disk
+          end
+          def setting_names
+            Azure::Compute::Mgmt::V2018_06_01::Models::SettingNames
+          end
+          def protocol_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::ProtocolTypes
+          end
+          def resource_identity_type
+            Azure::Compute::Mgmt::V2018_06_01::Models::ResourceIdentityType
+          end
+          def image_purchase_plan
+            Azure::Compute::Mgmt::V2018_06_01::Models::ImagePurchasePlan
           end
           def pass_names
             Azure::Compute::Mgmt::V2018_06_01::Models::PassNames
           end
+          def component_names
+            Azure::Compute::Mgmt::V2018_06_01::Models::ComponentNames
+          end
+          def gallery_osdisk_image
+            Azure::Compute::Mgmt::V2018_06_01::Models::GalleryOSDiskImage
+          end
           def rolling_upgrade_action_type
             Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradeActionType
-          end
-          def host_caching
-            Azure::Compute::Mgmt::V2018_06_01::Models::HostCaching
-          end
-          def disk_storage_account_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::DiskStorageAccountTypes
-          end
-          def ipversion
-            Azure::Compute::Mgmt::V2018_06_01::Models::IPVersion
-          end
-          def maintenance_operation_result_code_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::MaintenanceOperationResultCodeTypes
-          end
-          def operating_system_state_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::OperatingSystemStateTypes
           end
           def disk_create_option
             Azure::Compute::Mgmt::V2018_06_01::Models::DiskCreateOption
           end
-          def access_level
-            Azure::Compute::Mgmt::V2018_06_01::Models::AccessLevel
+          def maintenance_operation_result_code_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::MaintenanceOperationResultCodeTypes
           end
-          def instance_view_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::InstanceViewTypes
+          def diff_disk_options
+            Azure::Compute::Mgmt::V2018_06_01::Models::DiffDiskOptions
           end
-          def virtual_machine_scale_set_sku_scale_type
-            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetSkuScaleType
-          end
-          def aggregated_replication_state
-            Azure::Compute::Mgmt::V2018_06_01::Models::AggregatedReplicationState
+          def operating_system_state_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::OperatingSystemStateTypes
           end
           def replication_state
             Azure::Compute::Mgmt::V2018_06_01::Models::ReplicationState
           end
-          def snapshot_storage_account_types
-            Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotStorageAccountTypes
+          def host_caching
+            Azure::Compute::Mgmt::V2018_06_01::Models::HostCaching
+          end
+          def operating_system_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::OperatingSystemTypes
+          end
+          def ipversion
+            Azure::Compute::Mgmt::V2018_06_01::Models::IPVersion
+          end
+          def virtual_machine_scale_set_sku_scale_type
+            Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetSkuScaleType
+          end
+          def upgrade_mode
+            Azure::Compute::Mgmt::V2018_06_01::Models::UpgradeMode
+          end
+          def gallery
+            Azure::Compute::Mgmt::V2018_06_01::Models::Gallery
+          end
+          def instance_view_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::InstanceViewTypes
+          end
+          def rolling_upgrade_status_code
+            Azure::Compute::Mgmt::V2018_06_01::Models::RollingUpgradeStatusCode
+          end
+          def access_level
+            Azure::Compute::Mgmt::V2018_06_01::Models::AccessLevel
+          end
+          def aggregated_replication_state
+            Azure::Compute::Mgmt::V2018_06_01::Models::AggregatedReplicationState
+          end
+          def disk_storage_account_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::DiskStorageAccountTypes
           end
           def replication_status_types
             Azure::Compute::Mgmt::V2018_06_01::Models::ReplicationStatusTypes
+          end
+          def snapshot_storage_account_types
+            Azure::Compute::Mgmt::V2018_06_01::Models::SnapshotStorageAccountTypes
           end
         end
       end
