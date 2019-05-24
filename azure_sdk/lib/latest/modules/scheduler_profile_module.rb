@@ -38,9 +38,9 @@ module Azure::Profiles::Latest
         ServiceBusTopicMessage = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusTopicMessage
         ServiceBusAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::ServiceBusAuthentication
         ClientCertAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::ClientCertAuthentication
-        OAuthAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
         SkuDefinition = Azure::Scheduler::Mgmt::V2016_03_01::Models::SkuDefinition
         JobCollectionState = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionState
+        OAuthAuthentication = Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
         RetryType = Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryType
         JobScheduleDay = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobScheduleDay
         JobListResult = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobListResult
@@ -169,14 +169,14 @@ module Azure::Profiles::Latest
           def client_cert_authentication
             Azure::Scheduler::Mgmt::V2016_03_01::Models::ClientCertAuthentication
           end
-          def oauth_authentication
-            Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
-          end
           def sku_definition
             Azure::Scheduler::Mgmt::V2016_03_01::Models::SkuDefinition
           end
           def job_collection_state
             Azure::Scheduler::Mgmt::V2016_03_01::Models::JobCollectionState
+          end
+          def oauth_authentication
+            Azure::Scheduler::Mgmt::V2016_03_01::Models::OAuthAuthentication
           end
           def retry_type
             Azure::Scheduler::Mgmt::V2016_03_01::Models::RetryType
