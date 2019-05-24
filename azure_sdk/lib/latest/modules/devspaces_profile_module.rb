@@ -11,6 +11,12 @@ module Azure::Profiles::Latest
       Operations = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Operations
 
       module Models
+        Resource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
+        ControllerConnectionDetailsList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
+        ControllerUpdateParameters = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerUpdateParameters
+        ResourceProviderOperationDisplay = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDisplay
+        OrchestratorSpecificConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::OrchestratorSpecificConnectionDetails
+        ResourceProviderOperationDefinition = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDefinition
         ResourceProviderOperationList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationList
         Sku = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Sku
         ControllerConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetails
@@ -22,12 +28,6 @@ module Azure::Profiles::Latest
         SkuTier = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::SkuTier
         ErrorResponse = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ErrorResponse
         TrackedResource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::TrackedResource
-        Resource = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
-        ControllerConnectionDetailsList = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
-        ControllerUpdateParameters = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerUpdateParameters
-        ResourceProviderOperationDisplay = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDisplay
-        OrchestratorSpecificConnectionDetails = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::OrchestratorSpecificConnectionDetails
-        ResourceProviderOperationDefinition = Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDefinition
       end
 
       class DevSpacesManagementClass
@@ -61,6 +61,24 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
+          end
+          def controller_connection_details_list
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
+          end
+          def controller_update_parameters
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerUpdateParameters
+          end
+          def resource_provider_operation_display
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDisplay
+          end
+          def orchestrator_specific_connection_details
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::OrchestratorSpecificConnectionDetails
+          end
+          def resource_provider_operation_definition
+            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDefinition
+          end
           def resource_provider_operation_list
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationList
           end
@@ -93,24 +111,6 @@ module Azure::Profiles::Latest
           end
           def tracked_resource
             Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::TrackedResource
-          end
-          def resource
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::Resource
-          end
-          def controller_connection_details_list
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerConnectionDetailsList
-          end
-          def controller_update_parameters
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ControllerUpdateParameters
-          end
-          def resource_provider_operation_display
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDisplay
-          end
-          def orchestrator_specific_connection_details
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::OrchestratorSpecificConnectionDetails
-          end
-          def resource_provider_operation_definition
-            Azure::DevSpaces::Mgmt::V2018_06_01_preview::Models::ResourceProviderOperationDefinition
           end
         end
       end

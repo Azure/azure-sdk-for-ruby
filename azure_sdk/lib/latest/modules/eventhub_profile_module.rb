@@ -8,11 +8,15 @@ module Azure::Profiles::Latest
   module EventHub
     module Mgmt
       Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
-      Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
       Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
+      Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
       Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
 
       module Models
+        VirtualNetworkRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
+        Resource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
+        SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
+        IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
         Sku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
         OperationDisplay = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
         SkuTier = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
@@ -29,14 +33,10 @@ module Azure::Profiles::Latest
         Cluster = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
         EHNamespace = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
         IpFilterRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
-        VirtualNetworkRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
-        Resource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
-        SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
-        IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
       end
 
       class EventHubManagementClass
-        attr_reader :operations, :configuration, :clusters, :namespaces, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :configuration, :namespaces, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -47,8 +47,8 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @configuration = @client_0.configuration
           @clusters = @client_0.clusters
+          @configuration = @client_0.configuration
           @namespaces = @client_0.namespaces
 
           @model_classes = ModelClasses.new
@@ -68,6 +68,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def virtual_network_rule
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
+          end
+          def resource
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
+          end
+          def sku_name
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
+          end
+          def ipaction
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
+          end
           def sku
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
           end
@@ -115,18 +127,6 @@ module Azure::Profiles::Latest
           end
           def ip_filter_rule
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
-          end
-          def virtual_network_rule
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
-          end
-          def resource
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
-          end
-          def sku_name
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
-          end
-          def ipaction
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
           end
         end
       end

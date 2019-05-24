@@ -7,10 +7,10 @@ require 'azure_mgmt_relay'
 module Azure::Profiles::Latest
   module Relay
     module Mgmt
-      WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
       Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
       Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
+      WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
 
       module Models
         Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
@@ -43,7 +43,7 @@ module Azure::Profiles::Latest
       end
 
       class RelayManagementClass
-        attr_reader :wcfrelays, :operations, :hybrid_connections, :namespaces, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :hybrid_connections, :namespaces, :wcfrelays, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -53,10 +53,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @wcfrelays = @client_0.wcfrelays
           @operations = @client_0.operations
           @hybrid_connections = @client_0.hybrid_connections
           @namespaces = @client_0.namespaces
+          @wcfrelays = @client_0.wcfrelays
 
           @model_classes = ModelClasses.new
         end
