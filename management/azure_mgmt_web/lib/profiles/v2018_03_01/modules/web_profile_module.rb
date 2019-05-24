@@ -101,6 +101,13 @@ module Azure::Web::Profiles::V2018_03_01
       CheckNameResourceTypes = Azure::Web::Mgmt::V2016_03_01::Models::CheckNameResourceTypes
       ValidateResourceTypes = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResourceTypes
       SkuName = Azure::Web::Mgmt::V2016_03_01::Models::SkuName
+      SiteCloneability = Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneability
+      PerfMonSet = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSet
+      PerfMonCounterCollection = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonCounterCollection
+      WebJobCollection = Azure::Web::Mgmt::V2016_08_01::Models::WebJobCollection
+      ContinuousWebJobCollection = Azure::Web::Mgmt::V2016_08_01::Models::ContinuousWebJobCollection
+      FileSystemApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::FileSystemApplicationLogsConfig
+      FileSystemHttpLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::FileSystemHttpLogsConfig
       AzureBlobStorageApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::AzureBlobStorageApplicationLogsConfig
       AzureBlobStorageHttpLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::AzureBlobStorageHttpLogsConfig
       MSDeployLogEntry = Azure::Web::Mgmt::V2016_08_01::Models::MSDeployLogEntry
@@ -178,8 +185,7 @@ module Azure::Web::Profiles::V2018_03_01
       CloneAbilityResult = Azure::Web::Mgmt::V2016_08_01::Models::CloneAbilityResult
       SiteExtensionType = Azure::Web::Mgmt::V2016_08_01::Models::SiteExtensionType
       TriggeredWebJobStatus = Azure::Web::Mgmt::V2016_08_01::Models::TriggeredWebJobStatus
-      FileSystemHttpLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::FileSystemHttpLogsConfig
-      FileSystemApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::FileSystemApplicationLogsConfig
+      HostNameBindingCollection = Azure::Web::Mgmt::V2016_08_01::Models::HostNameBindingCollection
       IdentifierCollection = Azure::Web::Mgmt::V2016_08_01::Models::IdentifierCollection
       AzureTableStorageApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::AzureTableStorageApplicationLogsConfig
       ApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::ApplicationLogsConfig
@@ -197,12 +203,7 @@ module Azure::Web::Profiles::V2018_03_01
       TriggeredJobHistoryCollection = Azure::Web::Mgmt::V2016_08_01::Models::TriggeredJobHistoryCollection
       SnapshotCollection = Azure::Web::Mgmt::V2016_08_01::Models::SnapshotCollection
       SiteCloneabilityCriterion = Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneabilityCriterion
-      HostNameBindingCollection = Azure::Web::Mgmt::V2016_08_01::Models::HostNameBindingCollection
-      SiteCloneability = Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneability
-      PerfMonSet = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSet
-      PerfMonCounterCollection = Azure::Web::Mgmt::V2016_08_01::Models::PerfMonCounterCollection
-      WebJobCollection = Azure::Web::Mgmt::V2016_08_01::Models::WebJobCollection
-      ContinuousWebJobCollection = Azure::Web::Mgmt::V2016_08_01::Models::ContinuousWebJobCollection
+      Identifier = Azure::Web::Mgmt::V2016_09_01::Models::Identifier
       AppServiceEnvironmentCollection = Azure::Web::Mgmt::V2016_09_01::Models::AppServiceEnvironmentCollection
       HostingEnvironmentDiagnostics = Azure::Web::Mgmt::V2016_09_01::Models::HostingEnvironmentDiagnostics
       AddressResponse = Azure::Web::Mgmt::V2016_09_01::Models::AddressResponse
@@ -302,7 +303,6 @@ module Azure::Web::Profiles::V2018_03_01
       WorkerSizeOptions = Azure::Web::Mgmt::V2016_09_01::Models::WorkerSizeOptions
       AccessControlEntryAction = Azure::Web::Mgmt::V2016_09_01::Models::AccessControlEntryAction
       OperationStatus = Azure::Web::Mgmt::V2016_09_01::Models::OperationStatus
-      Identifier = Azure::Web::Mgmt::V2016_09_01::Models::Identifier
     end
 
     #
@@ -624,6 +624,27 @@ module Azure::Web::Profiles::V2018_03_01
       def sku_name
         Azure::Web::Mgmt::V2016_03_01::Models::SkuName
       end
+      def site_cloneability
+        Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneability
+      end
+      def perf_mon_set
+        Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSet
+      end
+      def perf_mon_counter_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::PerfMonCounterCollection
+      end
+      def web_job_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::WebJobCollection
+      end
+      def continuous_web_job_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::ContinuousWebJobCollection
+      end
+      def file_system_application_logs_config
+        Azure::Web::Mgmt::V2016_08_01::Models::FileSystemApplicationLogsConfig
+      end
+      def file_system_http_logs_config
+        Azure::Web::Mgmt::V2016_08_01::Models::FileSystemHttpLogsConfig
+      end
       def azure_blob_storage_application_logs_config
         Azure::Web::Mgmt::V2016_08_01::Models::AzureBlobStorageApplicationLogsConfig
       end
@@ -855,11 +876,8 @@ module Azure::Web::Profiles::V2018_03_01
       def triggered_web_job_status
         Azure::Web::Mgmt::V2016_08_01::Models::TriggeredWebJobStatus
       end
-      def file_system_http_logs_config
-        Azure::Web::Mgmt::V2016_08_01::Models::FileSystemHttpLogsConfig
-      end
-      def file_system_application_logs_config
-        Azure::Web::Mgmt::V2016_08_01::Models::FileSystemApplicationLogsConfig
+      def host_name_binding_collection
+        Azure::Web::Mgmt::V2016_08_01::Models::HostNameBindingCollection
       end
       def identifier_collection
         Azure::Web::Mgmt::V2016_08_01::Models::IdentifierCollection
@@ -912,23 +930,8 @@ module Azure::Web::Profiles::V2018_03_01
       def site_cloneability_criterion
         Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneabilityCriterion
       end
-      def host_name_binding_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::HostNameBindingCollection
-      end
-      def site_cloneability
-        Azure::Web::Mgmt::V2016_08_01::Models::SiteCloneability
-      end
-      def perf_mon_set
-        Azure::Web::Mgmt::V2016_08_01::Models::PerfMonSet
-      end
-      def perf_mon_counter_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::PerfMonCounterCollection
-      end
-      def web_job_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::WebJobCollection
-      end
-      def continuous_web_job_collection
-        Azure::Web::Mgmt::V2016_08_01::Models::ContinuousWebJobCollection
+      def identifier
+        Azure::Web::Mgmt::V2016_09_01::Models::Identifier
       end
       def app_service_environment_collection
         Azure::Web::Mgmt::V2016_09_01::Models::AppServiceEnvironmentCollection
@@ -1226,9 +1229,6 @@ module Azure::Web::Profiles::V2018_03_01
       end
       def operation_status
         Azure::Web::Mgmt::V2016_09_01::Models::OperationStatus
-      end
-      def identifier
-        Azure::Web::Mgmt::V2016_09_01::Models::Identifier
       end
     end
   end
