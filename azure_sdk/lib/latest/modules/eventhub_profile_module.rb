@@ -8,11 +8,13 @@ module Azure::Profiles::Latest
   module EventHub
     module Mgmt
       Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
-      Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
       Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
       Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
+      Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
 
       module Models
+        Resource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
+        IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
         Sku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
         OperationDisplay = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
         SkuTier = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
@@ -31,12 +33,10 @@ module Azure::Profiles::Latest
         EHNamespace = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
         IpFilterRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
         SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
-        Resource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
-        IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
       end
 
       class EventHubManagementClass
-        attr_reader :operations, :configuration, :clusters, :namespaces, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :namespaces, :configuration, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -47,9 +47,9 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
-          @configuration = @client_0.configuration
           @clusters = @client_0.clusters
           @namespaces = @client_0.namespaces
+          @configuration = @client_0.configuration
 
           @model_classes = ModelClasses.new
         end
@@ -68,6 +68,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
+          end
+          def ipaction
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
+          end
           def sku
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
           end
@@ -121,12 +127,6 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
-          end
-          def resource
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
-          end
-          def ipaction
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
           end
         end
       end
