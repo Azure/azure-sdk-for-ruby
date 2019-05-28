@@ -7,6 +7,13 @@ require 'azure_mgmt_compute'
 module Azure::Profiles::V2018_03_01
   module Compute
     module Mgmt
+      UsageOperations = Azure::Compute::Mgmt::V2017_03_30::UsageOperations
+      VirtualMachineSizes = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineSizes
+      Images = Azure::Compute::Mgmt::V2017_03_30::Images
+      ResourceSkus = Azure::Compute::Mgmt::V2017_03_30::ResourceSkus
+      VirtualMachineScaleSets = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineScaleSets
+      VirtualMachineScaleSetExtensions = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineScaleSetExtensions
+      VirtualMachineScaleSetRollingUpgrades = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineScaleSetRollingUpgrades
       VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineScaleSetVMs
       Disks = Azure::Compute::Mgmt::V2017_03_30::Disks
       Snapshots = Azure::Compute::Mgmt::V2017_03_30::Snapshots
@@ -16,15 +23,15 @@ module Azure::Profiles::V2018_03_01
       VirtualMachineExtensions = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensions
       VirtualMachines = Azure::Compute::Mgmt::V2017_03_30::VirtualMachines
       VirtualMachineImages = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineImages
-      UsageOperations = Azure::Compute::Mgmt::V2017_03_30::UsageOperations
-      VirtualMachineSizes = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineSizes
-      Images = Azure::Compute::Mgmt::V2017_03_30::Images
-      ResourceSkus = Azure::Compute::Mgmt::V2017_03_30::ResourceSkus
-      VirtualMachineScaleSets = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineScaleSets
-      VirtualMachineScaleSetExtensions = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineScaleSetExtensions
-      VirtualMachineScaleSetRollingUpgrades = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineScaleSetRollingUpgrades
 
       module Models
+        ResourceSkusResult = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
+        VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
+        VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
+        Plan = Azure::Compute::Mgmt::V2017_03_30::Models::Plan
+        VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
+        SnapshotList = Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
+        InstanceViewStatus = Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
         KeyVaultKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
         Sku = Azure::Compute::Mgmt::V2017_03_30::Models::Sku
         VirtualHardDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualHardDisk
@@ -187,17 +194,10 @@ module Azure::Profiles::V2018_03_01
         RunCommandInput = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandInput
         ResourceSku = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSku
         Usage = Azure::Compute::Mgmt::V2017_03_30::Models::Usage
-        ResourceSkusResult = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
-        VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
-        VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
-        Plan = Azure::Compute::Mgmt::V2017_03_30::Models::Plan
-        VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
-        SnapshotList = Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
-        InstanceViewStatus = Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
       end
 
       class ComputeManagementClass
-        attr_reader :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :configurable, :base_url, :options, :model_classes
+        attr_reader :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -207,6 +207,13 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @usage_operations = @client_0.usage_operations
+          @virtual_machine_sizes = @client_0.virtual_machine_sizes
+          @images = @client_0.images
+          @resource_skus = @client_0.resource_skus
+          @virtual_machine_scale_sets = @client_0.virtual_machine_scale_sets
+          @virtual_machine_scale_set_extensions = @client_0.virtual_machine_scale_set_extensions
+          @virtual_machine_scale_set_rolling_upgrades = @client_0.virtual_machine_scale_set_rolling_upgrades
           @virtual_machine_scale_set_vms = @client_0.virtual_machine_scale_set_vms
           @disks = @client_0.disks
           @snapshots = @client_0.snapshots
@@ -216,13 +223,6 @@ module Azure::Profiles::V2018_03_01
           @virtual_machine_extensions = @client_0.virtual_machine_extensions
           @virtual_machines = @client_0.virtual_machines
           @virtual_machine_images = @client_0.virtual_machine_images
-          @usage_operations = @client_0.usage_operations
-          @virtual_machine_sizes = @client_0.virtual_machine_sizes
-          @images = @client_0.images
-          @resource_skus = @client_0.resource_skus
-          @virtual_machine_scale_sets = @client_0.virtual_machine_scale_sets
-          @virtual_machine_scale_set_extensions = @client_0.virtual_machine_scale_set_extensions
-          @virtual_machine_scale_set_rolling_upgrades = @client_0.virtual_machine_scale_set_rolling_upgrades
 
           @model_classes = ModelClasses.new
         end
@@ -241,6 +241,27 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def resource_skus_result
+            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
+          end
+          def virtual_machine_capture_parameters
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
+          end
+          def virtual_machine_scale_set_osprofile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
+          end
+          def plan
+            Azure::Compute::Mgmt::V2017_03_30::Models::Plan
+          end
+          def virtual_machine_scale_set_update_osprofile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
+          end
+          def snapshot_list
+            Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
+          end
+          def instance_view_status
+            Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
+          end
           def key_vault_key_reference
             Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
           end
@@ -726,27 +747,6 @@ module Azure::Profiles::V2018_03_01
           end
           def usage
             Azure::Compute::Mgmt::V2017_03_30::Models::Usage
-          end
-          def resource_skus_result
-            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
-          end
-          def virtual_machine_capture_parameters
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
-          end
-          def virtual_machine_scale_set_osprofile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
-          end
-          def plan
-            Azure::Compute::Mgmt::V2017_03_30::Models::Plan
-          end
-          def virtual_machine_scale_set_update_osprofile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
-          end
-          def snapshot_list
-            Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
-          end
-          def instance_view_status
-            Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
           end
         end
       end

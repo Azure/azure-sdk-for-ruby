@@ -38,7 +38,8 @@ module Azure::Automation::Mgmt::V2015_10_31
       attr_accessor :interval
 
       # @return [ScheduleFrequency] Gets or sets the frequency of the schedule.
-      # Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
+      # Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month',
+      # 'Minute'
       attr_accessor :frequency
 
       # @return [String] Gets or sets the time zone of the schedule.
