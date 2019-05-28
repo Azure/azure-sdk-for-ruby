@@ -7,12 +7,21 @@ require 'azure_mgmt_event_hub'
 module Azure::Profiles::Latest
   module EventHub
     module Mgmt
+      Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
       Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
       Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
       Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
-      Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
 
       module Models
+        Resource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
+        IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
+        Sku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
+        OperationDisplay = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
+        SkuTier = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
+        Operation = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
+        VirtualNetworkRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
+        OperationListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
+        VirtualNetworkRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
         ErrorResponse = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
         ClusterQuotaConfigurationProperties = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
         ClusterListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
@@ -24,19 +33,10 @@ module Azure::Profiles::Latest
         EHNamespace = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
         IpFilterRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
         SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
-        Resource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
-        IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
-        Sku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
-        OperationDisplay = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
-        SkuTier = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
-        Operation = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
-        VirtualNetworkRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
-        OperationListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
-        VirtualNetworkRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
       end
 
       class EventHubManagementClass
-        attr_reader :clusters, :namespaces, :configuration, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :clusters, :namespaces, :configuration, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -46,10 +46,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @clusters = @client_0.clusters
           @namespaces = @client_0.namespaces
           @configuration = @client_0.configuration
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -68,6 +68,33 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
+          end
+          def ipaction
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
+          end
+          def sku
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
+          end
+          def operation_display
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
+          end
+          def sku_tier
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
+          end
+          def operation
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
+          end
+          def virtual_network_rule
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
+          end
+          def operation_list_result
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
+          end
+          def virtual_network_rule_list_result
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
+          end
           def error_response
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
           end
@@ -100,33 +127,6 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
-          end
-          def resource
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
-          end
-          def ipaction
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
-          end
-          def sku
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
-          end
-          def operation_display
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
-          end
-          def sku_tier
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
-          end
-          def operation
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
-          end
-          def virtual_network_rule
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
-          end
-          def operation_list_result
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
-          end
-          def virtual_network_rule_list_result
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
           end
         end
       end

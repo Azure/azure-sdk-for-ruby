@@ -8,12 +8,12 @@ module Azure::Profiles::Latest
   module DataLakeAnalytics
     module Mgmt
       Accounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Accounts
-      Operations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Operations
       DataLakeStoreAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::DataLakeStoreAccounts
+      ComputePolicies = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::ComputePolicies
       StorageAccounts = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::StorageAccounts
       FirewallRules = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::FirewallRules
-      ComputePolicies = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::ComputePolicies
       Locations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Locations
+      Operations = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Operations
 
       module Models
         CheckNameAvailabilityParameters = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
@@ -67,7 +67,7 @@ module Azure::Profiles::Latest
       end
 
       class DataLakeAnalyticsManagementClass
-        attr_reader :accounts, :operations, :data_lake_store_accounts, :storage_accounts, :firewall_rules, :compute_policies, :locations, :configurable, :base_url, :options, :model_classes
+        attr_reader :accounts, :data_lake_store_accounts, :compute_policies, :storage_accounts, :firewall_rules, :locations, :operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -78,12 +78,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @accounts = @client_0.accounts
-          @operations = @client_0.operations
           @data_lake_store_accounts = @client_0.data_lake_store_accounts
+          @compute_policies = @client_0.compute_policies
           @storage_accounts = @client_0.storage_accounts
           @firewall_rules = @client_0.firewall_rules
-          @compute_policies = @client_0.compute_policies
           @locations = @client_0.locations
+          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end

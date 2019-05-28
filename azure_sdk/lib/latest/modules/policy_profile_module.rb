@@ -7,11 +7,12 @@ require 'azure_mgmt_policy'
 module Azure::Profiles::Latest
   module Policy
     module Mgmt
-      PolicyDefinitions = Azure::Policy::Mgmt::V2018_03_01::PolicyDefinitions
       PolicyAssignments = Azure::Policy::Mgmt::V2018_03_01::PolicyAssignments
       PolicySetDefinitions = Azure::Policy::Mgmt::V2018_03_01::PolicySetDefinitions
+      PolicyDefinitions = Azure::Policy::Mgmt::V2018_03_01::PolicyDefinitions
 
       module Models
+        PolicyAssignment = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
         PolicyDefinition = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinition
         PolicyAssignmentListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignmentListResult
         PolicyDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinitionListResult
@@ -22,11 +23,10 @@ module Azure::Profiles::Latest
         PolicySetDefinition = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinition
         PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySetDefinitionListResult
         PolicySku = Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
-        PolicyAssignment = Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
       end
 
       class PolicyManagementClass
-        attr_reader :policy_definitions, :policy_assignments, :policy_set_definitions, :configurable, :base_url, :options, :model_classes
+        attr_reader :policy_assignments, :policy_set_definitions, :policy_definitions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -36,9 +36,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @policy_definitions = @client_0.policy_definitions
           @policy_assignments = @client_0.policy_assignments
           @policy_set_definitions = @client_0.policy_set_definitions
+          @policy_definitions = @client_0.policy_definitions
 
           @model_classes = ModelClasses.new
         end
@@ -57,6 +57,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def policy_assignment
+            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
+          end
           def policy_definition
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicyDefinition
           end
@@ -86,9 +89,6 @@ module Azure::Profiles::Latest
           end
           def policy_sku
             Azure::Policy::Mgmt::V2018_03_01::Models::PolicySku
-          end
-          def policy_assignment
-            Azure::Policy::Mgmt::V2018_03_01::Models::PolicyAssignment
           end
         end
       end

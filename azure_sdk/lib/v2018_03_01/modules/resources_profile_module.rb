@@ -15,6 +15,9 @@ module Azure::Profiles::V2018_03_01
       DeploymentOperations = Azure::Resources::Mgmt::V2018_02_01::DeploymentOperations
 
       module Models
+        Plan = Azure::Resources::Mgmt::V2018_02_01::Models::Plan
+        ResourceIdentityType = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceIdentityType
+        Sku = Azure::Resources::Mgmt::V2018_02_01::Models::Sku
         Dependency = Azure::Resources::Mgmt::V2018_02_01::Models::Dependency
         GenericResourceFilter = Azure::Resources::Mgmt::V2018_02_01::Models::GenericResourceFilter
         Identity = Azure::Resources::Mgmt::V2018_02_01::Models::Identity
@@ -53,18 +56,15 @@ module Azure::Profiles::V2018_03_01
         OnErrorDeploymentExtended = Azure::Resources::Mgmt::V2018_02_01::Models::OnErrorDeploymentExtended
         ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceProviderOperationDisplayProperties
         DebugSetting = Azure::Resources::Mgmt::V2018_02_01::Models::DebugSetting
+        Resource = Azure::Resources::Mgmt::V2018_02_01::Models::Resource
         DeploymentListResult = Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentListResult
         ProviderResourceType = Azure::Resources::Mgmt::V2018_02_01::Models::ProviderResourceType
         ResourceGroupExportResult = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceGroupExportResult
-        Resource = Azure::Resources::Mgmt::V2018_02_01::Models::Resource
         GenericResource = Azure::Resources::Mgmt::V2018_02_01::Models::GenericResource
         DeploymentMode = Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentMode
         OnErrorDeploymentType = Azure::Resources::Mgmt::V2018_02_01::Models::OnErrorDeploymentType
         SubResource = Azure::Resources::Mgmt::V2018_02_01::Models::SubResource
         ResourceListResult = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceListResult
-        Plan = Azure::Resources::Mgmt::V2018_02_01::Models::Plan
-        ResourceIdentityType = Azure::Resources::Mgmt::V2018_02_01::Models::ResourceIdentityType
-        Sku = Azure::Resources::Mgmt::V2018_02_01::Models::Sku
       end
 
       class ResourcesManagementClass
@@ -102,6 +102,15 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def plan
+            Azure::Resources::Mgmt::V2018_02_01::Models::Plan
+          end
+          def resource_identity_type
+            Azure::Resources::Mgmt::V2018_02_01::Models::ResourceIdentityType
+          end
+          def sku
+            Azure::Resources::Mgmt::V2018_02_01::Models::Sku
+          end
           def dependency
             Azure::Resources::Mgmt::V2018_02_01::Models::Dependency
           end
@@ -216,6 +225,9 @@ module Azure::Profiles::V2018_03_01
           def debug_setting
             Azure::Resources::Mgmt::V2018_02_01::Models::DebugSetting
           end
+          def resource
+            Azure::Resources::Mgmt::V2018_02_01::Models::Resource
+          end
           def deployment_list_result
             Azure::Resources::Mgmt::V2018_02_01::Models::DeploymentListResult
           end
@@ -224,9 +236,6 @@ module Azure::Profiles::V2018_03_01
           end
           def resource_group_export_result
             Azure::Resources::Mgmt::V2018_02_01::Models::ResourceGroupExportResult
-          end
-          def resource
-            Azure::Resources::Mgmt::V2018_02_01::Models::Resource
           end
           def generic_resource
             Azure::Resources::Mgmt::V2018_02_01::Models::GenericResource
@@ -242,15 +251,6 @@ module Azure::Profiles::V2018_03_01
           end
           def resource_list_result
             Azure::Resources::Mgmt::V2018_02_01::Models::ResourceListResult
-          end
-          def plan
-            Azure::Resources::Mgmt::V2018_02_01::Models::Plan
-          end
-          def resource_identity_type
-            Azure::Resources::Mgmt::V2018_02_01::Models::ResourceIdentityType
-          end
-          def sku
-            Azure::Resources::Mgmt::V2018_02_01::Models::Sku
           end
         end
       end

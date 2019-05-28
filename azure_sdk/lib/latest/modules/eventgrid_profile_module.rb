@@ -9,6 +9,15 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
+      DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
+      DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+      StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+      DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
+      ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
+      DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
+      ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
+      DeviceTwinInfo = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
+      ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
       DeviceLifeCycleEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
       EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
       DeviceConnectionStateEventInfo = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventInfo
@@ -36,15 +45,6 @@ module Azure::Profiles::Latest
       ContainerRegistryImagePushedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData
       ContainerRegistryImageDeletedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImageDeletedEventData
       JobState = Azure::EventGrid::V2018_01_01::Models::JobState
-      DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-      DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
-      StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
-      DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
-      ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
-      DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
-      ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
-      DeviceTwinInfo = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
-      ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
     end
 
     class EventGridDataClass
@@ -76,6 +76,33 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def device_twin_metadata
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
+        end
+        def device_twin_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+        end
+        def storage_blob_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+        end
+        def device_twin_info_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
+        end
+        def resource_write_success_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
+        end
+        def device_twin_info_x509_thumbprint
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
+        end
+        def resource_write_cancel_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
+        end
+        def device_twin_info
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
+        end
+        def resource_delete_failure_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
+        end
         def device_life_cycle_event_properties
           Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
         end
@@ -157,42 +184,15 @@ module Azure::Profiles::Latest
         def job_state
           Azure::EventGrid::V2018_01_01::Models::JobState
         end
-        def device_twin_metadata
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-        end
-        def device_twin_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
-        end
-        def storage_blob_deleted_event_data
-          Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
-        end
-        def device_twin_info_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
-        end
-        def resource_write_success_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
-        end
-        def device_twin_info_x509_thumbprint
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
-        end
-        def resource_write_cancel_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
-        end
-        def device_twin_info
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
-        end
-        def resource_delete_failure_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
-        end
       end
     end
     module Mgmt
+      Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
+      TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
       Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
       DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
-      Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
-      TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
 
       module Models
         TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
@@ -256,7 +256,7 @@ module Azure::Profiles::Latest
       end
 
       class EventGridManagementClass
-        attr_reader :operations, :domains, :domain_topics, :event_subscriptions, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
+        attr_reader :topics, :topic_types, :operations, :domains, :domain_topics, :event_subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -266,12 +266,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @topics = @client_0.topics
+          @topic_types = @client_0.topic_types
           @operations = @client_0.operations
           @domains = @client_0.domains
           @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
-          @topics = @client_0.topics
-          @topic_types = @client_0.topic_types
 
           @model_classes = ModelClasses.new
         end
