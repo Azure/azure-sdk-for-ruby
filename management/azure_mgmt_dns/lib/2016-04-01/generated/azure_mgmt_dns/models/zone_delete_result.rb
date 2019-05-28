@@ -46,7 +46,6 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ZoneDeleteResult',
           type: {
@@ -54,7 +53,6 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'ZoneDeleteResult',
             model_properties: {
               azure_async_operation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureAsyncOperation',
                 type: {
@@ -62,7 +60,6 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -71,7 +68,6 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               status_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCode',
                 type: {
@@ -80,7 +76,6 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {

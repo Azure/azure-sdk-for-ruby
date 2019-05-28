@@ -22,7 +22,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CnameRecord',
           type: {
@@ -30,7 +29,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
             class_name: 'CnameRecord',
             model_properties: {
               cname: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cname',
                 type: {

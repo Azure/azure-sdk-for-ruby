@@ -73,7 +73,6 @@ module Azure::Dns::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecordSet',
           type: {
@@ -81,7 +80,6 @@ module Azure::Dns::Mgmt::V2017_10_01
             class_name: 'RecordSet',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -90,7 +88,6 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -99,7 +96,6 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -108,7 +104,6 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -116,13 +111,11 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metadata',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -132,7 +125,6 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               ttl: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.TTL',
                 type: {
@@ -140,7 +132,6 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               fqdn: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.fqdn',
@@ -149,13 +140,11 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               arecords: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ARecords',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ARecordElementType',
                       type: {
@@ -166,13 +155,11 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               aaaa_records: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.AAAARecords',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AaaaRecordElementType',
                       type: {
@@ -183,13 +170,11 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               mx_records: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.MXRecords',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MxRecordElementType',
                       type: {
@@ -200,13 +185,11 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               ns_records: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.NSRecords',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NsRecordElementType',
                       type: {
@@ -217,13 +200,11 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               ptr_records: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.PTRRecords',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PtrRecordElementType',
                       type: {
@@ -234,13 +215,11 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               srv_records: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.SRVRecords',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SrvRecordElementType',
                       type: {
@@ -251,13 +230,11 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               txt_records: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.TXTRecords',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TxtRecordElementType',
                       type: {
@@ -268,7 +245,6 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               cname_record: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.CNAMERecord',
                 type: {
@@ -277,7 +253,6 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               soa_record: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.SOARecord',
                 type: {
@@ -286,13 +261,11 @@ module Azure::Dns::Mgmt::V2017_10_01
                 }
               },
               caa_records: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.caaRecords',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CaaRecordElementType',
                       type: {

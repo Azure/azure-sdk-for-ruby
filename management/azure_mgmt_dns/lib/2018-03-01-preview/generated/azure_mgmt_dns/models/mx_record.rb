@@ -25,7 +25,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MxRecord',
           type: {
@@ -33,7 +32,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
             class_name: 'MxRecord',
             model_properties: {
               preference: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'preference',
                 type: {
@@ -41,7 +39,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               exchange: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exchange',
                 type: {

@@ -29,7 +29,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CaaRecord',
           type: {
@@ -37,7 +36,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
             class_name: 'CaaRecord',
             model_properties: {
               flags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'flags',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               tag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tag',
                 type: {
@@ -53,7 +50,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

@@ -22,7 +22,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AaaaRecord',
           type: {
@@ -30,7 +29,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
             class_name: 'AaaaRecord',
             model_properties: {
               ipv6address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv6Address',
                 type: {
