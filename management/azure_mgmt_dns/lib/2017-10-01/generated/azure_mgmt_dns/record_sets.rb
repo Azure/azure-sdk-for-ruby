@@ -36,14 +36,14 @@ module Azure::Dns::Mgmt::V2017_10_01
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The etag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen etag value to
-    # prevent accidentally overwritting concurrent changes.
+    # prevent accidentally overwriting concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [RecordSet] operation results.
     #
-    def update(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, custom_headers:nil)
-      response = update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def update(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, custom_headers = nil)
+      response = update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -62,14 +62,14 @@ module Azure::Dns::Mgmt::V2017_10_01
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The etag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen etag value to
-    # prevent accidentally overwritting concurrent changes.
+    # prevent accidentally overwriting concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, custom_headers:nil)
-      update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, custom_headers = nil)
+      update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match, custom_headers).value!
     end
 
     #
@@ -87,34 +87,30 @@ module Azure::Dns::Mgmt::V2017_10_01
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The etag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen etag value to
-    # prevent accidentally overwritting concurrent changes.
+    # prevent accidentally overwriting concurrent changes.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, custom_headers:nil)
+    def update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'relative_record_set_name is nil' if relative_record_set_name.nil?
       fail ArgumentError, 'record_type is nil' if record_type.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Dns::Mgmt::V2017_10_01::Models::RecordSet.mapper()
@@ -180,7 +176,7 @@ module Azure::Dns::Mgmt::V2017_10_01
     # operation.
     # @param if_match [String] The etag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen etag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new record set to be
     # created, but to prevent updating an existing record set. Other values will be
     # ignored.
@@ -189,8 +185,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [RecordSet] operation results.
     #
-    def create_or_update(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, if_none_match:nil, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:if_match, if_none_match:if_none_match, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, if_none_match = nil, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match, if_none_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -211,7 +207,7 @@ module Azure::Dns::Mgmt::V2017_10_01
     # operation.
     # @param if_match [String] The etag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen etag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new record set to be
     # created, but to prevent updating an existing record set. Other values will be
     # ignored.
@@ -220,8 +216,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, if_none_match:nil, custom_headers:nil)
-      create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:if_match, if_none_match:if_none_match, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, if_none_match = nil, custom_headers = nil)
+      create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match, if_none_match, custom_headers).value!
     end
 
     #
@@ -241,7 +237,7 @@ module Azure::Dns::Mgmt::V2017_10_01
     # operation.
     # @param if_match [String] The etag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen etag value to
-    # prevent accidentally overwritting any concurrent changes.
+    # prevent accidentally overwriting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new record set to be
     # created, but to prevent updating an existing record set. Other values will be
     # ignored.
@@ -250,29 +246,25 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match:nil, if_none_match:nil, custom_headers:nil)
+    def create_or_update_async(resource_group_name, zone_name, relative_record_set_name, record_type, parameters, if_match = nil, if_none_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'relative_record_set_name is nil' if relative_record_set_name.nil?
       fail ArgumentError, 'record_type is nil' if record_type.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['If-None-Match'] = if_none_match unless if_none_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Dns::Mgmt::V2017_10_01::Models::RecordSet.mapper()
@@ -351,8 +343,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:nil, custom_headers:nil)
-      response = delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:if_match, custom_headers:custom_headers).value!
+    def delete(resource_group_name, zone_name, relative_record_set_name, record_type, if_match = nil, custom_headers = nil)
+      response = delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match, custom_headers).value!
       nil
     end
 
@@ -377,8 +369,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:nil, custom_headers:nil)
-      delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:if_match, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, if_match = nil, custom_headers = nil)
+      delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match, custom_headers).value!
     end
 
     #
@@ -402,22 +394,16 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match:nil, custom_headers:nil)
+    def delete_async(resource_group_name, zone_name, relative_record_set_name, record_type, if_match = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'relative_record_set_name is nil' if relative_record_set_name.nil?
       fail ArgumentError, 'record_type is nil' if record_type.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -471,8 +457,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [RecordSet] operation results.
     #
-    def get(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:nil)
-      response = get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:custom_headers).value!
+    def get(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers = nil)
+      response = get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -493,8 +479,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:nil)
-      get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers = nil)
+      get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers).value!
     end
 
     #
@@ -514,22 +500,16 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers:nil)
+    def get_async(resource_group_name, zone_name, relative_record_set_name, record_type, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'relative_record_set_name is nil' if relative_record_set_name.nil?
       fail ArgumentError, 'record_type is nil' if record_type.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -596,8 +576,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Array<RecordSet>] operation results.
     #
-    def list_by_type(resource_group_name, zone_name, record_type, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      first_page = list_by_type_as_lazy(resource_group_name, zone_name, record_type, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers)
+    def list_by_type(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      first_page = list_by_type_as_lazy(resource_group_name, zone_name, record_type, top, recordsetnamesuffix, custom_headers)
       first_page.get_all_items
     end
 
@@ -622,8 +602,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_type_with_http_info(resource_group_name, zone_name, record_type, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      list_by_type_async(resource_group_name, zone_name, record_type, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers).value!
+    def list_by_type_with_http_info(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      list_by_type_async(resource_group_name, zone_name, record_type, top, recordsetnamesuffix, custom_headers).value!
     end
 
     #
@@ -647,21 +627,15 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_type_async(resource_group_name, zone_name, record_type, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
+    def list_by_type_async(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'record_type is nil' if record_type.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -724,8 +698,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Array<RecordSet>] operation results.
     #
-    def list_by_dns_zone(resource_group_name, zone_name, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      first_page = list_by_dns_zone_as_lazy(resource_group_name, zone_name, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers)
+    def list_by_dns_zone(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      first_page = list_by_dns_zone_as_lazy(resource_group_name, zone_name, top, recordsetnamesuffix, custom_headers)
       first_page.get_all_items
     end
 
@@ -747,8 +721,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_dns_zone_with_http_info(resource_group_name, zone_name, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      list_by_dns_zone_async(resource_group_name, zone_name, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers).value!
+    def list_by_dns_zone_with_http_info(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      list_by_dns_zone_async(resource_group_name, zone_name, top, recordsetnamesuffix, custom_headers).value!
     end
 
     #
@@ -769,20 +743,14 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_dns_zone_async(resource_group_name, zone_name, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
+    def list_by_dns_zone_async(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -845,8 +813,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Array<RecordSet>] operation results.
     #
-    def list_all_by_dns_zone(resource_group_name, zone_name, top:nil, record_set_name_suffix:nil, custom_headers:nil)
-      first_page = list_all_by_dns_zone_as_lazy(resource_group_name, zone_name, top:top, record_set_name_suffix:record_set_name_suffix, custom_headers:custom_headers)
+    def list_all_by_dns_zone(resource_group_name, zone_name, top = nil, record_set_name_suffix = nil, custom_headers = nil)
+      first_page = list_all_by_dns_zone_as_lazy(resource_group_name, zone_name, top, record_set_name_suffix, custom_headers)
       first_page.get_all_items
     end
 
@@ -868,8 +836,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_by_dns_zone_with_http_info(resource_group_name, zone_name, top:nil, record_set_name_suffix:nil, custom_headers:nil)
-      list_all_by_dns_zone_async(resource_group_name, zone_name, top:top, record_set_name_suffix:record_set_name_suffix, custom_headers:custom_headers).value!
+    def list_all_by_dns_zone_with_http_info(resource_group_name, zone_name, top = nil, record_set_name_suffix = nil, custom_headers = nil)
+      list_all_by_dns_zone_async(resource_group_name, zone_name, top, record_set_name_suffix, custom_headers).value!
     end
 
     #
@@ -890,20 +858,14 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_by_dns_zone_async(resource_group_name, zone_name, top:nil, record_set_name_suffix:nil, custom_headers:nil)
+    def list_all_by_dns_zone_async(resource_group_name, zone_name, top = nil, record_set_name_suffix = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -958,8 +920,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [RecordSetListResult] operation results.
     #
-    def list_by_type_next(next_page_link, custom_headers:nil)
-      response = list_by_type_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_type_next(next_page_link, custom_headers = nil)
+      response = list_by_type_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -973,8 +935,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_type_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_type_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_type_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_type_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -987,12 +949,11 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_type_next_async(next_page_link, custom_headers:nil)
+    def list_by_type_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1046,8 +1007,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [RecordSetListResult] operation results.
     #
-    def list_by_dns_zone_next(next_page_link, custom_headers:nil)
-      response = list_by_dns_zone_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_dns_zone_next(next_page_link, custom_headers = nil)
+      response = list_by_dns_zone_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1061,8 +1022,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_dns_zone_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_dns_zone_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_dns_zone_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_dns_zone_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1075,12 +1036,11 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_dns_zone_next_async(next_page_link, custom_headers:nil)
+    def list_by_dns_zone_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1134,8 +1094,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [RecordSetListResult] operation results.
     #
-    def list_all_by_dns_zone_next(next_page_link, custom_headers:nil)
-      response = list_all_by_dns_zone_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_all_by_dns_zone_next(next_page_link, custom_headers = nil)
+      response = list_all_by_dns_zone_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1149,8 +1109,8 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_by_dns_zone_next_with_http_info(next_page_link, custom_headers:nil)
-      list_all_by_dns_zone_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_all_by_dns_zone_next_with_http_info(next_page_link, custom_headers = nil)
+      list_all_by_dns_zone_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1163,12 +1123,11 @@ module Azure::Dns::Mgmt::V2017_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_by_dns_zone_next_async(next_page_link, custom_headers:nil)
+    def list_all_by_dns_zone_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1234,12 +1193,12 @@ module Azure::Dns::Mgmt::V2017_10_01
     # @return [RecordSetListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_type_as_lazy(resource_group_name, zone_name, record_type, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      response = list_by_type_async(resource_group_name, zone_name, record_type, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers).value!
+    def list_by_type_as_lazy(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      response = list_by_type_async(resource_group_name, zone_name, record_type, top, recordsetnamesuffix, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_type_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_type_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1264,12 +1223,12 @@ module Azure::Dns::Mgmt::V2017_10_01
     # @return [RecordSetListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_dns_zone_as_lazy(resource_group_name, zone_name, top:nil, recordsetnamesuffix:nil, custom_headers:nil)
-      response = list_by_dns_zone_async(resource_group_name, zone_name, top:top, recordsetnamesuffix:recordsetnamesuffix, custom_headers:custom_headers).value!
+    def list_by_dns_zone_as_lazy(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      response = list_by_dns_zone_async(resource_group_name, zone_name, top, recordsetnamesuffix, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_dns_zone_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_dns_zone_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1294,12 +1253,12 @@ module Azure::Dns::Mgmt::V2017_10_01
     # @return [RecordSetListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_all_by_dns_zone_as_lazy(resource_group_name, zone_name, top:nil, record_set_name_suffix:nil, custom_headers:nil)
-      response = list_all_by_dns_zone_async(resource_group_name, zone_name, top:top, record_set_name_suffix:record_set_name_suffix, custom_headers:custom_headers).value!
+    def list_all_by_dns_zone_as_lazy(resource_group_name, zone_name, top = nil, record_set_name_suffix = nil, custom_headers = nil)
+      response = list_all_by_dns_zone_async(resource_group_name, zone_name, top, record_set_name_suffix, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_all_by_dns_zone_next_async(next_page_link, custom_headers:custom_headers)
+          list_all_by_dns_zone_next_async(next_page_link, custom_headers)
         end
         page
       end

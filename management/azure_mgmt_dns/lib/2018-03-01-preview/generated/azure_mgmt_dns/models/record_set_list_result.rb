@@ -58,7 +58,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecordSetListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
             class_name: 'RecordSetListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecordSetElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::Dns::Mgmt::V2018_03_01_preview
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',
