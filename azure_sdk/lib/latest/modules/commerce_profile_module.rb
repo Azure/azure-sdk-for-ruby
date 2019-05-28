@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
 
       module Models
+        UsageAggregationListResult = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
         OfferTermInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
         RateCardQueryParameters = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
         MonetaryCredit = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
@@ -22,7 +23,6 @@ module Azure::Profiles::Latest
         ResourceRateCardInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
         UsageAggregation = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
         InfoField = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::InfoField
-        UsageAggregationListResult = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
       end
 
       class CommerceManagementClass
@@ -56,6 +56,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def usage_aggregation_list_result
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
+          end
           def offer_term_info
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
           end
@@ -88,9 +91,6 @@ module Azure::Profiles::Latest
           end
           def info_field
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::InfoField
-          end
-          def usage_aggregation_list_result
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
           end
         end
       end

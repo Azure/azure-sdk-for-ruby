@@ -9,6 +9,7 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
+      VisualSearchRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
       Point2D = Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
       NormalizedQuadrilateral = Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
       ImageAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
@@ -55,7 +56,6 @@ module Azure::Profiles::Latest
       ImageInfo = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
       ImageTagRegion = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
       KnowledgeRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
-      VisualSearchRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
     end
 
     class VisualSearchDataClass
@@ -88,6 +88,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def visual_search_request
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
+        end
         def point2_d
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
         end
@@ -225,9 +228,6 @@ module Azure::Profiles::Latest
         end
         def knowledge_request
           Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
-        end
-        def visual_search_request
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
         end
       end
     end

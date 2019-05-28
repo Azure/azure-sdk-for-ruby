@@ -11,8 +11,8 @@ module Azure::Profiles::Latest
       BatchAccountOperations = Azure::Batch::Mgmt::V2017_09_01::BatchAccountOperations
       ApplicationPackageOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationPackageOperations
       ApplicationOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationOperations
-      PoolOperations = Azure::Batch::Mgmt::V2017_09_01::PoolOperations
       Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
+      PoolOperations = Azure::Batch::Mgmt::V2017_09_01::PoolOperations
       CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
 
       module Models
@@ -45,19 +45,19 @@ module Azure::Profiles::Latest
         LinuxUserConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::LinuxUserConfiguration
         UserAccount = Azure::Batch::Mgmt::V2017_09_01::Models::UserAccount
         MetadataItem = Azure::Batch::Mgmt::V2017_09_01::Models::MetadataItem
-        DeploymentConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::DeploymentConfiguration
         DataDisk = Azure::Batch::Mgmt::V2017_09_01::Models::DataDisk
+        DeploymentConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::DeploymentConfiguration
         ResourceFile = Azure::Batch::Mgmt::V2017_09_01::Models::ResourceFile
         BatchAccountKeys = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountKeys
         EnvironmentSetting = Azure::Batch::Mgmt::V2017_09_01::Models::EnvironmentSetting
         Application = Azure::Batch::Mgmt::V2017_09_01::Models::Application
         AutoUserSpecification = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
-        UserIdentity = Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
+        StartTask = Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
         CertificateReference = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateReference
         VirtualMachineConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
-        StartTask = Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
         ApplicationPackageReference = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
         ApplicationCreateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationCreateParameters
+        UserIdentity = Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
         ResizeError = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
         CertificateBaseProperties = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateBaseProperties
         ResizeOperationStatus = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeOperationStatus
@@ -70,11 +70,11 @@ module Azure::Profiles::Latest
         Pool = Azure::Batch::Mgmt::V2017_09_01::Models::Pool
         PoolAllocationMode = Azure::Batch::Mgmt::V2017_09_01::Models::PoolAllocationMode
         AccountKeyType = Azure::Batch::Mgmt::V2017_09_01::Models::AccountKeyType
-        PackageState = Azure::Batch::Mgmt::V2017_09_01::Models::PackageState
         CertificateCreateOrUpdateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateCreateOrUpdateParameters
-        CertificateProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateProvisioningState
         CertificateFormat = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateFormat
+        PackageState = Azure::Batch::Mgmt::V2017_09_01::Models::PackageState
         ProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::ProvisioningState
+        CertificateProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateProvisioningState
         PoolProvisioningState = Azure::Batch::Mgmt::V2017_09_01::Models::PoolProvisioningState
         AllocationState = Azure::Batch::Mgmt::V2017_09_01::Models::AllocationState
         CachingType = Azure::Batch::Mgmt::V2017_09_01::Models::CachingType
@@ -98,7 +98,7 @@ module Azure::Profiles::Latest
       end
 
       class BatchManagementClass
-        attr_reader :location, :batch_account_operations, :application_package_operations, :application_operations, :pool_operations, :operations, :certificate_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :location, :batch_account_operations, :application_package_operations, :application_operations, :operations, :pool_operations, :certificate_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -112,8 +112,8 @@ module Azure::Profiles::Latest
           @batch_account_operations = @client_0.batch_account_operations
           @application_package_operations = @client_0.application_package_operations
           @application_operations = @client_0.application_operations
-          @pool_operations = @client_0.pool_operations
           @operations = @client_0.operations
+          @pool_operations = @client_0.pool_operations
           @certificate_operations = @client_0.certificate_operations
 
           @model_classes = ModelClasses.new
@@ -220,11 +220,11 @@ module Azure::Profiles::Latest
           def metadata_item
             Azure::Batch::Mgmt::V2017_09_01::Models::MetadataItem
           end
-          def deployment_configuration
-            Azure::Batch::Mgmt::V2017_09_01::Models::DeploymentConfiguration
-          end
           def data_disk
             Azure::Batch::Mgmt::V2017_09_01::Models::DataDisk
+          end
+          def deployment_configuration
+            Azure::Batch::Mgmt::V2017_09_01::Models::DeploymentConfiguration
           end
           def resource_file
             Azure::Batch::Mgmt::V2017_09_01::Models::ResourceFile
@@ -241,8 +241,8 @@ module Azure::Profiles::Latest
           def auto_user_specification
             Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
           end
-          def user_identity
-            Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
+          def start_task
+            Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
           end
           def certificate_reference
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateReference
@@ -250,14 +250,14 @@ module Azure::Profiles::Latest
           def virtual_machine_configuration
             Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
           end
-          def start_task
-            Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
-          end
           def application_package_reference
             Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
           end
           def application_create_parameters
             Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationCreateParameters
+          end
+          def user_identity
+            Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
           end
           def resize_error
             Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
@@ -295,20 +295,20 @@ module Azure::Profiles::Latest
           def account_key_type
             Azure::Batch::Mgmt::V2017_09_01::Models::AccountKeyType
           end
-          def package_state
-            Azure::Batch::Mgmt::V2017_09_01::Models::PackageState
-          end
           def certificate_create_or_update_parameters
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateCreateOrUpdateParameters
-          end
-          def certificate_provisioning_state
-            Azure::Batch::Mgmt::V2017_09_01::Models::CertificateProvisioningState
           end
           def certificate_format
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateFormat
           end
+          def package_state
+            Azure::Batch::Mgmt::V2017_09_01::Models::PackageState
+          end
           def provisioning_state
             Azure::Batch::Mgmt::V2017_09_01::Models::ProvisioningState
+          end
+          def certificate_provisioning_state
+            Azure::Batch::Mgmt::V2017_09_01::Models::CertificateProvisioningState
           end
           def pool_provisioning_state
             Azure::Batch::Mgmt::V2017_09_01::Models::PoolProvisioningState

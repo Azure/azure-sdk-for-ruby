@@ -14,14 +14,14 @@ module Azure::Profiles::Latest
       MediaObject = Azure::CognitiveServices::Customimagesearch::V1_0::Models::MediaObject
       WebPage = Azure::CognitiveServices::Customimagesearch::V1_0::Models::WebPage
       ErrorSubCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorSubCode
-      ImageAspect = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageAspect
       ErrorResponse = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
+      ImageAspect = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageAspect
       Freshness = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
       ImageContent = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageContent
-      ImageType = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
+      ImageColor = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageColor
       ImageLicense = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
       ImageSize = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
-      ImageColor = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageColor
+      ImageType = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
       Response = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response
       Images = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Images
       ResponseBase = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ResponseBase
@@ -80,11 +80,11 @@ module Azure::Profiles::Latest
         def error_sub_code
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorSubCode
         end
-        def image_aspect
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageAspect
-        end
         def error_response
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorResponse
+        end
+        def image_aspect
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageAspect
         end
         def freshness
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Freshness
@@ -92,8 +92,8 @@ module Azure::Profiles::Latest
         def image_content
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageContent
         end
-        def image_type
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
+        def image_color
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageColor
         end
         def image_license
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageLicense
@@ -101,8 +101,8 @@ module Azure::Profiles::Latest
         def image_size
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageSize
         end
-        def image_color
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageColor
+        def image_type
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::ImageType
         end
         def response
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::Response

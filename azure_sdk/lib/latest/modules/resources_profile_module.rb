@@ -28,8 +28,8 @@ module Azure::Profiles::Latest
         Deployment = Azure::Resources::Mgmt::V2018_05_01::Models::Deployment
         ResourceGroupProperties = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupProperties
         ResourceManagementErrorWithDetails = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceManagementErrorWithDetails
-        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         ResourceGroup = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroup
+        IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
         ResourceGroupPatchable = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
         Provider = Azure::Resources::Mgmt::V2018_05_01::Models::Provider
         AliasType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasType
@@ -144,11 +144,11 @@ module Azure::Profiles::Latest
           def resource_management_error_with_details
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceManagementErrorWithDetails
           end
-          def identity_user_assigned_identities_value
-            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
-          end
           def resource_group
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroup
+          end
+          def identity_user_assigned_identities_value
+            Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
           end
           def resource_group_patchable
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
