@@ -13,7 +13,7 @@ module Azure::Signalr::Mgmt::V2018_10_01
 
       include MsRestAzure
 
-      # @return [String] Name of the feature. Required. Default value:
+      # @return [String] Kind of feature. Required. Default value:
       # 'ServiceMode' .
       attr_accessor :flag
 
