@@ -12,6 +12,12 @@ module Azure::Profiles::Latest
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
 
     module Models
+      DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
+      UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
+      Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
+      TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
+      FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
+      PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
       Person = Azure::CognitiveServices::Face::V1_0::Models::Person
       GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
       HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
@@ -23,9 +29,9 @@ module Azure::Profiles::Latest
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
+      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
-      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
       SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
@@ -52,12 +58,6 @@ module Azure::Profiles::Latest
       Noise = Azure::CognitiveServices::Face::V1_0::Models::Noise
       Hair = Azure::CognitiveServices::Face::V1_0::Models::Hair
       NameAndUserDataContract = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
-      DetectedFace = Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
-      UpdatePersonFaceRequest = Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
-      Blur = Azure::CognitiveServices::Face::V1_0::Models::Blur
-      TrainingStatus = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
-      FaceList = Azure::CognitiveServices::Face::V1_0::Models::FaceList
-      PersonGroup = Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
     end
 
     class FaceDataClass
@@ -93,6 +93,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def detected_face
+          Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
+        end
+        def update_person_face_request
+          Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
+        end
+        def blur
+          Azure::CognitiveServices::Face::V1_0::Models::Blur
+        end
+        def training_status
+          Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
+        end
+        def face_list
+          Azure::CognitiveServices::Face::V1_0::Models::FaceList
+        end
+        def person_group
+          Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
+        end
         def person
           Azure::CognitiveServices::Face::V1_0::Models::Person
         end
@@ -126,14 +144,14 @@ module Azure::Profiles::Latest
         def face_rectangle
           Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
+        def error
+          Azure::CognitiveServices::Face::V1_0::Models::Error
+        end
         def apierror
           Azure::CognitiveServices::Face::V1_0::Models::APIError
         end
         def image_url
           Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
-        end
-        def error
-          Azure::CognitiveServices::Face::V1_0::Models::Error
         end
         def gender
           Azure::CognitiveServices::Face::V1_0::Models::Gender
@@ -212,24 +230,6 @@ module Azure::Profiles::Latest
         end
         def name_and_user_data_contract
           Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract
-        end
-        def detected_face
-          Azure::CognitiveServices::Face::V1_0::Models::DetectedFace
-        end
-        def update_person_face_request
-          Azure::CognitiveServices::Face::V1_0::Models::UpdatePersonFaceRequest
-        end
-        def blur
-          Azure::CognitiveServices::Face::V1_0::Models::Blur
-        end
-        def training_status
-          Azure::CognitiveServices::Face::V1_0::Models::TrainingStatus
-        end
-        def face_list
-          Azure::CognitiveServices::Face::V1_0::Models::FaceList
-        end
-        def person_group
-          Azure::CognitiveServices::Face::V1_0::Models::PersonGroup
         end
       end
     end

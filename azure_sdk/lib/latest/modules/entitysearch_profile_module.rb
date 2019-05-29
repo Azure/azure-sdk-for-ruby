@@ -44,10 +44,10 @@ module Azure::Profiles::Latest
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       QueryContext = Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
-      EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::EntitySearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResultsAnswer
+      EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       Thing = Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::EntitySearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
@@ -192,9 +192,6 @@ module Azure::Profiles::Latest
         def query_context
           Azure::CognitiveServices::EntitySearch::V1_0::Models::QueryContext
         end
-        def entity_type
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
-        end
         def response_base
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
         end
@@ -203,6 +200,9 @@ module Azure::Profiles::Latest
         end
         def search_results_answer
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResultsAnswer
+        end
+        def entity_type
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
         end
         def thing
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing

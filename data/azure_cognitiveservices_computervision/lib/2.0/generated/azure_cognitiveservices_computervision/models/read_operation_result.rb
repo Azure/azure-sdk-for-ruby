@@ -13,8 +13,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       include MsRestAzure
 
       # @return [TextOperationStatusCodes] Status of the read operation.
-      # Possible values include: 'Not Started', 'Running', 'Failed',
-      # 'Succeeded'
+      # Possible values include: 'NotStarted', 'Running', 'Failed', 'Succeeded'
       attr_accessor :status
 
       # @return [Array<TextRecognitionResult>] An array of text recognition
