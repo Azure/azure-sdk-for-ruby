@@ -13,8 +13,8 @@ module Azure::Profiles::Latest
 
     module Models
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
-      FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
+      FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
       FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
       SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
       GroupRequest = Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
@@ -96,11 +96,11 @@ module Azure::Profiles::Latest
         def apierror
           Azure::CognitiveServices::Face::V1_0::Models::APIError
         end
-        def face_rectangle
-          Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
-        end
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
+        end
+        def face_rectangle
+          Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
         def find_similar_request
           Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
