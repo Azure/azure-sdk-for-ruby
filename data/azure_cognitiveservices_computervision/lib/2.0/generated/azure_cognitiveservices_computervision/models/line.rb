@@ -12,7 +12,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       include MsRestAzure
 
-      # @return [Array<Integer>] Bounding box of a recognized line.
+      # @return [Array<Float>] Bounding box of a recognized line.
       attr_accessor :bounding_box
 
       # @return [String] The text content of the line.
@@ -41,9 +41,9 @@ module Azure::CognitiveServices::ComputerVision::V2_0
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'NumberElementType',
+                      serialized_name: 'FloatElementType',
                       type: {
-                        name: 'Number'
+                        name: 'Double'
                       }
                   }
                 }

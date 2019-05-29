@@ -43,8 +43,8 @@ module Azure::Profiles::Latest
       Classifier = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Classifier
       ExportPlatformModel = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportPlatformModel
       ExportStatusModel = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportStatusModel
-      Domain = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Domain
       Region = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Region
+      Domain = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Domain
       TagType = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagType
       ExportFlavorModel = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportFlavorModel
       ImageTag = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageTag
@@ -190,11 +190,11 @@ module Azure::Profiles::Latest
         def export_status_model
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ExportStatusModel
         end
-        def domain
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Domain
-        end
         def region
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Region
+        end
+        def domain
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Domain
         end
         def tag_type
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagType

@@ -8,6 +8,11 @@ module Azure::Profiles::Latest
   module TextAnalytics
 
     module Models
+      MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageInput
+      LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResultItem
+      KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResultItem
+      LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResult
+      KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResult
       SentimentBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResultItem
       SentimentBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResult
       BatchInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::BatchInput
@@ -21,11 +26,6 @@ module Azure::Profiles::Latest
       Input = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::Input
       ErrorResponse = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::ErrorResponse
       DetectedLanguage = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
-      MultiLanguageInput = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageInput
-      LanguageBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResultItem
-      KeyPhraseBatchResultItem = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResultItem
-      LanguageBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResult
-      KeyPhraseBatchResult = Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResult
     end
 
     class TextAnalyticsDataClass
@@ -57,6 +57,21 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def multi_language_input
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageInput
+        end
+        def language_batch_result_item
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResultItem
+        end
+        def key_phrase_batch_result_item
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResultItem
+        end
+        def language_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResult
+        end
+        def key_phrase_batch_result
+          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResult
+        end
         def sentiment_batch_result_item
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::SentimentBatchResultItem
         end
@@ -95,21 +110,6 @@ module Azure::Profiles::Latest
         end
         def detected_language
           Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::DetectedLanguage
-        end
-        def multi_language_input
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::MultiLanguageInput
-        end
-        def language_batch_result_item
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResultItem
-        end
-        def key_phrase_batch_result_item
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResultItem
-        end
-        def language_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::LanguageBatchResult
-        end
-        def key_phrase_batch_result
-          Azure::CognitiveServices::TextAnalytics::V2_1_preview::Models::KeyPhraseBatchResult
         end
       end
     end
