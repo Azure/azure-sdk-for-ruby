@@ -14,7 +14,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
       # @return [LiveEventEncodingType] The encoding type for Live Event.  This
       # value is specified at creation time and cannot be updated. Possible
-      # values include: 'None', 'Basic', 'Standard', 'Premium1080p'
+      # values include: 'None', 'Basic', 'Standard'
       attr_accessor :encoding_type
 
       # @return [String] The encoding preset name.  This value is specified at
@@ -38,7 +38,8 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 required: false,
                 serialized_name: 'encodingType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'LiveEventEncodingType'
                 }
               },
               preset_name: {

@@ -12,7 +12,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       None = "None"
       Basic = "Basic"
       Standard = "Standard"
-      Premium1080p = "Premium1080p"
     end
   end
 end

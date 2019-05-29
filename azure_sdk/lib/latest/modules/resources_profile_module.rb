@@ -30,11 +30,11 @@ module Azure::Profiles::Latest
         ResourceManagementErrorWithDetails = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceManagementErrorWithDetails
         ResourceGroup = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroup
         AliasType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasType
-        ResourceGroupPatchable = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
-        Provider = Azure::Resources::Mgmt::V2018_05_01::Models::Provider
         IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+        ResourceGroupPatchable = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
         ResourceGroupListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
         ResourcesMoveInfo = Azure::Resources::Mgmt::V2018_05_01::Models::ResourcesMoveInfo
+        Provider = Azure::Resources::Mgmt::V2018_05_01::Models::Provider
         ExportTemplateRequest = Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
         DeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtended
         TagCount = Azure::Resources::Mgmt::V2018_05_01::Models::TagCount
@@ -150,20 +150,20 @@ module Azure::Profiles::Latest
           def alias_type
             Azure::Resources::Mgmt::V2018_05_01::Models::AliasType
           end
-          def resource_group_patchable
-            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
-          end
-          def provider
-            Azure::Resources::Mgmt::V2018_05_01::Models::Provider
-          end
           def identity_user_assigned_identities_value
             Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
+          end
+          def resource_group_patchable
+            Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
           end
           def resource_group_list_result
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupListResult
           end
           def resources_move_info
             Azure::Resources::Mgmt::V2018_05_01::Models::ResourcesMoveInfo
+          end
+          def provider
+            Azure::Resources::Mgmt::V2018_05_01::Models::Provider
           end
           def export_template_request
             Azure::Resources::Mgmt::V2018_05_01::Models::ExportTemplateRequest
