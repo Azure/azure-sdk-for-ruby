@@ -7,10 +7,10 @@ require 'azure_mgmt_relay'
 module Azure::Profiles::Latest
   module Relay
     module Mgmt
-      HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
       WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
       Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
+      HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
 
       module Models
         Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
@@ -33,17 +33,17 @@ module Azure::Profiles::Latest
         RegenerateAccessKeyParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
         CheckNameAvailabilityResult = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
         RelayUpdateParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
-        RelayNamespace = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
         Relaytype = Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
-        AuthorizationRule = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
-        UnavailableReason = Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
         ProvisioningStateEnum = Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
+        AuthorizationRule = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
+        RelayNamespace = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
+        UnavailableReason = Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
         WcfRelay = Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelay
         KeyType = Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
       end
 
       class RelayManagementClass
-        attr_reader :hybrid_connections, :wcfrelays, :operations, :namespaces, :configurable, :base_url, :options, :model_classes
+        attr_reader :wcfrelays, :operations, :namespaces, :hybrid_connections, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -53,10 +53,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @hybrid_connections = @client_0.hybrid_connections
           @wcfrelays = @client_0.wcfrelays
           @operations = @client_0.operations
           @namespaces = @client_0.namespaces
+          @hybrid_connections = @client_0.hybrid_connections
 
           @model_classes = ModelClasses.new
         end
@@ -135,20 +135,20 @@ module Azure::Profiles::Latest
           def relay_update_parameters
             Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
           end
-          def relay_namespace
-            Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
-          end
           def relaytype
             Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
+          end
+          def provisioning_state_enum
+            Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
           end
           def authorization_rule
             Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
           end
+          def relay_namespace
+            Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
+          end
           def unavailable_reason
             Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
-          end
-          def provisioning_state_enum
-            Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
           end
           def wcf_relay
             Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelay

@@ -12,8 +12,8 @@ module Azure::Profiles::Latest
       Query = Azure::CognitiveServices::ImageSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageObject
       MediaObject = Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
-      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       WebPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
+      ErrorResponse = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
       ErrorSubCode = Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
       ImageAspect = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageAspect
       ImageColor = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageColor
@@ -21,8 +21,8 @@ module Azure::Profiles::Latest
       ImageContent = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageContent
       ImageType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageType
       ImageLicense = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
-      ImageSize = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
       Response = Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+      ImageSize = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
       Organization = Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
       Intangible = Azure::CognitiveServices::ImageSearch::V1_0::Models::Intangible
       StructuredValue = Azure::CognitiveServices::ImageSearch::V1_0::Models::StructuredValue
@@ -53,8 +53,8 @@ module Azure::Profiles::Latest
       TrendingImages = Azure::CognitiveServices::ImageSearch::V1_0::Models::TrendingImages
       Rating = Azure::CognitiveServices::ImageSearch::V1_0::Models::Rating
       CollectionPage = Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
-      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       Currency = Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+      Images = Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
       ItemAvailability = Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
       ImageCropType = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageCropType
       ImageInsightModule = Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageInsightModule
@@ -108,11 +108,11 @@ module Azure::Profiles::Latest
         def media_object
           Azure::CognitiveServices::ImageSearch::V1_0::Models::MediaObject
         end
-        def error_response
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
-        end
         def web_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::WebPage
+        end
+        def error_response
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorResponse
         end
         def error_sub_code
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ErrorSubCode
@@ -135,11 +135,11 @@ module Azure::Profiles::Latest
         def image_license
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageLicense
         end
-        def image_size
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
-        end
         def response
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Response
+        end
+        def image_size
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::ImageSize
         end
         def organization
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Organization
@@ -231,11 +231,11 @@ module Azure::Profiles::Latest
         def collection_page
           Azure::CognitiveServices::ImageSearch::V1_0::Models::CollectionPage
         end
-        def images
-          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
-        end
         def currency
           Azure::CognitiveServices::ImageSearch::V1_0::Models::Currency
+        end
+        def images
+          Azure::CognitiveServices::ImageSearch::V1_0::Models::Images
         end
         def item_availability
           Azure::CognitiveServices::ImageSearch::V1_0::Models::ItemAvailability
