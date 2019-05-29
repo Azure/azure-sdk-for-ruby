@@ -187,12 +187,12 @@ module Azure::Profiles::Latest
       end
     end
     module Mgmt
-      EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
       Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
       DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
+      EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
 
       module Models
         TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicSharedAccessKeys
@@ -218,9 +218,9 @@ module Azure::Profiles::Latest
         EventTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventTypesListResult
         EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionsListResult
         EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
+        TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
         Domain = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
         DomainTopic = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
-        TopicTypesListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
         NumberInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberInAdvancedFilter
         StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageBlobDeadLetterDestination
         NumberNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberNotInAdvancedFilter
@@ -245,18 +245,18 @@ module Azure::Profiles::Latest
         TopicTypeInfo = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeInfo
         DomainProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainProvisioningState
         InputSchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
-        TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
-        EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
         EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
-        ResourceRegionType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
+        TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
         TopicProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
+        EventDeliverySchema = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
         TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
+        ResourceRegionType = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
         Resource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource
         Operation = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Operation
       end
 
       class EventGridManagementClass
-        attr_reader :event_subscriptions, :topics, :topic_types, :operations, :domains, :domain_topics, :configurable, :base_url, :options, :model_classes
+        attr_reader :topics, :topic_types, :operations, :domains, :domain_topics, :event_subscriptions, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -266,12 +266,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
           @topic_types = @client_0.topic_types
           @operations = @client_0.operations
           @domains = @client_0.domains
           @domain_topics = @client_0.domain_topics
+          @event_subscriptions = @client_0.event_subscriptions
 
           @model_classes = ModelClasses.new
         end
@@ -359,14 +359,14 @@ module Azure::Profiles::Latest
           def event_subscription_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionFilter
           end
+          def topic_types_list_result
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
+          end
           def domain
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Domain
           end
           def domain_topic
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::DomainTopic
-          end
-          def topic_types_list_result
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypesListResult
           end
           def number_in_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::NumberInAdvancedFilter
@@ -440,23 +440,23 @@ module Azure::Profiles::Latest
           def input_schema
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::InputSchema
           end
-          def tracked_resource
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
-          end
-          def event_delivery_schema
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
-          end
           def event_subscription_provisioning_state
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscriptionProvisioningState
           end
-          def resource_region_type
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
+          def tracked_resource
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
           end
           def topic_provisioning_state
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicProvisioningState
           end
+          def event_delivery_schema
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventDeliverySchema
+          end
           def topic_type_provisioning_state
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TopicTypeProvisioningState
+          end
+          def resource_region_type
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::ResourceRegionType
           end
           def resource
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Resource

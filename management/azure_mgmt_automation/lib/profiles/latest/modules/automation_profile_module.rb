@@ -178,7 +178,6 @@ module Azure::Automation::Profiles::Latest
       HttpStatusCode = Azure::Automation::Mgmt::V2015_10_31::Models::HttpStatusCode
       ScheduleDay = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
       ScheduleFrequency = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
-      Frequency = Azure::Automation::Mgmt::V2015_10_31::Models::Frequency
     end
 
     #
@@ -670,9 +669,6 @@ module Azure::Automation::Profiles::Latest
       end
       def schedule_frequency
         Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
-      end
-      def frequency
-        Azure::Automation::Mgmt::V2015_10_31::Models::Frequency
       end
     end
   end

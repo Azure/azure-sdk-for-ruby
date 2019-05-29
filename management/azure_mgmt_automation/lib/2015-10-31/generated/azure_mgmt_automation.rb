@@ -193,6 +193,5 @@ module Azure::Automation::Mgmt::V2015_10_31
     autoload :HttpStatusCode,                                     '2015-10-31/generated/azure_mgmt_automation/models/http_status_code.rb'
     autoload :ScheduleDay,                                        '2015-10-31/generated/azure_mgmt_automation/models/schedule_day.rb'
     autoload :ScheduleFrequency,                                  '2015-10-31/generated/azure_mgmt_automation/models/schedule_frequency.rb'
-    autoload :Frequency,                                          '2015-10-31/generated/azure_mgmt_automation/models/frequency.rb'
   end
 end

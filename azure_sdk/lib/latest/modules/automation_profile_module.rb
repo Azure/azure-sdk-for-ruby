@@ -50,7 +50,6 @@ module Azure::Profiles::Latest
         RunbookProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::RunbookProvisioningState
         ModuleProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::ModuleProvisioningState
         Sku = Azure::Automation::Mgmt::V2015_10_31::Models::Sku
-        Frequency = Azure::Automation::Mgmt::V2015_10_31::Models::Frequency
         ScheduleDay = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
         ScheduleFrequency = Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleFrequency
         ErrorResponse = Azure::Automation::Mgmt::V2015_10_31::Models::ErrorResponse
@@ -269,9 +268,6 @@ module Azure::Profiles::Latest
           end
           def sku
             Azure::Automation::Mgmt::V2015_10_31::Models::Sku
-          end
-          def frequency
-            Azure::Automation::Mgmt::V2015_10_31::Models::Frequency
           end
           def schedule_day
             Azure::Automation::Mgmt::V2015_10_31::Models::ScheduleDay
