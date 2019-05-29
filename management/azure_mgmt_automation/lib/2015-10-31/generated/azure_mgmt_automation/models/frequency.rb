@@ -6,9 +6,9 @@
 module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
-    # Defines values for ScheduleFrequency
+    # Defines values for Frequency
     #
-    module ScheduleFrequency
+    module Frequency
       OneTime = "OneTime"
       Day = "Day"
       Hour = "Hour"
