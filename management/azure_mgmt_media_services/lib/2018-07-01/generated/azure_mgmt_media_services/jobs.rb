@@ -31,7 +31,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param orderby [String] Specifies the the key by which the result collection
+    # @param orderby [String] Specifies the key by which the result collection
     # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -53,7 +53,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param orderby [String] Specifies the the key by which the result collection
+    # @param orderby [String] Specifies the key by which the result collection
     # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -74,7 +74,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param orderby [String] Specifies the the key by which the result collection
+    # @param orderby [String] Specifies the key by which the result collection
     # should be ordered.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -787,7 +787,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     # @param account_name [String] The Media Services account name.
     # @param transform_name [String] The Transform name.
     # @param filter [String] Restricts the set of items returned.
-    # @param orderby [String] Specifies the the key by which the result collection
+    # @param orderby [String] Specifies the key by which the result collection
     # should be ordered.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
