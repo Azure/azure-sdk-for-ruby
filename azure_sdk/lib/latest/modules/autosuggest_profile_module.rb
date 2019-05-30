@@ -8,6 +8,8 @@ module Azure::Profiles::Latest
   module Autosuggest
 
     module Models
+      Response = Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
+      ScenarioType = Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
       SearchKind = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
       ErrorCode = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
@@ -22,10 +24,8 @@ module Azure::Profiles::Latest
       Thing = Azure::CognitiveServices::Autosuggest::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::Autosuggest::V1_0::Models::CreativeWork
       SearchAction = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
-      Identifiable = Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
-      ScenarioType = Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
       Error = Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
-      Response = Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
+      Identifiable = Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
       ErrorResponse = Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse
     end
 
@@ -58,6 +58,12 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def response
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
+        end
+        def scenario_type
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
+        end
         def search_kind
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
         end
@@ -100,17 +106,11 @@ module Azure::Profiles::Latest
         def search_action
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
         end
-        def identifiable
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
-        end
-        def scenario_type
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
-        end
         def error
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
         end
-        def response
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
+        def identifiable
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
         end
         def error_response
           Azure::CognitiveServices::Autosuggest::V1_0::Models::ErrorResponse

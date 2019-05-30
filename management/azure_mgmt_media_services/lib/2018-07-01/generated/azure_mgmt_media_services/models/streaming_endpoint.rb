@@ -218,8 +218,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'properties.resourceState',
                 type: {
-                  name: 'Enum',
-                  module: 'StreamingEndpointResourceState'
+                  name: 'String'
                 }
               },
               cross_site_access_policies: {
