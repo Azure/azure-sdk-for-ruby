@@ -18,7 +18,6 @@ module Azure::Profiles::Latest
       module Models
         Sku = Azure::CDN::Mgmt::V2017_10_12::Models::Sku
         ErrorResponse = Azure::CDN::Mgmt::V2017_10_12::Models::ErrorResponse
-        TrackedResource = Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
         OriginUpdateParameters = Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
         OriginListResult = Azure::CDN::Mgmt::V2017_10_12::Models::OriginListResult
         ProfileListResult = Azure::CDN::Mgmt::V2017_10_12::Models::ProfileListResult
@@ -57,18 +56,19 @@ module Azure::Profiles::Latest
         DeliveryRuleUrlPathCondition = Azure::CDN::Mgmt::V2017_10_12::Models::DeliveryRuleUrlPathCondition
         DeliveryRuleUrlFileExtensionCondition = Azure::CDN::Mgmt::V2017_10_12::Models::DeliveryRuleUrlFileExtensionCondition
         DeliveryRuleCacheExpirationAction = Azure::CDN::Mgmt::V2017_10_12::Models::DeliveryRuleCacheExpirationAction
-        EdgeNode = Azure::CDN::Mgmt::V2017_10_12::Models::EdgeNode
         Origin = Azure::CDN::Mgmt::V2017_10_12::Models::Origin
+        EdgeNode = Azure::CDN::Mgmt::V2017_10_12::Models::EdgeNode
         ProfileResourceState = Azure::CDN::Mgmt::V2017_10_12::Models::ProfileResourceState
         OptimizationType = Azure::CDN::Mgmt::V2017_10_12::Models::OptimizationType
         EndpointResourceState = Azure::CDN::Mgmt::V2017_10_12::Models::EndpointResourceState
-        CustomDomain = Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomain
-        GeoFilterActions = Azure::CDN::Mgmt::V2017_10_12::Models::GeoFilterActions
         QueryStringCachingBehavior = Azure::CDN::Mgmt::V2017_10_12::Models::QueryStringCachingBehavior
+        CustomDomain = Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomain
+        TrackedResource = Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
+        GeoFilterActions = Azure::CDN::Mgmt::V2017_10_12::Models::GeoFilterActions
         ProxyResource = Azure::CDN::Mgmt::V2017_10_12::Models::ProxyResource
-        OriginResourceState = Azure::CDN::Mgmt::V2017_10_12::Models::OriginResourceState
         CustomDomainResourceState = Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomainResourceState
         CustomHttpsProvisioningState = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningState
+        OriginResourceState = Azure::CDN::Mgmt::V2017_10_12::Models::OriginResourceState
         CustomHttpsProvisioningSubstate = Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningSubstate
         ResourceType = Azure::CDN::Mgmt::V2017_10_12::Models::ResourceType
         Resource = Azure::CDN::Mgmt::V2017_10_12::Models::Resource
@@ -118,9 +118,6 @@ module Azure::Profiles::Latest
           end
           def error_response
             Azure::CDN::Mgmt::V2017_10_12::Models::ErrorResponse
-          end
-          def tracked_resource
-            Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
           end
           def origin_update_parameters
             Azure::CDN::Mgmt::V2017_10_12::Models::OriginUpdateParameters
@@ -236,11 +233,11 @@ module Azure::Profiles::Latest
           def delivery_rule_cache_expiration_action
             Azure::CDN::Mgmt::V2017_10_12::Models::DeliveryRuleCacheExpirationAction
           end
-          def edge_node
-            Azure::CDN::Mgmt::V2017_10_12::Models::EdgeNode
-          end
           def origin
             Azure::CDN::Mgmt::V2017_10_12::Models::Origin
+          end
+          def edge_node
+            Azure::CDN::Mgmt::V2017_10_12::Models::EdgeNode
           end
           def profile_resource_state
             Azure::CDN::Mgmt::V2017_10_12::Models::ProfileResourceState
@@ -251,26 +248,29 @@ module Azure::Profiles::Latest
           def endpoint_resource_state
             Azure::CDN::Mgmt::V2017_10_12::Models::EndpointResourceState
           end
+          def query_string_caching_behavior
+            Azure::CDN::Mgmt::V2017_10_12::Models::QueryStringCachingBehavior
+          end
           def custom_domain
             Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomain
+          end
+          def tracked_resource
+            Azure::CDN::Mgmt::V2017_10_12::Models::TrackedResource
           end
           def geo_filter_actions
             Azure::CDN::Mgmt::V2017_10_12::Models::GeoFilterActions
           end
-          def query_string_caching_behavior
-            Azure::CDN::Mgmt::V2017_10_12::Models::QueryStringCachingBehavior
-          end
           def proxy_resource
             Azure::CDN::Mgmt::V2017_10_12::Models::ProxyResource
-          end
-          def origin_resource_state
-            Azure::CDN::Mgmt::V2017_10_12::Models::OriginResourceState
           end
           def custom_domain_resource_state
             Azure::CDN::Mgmt::V2017_10_12::Models::CustomDomainResourceState
           end
           def custom_https_provisioning_state
             Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningState
+          end
+          def origin_resource_state
+            Azure::CDN::Mgmt::V2017_10_12::Models::OriginResourceState
           end
           def custom_https_provisioning_substate
             Azure::CDN::Mgmt::V2017_10_12::Models::CustomHttpsProvisioningSubstate

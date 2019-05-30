@@ -9,14 +9,14 @@ module Azure::Profiles::Latest
     module Mgmt
       Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
       Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
-      CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
       ResourceSkus = Azure::CognitiveServices::Mgmt::V2017_04_18::ResourceSkus
+      CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
 
       module Models
         ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
+        Kind = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
         SkuName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
         SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
-        Kind = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
         Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
         ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
         CognitiveServicesAccountUpdateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
@@ -49,7 +49,7 @@ module Azure::Profiles::Latest
       end
 
       class CognitiveServicesManagementClass
-        attr_reader :accounts, :operations, :check_sku_availability, :resource_skus, :configurable, :base_url, :options, :model_classes
+        attr_reader :accounts, :operations, :resource_skus, :check_sku_availability, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -61,8 +61,8 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @accounts = @client_0.accounts
           @operations = @client_0.operations
-          @check_sku_availability = @client_0.check_sku_availability
           @resource_skus = @client_0.resource_skus
+          @check_sku_availability = @client_0.check_sku_availability
 
           @model_classes = ModelClasses.new
         end
@@ -84,14 +84,14 @@ module Azure::Profiles::Latest
           def resource_skus_result
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
           end
+          def kind
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
+          end
           def sku_name
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
           end
           def sku_tier
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
-          end
-          def kind
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
           end
           def sku
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku

@@ -11,6 +11,7 @@ module Azure::Profiles::Latest
       Zones = Azure::Dns::Mgmt::V2018_03_01_preview::Zones
 
       module Models
+        RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
         RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
         AaaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
         ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
@@ -33,7 +34,6 @@ module Azure::Profiles::Latest
         ZoneUpdate = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
         CaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
         ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
-        RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
       end
 
       class DnsManagementClass
@@ -67,6 +67,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def record_set_update_parameters
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
+          end
           def record_set_list_result
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
           end
@@ -132,9 +135,6 @@ module Azure::Profiles::Latest
           end
           def zone_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
-          end
-          def record_set_update_parameters
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
           end
         end
       end

@@ -7,12 +7,12 @@ require 'azure_mgmt_resources'
 module Azure::Profiles::V2018_03_01
   module Resources
     module Mgmt
-      Tags = Azure::Resources::Mgmt::V2018_02_01::Tags
-      DeploymentOperations = Azure::Resources::Mgmt::V2018_02_01::DeploymentOperations
-      Resources = Azure::Resources::Mgmt::V2018_02_01::Resources
-      Deployments = Azure::Resources::Mgmt::V2018_02_01::Deployments
       Providers = Azure::Resources::Mgmt::V2018_02_01::Providers
       ResourceGroups = Azure::Resources::Mgmt::V2018_02_01::ResourceGroups
+      Resources = Azure::Resources::Mgmt::V2018_02_01::Resources
+      Tags = Azure::Resources::Mgmt::V2018_02_01::Tags
+      DeploymentOperations = Azure::Resources::Mgmt::V2018_02_01::DeploymentOperations
+      Deployments = Azure::Resources::Mgmt::V2018_02_01::Deployments
 
       module Models
         Plan = Azure::Resources::Mgmt::V2018_02_01::Models::Plan
@@ -68,7 +68,7 @@ module Azure::Profiles::V2018_03_01
       end
 
       class ResourcesManagementClass
-        attr_reader :tags, :deployment_operations, :resources, :deployments, :providers, :resource_groups, :configurable, :base_url, :options, :model_classes
+        attr_reader :providers, :resource_groups, :resources, :tags, :deployment_operations, :deployments, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -78,12 +78,12 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @tags = @client_0.tags
-          @deployment_operations = @client_0.deployment_operations
-          @resources = @client_0.resources
-          @deployments = @client_0.deployments
           @providers = @client_0.providers
           @resource_groups = @client_0.resource_groups
+          @resources = @client_0.resources
+          @tags = @client_0.tags
+          @deployment_operations = @client_0.deployment_operations
+          @deployments = @client_0.deployments
 
           @model_classes = ModelClasses.new
         end

@@ -31,8 +31,8 @@ module Azure::Profiles::Latest
       CreativeWork = Azure::CognitiveServices::Customimagesearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Identifiable
       ErrorCode = Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorCode
-      Error = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Error
       SafeSearch = Azure::CognitiveServices::Customimagesearch::V1_0::Models::SafeSearch
+      Error = Azure::CognitiveServices::Customimagesearch::V1_0::Models::Error
     end
 
     class CustomimagesearchDataClass
@@ -131,11 +131,11 @@ module Azure::Profiles::Latest
         def error_code
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::ErrorCode
         end
-        def error
-          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Error
-        end
         def safe_search
           Azure::CognitiveServices::Customimagesearch::V1_0::Models::SafeSearch
+        end
+        def error
+          Azure::CognitiveServices::Customimagesearch::V1_0::Models::Error
         end
       end
     end
