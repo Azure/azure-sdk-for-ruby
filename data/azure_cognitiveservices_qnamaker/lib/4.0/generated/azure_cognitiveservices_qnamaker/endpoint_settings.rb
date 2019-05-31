@@ -110,10 +110,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [String] operation results.
     #
     def update_settings(endpoint_settings_payload, custom_headers = nil)
       response = update_settings_async(endpoint_settings_payload, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -181,6 +182,22 @@ module Azure::CognitiveServices::Qnamaker::V4_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'String'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
