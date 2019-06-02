@@ -33,7 +33,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SmsReceiver',
           type: {
@@ -41,7 +40,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'SmsReceiver',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               country_code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'countryCode',
                 type: {
@@ -57,7 +54,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               phone_number: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'phoneNumber',
                 type: {
@@ -65,7 +61,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',

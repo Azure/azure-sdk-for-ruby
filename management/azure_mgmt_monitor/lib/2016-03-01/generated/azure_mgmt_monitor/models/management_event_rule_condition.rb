@@ -32,7 +32,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition',
           type: {
@@ -40,7 +39,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'ManagementEventRuleCondition',
             model_properties: {
               data_source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataSource',
                 type: {
@@ -51,7 +49,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               odatatype: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {
@@ -59,7 +56,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               aggregation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'aggregation',
                 type: {
