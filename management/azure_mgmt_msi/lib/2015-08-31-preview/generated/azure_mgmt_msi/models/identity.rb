@@ -51,7 +51,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Identity',
           type: {
@@ -59,7 +58,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
             class_name: 'Identity',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,7 +66,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -77,7 +74,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -85,13 +81,11 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -101,7 +95,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.tenantId',
@@ -110,7 +103,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.principalId',
@@ -119,7 +111,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               client_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.clientId',
@@ -128,7 +119,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               client_secret_url: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.clientSecretUrl',
@@ -137,7 +127,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

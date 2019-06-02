@@ -58,7 +58,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserAssignedIdentitiesListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
             class_name: 'UserAssignedIdentitiesListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IdentityElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
