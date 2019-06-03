@@ -13,6 +13,8 @@ module Azure::Profiles::Latest
       CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
 
       module Models
+        ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
+        SkuName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
         Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
         SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
         Kind = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
@@ -41,11 +43,9 @@ module Azure::Profiles::Latest
         ProvisioningState = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
         QuotaUsageStatus = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::QuotaUsageStatus
         ResourceSkuRestrictions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
-        SkuName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
+        Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
         ResourceSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
         Usage = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
-        ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
-        Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
       end
 
       class CognitiveServicesManagementClass
@@ -81,6 +81,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource_skus_result
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
+          end
+          def sku_name
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
+          end
           def sku
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
           end
@@ -165,20 +171,14 @@ module Azure::Profiles::Latest
           def resource_sku_restrictions
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
           end
-          def sku_name
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
+          def error
+            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
           end
           def resource_sku
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
           end
           def usage
             Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
-          end
-          def resource_skus_result
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
-          end
-          def error
-            Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
           end
         end
       end

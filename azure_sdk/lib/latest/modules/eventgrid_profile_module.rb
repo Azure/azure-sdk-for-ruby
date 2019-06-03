@@ -187,12 +187,12 @@ module Azure::Profiles::Latest
       end
     end
     module Mgmt
+      Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
+      DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
       EventSubscriptions = Azure::EventGrid::Mgmt::V2018_09_15_preview::EventSubscriptions
       Topics = Azure::EventGrid::Mgmt::V2018_09_15_preview::Topics
       Operations = Azure::EventGrid::Mgmt::V2018_09_15_preview::Operations
       TopicTypes = Azure::EventGrid::Mgmt::V2018_09_15_preview::TopicTypes
-      Domains = Azure::EventGrid::Mgmt::V2018_09_15_preview::Domains
-      DomainTopics = Azure::EventGrid::Mgmt::V2018_09_15_preview::DomainTopics
 
       module Models
         TrackedResource = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::TrackedResource
@@ -231,12 +231,12 @@ module Azure::Profiles::Latest
         BoolEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::BoolEqualsAdvancedFilter
         StringInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringInAdvancedFilter
         OperationsListResult = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
-        StringNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringNotInAdvancedFilter
         StringBeginsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringBeginsWithAdvancedFilter
         StringEndsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringEndsWithAdvancedFilter
         StringContainsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringContainsAdvancedFilter
         WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::WebHookEventSubscriptionDestination
         EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventHubEventSubscriptionDestination
+        StringNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringNotInAdvancedFilter
         StorageQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageQueueEventSubscriptionDestination
         HybridConnectionEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::HybridConnectionEventSubscriptionDestination
         EventSubscription = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscription
@@ -256,7 +256,7 @@ module Azure::Profiles::Latest
       end
 
       class EventGridManagementClass
-        attr_reader :event_subscriptions, :topics, :operations, :topic_types, :domains, :domain_topics, :configurable, :base_url, :options, :model_classes
+        attr_reader :domains, :domain_topics, :event_subscriptions, :topics, :operations, :topic_types, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -266,12 +266,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @domains = @client_0.domains
+          @domain_topics = @client_0.domain_topics
           @event_subscriptions = @client_0.event_subscriptions
           @topics = @client_0.topics
           @operations = @client_0.operations
           @topic_types = @client_0.topic_types
-          @domains = @client_0.domains
-          @domain_topics = @client_0.domain_topics
 
           @model_classes = ModelClasses.new
         end
@@ -398,9 +398,6 @@ module Azure::Profiles::Latest
           def operations_list_result
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::OperationsListResult
           end
-          def string_not_in_advanced_filter
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringNotInAdvancedFilter
-          end
           def string_begins_with_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringBeginsWithAdvancedFilter
           end
@@ -415,6 +412,9 @@ module Azure::Profiles::Latest
           end
           def event_hub_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventHubEventSubscriptionDestination
+          end
+          def string_not_in_advanced_filter
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringNotInAdvancedFilter
           end
           def storage_queue_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageQueueEventSubscriptionDestination

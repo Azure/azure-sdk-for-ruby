@@ -7,23 +7,23 @@ require 'azure_mgmt_customer_insights'
 module Azure::Profiles::Latest
   module CustomerInsights
     module Mgmt
-      Operations = Azure::CustomerInsights::Mgmt::V2017_04_26::Operations
+      Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
+      Images = Azure::CustomerInsights::Mgmt::V2017_04_26::Images
       Links = Azure::CustomerInsights::Mgmt::V2017_04_26::Links
+      Operations = Azure::CustomerInsights::Mgmt::V2017_04_26::Operations
+      RoleAssignments = Azure::CustomerInsights::Mgmt::V2017_04_26::RoleAssignments
       Hubs = Azure::CustomerInsights::Mgmt::V2017_04_26::Hubs
-      Interactions = Azure::CustomerInsights::Mgmt::V2017_04_26::Interactions
       Profiles = Azure::CustomerInsights::Mgmt::V2017_04_26::Profiles
+      Interactions = Azure::CustomerInsights::Mgmt::V2017_04_26::Interactions
       RelationshipLinks = Azure::CustomerInsights::Mgmt::V2017_04_26::RelationshipLinks
       AuthorizationPolicies = Azure::CustomerInsights::Mgmt::V2017_04_26::AuthorizationPolicies
       Connectors = Azure::CustomerInsights::Mgmt::V2017_04_26::Connectors
       ConnectorMappings = Azure::CustomerInsights::Mgmt::V2017_04_26::ConnectorMappings
       Kpi = Azure::CustomerInsights::Mgmt::V2017_04_26::Kpi
+      Relationships = Azure::CustomerInsights::Mgmt::V2017_04_26::Relationships
       WidgetTypes = Azure::CustomerInsights::Mgmt::V2017_04_26::WidgetTypes
       Views = Azure::CustomerInsights::Mgmt::V2017_04_26::Views
       Roles = Azure::CustomerInsights::Mgmt::V2017_04_26::Roles
-      Predictions = Azure::CustomerInsights::Mgmt::V2017_04_26::Predictions
-      Relationships = Azure::CustomerInsights::Mgmt::V2017_04_26::Relationships
-      RoleAssignments = Azure::CustomerInsights::Mgmt::V2017_04_26::RoleAssignments
-      Images = Azure::CustomerInsights::Mgmt::V2017_04_26::Images
 
       module Models
         ProxyResource = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProxyResource
@@ -81,6 +81,7 @@ module Azure::Profiles::Latest
         PredictionDistributionDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionDistributionDefinition
         ParticipantPropertyReference = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantPropertyReference
         SalesforceDiscoverSetting = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceDiscoverSetting
+        RoleAssignmentListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult
         PredictionDistributionDefinitionDistributionsItem = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionDistributionDefinitionDistributionsItem
         KpiDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiDefinition
         RoleListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleListResult
@@ -88,7 +89,6 @@ module Azure::Profiles::Latest
         GetImageUploadUrlInput = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::GetImageUploadUrlInput
         ParticipantProfilePropertyReference = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ParticipantProfilePropertyReference
         ImageDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ImageDefinition
-        RoleAssignmentListResult = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult
         Hub = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
         EntityTypeDefinition = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::EntityTypeDefinition
         ProfileResourceFormat = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ProfileResourceFormat
@@ -133,7 +133,7 @@ module Azure::Profiles::Latest
       end
 
       class CustomerInsightsManagementClass
-        attr_reader :operations, :links, :hubs, :interactions, :profiles, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :roles, :predictions, :relationships, :role_assignments, :images, :configurable, :base_url, :options, :model_classes
+        attr_reader :predictions, :images, :links, :operations, :role_assignments, :hubs, :profiles, :interactions, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :relationships, :widget_types, :views, :roles, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -143,23 +143,23 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
+          @predictions = @client_0.predictions
+          @images = @client_0.images
           @links = @client_0.links
+          @operations = @client_0.operations
+          @role_assignments = @client_0.role_assignments
           @hubs = @client_0.hubs
-          @interactions = @client_0.interactions
           @profiles = @client_0.profiles
+          @interactions = @client_0.interactions
           @relationship_links = @client_0.relationship_links
           @authorization_policies = @client_0.authorization_policies
           @connectors = @client_0.connectors
           @connector_mappings = @client_0.connector_mappings
           @kpi = @client_0.kpi
+          @relationships = @client_0.relationships
           @widget_types = @client_0.widget_types
           @views = @client_0.views
           @roles = @client_0.roles
-          @predictions = @client_0.predictions
-          @relationships = @client_0.relationships
-          @role_assignments = @client_0.role_assignments
-          @images = @client_0.images
 
           @model_classes = ModelClasses.new
         end
@@ -343,6 +343,9 @@ module Azure::Profiles::Latest
           def salesforce_discover_setting
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::SalesforceDiscoverSetting
           end
+          def role_assignment_list_result
+            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult
+          end
           def prediction_distribution_definition_distributions_item
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionDistributionDefinitionDistributionsItem
           end
@@ -363,9 +366,6 @@ module Azure::Profiles::Latest
           end
           def image_definition
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::ImageDefinition
-          end
-          def role_assignment_list_result
-            Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult
           end
           def hub
             Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub
