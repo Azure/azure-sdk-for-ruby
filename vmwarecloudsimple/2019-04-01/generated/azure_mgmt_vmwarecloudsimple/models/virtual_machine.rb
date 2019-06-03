@@ -25,7 +25,7 @@ module Microsoft.VMwareCloudSimple
       # @return [Plan] Virtual machine plan
       attr_accessor :plan
 
-      # @return [Integer] The amount of memeory
+      # @return [Integer] The amount of memory
       attr_accessor :amount_of_ram
 
       # @return [Array<VirtualDiskController>] The list of Virtual Disks'
