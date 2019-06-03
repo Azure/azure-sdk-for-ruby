@@ -22,7 +22,6 @@ module Azure::CDN::Mgmt::V2016_10_02
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SsoUri',
           type: {
@@ -30,7 +29,6 @@ module Azure::CDN::Mgmt::V2016_10_02
             class_name: 'SsoUri',
             model_properties: {
               sso_uri_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ssoUriValue',
                 type: {

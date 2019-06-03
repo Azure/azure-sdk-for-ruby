@@ -23,7 +23,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EdgeNode',
           type: {
@@ -31,7 +30,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'EdgeNode',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,7 +38,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,7 +46,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -58,13 +54,11 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               ip_address_groups: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.ipAddressGroups',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IpAddressGroupElementType',
                       type: {

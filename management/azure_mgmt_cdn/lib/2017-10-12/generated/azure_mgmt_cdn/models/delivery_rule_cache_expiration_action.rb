@@ -30,7 +30,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CacheExpiration',
           type: {
@@ -38,7 +37,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'DeliveryRuleCacheExpirationAction',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -46,7 +44,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'parameters',
                 default_value: {},
