@@ -36,6 +36,9 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [EndpointSettings] endpoint_settings
+    attr_reader :endpoint_settings
+
     # @return [EndpointKeys] endpoint_keys
     attr_reader :endpoint_keys
 
@@ -60,6 +63,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @endpoint_settings = EndpointSettings.new(self)
       @endpoint_keys = EndpointKeys.new(self)
       @alterations = Alterations.new(self)
       @knowledgebase = Knowledgebase.new(self)

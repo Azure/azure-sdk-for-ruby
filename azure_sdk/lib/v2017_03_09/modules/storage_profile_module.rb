@@ -11,6 +11,13 @@ module Azure::Profiles::V2017_03_09
       StorageAccounts = Azure::Storage::Mgmt::V2016_01_01::StorageAccounts
 
       module Models
+        EncryptionService = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionService
+        StorageAccountListKeysResult = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListKeysResult
+        Encryption = Azure::Storage::Mgmt::V2016_01_01::Models::Encryption
+        StorageAccountRegenerateKeyParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountRegenerateKeyParameters
+        Endpoints = Azure::Storage::Mgmt::V2016_01_01::Models::Endpoints
+        CustomDomain = Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
+        EncryptionServices = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
         UsageListResult = Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
         Sku = Azure::Storage::Mgmt::V2016_01_01::Models::Sku
         UsageName = Azure::Storage::Mgmt::V2016_01_01::Models::UsageName
@@ -18,27 +25,20 @@ module Azure::Profiles::V2017_03_09
         StorageAccount = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccount
         Kind = Azure::Storage::Mgmt::V2016_01_01::Models::Kind
         AccessTier = Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
-        KeyPermission = Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
-        CustomDomain = Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
-        UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
+        Usage = Azure::Storage::Mgmt::V2016_01_01::Models::Usage
         AccountStatus = Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
+        KeyPermission = Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
+        UsageUnit = Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
         StorageAccountCreateParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCreateParameters
         StorageAccountUpdateParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountUpdateParameters
         Resource = Azure::Storage::Mgmt::V2016_01_01::Models::Resource
+        Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
         ProvisioningState = Azure::Storage::Mgmt::V2016_01_01::Models::ProvisioningState
         CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2016_01_01::Models::CheckNameAvailabilityResult
-        Reason = Azure::Storage::Mgmt::V2016_01_01::Models::Reason
         SkuName = Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
         StorageAccountCheckNameAvailabilityParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCheckNameAvailabilityParameters
         StorageAccountKey = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountKey
-        Usage = Azure::Storage::Mgmt::V2016_01_01::Models::Usage
         StorageAccountListResult = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListResult
-        EncryptionService = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionService
-        StorageAccountListKeysResult = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListKeysResult
-        Encryption = Azure::Storage::Mgmt::V2016_01_01::Models::Encryption
-        StorageAccountRegenerateKeyParameters = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountRegenerateKeyParameters
-        Endpoints = Azure::Storage::Mgmt::V2016_01_01::Models::Endpoints
-        EncryptionServices = Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
       end
 
       class StorageManagementClass
@@ -72,6 +72,27 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def encryption_service
+            Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionService
+          end
+          def storage_account_list_keys_result
+            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListKeysResult
+          end
+          def encryption
+            Azure::Storage::Mgmt::V2016_01_01::Models::Encryption
+          end
+          def storage_account_regenerate_key_parameters
+            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountRegenerateKeyParameters
+          end
+          def endpoints
+            Azure::Storage::Mgmt::V2016_01_01::Models::Endpoints
+          end
+          def custom_domain
+            Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
+          end
+          def encryption_services
+            Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
+          end
           def usage_list_result
             Azure::Storage::Mgmt::V2016_01_01::Models::UsageListResult
           end
@@ -93,17 +114,17 @@ module Azure::Profiles::V2017_03_09
           def access_tier
             Azure::Storage::Mgmt::V2016_01_01::Models::AccessTier
           end
-          def key_permission
-            Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
-          end
-          def custom_domain
-            Azure::Storage::Mgmt::V2016_01_01::Models::CustomDomain
-          end
-          def usage_unit
-            Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
+          def usage
+            Azure::Storage::Mgmt::V2016_01_01::Models::Usage
           end
           def account_status
             Azure::Storage::Mgmt::V2016_01_01::Models::AccountStatus
+          end
+          def key_permission
+            Azure::Storage::Mgmt::V2016_01_01::Models::KeyPermission
+          end
+          def usage_unit
+            Azure::Storage::Mgmt::V2016_01_01::Models::UsageUnit
           end
           def storage_account_create_parameters
             Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCreateParameters
@@ -114,14 +135,14 @@ module Azure::Profiles::V2017_03_09
           def resource
             Azure::Storage::Mgmt::V2016_01_01::Models::Resource
           end
+          def reason
+            Azure::Storage::Mgmt::V2016_01_01::Models::Reason
+          end
           def provisioning_state
             Azure::Storage::Mgmt::V2016_01_01::Models::ProvisioningState
           end
           def check_name_availability_result
             Azure::Storage::Mgmt::V2016_01_01::Models::CheckNameAvailabilityResult
-          end
-          def reason
-            Azure::Storage::Mgmt::V2016_01_01::Models::Reason
           end
           def sku_name
             Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
@@ -132,29 +153,8 @@ module Azure::Profiles::V2017_03_09
           def storage_account_key
             Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountKey
           end
-          def usage
-            Azure::Storage::Mgmt::V2016_01_01::Models::Usage
-          end
           def storage_account_list_result
             Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListResult
-          end
-          def encryption_service
-            Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionService
-          end
-          def storage_account_list_keys_result
-            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountListKeysResult
-          end
-          def encryption
-            Azure::Storage::Mgmt::V2016_01_01::Models::Encryption
-          end
-          def storage_account_regenerate_key_parameters
-            Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountRegenerateKeyParameters
-          end
-          def endpoints
-            Azure::Storage::Mgmt::V2016_01_01::Models::Endpoints
-          end
-          def encryption_services
-            Azure::Storage::Mgmt::V2016_01_01::Models::EncryptionServices
           end
         end
       end
