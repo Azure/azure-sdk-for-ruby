@@ -21,7 +21,7 @@ module Microsoft.VMwareCloudSimple
       # @return [String] Azure region
       attr_accessor :location
 
-      # @return [String] {VirtualNetworkeName}
+      # @return [String] {VirtualNetworkName}
       attr_accessor :name
 
       # @return [String] The Private Cloud id

@@ -501,7 +501,7 @@ module Microsoft.VMwareCloudSimple
     # @param virtual_machine_name [String] virtual machine name
     # @param m [VirtualMachineStopMode] body stop mode parameter (reboot, shutdown,
     # etc...)
-    # @param mode [StopMode] quiry stop mode parameter (reboot, shutdown, etc...).
+    # @param mode [StopMode] query stop mode parameter (reboot, shutdown, etc...).
     # Possible values include: 'reboot', 'suspend', 'shutdown', 'poweroff'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -516,7 +516,7 @@ module Microsoft.VMwareCloudSimple
     # @param virtual_machine_name [String] virtual machine name
     # @param m [VirtualMachineStopMode] body stop mode parameter (reboot, shutdown,
     # etc...)
-    # @param mode [StopMode] quiry stop mode parameter (reboot, shutdown, etc...).
+    # @param mode [StopMode] query stop mode parameter (reboot, shutdown, etc...).
     # Possible values include: 'reboot', 'suspend', 'shutdown', 'poweroff'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -960,7 +960,7 @@ module Microsoft.VMwareCloudSimple
     # @param virtual_machine_name [String] virtual machine name
     # @param m [VirtualMachineStopMode] body stop mode parameter (reboot, shutdown,
     # etc...)
-    # @param mode [StopMode] quiry stop mode parameter (reboot, shutdown, etc...).
+    # @param mode [StopMode] query stop mode parameter (reboot, shutdown, etc...).
     # Possible values include: 'reboot', 'suspend', 'shutdown', 'poweroff'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -980,7 +980,7 @@ module Microsoft.VMwareCloudSimple
     # @param virtual_machine_name [String] virtual machine name
     # @param m [VirtualMachineStopMode] body stop mode parameter (reboot, shutdown,
     # etc...)
-    # @param mode [StopMode] quiry stop mode parameter (reboot, shutdown, etc...).
+    # @param mode [StopMode] query stop mode parameter (reboot, shutdown, etc...).
     # Possible values include: 'reboot', 'suspend', 'shutdown', 'poweroff'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1000,7 +1000,7 @@ module Microsoft.VMwareCloudSimple
     # @param virtual_machine_name [String] virtual machine name
     # @param m [VirtualMachineStopMode] body stop mode parameter (reboot, shutdown,
     # etc...)
-    # @param mode [StopMode] quiry stop mode parameter (reboot, shutdown, etc...).
+    # @param mode [StopMode] query stop mode parameter (reboot, shutdown, etc...).
     # Possible values include: 'reboot', 'suspend', 'shutdown', 'poweroff'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

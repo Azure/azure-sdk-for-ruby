@@ -16,7 +16,7 @@ module Microsoft.VMwareCloudSimple
       # @return [String] Link for next list of Private Clouds
       attr_accessor :next_link
 
-      # @return [Array<PrivateCloud>] thel list of private clouds
+      # @return [Array<PrivateCloud>] the list of private clouds
       attr_accessor :value
 
       # return [Proc] with next page method call.

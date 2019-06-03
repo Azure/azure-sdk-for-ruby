@@ -319,7 +319,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements dedicated cloud node PUT method
     #
-    # Returns decicated cloid node by its name
+    # Returns decicated cloud node by its name
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param dedicated_cloud_node_name [String] dedicated cloud node name
@@ -453,7 +453,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements dedicated cloud node PATCH method
     #
-    # Patches decicate node propetries
+    # Patches dedicated node properties
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param dedicated_cloud_node_name [String] dedicated cloud node name
@@ -472,7 +472,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements dedicated cloud node PATCH method
     #
-    # Patches decicate node propetries
+    # Patches dedicated node properties
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param dedicated_cloud_node_name [String] dedicated cloud node name
@@ -490,7 +490,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements dedicated cloud node PATCH method
     #
-    # Patches decicate node propetries
+    # Patches dedicated node properties
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param dedicated_cloud_node_name [String] dedicated cloud node name
@@ -566,7 +566,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements dedicated cloud node PUT method
     #
-    # Returns decicated cloid node by its name
+    # Returns decicated cloud node by its name
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param dedicated_cloud_node_name [String] dedicated cloud node name
@@ -585,7 +585,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements dedicated cloud node PUT method
     #
-    # Returns decicated cloid node by its name
+    # Returns decicated cloud node by its name
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param dedicated_cloud_node_name [String] dedicated cloud node name
@@ -603,7 +603,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements dedicated cloud node PUT method
     #
-    # Returns decicated cloid node by its name
+    # Returns decicated cloud node by its name
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param dedicated_cloud_node_name [String] dedicated cloud node name

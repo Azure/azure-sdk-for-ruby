@@ -17,7 +17,7 @@ module Microsoft.VMwareCloudSimple
       attr_accessor :next_link
 
       # @return [Array<SkuAvailability>] Results of the
-      # DedicatedPlacemnetGroupSkuAvailability list
+      # DedicatedPlacementGroupSkuAvailability list
       attr_accessor :value
 
       # return [Proc] with next page method call.

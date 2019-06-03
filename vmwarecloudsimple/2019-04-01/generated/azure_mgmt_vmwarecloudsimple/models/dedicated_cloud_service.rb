@@ -30,7 +30,7 @@ module Microsoft.VMwareCloudSimple
       attr_accessor :gateway_subnet
 
       # @return [OnboardingStatus] indicates whether account onboarded or not
-      # in a given region by nwiaas. Possible values include: 'notOnBoarded',
+      # in a given region. Possible values include: 'notOnBoarded',
       # 'onBoarded', 'onBoardingFailed', 'onBoarding'
       attr_accessor :is_account_onboarded
 

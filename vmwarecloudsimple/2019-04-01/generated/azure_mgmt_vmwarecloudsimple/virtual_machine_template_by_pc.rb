@@ -26,7 +26,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns virtual machine templates by its name
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param virtual_machine_template_name [String] virtual machine template id
     # (vsphereId)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -44,7 +44,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns virtual machine templates by its name
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param virtual_machine_template_name [String] virtual machine template id
     # (vsphereId)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -61,7 +61,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns virtual machine templates by its name
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param virtual_machine_template_name [String] virtual machine template id
     # (vsphereId)
     # @param [Hash{String => String}] A hash of custom headers that will be added

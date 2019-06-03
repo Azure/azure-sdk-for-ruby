@@ -21,7 +21,7 @@ module Microsoft.VMwareCloudSimple
       # @return [String] {virtualMachineTemplateName}
       attr_accessor :name
 
-      # @return [Integer] The amout of memory
+      # @return [Integer] The amount of memory
       attr_accessor :amount_of_ram
 
       # @return [Array<VirtualDiskController>] The list of Virtual Disk

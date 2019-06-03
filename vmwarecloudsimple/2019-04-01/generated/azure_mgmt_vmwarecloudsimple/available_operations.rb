@@ -24,7 +24,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements list of available operations
     #
-    # Return lisf of operatiions
+    # Return list of operations
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -39,7 +39,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements list of available operations
     #
-    # Return lisf of operatiions
+    # Return list of operations
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -53,7 +53,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements list of available operations
     #
-    # Return lisf of operatiions
+    # Return list of operations
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -111,7 +111,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements list of available operations
     #
-    # Return lisf of operatiions
+    # Return list of operations
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -128,7 +128,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements list of available operations
     #
-    # Return lisf of operatiions
+    # Return list of operations
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -144,7 +144,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements list of available operations
     #
-    # Return lisf of operatiions
+    # Return list of operations
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -204,7 +204,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Implements list of available operations
     #
-    # Return lisf of operatiions
+    # Return list of operations
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

@@ -26,7 +26,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns list of virtual machine templates in region for private cloud
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param resource_pool_name [String] Resource pool used to derive vSphere
     # cluster which contains VM templates
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -44,7 +44,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns list of virtual machine templates in region for private cloud
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param resource_pool_name [String] Resource pool used to derive vSphere
     # cluster which contains VM templates
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -61,7 +61,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns list of virtual machine templates in region for private cloud
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param resource_pool_name [String] Resource pool used to derive vSphere
     # cluster which contains VM templates
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -220,7 +220,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns list of virtual machine templates in region for private cloud
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param resource_pool_name [String] Resource pool used to derive vSphere
     # cluster which contains VM templates
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

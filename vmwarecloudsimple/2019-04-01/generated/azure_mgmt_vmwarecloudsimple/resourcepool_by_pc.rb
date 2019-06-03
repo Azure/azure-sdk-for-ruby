@@ -26,7 +26,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns resource pool templates by its name
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param resource_pool_name [String] resource pool id (vsphereId)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -43,7 +43,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns resource pool templates by its name
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param resource_pool_name [String] resource pool id (vsphereId)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -59,7 +59,7 @@ module Microsoft.VMwareCloudSimple
     #
     # Returns resource pool templates by its name
     #
-    # @param pc_name [String] The privae cloud name.
+    # @param pc_name [String] The private cloud name.
     # @param resource_pool_name [String] resource pool id (vsphereId)
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

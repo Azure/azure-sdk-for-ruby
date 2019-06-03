@@ -73,14 +73,13 @@ module Microsoft.VMwareCloudSimple
       # @return [Float] Disk space in TB
       attr_accessor :total_storage
 
-      # @return [String] Virtualizaiton type e.g. "vSphere"
+      # @return [String] Virtualization type e.g. "vSphere"
       attr_accessor :private_cloud_properties_type
 
       # @return [String] e.g. "6.5u2"
       attr_accessor :v_sphere_version
 
-      # @return [String] FQDN for vcneter access e.g.
-      # "vcsa-4-westus.az.cloudsimple.io"
+      # @return [String] FQDN for vcneter access
       attr_accessor :vcenter_fqdn
 
       # @return [String] Vcenters' ip address
