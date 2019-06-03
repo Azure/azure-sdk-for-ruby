@@ -29,7 +29,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -37,7 +36,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
             class_name: 'Operation',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,7 +43,6 @@ module Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
