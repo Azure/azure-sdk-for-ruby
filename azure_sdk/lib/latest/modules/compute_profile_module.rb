@@ -8,6 +8,12 @@ module Azure::Profiles::Latest
   module Compute
     module Mgmt
       ResourceSkus = Azure::Compute::Mgmt::V2017_09_01::ResourceSkus
+      UsageOperations = Azure::Compute::Mgmt::V2018_06_01::UsageOperations
+      VirtualMachineSizes = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineSizes
+      Images = Azure::Compute::Mgmt::V2018_06_01::Images
+      VirtualMachineScaleSets = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSets
+      VirtualMachineScaleSetExtensions = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetExtensions
+      VirtualMachineScaleSetRollingUpgrades = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetRollingUpgrades
       VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetVMs
       Disks = Azure::Compute::Mgmt::V2018_06_01::Disks
       Operations = Azure::Compute::Mgmt::V2018_06_01::Operations
@@ -22,14 +28,11 @@ module Azure::Profiles::Latest
       VirtualMachineExtensions = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineExtensions
       VirtualMachines = Azure::Compute::Mgmt::V2018_06_01::VirtualMachines
       VirtualMachineImages = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineImages
-      UsageOperations = Azure::Compute::Mgmt::V2018_06_01::UsageOperations
-      VirtualMachineSizes = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineSizes
-      Images = Azure::Compute::Mgmt::V2018_06_01::Images
-      VirtualMachineScaleSets = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSets
-      VirtualMachineScaleSetExtensions = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetExtensions
-      VirtualMachineScaleSetRollingUpgrades = Azure::Compute::Mgmt::V2018_06_01::VirtualMachineScaleSetRollingUpgrades
 
       module Models
+        ResourceSkusResult = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
+        ResourceSkuRestrictionsReasonCode = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
+        ResourceSkuCapacity = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacity
         ResourceSkuLocationInfo = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuLocationInfo
         ResourceSkuCosts = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCosts
         ResourceSkuCapabilities = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapabilities
@@ -38,9 +41,6 @@ module Azure::Profiles::Latest
         ResourceSkuRestrictionInfo = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionInfo
         ResourceSku = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSku
         ResourceSkuRestrictionsType = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsType
-        ResourceSkusResult = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
-        ResourceSkuRestrictionsReasonCode = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
-        ResourceSkuCapacity = Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacity
         OperationStatusResponse = Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse
         ComputeLongRunningOperationProperties = Azure::Compute::Mgmt::V2017_12_01::Models::ComputeLongRunningOperationProperties
         ComputeOperationValue = Azure::Compute::Mgmt::V2018_06_01::Models::ComputeOperationValue
@@ -262,7 +262,7 @@ module Azure::Profiles::Latest
       end
 
       class ComputeManagementClass
-        attr_reader :resource_skus, :virtual_machine_scale_set_vms, :disks, :operations, :virtual_machine_run_commands, :galleries, :gallery_images, :gallery_image_versions, :snapshots, :log_analytics, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :configurable, :base_url, :options, :model_classes
+        attr_reader :resource_skus, :usage_operations, :virtual_machine_sizes, :images, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :virtual_machine_scale_set_vms, :disks, :operations, :virtual_machine_run_commands, :galleries, :gallery_images, :gallery_image_versions, :snapshots, :log_analytics, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -291,6 +291,12 @@ module Azure::Profiles::Latest
             @client_3.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_3)
+          @usage_operations = @client_3.usage_operations
+          @virtual_machine_sizes = @client_3.virtual_machine_sizes
+          @images = @client_3.images
+          @virtual_machine_scale_sets = @client_3.virtual_machine_scale_sets
+          @virtual_machine_scale_set_extensions = @client_3.virtual_machine_scale_set_extensions
+          @virtual_machine_scale_set_rolling_upgrades = @client_3.virtual_machine_scale_set_rolling_upgrades
           @virtual_machine_scale_set_vms = @client_3.virtual_machine_scale_set_vms
           @disks = @client_3.disks
           @operations = @client_3.operations
@@ -305,12 +311,6 @@ module Azure::Profiles::Latest
           @virtual_machine_extensions = @client_3.virtual_machine_extensions
           @virtual_machines = @client_3.virtual_machines
           @virtual_machine_images = @client_3.virtual_machine_images
-          @usage_operations = @client_3.usage_operations
-          @virtual_machine_sizes = @client_3.virtual_machine_sizes
-          @images = @client_3.images
-          @virtual_machine_scale_sets = @client_3.virtual_machine_scale_sets
-          @virtual_machine_scale_set_extensions = @client_3.virtual_machine_scale_set_extensions
-          @virtual_machine_scale_set_rolling_upgrades = @client_3.virtual_machine_scale_set_rolling_upgrades
 
           @model_classes = ModelClasses.new
         end
@@ -335,6 +335,15 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource_skus_result
+            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
+          end
+          def resource_sku_restrictions_reason_code
+            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
+          end
+          def resource_sku_capacity
+            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacity
+          end
           def resource_sku_location_info
             Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuLocationInfo
           end
@@ -358,15 +367,6 @@ module Azure::Profiles::Latest
           end
           def resource_sku_restrictions_type
             Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsType
-          end
-          def resource_skus_result
-            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkusResult
-          end
-          def resource_sku_restrictions_reason_code
-            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuRestrictionsReasonCode
-          end
-          def resource_sku_capacity
-            Azure::Compute::Mgmt::V2017_09_01::Models::ResourceSkuCapacity
           end
           def operation_status_response
             Azure::Compute::Mgmt::V2017_12_01::Models::OperationStatusResponse

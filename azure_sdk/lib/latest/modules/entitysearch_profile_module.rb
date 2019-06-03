@@ -9,6 +9,9 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
+      ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
+      SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       ImageObject = Azure::CognitiveServices::EntitySearch::V1_0::Models::ImageObject
@@ -52,9 +55,6 @@ module Azure::Profiles::Latest
       SearchResultsAnswer = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResultsAnswer
       Thing = Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::EntitySearch::V1_0::Models::CreativeWork
-      Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
-      ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
-      SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,15 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def identifiable
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
+        end
+        def error_code
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
+        end
+        def safe_search
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
+        end
         def response_format
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
         end
@@ -215,15 +224,6 @@ module Azure::Profiles::Latest
         end
         def creative_work
           Azure::CognitiveServices::EntitySearch::V1_0::Models::CreativeWork
-        end
-        def identifiable
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
-        end
-        def error_code
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
-        end
-        def safe_search
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
         end
       end
     end

@@ -7,13 +7,6 @@ require 'azure_mgmt_media_services'
 module Azure::Profiles::Latest
   module MediaServices
     module Mgmt
-      StreamingLocators = Azure::MediaServices::Mgmt::V2018_07_01::StreamingLocators
-      LiveEvents = Azure::MediaServices::Mgmt::V2018_07_01::LiveEvents
-      Operations = Azure::MediaServices::Mgmt::V2018_07_01::Operations
-      LiveOutputs = Azure::MediaServices::Mgmt::V2018_07_01::LiveOutputs
-      StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_07_01::StreamingEndpoints
-      Locations = Azure::MediaServices::Mgmt::V2018_07_01::Locations
-      AccountFilters = Azure::MediaServices::Mgmt::V2018_07_01::AccountFilters
       Mediaservices = Azure::MediaServices::Mgmt::V2018_07_01::Mediaservices
       Assets = Azure::MediaServices::Mgmt::V2018_07_01::Assets
       AssetFilters = Azure::MediaServices::Mgmt::V2018_07_01::AssetFilters
@@ -21,6 +14,13 @@ module Azure::Profiles::Latest
       Transforms = Azure::MediaServices::Mgmt::V2018_07_01::Transforms
       Jobs = Azure::MediaServices::Mgmt::V2018_07_01::Jobs
       StreamingPolicies = Azure::MediaServices::Mgmt::V2018_07_01::StreamingPolicies
+      StreamingLocators = Azure::MediaServices::Mgmt::V2018_07_01::StreamingLocators
+      LiveEvents = Azure::MediaServices::Mgmt::V2018_07_01::LiveEvents
+      Operations = Azure::MediaServices::Mgmt::V2018_07_01::Operations
+      LiveOutputs = Azure::MediaServices::Mgmt::V2018_07_01::LiveOutputs
+      StreamingEndpoints = Azure::MediaServices::Mgmt::V2018_07_01::StreamingEndpoints
+      Locations = Azure::MediaServices::Mgmt::V2018_07_01::Locations
+      AccountFilters = Azure::MediaServices::Mgmt::V2018_07_01::AccountFilters
 
       module Models
         CheckNameAvailabilityInput = Azure::MediaServices::Mgmt::V2018_07_01::Models::CheckNameAvailabilityInput
@@ -143,14 +143,14 @@ module Azure::Profiles::Latest
         PngFormat = Azure::MediaServices::Mgmt::V2018_07_01::Models::PngFormat
         CopyAudio = Azure::MediaServices::Mgmt::V2018_07_01::Models::CopyAudio
         JpgFormat = Azure::MediaServices::Mgmt::V2018_07_01::Models::JpgFormat
-        VideoLayer = Azure::MediaServices::Mgmt::V2018_07_01::Models::VideoLayer
+        H264Layer = Azure::MediaServices::Mgmt::V2018_07_01::Models::H264Layer
         H264Video = Azure::MediaServices::Mgmt::V2018_07_01::Models::H264Video
         JpgLayer = Azure::MediaServices::Mgmt::V2018_07_01::Models::JpgLayer
-        H264Layer = Azure::MediaServices::Mgmt::V2018_07_01::Models::H264Layer
         JpgImage = Azure::MediaServices::Mgmt::V2018_07_01::Models::JpgImage
+        MultiBitrateFormat = Azure::MediaServices::Mgmt::V2018_07_01::Models::MultiBitrateFormat
         Mp4Format = Azure::MediaServices::Mgmt::V2018_07_01::Models::Mp4Format
         PngLayer = Azure::MediaServices::Mgmt::V2018_07_01::Models::PngLayer
-        MultiBitrateFormat = Azure::MediaServices::Mgmt::V2018_07_01::Models::MultiBitrateFormat
+        PngImage = Azure::MediaServices::Mgmt::V2018_07_01::Models::PngImage
         BuiltInStandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_07_01::Models::BuiltInStandardEncoderPreset
         StandardEncoderPreset = Azure::MediaServices::Mgmt::V2018_07_01::Models::StandardEncoderPreset
         VideoAnalyzerPreset = Azure::MediaServices::Mgmt::V2018_07_01::Models::VideoAnalyzerPreset
@@ -186,11 +186,11 @@ module Azure::Profiles::Latest
         Rotation = Azure::MediaServices::Mgmt::V2018_07_01::Models::Rotation
         H264VideoProfile = Azure::MediaServices::Mgmt::V2018_07_01::Models::H264VideoProfile
         StretchMode = Azure::MediaServices::Mgmt::V2018_07_01::Models::StretchMode
-        PngImage = Azure::MediaServices::Mgmt::V2018_07_01::Models::PngImage
-        EntropyMode = Azure::MediaServices::Mgmt::V2018_07_01::Models::EntropyMode
         H264Complexity = Azure::MediaServices::Mgmt::V2018_07_01::Models::H264Complexity
-        EncoderNamedPreset = Azure::MediaServices::Mgmt::V2018_07_01::Models::EncoderNamedPreset
+        VideoLayer = Azure::MediaServices::Mgmt::V2018_07_01::Models::VideoLayer
         InsightsType = Azure::MediaServices::Mgmt::V2018_07_01::Models::InsightsType
+        EncoderNamedPreset = Azure::MediaServices::Mgmt::V2018_07_01::Models::EncoderNamedPreset
+        EntropyMode = Azure::MediaServices::Mgmt::V2018_07_01::Models::EntropyMode
         OnErrorType = Azure::MediaServices::Mgmt::V2018_07_01::Models::OnErrorType
         Priority = Azure::MediaServices::Mgmt::V2018_07_01::Models::Priority
         JobErrorCode = Azure::MediaServices::Mgmt::V2018_07_01::Models::JobErrorCode
@@ -210,9 +210,9 @@ module Azure::Profiles::Latest
         LiveEventResourceState = Azure::MediaServices::Mgmt::V2018_07_01::Models::LiveEventResourceState
         Provider = Azure::MediaServices::Mgmt::V2018_07_01::Models::Provider
         ApiError = Azure::MediaServices::Mgmt::V2018_07_01::Models::ApiError
+        Format = Azure::MediaServices::Mgmt::V2018_07_01::Models::Format
         Resource = Azure::MediaServices::Mgmt::V2018_07_01::Models::Resource
         Filters = Azure::MediaServices::Mgmt::V2018_07_01::Models::Filters
-        Format = Azure::MediaServices::Mgmt::V2018_07_01::Models::Format
         Image = Azure::MediaServices::Mgmt::V2018_07_01::Models::Image
         Location = Azure::MediaServices::Mgmt::V2018_07_01::Models::Location
         StorageAccount = Azure::MediaServices::Mgmt::V2018_07_01::Models::StorageAccount
@@ -220,7 +220,7 @@ module Azure::Profiles::Latest
       end
 
       class MediaServicesManagementClass
-        attr_reader :streaming_locators, :live_events, :operations, :live_outputs, :streaming_endpoints, :locations, :account_filters, :mediaservices, :assets, :asset_filters, :content_key_policies, :transforms, :jobs, :streaming_policies, :configurable, :base_url, :options, :model_classes
+        attr_reader :mediaservices, :assets, :asset_filters, :content_key_policies, :transforms, :jobs, :streaming_policies, :streaming_locators, :live_events, :operations, :live_outputs, :streaming_endpoints, :locations, :account_filters, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -230,13 +230,6 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @streaming_locators = @client_0.streaming_locators
-          @live_events = @client_0.live_events
-          @operations = @client_0.operations
-          @live_outputs = @client_0.live_outputs
-          @streaming_endpoints = @client_0.streaming_endpoints
-          @locations = @client_0.locations
-          @account_filters = @client_0.account_filters
           @mediaservices = @client_0.mediaservices
           @assets = @client_0.assets
           @asset_filters = @client_0.asset_filters
@@ -244,6 +237,13 @@ module Azure::Profiles::Latest
           @transforms = @client_0.transforms
           @jobs = @client_0.jobs
           @streaming_policies = @client_0.streaming_policies
+          @streaming_locators = @client_0.streaming_locators
+          @live_events = @client_0.live_events
+          @operations = @client_0.operations
+          @live_outputs = @client_0.live_outputs
+          @streaming_endpoints = @client_0.streaming_endpoints
+          @locations = @client_0.locations
+          @account_filters = @client_0.account_filters
 
           @model_classes = ModelClasses.new
         end
@@ -622,8 +622,8 @@ module Azure::Profiles::Latest
           def jpg_format
             Azure::MediaServices::Mgmt::V2018_07_01::Models::JpgFormat
           end
-          def video_layer
-            Azure::MediaServices::Mgmt::V2018_07_01::Models::VideoLayer
+          def h264_layer
+            Azure::MediaServices::Mgmt::V2018_07_01::Models::H264Layer
           end
           def h264_video
             Azure::MediaServices::Mgmt::V2018_07_01::Models::H264Video
@@ -631,11 +631,11 @@ module Azure::Profiles::Latest
           def jpg_layer
             Azure::MediaServices::Mgmt::V2018_07_01::Models::JpgLayer
           end
-          def h264_layer
-            Azure::MediaServices::Mgmt::V2018_07_01::Models::H264Layer
-          end
           def jpg_image
             Azure::MediaServices::Mgmt::V2018_07_01::Models::JpgImage
+          end
+          def multi_bitrate_format
+            Azure::MediaServices::Mgmt::V2018_07_01::Models::MultiBitrateFormat
           end
           def mp4_format
             Azure::MediaServices::Mgmt::V2018_07_01::Models::Mp4Format
@@ -643,8 +643,8 @@ module Azure::Profiles::Latest
           def png_layer
             Azure::MediaServices::Mgmt::V2018_07_01::Models::PngLayer
           end
-          def multi_bitrate_format
-            Azure::MediaServices::Mgmt::V2018_07_01::Models::MultiBitrateFormat
+          def png_image
+            Azure::MediaServices::Mgmt::V2018_07_01::Models::PngImage
           end
           def built_in_standard_encoder_preset
             Azure::MediaServices::Mgmt::V2018_07_01::Models::BuiltInStandardEncoderPreset
@@ -751,20 +751,20 @@ module Azure::Profiles::Latest
           def stretch_mode
             Azure::MediaServices::Mgmt::V2018_07_01::Models::StretchMode
           end
-          def png_image
-            Azure::MediaServices::Mgmt::V2018_07_01::Models::PngImage
-          end
-          def entropy_mode
-            Azure::MediaServices::Mgmt::V2018_07_01::Models::EntropyMode
-          end
           def h264_complexity
             Azure::MediaServices::Mgmt::V2018_07_01::Models::H264Complexity
+          end
+          def video_layer
+            Azure::MediaServices::Mgmt::V2018_07_01::Models::VideoLayer
+          end
+          def insights_type
+            Azure::MediaServices::Mgmt::V2018_07_01::Models::InsightsType
           end
           def encoder_named_preset
             Azure::MediaServices::Mgmt::V2018_07_01::Models::EncoderNamedPreset
           end
-          def insights_type
-            Azure::MediaServices::Mgmt::V2018_07_01::Models::InsightsType
+          def entropy_mode
+            Azure::MediaServices::Mgmt::V2018_07_01::Models::EntropyMode
           end
           def on_error_type
             Azure::MediaServices::Mgmt::V2018_07_01::Models::OnErrorType
@@ -823,14 +823,14 @@ module Azure::Profiles::Latest
           def api_error
             Azure::MediaServices::Mgmt::V2018_07_01::Models::ApiError
           end
+          def format
+            Azure::MediaServices::Mgmt::V2018_07_01::Models::Format
+          end
           def resource
             Azure::MediaServices::Mgmt::V2018_07_01::Models::Resource
           end
           def filters
             Azure::MediaServices::Mgmt::V2018_07_01::Models::Filters
-          end
-          def format
-            Azure::MediaServices::Mgmt::V2018_07_01::Models::Format
           end
           def image
             Azure::MediaServices::Mgmt::V2018_07_01::Models::Image

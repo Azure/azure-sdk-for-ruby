@@ -13,25 +13,25 @@ module Azure::Profiles::Latest
       module Models
         ZoneUpdate = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneUpdate
         CaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
+        ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
         RecordSetUpdateParameters = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
         RecordSetListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetListResult
         AaaaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
-        ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
         MxRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
         PtrRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::PtrRecord
         SrvRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SrvRecord
         CnameRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
+        ARecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
         RecordSet = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
-        ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
         TxtRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
         NsRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::NsRecord
         SoaRecord = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SoaRecord
         TrackedResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::TrackedResource
         Zone = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
+        ZoneListResult = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
         ProxyResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
         AzureEntityResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::AzureEntityResource
         RecordType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
-        ZoneType = Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
         Resource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource
         SubResource = Azure::Dns::Mgmt::V2018_03_01_preview::Models::SubResource
       end
@@ -73,6 +73,9 @@ module Azure::Profiles::Latest
           def caa_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::CaaRecord
           end
+          def zone_type
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
+          end
           def record_set_update_parameters
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSetUpdateParameters
           end
@@ -81,9 +84,6 @@ module Azure::Profiles::Latest
           end
           def aaaa_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::AaaaRecord
-          end
-          def arecord
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
           end
           def mx_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::MxRecord
@@ -97,11 +97,11 @@ module Azure::Profiles::Latest
           def cname_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::CnameRecord
           end
+          def arecord
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ARecord
+          end
           def record_set
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordSet
-          end
-          def zone_list_result
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
           end
           def txt_record
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::TxtRecord
@@ -118,6 +118,9 @@ module Azure::Profiles::Latest
           def zone
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::Zone
           end
+          def zone_list_result
+            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneListResult
+          end
           def proxy_resource
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::ProxyResource
           end
@@ -126,9 +129,6 @@ module Azure::Profiles::Latest
           end
           def record_type
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::RecordType
-          end
-          def zone_type
-            Azure::Dns::Mgmt::V2018_03_01_preview::Models::ZoneType
           end
           def resource
             Azure::Dns::Mgmt::V2018_03_01_preview::Models::Resource

@@ -7,13 +7,20 @@ require 'azure_mgmt_redis'
 module Azure::Profiles::Latest
   module Redis
     module Mgmt
-      Operations = Azure::Redis::Mgmt::V2018_03_01::Operations
-      Redis = Azure::Redis::Mgmt::V2018_03_01::Redis
-      PatchSchedules = Azure::Redis::Mgmt::V2018_03_01::PatchSchedules
       LinkedServer = Azure::Redis::Mgmt::V2018_03_01::LinkedServer
       FirewallRules = Azure::Redis::Mgmt::V2018_03_01::FirewallRules
+      Redis = Azure::Redis::Mgmt::V2018_03_01::Redis
+      Operations = Azure::Redis::Mgmt::V2018_03_01::Operations
+      PatchSchedules = Azure::Redis::Mgmt::V2018_03_01::PatchSchedules
 
       module Models
+        RedisFirewallRuleListResult = Azure::Redis::Mgmt::V2018_03_01::Models::RedisFirewallRuleListResult
+        RedisLinkedServerWithPropertiesList = Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerWithPropertiesList
+        RedisCreateParameters = Azure::Redis::Mgmt::V2018_03_01::Models::RedisCreateParameters
+        RedisLinkedServerCreateParameters = Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerCreateParameters
+        RedisFirewallRule = Azure::Redis::Mgmt::V2018_03_01::Models::RedisFirewallRule
+        RedisResource = Azure::Redis::Mgmt::V2018_03_01::Models::RedisResource
+        RedisPatchSchedule = Azure::Redis::Mgmt::V2018_03_01::Models::RedisPatchSchedule
         RedisLinkedServerWithProperties = Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerWithProperties
         Sku = Azure::Redis::Mgmt::V2018_03_01::Models::Sku
         SkuFamily = Azure::Redis::Mgmt::V2018_03_01::Models::SkuFamily
@@ -45,17 +52,10 @@ module Azure::Profiles::Latest
         UpgradeNotification = Azure::Redis::Mgmt::V2018_03_01::Models::UpgradeNotification
         RedisForceRebootResponse = Azure::Redis::Mgmt::V2018_03_01::Models::RedisForceRebootResponse
         RedisLinkedServer = Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServer
-        RedisFirewallRuleListResult = Azure::Redis::Mgmt::V2018_03_01::Models::RedisFirewallRuleListResult
-        RedisLinkedServerWithPropertiesList = Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerWithPropertiesList
-        RedisCreateParameters = Azure::Redis::Mgmt::V2018_03_01::Models::RedisCreateParameters
-        RedisLinkedServerCreateParameters = Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerCreateParameters
-        RedisFirewallRule = Azure::Redis::Mgmt::V2018_03_01::Models::RedisFirewallRule
-        RedisResource = Azure::Redis::Mgmt::V2018_03_01::Models::RedisResource
-        RedisPatchSchedule = Azure::Redis::Mgmt::V2018_03_01::Models::RedisPatchSchedule
       end
 
       class RedisManagementClass
-        attr_reader :operations, :redis, :patch_schedules, :linked_server, :firewall_rules, :configurable, :base_url, :options, :model_classes
+        attr_reader :linked_server, :firewall_rules, :redis, :operations, :patch_schedules, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -65,11 +65,11 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
-          @redis = @client_0.redis
-          @patch_schedules = @client_0.patch_schedules
           @linked_server = @client_0.linked_server
           @firewall_rules = @client_0.firewall_rules
+          @redis = @client_0.redis
+          @operations = @client_0.operations
+          @patch_schedules = @client_0.patch_schedules
 
           @model_classes = ModelClasses.new
         end
@@ -88,6 +88,27 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def redis_firewall_rule_list_result
+            Azure::Redis::Mgmt::V2018_03_01::Models::RedisFirewallRuleListResult
+          end
+          def redis_linked_server_with_properties_list
+            Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerWithPropertiesList
+          end
+          def redis_create_parameters
+            Azure::Redis::Mgmt::V2018_03_01::Models::RedisCreateParameters
+          end
+          def redis_linked_server_create_parameters
+            Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerCreateParameters
+          end
+          def redis_firewall_rule
+            Azure::Redis::Mgmt::V2018_03_01::Models::RedisFirewallRule
+          end
+          def redis_resource
+            Azure::Redis::Mgmt::V2018_03_01::Models::RedisResource
+          end
+          def redis_patch_schedule
+            Azure::Redis::Mgmt::V2018_03_01::Models::RedisPatchSchedule
+          end
           def redis_linked_server_with_properties
             Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerWithProperties
           end
@@ -180,27 +201,6 @@ module Azure::Profiles::Latest
           end
           def redis_linked_server
             Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServer
-          end
-          def redis_firewall_rule_list_result
-            Azure::Redis::Mgmt::V2018_03_01::Models::RedisFirewallRuleListResult
-          end
-          def redis_linked_server_with_properties_list
-            Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerWithPropertiesList
-          end
-          def redis_create_parameters
-            Azure::Redis::Mgmt::V2018_03_01::Models::RedisCreateParameters
-          end
-          def redis_linked_server_create_parameters
-            Azure::Redis::Mgmt::V2018_03_01::Models::RedisLinkedServerCreateParameters
-          end
-          def redis_firewall_rule
-            Azure::Redis::Mgmt::V2018_03_01::Models::RedisFirewallRule
-          end
-          def redis_resource
-            Azure::Redis::Mgmt::V2018_03_01::Models::RedisResource
-          end
-          def redis_patch_schedule
-            Azure::Redis::Mgmt::V2018_03_01::Models::RedisPatchSchedule
           end
         end
       end
