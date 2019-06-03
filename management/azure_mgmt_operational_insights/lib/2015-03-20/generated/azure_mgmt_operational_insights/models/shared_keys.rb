@@ -6,41 +6,41 @@
 module Azure::OperationalInsights::Mgmt::V2015_03_20
   module Models
     #
-    # Highlight details.
+    # The shared keys for a workspace.
     #
-    class SearchHighlight
+    class SharedKeys
 
       include MsRestAzure
 
-      # @return [String] The string that is put before a matched result.
-      attr_accessor :pre
+      # @return [String] The primary shared key of a workspace.
+      attr_accessor :primary_shared_key
 
-      # @return [String] The string that is put after a matched result.
-      attr_accessor :post
+      # @return [String] The secondary shared key of a workspace.
+      attr_accessor :secondary_shared_key
 
 
       #
-      # Mapper for SearchHighlight class as Ruby Hash.
+      # Mapper for SharedKeys class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SearchHighlight',
+          serialized_name: 'SharedKeys',
           type: {
             name: 'Composite',
-            class_name: 'SearchHighlight',
+            class_name: 'SharedKeys',
             model_properties: {
-              pre: {
+              primary_shared_key: {
                 required: false,
-                serialized_name: 'pre',
+                serialized_name: 'primarySharedKey',
                 type: {
                   name: 'String'
                 }
               },
-              post: {
+              secondary_shared_key: {
                 required: false,
-                serialized_name: 'post',
+                serialized_name: 'secondarySharedKey',
                 type: {
                   name: 'String'
                 }

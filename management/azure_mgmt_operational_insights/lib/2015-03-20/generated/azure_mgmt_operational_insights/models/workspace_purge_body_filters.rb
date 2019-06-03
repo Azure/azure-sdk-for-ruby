@@ -25,6 +25,10 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       # values.
       attr_accessor :value
 
+      # @return [String] When filtering over custom dimensions, this key will
+      # be used as the name of the custom dimension.
+      attr_accessor :key
+
 
       #
       # Mapper for WorkspacePurgeBodyFilters class as Ruby Hash.
@@ -32,7 +36,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkspacePurgeBodyFilters',
           type: {
@@ -40,7 +43,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'WorkspacePurgeBodyFilters',
             model_properties: {
               column: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'column',
                 type: {
@@ -48,7 +50,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               operator: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operator',
                 type: {
@@ -56,11 +57,17 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Object'
+                }
+              },
+              key: {
+                required: false,
+                serialized_name: 'key',
+                type: {
+                  name: 'String'
                 }
               }
             }

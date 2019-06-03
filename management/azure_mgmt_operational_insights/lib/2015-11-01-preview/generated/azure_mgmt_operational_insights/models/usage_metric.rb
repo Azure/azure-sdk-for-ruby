@@ -38,7 +38,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UsageMetric',
           type: {
@@ -46,7 +45,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'UsageMetric',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -55,7 +53,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -63,7 +60,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentValue',
                 type: {
@@ -71,7 +67,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'limit',
                 type: {
@@ -79,7 +74,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               next_reset_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextResetTime',
                 type: {
@@ -87,7 +81,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               quota_period: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'quotaPeriod',
                 type: {

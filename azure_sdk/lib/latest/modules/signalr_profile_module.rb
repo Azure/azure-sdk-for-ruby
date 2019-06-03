@@ -7,40 +7,40 @@ require 'azure_mgmt_signalr'
 module Azure::Profiles::Latest
   module Signalr
     module Mgmt
+      Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
       Operations = Azure::Signalr::Mgmt::V2018_03_01_preview::Operations
       SignalR = Azure::Signalr::Mgmt::V2018_03_01_preview::SignalR
-      Usages = Azure::Signalr::Mgmt::V2018_03_01_preview::Usages
 
       module Models
-        SignalRResourceList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList
-        OperationDisplay = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay
+        OperationList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
         Dimension = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
-        ServiceSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
+        MetricSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
+        TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
+        SignalRResourceList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList
         SignalRUsageList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageList
-        Operation = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
-        Resource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
-        NameAvailabilityParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
+        RegenerateKeyParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
         SignalRCreateOrUpdateProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateOrUpdateProperties
-        ResourceSku = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
         SignalRKeys = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys
         OperationProperties = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
-        RegenerateKeyParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
+        Resource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
         NameAvailability = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
         SignalRUsage = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
-        OperationList = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
-        SignalRUpdateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
-        MetricSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
         SignalRUsageName = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageName
-        TrackedResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
         SignalRResource = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
         SignalRCreateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
+        NameAvailabilityParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
         SignalRSkuTier = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
+        OperationDisplay = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay
+        Operation = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
+        SignalRUpdateParameters = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
         ProvisioningState = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ProvisioningState
         KeyType = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
+        ServiceSpecification = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
+        ResourceSku = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
       end
 
       class SignalrManagementClass
-        attr_reader :operations, :signal_r, :usages, :configurable, :base_url, :options, :model_classes
+        attr_reader :usages, :operations, :signal_r, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -50,9 +50,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @usages = @client_0.usages
           @operations = @client_0.operations
           @signal_r = @client_0.signal_r
-          @usages = @client_0.usages
 
           @model_classes = ModelClasses.new
         end
@@ -71,35 +71,29 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def signal_rresource_list
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList
-          end
-          def operation_display
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay
+          def operation_list
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
           end
           def dimension
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Dimension
           end
-          def service_specification
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
+          def metric_specification
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
+          end
+          def tracked_resource
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
+          end
+          def signal_rresource_list
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList
           end
           def signal_rusage_list
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageList
           end
-          def operation
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
-          end
-          def resource
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
-          end
-          def name_availability_parameters
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
+          def regenerate_key_parameters
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
           end
           def signal_rcreate_or_update_properties
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateOrUpdateProperties
-          end
-          def resource_sku
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
           end
           def signal_rkeys
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys
@@ -107,8 +101,8 @@ module Azure::Profiles::Latest
           def operation_properties
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationProperties
           end
-          def regenerate_key_parameters
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters
+          def resource
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Resource
           end
           def name_availability
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability
@@ -116,20 +110,8 @@ module Azure::Profiles::Latest
           def signal_rusage
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsage
           end
-          def operation_list
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList
-          end
-          def signal_rupdate_parameters
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
-          end
-          def metric_specification
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::MetricSpecification
-          end
           def signal_rusage_name
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUsageName
-          end
-          def tracked_resource
-            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::TrackedResource
           end
           def signal_rresource
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource
@@ -137,14 +119,32 @@ module Azure::Profiles::Latest
           def signal_rcreate_parameters
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters
           end
+          def name_availability_parameters
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters
+          end
           def signal_rsku_tier
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRSkuTier
+          end
+          def operation_display
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationDisplay
+          end
+          def operation
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::Operation
+          end
+          def signal_rupdate_parameters
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters
           end
           def provisioning_state
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ProvisioningState
           end
           def key_type
             Azure::Signalr::Mgmt::V2018_03_01_preview::Models::KeyType
+          end
+          def service_specification
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ServiceSpecification
+          end
+          def resource_sku
+            Azure::Signalr::Mgmt::V2018_03_01_preview::Models::ResourceSku
           end
         end
       end
