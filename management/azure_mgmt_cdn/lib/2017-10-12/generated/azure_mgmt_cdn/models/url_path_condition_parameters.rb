@@ -30,7 +30,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UrlPathConditionParameters',
           type: {
@@ -38,7 +37,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'UrlPathConditionParameters',
             model_properties: {
               odatatype: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: '@odata\\.type',
@@ -48,7 +46,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               path: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'path',
                 type: {
@@ -56,7 +53,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               match_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'matchType',
                 type: {

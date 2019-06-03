@@ -35,8 +35,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Array<Endpoint>] operation results.
     #
-    def list_by_profile(resource_group_name, profile_name, custom_headers:nil)
-      first_page = list_by_profile_as_lazy(resource_group_name, profile_name, custom_headers:custom_headers)
+    def list_by_profile(resource_group_name, profile_name, custom_headers = nil)
+      first_page = list_by_profile_as_lazy(resource_group_name, profile_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -52,8 +52,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_profile_with_http_info(resource_group_name, profile_name, custom_headers:nil)
-      list_by_profile_async(resource_group_name, profile_name, custom_headers:custom_headers).value!
+    def list_by_profile_with_http_info(resource_group_name, profile_name, custom_headers = nil)
+      list_by_profile_async(resource_group_name, profile_name, custom_headers).value!
     end
 
     #
@@ -68,18 +68,14 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_profile_async(resource_group_name, profile_name, custom_headers:nil)
+    def list_by_profile_async(resource_group_name, profile_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -139,8 +135,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Endpoint] operation results.
     #
-    def get(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      response = get_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      response = get_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -159,8 +155,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      get_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      get_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
     end
 
     #
@@ -178,11 +174,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
+    def get_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -190,7 +183,6 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -251,8 +243,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Endpoint] operation results.
     #
-    def create(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers:nil)
-      response = create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers:custom_headers).value!
+    def create(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers = nil)
+      response = create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -270,9 +262,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers:nil)
+    def create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers = nil)
       # Send request
-      promise = begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers:custom_headers)
+      promise = begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -308,8 +300,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Endpoint] operation results.
     #
-    def update(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers:nil)
-      response = update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers:custom_headers).value!
+    def update(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers = nil)
+      response = update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -328,9 +320,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers:nil)
+    def update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers = nil)
       # Send request
-      promise = begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers:custom_headers)
+      promise = begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -359,8 +351,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      response = delete_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      response = delete_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
       nil
     end
 
@@ -377,9 +369,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
+    def delete_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -407,8 +399,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Endpoint] operation results.
     #
-    def start(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      response = start_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def start(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      response = start_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -425,9 +417,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def start_async(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
+    def start_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       # Send request
-      promise = begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers)
+      promise = begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -457,8 +449,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Endpoint] operation results.
     #
-    def stop(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      response = stop_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def stop(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      response = stop_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -475,9 +467,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def stop_async(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
+    def stop_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       # Send request
-      promise = begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers)
+      promise = begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -509,8 +501,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def purge_content(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
-      response = purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:custom_headers).value!
+    def purge_content(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
+      response = purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers).value!
       nil
     end
 
@@ -531,9 +523,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
+    def purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
       # Send request
-      promise = begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:custom_headers)
+      promise = begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -557,13 +549,13 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def load_content(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
-      response = load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:custom_headers).value!
+    def load_content(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
+      response = load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers).value!
       nil
     end
 
@@ -575,7 +567,7 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -583,9 +575,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
+    def load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
       # Send request
-      promise = begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:custom_headers)
+      promise = begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -616,8 +608,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [ValidateCustomDomainOutput] operation results.
     #
-    def validate_custom_domain(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers:nil)
-      response = validate_custom_domain_async(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers:custom_headers).value!
+    def validate_custom_domain(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers = nil)
+      response = validate_custom_domain_async(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -638,8 +630,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def validate_custom_domain_with_http_info(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers:nil)
-      validate_custom_domain_async(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers:custom_headers).value!
+    def validate_custom_domain_with_http_info(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers = nil)
+      validate_custom_domain_async(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers).value!
     end
 
     #
@@ -659,11 +651,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def validate_custom_domain_async(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers:nil)
+    def validate_custom_domain_async(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'custom_domain_properties is nil' if custom_domain_properties.nil?
@@ -672,11 +661,12 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::ValidateCustomDomainInput.mapper()
@@ -739,8 +729,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Array<ResourceUsage>] operation results.
     #
-    def list_resource_usage(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      first_page = list_resource_usage_as_lazy(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers)
+    def list_resource_usage(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      first_page = list_resource_usage_as_lazy(resource_group_name, profile_name, endpoint_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -759,8 +749,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_resource_usage_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      list_resource_usage_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def list_resource_usage_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      list_resource_usage_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
     end
 
     #
@@ -778,11 +768,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_resource_usage_async(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
+    def list_resource_usage_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -790,7 +777,6 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -851,8 +837,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Endpoint] operation results.
     #
-    def begin_create(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers:nil)
-      response = begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers:custom_headers).value!
+    def begin_create(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers = nil)
+      response = begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -872,8 +858,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers:nil)
-      begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers:custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers = nil)
+      begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers).value!
     end
 
     #
@@ -892,11 +878,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers:nil)
+    def begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
@@ -905,11 +888,12 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
@@ -997,8 +981,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Endpoint] operation results.
     #
-    def begin_update(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers:nil)
-      response = begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers:custom_headers).value!
+    def begin_update(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers = nil)
+      response = begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1022,8 +1006,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers:nil)
-      begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers:custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers = nil)
+      begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers).value!
     end
 
     #
@@ -1046,11 +1030,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers:nil)
+    def begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'endpoint_update_properties is nil' if endpoint_update_properties.nil?
@@ -1059,11 +1040,12 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::EndpointUpdateParameters.mapper()
@@ -1135,8 +1117,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
       nil
     end
 
@@ -1155,8 +1137,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
     end
 
     #
@@ -1174,11 +1156,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1186,7 +1165,6 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1235,8 +1213,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Endpoint] operation results.
     #
-    def begin_start(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      response = begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def begin_start(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      response = begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1254,8 +1232,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_start_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def begin_start_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
     end
 
     #
@@ -1272,11 +1250,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
+    def begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1284,7 +1259,6 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1353,8 +1327,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Endpoint] operation results.
     #
-    def begin_stop(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      response = begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def begin_stop(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      response = begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1372,8 +1346,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_stop_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def begin_stop_with_http_info(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
     end
 
     #
@@ -1390,11 +1364,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
+    def begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1402,7 +1373,6 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1474,8 +1444,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     # will be added to the HTTP request.
     #
     #
-    def begin_purge_content(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
-      response = begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:custom_headers).value!
+    def begin_purge_content(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
+      response = begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers).value!
       nil
     end
 
@@ -1497,8 +1467,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_purge_content_with_http_info(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
-      begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:custom_headers).value!
+    def begin_purge_content_with_http_info(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
+      begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers).value!
     end
 
     #
@@ -1519,11 +1489,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
+    def begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'content_file_paths is nil' if content_file_paths.nil?
@@ -1532,11 +1499,12 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::PurgeParameters.mapper()
@@ -1584,14 +1552,14 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_load_content(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
-      response = begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:custom_headers).value!
+    def begin_load_content(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
+      response = begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers).value!
       nil
     end
 
@@ -1605,15 +1573,15 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_load_content_with_http_info(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
-      begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:custom_headers).value!
+    def begin_load_content_with_http_info(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
+      begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers).value!
     end
 
     #
@@ -1626,18 +1594,15 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # loaded. Path should be a full URL, e.g. ‘/pictures/city.png' which loads a
     # single file
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers:nil)
+    def begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'content_file_paths is nil' if content_file_paths.nil?
@@ -1646,11 +1611,12 @@ module Azure::CDN::Mgmt::V2017_04_02
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::LoadParameters.mapper()
@@ -1698,8 +1664,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [EndpointListResult] operation results.
     #
-    def list_by_profile_next(next_page_link, custom_headers:nil)
-      response = list_by_profile_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_profile_next(next_page_link, custom_headers = nil)
+      response = list_by_profile_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1713,8 +1679,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_profile_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_profile_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_profile_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_profile_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1727,12 +1693,11 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_profile_next_async(next_page_link, custom_headers:nil)
+    def list_by_profile_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1787,8 +1752,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [ResourceUsageListResult] operation results.
     #
-    def list_resource_usage_next(next_page_link, custom_headers:nil)
-      response = list_resource_usage_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_resource_usage_next(next_page_link, custom_headers = nil)
+      response = list_resource_usage_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1803,8 +1768,8 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_resource_usage_next_with_http_info(next_page_link, custom_headers:nil)
-      list_resource_usage_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_resource_usage_next_with_http_info(next_page_link, custom_headers = nil)
+      list_resource_usage_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1818,12 +1783,11 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_resource_usage_next_async(next_page_link, custom_headers:nil)
+    def list_resource_usage_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1880,12 +1844,12 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @return [EndpointListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_profile_as_lazy(resource_group_name, profile_name, custom_headers:nil)
-      response = list_by_profile_async(resource_group_name, profile_name, custom_headers:custom_headers).value!
+    def list_by_profile_as_lazy(resource_group_name, profile_name, custom_headers = nil)
+      response = list_by_profile_async(resource_group_name, profile_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_profile_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_profile_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1907,12 +1871,12 @@ module Azure::CDN::Mgmt::V2017_04_02
     # @return [ResourceUsageListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_resource_usage_as_lazy(resource_group_name, profile_name, endpoint_name, custom_headers:nil)
-      response = list_resource_usage_async(resource_group_name, profile_name, endpoint_name, custom_headers:custom_headers).value!
+    def list_resource_usage_as_lazy(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
+      response = list_resource_usage_async(resource_group_name, profile_name, endpoint_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_resource_usage_next_async(next_page_link, custom_headers:custom_headers)
+          list_resource_usage_next_async(next_page_link, custom_headers)
         end
         page
       end
