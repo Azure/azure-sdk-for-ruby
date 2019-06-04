@@ -34,9 +34,9 @@ module Azure::Profiles::Latest
         State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
         OperationDisplay = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
         Operation = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
+        Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
         OperationListResult = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
         ProvisioningState = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
-        Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
         ResourceSku = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
       end
 
@@ -140,14 +140,14 @@ module Azure::Profiles::Latest
           def operation
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
           end
+          def status
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
+          end
           def operation_list_result
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationListResult
           end
           def provisioning_state
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ProvisioningState
-          end
-          def status
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
           end
           def resource_sku
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ResourceSku
