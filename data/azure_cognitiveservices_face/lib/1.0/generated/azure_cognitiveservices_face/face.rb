@@ -806,9 +806,6 @@ module Azure::CognitiveServices::Face::V1_0
     #
     # Detect human faces in an image, return face rectangles, and optionally with
     # faceIds, landmarks, and attributes.<br />
-    # * Optional parameters including faceId, landmarks, and attributes. Attributes
-    # include age, gender, headPose, smile, facialHair, glasses, emotion, hair,
-    # makeup, occlusion, accessories, blur, exposure and noise.
     # * No image will be stored. Only the extracted face feature will be stored on
     # server. The faceId is an identifier of the face feature and will be used in
     # [Face -
@@ -817,22 +814,40 @@ module Azure::CognitiveServices::Face::V1_0
     # Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a),
     # and [Face - Find
     # Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
-    # It will expire 24 hours after the detection call.
-    # * Higher face image quality means better detection and recognition precision.
-    # Please consider high-quality faces: frontal, clear, and face size is 200x200
-    # pixels (100 pixels between eyes) or bigger.
+    # The stored face feature(s) will expire and be deleted 24 hours after the
+    # original detection call.
+    # * Optional parameters include faceId, landmarks, and attributes. Attributes
+    # include age, gender, headPose, smile, facialHair, glasses, emotion, hair,
+    # makeup, occlusion, accessories, blur, exposure and noise. Some of the results
+    # returned for specific attributes may not be highly accurate.
     # * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed
     # image file size is from 1KB to 6MB.
-    # * Faces are detectable when its size is 36x36 to 4096x4096 pixels. If need to
-    # detect very small but clear faces, please try to enlarge the input image.
-    # * Up to 64 faces can be returned for an image. Faces are ranked by face
+    # * Up to 100 faces can be returned for an image. Faces are ranked by face
     # rectangle size from large to small.
-    # * Face detector prefer frontal and near-frontal faces. There are cases that
-    # faces may not be detected, e.g. exceptionally large face angles (head-pose)
-    # or being occluded, or wrong image orientation.
-    # * Attributes (age, gender, headPose, smile, facialHair, glasses, emotion,
-    # hair, makeup, occlusion, accessories, blur, exposure and noise) may not be
-    # perfectly accurate.
+    # * For optimal results when querying [Face -
+    # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239),
+    # [Face -
+    # Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a),
+    # and [Face - Find
+    # Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)
+    # ('returnFaceId' is true), please use faces that are: frontal, clear, and with
+    # a minimum size of 200x200 pixels (100 pixels between eyes).
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
+    #
     # * Different 'recognitionModel' values are provided. If follow-up operations
     # like Verify, Identify, Find Similar are needed, please specify the
     # recognition model with 'recognitionModel' parameter. The default value for
@@ -841,6 +856,15 @@ module Azure::CognitiveServices::Face::V1_0
     # detected faceIds will be associated with the specified recognition model.
     # More details, please refer to [How to specify a recognition
     # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'recognition_01': | The default recognition model for [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # All those faceIds created before 2019 March are bonded with this recognition
+    # model. |
+    # | 'recognition_02': | Recognition model released in 2019 March.
+    # 'recognition_02' is recommended since its overall accuracy is improved
+    # compared with 'recognition_01'. |
     #
     # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
@@ -861,22 +885,23 @@ module Azure::CognitiveServices::Face::V1_0
     # Possible values include: 'recognition_01', 'recognition_02'
     # @param return_recognition_model [Boolean] A value indicating whether the
     # operation should return 'recognitionModel' in response.
+    # @param detection_model [DetectionModel] The 'detectionModel' associated with
+    # the detected faceIds. Supported 'detectionModel' values include
+    # "detection_01" or "detection_02". Possible values include: 'detection_01',
+    # 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def detect_with_url(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
-      response = detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, custom_headers).value!
+    def detect_with_url(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, detection_model = nil, custom_headers = nil)
+      response = detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, detection_model, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Detect human faces in an image, return face rectangles, and optionally with
     # faceIds, landmarks, and attributes.<br />
-    # * Optional parameters including faceId, landmarks, and attributes. Attributes
-    # include age, gender, headPose, smile, facialHair, glasses, emotion, hair,
-    # makeup, occlusion, accessories, blur, exposure and noise.
     # * No image will be stored. Only the extracted face feature will be stored on
     # server. The faceId is an identifier of the face feature and will be used in
     # [Face -
@@ -885,22 +910,40 @@ module Azure::CognitiveServices::Face::V1_0
     # Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a),
     # and [Face - Find
     # Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
-    # It will expire 24 hours after the detection call.
-    # * Higher face image quality means better detection and recognition precision.
-    # Please consider high-quality faces: frontal, clear, and face size is 200x200
-    # pixels (100 pixels between eyes) or bigger.
+    # The stored face feature(s) will expire and be deleted 24 hours after the
+    # original detection call.
+    # * Optional parameters include faceId, landmarks, and attributes. Attributes
+    # include age, gender, headPose, smile, facialHair, glasses, emotion, hair,
+    # makeup, occlusion, accessories, blur, exposure and noise. Some of the results
+    # returned for specific attributes may not be highly accurate.
     # * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed
     # image file size is from 1KB to 6MB.
-    # * Faces are detectable when its size is 36x36 to 4096x4096 pixels. If need to
-    # detect very small but clear faces, please try to enlarge the input image.
-    # * Up to 64 faces can be returned for an image. Faces are ranked by face
+    # * Up to 100 faces can be returned for an image. Faces are ranked by face
     # rectangle size from large to small.
-    # * Face detector prefer frontal and near-frontal faces. There are cases that
-    # faces may not be detected, e.g. exceptionally large face angles (head-pose)
-    # or being occluded, or wrong image orientation.
-    # * Attributes (age, gender, headPose, smile, facialHair, glasses, emotion,
-    # hair, makeup, occlusion, accessories, blur, exposure and noise) may not be
-    # perfectly accurate.
+    # * For optimal results when querying [Face -
+    # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239),
+    # [Face -
+    # Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a),
+    # and [Face - Find
+    # Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)
+    # ('returnFaceId' is true), please use faces that are: frontal, clear, and with
+    # a minimum size of 200x200 pixels (100 pixels between eyes).
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
+    #
     # * Different 'recognitionModel' values are provided. If follow-up operations
     # like Verify, Identify, Find Similar are needed, please specify the
     # recognition model with 'recognitionModel' parameter. The default value for
@@ -909,6 +952,15 @@ module Azure::CognitiveServices::Face::V1_0
     # detected faceIds will be associated with the specified recognition model.
     # More details, please refer to [How to specify a recognition
     # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'recognition_01': | The default recognition model for [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # All those faceIds created before 2019 March are bonded with this recognition
+    # model. |
+    # | 'recognition_02': | Recognition model released in 2019 March.
+    # 'recognition_02' is recommended since its overall accuracy is improved
+    # compared with 'recognition_01'. |
     #
     # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
@@ -929,21 +981,22 @@ module Azure::CognitiveServices::Face::V1_0
     # Possible values include: 'recognition_01', 'recognition_02'
     # @param return_recognition_model [Boolean] A value indicating whether the
     # operation should return 'recognitionModel' in response.
+    # @param detection_model [DetectionModel] The 'detectionModel' associated with
+    # the detected faceIds. Supported 'detectionModel' values include
+    # "detection_01" or "detection_02". Possible values include: 'detection_01',
+    # 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_with_url_with_http_info(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
-      detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, custom_headers).value!
+    def detect_with_url_with_http_info(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, detection_model = nil, custom_headers = nil)
+      detect_with_url_async(url, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, detection_model, custom_headers).value!
     end
 
     #
     # Detect human faces in an image, return face rectangles, and optionally with
     # faceIds, landmarks, and attributes.<br />
-    # * Optional parameters including faceId, landmarks, and attributes. Attributes
-    # include age, gender, headPose, smile, facialHair, glasses, emotion, hair,
-    # makeup, occlusion, accessories, blur, exposure and noise.
     # * No image will be stored. Only the extracted face feature will be stored on
     # server. The faceId is an identifier of the face feature and will be used in
     # [Face -
@@ -952,22 +1005,40 @@ module Azure::CognitiveServices::Face::V1_0
     # Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a),
     # and [Face - Find
     # Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
-    # It will expire 24 hours after the detection call.
-    # * Higher face image quality means better detection and recognition precision.
-    # Please consider high-quality faces: frontal, clear, and face size is 200x200
-    # pixels (100 pixels between eyes) or bigger.
+    # The stored face feature(s) will expire and be deleted 24 hours after the
+    # original detection call.
+    # * Optional parameters include faceId, landmarks, and attributes. Attributes
+    # include age, gender, headPose, smile, facialHair, glasses, emotion, hair,
+    # makeup, occlusion, accessories, blur, exposure and noise. Some of the results
+    # returned for specific attributes may not be highly accurate.
     # * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed
     # image file size is from 1KB to 6MB.
-    # * Faces are detectable when its size is 36x36 to 4096x4096 pixels. If need to
-    # detect very small but clear faces, please try to enlarge the input image.
-    # * Up to 64 faces can be returned for an image. Faces are ranked by face
+    # * Up to 100 faces can be returned for an image. Faces are ranked by face
     # rectangle size from large to small.
-    # * Face detector prefer frontal and near-frontal faces. There are cases that
-    # faces may not be detected, e.g. exceptionally large face angles (head-pose)
-    # or being occluded, or wrong image orientation.
-    # * Attributes (age, gender, headPose, smile, facialHair, glasses, emotion,
-    # hair, makeup, occlusion, accessories, blur, exposure and noise) may not be
-    # perfectly accurate.
+    # * For optimal results when querying [Face -
+    # Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239),
+    # [Face -
+    # Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a),
+    # and [Face - Find
+    # Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)
+    # ('returnFaceId' is true), please use faces that are: frontal, clear, and with
+    # a minimum size of 200x200 pixels (100 pixels between eyes).
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
+    #
     # * Different 'recognitionModel' values are provided. If follow-up operations
     # like Verify, Identify, Find Similar are needed, please specify the
     # recognition model with 'recognitionModel' parameter. The default value for
@@ -976,6 +1047,15 @@ module Azure::CognitiveServices::Face::V1_0
     # detected faceIds will be associated with the specified recognition model.
     # More details, please refer to [How to specify a recognition
     # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'recognition_01': | The default recognition model for [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # All those faceIds created before 2019 March are bonded with this recognition
+    # model. |
+    # | 'recognition_02': | Recognition model released in 2019 March.
+    # 'recognition_02' is recommended since its overall accuracy is improved
+    # compared with 'recognition_01'. |
     #
     # @param url [String] Publicly reachable URL of an image
     # @param return_face_id [Boolean] A value indicating whether the operation
@@ -996,12 +1076,16 @@ module Azure::CognitiveServices::Face::V1_0
     # Possible values include: 'recognition_01', 'recognition_02'
     # @param return_recognition_model [Boolean] A value indicating whether the
     # operation should return 'recognitionModel' in response.
+    # @param detection_model [DetectionModel] The 'detectionModel' associated with
+    # the detected faceIds. Supported 'detectionModel' values include
+    # "detection_01" or "detection_02". Possible values include: 'detection_01',
+    # 'detection_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_with_url_async(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
+    def detect_with_url_async(url, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, detection_model = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -1030,7 +1114,7 @@ module Azure::CognitiveServices::Face::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'returnFaceId' => return_face_id,'returnFaceLandmarks' => return_face_landmarks,'returnFaceAttributes' => return_face_attributes.nil? ? nil : return_face_attributes.join(','),'recognitionModel' => recognition_model,'returnRecognitionModel' => return_recognition_model},
+          query_params: {'returnFaceId' => return_face_id,'returnFaceLandmarks' => return_face_landmarks,'returnFaceAttributes' => return_face_attributes.nil? ? nil : return_face_attributes.join(','),'recognitionModel' => recognition_model,'returnRecognitionModel' => return_recognition_model,'detectionModel' => detection_model},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1239,13 +1323,17 @@ module Azure::CognitiveServices::Face::V1_0
     # Possible values include: 'recognition_01', 'recognition_02'
     # @param return_recognition_model [Boolean] A value indicating whether the
     # operation should return 'recognitionModel' in response.
+    # @param detection_model [DetectionModel] The 'detectionModel' associated with
+    # the detected faceIds. Supported 'detectionModel' values include
+    # "detection_01" or "detection_02". Possible values include: 'detection_01',
+    # 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def detect_with_stream(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
-      response = detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, custom_headers).value!
+    def detect_with_stream(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, detection_model = nil, custom_headers = nil)
+      response = detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, detection_model, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1272,13 +1360,17 @@ module Azure::CognitiveServices::Face::V1_0
     # Possible values include: 'recognition_01', 'recognition_02'
     # @param return_recognition_model [Boolean] A value indicating whether the
     # operation should return 'recognitionModel' in response.
+    # @param detection_model [DetectionModel] The 'detectionModel' associated with
+    # the detected faceIds. Supported 'detectionModel' values include
+    # "detection_01" or "detection_02". Possible values include: 'detection_01',
+    # 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def detect_with_stream_with_http_info(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
-      detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, custom_headers).value!
+    def detect_with_stream_with_http_info(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, detection_model = nil, custom_headers = nil)
+      detect_with_stream_async(image, return_face_id, return_face_landmarks, return_face_attributes, recognition_model, return_recognition_model, detection_model, custom_headers).value!
     end
 
     #
@@ -1304,12 +1396,16 @@ module Azure::CognitiveServices::Face::V1_0
     # Possible values include: 'recognition_01', 'recognition_02'
     # @param return_recognition_model [Boolean] A value indicating whether the
     # operation should return 'recognitionModel' in response.
+    # @param detection_model [DetectionModel] The 'detectionModel' associated with
+    # the detected faceIds. Supported 'detectionModel' values include
+    # "detection_01" or "detection_02". Possible values include: 'detection_01',
+    # 'detection_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def detect_with_stream_async(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, custom_headers = nil)
+    def detect_with_stream_async(image, return_face_id = true, return_face_landmarks = false, return_face_attributes = nil, recognition_model = nil, return_recognition_model = false, detection_model = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
@@ -1340,7 +1436,7 @@ module Azure::CognitiveServices::Face::V1_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'returnFaceId' => return_face_id,'returnFaceLandmarks' => return_face_landmarks,'returnFaceAttributes' => return_face_attributes.nil? ? nil : return_face_attributes.join(','),'recognitionModel' => recognition_model,'returnRecognitionModel' => return_recognition_model},
+          query_params: {'returnFaceId' => return_face_id,'returnFaceLandmarks' => return_face_landmarks,'returnFaceAttributes' => return_face_attributes.nil? ? nil : return_face_attributes.join(','),'recognitionModel' => recognition_model,'returnRecognitionModel' => return_recognition_model,'detectionModel' => detection_model},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

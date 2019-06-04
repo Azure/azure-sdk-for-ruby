@@ -16,8 +16,9 @@ module Azure::Profiles::Latest
       CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
 
       module Models
-        OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
         Certificate = Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
+        InboundNatPool = Azure::Batch::Mgmt::V2017_09_01::Models::InboundNatPool
+        OSDisk = Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
         WindowsConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::WindowsConfiguration
         ProxyResource = Azure::Batch::Mgmt::V2017_09_01::Models::ProxyResource
         FixedScaleSettings = Azure::Batch::Mgmt::V2017_09_01::Models::FixedScaleSettings
@@ -52,9 +53,9 @@ module Azure::Profiles::Latest
         Application = Azure::Batch::Mgmt::V2017_09_01::Models::Application
         AutoUserSpecification = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
         UserIdentity = Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
-        StartTask = Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
         CertificateReference = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateReference
         VirtualMachineConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
+        StartTask = Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
         ApplicationPackageReference = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
         ApplicationCreateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationCreateParameters
         ResizeError = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
@@ -94,7 +95,6 @@ module Azure::Profiles::Latest
         OperationListResult = Azure::Batch::Mgmt::V2017_09_01::Models::OperationListResult
         CheckNameAvailabilityResult = Azure::Batch::Mgmt::V2017_09_01::Models::CheckNameAvailabilityResult
         NameAvailabilityReason = Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
-        InboundNatPool = Azure::Batch::Mgmt::V2017_09_01::Models::InboundNatPool
       end
 
       class BatchManagementClass
@@ -133,11 +133,14 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def osdisk
-            Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
-          end
           def certificate
             Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
+          end
+          def inbound_nat_pool
+            Azure::Batch::Mgmt::V2017_09_01::Models::InboundNatPool
+          end
+          def osdisk
+            Azure::Batch::Mgmt::V2017_09_01::Models::OSDisk
           end
           def windows_configuration
             Azure::Batch::Mgmt::V2017_09_01::Models::WindowsConfiguration
@@ -241,14 +244,14 @@ module Azure::Profiles::Latest
           def user_identity
             Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
           end
-          def start_task
-            Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
-          end
           def certificate_reference
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateReference
           end
           def virtual_machine_configuration
             Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
+          end
+          def start_task
+            Azure::Batch::Mgmt::V2017_09_01::Models::StartTask
           end
           def application_package_reference
             Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
@@ -366,9 +369,6 @@ module Azure::Profiles::Latest
           end
           def name_availability_reason
             Azure::Batch::Mgmt::V2017_09_01::Models::NameAvailabilityReason
-          end
-          def inbound_nat_pool
-            Azure::Batch::Mgmt::V2017_09_01::Models::InboundNatPool
           end
         end
       end
