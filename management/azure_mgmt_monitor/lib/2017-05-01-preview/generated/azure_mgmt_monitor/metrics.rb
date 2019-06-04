@@ -41,7 +41,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     # @param filter [String] The **$filter** is used to reduce the set of metric
     # data returned.<br>Example:<br>Metric contains metadata A, B and C.<br>-
     # Return all time series of C where A = a1 and B = b1 or b2<br>**$filter=A eq
-    # ‘a1’ and B eq ‘b1’ or B eq ‘b2’ and C eq ‘*’**<br>- Invalid
+    # ‘a1’ and B eq ‘b1’ or B eq ��b2’ and C eq ‘*’**<br>- Invalid
     # variant:<br>**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘*’ or B =
     # ‘b2’**<br>This is invalid because the logical or operator cannot separate two
     # different metadata names.<br>- Return all time series where A = a1, B = b1
@@ -81,7 +81,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     # @param filter [String] The **$filter** is used to reduce the set of metric
     # data returned.<br>Example:<br>Metric contains metadata A, B and C.<br>-
     # Return all time series of C where A = a1 and B = b1 or b2<br>**$filter=A eq
-    # ‘a1’ and B eq ‘b1’ or B eq ‘b2’ and C eq ‘*’**<br>- Invalid
+    # ‘a1’ and B eq ‘b1’ or B eq ��b2’ and C eq ‘*’**<br>- Invalid
     # variant:<br>**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘*’ or B =
     # ‘b2’**<br>This is invalid because the logical or operator cannot separate two
     # different metadata names.<br>- Return all time series where A = a1, B = b1
@@ -120,7 +120,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     # @param filter [String] The **$filter** is used to reduce the set of metric
     # data returned.<br>Example:<br>Metric contains metadata A, B and C.<br>-
     # Return all time series of C where A = a1 and B = b1 or b2<br>**$filter=A eq
-    # ‘a1’ and B eq ‘b1’ or B eq ‘b2’ and C eq ‘*’**<br>- Invalid
+    # ‘a1’ and B eq ‘b1’ or B eq ��b2’ and C eq ‘*’**<br>- Invalid
     # variant:<br>**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘*’ or B =
     # ‘b2’**<br>This is invalid because the logical or operator cannot separate two
     # different metadata names.<br>- Return all time series where A = a1, B = b1
