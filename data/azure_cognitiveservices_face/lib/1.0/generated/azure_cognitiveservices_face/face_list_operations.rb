@@ -751,10 +751,12 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
-    # @param detection_model [DetectionModel] The 'detectionModel' associated with
-    # the detected faceIds. Supported 'detectionModel' values include
-    # "detection_01" or "detection_02". Possible values include: 'detection_01',
-    # 'detection_02'
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model' is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Create or
+    # (Large)PersonGroup - Create. The default value is 'detection_01', if another
+    # model is needed, please explicitly specify it. Possible values include:
+    # 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -817,10 +819,12 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
-    # @param detection_model [DetectionModel] The 'detectionModel' associated with
-    # the detected faceIds. Supported 'detectionModel' values include
-    # "detection_01" or "detection_02". Possible values include: 'detection_01',
-    # 'detection_02'
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model' is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Create or
+    # (Large)PersonGroup - Create. The default value is 'detection_01', if another
+    # model is needed, please explicitly specify it. Possible values include:
+    # 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -882,10 +886,12 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
-    # @param detection_model [DetectionModel] The 'detectionModel' associated with
-    # the detected faceIds. Supported 'detectionModel' values include
-    # "detection_01" or "detection_02". Possible values include: 'detection_01',
-    # 'detection_02'
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model' is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Create or
+    # (Large)PersonGroup - Create. The default value is 'detection_01', if another
+    # model is needed, please explicitly specify it. Possible values include:
+    # 'detection_01', 'detection_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -971,10 +977,12 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
-    # @param detection_model [DetectionModel] The 'detectionModel' associated with
-    # the detected faceIds. Supported 'detectionModel' values include
-    # "detection_01" or "detection_02". Possible values include: 'detection_01',
-    # 'detection_02'
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model' is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Create or
+    # (Large)PersonGroup - Create. The default value is 'detection_01', if another
+    # model is needed, please explicitly specify it. Possible values include:
+    # 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1000,10 +1008,12 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
-    # @param detection_model [DetectionModel] The 'detectionModel' associated with
-    # the detected faceIds. Supported 'detectionModel' values include
-    # "detection_01" or "detection_02". Possible values include: 'detection_01',
-    # 'detection_02'
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model' is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Create or
+    # (Large)PersonGroup - Create. The default value is 'detection_01', if another
+    # model is needed, please explicitly specify it. Possible values include:
+    # 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1028,10 +1038,12 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
-    # @param detection_model [DetectionModel] The 'detectionModel' associated with
-    # the detected faceIds. Supported 'detectionModel' values include
-    # "detection_01" or "detection_02". Possible values include: 'detection_01',
-    # 'detection_02'
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model' is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Create or
+    # (Large)PersonGroup - Create. The default value is 'detection_01', if another
+    # model is needed, please explicitly specify it. Possible values include:
+    # 'detection_01', 'detection_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
