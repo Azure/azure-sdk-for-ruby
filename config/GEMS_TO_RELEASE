@@ -1,8 +1,8 @@
 {
     "management": [
-        "azure_mgmt_resources",
-        "azure_mgmt_network",
-        "azure_mgmt_storage",
-        "azure_mgmt_compute"
+        "azure_mgmt_event_grid"
+    ],
+    "rollup": [
+        "azure_sdk"
     ]
 }
