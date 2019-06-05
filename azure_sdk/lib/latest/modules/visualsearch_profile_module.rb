@@ -9,6 +9,12 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
+      ImageTagRegion = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
+      KnowledgeRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
+      VisualSearchRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
+      Point2D = Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
+      NormalizedQuadrilateral = Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
+      ImageAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
       ImageKnowledge = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
       ImageEntityAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageEntityAction
       ImageModuleAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageModuleAction
@@ -20,8 +26,8 @@ module Azure::Profiles::Latest
       SafeSearch = Azure::CognitiveServices::VisualSearch::V1_0::Models::SafeSearch
       Query = Azure::CognitiveServices::VisualSearch::V1_0::Models::Query
       ImageObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
-      ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
       MediaObject = Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
+      ErrorResponse = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
       ErrorSubCode = Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
       Response = Azure::CognitiveServices::VisualSearch::V1_0::Models::Response
       Organization = Azure::CognitiveServices::VisualSearch::V1_0::Models::Organization
@@ -36,8 +42,8 @@ module Azure::Profiles::Latest
       ImagesModule = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImagesModule
       AggregateRating = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateRating
       Offer = Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
-      Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
       AggregateOffer = Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
+      Filters = Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
       Recipe = Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
@@ -50,12 +56,6 @@ module Azure::Profiles::Latest
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
       CropArea = Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
       ImageInfo = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
-      ImageTagRegion = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
-      KnowledgeRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
-      VisualSearchRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
-      Point2D = Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
-      NormalizedQuadrilateral = Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
-      ImageAction = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
     end
 
     class VisualSearchDataClass
@@ -88,6 +88,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def image_tag_region
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
+        end
+        def knowledge_request
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
+        end
+        def visual_search_request
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
+        end
+        def point2_d
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
+        end
+        def normalized_quadrilateral
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
+        end
+        def image_action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
+        end
         def image_knowledge
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageKnowledge
         end
@@ -121,11 +139,11 @@ module Azure::Profiles::Latest
         def image_object
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageObject
         end
-        def error_response
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
-        end
         def media_object
           Azure::CognitiveServices::VisualSearch::V1_0::Models::MediaObject
+        end
+        def error_response
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorResponse
         end
         def error_sub_code
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ErrorSubCode
@@ -169,11 +187,11 @@ module Azure::Profiles::Latest
         def offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Offer
         end
-        def filters
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
-        end
         def aggregate_offer
           Azure::CognitiveServices::VisualSearch::V1_0::Models::AggregateOffer
+        end
+        def filters
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Filters
         end
         def recipe
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Recipe
@@ -210,24 +228,6 @@ module Azure::Profiles::Latest
         end
         def image_info
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
-        end
-        def image_tag_region
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
-        end
-        def knowledge_request
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
-        end
-        def visual_search_request
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::VisualSearchRequest
-        end
-        def point2_d
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Point2D
-        end
-        def normalized_quadrilateral
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::NormalizedQuadrilateral
-        end
-        def image_action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageAction
         end
       end
     end

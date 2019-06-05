@@ -13,6 +13,7 @@ module Azure::Profiles::Latest
       Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
 
       module Models
+        KeyType = Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
         Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
         SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
         HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
@@ -23,10 +24,10 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::Relay::Mgmt::V2017_04_01::Models::OperationDisplay
         RelayNamespaceListResult = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespaceListResult
         CheckNameAvailability = Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailability
+        OperationListResult = Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
         HybridConnectionListResult = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnectionListResult
         WcfRelaysListResult = Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelaysListResult
         AuthorizationRuleListResult = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-        OperationListResult = Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
         AccessKeys = Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
         RegenerateAccessKeyParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
         ResourceNamespacePatch = Azure::Relay::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
@@ -39,7 +40,6 @@ module Azure::Profiles::Latest
         Operation = Azure::Relay::Mgmt::V2017_04_01::Models::Operation
         UnavailableReason = Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
         Relaytype = Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
-        KeyType = Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
       end
 
       class RelayManagementClass
@@ -75,6 +75,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def key_type
+            Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
+          end
           def sku
             Azure::Relay::Mgmt::V2017_04_01::Models::Sku
           end
@@ -105,6 +108,9 @@ module Azure::Profiles::Latest
           def check_name_availability
             Azure::Relay::Mgmt::V2017_04_01::Models::CheckNameAvailability
           end
+          def operation_list_result
+            Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
+          end
           def hybrid_connection_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnectionListResult
           end
@@ -113,9 +119,6 @@ module Azure::Profiles::Latest
           end
           def authorization_rule_list_result
             Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-          end
-          def operation_list_result
-            Azure::Relay::Mgmt::V2017_04_01::Models::OperationListResult
           end
           def access_keys
             Azure::Relay::Mgmt::V2017_04_01::Models::AccessKeys
@@ -152,9 +155,6 @@ module Azure::Profiles::Latest
           end
           def relaytype
             Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
-          end
-          def key_type
-            Azure::Relay::Mgmt::V2017_04_01::Models::KeyType
           end
         end
       end

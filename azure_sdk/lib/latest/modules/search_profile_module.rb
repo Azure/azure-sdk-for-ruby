@@ -13,14 +13,16 @@ module Azure::Profiles::Latest
       Services = Azure::Search::Mgmt::V2015_08_19::Services
 
       module Models
+        Identity = Azure::Search::Mgmt::V2015_08_19::Models::Identity
+        Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
         Sku = Azure::Search::Mgmt::V2015_08_19::Models::Sku
         OperationDisplay = Azure::Search::Mgmt::V2015_08_19::Models::OperationDisplay
         QueryKey = Azure::Search::Mgmt::V2015_08_19::Models::QueryKey
         Operation = Azure::Search::Mgmt::V2015_08_19::Models::Operation
-        AdminKeyResult = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
-        OperationListResult = Azure::Search::Mgmt::V2015_08_19::Models::OperationListResult
-        CheckNameAvailabilityInput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput
         SearchManagementRequestOptions = Azure::Search::Mgmt::V2015_08_19::Models::SearchManagementRequestOptions
+        OperationListResult = Azure::Search::Mgmt::V2015_08_19::Models::OperationListResult
+        AdminKeyResult = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
+        CheckNameAvailabilityInput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput
         CheckNameAvailabilityOutput = Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityOutput
         UnavailableNameReason = Azure::Search::Mgmt::V2015_08_19::Models::UnavailableNameReason
         HostingMode = Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
@@ -29,8 +31,6 @@ module Azure::Profiles::Latest
         SearchServiceStatus = Azure::Search::Mgmt::V2015_08_19::Models::SearchServiceStatus
         ProvisioningState = Azure::Search::Mgmt::V2015_08_19::Models::ProvisioningState
         SkuName = Azure::Search::Mgmt::V2015_08_19::Models::SkuName
-        Identity = Azure::Search::Mgmt::V2015_08_19::Models::Identity
-        Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
       end
 
       class SearchManagementClass
@@ -66,6 +66,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def identity
+            Azure::Search::Mgmt::V2015_08_19::Models::Identity
+          end
+          def resource
+            Azure::Search::Mgmt::V2015_08_19::Models::Resource
+          end
           def sku
             Azure::Search::Mgmt::V2015_08_19::Models::Sku
           end
@@ -78,17 +84,17 @@ module Azure::Profiles::Latest
           def operation
             Azure::Search::Mgmt::V2015_08_19::Models::Operation
           end
-          def admin_key_result
-            Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
+          def search_management_request_options
+            Azure::Search::Mgmt::V2015_08_19::Models::SearchManagementRequestOptions
           end
           def operation_list_result
             Azure::Search::Mgmt::V2015_08_19::Models::OperationListResult
           end
+          def admin_key_result
+            Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyResult
+          end
           def check_name_availability_input
             Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityInput
-          end
-          def search_management_request_options
-            Azure::Search::Mgmt::V2015_08_19::Models::SearchManagementRequestOptions
           end
           def check_name_availability_output
             Azure::Search::Mgmt::V2015_08_19::Models::CheckNameAvailabilityOutput
@@ -113,12 +119,6 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::Search::Mgmt::V2015_08_19::Models::SkuName
-          end
-          def identity
-            Azure::Search::Mgmt::V2015_08_19::Models::Identity
-          end
-          def resource
-            Azure::Search::Mgmt::V2015_08_19::Models::Resource
           end
         end
       end
