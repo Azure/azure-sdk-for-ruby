@@ -22,7 +22,6 @@ module Azure::Relay::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AuthorizationRule',
           type: {
@@ -30,7 +29,6 @@ module Azure::Relay::Mgmt::V2017_04_01
             class_name: 'AuthorizationRule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -39,7 +37,6 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,7 +45,6 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -57,7 +53,6 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               rights: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.rights',
                 constraints: {
@@ -66,7 +61,6 @@ module Azure::Relay::Mgmt::V2017_04_01
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AccessRightsElementType',
                       type: {
