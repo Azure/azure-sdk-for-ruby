@@ -25,7 +25,6 @@ module Azure::Redis::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImportRDBParameters',
           type: {
@@ -33,7 +32,6 @@ module Azure::Redis::Mgmt::V2017_10_01
             class_name: 'ImportRDBParameters',
             model_properties: {
               format: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'format',
                 type: {
@@ -41,13 +39,11 @@ module Azure::Redis::Mgmt::V2017_10_01
                 }
               },
               files: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'files',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

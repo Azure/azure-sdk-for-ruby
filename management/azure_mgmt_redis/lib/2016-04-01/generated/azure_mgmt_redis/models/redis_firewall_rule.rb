@@ -36,7 +36,6 @@ module Azure::Redis::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RedisFirewallRule',
           type: {
@@ -44,7 +43,6 @@ module Azure::Redis::Mgmt::V2016_04_01
             class_name: 'RedisFirewallRule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,7 +51,6 @@ module Azure::Redis::Mgmt::V2016_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,7 +59,6 @@ module Azure::Redis::Mgmt::V2016_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,7 +67,6 @@ module Azure::Redis::Mgmt::V2016_04_01
                 }
               },
               start_ip: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.startIP',
                 type: {
@@ -79,7 +74,6 @@ module Azure::Redis::Mgmt::V2016_04_01
                 }
               },
               end_ip: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.endIP',
                 type: {

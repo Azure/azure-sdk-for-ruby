@@ -57,7 +57,6 @@ module Azure::Redis::Mgmt::V2017_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RedisListResult',
           type: {
@@ -65,13 +64,11 @@ module Azure::Redis::Mgmt::V2017_02_01
             class_name: 'RedisListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RedisResourceElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',
