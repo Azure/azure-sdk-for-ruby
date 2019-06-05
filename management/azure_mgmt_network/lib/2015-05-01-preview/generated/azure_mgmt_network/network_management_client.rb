@@ -25,16 +25,15 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @return [String] Client Api Version.
     attr_reader :api_version
 
-    # @return [String] The preferred language for the response.
+    # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] The retry timeout in seconds for Long Running
-    # Operations. Default value is 30.
+    # @return [Integer] Gets or sets the retry timeout in seconds for Long
+    # Running Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] Whether a unique x-ms-client-request-id should be
-    # generated. When set to true a unique x-ms-client-request-id value is
-    # generated and included in each request. Default is true.
+    # @return [Boolean] When set to true a unique x-ms-client-request-id value
+    # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [ApplicationGateways] application_gateways
@@ -177,9 +176,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -200,8 +196,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [DnsNameAvailabilityResult] operation results.
     #
-    def check_dns_name_availability(location, domain_name_label:nil, custom_headers:nil)
-      response = check_dns_name_availability_async(location, domain_name_label:domain_name_label, custom_headers:custom_headers).value!
+    def check_dns_name_availability(location, domain_name_label = nil, custom_headers = nil)
+      response = check_dns_name_availability_async(location, domain_name_label, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -216,8 +212,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_dns_name_availability_with_http_info(location, domain_name_label:nil, custom_headers:nil)
-      check_dns_name_availability_async(location, domain_name_label:domain_name_label, custom_headers:custom_headers).value!
+    def check_dns_name_availability_with_http_info(location, domain_name_label = nil, custom_headers = nil)
+      check_dns_name_availability_async(location, domain_name_label, custom_headers).value!
     end
 
     #
@@ -231,14 +227,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_dns_name_availability_async(location, domain_name_label:nil, custom_headers:nil)
+    def check_dns_name_availability_async(location, domain_name_label = nil, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -290,7 +285,9 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.18.2"
+        if defined? Azure::Network::Mgmt::V2015_05_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Network::Mgmt::V2015_05_01_preview::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
