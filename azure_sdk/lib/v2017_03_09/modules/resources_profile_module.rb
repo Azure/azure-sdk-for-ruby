@@ -15,6 +15,9 @@ module Azure::Profiles::V2017_03_09
       DeploymentOperations = Azure::Resources::Mgmt::V2016_02_01::DeploymentOperations
 
       module Models
+        Plan = Azure::Resources::Mgmt::V2016_02_01::Models::Plan
+        ResourceIdentityType = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceIdentityType
+        Sku = Azure::Resources::Mgmt::V2016_02_01::Models::Sku
         Dependency = Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
         GenericResourceFilter = Azure::Resources::Mgmt::V2016_02_01::Models::GenericResourceFilter
         Identity = Azure::Resources::Mgmt::V2016_02_01::Models::Identity
@@ -58,9 +61,6 @@ module Azure::Profiles::V2017_03_09
         DeploymentMode = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentMode
         SubResource = Azure::Resources::Mgmt::V2016_02_01::Models::SubResource
         ResourceListResult = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceListResult
-        Plan = Azure::Resources::Mgmt::V2016_02_01::Models::Plan
-        ResourceIdentityType = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceIdentityType
-        Sku = Azure::Resources::Mgmt::V2016_02_01::Models::Sku
       end
 
       class ResourcesManagementClass
@@ -98,6 +98,15 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def plan
+            Azure::Resources::Mgmt::V2016_02_01::Models::Plan
+          end
+          def resource_identity_type
+            Azure::Resources::Mgmt::V2016_02_01::Models::ResourceIdentityType
+          end
+          def sku
+            Azure::Resources::Mgmt::V2016_02_01::Models::Sku
+          end
           def dependency
             Azure::Resources::Mgmt::V2016_02_01::Models::Dependency
           end
@@ -226,15 +235,6 @@ module Azure::Profiles::V2017_03_09
           end
           def resource_list_result
             Azure::Resources::Mgmt::V2016_02_01::Models::ResourceListResult
-          end
-          def plan
-            Azure::Resources::Mgmt::V2016_02_01::Models::Plan
-          end
-          def resource_identity_type
-            Azure::Resources::Mgmt::V2016_02_01::Models::ResourceIdentityType
-          end
-          def sku
-            Azure::Resources::Mgmt::V2016_02_01::Models::Sku
           end
         end
       end

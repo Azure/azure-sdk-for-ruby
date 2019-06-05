@@ -7,11 +7,6 @@ require 'azure_mgmt_compute'
 module Azure::Profiles::V2018_03_01
   module Compute
     module Mgmt
-      AvailabilitySets = Azure::Compute::Mgmt::V2017_03_30::AvailabilitySets
-      VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensionImages
-      VirtualMachineExtensions = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensions
-      VirtualMachines = Azure::Compute::Mgmt::V2017_03_30::VirtualMachines
-      VirtualMachineImages = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineImages
       UsageOperations = Azure::Compute::Mgmt::V2017_03_30::UsageOperations
       VirtualMachineSizes = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineSizes
       Images = Azure::Compute::Mgmt::V2017_03_30::Images
@@ -23,8 +18,32 @@ module Azure::Profiles::V2018_03_01
       Disks = Azure::Compute::Mgmt::V2017_03_30::Disks
       Snapshots = Azure::Compute::Mgmt::V2017_03_30::Snapshots
       VirtualMachineRunCommands = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineRunCommands
+      AvailabilitySets = Azure::Compute::Mgmt::V2017_03_30::AvailabilitySets
+      VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensionImages
+      VirtualMachineExtensions = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensions
+      VirtualMachines = Azure::Compute::Mgmt::V2017_03_30::VirtualMachines
+      VirtualMachineImages = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineImages
 
       module Models
+        ResourceSkusResult = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
+        VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
+        VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
+        Plan = Azure::Compute::Mgmt::V2017_03_30::Models::Plan
+        VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
+        SnapshotList = Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
+        InstanceViewStatus = Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
+        KeyVaultKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
+        Sku = Azure::Compute::Mgmt::V2017_03_30::Models::Sku
+        VirtualHardDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualHardDisk
+        KeyVaultAndKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndKeyReference
+        OSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::OSDisk
+        VirtualMachineScaleSetDataDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
+        StorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
+        VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetStorageProfile
+        WinRMListener = Azure::Compute::Mgmt::V2017_03_30::Models::WinRMListener
+        VirtualMachineScaleSetUpdateStorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateStorageProfile
+        WindowsConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::WindowsConfiguration
+        ApiEntityReference = Azure::Compute::Mgmt::V2017_03_30::Models::ApiEntityReference
         SshConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::SshConfiguration
         VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
         VaultCertificate = Azure::Compute::Mgmt::V2017_03_30::Models::VaultCertificate
@@ -175,29 +194,10 @@ module Azure::Profiles::V2018_03_01
         RunCommandInput = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandInput
         ResourceSku = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSku
         Usage = Azure::Compute::Mgmt::V2017_03_30::Models::Usage
-        ResourceSkusResult = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
-        VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
-        VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
-        Plan = Azure::Compute::Mgmt::V2017_03_30::Models::Plan
-        VirtualMachineScaleSetUpdateOSProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
-        SnapshotList = Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
-        InstanceViewStatus = Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
-        KeyVaultKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
-        Sku = Azure::Compute::Mgmt::V2017_03_30::Models::Sku
-        VirtualHardDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualHardDisk
-        KeyVaultAndKeyReference = Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndKeyReference
-        OSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::OSDisk
-        VirtualMachineScaleSetDataDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
-        StorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
-        VirtualMachineScaleSetStorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetStorageProfile
-        WinRMListener = Azure::Compute::Mgmt::V2017_03_30::Models::WinRMListener
-        VirtualMachineScaleSetUpdateStorageProfile = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateStorageProfile
-        WindowsConfiguration = Azure::Compute::Mgmt::V2017_03_30::Models::WindowsConfiguration
-        ApiEntityReference = Azure::Compute::Mgmt::V2017_03_30::Models::ApiEntityReference
       end
 
       class ComputeManagementClass
-        attr_reader :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :configurable, :base_url, :options, :model_classes
+        attr_reader :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -207,11 +207,6 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @availability_sets = @client_0.availability_sets
-          @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
-          @virtual_machine_extensions = @client_0.virtual_machine_extensions
-          @virtual_machines = @client_0.virtual_machines
-          @virtual_machine_images = @client_0.virtual_machine_images
           @usage_operations = @client_0.usage_operations
           @virtual_machine_sizes = @client_0.virtual_machine_sizes
           @images = @client_0.images
@@ -223,6 +218,11 @@ module Azure::Profiles::V2018_03_01
           @disks = @client_0.disks
           @snapshots = @client_0.snapshots
           @virtual_machine_run_commands = @client_0.virtual_machine_run_commands
+          @availability_sets = @client_0.availability_sets
+          @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
+          @virtual_machine_extensions = @client_0.virtual_machine_extensions
+          @virtual_machines = @client_0.virtual_machines
+          @virtual_machine_images = @client_0.virtual_machine_images
 
           @model_classes = ModelClasses.new
         end
@@ -241,6 +241,63 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def resource_skus_result
+            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
+          end
+          def virtual_machine_capture_parameters
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
+          end
+          def virtual_machine_scale_set_osprofile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
+          end
+          def plan
+            Azure::Compute::Mgmt::V2017_03_30::Models::Plan
+          end
+          def virtual_machine_scale_set_update_osprofile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
+          end
+          def snapshot_list
+            Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
+          end
+          def instance_view_status
+            Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
+          end
+          def key_vault_key_reference
+            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
+          end
+          def sku
+            Azure::Compute::Mgmt::V2017_03_30::Models::Sku
+          end
+          def virtual_hard_disk
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualHardDisk
+          end
+          def key_vault_and_key_reference
+            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndKeyReference
+          end
+          def osdisk
+            Azure::Compute::Mgmt::V2017_03_30::Models::OSDisk
+          end
+          def virtual_machine_scale_set_data_disk
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
+          end
+          def storage_profile
+            Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
+          end
+          def virtual_machine_scale_set_storage_profile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetStorageProfile
+          end
+          def win_rmlistener
+            Azure::Compute::Mgmt::V2017_03_30::Models::WinRMListener
+          end
+          def virtual_machine_scale_set_update_storage_profile
+            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateStorageProfile
+          end
+          def windows_configuration
+            Azure::Compute::Mgmt::V2017_03_30::Models::WindowsConfiguration
+          end
+          def api_entity_reference
+            Azure::Compute::Mgmt::V2017_03_30::Models::ApiEntityReference
+          end
           def ssh_configuration
             Azure::Compute::Mgmt::V2017_03_30::Models::SshConfiguration
           end
@@ -690,63 +747,6 @@ module Azure::Profiles::V2018_03_01
           end
           def usage
             Azure::Compute::Mgmt::V2017_03_30::Models::Usage
-          end
-          def resource_skus_result
-            Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkusResult
-          end
-          def virtual_machine_capture_parameters
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters
-          end
-          def virtual_machine_scale_set_osprofile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSProfile
-          end
-          def plan
-            Azure::Compute::Mgmt::V2017_03_30::Models::Plan
-          end
-          def virtual_machine_scale_set_update_osprofile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateOSProfile
-          end
-          def snapshot_list
-            Azure::Compute::Mgmt::V2017_03_30::Models::SnapshotList
-          end
-          def instance_view_status
-            Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewStatus
-          end
-          def key_vault_key_reference
-            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultKeyReference
-          end
-          def sku
-            Azure::Compute::Mgmt::V2017_03_30::Models::Sku
-          end
-          def virtual_hard_disk
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualHardDisk
-          end
-          def key_vault_and_key_reference
-            Azure::Compute::Mgmt::V2017_03_30::Models::KeyVaultAndKeyReference
-          end
-          def osdisk
-            Azure::Compute::Mgmt::V2017_03_30::Models::OSDisk
-          end
-          def virtual_machine_scale_set_data_disk
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetDataDisk
-          end
-          def storage_profile
-            Azure::Compute::Mgmt::V2017_03_30::Models::StorageProfile
-          end
-          def virtual_machine_scale_set_storage_profile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetStorageProfile
-          end
-          def win_rmlistener
-            Azure::Compute::Mgmt::V2017_03_30::Models::WinRMListener
-          end
-          def virtual_machine_scale_set_update_storage_profile
-            Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetUpdateStorageProfile
-          end
-          def windows_configuration
-            Azure::Compute::Mgmt::V2017_03_30::Models::WindowsConfiguration
-          end
-          def api_entity_reference
-            Azure::Compute::Mgmt::V2017_03_30::Models::ApiEntityReference
           end
         end
       end

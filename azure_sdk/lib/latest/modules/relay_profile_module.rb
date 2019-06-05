@@ -7,12 +7,20 @@ require 'azure_mgmt_relay'
 module Azure::Profiles::Latest
   module Relay
     module Mgmt
+      Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
       HybridConnections = Azure::Relay::Mgmt::V2017_04_01::HybridConnections
       Namespaces = Azure::Relay::Mgmt::V2017_04_01::Namespaces
       WCFRelays = Azure::Relay::Mgmt::V2017_04_01::WCFRelays
-      Operations = Azure::Relay::Mgmt::V2017_04_01::Operations
 
       module Models
+        RelayUpdateParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
+        AuthorizationRule = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
+        Relaytype = Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
+        ProvisioningStateEnum = Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
+        UnavailableReason = Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
+        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+        SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
+        HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
         AccessRights = Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
         ErrorResponse = Azure::Relay::Mgmt::V2017_04_01::Models::ErrorResponse
         TrackedResource = Azure::Relay::Mgmt::V2017_04_01::Models::TrackedResource
@@ -32,18 +40,10 @@ module Azure::Profiles::Latest
         ResourceNamespacePatch = Azure::Relay::Mgmt::V2017_04_01::Models::ResourceNamespacePatch
         WcfRelay = Azure::Relay::Mgmt::V2017_04_01::Models::WcfRelay
         RelayNamespace = Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
-        RelayUpdateParameters = Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
-        AuthorizationRule = Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
-        Relaytype = Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
-        ProvisioningStateEnum = Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
-        UnavailableReason = Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
-        Sku = Azure::Relay::Mgmt::V2017_04_01::Models::Sku
-        SkuTier = Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
-        HybridConnection = Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
       end
 
       class RelayManagementClass
-        attr_reader :hybrid_connections, :namespaces, :wcfrelays, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :hybrid_connections, :namespaces, :wcfrelays, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -53,10 +53,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @operations = @client_0.operations
           @hybrid_connections = @client_0.hybrid_connections
           @namespaces = @client_0.namespaces
           @wcfrelays = @client_0.wcfrelays
-          @operations = @client_0.operations
 
           @model_classes = ModelClasses.new
         end
@@ -75,6 +75,30 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def relay_update_parameters
+            Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
+          end
+          def authorization_rule
+            Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
+          end
+          def relaytype
+            Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
+          end
+          def provisioning_state_enum
+            Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
+          end
+          def unavailable_reason
+            Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
+          end
+          def sku
+            Azure::Relay::Mgmt::V2017_04_01::Models::Sku
+          end
+          def sku_tier
+            Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
+          end
+          def hybrid_connection
+            Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
+          end
           def access_rights
             Azure::Relay::Mgmt::V2017_04_01::Models::AccessRights
           end
@@ -131,30 +155,6 @@ module Azure::Profiles::Latest
           end
           def relay_namespace
             Azure::Relay::Mgmt::V2017_04_01::Models::RelayNamespace
-          end
-          def relay_update_parameters
-            Azure::Relay::Mgmt::V2017_04_01::Models::RelayUpdateParameters
-          end
-          def authorization_rule
-            Azure::Relay::Mgmt::V2017_04_01::Models::AuthorizationRule
-          end
-          def relaytype
-            Azure::Relay::Mgmt::V2017_04_01::Models::Relaytype
-          end
-          def provisioning_state_enum
-            Azure::Relay::Mgmt::V2017_04_01::Models::ProvisioningStateEnum
-          end
-          def unavailable_reason
-            Azure::Relay::Mgmt::V2017_04_01::Models::UnavailableReason
-          end
-          def sku
-            Azure::Relay::Mgmt::V2017_04_01::Models::Sku
-          end
-          def sku_tier
-            Azure::Relay::Mgmt::V2017_04_01::Models::SkuTier
-          end
-          def hybrid_connection
-            Azure::Relay::Mgmt::V2017_04_01::Models::HybridConnection
           end
         end
       end

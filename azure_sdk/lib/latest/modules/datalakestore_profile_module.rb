@@ -31,16 +31,16 @@ module Azure::Profiles::Latest
         VirtualNetworkRuleListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::VirtualNetworkRuleListResult
         CheckNameAvailabilityParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
         UpdateTrustedIdProviderWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
-        DataLakeStoreAccountListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
-        CreateOrUpdateVirtualNetworkRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateVirtualNetworkRuleParameters
         UpdateDataLakeStoreAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
+        CreateOrUpdateVirtualNetworkRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateVirtualNetworkRuleParameters
+        TrustedIdProvider = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
         DataLakeStoreAccount = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
         DataLakeStoreAccountBasic = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountBasic
-        TrustedIdProvider = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
-        EncryptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
-        EncryptionProvisioningState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionProvisioningState
         EncryptionConfigType = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
+        DataLakeStoreAccountListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
+        EncryptionProvisioningState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionProvisioningState
         TrustedIdProviderState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
+        EncryptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
         DataLakeStoreAccountStatus = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
         DataLakeStoreAccountState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
         SubscriptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubscriptionState
@@ -147,14 +147,14 @@ module Azure::Profiles::Latest
           def update_trusted_id_provider_with_account_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
           end
-          def data_lake_store_account_list_result
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
+          def update_data_lake_store_account_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
           end
           def create_or_update_virtual_network_rule_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateVirtualNetworkRuleParameters
           end
-          def update_data_lake_store_account_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
+          def trusted_id_provider
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
           end
           def data_lake_store_account
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
@@ -162,20 +162,20 @@ module Azure::Profiles::Latest
           def data_lake_store_account_basic
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountBasic
           end
-          def trusted_id_provider
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
+          def encryption_config_type
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
           end
-          def encryption_state
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
+          def data_lake_store_account_list_result
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
           end
           def encryption_provisioning_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionProvisioningState
           end
-          def encryption_config_type
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
-          end
           def trusted_id_provider_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
+          end
+          def encryption_state
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
           end
           def data_lake_store_account_status
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
