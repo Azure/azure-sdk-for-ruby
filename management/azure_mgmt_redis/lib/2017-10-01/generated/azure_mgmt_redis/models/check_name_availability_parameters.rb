@@ -26,7 +26,6 @@ module Azure::Redis::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityParameters',
           type: {
@@ -34,7 +33,6 @@ module Azure::Redis::Mgmt::V2017_10_01
             class_name: 'CheckNameAvailabilityParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Redis::Mgmt::V2017_10_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {

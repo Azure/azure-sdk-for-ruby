@@ -23,7 +23,6 @@ module Azure::Redis::Mgmt::V2017_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RedisLinkedServerList',
           type: {
@@ -31,13 +30,11 @@ module Azure::Redis::Mgmt::V2017_02_01
             class_name: 'RedisLinkedServerList',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RedisLinkedServerElementType',
                       type: {
