@@ -28,7 +28,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # @return [Integer] The time scale of time stamps.
       attr_accessor :timescale
 
-      # @return [Boolean] The indicator of forcing exsiting of end time stamp.
+      # @return [Boolean] The indicator of forcing existing of end time stamp.
       attr_accessor :force_end_timestamp
 
 
