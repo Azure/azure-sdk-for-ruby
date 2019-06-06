@@ -35,7 +35,6 @@ module Azure::Search::Mgmt::V2015_08_19
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityOutput',
           type: {
@@ -43,7 +42,6 @@ module Azure::Search::Mgmt::V2015_08_19
             class_name: 'CheckNameAvailabilityOutput',
             model_properties: {
               is_name_available: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nameAvailable',
@@ -52,7 +50,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reason',
@@ -61,7 +58,6 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
