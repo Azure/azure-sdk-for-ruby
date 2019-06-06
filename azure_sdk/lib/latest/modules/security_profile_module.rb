@@ -14,6 +14,7 @@ module Azure::Profiles::Latest
       Compliances = Azure::Security::Mgmt::V2017_08_01_preview::Compliances
 
       module Models
+        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
         AutoProvisioningSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSettingList
         PricingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingList
         ComplianceSegment = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceSegment
@@ -29,7 +30,6 @@ module Azure::Profiles::Latest
         AlertsToAdmins = Azure::Security::Mgmt::V2017_08_01_preview::Models::AlertsToAdmins
         PricingTier = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingTier
         AutoProvision = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
-        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
       end
 
       class SecurityManagementClass
@@ -66,6 +66,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
+          end
           def auto_provisioning_setting_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSettingList
           end
@@ -110,9 +113,6 @@ module Azure::Profiles::Latest
           end
           def auto_provision
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvision
-          end
-          def resource
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
           end
         end
       end

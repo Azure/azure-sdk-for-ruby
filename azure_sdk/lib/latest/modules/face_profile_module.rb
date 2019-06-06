@@ -6,12 +6,13 @@ require 'azure_cognitiveservices_face'
 
 module Azure::Profiles::Latest
   module Face
-    Face = Azure::CognitiveServices::Face::V1_0::Face
     PersonGroupPerson = Azure::CognitiveServices::Face::V1_0::PersonGroupPerson
+    Face = Azure::CognitiveServices::Face::V1_0::Face
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
 
     module Models
+      Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
@@ -52,16 +53,15 @@ module Azure::Profiles::Latest
       AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
       BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
       HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
-      ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
-      Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
-      TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
+      ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
+      TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
     end
 
     class FaceDataClass
-      attr_reader :face, :person_group_person, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :person_group_person, :face, :person_group_operations, :face_list_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -71,8 +71,8 @@ module Azure::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @face = @client_0.face
         @person_group_person = @client_0.person_group_person
+        @face = @client_0.face
         @person_group_operations = @client_0.person_group_operations
         @face_list_operations = @client_0.face_list_operations
 
@@ -93,6 +93,9 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def gender
+          Azure::CognitiveServices::Face::V1_0::Models::Gender
+        end
         def apierror
           Azure::CognitiveServices::Face::V1_0::Models::APIError
         end
@@ -213,20 +216,17 @@ module Azure::Profiles::Latest
         def hair_color_type
           Azure::CognitiveServices::Face::V1_0::Models::HairColorType
         end
-        def exposure_level
-          Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
-        end
         def noise_level
           Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
         end
-        def gender
-          Azure::CognitiveServices::Face::V1_0::Models::Gender
+        def find_similar_match_mode
+          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
+        end
+        def exposure_level
+          Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
         end
         def training_status_type
           Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
-        end
-        def find_similar_match_mode
-          Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
