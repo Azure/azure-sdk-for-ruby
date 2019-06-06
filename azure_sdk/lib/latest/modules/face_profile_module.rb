@@ -10,16 +10,19 @@ module Azure::Profiles::Latest
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
     FaceListOperations = Azure::CognitiveServices::Face::V1_0::FaceListOperations
     LargePersonGroupPerson = Azure::CognitiveServices::Face::V1_0::LargePersonGroupPerson
+    Face = Azure::CognitiveServices::Face::V1_0::Face
     LargePersonGroupOperations = Azure::CognitiveServices::Face::V1_0::LargePersonGroupOperations
     LargeFaceListOperations = Azure::CognitiveServices::Face::V1_0::LargeFaceListOperations
     SnapshotOperations = Azure::CognitiveServices::Face::V1_0::SnapshotOperations
-    Face = Azure::CognitiveServices::Face::V1_0::Face
 
     module Models
+      OperationStatusType = Azure::CognitiveServices::Face::V1_0::Models::OperationStatusType
+      FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+      DetectionModel = Azure::CognitiveServices::Face::V1_0::Models::DetectionModel
       OperationStatus = Azure::CognitiveServices::Face::V1_0::Models::OperationStatus
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
-      FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
       Error = Azure::CognitiveServices::Face::V1_0::Models::Error
+      FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
       ImageUrl = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       IdentifyRequest = Azure::CognitiveServices::Face::V1_0::Models::IdentifyRequest
@@ -64,20 +67,18 @@ module Azure::Profiles::Latest
       GlassesType = Azure::CognitiveServices::Face::V1_0::Models::GlassesType
       HairColorType = Azure::CognitiveServices::Face::V1_0::Models::HairColorType
       AccessoryType = Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
-      Snapshot = Azure::CognitiveServices::Face::V1_0::Models::Snapshot
       BlurLevel = Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+      Snapshot = Azure::CognitiveServices::Face::V1_0::Models::Snapshot
       ExposureLevel = Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
       NoiseLevel = Azure::CognitiveServices::Face::V1_0::Models::NoiseLevel
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       SnapshotApplyMode = Azure::CognitiveServices::Face::V1_0::Models::SnapshotApplyMode
       SnapshotObjectType = Azure::CognitiveServices::Face::V1_0::Models::SnapshotObjectType
-      OperationStatusType = Azure::CognitiveServices::Face::V1_0::Models::OperationStatusType
-      FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
     end
 
     class FaceDataClass
-      attr_reader :person_group_person, :person_group_operations, :face_list_operations, :large_person_group_person, :large_person_group_operations, :large_face_list_operations, :snapshot_operations, :face, :configurable, :base_url, :options, :model_classes
+      attr_reader :person_group_person, :person_group_operations, :face_list_operations, :large_person_group_person, :face, :large_person_group_operations, :large_face_list_operations, :snapshot_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -91,10 +92,10 @@ module Azure::Profiles::Latest
         @person_group_operations = @client_0.person_group_operations
         @face_list_operations = @client_0.face_list_operations
         @large_person_group_person = @client_0.large_person_group_person
+        @face = @client_0.face
         @large_person_group_operations = @client_0.large_person_group_operations
         @large_face_list_operations = @client_0.large_face_list_operations
         @snapshot_operations = @client_0.snapshot_operations
-        @face = @client_0.face
 
         @model_classes = ModelClasses.new
       end
@@ -113,17 +114,26 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def operation_status_type
+          Azure::CognitiveServices::Face::V1_0::Models::OperationStatusType
+        end
+        def face_attribute_type
+          Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+        end
+        def detection_model
+          Azure::CognitiveServices::Face::V1_0::Models::DetectionModel
+        end
         def operation_status
           Azure::CognitiveServices::Face::V1_0::Models::OperationStatus
         end
         def apierror
           Azure::CognitiveServices::Face::V1_0::Models::APIError
         end
-        def face_rectangle
-          Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
-        end
         def error
           Azure::CognitiveServices::Face::V1_0::Models::Error
+        end
+        def face_rectangle
+          Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
         def image_url
           Azure::CognitiveServices::Face::V1_0::Models::ImageUrl
@@ -257,11 +267,11 @@ module Azure::Profiles::Latest
         def accessory_type
           Azure::CognitiveServices::Face::V1_0::Models::AccessoryType
         end
-        def snapshot
-          Azure::CognitiveServices::Face::V1_0::Models::Snapshot
-        end
         def blur_level
           Azure::CognitiveServices::Face::V1_0::Models::BlurLevel
+        end
+        def snapshot
+          Azure::CognitiveServices::Face::V1_0::Models::Snapshot
         end
         def exposure_level
           Azure::CognitiveServices::Face::V1_0::Models::ExposureLevel
@@ -280,12 +290,6 @@ module Azure::Profiles::Latest
         end
         def snapshot_object_type
           Azure::CognitiveServices::Face::V1_0::Models::SnapshotObjectType
-        end
-        def operation_status_type
-          Azure::CognitiveServices::Face::V1_0::Models::OperationStatusType
-        end
-        def face_attribute_type
-          Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
         end
       end
     end

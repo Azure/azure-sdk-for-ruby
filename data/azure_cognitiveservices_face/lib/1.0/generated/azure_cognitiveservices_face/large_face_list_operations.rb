@@ -1168,6 +1168,21 @@ module Azure::CognitiveServices::Face::V1_0
     # large occlusions will cause failures.
     # * Adding/deleting faces to/from a same face list are processed sequentially
     # and to/from different face lists are in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [LargeFaceList - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
     #
     # Quota:
     # * Free-tier subscription quota: 1,000 faces per large face list.
@@ -1184,13 +1199,19 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PersistedFace] operation results.
     #
-    def add_face_from_url(large_face_list_id, url, user_data = nil, target_face = nil, custom_headers = nil)
-      response = add_face_from_url_async(large_face_list_id, url, user_data, target_face, custom_headers).value!
+    def add_face_from_url(large_face_list_id, url, user_data = nil, target_face = nil, detection_model = nil, custom_headers = nil)
+      response = add_face_from_url_async(large_face_list_id, url, user_data, target_face, detection_model, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1221,6 +1242,21 @@ module Azure::CognitiveServices::Face::V1_0
     # large occlusions will cause failures.
     # * Adding/deleting faces to/from a same face list are processed sequentially
     # and to/from different face lists are in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [LargeFaceList - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
     #
     # Quota:
     # * Free-tier subscription quota: 1,000 faces per large face list.
@@ -1237,13 +1273,19 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_face_from_url_with_http_info(large_face_list_id, url, user_data = nil, target_face = nil, custom_headers = nil)
-      add_face_from_url_async(large_face_list_id, url, user_data, target_face, custom_headers).value!
+    def add_face_from_url_with_http_info(large_face_list_id, url, user_data = nil, target_face = nil, detection_model = nil, custom_headers = nil)
+      add_face_from_url_async(large_face_list_id, url, user_data, target_face, detection_model, custom_headers).value!
     end
 
     #
@@ -1273,6 +1315,21 @@ module Azure::CognitiveServices::Face::V1_0
     # large occlusions will cause failures.
     # * Adding/deleting faces to/from a same face list are processed sequentially
     # and to/from different face lists are in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [LargeFaceList - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
     #
     # Quota:
     # * Free-tier subscription quota: 1,000 faces per large face list.
@@ -1289,12 +1346,18 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_face_from_url_async(large_face_list_id, url, user_data = nil, target_face = nil, custom_headers = nil)
+    def add_face_from_url_async(large_face_list_id, url, user_data = nil, target_face = nil, detection_model = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'large_face_list_id is nil' if large_face_list_id.nil?
       fail ArgumentError, 'url is nil' if url.nil?
@@ -1325,7 +1388,7 @@ module Azure::CognitiveServices::Face::V1_0
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'largeFaceListId' => large_face_list_id},
-          query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(',')},
+          query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(','),'detectionModel' => detection_model},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1479,9 +1542,51 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Add a face to a large face list. The input face is specified as an image with
-    # a targetFace rectangle. It returns a persistedFaceId representing the added
-    # face, and persistedFaceId will not expire.
+    # Add a face to a specified large face list, up to 1,000,000 faces.
+    # <br /> To deal with an image contains multiple faces, input face can be
+    # specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [LargeFaceList Face
+    # -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a158c8ad2de3616c086f2d4)
+    # or [LargeFaceList -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a1580d5d2de3616c086f2cd)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # * Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed
+    # image file size is from 1KB to 6MB.
+    # * "targetFace" rectangle should contain one face. Zero or multiple faces will
+    # be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # * Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose, or
+    # large occlusions will cause failures.
+    # * Adding/deleting faces to/from a same face list are processed sequentially
+    # and to/from different face lists are in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [LargeFaceList - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
+    #
+    # Quota:
+    # * Free-tier subscription quota: 1,000 faces per large face list.
+    # * S0-tier subscription quota: 1,000,000 faces per large face list.
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
@@ -1494,20 +1599,68 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PersistedFace] operation results.
     #
-    def add_face_from_stream(large_face_list_id, image, user_data = nil, target_face = nil, custom_headers = nil)
-      response = add_face_from_stream_async(large_face_list_id, image, user_data, target_face, custom_headers).value!
+    def add_face_from_stream(large_face_list_id, image, user_data = nil, target_face = nil, detection_model = nil, custom_headers = nil)
+      response = add_face_from_stream_async(large_face_list_id, image, user_data, target_face, detection_model, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Add a face to a large face list. The input face is specified as an image with
-    # a targetFace rectangle. It returns a persistedFaceId representing the added
-    # face, and persistedFaceId will not expire.
+    # Add a face to a specified large face list, up to 1,000,000 faces.
+    # <br /> To deal with an image contains multiple faces, input face can be
+    # specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [LargeFaceList Face
+    # -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a158c8ad2de3616c086f2d4)
+    # or [LargeFaceList -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a1580d5d2de3616c086f2cd)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # * Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed
+    # image file size is from 1KB to 6MB.
+    # * "targetFace" rectangle should contain one face. Zero or multiple faces will
+    # be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # * Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose, or
+    # large occlusions will cause failures.
+    # * Adding/deleting faces to/from a same face list are processed sequentially
+    # and to/from different face lists are in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [LargeFaceList - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
+    #
+    # Quota:
+    # * Free-tier subscription quota: 1,000 faces per large face list.
+    # * S0-tier subscription quota: 1,000,000 faces per large face list.
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
@@ -1520,19 +1673,67 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_face_from_stream_with_http_info(large_face_list_id, image, user_data = nil, target_face = nil, custom_headers = nil)
-      add_face_from_stream_async(large_face_list_id, image, user_data, target_face, custom_headers).value!
+    def add_face_from_stream_with_http_info(large_face_list_id, image, user_data = nil, target_face = nil, detection_model = nil, custom_headers = nil)
+      add_face_from_stream_async(large_face_list_id, image, user_data, target_face, detection_model, custom_headers).value!
     end
 
     #
-    # Add a face to a large face list. The input face is specified as an image with
-    # a targetFace rectangle. It returns a persistedFaceId representing the added
-    # face, and persistedFaceId will not expire.
+    # Add a face to a specified large face list, up to 1,000,000 faces.
+    # <br /> To deal with an image contains multiple faces, input face can be
+    # specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [LargeFaceList Face
+    # -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a158c8ad2de3616c086f2d4)
+    # or [LargeFaceList -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a1580d5d2de3616c086f2cd)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # * Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed
+    # image file size is from 1KB to 6MB.
+    # * "targetFace" rectangle should contain one face. Zero or multiple faces will
+    # be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # * Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose, or
+    # large occlusions will cause failures.
+    # * Adding/deleting faces to/from a same face list are processed sequentially
+    # and to/from different face lists are in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [LargeFaceList - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
+    #
+    # Quota:
+    # * Free-tier subscription quota: 1,000 faces per large face list.
+    # * S0-tier subscription quota: 1,000,000 faces per large face list.
     #
     # @param large_face_list_id [String] Id referencing a particular large face
     # list.
@@ -1545,12 +1746,18 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_face_from_stream_async(large_face_list_id, image, user_data = nil, target_face = nil, custom_headers = nil)
+    def add_face_from_stream_async(large_face_list_id, image, user_data = nil, target_face = nil, detection_model = nil, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'large_face_list_id is nil' if large_face_list_id.nil?
       fail ArgumentError, 'image is nil' if image.nil?
@@ -1583,7 +1790,7 @@ module Azure::CognitiveServices::Face::V1_0
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'largeFaceListId' => large_face_list_id},
-          query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(',')},
+          query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(','),'detectionModel' => detection_model},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
