@@ -22,7 +22,6 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrafficManagerUserMetricsKeyModel',
           type: {
@@ -30,7 +29,6 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
             class_name: 'TrafficManagerUserMetricsKeyModel',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -39,7 +37,6 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,7 +45,6 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -57,7 +53,6 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'key',
                 type: {

@@ -30,8 +30,8 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
     #
     # @return [TrafficManagerGeographicHierarchy] operation results.
     #
-    def get_default(custom_headers:nil)
-      response = get_default_async(custom_headers:custom_headers).value!
+    def get_default(custom_headers = nil)
+      response = get_default_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -44,8 +44,8 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_default_with_http_info(custom_headers:nil)
-      get_default_async(custom_headers:custom_headers).value!
+    def get_default_with_http_info(custom_headers = nil)
+      get_default_async(custom_headers).value!
     end
 
     #
@@ -57,12 +57,11 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_default_async(custom_headers:nil)
+    def get_default_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

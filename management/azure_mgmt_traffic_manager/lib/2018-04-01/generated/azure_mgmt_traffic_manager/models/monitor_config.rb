@@ -59,7 +59,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MonitorConfig',
           type: {
@@ -67,7 +66,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
             class_name: 'MonitorConfig',
             model_properties: {
               profile_monitor_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'profileMonitorStatus',
                 type: {
@@ -75,7 +73,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {
@@ -83,7 +80,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {
@@ -91,7 +87,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {
@@ -99,7 +94,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               interval_in_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'intervalInSeconds',
                 type: {
@@ -107,7 +101,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               timeout_in_seconds: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeoutInSeconds',
                 type: {
@@ -115,7 +108,6 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               tolerated_number_of_failures: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'toleratedNumberOfFailures',
                 type: {
@@ -123,13 +115,11 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               custom_headers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customHeaders',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MonitorConfigCustomHeadersItemElementType',
                       type: {
@@ -140,13 +130,11 @@ module Azure::TrafficManager::Mgmt::V2018_04_01
                 }
               },
               expected_status_code_ranges: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expectedStatusCodeRanges',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MonitorConfigExpectedStatusCodeRangesItemElementType',
                       type: {
