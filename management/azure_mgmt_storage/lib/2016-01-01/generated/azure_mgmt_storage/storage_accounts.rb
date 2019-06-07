@@ -33,8 +33,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [CheckNameAvailabilityResult] operation results.
     #
-    def check_name_availability(account_name, custom_headers:nil)
-      response = check_name_availability_async(account_name, custom_headers:custom_headers).value!
+    def check_name_availability(account_name, custom_headers = nil)
+      response = check_name_availability_async(account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(account_name, custom_headers:nil)
-      check_name_availability_async(account_name, custom_headers:custom_headers).value!
+    def check_name_availability_with_http_info(account_name, custom_headers = nil)
+      check_name_availability_async(account_name, custom_headers).value!
     end
 
     #
@@ -66,18 +66,19 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(account_name, custom_headers:nil)
+    def check_name_availability_async(account_name, custom_headers = nil)
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCheckNameAvailabilityParameters.mapper()
@@ -144,8 +145,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [StorageAccount] operation results.
     #
-    def create(resource_group_name, account_name, parameters, custom_headers:nil)
-      response = create_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
+    def create(resource_group_name, account_name, parameters, custom_headers = nil)
+      response = create_async(resource_group_name, account_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -163,9 +164,9 @@ module Azure::Storage::Mgmt::V2016_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, account_name, parameters, custom_headers:nil)
+    def create_async(resource_group_name, account_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_async(resource_group_name, account_name, parameters, custom_headers:custom_headers)
+      promise = begin_create_async(resource_group_name, account_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -193,8 +194,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, account_name, custom_headers:nil)
-      response = delete_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, account_name, custom_headers = nil)
+      response = delete_async(resource_group_name, account_name, custom_headers).value!
       nil
     end
 
@@ -211,8 +212,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      delete_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      delete_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
@@ -228,17 +229,14 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, account_name, custom_headers:nil)
+    def delete_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -288,8 +286,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [StorageAccount] operation results.
     #
-    def get_properties(resource_group_name, account_name, custom_headers:nil)
-      response = get_properties_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def get_properties(resource_group_name, account_name, custom_headers = nil)
+      response = get_properties_async(resource_group_name, account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -308,8 +306,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_properties_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      get_properties_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def get_properties_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      get_properties_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
@@ -327,17 +325,14 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_properties_async(resource_group_name, account_name, custom_headers:nil)
+    def get_properties_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -405,8 +400,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [StorageAccount] operation results.
     #
-    def update(resource_group_name, account_name, parameters, custom_headers:nil)
-      response = update_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
+    def update(resource_group_name, account_name, parameters, custom_headers = nil)
+      response = update_async(resource_group_name, account_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -433,8 +428,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, account_name, parameters, custom_headers:nil)
-      update_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, parameters, custom_headers = nil)
+      update_async(resource_group_name, account_name, parameters, custom_headers).value!
     end
 
     #
@@ -460,22 +455,21 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, account_name, parameters, custom_headers:nil)
+    def update_async(resource_group_name, account_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountUpdateParameters.mapper()
@@ -532,8 +526,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [StorageAccountListResult] operation results.
     #
-    def list(custom_headers:nil)
-      response = list_async(custom_headers:custom_headers).value!
+    def list(custom_headers = nil)
+      response = list_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -546,8 +540,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers:nil)
-      list_async(custom_headers:custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
@@ -559,13 +553,12 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers:nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -621,8 +614,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [StorageAccountListResult] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -637,8 +630,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -652,14 +645,13 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -717,8 +709,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [StorageAccountListKeysResult] operation results.
     #
-    def list_keys(resource_group_name, account_name, custom_headers:nil)
-      response = list_keys_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_keys(resource_group_name, account_name, custom_headers = nil)
+      response = list_keys_async(resource_group_name, account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -735,8 +727,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      list_keys_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_keys_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      list_keys_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
@@ -752,17 +744,14 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_async(resource_group_name, account_name, custom_headers:nil)
+    def list_keys_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -822,8 +811,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [StorageAccountListKeysResult] operation results.
     #
-    def regenerate_key(resource_group_name, account_name, regenerate_key, custom_headers:nil)
-      response = regenerate_key_async(resource_group_name, account_name, regenerate_key, custom_headers:custom_headers).value!
+    def regenerate_key(resource_group_name, account_name, regenerate_key, custom_headers = nil)
+      response = regenerate_key_async(resource_group_name, account_name, regenerate_key, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -842,8 +831,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def regenerate_key_with_http_info(resource_group_name, account_name, regenerate_key, custom_headers:nil)
-      regenerate_key_async(resource_group_name, account_name, regenerate_key, custom_headers:custom_headers).value!
+    def regenerate_key_with_http_info(resource_group_name, account_name, regenerate_key, custom_headers = nil)
+      regenerate_key_async(resource_group_name, account_name, regenerate_key, custom_headers).value!
     end
 
     #
@@ -861,22 +850,21 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def regenerate_key_async(resource_group_name, account_name, regenerate_key, custom_headers:nil)
+    def regenerate_key_async(resource_group_name, account_name, regenerate_key, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'regenerate_key is nil' if regenerate_key.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountRegenerateKeyParameters.mapper()
@@ -943,8 +931,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [StorageAccount] operation results.
     #
-    def begin_create(resource_group_name, account_name, parameters, custom_headers:nil)
-      response = begin_create_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
+    def begin_create(resource_group_name, account_name, parameters, custom_headers = nil)
+      response = begin_create_async(resource_group_name, account_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -967,8 +955,8 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, account_name, parameters, custom_headers:nil)
-      begin_create_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, account_name, parameters, custom_headers = nil)
+      begin_create_async(resource_group_name, account_name, parameters, custom_headers).value!
     end
 
     #
@@ -990,22 +978,21 @@ module Azure::Storage::Mgmt::V2016_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, account_name, parameters, custom_headers:nil)
+    def begin_create_async(resource_group_name, account_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
-      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Storage::Mgmt::V2016_01_01::Models::StorageAccountCreateParameters.mapper()

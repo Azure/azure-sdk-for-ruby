@@ -44,7 +44,6 @@ module Azure::Storage::Mgmt::V2018_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateHistoryProperty',
           type: {
@@ -52,7 +51,6 @@ module Azure::Storage::Mgmt::V2018_02_01
             class_name: 'UpdateHistoryProperty',
             model_properties: {
               update: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'update',
@@ -61,7 +59,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               immutability_period_since_creation_in_days: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'immutabilityPeriodSinceCreationInDays',
@@ -70,7 +67,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',
@@ -79,7 +75,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               object_identifier: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'objectIdentifier',
@@ -88,7 +83,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -97,7 +91,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               upn: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'upn',
