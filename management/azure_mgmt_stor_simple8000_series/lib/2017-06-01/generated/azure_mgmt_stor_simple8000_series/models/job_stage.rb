@@ -32,7 +32,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobStage',
           type: {
@@ -40,7 +39,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'JobStage',
             model_properties: {
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -48,7 +46,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               stage_status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'stageStatus',
                 type: {
@@ -57,7 +54,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               detail: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'detail',
                 type: {
@@ -65,7 +61,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               error_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorCode',
                 type: {

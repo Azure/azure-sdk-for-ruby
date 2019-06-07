@@ -54,7 +54,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Volume',
           type: {
@@ -62,7 +61,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Volume',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -71,7 +69,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -80,7 +77,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -89,7 +85,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -98,7 +93,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               size_in_bytes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.sizeInBytes',
                 type: {
@@ -106,7 +100,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.volumeType',
                 type: {
@@ -115,7 +108,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_container_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.volumeContainerId',
@@ -124,13 +116,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               access_control_record_ids: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.accessControlRecordIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -140,7 +130,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.volumeStatus',
                 type: {
@@ -149,7 +138,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               operation_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.operationStatus',
@@ -159,7 +147,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.backupStatus',
@@ -169,7 +156,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               monitoring_status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.monitoringStatus',
                 type: {
@@ -178,14 +164,12 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_policy_ids: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.backupPolicyIds',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

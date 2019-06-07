@@ -42,7 +42,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackupElement',
           type: {
@@ -50,7 +49,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'BackupElement',
             model_properties: {
               element_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'elementId',
                 type: {
@@ -58,7 +56,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               element_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'elementName',
                 type: {
@@ -66,7 +63,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               element_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'elementType',
                 type: {
@@ -74,7 +70,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               size_in_bytes: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sizeInBytes',
                 type: {
@@ -82,7 +77,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'volumeName',
                 type: {
@@ -90,7 +84,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_container_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'volumeContainerId',
                 type: {
@@ -98,7 +91,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeType',
                 type: {

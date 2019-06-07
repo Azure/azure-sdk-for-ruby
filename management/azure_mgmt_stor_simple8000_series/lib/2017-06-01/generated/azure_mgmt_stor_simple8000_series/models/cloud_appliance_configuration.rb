@@ -40,7 +40,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CloudApplianceConfiguration',
           type: {
@@ -48,7 +47,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'CloudApplianceConfiguration',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -57,7 +55,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -66,7 +63,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -75,7 +71,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -84,7 +79,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               model_number: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.modelNumber',
                 type: {
@@ -92,7 +86,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               cloud_platform: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.cloudPlatform',
                 type: {
@@ -100,7 +93,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               acs_configuration: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.acsConfiguration',
                 type: {
@@ -109,13 +101,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               supported_storage_account_types: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.supportedStorageAccountTypes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -125,13 +115,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               supported_regions: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.supportedRegions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -141,13 +129,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               supported_vm_types: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.supportedVmTypes',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -157,13 +143,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               supported_vm_images: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.supportedVmImages',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VmImageElementType',
                       type: {

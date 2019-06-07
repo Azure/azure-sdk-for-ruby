@@ -25,7 +25,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricName',
           type: {
@@ -33,7 +32,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'MetricName',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -41,7 +39,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               localized_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedValue',
                 type: {

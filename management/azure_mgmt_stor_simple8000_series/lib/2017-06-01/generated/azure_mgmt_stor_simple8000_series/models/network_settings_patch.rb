@@ -25,7 +25,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkSettingsPatch',
           type: {
@@ -33,7 +32,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'NetworkSettingsPatch',
             model_properties: {
               dns_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSettings',
                 type: {
@@ -42,7 +40,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               network_adapters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkAdapters',
                 type: {

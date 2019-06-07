@@ -66,7 +66,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Alert',
           type: {
@@ -74,7 +73,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Alert',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -83,7 +81,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -92,7 +89,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -101,7 +97,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -110,7 +105,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               title: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.title',
                 type: {
@@ -118,7 +112,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               scope: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.scope',
                 type: {
@@ -127,7 +120,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               alert_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.alertType',
                 type: {
@@ -135,7 +127,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               appeared_at_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.appearedAtTime',
                 type: {
@@ -143,7 +134,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               appeared_at_source_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.appearedAtSourceTime',
                 type: {
@@ -151,7 +141,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               cleared_at_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clearedAtTime',
                 type: {
@@ -159,7 +148,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               cleared_at_source_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clearedAtSourceTime',
                 type: {
@@ -167,7 +155,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               source: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.source',
                 type: {
@@ -176,7 +163,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               recommendation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.recommendation',
                 type: {
@@ -184,7 +170,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               resolution_reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resolutionReason',
                 type: {
@@ -192,7 +177,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               severity: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.severity',
                 type: {
@@ -201,7 +185,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.status',
                 type: {
@@ -210,7 +193,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               error_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.errorDetails',
                 type: {
@@ -219,13 +201,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               detailed_information: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.detailedInformation',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
