@@ -46,7 +46,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Sql/Server/Database',
           type: {
@@ -54,7 +53,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'AzureSqlDatabaseOutputDataSource',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -62,7 +60,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               server: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.server',
                 type: {
@@ -70,7 +67,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               database: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.database',
                 type: {
@@ -78,7 +74,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               user: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.user',
                 type: {
@@ -86,7 +81,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.password',
                 type: {
@@ -94,7 +88,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               table: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.table',
                 type: {

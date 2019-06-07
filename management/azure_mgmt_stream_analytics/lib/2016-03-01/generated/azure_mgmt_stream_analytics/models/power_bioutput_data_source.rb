@@ -60,7 +60,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PowerBI',
           type: {
@@ -68,7 +67,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'PowerBIOutputDataSource',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -76,7 +74,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               refresh_token: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.refreshToken',
                 type: {
@@ -84,7 +81,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               token_user_principal_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tokenUserPrincipalName',
                 type: {
@@ -92,7 +88,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               token_user_display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tokenUserDisplayName',
                 type: {
@@ -100,7 +95,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               dataset: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dataset',
                 type: {
@@ -108,7 +102,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               table: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.table',
                 type: {
@@ -116,7 +109,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               group_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.groupId',
                 type: {
@@ -124,7 +116,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               group_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.groupName',
                 type: {
