@@ -56,7 +56,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Storage/DocumentDB',
           type: {
@@ -64,7 +63,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'DocumentDbOutputDataSource',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -72,7 +70,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountId',
                 type: {
@@ -80,7 +77,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               account_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountKey',
                 type: {
@@ -88,7 +84,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               database: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.database',
                 type: {
@@ -96,7 +91,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               collection_name_pattern: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.collectionNamePattern',
                 type: {
@@ -104,7 +98,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               partition_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.partitionKey',
                 type: {
@@ -112,7 +105,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               document_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.documentId',
                 type: {

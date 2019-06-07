@@ -25,7 +25,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Diagnostics',
           type: {
@@ -33,14 +32,12 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'Diagnostics',
             model_properties: {
               conditions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'conditions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiagnosticConditionElementType',
                       type: {

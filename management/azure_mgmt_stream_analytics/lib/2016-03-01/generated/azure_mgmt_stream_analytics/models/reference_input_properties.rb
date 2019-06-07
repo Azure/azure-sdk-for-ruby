@@ -31,7 +31,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Reference',
           type: {
@@ -39,7 +38,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'ReferenceInputProperties',
             model_properties: {
               serialization: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serialization',
                 type: {
@@ -50,7 +48,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               diagnostics: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'diagnostics',
@@ -60,7 +57,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
@@ -69,7 +65,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -77,7 +72,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               datasource: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'datasource',
                 type: {

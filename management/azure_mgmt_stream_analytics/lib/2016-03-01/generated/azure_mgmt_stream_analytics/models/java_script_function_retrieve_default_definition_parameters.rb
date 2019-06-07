@@ -35,7 +35,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.StreamAnalytics/JavascriptUdf',
           type: {
@@ -43,7 +42,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'JavaScriptFunctionRetrieveDefaultDefinitionParameters',
             model_properties: {
               bindingType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'bindingType',
                 type: {
@@ -51,7 +49,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               script: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bindingRetrievalProperties.script',
                 type: {
@@ -59,7 +56,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               udf_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bindingRetrievalProperties.udfType',
                 type: {

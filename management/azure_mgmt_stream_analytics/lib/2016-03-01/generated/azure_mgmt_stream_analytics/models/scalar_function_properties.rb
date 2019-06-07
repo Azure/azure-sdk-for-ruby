@@ -38,7 +38,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Scalar',
           type: {
@@ -46,7 +45,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'ScalarFunctionProperties',
             model_properties: {
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
@@ -55,7 +53,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -63,13 +60,11 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               inputs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.inputs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FunctionInputElementType',
                       type: {
@@ -80,7 +75,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               output: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.output',
                 type: {
@@ -89,7 +83,6 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               binding: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.binding',
                 type: {
