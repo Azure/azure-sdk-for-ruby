@@ -9,12 +9,18 @@ module Azure::Profiles::Latest
     EntitiesOperations = Azure::CognitiveServices::EntitySearch::V1_0::EntitiesOperations
 
     module Models
+      ContractualRulesLicenseAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
+      ContractualRulesLinkAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
+      ContractualRulesMediaAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
+      ContractualRulesTextAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
+      FoodEstablishment = Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
+      LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
       Restaurant = Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
       Hotel = Azure::CognitiveServices::EntitySearch::V1_0::Models::Hotel
       EntityQueryScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityQueryScenario
       EntityScenario = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
-      Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
       AnswerType = Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+      CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
       ErrorResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
       Response = Azure::CognitiveServices::EntitySearch::V1_0::Models::Response
       SearchResponse = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResponse
@@ -22,10 +28,10 @@ module Azure::Profiles::Latest
       ResponseBase = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseBase
       Answer = Azure::CognitiveServices::EntitySearch::V1_0::Models::Answer
       SearchResultsAnswer = Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResultsAnswer
+      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       Thing = Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::EntitySearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
-      Error = Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
       ErrorCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
       SafeSearch = Azure::CognitiveServices::EntitySearch::V1_0::Models::SafeSearch
       ResponseFormat = Azure::CognitiveServices::EntitySearch::V1_0::Models::ResponseFormat
@@ -34,8 +40,8 @@ module Azure::Profiles::Latest
       ErrorSubCode = Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorSubCode
       Entities = Azure::CognitiveServices::EntitySearch::V1_0::Models::Entities
       ContractualRulesContractualRule = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
-      EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       EntitiesEntityPresentationInfo = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
+      EntityType = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
       Places = Azure::CognitiveServices::EntitySearch::V1_0::Models::Places
       PostalAddress = Azure::CognitiveServices::EntitySearch::V1_0::Models::PostalAddress
       Place = Azure::CognitiveServices::EntitySearch::V1_0::Models::Place
@@ -44,17 +50,11 @@ module Azure::Profiles::Latest
       ContractualRulesAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesAttribution
       LocalBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LocalBusiness
       TouristAttraction = Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
-      CivicStructure = Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
+      Airport = Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
       License = Azure::CognitiveServices::EntitySearch::V1_0::Models::License
       StructuredValue = Azure::CognitiveServices::EntitySearch::V1_0::Models::StructuredValue
       EntertainmentBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::EntertainmentBusiness
       MovieTheater = Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
-      ContractualRulesLicenseAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
-      ContractualRulesLinkAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
-      ContractualRulesMediaAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
-      ContractualRulesTextAttribution = Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
-      FoodEstablishment = Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
-      LodgingBusiness = Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
     end
 
     class EntitySearchDataClass
@@ -87,6 +87,24 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def contractual_rules_license_attribution
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
+        end
+        def contractual_rules_link_attribution
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
+        end
+        def contractual_rules_media_attribution
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
+        end
+        def contractual_rules_text_attribution
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
+        end
+        def food_establishment
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
+        end
+        def lodging_business
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
+        end
         def restaurant
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Restaurant
         end
@@ -99,11 +117,11 @@ module Azure::Profiles::Latest
         def entity_scenario
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityScenario
         end
-        def airport
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
-        end
         def answer_type
           Azure::CognitiveServices::EntitySearch::V1_0::Models::AnswerType
+        end
+        def civic_structure
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
         end
         def error_response
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorResponse
@@ -126,6 +144,9 @@ module Azure::Profiles::Latest
         def search_results_answer
           Azure::CognitiveServices::EntitySearch::V1_0::Models::SearchResultsAnswer
         end
+        def error
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
+        end
         def thing
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Thing
         end
@@ -134,9 +155,6 @@ module Azure::Profiles::Latest
         end
         def identifiable
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Identifiable
-        end
-        def error
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::Error
         end
         def error_code
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ErrorCode
@@ -162,11 +180,11 @@ module Azure::Profiles::Latest
         def contractual_rules_contractual_rule
           Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesContractualRule
         end
-        def entity_type
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
-        end
         def entities_entity_presentation_info
           Azure::CognitiveServices::EntitySearch::V1_0::Models::EntitiesEntityPresentationInfo
+        end
+        def entity_type
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::EntityType
         end
         def places
           Azure::CognitiveServices::EntitySearch::V1_0::Models::Places
@@ -192,8 +210,8 @@ module Azure::Profiles::Latest
         def tourist_attraction
           Azure::CognitiveServices::EntitySearch::V1_0::Models::TouristAttraction
         end
-        def civic_structure
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::CivicStructure
+        def airport
+          Azure::CognitiveServices::EntitySearch::V1_0::Models::Airport
         end
         def license
           Azure::CognitiveServices::EntitySearch::V1_0::Models::License
@@ -206,24 +224,6 @@ module Azure::Profiles::Latest
         end
         def movie_theater
           Azure::CognitiveServices::EntitySearch::V1_0::Models::MovieTheater
-        end
-        def contractual_rules_license_attribution
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLicenseAttribution
-        end
-        def contractual_rules_link_attribution
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesLinkAttribution
-        end
-        def contractual_rules_media_attribution
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesMediaAttribution
-        end
-        def contractual_rules_text_attribution
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::ContractualRulesTextAttribution
-        end
-        def food_establishment
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::FoodEstablishment
-        end
-        def lodging_business
-          Azure::CognitiveServices::EntitySearch::V1_0::Models::LodgingBusiness
         end
       end
     end
