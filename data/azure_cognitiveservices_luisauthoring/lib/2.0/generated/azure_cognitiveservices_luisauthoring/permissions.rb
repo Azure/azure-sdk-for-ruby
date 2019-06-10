@@ -320,11 +320,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Replaces the current users access list with the one sent in the body. If an
-    # empty list is sent, all access to other users will be removed.
+    # Replaces the current user access list with the new list sent in the body. If
+    # an empty list is sent, all access to other users will be removed.
     #
     # @param app_id The application ID.
-    # @param collaborators [CollaboratorsArray] A model containing a list of user's
+    # @param collaborators [CollaboratorsArray] A model containing a list of user
     # email addresses.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -337,11 +337,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Replaces the current users access list with the one sent in the body. If an
-    # empty list is sent, all access to other users will be removed.
+    # Replaces the current user access list with the new list sent in the body. If
+    # an empty list is sent, all access to other users will be removed.
     #
     # @param app_id The application ID.
-    # @param collaborators [CollaboratorsArray] A model containing a list of user's
+    # @param collaborators [CollaboratorsArray] A model containing a list of user
     # email addresses.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -353,11 +353,11 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Replaces the current users access list with the one sent in the body. If an
-    # empty list is sent, all access to other users will be removed.
+    # Replaces the current user access list with the new list sent in the body. If
+    # an empty list is sent, all access to other users will be removed.
     #
     # @param app_id The application ID.
-    # @param collaborators [CollaboratorsArray] A model containing a list of user's
+    # @param collaborators [CollaboratorsArray] A model containing a list of user
     # email addresses.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

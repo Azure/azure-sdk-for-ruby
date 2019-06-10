@@ -33,8 +33,8 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # upgrade operation.
       attr_accessor :message
 
-      # @return [TriggerType] The way the vault upgradation was triggered.
-      # Possible values include: 'UserTriggered', 'ForcedUpgrade'
+      # @return [TriggerType] The way the vault upgrade was triggered. Possible
+      # values include: 'UserTriggered', 'ForcedUpgrade'
       attr_accessor :trigger_type
 
       # @return [String] Resource ID of the upgraded vault.

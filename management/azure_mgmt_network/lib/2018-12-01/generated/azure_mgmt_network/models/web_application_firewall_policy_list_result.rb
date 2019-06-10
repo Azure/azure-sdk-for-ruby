@@ -8,7 +8,7 @@ module Azure::Network::Mgmt::V2018_12_01
     #
     # Result of the request to list WebApplicationFirewallPolicies. It contains
     # a list of WebApplicationFirewallPolicy objects and a URL link to get the
-    # the next set of results.
+    # next set of results.
     #
     class WebApplicationFirewallPolicyListResult
 

@@ -12,7 +12,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
 
       include MsRestAzure
 
-      # @return [SBSku] Porperties of Sku
+      # @return [SBSku] Properties of Sku
       attr_accessor :sku
 
       # @return [String] Provisioning state of the namespace.

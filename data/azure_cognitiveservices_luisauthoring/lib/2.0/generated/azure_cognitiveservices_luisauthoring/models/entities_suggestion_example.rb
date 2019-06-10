@@ -12,8 +12,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
 
       include MsRestAzure
 
-      # @return [String] The utterance. E.g.: what's the weather like in
-      # seattle?
+      # @return [String] The utterance. For example, "What's the weather like
+      # in seattle?"
       attr_accessor :text
 
       # @return [Array<String>] The utterance tokenized.

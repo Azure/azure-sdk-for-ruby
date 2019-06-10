@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Model object for updating an explicit list item.
+    # Model object for updating an explicit (exception) list item.
     #
     class ExplicitListItemUpdateObject
 

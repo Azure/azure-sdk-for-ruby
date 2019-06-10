@@ -14,7 +14,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
 
       # @return [Boolean] Setting your application as public allows other
       # people to use your application's endpoint using their own keys.
-      attr_accessor :public
+      attr_accessor :is_public
 
 
       #
@@ -30,7 +30,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
             name: 'Composite',
             class_name: 'ApplicationSettingUpdateObject',
             model_properties: {
-              public: {
+              is_public: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'public',

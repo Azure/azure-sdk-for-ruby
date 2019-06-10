@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Explicit list item
+    # Explicit (exception) list item
     #
     class ExplicitListItem
 

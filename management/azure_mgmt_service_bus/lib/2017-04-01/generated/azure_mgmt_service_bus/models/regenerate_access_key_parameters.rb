@@ -7,7 +7,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
   module Models
     #
     # Parameters supplied to the Regenerate Authorization Rule operation,
-    # specifies which key neeeds to be reset.
+    # specifies which key needs to be reset.
     #
     class RegenerateAccessKeyParameters
 

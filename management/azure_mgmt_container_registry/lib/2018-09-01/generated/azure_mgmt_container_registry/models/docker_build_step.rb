@@ -35,6 +35,10 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       # @return [String] The Docker file path relative to the source context.
       attr_accessor :docker_file_path
 
+      # @return [String] The name of the target build stage for the docker
+      # build.
+      attr_accessor :target
+
       # @return [Array<Argument>] The collection of override arguments to be
       # used when executing this build step.
       attr_accessor :arguments
@@ -133,6 +137,14 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'dockerFilePath',
+                type: {
+                  name: 'String'
+                }
+              },
+              target: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'target',
                 type: {
                   name: 'String'
                 }

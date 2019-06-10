@@ -18,6 +18,7 @@ require 'latest/modules/consumption_profile_module'
 require 'latest/modules/containerinstance_profile_module'
 require 'latest/modules/containerregistry_profile_module'
 require 'latest/modules/containerservice_profile_module'
+require 'latest/modules/cosmosdb_profile_module'
 require 'latest/modules/customerinsights_profile_module'
 require 'latest/modules/datalakeanalytics_profile_module'
 require 'latest/modules/datalakestore_profile_module'
@@ -29,6 +30,7 @@ require 'latest/modules/edgegateway_profile_module'
 require 'latest/modules/eventgrid_profile_module'
 require 'latest/modules/eventhub_profile_module'
 require 'latest/modules/features_profile_module'
+require 'latest/modules/hanaonazure_profile_module'
 require 'latest/modules/hdinsight_profile_module'
 require 'latest/modules/graphrbac_profile_module'
 require 'latest/modules/iotcentral_profile_module'
@@ -54,6 +56,7 @@ require 'latest/modules/notificationhubs_profile_module'
 require 'latest/modules/operationalinsights_profile_module'
 require 'latest/modules/policy_profile_module'
 require 'latest/modules/policyinsights_profile_module'
+require 'latest/modules/postgresql_profile_module'
 require 'latest/modules/powerbiembedded_profile_module'
 require 'latest/modules/privatedns_profile_module'
 require 'latest/modules/recoveryservices_profile_module'
@@ -61,12 +64,14 @@ require 'latest/modules/recoveryservicesbackup_profile_module'
 require 'latest/modules/recoveryservicessiterecovery_profile_module'
 require 'latest/modules/redis_profile_module'
 require 'latest/modules/relay_profile_module'
+require 'latest/modules/reservations_profile_module'
 require 'latest/modules/resourcegraph_profile_module'
 require 'latest/modules/resources_profile_module'
 require 'latest/modules/resourcesmanagement_profile_module'
 require 'latest/modules/scheduler_profile_module'
 require 'latest/modules/search_profile_module'
 require 'latest/modules/security_profile_module'
+require 'latest/modules/serialconsole_profile_module'
 require 'latest/modules/servicebus_profile_module'
 require 'latest/modules/servicefabric_profile_module'
 require 'latest/modules/signalr_profile_module'
@@ -89,6 +94,7 @@ require 'latest/modules/customvisiontraining_profile_module'
 require 'latest/modules/customvisionprediction_profile_module'
 require 'latest/modules/entitysearch_profile_module'
 require 'latest/modules/face_profile_module'
+require 'latest/modules/formrecognizer_profile_module'
 require 'latest/modules/imagesearch_profile_module'
 require 'latest/modules/localsearch_profile_module'
 require 'latest/modules/luisruntime_profile_module'
@@ -108,7 +114,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :advisor, :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :advisor, :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :postgresql, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -155,6 +161,7 @@ module Azure::Profiles::Latest
       @container_instance = ContainerInstanceAdapter.new(self, base_url, sdk_options)
       @container_registry = ContainerRegistryAdapter.new(self, base_url, sdk_options)
       @container_service = ContainerServiceAdapter.new(self, base_url, sdk_options)
+      @cosmosdb = CosmosdbAdapter.new(self, base_url, sdk_options)
       @customer_insights = CustomerInsightsAdapter.new(self, base_url, sdk_options)
       @data_lake_analytics = DataLakeAnalyticsAdapter.new(self, base_url, sdk_options)
       @data_lake_store = DataLakeStoreAdapter.new(self, base_url, sdk_options)
@@ -166,6 +173,7 @@ module Azure::Profiles::Latest
       @event_grid = EventGridAdapter.new(self, base_url, sdk_options)
       @event_hub = EventHubAdapter.new(self, base_url, sdk_options)
       @features = FeaturesAdapter.new(self, base_url, sdk_options)
+      @hanaonazure = HanaonazureAdapter.new(self, base_url, sdk_options)
       @hdinsight = HdinsightAdapter.new(self, base_url, sdk_options)
       @graph_rbac = GraphRbacAdapter.new(self, base_url, sdk_options)
       @iot_central = IotCentralAdapter.new(self, base_url, sdk_options)
@@ -191,6 +199,7 @@ module Azure::Profiles::Latest
       @operational_insights = OperationalInsightsAdapter.new(self, base_url, sdk_options)
       @policy = PolicyAdapter.new(self, base_url, sdk_options)
       @policy_insights = PolicyInsightsAdapter.new(self, base_url, sdk_options)
+      @postgresql = PostgresqlAdapter.new(self, base_url, sdk_options)
       @power_bi_embedded = PowerBiEmbeddedAdapter.new(self, base_url, sdk_options)
       @private_dns = PrivateDnsAdapter.new(self, base_url, sdk_options)
       @recovery_services = RecoveryServicesAdapter.new(self, base_url, sdk_options)
@@ -198,12 +207,14 @@ module Azure::Profiles::Latest
       @recovery_services_site_recovery = RecoveryServicesSiteRecoveryAdapter.new(self, base_url, sdk_options)
       @redis = RedisAdapter.new(self, base_url, sdk_options)
       @relay = RelayAdapter.new(self, base_url, sdk_options)
+      @reservations = ReservationsAdapter.new(self, base_url, sdk_options)
       @resource_graph = ResourceGraphAdapter.new(self, base_url, sdk_options)
       @resources = ResourcesAdapter.new(self, base_url, sdk_options)
       @resources_management = ResourcesManagementAdapter.new(self, base_url, sdk_options)
       @scheduler = SchedulerAdapter.new(self, base_url, sdk_options)
       @search = SearchAdapter.new(self, base_url, sdk_options)
       @security = SecurityAdapter.new(self, base_url, sdk_options)
+      @serialconsole = SerialconsoleAdapter.new(self, base_url, sdk_options)
       @service_bus = ServiceBusAdapter.new(self, base_url, sdk_options)
       @service_fabric = ServiceFabricAdapter.new(self, base_url, sdk_options)
       @signalr = SignalrAdapter.new(self, base_url, sdk_options)
@@ -226,6 +237,7 @@ module Azure::Profiles::Latest
       @customvisionprediction = CustomvisionpredictionAdapter.new(self, base_url, sdk_options)
       @entity_search = EntitySearchAdapter.new(self, base_url, sdk_options)
       @face = FaceAdapter.new(self, base_url, sdk_options)
+      @form_recognizer = FormRecognizerAdapter.new(self, base_url, sdk_options)
       @image_search = ImageSearchAdapter.new(self, base_url, sdk_options)
       @local_search = LocalSearchAdapter.new(self, base_url, sdk_options)
       @luis_runtime = LuisRuntimeAdapter.new(self, base_url, sdk_options)
@@ -359,6 +371,14 @@ module Azure::Profiles::Latest
       end
     end
 
+    class CosmosdbAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Cosmosdb::Mgmt::CosmosdbManagementClass.new(context, base_url, options)
+      end
+    end
+
     class CustomerInsightsAdapter
       attr_accessor :mgmt
 
@@ -445,6 +465,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::Features::Mgmt::FeaturesManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class HanaonazureAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Hanaonazure::Mgmt::HanaonazureManagementClass.new(context, base_url, options)
       end
     end
 
@@ -648,6 +676,14 @@ module Azure::Profiles::Latest
       end
     end
 
+    class PostgresqlAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Postgresql::Mgmt::PostgresqlManagementClass.new(context, base_url, options)
+      end
+    end
+
     class PowerBiEmbeddedAdapter
       attr_accessor :mgmt
 
@@ -704,6 +740,14 @@ module Azure::Profiles::Latest
       end
     end
 
+    class ReservationsAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Reservations::Mgmt::ReservationsManagementClass.new(context, base_url, options)
+      end
+    end
+
     class ResourceGraphAdapter
       attr_accessor :mgmt
 
@@ -749,6 +793,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::Security::Mgmt::SecurityManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class SerialconsoleAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Serialconsole::Mgmt::SerialconsoleManagementClass.new(context, base_url, options)
       end
     end
 
@@ -913,6 +965,13 @@ module Azure::Profiles::Latest
     end
 
     class FaceAdapter < Azure::Profiles::Latest::Face::FaceDataClass
+
+      def initialize(context, base_url, options)
+        super(context)
+      end
+    end
+
+    class FormRecognizerAdapter < Azure::Profiles::Latest::FormRecognizer::FormRecognizerDataClass
 
       def initialize(context, base_url, options)
         super(context)

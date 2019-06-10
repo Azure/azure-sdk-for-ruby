@@ -17,7 +17,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
       attr_accessor :client_certificatethumbprint
 
       # @return [Integer] Maximum number of retries while attempting resolve
-      # the parition.
+      # the partition.
       attr_accessor :max_partition_resolution_retries
 
       # @return [Array<String>] The cluster management endpoint.

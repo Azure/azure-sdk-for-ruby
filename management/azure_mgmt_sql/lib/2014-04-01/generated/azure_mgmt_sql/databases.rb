@@ -748,7 +748,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Gets a database inside of a recommented elastic pool.
+    # Gets a database inside of a recommended elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -768,7 +768,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Gets a database inside of a recommented elastic pool.
+    # Gets a database inside of a recommended elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -787,7 +787,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Gets a database inside of a recommented elastic pool.
+    # Gets a database inside of a recommended elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -857,7 +857,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Returns a list of databases inside a recommented elastic pool.
+    # Returns a list of databases inside a recommended elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -876,7 +876,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Returns a list of databases inside a recommented elastic pool.
+    # Returns a list of databases inside a recommended elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -894,7 +894,7 @@ module Azure::SQL::Mgmt::V2014_04_01
     end
 
     #
-    # Returns a list of databases inside a recommented elastic pool.
+    # Returns a list of databases inside a recommended elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource

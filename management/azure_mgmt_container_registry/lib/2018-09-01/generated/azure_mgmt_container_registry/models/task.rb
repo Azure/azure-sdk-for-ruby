@@ -42,6 +42,10 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       # for the task.
       attr_accessor :trigger
 
+      # @return [Credentials] The properties that describes a set of
+      # credentials that will be used when this run is invoked.
+      attr_accessor :credentials
+
 
       #
       # Mapper for Task class as Ruby Hash.
@@ -182,6 +186,15 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                 type: {
                   name: 'Composite',
                   class_name: 'TriggerProperties'
+                }
+              },
+              credentials: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.credentials',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Credentials'
                 }
               }
             }

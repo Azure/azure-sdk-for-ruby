@@ -5,25 +5,27 @@
 require 'azure_cognitiveservices_luisruntime'
 
 module Azure::LuisRuntime::Profiles::Latest
-  Prediction = Azure::CognitiveServices::LuisRuntime::V2_0::Prediction
+  PredictionOperations = Azure::CognitiveServices::LuisRuntime::V3_0_preview::PredictionOperations
 
   module Models
-    Sentiment = Azure::CognitiveServices::LuisRuntime::V2_0::Models::Sentiment
-    LuisResult = Azure::CognitiveServices::LuisRuntime::V2_0::Models::LuisResult
-    EntityModel = Azure::CognitiveServices::LuisRuntime::V2_0::Models::EntityModel
-    CompositeChildModel = Azure::CognitiveServices::LuisRuntime::V2_0::Models::CompositeChildModel
-    CompositeEntityModel = Azure::CognitiveServices::LuisRuntime::V2_0::Models::CompositeEntityModel
-    IntentModel = Azure::CognitiveServices::LuisRuntime::V2_0::Models::IntentModel
-    APIError = Azure::CognitiveServices::LuisRuntime::V2_0::Models::APIError
-    EntityWithScore = Azure::CognitiveServices::LuisRuntime::V2_0::Models::EntityWithScore
-    EntityWithResolution = Azure::CognitiveServices::LuisRuntime::V2_0::Models::EntityWithResolution
+    Intent = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::Intent
+    Sentiment = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::Sentiment
+    ExternalEntity = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::ExternalEntity
+    Prediction = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::Prediction
+    DynamicList = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::DynamicList
+    PredictionResponse = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionResponse
+    PredictionRequestOptions = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionRequestOptions
+    ErrorBody = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::ErrorBody
+    PredictionRequest = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionRequest
+    Error = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::Error
+    RequestList = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::RequestList
   end
 
   #
   # LuisRuntimeDataClass
   #
   class LuisRuntimeDataClass
-    attr_reader :prediction, :configurable, :base_url, :options, :model_classes
+    attr_reader :prediction_operations, :configurable, :base_url, :options, :model_classes
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -38,12 +40,12 @@ module Azure::LuisRuntime::Profiles::Latest
       @base_url = options[:base_url].nil? ? nil:options[:base_url]
       @options = options[:options].nil? ? nil:options[:options]
 
-      @client_0 = Azure::CognitiveServices::LuisRuntime::V2_0::LuisRuntimeClient.new(configurable.credentials, options)
+      @client_0 = Azure::CognitiveServices::LuisRuntime::V3_0_preview::LuisRuntimeClient.new(configurable.credentials, options)
       if(@client_0.respond_to?(:subscription_id))
         @client_0.subscription_id = configurable.subscription_id
       end
       add_telemetry(@client_0)
-      @prediction = @client_0.prediction
+      @prediction_operations = @client_0.prediction_operations
 
       @model_classes = ModelClasses.new
     end
@@ -64,32 +66,38 @@ module Azure::LuisRuntime::Profiles::Latest
   end
 
   class ModelClasses
+    def intent
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::Intent
+    end
     def sentiment
-      Azure::CognitiveServices::LuisRuntime::V2_0::Models::Sentiment
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::Sentiment
     end
-    def luis_result
-      Azure::CognitiveServices::LuisRuntime::V2_0::Models::LuisResult
+    def external_entity
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::ExternalEntity
     end
-    def entity_model
-      Azure::CognitiveServices::LuisRuntime::V2_0::Models::EntityModel
+    def prediction
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::Prediction
     end
-    def composite_child_model
-      Azure::CognitiveServices::LuisRuntime::V2_0::Models::CompositeChildModel
+    def dynamic_list
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::DynamicList
     end
-    def composite_entity_model
-      Azure::CognitiveServices::LuisRuntime::V2_0::Models::CompositeEntityModel
+    def prediction_response
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionResponse
     end
-    def intent_model
-      Azure::CognitiveServices::LuisRuntime::V2_0::Models::IntentModel
+    def prediction_request_options
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionRequestOptions
     end
-    def apierror
-      Azure::CognitiveServices::LuisRuntime::V2_0::Models::APIError
+    def error_body
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::ErrorBody
     end
-    def entity_with_score
-      Azure::CognitiveServices::LuisRuntime::V2_0::Models::EntityWithScore
+    def prediction_request
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionRequest
     end
-    def entity_with_resolution
-      Azure::CognitiveServices::LuisRuntime::V2_0::Models::EntityWithResolution
+    def error
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::Error
+    end
+    def request_list
+      Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::RequestList
     end
   end
 end

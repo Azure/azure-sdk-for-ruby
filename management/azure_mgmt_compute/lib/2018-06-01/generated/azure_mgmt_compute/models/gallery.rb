@@ -14,7 +14,7 @@ module Azure::Compute::Mgmt::V2018_06_01
       include MsRestAzure
 
       # @return [String] The description of this Shared Image Gallery resource.
-      # This property is updateable.
+      # This property is updatable.
       attr_accessor :description
 
       # @return [GalleryIdentifier]

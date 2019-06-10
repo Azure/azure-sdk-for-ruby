@@ -20,6 +20,9 @@ module Azure::IotHub::Mgmt::V2018_04_01
       # @return [RoutingMessage] Routing message
       attr_accessor :message
 
+      # @return [RoutingTwin] Routing Twin Reference
+      attr_accessor :twin
+
 
       #
       # Mapper for TestAllRoutesInput class as Ruby Hash.
@@ -49,6 +52,15 @@ module Azure::IotHub::Mgmt::V2018_04_01
                 type: {
                   name: 'Composite',
                   class_name: 'RoutingMessage'
+                }
+              },
+              twin: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'twin',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RoutingTwin'
                 }
               }
             }

@@ -13,13 +13,14 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       include MsRestAzure
 
       # @return [SecurityAlertPolicyState] Specifies the state of the policy,
-      # whether it is enabled or disabled. Possible values include: 'New',
-      # 'Enabled', 'Disabled'
+      # whether it is enabled or disabled or a policy has not been applied yet
+      # on the specific database. Possible values include: 'New', 'Enabled',
+      # 'Disabled'
       attr_accessor :state
 
       # @return [Array<String>] Specifies an array of alerts that are disabled.
       # Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
-      # Access_Anomaly
+      # Access_Anomaly, Data_Exfiltration, Unsafe_Action
       attr_accessor :disabled_alerts
 
       # @return [Array<String>] Specifies an array of e-mail addresses to which
@@ -42,6 +43,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # @return [Integer] Specifies the number of days to keep in the Threat
       # Detection audit logs.
       attr_accessor :retention_days
+
+      # @return [DateTime] Specifies the UTC creation time of the policy.
+      attr_accessor :creation_time
 
 
       #
@@ -155,6 +159,15 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 serialized_name: 'properties.retentionDays',
                 type: {
                   name: 'Number'
+                }
+              },
+              creation_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.creationTime',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

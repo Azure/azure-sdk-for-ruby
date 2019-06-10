@@ -22,7 +22,130 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     attr_reader :client
 
     #
-    # Creates a new phraselist feature.
+    # [DEPRECATED NOTICE: This operation will soon be removed] Gets all the pattern
+    # features.
+    #
+    # @param app_id The application ID.
+    # @param version_id [String] The version ID.
+    # @param skip [Integer] The number of entries to skip. Default value is 0.
+    # @param take [Integer] The number of entries to return. Maximum page size is
+    # 500. Default is 100.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array] operation results.
+    #
+    def list_application_version_pattern_features(app_id, version_id, skip:0, take:100, custom_headers:nil)
+      response = list_application_version_pattern_features_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # [DEPRECATED NOTICE: This operation will soon be removed] Gets all the pattern
+    # features.
+    #
+    # @param app_id The application ID.
+    # @param version_id [String] The version ID.
+    # @param skip [Integer] The number of entries to skip. Default value is 0.
+    # @param take [Integer] The number of entries to return. Maximum page size is
+    # 500. Default is 100.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_application_version_pattern_features_with_http_info(app_id, version_id, skip:0, take:100, custom_headers:nil)
+      list_application_version_pattern_features_async(app_id, version_id, skip:skip, take:take, custom_headers:custom_headers).value!
+    end
+
+    #
+    # [DEPRECATED NOTICE: This operation will soon be removed] Gets all the pattern
+    # features.
+    #
+    # @param app_id The application ID.
+    # @param version_id [String] The version ID.
+    # @param skip [Integer] The number of entries to skip. Default value is 0.
+    # @param take [Integer] The number of entries to return. Maximum page size is
+    # 500. Default is 100.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_application_version_pattern_features_async(app_id, version_id, skip:0, take:100, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
+      fail ArgumentError, 'app_id is nil' if app_id.nil?
+      fail ArgumentError, 'version_id is nil' if version_id.nil?
+      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
+      fail ArgumentError, "'take' should satisfy the constraint - 'InclusiveMaximum': '500'" if !take.nil? && take > 500
+      fail ArgumentError, "'take' should satisfy the constraint - 'InclusiveMinimum': '0'" if !take.nil? && take < 0
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'apps/{appId}/versions/{versionId}/patterns'
+
+      request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'appId' => app_id,'versionId' => version_id},
+          query_params: {'skip' => skip,'take' => take},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'PatternFeatureInfoElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'PatternFeatureInfo'
+                    }
+                }
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a new phraselist feature in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -40,7 +163,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Creates a new phraselist feature.
+    # Creates a new phraselist feature in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -57,7 +180,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Creates a new phraselist feature.
+    # Creates a new phraselist feature in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -137,7 +260,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the phraselist features.
+    # Gets all the phraselist features in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -155,7 +278,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the phraselist features.
+    # Gets all the phraselist features in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -172,7 +295,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the phraselist features.
+    # Gets all the phraselist features in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -257,7 +380,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the extraction features for the specified application version.
+    # Gets all the extraction phraselist and pattern features in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -275,7 +399,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the extraction features for the specified application version.
+    # Gets all the extraction phraselist and pattern features in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -292,7 +417,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets all the extraction features for the specified application version.
+    # Gets all the extraction phraselist and pattern features in a version of the
+    # application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -361,7 +487,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets phraselist feature info.
+    # Gets phraselist feature info in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -377,7 +503,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets phraselist feature info.
+    # Gets phraselist feature info in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -392,7 +518,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets phraselist feature info.
+    # Gets phraselist feature info in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -456,7 +582,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the phrases, the state and the name of the phraselist feature.
+    # Updates the phrases, the state and the name of the phraselist feature in a
+    # version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -476,7 +603,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the phrases, the state and the name of the phraselist feature.
+    # Updates the phrases, the state and the name of the phraselist feature in a
+    # version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -495,7 +623,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the phrases, the state and the name of the phraselist feature.
+    # Updates the phrases, the state and the name of the phraselist feature in a
+    # version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -570,7 +699,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a phraselist feature.
+    # Deletes a phraselist feature from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -586,7 +715,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a phraselist feature.
+    # Deletes a phraselist feature from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -601,7 +730,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes a phraselist feature.
+    # Deletes a phraselist feature from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.

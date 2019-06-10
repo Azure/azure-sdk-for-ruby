@@ -1,3 +1,59 @@
+## 2019.06.05 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_event_grid - v0.17.6
+    - azure_sdk - v0.26.1
+    
+## 2019.05.20 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_resources - v0.17.5
+    - azure_mgmt_network - v0.18.8
+    - azure_mgmt_storage - v0.17.10
+    - azure_mgmt_compute - v0.18.7
+    
+## 2019.05.16 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_cosmosdb - v0.17.0
+    - azure_mgmt_iot_hub - v0.17.3
+    - azure_event_grid - v0.18.0
+    - azure_sdk - v0.26.0
+    
+## 2019.05.02 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_container_service - v0.18.4
+    - azure_mgmt_hanaonazure - v0.17.0
+    - azure_mgmt_netapp - v0.17.3
+    - azure_mgmt_storage - v0.17.9
+    - azure_sdk - v0.25.3
+
+## 2019.05.01 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_recovery_services - v0.17.3
+    - azure_mgmt_sql - v0.17.3
+    - azure_mgmt_container_registry - v0.18.2
+    - azure_mgmt_cognitive_services - v0.18.2
+    - azure_mgmt_api_management - v0.18.3
+    - azure_cognitiveservices_luisauthoring - v0.17.2
+    - azure_cognitiveservices_luisruntime - v0.17.2
+    - azure_sdk - v0.25.2
+    
+## 2019.04.25 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_authorization - v0.18.4
+    - azure_mgmt_compute - v0.18.5
+    - azure_mgmt_dns - v0.17.4
+    - azure_mgmt_key_vault - v0.17.4
+    - azure_mgmt_locks - v0.17.3
+    - azure_mgmt_monitor - v0.17.4
+    - azure_mgmt_network - v0.18.7
+    - azure_mgmt_policy - v0.17.4
+    - azure_mgmt_resources - v0.17.4
+    - azure_mgmt_storage - v0.17.8
+    - azure_mgmt_subscriptions - v0.17.3
+    - azure_mgmt_web - v0.17.4
+    - azure_key_vault - v0.17.3
+    - azure_sdk - v0.25.1
+The changes include V2019_03_01 version of Azure Stack Profile. 
+
 ## 2019.04.01 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_storagesync -v0.17.0

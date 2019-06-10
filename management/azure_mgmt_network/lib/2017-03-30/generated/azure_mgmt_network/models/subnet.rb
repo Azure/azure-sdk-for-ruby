@@ -25,6 +25,9 @@ module Azure::Network::Mgmt::V2017_03_30
       # @return [RouteTable] The reference of the RouteTable resource.
       attr_accessor :route_table
 
+      # @return [SubResource] Nat gateway associated with this subnet.
+      attr_accessor :nat_gateway
+
       # @return [Array<ServiceEndpointPropertiesFormat>] An array of service
       # endpoints.
       attr_accessor :service_endpoints
@@ -134,6 +137,15 @@ module Azure::Network::Mgmt::V2017_03_30
                 type: {
                   name: 'Composite',
                   class_name: 'RouteTable'
+                }
+              },
+              nat_gateway: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.natGateway',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
                 }
               },
               service_endpoints: {

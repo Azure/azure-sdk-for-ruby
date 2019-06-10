@@ -6,13 +6,13 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Response when adding a labeled example.
+    # Response when adding a labeled example utterance.
     #
     class LabelExampleResponse
 
       include MsRestAzure
 
-      # @return [String] The sample's utterance.
+      # @return [String] The example utterance.
       attr_accessor :utterance_text
 
       # @return [Integer] The newly created sample ID.

@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Object model for updating one of the closed list's sublists.
+    # Object model for updating one of the list entity's sublists.
     #
     class WordListBaseUpdateObject
 
