@@ -13,6 +13,10 @@ module Azure::Profiles::Latest
       Operations = Azure::Billing::Mgmt::V2018_03_01_preview::Operations
 
       module Models
+        Resource = Azure::Billing::Mgmt::V2018_03_01_preview::Models::Resource
+        DownloadUrl = Azure::Billing::Mgmt::V2018_03_01_preview::Models::DownloadUrl
+        InvoicesListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
+        BillingPeriodsListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriodsListResult
         EnrollmentAccountListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::EnrollmentAccountListResult
         ErrorDetails = Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorDetails
         OperationDisplay = Azure::Billing::Mgmt::V2018_03_01_preview::Models::OperationDisplay
@@ -22,10 +26,6 @@ module Azure::Profiles::Latest
         EnrollmentAccount = Azure::Billing::Mgmt::V2018_03_01_preview::Models::EnrollmentAccount
         Invoice = Azure::Billing::Mgmt::V2018_03_01_preview::Models::Invoice
         ErrorResponse = Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorResponse
-        Resource = Azure::Billing::Mgmt::V2018_03_01_preview::Models::Resource
-        DownloadUrl = Azure::Billing::Mgmt::V2018_03_01_preview::Models::DownloadUrl
-        InvoicesListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
-        BillingPeriodsListResult = Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriodsListResult
       end
 
       class BillingManagementClass
@@ -61,6 +61,18 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource
+            Azure::Billing::Mgmt::V2018_03_01_preview::Models::Resource
+          end
+          def download_url
+            Azure::Billing::Mgmt::V2018_03_01_preview::Models::DownloadUrl
+          end
+          def invoices_list_result
+            Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
+          end
+          def billing_periods_list_result
+            Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriodsListResult
+          end
           def enrollment_account_list_result
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::EnrollmentAccountListResult
           end
@@ -87,18 +99,6 @@ module Azure::Profiles::Latest
           end
           def error_response
             Azure::Billing::Mgmt::V2018_03_01_preview::Models::ErrorResponse
-          end
-          def resource
-            Azure::Billing::Mgmt::V2018_03_01_preview::Models::Resource
-          end
-          def download_url
-            Azure::Billing::Mgmt::V2018_03_01_preview::Models::DownloadUrl
-          end
-          def invoices_list_result
-            Azure::Billing::Mgmt::V2018_03_01_preview::Models::InvoicesListResult
-          end
-          def billing_periods_list_result
-            Azure::Billing::Mgmt::V2018_03_01_preview::Models::BillingPeriodsListResult
           end
         end
       end
