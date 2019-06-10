@@ -23,7 +23,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationServiceSpecificationDefinition',
           type: {
@@ -31,13 +30,11 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'OperationServiceSpecificationDefinition',
             model_properties: {
               metric_specifications: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metricSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationMetricSpecificationDefinitionElementType',
                       type: {

@@ -27,7 +27,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrustPolicy',
           type: {
@@ -35,7 +34,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'TrustPolicy',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -43,7 +41,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

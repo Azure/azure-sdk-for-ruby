@@ -40,7 +40,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImportSource',
           type: {
@@ -48,7 +47,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'ImportSource',
             model_properties: {
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -56,7 +54,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               registry_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'registryUri',
                 type: {
@@ -64,7 +61,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               credentials: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'credentials',
                 type: {
@@ -73,7 +69,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               source_image: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceImage',
                 type: {

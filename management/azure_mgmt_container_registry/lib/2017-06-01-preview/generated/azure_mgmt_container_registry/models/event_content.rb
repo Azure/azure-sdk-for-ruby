@@ -44,7 +44,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventContent',
           type: {
@@ -52,7 +51,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'EventContent',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,7 +58,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timestamp',
                 type: {
@@ -68,7 +65,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               action: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'action',
                 type: {
@@ -76,7 +72,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -85,7 +80,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               request: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'request',
                 type: {
@@ -94,7 +88,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               actor: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'actor',
                 type: {
@@ -103,7 +96,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'source',
                 type: {

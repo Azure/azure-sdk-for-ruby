@@ -27,7 +27,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Event',
           type: {
@@ -35,7 +34,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'Event',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -43,7 +41,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               event_request_message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventRequestMessage',
                 type: {
@@ -52,7 +49,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               event_response_message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventResponseMessage',
                 type: {
