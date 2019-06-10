@@ -58,7 +58,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceListResult',
           type: {
@@ -66,13 +65,11 @@ module Azure::ContainerService::Mgmt::V2016_09_30
             class_name: 'ContainerServiceListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContainerServiceElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::ContainerService::Mgmt::V2016_09_30
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
