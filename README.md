@@ -4,7 +4,7 @@
 This project provides a Ruby package for Azure Resource Management (ARM).
 If you're looking for Azure Service Management (ASM) please refer to this [repo](https://github.com/Azure/azure-sdk-for-ruby/tree/asm)
 
-Additional info on Azure deployment models [https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/](https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/)
+Additional info on Azure deployment models [https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model`)
 
 ## Azure Resource Management (preview)
 * [Authorization](https://rubygems.org/gems/azure_mgmt_authorization) Azure Resource Manager role based authorization
@@ -14,8 +14,8 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [Commerce](https://rubygems.org/gems/azure_mgmt_commerce) Azure Commerce Usage aggregates & Rate card management
 * [Compute](https://rubygems.org/gems/azure_mgmt_compute) Virtual Machines, Images, Extensions, Availability Sets, etc...
 * [Consumption](https://rubygems.org/gems/azure_mgmt_consumption) Usage details, Operations, etc...
-* [Datalake Analytics](https://rubygems.org/gems/azure_mgmt_datalake_analytics) Azure Datalake Analytics Account, Catalog and Job management
-* [Datalake Store](https://rubygems.org/gems/azure_mgmt_datalake_store) Azure Datalake Store Account and FileSystem management
+* [Data Lake Analytics](https://rubygems.org/gems/azure_mgmt_datalake_analytics) Azure Data Lake Analytics Account, Catalog and Job management
+* [Data Lake Store](https://rubygems.org/gems/azure_mgmt_datalake_store) Azure Data Lake Store Account and FileSystem management
 * [DevTest Labs](https://rubygems.org/gems/azure_mgmt_devtestlabs) Azure DevTest Labs LabOperations, ArtifactSourceOperations, ArtifactOperations, CostOperations etc...
 * [DNS](https://rubygems.org/gems/azure_mgmt_dns) Azure DNS Record Set and Zone management
 * [Features](https://rubygems.org/gems/azure_mgmt_features) Feature Exposure Controls
@@ -32,9 +32,10 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [Network](https://rubygems.org/gems/azure_mgmt_network) Load Balancers, Network Gateways, Security Groups, etc...
 * [Notification Hubs](https://rubygems.org/gems/azure_mgmt_notification_hubs) Notification Hubs management
 * [Policy](https://rubygems.org/gems/azure_mgmt_policy) Policy Assignment & Policy definition operations
-* [Powerbi Embedded](https://rubygems.org/gems/azure_mgmt_powerbi_embedded) Azure Powerbi Embedded Workspace & WorkspaceCollection management
+* [Power BI Embedded](https://rubygems.org/gems/azure_mgmt_powerbi_embedded) Azure Power BI Embedded Workspace & WorkspaceCollection management
 * [Redis](https://rubygems.org/gems/azure_mgmt_redis) Redis resource management
 * [Resources](https://rubygems.org/gems/azure_mgmt_resources) Resource Groups, Resource Providers, Template Deployments, Operations, etc...
+* [Resource Graph](https://rubygems.org/gems/azure_mgmt_resourcegraph) Query Azure Resource Manager resources at scale
 * [Scheduler](https://rubygems.org/gems/azure_mgmt_scheduler) Manage scheduled jobs in Azure
 * [Search](https://rubygems.org/gems/azure_mgmt_search) Manage Search resources
 * [Server Management](https://rubygems.org/gems/azure_mgmt_server_management) Azure Server Management Service like node, gateway, powershell etc..

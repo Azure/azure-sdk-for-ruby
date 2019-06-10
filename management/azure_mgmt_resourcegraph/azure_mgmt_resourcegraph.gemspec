@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.metadata      = {
       'bug_tracker_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/issues',
       'changelog_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/blob/master/ChangeLog.md',
-      'documentation_uri' => 'https://azure.microsoft.com/en-us/develop/ruby/',
+      'documentation_uri' => 'https://docs.microsoft.com/azure/governance/resource-graph',
       'homepage_uri' => 'https://aka.ms/azure-sdk-for-ruby',
       'source_code_uri' => 'https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_resourcegraph'
   }
