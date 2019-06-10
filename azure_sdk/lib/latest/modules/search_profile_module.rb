@@ -13,6 +13,8 @@ module Azure::Profiles::Latest
       Services = Azure::Search::Mgmt::V2015_08_19::Services
 
       module Models
+        Identity = Azure::Search::Mgmt::V2015_08_19::Models::Identity
+        Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
         Sku = Azure::Search::Mgmt::V2015_08_19::Models::Sku
         OperationDisplay = Azure::Search::Mgmt::V2015_08_19::Models::OperationDisplay
         Operation = Azure::Search::Mgmt::V2015_08_19::Models::Operation
@@ -29,8 +31,6 @@ module Azure::Profiles::Latest
         HostingMode = Azure::Search::Mgmt::V2015_08_19::Models::HostingMode
         AdminKeyKind = Azure::Search::Mgmt::V2015_08_19::Models::AdminKeyKind
         SkuName = Azure::Search::Mgmt::V2015_08_19::Models::SkuName
-        Identity = Azure::Search::Mgmt::V2015_08_19::Models::Identity
-        Resource = Azure::Search::Mgmt::V2015_08_19::Models::Resource
       end
 
       class SearchManagementClass
@@ -66,6 +66,12 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def identity
+            Azure::Search::Mgmt::V2015_08_19::Models::Identity
+          end
+          def resource
+            Azure::Search::Mgmt::V2015_08_19::Models::Resource
+          end
           def sku
             Azure::Search::Mgmt::V2015_08_19::Models::Sku
           end
@@ -113,12 +119,6 @@ module Azure::Profiles::Latest
           end
           def sku_name
             Azure::Search::Mgmt::V2015_08_19::Models::SkuName
-          end
-          def identity
-            Azure::Search::Mgmt::V2015_08_19::Models::Identity
-          end
-          def resource
-            Azure::Search::Mgmt::V2015_08_19::Models::Resource
           end
         end
       end
