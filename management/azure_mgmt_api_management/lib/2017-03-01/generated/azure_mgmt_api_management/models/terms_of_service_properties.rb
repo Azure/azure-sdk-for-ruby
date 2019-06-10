@@ -18,7 +18,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
       # @return [Boolean] Display terms of service during a sign-up process.
       attr_accessor :enabled
 
-      # @return [Boolean] Ask user for concent.
+      # @return [Boolean] Ask user for consent.
       attr_accessor :consent_required
 
 

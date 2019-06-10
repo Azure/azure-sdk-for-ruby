@@ -456,7 +456,7 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     end
 
     #
-    # Deletes specific property from the the API Management service instance.
+    # Deletes specific property from the API Management service instance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -475,7 +475,7 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     end
 
     #
-    # Deletes specific property from the the API Management service instance.
+    # Deletes specific property from the API Management service instance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -493,7 +493,7 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
     end
 
     #
-    # Deletes specific property from the the API Management service instance.
+    # Deletes specific property from the API Management service instance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.

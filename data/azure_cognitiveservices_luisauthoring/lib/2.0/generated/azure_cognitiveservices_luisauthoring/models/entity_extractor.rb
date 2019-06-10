@@ -23,9 +23,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
 
       # @return [Enum] Possible values include: 'Entity Extractor',
       # 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
-      # 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
-      # Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
-      # 'Regex Entity Extractor'
+      # 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt Entity
+      # Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
+      # 'Closed List Entity Extractor', 'Regex Entity Extractor'
       attr_accessor :readable_type
 
       # @return [Array<EntityRole>]

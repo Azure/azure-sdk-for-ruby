@@ -13,7 +13,7 @@ module Azure::Compute::Mgmt::V2018_06_01
       include MsRestAzure
 
       # @return [Array<TargetRegion>] The target regions where the Image
-      # Version is going to be replicated to. This property is updateable.
+      # Version is going to be replicated to. This property is updatable.
       attr_accessor :target_regions
 
       # @return [GalleryArtifactSource]

@@ -16,7 +16,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       attr_accessor :id
 
       # @return [Boolean] Setting your application as public allows other
-      # people to use your application's endpoint using their own keys.
+      # people to use your application's endpoint using their own keys for
+      # billing purposes.
       attr_accessor :is_public
 
 

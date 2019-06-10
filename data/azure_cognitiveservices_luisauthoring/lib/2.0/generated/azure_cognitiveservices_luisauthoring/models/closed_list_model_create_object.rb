@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Object model for creating a closed list.
+    # Object model for creating a list entity.
     #
     class ClosedListModelCreateObject
 
@@ -15,7 +15,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       # @return [Array<WordListObject>] Sublists for the feature.
       attr_accessor :sub_lists
 
-      # @return [String] Name of the closed list feature.
+      # @return [String] Name of the list entity.
       attr_accessor :name
 
 

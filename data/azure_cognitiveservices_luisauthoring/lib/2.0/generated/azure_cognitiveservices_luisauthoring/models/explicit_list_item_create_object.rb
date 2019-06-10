@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Object model for creating an explicit list item.
+    # Object model for creating an explicit (exception) list item.
     #
     class ExplicitListItemCreateObject
 

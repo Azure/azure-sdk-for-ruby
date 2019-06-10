@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Response when adding a batch of labeled examples.
+    # Response when adding a batch of labeled example utterances.
     #
     class BatchLabelExample
 

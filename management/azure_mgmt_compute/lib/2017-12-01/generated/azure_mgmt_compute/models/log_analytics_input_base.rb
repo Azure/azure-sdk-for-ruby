@@ -25,7 +25,7 @@ module Azure::Compute::Mgmt::V2017_12_01
       # @return [Boolean] Group query result by Throttle Policy applied.
       attr_accessor :group_by_throttle_policy
 
-      # @return [Boolean] Group query result by  by Operation Name.
+      # @return [Boolean] Group query result by Operation Name.
       attr_accessor :group_by_operation_name
 
       # @return [Boolean] Group query result by Resource Name.

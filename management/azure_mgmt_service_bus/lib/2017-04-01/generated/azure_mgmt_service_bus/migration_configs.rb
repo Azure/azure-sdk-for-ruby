@@ -121,8 +121,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     end
 
     #
-    # Creates Migration configuration and starts migration of enties from Standard
-    # to Premium namespace
+    # Creates Migration configuration and starts migration of entities from
+    # Standard to Premium namespace
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -360,9 +360,9 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
 
     #
     # This operation Completes Migration of entities by pointing the connection
-    # strings to Premium namespace and any enties created after the operation will
-    # be under Premium Namespace. CompleteMigration operation will fail when entity
-    # migration is in-progress.
+    # strings to Premium namespace and any entities created after the operation
+    # will be under Premium Namespace. CompleteMigration operation will fail when
+    # entity migration is in-progress.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -378,9 +378,9 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
 
     #
     # This operation Completes Migration of entities by pointing the connection
-    # strings to Premium namespace and any enties created after the operation will
-    # be under Premium Namespace. CompleteMigration operation will fail when entity
-    # migration is in-progress.
+    # strings to Premium namespace and any entities created after the operation
+    # will be under Premium Namespace. CompleteMigration operation will fail when
+    # entity migration is in-progress.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -396,9 +396,9 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
 
     #
     # This operation Completes Migration of entities by pointing the connection
-    # strings to Premium namespace and any enties created after the operation will
-    # be under Premium Namespace. CompleteMigration operation will fail when entity
-    # migration is in-progress.
+    # strings to Premium namespace and any entities created after the operation
+    # will be under Premium Namespace. CompleteMigration operation will fail when
+    # entity migration is in-progress.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -546,8 +546,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     end
 
     #
-    # Creates Migration configuration and starts migration of enties from Standard
-    # to Premium namespace
+    # Creates Migration configuration and starts migration of entities from
+    # Standard to Premium namespace
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -565,8 +565,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     end
 
     #
-    # Creates Migration configuration and starts migration of enties from Standard
-    # to Premium namespace
+    # Creates Migration configuration and starts migration of entities from
+    # Standard to Premium namespace
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -583,8 +583,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     end
 
     #
-    # Creates Migration configuration and starts migration of enties from Standard
-    # to Premium namespace
+    # Creates Migration configuration and starts migration of entities from
+    # Standard to Premium namespace
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.

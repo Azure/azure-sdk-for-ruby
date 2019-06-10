@@ -22,12 +22,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     attr_reader :client
 
     #
-    # Adds a labeled example to the application.
+    # Adds a labeled example utterance in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param example_label_object [ExampleLabelObject] An example label with the
-    # expected intent and entities.
+    # @param example_label_object [ExampleLabelObject] A labeled example utterance
+    # with the expected intent and entities.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -39,12 +39,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a labeled example to the application.
+    # Adds a labeled example utterance in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param example_label_object [ExampleLabelObject] An example label with the
-    # expected intent and entities.
+    # @param example_label_object [ExampleLabelObject] A labeled example utterance
+    # with the expected intent and entities.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -55,12 +55,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a labeled example to the application.
+    # Adds a labeled example utterance in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param example_label_object [ExampleLabelObject] An example label with the
-    # expected intent and entities.
+    # @param example_label_object [ExampleLabelObject] A labeled example utterance
+    # with the expected intent and entities.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -127,12 +127,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a batch of labeled examples to the application.
+    # Adds a batch of labeled example utterances to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param example_label_object_array [Array<ExampleLabelObject>] Array of
-    # examples.
+    # example utterances.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -144,12 +144,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a batch of labeled examples to the application.
+    # Adds a batch of labeled example utterances to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param example_label_object_array [Array<ExampleLabelObject>] Array of
-    # examples.
+    # example utterances.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -160,12 +160,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Adds a batch of labeled examples to the application.
+    # Adds a batch of labeled example utterances to a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
     # @param example_label_object_array [Array<ExampleLabelObject>] Array of
-    # examples.
+    # example utterances.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -290,7 +290,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Returns examples to be reviewed.
+    # Returns example utterances to be reviewed from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -308,7 +308,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Returns examples to be reviewed.
+    # Returns example utterances to be reviewed from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -325,7 +325,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Returns examples to be reviewed.
+    # Returns example utterances to be reviewed from a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -410,7 +410,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes the labeled example with the specified ID.
+    # Deletes the labeled example utterances with the specified ID from a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -426,7 +427,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes the labeled example with the specified ID.
+    # Deletes the labeled example utterances with the specified ID from a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -441,7 +443,8 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Deletes the labeled example with the specified ID.
+    # Deletes the labeled example utterances with the specified ID from a version
+    # of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.

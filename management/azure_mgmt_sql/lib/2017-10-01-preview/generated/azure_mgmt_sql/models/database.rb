@@ -12,7 +12,22 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
 
       include MsRestAzure
 
-      # @return [Sku] The name and tier of the SKU.
+      # @return [Sku] The database SKU.
+      #
+      # The list of SKUs may vary by region and support offer. To determine the
+      # SKUs (including the SKU name, tier/edition, family, and capacity) that
+      # are available to your subscription in an Azure region, use the
+      # `Capabilities_ListByLocation` REST API or one of the following
+      # commands:
+      #
+      # ```azurecli
+      # az sql db list-editions -l <location> -o table
+      # ````
+      #
+      # ```powershell
+      # Get-AzSqlServerServiceObjective -Location <location>
+      # ````
+      #
       attr_accessor :sku
 
       # @return [String] Kind of database. This is metadata used for the Azure
@@ -85,7 +100,8 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       # include: 'Online', 'Restoring', 'RecoveryPending', 'Recovering',
       # 'Suspect', 'Offline', 'Standby', 'Shutdown', 'EmergencyMode',
       # 'AutoClosed', 'Copying', 'Creating', 'Inaccessible',
-      # 'OfflineSecondary', 'Pausing', 'Paused', 'Resuming', 'Scaling'
+      # 'OfflineSecondary', 'Pausing', 'Paused', 'Resuming', 'Scaling',
+      # 'OfflineChangingDwPerformanceTiers', 'OnlineChangingDwPerformanceTiers'
       attr_accessor :status
 
       # @return The ID of the database.
@@ -161,6 +177,14 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
 
       # @return [Sku] The name and tier of the SKU.
       attr_accessor :current_sku
+
+      # @return [Integer] Time in minutes after which database is automatically
+      # paused. A value of -1 means that automatic pause is disabled
+      attr_accessor :auto_pause_delay
+
+      # @return [Float] Minimal capacity that database will always have
+      # allocated, if not paused
+      attr_accessor :min_capacity
 
 
       #
@@ -471,6 +495,22 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'
+                }
+              },
+              auto_pause_delay: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.autoPauseDelay',
+                type: {
+                  name: 'Number'
+                }
+              },
+              min_capacity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.minCapacity',
+                type: {
+                  name: 'Double'
                 }
               }
             }

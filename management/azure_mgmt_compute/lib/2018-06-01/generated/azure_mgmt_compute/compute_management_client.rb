@@ -43,6 +43,9 @@ module Azure::Compute::Mgmt::V2018_06_01
     # @return [AvailabilitySets] availability_sets
     attr_reader :availability_sets
 
+    # @return [ProximityPlacementGroups] proximity_placement_groups
+    attr_reader :proximity_placement_groups
+
     # @return [VirtualMachineExtensionImages] virtual_machine_extension_images
     attr_reader :virtual_machine_extension_images
 
@@ -114,6 +117,7 @@ module Azure::Compute::Mgmt::V2018_06_01
 
       @operations = Operations.new(self)
       @availability_sets = AvailabilitySets.new(self)
+      @proximity_placement_groups = ProximityPlacementGroups.new(self)
       @virtual_machine_extension_images = VirtualMachineExtensionImages.new(self)
       @virtual_machine_extensions = VirtualMachineExtensions.new(self)
       @virtual_machine_images = VirtualMachineImages.new(self)
@@ -204,7 +208,7 @@ module Azure::Compute::Mgmt::V2018_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        sdk_information = "#{sdk_information}/0.18.4"
+        sdk_information = "#{sdk_information}/0.18.7"
         add_user_agent_information(sdk_information)
     end
   end

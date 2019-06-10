@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # An object containing the example's text.
+    # An object containing the example utterance's text.
     #
     class LabelTextObject
 

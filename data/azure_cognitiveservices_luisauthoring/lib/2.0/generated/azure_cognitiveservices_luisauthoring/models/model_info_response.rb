@@ -23,9 +23,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
 
       # @return [Enum] Possible values include: 'Entity Extractor',
       # 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
-      # 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
-      # Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
-      # 'Regex Entity Extractor'
+      # 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt Entity
+      # Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
+      # 'Closed List Entity Extractor', 'Regex Entity Extractor'
       attr_accessor :readable_type
 
       # @return [Array<EntityRole>]
@@ -34,7 +34,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       # @return [Array<ChildEntity>] List of child entities.
       attr_accessor :children
 
-      # @return [Array<SubClosedListResponse>] List of sub-lists.
+      # @return [Array<SubClosedListResponse>] List of sublists.
       attr_accessor :sub_lists
 
       # @return [String] The domain name.
@@ -43,7 +43,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       # @return [String] The intent name or entity name.
       attr_accessor :custom_prebuilt_model_name
 
-      # @return [String] The Regex entity pattern.
+      # @return [String] The Regular Expression entity pattern.
       attr_accessor :regex_pattern
 
       # @return [Array<ExplicitListItem>]

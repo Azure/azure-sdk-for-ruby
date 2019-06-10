@@ -719,7 +719,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
     # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -738,7 +738,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
     # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -756,7 +756,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
     # shared access authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -838,7 +838,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -854,7 +854,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -870,7 +870,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -932,7 +932,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -949,7 +949,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -965,7 +965,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1037,7 +1037,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1054,7 +1054,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1070,7 +1070,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1142,7 +1142,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
     # regenerate the authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1161,7 +1161,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
     # regenerate the authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1179,7 +1179,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
     # regenerate the authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added

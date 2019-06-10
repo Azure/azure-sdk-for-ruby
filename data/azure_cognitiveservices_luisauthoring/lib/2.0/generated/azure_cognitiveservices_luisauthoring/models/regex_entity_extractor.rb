@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Regex Entity Extractor.
+    # Regular Expression Entity Extractor.
     #
     class RegexEntityExtractor
 
@@ -23,15 +23,15 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
 
       # @return [Enum] Possible values include: 'Entity Extractor',
       # 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
-      # 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
-      # Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
-      # 'Regex Entity Extractor'
+      # 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt Entity
+      # Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
+      # 'Closed List Entity Extractor', 'Regex Entity Extractor'
       attr_accessor :readable_type
 
       # @return [Array<EntityRole>]
       attr_accessor :roles
 
-      # @return [String] The Regex entity pattern.
+      # @return [String] The Regular Expression entity pattern.
       attr_accessor :regex_pattern
 
 

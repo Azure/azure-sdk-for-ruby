@@ -9,42 +9,88 @@ module Azure::Profiles::Latest
   module EventGrid
 
     module Models
-      DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-      DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
-      StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
-      DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
-      ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
-      DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
-      ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
-      DeviceTwinInfo = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
-      ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
-      DeviceLifeCycleEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
-      EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
-      DeviceConnectionStateEventInfo = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventInfo
-      SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
-      DeviceConnectionStateEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
-      ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
-      SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
-      MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
-      SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+      ContainerRegistryArtifactEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventTarget
       StorageBlobCreatedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
+      ContainerRegistryArtifactEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventData
+      EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
       ServiceBusActiveMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
       ResourceWriteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
-      ContainerRegistryEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
-      ContainerRegistryEventSource = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
-      EventHubCaptureFileCreatedEventData = Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
-      ContainerRegistryEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
       ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
-      ContainerRegistryEventRequest = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
       ResourceDeleteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
+      MediaJobStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
+      ResourceDeleteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
+      MediaJobErrorDetail = Azure::EventGrid::V2018_01_01::Models::MediaJobErrorDetail
+      ResourceActionFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceActionFailureData
+      MediaJobError = Azure::EventGrid::V2018_01_01::Models::MediaJobError
+      EventGridEvent = Azure::EventGrid::V2018_01_01::Models::EventGridEvent
+      MediaJobOutput = Azure::EventGrid::V2018_01_01::Models::MediaJobOutput
+      SubscriptionValidationResponse = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
+      StorageBlobDeletedEventData = Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+      ContainerRegistryEventRequest = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
+      MediaLiveEventEncoderConnectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderConnectedEventData
       ContainerRegistryEventActor = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
+      MediaLiveEventEncoderDisconnectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderDisconnectedEventData
+      ContainerRegistryEventSource = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
+      DeviceTwinMetadata = Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
+      ContainerRegistryEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
+      DeviceTwinInfoProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
+      MediaLiveEventTrackDiscontinuityDetectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventTrackDiscontinuityDetectedEventData
+      DeviceTwinInfo = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
+      ResourceWriteSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
+      DeviceConnectionStateEventInfo = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventInfo
+      ResourceWriteCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
+      DeviceTelemetryEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTelemetryEventProperties
+      ResourceDeleteFailureData = Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
+      MediaLiveEventIncomingVideoStreamsOutOfSyncEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingVideoStreamsOutOfSyncEventData
+      ResourceActionSuccessData = Azure::EventGrid::V2018_01_01::Models::ResourceActionSuccessData
+      MediaLiveEventIngestHeartbeatEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIngestHeartbeatEventData
+      ResourceActionCancelData = Azure::EventGrid::V2018_01_01::Models::ResourceActionCancelData
+      MediaLiveEventConnectionRejectedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventConnectionRejectedEventData
+      SubscriptionValidationEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
+      DeviceTwinProperties = Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+      SubscriptionDeletedEventData = Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+      DeviceLifeCycleEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
+      MediaLiveEventIncomingStreamsOutOfSyncEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamsOutOfSyncEventData
+      MediaJobOutputProgressEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputProgressEventData
+      ContainerRegistryEventTarget = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
+      MediaJobOutputStateChangeEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputStateChangeEventData
+      DeviceTwinInfoX509Thumbprint = Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
+      AppConfigurationKeyValueDeletedEventData = Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueDeletedEventData
+      MediaLiveEventIncomingDataChunkDroppedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingDataChunkDroppedEventData
+      AppConfigurationKeyValueModifiedEventData = Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueModifiedEventData
+      DeviceConnectionStateEventProperties = Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
+      MapsGeofenceEventProperties = Azure::EventGrid::V2018_01_01::Models::MapsGeofenceEventProperties
+      MediaLiveEventIncomingStreamReceivedEventData = Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamReceivedEventData
+      MapsGeofenceGeometry = Azure::EventGrid::V2018_01_01::Models::MapsGeofenceGeometry
       IotHubDeviceCreatedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceCreatedEventData
       IotHubDeviceDeletedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDeletedEventData
       IotHubDeviceConnectedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceConnectedEventData
       IotHubDeviceDisconnectedEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDisconnectedEventData
+      IotHubDeviceTelemetryEventData = Azure::EventGrid::V2018_01_01::Models::IotHubDeviceTelemetryEventData
       ContainerRegistryImagePushedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData
       ContainerRegistryImageDeletedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImageDeletedEventData
-      JobState = Azure::EventGrid::V2018_01_01::Models::JobState
+      ContainerRegistryChartPushedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryChartPushedEventData
+      ContainerRegistryChartDeletedEventData = Azure::EventGrid::V2018_01_01::Models::ContainerRegistryChartDeletedEventData
+      MediaJobOutputAsset = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputAsset
+      MediaJobScheduledEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobScheduledEventData
+      MediaJobProcessingEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobProcessingEventData
+      MediaJobCancelingEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobCancelingEventData
+      MediaJobFinishedEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobFinishedEventData
+      MediaJobCanceledEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobCanceledEventData
+      MediaJobErroredEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobErroredEventData
+      MediaJobOutputCanceledEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputCanceledEventData
+      MediaJobOutputCancelingEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputCancelingEventData
+      MediaJobOutputErroredEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputErroredEventData
+      MediaJobOutputFinishedEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputFinishedEventData
+      MediaJobOutputProcessingEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputProcessingEventData
+      MediaJobOutputScheduledEventData = Azure::EventGrid::V2018_01_01::Models::MediaJobOutputScheduledEventData
+      MapsGeofenceEnteredEventData = Azure::EventGrid::V2018_01_01::Models::MapsGeofenceEnteredEventData
+      MapsGeofenceExitedEventData = Azure::EventGrid::V2018_01_01::Models::MapsGeofenceExitedEventData
+      MapsGeofenceResultEventData = Azure::EventGrid::V2018_01_01::Models::MapsGeofenceResultEventData
+      MediaJobState = Azure::EventGrid::V2018_01_01::Models::MediaJobState
+      MediaJobErrorCode = Azure::EventGrid::V2018_01_01::Models::MediaJobErrorCode
+      MediaJobErrorCategory = Azure::EventGrid::V2018_01_01::Models::MediaJobErrorCategory
+      MediaJobRetry = Azure::EventGrid::V2018_01_01::Models::MediaJobRetry
     end
 
     class EventGridDataClass
@@ -76,62 +122,17 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def device_twin_metadata
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
-        end
-        def device_twin_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
-        end
-        def storage_blob_deleted_event_data
-          Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
-        end
-        def device_twin_info_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
-        end
-        def resource_write_success_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
-        end
-        def device_twin_info_x509_thumbprint
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
-        end
-        def resource_write_cancel_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
-        end
-        def device_twin_info
-          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
-        end
-        def resource_delete_failure_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
-        end
-        def device_life_cycle_event_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
-        end
-        def event_grid_event
-          Azure::EventGrid::V2018_01_01::Models::EventGridEvent
-        end
-        def device_connection_state_event_info
-          Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventInfo
-        end
-        def subscription_validation_response
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
-        end
-        def device_connection_state_event_properties
-          Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
-        end
-        def resource_delete_cancel_data
-          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
-        end
-        def subscription_validation_event_data
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
-        end
-        def media_job_state_change_event_data
-          Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
-        end
-        def subscription_deleted_event_data
-          Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+        def container_registry_artifact_event_target
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventTarget
         end
         def storage_blob_created_event_data
           Azure::EventGrid::V2018_01_01::Models::StorageBlobCreatedEventData
+        end
+        def container_registry_artifact_event_data
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryArtifactEventData
+        end
+        def event_hub_capture_file_created_event_data
+          Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
         end
         def service_bus_active_messages_available_with_no_listeners_event_data
           Azure::EventGrid::V2018_01_01::Models::ServiceBusActiveMessagesAvailableWithNoListenersEventData
@@ -139,29 +140,146 @@ module Azure::Profiles::Latest
         def resource_write_failure_data
           Azure::EventGrid::V2018_01_01::Models::ResourceWriteFailureData
         end
-        def container_registry_event_data
-          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
-        end
-        def container_registry_event_source
-          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
-        end
-        def event_hub_capture_file_created_event_data
-          Azure::EventGrid::V2018_01_01::Models::EventHubCaptureFileCreatedEventData
-        end
-        def container_registry_event_target
-          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
-        end
         def service_bus_deadletter_messages_available_with_no_listeners_event_data
           Azure::EventGrid::V2018_01_01::Models::ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
-        end
-        def container_registry_event_request
-          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
         end
         def resource_delete_success_data
           Azure::EventGrid::V2018_01_01::Models::ResourceDeleteSuccessData
         end
+        def media_job_state_change_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobStateChangeEventData
+        end
+        def resource_delete_cancel_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteCancelData
+        end
+        def media_job_error_detail
+          Azure::EventGrid::V2018_01_01::Models::MediaJobErrorDetail
+        end
+        def resource_action_failure_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceActionFailureData
+        end
+        def media_job_error
+          Azure::EventGrid::V2018_01_01::Models::MediaJobError
+        end
+        def event_grid_event
+          Azure::EventGrid::V2018_01_01::Models::EventGridEvent
+        end
+        def media_job_output
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutput
+        end
+        def subscription_validation_response
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationResponse
+        end
+        def storage_blob_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::StorageBlobDeletedEventData
+        end
+        def container_registry_event_request
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventRequest
+        end
+        def media_live_event_encoder_connected_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderConnectedEventData
+        end
         def container_registry_event_actor
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventActor
+        end
+        def media_live_event_encoder_disconnected_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventEncoderDisconnectedEventData
+        end
+        def container_registry_event_source
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventSource
+        end
+        def device_twin_metadata
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinMetadata
+        end
+        def container_registry_event_data
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventData
+        end
+        def device_twin_info_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoProperties
+        end
+        def media_live_event_track_discontinuity_detected_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventTrackDiscontinuityDetectedEventData
+        end
+        def device_twin_info
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfo
+        end
+        def resource_write_success_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceWriteSuccessData
+        end
+        def device_connection_state_event_info
+          Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventInfo
+        end
+        def resource_write_cancel_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceWriteCancelData
+        end
+        def device_telemetry_event_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceTelemetryEventProperties
+        end
+        def resource_delete_failure_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceDeleteFailureData
+        end
+        def media_live_event_incoming_video_streams_out_of_sync_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingVideoStreamsOutOfSyncEventData
+        end
+        def resource_action_success_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceActionSuccessData
+        end
+        def media_live_event_ingest_heartbeat_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIngestHeartbeatEventData
+        end
+        def resource_action_cancel_data
+          Azure::EventGrid::V2018_01_01::Models::ResourceActionCancelData
+        end
+        def media_live_event_connection_rejected_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventConnectionRejectedEventData
+        end
+        def subscription_validation_event_data
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionValidationEventData
+        end
+        def device_twin_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinProperties
+        end
+        def subscription_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::SubscriptionDeletedEventData
+        end
+        def device_life_cycle_event_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceLifeCycleEventProperties
+        end
+        def media_live_event_incoming_streams_out_of_sync_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamsOutOfSyncEventData
+        end
+        def media_job_output_progress_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputProgressEventData
+        end
+        def container_registry_event_target
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryEventTarget
+        end
+        def media_job_output_state_change_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputStateChangeEventData
+        end
+        def device_twin_info_x509_thumbprint
+          Azure::EventGrid::V2018_01_01::Models::DeviceTwinInfoX509Thumbprint
+        end
+        def app_configuration_key_value_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueDeletedEventData
+        end
+        def media_live_event_incoming_data_chunk_dropped_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingDataChunkDroppedEventData
+        end
+        def app_configuration_key_value_modified_event_data
+          Azure::EventGrid::V2018_01_01::Models::AppConfigurationKeyValueModifiedEventData
+        end
+        def device_connection_state_event_properties
+          Azure::EventGrid::V2018_01_01::Models::DeviceConnectionStateEventProperties
+        end
+        def maps_geofence_event_properties
+          Azure::EventGrid::V2018_01_01::Models::MapsGeofenceEventProperties
+        end
+        def media_live_event_incoming_stream_received_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaLiveEventIncomingStreamReceivedEventData
+        end
+        def maps_geofence_geometry
+          Azure::EventGrid::V2018_01_01::Models::MapsGeofenceGeometry
         end
         def iot_hub_device_created_event_data
           Azure::EventGrid::V2018_01_01::Models::IotHubDeviceCreatedEventData
@@ -175,86 +293,146 @@ module Azure::Profiles::Latest
         def iot_hub_device_disconnected_event_data
           Azure::EventGrid::V2018_01_01::Models::IotHubDeviceDisconnectedEventData
         end
+        def iot_hub_device_telemetry_event_data
+          Azure::EventGrid::V2018_01_01::Models::IotHubDeviceTelemetryEventData
+        end
         def container_registry_image_pushed_event_data
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImagePushedEventData
         end
         def container_registry_image_deleted_event_data
           Azure::EventGrid::V2018_01_01::Models::ContainerRegistryImageDeletedEventData
         end
-        def job_state
-          Azure::EventGrid::V2018_01_01::Models::JobState
+        def container_registry_chart_pushed_event_data
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryChartPushedEventData
+        end
+        def container_registry_chart_deleted_event_data
+          Azure::EventGrid::V2018_01_01::Models::ContainerRegistryChartDeletedEventData
+        end
+        def media_job_output_asset
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputAsset
+        end
+        def media_job_scheduled_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobScheduledEventData
+        end
+        def media_job_processing_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobProcessingEventData
+        end
+        def media_job_canceling_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobCancelingEventData
+        end
+        def media_job_finished_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobFinishedEventData
+        end
+        def media_job_canceled_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobCanceledEventData
+        end
+        def media_job_errored_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobErroredEventData
+        end
+        def media_job_output_canceled_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputCanceledEventData
+        end
+        def media_job_output_canceling_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputCancelingEventData
+        end
+        def media_job_output_errored_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputErroredEventData
+        end
+        def media_job_output_finished_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputFinishedEventData
+        end
+        def media_job_output_processing_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputProcessingEventData
+        end
+        def media_job_output_scheduled_event_data
+          Azure::EventGrid::V2018_01_01::Models::MediaJobOutputScheduledEventData
+        end
+        def maps_geofence_entered_event_data
+          Azure::EventGrid::V2018_01_01::Models::MapsGeofenceEnteredEventData
+        end
+        def maps_geofence_exited_event_data
+          Azure::EventGrid::V2018_01_01::Models::MapsGeofenceExitedEventData
+        end
+        def maps_geofence_result_event_data
+          Azure::EventGrid::V2018_01_01::Models::MapsGeofenceResultEventData
+        end
+        def media_job_state
+          Azure::EventGrid::V2018_01_01::Models::MediaJobState
+        end
+        def media_job_error_code
+          Azure::EventGrid::V2018_01_01::Models::MediaJobErrorCode
+        end
+        def media_job_error_category
+          Azure::EventGrid::V2018_01_01::Models::MediaJobErrorCategory
+        end
+        def media_job_retry
+          Azure::EventGrid::V2018_01_01::Models::MediaJobRetry
         end
       end
     end
     module Mgmt
-      Domains = Azure::EventGrid::Mgmt::V2019_02_01_preview::Domains
-      DomainTopics = Azure::EventGrid::Mgmt::V2019_02_01_preview::DomainTopics
-      EventSubscriptions = Azure::EventGrid::Mgmt::V2019_02_01_preview::EventSubscriptions
-      Operations = Azure::EventGrid::Mgmt::V2019_02_01_preview::Operations
-      Topics = Azure::EventGrid::Mgmt::V2019_02_01_preview::Topics
-      TopicTypes = Azure::EventGrid::Mgmt::V2019_02_01_preview::TopicTypes
+      Domains = Azure::EventGrid::Mgmt::V2019_06_01::Domains
+      DomainTopics = Azure::EventGrid::Mgmt::V2019_06_01::DomainTopics
+      EventSubscriptions = Azure::EventGrid::Mgmt::V2019_06_01::EventSubscriptions
+      Operations = Azure::EventGrid::Mgmt::V2019_06_01::Operations
+      Topics = Azure::EventGrid::Mgmt::V2019_06_01::Topics
+      TopicTypes = Azure::EventGrid::Mgmt::V2019_06_01::TopicTypes
 
       module Models
-        EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionFilter
-        RetryPolicy = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::RetryPolicy
-        Resource = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::Resource
-        DeadLetterDestination = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DeadLetterDestination
-        JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::JsonFieldWithDefault
-        InputSchemaMapping = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::InputSchemaMapping
-        JsonField = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::JsonField
-        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicRegenerateKeyRequest
-        TopicTypesListResult = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicTypesListResult
-        DomainsListResult = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainsListResult
-        TopicsListResult = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicsListResult
-        DomainRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainRegenerateKeyRequest
-        EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionFullUrl
-        DomainTopicsListResult = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainTopicsListResult
-        EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionUpdateParameters
-        AdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::AdvancedFilter
-        EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionsListResult
-        DomainUpdateParameters = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainUpdateParameters
-        OperationInfo = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::OperationInfo
-        EventTypesListResult = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventTypesListResult
-        Operation = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::Operation
-        TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicSharedAccessKeys
-        OperationsListResult = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::OperationsListResult
-        EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionDestination
-        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicUpdateParameters
-        DomainSharedAccessKeys = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainSharedAccessKeys
-        JsonInputSchemaMapping = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::JsonInputSchemaMapping
-        TrackedResource = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TrackedResource
-        Domain = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::Domain
-        DomainTopic = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainTopic
-        NumberInAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberInAdvancedFilter
-        StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StorageBlobDeadLetterDestination
-        NumberNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberNotInAdvancedFilter
-        NumberLessThanAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberLessThanAdvancedFilter
-        NumberGreaterThanAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberGreaterThanAdvancedFilter
-        NumberLessThanOrEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberLessThanOrEqualsAdvancedFilter
-        NumberGreaterThanOrEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberGreaterThanOrEqualsAdvancedFilter
-        BoolEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::BoolEqualsAdvancedFilter
-        StringInAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringInAdvancedFilter
-        StringNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringNotInAdvancedFilter
-        StringBeginsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringBeginsWithAdvancedFilter
-        StringEndsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringEndsWithAdvancedFilter
-        StringContainsAdvancedFilter = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringContainsAdvancedFilter
-        WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::WebHookEventSubscriptionDestination
-        EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventHubEventSubscriptionDestination
-        StorageQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StorageQueueEventSubscriptionDestination
-        HybridConnectionEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::HybridConnectionEventSubscriptionDestination
-        ServiceBusQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::ServiceBusQueueEventSubscriptionDestination
-        EventSubscription = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscription
-        Topic = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::Topic
-        EventType = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventType
-        TopicTypeInfo = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicTypeInfo
-        DomainProvisioningState = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainProvisioningState
-        InputSchema = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::InputSchema
-        DomainTopicProvisioningState = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainTopicProvisioningState
-        EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionProvisioningState
-        EventDeliverySchema = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventDeliverySchema
-        TopicProvisioningState = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicProvisioningState
-        ResourceRegionType = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::ResourceRegionType
-        TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicTypeProvisioningState
+        DeadLetterDestination = Azure::EventGrid::Mgmt::V2019_06_01::Models::DeadLetterDestination
+        Resource = Azure::EventGrid::Mgmt::V2019_06_01::Models::Resource
+        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicRegenerateKeyRequest
+        DomainUpdateParameters = Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainUpdateParameters
+        TopicTypesListResult = Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicTypesListResult
+        DomainSharedAccessKeys = Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainSharedAccessKeys
+        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicUpdateParameters
+        EventTypesListResult = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventTypesListResult
+        TopicsListResult = Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicsListResult
+        EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionDestination
+        TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicSharedAccessKeys
+        EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionFilter
+        OperationInfo = Azure::EventGrid::Mgmt::V2019_06_01::Models::OperationInfo
+        DomainsListResult = Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainsListResult
+        EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionsListResult
+        DomainTopicsListResult = Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainTopicsListResult
+        EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionFullUrl
+        RetryPolicy = Azure::EventGrid::Mgmt::V2019_06_01::Models::RetryPolicy
+        EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionUpdateParameters
+        AdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::AdvancedFilter
+        Operation = Azure::EventGrid::Mgmt::V2019_06_01::Models::Operation
+        DomainRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainRegenerateKeyRequest
+        OperationsListResult = Azure::EventGrid::Mgmt::V2019_06_01::Models::OperationsListResult
+        TrackedResource = Azure::EventGrid::Mgmt::V2019_06_01::Models::TrackedResource
+        Domain = Azure::EventGrid::Mgmt::V2019_06_01::Models::Domain
+        DomainTopic = Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainTopic
+        NumberInAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberInAdvancedFilter
+        StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2019_06_01::Models::StorageBlobDeadLetterDestination
+        NumberNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberNotInAdvancedFilter
+        NumberLessThanAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberLessThanAdvancedFilter
+        NumberGreaterThanAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberGreaterThanAdvancedFilter
+        NumberLessThanOrEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberLessThanOrEqualsAdvancedFilter
+        NumberGreaterThanOrEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberGreaterThanOrEqualsAdvancedFilter
+        BoolEqualsAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::BoolEqualsAdvancedFilter
+        StringInAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::StringInAdvancedFilter
+        StringNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::StringNotInAdvancedFilter
+        StringBeginsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::StringBeginsWithAdvancedFilter
+        StringEndsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::StringEndsWithAdvancedFilter
+        StringContainsAdvancedFilter = Azure::EventGrid::Mgmt::V2019_06_01::Models::StringContainsAdvancedFilter
+        WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_06_01::Models::WebHookEventSubscriptionDestination
+        EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventHubEventSubscriptionDestination
+        StorageQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_06_01::Models::StorageQueueEventSubscriptionDestination
+        HybridConnectionEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_06_01::Models::HybridConnectionEventSubscriptionDestination
+        ServiceBusQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2019_06_01::Models::ServiceBusQueueEventSubscriptionDestination
+        EventSubscription = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscription
+        Topic = Azure::EventGrid::Mgmt::V2019_06_01::Models::Topic
+        EventType = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventType
+        TopicTypeInfo = Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicTypeInfo
+        DomainProvisioningState = Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainProvisioningState
+        DomainTopicProvisioningState = Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainTopicProvisioningState
+        EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionProvisioningState
+        TopicProvisioningState = Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicProvisioningState
+        ResourceRegionType = Azure::EventGrid::Mgmt::V2019_06_01::Models::ResourceRegionType
+        TopicTypeProvisioningState = Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicTypeProvisioningState
       end
 
       class EventGridManagementClass
@@ -263,7 +441,7 @@ module Azure::Profiles::Latest
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          @client_0 = Azure::EventGrid::Mgmt::V2019_02_01_preview::EventGridManagementClient.new(configurable.credentials, base_url, options)
+          @client_0 = Azure::EventGrid::Mgmt::V2019_06_01::EventGridManagementClient.new(configurable.credentials, base_url, options)
           if(@client_0.respond_to?(:subscription_id))
             @client_0.subscription_id = configurable.subscription_id
           end
@@ -292,185 +470,167 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def event_subscription_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionFilter
-          end
-          def retry_policy
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::RetryPolicy
+          def dead_letter_destination
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::DeadLetterDestination
           end
           def resource
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::Resource
-          end
-          def dead_letter_destination
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DeadLetterDestination
-          end
-          def json_field_with_default
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::JsonFieldWithDefault
-          end
-          def input_schema_mapping
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::InputSchemaMapping
-          end
-          def json_field
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::JsonField
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::Resource
           end
           def topic_regenerate_key_request
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicRegenerateKeyRequest
-          end
-          def topic_types_list_result
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicTypesListResult
-          end
-          def domains_list_result
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainsListResult
-          end
-          def topics_list_result
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicsListResult
-          end
-          def domain_regenerate_key_request
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainRegenerateKeyRequest
-          end
-          def event_subscription_full_url
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionFullUrl
-          end
-          def domain_topics_list_result
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainTopicsListResult
-          end
-          def event_subscription_update_parameters
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionUpdateParameters
-          end
-          def advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::AdvancedFilter
-          end
-          def event_subscriptions_list_result
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionsListResult
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicRegenerateKeyRequest
           end
           def domain_update_parameters
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainUpdateParameters
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainUpdateParameters
           end
-          def operation_info
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::OperationInfo
-          end
-          def event_types_list_result
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventTypesListResult
-          end
-          def operation
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::Operation
-          end
-          def topic_shared_access_keys
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicSharedAccessKeys
-          end
-          def operations_list_result
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::OperationsListResult
-          end
-          def event_subscription_destination
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionDestination
-          end
-          def topic_update_parameters
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicUpdateParameters
+          def topic_types_list_result
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicTypesListResult
           end
           def domain_shared_access_keys
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainSharedAccessKeys
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainSharedAccessKeys
           end
-          def json_input_schema_mapping
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::JsonInputSchemaMapping
+          def topic_update_parameters
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicUpdateParameters
+          end
+          def event_types_list_result
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventTypesListResult
+          end
+          def topics_list_result
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicsListResult
+          end
+          def event_subscription_destination
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionDestination
+          end
+          def topic_shared_access_keys
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicSharedAccessKeys
+          end
+          def event_subscription_filter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionFilter
+          end
+          def operation_info
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::OperationInfo
+          end
+          def domains_list_result
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainsListResult
+          end
+          def event_subscriptions_list_result
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionsListResult
+          end
+          def domain_topics_list_result
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainTopicsListResult
+          end
+          def event_subscription_full_url
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionFullUrl
+          end
+          def retry_policy
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::RetryPolicy
+          end
+          def event_subscription_update_parameters
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionUpdateParameters
+          end
+          def advanced_filter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::AdvancedFilter
+          end
+          def operation
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::Operation
+          end
+          def domain_regenerate_key_request
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainRegenerateKeyRequest
+          end
+          def operations_list_result
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::OperationsListResult
           end
           def tracked_resource
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TrackedResource
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::TrackedResource
           end
           def domain
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::Domain
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::Domain
           end
           def domain_topic
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainTopic
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainTopic
           end
           def number_in_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberInAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberInAdvancedFilter
           end
           def storage_blob_dead_letter_destination
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StorageBlobDeadLetterDestination
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::StorageBlobDeadLetterDestination
           end
           def number_not_in_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberNotInAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberNotInAdvancedFilter
           end
           def number_less_than_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberLessThanAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberLessThanAdvancedFilter
           end
           def number_greater_than_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberGreaterThanAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberGreaterThanAdvancedFilter
           end
           def number_less_than_or_equals_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberLessThanOrEqualsAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberLessThanOrEqualsAdvancedFilter
           end
           def number_greater_than_or_equals_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::NumberGreaterThanOrEqualsAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::NumberGreaterThanOrEqualsAdvancedFilter
           end
           def bool_equals_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::BoolEqualsAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::BoolEqualsAdvancedFilter
           end
           def string_in_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringInAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::StringInAdvancedFilter
           end
           def string_not_in_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringNotInAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::StringNotInAdvancedFilter
           end
           def string_begins_with_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringBeginsWithAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::StringBeginsWithAdvancedFilter
           end
           def string_ends_with_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringEndsWithAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::StringEndsWithAdvancedFilter
           end
           def string_contains_advanced_filter
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StringContainsAdvancedFilter
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::StringContainsAdvancedFilter
           end
           def web_hook_event_subscription_destination
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::WebHookEventSubscriptionDestination
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::WebHookEventSubscriptionDestination
           end
           def event_hub_event_subscription_destination
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventHubEventSubscriptionDestination
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventHubEventSubscriptionDestination
           end
           def storage_queue_event_subscription_destination
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::StorageQueueEventSubscriptionDestination
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::StorageQueueEventSubscriptionDestination
           end
           def hybrid_connection_event_subscription_destination
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::HybridConnectionEventSubscriptionDestination
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::HybridConnectionEventSubscriptionDestination
           end
           def service_bus_queue_event_subscription_destination
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::ServiceBusQueueEventSubscriptionDestination
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::ServiceBusQueueEventSubscriptionDestination
           end
           def event_subscription
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscription
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscription
           end
           def topic
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::Topic
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::Topic
           end
           def event_type
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventType
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventType
           end
           def topic_type_info
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicTypeInfo
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicTypeInfo
           end
           def domain_provisioning_state
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainProvisioningState
-          end
-          def input_schema
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::InputSchema
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainProvisioningState
           end
           def domain_topic_provisioning_state
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::DomainTopicProvisioningState
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::DomainTopicProvisioningState
           end
           def event_subscription_provisioning_state
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventSubscriptionProvisioningState
-          end
-          def event_delivery_schema
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::EventDeliverySchema
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::EventSubscriptionProvisioningState
           end
           def topic_provisioning_state
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicProvisioningState
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicProvisioningState
           end
           def resource_region_type
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::ResourceRegionType
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::ResourceRegionType
           end
           def topic_type_provisioning_state
-            Azure::EventGrid::Mgmt::V2019_02_01_preview::Models::TopicTypeProvisioningState
+            Azure::EventGrid::Mgmt::V2019_06_01::Models::TopicTypeProvisioningState
           end
         end
       end

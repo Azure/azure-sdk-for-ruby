@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Object model for adding a batch of sublists to an existing closedlist.
+    # Object model for adding a batch of sublists to an existing list entity.
     #
     class ClosedListModelPatchObject
 

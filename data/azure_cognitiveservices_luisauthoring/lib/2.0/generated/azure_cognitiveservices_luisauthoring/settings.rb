@@ -22,7 +22,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     attr_reader :client
 
     #
-    # Gets the application version settings.
+    # Gets the settings in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -37,7 +37,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the application version settings.
+    # Gets the settings in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -51,7 +51,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Gets the application version settings.
+    # Gets the settings in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
@@ -129,12 +129,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the application version settings.
+    # Updates the settings in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param list_of_app_version_setting_object [AppVersionSettingObject] A list of
-    # the updated application version settings.
+    # @param list_of_app_version_setting_object [Array<AppVersionSettingObject>] A
+    # list of the updated application version settings.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -146,12 +146,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the application version settings.
+    # Updates the settings in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param list_of_app_version_setting_object [AppVersionSettingObject] A list of
-    # the updated application version settings.
+    # @param list_of_app_version_setting_object [Array<AppVersionSettingObject>] A
+    # list of the updated application version settings.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -162,12 +162,12 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
     end
 
     #
-    # Updates the application version settings.
+    # Updates the settings in a version of the application.
     #
     # @param app_id The application ID.
     # @param version_id [String] The version ID.
-    # @param list_of_app_version_setting_object [AppVersionSettingObject] A list of
-    # the updated application version settings.
+    # @param list_of_app_version_setting_object [Array<AppVersionSettingObject>] A
+    # list of the updated application version settings.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -188,7 +188,23 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::LuisAuthoring::V2_0::Models::AppVersionSettingObject.mapper()
+      request_mapper = {
+        client_side_validation: true,
+        required: true,
+        serialized_name: 'listOfAppVersionSettingObject',
+        type: {
+          name: 'Sequence',
+          element: {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'AppVersionSettingObjectElementType',
+              type: {
+                name: 'Composite',
+                class_name: 'AppVersionSettingObject'
+              }
+          }
+        }
+      }
       request_content = @client.serialize(request_mapper,  list_of_app_version_setting_object)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

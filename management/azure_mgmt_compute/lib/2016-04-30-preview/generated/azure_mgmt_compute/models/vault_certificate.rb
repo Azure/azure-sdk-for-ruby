@@ -29,7 +29,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # <br><br>For Linux VMs, the certificate file is placed under the
       # /var/lib/waagent directory, with the file name
       # <UppercaseThumbprint>.crt for the X509 certificate file and
-      # <UppercaseThumbpring>.prv for private key. Both of these files are .pem
+      # <UppercaseThumbprint>.prv for private key. Both of these files are .pem
       # formatted.
       attr_accessor :certificate_store
 

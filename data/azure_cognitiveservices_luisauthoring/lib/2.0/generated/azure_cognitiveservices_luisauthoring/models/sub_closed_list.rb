@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::LuisAuthoring::V2_0
   module Models
     #
-    # Sublist of items for a Closed list.
+    # Sublist of items for a list entity.
     #
     class SubClosedList
 

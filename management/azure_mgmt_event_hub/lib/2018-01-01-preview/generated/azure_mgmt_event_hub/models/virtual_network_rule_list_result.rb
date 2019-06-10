@@ -13,8 +13,8 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<IpFilterRule>] Result of the List VirtualNetwork Rules
-      # operation.
+      # @return [Array<VirtualNetworkRule>] Result of the List VirtualNetwork
+      # Rules operation.
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
@@ -27,7 +27,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<IpFilterRule>] operation results.
+      # @return [Array<VirtualNetworkRule>] operation results.
       #
       def get_all_items
         items = @value
@@ -75,10 +75,10 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'IpFilterRuleElementType',
+                      serialized_name: 'VirtualNetworkRuleElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'IpFilterRule'
+                        class_name: 'VirtualNetworkRule'
                       }
                   }
                 }

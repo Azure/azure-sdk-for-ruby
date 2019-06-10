@@ -36,6 +36,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
       # stored. (Storage Account, Blob Names)
       attr_accessor :destination
 
+      # @return [Boolean] A value that indicates whether to Skip Empty Archives
+      attr_accessor :skip_empty_archives
+
 
       #
       # Mapper for CaptureDescription class as Ruby Hash.
@@ -98,6 +101,14 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 type: {
                   name: 'Composite',
                   class_name: 'Destination'
+                }
+              },
+              skip_empty_archives: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'skipEmptyArchives',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

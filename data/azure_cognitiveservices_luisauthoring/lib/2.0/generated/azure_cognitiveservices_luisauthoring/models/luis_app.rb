@@ -34,7 +34,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       # @return [Array<HierarchicalModel>] List of entities.
       attr_accessor :entities
 
-      # @return [Array<ClosedList>] List of closed lists.
+      # @return [Array<ClosedList>] List of list entities.
       attr_accessor :closed_lists
 
       # @return [Array<HierarchicalModel>] List of composite entities.
@@ -58,7 +58,7 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       # @return [Array<PatternRule>] List of patterns.
       attr_accessor :patterns
 
-      # @return [Array<JSONUtterance>] List of sample utterances.
+      # @return [Array<JSONUtterance>] List of example utterances.
       attr_accessor :utterances
 
 

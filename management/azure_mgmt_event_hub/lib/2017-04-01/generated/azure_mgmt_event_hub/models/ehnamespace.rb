@@ -36,9 +36,13 @@ module Azure::EventHub::Mgmt::V2017_04_01
       attr_accessor :is_auto_inflate_enabled
 
       # @return [Integer] Upper limit of throughput units when AutoInflate is
-      # enabled, vaule should be within 0 to 20 throughput units. ( '0' if
+      # enabled, value should be within 0 to 20 throughput units. ( '0' if
       # AutoInflateEnabled = true)
       attr_accessor :maximum_throughput_units
+
+      # @return [Boolean] Value that indicates whether Kafka is enabled for
+      # eventhub namespace.
+      attr_accessor :kafka_enabled
 
 
       #
@@ -177,6 +181,14 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              kafka_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.kafkaEnabled',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

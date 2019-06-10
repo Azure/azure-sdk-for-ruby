@@ -16,15 +16,13 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       attr_accessor :id
 
       # @return [Boolean] Setting sentiment analysis as true returns the
-      # Sentiment of the input utterance along with the response
+      # sentiment of the input utterance along with the response
       attr_accessor :is_sentiment_analysis_enabled
 
-      # @return [Boolean] Setting speech as public enables speech priming in
-      # your app
+      # @return [Boolean] Enables speech priming in your app
       attr_accessor :is_speech_enabled
 
-      # @return [Boolean] Setting spell checker as public enables spell
-      # checking the input utterance.
+      # @return [Boolean] Enables spell checking of the utterance.
       attr_accessor :is_spell_checker_enabled
 
 

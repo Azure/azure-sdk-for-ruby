@@ -226,6 +226,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -404,6 +406,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -492,6 +496,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -585,6 +591,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -680,6 +688,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -772,6 +782,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1049,34 +1061,35 @@ module Azure::Compute::Mgmt::V2018_06_01
 
     #
     # Reimages (upgrade the operating system) one or more virtual machines in a VM
-    # scale set.
+    # scale set which don't have a ephemeral OS disk, for virtual machines who have
+    # a ephemeral OS disk the virtual machine is reset to initial state.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
-    # virtual machine instance IDs from the VM scale set.
+    # @param vm_scale_set_reimage_input [VirtualMachineScaleSetReimageParameters]
+    # Parameters for Reimaging VM ScaleSet.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def reimage(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
-      response = reimage_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
+    def reimage(resource_group_name, vm_scale_set_name, vm_scale_set_reimage_input:nil, custom_headers:nil)
+      response = reimage_async(resource_group_name, vm_scale_set_name, vm_scale_set_reimage_input:vm_scale_set_reimage_input, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
-    # virtual machine instance IDs from the VM scale set.
+    # @param vm_scale_set_reimage_input [VirtualMachineScaleSetReimageParameters]
+    # Parameters for Reimaging VM ScaleSet.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reimage_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+    def reimage_async(resource_group_name, vm_scale_set_name, vm_scale_set_reimage_input:nil, custom_headers:nil)
       # Send request
-      promise = begin_reimage_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers)
+      promise = begin_reimage_async(resource_group_name, vm_scale_set_name, vm_scale_set_reimage_input:vm_scale_set_reimage_input, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -1218,6 +1231,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1324,6 +1339,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1440,6 +1457,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1531,6 +1550,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1631,6 +1652,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1726,6 +1749,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1826,6 +1851,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1920,6 +1947,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -2014,6 +2043,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -2108,6 +2139,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -2211,6 +2244,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -2309,6 +2344,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -2318,52 +2355,55 @@ module Azure::Compute::Mgmt::V2018_06_01
 
     #
     # Reimages (upgrade the operating system) one or more virtual machines in a VM
-    # scale set.
+    # scale set which don't have a ephemeral OS disk, for virtual machines who have
+    # a ephemeral OS disk the virtual machine is reset to initial state.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
-    # virtual machine instance IDs from the VM scale set.
+    # @param vm_scale_set_reimage_input [VirtualMachineScaleSetReimageParameters]
+    # Parameters for Reimaging VM ScaleSet.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_reimage(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
-      response = begin_reimage_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
+    def begin_reimage(resource_group_name, vm_scale_set_name, vm_scale_set_reimage_input:nil, custom_headers:nil)
+      response = begin_reimage_async(resource_group_name, vm_scale_set_name, vm_scale_set_reimage_input:vm_scale_set_reimage_input, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # Reimages (upgrade the operating system) one or more virtual machines in a VM
-    # scale set.
+    # scale set which don't have a ephemeral OS disk, for virtual machines who have
+    # a ephemeral OS disk the virtual machine is reset to initial state.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
-    # virtual machine instance IDs from the VM scale set.
+    # @param vm_scale_set_reimage_input [VirtualMachineScaleSetReimageParameters]
+    # Parameters for Reimaging VM ScaleSet.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reimage_with_http_info(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
-      begin_reimage_async(resource_group_name, vm_scale_set_name, vm_instance_ids:vm_instance_ids, custom_headers:custom_headers).value!
+    def begin_reimage_with_http_info(resource_group_name, vm_scale_set_name, vm_scale_set_reimage_input:nil, custom_headers:nil)
+      begin_reimage_async(resource_group_name, vm_scale_set_name, vm_scale_set_reimage_input:vm_scale_set_reimage_input, custom_headers:custom_headers).value!
     end
 
     #
     # Reimages (upgrade the operating system) one or more virtual machines in a VM
-    # scale set.
+    # scale set which don't have a ephemeral OS disk, for virtual machines who have
+    # a ephemeral OS disk the virtual machine is reset to initial state.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
-    # virtual machine instance IDs from the VM scale set.
+    # @param vm_scale_set_reimage_input [VirtualMachineScaleSetReimageParameters]
+    # Parameters for Reimaging VM ScaleSet.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reimage_async(resource_group_name, vm_scale_set_name, vm_instance_ids:nil, custom_headers:nil)
+    def begin_reimage_async(resource_group_name, vm_scale_set_name, vm_scale_set_reimage_input:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -2378,8 +2418,8 @@ module Azure::Compute::Mgmt::V2018_06_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetVMInstanceIDs.mapper()
-      request_content = @client.serialize(request_mapper,  vm_instance_ids)
+      request_mapper = Azure::Compute::Mgmt::V2018_06_01::Models::VirtualMachineScaleSetReimageParameters.mapper()
+      request_content = @client.serialize(request_mapper,  vm_scale_set_reimage_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage'
@@ -2406,6 +2446,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -2503,6 +2545,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -2581,6 +2625,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -2678,6 +2724,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -2769,6 +2817,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -2857,6 +2907,8 @@ module Azure::Compute::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

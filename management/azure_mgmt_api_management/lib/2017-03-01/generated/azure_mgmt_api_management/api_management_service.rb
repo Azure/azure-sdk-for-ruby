@@ -1293,7 +1293,7 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 201
+        unless status_code == 200 || status_code == 201 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1311,6 +1311,16 @@ module Azure::ApiManagement::Mgmt::V2017_03_01
         end
         # Deserialize Response
         if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ApiManagement::Mgmt::V2017_03_01::Models::ApiManagementServiceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ApiManagement::Mgmt::V2017_03_01::Models::ApiManagementServiceResource.mapper()

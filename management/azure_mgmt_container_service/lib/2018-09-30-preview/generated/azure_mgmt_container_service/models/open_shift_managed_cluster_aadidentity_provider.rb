@@ -28,6 +28,9 @@ module Azure::ContainerService::Mgmt::V2018_09_30_preview
       # @return [String] The tenantId associated with the provider.
       attr_accessor :tenant_id
 
+      # @return [String] The groupId to be granted cluster admin role.
+      attr_accessor :customer_admin_group_id
+
 
       #
       # Mapper for OpenShiftManagedClusterAADIdentityProvider class as Ruby
@@ -71,6 +74,14 @@ module Azure::ContainerService::Mgmt::V2018_09_30_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'tenantId',
+                type: {
+                  name: 'String'
+                }
+              },
+              customer_admin_group_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'customerAdminGroupId',
                 type: {
                   name: 'String'
                 }
