@@ -29,7 +29,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Source',
           type: {
@@ -37,7 +36,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Source',
             model_properties: {
               addr: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'addr',
                 type: {
@@ -45,7 +43,6 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               instance_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'instanceID',
                 type: {
