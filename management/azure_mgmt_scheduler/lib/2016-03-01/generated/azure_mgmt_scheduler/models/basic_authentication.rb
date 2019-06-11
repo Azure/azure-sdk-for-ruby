@@ -34,7 +34,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Basic',
           type: {
@@ -42,7 +41,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'BasicAuthentication',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -50,7 +48,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               username: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'username',
                 type: {
@@ -58,7 +55,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {

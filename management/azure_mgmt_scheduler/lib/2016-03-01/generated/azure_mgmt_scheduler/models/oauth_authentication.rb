@@ -40,7 +40,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ActiveDirectoryOAuth',
           type: {
@@ -48,7 +47,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'OAuthAuthentication',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               secret: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secret',
                 type: {
@@ -64,7 +61,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               tenant: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tenant',
                 type: {
@@ -72,7 +68,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               audience: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audience',
                 type: {
@@ -80,7 +75,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               client_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientId',
                 type: {
