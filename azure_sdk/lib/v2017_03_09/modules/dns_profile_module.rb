@@ -11,6 +11,7 @@ module Azure::Profiles::V2017_03_09
       Zones = Azure::Dns::Mgmt::V2016_04_01::Zones
 
       module Models
+        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         RecordSetUpdateParameters = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
         RecordSetListResult = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
         AaaaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
@@ -18,7 +19,6 @@ module Azure::Profiles::V2017_03_09
         MxRecord = Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
         PtrRecord = Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
         SrvRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
-        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
         ZoneDeleteResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
         RecordSet = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
@@ -66,6 +66,9 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
+          def resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
+          end
           def record_set_update_parameters
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
           end
@@ -86,9 +89,6 @@ module Azure::Profiles::V2017_03_09
           end
           def srv_record
             Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
-          end
-          def resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
           end
           def cname_record
             Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
