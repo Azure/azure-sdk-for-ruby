@@ -32,8 +32,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [JobDefinition] operation results.
     #
-    def get(resource_group_name, job_collection_name, job_name, custom_headers:nil)
-      response = get_async(resource_group_name, job_collection_name, job_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, job_collection_name, job_name, custom_headers = nil)
+      response = get_async(resource_group_name, job_collection_name, job_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -48,8 +48,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, job_collection_name, job_name, custom_headers:nil)
-      get_async(resource_group_name, job_collection_name, job_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, job_collection_name, job_name, custom_headers = nil)
+      get_async(resource_group_name, job_collection_name, job_name, custom_headers).value!
     end
 
     #
@@ -63,7 +63,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, job_collection_name, job_name, custom_headers:nil)
+    def get_async(resource_group_name, job_collection_name, job_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
@@ -72,7 +72,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -129,8 +128,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [JobDefinition] operation results.
     #
-    def create_or_update(resource_group_name, job_collection_name, job_name, job, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, job_collection_name, job_name, job, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, job_collection_name, job_name, job, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, job_collection_name, job_name, job, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -146,8 +145,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, job_collection_name, job_name, job, custom_headers:nil)
-      create_or_update_async(resource_group_name, job_collection_name, job_name, job, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, job_collection_name, job_name, job, custom_headers = nil)
+      create_or_update_async(resource_group_name, job_collection_name, job_name, job, custom_headers).value!
     end
 
     #
@@ -162,7 +161,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, job_collection_name, job_name, job, custom_headers:nil)
+    def create_or_update_async(resource_group_name, job_collection_name, job_name, job, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
@@ -172,11 +171,12 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.mapper()
@@ -246,8 +246,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [JobDefinition] operation results.
     #
-    def patch(resource_group_name, job_collection_name, job_name, job, custom_headers:nil)
-      response = patch_async(resource_group_name, job_collection_name, job_name, job, custom_headers:custom_headers).value!
+    def patch(resource_group_name, job_collection_name, job_name, job, custom_headers = nil)
+      response = patch_async(resource_group_name, job_collection_name, job_name, job, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -263,8 +263,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def patch_with_http_info(resource_group_name, job_collection_name, job_name, job, custom_headers:nil)
-      patch_async(resource_group_name, job_collection_name, job_name, job, custom_headers:custom_headers).value!
+    def patch_with_http_info(resource_group_name, job_collection_name, job_name, job, custom_headers = nil)
+      patch_async(resource_group_name, job_collection_name, job_name, job, custom_headers).value!
     end
 
     #
@@ -279,7 +279,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def patch_async(resource_group_name, job_collection_name, job_name, job, custom_headers:nil)
+    def patch_async(resource_group_name, job_collection_name, job_name, job, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
@@ -289,11 +289,12 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.mapper()
@@ -351,8 +352,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, job_collection_name, job_name, custom_headers:nil)
-      response = delete_async(resource_group_name, job_collection_name, job_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, job_collection_name, job_name, custom_headers = nil)
+      response = delete_async(resource_group_name, job_collection_name, job_name, custom_headers).value!
       nil
     end
 
@@ -367,8 +368,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, job_collection_name, job_name, custom_headers:nil)
-      delete_async(resource_group_name, job_collection_name, job_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, job_collection_name, job_name, custom_headers = nil)
+      delete_async(resource_group_name, job_collection_name, job_name, custom_headers).value!
     end
 
     #
@@ -382,7 +383,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, job_collection_name, job_name, custom_headers:nil)
+    def delete_async(resource_group_name, job_collection_name, job_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
@@ -391,7 +392,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -436,8 +436,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     # will be added to the HTTP request.
     #
     #
-    def run(resource_group_name, job_collection_name, job_name, custom_headers:nil)
-      response = run_async(resource_group_name, job_collection_name, job_name, custom_headers:custom_headers).value!
+    def run(resource_group_name, job_collection_name, job_name, custom_headers = nil)
+      response = run_async(resource_group_name, job_collection_name, job_name, custom_headers).value!
       nil
     end
 
@@ -452,8 +452,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def run_with_http_info(resource_group_name, job_collection_name, job_name, custom_headers:nil)
-      run_async(resource_group_name, job_collection_name, job_name, custom_headers:custom_headers).value!
+    def run_with_http_info(resource_group_name, job_collection_name, job_name, custom_headers = nil)
+      run_async(resource_group_name, job_collection_name, job_name, custom_headers).value!
     end
 
     #
@@ -467,7 +467,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def run_async(resource_group_name, job_collection_name, job_name, custom_headers:nil)
+    def run_async(resource_group_name, job_collection_name, job_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
@@ -476,7 +476,6 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -526,8 +525,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Array<JobDefinition>] operation results.
     #
-    def list(resource_group_name, job_collection_name, top:nil, skip:nil, filter:nil, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, job_collection_name, top:top, skip:skip, filter:filter, custom_headers:custom_headers)
+    def list(resource_group_name, job_collection_name, top = nil, skip = nil, filter = nil, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, job_collection_name, top, skip, filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -546,8 +545,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, job_collection_name, top:nil, skip:nil, filter:nil, custom_headers:nil)
-      list_async(resource_group_name, job_collection_name, top:top, skip:skip, filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, job_collection_name, top = nil, skip = nil, filter = nil, custom_headers = nil)
+      list_async(resource_group_name, job_collection_name, top, skip, filter, custom_headers).value!
     end
 
     #
@@ -565,17 +564,14 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, job_collection_name, top:nil, skip:nil, filter:nil, custom_headers:nil)
+    def list_async(resource_group_name, job_collection_name, top = nil, skip = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '100'" if !top.nil? && top > 100
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -636,8 +632,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Array<JobHistoryDefinition>] operation results.
     #
-    def list_job_history(resource_group_name, job_collection_name, job_name, top:nil, skip:nil, filter:nil, custom_headers:nil)
-      first_page = list_job_history_as_lazy(resource_group_name, job_collection_name, job_name, top:top, skip:skip, filter:filter, custom_headers:custom_headers)
+    def list_job_history(resource_group_name, job_collection_name, job_name, top = nil, skip = nil, filter = nil, custom_headers = nil)
+      first_page = list_job_history_as_lazy(resource_group_name, job_collection_name, job_name, top, skip, filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -657,8 +653,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_job_history_with_http_info(resource_group_name, job_collection_name, job_name, top:nil, skip:nil, filter:nil, custom_headers:nil)
-      list_job_history_async(resource_group_name, job_collection_name, job_name, top:top, skip:skip, filter:filter, custom_headers:custom_headers).value!
+    def list_job_history_with_http_info(resource_group_name, job_collection_name, job_name, top = nil, skip = nil, filter = nil, custom_headers = nil)
+      list_job_history_async(resource_group_name, job_collection_name, job_name, top, skip, filter, custom_headers).value!
     end
 
     #
@@ -677,18 +673,15 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_job_history_async(resource_group_name, job_collection_name, job_name, top:nil, skip:nil, filter:nil, custom_headers:nil)
+    def list_job_history_async(resource_group_name, job_collection_name, job_name, top = nil, skip = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
       fail ArgumentError, 'job_name is nil' if job_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '100'" if !top.nil? && top > 100
-      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -743,8 +736,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [JobListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -758,8 +751,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -772,12 +765,11 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -831,8 +823,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [JobHistoryListResult] operation results.
     #
-    def list_job_history_next(next_page_link, custom_headers:nil)
-      response = list_job_history_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_job_history_next(next_page_link, custom_headers = nil)
+      response = list_job_history_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -846,8 +838,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_job_history_next_with_http_info(next_page_link, custom_headers:nil)
-      list_job_history_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_job_history_next_with_http_info(next_page_link, custom_headers = nil)
+      list_job_history_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -860,12 +852,11 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_job_history_next_async(next_page_link, custom_headers:nil)
+    def list_job_history_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -924,12 +915,12 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     #
     # @return [JobListResult] which provide lazy access to pages of the response.
     #
-    def list_as_lazy(resource_group_name, job_collection_name, top:nil, skip:nil, filter:nil, custom_headers:nil)
-      response = list_async(resource_group_name, job_collection_name, top:top, skip:skip, filter:filter, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, job_collection_name, top = nil, skip = nil, filter = nil, custom_headers = nil)
+      response = list_async(resource_group_name, job_collection_name, top, skip, filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -952,12 +943,12 @@ module Azure::Scheduler::Mgmt::V2016_03_01
     # @return [JobHistoryListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_job_history_as_lazy(resource_group_name, job_collection_name, job_name, top:nil, skip:nil, filter:nil, custom_headers:nil)
-      response = list_job_history_async(resource_group_name, job_collection_name, job_name, top:top, skip:skip, filter:filter, custom_headers:custom_headers).value!
+    def list_job_history_as_lazy(resource_group_name, job_collection_name, job_name, top = nil, skip = nil, filter = nil, custom_headers = nil)
+      response = list_job_history_async(resource_group_name, job_collection_name, job_name, top, skip, filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_job_history_next_async(next_page_link, custom_headers:custom_headers)
+          list_job_history_next_async(next_page_link, custom_headers)
         end
         page
       end
