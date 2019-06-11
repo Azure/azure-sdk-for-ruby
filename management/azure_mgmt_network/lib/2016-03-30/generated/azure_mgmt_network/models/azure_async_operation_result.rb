@@ -7,7 +7,7 @@ module Azure::Network::Mgmt::V2016_03_30
   module Models
     #
     # The response body contains the status of the specified asynchronous
-    # operation, indicating whether it has succeeded, is inprogress, or has
+    # operation, indicating whether it has succeeded, is in progress, or has
     # failed. Note that this status is distinct from the HTTP status code
     # returned for the Get Operation Status operation itself. If the
     # asynchronous operation succeeded, the response body includes the HTTP
@@ -33,7 +33,6 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AzureAsyncOperationResult',
           type: {
@@ -41,7 +40,6 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'AzureAsyncOperationResult',
             model_properties: {
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
