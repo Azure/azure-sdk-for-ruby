@@ -7,7 +7,7 @@ module Azure::CDN::Mgmt::V2017_04_02
   module Models
     #
     # Result of the request to list profiles. It contains a list of profile
-    # objects and a URL link to get the the next set of results.
+    # objects and a URL link to get the next set of results.
     #
     class ProfileListResult
 
@@ -59,7 +59,6 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProfileListResult',
           type: {
@@ -67,14 +66,12 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'ProfileListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProfileElementType',
                       type: {
@@ -85,7 +82,6 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
