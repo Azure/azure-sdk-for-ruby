@@ -40,7 +40,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayRoute',
           type: {
@@ -48,7 +47,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'GatewayRoute',
             model_properties: {
               local_address: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'localAddress',
@@ -57,7 +55,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               network: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'network',
@@ -66,7 +63,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               next_hop: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextHop',
@@ -75,7 +71,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               source_peer: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'sourcePeer',
@@ -84,7 +79,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               origin: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'origin',
@@ -93,7 +87,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               as_path: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'asPath',
@@ -102,7 +95,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               weight: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'weight',

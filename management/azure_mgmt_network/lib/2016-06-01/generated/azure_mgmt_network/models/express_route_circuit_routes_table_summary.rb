@@ -37,7 +37,6 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitRoutesTableSummary',
           type: {
@@ -45,7 +44,6 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'ExpressRouteCircuitRoutesTableSummary',
             model_properties: {
               neighbor: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'neighbor',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               v: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'v',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               as: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'as',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               up_down: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'upDown',
                 type: {
@@ -77,7 +72,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               state_pfx_rcd: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statePfxRcd',
                 type: {
