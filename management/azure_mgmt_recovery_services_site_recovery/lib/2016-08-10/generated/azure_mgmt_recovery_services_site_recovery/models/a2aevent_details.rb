@@ -44,7 +44,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'A2A',
           type: {
@@ -52,7 +51,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'A2AEventDetails',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -60,7 +58,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protected_item_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemName',
                 type: {
@@ -68,7 +65,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_object_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricObjectId',
                 type: {
@@ -76,7 +72,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricName',
                 type: {
@@ -84,7 +79,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricLocation',
                 type: {
@@ -92,7 +86,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               remote_fabric_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'remoteFabricName',
                 type: {
@@ -100,7 +93,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               remote_fabric_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'remoteFabricLocation',
                 type: {

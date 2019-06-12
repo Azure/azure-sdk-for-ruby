@@ -52,7 +52,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IdentityInformation',
           type: {
@@ -60,7 +59,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'IdentityInformation',
             model_properties: {
               identity_provider_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'identityProviderType',
                 type: {
@@ -69,7 +67,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tenantId',
                 type: {
@@ -77,7 +74,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               application_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationId',
                 type: {
@@ -85,7 +81,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               object_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectId',
                 type: {
@@ -93,7 +88,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               audience: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audience',
                 type: {
@@ -101,7 +95,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               aad_authority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'aadAuthority',
                 type: {
@@ -109,7 +102,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               certificate_thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateThumbprint',
                 type: {

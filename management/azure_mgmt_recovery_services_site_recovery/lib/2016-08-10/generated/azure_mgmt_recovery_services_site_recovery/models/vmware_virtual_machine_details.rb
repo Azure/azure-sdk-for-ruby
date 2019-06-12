@@ -43,7 +43,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       # @return [String] The VCenter infrastructure Id.
       attr_accessor :v_center_infrastructure_id
 
-      # @return [String] A value inidicating the discovery type of the machine.
+      # @return [String] A value indicating the discovery type of the machine.
       # Value can be vCenter or physical.
       attr_accessor :discovery_type
 
@@ -60,7 +60,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VMwareVirtualMachine',
           type: {
@@ -68,7 +67,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'VMwareVirtualMachineDetails',
             model_properties: {
               instanceType: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -76,7 +74,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               agent_generated_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'agentGeneratedId',
                 type: {
@@ -84,7 +81,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               agent_installed: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'agentInstalled',
                 type: {
@@ -92,7 +88,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -100,7 +95,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               agent_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'agentVersion',
                 type: {
@@ -108,7 +102,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               ip_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipAddress',
                 type: {
@@ -116,7 +109,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               powered_on: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'poweredOn',
                 type: {
@@ -124,7 +116,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               v_center_infrastructure_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vCenterInfrastructureId',
                 type: {
@@ -132,7 +123,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               discovery_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'discoveryType',
                 type: {
@@ -140,13 +130,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskDetails',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InMageDiskDetailsElementType',
                       type: {
@@ -157,13 +145,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               validation_errors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'validationErrors',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorElementType',
                       type: {

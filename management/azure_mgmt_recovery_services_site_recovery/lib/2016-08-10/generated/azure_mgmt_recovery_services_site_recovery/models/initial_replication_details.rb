@@ -25,7 +25,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InitialReplicationDetails',
           type: {
@@ -33,7 +32,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InitialReplicationDetails',
             model_properties: {
               initial_replication_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'initialReplicationType',
                 type: {
@@ -41,7 +39,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               initial_replication_progress_percentage: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'initialReplicationProgressPercentage',
                 type: {

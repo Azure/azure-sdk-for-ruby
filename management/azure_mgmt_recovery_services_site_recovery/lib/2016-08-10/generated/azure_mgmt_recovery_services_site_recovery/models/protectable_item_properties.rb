@@ -42,7 +42,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProtectableItemProperties',
           type: {
@@ -50,7 +49,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ProtectableItemProperties',
             model_properties: {
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -58,7 +56,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protection_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionStatus',
                 type: {
@@ -66,7 +63,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replication_protected_item_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicationProtectedItemId',
                 type: {
@@ -74,7 +70,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_services_provider_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryServicesProviderId',
                 type: {
@@ -82,13 +77,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protection_readiness_errors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionReadinessErrors',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -98,13 +91,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               supported_replication_providers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'supportedReplicationProviders',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -114,7 +105,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               custom_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customDetails',
                 type: {

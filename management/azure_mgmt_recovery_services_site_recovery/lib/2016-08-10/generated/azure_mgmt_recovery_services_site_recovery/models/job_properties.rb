@@ -67,7 +67,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobProperties',
           type: {
@@ -75,7 +74,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'JobProperties',
             model_properties: {
               activity_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'activityId',
                 type: {
@@ -83,7 +81,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               scenario_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scenarioName',
                 type: {
@@ -91,7 +88,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -99,7 +95,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -107,7 +102,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               state_description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'stateDescription',
                 type: {
@@ -115,13 +109,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               tasks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tasks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ASRTaskElementType',
                       type: {
@@ -132,13 +124,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               errors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'errors',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobErrorDetailsElementType',
                       type: {
@@ -149,7 +139,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -157,7 +146,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -165,13 +153,11 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               allowed_actions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowedActions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -181,7 +167,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_object_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetObjectId',
                 type: {
@@ -189,7 +174,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_object_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetObjectName',
                 type: {
@@ -197,7 +181,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_instance_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetInstanceType',
                 type: {
@@ -205,7 +188,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               custom_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customDetails',
                 type: {

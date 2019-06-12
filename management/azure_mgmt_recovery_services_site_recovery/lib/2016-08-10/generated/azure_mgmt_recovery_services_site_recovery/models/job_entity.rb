@@ -38,7 +38,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobEntity',
           type: {
@@ -46,7 +45,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'JobEntity',
             model_properties: {
               job_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobId',
                 type: {
@@ -54,7 +52,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobFriendlyName',
                 type: {
@@ -62,7 +59,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_object_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetObjectId',
                 type: {
@@ -70,7 +66,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_object_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetObjectName',
                 type: {
@@ -78,7 +73,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_instance_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetInstanceType',
                 type: {
@@ -86,7 +80,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_scenario_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobScenarioName',
                 type: {
