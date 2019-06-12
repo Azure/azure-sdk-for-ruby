@@ -42,8 +42,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [WebService] operation results.
     #
-    def create_or_update(resource_group_name, web_service_name, create_or_update_payload, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -59,9 +59,9 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers:nil)
+    def create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -93,8 +93,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [WebService] operation results.
     #
-    def get(resource_group_name, web_service_name, region:nil, custom_headers:nil)
-      response = get_async(resource_group_name, web_service_name, region:region, custom_headers:custom_headers).value!
+    def get(resource_group_name, web_service_name, region = nil, custom_headers = nil)
+      response = get_async(resource_group_name, web_service_name, region, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -114,8 +114,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, web_service_name, region:nil, custom_headers:nil)
-      get_async(resource_group_name, web_service_name, region:region, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, web_service_name, region = nil, custom_headers = nil)
+      get_async(resource_group_name, web_service_name, region, custom_headers).value!
     end
 
     #
@@ -134,7 +134,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, web_service_name, region:nil, custom_headers:nil)
+    def get_async(resource_group_name, web_service_name, region = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'web_service_name is nil' if web_service_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -142,7 +142,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -195,15 +194,15 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [WebService] operation results.
     #
-    def patch(resource_group_name, web_service_name, patch_payload, custom_headers:nil)
-      response = patch_async(resource_group_name, web_service_name, patch_payload, custom_headers:custom_headers).value!
+    def patch(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
+      response = patch_async(resource_group_name, web_service_name, patch_payload, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -211,7 +210,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -219,9 +218,9 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def patch_async(resource_group_name, web_service_name, patch_payload, custom_headers:nil)
+    def patch_async(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
       # Send request
-      promise = begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers:custom_headers)
+      promise = begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -246,8 +245,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def remove(resource_group_name, web_service_name, custom_headers:nil)
-      response = remove_async(resource_group_name, web_service_name, custom_headers:custom_headers).value!
+    def remove(resource_group_name, web_service_name, custom_headers = nil)
+      response = remove_async(resource_group_name, web_service_name, custom_headers).value!
       nil
     end
 
@@ -261,9 +260,9 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def remove_async(resource_group_name, web_service_name, custom_headers:nil)
+    def remove_async(resource_group_name, web_service_name, custom_headers = nil)
       # Send request
-      promise = begin_remove_async(resource_group_name, web_service_name, custom_headers:custom_headers)
+      promise = begin_remove_async(resource_group_name, web_service_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -295,8 +294,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [AsyncOperationStatus] operation results.
     #
-    def create_regional_properties(resource_group_name, web_service_name, region, custom_headers:nil)
-      response = create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers:custom_headers).value!
+    def create_regional_properties(resource_group_name, web_service_name, region, custom_headers = nil)
+      response = create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -312,9 +311,9 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers:nil)
+    def create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers = nil)
       # Send request
-      promise = begin_create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers:custom_headers)
+      promise = begin_create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -341,8 +340,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [WebServiceKeys] operation results.
     #
-    def list_keys(resource_group_name, web_service_name, custom_headers:nil)
-      response = list_keys_async(resource_group_name, web_service_name, custom_headers:custom_headers).value!
+    def list_keys(resource_group_name, web_service_name, custom_headers = nil)
+      response = list_keys_async(resource_group_name, web_service_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -357,8 +356,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_with_http_info(resource_group_name, web_service_name, custom_headers:nil)
-      list_keys_async(resource_group_name, web_service_name, custom_headers:custom_headers).value!
+    def list_keys_with_http_info(resource_group_name, web_service_name, custom_headers = nil)
+      list_keys_async(resource_group_name, web_service_name, custom_headers).value!
     end
 
     #
@@ -372,7 +371,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_async(resource_group_name, web_service_name, custom_headers:nil)
+    def list_keys_async(resource_group_name, web_service_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'web_service_name is nil' if web_service_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -380,7 +379,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -436,8 +434,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Array<WebService>] operation results.
     #
-    def list_by_resource_group(resource_group_name, skiptoken:nil, custom_headers:nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, skiptoken:skiptoken, custom_headers:custom_headers)
+    def list_by_resource_group(resource_group_name, skiptoken = nil, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, skiptoken, custom_headers)
       first_page.get_all_items
     end
 
@@ -452,8 +450,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, skiptoken:nil, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, skiptoken = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, skiptoken, custom_headers).value!
     end
 
     #
@@ -467,14 +465,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, skiptoken:nil, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, skiptoken = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -528,8 +525,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Array<WebService>] operation results.
     #
-    def list_by_subscription_id(skiptoken:nil, custom_headers:nil)
-      first_page = list_by_subscription_id_as_lazy(skiptoken:skiptoken, custom_headers:custom_headers)
+    def list_by_subscription_id(skiptoken = nil, custom_headers = nil)
+      first_page = list_by_subscription_id_as_lazy(skiptoken, custom_headers)
       first_page.get_all_items
     end
 
@@ -542,8 +539,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_id_with_http_info(skiptoken:nil, custom_headers:nil)
-      list_by_subscription_id_async(skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_by_subscription_id_with_http_info(skiptoken = nil, custom_headers = nil)
+      list_by_subscription_id_async(skiptoken, custom_headers).value!
     end
 
     #
@@ -555,13 +552,12 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_id_async(skiptoken:nil, custom_headers:nil)
+    def list_by_subscription_id_async(skiptoken = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -622,8 +618,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [WebService] operation results.
     #
-    def begin_create_or_update(resource_group_name, web_service_name, create_or_update_payload, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -643,8 +639,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, web_service_name, create_or_update_payload, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers).value!
     end
 
     #
@@ -663,7 +659,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'web_service_name is nil' if web_service_name.nil?
       fail ArgumentError, 'create_or_update_payload is nil' if create_or_update_payload.nil?
@@ -672,11 +668,12 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService.mapper()
@@ -742,15 +739,15 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [WebService] operation results.
     #
-    def begin_patch(resource_group_name, web_service_name, patch_payload, custom_headers:nil)
-      response = begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers:custom_headers).value!
+    def begin_patch(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
+      response = begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -762,15 +759,15 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_patch_with_http_info(resource_group_name, web_service_name, patch_payload, custom_headers:nil)
-      begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers:custom_headers).value!
+    def begin_patch_with_http_info(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
+      begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers).value!
     end
 
     #
@@ -781,14 +778,14 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @param resource_group_name [String] Name of the resource group in which the
     # web service is located.
     # @param web_service_name [String] The name of the web service.
-    # @param patch_payload [WebService] The payload to use to patch the web
+    # @param patch_payload [PatchedWebService] The payload to use to patch the web
     # service.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers:nil)
+    def begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'web_service_name is nil' if web_service_name.nil?
       fail ArgumentError, 'patch_payload is nil' if patch_payload.nil?
@@ -797,14 +794,15 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
       # Serialize Request
-      request_mapper = Azure::MachineLearning::Mgmt::V2017_01_01::Models::WebService.mapper()
+      request_mapper = Azure::MachineLearning::Mgmt::V2017_01_01::Models::PatchedWebService.mapper()
       request_content = @client.serialize(request_mapper,  patch_payload)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -859,8 +857,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # will be added to the HTTP request.
     #
     #
-    def begin_remove(resource_group_name, web_service_name, custom_headers:nil)
-      response = begin_remove_async(resource_group_name, web_service_name, custom_headers:custom_headers).value!
+    def begin_remove(resource_group_name, web_service_name, custom_headers = nil)
+      response = begin_remove_async(resource_group_name, web_service_name, custom_headers).value!
       nil
     end
 
@@ -875,8 +873,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_remove_with_http_info(resource_group_name, web_service_name, custom_headers:nil)
-      begin_remove_async(resource_group_name, web_service_name, custom_headers:custom_headers).value!
+    def begin_remove_with_http_info(resource_group_name, web_service_name, custom_headers = nil)
+      begin_remove_async(resource_group_name, web_service_name, custom_headers).value!
     end
 
     #
@@ -890,7 +888,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_remove_async(resource_group_name, web_service_name, custom_headers:nil)
+    def begin_remove_async(resource_group_name, web_service_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'web_service_name is nil' if web_service_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -898,7 +896,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -951,8 +948,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [AsyncOperationStatus] operation results.
     #
-    def begin_create_regional_properties(resource_group_name, web_service_name, region, custom_headers:nil)
-      response = begin_create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers:custom_headers).value!
+    def begin_create_regional_properties(resource_group_name, web_service_name, region, custom_headers = nil)
+      response = begin_create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -974,8 +971,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_regional_properties_with_http_info(resource_group_name, web_service_name, region, custom_headers:nil)
-      begin_create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers:custom_headers).value!
+    def begin_create_regional_properties_with_http_info(resource_group_name, web_service_name, region, custom_headers = nil)
+      begin_create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers).value!
     end
 
     #
@@ -996,7 +993,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers:nil)
+    def begin_create_regional_properties_async(resource_group_name, web_service_name, region, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'web_service_name is nil' if web_service_name.nil?
       fail ArgumentError, 'region is nil' if region.nil?
@@ -1005,7 +1002,6 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1060,8 +1056,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [PaginatedWebServicesList] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers:nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1075,8 +1071,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1089,12 +1085,11 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1148,8 +1143,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [PaginatedWebServicesList] operation results.
     #
-    def list_by_subscription_id_next(next_page_link, custom_headers:nil)
-      response = list_by_subscription_id_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_id_next(next_page_link, custom_headers = nil)
+      response = list_by_subscription_id_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1163,8 +1158,8 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_id_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_subscription_id_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_id_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_subscription_id_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1177,12 +1172,11 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_id_next_async(next_page_link, custom_headers:nil)
+    def list_by_subscription_id_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1238,12 +1232,12 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @return [PaginatedWebServicesList] which provide lazy access to pages of the
     # response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, skiptoken:nil, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, skiptoken = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, skiptoken, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1259,12 +1253,12 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
     # @return [PaginatedWebServicesList] which provide lazy access to pages of the
     # response.
     #
-    def list_by_subscription_id_as_lazy(skiptoken:nil, custom_headers:nil)
-      response = list_by_subscription_id_async(skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_by_subscription_id_as_lazy(skiptoken = nil, custom_headers = nil)
+      response = list_by_subscription_id_async(skiptoken, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_subscription_id_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_subscription_id_next_async(next_page_link, custom_headers)
         end
         page
       end
