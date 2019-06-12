@@ -22,7 +22,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AccessUri',
           type: {
@@ -30,7 +29,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'AccessUri',
             model_properties: {
               access_sas: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.output.accessSAS',

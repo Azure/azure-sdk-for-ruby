@@ -42,7 +42,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MaintenanceRedeployStatus',
           type: {
@@ -50,7 +49,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'MaintenanceRedeployStatus',
             model_properties: {
               is_customer_initiated_maintenance_allowed: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isCustomerInitiatedMaintenanceAllowed',
                 type: {
@@ -58,7 +56,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               pre_maintenance_window_start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'preMaintenanceWindowStartTime',
                 type: {
@@ -66,7 +63,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               pre_maintenance_window_end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'preMaintenanceWindowEndTime',
                 type: {
@@ -74,7 +70,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               maintenance_window_start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maintenanceWindowStartTime',
                 type: {
@@ -82,7 +77,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               maintenance_window_end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maintenanceWindowEndTime',
                 type: {
@@ -90,7 +84,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               last_operation_result_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastOperationResultCode',
                 type: {
@@ -99,7 +92,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               last_operation_message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastOperationMessage',
                 type: {

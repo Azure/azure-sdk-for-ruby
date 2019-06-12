@@ -13,7 +13,8 @@ module Azure::Compute::Mgmt::V2016_03_30
       include MsRestAzure
 
       # @return [String] Specifies the host OS name of the virtual machine.
-      # <br><br> **Max-length (Windows):** 15 characters <br><br> **Max-length
+      # <br><br> This name cannot be updated after the VM is created. <br><br>
+      # **Max-length (Windows):** 15 characters <br><br> **Max-length
       # (Linux):** 64 characters. <br><br> For naming conventions and
       # restrictions see [Azure infrastructure services implementation
       # guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
@@ -86,7 +87,6 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OSProfile',
           type: {
@@ -94,7 +94,6 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'OSProfile',
             model_properties: {
               computer_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'computerName',
                 type: {
@@ -102,7 +101,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               admin_username: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'adminUsername',
                 type: {
@@ -110,7 +108,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               admin_password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'adminPassword',
                 type: {
@@ -118,7 +115,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               custom_data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customData',
                 type: {
@@ -126,7 +122,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               windows_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'windowsConfiguration',
                 type: {
@@ -135,7 +130,6 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               linux_configuration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'linuxConfiguration',
                 type: {
@@ -144,13 +138,11 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               secrets: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secrets',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VaultSecretGroupElementType',
                       type: {

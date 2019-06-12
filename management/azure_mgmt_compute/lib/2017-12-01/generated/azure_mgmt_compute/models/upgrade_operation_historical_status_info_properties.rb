@@ -16,7 +16,7 @@ module Azure::Compute::Mgmt::V2017_12_01
       # status of the upgrade operation.
       attr_accessor :running_status
 
-      # @return [RollingUpgradeProgressInfo] Counts of the VM's in each state.
+      # @return [RollingUpgradeProgressInfo] Counts of the VMs in each state.
       attr_accessor :progress
 
       # @return [ApiError] Error Details for this upgrade if there are any.
@@ -40,7 +40,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpgradeOperationHistoricalStatusInfoProperties',
           type: {
@@ -48,7 +47,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'UpgradeOperationHistoricalStatusInfoProperties',
             model_properties: {
               running_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'runningStatus',
@@ -58,7 +56,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               progress: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'progress',
@@ -68,7 +65,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',
@@ -78,7 +74,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               started_by: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startedBy',
@@ -88,7 +83,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               target_image_reference: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'targetImageReference',
@@ -98,7 +92,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               rollback_info: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'rollbackInfo',

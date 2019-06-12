@@ -27,7 +27,6 @@ module Azure::Compute::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSkuLocationInfo',
           type: {
@@ -35,7 +34,6 @@ module Azure::Compute::Mgmt::V2017_09_01
             class_name: 'ResourceSkuLocationInfo',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -44,14 +42,12 @@ module Azure::Compute::Mgmt::V2017_09_01
                 }
               },
               zones: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'zones',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
