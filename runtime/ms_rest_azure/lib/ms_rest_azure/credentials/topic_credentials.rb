@@ -4,7 +4,7 @@
 
 module MsRestAzure
   #
-  # Class that provides access to authentication token.
+  # Class that enables access to Azure EventGrid topics.
   #
   class TopicCredentials < MsRest::ServiceClientCredentials
 
