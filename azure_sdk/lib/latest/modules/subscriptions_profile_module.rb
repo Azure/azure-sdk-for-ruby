@@ -7,12 +7,13 @@ require 'azure_mgmt_subscriptions'
 module Azure::Profiles::Latest
   module Subscriptions
     module Mgmt
+      Subscriptions = Azure::Subscriptions::Mgmt::V2016_06_01::Subscriptions
       Operations = Azure::Subscriptions::Mgmt::V2016_06_01::Operations
       Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
-      Subscriptions = Azure::Subscriptions::Mgmt::V2016_06_01::Subscriptions
 
       module Models
         Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+        TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
         TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
         SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
@@ -23,11 +24,10 @@ module Azure::Profiles::Latest
         OperationDisplay = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationDisplay
         Operation = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Operation
         OperationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
-        TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
       end
 
       class SubscriptionsManagementClass
-        attr_reader :operations, :tenants, :subscriptions, :configurable, :base_url, :options, :model_classes
+        attr_reader :subscriptions, :operations, :tenants, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -37,9 +37,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @subscriptions = @client_0.subscriptions
           @operations = @client_0.operations
           @tenants = @client_0.tenants
-          @subscriptions = @client_0.subscriptions
 
           @model_classes = ModelClasses.new
         end
@@ -60,6 +60,9 @@ module Azure::Profiles::Latest
         class ModelClasses
           def location
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+          end
+          def tenant_id_description
+            Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
           end
           def tenant_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
@@ -90,9 +93,6 @@ module Azure::Profiles::Latest
           end
           def operation_list_result
             Azure::Subscriptions::Mgmt::V2016_06_01::Models::OperationListResult
-          end
-          def tenant_id_description
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
           end
         end
       end
