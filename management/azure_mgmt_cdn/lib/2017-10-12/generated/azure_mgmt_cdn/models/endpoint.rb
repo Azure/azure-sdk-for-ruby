@@ -23,7 +23,7 @@ module Azure::CDN::Mgmt::V2017_10_12
       attr_accessor :origin_host_header
 
       # @return [String] A directory path on the origin that CDN can use to
-      # retreive content from, e.g. contoso.cloudapp.net/originpath.
+      # retrieve content from, e.g. contoso.cloudapp.net/originpath.
       attr_accessor :origin_path
 
       # @return [Array<String>] List of content types on which compression
@@ -69,7 +69,7 @@ module Azure::CDN::Mgmt::V2017_10_12
       attr_accessor :probe_path
 
       # @return [Array<GeoFilter>] List of rules defining the user's geo access
-      # within a CDN endpoint. Each geo filter defines an acess rule to a
+      # within a CDN endpoint. Each geo filter defines an access rule to a
       # specified path or content, e.g. block APAC for path /pictures/
       attr_accessor :geo_filters
 
@@ -78,7 +78,7 @@ module Azure::CDN::Mgmt::V2017_10_12
       attr_accessor :delivery_policy
 
       # @return [String] The host name of the endpoint structured as
-      # {endpointName}.{DNSZone}, e.g. consoto.azureedge.net
+      # {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
       attr_accessor :host_name
 
       # @return [Array<DeepCreatedOrigin>] The source of the content being
@@ -100,7 +100,6 @@ module Azure::CDN::Mgmt::V2017_10_12
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Endpoint',
           type: {
@@ -108,7 +107,6 @@ module Azure::CDN::Mgmt::V2017_10_12
             class_name: 'Endpoint',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -117,7 +115,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -126,7 +123,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -135,7 +131,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -143,13 +138,11 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -159,7 +152,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               origin_host_header: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.originHostHeader',
                 type: {
@@ -167,7 +159,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               origin_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.originPath',
                 type: {
@@ -175,13 +166,11 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               content_types_to_compress: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.contentTypesToCompress',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -191,7 +180,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               is_compression_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isCompressionEnabled',
                 type: {
@@ -199,7 +187,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               is_http_allowed: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isHttpAllowed',
                 type: {
@@ -207,7 +194,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               is_https_allowed: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isHttpsAllowed',
                 type: {
@@ -215,7 +201,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               query_string_caching_behavior: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.queryStringCachingBehavior',
                 type: {
@@ -224,7 +209,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               optimization_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.optimizationType',
                 type: {
@@ -232,7 +216,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               probe_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.probePath',
                 type: {
@@ -240,13 +223,11 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               geo_filters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.geoFilters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GeoFilterElementType',
                       type: {
@@ -257,7 +238,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               delivery_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deliveryPolicy',
                 type: {
@@ -266,7 +246,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               host_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hostName',
@@ -275,13 +254,11 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               origins: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.origins',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DeepCreatedOriginElementType',
                       type: {
@@ -292,7 +269,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               resource_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceState',
@@ -301,7 +277,6 @@ module Azure::CDN::Mgmt::V2017_10_12
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
