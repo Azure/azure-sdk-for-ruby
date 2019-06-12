@@ -29,7 +29,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MobilityServiceUpdate',
           type: {
@@ -37,7 +36,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'MobilityServiceUpdate',
             model_properties: {
               version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {
@@ -45,7 +43,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               reboot_status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rebootStatus',
                 type: {
@@ -53,7 +50,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {

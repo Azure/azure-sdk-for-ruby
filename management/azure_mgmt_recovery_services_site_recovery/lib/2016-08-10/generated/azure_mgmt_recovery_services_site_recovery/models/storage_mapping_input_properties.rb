@@ -22,7 +22,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageMappingInputProperties',
           type: {
@@ -30,7 +29,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'StorageMappingInputProperties',
             model_properties: {
               target_storage_classification_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetStorageClassificationId',
                 type: {

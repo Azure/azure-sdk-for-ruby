@@ -28,7 +28,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OSDiskDetails',
           type: {
@@ -36,7 +35,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'OSDiskDetails',
             model_properties: {
               os_vhd_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osVhdId',
                 type: {
@@ -44,7 +42,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -52,7 +49,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vhd_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdName',
                 type: {

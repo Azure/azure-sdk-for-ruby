@@ -43,7 +43,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventQueryParameter',
           type: {
@@ -51,7 +50,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'EventQueryParameter',
             model_properties: {
               event_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'EventCode',
                 type: {
@@ -59,7 +57,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               severity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'Severity',
                 type: {
@@ -67,7 +64,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               event_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'EventType',
                 type: {
@@ -75,7 +71,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'FabricName',
                 type: {
@@ -83,7 +78,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               affected_object_friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'AffectedObjectFriendlyName',
                 type: {
@@ -91,7 +85,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'StartTime',
                 type: {
@@ -99,7 +92,6 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'EndTime',
                 type: {
