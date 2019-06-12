@@ -11,11 +11,11 @@ module Azure::Profiles::Latest
       UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::UserAssignedIdentities
 
       module Models
-        UserAssignedIdentitiesListResult = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentitiesListResult
         OperationDisplay = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
+        UserAssignedIdentitiesListResult = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentitiesListResult
         Operation = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation
-        Identity = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Identity
         OperationListResult = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationListResult
+        Identity = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Identity
         UserAssignedIdentities = Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentities
       end
 
@@ -50,20 +50,20 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def user_assigned_identities_list_result
-            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentitiesListResult
-          end
           def operation_display
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationDisplay
+          end
+          def user_assigned_identities_list_result
+            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentitiesListResult
           end
           def operation
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Operation
           end
-          def identity
-            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Identity
-          end
           def operation_list_result
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::OperationListResult
+          end
+          def identity
+            Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::Identity
           end
           def user_assigned_identities
             Azure::ManagedServiceIdentity::Mgmt::V2015_08_31_preview::Models::UserAssignedIdentities
