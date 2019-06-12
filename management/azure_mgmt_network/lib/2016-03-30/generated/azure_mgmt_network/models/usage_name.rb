@@ -26,7 +26,6 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UsageName',
           type: {
@@ -34,7 +33,6 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'UsageName',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               localized_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedValue',
                 type: {

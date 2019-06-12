@@ -20,13 +20,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       # each of the frontendIPConfigurations is forwarded to the backed IP
       attr_accessor :backend_ipconfiguration
 
-      # @return [TransportProtocol] Gets or sets the transport potocol for the
+      # @return [TransportProtocol] Gets or sets the transport protocol for the
       # external endpoint. Possible values are Udp or Tcp. Possible values
       # include: 'Udp', 'Tcp'
       attr_accessor :protocol
 
       # @return [Integer] Gets or sets the port for the external endpoint. You
-      # can spcify any port number you choose, but the port numbers specified
+      # can specify any port number you choose, but the port numbers specified
       # for each role in the service must be unique. Possible values range
       # between 1 and 65535, inclusive
       attr_accessor :frontend_port
@@ -34,7 +34,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       # @return [Integer] Gets or sets a port used for internal connections on
       # the endpoint. The localPort attribute maps the eternal port of the
       # endpoint to an internal port on a role. This is useful in scenarios
-      # where a role must communicate to an internal compotnent on a port that
+      # where a role must communicate to an internal component on a port that
       # is different from the one that is exposed externally. If not specified,
       # the value of localPort is the same as the port attribute. Set the value
       # of localPort to '*' to automatically assign an unallocated port that is
@@ -43,7 +43,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       # @return [Integer] Gets or sets the timeout for the Tcp idle connection.
       # The value can be set between 4 and 30 minutes. The default value is 4
-      # minutes. This emlement is only used when the protocol is set to Tcp
+      # minutes. This element is only used when the protocol is set to Tcp
       attr_accessor :idle_timeout_in_minutes
 
       # @return [Boolean] Configures a virtual machine's endpoint for the
@@ -72,7 +72,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InboundNatRule',
           type: {
@@ -80,7 +79,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'InboundNatRule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -88,7 +86,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               frontend_ipconfiguration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendIPConfiguration',
                 type: {
@@ -97,7 +94,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               backend_ipconfiguration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendIPConfiguration',
                 type: {
@@ -106,7 +102,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -114,7 +109,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               frontend_port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.frontendPort',
                 type: {
@@ -122,7 +116,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               backend_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendPort',
                 type: {
@@ -130,7 +123,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               idle_timeout_in_minutes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -138,7 +130,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               enable_floating_ip: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.enableFloatingIP',
                 type: {
@@ -146,7 +137,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -154,7 +144,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -162,7 +151,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

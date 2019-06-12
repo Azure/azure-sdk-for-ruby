@@ -33,8 +33,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [NetworkWatcher] operation results.
     #
-    def create_or_update(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,8 +50,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      create_or_update_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -66,7 +66,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -75,11 +75,12 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_09_01::Models::NetworkWatcher.mapper()
@@ -147,8 +148,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [NetworkWatcher] operation results.
     #
-    def get(resource_group_name, network_watcher_name, custom_headers:nil)
-      response = get_async(resource_group_name, network_watcher_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, network_watcher_name, custom_headers = nil)
+      response = get_async(resource_group_name, network_watcher_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -162,8 +163,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, network_watcher_name, custom_headers:nil)
-      get_async(resource_group_name, network_watcher_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, network_watcher_name, custom_headers = nil)
+      get_async(resource_group_name, network_watcher_name, custom_headers).value!
     end
 
     #
@@ -176,7 +177,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, network_watcher_name, custom_headers:nil)
+    def get_async(resource_group_name, network_watcher_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -184,7 +185,6 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -237,8 +237,8 @@ module Azure::Network::Mgmt::V2016_09_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, network_watcher_name, custom_headers:nil)
-      response = delete_async(resource_group_name, network_watcher_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, network_watcher_name, custom_headers = nil)
+      response = delete_async(resource_group_name, network_watcher_name, custom_headers).value!
       nil
     end
 
@@ -251,9 +251,9 @@ module Azure::Network::Mgmt::V2016_09_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, network_watcher_name, custom_headers:nil)
+    def delete_async(resource_group_name, network_watcher_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, network_watcher_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, network_watcher_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -276,8 +276,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [NetworkWatcherListResult] operation results.
     #
-    def list(resource_group_name, custom_headers:nil)
-      response = list_async(resource_group_name, custom_headers:custom_headers).value!
+    def list(resource_group_name, custom_headers = nil)
+      response = list_async(resource_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -290,8 +290,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, custom_headers:nil)
-      list_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, custom_headers = nil)
+      list_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -303,14 +303,13 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, custom_headers:nil)
+    def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -363,8 +362,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [NetworkWatcherListResult] operation results.
     #
-    def list_all(custom_headers:nil)
-      response = list_all_async(custom_headers:custom_headers).value!
+    def list_all(custom_headers = nil)
+      response = list_all_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -376,8 +375,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_with_http_info(custom_headers:nil)
-      list_all_async(custom_headers:custom_headers).value!
+    def list_all_with_http_info(custom_headers = nil)
+      list_all_async(custom_headers).value!
     end
 
     #
@@ -388,13 +387,12 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_async(custom_headers:nil)
+    def list_all_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -451,8 +449,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Topology] operation results.
     #
-    def get_topology(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = get_topology_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def get_topology(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_topology_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -468,8 +466,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_topology_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      get_topology_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def get_topology_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      get_topology_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -484,7 +482,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_topology_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def get_topology_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -493,11 +491,12 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_09_01::Models::TopologyParameters.mapper()
@@ -558,8 +557,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [VerificationIPFlowResult] operation results.
     #
-    def verify_ipflow(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def verify_ipflow(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -574,9 +573,9 @@ module Azure::Network::Mgmt::V2016_09_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers)
+      promise = begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -604,8 +603,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [NextHopResult] operation results.
     #
-    def get_next_hop(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def get_next_hop(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -620,9 +619,9 @@ module Azure::Network::Mgmt::V2016_09_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers)
+      promise = begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -650,8 +649,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [SecurityGroupViewResult] operation results.
     #
-    def get_vmsecurity_rules(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def get_vmsecurity_rules(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -666,9 +665,9 @@ module Azure::Network::Mgmt::V2016_09_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers)
+      promise = begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -697,8 +696,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [TroubleshootingResult] operation results.
     #
-    def get_troubleshooting(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def get_troubleshooting(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -714,9 +713,9 @@ module Azure::Network::Mgmt::V2016_09_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers)
+      promise = begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -745,8 +744,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [TroubleshootingResult] operation results.
     #
-    def get_troubleshooting_result(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def get_troubleshooting_result(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -762,9 +761,9 @@ module Azure::Network::Mgmt::V2016_09_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers)
+      promise = begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -794,8 +793,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [FlowLogInformation] operation results.
     #
-    def set_flow_log_configuration(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def set_flow_log_configuration(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -812,9 +811,9 @@ module Azure::Network::Mgmt::V2016_09_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers)
+      promise = begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -844,8 +843,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [FlowLogInformation] operation results.
     #
-    def get_flow_log_status(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def get_flow_log_status(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -862,9 +861,9 @@ module Azure::Network::Mgmt::V2016_09_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers)
+      promise = begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -889,8 +888,8 @@ module Azure::Network::Mgmt::V2016_09_01
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, network_watcher_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, network_watcher_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, network_watcher_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, network_watcher_name, custom_headers).value!
       nil
     end
 
@@ -904,8 +903,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, network_watcher_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, network_watcher_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, network_watcher_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, network_watcher_name, custom_headers).value!
     end
 
     #
@@ -918,7 +917,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, network_watcher_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, network_watcher_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -926,7 +925,6 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -974,8 +972,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [VerificationIPFlowResult] operation results.
     #
-    def begin_verify_ipflow(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_verify_ipflow(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -992,8 +990,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_verify_ipflow_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_verify_ipflow_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1009,7 +1007,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1018,11 +1016,12 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_09_01::Models::VerificationIPFlowParameters.mapper()
@@ -1092,8 +1091,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [NextHopResult] operation results.
     #
-    def begin_get_next_hop(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_next_hop(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1109,8 +1108,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_next_hop_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_next_hop_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1125,7 +1124,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1134,11 +1133,12 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_09_01::Models::NextHopParameters.mapper()
@@ -1208,8 +1208,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [SecurityGroupViewResult] operation results.
     #
-    def begin_get_vmsecurity_rules(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_vmsecurity_rules(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1225,8 +1225,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_vmsecurity_rules_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_vmsecurity_rules_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1241,7 +1241,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1250,11 +1250,12 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_09_01::Models::SecurityGroupViewParameters.mapper()
@@ -1325,8 +1326,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [TroubleshootingResult] operation results.
     #
-    def begin_get_troubleshooting(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_troubleshooting(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1343,8 +1344,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_troubleshooting_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_troubleshooting_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1360,7 +1361,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1369,11 +1370,12 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_09_01::Models::TroubleshootingParameters.mapper()
@@ -1444,8 +1446,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [TroubleshootingResult] operation results.
     #
-    def begin_get_troubleshooting_result(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_troubleshooting_result(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1462,8 +1464,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_troubleshooting_result_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_troubleshooting_result_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1479,7 +1481,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1488,11 +1490,12 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_09_01::Models::QueryTroubleshootingParameters.mapper()
@@ -1564,8 +1567,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [FlowLogInformation] operation results.
     #
-    def begin_set_flow_log_configuration(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_set_flow_log_configuration(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1583,8 +1586,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_set_flow_log_configuration_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_set_flow_log_configuration_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1601,7 +1604,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1610,11 +1613,12 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_09_01::Models::FlowLogInformation.mapper()
@@ -1686,8 +1690,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [FlowLogInformation] operation results.
     #
-    def begin_get_flow_log_status(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      response = begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_flow_log_status(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1705,8 +1709,8 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_flow_log_status_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
-      begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers:custom_headers).value!
+    def begin_get_flow_log_status_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1723,7 +1727,7 @@ module Azure::Network::Mgmt::V2016_09_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers:nil)
+    def begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1732,11 +1736,12 @@ module Azure::Network::Mgmt::V2016_09_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2016_09_01::Models::FlowLogStatusParameters.mapper()

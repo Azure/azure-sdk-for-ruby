@@ -22,15 +22,15 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     attr_reader :client
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, network_interface_name, custom_headers:nil)
-      response = delete_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, network_interface_name, custom_headers = nil)
+      response = delete_async(resource_group_name, network_interface_name, custom_headers).value!
       nil
     end
 
@@ -43,9 +43,9 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, network_interface_name, custom_headers:nil)
+    def delete_async(resource_group_name, network_interface_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, network_interface_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, network_interface_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -60,7 +60,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -70,13 +70,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [NetworkInterface] operation results.
     #
-    def get(resource_group_name, network_interface_name, custom_headers:nil)
-      response = get_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, network_interface_name, custom_headers = nil)
+      response = get_async(resource_group_name, network_interface_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -86,12 +86,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, network_interface_name, custom_headers:nil)
-      get_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, network_interface_name, custom_headers = nil)
+      get_async(resource_group_name, network_interface_name, custom_headers).value!
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -101,7 +101,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, network_interface_name, custom_headers:nil)
+    def get_async(resource_group_name, network_interface_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -109,7 +109,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -166,8 +165,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [NetworkInterface] operation results.
     #
-    def create_or_update(resource_group_name, network_interface_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, network_interface_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -182,9 +181,9 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -213,8 +212,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Array<NetworkInterface>] operation results.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      first_page = list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:custom_headers)
+    def list_virtual_machine_scale_set_vmnetwork_interfaces(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers = nil)
+      first_page = list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers)
       first_page.get_all_items
     end
 
@@ -231,8 +230,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers = nil)
+      list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers).value!
     end
 
     #
@@ -248,7 +247,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
@@ -257,7 +256,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -314,8 +312,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Array<NetworkInterface>] operation results.
     #
-    def list_virtual_machine_scale_set_network_interfaces(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      first_page = list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers:custom_headers)
+    def list_virtual_machine_scale_set_network_interfaces(resource_group_name, virtual_machine_scale_set_name, custom_headers = nil)
+      first_page = list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -331,8 +329,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_network_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_network_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, custom_headers = nil)
+      list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers).value!
     end
 
     #
@@ -347,7 +345,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
+    def list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -355,7 +353,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -401,7 +398,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -414,13 +411,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [NetworkInterface] operation results.
     #
-    def get_virtual_machine_scale_set_network_interface(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers:nil)
-      response = get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers:custom_headers).value!
+    def get_virtual_machine_scale_set_network_interface(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers = nil)
+      response = get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -433,12 +430,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_virtual_machine_scale_set_network_interface_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers:nil)
-      get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers:custom_headers).value!
+    def get_virtual_machine_scale_set_network_interface_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers = nil)
+      get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers).value!
     end
 
     #
-    # The Get ntework interface operation retreives information about the specified
+    # The Get network interface operation retrieves information about the specified
     # network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -451,7 +448,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers:nil)
+    def get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
@@ -461,7 +458,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -507,7 +503,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -515,13 +511,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Array<NetworkInterface>] operation results.
     #
-    def list_all(custom_headers:nil)
-      first_page = list_all_as_lazy(custom_headers:custom_headers)
+    def list_all(custom_headers = nil)
+      first_page = list_all_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -529,12 +525,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_with_http_info(custom_headers:nil)
-      list_all_async(custom_headers:custom_headers).value!
+    def list_all_with_http_info(custom_headers = nil)
+      list_all_async(custom_headers).value!
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -542,13 +538,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_async(custom_headers:nil)
+    def list_all_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -594,7 +589,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -603,13 +598,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Array<NetworkInterface>] operation results.
     #
-    def list(resource_group_name, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, custom_headers:custom_headers)
+    def list(resource_group_name, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, custom_headers)
       first_page.get_all_items
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -618,12 +613,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, custom_headers:nil)
-      list_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, custom_headers = nil)
+      list_async(resource_group_name, custom_headers).value!
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -632,14 +627,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, custom_headers:nil)
+    def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -685,7 +679,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -693,13 +687,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, network_interface_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, network_interface_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, network_interface_name, custom_headers).value!
       nil
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -708,12 +702,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, network_interface_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, network_interface_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, network_interface_name, custom_headers).value!
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # The delete networkInterface operation deletes the specified networkInterface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -722,7 +716,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, network_interface_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, network_interface_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -730,7 +724,6 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -777,8 +770,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [NetworkInterface] operation results.
     #
-    def begin_create_or_update(resource_group_name, network_interface_name, parameters, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, network_interface_name, parameters, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -794,8 +787,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, network_interface_name, parameters, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, network_interface_name, parameters, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers).value!
     end
 
     #
@@ -810,7 +803,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -819,11 +812,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Network::Mgmt::V2015_05_01_preview::Models::NetworkInterface.mapper()
@@ -892,8 +886,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [NetworkInterfaceListResult] operation results.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_next(next_page_link, custom_headers:nil)
-      response = list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_next(next_page_link, custom_headers = nil)
+      response = list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -908,8 +902,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_with_http_info(next_page_link, custom_headers:nil)
-      list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_with_http_info(next_page_link, custom_headers = nil)
+      list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -923,12 +917,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:nil)
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -983,8 +976,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [NetworkInterfaceListResult] operation results.
     #
-    def list_virtual_machine_scale_set_network_interfaces_next(next_page_link, custom_headers:nil)
-      response = list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_network_interfaces_next(next_page_link, custom_headers = nil)
+      response = list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -999,8 +992,8 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_network_interfaces_next_with_http_info(next_page_link, custom_headers:nil)
-      list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_network_interfaces_next_with_http_info(next_page_link, custom_headers = nil)
+      list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1014,12 +1007,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:nil)
+    def list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1064,7 +1056,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1074,13 +1066,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [NetworkInterfaceListResult] operation results.
     #
-    def list_all_next(next_page_link, custom_headers:nil)
-      response = list_all_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_all_next(next_page_link, custom_headers = nil)
+      response = list_all_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1090,12 +1082,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_next_with_http_info(next_page_link, custom_headers:nil)
-      list_all_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_all_next_with_http_info(next_page_link, custom_headers = nil)
+      list_all_next_async(next_page_link, custom_headers).value!
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1105,12 +1097,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_next_async(next_page_link, custom_headers:nil)
+    def list_all_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1155,7 +1146,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1165,13 +1156,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [NetworkInterfaceListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1181,12 +1172,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1196,12 +1187,11 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1259,12 +1249,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @return [NetworkInterfaceListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      response = list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers = nil)
+      response = list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:custom_headers)
+          list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1283,19 +1273,19 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @return [NetworkInterfaceListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      response = list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:custom_headers).value!
+    def list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers = nil)
+      response = list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:custom_headers)
+          list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers)
         end
         page
       end
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1304,19 +1294,19 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @return [NetworkInterfaceListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_all_as_lazy(custom_headers:nil)
-      response = list_all_async(custom_headers:custom_headers).value!
+    def list_all_as_lazy(custom_headers = nil)
+      response = list_all_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_all_next_async(next_page_link, custom_headers:custom_headers)
+          list_all_next_async(next_page_link, custom_headers)
         end
         page
       end
     end
 
     #
-    # The List networkInterfaces opertion retrieves all the networkInterfaces in a
+    # The List networkInterfaces operation retrieves all the networkInterfaces in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -1326,12 +1316,12 @@ module Azure::Network::Mgmt::V2015_05_01_preview
     # @return [NetworkInterfaceListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_as_lazy(resource_group_name, custom_headers:nil)
-      response = list_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, custom_headers = nil)
+      response = list_async(resource_group_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
