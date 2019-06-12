@@ -30,7 +30,6 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitSku',
           type: {
@@ -38,7 +37,6 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'ExpressRouteCircuitSku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -46,7 +44,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               tier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -54,7 +51,6 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               family: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'family',
                 type: {

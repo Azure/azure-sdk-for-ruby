@@ -28,7 +28,6 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Availability',
           type: {
@@ -36,7 +35,6 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'Availability',
             model_properties: {
               time_grain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeGrain',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               retention: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retention',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               blob_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobDuration',
                 type: {

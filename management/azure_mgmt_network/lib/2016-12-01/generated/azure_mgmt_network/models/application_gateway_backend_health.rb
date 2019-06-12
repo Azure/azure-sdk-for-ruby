@@ -22,7 +22,6 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayBackendHealth',
           type: {
@@ -30,13 +29,11 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'ApplicationGatewayBackendHealth',
             model_properties: {
               backend_address_pools: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'backendAddressPools',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayBackendHealthPoolElementType',
                       type: {
