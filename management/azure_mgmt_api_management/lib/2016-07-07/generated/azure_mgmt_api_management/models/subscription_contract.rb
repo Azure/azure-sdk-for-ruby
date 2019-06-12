@@ -91,7 +91,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SubscriptionContract',
           type: {
@@ -99,7 +98,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'SubscriptionContract',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -108,7 +106,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               user_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userId',
                 type: {
@@ -116,7 +113,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               product_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'productId',
                 type: {
@@ -124,7 +120,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 constraints: {
@@ -136,7 +131,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -145,7 +139,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               created_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'createdDate',
@@ -154,7 +147,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               start_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startDate',
                 type: {
@@ -162,7 +154,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               expiration_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'expirationDate',
                 type: {
@@ -170,7 +161,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               end_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endDate',
                 type: {
@@ -178,7 +168,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               notification_date: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'notificationDate',
                 type: {
@@ -186,7 +175,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 constraints: {
@@ -198,7 +186,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
                 constraints: {
@@ -210,7 +197,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               state_comment: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'stateComment',
                 type: {

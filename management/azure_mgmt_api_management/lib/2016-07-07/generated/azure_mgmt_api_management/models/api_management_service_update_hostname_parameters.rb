@@ -26,7 +26,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiManagementServiceUpdateHostnameParameters',
           type: {
@@ -34,13 +33,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ApiManagementServiceUpdateHostnameParameters',
             model_properties: {
               update: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'update',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HostnameConfigurationElementType',
                       type: {
@@ -51,13 +48,11 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               delete: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'delete',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HostnameTypeElementType',
                       type: {

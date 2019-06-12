@@ -45,7 +45,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectivityStatusContract',
           type: {
@@ -53,7 +52,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'ConnectivityStatusContract',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -64,7 +62,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'status',
                 type: {
@@ -72,7 +69,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
@@ -80,7 +76,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               last_updated: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'lastUpdated',
                 type: {
@@ -88,7 +83,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               last_status_change: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'lastStatusChange',
                 type: {

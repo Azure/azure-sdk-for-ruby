@@ -41,7 +41,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IdentityProviderContract',
           type: {
@@ -49,7 +48,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'IdentityProviderContract',
             model_properties: {
               client_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'clientId',
                 constraints: {
@@ -60,7 +58,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               client_secret: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'clientSecret',
                 constraints: {
@@ -71,7 +68,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -79,7 +75,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               allowed_tenants: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowedTenants',
                 constraints: {
@@ -88,7 +83,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

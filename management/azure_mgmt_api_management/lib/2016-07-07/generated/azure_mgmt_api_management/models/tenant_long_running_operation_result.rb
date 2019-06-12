@@ -36,7 +36,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TenantLongRunningOperationResult',
           type: {
@@ -44,7 +43,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'TenantLongRunningOperationResult',
             model_properties: {
               operation_status_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operationStatusLink',
                 type: {
@@ -52,7 +50,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               retry_after: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryAfter',
                 type: {
@@ -60,7 +57,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -69,7 +65,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               status_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCode',
                 type: {
@@ -78,7 +73,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {

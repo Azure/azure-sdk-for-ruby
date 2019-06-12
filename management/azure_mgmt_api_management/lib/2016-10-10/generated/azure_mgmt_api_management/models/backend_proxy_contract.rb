@@ -30,7 +30,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackendProxyContract',
           type: {
@@ -38,7 +37,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'BackendProxyContract',
             model_properties: {
               url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 constraints: {
@@ -50,7 +48,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               username: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'username',
                 type: {
@@ -58,7 +55,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {

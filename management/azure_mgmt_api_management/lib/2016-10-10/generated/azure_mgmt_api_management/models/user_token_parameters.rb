@@ -30,7 +30,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UserTokenParameters',
           type: {
@@ -38,7 +37,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'UserTokenParameters',
             model_properties: {
               key_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyType',
                 default_value: 'primary',
@@ -48,7 +46,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               expiry: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'expiry',
                 type: {
