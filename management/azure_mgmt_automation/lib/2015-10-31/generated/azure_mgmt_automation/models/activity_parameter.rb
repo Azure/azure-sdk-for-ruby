@@ -66,7 +66,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ActivityParameter',
           type: {
@@ -74,7 +73,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ActivityParameter',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -82,7 +80,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -90,7 +87,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_mandatory: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isMandatory',
                 type: {
@@ -98,7 +94,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_dynamic: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isDynamic',
                 type: {
@@ -106,7 +101,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               position: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'position',
                 type: {
@@ -114,7 +108,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value_from_pipeline: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'valueFromPipeline',
                 type: {
@@ -122,7 +115,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value_from_pipeline_by_property_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'valueFromPipelineByPropertyName',
                 type: {
@@ -130,7 +122,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value_from_remaining_arguments: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'valueFromRemainingArguments',
                 type: {
@@ -138,7 +129,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -146,13 +136,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               validation_set: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'validationSet',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ActivityParameterValidationSetElementType',
                       type: {

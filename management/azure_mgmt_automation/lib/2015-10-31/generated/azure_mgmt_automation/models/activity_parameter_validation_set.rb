@@ -23,7 +23,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ActivityParameterValidationSet',
           type: {
@@ -31,7 +30,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ActivityParameterValidationSet',
             model_properties: {
               member_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'memberValue',
                 type: {
