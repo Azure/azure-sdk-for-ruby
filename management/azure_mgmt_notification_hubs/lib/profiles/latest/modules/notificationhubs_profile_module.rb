@@ -6,9 +6,9 @@ require 'azure_mgmt_notification_hubs'
 
 module Azure::NotificationHubs::Profiles::Latest
   module Mgmt
+    NotificationHubs = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubs
     Operations = Azure::NotificationHubs::Mgmt::V2017_04_01::Operations
     Namespaces = Azure::NotificationHubs::Mgmt::V2017_04_01::Namespaces
-    NotificationHubs = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubs
 
     module Models
       ResourceListKeys = Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ResourceListKeys
@@ -51,7 +51,7 @@ module Azure::NotificationHubs::Profiles::Latest
     # NotificationHubsManagementClass
     #
     class NotificationHubsManagementClass
-      attr_reader :operations, :namespaces, :notification_hubs, :configurable, :base_url, :options, :model_classes
+      attr_reader :notification_hubs, :operations, :namespaces, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -71,9 +71,9 @@ module Azure::NotificationHubs::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @notification_hubs = @client_0.notification_hubs
         @operations = @client_0.operations
         @namespaces = @client_0.namespaces
-        @notification_hubs = @client_0.notification_hubs
 
         @model_classes = ModelClasses.new
       end

@@ -48,7 +48,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SharedAccessAuthorizationRuleResource',
           type: {
@@ -56,7 +55,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'SharedAccessAuthorizationRuleResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -65,7 +63,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -74,7 +71,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -83,7 +79,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -91,13 +86,11 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -107,7 +100,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -116,13 +108,11 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               rights: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.rights',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AccessRightsElementType',
                       type: {
@@ -133,7 +123,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               primary_key: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.primaryKey',
@@ -142,7 +131,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               secondary_key: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.secondaryKey',
@@ -151,7 +139,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               key_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.keyName',
@@ -160,7 +147,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               claim_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.claimType',
@@ -169,7 +155,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               claim_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.claimValue',
@@ -178,7 +163,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               modified_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.modifiedTime',
@@ -187,7 +171,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               created_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdTime',
@@ -196,7 +179,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               revision: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.revision',

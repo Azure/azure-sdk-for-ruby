@@ -28,7 +28,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AdmCredential',
           type: {
@@ -36,7 +35,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'AdmCredential',
             model_properties: {
               client_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clientId',
                 type: {
@@ -44,7 +42,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               client_secret: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clientSecret',
                 type: {
@@ -52,7 +49,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               auth_token_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authTokenUrl',
                 type: {

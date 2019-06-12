@@ -18,7 +18,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       # @return [String] The certificate key for this credential.
       attr_accessor :certificate_key
 
-      # @return [String] The Mpns certificate Thumbprint
+      # @return [String] The MPNS certificate Thumbprint
       attr_accessor :thumbprint
 
 
@@ -28,7 +28,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MpnsCredential',
           type: {
@@ -36,7 +35,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'MpnsCredential',
             model_properties: {
               mpns_certificate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.mpnsCertificate',
                 type: {
@@ -44,7 +42,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               certificate_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.certificateKey',
                 type: {
@@ -52,7 +49,6 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.thumbprint',
                 type: {
