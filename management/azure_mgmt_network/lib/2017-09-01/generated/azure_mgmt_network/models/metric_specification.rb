@@ -61,7 +61,6 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricSpecification',
           type: {
@@ -69,7 +68,6 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'MetricSpecification',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -77,7 +75,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -85,7 +82,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               display_description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayDescription',
                 type: {
@@ -93,7 +89,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -101,7 +96,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               aggregation_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'aggregationType',
                 type: {
@@ -109,13 +103,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               availabilities: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'availabilities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AvailabilityElementType',
                       type: {
@@ -126,7 +118,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               enable_regional_mdm_account: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enableRegionalMdmAccount',
                 type: {
@@ -134,7 +125,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               fill_gap_with_zero: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fillGapWithZero',
                 type: {
@@ -142,7 +132,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               metric_filter_pattern: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metricFilterPattern',
                 type: {
@@ -150,13 +139,11 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               dimensions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dimensions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DimensionElementType',
                       type: {
@@ -167,7 +154,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               is_internal: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isInternal',
                 type: {
@@ -175,7 +161,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               source_mdm_account: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceMdmAccount',
                 type: {
@@ -183,7 +168,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               source_mdm_namespace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceMdmNamespace',
                 type: {
@@ -191,7 +175,6 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               resource_id_dimension_name_override: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceIdDimensionNameOverride',
                 type: {

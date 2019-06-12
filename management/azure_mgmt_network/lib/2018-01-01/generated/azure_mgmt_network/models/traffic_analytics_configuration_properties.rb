@@ -31,7 +31,6 @@ module Azure::Network::Mgmt::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrafficAnalyticsConfigurationProperties',
           type: {
@@ -39,7 +38,6 @@ module Azure::Network::Mgmt::V2018_01_01
             class_name: 'TrafficAnalyticsConfigurationProperties',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               workspace_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'workspaceId',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               workspace_region: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'workspaceRegion',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Network::Mgmt::V2018_01_01
                 }
               },
               workspace_resource_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'workspaceResourceId',
                 type: {

@@ -38,7 +38,6 @@ module Azure::Network::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectivityIssue',
           type: {
@@ -46,7 +45,6 @@ module Azure::Network::Mgmt::V2017_10_01
             class_name: 'ConnectivityIssue',
             model_properties: {
               origin: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'origin',
@@ -55,7 +53,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               severity: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'severity',
@@ -64,7 +61,6 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -73,20 +69,17 @@ module Azure::Network::Mgmt::V2017_10_01
                 }
               },
               context: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'context',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HashElementType',
                       type: {
                         name: 'Dictionary',
                         value: {
-                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {

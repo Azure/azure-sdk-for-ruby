@@ -46,11 +46,6 @@ module Azure::Network::Mgmt::V2017_03_30
       # changed after you create the endpoint.
       attr_accessor :enable_floating_ip
 
-      # @return [Boolean] Receive bidirectional TCP Reset on TCP flow idle
-      # timeout or unexpected connection termination. This element is only used
-      # when the protocol is set to TCP.
-      attr_accessor :enable_tcp_reset
-
       # @return [String] Gets the provisioning state of the public IP resource.
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
@@ -70,7 +65,6 @@ module Azure::Network::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InboundNatRule',
           type: {
@@ -78,7 +72,6 @@ module Azure::Network::Mgmt::V2017_03_30
             class_name: 'InboundNatRule',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -86,7 +79,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               frontend_ipconfiguration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendIPConfiguration',
                 type: {
@@ -95,7 +87,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               backend_ipconfiguration: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.backendIPConfiguration',
@@ -105,7 +96,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -113,7 +103,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               frontend_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendPort',
                 type: {
@@ -121,7 +110,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               backend_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendPort',
                 type: {
@@ -129,7 +117,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               idle_timeout_in_minutes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -137,23 +124,13 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               enable_floating_ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableFloatingIP',
                 type: {
                   name: 'Boolean'
                 }
               },
-              enable_tcp_reset: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.enableTcpReset',
-                type: {
-                  name: 'Boolean'
-                }
-              },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -161,7 +138,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -169,7 +145,6 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

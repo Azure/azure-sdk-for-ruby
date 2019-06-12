@@ -53,7 +53,6 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VerificationIPFlowParameters',
           type: {
@@ -61,7 +60,6 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'VerificationIPFlowParameters',
             model_properties: {
               target_resource_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {
@@ -69,7 +67,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               direction: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'direction',
                 type: {
@@ -77,7 +74,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'protocol',
                 type: {
@@ -85,7 +81,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               local_port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'localPort',
                 type: {
@@ -93,7 +88,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               remote_port: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'remotePort',
                 type: {
@@ -101,7 +95,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               local_ipaddress: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'localIPAddress',
                 type: {
@@ -109,7 +102,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               remote_ipaddress: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'remoteIPAddress',
                 type: {
@@ -117,7 +109,6 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               target_nic_resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetNicResourceId',
                 type: {

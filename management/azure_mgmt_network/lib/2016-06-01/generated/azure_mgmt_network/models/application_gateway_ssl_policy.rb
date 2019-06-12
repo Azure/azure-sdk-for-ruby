@@ -23,7 +23,6 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewaySslPolicy',
           type: {
@@ -31,13 +30,11 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'ApplicationGatewaySslPolicy',
             model_properties: {
               disabled_ssl_protocols: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'disabledSslProtocols',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewaySslProtocolElementType',
                       type: {
