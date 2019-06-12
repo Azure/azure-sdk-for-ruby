@@ -52,7 +52,6 @@ module Azure::Storage::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountUpdateParameters',
           type: {
@@ -60,7 +59,6 @@ module Azure::Storage::Mgmt::V2016_12_01
             class_name: 'StorageAccountUpdateParameters',
             model_properties: {
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -69,13 +67,11 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -85,7 +81,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               custom_domain: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customDomain',
                 type: {
@@ -94,7 +89,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               encryption: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryption',
                 type: {
@@ -103,7 +97,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               access_tier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accessTier',
                 type: {
@@ -112,7 +105,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               enable_https_traffic_only: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.supportsHttpsTrafficOnly',
                 default_value: false,

@@ -35,7 +35,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Usage',
           type: {
@@ -43,7 +42,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
             class_name: 'Usage',
             model_properties: {
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -52,7 +50,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               current_value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentValue',
                 type: {
@@ -60,7 +57,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               limit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'limit',
                 type: {
@@ -68,7 +64,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

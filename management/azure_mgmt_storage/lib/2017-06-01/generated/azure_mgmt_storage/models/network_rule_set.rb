@@ -37,7 +37,6 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkRuleSet',
           type: {
@@ -45,7 +44,6 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'NetworkRuleSet',
             model_properties: {
               bypass: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bypass',
                 default_value: 'AzureServices',
@@ -54,13 +52,11 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               virtual_network_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualNetworkRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualNetworkRuleElementType',
                       type: {
@@ -71,13 +67,11 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               ip_rules: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipRules',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IPRuleElementType',
                       type: {
@@ -88,7 +82,6 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               default_action: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'defaultAction',
                 default_value: 'Allow',

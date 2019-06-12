@@ -27,7 +27,6 @@ module Azure::Storage::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Encryption',
           type: {
@@ -35,7 +34,6 @@ module Azure::Storage::Mgmt::V2016_12_01
             class_name: 'Encryption',
             model_properties: {
               services: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'services',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               key_source: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'keySource',

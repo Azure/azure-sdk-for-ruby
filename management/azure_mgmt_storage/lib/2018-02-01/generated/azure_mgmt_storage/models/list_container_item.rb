@@ -65,7 +65,6 @@ module Azure::Storage::Mgmt::V2018_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ListContainerItem',
           type: {
@@ -73,7 +72,6 @@ module Azure::Storage::Mgmt::V2018_02_01
             class_name: 'ListContainerItem',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -82,7 +80,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -91,7 +88,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -100,7 +96,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
@@ -109,7 +104,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               public_access: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicAccess',
                 type: {
@@ -118,7 +112,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModifiedTime',
@@ -127,7 +120,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               lease_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.leaseStatus',
@@ -136,7 +128,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               lease_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.leaseState',
@@ -145,7 +136,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               lease_duration: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.leaseDuration',
@@ -154,13 +144,11 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metadata',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -170,7 +158,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               immutability_policy: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.immutabilityPolicy',
@@ -180,7 +167,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               legal_hold: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.legalHold',
@@ -190,7 +176,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               has_legal_hold: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hasLegalHold',
@@ -199,7 +184,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               has_immutability_policy: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hasImmutabilityPolicy',

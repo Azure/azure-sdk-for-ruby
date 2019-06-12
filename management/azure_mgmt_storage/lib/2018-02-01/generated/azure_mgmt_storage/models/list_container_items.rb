@@ -22,7 +22,6 @@ module Azure::Storage::Mgmt::V2018_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ListContainerItems',
           type: {
@@ -30,13 +29,11 @@ module Azure::Storage::Mgmt::V2018_02_01
             class_name: 'ListContainerItems',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ListContainerItemElementType',
                       type: {

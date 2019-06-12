@@ -19,7 +19,7 @@ module Azure::Storage::Mgmt::V2017_10_01
 
       # @return [Boolean] Indicates whether indirect CName validation is
       # enabled. Default value is false. This should only be set on updates.
-      attr_accessor :use_sub_domain
+      attr_accessor :use_sub_domain_name
 
 
       #
@@ -28,7 +28,6 @@ module Azure::Storage::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CustomDomain',
           type: {
@@ -36,17 +35,15 @@ module Azure::Storage::Mgmt::V2017_10_01
             class_name: 'CustomDomain',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              use_sub_domain: {
-                client_side_validation: true,
+              use_sub_domain_name: {
                 required: false,
-                serialized_name: 'useSubDomain',
+                serialized_name: 'useSubDomainName',
                 type: {
                   name: 'Boolean'
                 }
