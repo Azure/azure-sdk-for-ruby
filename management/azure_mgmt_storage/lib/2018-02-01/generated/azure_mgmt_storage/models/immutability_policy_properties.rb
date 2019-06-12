@@ -35,7 +35,6 @@ module Azure::Storage::Mgmt::V2018_02_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImmutabilityPolicyProperties',
           type: {
@@ -43,7 +42,6 @@ module Azure::Storage::Mgmt::V2018_02_01
             class_name: 'ImmutabilityPolicyProperties',
             model_properties: {
               immutability_period_since_creation_in_days: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.immutabilityPeriodSinceCreationInDays',
                 type: {
@@ -51,7 +49,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -60,7 +57,6 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               etag: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
@@ -69,14 +65,12 @@ module Azure::Storage::Mgmt::V2018_02_01
                 }
               },
               update_history: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'updateHistory',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UpdateHistoryPropertyElementType',
                       type: {

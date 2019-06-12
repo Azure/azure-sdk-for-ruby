@@ -23,7 +23,6 @@ module Azure::Storage::Mgmt::V2016_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionServices',
           type: {
@@ -31,7 +30,6 @@ module Azure::Storage::Mgmt::V2016_01_01
             class_name: 'EncryptionServices',
             model_properties: {
               blob: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blob',
                 type: {

@@ -33,7 +33,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityResult',
           type: {
@@ -41,7 +40,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
             class_name: 'CheckNameAvailabilityResult',
             model_properties: {
               name_available: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -49,7 +47,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -58,7 +55,6 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

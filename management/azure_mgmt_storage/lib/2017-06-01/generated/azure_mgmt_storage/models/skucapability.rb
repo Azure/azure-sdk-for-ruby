@@ -29,7 +29,6 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SKUCapability',
           type: {
@@ -37,7 +36,6 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'SKUCapability',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -46,7 +44,6 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
