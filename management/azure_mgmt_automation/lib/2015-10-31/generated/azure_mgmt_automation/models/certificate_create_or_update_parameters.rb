@@ -37,7 +37,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateCreateOrUpdateParameters',
           type: {
@@ -45,7 +44,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'CertificateCreateOrUpdateParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               base64value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.base64Value',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.thumbprint',
                 type: {
@@ -77,7 +72,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_exportable: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isExportable',
                 type: {

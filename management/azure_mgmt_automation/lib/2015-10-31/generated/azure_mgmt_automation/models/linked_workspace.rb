@@ -22,7 +22,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LinkedWorkspace',
           type: {
@@ -30,7 +29,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'LinkedWorkspace',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',

@@ -30,7 +30,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Key',
           type: {
@@ -38,7 +37,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Key',
             model_properties: {
               key_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'KeyName',
@@ -47,7 +45,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               permissions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Permissions',
@@ -56,7 +53,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Value',

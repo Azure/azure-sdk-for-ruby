@@ -23,7 +23,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KeyListResult',
           type: {
@@ -31,13 +30,11 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'KeyListResult',
             model_properties: {
               keys: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keys',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyElementType',
                       type: {

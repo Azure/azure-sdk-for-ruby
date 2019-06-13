@@ -45,7 +45,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionType',
           type: {
@@ -53,7 +52,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ConnectionType',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -62,7 +60,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -71,7 +68,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -80,7 +76,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_global: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isGlobal',
                 type: {
@@ -88,14 +83,12 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               field_definitions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.fieldDefinitions',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FieldDefinitionElementType',
                       type: {
@@ -106,7 +99,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationTime',
@@ -115,7 +107,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastModifiedTime',
                 type: {
@@ -123,7 +114,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {

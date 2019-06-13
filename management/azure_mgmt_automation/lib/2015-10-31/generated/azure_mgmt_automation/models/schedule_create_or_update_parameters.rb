@@ -27,8 +27,9 @@ module Azure::Automation::Mgmt::V2015_10_31
       # @return Gets or sets the interval of the schedule.
       attr_accessor :interval
 
-      # @return [ScheduleFrequency] Possible values include: 'OneTime', 'Day',
-      # 'Hour', 'Week', 'Month'
+      # @return [ScheduleFrequency] Gets or sets the frequency of the schedule.
+      # Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month',
+      # 'Minute'
       attr_accessor :frequency
 
       # @return [String] Gets or sets the time zone of the schedule.
@@ -44,7 +45,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ScheduleCreateOrUpdateParameters',
           type: {
@@ -52,7 +52,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ScheduleCreateOrUpdateParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -60,7 +59,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -68,7 +66,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -76,7 +73,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               expiry_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.expiryTime',
                 type: {
@@ -84,7 +80,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.interval',
                 type: {
@@ -92,7 +87,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               frequency: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.frequency',
                 type: {
@@ -100,7 +94,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               time_zone: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timeZone',
                 type: {
@@ -108,7 +101,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               advanced_schedule: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.advancedSchedule',
                 type: {

@@ -32,7 +32,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HybridRunbookWorker',
           type: {
@@ -40,7 +39,6 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'HybridRunbookWorker',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,7 +46,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ip',
                 type: {
@@ -56,7 +53,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               registration_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'registrationTime',
                 type: {
@@ -64,7 +60,6 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_seen_date_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastSeenDateTime',
                 type: {
