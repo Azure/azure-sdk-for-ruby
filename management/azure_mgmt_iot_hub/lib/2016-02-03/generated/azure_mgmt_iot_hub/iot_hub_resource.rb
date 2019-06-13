@@ -34,8 +34,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [IotHubDescription] operation results.
     #
-    def get(resource_group_name, resource_name, custom_headers:nil)
-      response = get_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, resource_name, custom_headers = nil)
+      response = get_async(resource_group_name, resource_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -52,8 +52,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, resource_name, custom_headers:nil)
-      get_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, resource_name, custom_headers = nil)
+      get_async(resource_group_name, resource_name, custom_headers).value!
     end
 
     #
@@ -69,7 +69,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, resource_name, custom_headers:nil)
+    def get_async(resource_group_name, resource_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -77,7 +77,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -139,8 +138,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [IotHubDescription] operation results.
     #
-    def create_or_update(resource_group_name, resource_name, iot_hub_description, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -156,9 +155,9 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers:nil)
+    def create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -187,8 +186,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Object] operation results.
     #
-    def delete(resource_group_name, resource_name, custom_headers:nil)
-      response = delete_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, resource_name, custom_headers = nil)
+      response = delete_async(resource_group_name, resource_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -202,15 +201,14 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, resource_name, custom_headers:nil)
+    def delete_async(resource_group_name, resource_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, resource_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, resource_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = {
-            client_side_validation: true,
             required: false,
             serialized_name: 'parsed_response',
             type: {
@@ -237,8 +235,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Array<IotHubDescription>] operation results.
     #
-    def list_by_subscription(custom_headers:nil)
-      first_page = list_by_subscription_as_lazy(custom_headers:custom_headers)
+    def list_by_subscription(custom_headers = nil)
+      first_page = list_by_subscription_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -252,8 +250,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_with_http_info(custom_headers:nil)
-      list_by_subscription_async(custom_headers:custom_headers).value!
+    def list_by_subscription_with_http_info(custom_headers = nil)
+      list_by_subscription_async(custom_headers).value!
     end
 
     #
@@ -266,13 +264,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_async(custom_headers:nil)
+    def list_by_subscription_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -329,8 +326,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Array<IotHubDescription>] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers:nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers:custom_headers)
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -346,8 +343,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -362,14 +359,13 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers:nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -427,8 +423,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [RegistryStatistics] operation results.
     #
-    def get_stats(resource_group_name, resource_name, custom_headers:nil)
-      response = get_stats_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def get_stats(resource_group_name, resource_name, custom_headers = nil)
+      response = get_stats_async(resource_group_name, resource_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -445,8 +441,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_stats_with_http_info(resource_group_name, resource_name, custom_headers:nil)
-      get_stats_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def get_stats_with_http_info(resource_group_name, resource_name, custom_headers = nil)
+      get_stats_async(resource_group_name, resource_name, custom_headers).value!
     end
 
     #
@@ -462,7 +458,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_stats_async(resource_group_name, resource_name, custom_headers:nil)
+    def get_stats_async(resource_group_name, resource_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -470,7 +466,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -528,8 +523,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Array<IotHubSkuDescription>] operation results.
     #
-    def get_valid_skus(resource_group_name, resource_name, custom_headers:nil)
-      first_page = get_valid_skus_as_lazy(resource_group_name, resource_name, custom_headers:custom_headers)
+    def get_valid_skus(resource_group_name, resource_name, custom_headers = nil)
+      first_page = get_valid_skus_as_lazy(resource_group_name, resource_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -546,8 +541,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_valid_skus_with_http_info(resource_group_name, resource_name, custom_headers:nil)
-      get_valid_skus_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def get_valid_skus_with_http_info(resource_group_name, resource_name, custom_headers = nil)
+      get_valid_skus_async(resource_group_name, resource_name, custom_headers).value!
     end
 
     #
@@ -563,7 +558,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_valid_skus_async(resource_group_name, resource_name, custom_headers:nil)
+    def get_valid_skus_async(resource_group_name, resource_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -571,7 +566,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -633,8 +627,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Array<String>] operation results.
     #
-    def list_event_hub_consumer_groups(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers:nil)
-      first_page = list_event_hub_consumer_groups_as_lazy(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers:custom_headers)
+    def list_event_hub_consumer_groups(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers = nil)
+      first_page = list_event_hub_consumer_groups_as_lazy(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -655,8 +649,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_event_hub_consumer_groups_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers:nil)
-      list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers:custom_headers).value!
+    def list_event_hub_consumer_groups_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers = nil)
+      list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers).value!
     end
 
     #
@@ -676,7 +670,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers:nil)
+    def list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -685,7 +679,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -748,8 +741,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [EventHubConsumerGroupInfo] operation results.
     #
-    def get_event_hub_consumer_group(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:nil)
-      response = get_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:custom_headers).value!
+    def get_event_hub_consumer_group(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
+      response = get_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -771,8 +764,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_event_hub_consumer_group_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:nil)
-      get_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:custom_headers).value!
+    def get_event_hub_consumer_group_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
+      get_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
     end
 
     #
@@ -793,7 +786,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:nil)
+    def get_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -803,7 +796,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -864,8 +856,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [EventHubConsumerGroupInfo] operation results.
     #
-    def create_event_hub_consumer_group(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:nil)
-      response = create_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:custom_headers).value!
+    def create_event_hub_consumer_group(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
+      response = create_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -885,8 +877,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_event_hub_consumer_group_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:nil)
-      create_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:custom_headers).value!
+    def create_event_hub_consumer_group_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
+      create_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
     end
 
     #
@@ -905,7 +897,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:nil)
+    def create_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -915,7 +907,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -975,8 +966,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # will be added to the HTTP request.
     #
     #
-    def delete_event_hub_consumer_group(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:nil)
-      response = delete_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:custom_headers).value!
+    def delete_event_hub_consumer_group(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
+      response = delete_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
       nil
     end
 
@@ -996,8 +987,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_event_hub_consumer_group_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:nil)
-      delete_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:custom_headers).value!
+    def delete_event_hub_consumer_group_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
+      delete_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
     end
 
     #
@@ -1016,7 +1007,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers:nil)
+    def delete_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1026,7 +1017,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1076,8 +1066,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Array<JobResponse>] operation results.
     #
-    def list_jobs(resource_group_name, resource_name, custom_headers:nil)
-      first_page = list_jobs_as_lazy(resource_group_name, resource_name, custom_headers:custom_headers)
+    def list_jobs(resource_group_name, resource_name, custom_headers = nil)
+      first_page = list_jobs_as_lazy(resource_group_name, resource_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -1096,8 +1086,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_jobs_with_http_info(resource_group_name, resource_name, custom_headers:nil)
-      list_jobs_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def list_jobs_with_http_info(resource_group_name, resource_name, custom_headers = nil)
+      list_jobs_async(resource_group_name, resource_name, custom_headers).value!
     end
 
     #
@@ -1115,7 +1105,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_jobs_async(resource_group_name, resource_name, custom_headers:nil)
+    def list_jobs_async(resource_group_name, resource_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1123,7 +1113,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1184,8 +1173,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [JobResponse] operation results.
     #
-    def get_job(resource_group_name, resource_name, job_id, custom_headers:nil)
-      response = get_job_async(resource_group_name, resource_name, job_id, custom_headers:custom_headers).value!
+    def get_job(resource_group_name, resource_name, job_id, custom_headers = nil)
+      response = get_job_async(resource_group_name, resource_name, job_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1205,8 +1194,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_job_with_http_info(resource_group_name, resource_name, job_id, custom_headers:nil)
-      get_job_async(resource_group_name, resource_name, job_id, custom_headers:custom_headers).value!
+    def get_job_with_http_info(resource_group_name, resource_name, job_id, custom_headers = nil)
+      get_job_async(resource_group_name, resource_name, job_id, custom_headers).value!
     end
 
     #
@@ -1225,7 +1214,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_job_async(resource_group_name, resource_name, job_id, custom_headers:nil)
+    def get_job_async(resource_group_name, resource_name, job_id, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1234,7 +1223,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1292,8 +1280,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Array<IotHubQuotaMetricInfo>] operation results.
     #
-    def get_quota_metrics(resource_group_name, resource_name, custom_headers:nil)
-      first_page = get_quota_metrics_as_lazy(resource_group_name, resource_name, custom_headers:custom_headers)
+    def get_quota_metrics(resource_group_name, resource_name, custom_headers = nil)
+      first_page = get_quota_metrics_as_lazy(resource_group_name, resource_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -1310,8 +1298,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_quota_metrics_with_http_info(resource_group_name, resource_name, custom_headers:nil)
-      get_quota_metrics_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def get_quota_metrics_with_http_info(resource_group_name, resource_name, custom_headers = nil)
+      get_quota_metrics_async(resource_group_name, resource_name, custom_headers).value!
     end
 
     #
@@ -1327,7 +1315,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_quota_metrics_async(resource_group_name, resource_name, custom_headers:nil)
+    def get_quota_metrics_async(resource_group_name, resource_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1335,7 +1323,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1392,8 +1379,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [IotHubNameAvailabilityInfo] operation results.
     #
-    def check_name_availability(operation_inputs, custom_headers:nil)
-      response = check_name_availability_async(operation_inputs, custom_headers:custom_headers).value!
+    def check_name_availability(operation_inputs, custom_headers = nil)
+      response = check_name_availability_async(operation_inputs, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1409,8 +1396,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(operation_inputs, custom_headers:nil)
-      check_name_availability_async(operation_inputs, custom_headers:custom_headers).value!
+    def check_name_availability_with_http_info(operation_inputs, custom_headers = nil)
+      check_name_availability_async(operation_inputs, custom_headers).value!
     end
 
     #
@@ -1425,18 +1412,19 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(operation_inputs, custom_headers:nil)
+    def check_name_availability_async(operation_inputs, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'operation_inputs is nil' if operation_inputs.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::IotHub::Mgmt::V2016_02_03::Models::OperationInputs.mapper()
@@ -1499,8 +1487,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Array<SharedAccessSignatureAuthorizationRule>] operation results.
     #
-    def list_keys(resource_group_name, resource_name, custom_headers:nil)
-      first_page = list_keys_as_lazy(resource_group_name, resource_name, custom_headers:custom_headers)
+    def list_keys(resource_group_name, resource_name, custom_headers = nil)
+      first_page = list_keys_as_lazy(resource_group_name, resource_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -1519,8 +1507,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_with_http_info(resource_group_name, resource_name, custom_headers:nil)
-      list_keys_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def list_keys_with_http_info(resource_group_name, resource_name, custom_headers = nil)
+      list_keys_async(resource_group_name, resource_name, custom_headers).value!
     end
 
     #
@@ -1538,7 +1526,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_async(resource_group_name, resource_name, custom_headers:nil)
+    def list_keys_async(resource_group_name, resource_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1546,7 +1534,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1607,8 +1594,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [SharedAccessSignatureAuthorizationRule] operation results.
     #
-    def get_keys_for_key_name(resource_group_name, resource_name, key_name, custom_headers:nil)
-      response = get_keys_for_key_name_async(resource_group_name, resource_name, key_name, custom_headers:custom_headers).value!
+    def get_keys_for_key_name(resource_group_name, resource_name, key_name, custom_headers = nil)
+      response = get_keys_for_key_name_async(resource_group_name, resource_name, key_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1628,8 +1615,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_keys_for_key_name_with_http_info(resource_group_name, resource_name, key_name, custom_headers:nil)
-      get_keys_for_key_name_async(resource_group_name, resource_name, key_name, custom_headers:custom_headers).value!
+    def get_keys_for_key_name_with_http_info(resource_group_name, resource_name, key_name, custom_headers = nil)
+      get_keys_for_key_name_async(resource_group_name, resource_name, key_name, custom_headers).value!
     end
 
     #
@@ -1648,7 +1635,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_keys_for_key_name_async(resource_group_name, resource_name, key_name, custom_headers:nil)
+    def get_keys_for_key_name_async(resource_group_name, resource_name, key_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1657,7 +1644,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1721,8 +1707,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [JobResponse] operation results.
     #
-    def export_devices(resource_group_name, resource_name, export_devices_parameters, custom_headers:nil)
-      response = export_devices_async(resource_group_name, resource_name, export_devices_parameters, custom_headers:custom_headers).value!
+    def export_devices(resource_group_name, resource_name, export_devices_parameters, custom_headers = nil)
+      response = export_devices_async(resource_group_name, resource_name, export_devices_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1745,8 +1731,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def export_devices_with_http_info(resource_group_name, resource_name, export_devices_parameters, custom_headers:nil)
-      export_devices_async(resource_group_name, resource_name, export_devices_parameters, custom_headers:custom_headers).value!
+    def export_devices_with_http_info(resource_group_name, resource_name, export_devices_parameters, custom_headers = nil)
+      export_devices_async(resource_group_name, resource_name, export_devices_parameters, custom_headers).value!
     end
 
     #
@@ -1768,7 +1754,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def export_devices_async(resource_group_name, resource_name, export_devices_parameters, custom_headers:nil)
+    def export_devices_async(resource_group_name, resource_name, export_devices_parameters, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1777,11 +1763,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::IotHub::Mgmt::V2016_02_03::Models::ExportDevicesRequest.mapper()
@@ -1848,8 +1835,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [JobResponse] operation results.
     #
-    def import_devices(resource_group_name, resource_name, import_devices_parameters, custom_headers:nil)
-      response = import_devices_async(resource_group_name, resource_name, import_devices_parameters, custom_headers:custom_headers).value!
+    def import_devices(resource_group_name, resource_name, import_devices_parameters, custom_headers = nil)
+      response = import_devices_async(resource_group_name, resource_name, import_devices_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1872,8 +1859,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def import_devices_with_http_info(resource_group_name, resource_name, import_devices_parameters, custom_headers:nil)
-      import_devices_async(resource_group_name, resource_name, import_devices_parameters, custom_headers:custom_headers).value!
+    def import_devices_with_http_info(resource_group_name, resource_name, import_devices_parameters, custom_headers = nil)
+      import_devices_async(resource_group_name, resource_name, import_devices_parameters, custom_headers).value!
     end
 
     #
@@ -1895,7 +1882,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def import_devices_async(resource_group_name, resource_name, import_devices_parameters, custom_headers:nil)
+    def import_devices_async(resource_group_name, resource_name, import_devices_parameters, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1904,11 +1891,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::IotHub::Mgmt::V2016_02_03::Models::ImportDevicesRequest.mapper()
@@ -1973,8 +1961,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [IotHubDescription] operation results.
     #
-    def begin_create_or_update(resource_group_name, resource_name, iot_hub_description, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1995,8 +1983,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, resource_name, iot_hub_description, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers).value!
     end
 
     #
@@ -2016,7 +2004,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -2025,11 +2013,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::IotHub::Mgmt::V2016_02_03::Models::IotHubDescription.mapper()
@@ -2100,8 +2089,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Object] operation results.
     #
-    def begin_delete(resource_group_name, resource_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, resource_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, resource_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2118,8 +2107,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, resource_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, resource_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, resource_name, custom_headers).value!
     end
 
     #
@@ -2135,7 +2124,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, resource_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, resource_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -2143,7 +2132,6 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2220,8 +2208,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [IotHubDescriptionListResult] operation results.
     #
-    def list_by_subscription_next(next_page_link, custom_headers:nil)
-      response = list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next(next_page_link, custom_headers = nil)
+      response = list_by_subscription_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2237,8 +2225,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_subscription_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_subscription_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2253,12 +2241,11 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_next_async(next_page_link, custom_headers:nil)
+    def list_by_subscription_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2314,8 +2301,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [IotHubDescriptionListResult] operation results.
     #
-    def list_by_resource_group_next(next_page_link, custom_headers:nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2331,8 +2318,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2347,12 +2334,11 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2408,8 +2394,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [IotHubSkuDescriptionListResult] operation results.
     #
-    def get_valid_skus_next(next_page_link, custom_headers:nil)
-      response = get_valid_skus_next_async(next_page_link, custom_headers:custom_headers).value!
+    def get_valid_skus_next(next_page_link, custom_headers = nil)
+      response = get_valid_skus_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2425,8 +2411,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_valid_skus_next_with_http_info(next_page_link, custom_headers:nil)
-      get_valid_skus_next_async(next_page_link, custom_headers:custom_headers).value!
+    def get_valid_skus_next_with_http_info(next_page_link, custom_headers = nil)
+      get_valid_skus_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2441,12 +2427,11 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_valid_skus_next_async(next_page_link, custom_headers:nil)
+    def get_valid_skus_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2504,8 +2489,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [EventHubConsumerGroupsListResult] operation results.
     #
-    def list_event_hub_consumer_groups_next(next_page_link, custom_headers:nil)
-      response = list_event_hub_consumer_groups_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_event_hub_consumer_groups_next(next_page_link, custom_headers = nil)
+      response = list_event_hub_consumer_groups_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2523,8 +2508,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_event_hub_consumer_groups_next_with_http_info(next_page_link, custom_headers:nil)
-      list_event_hub_consumer_groups_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_event_hub_consumer_groups_next_with_http_info(next_page_link, custom_headers = nil)
+      list_event_hub_consumer_groups_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2541,12 +2526,11 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_event_hub_consumer_groups_next_async(next_page_link, custom_headers:nil)
+    def list_event_hub_consumer_groups_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2604,8 +2588,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [JobResponseListResult] operation results.
     #
-    def list_jobs_next(next_page_link, custom_headers:nil)
-      response = list_jobs_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_jobs_next(next_page_link, custom_headers = nil)
+      response = list_jobs_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2623,8 +2607,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_jobs_next_with_http_info(next_page_link, custom_headers:nil)
-      list_jobs_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_jobs_next_with_http_info(next_page_link, custom_headers = nil)
+      list_jobs_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2641,12 +2625,11 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_jobs_next_async(next_page_link, custom_headers:nil)
+    def list_jobs_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2702,8 +2685,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [IotHubQuotaMetricInfoListResult] operation results.
     #
-    def get_quota_metrics_next(next_page_link, custom_headers:nil)
-      response = get_quota_metrics_next_async(next_page_link, custom_headers:custom_headers).value!
+    def get_quota_metrics_next(next_page_link, custom_headers = nil)
+      response = get_quota_metrics_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2719,8 +2702,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_quota_metrics_next_with_http_info(next_page_link, custom_headers:nil)
-      get_quota_metrics_next_async(next_page_link, custom_headers:custom_headers).value!
+    def get_quota_metrics_next_with_http_info(next_page_link, custom_headers = nil)
+      get_quota_metrics_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2735,12 +2718,11 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_quota_metrics_next_async(next_page_link, custom_headers:nil)
+    def get_quota_metrics_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2798,8 +2780,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [SharedAccessSignatureAuthorizationRuleListResult] operation results.
     #
-    def list_keys_next(next_page_link, custom_headers:nil)
-      response = list_keys_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_keys_next(next_page_link, custom_headers = nil)
+      response = list_keys_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2817,8 +2799,8 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_next_with_http_info(next_page_link, custom_headers:nil)
-      list_keys_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_keys_next_with_http_info(next_page_link, custom_headers = nil)
+      list_keys_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2835,12 +2817,11 @@ module Azure::IotHub::Mgmt::V2016_02_03
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_next_async(next_page_link, custom_headers:nil)
+    def list_keys_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2895,12 +2876,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # @return [IotHubDescriptionListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_subscription_as_lazy(custom_headers:nil)
-      response = list_by_subscription_async(custom_headers:custom_headers).value!
+    def list_by_subscription_as_lazy(custom_headers = nil)
+      response = list_by_subscription_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_subscription_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_subscription_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2919,12 +2900,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # @return [IotHubDescriptionListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2944,12 +2925,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # @return [IotHubSkuDescriptionListResult] which provide lazy access to pages
     # of the response.
     #
-    def get_valid_skus_as_lazy(resource_group_name, resource_name, custom_headers:nil)
-      response = get_valid_skus_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def get_valid_skus_as_lazy(resource_group_name, resource_name, custom_headers = nil)
+      response = get_valid_skus_async(resource_group_name, resource_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          get_valid_skus_next_async(next_page_link, custom_headers:custom_headers)
+          get_valid_skus_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2973,12 +2954,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # @return [EventHubConsumerGroupsListResult] which provide lazy access to pages
     # of the response.
     #
-    def list_event_hub_consumer_groups_as_lazy(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers:nil)
-      response = list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers:custom_headers).value!
+    def list_event_hub_consumer_groups_as_lazy(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers = nil)
+      response = list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_event_hub_consumer_groups_next_async(next_page_link, custom_headers:custom_headers)
+          list_event_hub_consumer_groups_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3000,12 +2981,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # @return [JobResponseListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_jobs_as_lazy(resource_group_name, resource_name, custom_headers:nil)
-      response = list_jobs_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def list_jobs_as_lazy(resource_group_name, resource_name, custom_headers = nil)
+      response = list_jobs_async(resource_group_name, resource_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_jobs_next_async(next_page_link, custom_headers:custom_headers)
+          list_jobs_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3025,12 +3006,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # @return [IotHubQuotaMetricInfoListResult] which provide lazy access to pages
     # of the response.
     #
-    def get_quota_metrics_as_lazy(resource_group_name, resource_name, custom_headers:nil)
-      response = get_quota_metrics_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def get_quota_metrics_as_lazy(resource_group_name, resource_name, custom_headers = nil)
+      response = get_quota_metrics_async(resource_group_name, resource_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          get_quota_metrics_next_async(next_page_link, custom_headers:custom_headers)
+          get_quota_metrics_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3052,12 +3033,12 @@ module Azure::IotHub::Mgmt::V2016_02_03
     # @return [SharedAccessSignatureAuthorizationRuleListResult] which provide lazy
     # access to pages of the response.
     #
-    def list_keys_as_lazy(resource_group_name, resource_name, custom_headers:nil)
-      response = list_keys_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    def list_keys_as_lazy(resource_group_name, resource_name, custom_headers = nil)
+      response = list_keys_async(resource_group_name, resource_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_keys_next_async(next_page_link, custom_headers:custom_headers)
+          list_keys_next_async(next_page_link, custom_headers)
         end
         page
       end

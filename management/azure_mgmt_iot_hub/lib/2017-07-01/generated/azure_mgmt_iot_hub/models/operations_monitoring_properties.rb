@@ -26,7 +26,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationsMonitoringProperties',
           type: {
@@ -34,13 +33,11 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'OperationsMonitoringProperties',
             model_properties: {
               events: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'events',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationMonitoringLevelElementType',
                       type: {
