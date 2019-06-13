@@ -14,6 +14,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       Hour = "Hour"
       Week = "Week"
       Month = "Month"
+      Minute = "Minute"
     end
   end
 end

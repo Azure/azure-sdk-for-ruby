@@ -31,7 +31,6 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AdvancedSchedule',
           type: {
@@ -39,13 +38,11 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'AdvancedSchedule',
             model_properties: {
               week_days: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'weekDays',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -55,13 +52,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               month_days: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'monthDays',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NumberElementType',
                       type: {
@@ -71,13 +66,11 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               monthly_occurrences: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'monthlyOccurrences',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AdvancedScheduleMonthlyOccurrenceElementType',
                       type: {
