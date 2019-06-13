@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.Video"
+        @@odatatype = "#Microsoft.Media.Video"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Duration] The distance between two key frames, thereby
       # defining a group of pictures (GOP). The value should be a non-zero
@@ -37,7 +37,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.Video',
           type: {
@@ -45,15 +44,13 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'Video',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -61,7 +58,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               key_frame_interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyFrameInterval',
                 type: {
@@ -69,7 +65,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               stretch_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'stretchMode',
                 type: {

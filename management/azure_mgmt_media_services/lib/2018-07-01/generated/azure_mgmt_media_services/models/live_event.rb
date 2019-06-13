@@ -57,7 +57,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveEvent',
           type: {
@@ -65,7 +64,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'LiveEvent',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -74,7 +72,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -83,7 +80,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -92,13 +88,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -108,7 +102,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -116,7 +109,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -124,7 +116,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               input: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.input',
                 type: {
@@ -133,7 +124,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               preview: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.preview',
                 type: {
@@ -142,7 +132,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               encoding: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encoding',
                 type: {
@@ -151,7 +140,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -160,17 +148,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               resource_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceState',
                 type: {
-                  name: 'Enum',
-                  module: 'LiveEventResourceState'
+                  name: 'String'
                 }
               },
               cross_site_access_policies: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.crossSiteAccessPolicies',
                 type: {
@@ -179,7 +164,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               vanity_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vanityUrl',
                 type: {
@@ -187,24 +171,20 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               stream_options: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.streamOptions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StreamOptionsFlagElementType',
                       type: {
-                        name: 'Enum',
-                        module: 'StreamOptionsFlag'
+                        name: 'String'
                       }
                   }
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -213,7 +193,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',

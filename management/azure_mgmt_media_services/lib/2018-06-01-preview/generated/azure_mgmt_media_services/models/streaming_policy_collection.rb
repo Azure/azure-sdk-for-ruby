@@ -58,7 +58,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingPolicyCollection',
           type: {
@@ -66,13 +65,11 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'StreamingPolicyCollection',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StreamingPolicyElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               odatanext_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: '@odata\\.nextLink',
                 type: {

@@ -37,7 +37,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Transform',
           type: {
@@ -45,7 +44,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'Transform',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -54,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,7 +68,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -81,7 +76,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -89,7 +83,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',
@@ -98,13 +91,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               outputs: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.outputs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TransformOutputElementType',
                       type: {

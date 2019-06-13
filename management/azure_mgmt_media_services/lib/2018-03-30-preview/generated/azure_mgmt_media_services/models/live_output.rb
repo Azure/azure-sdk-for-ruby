@@ -52,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveOutput',
           type: {
@@ -60,7 +59,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'LiveOutput',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -69,7 +67,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -78,7 +75,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -87,7 +83,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -95,7 +90,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               asset_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.assetName',
                 type: {
@@ -103,7 +97,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               archive_window_length: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.archiveWindowLength',
                 type: {
@@ -111,7 +104,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               manifest_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.manifestName',
                 type: {
@@ -119,7 +111,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               hls: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hls',
                 type: {
@@ -128,7 +119,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               output_snap_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outputSnapTime',
                 type: {
@@ -136,7 +126,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -145,7 +134,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               last_modified: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',
@@ -154,7 +142,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -163,7 +150,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               resource_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceState',

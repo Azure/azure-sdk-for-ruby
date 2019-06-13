@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.H264Video"
+        @@odatatype = "#Microsoft.Media.H264Video"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Boolean] Whether or not the encoder should insert key frames
       # at scene changes. If not specified, the default is false. This flag
@@ -41,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.H264Video',
           type: {
@@ -49,15 +48,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'H264Video',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -65,7 +62,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               key_frame_interval: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyFrameInterval',
                 type: {
@@ -73,16 +69,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               stretch_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'stretchMode',
                 type: {
-                  name: 'Enum',
-                  module: 'StretchMode'
+                  name: 'String'
                 }
               },
               scene_change_detection: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sceneChangeDetection',
                 type: {
@@ -90,22 +83,18 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               complexity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'complexity',
                 type: {
-                  name: 'Enum',
-                  module: 'H264Complexity'
+                  name: 'String'
                 }
               },
               layers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'layers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'H264LayerElementType',
                       type: {

@@ -26,7 +26,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingEndpointAccessControl',
           type: {
@@ -34,7 +33,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'StreamingEndpointAccessControl',
             model_properties: {
               akamai: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'akamai',
                 type: {
@@ -43,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ip',
                 type: {

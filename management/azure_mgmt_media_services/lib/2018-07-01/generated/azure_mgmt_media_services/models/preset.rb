@@ -14,16 +14,17 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["#Microsoft.Media.FaceDetectorPreset"] = "FaceDetectorPreset"
       @@discriminatorMap["#Microsoft.Media.AudioAnalyzerPreset"] = "AudioAnalyzerPreset"
       @@discriminatorMap["#Microsoft.Media.BuiltInStandardEncoderPreset"] = "BuiltInStandardEncoderPreset"
       @@discriminatorMap["#Microsoft.Media.StandardEncoderPreset"] = "StandardEncoderPreset"
       @@discriminatorMap["#Microsoft.Media.VideoAnalyzerPreset"] = "VideoAnalyzerPreset"
 
       def initialize
-        @odatatype = "Preset"
+        @@odatatype = "Preset"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
 
       #
@@ -32,7 +33,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Preset',
           type: {

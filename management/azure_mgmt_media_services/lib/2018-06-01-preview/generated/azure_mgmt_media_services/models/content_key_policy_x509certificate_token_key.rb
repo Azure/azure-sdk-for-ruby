@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.ContentKeyPolicyX509CertificateTokenKey"
+        @@odatatype = "#Microsoft.Media.ContentKeyPolicyX509CertificateTokenKey"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Array<Integer>] The raw data field of a certificate in PKCS 12
       # format (X509Certificate2 in .NET)
@@ -30,15 +30,13 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.ContentKeyPolicyX509CertificateTokenKey',
           type: {
             name: 'Composite',
             class_name: 'ContentKeyPolicyX509CertificateTokenKey',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -46,7 +44,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               raw_body: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'rawBody',
                 type: {

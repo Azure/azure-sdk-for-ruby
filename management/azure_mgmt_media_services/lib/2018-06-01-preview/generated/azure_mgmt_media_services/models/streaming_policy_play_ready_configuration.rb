@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingPolicyPlayReadyConfiguration',
           type: {
@@ -35,7 +34,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'StreamingPolicyPlayReadyConfiguration',
             model_properties: {
               custom_license_acquisition_url_template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customLicenseAcquisitionUrlTemplate',
                 type: {
@@ -43,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               play_ready_custom_attributes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'playReadyCustomAttributes',
                 type: {

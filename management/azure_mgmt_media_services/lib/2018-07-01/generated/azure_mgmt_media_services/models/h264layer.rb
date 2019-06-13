@@ -15,20 +15,20 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.H264Layer"
+        @@odatatype = "#Microsoft.Media.H264Layer"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
-      # @return [H264VideoProfile] Which profile of the H.264 standard should
-      # be used when encoding this layer. Default is Auto. Possible values
-      # include: 'Auto', 'Baseline', 'Main', 'High', 'High422', 'High444'
+      # @return [H264VideoProfile] We currently support Baseline, Main, High,
+      # High422, High444. Default is Auto. Possible values include: 'Auto',
+      # 'Baseline', 'Main', 'High', 'High422', 'High444'
       attr_accessor :profile
 
-      # @return [String] Which level of the H.264 standard should be used when
-      # encoding this layer. The value can be Auto, or a number that matches
-      # the H.264 profile. If not specified, the default is Auto, which lets
-      # the encoder choose the Level that is appropriate for this layer.
+      # @return [String] We currently support Level up to 6.2. The value can be
+      # Auto, or a number that matches the H.264 profile. If not specified, the
+      # default is Auto, which lets the encoder choose the Level that is
+      # appropriate for this layer.
       attr_accessor :level
 
       # @return [Duration] The VBV buffer window length. The value should be in
@@ -53,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.H264Layer',
           type: {
@@ -61,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'H264Layer',
             model_properties: {
               width: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'width',
                 type: {
@@ -69,7 +67,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               height: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'height',
                 type: {
@@ -77,15 +74,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -93,15 +88,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               bitrate: {
-                client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'bitrate',
                 type: {
                   name: 'Number'
                 }
               },
               max_bitrate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxBitrate',
                 type: {
@@ -109,7 +102,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               b_frames: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bFrames',
                 type: {
@@ -117,7 +109,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               frame_rate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'frameRate',
                 type: {
@@ -125,7 +116,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               slices: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'slices',
                 type: {
@@ -133,7 +123,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               adaptive_bframe: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'adaptiveBFrame',
                 type: {
@@ -141,16 +130,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'profile',
                 type: {
-                  name: 'Enum',
-                  module: 'H264VideoProfile'
+                  name: 'String'
                 }
               },
               level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'level',
                 type: {
@@ -158,7 +144,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               buffer_window: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bufferWindow',
                 type: {
@@ -166,7 +151,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               reference_frames: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'referenceFrames',
                 type: {
@@ -174,12 +158,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               entropy_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'entropyMode',
                 type: {
-                  name: 'Enum',
-                  module: 'EntropyMode'
+                  name: 'String'
                 }
               }
             }

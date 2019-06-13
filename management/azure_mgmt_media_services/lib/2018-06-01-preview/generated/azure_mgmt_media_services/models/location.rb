@@ -23,7 +23,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Location',
           type: {
@@ -31,7 +30,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'Location',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

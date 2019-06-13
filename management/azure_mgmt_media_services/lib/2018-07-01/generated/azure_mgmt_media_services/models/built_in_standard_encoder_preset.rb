@@ -15,16 +15,17 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.BuiltInStandardEncoderPreset"
+        @@odatatype = "#Microsoft.Media.BuiltInStandardEncoderPreset"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [EncoderNamedPreset] The built-in preset to be used for
       # encoding videos. Possible values include: 'H264SingleBitrateSD',
       # 'H264SingleBitrate720p', 'H264SingleBitrate1080p', 'AdaptiveStreaming',
-      # 'AACGoodQualityAudio', 'H264MultipleBitrate1080p',
-      # 'H264MultipleBitrate720p', 'H264MultipleBitrateSD'
+      # 'AACGoodQualityAudio', 'ContentAwareEncodingExperimental',
+      # 'H264MultipleBitrate1080p', 'H264MultipleBitrate720p',
+      # 'H264MultipleBitrateSD'
       attr_accessor :preset_name
 
 
@@ -34,15 +35,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.BuiltInStandardEncoderPreset',
           type: {
             name: 'Composite',
             class_name: 'BuiltInStandardEncoderPreset',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -50,12 +49,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               preset_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'presetName',
                 type: {
-                  name: 'Enum',
-                  module: 'EncoderNamedPreset'
+                  name: 'String'
                 }
               }
             }

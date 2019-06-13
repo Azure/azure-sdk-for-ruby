@@ -16,7 +16,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       attr_accessor :default_key
 
       # @return [Array<StreamingPolicyContentKey>] Representing tracks needs
-      # sepearete content key
+      # separate content key
       attr_accessor :key_to_track_mappings
 
 
@@ -26,7 +26,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingPolicyContentKeys',
           type: {
@@ -34,7 +33,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'StreamingPolicyContentKeys',
             model_properties: {
               default_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultKey',
                 type: {
@@ -43,13 +41,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               key_to_track_mappings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyToTrackMappings',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StreamingPolicyContentKeyElementType',
                       type: {

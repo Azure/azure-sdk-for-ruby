@@ -14,14 +14,15 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JobInputHttp"
+        @@odatatype = "#Microsoft.Media.JobInputHttp"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] Base URI for HTTPS job input. It will be concatenated
-      # with provided file names.   If no base uri is given, then the provided
-      # file list is assumed to be fully qualified uris.
+      # with provided file names. If no base uri is given, then the provided
+      # file list is assumed to be fully qualified uris. Maximum length of 4000
+      # characters.
       attr_accessor :base_uri
 
 
@@ -31,15 +32,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JobInputHttp',
           type: {
             name: 'Composite',
             class_name: 'JobInputHttp',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -47,13 +46,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               files: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'files',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -62,8 +59,27 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                   }
                 }
               },
+              start: {
+                required: false,
+                serialized_name: 'start',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: '@odata.type',
+                  uber_parent: 'ClipTime',
+                  class_name: 'ClipTime'
+                }
+              },
+              end_property: {
+                required: false,
+                serialized_name: 'end',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: '@odata.type',
+                  uber_parent: 'ClipTime',
+                  class_name: 'ClipTime'
+                }
+              },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
@@ -71,7 +87,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               base_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'baseUri',
                 type: {
