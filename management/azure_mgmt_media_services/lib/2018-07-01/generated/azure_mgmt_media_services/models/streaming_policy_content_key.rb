@@ -29,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingPolicyContentKey',
           type: {
@@ -37,7 +36,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'StreamingPolicyContentKey',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
@@ -45,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               policy_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyName',
                 type: {
@@ -53,13 +50,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               tracks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tracks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrackSelectionElementType',
                       type: {

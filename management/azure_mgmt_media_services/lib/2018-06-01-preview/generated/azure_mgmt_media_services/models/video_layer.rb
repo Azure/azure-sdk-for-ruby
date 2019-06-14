@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.VideoLayer"
+        @@odatatype = "#Microsoft.Media.VideoLayer"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Integer] The average bitrate in bits per second at which to
       # encode the input video when generating this layer. This is a required
@@ -60,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.VideoLayer',
           type: {
@@ -68,7 +67,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'VideoLayer',
             model_properties: {
               width: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'width',
                 type: {
@@ -76,7 +74,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               height: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'height',
                 type: {
@@ -84,15 +81,13 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -100,7 +95,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               bitrate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bitrate',
                 type: {
@@ -108,7 +102,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               max_bitrate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxBitrate',
                 type: {
@@ -116,7 +109,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               b_frames: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bFrames',
                 type: {
@@ -124,7 +116,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               frame_rate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'frameRate',
                 type: {
@@ -132,7 +123,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               slices: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'slices',
                 type: {
@@ -140,7 +130,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               adaptive_bframe: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'adaptiveBFrame',
                 type: {

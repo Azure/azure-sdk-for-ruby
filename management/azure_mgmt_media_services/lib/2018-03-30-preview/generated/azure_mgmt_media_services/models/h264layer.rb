@@ -15,10 +15,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.H264Layer"
+        @@odatatype = "#Microsoft.Media.H264Layer"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [H264VideoProfile] Which profile of the H.264 standard should
       # be used when encoding this layer. Default is Auto. Possible values
@@ -53,7 +53,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.H264Layer',
           type: {
@@ -61,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'H264Layer',
             model_properties: {
               width: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'width',
                 type: {
@@ -69,7 +67,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               height: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'height',
                 type: {
@@ -77,15 +74,13 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -93,7 +88,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               bitrate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bitrate',
                 type: {
@@ -101,7 +95,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               max_bitrate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxBitrate',
                 type: {
@@ -109,7 +102,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               b_frames: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bFrames',
                 type: {
@@ -117,7 +109,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               frame_rate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'frameRate',
                 type: {
@@ -125,7 +116,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               slices: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'slices',
                 type: {
@@ -133,7 +123,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               adaptive_bframe: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'adaptiveBFrame',
                 type: {
@@ -141,7 +130,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'profile',
                 type: {
@@ -150,7 +138,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'level',
                 type: {
@@ -158,7 +145,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               buffer_window: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bufferWindow',
                 type: {
@@ -166,7 +152,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               reference_frames: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'referenceFrames',
                 type: {
@@ -174,7 +159,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               entropy_mode: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'entropyMode',
                 type: {

@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.ContentKeyPolicyFairPlayConfiguration"
+        @@odatatype = "#Microsoft.Media.ContentKeyPolicyFairPlayConfiguration"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Array<Integer>] The key that must be used as FairPlay ASk.
       attr_accessor :ask
@@ -46,15 +46,13 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.ContentKeyPolicyFairPlayConfiguration',
           type: {
             name: 'Composite',
             class_name: 'ContentKeyPolicyFairPlayConfiguration',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -62,7 +60,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               ask: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ask',
                 type: {
@@ -70,7 +67,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               fair_play_pfx_password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'fairPlayPfxPassword',
                 type: {
@@ -78,7 +74,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               fair_play_pfx: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'fairPlayPfx',
                 type: {
@@ -86,7 +81,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               rental_and_lease_key_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'rentalAndLeaseKeyType',
                 type: {
@@ -95,7 +89,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               rental_duration: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'rentalDuration',
                 type: {

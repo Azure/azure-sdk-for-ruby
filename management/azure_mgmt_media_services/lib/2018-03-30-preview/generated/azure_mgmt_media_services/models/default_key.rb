@@ -14,7 +14,7 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       include MsRestAzure
 
       # @return [String] Label can be used to specify Content Key when creating
-      # Stremaing Locator
+      # Streaming Locator
       attr_accessor :label
 
       # @return [String] Policy used by Default Key
@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DefaultKey',
           type: {
@@ -35,7 +34,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'DefaultKey',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
@@ -43,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               policy_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyName',
                 type: {

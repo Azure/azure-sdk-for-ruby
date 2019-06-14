@@ -14,13 +14,23 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.JobInputClip"
+        @@odatatype = "#Microsoft.Media.JobInputClip"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Array<String>] List of files. Required for JobInputHttp.
+      # Maximum of 4000 characters each.
       attr_accessor :files
+
+      # @return [ClipTime] Defines a point on the timeline of the input media
+      # at which processing will start. Defaults to the beginning of the input
+      # media.
+      attr_accessor :start
+
+      # @return [ClipTime] Defines a point on the timeline of the input media
+      # at which processing will end. Defaults to the end of the input media.
+      attr_accessor :end_property
 
       # @return [String] A label that is assigned to a JobInputClip, that is
       # used to satisfy a reference used in the Transform. For example, a
@@ -37,15 +47,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.JobInputClip',
           type: {
             name: 'Composite',
             class_name: 'JobInputClip',
             model_properties: {
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -53,13 +61,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               files: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'files',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -68,8 +74,27 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                   }
                 }
               },
+              start: {
+                required: false,
+                serialized_name: 'start',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: '@odata.type',
+                  uber_parent: 'ClipTime',
+                  class_name: 'ClipTime'
+                }
+              },
+              end_property: {
+                required: false,
+                serialized_name: 'end',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: '@odata.type',
+                  uber_parent: 'ClipTime',
+                  class_name: 'ClipTime'
+                }
+              },
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {

@@ -28,7 +28,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AssetFileEncryptionMetadata',
           type: {
@@ -36,7 +35,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'AssetFileEncryptionMetadata',
             model_properties: {
               initialization_vector: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'initializationVector',
                 type: {
@@ -44,7 +42,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               asset_file_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'assetFileName',
                 type: {
@@ -52,7 +49,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               asset_file_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'assetFileId',
                 type: {

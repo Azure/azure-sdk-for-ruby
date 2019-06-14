@@ -17,7 +17,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # 'Bitrate'
       attr_accessor :property
 
-      # @return [String] The track proprty value.
+      # @return [String] The track property value.
       attr_accessor :value
 
       # @return [FilterTrackPropertyCompareOperation] The track property
@@ -31,7 +31,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FilterTrackPropertyCondition',
           type: {
@@ -39,16 +38,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'FilterTrackPropertyCondition',
             model_properties: {
               property: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'property',
                 type: {
-                  name: 'Enum',
-                  module: 'FilterTrackPropertyType'
+                  name: 'String'
                 }
               },
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
@@ -56,12 +52,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'operation',
                 type: {
-                  name: 'Enum',
-                  module: 'FilterTrackPropertyCompareOperation'
+                  name: 'String'
                 }
               }
             }

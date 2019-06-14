@@ -24,10 +24,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       @@discriminatorMap["#Microsoft.Media.PngImage"] = "PngImage"
 
       def initialize
-        @odatatype = "Codec"
+        @@odatatype = "Codec"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [String] An optional label for the codec. The label can be used
       # to control muxing behavior.
@@ -40,7 +40,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Codec',
           type: {
@@ -50,7 +49,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'Codec',
             model_properties: {
               label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {

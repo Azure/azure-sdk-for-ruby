@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.VideoOverlay"
+        @@odatatype = "#Microsoft.Media.VideoOverlay"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
       # @return [Rectangle] The location in the input video where the overlay
       # is applied.
@@ -38,7 +38,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.VideoOverlay',
           type: {
@@ -46,7 +45,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'VideoOverlay',
             model_properties: {
               input_label: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inputLabel',
                 type: {
@@ -54,7 +52,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               start: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'start',
                 type: {
@@ -62,7 +59,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               end_property: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'end',
                 type: {
@@ -70,7 +66,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               fade_in_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fadeInDuration',
                 type: {
@@ -78,7 +73,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               fade_out_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fadeOutDuration',
                 type: {
@@ -86,15 +80,13 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               audio_gain_level: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'audioGainLevel',
                 type: {
                   name: 'Double'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -102,7 +94,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               position: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'position',
                 type: {
@@ -111,7 +102,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               opacity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'opacity',
                 type: {
@@ -119,7 +109,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               crop_rectangle: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'cropRectangle',
                 type: {

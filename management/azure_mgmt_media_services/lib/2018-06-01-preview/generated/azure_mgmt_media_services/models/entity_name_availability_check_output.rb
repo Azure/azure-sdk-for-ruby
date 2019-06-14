@@ -29,7 +29,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EntityNameAvailabilityCheckOutput',
           type: {
@@ -37,7 +36,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
             class_name: 'EntityNameAvailabilityCheckOutput',
             model_properties: {
               name_available: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -45,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               reason: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -53,7 +50,6 @@ module Azure::MediaServices::Mgmt::V2018_06_01_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

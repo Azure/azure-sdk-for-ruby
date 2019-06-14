@@ -34,7 +34,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveEventInput',
           type: {
@@ -42,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'LiveEventInput',
             model_properties: {
               streaming_protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'streamingProtocol',
                 type: {
@@ -51,7 +49,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               key_frame_interval_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyFrameIntervalDuration',
                 type: {
@@ -59,7 +56,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               access_token: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accessToken',
                 type: {
@@ -67,13 +63,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               endpoints: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpoints',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LiveEventEndpointElementType',
                       type: {

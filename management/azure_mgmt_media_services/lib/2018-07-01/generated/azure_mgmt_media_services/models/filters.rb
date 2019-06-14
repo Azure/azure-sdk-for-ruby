@@ -36,7 +36,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Filters',
           type: {
@@ -44,7 +43,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'Filters',
             model_properties: {
               deinterlace: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deinterlace',
                 type: {
@@ -53,16 +51,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               rotation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'rotation',
                 type: {
-                  name: 'Enum',
-                  module: 'Rotation'
+                  name: 'String'
                 }
               },
               crop: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'crop',
                 type: {
@@ -71,13 +66,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               overlays: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'overlays',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OverlayElementType',
                       type: {

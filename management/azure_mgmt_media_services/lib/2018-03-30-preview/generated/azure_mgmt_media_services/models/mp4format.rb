@@ -14,10 +14,10 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.Mp4Format"
+        @@odatatype = "#Microsoft.Media.Mp4Format"
       end
 
-      attr_accessor :odatatype
+      attr_accessor :@odatatype
 
 
       #
@@ -26,7 +26,6 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: '#Microsoft.Media.Mp4Format',
           type: {
@@ -34,15 +33,13 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
             class_name: 'Mp4Format',
             model_properties: {
               filename_pattern: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'filenamePattern',
                 type: {
                   name: 'String'
                 }
               },
-              odatatype: {
-                client_side_validation: true,
+              @odatatype: {
                 required: true,
                 serialized_name: '@odata\\.type',
                 type: {
@@ -50,13 +47,11 @@ module Azure::MediaServices::Mgmt::V2018_03_30_preview
                 }
               },
               output_files: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputFiles',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OutputFileElementType',
                       type: {

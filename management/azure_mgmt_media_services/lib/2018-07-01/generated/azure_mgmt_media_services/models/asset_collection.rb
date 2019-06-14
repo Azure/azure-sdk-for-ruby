@@ -58,7 +58,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AssetCollection',
           type: {
@@ -66,13 +65,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'AssetCollection',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AssetElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               odatanext_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: '@odata\\.nextLink',
                 type: {

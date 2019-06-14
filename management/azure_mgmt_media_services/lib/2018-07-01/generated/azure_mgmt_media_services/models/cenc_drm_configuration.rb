@@ -27,7 +27,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CencDrmConfiguration',
           type: {
@@ -35,7 +34,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'CencDrmConfiguration',
             model_properties: {
               play_ready: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'playReady',
                 type: {
@@ -44,7 +42,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               widevine: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'widevine',
                 type: {

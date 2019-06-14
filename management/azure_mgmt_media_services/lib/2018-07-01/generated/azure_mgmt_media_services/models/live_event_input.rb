@@ -41,7 +41,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LiveEventInput',
           type: {
@@ -49,16 +48,13 @@ module Azure::MediaServices::Mgmt::V2018_07_01
             class_name: 'LiveEventInput',
             model_properties: {
               streaming_protocol: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'streamingProtocol',
                 type: {
-                  name: 'Enum',
-                  module: 'LiveEventInputProtocol'
+                  name: 'String'
                 }
               },
               access_control: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accessControl',
                 type: {
@@ -67,7 +63,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               key_frame_interval_duration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyFrameIntervalDuration',
                 type: {
@@ -75,7 +70,6 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               access_token: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accessToken',
                 type: {
@@ -83,13 +77,11 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 }
               },
               endpoints: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpoints',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LiveEventEndpointElementType',
                       type: {
