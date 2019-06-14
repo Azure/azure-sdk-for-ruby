@@ -12,7 +12,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
-      # @return [Array<String>] Instrunctions if any for the data source
+      # @return [Array<String>] Instructions if any for the data source
       attr_accessor :instructions
 
       # @return [Array<NameValuePair>] Datasource Uri Links
@@ -25,7 +25,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DataSource',
           type: {
@@ -33,13 +32,11 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DataSource',
             model_properties: {
               instructions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'instructions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -49,13 +46,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               data_source_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataSourceUri',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NameValuePairElementType',
                       type: {

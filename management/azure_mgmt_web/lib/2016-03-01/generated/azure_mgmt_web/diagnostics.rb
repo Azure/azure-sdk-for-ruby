@@ -34,8 +34,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<DetectorResponse>] operation results.
     #
-    def list_hosting_environment_detector_responses(resource_group_name, name, custom_headers:nil)
-      first_page = list_hosting_environment_detector_responses_as_lazy(resource_group_name, name, custom_headers:custom_headers)
+    def list_hosting_environment_detector_responses(resource_group_name, name, custom_headers = nil)
+      first_page = list_hosting_environment_detector_responses_as_lazy(resource_group_name, name, custom_headers)
       first_page.get_all_items
     end
 
@@ -52,8 +52,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_hosting_environment_detector_responses_with_http_info(resource_group_name, name, custom_headers:nil)
-      list_hosting_environment_detector_responses_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def list_hosting_environment_detector_responses_with_http_info(resource_group_name, name, custom_headers = nil)
+      list_hosting_environment_detector_responses_async(resource_group_name, name, custom_headers).value!
     end
 
     #
@@ -69,18 +69,14 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_hosting_environment_detector_responses_async(resource_group_name, name, custom_headers:nil)
+    def list_hosting_environment_detector_responses_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -142,8 +138,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DetectorResponse] operation results.
     #
-    def get_hosting_environment_detector_response(resource_group_name, name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      response = get_hosting_environment_detector_response_async(resource_group_name, name, detector_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def get_hosting_environment_detector_response(resource_group_name, name, detector_name, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      response = get_hosting_environment_detector_response_async(resource_group_name, name, detector_name, start_time, end_time, time_grain, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -164,8 +160,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_hosting_environment_detector_response_with_http_info(resource_group_name, name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      get_hosting_environment_detector_response_async(resource_group_name, name, detector_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def get_hosting_environment_detector_response_with_http_info(resource_group_name, name, detector_name, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      get_hosting_environment_detector_response_async(resource_group_name, name, detector_name, start_time, end_time, time_grain, custom_headers).value!
     end
 
     #
@@ -185,20 +181,15 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_hosting_environment_detector_response_async(resource_group_name, name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+    def get_hosting_environment_detector_response_async(resource_group_name, name, detector_name, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'detector_name is nil' if detector_name.nil?
-      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -256,8 +247,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<DetectorResponse>] operation results.
     #
-    def list_site_detector_responses(resource_group_name, site_name, custom_headers:nil)
-      first_page = list_site_detector_responses_as_lazy(resource_group_name, site_name, custom_headers:custom_headers)
+    def list_site_detector_responses(resource_group_name, site_name, custom_headers = nil)
+      first_page = list_site_detector_responses_as_lazy(resource_group_name, site_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -274,8 +265,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_detector_responses_with_http_info(resource_group_name, site_name, custom_headers:nil)
-      list_site_detector_responses_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+    def list_site_detector_responses_with_http_info(resource_group_name, site_name, custom_headers = nil)
+      list_site_detector_responses_async(resource_group_name, site_name, custom_headers).value!
     end
 
     #
@@ -291,18 +282,14 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_detector_responses_async(resource_group_name, site_name, custom_headers:nil)
+    def list_site_detector_responses_async(resource_group_name, site_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -364,8 +351,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DetectorResponse] operation results.
     #
-    def get_site_detector_response(resource_group_name, site_name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      response = get_site_detector_response_async(resource_group_name, site_name, detector_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def get_site_detector_response(resource_group_name, site_name, detector_name, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      response = get_site_detector_response_async(resource_group_name, site_name, detector_name, start_time, end_time, time_grain, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -386,8 +373,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_detector_response_with_http_info(resource_group_name, site_name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      get_site_detector_response_async(resource_group_name, site_name, detector_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def get_site_detector_response_with_http_info(resource_group_name, site_name, detector_name, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      get_site_detector_response_async(resource_group_name, site_name, detector_name, start_time, end_time, time_grain, custom_headers).value!
     end
 
     #
@@ -407,20 +394,15 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_detector_response_async(resource_group_name, site_name, detector_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+    def get_site_detector_response_async(resource_group_name, site_name, detector_name, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'detector_name is nil' if detector_name.nil?
-      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -478,8 +460,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<DiagnosticCategory>] operation results.
     #
-    def list_site_diagnostic_categories(resource_group_name, site_name, custom_headers:nil)
-      first_page = list_site_diagnostic_categories_as_lazy(resource_group_name, site_name, custom_headers:custom_headers)
+    def list_site_diagnostic_categories(resource_group_name, site_name, custom_headers = nil)
+      first_page = list_site_diagnostic_categories_as_lazy(resource_group_name, site_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -496,8 +478,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_diagnostic_categories_with_http_info(resource_group_name, site_name, custom_headers:nil)
-      list_site_diagnostic_categories_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+    def list_site_diagnostic_categories_with_http_info(resource_group_name, site_name, custom_headers = nil)
+      list_site_diagnostic_categories_async(resource_group_name, site_name, custom_headers).value!
     end
 
     #
@@ -513,18 +495,14 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_diagnostic_categories_async(resource_group_name, site_name, custom_headers:nil)
+    def list_site_diagnostic_categories_async(resource_group_name, site_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -583,8 +561,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticCategory] operation results.
     #
-    def get_site_diagnostic_category(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
-      response = get_site_diagnostic_category_async(resource_group_name, site_name, diagnostic_category, custom_headers:custom_headers).value!
+    def get_site_diagnostic_category(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
+      response = get_site_diagnostic_category_async(resource_group_name, site_name, diagnostic_category, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -602,8 +580,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_diagnostic_category_with_http_info(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
-      get_site_diagnostic_category_async(resource_group_name, site_name, diagnostic_category, custom_headers:custom_headers).value!
+    def get_site_diagnostic_category_with_http_info(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
+      get_site_diagnostic_category_async(resource_group_name, site_name, diagnostic_category, custom_headers).value!
     end
 
     #
@@ -620,11 +598,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_diagnostic_category_async(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
+    def get_site_diagnostic_category_async(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -632,7 +607,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -691,8 +665,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<AnalysisDefinition>] operation results.
     #
-    def list_site_analyses(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
-      first_page = list_site_analyses_as_lazy(resource_group_name, site_name, diagnostic_category, custom_headers:custom_headers)
+    def list_site_analyses(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
+      first_page = list_site_analyses_as_lazy(resource_group_name, site_name, diagnostic_category, custom_headers)
       first_page.get_all_items
     end
 
@@ -710,8 +684,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_analyses_with_http_info(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
-      list_site_analyses_async(resource_group_name, site_name, diagnostic_category, custom_headers:custom_headers).value!
+    def list_site_analyses_with_http_info(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
+      list_site_analyses_async(resource_group_name, site_name, diagnostic_category, custom_headers).value!
     end
 
     #
@@ -728,11 +702,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_analyses_async(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
+    def list_site_analyses_async(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -740,7 +711,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -800,8 +770,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticAnalysis] operation results.
     #
-    def get_site_analysis(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers:nil)
-      response = get_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers:custom_headers).value!
+    def get_site_analysis(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers = nil)
+      response = get_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -820,8 +790,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_analysis_with_http_info(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers:nil)
-      get_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers:custom_headers).value!
+    def get_site_analysis_with_http_info(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers = nil)
+      get_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers).value!
     end
 
     #
@@ -839,11 +809,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers:nil)
+    def get_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'analysis_name is nil' if analysis_name.nil?
@@ -852,7 +819,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -915,8 +881,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticAnalysis] operation results.
     #
-    def execute_site_analysis(resource_group_name, site_name, diagnostic_category, analysis_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      response = execute_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def execute_site_analysis(resource_group_name, site_name, diagnostic_category, analysis_name, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      response = execute_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, start_time, end_time, time_grain, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -938,8 +904,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def execute_site_analysis_with_http_info(resource_group_name, site_name, diagnostic_category, analysis_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      execute_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def execute_site_analysis_with_http_info(resource_group_name, site_name, diagnostic_category, analysis_name, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      execute_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, start_time, end_time, time_grain, custom_headers).value!
     end
 
     #
@@ -960,21 +926,16 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def execute_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+    def execute_site_analysis_async(resource_group_name, site_name, diagnostic_category, analysis_name, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'analysis_name is nil' if analysis_name.nil?
-      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1033,8 +994,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<DetectorDefinition>] operation results.
     #
-    def list_site_detectors(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
-      first_page = list_site_detectors_as_lazy(resource_group_name, site_name, diagnostic_category, custom_headers:custom_headers)
+    def list_site_detectors(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
+      first_page = list_site_detectors_as_lazy(resource_group_name, site_name, diagnostic_category, custom_headers)
       first_page.get_all_items
     end
 
@@ -1052,8 +1013,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_detectors_with_http_info(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
-      list_site_detectors_async(resource_group_name, site_name, diagnostic_category, custom_headers:custom_headers).value!
+    def list_site_detectors_with_http_info(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
+      list_site_detectors_async(resource_group_name, site_name, diagnostic_category, custom_headers).value!
     end
 
     #
@@ -1070,11 +1031,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_detectors_async(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
+    def list_site_detectors_async(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1082,7 +1040,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1142,8 +1099,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<DetectorDefinition>] operation results.
     #
-    def get_site_detector(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers:nil)
-      first_page = get_site_detector_as_lazy(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers:custom_headers)
+    def get_site_detector(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers = nil)
+      first_page = get_site_detector_as_lazy(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -1162,8 +1119,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_detector_with_http_info(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers:nil)
-      get_site_detector_async(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers:custom_headers).value!
+    def get_site_detector_with_http_info(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers = nil)
+      get_site_detector_async(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers).value!
     end
 
     #
@@ -1181,11 +1138,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_detector_async(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers:nil)
+    def get_site_detector_async(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'detector_name is nil' if detector_name.nil?
@@ -1194,7 +1148,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1257,8 +1210,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticDetectorResponse] operation results.
     #
-    def execute_site_detector(resource_group_name, site_name, detector_name, diagnostic_category, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      response = execute_site_detector_async(resource_group_name, site_name, detector_name, diagnostic_category, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def execute_site_detector(resource_group_name, site_name, detector_name, diagnostic_category, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      response = execute_site_detector_async(resource_group_name, site_name, detector_name, diagnostic_category, start_time, end_time, time_grain, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1280,8 +1233,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def execute_site_detector_with_http_info(resource_group_name, site_name, detector_name, diagnostic_category, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      execute_site_detector_async(resource_group_name, site_name, detector_name, diagnostic_category, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def execute_site_detector_with_http_info(resource_group_name, site_name, detector_name, diagnostic_category, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      execute_site_detector_async(resource_group_name, site_name, detector_name, diagnostic_category, start_time, end_time, time_grain, custom_headers).value!
     end
 
     #
@@ -1302,21 +1255,16 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def execute_site_detector_async(resource_group_name, site_name, detector_name, diagnostic_category, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+    def execute_site_detector_async(resource_group_name, site_name, detector_name, diagnostic_category, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'detector_name is nil' if detector_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
-      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1375,8 +1323,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<DetectorResponse>] operation results.
     #
-    def list_site_detector_responses_slot(resource_group_name, site_name, slot, custom_headers:nil)
-      first_page = list_site_detector_responses_slot_as_lazy(resource_group_name, site_name, slot, custom_headers:custom_headers)
+    def list_site_detector_responses_slot(resource_group_name, site_name, slot, custom_headers = nil)
+      first_page = list_site_detector_responses_slot_as_lazy(resource_group_name, site_name, slot, custom_headers)
       first_page.get_all_items
     end
 
@@ -1394,8 +1342,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_detector_responses_slot_with_http_info(resource_group_name, site_name, slot, custom_headers:nil)
-      list_site_detector_responses_slot_async(resource_group_name, site_name, slot, custom_headers:custom_headers).value!
+    def list_site_detector_responses_slot_with_http_info(resource_group_name, site_name, slot, custom_headers = nil)
+      list_site_detector_responses_slot_async(resource_group_name, site_name, slot, custom_headers).value!
     end
 
     #
@@ -1412,11 +1360,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_detector_responses_slot_async(resource_group_name, site_name, slot, custom_headers:nil)
+    def list_site_detector_responses_slot_async(resource_group_name, site_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1424,7 +1369,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1487,8 +1431,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DetectorResponse] operation results.
     #
-    def get_site_detector_response_slot(resource_group_name, site_name, detector_name, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      response = get_site_detector_response_slot_async(resource_group_name, site_name, detector_name, slot, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def get_site_detector_response_slot(resource_group_name, site_name, detector_name, slot, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      response = get_site_detector_response_slot_async(resource_group_name, site_name, detector_name, slot, start_time, end_time, time_grain, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1510,8 +1454,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_detector_response_slot_with_http_info(resource_group_name, site_name, detector_name, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      get_site_detector_response_slot_async(resource_group_name, site_name, detector_name, slot, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def get_site_detector_response_slot_with_http_info(resource_group_name, site_name, detector_name, slot, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      get_site_detector_response_slot_async(resource_group_name, site_name, detector_name, slot, start_time, end_time, time_grain, custom_headers).value!
     end
 
     #
@@ -1532,21 +1476,16 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_detector_response_slot_async(resource_group_name, site_name, detector_name, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+    def get_site_detector_response_slot_async(resource_group_name, site_name, detector_name, slot, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'detector_name is nil' if detector_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1605,8 +1544,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<DiagnosticCategory>] operation results.
     #
-    def list_site_diagnostic_categories_slot(resource_group_name, site_name, slot, custom_headers:nil)
-      first_page = list_site_diagnostic_categories_slot_as_lazy(resource_group_name, site_name, slot, custom_headers:custom_headers)
+    def list_site_diagnostic_categories_slot(resource_group_name, site_name, slot, custom_headers = nil)
+      first_page = list_site_diagnostic_categories_slot_as_lazy(resource_group_name, site_name, slot, custom_headers)
       first_page.get_all_items
     end
 
@@ -1624,8 +1563,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_diagnostic_categories_slot_with_http_info(resource_group_name, site_name, slot, custom_headers:nil)
-      list_site_diagnostic_categories_slot_async(resource_group_name, site_name, slot, custom_headers:custom_headers).value!
+    def list_site_diagnostic_categories_slot_with_http_info(resource_group_name, site_name, slot, custom_headers = nil)
+      list_site_diagnostic_categories_slot_async(resource_group_name, site_name, slot, custom_headers).value!
     end
 
     #
@@ -1642,11 +1581,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_diagnostic_categories_slot_async(resource_group_name, site_name, slot, custom_headers:nil)
+    def list_site_diagnostic_categories_slot_async(resource_group_name, site_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1654,7 +1590,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1714,8 +1649,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticCategory] operation results.
     #
-    def get_site_diagnostic_category_slot(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
-      response = get_site_diagnostic_category_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers:custom_headers).value!
+    def get_site_diagnostic_category_slot(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
+      response = get_site_diagnostic_category_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1734,8 +1669,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_diagnostic_category_slot_with_http_info(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
-      get_site_diagnostic_category_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers:custom_headers).value!
+    def get_site_diagnostic_category_slot_with_http_info(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
+      get_site_diagnostic_category_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers).value!
     end
 
     #
@@ -1753,11 +1688,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_diagnostic_category_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
+    def get_site_diagnostic_category_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -1766,7 +1698,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1826,8 +1757,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<AnalysisDefinition>] operation results.
     #
-    def list_site_analyses_slot(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
-      first_page = list_site_analyses_slot_as_lazy(resource_group_name, site_name, diagnostic_category, slot, custom_headers:custom_headers)
+    def list_site_analyses_slot(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
+      first_page = list_site_analyses_slot_as_lazy(resource_group_name, site_name, diagnostic_category, slot, custom_headers)
       first_page.get_all_items
     end
 
@@ -1846,8 +1777,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_analyses_slot_with_http_info(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
-      list_site_analyses_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers:custom_headers).value!
+    def list_site_analyses_slot_with_http_info(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
+      list_site_analyses_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers).value!
     end
 
     #
@@ -1865,11 +1796,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_analyses_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
+    def list_site_analyses_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -1878,7 +1806,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -1939,8 +1866,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticAnalysis] operation results.
     #
-    def get_site_analysis_slot(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers:nil)
-      response = get_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers:custom_headers).value!
+    def get_site_analysis_slot(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers = nil)
+      response = get_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1960,8 +1887,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_analysis_slot_with_http_info(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers:nil)
-      get_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers:custom_headers).value!
+    def get_site_analysis_slot_with_http_info(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers = nil)
+      get_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers).value!
     end
 
     #
@@ -1980,11 +1907,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers:nil)
+    def get_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'analysis_name is nil' if analysis_name.nil?
@@ -1994,7 +1918,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2058,8 +1981,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticAnalysis] operation results.
     #
-    def execute_site_analysis_slot(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      response = execute_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def execute_site_analysis_slot(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      response = execute_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time, end_time, time_grain, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2082,8 +2005,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def execute_site_analysis_slot_with_http_info(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      execute_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def execute_site_analysis_slot_with_http_info(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      execute_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time, end_time, time_grain, custom_headers).value!
     end
 
     #
@@ -2105,22 +2028,17 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def execute_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+    def execute_site_analysis_slot_async(resource_group_name, site_name, diagnostic_category, analysis_name, slot, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'analysis_name is nil' if analysis_name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2180,8 +2098,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<DetectorDefinition>] operation results.
     #
-    def list_site_detectors_slot(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
-      first_page = list_site_detectors_slot_as_lazy(resource_group_name, site_name, diagnostic_category, slot, custom_headers:custom_headers)
+    def list_site_detectors_slot(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
+      first_page = list_site_detectors_slot_as_lazy(resource_group_name, site_name, diagnostic_category, slot, custom_headers)
       first_page.get_all_items
     end
 
@@ -2200,8 +2118,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_detectors_slot_with_http_info(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
-      list_site_detectors_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers:custom_headers).value!
+    def list_site_detectors_slot_with_http_info(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
+      list_site_detectors_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers).value!
     end
 
     #
@@ -2219,11 +2137,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_detectors_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
+    def list_site_detectors_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -2232,7 +2147,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2293,8 +2207,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Array<DetectorDefinition>] operation results.
     #
-    def get_site_detector_slot(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers:nil)
-      first_page = get_site_detector_slot_as_lazy(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers:custom_headers)
+    def get_site_detector_slot(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers = nil)
+      first_page = get_site_detector_slot_as_lazy(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers)
       first_page.get_all_items
     end
 
@@ -2314,8 +2228,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_detector_slot_with_http_info(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers:nil)
-      get_site_detector_slot_async(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers:custom_headers).value!
+    def get_site_detector_slot_with_http_info(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers = nil)
+      get_site_detector_slot_async(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers).value!
     end
 
     #
@@ -2334,11 +2248,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_detector_slot_async(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers:nil)
+    def get_site_detector_slot_async(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'detector_name is nil' if detector_name.nil?
@@ -2348,7 +2259,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2412,8 +2322,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticDetectorResponse] operation results.
     #
-    def execute_site_detector_slot(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      response = execute_site_detector_slot_async(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def execute_site_detector_slot(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      response = execute_site_detector_slot_async(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time, end_time, time_grain, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2436,8 +2346,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def execute_site_detector_slot_with_http_info(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
-      execute_site_detector_slot_async(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time:start_time, end_time:end_time, time_grain:time_grain, custom_headers:custom_headers).value!
+    def execute_site_detector_slot_with_http_info(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
+      execute_site_detector_slot_async(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time, end_time, time_grain, custom_headers).value!
     end
 
     #
@@ -2459,22 +2369,17 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def execute_site_detector_slot_async(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time:nil, end_time:nil, time_grain:nil, custom_headers:nil)
+    def execute_site_detector_slot_async(resource_group_name, site_name, detector_name, diagnostic_category, slot, start_time = nil, end_time = nil, time_grain = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, 'detector_name is nil' if detector_name.nil?
       fail ArgumentError, 'diagnostic_category is nil' if diagnostic_category.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, "'time_grain' should satisfy the constraint - 'Pattern': 'PT[1-9][0-9]+[SMH]'" if !time_grain.nil? && time_grain.match(Regexp.new('^PT[1-9][0-9]+[SMH]$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2531,8 +2436,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DetectorResponseCollection] operation results.
     #
-    def list_hosting_environment_detector_responses_next(next_page_link, custom_headers:nil)
-      response = list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_hosting_environment_detector_responses_next(next_page_link, custom_headers = nil)
+      response = list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2548,8 +2453,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_hosting_environment_detector_responses_next_with_http_info(next_page_link, custom_headers:nil)
-      list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_hosting_environment_detector_responses_next_with_http_info(next_page_link, custom_headers = nil)
+      list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2564,12 +2469,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers:nil)
+    def list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2625,8 +2529,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DetectorResponseCollection] operation results.
     #
-    def list_site_detector_responses_next(next_page_link, custom_headers:nil)
-      response = list_site_detector_responses_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_detector_responses_next(next_page_link, custom_headers = nil)
+      response = list_site_detector_responses_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2642,8 +2546,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_detector_responses_next_with_http_info(next_page_link, custom_headers:nil)
-      list_site_detector_responses_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_detector_responses_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_detector_responses_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2658,12 +2562,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_detector_responses_next_async(next_page_link, custom_headers:nil)
+    def list_site_detector_responses_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2719,8 +2622,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticCategoryCollection] operation results.
     #
-    def list_site_diagnostic_categories_next(next_page_link, custom_headers:nil)
-      response = list_site_diagnostic_categories_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_diagnostic_categories_next(next_page_link, custom_headers = nil)
+      response = list_site_diagnostic_categories_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2736,8 +2639,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_diagnostic_categories_next_with_http_info(next_page_link, custom_headers:nil)
-      list_site_diagnostic_categories_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_diagnostic_categories_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_diagnostic_categories_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2752,12 +2655,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_diagnostic_categories_next_async(next_page_link, custom_headers:nil)
+    def list_site_diagnostic_categories_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2813,8 +2715,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticAnalysisCollection] operation results.
     #
-    def list_site_analyses_next(next_page_link, custom_headers:nil)
-      response = list_site_analyses_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_analyses_next(next_page_link, custom_headers = nil)
+      response = list_site_analyses_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2830,8 +2732,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_analyses_next_with_http_info(next_page_link, custom_headers:nil)
-      list_site_analyses_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_analyses_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_analyses_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2846,12 +2748,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_analyses_next_async(next_page_link, custom_headers:nil)
+    def list_site_analyses_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -2907,8 +2808,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticDetectorCollection] operation results.
     #
-    def list_site_detectors_next(next_page_link, custom_headers:nil)
-      response = list_site_detectors_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_detectors_next(next_page_link, custom_headers = nil)
+      response = list_site_detectors_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2924,8 +2825,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_detectors_next_with_http_info(next_page_link, custom_headers:nil)
-      list_site_detectors_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_detectors_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_detectors_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -2940,12 +2841,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_detectors_next_async(next_page_link, custom_headers:nil)
+    def list_site_detectors_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3001,8 +2901,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticDetectorCollection] operation results.
     #
-    def get_site_detector_next(next_page_link, custom_headers:nil)
-      response = get_site_detector_next_async(next_page_link, custom_headers:custom_headers).value!
+    def get_site_detector_next(next_page_link, custom_headers = nil)
+      response = get_site_detector_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3018,8 +2918,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_detector_next_with_http_info(next_page_link, custom_headers:nil)
-      get_site_detector_next_async(next_page_link, custom_headers:custom_headers).value!
+    def get_site_detector_next_with_http_info(next_page_link, custom_headers = nil)
+      get_site_detector_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -3034,12 +2934,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_detector_next_async(next_page_link, custom_headers:nil)
+    def get_site_detector_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3095,8 +2994,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DetectorResponseCollection] operation results.
     #
-    def list_site_detector_responses_slot_next(next_page_link, custom_headers:nil)
-      response = list_site_detector_responses_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_detector_responses_slot_next(next_page_link, custom_headers = nil)
+      response = list_site_detector_responses_slot_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3112,8 +3011,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_detector_responses_slot_next_with_http_info(next_page_link, custom_headers:nil)
-      list_site_detector_responses_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_detector_responses_slot_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_detector_responses_slot_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -3128,12 +3027,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_detector_responses_slot_next_async(next_page_link, custom_headers:nil)
+    def list_site_detector_responses_slot_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3189,8 +3087,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticCategoryCollection] operation results.
     #
-    def list_site_diagnostic_categories_slot_next(next_page_link, custom_headers:nil)
-      response = list_site_diagnostic_categories_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_diagnostic_categories_slot_next(next_page_link, custom_headers = nil)
+      response = list_site_diagnostic_categories_slot_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3206,8 +3104,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_diagnostic_categories_slot_next_with_http_info(next_page_link, custom_headers:nil)
-      list_site_diagnostic_categories_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_diagnostic_categories_slot_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_diagnostic_categories_slot_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -3222,12 +3120,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_diagnostic_categories_slot_next_async(next_page_link, custom_headers:nil)
+    def list_site_diagnostic_categories_slot_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3283,8 +3180,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticAnalysisCollection] operation results.
     #
-    def list_site_analyses_slot_next(next_page_link, custom_headers:nil)
-      response = list_site_analyses_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_analyses_slot_next(next_page_link, custom_headers = nil)
+      response = list_site_analyses_slot_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3300,8 +3197,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_analyses_slot_next_with_http_info(next_page_link, custom_headers:nil)
-      list_site_analyses_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_analyses_slot_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_analyses_slot_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -3316,12 +3213,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_analyses_slot_next_async(next_page_link, custom_headers:nil)
+    def list_site_analyses_slot_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3377,8 +3273,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticDetectorCollection] operation results.
     #
-    def list_site_detectors_slot_next(next_page_link, custom_headers:nil)
-      response = list_site_detectors_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_detectors_slot_next(next_page_link, custom_headers = nil)
+      response = list_site_detectors_slot_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3394,8 +3290,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_site_detectors_slot_next_with_http_info(next_page_link, custom_headers:nil)
-      list_site_detectors_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_site_detectors_slot_next_with_http_info(next_page_link, custom_headers = nil)
+      list_site_detectors_slot_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -3410,12 +3306,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_site_detectors_slot_next_async(next_page_link, custom_headers:nil)
+    def list_site_detectors_slot_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3471,8 +3366,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [DiagnosticDetectorCollection] operation results.
     #
-    def get_site_detector_slot_next(next_page_link, custom_headers:nil)
-      response = get_site_detector_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def get_site_detector_slot_next(next_page_link, custom_headers = nil)
+      response = get_site_detector_slot_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3488,8 +3383,8 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_site_detector_slot_next_with_http_info(next_page_link, custom_headers:nil)
-      get_site_detector_slot_next_async(next_page_link, custom_headers:custom_headers).value!
+    def get_site_detector_slot_next_with_http_info(next_page_link, custom_headers = nil)
+      get_site_detector_slot_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -3504,12 +3399,11 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_site_detector_slot_next_async(next_page_link, custom_headers:nil)
+    def get_site_detector_slot_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -3567,12 +3461,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DetectorResponseCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_hosting_environment_detector_responses_as_lazy(resource_group_name, name, custom_headers:nil)
-      response = list_hosting_environment_detector_responses_async(resource_group_name, name, custom_headers:custom_headers).value!
+    def list_hosting_environment_detector_responses_as_lazy(resource_group_name, name, custom_headers = nil)
+      response = list_hosting_environment_detector_responses_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers:custom_headers)
+          list_hosting_environment_detector_responses_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3592,12 +3486,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DetectorResponseCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_site_detector_responses_as_lazy(resource_group_name, site_name, custom_headers:nil)
-      response = list_site_detector_responses_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+    def list_site_detector_responses_as_lazy(resource_group_name, site_name, custom_headers = nil)
+      response = list_site_detector_responses_async(resource_group_name, site_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_site_detector_responses_next_async(next_page_link, custom_headers:custom_headers)
+          list_site_detector_responses_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3617,12 +3511,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DiagnosticCategoryCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_site_diagnostic_categories_as_lazy(resource_group_name, site_name, custom_headers:nil)
-      response = list_site_diagnostic_categories_async(resource_group_name, site_name, custom_headers:custom_headers).value!
+    def list_site_diagnostic_categories_as_lazy(resource_group_name, site_name, custom_headers = nil)
+      response = list_site_diagnostic_categories_async(resource_group_name, site_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_site_diagnostic_categories_next_async(next_page_link, custom_headers:custom_headers)
+          list_site_diagnostic_categories_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3643,12 +3537,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DiagnosticAnalysisCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_site_analyses_as_lazy(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
-      response = list_site_analyses_async(resource_group_name, site_name, diagnostic_category, custom_headers:custom_headers).value!
+    def list_site_analyses_as_lazy(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
+      response = list_site_analyses_async(resource_group_name, site_name, diagnostic_category, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_site_analyses_next_async(next_page_link, custom_headers:custom_headers)
+          list_site_analyses_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3669,12 +3563,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DiagnosticDetectorCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_site_detectors_as_lazy(resource_group_name, site_name, diagnostic_category, custom_headers:nil)
-      response = list_site_detectors_async(resource_group_name, site_name, diagnostic_category, custom_headers:custom_headers).value!
+    def list_site_detectors_as_lazy(resource_group_name, site_name, diagnostic_category, custom_headers = nil)
+      response = list_site_detectors_async(resource_group_name, site_name, diagnostic_category, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_site_detectors_next_async(next_page_link, custom_headers:custom_headers)
+          list_site_detectors_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3696,12 +3590,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DiagnosticDetectorCollection] which provide lazy access to pages of
     # the response.
     #
-    def get_site_detector_as_lazy(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers:nil)
-      response = get_site_detector_async(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers:custom_headers).value!
+    def get_site_detector_as_lazy(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers = nil)
+      response = get_site_detector_async(resource_group_name, site_name, diagnostic_category, detector_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          get_site_detector_next_async(next_page_link, custom_headers:custom_headers)
+          get_site_detector_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3722,12 +3616,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DetectorResponseCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_site_detector_responses_slot_as_lazy(resource_group_name, site_name, slot, custom_headers:nil)
-      response = list_site_detector_responses_slot_async(resource_group_name, site_name, slot, custom_headers:custom_headers).value!
+    def list_site_detector_responses_slot_as_lazy(resource_group_name, site_name, slot, custom_headers = nil)
+      response = list_site_detector_responses_slot_async(resource_group_name, site_name, slot, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_site_detector_responses_slot_next_async(next_page_link, custom_headers:custom_headers)
+          list_site_detector_responses_slot_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3748,12 +3642,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DiagnosticCategoryCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_site_diagnostic_categories_slot_as_lazy(resource_group_name, site_name, slot, custom_headers:nil)
-      response = list_site_diagnostic_categories_slot_async(resource_group_name, site_name, slot, custom_headers:custom_headers).value!
+    def list_site_diagnostic_categories_slot_as_lazy(resource_group_name, site_name, slot, custom_headers = nil)
+      response = list_site_diagnostic_categories_slot_async(resource_group_name, site_name, slot, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_site_diagnostic_categories_slot_next_async(next_page_link, custom_headers:custom_headers)
+          list_site_diagnostic_categories_slot_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3775,12 +3669,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DiagnosticAnalysisCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_site_analyses_slot_as_lazy(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
-      response = list_site_analyses_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers:custom_headers).value!
+    def list_site_analyses_slot_as_lazy(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
+      response = list_site_analyses_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_site_analyses_slot_next_async(next_page_link, custom_headers:custom_headers)
+          list_site_analyses_slot_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3802,12 +3696,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DiagnosticDetectorCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_site_detectors_slot_as_lazy(resource_group_name, site_name, diagnostic_category, slot, custom_headers:nil)
-      response = list_site_detectors_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers:custom_headers).value!
+    def list_site_detectors_slot_as_lazy(resource_group_name, site_name, diagnostic_category, slot, custom_headers = nil)
+      response = list_site_detectors_slot_async(resource_group_name, site_name, diagnostic_category, slot, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_site_detectors_slot_next_async(next_page_link, custom_headers:custom_headers)
+          list_site_detectors_slot_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3830,12 +3724,12 @@ module Azure::Web::Mgmt::V2016_03_01
     # @return [DiagnosticDetectorCollection] which provide lazy access to pages of
     # the response.
     #
-    def get_site_detector_slot_as_lazy(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers:nil)
-      response = get_site_detector_slot_async(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers:custom_headers).value!
+    def get_site_detector_slot_as_lazy(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers = nil)
+      response = get_site_detector_slot_async(resource_group_name, site_name, diagnostic_category, detector_name, slot, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          get_site_detector_slot_next_async(next_page_link, custom_headers:custom_headers)
+          get_site_detector_slot_next_async(next_page_link, custom_headers)
         end
         page
       end

@@ -31,7 +31,6 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualIPMapping',
           type: {
@@ -39,7 +38,6 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'VirtualIPMapping',
             model_properties: {
               virtual_ip: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualIP',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               internal_http_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalHttpPort',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               internal_https_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalHttpsPort',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               in_use: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'inUse',
                 type: {

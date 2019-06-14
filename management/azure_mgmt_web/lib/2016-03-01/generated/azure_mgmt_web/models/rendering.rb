@@ -30,7 +30,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Rendering',
           type: {
@@ -38,7 +37,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'Rendering',
             model_properties: {
               rendering_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'renderingType',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               title: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {

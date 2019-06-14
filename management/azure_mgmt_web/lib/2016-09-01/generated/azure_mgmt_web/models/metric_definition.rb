@@ -35,7 +35,6 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricDefinition',
           type: {
@@ -43,7 +42,6 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'MetricDefinition',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,7 +50,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,7 +58,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,7 +73,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               metric_definition_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -87,7 +81,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.unit',
@@ -96,7 +89,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               primary_aggregation_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.primaryAggregationType',
@@ -105,14 +97,12 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               metric_availabilities: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.metricAvailabilities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricAvailabililyElementType',
                       type: {
@@ -123,7 +113,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.displayName',
