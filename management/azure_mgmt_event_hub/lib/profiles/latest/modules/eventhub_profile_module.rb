@@ -6,12 +6,20 @@ require 'azure_mgmt_event_hub'
 
 module Azure::EventHub::Profiles::Latest
   module Mgmt
-    Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
-    Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
     Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
     Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
+    Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
+    Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
 
     module Models
+      TrackedResource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
+      Cluster = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
+      EHNamespace = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
+      IpFilterRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
+      VirtualNetworkRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
+      SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
+      SkuTier = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
+      IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
       ClusterQuotaConfigurationProperties = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
       OperationDisplay = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
       ErrorResponse = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
@@ -24,21 +32,13 @@ module Azure::EventHub::Profiles::Latest
       IpFilterRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
       ClusterSku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterSku
       EHNamespaceListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
-      TrackedResource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
-      Cluster = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
-      EHNamespace = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
-      IpFilterRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
-      VirtualNetworkRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
-      SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
-      SkuTier = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
-      IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
     end
 
     #
     # EventHubManagementClass
     #
     class EventHubManagementClass
-      attr_reader :operations, :clusters, :configuration, :namespaces, :configurable, :base_url, :options, :model_classes
+      attr_reader :configuration, :namespaces, :operations, :clusters, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -58,10 +58,10 @@ module Azure::EventHub::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @operations = @client_0.operations
-        @clusters = @client_0.clusters
         @configuration = @client_0.configuration
         @namespaces = @client_0.namespaces
+        @operations = @client_0.operations
+        @clusters = @client_0.clusters
 
         @model_classes = ModelClasses.new
       end
@@ -82,6 +82,30 @@ module Azure::EventHub::Profiles::Latest
     end
 
     class ModelClasses
+      def tracked_resource
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
+      end
+      def cluster
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
+      end
+      def ehnamespace
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
+      end
+      def ip_filter_rule
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
+      end
+      def virtual_network_rule
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
+      end
+      def sku_name
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
+      end
+      def sku_tier
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
+      end
+      def ipaction
+        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
+      end
       def cluster_quota_configuration_properties
         Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
       end
@@ -117,30 +141,6 @@ module Azure::EventHub::Profiles::Latest
       end
       def ehnamespace_list_result
         Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
-      end
-      def tracked_resource
-        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
-      end
-      def cluster
-        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
-      end
-      def ehnamespace
-        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
-      end
-      def ip_filter_rule
-        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
-      end
-      def virtual_network_rule
-        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRule
-      end
-      def sku_name
-        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
-      end
-      def sku_tier
-        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
-      end
-      def ipaction
-        Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
       end
     end
   end
