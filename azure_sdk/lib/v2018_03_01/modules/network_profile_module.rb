@@ -7,7 +7,6 @@ require 'azure_mgmt_network'
 module Azure::Profiles::V2018_03_01
   module Network
     module Mgmt
-      ExpressRouteCircuits = Azure::Network::Mgmt::V2017_10_01::ExpressRouteCircuits
       ExpressRouteServiceProviders = Azure::Network::Mgmt::V2017_10_01::ExpressRouteServiceProviders
       LoadBalancers = Azure::Network::Mgmt::V2017_10_01::LoadBalancers
       LoadBalancerBackendAddressPools = Azure::Network::Mgmt::V2017_10_01::LoadBalancerBackendAddressPools
@@ -44,6 +43,7 @@ module Azure::Profiles::V2018_03_01
       AvailableEndpointServices = Azure::Network::Mgmt::V2017_10_01::AvailableEndpointServices
       ExpressRouteCircuitAuthorizations = Azure::Network::Mgmt::V2017_10_01::ExpressRouteCircuitAuthorizations
       ExpressRouteCircuitPeerings = Azure::Network::Mgmt::V2017_10_01::ExpressRouteCircuitPeerings
+      ExpressRouteCircuits = Azure::Network::Mgmt::V2017_10_01::ExpressRouteCircuits
 
       module Models
         IpTag = Azure::Network::Mgmt::V2017_03_30::Models::IpTag
@@ -113,18 +113,18 @@ module Azure::Profiles::V2018_03_01
         AzureAsyncOperationResult = Azure::Network::Mgmt::V2017_10_01::Models::AzureAsyncOperationResult
         ApplicationGatewaySslPolicy = Azure::Network::Mgmt::V2017_10_01::Models::ApplicationGatewaySslPolicy
         GatewayRoute = Azure::Network::Mgmt::V2017_10_01::Models::GatewayRoute
-        SubResource = Azure::Network::Mgmt::V2017_10_01::Models::SubResource
-        BgpSettings = Azure::Network::Mgmt::V2017_10_01::Models::BgpSettings
-        EffectiveNetworkSecurityGroupAssociation = Azure::Network::Mgmt::V2017_10_01::Models::EffectiveNetworkSecurityGroupAssociation
         NetworkInterfaceLoadBalancerListResult = Azure::Network::Mgmt::V2017_10_01::Models::NetworkInterfaceLoadBalancerListResult
+        SubResource = Azure::Network::Mgmt::V2017_10_01::Models::SubResource
+        EffectiveNetworkSecurityGroupAssociation = Azure::Network::Mgmt::V2017_10_01::Models::EffectiveNetworkSecurityGroupAssociation
+        VirtualNetworkGatewaySku = Azure::Network::Mgmt::V2017_10_01::Models::VirtualNetworkGatewaySku
         EffectiveNetworkSecurityRule = Azure::Network::Mgmt::V2017_10_01::Models::EffectiveNetworkSecurityRule
         ApplicationGatewayProbeHealthResponseMatch = Azure::Network::Mgmt::V2017_10_01::Models::ApplicationGatewayProbeHealthResponseMatch
         EffectiveNetworkSecurityGroup = Azure::Network::Mgmt::V2017_10_01::Models::EffectiveNetworkSecurityGroup
         VirtualNetworkUsageName = Azure::Network::Mgmt::V2017_10_01::Models::VirtualNetworkUsageName
         EffectiveNetworkSecurityGroupListResult = Azure::Network::Mgmt::V2017_10_01::Models::EffectiveNetworkSecurityGroupListResult
-        VirtualNetworkGatewaySku = Azure::Network::Mgmt::V2017_10_01::Models::VirtualNetworkGatewaySku
         VirtualNetworkListResult = Azure::Network::Mgmt::V2017_10_01::Models::VirtualNetworkListResult
         EffectiveRoute = Azure::Network::Mgmt::V2017_10_01::Models::EffectiveRoute
+        BgpSettings = Azure::Network::Mgmt::V2017_10_01::Models::BgpSettings
         EffectiveRouteListResult = Azure::Network::Mgmt::V2017_10_01::Models::EffectiveRouteListResult
         ApplicationGatewayListResult = Azure::Network::Mgmt::V2017_10_01::Models::ApplicationGatewayListResult
         SecurityRuleListResult = Azure::Network::Mgmt::V2017_10_01::Models::SecurityRuleListResult
@@ -344,7 +344,7 @@ module Azure::Profiles::V2018_03_01
       end
 
       class NetworkManagementClass
-        attr_reader :express_route_circuits, :express_route_service_providers, :load_balancers, :load_balancer_backend_address_pools, :load_balancer_frontend_ipconfigurations, :inbound_nat_rules, :load_balancer_load_balancing_rules, :load_balancer_network_interfaces, :load_balancer_probes, :network_interface_ipconfigurations, :network_interface_load_balancers, :network_security_groups, :security_rules, :default_security_rules, :network_watchers, :packet_captures, :connection_monitors, :route_filters, :route_filter_rules, :route_tables, :routes, :bgp_service_communities, :usages, :virtual_networks, :subnets, :virtual_network_peerings, :virtual_network_gateways, :network_interfaces, :public_ipaddresses, :local_network_gateways, :virtual_network_gateway_connections, :operations, :application_gateways, :application_security_groups, :available_endpoint_services, :express_route_circuit_authorizations, :express_route_circuit_peerings, :configurable, :base_url, :options, :model_classes
+        attr_reader :express_route_service_providers, :load_balancers, :load_balancer_backend_address_pools, :load_balancer_frontend_ipconfigurations, :inbound_nat_rules, :load_balancer_load_balancing_rules, :load_balancer_network_interfaces, :load_balancer_probes, :network_interface_ipconfigurations, :network_interface_load_balancers, :network_security_groups, :security_rules, :default_security_rules, :network_watchers, :packet_captures, :connection_monitors, :route_filters, :route_filter_rules, :route_tables, :routes, :bgp_service_communities, :usages, :virtual_networks, :subnets, :virtual_network_peerings, :virtual_network_gateways, :network_interfaces, :public_ipaddresses, :local_network_gateways, :virtual_network_gateway_connections, :operations, :application_gateways, :application_security_groups, :available_endpoint_services, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -360,7 +360,6 @@ module Azure::Profiles::V2018_03_01
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @express_route_circuits = @client_1.express_route_circuits
           @express_route_service_providers = @client_1.express_route_service_providers
           @load_balancers = @client_1.load_balancers
           @load_balancer_backend_address_pools = @client_1.load_balancer_backend_address_pools
@@ -397,6 +396,7 @@ module Azure::Profiles::V2018_03_01
           @available_endpoint_services = @client_1.available_endpoint_services
           @express_route_circuit_authorizations = @client_1.express_route_circuit_authorizations
           @express_route_circuit_peerings = @client_1.express_route_circuit_peerings
+          @express_route_circuits = @client_1.express_route_circuits
 
           @model_classes = ModelClasses.new
         end
@@ -618,17 +618,17 @@ module Azure::Profiles::V2018_03_01
           def gateway_route
             Azure::Network::Mgmt::V2017_10_01::Models::GatewayRoute
           end
+          def network_interface_load_balancer_list_result
+            Azure::Network::Mgmt::V2017_10_01::Models::NetworkInterfaceLoadBalancerListResult
+          end
           def sub_resource
             Azure::Network::Mgmt::V2017_10_01::Models::SubResource
-          end
-          def bgp_settings
-            Azure::Network::Mgmt::V2017_10_01::Models::BgpSettings
           end
           def effective_network_security_group_association
             Azure::Network::Mgmt::V2017_10_01::Models::EffectiveNetworkSecurityGroupAssociation
           end
-          def network_interface_load_balancer_list_result
-            Azure::Network::Mgmt::V2017_10_01::Models::NetworkInterfaceLoadBalancerListResult
+          def virtual_network_gateway_sku
+            Azure::Network::Mgmt::V2017_10_01::Models::VirtualNetworkGatewaySku
           end
           def effective_network_security_rule
             Azure::Network::Mgmt::V2017_10_01::Models::EffectiveNetworkSecurityRule
@@ -645,14 +645,14 @@ module Azure::Profiles::V2018_03_01
           def effective_network_security_group_list_result
             Azure::Network::Mgmt::V2017_10_01::Models::EffectiveNetworkSecurityGroupListResult
           end
-          def virtual_network_gateway_sku
-            Azure::Network::Mgmt::V2017_10_01::Models::VirtualNetworkGatewaySku
-          end
           def virtual_network_list_result
             Azure::Network::Mgmt::V2017_10_01::Models::VirtualNetworkListResult
           end
           def effective_route
             Azure::Network::Mgmt::V2017_10_01::Models::EffectiveRoute
+          end
+          def bgp_settings
+            Azure::Network::Mgmt::V2017_10_01::Models::BgpSettings
           end
           def effective_route_list_result
             Azure::Network::Mgmt::V2017_10_01::Models::EffectiveRouteListResult

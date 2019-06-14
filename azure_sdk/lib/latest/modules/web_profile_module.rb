@@ -15,15 +15,14 @@ module Azure::Profiles::Latest
       AppServiceCertificateOrders = Azure::Web::Mgmt::V2018_02_01::AppServiceCertificateOrders
       CertificateRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::CertificateRegistrationProvider
       TopLevelDomains = Azure::Web::Mgmt::V2018_02_01::TopLevelDomains
-      Provider = Azure::Web::Mgmt::V2018_02_01::Provider
       DomainRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::DomainRegistrationProvider
+      Provider = Azure::Web::Mgmt::V2018_02_01::Provider
       Domains = Azure::Web::Mgmt::V2018_02_01::Domains
       AppServiceEnvironments = Azure::Web::Mgmt::V2018_02_01::AppServiceEnvironments
       AppServicePlans = Azure::Web::Mgmt::V2018_02_01::AppServicePlans
       WebApps = Azure::Web::Mgmt::V2018_02_01::WebApps
 
       module Models
-        StatusCodesBasedTrigger = Azure::Web::Mgmt::V2018_02_01::Models::StatusCodesBasedTrigger
         RequestsBasedTrigger = Azure::Web::Mgmt::V2018_02_01::Models::RequestsBasedTrigger
         ApplicationStack = Azure::Web::Mgmt::V2018_02_01::Models::ApplicationStack
         AutoHealRules = Azure::Web::Mgmt::V2018_02_01::Models::AutoHealRules
@@ -97,7 +96,7 @@ module Azure::Profiles::Latest
         ApplicationStackCollection = Azure::Web::Mgmt::V2018_02_01::Models::ApplicationStackCollection
         NameValuePair = Azure::Web::Mgmt::V2018_02_01::Models::NameValuePair
         StackMinorVersion = Azure::Web::Mgmt::V2018_02_01::Models::StackMinorVersion
-        CertificatePatchResource = Azure::Web::Mgmt::V2018_02_01::Models::CertificatePatchResource
+        Identifier = Azure::Web::Mgmt::V2018_02_01::Models::Identifier
         VnetRoute = Azure::Web::Mgmt::V2018_02_01::Models::VnetRoute
         VnetInfo = Azure::Web::Mgmt::V2018_02_01::Models::VnetInfo
         VnetGateway = Azure::Web::Mgmt::V2018_02_01::Models::VnetGateway
@@ -108,11 +107,11 @@ module Azure::Profiles::Latest
         HybridConnectionKey = Azure::Web::Mgmt::V2018_02_01::Models::HybridConnectionKey
         HybridConnection = Azure::Web::Mgmt::V2018_02_01::Models::HybridConnection
         Site = Azure::Web::Mgmt::V2018_02_01::Models::Site
-        Identifier = Azure::Web::Mgmt::V2018_02_01::Models::Identifier
         AppServicePlan = Azure::Web::Mgmt::V2018_02_01::Models::AppServicePlan
         DetectorDefinition = Azure::Web::Mgmt::V2018_02_01::Models::DetectorDefinition
         AnalysisDefinition = Azure::Web::Mgmt::V2018_02_01::Models::AnalysisDefinition
         DetectorResponse = Azure::Web::Mgmt::V2018_02_01::Models::DetectorResponse
+        CertificatePatchResource = Azure::Web::Mgmt::V2018_02_01::Models::CertificatePatchResource
         DiagnosticAnalysis = Azure::Web::Mgmt::V2018_02_01::Models::DiagnosticAnalysis
         DiagnosticCategory = Azure::Web::Mgmt::V2018_02_01::Models::DiagnosticCategory
         DiagnosticDetectorResponse = Azure::Web::Mgmt::V2018_02_01::Models::DiagnosticDetectorResponse
@@ -293,13 +292,13 @@ module Azure::Profiles::Latest
         DeploymentCollection = Azure::Web::Mgmt::V2018_02_01::Models::DeploymentCollection
         HttpLogsConfig = Azure::Web::Mgmt::V2018_02_01::Models::HttpLogsConfig
         SiteConfigResourceCollection = Azure::Web::Mgmt::V2018_02_01::Models::SiteConfigResourceCollection
+        FunctionEnvelopeCollection = Azure::Web::Mgmt::V2018_02_01::Models::FunctionEnvelopeCollection
         ManagedServiceIdentity = Azure::Web::Mgmt::V2018_02_01::Models::ManagedServiceIdentity
         PerfMonResponse = Azure::Web::Mgmt::V2018_02_01::Models::PerfMonResponse
         SiteConfigurationSnapshotInfoCollection = Azure::Web::Mgmt::V2018_02_01::Models::SiteConfigurationSnapshotInfoCollection
-        CsmSlotEntity = Azure::Web::Mgmt::V2018_02_01::Models::CsmSlotEntity
         SiteExtensionInfoCollection = Azure::Web::Mgmt::V2018_02_01::Models::SiteExtensionInfoCollection
         BackupItem = Azure::Web::Mgmt::V2018_02_01::Models::BackupItem
-        FunctionEnvelopeCollection = Azure::Web::Mgmt::V2018_02_01::Models::FunctionEnvelopeCollection
+        CsmSlotEntity = Azure::Web::Mgmt::V2018_02_01::Models::CsmSlotEntity
         BackupRequest = Azure::Web::Mgmt::V2018_02_01::Models::BackupRequest
         ConnectionStringDictionary = Azure::Web::Mgmt::V2018_02_01::Models::ConnectionStringDictionary
         ContinuousWebJob = Azure::Web::Mgmt::V2018_02_01::Models::ContinuousWebJob
@@ -359,10 +358,11 @@ module Azure::Profiles::Latest
         AutoHealCustomAction = Azure::Web::Mgmt::V2018_02_01::Models::AutoHealCustomAction
         ErrorEntity = Azure::Web::Mgmt::V2018_02_01::Models::ErrorEntity
         SlowRequestsBasedTrigger = Azure::Web::Mgmt::V2018_02_01::Models::SlowRequestsBasedTrigger
+        StatusCodesBasedTrigger = Azure::Web::Mgmt::V2018_02_01::Models::StatusCodesBasedTrigger
       end
 
       class WebManagementClass
-        attr_reader :certificates, :deleted_web_apps, :diagnostics, :recommendations, :resource_health_metadata_operations, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :provider, :domain_registration_provider, :domains, :app_service_environments, :app_service_plans, :web_apps, :configurable, :base_url, :options, :model_classes
+        attr_reader :certificates, :deleted_web_apps, :diagnostics, :recommendations, :resource_health_metadata_operations, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :provider, :domains, :app_service_environments, :app_service_plans, :web_apps, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -380,8 +380,8 @@ module Azure::Profiles::Latest
           @app_service_certificate_orders = @client_0.app_service_certificate_orders
           @certificate_registration_provider = @client_0.certificate_registration_provider
           @top_level_domains = @client_0.top_level_domains
-          @provider = @client_0.provider
           @domain_registration_provider = @client_0.domain_registration_provider
+          @provider = @client_0.provider
           @domains = @client_0.domains
           @app_service_environments = @client_0.app_service_environments
           @app_service_plans = @client_0.app_service_plans
@@ -404,9 +404,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def status_codes_based_trigger
-            Azure::Web::Mgmt::V2018_02_01::Models::StatusCodesBasedTrigger
-          end
           def requests_based_trigger
             Azure::Web::Mgmt::V2018_02_01::Models::RequestsBasedTrigger
           end
@@ -626,8 +623,8 @@ module Azure::Profiles::Latest
           def stack_minor_version
             Azure::Web::Mgmt::V2018_02_01::Models::StackMinorVersion
           end
-          def certificate_patch_resource
-            Azure::Web::Mgmt::V2018_02_01::Models::CertificatePatchResource
+          def identifier
+            Azure::Web::Mgmt::V2018_02_01::Models::Identifier
           end
           def vnet_route
             Azure::Web::Mgmt::V2018_02_01::Models::VnetRoute
@@ -659,9 +656,6 @@ module Azure::Profiles::Latest
           def site
             Azure::Web::Mgmt::V2018_02_01::Models::Site
           end
-          def identifier
-            Azure::Web::Mgmt::V2018_02_01::Models::Identifier
-          end
           def app_service_plan
             Azure::Web::Mgmt::V2018_02_01::Models::AppServicePlan
           end
@@ -673,6 +667,9 @@ module Azure::Profiles::Latest
           end
           def detector_response
             Azure::Web::Mgmt::V2018_02_01::Models::DetectorResponse
+          end
+          def certificate_patch_resource
+            Azure::Web::Mgmt::V2018_02_01::Models::CertificatePatchResource
           end
           def diagnostic_analysis
             Azure::Web::Mgmt::V2018_02_01::Models::DiagnosticAnalysis
@@ -1214,6 +1211,9 @@ module Azure::Profiles::Latest
           def site_config_resource_collection
             Azure::Web::Mgmt::V2018_02_01::Models::SiteConfigResourceCollection
           end
+          def function_envelope_collection
+            Azure::Web::Mgmt::V2018_02_01::Models::FunctionEnvelopeCollection
+          end
           def managed_service_identity
             Azure::Web::Mgmt::V2018_02_01::Models::ManagedServiceIdentity
           end
@@ -1223,17 +1223,14 @@ module Azure::Profiles::Latest
           def site_configuration_snapshot_info_collection
             Azure::Web::Mgmt::V2018_02_01::Models::SiteConfigurationSnapshotInfoCollection
           end
-          def csm_slot_entity
-            Azure::Web::Mgmt::V2018_02_01::Models::CsmSlotEntity
-          end
           def site_extension_info_collection
             Azure::Web::Mgmt::V2018_02_01::Models::SiteExtensionInfoCollection
           end
           def backup_item
             Azure::Web::Mgmt::V2018_02_01::Models::BackupItem
           end
-          def function_envelope_collection
-            Azure::Web::Mgmt::V2018_02_01::Models::FunctionEnvelopeCollection
+          def csm_slot_entity
+            Azure::Web::Mgmt::V2018_02_01::Models::CsmSlotEntity
           end
           def backup_request
             Azure::Web::Mgmt::V2018_02_01::Models::BackupRequest
@@ -1411,6 +1408,9 @@ module Azure::Profiles::Latest
           end
           def slow_requests_based_trigger
             Azure::Web::Mgmt::V2018_02_01::Models::SlowRequestsBasedTrigger
+          end
+          def status_codes_based_trigger
+            Azure::Web::Mgmt::V2018_02_01::Models::StatusCodesBasedTrigger
           end
         end
       end

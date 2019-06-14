@@ -7,7 +7,6 @@ require 'azure_mgmt_automation'
 module Azure::Profiles::Latest
   module Automation
     module Mgmt
-      JobOperations = Azure::Automation::Mgmt::V2015_10_31::JobOperations
       JobStreamOperations = Azure::Automation::Mgmt::V2015_10_31::JobStreamOperations
       JobScheduleOperations = Azure::Automation::Mgmt::V2015_10_31::JobScheduleOperations
       LinkedWorkspaceOperations = Azure::Automation::Mgmt::V2015_10_31::LinkedWorkspaceOperations
@@ -39,9 +38,9 @@ module Azure::Profiles::Latest
       NodeReports = Azure::Automation::Mgmt::V2015_10_31::NodeReports
       DscNodeConfigurationOperations = Azure::Automation::Mgmt::V2015_10_31::DscNodeConfigurationOperations
       HybridRunbookWorkerGroupOperations = Azure::Automation::Mgmt::V2015_10_31::HybridRunbookWorkerGroupOperations
+      JobOperations = Azure::Automation::Mgmt::V2015_10_31::JobOperations
 
       module Models
-        JobProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
         JobStatus = Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
         JobStreamType = Azure::Automation::Mgmt::V2015_10_31::Models::JobStreamType
         ContentSourceType = Azure::Automation::Mgmt::V2015_10_31::Models::ContentSourceType
@@ -179,10 +178,11 @@ module Azure::Profiles::Latest
         AutomationAccountState = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationAccountState
         AutomationKeyName = Azure::Automation::Mgmt::V2015_10_31::Models::AutomationKeyName
         Webhook = Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
+        JobProvisioningState = Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
       end
 
       class AutomationManagementClass
-        attr_reader :job_operations, :job_stream_operations, :job_schedule_operations, :linked_workspace_operations, :activity_operations, :module_model_operations, :object_data_types, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_job_operations, :schedule_operations, :variable_operations, :webhook_operations, :usages, :operations, :automation_account_operations, :statistics_operations, :keys, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_compilation_job_stream, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :job_stream_operations, :job_schedule_operations, :linked_workspace_operations, :activity_operations, :module_model_operations, :object_data_types, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_job_operations, :schedule_operations, :variable_operations, :webhook_operations, :usages, :operations, :automation_account_operations, :statistics_operations, :keys, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_compilation_job_stream, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -192,7 +192,6 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @job_operations = @client_0.job_operations
           @job_stream_operations = @client_0.job_stream_operations
           @job_schedule_operations = @client_0.job_schedule_operations
           @linked_workspace_operations = @client_0.linked_workspace_operations
@@ -224,6 +223,7 @@ module Azure::Profiles::Latest
           @node_reports = @client_0.node_reports
           @dsc_node_configuration_operations = @client_0.dsc_node_configuration_operations
           @hybrid_runbook_worker_group_operations = @client_0.hybrid_runbook_worker_group_operations
+          @job_operations = @client_0.job_operations
 
           @model_classes = ModelClasses.new
         end
@@ -242,9 +242,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def job_provisioning_state
-            Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
-          end
           def job_status
             Azure::Automation::Mgmt::V2015_10_31::Models::JobStatus
           end
@@ -655,6 +652,9 @@ module Azure::Profiles::Latest
           end
           def webhook
             Azure::Automation::Mgmt::V2015_10_31::Models::Webhook
+          end
+          def job_provisioning_state
+            Azure::Automation::Mgmt::V2015_10_31::Models::JobProvisioningState
           end
         end
       end

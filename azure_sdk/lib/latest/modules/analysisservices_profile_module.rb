@@ -31,8 +31,8 @@ module Azure::Profiles::Latest
         AnalysisServicesServer = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::AnalysisServicesServer
         ConnectionMode = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::ConnectionMode
         OperationStatus = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
-        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
         Resource = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
+        State = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
         Status = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status
         OperationDisplay = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationDisplay
         Operation = Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Operation
@@ -131,11 +131,11 @@ module Azure::Profiles::Latest
           def operation_status
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::OperationStatus
           end
-          def state
-            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
-          end
           def resource
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Resource
+          end
+          def state
+            Azure::AnalysisServices::Mgmt::V2017_08_01::Models::State
           end
           def status
             Azure::AnalysisServices::Mgmt::V2017_08_01::Models::Status

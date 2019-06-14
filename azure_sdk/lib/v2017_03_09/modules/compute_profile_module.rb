@@ -7,7 +7,6 @@ require 'azure_mgmt_compute'
 module Azure::Profiles::V2017_03_09
   module Compute
     module Mgmt
-      AvailabilitySets = Azure::Compute::Mgmt::V2016_03_30::AvailabilitySets
       VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensionImages
       VirtualMachineExtensions = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineExtensions
       VirtualMachines = Azure::Compute::Mgmt::V2016_03_30::VirtualMachines
@@ -16,9 +15,9 @@ module Azure::Profiles::V2017_03_09
       VirtualMachineSizes = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineSizes
       VirtualMachineScaleSets = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSets
       VirtualMachineScaleSetVMs = Azure::Compute::Mgmt::V2016_03_30::VirtualMachineScaleSetVMs
+      AvailabilitySets = Azure::Compute::Mgmt::V2016_03_30::AvailabilitySets
 
       module Models
-        OSDiskImage = Azure::Compute::Mgmt::V2016_03_30::Models::OSDiskImage
         Usage = Azure::Compute::Mgmt::V2016_03_30::Models::Usage
         VirtualMachineCaptureParameters = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineCaptureParameters
         VirtualMachineScaleSetOSProfile = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetOSProfile
@@ -119,10 +118,11 @@ module Azure::Profiles::V2017_03_09
         VirtualMachineSizeListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineSizeListResult
         VirtualMachineScaleSetIdentity = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineScaleSetIdentity
         VirtualMachineExtensionsListResult = Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionsListResult
+        OSDiskImage = Azure::Compute::Mgmt::V2016_03_30::Models::OSDiskImage
       end
 
       class ComputeManagementClass
-        attr_reader :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :configurable, :base_url, :options, :model_classes
+        attr_reader :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :virtual_machine_scale_sets, :virtual_machine_scale_set_vms, :availability_sets, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -132,7 +132,6 @@ module Azure::Profiles::V2017_03_09
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @availability_sets = @client_0.availability_sets
           @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
           @virtual_machine_extensions = @client_0.virtual_machine_extensions
           @virtual_machines = @client_0.virtual_machines
@@ -141,6 +140,7 @@ module Azure::Profiles::V2017_03_09
           @virtual_machine_sizes = @client_0.virtual_machine_sizes
           @virtual_machine_scale_sets = @client_0.virtual_machine_scale_sets
           @virtual_machine_scale_set_vms = @client_0.virtual_machine_scale_set_vms
+          @availability_sets = @client_0.availability_sets
 
           @model_classes = ModelClasses.new
         end
@@ -159,9 +159,6 @@ module Azure::Profiles::V2017_03_09
         end
 
         class ModelClasses
-          def osdisk_image
-            Azure::Compute::Mgmt::V2016_03_30::Models::OSDiskImage
-          end
           def usage
             Azure::Compute::Mgmt::V2016_03_30::Models::Usage
           end
@@ -461,6 +458,9 @@ module Azure::Profiles::V2017_03_09
           end
           def virtual_machine_extensions_list_result
             Azure::Compute::Mgmt::V2016_03_30::Models::VirtualMachineExtensionsListResult
+          end
+          def osdisk_image
+            Azure::Compute::Mgmt::V2016_03_30::Models::OSDiskImage
           end
         end
       end

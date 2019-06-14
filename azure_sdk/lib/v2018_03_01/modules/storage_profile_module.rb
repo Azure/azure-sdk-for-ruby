@@ -7,8 +7,8 @@ require 'azure_mgmt_storage'
 module Azure::Profiles::V2018_03_01
   module Storage
     module Mgmt
-      StorageAccounts = Azure::Storage::Mgmt::V2016_01_01::StorageAccounts
       UsageOperations = Azure::Storage::Mgmt::V2016_01_01::UsageOperations
+      StorageAccounts = Azure::Storage::Mgmt::V2016_01_01::StorageAccounts
 
       module Models
         SkuName = Azure::Storage::Mgmt::V2016_01_01::Models::SkuName
@@ -42,7 +42,7 @@ module Azure::Profiles::V2018_03_01
       end
 
       class StorageManagementClass
-        attr_reader :storage_accounts, :usage_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :usage_operations, :storage_accounts, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -52,8 +52,8 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @storage_accounts = @client_0.storage_accounts
           @usage_operations = @client_0.usage_operations
+          @storage_accounts = @client_0.storage_accounts
 
           @model_classes = ModelClasses.new
         end

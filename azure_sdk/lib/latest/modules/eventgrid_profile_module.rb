@@ -232,12 +232,12 @@ module Azure::Profiles::Latest
         StringInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringInAdvancedFilter
         StringNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringNotInAdvancedFilter
         StringBeginsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringBeginsWithAdvancedFilter
-        StringContainsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringContainsAdvancedFilter
+        StringEndsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringEndsWithAdvancedFilter
         WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::WebHookEventSubscriptionDestination
         EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventHubEventSubscriptionDestination
+        StringContainsAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringContainsAdvancedFilter
         StorageQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageQueueEventSubscriptionDestination
         HybridConnectionEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::HybridConnectionEventSubscriptionDestination
-        StringEndsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringEndsWithAdvancedFilter
         EventSubscription = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscription
         JsonInputSchemaMapping = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::JsonInputSchemaMapping
         Topic = Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::Topic
@@ -401,8 +401,8 @@ module Azure::Profiles::Latest
           def string_begins_with_advanced_filter
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringBeginsWithAdvancedFilter
           end
-          def string_contains_advanced_filter
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringContainsAdvancedFilter
+          def string_ends_with_advanced_filter
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringEndsWithAdvancedFilter
           end
           def web_hook_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::WebHookEventSubscriptionDestination
@@ -410,14 +410,14 @@ module Azure::Profiles::Latest
           def event_hub_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventHubEventSubscriptionDestination
           end
+          def string_contains_advanced_filter
+            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringContainsAdvancedFilter
+          end
           def storage_queue_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StorageQueueEventSubscriptionDestination
           end
           def hybrid_connection_event_subscription_destination
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::HybridConnectionEventSubscriptionDestination
-          end
-          def string_ends_with_advanced_filter
-            Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::StringEndsWithAdvancedFilter
           end
           def event_subscription
             Azure::EventGrid::Mgmt::V2018_09_15_preview::Models::EventSubscription

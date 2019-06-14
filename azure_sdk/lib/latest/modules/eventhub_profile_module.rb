@@ -7,13 +7,12 @@ require 'azure_mgmt_event_hub'
 module Azure::Profiles::Latest
   module EventHub
     module Mgmt
-      Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
       Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
       Configuration = Azure::EventHub::Mgmt::V2018_01_01_preview::Configuration
       Operations = Azure::EventHub::Mgmt::V2018_01_01_preview::Operations
+      Clusters = Azure::EventHub::Mgmt::V2018_01_01_preview::Clusters
 
       module Models
-        Cluster = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
         TrackedResource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
         EHNamespace = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
         IpFilterRule = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRule
@@ -33,10 +32,11 @@ module Azure::Profiles::Latest
         IpFilterRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
         ClusterSku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterSku
         EHNamespaceListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
+        Cluster = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
       end
 
       class EventHubManagementClass
-        attr_reader :clusters, :namespaces, :configuration, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :namespaces, :configuration, :operations, :clusters, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -46,10 +46,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @clusters = @client_0.clusters
           @namespaces = @client_0.namespaces
           @configuration = @client_0.configuration
           @operations = @client_0.operations
+          @clusters = @client_0.clusters
 
           @model_classes = ModelClasses.new
         end
@@ -68,9 +68,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def cluster
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
-          end
           def tracked_resource
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
           end
@@ -127,6 +124,9 @@ module Azure::Profiles::Latest
           end
           def ehnamespace_list_result
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
+          end
+          def cluster
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
           end
         end
       end

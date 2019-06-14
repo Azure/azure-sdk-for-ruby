@@ -11,7 +11,6 @@ module Azure::Profiles::Latest
       RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
 
       module Models
-        MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
         ResourceRateCardInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
         UsageAggregation = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
         InfoField = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::InfoField
@@ -23,6 +22,7 @@ module Azure::Profiles::Latest
         RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
         AggregationGranularity = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
         ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+        MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
       end
 
       class CommerceManagementClass
@@ -56,9 +56,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def meter_info
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
-          end
           def resource_rate_card_info
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
           end
@@ -91,6 +88,9 @@ module Azure::Profiles::Latest
           end
           def error_response
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+          end
+          def meter_info
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
           end
         end
       end

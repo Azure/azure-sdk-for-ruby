@@ -25,8 +25,8 @@ module Azure::Profiles::V2018_03_01
         Dimension = Azure::Web::Mgmt::V2016_03_01::Models::Dimension
         NameIdentifier = Azure::Web::Mgmt::V2016_03_01::Models::NameIdentifier
         MetricSpecification = Azure::Web::Mgmt::V2016_03_01::Models::MetricSpecification
-        GeoRegionCollection = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection
         GlobalCsmSkuDescription = Azure::Web::Mgmt::V2016_03_01::Models::GlobalCsmSkuDescription
+        GeoRegionCollection = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection
         DeletedWebAppCollection = Azure::Web::Mgmt::V2016_03_01::Models::DeletedWebAppCollection
         Solution = Azure::Web::Mgmt::V2016_03_01::Models::Solution
         DeletedSite = Azure::Web::Mgmt::V2016_03_01::Models::DeletedSite
@@ -103,10 +103,9 @@ module Azure::Profiles::V2018_03_01
         PremierAddOnOfferCollection = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection
         CsmOperationCollection = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationCollection
         DnsVerificationTestResult = Azure::Web::Mgmt::V2016_08_01::Models::DnsVerificationTestResult
-        WebJobType = Azure::Web::Mgmt::V2016_08_01::Models::WebJobType
         IdentifierCollection = Azure::Web::Mgmt::V2016_08_01::Models::IdentifierCollection
-        PublishingProfileFormat = Azure::Web::Mgmt::V2016_08_01::Models::PublishingProfileFormat
         FrequencyUnit = Azure::Web::Mgmt::V2016_08_01::Models::FrequencyUnit
+        PublishingProfileFormat = Azure::Web::Mgmt::V2016_08_01::Models::PublishingProfileFormat
         Deployment = Azure::Web::Mgmt::V2016_08_01::Models::Deployment
         Snapshot = Azure::Web::Mgmt::V2016_08_01::Models::Snapshot
         AzureTableStorageApplicationLogsConfig = Azure::Web::Mgmt::V2016_08_01::Models::AzureTableStorageApplicationLogsConfig
@@ -204,7 +203,7 @@ module Azure::Profiles::V2018_03_01
         CloneAbilityResult = Azure::Web::Mgmt::V2016_08_01::Models::CloneAbilityResult
         SiteExtensionType = Azure::Web::Mgmt::V2016_08_01::Models::SiteExtensionType
         TriggeredWebJobStatus = Azure::Web::Mgmt::V2016_08_01::Models::TriggeredWebJobStatus
-        StatusCodesBasedTrigger = Azure::Web::Mgmt::V2016_09_01::Models::StatusCodesBasedTrigger
+        WebJobType = Azure::Web::Mgmt::V2016_08_01::Models::WebJobType
         RequestsBasedTrigger = Azure::Web::Mgmt::V2016_09_01::Models::RequestsBasedTrigger
         AutoHealRules = Azure::Web::Mgmt::V2016_09_01::Models::AutoHealRules
         Usage = Azure::Web::Mgmt::V2016_09_01::Models::Usage
@@ -281,10 +280,10 @@ module Azure::Profiles::V2018_03_01
         SkuInfoCollection = Azure::Web::Mgmt::V2016_09_01::Models::SkuInfoCollection
         ResourceCollection = Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection
         WorkerPoolCollection = Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolCollection
-        ManagedServiceIdentity = Azure::Web::Mgmt::V2016_09_01::Models::ManagedServiceIdentity
+        HybridConnectionCollection = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
         MetricAvailabilily = Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailabilily
         SkuInfo = Azure::Web::Mgmt::V2016_09_01::Models::SkuInfo
-        HybridConnectionCollection = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
+        ManagedServiceIdentity = Azure::Web::Mgmt::V2016_09_01::Models::ManagedServiceIdentity
         UsageCollection = Azure::Web::Mgmt::V2016_09_01::Models::UsageCollection
         AppServiceEnvironmentResource = Azure::Web::Mgmt::V2016_09_01::Models::AppServiceEnvironmentResource
         AppServiceEnvironmentPatchResource = Azure::Web::Mgmt::V2016_09_01::Models::AppServiceEnvironmentPatchResource
@@ -304,6 +303,7 @@ module Azure::Profiles::V2018_03_01
         AutoHealCustomAction = Azure::Web::Mgmt::V2016_09_01::Models::AutoHealCustomAction
         ErrorEntity = Azure::Web::Mgmt::V2016_09_01::Models::ErrorEntity
         SlowRequestsBasedTrigger = Azure::Web::Mgmt::V2016_09_01::Models::SlowRequestsBasedTrigger
+        StatusCodesBasedTrigger = Azure::Web::Mgmt::V2016_09_01::Models::StatusCodesBasedTrigger
       end
 
       class WebManagementClass
@@ -379,11 +379,11 @@ module Azure::Profiles::V2018_03_01
           def metric_specification
             Azure::Web::Mgmt::V2016_03_01::Models::MetricSpecification
           end
-          def geo_region_collection
-            Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection
-          end
           def global_csm_sku_description
             Azure::Web::Mgmt::V2016_03_01::Models::GlobalCsmSkuDescription
+          end
+          def geo_region_collection
+            Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection
           end
           def deleted_web_app_collection
             Azure::Web::Mgmt::V2016_03_01::Models::DeletedWebAppCollection
@@ -613,17 +613,14 @@ module Azure::Profiles::V2018_03_01
           def dns_verification_test_result
             Azure::Web::Mgmt::V2016_08_01::Models::DnsVerificationTestResult
           end
-          def web_job_type
-            Azure::Web::Mgmt::V2016_08_01::Models::WebJobType
-          end
           def identifier_collection
             Azure::Web::Mgmt::V2016_08_01::Models::IdentifierCollection
           end
-          def publishing_profile_format
-            Azure::Web::Mgmt::V2016_08_01::Models::PublishingProfileFormat
-          end
           def frequency_unit
             Azure::Web::Mgmt::V2016_08_01::Models::FrequencyUnit
+          end
+          def publishing_profile_format
+            Azure::Web::Mgmt::V2016_08_01::Models::PublishingProfileFormat
           end
           def deployment
             Azure::Web::Mgmt::V2016_08_01::Models::Deployment
@@ -916,8 +913,8 @@ module Azure::Profiles::V2018_03_01
           def triggered_web_job_status
             Azure::Web::Mgmt::V2016_08_01::Models::TriggeredWebJobStatus
           end
-          def status_codes_based_trigger
-            Azure::Web::Mgmt::V2016_09_01::Models::StatusCodesBasedTrigger
+          def web_job_type
+            Azure::Web::Mgmt::V2016_08_01::Models::WebJobType
           end
           def requests_based_trigger
             Azure::Web::Mgmt::V2016_09_01::Models::RequestsBasedTrigger
@@ -1147,8 +1144,8 @@ module Azure::Profiles::V2018_03_01
           def worker_pool_collection
             Azure::Web::Mgmt::V2016_09_01::Models::WorkerPoolCollection
           end
-          def managed_service_identity
-            Azure::Web::Mgmt::V2016_09_01::Models::ManagedServiceIdentity
+          def hybrid_connection_collection
+            Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
           end
           def metric_availabilily
             Azure::Web::Mgmt::V2016_09_01::Models::MetricAvailabilily
@@ -1156,8 +1153,8 @@ module Azure::Profiles::V2018_03_01
           def sku_info
             Azure::Web::Mgmt::V2016_09_01::Models::SkuInfo
           end
-          def hybrid_connection_collection
-            Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection
+          def managed_service_identity
+            Azure::Web::Mgmt::V2016_09_01::Models::ManagedServiceIdentity
           end
           def usage_collection
             Azure::Web::Mgmt::V2016_09_01::Models::UsageCollection
@@ -1215,6 +1212,9 @@ module Azure::Profiles::V2018_03_01
           end
           def slow_requests_based_trigger
             Azure::Web::Mgmt::V2016_09_01::Models::SlowRequestsBasedTrigger
+          end
+          def status_codes_based_trigger
+            Azure::Web::Mgmt::V2016_09_01::Models::StatusCodesBasedTrigger
           end
         end
       end

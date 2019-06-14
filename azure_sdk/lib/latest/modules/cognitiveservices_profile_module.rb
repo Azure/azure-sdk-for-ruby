@@ -7,10 +7,10 @@ require 'azure_mgmt_cognitive_services'
 module Azure::Profiles::Latest
   module CognitiveServices
     module Mgmt
-      ResourceSkus = Azure::CognitiveServices::Mgmt::V2017_04_18::ResourceSkus
       Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
       CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
       Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
+      ResourceSkus = Azure::CognitiveServices::Mgmt::V2017_04_18::ResourceSkus
 
       module Models
         ResourceSkuRestrictions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
@@ -49,7 +49,7 @@ module Azure::Profiles::Latest
       end
 
       class CognitiveServicesManagementClass
-        attr_reader :resource_skus, :accounts, :check_sku_availability, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :accounts, :check_sku_availability, :operations, :resource_skus, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -59,10 +59,10 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @resource_skus = @client_0.resource_skus
           @accounts = @client_0.accounts
           @check_sku_availability = @client_0.check_sku_availability
           @operations = @client_0.operations
+          @resource_skus = @client_0.resource_skus
 
           @model_classes = ModelClasses.new
         end

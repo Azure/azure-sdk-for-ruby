@@ -7,13 +7,13 @@ require 'azure_mgmt_resources'
 module Azure::Profiles::Latest
   module Resources
     module Mgmt
-      ResourceGroups = Azure::Resources::Mgmt::V2018_05_01::ResourceGroups
       Tags = Azure::Resources::Mgmt::V2018_05_01::Tags
+      Providers = Azure::Resources::Mgmt::V2018_05_01::Providers
       Resources = Azure::Resources::Mgmt::V2018_05_01::Resources
       DeploymentOperations = Azure::Resources::Mgmt::V2018_05_01::DeploymentOperations
-      Providers = Azure::Resources::Mgmt::V2018_05_01::Providers
-      Deployments = Azure::Resources::Mgmt::V2018_05_01::Deployments
       Operations = Azure::Resources::Mgmt::V2018_05_01::Operations
+      Deployments = Azure::Resources::Mgmt::V2018_05_01::Deployments
+      ResourceGroups = Azure::Resources::Mgmt::V2018_05_01::ResourceGroups
 
       module Models
         Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
@@ -73,7 +73,7 @@ module Azure::Profiles::Latest
       end
 
       class ResourcesManagementClass
-        attr_reader :resource_groups, :tags, :resources, :deployment_operations, :providers, :deployments, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :tags, :providers, :resources, :deployment_operations, :operations, :deployments, :resource_groups, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -83,13 +83,13 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @resource_groups = @client_0.resource_groups
           @tags = @client_0.tags
+          @providers = @client_0.providers
           @resources = @client_0.resources
           @deployment_operations = @client_0.deployment_operations
-          @providers = @client_0.providers
-          @deployments = @client_0.deployments
           @operations = @client_0.operations
+          @deployments = @client_0.deployments
+          @resource_groups = @client_0.resource_groups
 
           @model_classes = ModelClasses.new
         end

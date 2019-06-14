@@ -15,7 +15,6 @@ module Azure::Profiles::Latest
       Operations = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Operations
 
       module Models
-        SavedSearchesListResult = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearchesListResult
         SearchResultsResponse = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse
         StorageInsightListResult = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightListResult
         SearchSort = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSort
@@ -40,7 +39,7 @@ module Azure::Profiles::Latest
         SearchMetadataSchema = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchMetadataSchema
         StorageInsightStatus = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::StorageInsightStatus
         SavedSearch = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
-        WorkspaceListManagementGroupsResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
+        SavedSearchesListResult = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearchesListResult
         IntelligencePack = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::IntelligencePack
         SharedKeys = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys
         DataSourceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceListResult
@@ -63,6 +62,7 @@ module Azure::Profiles::Latest
         LinkedServiceListResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::LinkedServiceListResult
         ManagementGroup = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::ManagementGroup
         DataSourceFilter = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
+        WorkspaceListManagementGroupsResult = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
       end
 
       class OperationalInsightsManagementClass
@@ -108,9 +108,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def saved_searches_list_result
-            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearchesListResult
-          end
           def search_results_response
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse
           end
@@ -183,8 +180,8 @@ module Azure::Profiles::Latest
           def saved_search
             Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearch
           end
-          def workspace_list_management_groups_result
-            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
+          def saved_searches_list_result
+            Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SavedSearchesListResult
           end
           def intelligence_pack
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::IntelligencePack
@@ -251,6 +248,9 @@ module Azure::Profiles::Latest
           end
           def data_source_filter
             Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::DataSourceFilter
+          end
+          def workspace_list_management_groups_result
+            Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult
           end
         end
       end

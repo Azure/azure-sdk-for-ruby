@@ -7,7 +7,6 @@ require 'azure_mgmt_compute'
 module Azure::Profiles::V2018_03_01
   module Compute
     module Mgmt
-      AvailabilitySets = Azure::Compute::Mgmt::V2017_03_30::AvailabilitySets
       VirtualMachineExtensionImages = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensionImages
       VirtualMachineExtensions = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineExtensions
       VirtualMachines = Azure::Compute::Mgmt::V2017_03_30::VirtualMachines
@@ -23,9 +22,9 @@ module Azure::Profiles::V2018_03_01
       Disks = Azure::Compute::Mgmt::V2017_03_30::Disks
       Snapshots = Azure::Compute::Mgmt::V2017_03_30::Snapshots
       VirtualMachineRunCommands = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineRunCommands
+      AvailabilitySets = Azure::Compute::Mgmt::V2017_03_30::AvailabilitySets
 
       module Models
-        OSDiskImage = Azure::Compute::Mgmt::V2017_03_30::Models::OSDiskImage
         ResourceSkuRestrictions = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictions
         RunCommandInput = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandInput
         ResourceSku = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSku
@@ -194,10 +193,11 @@ module Azure::Profiles::V2018_03_01
         ResourceSkuCosts = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCosts
         VirtualMachineExtensionsListResult = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineExtensionsListResult
         ResourceSkuCapabilities = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapabilities
+        OSDiskImage = Azure::Compute::Mgmt::V2017_03_30::Models::OSDiskImage
       end
 
       class ComputeManagementClass
-        attr_reader :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :configurable, :base_url, :options, :model_classes
+        attr_reader :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machines, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_rolling_upgrades, :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :availability_sets, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -207,7 +207,6 @@ module Azure::Profiles::V2018_03_01
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @availability_sets = @client_0.availability_sets
           @virtual_machine_extension_images = @client_0.virtual_machine_extension_images
           @virtual_machine_extensions = @client_0.virtual_machine_extensions
           @virtual_machines = @client_0.virtual_machines
@@ -223,6 +222,7 @@ module Azure::Profiles::V2018_03_01
           @disks = @client_0.disks
           @snapshots = @client_0.snapshots
           @virtual_machine_run_commands = @client_0.virtual_machine_run_commands
+          @availability_sets = @client_0.availability_sets
 
           @model_classes = ModelClasses.new
         end
@@ -241,9 +241,6 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
-          def osdisk_image
-            Azure::Compute::Mgmt::V2017_03_30::Models::OSDiskImage
-          end
           def resource_sku_restrictions
             Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictions
           end
@@ -747,6 +744,9 @@ module Azure::Profiles::V2018_03_01
           end
           def resource_sku_capabilities
             Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapabilities
+          end
+          def osdisk_image
+            Azure::Compute::Mgmt::V2017_03_30::Models::OSDiskImage
           end
         end
       end

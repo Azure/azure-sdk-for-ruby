@@ -14,7 +14,6 @@ module Azure::Profiles::Latest
       Operations = Azure::ContainerInstance::Mgmt::V2018_10_01::Operations
 
       module Models
-        ResourceRequirements = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequirements
         ContainerGroupNetworkProfile = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProfile
         ContainerExec = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerExec
         DnsConfiguration = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::DnsConfiguration
@@ -63,6 +62,7 @@ module Azure::Profiles::Latest
         ContainerPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerPropertiesInstanceView
         ResourceRequests = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequests
         ContainerGroupDiagnostics = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupDiagnostics
+        ResourceRequirements = Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequirements
       end
 
       class ContainerInstanceManagementClass
@@ -99,9 +99,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def resource_requirements
-            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequirements
-          end
           def container_group_network_profile
             Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupNetworkProfile
           end
@@ -245,6 +242,9 @@ module Azure::Profiles::Latest
           end
           def container_group_diagnostics
             Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ContainerGroupDiagnostics
+          end
+          def resource_requirements
+            Azure::ContainerInstance::Mgmt::V2018_10_01::Models::ResourceRequirements
           end
         end
       end

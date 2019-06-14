@@ -8,7 +8,6 @@ module Azure::Profiles::Latest
   module Customvisiontraining
 
     module Models
-      TagPerformance = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagPerformance
       ImageRegionCreateSummary = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateSummary
       IterationPerformance = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::IterationPerformance
       ImageCreateResult = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageCreateResult
@@ -54,6 +53,7 @@ module Azure::Profiles::Latest
       ImageIdCreateEntry = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageIdCreateEntry
       ImageUrlCreateEntry = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageUrlCreateEntry
       Project = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Project
+      TagPerformance = Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagPerformance
     end
 
     class CustomvisiontrainingDataClass
@@ -85,9 +85,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def tag_performance
-          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagPerformance
-        end
         def image_region_create_summary
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::ImageRegionCreateSummary
         end
@@ -222,6 +219,9 @@ module Azure::Profiles::Latest
         end
         def project
           Azure::CognitiveServices::Customvisiontraining::V2_2::Models::Project
+        end
+        def tag_performance
+          Azure::CognitiveServices::Customvisiontraining::V2_2::Models::TagPerformance
         end
       end
     end

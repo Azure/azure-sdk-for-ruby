@@ -9,11 +9,11 @@ module Azure::Profiles::Latest
     module Mgmt
       Location = Azure::Batch::Mgmt::V2017_09_01::Location
       PoolOperations = Azure::Batch::Mgmt::V2017_09_01::PoolOperations
-      ApplicationOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationOperations
       CertificateOperations = Azure::Batch::Mgmt::V2017_09_01::CertificateOperations
       BatchAccountOperations = Azure::Batch::Mgmt::V2017_09_01::BatchAccountOperations
       Operations = Azure::Batch::Mgmt::V2017_09_01::Operations
       ApplicationPackageOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationPackageOperations
+      ApplicationOperations = Azure::Batch::Mgmt::V2017_09_01::ApplicationOperations
 
       module Models
         Certificate = Azure::Batch::Mgmt::V2017_09_01::Models::Certificate
@@ -48,7 +48,7 @@ module Azure::Profiles::Latest
         DeploymentConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::DeploymentConfiguration
         DataDisk = Azure::Batch::Mgmt::V2017_09_01::Models::DataDisk
         ResourceFile = Azure::Batch::Mgmt::V2017_09_01::Models::ResourceFile
-        EnvironmentSetting = Azure::Batch::Mgmt::V2017_09_01::Models::EnvironmentSetting
+        BatchAccountKeys = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountKeys
         Application = Azure::Batch::Mgmt::V2017_09_01::Models::Application
         AutoUserSpecification = Azure::Batch::Mgmt::V2017_09_01::Models::AutoUserSpecification
         UserIdentity = Azure::Batch::Mgmt::V2017_09_01::Models::UserIdentity
@@ -57,8 +57,8 @@ module Azure::Profiles::Latest
         VirtualMachineConfiguration = Azure::Batch::Mgmt::V2017_09_01::Models::VirtualMachineConfiguration
         ApplicationPackageReference = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationPackageReference
         ApplicationCreateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationCreateParameters
-        BatchAccountKeys = Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountKeys
         ResizeError = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
+        EnvironmentSetting = Azure::Batch::Mgmt::V2017_09_01::Models::EnvironmentSetting
         CertificateBaseProperties = Azure::Batch::Mgmt::V2017_09_01::Models::CertificateBaseProperties
         ResizeOperationStatus = Azure::Batch::Mgmt::V2017_09_01::Models::ResizeOperationStatus
         ApplicationUpdateParameters = Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationUpdateParameters
@@ -98,7 +98,7 @@ module Azure::Profiles::Latest
       end
 
       class BatchManagementClass
-        attr_reader :location, :pool_operations, :application_operations, :certificate_operations, :batch_account_operations, :operations, :application_package_operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :location, :pool_operations, :certificate_operations, :batch_account_operations, :operations, :application_package_operations, :application_operations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -110,11 +110,11 @@ module Azure::Profiles::Latest
           add_telemetry(@client_0)
           @location = @client_0.location
           @pool_operations = @client_0.pool_operations
-          @application_operations = @client_0.application_operations
           @certificate_operations = @client_0.certificate_operations
           @batch_account_operations = @client_0.batch_account_operations
           @operations = @client_0.operations
           @application_package_operations = @client_0.application_package_operations
+          @application_operations = @client_0.application_operations
 
           @model_classes = ModelClasses.new
         end
@@ -229,8 +229,8 @@ module Azure::Profiles::Latest
           def resource_file
             Azure::Batch::Mgmt::V2017_09_01::Models::ResourceFile
           end
-          def environment_setting
-            Azure::Batch::Mgmt::V2017_09_01::Models::EnvironmentSetting
+          def batch_account_keys
+            Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountKeys
           end
           def application
             Azure::Batch::Mgmt::V2017_09_01::Models::Application
@@ -256,11 +256,11 @@ module Azure::Profiles::Latest
           def application_create_parameters
             Azure::Batch::Mgmt::V2017_09_01::Models::ApplicationCreateParameters
           end
-          def batch_account_keys
-            Azure::Batch::Mgmt::V2017_09_01::Models::BatchAccountKeys
-          end
           def resize_error
             Azure::Batch::Mgmt::V2017_09_01::Models::ResizeError
+          end
+          def environment_setting
+            Azure::Batch::Mgmt::V2017_09_01::Models::EnvironmentSetting
           end
           def certificate_base_properties
             Azure::Batch::Mgmt::V2017_09_01::Models::CertificateBaseProperties

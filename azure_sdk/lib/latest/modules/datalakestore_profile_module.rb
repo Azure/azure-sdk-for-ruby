@@ -7,12 +7,12 @@ require 'azure_mgmt_datalake_store'
 module Azure::Profiles::Latest
   module DataLakeStore
     module Mgmt
-      FirewallRules = Azure::DataLakeStore::Mgmt::V2016_11_01::FirewallRules
       Locations = Azure::DataLakeStore::Mgmt::V2016_11_01::Locations
       VirtualNetworkRules = Azure::DataLakeStore::Mgmt::V2016_11_01::VirtualNetworkRules
       TrustedIdProviders = Azure::DataLakeStore::Mgmt::V2016_11_01::TrustedIdProviders
       Accounts = Azure::DataLakeStore::Mgmt::V2016_11_01::Accounts
       Operations = Azure::DataLakeStore::Mgmt::V2016_11_01::Operations
+      FirewallRules = Azure::DataLakeStore::Mgmt::V2016_11_01::FirewallRules
 
       module Models
         EncryptionIdentity = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionIdentity
@@ -31,17 +31,17 @@ module Azure::Profiles::Latest
         VirtualNetworkRuleListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::VirtualNetworkRuleListResult
         CheckNameAvailabilityParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CheckNameAvailabilityParameters
         UpdateTrustedIdProviderWithAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
-        DataLakeStoreAccountListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
-        CreateOrUpdateVirtualNetworkRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateVirtualNetworkRuleParameters
         UpdateDataLakeStoreAccountParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
+        CreateOrUpdateVirtualNetworkRuleParameters = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateVirtualNetworkRuleParameters
         TrustedIdProvider = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
+        DataLakeStoreAccount = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
         DataLakeStoreAccountBasic = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountBasic
         EncryptionConfigType = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionConfigType
         EncryptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionState
         EncryptionProvisioningState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::EncryptionProvisioningState
         TrustedIdProviderState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
-        DataLakeStoreAccount = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
         DataLakeStoreAccountStatus = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
+        DataLakeStoreAccountListResult = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
         DataLakeStoreAccountState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState
         SubscriptionState = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::SubscriptionState
         VirtualNetworkRule = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::VirtualNetworkRule
@@ -65,7 +65,7 @@ module Azure::Profiles::Latest
       end
 
       class DataLakeStoreManagementClass
-        attr_reader :firewall_rules, :locations, :virtual_network_rules, :trusted_id_providers, :accounts, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :locations, :virtual_network_rules, :trusted_id_providers, :accounts, :operations, :firewall_rules, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -75,12 +75,12 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @firewall_rules = @client_0.firewall_rules
           @locations = @client_0.locations
           @virtual_network_rules = @client_0.virtual_network_rules
           @trusted_id_providers = @client_0.trusted_id_providers
           @accounts = @client_0.accounts
           @operations = @client_0.operations
+          @firewall_rules = @client_0.firewall_rules
 
           @model_classes = ModelClasses.new
         end
@@ -147,17 +147,17 @@ module Azure::Profiles::Latest
           def update_trusted_id_provider_with_account_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateTrustedIdProviderWithAccountParameters
           end
-          def data_lake_store_account_list_result
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
+          def update_data_lake_store_account_parameters
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
           end
           def create_or_update_virtual_network_rule_parameters
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::CreateOrUpdateVirtualNetworkRuleParameters
           end
-          def update_data_lake_store_account_parameters
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::UpdateDataLakeStoreAccountParameters
-          end
           def trusted_id_provider
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProvider
+          end
+          def data_lake_store_account
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
           end
           def data_lake_store_account_basic
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountBasic
@@ -174,11 +174,11 @@ module Azure::Profiles::Latest
           def trusted_id_provider_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::TrustedIdProviderState
           end
-          def data_lake_store_account
-            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount
-          end
           def data_lake_store_account_status
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountStatus
+          end
+          def data_lake_store_account_list_result
+            Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountListResult
           end
           def data_lake_store_account_state
             Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccountState

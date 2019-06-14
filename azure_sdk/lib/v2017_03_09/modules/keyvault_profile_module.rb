@@ -35,10 +35,10 @@ module Azure::Profiles::V2017_03_09
       CertificateCreateParameters = Azure::KeyVault::V2016_10_01::Models::CertificateCreateParameters
       LifetimeAction = Azure::KeyVault::V2016_10_01::Models::LifetimeAction
       CertificateImportParameters = Azure::KeyVault::V2016_10_01::Models::CertificateImportParameters
-      Error = Azure::KeyVault::V2016_10_01::Models::Error
       CertificatePolicy = Azure::KeyVault::V2016_10_01::Models::CertificatePolicy
+      Error = Azure::KeyVault::V2016_10_01::Models::Error
       CertificateUpdateParameters = Azure::KeyVault::V2016_10_01::Models::CertificateUpdateParameters
-      CertificateMergeParameters = Azure::KeyVault::V2016_10_01::Models::CertificateMergeParameters
+      SasDefinitionItem = Azure::KeyVault::V2016_10_01::Models::SasDefinitionItem
       CertificateIssuerSetParameters = Azure::KeyVault::V2016_10_01::Models::CertificateIssuerSetParameters
       IssuerCredentials = Azure::KeyVault::V2016_10_01::Models::IssuerCredentials
       CertificateIssuerUpdateParameters = Azure::KeyVault::V2016_10_01::Models::CertificateIssuerUpdateParameters
@@ -52,8 +52,8 @@ module Azure::Profiles::V2017_03_09
       SasDefinitionCreateParameters = Azure::KeyVault::V2016_10_01::Models::SasDefinitionCreateParameters
       DeletedKeyListResult = Azure::KeyVault::V2016_10_01::Models::DeletedKeyListResult
       CertificateIssuerItem = Azure::KeyVault::V2016_10_01::Models::CertificateIssuerItem
-      SasDefinitionItem = Azure::KeyVault::V2016_10_01::Models::SasDefinitionItem
       SecretListResult = Azure::KeyVault::V2016_10_01::Models::SecretListResult
+      CertificateMergeParameters = Azure::KeyVault::V2016_10_01::Models::CertificateMergeParameters
       X509CertificateProperties = Azure::KeyVault::V2016_10_01::Models::X509CertificateProperties
       DeletedSecretListResult = Azure::KeyVault::V2016_10_01::Models::DeletedSecretListResult
       IssuerParameters = Azure::KeyVault::V2016_10_01::Models::IssuerParameters
@@ -84,18 +84,18 @@ module Azure::Profiles::V2017_03_09
       DeletedKeyItem = Azure::KeyVault::V2016_10_01::Models::DeletedKeyItem
       SecretAttributes = Azure::KeyVault::V2016_10_01::Models::SecretAttributes
       DeletedSecretBundle = Azure::KeyVault::V2016_10_01::Models::DeletedSecretBundle
-      CertificateAttributes = Azure::KeyVault::V2016_10_01::Models::CertificateAttributes
-      DeletedCertificateBundle = Azure::KeyVault::V2016_10_01::Models::DeletedCertificateBundle
       DeletedSecretItem = Azure::KeyVault::V2016_10_01::Models::DeletedSecretItem
+      DeletedCertificateBundle = Azure::KeyVault::V2016_10_01::Models::DeletedCertificateBundle
       DeletedCertificateItem = Azure::KeyVault::V2016_10_01::Models::DeletedCertificateItem
-      JsonWebKeyCurveName = Azure::KeyVault::V2016_10_01::Models::JsonWebKeyCurveName
-      DeletionRecoveryLevel = Azure::KeyVault::V2016_10_01::Models::DeletionRecoveryLevel
+      CertificateAttributes = Azure::KeyVault::V2016_10_01::Models::CertificateAttributes
       JsonWebKeyType = Azure::KeyVault::V2016_10_01::Models::JsonWebKeyType
+      DeletionRecoveryLevel = Azure::KeyVault::V2016_10_01::Models::DeletionRecoveryLevel
       KeyUsageType = Azure::KeyVault::V2016_10_01::Models::KeyUsageType
-      JsonWebKeyOperation = Azure::KeyVault::V2016_10_01::Models::JsonWebKeyOperation
-      JsonWebKeyEncryptionAlgorithm = Azure::KeyVault::V2016_10_01::Models::JsonWebKeyEncryptionAlgorithm
+      JsonWebKeyCurveName = Azure::KeyVault::V2016_10_01::Models::JsonWebKeyCurveName
       ActionType = Azure::KeyVault::V2016_10_01::Models::ActionType
+      JsonWebKeyEncryptionAlgorithm = Azure::KeyVault::V2016_10_01::Models::JsonWebKeyEncryptionAlgorithm
       JsonWebKeySignatureAlgorithm = Azure::KeyVault::V2016_10_01::Models::JsonWebKeySignatureAlgorithm
+      JsonWebKeyOperation = Azure::KeyVault::V2016_10_01::Models::JsonWebKeyOperation
     end
 
     class KeyVaultDataClass
@@ -205,17 +205,17 @@ module Azure::Profiles::V2017_03_09
         def certificate_import_parameters
           Azure::KeyVault::V2016_10_01::Models::CertificateImportParameters
         end
-        def error
-          Azure::KeyVault::V2016_10_01::Models::Error
-        end
         def certificate_policy
           Azure::KeyVault::V2016_10_01::Models::CertificatePolicy
+        end
+        def error
+          Azure::KeyVault::V2016_10_01::Models::Error
         end
         def certificate_update_parameters
           Azure::KeyVault::V2016_10_01::Models::CertificateUpdateParameters
         end
-        def certificate_merge_parameters
-          Azure::KeyVault::V2016_10_01::Models::CertificateMergeParameters
+        def sas_definition_item
+          Azure::KeyVault::V2016_10_01::Models::SasDefinitionItem
         end
         def certificate_issuer_set_parameters
           Azure::KeyVault::V2016_10_01::Models::CertificateIssuerSetParameters
@@ -256,11 +256,11 @@ module Azure::Profiles::V2017_03_09
         def certificate_issuer_item
           Azure::KeyVault::V2016_10_01::Models::CertificateIssuerItem
         end
-        def sas_definition_item
-          Azure::KeyVault::V2016_10_01::Models::SasDefinitionItem
-        end
         def secret_list_result
           Azure::KeyVault::V2016_10_01::Models::SecretListResult
+        end
+        def certificate_merge_parameters
+          Azure::KeyVault::V2016_10_01::Models::CertificateMergeParameters
         end
         def x509_certificate_properties
           Azure::KeyVault::V2016_10_01::Models::X509CertificateProperties
@@ -352,41 +352,41 @@ module Azure::Profiles::V2017_03_09
         def deleted_secret_bundle
           Azure::KeyVault::V2016_10_01::Models::DeletedSecretBundle
         end
-        def certificate_attributes
-          Azure::KeyVault::V2016_10_01::Models::CertificateAttributes
+        def deleted_secret_item
+          Azure::KeyVault::V2016_10_01::Models::DeletedSecretItem
         end
         def deleted_certificate_bundle
           Azure::KeyVault::V2016_10_01::Models::DeletedCertificateBundle
         end
-        def deleted_secret_item
-          Azure::KeyVault::V2016_10_01::Models::DeletedSecretItem
-        end
         def deleted_certificate_item
           Azure::KeyVault::V2016_10_01::Models::DeletedCertificateItem
         end
-        def json_web_key_curve_name
-          Azure::KeyVault::V2016_10_01::Models::JsonWebKeyCurveName
-        end
-        def deletion_recovery_level
-          Azure::KeyVault::V2016_10_01::Models::DeletionRecoveryLevel
+        def certificate_attributes
+          Azure::KeyVault::V2016_10_01::Models::CertificateAttributes
         end
         def json_web_key_type
           Azure::KeyVault::V2016_10_01::Models::JsonWebKeyType
         end
+        def deletion_recovery_level
+          Azure::KeyVault::V2016_10_01::Models::DeletionRecoveryLevel
+        end
         def key_usage_type
           Azure::KeyVault::V2016_10_01::Models::KeyUsageType
         end
-        def json_web_key_operation
-          Azure::KeyVault::V2016_10_01::Models::JsonWebKeyOperation
-        end
-        def json_web_key_encryption_algorithm
-          Azure::KeyVault::V2016_10_01::Models::JsonWebKeyEncryptionAlgorithm
+        def json_web_key_curve_name
+          Azure::KeyVault::V2016_10_01::Models::JsonWebKeyCurveName
         end
         def action_type
           Azure::KeyVault::V2016_10_01::Models::ActionType
         end
+        def json_web_key_encryption_algorithm
+          Azure::KeyVault::V2016_10_01::Models::JsonWebKeyEncryptionAlgorithm
+        end
         def json_web_key_signature_algorithm
           Azure::KeyVault::V2016_10_01::Models::JsonWebKeySignatureAlgorithm
+        end
+        def json_web_key_operation
+          Azure::KeyVault::V2016_10_01::Models::JsonWebKeyOperation
         end
       end
     end
@@ -396,7 +396,6 @@ module Azure::Profiles::V2017_03_09
 
       module Models
         Vault = Azure::KeyVault::Mgmt::V2016_10_01::Models::Vault
-        AccessPolicyEntry = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
         SkuName = Azure::KeyVault::Mgmt::V2016_10_01::Models::SkuName
         KeyPermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::KeyPermissions
         SecretPermissions = Azure::KeyVault::Mgmt::V2016_10_01::Models::SecretPermissions
@@ -425,6 +424,7 @@ module Azure::Profiles::V2017_03_09
         LogSpecification = Azure::KeyVault::Mgmt::V2016_10_01::Models::LogSpecification
         VaultPatchParameters = Azure::KeyVault::Mgmt::V2016_10_01::Models::VaultPatchParameters
         ServiceSpecification = Azure::KeyVault::Mgmt::V2016_10_01::Models::ServiceSpecification
+        AccessPolicyEntry = Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
         DeletedVaultProperties = Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultProperties
       end
 
@@ -461,9 +461,6 @@ module Azure::Profiles::V2017_03_09
         class ModelClasses
           def vault
             Azure::KeyVault::Mgmt::V2016_10_01::Models::Vault
-          end
-          def access_policy_entry
-            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
           end
           def sku_name
             Azure::KeyVault::Mgmt::V2016_10_01::Models::SkuName
@@ -548,6 +545,9 @@ module Azure::Profiles::V2017_03_09
           end
           def service_specification
             Azure::KeyVault::Mgmt::V2016_10_01::Models::ServiceSpecification
+          end
+          def access_policy_entry
+            Azure::KeyVault::Mgmt::V2016_10_01::Models::AccessPolicyEntry
           end
           def deleted_vault_properties
             Azure::KeyVault::Mgmt::V2016_10_01::Models::DeletedVaultProperties

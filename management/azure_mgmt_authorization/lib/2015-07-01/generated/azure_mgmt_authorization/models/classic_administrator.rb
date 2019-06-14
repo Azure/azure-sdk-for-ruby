@@ -21,9 +21,11 @@ module Azure::Authorization::Mgmt::V2015_07_01
       # @return [String] The type of the administrator.
       attr_accessor :type
 
-      # @return [ClassicAdministratorProperties] Properties for the classic
-      # administrator.
-      attr_accessor :properties
+      # @return [String] The email address of the administrator.
+      attr_accessor :email_address
+
+      # @return [String] The role of the administrator.
+      attr_accessor :role
 
 
       #
@@ -59,12 +61,18 @@ module Azure::Authorization::Mgmt::V2015_07_01
                   name: 'String'
                 }
               },
-              properties: {
+              email_address: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.emailAddress',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ClassicAdministratorProperties'
+                  name: 'String'
+                }
+              },
+              role: {
+                required: false,
+                serialized_name: 'properties.role',
+                type: {
+                  name: 'String'
                 }
               }
             }

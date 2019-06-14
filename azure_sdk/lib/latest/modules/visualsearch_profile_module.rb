@@ -9,7 +9,6 @@ module Azure::Profiles::Latest
     Images = Azure::CognitiveServices::VisualSearch::V1_0::Images
 
     module Models
-      CropArea = Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
       ImageInfo = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
       ImageTagRegion = Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageTagRegion
       KnowledgeRequest = Azure::CognitiveServices::VisualSearch::V1_0::Models::KnowledgeRequest
@@ -50,12 +49,13 @@ module Azure::Profiles::Latest
       Rating = Azure::CognitiveServices::VisualSearch::V1_0::Models::Rating
       Currency = Azure::CognitiveServices::VisualSearch::V1_0::Models::Currency
       ItemAvailability = Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
-      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
       Person = Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
+      Action = Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
       ResponseBase = Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
       Thing = Azure::CognitiveServices::VisualSearch::V1_0::Models::Thing
       CreativeWork = Azure::CognitiveServices::VisualSearch::V1_0::Models::CreativeWork
       Identifiable = Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
+      CropArea = Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
     end
 
     class VisualSearchDataClass
@@ -88,9 +88,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def crop_area
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
-        end
         def image_info
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ImageInfo
         end
@@ -211,11 +208,11 @@ module Azure::Profiles::Latest
         def item_availability
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ItemAvailability
         end
-        def action
-          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
-        end
         def person
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Person
+        end
+        def action
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::Action
         end
         def response_base
           Azure::CognitiveServices::VisualSearch::V1_0::Models::ResponseBase
@@ -228,6 +225,9 @@ module Azure::Profiles::Latest
         end
         def identifiable
           Azure::CognitiveServices::VisualSearch::V1_0::Models::Identifiable
+        end
+        def crop_area
+          Azure::CognitiveServices::VisualSearch::V1_0::Models::CropArea
         end
       end
     end

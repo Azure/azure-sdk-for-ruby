@@ -8,7 +8,6 @@ module Azure::Profiles::Latest
   module ComputerVision
 
     module Models
-      ImageCaption = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageCaption
       ListModelsResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::ListModelsResult
       Word = Azure::CognitiveServices::ComputerVision::V2_0::Models::Word
       DomainModelResults = Azure::CognitiveServices::ComputerVision::V2_0::Models::DomainModelResults
@@ -46,6 +45,7 @@ module Azure::Profiles::Latest
       AdultInfo = Azure::CognitiveServices::ComputerVision::V2_0::Models::AdultInfo
       OcrResult = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult
       ModelDescription = Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
+      ImageCaption = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageCaption
     end
 
     class ComputerVisionDataClass
@@ -77,9 +77,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def image_caption
-          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageCaption
-        end
         def list_models_result
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ListModelsResult
         end
@@ -190,6 +187,9 @@ module Azure::Profiles::Latest
         end
         def model_description
           Azure::CognitiveServices::ComputerVision::V2_0::Models::ModelDescription
+        end
+        def image_caption
+          Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageCaption
         end
       end
     end

@@ -8,7 +8,6 @@ module Azure::Profiles::Latest
   module Autosuggest
 
     module Models
-      Response = Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
       SearchKind = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
       ScenarioType = Azure::CognitiveServices::Autosuggest::V1_0::Models::ScenarioType
       SafeSearch = Azure::CognitiveServices::Autosuggest::V1_0::Models::SafeSearch
@@ -27,6 +26,7 @@ module Azure::Profiles::Latest
       SearchAction = Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchAction
       Error = Azure::CognitiveServices::Autosuggest::V1_0::Models::Error
       Identifiable = Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
+      Response = Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
     end
 
     class AutosuggestDataClass
@@ -58,9 +58,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def response
-          Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
-        end
         def search_kind
           Azure::CognitiveServices::Autosuggest::V1_0::Models::SearchKind
         end
@@ -114,6 +111,9 @@ module Azure::Profiles::Latest
         end
         def identifiable
           Azure::CognitiveServices::Autosuggest::V1_0::Models::Identifiable
+        end
+        def response
+          Azure::CognitiveServices::Autosuggest::V1_0::Models::Response
         end
       end
     end

@@ -11,7 +11,6 @@ module Azure::Profiles::V2018_03_01
       Zones = Azure::Dns::Mgmt::V2016_04_01::Zones
 
       module Models
-        ProxyResource = Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
         AzureEntityResource = Azure::Dns::Mgmt::V2016_04_01::Models::AzureEntityResource
         OperationStatus = Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
         HttpStatusCode = Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
@@ -33,6 +32,7 @@ module Azure::Profiles::V2018_03_01
         SoaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
         TrackedResource = Azure::Dns::Mgmt::V2016_04_01::Models::TrackedResource
         Zone = Azure::Dns::Mgmt::V2016_04_01::Models::Zone
+        ProxyResource = Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
       end
 
       class DnsManagementClass
@@ -66,9 +66,6 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
-          def proxy_resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
-          end
           def azure_entity_resource
             Azure::Dns::Mgmt::V2016_04_01::Models::AzureEntityResource
           end
@@ -131,6 +128,9 @@ module Azure::Profiles::V2018_03_01
           end
           def zone
             Azure::Dns::Mgmt::V2016_04_01::Models::Zone
+          end
+          def proxy_resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
           end
         end
       end
