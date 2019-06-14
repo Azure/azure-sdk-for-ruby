@@ -6,52 +6,57 @@ require 'azure_mgmt_cognitive_services'
 
 module Azure::CognitiveServices::Profiles::Latest
   module Mgmt
-    Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
-    ResourceSkus = Azure::CognitiveServices::Mgmt::V2017_04_18::ResourceSkus
     Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
     CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
+    Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
+    ResourceSkus = Azure::CognitiveServices::Mgmt::V2017_04_18::ResourceSkus
 
     module Models
-      ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
-      Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
-      Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
-      CognitiveServicesAccountUpdateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
-      OperationDisplayInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
-      CognitiveServicesAccountListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
-      OperationEntity = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
-      RegenerateKeyParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
-      OperationEntityListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
-      CognitiveServicesAccountEnumerateSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
-      CheckSkuAvailabilityParameter = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
-      Usage = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
-      CheckSkuAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
-      CognitiveServicesAccountCreateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters
-      CheckSkuAvailabilityResultList = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
-      CognitiveServicesAccountKeys = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
-      ResourceSkuRestrictionInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionInfo
-      MetricName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
-      ResourceSkuRestrictions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
-      CognitiveServicesAccount = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount
-      ResourceSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
       UsagesResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UsagesResult
-      ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
+      ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
+      CognitiveServicesAccountCreateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters
+      IpRule = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IpRule
+      OperationDisplayInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
+      NetworkRuleSet = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleSet
+      OperationEntity = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
+      CognitiveServicesAccountListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
+      OperationEntityListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
+      RegenerateKeyParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
+      CheckSkuAvailabilityParameter = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
+      CognitiveServicesAccountEnumerateSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
+      CheckSkuAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
+      Usage = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
+      CheckSkuAvailabilityResultList = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
+      CognitiveServicesAccountUpdateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
+      CheckDomainAvailabilityParameter = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityParameter
+      CognitiveServicesAccount = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount
+      CheckDomainAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityResult
       CognitiveServicesResourceAndSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
-      SkuName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
+      ResourceSkuRestrictionInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionInfo
+      Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
+      ResourceSkuRestrictions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
+      CognitiveServicesAccountKeys = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
+      ResourceSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
+      VirtualNetworkRule = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
+      ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
+      MetricName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
       SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
-      Kind = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
       ProvisioningState = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
+      NetworkRuleBypassOptions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleBypassOptions
+      NetworkRuleAction = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleAction
       KeyName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
       UnitType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UnitType
       QuotaUsageStatus = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::QuotaUsageStatus
       ResourceSkuRestrictionsType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsType
       ResourceSkuRestrictionsReasonCode = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsReasonCode
+      Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
     end
 
     #
     # CognitiveServicesManagementClass
     #
     class CognitiveServicesManagementClass
-      attr_reader :accounts, :resource_skus, :operations, :check_sku_availability, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :check_sku_availability, :accounts, :resource_skus, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -71,10 +76,10 @@ module Azure::CognitiveServices::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @accounts = @client_0.accounts
-        @resource_skus = @client_0.resource_skus
         @operations = @client_0.operations
         @check_sku_availability = @client_0.check_sku_availability
+        @accounts = @client_0.accounts
+        @resource_skus = @client_0.resource_skus
 
         @model_classes = ModelClasses.new
       end
@@ -95,89 +100,101 @@ module Azure::CognitiveServices::Profiles::Latest
     end
 
     class ModelClasses
+      def usages_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UsagesResult
+      end
       def error_body
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
-      end
-      def sku
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
-      end
-      def error
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
-      end
-      def cognitive_services_account_update_parameters
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
-      end
-      def operation_display_info
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
-      end
-      def cognitive_services_account_list_result
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
-      end
-      def operation_entity
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
-      end
-      def regenerate_key_parameters
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
-      end
-      def operation_entity_list_result
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
-      end
-      def cognitive_services_account_enumerate_skus_result
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
-      end
-      def check_sku_availability_parameter
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
-      end
-      def usage
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
-      end
-      def check_sku_availability_result
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
       end
       def cognitive_services_account_create_parameters
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters
       end
+      def ip_rule
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IpRule
+      end
+      def operation_display_info
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
+      end
+      def network_rule_set
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleSet
+      end
+      def operation_entity
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
+      end
+      def cognitive_services_account_list_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
+      end
+      def operation_entity_list_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
+      end
+      def regenerate_key_parameters
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
+      end
+      def check_sku_availability_parameter
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
+      end
+      def cognitive_services_account_enumerate_skus_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
+      end
+      def check_sku_availability_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
+      end
+      def usage
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
+      end
       def check_sku_availability_result_list
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
       end
-      def cognitive_services_account_keys
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
+      def cognitive_services_account_update_parameters
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
       end
-      def resource_sku_restriction_info
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionInfo
-      end
-      def metric_name
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
-      end
-      def resource_sku_restrictions
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
+      def check_domain_availability_parameter
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityParameter
       end
       def cognitive_services_account
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount
       end
-      def resource_sku
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
-      end
-      def usages_result
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UsagesResult
-      end
-      def resource_skus_result
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
+      def check_domain_availability_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityResult
       end
       def cognitive_services_resource_and_sku
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
       end
-      def sku_name
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuName
+      def resource_sku_restriction_info
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionInfo
+      end
+      def sku
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
+      end
+      def resource_sku_restrictions
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
+      end
+      def cognitive_services_account_keys
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
+      end
+      def resource_sku
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
+      end
+      def virtual_network_rule
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
+      end
+      def resource_skus_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
+      end
+      def metric_name
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
       end
       def sku_tier
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
       end
-      def kind
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Kind
-      end
       def provisioning_state
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
+      end
+      def network_rule_bypass_options
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleBypassOptions
+      end
+      def network_rule_action
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleAction
       end
       def key_name
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
@@ -193,6 +210,9 @@ module Azure::CognitiveServices::Profiles::Latest
       end
       def resource_sku_restrictions_reason_code
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionsReasonCode
+      end
+      def error
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
       end
     end
   end

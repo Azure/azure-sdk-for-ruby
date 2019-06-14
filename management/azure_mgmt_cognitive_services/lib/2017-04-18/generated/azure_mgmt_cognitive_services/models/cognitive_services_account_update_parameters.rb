@@ -22,6 +22,10 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # than 128 characters and value no greater than 256 characters.
       attr_accessor :tags
 
+      # @return Additional properties for Account. Only provided fields will be
+      # updated.
+      attr_accessor :properties
+
 
       #
       # Mapper for CognitiveServicesAccountUpdateParameters class as Ruby Hash.
@@ -29,7 +33,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CognitiveServicesAccountUpdateParameters',
           type: {
@@ -37,7 +40,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CognitiveServicesAccountUpdateParameters',
             model_properties: {
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -46,19 +48,24 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
                       }
                   }
+                }
+              },
+              properties: {
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Object'
                 }
               }
             }

@@ -24,16 +24,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # Current version is 2017-04-18
     attr_reader :api_version
 
-    # @return [String] The preferred language for the response.
+    # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] The retry timeout in seconds for Long Running
-    # Operations. Default value is 30.
+    # @return [Integer] Gets or sets the retry timeout in seconds for Long
+    # Running Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] Whether a unique x-ms-client-request-id should be
-    # generated. When set to true a unique x-ms-client-request-id value is
-    # generated and included in each request. Default is true.
+    # @return [Boolean] When set to true a unique x-ms-client-request-id value
+    # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [Accounts] accounts
@@ -118,9 +117,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -130,6 +126,111 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       super(request_url, method, path, options)
     end
 
+    #
+    # Check whether a domain is available.
+    #
+    # @param subdomain_name [String] The subdomain name to use.
+    # @param type [String] The Type of the resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CheckDomainAvailabilityResult] operation results.
+    #
+    def check_domain_availability(subdomain_name, type, custom_headers = nil)
+      response = check_domain_availability_async(subdomain_name, type, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Check whether a domain is available.
+    #
+    # @param subdomain_name [String] The subdomain name to use.
+    # @param type [String] The Type of the resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_domain_availability_with_http_info(subdomain_name, type, custom_headers = nil)
+      check_domain_availability_async(subdomain_name, type, custom_headers).value!
+    end
+
+    #
+    # Check whether a domain is available.
+    #
+    # @param subdomain_name [String] The subdomain name to use.
+    # @param type [String] The Type of the resource.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_domain_availability_async(subdomain_name, type, custom_headers = nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subdomain_name is nil' if subdomain_name.nil?
+      fail ArgumentError, 'type is nil' if type.nil?
+
+      parameters = CheckDomainAvailabilityParameter.new
+      unless subdomain_name.nil? && type.nil?
+        parameters.subdomain_name = subdomain_name
+        parameters.type = type
+      end
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityParameter.mapper()
+      request_content = self.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'providers/Microsoft.CognitiveServices/checkDomainAvailability'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
 
     private
     #
@@ -137,7 +238,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cognitive_services'
-        sdk_information = "#{sdk_information}/0.17.0"
+        if defined? Azure::CognitiveServices::Mgmt::V2017_04_18::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::CognitiveServices::Mgmt::V2017_04_18::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
