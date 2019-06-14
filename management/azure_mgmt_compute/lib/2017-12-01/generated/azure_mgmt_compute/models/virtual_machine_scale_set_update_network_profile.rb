@@ -24,7 +24,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdateNetworkProfile',
           type: {
@@ -32,13 +31,11 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineScaleSetUpdateNetworkProfile',
             model_properties: {
               network_interface_configurations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterfaceConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetUpdateNetworkConfigurationElementType',
                       type: {

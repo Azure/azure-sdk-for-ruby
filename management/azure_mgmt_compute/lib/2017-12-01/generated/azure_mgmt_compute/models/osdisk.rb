@@ -76,7 +76,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OSDisk',
           type: {
@@ -84,7 +83,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'OSDisk',
             model_properties: {
               os_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -93,7 +91,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               encryption_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionSettings',
                 type: {
@@ -102,7 +99,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -110,7 +106,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               vhd: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhd',
                 type: {
@@ -119,7 +114,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               image: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'image',
                 type: {
@@ -128,7 +122,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               caching: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -137,7 +130,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               write_accelerator_enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'writeAcceleratorEnabled',
                 type: {
@@ -145,7 +137,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               create_option: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -153,7 +144,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               disk_size_gb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {
@@ -161,7 +151,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               managed_disk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {

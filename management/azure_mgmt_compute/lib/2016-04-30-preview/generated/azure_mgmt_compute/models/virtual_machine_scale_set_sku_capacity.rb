@@ -32,7 +32,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetSkuCapacity',
           type: {
@@ -40,7 +39,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineScaleSetSkuCapacity',
             model_properties: {
               minimum: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'minimum',
@@ -49,7 +47,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               maximum: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'maximum',
@@ -58,7 +55,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               default_capacity: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'defaultCapacity',
@@ -67,7 +63,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               scale_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'scaleType',

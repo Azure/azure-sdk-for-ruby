@@ -33,7 +33,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetIdentity',
           type: {
@@ -41,7 +40,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetIdentity',
             model_properties: {
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'principalId',
@@ -50,7 +48,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -59,7 +56,6 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

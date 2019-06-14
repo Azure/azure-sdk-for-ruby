@@ -22,7 +22,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ComputeLongRunningOperationProperties',
           type: {
@@ -30,7 +29,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ComputeLongRunningOperationProperties',
             model_properties: {
               output: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'output',
                 type: {

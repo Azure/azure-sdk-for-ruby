@@ -36,7 +36,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImageStorageProfile',
           type: {
@@ -44,7 +43,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'ImageStorageProfile',
             model_properties: {
               os_disk: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDisk',
                 type: {
@@ -53,13 +51,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               data_disks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ImageDataDiskElementType',
                       type: {
@@ -70,7 +66,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               zone_resilient: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'zoneResilient',
                 type: {

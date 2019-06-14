@@ -30,7 +30,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetInstanceView',
           type: {
@@ -38,7 +37,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetInstanceView',
             model_properties: {
               virtual_machine: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'virtualMachine',
@@ -48,14 +46,12 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               extensions: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'extensions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetVMExtensionsSummaryElementType',
                       type: {
@@ -66,13 +62,11 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               statuses: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {

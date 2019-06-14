@@ -30,7 +30,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineExtensionHandlerInstanceView',
           type: {
@@ -38,7 +37,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineExtensionHandlerInstanceView',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -46,7 +44,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               type_handler_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'typeHandlerVersion',
                 type: {
@@ -54,7 +51,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

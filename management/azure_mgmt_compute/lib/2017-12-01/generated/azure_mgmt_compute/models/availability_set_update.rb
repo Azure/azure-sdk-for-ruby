@@ -36,7 +36,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AvailabilitySetUpdate',
           type: {
@@ -44,13 +43,11 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'AvailabilitySetUpdate',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -60,7 +57,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               platform_update_domain_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.platformUpdateDomainCount',
                 type: {
@@ -68,7 +64,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               platform_fault_domain_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.platformFaultDomainCount',
                 type: {
@@ -76,13 +71,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               virtual_machines: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMachines',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -93,14 +86,12 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               statuses: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.statuses',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {
@@ -111,7 +102,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
