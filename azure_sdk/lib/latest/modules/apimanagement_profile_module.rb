@@ -7,6 +7,9 @@ require 'azure_mgmt_api_management'
 module Azure::Profiles::Latest
   module ApiManagement
     module Mgmt
+      Certificate = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Certificate
+      Group = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Group
+      Subscription = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Subscription
       Policy = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Policy
       PolicySnippets = Azure::ApiManagement::Mgmt::V2018_06_01_preview::PolicySnippets
       Regions = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Regions
@@ -24,15 +27,12 @@ module Azure::Profiles::Latest
       ApiIssueAttachment = Azure::ApiManagement::Mgmt::V2018_06_01_preview::ApiIssueAttachment
       AuthorizationServer = Azure::ApiManagement::Mgmt::V2018_06_01_preview::AuthorizationServer
       Backend = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Backend
-      Certificate = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Certificate
       ApiManagementOperations = Azure::ApiManagement::Mgmt::V2018_06_01_preview::ApiManagementOperations
       ApiManagementService = Azure::ApiManagement::Mgmt::V2018_06_01_preview::ApiManagementService
       Diagnostic = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Diagnostic
       EmailTemplate = Azure::ApiManagement::Mgmt::V2018_06_01_preview::EmailTemplate
-      Group = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Group
       GroupUser = Azure::ApiManagement::Mgmt::V2018_06_01_preview::GroupUser
       IdentityProvider = Azure::ApiManagement::Mgmt::V2018_06_01_preview::IdentityProvider
-      Logger = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Logger
       Notification = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Notification
       NotificationRecipientUser = Azure::ApiManagement::Mgmt::V2018_06_01_preview::NotificationRecipientUser
       NotificationRecipientEmail = Azure::ApiManagement::Mgmt::V2018_06_01_preview::NotificationRecipientEmail
@@ -50,40 +50,41 @@ module Azure::Profiles::Latest
       QuotaByCounterKeys = Azure::ApiManagement::Mgmt::V2018_06_01_preview::QuotaByCounterKeys
       QuotaByPeriodKeys = Azure::ApiManagement::Mgmt::V2018_06_01_preview::QuotaByPeriodKeys
       Reports = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Reports
-      Subscription = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Subscription
+      Logger = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Logger
       TagResource = Azure::ApiManagement::Mgmt::V2018_06_01_preview::TagResource
-      Tag = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Tag
       TagDescription = Azure::ApiManagement::Mgmt::V2018_06_01_preview::TagDescription
-      OperationOperations = Azure::ApiManagement::Mgmt::V2018_06_01_preview::OperationOperations
+      Tag = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Tag
       TenantAccess = Azure::ApiManagement::Mgmt::V2018_06_01_preview::TenantAccess
-      TenantAccessGit = Azure::ApiManagement::Mgmt::V2018_06_01_preview::TenantAccessGit
+      OperationOperations = Azure::ApiManagement::Mgmt::V2018_06_01_preview::OperationOperations
       TenantConfiguration = Azure::ApiManagement::Mgmt::V2018_06_01_preview::TenantConfiguration
-      User = Azure::ApiManagement::Mgmt::V2018_06_01_preview::User
-      UserGroup = Azure::ApiManagement::Mgmt::V2018_06_01_preview::UserGroup
+      TenantAccessGit = Azure::ApiManagement::Mgmt::V2018_06_01_preview::TenantAccessGit
       UserSubscription = Azure::ApiManagement::Mgmt::V2018_06_01_preview::UserSubscription
-      UserIdentities = Azure::ApiManagement::Mgmt::V2018_06_01_preview::UserIdentities
+      UserGroup = Azure::ApiManagement::Mgmt::V2018_06_01_preview::UserGroup
       ApiVersionSet = Azure::ApiManagement::Mgmt::V2018_06_01_preview::ApiVersionSet
+      UserIdentities = Azure::ApiManagement::Mgmt::V2018_06_01_preview::UserIdentities
       ApiExport = Azure::ApiManagement::Mgmt::V2018_06_01_preview::ApiExport
+      User = Azure::ApiManagement::Mgmt::V2018_06_01_preview::User
 
       module Models
-        ApiManagementServiceListResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceListResult
-        ErrorFieldContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ErrorFieldContract
-        ApiManagementServiceGetSsoTokenResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceGetSsoTokenResult
         ErrorResponse = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ErrorResponse
+        OperationDisplay = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationDisplay
+        ApiManagementServiceListResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceListResult
+        Operation = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Operation
+        ErrorFieldContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ErrorFieldContract
+        OperationListResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationListResult
         ApiManagementServiceCheckNameAvailabilityParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceCheckNameAvailabilityParameters
-        PolicyCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyCollection
+        ApiManagementServiceGetSsoTokenResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceGetSsoTokenResult
         ApiManagementServiceNameAvailabilityResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceNameAvailabilityResult
-        PolicySnippetsCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicySnippetsCollection
+        PolicyCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyCollection
         ApiManagementServiceApplyNetworkConfigurationParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceApplyNetworkConfigurationParameters
-        RegionListResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RegionListResult
+        PolicySnippetsCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicySnippetsCollection
         ApiManagementServiceUploadCertificateParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceUploadCertificateParameters
-        ApiExportResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiExportResult
+        RegionListResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RegionListResult
         HostnameConfigurationOld = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::HostnameConfigurationOld
-        CertificateInformation = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateInformation
+        ApiExportResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiExportResult
         CertificateConfiguration = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateConfiguration
-        ApiCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCollection
+        CertificateInformation = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateInformation
         HostnameConfiguration = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::HostnameConfiguration
-        ApiCreateOrUpdateParameter = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCreateOrUpdateParameter
         VirtualNetworkConfiguration = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::VirtualNetworkConfiguration
         OAuth2AuthenticationSettingsContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OAuth2AuthenticationSettingsContract
         ApiManagementServiceSkuProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceSkuProperties
@@ -111,7 +112,6 @@ module Azure::Profiles::Latest
         UserTokenParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::UserTokenParameters
         RegionContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RegionContract
         BodyDiagnosticSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BodyDiagnosticSettings
-        Resource = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Resource
         PipelineDiagnosticSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PipelineDiagnosticSettings
         ApiVersionSetContractDetails = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiVersionSetContractDetails
         UserIdentityCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::UserIdentityCollection
@@ -119,11 +119,8 @@ module Azure::Profiles::Latest
         ProductEntityBaseParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductEntityBaseParameters
         ApiManagementServiceUpdateHostnameParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceUpdateHostnameParameters
         OperationTagResourceContractProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationTagResourceContractProperties
-        OperationDisplay = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationDisplay
         TagTagResourceContractProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagTagResourceContractProperties
-        Operation = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Operation
         TagResourceCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagResourceCollection
-        OperationListResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationListResult
         ProductCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductCollection
         EmailTemplateParametersContractProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::EmailTemplateParametersContractProperties
         AuthorizationServerCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AuthorizationServerCollection
@@ -153,6 +150,7 @@ module Azure::Profiles::Latest
         ApiRevisionCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiRevisionCollection
         SubscriptionCreateParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionCreateParameters
         ApiVersionSetEntityBase = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiVersionSetEntityBase
+        ApiCreateOrUpdateParameter = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCreateOrUpdateParameter
         IdentityProviderList = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IdentityProviderList
         RequestContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RequestContract
         IdentityProviderUpdateParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IdentityProviderUpdateParameters
@@ -162,58 +160,56 @@ module Azure::Profiles::Latest
         RequestReportCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RequestReportCollection
         HttpMessageDiagnostic = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::HttpMessageDiagnostic
         LoggerCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::LoggerCollection
-        DiagnosticCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::DiagnosticCollection
+        ApiCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCollection
         LoggerUpdateContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::LoggerUpdateContract
-        GenerateSsoUrlResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::GenerateSsoUrlResult
+        DiagnosticCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::DiagnosticCollection
         RecipientsContractProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RecipientsContractProperties
-        TenantConfigurationSyncStateContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TenantConfigurationSyncStateContract
+        GenerateSsoUrlResult = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::GenerateSsoUrlResult
         RequestReportRecordContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RequestReportRecordContract
-        OperationResultContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationResultContract
+        TenantConfigurationSyncStateContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TenantConfigurationSyncStateContract
         NotificationCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NotificationCollection
-        X509CertificateName = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::X509CertificateName
+        OperationResultContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationResultContract
         ReportCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ReportCollection
-        BackendProxyContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProxyContract
+        X509CertificateName = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::X509CertificateName
         RecipientUserCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RecipientUserCollection
-        BackendCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendCollection
+        BackendProxyContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProxyContract
         ReportRecordContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ReportRecordContract
-        CertificateCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateCollection
-        RecipientEmailCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RecipientEmailCollection
+        BackendCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendCollection
         ApiUpdateContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiUpdateContract
-        ConnectivityStatusContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ConnectivityStatusContract
+        RecipientEmailCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RecipientEmailCollection
         ApiVersionSetUpdateParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiVersionSetUpdateParameters
-        NetworkStatusContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NetworkStatusContract
+        ConnectivityStatusContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ConnectivityStatusContract
         OperationEntityBaseContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationEntityBaseContract
-        NetworkStatusContractByLocation = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NetworkStatusContractByLocation
+        NetworkStatusContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NetworkStatusContract
         IssueAttachmentCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IssueAttachmentCollection
-        QuotaCounterValueContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterValueContract
+        NetworkStatusContractByLocation = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NetworkStatusContractByLocation
         UserCreateParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::UserCreateParameters
-        OpenIdConnectProviderCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OpenIdConnectProviderCollection
+        QuotaCounterValueContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterValueContract
         SaveConfigurationParameter = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SaveConfigurationParameter
-        OpenidConnectProviderUpdateContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OpenidConnectProviderUpdateContract
+        OpenIdConnectProviderCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OpenIdConnectProviderCollection
         BackendProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProperties
-        QuotaCounterCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterCollection
+        OpenidConnectProviderUpdateContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OpenidConnectProviderUpdateContract
         DeployConfigurationParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::DeployConfigurationParameters
-        TermsOfServiceProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TermsOfServiceProperties
+        QuotaCounterCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterCollection
         ApiEntityBaseContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiEntityBaseContract
-        QuotaCounterContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterContract
         IssueCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IssueCollection
         SubscriptionsDelegationSettingsProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionsDelegationSettingsProperties
-        TagResourceContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagResourceContract
+        QuotaCounterContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterContract
+        TermsOfServiceProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TermsOfServiceProperties
         RegistrationDelegationSettingsProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RegistrationDelegationSettingsProperties
-        BackendBaseParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendBaseParameters
+        TagResourceContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagResourceContract
         QuotaCounterValueContractProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterValueContractProperties
-        ParameterContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ParameterContract
+        BackendBaseParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendBaseParameters
         ProductUpdateParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductUpdateParameters
-        AuthorizationServerContractBaseProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AuthorizationServerContractBaseProperties
+        ParameterContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ParameterContract
         PropertyEntityBaseParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyEntityBaseParameters
-        SamplingSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SamplingSettings
+        AuthorizationServerContractBaseProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AuthorizationServerContractBaseProperties
         SubscriptionCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionCollection
-        PropertyUpdateParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyUpdateParameters
+        SamplingSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SamplingSettings
         PolicyContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyContract
-        ApiContractProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContractProperties
+        PropertyUpdateParameters = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyUpdateParameters
         ApiContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContract
-        ApiReleaseContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiReleaseContract
-        OperationContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationContract
+        ApiContractProperties = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContractProperties
         SchemaContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SchemaContract
         IssueContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IssueContract
         IssueCommentContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IssueCommentContract
@@ -240,20 +236,21 @@ module Azure::Profiles::Latest
         OpenidConnectProviderContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OpenidConnectProviderContract
         PortalSigninSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PortalSigninSettings
         PortalSignupSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PortalSignupSettings
-        PortalDelegationSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PortalDelegationSettings
+        ApiReleaseContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiReleaseContract
+        OperationContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationContract
         SubscriptionContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionContract
-        PropertyContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyContract
+        PortalDelegationSettings = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PortalDelegationSettings
         TagContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagContract
-        TagDescriptionContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagDescriptionContract
+        PropertyContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyContract
         ApiVersionSetContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiVersionSetContract
-        PolicyContentFormat = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyContentFormat
-        Protocol = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Protocol
+        TagDescriptionContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagDescriptionContract
         ContentFormat = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ContentFormat
-        SoapApiType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SoapApiType
+        PolicyContentFormat = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyContentFormat
         ApiType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiType
-        State = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::State
-        SamplingType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SamplingType
+        SoapApiType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SoapApiType
         AlwaysLog = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AlwaysLog
+        SamplingType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SamplingType
+        State = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::State
         ProductState = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductState
         GrantType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::GrantType
         AuthorizationMethod = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AuthorizationMethod
@@ -270,18 +267,21 @@ module Azure::Profiles::Latest
         IdentityProviderType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IdentityProviderType
         LoggerType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::LoggerType
         ConnectivityStatusType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ConnectivityStatusType
-        SubscriptionState = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionState
-        AsyncOperationStatus = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AsyncOperationStatus
         KeyType = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::KeyType
         VersioningScheme = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::VersioningScheme
         TemplateName = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TemplateName
         NotificationName = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NotificationName
         PolicyScopeContract = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyScopeContract
         ExportFormat = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ExportFormat
+        AsyncOperationStatus = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AsyncOperationStatus
+        Protocol = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Protocol
+        Resource = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Resource
+        SubscriptionState = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionState
+        CertificateCollection = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateCollection
       end
 
       class ApiManagementManagementClass
-        attr_reader :policy, :policy_snippets, :regions, :api, :api_revisions, :api_release, :api_operation, :api_operation_policy, :api_product, :api_policy, :api_schema, :api_diagnostic, :api_issue, :api_issue_comment, :api_issue_attachment, :authorization_server, :backend, :certificate, :api_management_operations, :api_management_service, :diagnostic, :email_template, :group, :group_user, :identity_provider, :logger, :notification, :notification_recipient_user, :notification_recipient_email, :network_status, :open_id_connect_provider, :sign_in_settings, :sign_up_settings, :delegation_settings, :product, :product_api, :product_group, :product_subscriptions, :product_policy, :property, :quota_by_counter_keys, :quota_by_period_keys, :reports, :subscription, :tag_resource, :tag, :tag_description, :operation_operations, :tenant_access, :tenant_access_git, :tenant_configuration, :user, :user_group, :user_subscription, :user_identities, :api_version_set, :api_export, :configurable, :base_url, :options, :model_classes
+        attr_reader :certificate, :group, :subscription, :policy, :policy_snippets, :regions, :api, :api_revisions, :api_release, :api_operation, :api_operation_policy, :api_product, :api_policy, :api_schema, :api_diagnostic, :api_issue, :api_issue_comment, :api_issue_attachment, :authorization_server, :backend, :api_management_operations, :api_management_service, :diagnostic, :email_template, :group_user, :identity_provider, :notification, :notification_recipient_user, :notification_recipient_email, :network_status, :open_id_connect_provider, :sign_in_settings, :sign_up_settings, :delegation_settings, :product, :product_api, :product_group, :product_subscriptions, :product_policy, :property, :quota_by_counter_keys, :quota_by_period_keys, :reports, :logger, :tag_resource, :tag_description, :tag, :tenant_access, :operation_operations, :tenant_configuration, :tenant_access_git, :user_subscription, :user_group, :api_version_set, :user_identities, :api_export, :user, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -291,6 +291,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
+          @certificate = @client_0.certificate
+          @group = @client_0.group
+          @subscription = @client_0.subscription
           @policy = @client_0.policy
           @policy_snippets = @client_0.policy_snippets
           @regions = @client_0.regions
@@ -308,15 +311,12 @@ module Azure::Profiles::Latest
           @api_issue_attachment = @client_0.api_issue_attachment
           @authorization_server = @client_0.authorization_server
           @backend = @client_0.backend
-          @certificate = @client_0.certificate
           @api_management_operations = @client_0.api_management_operations
           @api_management_service = @client_0.api_management_service
           @diagnostic = @client_0.diagnostic
           @email_template = @client_0.email_template
-          @group = @client_0.group
           @group_user = @client_0.group_user
           @identity_provider = @client_0.identity_provider
-          @logger = @client_0.logger
           @notification = @client_0.notification
           @notification_recipient_user = @client_0.notification_recipient_user
           @notification_recipient_email = @client_0.notification_recipient_email
@@ -334,20 +334,20 @@ module Azure::Profiles::Latest
           @quota_by_counter_keys = @client_0.quota_by_counter_keys
           @quota_by_period_keys = @client_0.quota_by_period_keys
           @reports = @client_0.reports
-          @subscription = @client_0.subscription
+          @logger = @client_0.logger
           @tag_resource = @client_0.tag_resource
-          @tag = @client_0.tag
           @tag_description = @client_0.tag_description
-          @operation_operations = @client_0.operation_operations
+          @tag = @client_0.tag
           @tenant_access = @client_0.tenant_access
-          @tenant_access_git = @client_0.tenant_access_git
+          @operation_operations = @client_0.operation_operations
           @tenant_configuration = @client_0.tenant_configuration
-          @user = @client_0.user
-          @user_group = @client_0.user_group
+          @tenant_access_git = @client_0.tenant_access_git
           @user_subscription = @client_0.user_subscription
-          @user_identities = @client_0.user_identities
+          @user_group = @client_0.user_group
           @api_version_set = @client_0.api_version_set
+          @user_identities = @client_0.user_identities
           @api_export = @client_0.api_export
+          @user = @client_0.user
 
           @model_classes = ModelClasses.new
         end
@@ -366,59 +366,62 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def error_response
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ErrorResponse
+          end
+          def operation_display
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationDisplay
+          end
           def api_management_service_list_result
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceListResult
+          end
+          def operation
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Operation
           end
           def error_field_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ErrorFieldContract
           end
-          def api_management_service_get_sso_token_result
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceGetSsoTokenResult
-          end
-          def error_response
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ErrorResponse
+          def operation_list_result
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationListResult
           end
           def api_management_service_check_name_availability_parameters
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceCheckNameAvailabilityParameters
           end
-          def policy_collection
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyCollection
+          def api_management_service_get_sso_token_result
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceGetSsoTokenResult
           end
           def api_management_service_name_availability_result
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceNameAvailabilityResult
           end
-          def policy_snippets_collection
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicySnippetsCollection
+          def policy_collection
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyCollection
           end
           def api_management_service_apply_network_configuration_parameters
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceApplyNetworkConfigurationParameters
           end
-          def region_list_result
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RegionListResult
+          def policy_snippets_collection
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicySnippetsCollection
           end
           def api_management_service_upload_certificate_parameters
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiManagementServiceUploadCertificateParameters
           end
-          def api_export_result
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiExportResult
+          def region_list_result
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RegionListResult
           end
           def hostname_configuration_old
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::HostnameConfigurationOld
           end
-          def certificate_information
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateInformation
+          def api_export_result
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiExportResult
           end
           def certificate_configuration
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateConfiguration
           end
-          def api_collection
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCollection
+          def certificate_information
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateInformation
           end
           def hostname_configuration
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::HostnameConfiguration
-          end
-          def api_create_or_update_parameter
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCreateOrUpdateParameter
           end
           def virtual_network_configuration
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::VirtualNetworkConfiguration
@@ -501,9 +504,6 @@ module Azure::Profiles::Latest
           def body_diagnostic_settings
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BodyDiagnosticSettings
           end
-          def resource
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Resource
-          end
           def pipeline_diagnostic_settings
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PipelineDiagnosticSettings
           end
@@ -525,20 +525,11 @@ module Azure::Profiles::Latest
           def operation_tag_resource_contract_properties
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationTagResourceContractProperties
           end
-          def operation_display
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationDisplay
-          end
           def tag_tag_resource_contract_properties
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagTagResourceContractProperties
           end
-          def operation
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Operation
-          end
           def tag_resource_collection
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagResourceCollection
-          end
-          def operation_list_result
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationListResult
           end
           def product_collection
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductCollection
@@ -627,6 +618,9 @@ module Azure::Profiles::Latest
           def api_version_set_entity_base
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiVersionSetEntityBase
           end
+          def api_create_or_update_parameter
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCreateOrUpdateParameter
+          end
           def identity_provider_list
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IdentityProviderList
           end
@@ -654,107 +648,101 @@ module Azure::Profiles::Latest
           def logger_collection
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::LoggerCollection
           end
-          def diagnostic_collection
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::DiagnosticCollection
+          def api_collection
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCollection
           end
           def logger_update_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::LoggerUpdateContract
           end
-          def generate_sso_url_result
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::GenerateSsoUrlResult
+          def diagnostic_collection
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::DiagnosticCollection
           end
           def recipients_contract_properties
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RecipientsContractProperties
           end
-          def tenant_configuration_sync_state_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TenantConfigurationSyncStateContract
+          def generate_sso_url_result
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::GenerateSsoUrlResult
           end
           def request_report_record_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RequestReportRecordContract
           end
-          def operation_result_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationResultContract
+          def tenant_configuration_sync_state_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TenantConfigurationSyncStateContract
           end
           def notification_collection
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NotificationCollection
           end
-          def x509_certificate_name
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::X509CertificateName
+          def operation_result_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationResultContract
           end
           def report_collection
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ReportCollection
           end
-          def backend_proxy_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProxyContract
+          def x509_certificate_name
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::X509CertificateName
           end
           def recipient_user_collection
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RecipientUserCollection
           end
-          def backend_collection
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendCollection
+          def backend_proxy_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProxyContract
           end
           def report_record_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ReportRecordContract
           end
-          def certificate_collection
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateCollection
-          end
-          def recipient_email_collection
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RecipientEmailCollection
+          def backend_collection
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendCollection
           end
           def api_update_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiUpdateContract
           end
-          def connectivity_status_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ConnectivityStatusContract
+          def recipient_email_collection
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RecipientEmailCollection
           end
           def api_version_set_update_parameters
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiVersionSetUpdateParameters
           end
-          def network_status_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NetworkStatusContract
+          def connectivity_status_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ConnectivityStatusContract
           end
           def operation_entity_base_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationEntityBaseContract
           end
-          def network_status_contract_by_location
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NetworkStatusContractByLocation
+          def network_status_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NetworkStatusContract
           end
           def issue_attachment_collection
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IssueAttachmentCollection
           end
-          def quota_counter_value_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterValueContract
+          def network_status_contract_by_location
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::NetworkStatusContractByLocation
           end
           def user_create_parameters
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::UserCreateParameters
           end
-          def open_id_connect_provider_collection
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OpenIdConnectProviderCollection
+          def quota_counter_value_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterValueContract
           end
           def save_configuration_parameter
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SaveConfigurationParameter
           end
-          def openid_connect_provider_update_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OpenidConnectProviderUpdateContract
+          def open_id_connect_provider_collection
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OpenIdConnectProviderCollection
           end
           def backend_properties
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendProperties
           end
-          def quota_counter_collection
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterCollection
+          def openid_connect_provider_update_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OpenidConnectProviderUpdateContract
           end
           def deploy_configuration_parameters
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::DeployConfigurationParameters
           end
-          def terms_of_service_properties
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TermsOfServiceProperties
+          def quota_counter_collection
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterCollection
           end
           def api_entity_base_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiEntityBaseContract
-          end
-          def quota_counter_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterContract
           end
           def issue_collection
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::IssueCollection
@@ -762,53 +750,53 @@ module Azure::Profiles::Latest
           def subscriptions_delegation_settings_properties
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionsDelegationSettingsProperties
           end
-          def tag_resource_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagResourceContract
+          def quota_counter_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterContract
+          end
+          def terms_of_service_properties
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TermsOfServiceProperties
           end
           def registration_delegation_settings_properties
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::RegistrationDelegationSettingsProperties
           end
-          def backend_base_parameters
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendBaseParameters
+          def tag_resource_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagResourceContract
           end
           def quota_counter_value_contract_properties
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::QuotaCounterValueContractProperties
           end
-          def parameter_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ParameterContract
+          def backend_base_parameters
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::BackendBaseParameters
           end
           def product_update_parameters
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductUpdateParameters
           end
-          def authorization_server_contract_base_properties
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AuthorizationServerContractBaseProperties
+          def parameter_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ParameterContract
           end
           def property_entity_base_parameters
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyEntityBaseParameters
           end
-          def sampling_settings
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SamplingSettings
+          def authorization_server_contract_base_properties
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AuthorizationServerContractBaseProperties
           end
           def subscription_collection
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionCollection
           end
-          def property_update_parameters
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyUpdateParameters
+          def sampling_settings
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SamplingSettings
           end
           def policy_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyContract
           end
-          def api_contract_properties
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContractProperties
+          def property_update_parameters
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyUpdateParameters
           end
           def api_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContract
           end
-          def api_release_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiReleaseContract
-          end
-          def operation_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationContract
+          def api_contract_properties
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContractProperties
           end
           def schema_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SchemaContract
@@ -888,47 +876,50 @@ module Azure::Profiles::Latest
           def portal_signup_settings
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PortalSignupSettings
           end
-          def portal_delegation_settings
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PortalDelegationSettings
+          def api_release_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiReleaseContract
+          end
+          def operation_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::OperationContract
           end
           def subscription_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionContract
           end
-          def property_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyContract
+          def portal_delegation_settings
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PortalDelegationSettings
           end
           def tag_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagContract
           end
-          def tag_description_contract
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagDescriptionContract
+          def property_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PropertyContract
           end
           def api_version_set_contract
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiVersionSetContract
           end
-          def policy_content_format
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyContentFormat
-          end
-          def protocol
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Protocol
+          def tag_description_contract
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagDescriptionContract
           end
           def content_format
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ContentFormat
           end
-          def soap_api_type
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SoapApiType
+          def policy_content_format
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::PolicyContentFormat
           end
           def api_type
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiType
           end
-          def state
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::State
+          def soap_api_type
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SoapApiType
+          end
+          def always_log
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AlwaysLog
           end
           def sampling_type
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SamplingType
           end
-          def always_log
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AlwaysLog
+          def state
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::State
           end
           def product_state
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ProductState
@@ -978,12 +969,6 @@ module Azure::Profiles::Latest
           def connectivity_status_type
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ConnectivityStatusType
           end
-          def subscription_state
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionState
-          end
-          def async_operation_status
-            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AsyncOperationStatus
-          end
           def key_type
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::KeyType
           end
@@ -1001,6 +986,21 @@ module Azure::Profiles::Latest
           end
           def export_format
             Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ExportFormat
+          end
+          def async_operation_status
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::AsyncOperationStatus
+          end
+          def protocol
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Protocol
+          end
+          def resource
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::Resource
+          end
+          def subscription_state
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::SubscriptionState
+          end
+          def certificate_collection
+            Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::CertificateCollection
           end
         end
       end

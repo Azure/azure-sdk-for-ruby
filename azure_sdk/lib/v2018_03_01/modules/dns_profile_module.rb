@@ -11,6 +11,12 @@ module Azure::Profiles::V2018_03_01
       Zones = Azure::Dns::Mgmt::V2016_04_01::Zones
 
       module Models
+        ProxyResource = Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
+        AzureEntityResource = Azure::Dns::Mgmt::V2016_04_01::Models::AzureEntityResource
+        OperationStatus = Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
+        HttpStatusCode = Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
+        RecordType = Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
+        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         RecordSetUpdateParameters = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
         RecordSetListResult = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
         AaaaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
@@ -18,7 +24,6 @@ module Azure::Profiles::V2018_03_01
         MxRecord = Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
         PtrRecord = Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
         SrvRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
-        Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
         ZoneDeleteResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
         RecordSet = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
@@ -28,11 +33,6 @@ module Azure::Profiles::V2018_03_01
         SoaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
         TrackedResource = Azure::Dns::Mgmt::V2016_04_01::Models::TrackedResource
         Zone = Azure::Dns::Mgmt::V2016_04_01::Models::Zone
-        ProxyResource = Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
-        AzureEntityResource = Azure::Dns::Mgmt::V2016_04_01::Models::AzureEntityResource
-        OperationStatus = Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
-        HttpStatusCode = Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
-        RecordType = Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
       end
 
       class DnsManagementClass
@@ -66,6 +66,24 @@ module Azure::Profiles::V2018_03_01
         end
 
         class ModelClasses
+          def proxy_resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
+          end
+          def azure_entity_resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::AzureEntityResource
+          end
+          def operation_status
+            Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
+          end
+          def http_status_code
+            Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
+          end
+          def record_type
+            Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
+          end
+          def resource
+            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
+          end
           def record_set_update_parameters
             Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
           end
@@ -86,9 +104,6 @@ module Azure::Profiles::V2018_03_01
           end
           def srv_record
             Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
-          end
-          def resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::Resource
           end
           def cname_record
             Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
@@ -116,21 +131,6 @@ module Azure::Profiles::V2018_03_01
           end
           def zone
             Azure::Dns::Mgmt::V2016_04_01::Models::Zone
-          end
-          def proxy_resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::ProxyResource
-          end
-          def azure_entity_resource
-            Azure::Dns::Mgmt::V2016_04_01::Models::AzureEntityResource
-          end
-          def operation_status
-            Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
-          end
-          def http_status_code
-            Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
-          end
-          def record_type
-            Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
           end
         end
       end

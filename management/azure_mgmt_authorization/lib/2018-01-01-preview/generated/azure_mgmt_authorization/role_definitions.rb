@@ -31,8 +31,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [RoleDefinition] operation results.
     #
-    def delete(scope, role_definition_id, custom_headers:nil)
-      response = delete_async(scope, role_definition_id, custom_headers:custom_headers).value!
+    def delete(scope, role_definition_id, custom_headers = nil)
+      response = delete_async(scope, role_definition_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -46,8 +46,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(scope, role_definition_id, custom_headers:nil)
-      delete_async(scope, role_definition_id, custom_headers:custom_headers).value!
+    def delete_with_http_info(scope, role_definition_id, custom_headers = nil)
+      delete_async(scope, role_definition_id, custom_headers).value!
     end
 
     #
@@ -60,14 +60,13 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(scope, role_definition_id, custom_headers:nil)
+    def delete_async(scope, role_definition_id, custom_headers = nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'role_definition_id is nil' if role_definition_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -123,8 +122,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [RoleDefinition] operation results.
     #
-    def get(scope, role_definition_id, custom_headers:nil)
-      response = get_async(scope, role_definition_id, custom_headers:custom_headers).value!
+    def get(scope, role_definition_id, custom_headers = nil)
+      response = get_async(scope, role_definition_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -138,8 +137,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(scope, role_definition_id, custom_headers:nil)
-      get_async(scope, role_definition_id, custom_headers:custom_headers).value!
+    def get_with_http_info(scope, role_definition_id, custom_headers = nil)
+      get_async(scope, role_definition_id, custom_headers).value!
     end
 
     #
@@ -152,14 +151,13 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(scope, role_definition_id, custom_headers:nil)
+    def get_async(scope, role_definition_id, custom_headers = nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'role_definition_id is nil' if role_definition_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -216,8 +214,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [RoleDefinition] operation results.
     #
-    def create_or_update(scope, role_definition_id, role_definition, custom_headers:nil)
-      response = create_or_update_async(scope, role_definition_id, role_definition, custom_headers:custom_headers).value!
+    def create_or_update(scope, role_definition_id, role_definition, custom_headers = nil)
+      response = create_or_update_async(scope, role_definition_id, role_definition, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -232,8 +230,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(scope, role_definition_id, role_definition, custom_headers:nil)
-      create_or_update_async(scope, role_definition_id, role_definition, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(scope, role_definition_id, role_definition, custom_headers = nil)
+      create_or_update_async(scope, role_definition_id, role_definition, custom_headers).value!
     end
 
     #
@@ -247,7 +245,7 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(scope, role_definition_id, role_definition, custom_headers:nil)
+    def create_or_update_async(scope, role_definition_id, role_definition, custom_headers = nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'role_definition_id is nil' if role_definition_id.nil?
       fail ArgumentError, 'role_definition is nil' if role_definition.nil?
@@ -255,11 +253,12 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Authorization::Mgmt::V2018_01_01_preview::Models::RoleDefinition.mapper()
@@ -319,8 +318,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [Array<RoleDefinition>] operation results.
     #
-    def list(scope, filter:nil, custom_headers:nil)
-      first_page = list_as_lazy(scope, filter:filter, custom_headers:custom_headers)
+    def list(scope, filter = nil, custom_headers = nil)
+      first_page = list_as_lazy(scope, filter, custom_headers)
       first_page.get_all_items
     end
 
@@ -335,8 +334,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(scope, filter:nil, custom_headers:nil)
-      list_async(scope, filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(scope, filter = nil, custom_headers = nil)
+      list_async(scope, filter, custom_headers).value!
     end
 
     #
@@ -350,13 +349,12 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(scope, filter:nil, custom_headers:nil)
+    def list_async(scope, filter = nil, custom_headers = nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -415,8 +413,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [RoleDefinition] operation results.
     #
-    def get_by_id(role_id, custom_headers:nil)
-      response = get_by_id_async(role_id, custom_headers:custom_headers).value!
+    def get_by_id(role_id, custom_headers = nil)
+      response = get_by_id_async(role_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -434,8 +432,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_by_id_with_http_info(role_id, custom_headers:nil)
-      get_by_id_async(role_id, custom_headers:custom_headers).value!
+    def get_by_id_with_http_info(role_id, custom_headers = nil)
+      get_by_id_async(role_id, custom_headers).value!
     end
 
     #
@@ -452,13 +450,12 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_by_id_async(role_id, custom_headers:nil)
+    def get_by_id_async(role_id, custom_headers = nil)
       fail ArgumentError, 'role_id is nil' if role_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -513,8 +510,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [RoleDefinitionListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers:nil)
-      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -528,8 +525,8 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers:nil)
-      list_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -542,12 +539,11 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -603,12 +599,12 @@ module Azure::Authorization::Mgmt::V2018_01_01_preview
     # @return [RoleDefinitionListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(scope, filter:nil, custom_headers:nil)
-      response = list_async(scope, filter:filter, custom_headers:custom_headers).value!
+    def list_as_lazy(scope, filter = nil, custom_headers = nil)
+      response = list_async(scope, filter, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end

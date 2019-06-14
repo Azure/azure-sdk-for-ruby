@@ -23,30 +23,32 @@ module Azure::Authorization::Mgmt::V2015_07_01
     # @return [String] The API version to use for this operation.
     attr_reader :api_version
 
-    # @return [String] The preferred language for the response.
+    # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] The retry timeout in seconds for Long Running
-    # Operations. Default value is 30.
+    # @return [Integer] Gets or sets the retry timeout in seconds for Long
+    # Running Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] Whether a unique x-ms-client-request-id should be
-    # generated. When set to true a unique x-ms-client-request-id value is
-    # generated and included in each request. Default is true.
+    # @return [Boolean] When set to true a unique x-ms-client-request-id value
+    # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [Permissions] permissions
     attr_reader :permissions
 
+    # @return [RoleDefinitions] role_definitions
+    attr_reader :role_definitions
+
     # @return [ProviderOperationsMetadataOperations]
     # provider_operations_metadata_operations
     attr_reader :provider_operations_metadata_operations
 
+    # @return [GlobalAdministrator] global_administrator
+    attr_reader :global_administrator
+
     # @return [RoleAssignments] role_assignments
     attr_reader :role_assignments
-
-    # @return [RoleDefinitions] role_definitions
-    attr_reader :role_definitions
 
     # @return [ClassicAdministrators] classic_administrators
     attr_reader :classic_administrators
@@ -65,9 +67,10 @@ module Azure::Authorization::Mgmt::V2015_07_01
       @credentials = credentials
 
       @permissions = Permissions.new(self)
-      @provider_operations_metadata_operations = ProviderOperationsMetadataOperations.new(self)
-      @role_assignments = RoleAssignments.new(self)
       @role_definitions = RoleDefinitions.new(self)
+      @provider_operations_metadata_operations = ProviderOperationsMetadataOperations.new(self)
+      @global_administrator = GlobalAdministrator.new(self)
+      @role_assignments = RoleAssignments.new(self)
       @classic_administrators = ClassicAdministrators.new(self)
       @api_version = '2015-07-01'
       @accept_language = 'en-US'
@@ -122,9 +125,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -141,7 +141,9 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_authorization'
-        sdk_information = "#{sdk_information}/0.18.2"
+        if defined? Azure::Authorization::Mgmt::V2015_07_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Authorization::Mgmt::V2015_07_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end

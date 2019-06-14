@@ -6,39 +6,39 @@ require 'azure_mgmt_authorization'
 
 module Azure::Authorization::Profiles::V2017_03_09
   module Mgmt
-    Permissions = Azure::Authorization::Mgmt::V2015_07_01::Permissions
     ProviderOperationsMetadataOperations = Azure::Authorization::Mgmt::V2015_07_01::ProviderOperationsMetadataOperations
+    GlobalAdministrator = Azure::Authorization::Mgmt::V2015_07_01::GlobalAdministrator
     RoleAssignments = Azure::Authorization::Mgmt::V2015_07_01::RoleAssignments
-    RoleDefinitions = Azure::Authorization::Mgmt::V2015_07_01::RoleDefinitions
     ClassicAdministrators = Azure::Authorization::Mgmt::V2015_07_01::ClassicAdministrators
+    Permissions = Azure::Authorization::Mgmt::V2015_07_01::Permissions
+    RoleDefinitions = Azure::Authorization::Mgmt::V2015_07_01::RoleDefinitions
 
     module Models
-      RoleAssignment = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignment
-      RoleAssignmentListResult = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentListResult
-      RoleDefinitionFilter = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionFilter
-      RoleAssignmentProperties = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentProperties
-      PermissionGetResult = Azure::Authorization::Mgmt::V2015_07_01::Models::PermissionGetResult
       RoleAssignmentCreateParameters = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentCreateParameters
-      ResourceType = Azure::Authorization::Mgmt::V2015_07_01::Models::ResourceType
-      RoleDefinitionProperties = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionProperties
-      ProviderOperationsMetadataListResult = Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadataListResult
-      RoleDefinition = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition
-      RoleAssignmentFilter = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentFilter
       RoleDefinitionListResult = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionListResult
-      ProviderOperation = Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperation
       ClassicAdministratorProperties = Azure::Authorization::Mgmt::V2015_07_01::Models::ClassicAdministratorProperties
-      RoleAssignmentPropertiesWithScope = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentPropertiesWithScope
-      ClassicAdministrator = Azure::Authorization::Mgmt::V2015_07_01::Models::ClassicAdministrator
       ProviderOperationsMetadata = Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadata
+      ClassicAdministrator = Azure::Authorization::Mgmt::V2015_07_01::Models::ClassicAdministrator
+      ProviderOperation = Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperation
       ClassicAdministratorListResult = Azure::Authorization::Mgmt::V2015_07_01::Models::ClassicAdministratorListResult
       Permission = Azure::Authorization::Mgmt::V2015_07_01::Models::Permission
+      RoleAssignmentFilter = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentFilter
+      RoleDefinitionFilter = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionFilter
+      RoleAssignmentPropertiesWithScope = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentPropertiesWithScope
+      RoleDefinition = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition
+      RoleAssignment = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignment
+      PermissionGetResult = Azure::Authorization::Mgmt::V2015_07_01::Models::PermissionGetResult
+      RoleAssignmentListResult = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentListResult
+      ResourceType = Azure::Authorization::Mgmt::V2015_07_01::Models::ResourceType
+      RoleAssignmentProperties = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentProperties
+      ProviderOperationsMetadataListResult = Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadataListResult
     end
 
     #
     # AuthorizationManagementClass
     #
     class AuthorizationManagementClass
-      attr_reader :permissions, :provider_operations_metadata_operations, :role_assignments, :role_definitions, :classic_administrators, :configurable, :base_url, :options, :model_classes
+      attr_reader :provider_operations_metadata_operations, :global_administrator, :role_assignments, :classic_administrators, :permissions, :role_definitions, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -64,11 +64,12 @@ module Azure::Authorization::Profiles::V2017_03_09
           @client_1.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_1)
-        @permissions = @client_1.permissions
         @provider_operations_metadata_operations = @client_1.provider_operations_metadata_operations
+        @global_administrator = @client_1.global_administrator
         @role_assignments = @client_1.role_assignments
-        @role_definitions = @client_1.role_definitions
         @classic_administrators = @client_1.classic_administrators
+        @permissions = @client_1.permissions
+        @role_definitions = @client_1.role_definitions
 
         @model_classes = ModelClasses.new
       end
@@ -91,62 +92,59 @@ module Azure::Authorization::Profiles::V2017_03_09
     end
 
     class ModelClasses
-      def role_assignment
-        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignment
-      end
-      def role_assignment_list_result
-        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentListResult
-      end
-      def role_definition_filter
-        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionFilter
-      end
-      def role_assignment_properties
-        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentProperties
-      end
-      def permission_get_result
-        Azure::Authorization::Mgmt::V2015_07_01::Models::PermissionGetResult
-      end
       def role_assignment_create_parameters
         Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentCreateParameters
-      end
-      def resource_type
-        Azure::Authorization::Mgmt::V2015_07_01::Models::ResourceType
-      end
-      def role_definition_properties
-        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionProperties
-      end
-      def provider_operations_metadata_list_result
-        Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadataListResult
-      end
-      def role_definition
-        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition
-      end
-      def role_assignment_filter
-        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentFilter
       end
       def role_definition_list_result
         Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionListResult
       end
-      def provider_operation
-        Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperation
-      end
       def classic_administrator_properties
         Azure::Authorization::Mgmt::V2015_07_01::Models::ClassicAdministratorProperties
       end
-      def role_assignment_properties_with_scope
-        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentPropertiesWithScope
+      def provider_operations_metadata
+        Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadata
       end
       def classic_administrator
         Azure::Authorization::Mgmt::V2015_07_01::Models::ClassicAdministrator
       end
-      def provider_operations_metadata
-        Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadata
+      def provider_operation
+        Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperation
       end
       def classic_administrator_list_result
         Azure::Authorization::Mgmt::V2015_07_01::Models::ClassicAdministratorListResult
       end
       def permission
         Azure::Authorization::Mgmt::V2015_07_01::Models::Permission
+      end
+      def role_assignment_filter
+        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentFilter
+      end
+      def role_definition_filter
+        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionFilter
+      end
+      def role_assignment_properties_with_scope
+        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentPropertiesWithScope
+      end
+      def role_definition
+        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition
+      end
+      def role_assignment
+        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignment
+      end
+      def permission_get_result
+        Azure::Authorization::Mgmt::V2015_07_01::Models::PermissionGetResult
+      end
+      def role_assignment_list_result
+        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentListResult
+      end
+      def resource_type
+        Azure::Authorization::Mgmt::V2015_07_01::Models::ResourceType
+      end
+      def role_assignment_properties
+        Azure::Authorization::Mgmt::V2015_07_01::Models::RoleAssignmentProperties
+      end
+      def provider_operations_metadata_list_result
+        Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadataListResult
       end
     end
   end
