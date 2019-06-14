@@ -23,7 +23,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CreateDatabaseRestorePointDefinition',
           type: {
@@ -31,7 +30,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'CreateDatabaseRestorePointDefinition',
             model_properties: {
               restore_point_label: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'restorePointLabel',
                 type: {

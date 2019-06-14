@@ -35,7 +35,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SyncFullSchemaTable',
           type: {
@@ -43,14 +42,12 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncFullSchemaTable',
             model_properties: {
               columns: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'columns',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SyncFullSchemaTableColumnElementType',
                       type: {
@@ -61,7 +58,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               error_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'errorId',
@@ -70,7 +66,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               has_error: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'hasError',
@@ -79,7 +74,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -88,7 +82,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               quoted_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'quotedName',

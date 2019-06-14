@@ -49,7 +49,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ImportExportDatabaseDefinition',
           type: {
@@ -57,7 +56,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'ImportExportDatabaseDefinition',
             model_properties: {
               database_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'databaseName',
                 type: {
@@ -65,7 +63,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               edition: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'edition',
                 type: {
@@ -73,7 +70,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               service_objective_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceObjectiveName',
                 type: {
@@ -81,7 +77,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               max_size_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxSizeBytes',
                 type: {
@@ -89,7 +84,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_key_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageKeyType',
                 type: {
@@ -97,7 +91,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_key: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageKey',
                 type: {
@@ -105,7 +98,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               storage_uri: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageUri',
                 type: {
@@ -113,7 +105,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               administrator_login: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'administratorLogin',
                 type: {
@@ -121,7 +112,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               administrator_login_password: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'administratorLoginPassword',
                 type: {
@@ -129,7 +119,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               authentication_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'authenticationType',
                 type: {

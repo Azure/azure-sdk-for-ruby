@@ -6,7 +6,7 @@
 module Azure::SQL::Mgmt::V2017_03_01_preview
   module Models
     #
-    # A list of long term retention bacukps.
+    # A list of long term retention backups.
     #
     class RestorePointListResult
 
@@ -25,7 +25,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RestorePointListResult',
           type: {
@@ -33,14 +32,12 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'RestorePointListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RestorePointElementType',
                       type: {
@@ -51,7 +48,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',
