@@ -166,7 +166,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def check_domain_availability_async(subdomain_name, type, custom_headers = nil)
-      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'subdomain_name is nil' if subdomain_name.nil?
       fail ArgumentError, 'type is nil' if type.nil?
@@ -196,7 +195,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => subscription_id},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
