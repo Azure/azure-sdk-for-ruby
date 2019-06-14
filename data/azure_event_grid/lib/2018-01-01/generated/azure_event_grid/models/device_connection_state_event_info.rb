@@ -26,7 +26,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceConnectionStateEventInfo',
           type: {
@@ -34,7 +33,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'DeviceConnectionStateEventInfo',
             model_properties: {
               sequence_number: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sequenceNumber',
                 type: {

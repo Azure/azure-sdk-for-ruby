@@ -43,7 +43,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerRegistryEventTarget',
           type: {
@@ -51,7 +50,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'ContainerRegistryEventTarget',
             model_properties: {
               media_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'mediaType',
                 type: {
@@ -59,7 +57,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               size: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'size',
                 type: {
@@ -67,7 +64,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               digest: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'digest',
                 type: {
@@ -75,7 +71,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               length: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'length',
                 type: {
@@ -83,7 +78,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               repository: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'repository',
                 type: {
@@ -91,7 +85,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'url',
                 type: {
@@ -99,7 +92,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               tag: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tag',
                 type: {
