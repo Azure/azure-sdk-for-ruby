@@ -62,7 +62,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetVMProfile',
           type: {
@@ -70,7 +69,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineScaleSetVMProfile',
             model_properties: {
               os_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'osProfile',
                 type: {
@@ -79,7 +77,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               storage_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageProfile',
                 type: {
@@ -88,7 +85,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               network_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkProfile',
                 type: {
@@ -97,7 +93,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               diagnostics_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'diagnosticsProfile',
                 type: {
@@ -106,7 +101,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               extension_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensionProfile',
                 type: {
@@ -115,7 +109,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               license_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'licenseType',
                 type: {
@@ -123,7 +116,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               priority: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'priority',
                 type: {
@@ -131,7 +123,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               eviction_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'evictionPolicy',
                 type: {

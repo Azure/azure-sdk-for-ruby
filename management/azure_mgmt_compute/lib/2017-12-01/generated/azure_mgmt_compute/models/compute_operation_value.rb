@@ -38,7 +38,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ComputeOperationValue',
           type: {
@@ -46,7 +45,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'ComputeOperationValue',
             model_properties: {
               origin: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'origin',
@@ -55,7 +53,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -64,7 +61,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'display.operation',
@@ -73,7 +69,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               resource: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'display.resource',
@@ -82,7 +77,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'display.description',
@@ -91,7 +85,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               provider: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'display.provider',

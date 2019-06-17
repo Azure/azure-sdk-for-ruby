@@ -24,6 +24,15 @@ module Azure::Compute::Profiles::V2018_03_01
     VirtualMachineRunCommands = Azure::Compute::Mgmt::V2017_03_30::VirtualMachineRunCommands
 
     module Models
+      ResourceSkuRestrictionsType = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictionsType
+      ResourceSkuRestrictionsReasonCode = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictionsReasonCode
+      IPVersion = Azure::Compute::Mgmt::V2017_03_30::Models::IPVersion
+      VirtualMachineScaleSetSkuScaleType = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetSkuScaleType
+      RollingUpgradeStatusCode = Azure::Compute::Mgmt::V2017_03_30::Models::RollingUpgradeStatusCode
+      RollingUpgradeActionType = Azure::Compute::Mgmt::V2017_03_30::Models::RollingUpgradeActionType
+      DiskCreateOption = Azure::Compute::Mgmt::V2017_03_30::Models::DiskCreateOption
+      AccessLevel = Azure::Compute::Mgmt::V2017_03_30::Models::AccessLevel
+      InstanceViewTypes = Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewTypes
       VirtualMachineScaleSetManagedDiskParameters = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetManagedDiskParameters
       VirtualMachineScaleSetOSDisk = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSDisk
       SubResource = Azure::Compute::Mgmt::V2017_03_30::Models::SubResource
@@ -184,15 +193,6 @@ module Azure::Compute::Profiles::V2018_03_01
       UpgradeMode = Azure::Compute::Mgmt::V2017_03_30::Models::UpgradeMode
       OperatingSystemStateTypes = Azure::Compute::Mgmt::V2017_03_30::Models::OperatingSystemStateTypes
       ResourceSkuCapacityScaleType = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapacityScaleType
-      ResourceSkuRestrictionsType = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictionsType
-      ResourceSkuRestrictionsReasonCode = Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictionsReasonCode
-      IPVersion = Azure::Compute::Mgmt::V2017_03_30::Models::IPVersion
-      VirtualMachineScaleSetSkuScaleType = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetSkuScaleType
-      RollingUpgradeStatusCode = Azure::Compute::Mgmt::V2017_03_30::Models::RollingUpgradeStatusCode
-      RollingUpgradeActionType = Azure::Compute::Mgmt::V2017_03_30::Models::RollingUpgradeActionType
-      DiskCreateOption = Azure::Compute::Mgmt::V2017_03_30::Models::DiskCreateOption
-      AccessLevel = Azure::Compute::Mgmt::V2017_03_30::Models::AccessLevel
-      InstanceViewTypes = Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewTypes
     end
 
     #
@@ -255,6 +255,33 @@ module Azure::Compute::Profiles::V2018_03_01
     end
 
     class ModelClasses
+      def resource_sku_restrictions_type
+        Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictionsType
+      end
+      def resource_sku_restrictions_reason_code
+        Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictionsReasonCode
+      end
+      def ipversion
+        Azure::Compute::Mgmt::V2017_03_30::Models::IPVersion
+      end
+      def virtual_machine_scale_set_sku_scale_type
+        Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetSkuScaleType
+      end
+      def rolling_upgrade_status_code
+        Azure::Compute::Mgmt::V2017_03_30::Models::RollingUpgradeStatusCode
+      end
+      def rolling_upgrade_action_type
+        Azure::Compute::Mgmt::V2017_03_30::Models::RollingUpgradeActionType
+      end
+      def disk_create_option
+        Azure::Compute::Mgmt::V2017_03_30::Models::DiskCreateOption
+      end
+      def access_level
+        Azure::Compute::Mgmt::V2017_03_30::Models::AccessLevel
+      end
+      def instance_view_types
+        Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewTypes
+      end
       def virtual_machine_scale_set_managed_disk_parameters
         Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetManagedDiskParameters
       end
@@ -734,33 +761,6 @@ module Azure::Compute::Profiles::V2018_03_01
       end
       def resource_sku_capacity_scale_type
         Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuCapacityScaleType
-      end
-      def resource_sku_restrictions_type
-        Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictionsType
-      end
-      def resource_sku_restrictions_reason_code
-        Azure::Compute::Mgmt::V2017_03_30::Models::ResourceSkuRestrictionsReasonCode
-      end
-      def ipversion
-        Azure::Compute::Mgmt::V2017_03_30::Models::IPVersion
-      end
-      def virtual_machine_scale_set_sku_scale_type
-        Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetSkuScaleType
-      end
-      def rolling_upgrade_status_code
-        Azure::Compute::Mgmt::V2017_03_30::Models::RollingUpgradeStatusCode
-      end
-      def rolling_upgrade_action_type
-        Azure::Compute::Mgmt::V2017_03_30::Models::RollingUpgradeActionType
-      end
-      def disk_create_option
-        Azure::Compute::Mgmt::V2017_03_30::Models::DiskCreateOption
-      end
-      def access_level
-        Azure::Compute::Mgmt::V2017_03_30::Models::AccessLevel
-      end
-      def instance_view_types
-        Azure::Compute::Mgmt::V2017_03_30::Models::InstanceViewTypes
       end
     end
   end

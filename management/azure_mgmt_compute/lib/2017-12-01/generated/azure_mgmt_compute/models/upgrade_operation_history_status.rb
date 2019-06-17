@@ -30,7 +30,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpgradeOperationHistoryStatus',
           type: {
@@ -38,7 +37,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'UpgradeOperationHistoryStatus',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -48,7 +46,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -57,7 +54,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',

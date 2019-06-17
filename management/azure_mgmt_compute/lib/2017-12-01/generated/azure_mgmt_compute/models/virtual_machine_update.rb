@@ -47,7 +47,7 @@ module Azure::Compute::Mgmt::V2017_12_01
       # to maximize availability. For more information about availability sets,
       # see [Manage the availability of virtual
       # machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-      # <br><br> For more information on Azure planned maintainance, see
+      # <br><br> For more information on Azure planned maintenance, see
       # [Planned maintenance for virtual machines in
       # Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
       # <br><br> Currently, a VM can only be added to availability set at
@@ -91,7 +91,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineUpdate',
           type: {
@@ -99,13 +98,11 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'VirtualMachineUpdate',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -115,7 +112,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               plan: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'plan',
                 type: {
@@ -124,7 +120,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               hardware_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hardwareProfile',
                 type: {
@@ -133,7 +128,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               storage_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageProfile',
                 type: {
@@ -142,7 +136,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               os_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osProfile',
                 type: {
@@ -151,7 +144,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               network_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkProfile',
                 type: {
@@ -160,7 +152,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               diagnostics_profile: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diagnosticsProfile',
                 type: {
@@ -169,7 +160,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               availability_set: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.availabilitySet',
                 type: {
@@ -178,7 +168,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -187,7 +176,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               instance_view: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.instanceView',
@@ -197,7 +185,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               license_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.licenseType',
                 type: {
@@ -205,7 +192,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               vm_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.vmId',
@@ -214,7 +200,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               identity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {
@@ -223,13 +208,11 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               zones: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'zones',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
