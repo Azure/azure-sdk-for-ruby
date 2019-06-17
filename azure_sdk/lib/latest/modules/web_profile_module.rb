@@ -8,12 +8,12 @@ module Azure::Profiles::Latest
   module Web
     module Mgmt
       ResourceHealthMetadataOperations = Azure::Web::Mgmt::V2018_02_01::ResourceHealthMetadataOperations
-      Provider = Azure::Web::Mgmt::V2018_02_01::Provider
-      Domains = Azure::Web::Mgmt::V2018_02_01::Domains
       AppServiceCertificateOrders = Azure::Web::Mgmt::V2018_02_01::AppServiceCertificateOrders
       CertificateRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::CertificateRegistrationProvider
       TopLevelDomains = Azure::Web::Mgmt::V2018_02_01::TopLevelDomains
       DomainRegistrationProvider = Azure::Web::Mgmt::V2018_02_01::DomainRegistrationProvider
+      Provider = Azure::Web::Mgmt::V2018_02_01::Provider
+      Domains = Azure::Web::Mgmt::V2018_02_01::Domains
       AppServiceEnvironments = Azure::Web::Mgmt::V2018_02_01::AppServiceEnvironments
       AppServicePlans = Azure::Web::Mgmt::V2018_02_01::AppServicePlans
       WebApps = Azure::Web::Mgmt::V2018_02_01::WebApps
@@ -249,10 +249,10 @@ module Azure::Profiles::Latest
         AzureStorageState = Azure::Web::Mgmt::V2018_02_01::Models::AzureStorageState
         FtpsState = Azure::Web::Mgmt::V2018_02_01::Models::FtpsState
         DomainStatus = Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
-        Deployment = Azure::Web::Mgmt::V2018_02_01::Models::Deployment
         DnsType = Azure::Web::Mgmt::V2018_02_01::Models::DnsType
         DomainType = Azure::Web::Mgmt::V2018_02_01::Models::DomainType
         OperationStatus = Azure::Web::Mgmt::V2018_02_01::Models::OperationStatus
+        Deployment = Azure::Web::Mgmt::V2018_02_01::Models::Deployment
         Resource = Azure::Web::Mgmt::V2018_02_01::Models::Resource
         Snapshot = Azure::Web::Mgmt::V2018_02_01::Models::Snapshot
         AzureTableStorageApplicationLogsConfig = Azure::Web::Mgmt::V2018_02_01::Models::AzureTableStorageApplicationLogsConfig
@@ -362,7 +362,7 @@ module Azure::Profiles::Latest
       end
 
       class WebManagementClass
-        attr_reader :resource_health_metadata_operations, :provider, :domains, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :app_service_environments, :app_service_plans, :web_apps, :certificates, :deleted_web_apps, :diagnostics, :recommendations, :configurable, :base_url, :options, :model_classes
+        attr_reader :resource_health_metadata_operations, :app_service_certificate_orders, :certificate_registration_provider, :top_level_domains, :domain_registration_provider, :provider, :domains, :app_service_environments, :app_service_plans, :web_apps, :certificates, :deleted_web_apps, :diagnostics, :recommendations, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -373,12 +373,12 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
           @resource_health_metadata_operations = @client_0.resource_health_metadata_operations
-          @provider = @client_0.provider
-          @domains = @client_0.domains
           @app_service_certificate_orders = @client_0.app_service_certificate_orders
           @certificate_registration_provider = @client_0.certificate_registration_provider
           @top_level_domains = @client_0.top_level_domains
           @domain_registration_provider = @client_0.domain_registration_provider
+          @provider = @client_0.provider
+          @domains = @client_0.domains
           @app_service_environments = @client_0.app_service_environments
           @app_service_plans = @client_0.app_service_plans
           @web_apps = @client_0.web_apps
@@ -1082,9 +1082,6 @@ module Azure::Profiles::Latest
           def domain_status
             Azure::Web::Mgmt::V2018_02_01::Models::DomainStatus
           end
-          def deployment
-            Azure::Web::Mgmt::V2018_02_01::Models::Deployment
-          end
           def dns_type
             Azure::Web::Mgmt::V2018_02_01::Models::DnsType
           end
@@ -1093,6 +1090,9 @@ module Azure::Profiles::Latest
           end
           def operation_status
             Azure::Web::Mgmt::V2018_02_01::Models::OperationStatus
+          end
+          def deployment
+            Azure::Web::Mgmt::V2018_02_01::Models::Deployment
           end
           def resource
             Azure::Web::Mgmt::V2018_02_01::Models::Resource
