@@ -26,7 +26,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorBody',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
             class_name: 'ErrorBody',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 type: {
@@ -42,7 +40,6 @@ module Azure::CognitiveServices::Mgmt::V2016_02_01_preview
                 }
               },
               message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'message',
                 type: {

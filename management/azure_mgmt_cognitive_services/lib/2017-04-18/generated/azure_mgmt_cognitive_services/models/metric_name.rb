@@ -25,7 +25,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricName',
           type: {
@@ -33,7 +32,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'MetricName',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
@@ -42,7 +40,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               localized_value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'localizedValue',
