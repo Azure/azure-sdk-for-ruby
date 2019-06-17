@@ -25,7 +25,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProfileEnumValidValuesFormat',
           type: {
@@ -33,7 +32,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'ProfileEnumValidValuesFormat',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -41,13 +39,11 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               localized_value_names: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedValueNames',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

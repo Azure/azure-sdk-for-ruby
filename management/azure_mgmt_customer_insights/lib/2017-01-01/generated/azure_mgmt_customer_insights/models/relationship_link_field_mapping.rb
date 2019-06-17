@@ -29,7 +29,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RelationshipLinkFieldMapping',
           type: {
@@ -37,7 +36,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'RelationshipLinkFieldMapping',
             model_properties: {
               interaction_field_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'interactionFieldName',
                 type: {
@@ -45,7 +43,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               link_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'linkType',
                 type: {
@@ -54,7 +51,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               relationship_field_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'relationshipFieldName',
                 type: {

@@ -31,7 +31,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StrongId',
           type: {
@@ -39,13 +38,11 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'StrongId',
             model_properties: {
               key_property_names: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyPropertyNames',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -55,7 +52,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               strong_id_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'strongIdName',
                 type: {
@@ -63,13 +59,11 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -79,13 +73,11 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

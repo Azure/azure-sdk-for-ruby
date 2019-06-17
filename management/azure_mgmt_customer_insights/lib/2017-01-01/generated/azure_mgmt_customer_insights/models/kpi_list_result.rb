@@ -57,7 +57,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KpiListResult',
           type: {
@@ -65,13 +64,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'KpiListResult',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KpiResourceFormatElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

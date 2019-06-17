@@ -33,7 +33,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TypePropertiesMapping',
           type: {
@@ -41,7 +40,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'TypePropertiesMapping',
             model_properties: {
               interaction_type_property_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'interactionTypePropertyName',
                 type: {
@@ -49,7 +47,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               profile_type_property_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'profileTypePropertyName',
                 type: {
@@ -57,7 +54,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               is_profile_type_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isProfileTypeId',
                 type: {
@@ -65,7 +61,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               link_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'linkType',
                 type: {

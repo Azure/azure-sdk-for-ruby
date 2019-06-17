@@ -36,8 +36,8 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
     #
     # @return [ImageDefinition] operation results.
     #
-    def get_upload_url_for_entity_type(resource_group_name, hub_name, parameters, custom_headers:nil)
-      response = get_upload_url_for_entity_type_async(resource_group_name, hub_name, parameters, custom_headers:custom_headers).value!
+    def get_upload_url_for_entity_type(resource_group_name, hub_name, parameters, custom_headers = nil)
+      response = get_upload_url_for_entity_type_async(resource_group_name, hub_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -53,8 +53,8 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_upload_url_for_entity_type_with_http_info(resource_group_name, hub_name, parameters, custom_headers:nil)
-      get_upload_url_for_entity_type_async(resource_group_name, hub_name, parameters, custom_headers:custom_headers).value!
+    def get_upload_url_for_entity_type_with_http_info(resource_group_name, hub_name, parameters, custom_headers = nil)
+      get_upload_url_for_entity_type_async(resource_group_name, hub_name, parameters, custom_headers).value!
     end
 
     #
@@ -69,7 +69,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_upload_url_for_entity_type_async(resource_group_name, hub_name, parameters, custom_headers:nil)
+    def get_upload_url_for_entity_type_async(resource_group_name, hub_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'hub_name is nil' if hub_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -78,11 +78,12 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::GetImageUploadUrlInput.mapper()
@@ -142,8 +143,8 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
     #
     # @return [ImageDefinition] operation results.
     #
-    def get_upload_url_for_data(resource_group_name, hub_name, parameters, custom_headers:nil)
-      response = get_upload_url_for_data_async(resource_group_name, hub_name, parameters, custom_headers:custom_headers).value!
+    def get_upload_url_for_data(resource_group_name, hub_name, parameters, custom_headers = nil)
+      response = get_upload_url_for_data_async(resource_group_name, hub_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -159,8 +160,8 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_upload_url_for_data_with_http_info(resource_group_name, hub_name, parameters, custom_headers:nil)
-      get_upload_url_for_data_async(resource_group_name, hub_name, parameters, custom_headers:custom_headers).value!
+    def get_upload_url_for_data_with_http_info(resource_group_name, hub_name, parameters, custom_headers = nil)
+      get_upload_url_for_data_async(resource_group_name, hub_name, parameters, custom_headers).value!
     end
 
     #
@@ -175,7 +176,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_upload_url_for_data_async(resource_group_name, hub_name, parameters, custom_headers:nil)
+    def get_upload_url_for_data_async(resource_group_name, hub_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'hub_name is nil' if hub_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -184,11 +185,12 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::GetImageUploadUrlInput.mapper()

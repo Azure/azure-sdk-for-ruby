@@ -26,7 +26,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RelationshipTypeFieldMapping',
           type: {
@@ -34,7 +33,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'RelationshipTypeFieldMapping',
             model_properties: {
               profile_field_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'profileFieldName',
                 type: {
@@ -42,7 +40,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               related_profile_key_property: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'relatedProfileKeyProperty',
                 type: {

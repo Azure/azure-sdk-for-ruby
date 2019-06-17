@@ -31,7 +31,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectorMappingStructure',
           type: {
@@ -39,7 +38,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'ConnectorMappingStructure',
             model_properties: {
               property_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'propertyName',
                 type: {
@@ -47,7 +45,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               column_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'columnName',
                 type: {
@@ -55,7 +52,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               custom_format_specifier: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'customFormatSpecifier',
                 type: {
@@ -63,7 +59,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               is_encrypted: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isEncrypted',
                 type: {

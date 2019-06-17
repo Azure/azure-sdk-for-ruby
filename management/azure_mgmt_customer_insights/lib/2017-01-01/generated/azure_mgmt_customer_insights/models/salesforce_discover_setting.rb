@@ -22,7 +22,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SalesforceDiscoverSetting',
           type: {
@@ -30,7 +29,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'SalesforceDiscoverSetting',
             model_properties: {
               salesforce_connection_string_secret_url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'salesforceConnectionStringSecretUrl',
                 type: {
