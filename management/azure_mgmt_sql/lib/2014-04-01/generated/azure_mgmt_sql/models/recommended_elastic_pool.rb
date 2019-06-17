@@ -6,7 +6,7 @@
 module Azure::SQL::Mgmt::V2014_04_01
   module Models
     #
-    # Represents a recommented elastic pool.
+    # Represents a recommended elastic pool.
     #
     class RecommendedElasticPool < ProxyResource
 
@@ -14,7 +14,8 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       # @return [ElasticPoolEdition] The edition of the recommended elastic
       # pool. The ElasticPoolEdition enumeration contains all the valid
-      # editions. Possible values include: 'Basic', 'Standard', 'Premium'
+      # editions. Possible values include: 'Basic', 'Standard', 'Premium',
+      # 'GeneralPurpose', 'BusinessCritical'
       attr_accessor :database_edition
 
       # @return [Float] The DTU for the recommended elastic pool.
@@ -56,7 +57,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedElasticPool',
           type: {
@@ -64,7 +64,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'RecommendedElasticPool',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -73,7 +72,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -82,7 +80,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -91,7 +88,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_edition: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseEdition',
@@ -100,7 +96,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               dtu: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dtu',
                 type: {
@@ -108,7 +103,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_dtu_min: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.databaseDtuMin',
                 type: {
@@ -116,7 +110,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_dtu_max: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.databaseDtuMax',
                 type: {
@@ -124,7 +117,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_mb: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageMB',
                 type: {
@@ -132,7 +124,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               observation_period_start: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.observationPeriodStart',
@@ -141,7 +132,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               observation_period_end: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.observationPeriodEnd',
@@ -150,7 +140,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               max_observed_dtu: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maxObservedDtu',
@@ -159,7 +148,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               max_observed_storage_mb: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maxObservedStorageMB',
@@ -168,14 +156,12 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               databases: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databases',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DatabaseElementType',
                       type: {
@@ -186,14 +172,12 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               metrics: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.metrics',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecommendedElasticPoolMetricElementType',
                       type: {

@@ -23,7 +23,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServerDnsAliasAcquisition',
           type: {
@@ -31,7 +30,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'ServerDnsAliasAcquisition',
             model_properties: {
               old_server_dns_alias_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'oldServerDnsAliasId',
                 type: {

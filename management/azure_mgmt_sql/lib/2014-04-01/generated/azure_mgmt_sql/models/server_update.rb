@@ -53,7 +53,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ServerUpdate',
           type: {
@@ -61,7 +60,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ServerUpdate',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -70,7 +68,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -79,7 +76,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -88,13 +84,11 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -104,7 +98,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               fully_qualified_domain_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.fullyQualifiedDomainName',
@@ -113,7 +106,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.version',
                 type: {
@@ -121,7 +113,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               administrator_login: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.administratorLogin',
                 type: {
@@ -129,7 +120,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               administrator_login_password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.administratorLoginPassword',
                 type: {
@@ -137,7 +127,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               external_administrator_sid: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.externalAdministratorSid',
@@ -146,7 +135,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               external_administrator_login: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.externalAdministratorLogin',
@@ -155,7 +143,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',

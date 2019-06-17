@@ -44,7 +44,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DataMaskingPolicy',
           type: {
@@ -52,7 +51,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'DataMaskingPolicy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -61,7 +59,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -70,7 +67,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -79,7 +75,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               data_masking_state: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.dataMaskingState',
                 type: {
@@ -88,7 +83,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               exempt_principals: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.exemptPrincipals',
                 type: {
@@ -96,7 +90,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               application_principals: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.applicationPrincipals',
@@ -105,7 +98,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               masking_level: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maskingLevel',
@@ -114,7 +106,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -123,7 +114,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',

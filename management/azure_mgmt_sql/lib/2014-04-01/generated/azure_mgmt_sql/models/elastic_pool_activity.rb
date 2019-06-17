@@ -83,7 +83,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ElasticPoolActivity',
           type: {
@@ -91,7 +90,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ElasticPoolActivity',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -100,7 +98,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -109,7 +106,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -118,7 +114,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -126,7 +121,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endTime',
@@ -135,7 +129,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               error_code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorCode',
@@ -144,7 +137,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               error_message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorMessage',
@@ -153,7 +145,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               error_severity: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorSeverity',
@@ -162,7 +153,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               operation: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.operation',
@@ -171,7 +161,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               operation_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.operationId',
@@ -180,7 +169,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               percent_complete: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.percentComplete',
@@ -189,7 +177,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_database_dtu_max: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedDatabaseDtuMax',
@@ -198,7 +185,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_database_dtu_min: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedDatabaseDtuMin',
@@ -207,7 +193,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_dtu: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedDtu',
@@ -216,7 +201,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_elastic_pool_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedElasticPoolName',
@@ -225,7 +209,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_storage_limit_in_gb: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedStorageLimitInGB',
@@ -234,7 +217,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               elastic_pool_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.elasticPoolName',
@@ -243,7 +225,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               server_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serverName',
@@ -252,7 +233,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTime',
@@ -261,7 +241,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -270,7 +249,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_storage_limit_in_mb: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedStorageLimitInMB',
@@ -279,7 +257,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_database_dtu_guarantee: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedDatabaseDtuGuarantee',
@@ -288,7 +265,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_database_dtu_cap: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedDatabaseDtuCap',
@@ -297,7 +273,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_dtu_guarantee: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requestedDtuGuarantee',

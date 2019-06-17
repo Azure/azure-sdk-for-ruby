@@ -36,7 +36,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RestorePoint',
           type: {
@@ -44,7 +43,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'RestorePoint',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,7 +51,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,7 +59,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,7 +67,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -80,7 +75,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               restore_point_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.restorePointType',
@@ -90,7 +84,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               earliest_restore_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.earliestRestoreDate',
@@ -99,7 +92,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               restore_point_creation_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.restorePointCreationDate',
@@ -108,7 +100,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               restore_point_label: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.restorePointLabel',

@@ -47,7 +47,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RestorableDroppedDatabase',
           type: {
@@ -55,7 +54,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'RestorableDroppedDatabase',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -64,7 +62,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -73,7 +70,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,7 +78,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -91,7 +86,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseName',
@@ -100,7 +94,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               edition: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.edition',
@@ -109,7 +102,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               max_size_bytes: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maxSizeBytes',
@@ -118,7 +110,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               service_level_objective: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serviceLevelObjective',
@@ -127,7 +118,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               elastic_pool_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.elasticPoolName',
@@ -136,7 +126,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               creation_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationDate',
@@ -145,7 +134,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               deletion_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.deletionDate',
@@ -154,7 +142,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               earliest_restore_date: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.earliestRestoreDate',
