@@ -26,7 +26,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectorMappingAvailability',
           type: {
@@ -34,7 +33,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'ConnectorMappingAvailability',
             model_properties: {
               frequency: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'frequency',
                 type: {
@@ -43,7 +41,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               interval: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'interval',
                 type: {

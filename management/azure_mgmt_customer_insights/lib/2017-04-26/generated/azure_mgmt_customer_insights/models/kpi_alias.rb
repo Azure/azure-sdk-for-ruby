@@ -25,7 +25,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KpiAlias',
           type: {
@@ -33,7 +32,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'KpiAlias',
             model_properties: {
               alias_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'aliasName',
                 type: {
@@ -41,7 +39,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               expression: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'expression',
                 type: {

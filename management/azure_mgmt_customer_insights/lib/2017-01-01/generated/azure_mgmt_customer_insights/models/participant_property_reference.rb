@@ -27,7 +27,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ParticipantPropertyReference',
           type: {
@@ -35,7 +34,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'ParticipantPropertyReference',
             model_properties: {
               interaction_property_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'interactionPropertyName',
                 type: {
@@ -43,7 +41,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               profile_property_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'profilePropertyName',
                 type: {

@@ -35,7 +35,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CrmConnectorProperties',
           type: {
@@ -43,7 +42,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'CrmConnectorProperties',
             model_properties: {
               connection_string: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'connectionString',
                 type: {
@@ -51,7 +49,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               organization_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'organizationId',
                 type: {
@@ -59,7 +56,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               organization_url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'organizationUrl',
                 type: {
@@ -67,13 +63,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               entities: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'entities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CrmConnectorEntitiesElementType',
                       type: {
@@ -84,7 +78,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               access_token: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'accessToken',
                 type: {

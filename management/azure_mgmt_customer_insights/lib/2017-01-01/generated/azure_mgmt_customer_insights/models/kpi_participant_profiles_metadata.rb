@@ -22,7 +22,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KpiParticipantProfilesMetadata',
           type: {
@@ -30,7 +29,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'KpiParticipantProfilesMetadata',
             model_properties: {
               type_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'typeName',
                 type: {

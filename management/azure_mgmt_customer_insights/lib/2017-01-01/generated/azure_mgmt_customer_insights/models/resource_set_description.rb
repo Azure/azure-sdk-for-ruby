@@ -26,7 +26,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSetDescription',
           type: {
@@ -34,13 +33,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'ResourceSetDescription',
             model_properties: {
               elements: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'elements',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -50,13 +47,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               exceptions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'exceptions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

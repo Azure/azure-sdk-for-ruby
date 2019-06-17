@@ -47,7 +47,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectorMappingProperties',
           type: {
@@ -55,7 +54,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
             class_name: 'ConnectorMappingProperties',
             model_properties: {
               folder_path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'folderPath',
                 type: {
@@ -63,7 +61,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               file_filter: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'fileFilter',
                 type: {
@@ -71,7 +68,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               has_header: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hasHeader',
                 type: {
@@ -79,7 +75,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               error_management: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'errorManagement',
                 type: {
@@ -88,7 +83,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               format: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'format',
                 default_value: {},
@@ -98,7 +92,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               availability: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'availability',
                 type: {
@@ -107,13 +100,11 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               structure: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'structure',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ConnectorMappingStructureElementType',
                       type: {
@@ -124,7 +115,6 @@ module Azure::CustomerInsights::Mgmt::V2017_01_01
                 }
               },
               complete_operation: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'completeOperation',
                 type: {

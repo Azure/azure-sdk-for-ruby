@@ -47,7 +47,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WidgetTypeResourceFormat',
           type: {
@@ -55,7 +54,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'WidgetTypeResourceFormat',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -64,7 +62,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -73,7 +70,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,7 +78,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               widget_type_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.widgetTypeName',
@@ -91,7 +86,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               definition: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.definition',
                 type: {
@@ -99,7 +93,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -107,13 +100,11 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -123,7 +114,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               image_url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.imageUrl',
                 type: {
@@ -131,7 +121,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.tenantId',
@@ -140,7 +129,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               widget_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.widgetVersion',
                 type: {
@@ -148,7 +136,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               changed: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.changed',
@@ -157,7 +144,6 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
