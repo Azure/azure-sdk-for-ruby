@@ -31,7 +31,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SearchResultsResponse',
           type: {
@@ -39,7 +38,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchResultsResponse',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,7 +46,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metaData',
                 type: {
@@ -57,13 +54,11 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -73,7 +68,6 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

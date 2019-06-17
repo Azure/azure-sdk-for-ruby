@@ -13,8 +13,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       include MsRestAzure
 
       # @return [SkuNameEnum] The name of the SKU. Possible values include:
-      # 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
-      # 'Standalone'
+      # 'Free', 'Standard', 'Premium', 'PerNode', 'PerGB2018', 'Standalone'
       attr_accessor :name
 
 
@@ -24,7 +23,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -32,7 +30,6 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'Sku',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
