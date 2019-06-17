@@ -29,7 +29,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobAgent',
           type: {
@@ -37,7 +36,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobAgent',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,7 +44,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,7 +52,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,7 +60,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -72,13 +67,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -88,7 +81,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               sku: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -97,7 +89,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               database_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.databaseId',
                 type: {
@@ -105,7 +96,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',

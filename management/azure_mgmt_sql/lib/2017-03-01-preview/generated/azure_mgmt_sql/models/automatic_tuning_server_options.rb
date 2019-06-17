@@ -36,7 +36,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AutomaticTuningServerOptions',
           type: {
@@ -44,7 +43,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'AutomaticTuningServerOptions',
             model_properties: {
               desired_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'desiredState',
                 type: {
@@ -53,7 +51,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               actual_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'actualState',
@@ -63,7 +60,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               reason_code: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reasonCode',
@@ -72,7 +68,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               reason_desc: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reasonDesc',

@@ -64,7 +64,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobExecution',
           type: {
@@ -72,7 +71,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'JobExecution',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -81,7 +79,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -90,7 +87,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -99,7 +95,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               job_version: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.jobVersion',
@@ -108,7 +103,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               step_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.stepName',
@@ -117,7 +111,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               step_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.stepId',
@@ -126,7 +119,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               job_execution_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.jobExecutionId',
@@ -135,7 +127,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               lifecycle: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lifecycle',
@@ -144,7 +135,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               provisioning_state: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -153,7 +143,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               create_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createTime',
@@ -162,7 +151,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTime',
@@ -171,7 +159,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endTime',
@@ -180,7 +167,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               current_attempts: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.currentAttempts',
                 type: {
@@ -188,7 +174,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               current_attempt_start_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentAttemptStartTime',
@@ -197,7 +182,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               last_message: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastMessage',
@@ -206,7 +190,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               target: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.target',

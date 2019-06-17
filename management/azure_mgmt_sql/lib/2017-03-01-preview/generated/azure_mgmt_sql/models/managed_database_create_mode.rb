@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       Default = "Default"
       RestoreExternalBackup = "RestoreExternalBackup"
       PointInTimeRestore = "PointInTimeRestore"
+      Recovery = "Recovery"
     end
   end
 end

@@ -16,7 +16,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # ISO 8601 format.
       attr_accessor :weekly_retention
 
-      # @return [String] The montly retention policy for an LTR backup in an
+      # @return [String] The monthly retention policy for an LTR backup in an
       # ISO 8601 format.
       attr_accessor :monthly_retention
 
@@ -35,7 +35,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BackupLongTermRetentionPolicy',
           type: {
@@ -43,7 +42,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
             class_name: 'BackupLongTermRetentionPolicy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,7 +50,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,7 +58,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -70,7 +66,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               weekly_retention: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.weeklyRetention',
                 type: {
@@ -78,7 +73,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               monthly_retention: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.monthlyRetention',
                 type: {
@@ -86,7 +80,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               yearly_retention: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.yearlyRetention',
                 type: {
@@ -94,7 +87,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 }
               },
               week_of_year: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.weekOfYear',
                 type: {

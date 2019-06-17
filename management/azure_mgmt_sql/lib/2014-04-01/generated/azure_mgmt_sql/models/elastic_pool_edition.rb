@@ -12,6 +12,8 @@ module Azure::SQL::Mgmt::V2014_04_01
       Basic = "Basic"
       Standard = "Standard"
       Premium = "Premium"
+      GeneralPurpose = "GeneralPurpose"
+      BusinessCritical = "BusinessCritical"
     end
   end
 end

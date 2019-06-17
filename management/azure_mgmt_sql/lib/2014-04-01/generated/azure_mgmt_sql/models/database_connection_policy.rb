@@ -46,7 +46,6 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DatabaseConnectionPolicy',
           type: {
@@ -54,7 +53,6 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'DatabaseConnectionPolicy',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -63,7 +61,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -72,7 +69,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -81,7 +77,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -90,7 +85,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -99,7 +93,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               security_enabled_access: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.securityEnabledAccess',
                 type: {
@@ -107,7 +100,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               proxy_dns_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.proxyDnsName',
                 type: {
@@ -115,7 +107,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               proxy_port: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.proxyPort',
                 type: {
@@ -123,7 +114,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               visibility: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.visibility',
                 type: {
@@ -131,7 +121,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               use_server_default: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.useServerDefault',
                 type: {
@@ -139,7 +128,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               redirection_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.redirectionState',
                 type: {
@@ -147,7 +135,6 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.state',
                 type: {
