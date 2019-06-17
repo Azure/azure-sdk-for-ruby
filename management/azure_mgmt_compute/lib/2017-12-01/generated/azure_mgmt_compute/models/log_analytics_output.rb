@@ -22,7 +22,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LogAnalyticsOutput',
           type: {
@@ -30,7 +29,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'LogAnalyticsOutput',
             model_properties: {
               output: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'output',

@@ -34,8 +34,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [LogAnalyticsOperationResult] operation results.
     #
-    def export_request_rate_by_interval(parameters, location, custom_headers:nil)
-      response = export_request_rate_by_interval_async(parameters, location, custom_headers:custom_headers).value!
+    def export_request_rate_by_interval(parameters, location, custom_headers = nil)
+      response = export_request_rate_by_interval_async(parameters, location, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,9 +50,9 @@ module Azure::Compute::Mgmt::V2017_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def export_request_rate_by_interval_async(parameters, location, custom_headers:nil)
+    def export_request_rate_by_interval_async(parameters, location, custom_headers = nil)
       # Send request
-      promise = begin_export_request_rate_by_interval_async(parameters, location, custom_headers:custom_headers)
+      promise = begin_export_request_rate_by_interval_async(parameters, location, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -62,7 +62,7 @@ module Azure::Compute::Mgmt::V2017_12_01
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
       promise
@@ -81,8 +81,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [LogAnalyticsOperationResult] operation results.
     #
-    def export_throttled_requests(parameters, location, custom_headers:nil)
-      response = export_throttled_requests_async(parameters, location, custom_headers:custom_headers).value!
+    def export_throttled_requests(parameters, location, custom_headers = nil)
+      response = export_throttled_requests_async(parameters, location, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -97,9 +97,9 @@ module Azure::Compute::Mgmt::V2017_12_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def export_throttled_requests_async(parameters, location, custom_headers:nil)
+    def export_throttled_requests_async(parameters, location, custom_headers = nil)
       # Send request
-      promise = begin_export_throttled_requests_async(parameters, location, custom_headers:custom_headers)
+      promise = begin_export_throttled_requests_async(parameters, location, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -109,7 +109,7 @@ module Azure::Compute::Mgmt::V2017_12_01
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
       promise
@@ -128,8 +128,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [LogAnalyticsOperationResult] operation results.
     #
-    def begin_export_request_rate_by_interval(parameters, location, custom_headers:nil)
-      response = begin_export_request_rate_by_interval_async(parameters, location, custom_headers:custom_headers).value!
+    def begin_export_request_rate_by_interval(parameters, location, custom_headers = nil)
+      response = begin_export_request_rate_by_interval_async(parameters, location, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -146,8 +146,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_export_request_rate_by_interval_with_http_info(parameters, location, custom_headers:nil)
-      begin_export_request_rate_by_interval_async(parameters, location, custom_headers:custom_headers).value!
+    def begin_export_request_rate_by_interval_with_http_info(parameters, location, custom_headers = nil)
+      begin_export_request_rate_by_interval_async(parameters, location, custom_headers).value!
     end
 
     #
@@ -163,20 +163,20 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_export_request_rate_by_interval_async(parameters, location, custom_headers:nil)
+    def begin_export_request_rate_by_interval_async(parameters, location, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, "'location' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !location.nil? && location.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::RequestRateByIntervalInput.mapper()
@@ -237,8 +237,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [LogAnalyticsOperationResult] operation results.
     #
-    def begin_export_throttled_requests(parameters, location, custom_headers:nil)
-      response = begin_export_throttled_requests_async(parameters, location, custom_headers:custom_headers).value!
+    def begin_export_throttled_requests(parameters, location, custom_headers = nil)
+      response = begin_export_throttled_requests_async(parameters, location, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -255,8 +255,8 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_export_throttled_requests_with_http_info(parameters, location, custom_headers:nil)
-      begin_export_throttled_requests_async(parameters, location, custom_headers:custom_headers).value!
+    def begin_export_throttled_requests_with_http_info(parameters, location, custom_headers = nil)
+      begin_export_throttled_requests_async(parameters, location, custom_headers).value!
     end
 
     #
@@ -272,20 +272,20 @@ module Azure::Compute::Mgmt::V2017_12_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_export_throttled_requests_async(parameters, location, custom_headers:nil)
+    def begin_export_throttled_requests_async(parameters, location, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, "'location' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !location.nil? && location.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
       request_mapper = Azure::Compute::Mgmt::V2017_12_01::Models::ThrottledRequestsInput.mapper()

@@ -24,7 +24,6 @@ module Azure::Compute::Mgmt::V2017_12_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RequestRateByIntervalInput',
           type: {
@@ -32,7 +31,6 @@ module Azure::Compute::Mgmt::V2017_12_01
             class_name: 'RequestRateByIntervalInput',
             model_properties: {
               blob_container_sas_uri: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'blobContainerSasUri',
                 type: {
@@ -40,7 +38,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               from_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'fromTime',
                 type: {
@@ -48,7 +45,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               to_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'toTime',
                 type: {
@@ -56,7 +52,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               group_by_throttle_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupByThrottlePolicy',
                 type: {
@@ -64,7 +59,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               group_by_operation_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupByOperationName',
                 type: {
@@ -72,7 +66,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               group_by_resource_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupByResourceName',
                 type: {
@@ -80,7 +73,6 @@ module Azure::Compute::Mgmt::V2017_12_01
                 }
               },
               interval_length: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'intervalLength',
                 type: {

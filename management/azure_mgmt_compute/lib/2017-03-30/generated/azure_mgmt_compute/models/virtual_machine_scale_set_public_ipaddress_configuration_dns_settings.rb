@@ -27,7 +27,6 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings',
           type: {
@@ -35,7 +34,6 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings',
             model_properties: {
               domain_name_label: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'domainNameLabel',
                 type: {
