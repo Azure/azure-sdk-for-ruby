@@ -6,7 +6,7 @@
 module Azure::Compute::Mgmt::V2017_09_01
   module Models
     #
-    # The Compute List Skus operation response.
+    # The List Resource Skus operation response.
     #
     class ResourceSkusResult
 
@@ -17,8 +17,8 @@ module Azure::Compute::Mgmt::V2017_09_01
       # subscription.
       attr_accessor :value
 
-      # @return [String] The uri to fetch the next page of Compute Skus. Call
-      # ListNext() with this to fetch the next page of VMSS Skus.
+      # @return [String] The URI to fetch the next page of Resource Skus. Call
+      # ListNext() with this URI to fetch the next page of Resource Skus
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
