@@ -31,7 +31,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SymmetricEncryptedSecret',
           type: {
@@ -39,7 +38,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'SymmetricEncryptedSecret',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
@@ -47,7 +45,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               value_certificate_thumbprint: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'valueCertificateThumbprint',
                 type: {
@@ -55,7 +52,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               encryption_algorithm: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'encryptionAlgorithm',
                 type: {

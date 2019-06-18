@@ -120,7 +120,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Device',
           type: {
@@ -128,7 +127,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Device',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -137,7 +135,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -146,7 +143,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -155,7 +151,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -164,7 +159,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               friendly_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.friendlyName',
                 type: {
@@ -172,7 +166,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               activation_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.activationTime',
                 type: {
@@ -180,7 +173,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               culture: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.culture',
                 type: {
@@ -188,7 +180,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_description: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.deviceDescription',
                 type: {
@@ -196,7 +187,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_software_version: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.deviceSoftwareVersion',
                 type: {
@@ -204,7 +194,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               friendly_software_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.friendlySoftwareName',
                 type: {
@@ -212,7 +201,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_configuration_status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.deviceConfigurationStatus',
                 type: {
@@ -221,7 +209,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               target_iqn: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.targetIqn',
                 type: {
@@ -229,7 +216,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               model_description: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.modelDescription',
                 type: {
@@ -237,7 +223,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.status',
                 type: {
@@ -246,7 +231,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               serial_number: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.serialNumber',
                 type: {
@@ -254,7 +238,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.deviceType',
                 type: {
@@ -263,7 +246,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               active_controller: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.activeController',
                 type: {
@@ -272,7 +254,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               friendly_software_version: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.friendlySoftwareVersion',
                 type: {
@@ -280,7 +261,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               available_local_storage_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.availableLocalStorageInBytes',
                 type: {
@@ -288,7 +268,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               available_tiered_storage_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.availableTieredStorageInBytes',
                 type: {
@@ -296,7 +275,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               provisioned_tiered_storage_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisionedTieredStorageInBytes',
                 type: {
@@ -304,7 +282,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               provisioned_local_storage_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisionedLocalStorageInBytes',
                 type: {
@@ -312,7 +289,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               provisioned_volume_size_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisionedVolumeSizeInBytes',
                 type: {
@@ -320,7 +296,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               using_storage_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.usingStorageInBytes',
                 type: {
@@ -328,7 +303,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               total_tiered_storage_in_bytes: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.totalTieredStorageInBytes',
                 type: {
@@ -336,7 +310,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               agent_group_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.agentGroupVersion',
                 type: {
@@ -344,7 +317,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               network_interface_card_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkInterfaceCardCount',
                 type: {
@@ -352,7 +324,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deviceLocation',
                 type: {
@@ -360,7 +331,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               virtual_machine_api_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.virtualMachineApiType',
@@ -370,7 +340,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.details',
                 type: {
@@ -379,7 +348,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               rollover_details: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.rolloverDetails',
                 type: {

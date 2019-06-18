@@ -23,7 +23,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FeatureFilter',
           type: {
@@ -31,7 +30,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'FeatureFilter',
             model_properties: {
               device_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceId',
                 type: {

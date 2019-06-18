@@ -29,7 +29,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'JobErrorItem',
           type: {
@@ -37,13 +36,11 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'JobErrorItem',
             model_properties: {
               recommendations: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'recommendations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -53,7 +50,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 type: {
@@ -61,7 +57,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'message',
                 type: {

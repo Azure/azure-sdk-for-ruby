@@ -28,7 +28,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AcsConfiguration',
           type: {
@@ -36,7 +35,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'AcsConfiguration',
             model_properties: {
               namespace: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'namespace',
                 type: {
@@ -44,7 +42,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               realm: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'realm',
                 type: {
@@ -52,7 +49,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               service_url: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'serviceUrl',
                 type: {

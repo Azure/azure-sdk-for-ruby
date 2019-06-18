@@ -34,7 +34,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SecuritySettingsPatch',
           type: {
@@ -42,7 +41,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'SecuritySettingsPatch',
             model_properties: {
               remote_management_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.remoteManagementSettings',
                 type: {
@@ -51,7 +49,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_admin_password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deviceAdminPassword',
                 type: {
@@ -60,7 +57,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               snapshot_password: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.snapshotPassword',
                 type: {
@@ -69,7 +65,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               chap_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.chapSettings',
                 type: {
@@ -78,7 +73,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               cloud_appliance_settings: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cloudApplianceSettings',
                 type: {

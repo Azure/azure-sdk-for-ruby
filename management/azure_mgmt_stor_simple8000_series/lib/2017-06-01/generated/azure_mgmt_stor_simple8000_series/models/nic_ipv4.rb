@@ -34,7 +34,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NicIPv4',
           type: {
@@ -42,7 +41,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'NicIPv4',
             model_properties: {
               ipv4address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv4Address',
                 type: {
@@ -50,7 +48,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               ipv4netmask: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv4Netmask',
                 type: {
@@ -58,7 +55,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               ipv4gateway: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv4Gateway',
                 type: {
@@ -66,7 +62,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               controller0ipv4address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'controller0Ipv4Address',
                 type: {
@@ -74,7 +69,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               controller1ipv4address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'controller1Ipv4Address',
                 type: {

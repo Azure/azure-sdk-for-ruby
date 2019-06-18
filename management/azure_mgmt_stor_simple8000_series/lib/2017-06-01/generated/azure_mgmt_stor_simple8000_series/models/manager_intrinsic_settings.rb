@@ -6,7 +6,7 @@
 module Azure::StorSimple8000Series::Mgmt::V2017_06_01
   module Models
     #
-    # Intrinsic settings which refers to the type of the Storsimple Manager.
+    # Intrinsic settings which refers to the type of the StorSimple Manager.
     #
     class ManagerIntrinsicSettings
 
@@ -23,7 +23,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ManagerIntrinsicSettings',
           type: {
@@ -31,7 +30,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'ManagerIntrinsicSettings',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
