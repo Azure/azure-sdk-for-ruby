@@ -35,7 +35,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationStack',
           type: {
@@ -43,7 +42,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'ApplicationStack',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -51,7 +49,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               display: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -59,7 +56,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               dependency: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'dependency',
                 type: {
@@ -67,13 +63,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               major_versions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'majorVersions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StackMajorVersionElementType',
                       type: {
@@ -84,13 +78,11 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               frameworks: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'frameworks',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationStackElementType',
                       type: {

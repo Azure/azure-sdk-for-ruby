@@ -6,7 +6,7 @@
 module Azure::Web::Mgmt::V2015_08_01
   module Models
     #
-    # Collection of certitificateorder certificates.
+    # Collection of certificate order certificates.
     #
     class AppServiceCertificateCollection
 
@@ -57,7 +57,6 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AppServiceCertificateCollection',
           type: {
@@ -65,13 +64,11 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'AppServiceCertificateCollection',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AppServiceCertificateResourceElementType',
                       type: {
@@ -82,7 +79,6 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',

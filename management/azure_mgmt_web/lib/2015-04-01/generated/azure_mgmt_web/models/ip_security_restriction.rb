@@ -26,7 +26,6 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IpSecurityRestriction',
           type: {
@@ -34,7 +33,6 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'IpSecurityRestriction',
             model_properties: {
               ip_address: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'ipAddress',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               subnet_mask: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnetMask',
                 type: {

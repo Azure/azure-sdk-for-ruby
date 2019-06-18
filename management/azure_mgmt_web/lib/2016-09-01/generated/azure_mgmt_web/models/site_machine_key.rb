@@ -31,7 +31,6 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SiteMachineKey',
           type: {
@@ -39,7 +38,6 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'SiteMachineKey',
             model_properties: {
               validation: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'validation',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               validation_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'validationKey',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               decryption: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'decryption',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               decryption_key: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'decryptionKey',
                 type: {

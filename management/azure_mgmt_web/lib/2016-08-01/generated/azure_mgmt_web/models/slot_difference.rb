@@ -42,7 +42,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SlotDifference',
           type: {
@@ -50,7 +49,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SlotDifference',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -59,7 +57,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -68,7 +65,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -76,7 +72,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -85,7 +80,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               slot_difference_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.type',
@@ -94,7 +88,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               setting_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.settingType',
@@ -103,7 +96,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               diff_rule: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.diffRule',
@@ -112,7 +104,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               setting_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.settingName',
@@ -121,7 +112,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               value_in_current_slot: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.valueInCurrentSlot',
@@ -130,7 +120,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               value_in_target_slot: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.valueInTargetSlot',
@@ -139,7 +128,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.description',

@@ -35,7 +35,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'BillingMeter',
           type: {
@@ -43,7 +42,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'BillingMeter',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,7 +50,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,7 +58,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,7 +73,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               meter_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.meterId',
                 type: {
@@ -86,7 +80,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               billing_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.billingLocation',
                 type: {
@@ -94,7 +87,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               short_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.shortName',
                 type: {
@@ -102,7 +94,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               friendly_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.friendlyName',
                 type: {
@@ -110,7 +101,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               resource_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceType',
                 type: {
