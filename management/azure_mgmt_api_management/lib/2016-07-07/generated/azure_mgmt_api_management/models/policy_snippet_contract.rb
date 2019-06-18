@@ -32,7 +32,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PolicySnippetContract',
           type: {
@@ -40,7 +39,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'PolicySnippetContract',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,7 +47,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               content: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'content',
@@ -58,7 +55,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               tool_tip: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'toolTip',
@@ -67,7 +63,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               scope: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'scope',

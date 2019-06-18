@@ -67,7 +67,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProductContract',
           type: {
@@ -75,7 +74,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'ProductContract',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -84,7 +82,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -96,7 +93,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 constraints: {
@@ -108,7 +104,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               terms: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'terms',
                 type: {
@@ -116,7 +111,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               subscription_required: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionRequired',
                 default_value: true,
@@ -125,7 +119,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               approval_required: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'approvalRequired',
                 type: {
@@ -133,7 +126,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               subscriptions_limit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionsLimit',
                 type: {
@@ -141,7 +133,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 default_value: 'NotPublished',

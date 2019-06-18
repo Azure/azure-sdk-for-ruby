@@ -27,7 +27,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ApiManagementServiceSkuProperties',
           type: {
@@ -35,7 +34,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'ApiManagementServiceSkuProperties',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -44,7 +42,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               capacity: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 default_value: 1,

@@ -26,7 +26,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkStatusContract',
           type: {
@@ -34,13 +33,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'NetworkStatusContract',
             model_properties: {
               dns_servers: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'dnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -50,13 +47,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               connectivity_status: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'connectivityStatus',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ConnectivityStatusContractElementType',
                       type: {

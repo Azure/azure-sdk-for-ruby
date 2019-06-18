@@ -44,7 +44,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'OperationResultContract',
           type: {
@@ -52,7 +51,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'OperationResultContract',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,7 +58,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -69,7 +66,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               started: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'started',
                 type: {
@@ -77,7 +73,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               updated: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'updated',
                 type: {
@@ -85,7 +80,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               result_info: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resultInfo',
                 type: {
@@ -93,7 +87,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

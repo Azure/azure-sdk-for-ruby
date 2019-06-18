@@ -41,7 +41,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AdditionalRegion',
           type: {
@@ -49,7 +48,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'AdditionalRegion',
             model_properties: {
               location: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -57,7 +55,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               sku_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'skuType',
                 type: {
@@ -66,7 +63,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               sku_unit_count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skuUnitCount',
                 default_value: 1,
@@ -78,14 +74,12 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               static_ips: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'staticIPs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -95,7 +89,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               vpnconfiguration: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'vpnconfiguration',
                 type: {
