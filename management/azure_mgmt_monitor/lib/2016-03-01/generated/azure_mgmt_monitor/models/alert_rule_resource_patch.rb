@@ -45,7 +45,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AlertRuleResourcePatch',
           type: {
@@ -53,13 +52,11 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'AlertRuleResourcePatch',
             model_properties: {
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -69,7 +66,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.name',
                 type: {
@@ -77,7 +73,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -85,7 +80,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               is_enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.isEnabled',
                 type: {
@@ -93,7 +87,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               condition: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.condition',
                 type: {
@@ -104,13 +97,11 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               actions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.actions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RuleActionElementType',
                       type: {
@@ -123,7 +114,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               last_updated_time: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastUpdatedTime',

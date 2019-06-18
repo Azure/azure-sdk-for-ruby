@@ -32,7 +32,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LogSettings',
           type: {
@@ -40,7 +39,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
             class_name: 'LogSettings',
             model_properties: {
               category: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'category',
                 type: {
@@ -48,7 +46,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -56,7 +53,6 @@ module Azure::Monitor::Mgmt::V2016_09_01
                 }
               },
               retention_policy: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionPolicy',
                 type: {

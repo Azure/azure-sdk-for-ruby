@@ -39,7 +39,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ScaleAction',
           type: {
@@ -47,7 +46,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'ScaleAction',
             model_properties: {
               direction: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'direction',
                 type: {
@@ -56,7 +54,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -65,7 +62,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 default_value: '1',
@@ -74,7 +70,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               cooldown: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'cooldown',
                 type: {

@@ -24,7 +24,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ActivityLogAlertAllOfCondition',
           type: {
@@ -32,13 +31,11 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ActivityLogAlertAllOfCondition',
             model_properties: {
               all_of: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'allOf',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ActivityLogAlertLeafConditionElementType',
                       type: {
