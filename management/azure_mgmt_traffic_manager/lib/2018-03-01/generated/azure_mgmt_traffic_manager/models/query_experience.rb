@@ -30,7 +30,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'QueryExperience',
           type: {
@@ -38,7 +37,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
             class_name: 'QueryExperience',
             model_properties: {
               endpoint_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'endpointId',
                 type: {
@@ -46,7 +44,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               query_count: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'queryCount',
                 type: {
@@ -54,7 +51,6 @@ module Azure::TrafficManager::Mgmt::V2018_03_01
                 }
               },
               latency: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'latency',
                 type: {
