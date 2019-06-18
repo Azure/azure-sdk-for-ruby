@@ -23,16 +23,15 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # @return [String] Client Api Version.
     attr_reader :api_version
 
-    # @return [String] The preferred language for the response.
+    # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
-    # @return [Integer] The retry timeout in seconds for Long Running
-    # Operations. Default value is 30.
+    # @return [Integer] Gets or sets the retry timeout in seconds for Long
+    # Running Operations. Default value is 30.
     attr_accessor :long_running_operation_retry_timeout
 
-    # @return [Boolean] Whether a unique x-ms-client-request-id should be
-    # generated. When set to true a unique x-ms-client-request-id value is
-    # generated and included in each request. Default is true.
+    # @return [Boolean] When set to true a unique x-ms-client-request-id value
+    # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
     # @return [VaultCertificates] vault_certificates
@@ -43,6 +42,9 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
     # @return [ReplicationUsages] replication_usages
     attr_reader :replication_usages
+
+    # @return [RecoveryServices] recovery_services
+    attr_reader :recovery_services
 
     # @return [Vaults] vaults
     attr_reader :vaults
@@ -72,6 +74,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       @vault_certificates = VaultCertificates.new(self)
       @registered_identities = RegisteredIdentities.new(self)
       @replication_usages = ReplicationUsages.new(self)
+      @recovery_services = RecoveryServices.new(self)
       @vaults = Vaults.new(self)
       @operations = Operations.new(self)
       @vault_extended_info_operations = VaultExtendedInfoOperations.new(self)
@@ -129,9 +132,6 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       fail ArgumentError, 'path is nil' if path.nil?
 
       request_url = options[:base_url] || @base_url
-      if(!options[:headers].nil? && !options[:headers]['Content-Type'].nil?)
-        @request_headers['Content-Type'] = options[:headers]['Content-Type']
-      end
 
       request_headers = @request_headers
       request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
@@ -148,7 +148,9 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_recovery_services'
-        sdk_information = "#{sdk_information}/0.17.1"
+        if defined? Azure::RecoveryServices::Mgmt::V2016_06_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::RecoveryServices::Mgmt::V2016_06_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
