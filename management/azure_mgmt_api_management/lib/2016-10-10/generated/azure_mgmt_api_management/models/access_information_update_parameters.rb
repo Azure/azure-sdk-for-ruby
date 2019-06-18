@@ -24,7 +24,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AccessInformationUpdateParameters',
           type: {
@@ -32,7 +31,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'AccessInformationUpdateParameters',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {

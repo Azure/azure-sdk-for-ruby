@@ -25,7 +25,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SubscriptionKeyParameterNamesContract',
           type: {
@@ -33,7 +32,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'SubscriptionKeyParameterNamesContract',
             model_properties: {
               header: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'header',
                 type: {
@@ -41,7 +39,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               query: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'query',
                 type: {

@@ -35,7 +35,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'PropertyCreateParameters',
           type: {
@@ -43,7 +42,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
             class_name: 'PropertyCreateParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -56,7 +54,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 constraints: {
@@ -68,7 +65,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 constraints: {
@@ -77,7 +73,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -87,7 +82,6 @@ module Azure::ApiManagement::Mgmt::V2016_07_07
                 }
               },
               secret: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'secret',
                 type: {

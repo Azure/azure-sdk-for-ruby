@@ -40,7 +40,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'LoggerResponse',
           type: {
@@ -48,7 +47,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
             class_name: 'LoggerResponse',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -57,7 +55,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               type: {
-                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',
@@ -67,7 +64,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 constraints: {
@@ -78,13 +74,11 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               credentials: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'credentials',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -94,7 +88,6 @@ module Azure::ApiManagement::Mgmt::V2016_10_10
                 }
               },
               is_buffered: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'isBuffered',
                 default_value: true,
