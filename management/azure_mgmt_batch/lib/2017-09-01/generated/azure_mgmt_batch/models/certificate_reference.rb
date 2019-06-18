@@ -62,7 +62,6 @@ module Azure::Batch::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateReference',
           type: {
@@ -70,7 +69,6 @@ module Azure::Batch::Mgmt::V2017_09_01
             class_name: 'CertificateReference',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -78,7 +76,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               store_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storeLocation',
                 type: {
@@ -87,7 +84,6 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               store_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storeName',
                 type: {
@@ -95,13 +91,11 @@ module Azure::Batch::Mgmt::V2017_09_01
                 }
               },
               visibility: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'visibility',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CertificateVisibilityElementType',
                       type: {
