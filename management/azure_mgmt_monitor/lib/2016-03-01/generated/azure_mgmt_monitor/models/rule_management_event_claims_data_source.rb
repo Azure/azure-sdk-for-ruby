@@ -22,7 +22,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RuleManagementEventClaimsDataSource',
           type: {
@@ -30,7 +29,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'RuleManagementEventClaimsDataSource',
             model_properties: {
               email_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'emailAddress',
                 type: {

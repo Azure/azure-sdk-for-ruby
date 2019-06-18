@@ -122,7 +122,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventData',
           type: {
@@ -130,7 +129,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'EventData',
             model_properties: {
               authorization: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'authorization',
@@ -140,14 +138,12 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               claims: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'claims',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -157,7 +153,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               caller: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'caller',
@@ -166,7 +161,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',
@@ -175,7 +169,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -184,7 +177,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               event_data_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'eventDataId',
@@ -193,7 +185,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               correlation_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'correlationId',
@@ -202,7 +193,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               event_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'eventName',
@@ -212,7 +202,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               category: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'category',
@@ -222,7 +211,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               http_request: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'httpRequest',
@@ -232,7 +220,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               level: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'level',
@@ -242,7 +229,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               resource_group_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceGroupName',
@@ -251,7 +237,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               resource_provider_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceProviderName',
@@ -261,7 +246,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceId',
@@ -270,7 +254,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               resource_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceType',
@@ -280,7 +263,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               operation_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operationId',
@@ -289,7 +271,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               operation_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operationName',
@@ -299,14 +280,12 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               properties: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -316,7 +295,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -326,7 +304,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               sub_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subStatus',
@@ -336,7 +313,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               event_timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'eventTimestamp',
@@ -345,7 +321,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               submission_timestamp: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'submissionTimestamp',
@@ -354,7 +329,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               subscription_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subscriptionId',
@@ -363,7 +337,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               tenant_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',

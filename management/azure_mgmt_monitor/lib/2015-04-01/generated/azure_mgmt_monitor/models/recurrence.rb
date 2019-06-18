@@ -13,12 +13,13 @@ module Azure::Monitor::Mgmt::V2015_04_01
 
       include MsRestAzure
 
-      # @return [String] the recurrence frequency. How often the schedule
-      # profile should take effect. This value must be Week, meaning each week
-      # will have the same set of profiles. For example, to set a daily
-      # schedule, set **schedule** to every day of the week. The frequency
-      # property specifies that the schedule is repeated weekly. Default value:
-      # 'Week' .
+      # @return [RecurrenceFrequency] the recurrence frequency. How often the
+      # schedule profile should take effect. This value must be Week, meaning
+      # each week will have the same set of profiles. For example, to set a
+      # daily schedule, set **schedule** to every day of the week. The
+      # frequency property specifies that the schedule is repeated weekly.
+      # Possible values include: 'None', 'Second', 'Minute', 'Hour', 'Day',
+      # 'Week', 'Month', 'Year'
       attr_accessor :frequency
 
       # @return [RecurrentSchedule] the scheduling constraints for when the
@@ -32,7 +33,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Recurrence',
           type: {
@@ -40,17 +40,14 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'Recurrence',
             model_properties: {
               frequency: {
-                client_side_validation: true,
                 required: true,
-                is_constant: true,
                 serialized_name: 'frequency',
-                default_value: 'Week',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'RecurrenceFrequency'
                 }
               },
               schedule: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'schedule',
                 type: {

@@ -23,7 +23,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticSettingsCategoryResource',
           type: {
@@ -31,7 +30,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'DiagnosticSettingsCategoryResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,7 +38,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,7 +46,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -58,7 +54,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               category_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.categoryType',
                 type: {

@@ -29,7 +29,6 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TimeSeriesElement',
           type: {
@@ -37,13 +36,11 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'TimeSeriesElement',
             model_properties: {
               metadatavalues: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadatavalues',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetadataValueElementType',
                       type: {
@@ -54,13 +51,11 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               data: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'data',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricValueElementType',
                       type: {

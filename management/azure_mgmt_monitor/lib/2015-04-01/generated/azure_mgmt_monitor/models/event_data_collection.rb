@@ -58,7 +58,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EventDataCollection',
           type: {
@@ -66,13 +65,11 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'EventDataCollection',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EventDataElementType',
                       type: {
@@ -83,7 +80,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               next_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

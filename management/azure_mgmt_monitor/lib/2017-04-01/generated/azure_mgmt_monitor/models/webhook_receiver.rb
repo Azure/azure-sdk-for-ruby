@@ -26,7 +26,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WebhookReceiver',
           type: {
@@ -34,7 +33,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'WebhookReceiver',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               service_uri: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'serviceUri',
                 type: {
