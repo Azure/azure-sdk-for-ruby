@@ -31,7 +31,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DetectorDefinition',
           type: {
@@ -39,7 +38,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DetectorDefinition',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,7 +46,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,7 +54,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -65,7 +61,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -74,7 +69,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               display_name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.displayName',
@@ -83,7 +77,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               description: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.description',
@@ -92,7 +85,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               rank: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.rank',
@@ -101,7 +93,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               is_enabled: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isEnabled',

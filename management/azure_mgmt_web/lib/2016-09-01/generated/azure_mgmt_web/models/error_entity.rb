@@ -37,7 +37,6 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorEntity',
           type: {
@@ -45,7 +44,6 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'ErrorEntity',
             model_properties: {
               extended_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'extendedCode',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               message_template: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageTemplate',
                 type: {
@@ -61,13 +58,11 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -77,13 +72,11 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               inner_errors: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'innerErrors',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ErrorEntityElementType',
                       type: {
@@ -94,7 +87,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -102,7 +94,6 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               message: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

@@ -26,7 +26,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CsmSlotEntity',
           type: {
@@ -34,7 +33,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'CsmSlotEntity',
             model_properties: {
               target_slot: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetSlot',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               preserve_vnet: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'preserveVnet',
                 type: {

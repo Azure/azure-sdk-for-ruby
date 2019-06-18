@@ -29,7 +29,6 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MigrateMySqlStatus',
           type: {
@@ -37,7 +36,6 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'MigrateMySqlStatus',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,7 +44,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,7 +52,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,7 +67,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               migration_operation_status: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.migrationOperationStatus',
@@ -82,7 +76,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               operation_id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.operationId',
@@ -91,7 +84,6 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               local_my_sql_enabled: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.localMySqlEnabled',

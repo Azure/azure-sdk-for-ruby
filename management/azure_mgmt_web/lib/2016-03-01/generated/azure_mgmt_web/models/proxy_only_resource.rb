@@ -32,7 +32,6 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ProxyOnlyResource',
           type: {
@@ -40,7 +39,6 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'ProxyOnlyResource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,7 +47,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -58,7 +55,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -66,7 +62,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
