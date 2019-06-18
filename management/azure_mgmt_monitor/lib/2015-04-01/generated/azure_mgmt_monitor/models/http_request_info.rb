@@ -31,7 +31,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'HttpRequestInfo',
           type: {
@@ -39,7 +38,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'HttpRequestInfo',
             model_properties: {
               client_request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientRequestId',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               client_ip_address: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientIpAddress',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               method: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'method',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'uri',
                 type: {

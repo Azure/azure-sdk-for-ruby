@@ -44,7 +44,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricDefinition',
           type: {
@@ -52,7 +51,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'MetricDefinition',
             model_properties: {
               resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -60,7 +58,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -69,7 +66,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               unit: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -78,7 +74,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               primary_aggregation_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryAggregationType',
                 type: {
@@ -87,13 +82,11 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               metric_availabilities: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metricAvailabilities',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricAvailabilityElementType',
                       type: {
@@ -104,7 +97,6 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

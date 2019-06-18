@@ -59,5 +59,6 @@ module Azure::Monitor::Mgmt::V2015_04_01
     autoload :ComparisonOperationType,                            '2015-04-01/generated/azure_mgmt_monitor/models/comparison_operation_type.rb'
     autoload :ScaleDirection,                                     '2015-04-01/generated/azure_mgmt_monitor/models/scale_direction.rb'
     autoload :ScaleType,                                          '2015-04-01/generated/azure_mgmt_monitor/models/scale_type.rb'
+    autoload :RecurrenceFrequency,                                '2015-04-01/generated/azure_mgmt_monitor/models/recurrence_frequency.rb'
   end
 end

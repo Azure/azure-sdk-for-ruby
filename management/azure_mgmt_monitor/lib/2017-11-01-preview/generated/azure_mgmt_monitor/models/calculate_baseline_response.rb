@@ -6,7 +6,7 @@
 module Azure::Monitor::Mgmt::V2017_11_01_preview
   module Models
     #
-    # The response to a calcualte baseline call.
+    # The response to a calculate baseline call.
     #
     class CalculateBaselineResponse
 
@@ -28,7 +28,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CalculateBaselineResponse',
           type: {
@@ -36,7 +35,6 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
             class_name: 'CalculateBaselineResponse',
             model_properties: {
               type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -44,13 +42,11 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               timestamps: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timestamps',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DateTimeElementType',
                       type: {
@@ -60,13 +56,11 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
                 }
               },
               baseline: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'baseline',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BaselineElementType',
                       type: {
