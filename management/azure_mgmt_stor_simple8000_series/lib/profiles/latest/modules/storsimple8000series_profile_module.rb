@@ -47,7 +47,6 @@ module Azure::StorSimple8000Series::Profiles::Latest
       ScheduleRecurrence = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::ScheduleRecurrence
       SymmetricEncryptedSecret = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::SymmetricEncryptedSecret
       NicIPv6 = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NicIPv6
-      Time = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
       AcsConfiguration = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AcsConfiguration
       StorageAccountCredentialList = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::StorageAccountCredentialList
       AlertErrorDetails = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertErrorDetails
@@ -133,6 +132,7 @@ module Azure::StorSimple8000Series::Profiles::Latest
       StorageAccountCredential = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::StorageAccountCredential
       TimeSettings = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::TimeSettings
       Updates = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Updates
+      Time = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
       Volume = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Volume
       VolumeContainer = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::VolumeContainer
       AlertScope = Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AlertScope
@@ -313,9 +313,6 @@ module Azure::StorSimple8000Series::Profiles::Latest
       end
       def nic_ipv6
         Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::NicIPv6
-      end
-      def time
-        Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
       end
       def acs_configuration
         Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::AcsConfiguration
@@ -571,6 +568,9 @@ module Azure::StorSimple8000Series::Profiles::Latest
       end
       def updates
         Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Updates
+      end
+      def time
+        Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Time
       end
       def volume
         Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::Volume

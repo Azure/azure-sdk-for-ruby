@@ -37,7 +37,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'MetricData',
           type: {
@@ -45,7 +44,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'MetricData',
             model_properties: {
               time_stamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeStamp',
                 type: {
@@ -53,7 +51,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               sum: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sum',
                 type: {
@@ -61,7 +58,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               count: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -69,7 +65,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               average: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'average',
                 type: {
@@ -77,7 +72,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               minimum: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'minimum',
                 type: {
@@ -85,7 +79,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               maximum: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'maximum',
                 type: {

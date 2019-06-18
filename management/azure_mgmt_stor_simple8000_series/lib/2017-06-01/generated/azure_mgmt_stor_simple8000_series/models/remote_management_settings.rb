@@ -27,7 +27,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RemoteManagementSettings',
           type: {
@@ -35,7 +34,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'RemoteManagementSettings',
             model_properties: {
               remote_management_mode: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'remoteManagementMode',
                 type: {
@@ -44,7 +42,6 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               remote_management_certificate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'remoteManagementCertificate',
                 type: {
