@@ -6,38 +6,29 @@
 module Azure::RecoveryServices::Mgmt::V2016_06_01
   module Models
     #
-    # ARM Resource.
+    # Response for check name availability API. Resource provider will set
+    # availability as true | false.
     #
-    class Resource
+    class CheckNameAvailabilityResultResource < Resource
 
       include MsRestAzure
 
-      # @return [String] Resource Id represents the complete path to the
-      # resource.
-      attr_accessor :id
-
-      # @return [String] Resource name associated with the resource.
-      attr_accessor :name
-
-      # @return [String] Resource type represents the complete path of the form
-      # Namespace/ResourceType/ResourceType/...
-      attr_accessor :type
-
-      # @return [String] Optional ETag.
-      attr_accessor :e_tag
+      # @return [CheckNameAvailabilityResult]
+      # CheckNameAvailabilityResultResource properties
+      attr_accessor :properties
 
 
       #
-      # Mapper for Resource class as Ruby Hash.
+      # Mapper for CheckNameAvailabilityResultResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Resource',
+          serialized_name: 'CheckNameAvailabilityResultResource',
           type: {
             name: 'Composite',
-            class_name: 'Resource',
+            class_name: 'CheckNameAvailabilityResultResource',
             model_properties: {
               id: {
                 required: false,
@@ -68,6 +59,14 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 serialized_name: 'eTag',
                 type: {
                   name: 'String'
+                }
+              },
+              properties: {
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'CheckNameAvailabilityResult'
                 }
               }
             }

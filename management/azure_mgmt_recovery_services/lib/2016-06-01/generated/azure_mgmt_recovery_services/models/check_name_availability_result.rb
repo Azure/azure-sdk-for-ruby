@@ -6,51 +6,52 @@
 module Azure::RecoveryServices::Mgmt::V2016_06_01
   module Models
     #
-    # Class to represent shoebox log specification in json client discovery.
+    # Response for check name availability API. Resource provider will set
+    # availability as true | false.
     #
-    class ClientDiscoveryForLogSpecification
+    class CheckNameAvailabilityResult
 
       include MsRestAzure
 
-      # @return [String] Name of the log.
-      attr_accessor :name
+      # @return [Boolean]
+      attr_accessor :name_available
 
-      # @return [String] Localized display name
-      attr_accessor :display_name
+      # @return [String]
+      attr_accessor :reason
 
-      # @return [String] Blobs created in customer storage account per hour
-      attr_accessor :blob_duration
+      # @return [String]
+      attr_accessor :message
 
 
       #
-      # Mapper for ClientDiscoveryForLogSpecification class as Ruby Hash.
+      # Mapper for CheckNameAvailabilityResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ClientDiscoveryForLogSpecification',
+          serialized_name: 'CheckNameAvailabilityResult',
           type: {
             name: 'Composite',
-            class_name: 'ClientDiscoveryForLogSpecification',
+            class_name: 'CheckNameAvailabilityResult',
             model_properties: {
-              name: {
+              name_available: {
                 required: false,
-                serialized_name: 'name',
+                serialized_name: 'nameAvailable',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              reason: {
+                required: false,
+                serialized_name: 'reason',
                 type: {
                   name: 'String'
                 }
               },
-              display_name: {
+              message: {
                 required: false,
-                serialized_name: 'displayName',
-                type: {
-                  name: 'String'
-                }
-              },
-              blob_duration: {
-                required: false,
-                serialized_name: 'blobDuration',
+                serialized_name: 'message',
                 type: {
                   name: 'String'
                 }
