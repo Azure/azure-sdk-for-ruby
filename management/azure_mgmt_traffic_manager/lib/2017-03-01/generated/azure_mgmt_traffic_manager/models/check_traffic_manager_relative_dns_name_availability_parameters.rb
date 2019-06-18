@@ -26,7 +26,6 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CheckTrafficManagerRelativeDnsNameAvailabilityParameters',
           type: {
@@ -34,7 +33,6 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
             class_name: 'CheckTrafficManagerRelativeDnsNameAvailabilityParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,7 +40,6 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

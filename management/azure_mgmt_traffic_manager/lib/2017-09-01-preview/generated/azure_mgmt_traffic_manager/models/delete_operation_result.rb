@@ -22,7 +22,6 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'DeleteOperationResult',
           type: {
@@ -30,7 +29,6 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
             class_name: 'DeleteOperationResult',
             model_properties: {
               operation_result: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'boolean',

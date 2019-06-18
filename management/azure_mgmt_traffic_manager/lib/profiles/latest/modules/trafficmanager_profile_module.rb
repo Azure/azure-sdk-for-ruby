@@ -6,11 +6,11 @@ require 'azure_mgmt_traffic_manager'
 
 module Azure::TrafficManager::Profiles::Latest
   module Mgmt
-    Endpoints = Azure::TrafficManager::Mgmt::V2018_04_01::Endpoints
-    Profiles = Azure::TrafficManager::Mgmt::V2018_04_01::Profiles
     GeographicHierarchies = Azure::TrafficManager::Mgmt::V2018_04_01::GeographicHierarchies
     HeatMap = Azure::TrafficManager::Mgmt::V2018_04_01::HeatMap
     TrafficManagerUserMetricsKeys = Azure::TrafficManager::Mgmt::V2018_04_01::TrafficManagerUserMetricsKeys
+    Endpoints = Azure::TrafficManager::Mgmt::V2018_04_01::Endpoints
+    Profiles = Azure::TrafficManager::Mgmt::V2018_04_01::Profiles
 
     module Models
       MonitorConfigCustomHeadersItem = Azure::TrafficManager::Mgmt::V2018_04_01::Models::MonitorConfigCustomHeadersItem
@@ -48,7 +48,7 @@ module Azure::TrafficManager::Profiles::Latest
     # TrafficManagerManagementClass
     #
     class TrafficManagerManagementClass
-      attr_reader :endpoints, :profiles, :geographic_hierarchies, :heat_map, :traffic_manager_user_metrics_keys, :configurable, :base_url, :options, :model_classes
+      attr_reader :geographic_hierarchies, :heat_map, :traffic_manager_user_metrics_keys, :endpoints, :profiles, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -68,11 +68,11 @@ module Azure::TrafficManager::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @endpoints = @client_0.endpoints
-        @profiles = @client_0.profiles
         @geographic_hierarchies = @client_0.geographic_hierarchies
         @heat_map = @client_0.heat_map
         @traffic_manager_user_metrics_keys = @client_0.traffic_manager_user_metrics_keys
+        @endpoints = @client_0.endpoints
+        @profiles = @client_0.profiles
 
         @model_classes = ModelClasses.new
       end
