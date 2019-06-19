@@ -32,14 +32,14 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [Boolean] The value indicating whether to sign the outbound MDN
       # if optional.
-      attr_accessor :sign_outbound_mdnif_optional
+      attr_accessor :sign_outbound_mdn_if_optional
 
       # @return [String] The MDN text.
       attr_accessor :mdn_text
 
       # @return [Boolean] The value indicating whether to send inbound MDN to
       # message box.
-      attr_accessor :send_inbound_mdnto_message_box
+      attr_accessor :send_inbound_mdn_to_message_box
 
       # @return [HashingAlgorithm] The signing or hashing algorithm. Possible
       # values include: 'NotSpecified', 'None', 'MD5', 'SHA1', 'SHA2256',
@@ -94,9 +94,9 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                   name: 'String'
                 }
               },
-              sign_outbound_mdnif_optional: {
+              sign_outbound_mdn_if_optional: {
                 required: true,
-                serialized_name: 'signOutboundMDNIfOptional',
+                serialized_name: 'signOutboundMdnIfOptional',
                 type: {
                   name: 'Boolean'
                 }
@@ -108,9 +108,9 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                   name: 'String'
                 }
               },
-              send_inbound_mdnto_message_box: {
+              send_inbound_mdn_to_message_box: {
                 required: true,
-                serialized_name: 'sendInboundMDNToMessageBox',
+                serialized_name: 'sendInboundMdnToMessageBox',
                 type: {
                   name: 'Boolean'
                 }
