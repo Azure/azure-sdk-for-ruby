@@ -22,9 +22,6 @@ module Microsoft.VMwareCloudSimple
       # @return [String] {virtualMachineName}
       attr_accessor :name
 
-      # @return [Plan] Virtual machine plan
-      attr_accessor :plan
-
       # @return [Integer] The amount of memory
       attr_accessor :amount_of_ram
 
@@ -54,7 +51,7 @@ module Microsoft.VMwareCloudSimple
       # @return [Array<VirtualNic>] The list of Virtual NICs
       attr_accessor :nics
 
-      # @return [Integer] The number of CPU cores
+      # @return [Integer] The numnber of CPU cores
       attr_accessor :number_of_cores
 
       # @return [String] Password for login
@@ -135,14 +132,6 @@ module Microsoft.VMwareCloudSimple
                 },
                 type: {
                   name: 'String'
-                }
-              },
-              plan: {
-                required: false,
-                serialized_name: 'plan',
-                type: {
-                  name: 'Composite',
-                  class_name: 'Plan'
                 }
               },
               amount_of_ram: {

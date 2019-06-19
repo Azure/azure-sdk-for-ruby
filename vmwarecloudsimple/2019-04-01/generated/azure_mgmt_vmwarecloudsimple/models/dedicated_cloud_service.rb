@@ -22,9 +22,6 @@ module Microsoft.VMwareCloudSimple
       # @return [String] {dedicatedCloudServiceName}
       attr_accessor :name
 
-      # @return [Plan] The plan
-      attr_accessor :plan
-
       # @return [String] gateway Subnet for the account. It will collect the
       # subnet address and always treat it as /28
       attr_accessor :gateway_subnet
@@ -83,14 +80,6 @@ module Microsoft.VMwareCloudSimple
                 },
                 type: {
                   name: 'String'
-                }
-              },
-              plan: {
-                required: false,
-                serialized_name: 'plan',
-                type: {
-                  name: 'Composite',
-                  class_name: 'Plan'
                 }
               },
               gateway_subnet: {

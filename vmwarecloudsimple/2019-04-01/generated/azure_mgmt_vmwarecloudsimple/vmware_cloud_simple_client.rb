@@ -224,7 +224,7 @@ module Microsoft.VMwareCloudSimple
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['Referer'] = referer unless referer.nil?
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/microsoft.vmwarecloudsimple/locations/{regionId}/operationresults/{operationId}'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/operationResults/{operationId}'
 
       request_url = @base_url || self.base_url
 
@@ -241,7 +241,7 @@ module Microsoft.VMwareCloudSimple
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202 || status_code == 204 || status_code == 404
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -318,7 +318,7 @@ module Microsoft.VMwareCloudSimple
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/microsoft.vmwarecloudsimple/locations/{regionId}/privateclouds/{pcName}'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}'
 
       request_url = @base_url || self.base_url
 
@@ -335,7 +335,7 @@ module Microsoft.VMwareCloudSimple
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 404
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -414,7 +414,7 @@ module Microsoft.VMwareCloudSimple
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['Referer'] = referer unless referer.nil?
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/microsoft.vmwarecloudsimple/locations/{regionId}/operationresults/{operationId}'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/operationResults/{operationId}'
 
       request_url = @base_url || self.base_url
 
@@ -431,7 +431,7 @@ module Microsoft.VMwareCloudSimple
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202 || status_code == 204 || status_code == 404
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
