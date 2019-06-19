@@ -24,27 +24,27 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [Boolean] The value indicating whether to enable NRR for
       # inbound encoded messages.
-      attr_accessor :enable_nrr_for_inbound_encoded_messages
+      attr_accessor :enable_nrrfor_inbound_encoded_messages
 
       # @return [Boolean] The value indicating whether to enable NRR for
       # inbound decoded messages.
-      attr_accessor :enable_nrr_for_inbound_decoded_messages
+      attr_accessor :enable_nrrfor_inbound_decoded_messages
 
       # @return [Boolean] The value indicating whether to enable NRR for
       # outbound MDN.
-      attr_accessor :enable_nrr_for_outbound_mdn
+      attr_accessor :enable_nrrfor_outbound_mdn
 
       # @return [Boolean] The value indicating whether to enable NRR for
       # outbound encoded messages.
-      attr_accessor :enable_nrr_for_outbound_encoded_messages
+      attr_accessor :enable_nrrfor_outbound_encoded_messages
 
       # @return [Boolean] The value indicating whether to enable NRR for
       # outbound decoded messages.
-      attr_accessor :enable_nrr_for_outbound_decoded_messages
+      attr_accessor :enable_nrrfor_outbound_decoded_messages
 
       # @return [Boolean] The value indicating whether to enable NRR for
       # inbound MDN.
-      attr_accessor :enable_nrr_for_inbound_mdn
+      attr_accessor :enable_nrrfor_inbound_mdn
 
       # @return [String] The Sha2 algorithm format. Valid values are Sha2,
       # ShaHashSize, ShaHyphenHashSize, Sha2UnderscoreHashSize.
@@ -57,7 +57,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AS2SecuritySettings',
           type: {
@@ -65,7 +64,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'AS2SecuritySettings',
             model_properties: {
               override_group_signing_certificate: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'overrideGroupSigningCertificate',
                 type: {
@@ -73,7 +71,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               signing_certificate_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'signingCertificateName',
                 type: {
@@ -81,63 +78,55 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               encryption_certificate_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionCertificateName',
                 type: {
                   name: 'String'
                 }
               },
-              enable_nrr_for_inbound_encoded_messages: {
-                client_side_validation: true,
+              enable_nrrfor_inbound_encoded_messages: {
                 required: true,
-                serialized_name: 'enableNrrForInboundEncodedMessages',
+                serialized_name: 'enableNRRForInboundEncodedMessages',
                 type: {
                   name: 'Boolean'
                 }
               },
-              enable_nrr_for_inbound_decoded_messages: {
-                client_side_validation: true,
+              enable_nrrfor_inbound_decoded_messages: {
                 required: true,
-                serialized_name: 'enableNrrForInboundDecodedMessages',
+                serialized_name: 'enableNRRForInboundDecodedMessages',
                 type: {
                   name: 'Boolean'
                 }
               },
-              enable_nrr_for_outbound_mdn: {
-                client_side_validation: true,
+              enable_nrrfor_outbound_mdn: {
                 required: true,
-                serialized_name: 'enableNrrForOutboundMdn',
+                serialized_name: 'enableNRRForOutboundMDN',
                 type: {
                   name: 'Boolean'
                 }
               },
-              enable_nrr_for_outbound_encoded_messages: {
-                client_side_validation: true,
+              enable_nrrfor_outbound_encoded_messages: {
                 required: true,
-                serialized_name: 'enableNrrForOutboundEncodedMessages',
+                serialized_name: 'enableNRRForOutboundEncodedMessages',
                 type: {
                   name: 'Boolean'
                 }
               },
-              enable_nrr_for_outbound_decoded_messages: {
-                client_side_validation: true,
+              enable_nrrfor_outbound_decoded_messages: {
                 required: true,
-                serialized_name: 'enableNrrForOutboundDecodedMessages',
+                serialized_name: 'enableNRRForOutboundDecodedMessages',
                 type: {
                   name: 'Boolean'
                 }
               },
-              enable_nrr_for_inbound_mdn: {
-                client_side_validation: true,
+              enable_nrrfor_inbound_mdn: {
                 required: true,
-                serialized_name: 'enableNrrForInboundMdn',
+                serialized_name: 'enableNRRForInboundMDN',
                 type: {
                   name: 'Boolean'
                 }
               },
               sha2algorithm_format: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sha2AlgorithmFormat',
                 type: {

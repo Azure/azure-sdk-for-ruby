@@ -29,22 +29,12 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       attr_accessor :tags
 
 
-      # @return [String] the name of the resource group of the resource.
-      def resource_group
-        unless self.id.nil?
-          groups = self.id.match(/.+\/resourceGroups\/([^\/]+)\/.+/)
-          groups.captures[0].strip if groups
-        end
-      end
-
-
       #
       # Mapper for Resource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Resource',
           type: {
@@ -52,7 +42,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'Resource',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,7 +49,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -68,7 +56,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -76,7 +63,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -84,13 +70,11 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               tags: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

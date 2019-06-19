@@ -23,7 +23,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'SetTriggerStateActionDefinition',
           type: {
@@ -31,7 +30,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'SetTriggerStateActionDefinition',
             model_properties: {
               source: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'source',
                 type: {

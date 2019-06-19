@@ -24,7 +24,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AccessKeyRegenerateActionDefinition',
           type: {
@@ -32,7 +31,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AccessKeyRegenerateActionDefinition',
             model_properties: {
               key_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyType',
                 type: {

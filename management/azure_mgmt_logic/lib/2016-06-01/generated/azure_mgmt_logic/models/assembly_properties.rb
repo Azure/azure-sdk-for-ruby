@@ -31,7 +31,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AssemblyProperties',
           type: {
@@ -39,7 +38,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AssemblyProperties',
             model_properties: {
               created_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'createdTime',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               changed_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'changedTime',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
@@ -63,7 +59,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'content',
                 type: {
@@ -71,7 +66,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentType',
                 type: {
@@ -79,7 +73,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentLink',
                 type: {
@@ -88,7 +81,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               assembly_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'assemblyName',
                 type: {
@@ -96,7 +88,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               assembly_version: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'assemblyVersion',
                 type: {
@@ -104,7 +95,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               assembly_culture: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'assemblyCulture',
                 type: {
@@ -112,7 +102,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               assembly_public_key_token: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'assemblyPublicKeyToken',
                 type: {

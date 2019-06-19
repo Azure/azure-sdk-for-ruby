@@ -30,7 +30,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'TrackingEventsDefinition',
           type: {
@@ -38,7 +37,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'TrackingEventsDefinition',
             model_properties: {
               source_type: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceType',
                 type: {
@@ -46,7 +44,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               track_events_options: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'trackEventsOptions',
                 type: {
@@ -54,13 +51,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               events: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'events',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TrackingEventElementType',
                       type: {

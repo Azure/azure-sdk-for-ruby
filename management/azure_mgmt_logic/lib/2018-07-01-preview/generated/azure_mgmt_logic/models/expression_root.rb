@@ -23,7 +23,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressionRoot',
           type: {
@@ -31,7 +30,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'ExpressionRoot',
             model_properties: {
               text: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'text',
                 type: {
@@ -39,7 +37,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -47,13 +44,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               subexpressions: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'subexpressions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressionElementType',
                       type: {
@@ -64,7 +59,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
@@ -73,7 +67,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               path: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {

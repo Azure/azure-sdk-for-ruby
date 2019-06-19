@@ -28,7 +28,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AgreementContent',
           type: {
@@ -36,7 +35,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'AgreementContent',
             model_properties: {
               a_s2: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'aS2',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               x12: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'x12',
                 type: {
@@ -54,7 +51,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               edifact: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'edifact',
                 type: {

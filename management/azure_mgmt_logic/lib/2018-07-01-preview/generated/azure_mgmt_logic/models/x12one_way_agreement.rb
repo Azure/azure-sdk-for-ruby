@@ -28,7 +28,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'X12OneWayAgreement',
           type: {
@@ -36,7 +35,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'X12OneWayAgreement',
             model_properties: {
               sender_business_identity: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'senderBusinessIdentity',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               receiver_business_identity: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'receiverBusinessIdentity',
                 type: {
@@ -54,7 +51,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               protocol_settings: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'protocolSettings',
                 type: {

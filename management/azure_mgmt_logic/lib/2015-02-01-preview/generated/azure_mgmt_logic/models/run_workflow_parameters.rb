@@ -26,7 +26,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RunWorkflowParameters',
           type: {
@@ -34,7 +33,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'RunWorkflowParameters',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,7 +40,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               outputs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputs',
                 type: {

@@ -23,7 +23,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactMessageIdentifier',
           type: {
@@ -31,7 +30,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'EdifactMessageIdentifier',
             model_properties: {
               message_id: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageId',
                 type: {

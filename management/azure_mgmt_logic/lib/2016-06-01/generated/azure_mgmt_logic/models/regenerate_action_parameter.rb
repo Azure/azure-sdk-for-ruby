@@ -23,7 +23,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateActionParameter',
           type: {
@@ -31,7 +30,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'RegenerateActionParameter',
             model_properties: {
               key_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyType',
                 type: {

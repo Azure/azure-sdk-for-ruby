@@ -39,7 +39,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTriggerCallbackUrl',
           type: {
@@ -47,7 +46,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'WorkflowTriggerCallbackUrl',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
@@ -56,7 +54,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               method: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'method',
@@ -65,7 +62,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               base_path: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'basePath',
@@ -74,7 +70,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               relative_path: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'relativePath',
@@ -83,13 +78,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               relative_path_parameters: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'relativePathParameters',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -99,7 +92,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               queries: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'queries',
                 type: {
