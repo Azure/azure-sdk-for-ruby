@@ -22,7 +22,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountSessionFilter',
           type: {
@@ -30,7 +29,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'IntegrationAccountSessionFilter',
             model_properties: {
               changed_time: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'changedTime',
                 type: {

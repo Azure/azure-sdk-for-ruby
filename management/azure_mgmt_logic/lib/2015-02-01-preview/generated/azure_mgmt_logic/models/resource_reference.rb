@@ -29,7 +29,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceReference',
           type: {
@@ -37,7 +36,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'ResourceReference',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -45,7 +43,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,7 +51,6 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

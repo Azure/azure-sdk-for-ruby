@@ -31,7 +31,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RequestHistoryProperties',
           type: {
@@ -39,7 +38,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'RequestHistoryProperties',
             model_properties: {
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               request: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'request',
                 type: {
@@ -64,7 +60,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               response: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'response',
                 type: {

@@ -28,7 +28,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Response',
           type: {
@@ -36,7 +35,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'Response',
             model_properties: {
               headers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'headers',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               status_code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCode',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               body_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'bodyLink',
                 type: {

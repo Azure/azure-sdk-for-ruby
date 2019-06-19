@@ -28,7 +28,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ArtifactContentPropertiesDefinition',
           type: {
@@ -36,7 +35,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'ArtifactContentPropertiesDefinition',
             model_properties: {
               created_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'createdTime',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               changed_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'changedTime',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
@@ -60,7 +56,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'content',
                 type: {
@@ -68,7 +63,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentType',
                 type: {
@@ -76,7 +70,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content_link: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentLink',
                 type: {

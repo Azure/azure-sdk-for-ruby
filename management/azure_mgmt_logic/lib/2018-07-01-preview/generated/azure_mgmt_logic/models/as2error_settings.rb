@@ -18,7 +18,7 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
 
       # @return [Boolean] The value indicating whether to resend message If MDN
       # is not received.
-      attr_accessor :resend_if_mdn_not_received
+      attr_accessor :resend_if_mdnnot_received
 
 
       #
@@ -27,7 +27,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AS2ErrorSettings',
           type: {
@@ -35,17 +34,15 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'AS2ErrorSettings',
             model_properties: {
               suspend_duplicate_message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'suspendDuplicateMessage',
                 type: {
                   name: 'Boolean'
                 }
               },
-              resend_if_mdn_not_received: {
-                client_side_validation: true,
+              resend_if_mdnnot_received: {
                 required: true,
-                serialized_name: 'resendIfMdnNotReceived',
+                serialized_name: 'resendIfMDNNotReceived',
                 type: {
                   name: 'Boolean'
                 }

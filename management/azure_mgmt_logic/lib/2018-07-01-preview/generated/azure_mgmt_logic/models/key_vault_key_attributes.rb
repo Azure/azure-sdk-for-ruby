@@ -28,7 +28,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KeyVaultKey_attributes',
           type: {
@@ -36,7 +35,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'KeyVaultKeyAttributes',
             model_properties: {
               enabled: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               created: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'created',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               updated: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'updated',
                 type: {

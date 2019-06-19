@@ -25,7 +25,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KeyVaultKeyCollection',
           type: {
@@ -33,13 +32,11 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'KeyVaultKeyCollection',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyVaultKeyElementType',
                       type: {
@@ -50,7 +47,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               skip_token: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'skipToken',
                 type: {

@@ -22,7 +22,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorInfo',
           type: {
@@ -30,7 +29,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'ErrorInfo',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 type: {

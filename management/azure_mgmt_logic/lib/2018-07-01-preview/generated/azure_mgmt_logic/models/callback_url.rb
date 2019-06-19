@@ -22,7 +22,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CallbackUrl',
           type: {
@@ -30,7 +29,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'CallbackUrl',
             model_properties: {
               value: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

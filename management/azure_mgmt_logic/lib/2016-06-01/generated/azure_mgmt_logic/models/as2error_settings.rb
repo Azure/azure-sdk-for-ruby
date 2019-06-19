@@ -27,7 +27,6 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'AS2ErrorSettings',
           type: {
@@ -35,7 +34,6 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AS2ErrorSettings',
             model_properties: {
               suspend_duplicate_message: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'suspendDuplicateMessage',
                 type: {
@@ -43,7 +41,6 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               resend_if_mdn_not_received: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'resendIfMdnNotReceived',
                 type: {

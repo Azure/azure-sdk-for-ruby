@@ -37,7 +37,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RetryHistory',
           type: {
@@ -45,7 +44,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
             class_name: 'RetryHistory',
             model_properties: {
               start_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -53,7 +51,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               end_time: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -61,7 +58,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -69,7 +65,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               client_request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientRequestId',
                 type: {
@@ -77,7 +72,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               service_request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceRequestId',
                 type: {
@@ -85,7 +79,6 @@ module Azure::Logic::Mgmt::V2018_07_01_preview
                 }
               },
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
