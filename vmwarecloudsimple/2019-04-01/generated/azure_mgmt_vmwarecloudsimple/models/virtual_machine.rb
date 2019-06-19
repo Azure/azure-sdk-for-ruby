@@ -51,7 +51,7 @@ module Microsoft.VMwareCloudSimple
       # @return [Array<VirtualNic>] The list of Virtual NICs
       attr_accessor :nics
 
-      # @return [Integer] The numnber of CPU cores
+      # @return [Integer] The number of CPU cores
       attr_accessor :number_of_cores
 
       # @return [String] Password for login
