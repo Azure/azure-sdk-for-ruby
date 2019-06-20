@@ -19,7 +19,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       attr_accessor :name
 
       # @return [String] dik controller subtype (VMWARE_PARAVIRTUAL,
-      # BUS_PARALEL, LSI_PARALEL, LSI_SAS)
+      # BUS_PARALLEL, LSI_PARALLEL, LSI_SAS)
       attr_accessor :sub_type
 
       # @return [String] disk controller type (SCSI)

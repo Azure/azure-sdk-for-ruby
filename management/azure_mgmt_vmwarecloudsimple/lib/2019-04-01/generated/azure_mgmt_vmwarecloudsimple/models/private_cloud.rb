@@ -79,10 +79,10 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       # @return [String] e.g. "6.5u2"
       attr_accessor :v_sphere_version
 
-      # @return [String] FQDN for vcneter access
+      # @return [String] FQDN for vcenter access
       attr_accessor :vcenter_fqdn
 
-      # @return [String] Vcenters' ip address
+      # @return [String] Vcenter ip address
       attr_accessor :vcenter_refid
 
       # @return [Array<VirtualMachineTemplate>] The list of Virtual Machine
