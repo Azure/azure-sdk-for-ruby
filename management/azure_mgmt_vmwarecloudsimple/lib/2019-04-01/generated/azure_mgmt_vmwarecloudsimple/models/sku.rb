@@ -15,7 +15,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       # @return [String] The capacity of the SKU
       attr_accessor :capacity
 
-      # @return [String] dedicatedcloudnode example: 8 x Ten-Core Intel® Xeon®
+      # @return [String] dedicatedCloudNode example: 8 x Ten-Core Intel® Xeon®
       # Processor E5-2640 v4 2.40GHz 25MB Cache (90W); 12 x 64GB PC4-19200
       # 2400MHz DDR4 ECC Registered DIMM, ...
       attr_accessor :description
@@ -24,7 +24,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       # for the same SKU, then that can be captured here
       attr_accessor :family
 
-      # @return [String] The name of the SKU for VMWare Cloudsimple Node
+      # @return [String] The name of the SKU for VMWare CloudSimple Node
       attr_accessor :name
 
       # @return [String] The tier of the SKU

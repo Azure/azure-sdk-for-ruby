@@ -12,16 +12,16 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
 
       include MsRestAzure
 
-      # @return [String] CSOS Availability Zone id
+      # @return [String] CloudSimple Availability Zone id
       attr_accessor :dedicated_availability_zone_id
 
-      # @return [String] CSOS Availability Zone Name
+      # @return [String] CloudSimple Availability Zone Name
       attr_accessor :dedicated_availability_zone_name
 
-      # @return [String] CSOS Placement Group Id
+      # @return [String] CloudSimple Placement Group Id
       attr_accessor :dedicated_placement_group_id
 
-      # @return [String] CSOS Placement Group name
+      # @return [String] CloudSimple Placement Group name
       attr_accessor :dedicated_placement_group_name
 
       # @return [Integer] indicates how many resources of a given SKU is

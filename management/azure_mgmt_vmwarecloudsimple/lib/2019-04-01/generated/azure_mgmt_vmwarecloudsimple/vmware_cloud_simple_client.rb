@@ -56,11 +56,11 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
     # @return [PrivateCloudByRegion] private_cloud_by_region
     attr_reader :private_cloud_by_region
 
-    # @return [ResourcepoolsByPC] resourcepools_by_pc
-    attr_reader :resourcepools_by_pc
+    # @return [ResourcePoolsByPC] resource_pools_by_pc
+    attr_reader :resource_pools_by_pc
 
-    # @return [ResourcepoolByPC] resourcepool_by_pc
-    attr_reader :resourcepool_by_pc
+    # @return [ResourcePoolByPC] resource_pool_by_pc
+    attr_reader :resource_pool_by_pc
 
     # @return [VirtualMachineTemplatesByPC] virtual_machine_templates_by_pc
     attr_reader :virtual_machine_templates_by_pc
@@ -98,8 +98,8 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       @dedicated_cloud_service_operations = DedicatedCloudServiceOperations.new(self)
       @skus_availability_within_region = SkusAvailabilityWithinRegion.new(self)
       @private_cloud_by_region = PrivateCloudByRegion.new(self)
-      @resourcepools_by_pc = ResourcepoolsByPC.new(self)
-      @resourcepool_by_pc = ResourcepoolByPC.new(self)
+      @resource_pools_by_pc = ResourcePoolsByPC.new(self)
+      @resource_pool_by_pc = ResourcePoolByPC.new(self)
       @virtual_machine_templates_by_pc = VirtualMachineTemplatesByPC.new(self)
       @virtual_machine_template_by_pc = VirtualMachineTemplateByPC.new(self)
       @virtual_networks_by_pc = VirtualNetworksByPC.new(self)

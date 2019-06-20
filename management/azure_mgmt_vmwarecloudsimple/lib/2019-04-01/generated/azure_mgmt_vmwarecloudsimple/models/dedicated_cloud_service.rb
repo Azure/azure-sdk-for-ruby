@@ -13,7 +13,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       include MsRestAzure
 
       # @return [String]
-      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedcloudservices/{dedicatedCloudServiceName}
+      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudServices/{dedicatedCloudServiceName}
       attr_accessor :id
 
       # @return [String] Azure region

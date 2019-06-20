@@ -12,26 +12,26 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
 
       include MsRestAzure
 
-      # @return [Array<String>] NIC's ip address
+      # @return [Array<String>] NIC ip address
       attr_accessor :ip_addresses
 
-      # @return [String] NIC's MAC address
+      # @return [String] NIC MAC address
       attr_accessor :mac_address
 
       # @return [VirtualNetwork] The list of Virtual Networks
       attr_accessor :network
 
-      # @return [NICType] NIC's type. Possible values include: 'E1000',
-      # 'E1000E', 'PCNET32', 'VMXNET', 'VMXNET2', 'VMXNET3'
+      # @return [NICType] NIC type. Possible values include: 'E1000', 'E1000E',
+      # 'PCNET32', 'VMXNET', 'VMXNET2', 'VMXNET3'
       attr_accessor :nic_type
 
       # @return [Boolean] Is NIC powered on/off on boot
       attr_accessor :power_on_boot
 
-      # @return [String] NIC's id
+      # @return [String] NIC id
       attr_accessor :virtual_nic_id
 
-      # @return [String] NIC's name
+      # @return [String] NIC name
       attr_accessor :virtual_nic_name
 
 
