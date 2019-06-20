@@ -16,7 +16,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # be deleted
       attr_accessor :delete
 
-      # @return [Array<MetadataDTO>] List of Metadat associated with answer to
+      # @return [Array<MetadataDTO>] List of metadata associated with answer to
       # be added
       attr_accessor :add
 
@@ -27,7 +27,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateMetadataDTO',
           type: {
@@ -35,13 +34,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'UpdateMetadataDTO',
             model_properties: {
               delete: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'delete',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetadataDTOElementType',
                       type: {
@@ -52,13 +49,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               add: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'add',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetadataDTOElementType',
                       type: {

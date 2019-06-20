@@ -18,7 +18,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       @client = client
     end
 
-    # @return [QnamakerClient] reference to the QnamakerClient
+    # @return [QnAMakerClient] reference to the QnAMakerClient
     attr_reader :client
 
     #
@@ -29,8 +29,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [EndpointKeysDTO] operation results.
     #
-    def get_keys(custom_headers:nil)
-      response = get_keys_async(custom_headers:custom_headers).value!
+    def get_keys(custom_headers = nil)
+      response = get_keys_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -42,8 +42,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_keys_with_http_info(custom_headers:nil)
-      get_keys_async(custom_headers:custom_headers).value!
+    def get_keys_with_http_info(custom_headers = nil)
+      get_keys_async(custom_headers).value!
     end
 
     #
@@ -54,12 +54,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_keys_async(custom_headers:nil)
+    def get_keys_async(custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
@@ -112,8 +111,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [EndpointKeysDTO] operation results.
     #
-    def refresh_keys(key_type, custom_headers:nil)
-      response = refresh_keys_async(key_type, custom_headers:custom_headers).value!
+    def refresh_keys(key_type, custom_headers = nil)
+      response = refresh_keys_async(key_type, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -126,8 +125,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def refresh_keys_with_http_info(key_type, custom_headers:nil)
-      refresh_keys_async(key_type, custom_headers:custom_headers).value!
+    def refresh_keys_with_http_info(key_type, custom_headers = nil)
+      refresh_keys_async(key_type, custom_headers).value!
     end
 
     #
@@ -139,13 +138,12 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def refresh_keys_async(key_type, custom_headers:nil)
+    def refresh_keys_async(key_type, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'key_type is nil' if key_type.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

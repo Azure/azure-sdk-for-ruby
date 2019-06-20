@@ -18,7 +18,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       @client = client
     end
 
-    # @return [QnamakerClient] reference to the QnamakerClient
+    # @return [QnAMakerClient] reference to the QnAMakerClient
     attr_reader :client
 
     #
@@ -30,8 +30,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [Operation] operation results.
     #
-    def get_details(operation_id, custom_headers:nil)
-      response = get_details_async(operation_id, custom_headers:custom_headers).value!
+    def get_details(operation_id, custom_headers = nil)
+      response = get_details_async(operation_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -44,8 +44,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_details_with_http_info(operation_id, custom_headers:nil)
-      get_details_async(operation_id, custom_headers:custom_headers).value!
+    def get_details_with_http_info(operation_id, custom_headers = nil)
+      get_details_async(operation_id, custom_headers).value!
     end
 
     #
@@ -57,13 +57,12 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_details_async(operation_id, custom_headers:nil)
+    def get_details_async(operation_id, custom_headers = nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'operation_id is nil' if operation_id.nil?
 
 
       request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid

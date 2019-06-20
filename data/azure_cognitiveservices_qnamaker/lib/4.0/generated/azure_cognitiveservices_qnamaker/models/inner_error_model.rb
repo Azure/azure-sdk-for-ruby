@@ -29,7 +29,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'InnerErrorModel',
           type: {
@@ -37,7 +36,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'InnerErrorModel',
             model_properties: {
               code: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -45,7 +43,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               inner_error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'innerError',
                 type: {
