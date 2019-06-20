@@ -4,10 +4,15 @@
     "repotag": "azure-sdk-for-ruby",
     "autorest_options": {
       "version": "preview",
-      "use": "@microsoft.azure/autorest.ruby@3.0.20",
+      "use": "@microsoft.azure/autorest.ruby@preview",
       "ruby": "",
       "multiapi": "",
       "sdkrel:ruby-sdks-folder": "."
+    },
+    "advanced_options": {
+      "create_sdk_pull_requests": false,
+      "sdk_generation_pull_request_base": "main_branch",
+      "main_branch": "latest"
     }
   }
 }
