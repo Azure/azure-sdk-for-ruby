@@ -42,7 +42,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -50,7 +49,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'Operation',
             model_properties: {
               operation_state: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operationState',
                 type: {
@@ -58,7 +56,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               created_timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'createdTimestamp',
                 type: {
@@ -66,7 +63,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               last_action_timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastActionTimestamp',
                 type: {
@@ -74,7 +70,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               resource_location: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceLocation',
                 type: {
@@ -82,7 +77,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               user_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userId',
                 type: {
@@ -90,7 +84,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               operation_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'operationId',
                 type: {
@@ -98,7 +91,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               error_response: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorResponse',
                 type: {

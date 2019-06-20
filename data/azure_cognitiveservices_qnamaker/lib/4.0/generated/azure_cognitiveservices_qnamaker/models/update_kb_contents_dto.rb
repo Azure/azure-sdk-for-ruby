@@ -30,7 +30,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateKbContentsDTO',
           type: {
@@ -38,7 +37,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'UpdateKbContentsDTO',
             model_properties: {
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -46,13 +44,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               qna_list: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'qnaList',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UpdateQnaDTOElementType',
                       type: {
@@ -63,13 +59,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               urls: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'urls',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

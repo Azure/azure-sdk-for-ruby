@@ -23,7 +23,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -31,7 +30,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'ErrorResponse',
             model_properties: {
               error: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
