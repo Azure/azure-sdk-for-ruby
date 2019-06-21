@@ -31,12 +31,12 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [DiagnosticSettingsOperations] diagnostic_settings_operations
-    attr_reader :diagnostic_settings_operations
-
     # @return [DiagnosticSettingsCategoryOperations]
     # diagnostic_settings_category_operations
     attr_reader :diagnostic_settings_category_operations
+
+    # @return [DiagnosticSettingsOperations] diagnostic_settings_operations
+    attr_reader :diagnostic_settings_operations
 
     # @return [MetricDefinitions] metric_definitions
     attr_reader :metric_definitions
@@ -57,8 +57,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @diagnostic_settings_operations = DiagnosticSettingsOperations.new(self)
       @diagnostic_settings_category_operations = DiagnosticSettingsCategoryOperations.new(self)
+      @diagnostic_settings_operations = DiagnosticSettingsOperations.new(self)
       @metric_definitions = MetricDefinitions.new(self)
       @metrics = Metrics.new(self)
       @api_version = '2017-05-01-preview'
