@@ -19,7 +19,7 @@ module Azure::Storage::Mgmt::V2016_12_01
 
       # @return [Boolean] Indicates whether indirect CName validation is
       # enabled. Default value is false. This should only be set on updates.
-      attr_accessor :use_sub_domain
+      attr_accessor :use_sub_domain_name
 
 
       #
@@ -43,10 +43,10 @@ module Azure::Storage::Mgmt::V2016_12_01
                   name: 'String'
                 }
               },
-              use_sub_domain: {
+              use_sub_domain_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'useSubDomain',
+                serialized_name: 'useSubDomainName',
                 type: {
                   name: 'Boolean'
                 }

@@ -3,50 +3,50 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Storage::Mgmt::V2015_06_15
+module Azure::Storage::Mgmt::V2018_02_01
   module Models
     #
-    # The parameters used to check the availability of the storage account
-    # name.
+    # Lease Container response schema.
     #
-    class StorageAccountCheckNameAvailabilityParameters
+    class LeaseContainerResponse
 
       include MsRestAzure
 
-      # @return [String]
-      attr_accessor :name
+      # @return [String] Returned unique lease ID that must be included with
+      # any request to delete the container, or to renew, change, or release
+      # the lease.
+      attr_accessor :lease_id
 
-      # @return [String] . Default value: 'Microsoft.Storage/storageAccounts' .
-      attr_accessor :type
+      # @return [String] Approximate time remaining in the lease period, in
+      # seconds.
+      attr_accessor :lease_time_seconds
 
 
       #
-      # Mapper for StorageAccountCheckNameAvailabilityParameters class as Ruby
-      # Hash.
+      # Mapper for LeaseContainerResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'StorageAccountCheckNameAvailabilityParameters',
+          serialized_name: 'LeaseContainerResponse',
           type: {
             name: 'Composite',
-            class_name: 'StorageAccountCheckNameAvailabilityParameters',
+            class_name: 'LeaseContainerResponse',
             model_properties: {
-              name: {
+              lease_id: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'name',
+                required: false,
+                serialized_name: 'leaseId',
                 type: {
                   name: 'String'
                 }
               },
-              type: {
+              lease_time_seconds: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'type',
-                default_value: 'Microsoft.Storage/storageAccounts',
+                serialized_name: 'leaseTimeSeconds',
                 type: {
                   name: 'String'
                 }

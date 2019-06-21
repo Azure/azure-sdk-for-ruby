@@ -14,12 +14,12 @@ module Azure::Profiles::Latest
       Compliances = Azure::Security::Mgmt::V2017_08_01_preview::Compliances
 
       module Models
+        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
         AutoProvisioningSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSettingList
         PricingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::PricingList
         ComplianceSegment = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceSegment
         SecurityContactList = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContactList
         ComplianceList = Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
-        Resource = Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
         WorkspaceSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
         SecurityContact = Azure::Security::Mgmt::V2017_08_01_preview::Models::SecurityContact
         Pricing = Azure::Security::Mgmt::V2017_08_01_preview::Models::Pricing
@@ -66,6 +66,9 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def resource
+            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
+          end
           def auto_provisioning_setting_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::AutoProvisioningSettingList
           end
@@ -80,9 +83,6 @@ module Azure::Profiles::Latest
           end
           def compliance_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::ComplianceList
-          end
-          def resource
-            Azure::Security::Mgmt::V2017_08_01_preview::Models::Resource
           end
           def workspace_setting_list
             Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
