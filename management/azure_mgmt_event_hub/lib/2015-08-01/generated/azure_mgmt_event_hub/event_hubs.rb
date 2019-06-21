@@ -745,8 +745,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
     #
     # @return [SharedAccessAuthorizationRuleResource] operation results.
     #
-    def postt_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
-      response = postt_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
+    def post_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
+      response = post_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -763,8 +763,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def postt_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
-      postt_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
+    def post_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
+      post_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers).value!
     end
 
     #
@@ -780,7 +780,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def postt_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
+    def post_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
