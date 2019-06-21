@@ -7,27 +7,27 @@ require 'azure_mgmt_iot_central'
 module Azure::Profiles::Latest
   module IotCentral
     module Mgmt
-      Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
       Operations = Azure::IotCentral::Mgmt::V2018_09_01::Operations
+      Apps = Azure::IotCentral::Mgmt::V2018_09_01::Apps
 
       module Models
-        AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
-        AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
-        OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
-        AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
-        Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
-        ErrorResponseBody = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
-        OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
-        Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
-        OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
-        ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
         AppAvailabilityInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
+        Resource = Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
         App = Azure::IotCentral::Mgmt::V2018_09_01::Models::App
         AppSku = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
+        ErrorDetails = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
+        OperationDisplay = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
+        Operation = Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
+        OperationListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
+        ErrorResponseBody = Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
+        AppListResult = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
+        AppSkuInfo = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
+        AppPatch = Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
+        OperationInputs = Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
       end
 
       class IotCentralManagementClass
-        attr_reader :apps, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :apps, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -37,8 +37,8 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @apps = @client_0.apps
           @operations = @client_0.operations
+          @apps = @client_0.apps
 
           @model_classes = ModelClasses.new
         end
@@ -57,44 +57,44 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def app_list_result
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
-          end
-          def app_sku_info
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
-          end
-          def operation_display
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
-          end
-          def app_patch
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
-          end
-          def operation
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
-          end
-          def error_response_body
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
-          end
-          def operation_list_result
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
+          def app_availability_info
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
           end
           def resource
             Azure::IotCentral::Mgmt::V2018_09_01::Models::Resource
-          end
-          def operation_inputs
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
-          end
-          def error_details
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
-          end
-          def app_availability_info
-            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppAvailabilityInfo
           end
           def app
             Azure::IotCentral::Mgmt::V2018_09_01::Models::App
           end
           def app_sku
             Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSku
+          end
+          def error_details
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorDetails
+          end
+          def operation_display
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationDisplay
+          end
+          def operation
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::Operation
+          end
+          def operation_list_result
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationListResult
+          end
+          def error_response_body
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::ErrorResponseBody
+          end
+          def app_list_result
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppListResult
+          end
+          def app_sku_info
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppSkuInfo
+          end
+          def app_patch
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::AppPatch
+          end
+          def operation_inputs
+            Azure::IotCentral::Mgmt::V2018_09_01::Models::OperationInputs
           end
         end
       end

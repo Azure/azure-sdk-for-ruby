@@ -53,7 +53,6 @@ module Azure::EventGrid::V2018_01_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'StorageBlobDeletedEventData',
           type: {
@@ -61,7 +60,6 @@ module Azure::EventGrid::V2018_01_01
             class_name: 'StorageBlobDeletedEventData',
             model_properties: {
               api: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'api',
                 type: {
@@ -69,7 +67,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               client_request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientRequestId',
                 type: {
@@ -77,7 +74,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               request_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {
@@ -85,7 +81,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               content_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentType',
                 type: {
@@ -93,7 +88,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               blob_type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobType',
                 type: {
@@ -101,7 +95,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               url: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'url',
                 type: {
@@ -109,7 +102,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               sequencer: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sequencer',
                 type: {
@@ -117,7 +109,6 @@ module Azure::EventGrid::V2018_01_01
                 }
               },
               storage_diagnostics: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageDiagnostics',
                 type: {
