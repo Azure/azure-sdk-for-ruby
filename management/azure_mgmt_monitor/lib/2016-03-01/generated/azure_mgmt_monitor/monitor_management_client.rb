@@ -34,11 +34,11 @@ module Azure::Monitor::Mgmt::V2016_03_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [AlertRules] alert_rules
-    attr_reader :alert_rules
-
     # @return [AlertRuleIncidents] alert_rule_incidents
     attr_reader :alert_rule_incidents
+
+    # @return [AlertRules] alert_rules
+    attr_reader :alert_rules
 
     # @return [LogProfiles] log_profiles
     attr_reader :log_profiles
@@ -59,8 +59,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @alert_rules = AlertRules.new(self)
       @alert_rule_incidents = AlertRuleIncidents.new(self)
+      @alert_rules = AlertRules.new(self)
       @log_profiles = LogProfiles.new(self)
       @metric_definitions = MetricDefinitions.new(self)
       @api_version = '2016-03-01'
