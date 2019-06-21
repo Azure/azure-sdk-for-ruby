@@ -6,7 +6,7 @@
 module Azure::CognitiveServices::ComputerVision::V2_0
   module Models
     #
-    # Json object representing a recognized text region
+    # An object representing a recognized text region
     #
     class TextRecognitionResult
 
@@ -26,8 +26,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       attr_accessor :height
 
       # @return [TextRecognitionResultDimensionUnit] The unit used in the
-      # Width, Height and BoundingBox. For images, the unit is "pixel". For
-      # PDF, the unit is "inch". Possible values include: 'pixel', 'inch'
+      # Width, Height and BoundingBox. For images, the unit is 'pixel'. For
+      # PDF, the unit is 'inch'. Possible values include: 'pixel', 'inch'
       attr_accessor :unit
 
       # @return [Array<Line>] A list of recognized text lines.

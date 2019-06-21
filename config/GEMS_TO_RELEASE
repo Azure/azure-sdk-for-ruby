@@ -1,6 +1,6 @@
 {
-    "management": [
-        "azure_mgmt_event_grid"
+    "data": [
+        "azure_cognitiveservices_computervision"
     ],
     "rollup": [
         "azure_sdk"
