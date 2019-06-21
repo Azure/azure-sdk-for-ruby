@@ -2140,6 +2140,14 @@
       "tag": "release_1_0"
     }
   },
+  "azure_cognitiveservices_personalizer": {
+    "azure_cognitiveservices_personalizer_v1.0_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f349d1c91fa265937f7d3138c87f5d88f7eb6240/specification/cognitiveservices/data-plane/Personalizer/readme.md",
+      "namespace": "Azure::CognitiveServices::Personalizer::V1_0",
+      "title": "PersonalizerClient",
+      "tag": "release_1_0"
+    }
+  },
   "azure_cognitiveservices_qnamaker":{
     "azure_cognitiveservices_qnamaker_v4.0":{
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1a66a41ea1bde833fa94bb38bb8c87a7c1ce2142/specification/cognitiveservices/data-plane/QnAMaker/readme.md",

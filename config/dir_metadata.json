@@ -714,6 +714,13 @@
       "module_require": "azure_cognitiveservices_newssearch"
     }
   },
+  "Microsoft.CognitiveServices.Personalizer": {
+    "data": {
+      "path": "data/azure_cognitiveservices_personalizer",
+      "namespace": "Azure::CognitiveServices::Personalizer",
+      "module_require": "azure_cognitiveservices_personalizer"
+    }
+  },
   "Microsoft.CognitiveServices.Qnamaker":{
     "data": {
       "path": "data/azure_cognitiveservices_qnamaker",
