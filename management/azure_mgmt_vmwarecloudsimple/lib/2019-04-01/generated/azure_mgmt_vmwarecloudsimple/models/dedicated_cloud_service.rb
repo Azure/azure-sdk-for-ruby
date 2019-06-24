@@ -22,14 +22,14 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       # @return [String] {dedicatedCloudServiceName}
       attr_accessor :name
 
-      # @return [String] gateway Subnet for the account. It will collect the
-      # subnet address and always treat it as /28
-      attr_accessor :gateway_subnet
-
       # @return [OnboardingStatus] indicates whether account onboarded or not
       # in a given region. Possible values include: 'notOnBoarded',
       # 'onBoarded', 'onBoardingFailed', 'onBoarding'
-      attr_accessor :is_account_onboarded
+      attr_accessor :account_onboarding_state
+
+      # @return [String] gateway Subnet for the account. It will collect the
+      # subnet address and always treat it as /28
+      attr_accessor :gateway_subnet
 
       # @return [Integer] total nodes purchased
       attr_accessor :nodes
@@ -82,20 +82,20 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
                   name: 'String'
                 }
               },
+              account_onboarding_state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.accountOnboardingState',
+                type: {
+                  name: 'Enum',
+                  module: 'OnboardingStatus'
+                }
+              },
               gateway_subnet: {
                 required: true,
                 serialized_name: 'properties.gatewaySubnet',
                 type: {
                   name: 'String'
-                }
-              },
-              is_account_onboarded: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.isAccountOnboarded',
-                type: {
-                  name: 'Enum',
-                  module: 'OnboardingStatus'
                 }
               },
               nodes: {

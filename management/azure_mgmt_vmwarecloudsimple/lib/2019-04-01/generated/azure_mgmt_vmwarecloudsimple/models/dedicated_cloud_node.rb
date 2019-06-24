@@ -22,26 +22,27 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       # @return [String] {dedicatedCloudNodeName}
       attr_accessor :name
 
-      # @return [String] Availability Zone id, e.g. "az1"
-      attr_accessor :availability_zone_id
-
-      # @return [String] Availability Zone name, e.g. "Availability Zone 1"
-      attr_accessor :availability_zone_name
-
       # @return [String] VMWare Cloud Rack Name
       attr_accessor :cloud_rack_name
 
       # @return date time the resource was created
       attr_accessor :created
 
+      # @return [String] CloudSimple Availability Zone id, e.g. "az1"
+      attr_accessor :dedicated_availability_zone_id
+
+      # @return [String] CloudSimple Availability Zone name, e.g. "Availability
+      # Zone 1"
+      attr_accessor :dedicated_availability_zone_name
+
+      # @return [String] CloudSimple Placement Group id, e.g. "n1"
+      attr_accessor :dedicated_placement_group_id
+
+      # @return [String] CloudSimple Placement Name, e.g. "Placement Group 1"
+      attr_accessor :dedicated_placement_group_name
+
       # @return [Integer] count of nodes to create
       attr_accessor :nodes_count
-
-      # @return [String] Placement Group id, e.g. "n1"
-      attr_accessor :placement_group_id
-
-      # @return [String] Placement Name, e.g. "Placement Group 1"
-      attr_accessor :placement_group_name
 
       # @return [String] Private Cloud Id
       attr_accessor :private_cloud_id
@@ -116,21 +117,6 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
                   name: 'String'
                 }
               },
-              availability_zone_id: {
-                required: true,
-                serialized_name: 'properties.availabilityZoneId',
-                type: {
-                  name: 'String'
-                }
-              },
-              availability_zone_name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.availabilityZoneName',
-                type: {
-                  name: 'String'
-                }
-              },
               cloud_rack_name: {
                 required: false,
                 read_only: true,
@@ -147,26 +133,41 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
                   name: 'Object'
                 }
               },
+              dedicated_availability_zone_id: {
+                required: true,
+                serialized_name: 'properties.dedicatedAvailabilityZoneId',
+                type: {
+                  name: 'String'
+                }
+              },
+              dedicated_availability_zone_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.dedicatedAvailabilityZoneName',
+                type: {
+                  name: 'String'
+                }
+              },
+              dedicated_placement_group_id: {
+                required: true,
+                serialized_name: 'properties.dedicatedPlacementGroupId',
+                type: {
+                  name: 'String'
+                }
+              },
+              dedicated_placement_group_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.dedicatedPlacementGroupName',
+                type: {
+                  name: 'String'
+                }
+              },
               nodes_count: {
                 required: true,
                 serialized_name: 'properties.nodesCount',
                 type: {
                   name: 'Number'
-                }
-              },
-              placement_group_id: {
-                required: true,
-                serialized_name: 'properties.placementGroupId',
-                type: {
-                  name: 'String'
-                }
-              },
-              placement_group_name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.placementGroupName',
-                type: {
-                  name: 'String'
                 }
               },
               private_cloud_id: {

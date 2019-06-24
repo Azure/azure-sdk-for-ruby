@@ -22,12 +22,6 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       # @return [String] Private cloud name
       attr_accessor :name
 
-      # @return [String] Availability Zone id, e.g. "az1"
-      attr_accessor :availability_zone_id
-
-      # @return [String] Availability Zone name, e.g. "Availability Zone 1"
-      attr_accessor :availability_zone_name
-
       # @return [Integer] Number of clusters
       attr_accessor :clusters_number
 
@@ -37,6 +31,19 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
       # @return [DateTime] When private cloud was created
       attr_accessor :created_on
 
+      # @return [String] CloudSimple Availability Zone id, e.g. "az1"
+      attr_accessor :dedicated_availability_zone_id
+
+      # @return [String] CloudSimple Availability Zone name, e.g. "Availability
+      # Zone 1"
+      attr_accessor :dedicated_availability_zone_name
+
+      # @return [String] CloudSimple Placement Group id, e.g. "n1"
+      attr_accessor :dedicated_placement_group_id
+
+      # @return [String] CloudSimple Placement Group name
+      attr_accessor :dedicated_placement_group_name
+
       # @return [Array<String>] Array of DNS servers
       attr_accessor :dns_servers
 
@@ -45,12 +52,6 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
 
       # @return [String] Nsx Type, e.g. "Advanced"
       attr_accessor :nsx_type
-
-      # @return [String] Placement Group id, e.g. "n1"
-      attr_accessor :placement_group_id
-
-      # @return [String] Placement Group name
-      attr_accessor :placement_group_name
 
       # @return Id of a private cloud
       attr_accessor :private_cloud_id
@@ -133,20 +134,6 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
                   name: 'String'
                 }
               },
-              availability_zone_id: {
-                required: false,
-                serialized_name: 'properties.availabilityZoneId',
-                type: {
-                  name: 'String'
-                }
-              },
-              availability_zone_name: {
-                required: false,
-                serialized_name: 'properties.availabilityZoneName',
-                type: {
-                  name: 'String'
-                }
-              },
               clusters_number: {
                 required: false,
                 serialized_name: 'properties.clustersNumber',
@@ -166,6 +153,34 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
                 serialized_name: 'properties.createdOn',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              dedicated_availability_zone_id: {
+                required: false,
+                serialized_name: 'properties.dedicatedAvailabilityZoneId',
+                type: {
+                  name: 'String'
+                }
+              },
+              dedicated_availability_zone_name: {
+                required: false,
+                serialized_name: 'properties.dedicatedAvailabilityZoneName',
+                type: {
+                  name: 'String'
+                }
+              },
+              dedicated_placement_group_id: {
+                required: false,
+                serialized_name: 'properties.dedicatedPlacementGroupId',
+                type: {
+                  name: 'String'
+                }
+              },
+              dedicated_placement_group_name: {
+                required: false,
+                serialized_name: 'properties.dedicatedPlacementGroupName',
+                type: {
+                  name: 'String'
                 }
               },
               dns_servers: {
@@ -192,20 +207,6 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
               nsx_type: {
                 required: false,
                 serialized_name: 'properties.nsxType',
-                type: {
-                  name: 'String'
-                }
-              },
-              placement_group_id: {
-                required: false,
-                serialized_name: 'properties.placementGroupId',
-                type: {
-                  name: 'String'
-                }
-              },
-              placement_group_name: {
-                required: false,
-                serialized_name: 'properties.placementGroupName',
                 type: {
                   name: 'String'
                 }
