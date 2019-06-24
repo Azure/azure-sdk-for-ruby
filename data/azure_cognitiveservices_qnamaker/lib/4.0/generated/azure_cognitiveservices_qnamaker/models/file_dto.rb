@@ -26,7 +26,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'FileDTO',
           type: {
@@ -34,7 +33,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'FileDTO',
             model_properties: {
               file_name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'fileName',
                 constraints: {
@@ -46,7 +44,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               file_uri: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'fileUri',
                 type: {

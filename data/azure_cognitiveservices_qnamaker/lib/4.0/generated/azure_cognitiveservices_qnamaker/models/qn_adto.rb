@@ -29,6 +29,9 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # answer.
       attr_accessor :metadata
 
+      # @return [QnADTOContext] Context of a QnA
+      attr_accessor :context
+
 
       #
       # Mapper for QnADTO class as Ruby Hash.
@@ -36,7 +39,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'QnADTO',
           type: {
@@ -44,7 +46,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'QnADTO',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -52,7 +53,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               answer: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'answer',
                 constraints: {
@@ -64,7 +64,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               source: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'source',
                 constraints: {
@@ -75,13 +74,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               questions: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'questions',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -91,13 +88,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               metadata: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetadataDTOElementType',
                       type: {
@@ -105,6 +100,14 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                         class_name: 'MetadataDTO'
                       }
                   }
+                }
+              },
+              context: {
+                required: false,
+                serialized_name: 'context',
+                type: {
+                  name: 'Composite',
+                  class_name: 'QnADTOContext'
                 }
               }
             }

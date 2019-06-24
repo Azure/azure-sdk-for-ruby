@@ -51,7 +51,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'KnowledgebaseDTO',
           type: {
@@ -59,7 +58,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'KnowledgebaseDTO',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -67,7 +65,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               host_name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'hostName',
                 type: {
@@ -75,7 +72,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               last_accessed_timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastAccessedTimestamp',
                 type: {
@@ -83,7 +79,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               last_changed_timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastChangedTimestamp',
                 type: {
@@ -91,7 +86,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               last_published_timestamp: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastPublishedTimestamp',
                 type: {
@@ -99,7 +93,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -107,7 +100,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               user_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'userId',
                 type: {
@@ -115,13 +107,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               urls: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'urls',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -131,13 +121,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 }
               },
               sources: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sources',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

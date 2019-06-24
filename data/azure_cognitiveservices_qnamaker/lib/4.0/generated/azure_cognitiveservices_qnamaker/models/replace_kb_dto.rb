@@ -24,7 +24,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ReplaceKbDTO',
           type: {
@@ -32,13 +31,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
             class_name: 'ReplaceKbDTO',
             model_properties: {
               qn_alist: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'qnAList',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'QnADTOElementType',
                       type: {
