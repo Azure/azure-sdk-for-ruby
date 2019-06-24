@@ -20,9 +20,9 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
       # @return [String] Specifies the targeted region in which the namespace
       # should be created. It can be any of the following values: Australia
-      # EastAustralia SoutheastCentral USEast USEast US 2West USNorth Central
-      # USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan EastJapan
-      # WestNorth EuropeWest Europe
+      # East, Australia Southeast, Central US, East US, East US 2, West US,
+      # North Central US, South Central US, East Asia, Southeast Asia, Brazil
+      # South, Japan East, Japan West, North Europe, West Europe
       attr_accessor :region
 
       # @return [String] Identifier for Azure Insights metrics
