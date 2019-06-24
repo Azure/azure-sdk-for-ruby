@@ -17,7 +17,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # 'Bitrate'
       attr_accessor :property
 
-      # @return [String] The track property value.
+      # @return [String] The track proprty value.
       attr_accessor :value
 
       # @return [FilterTrackPropertyCompareOperation] The track property

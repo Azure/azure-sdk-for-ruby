@@ -22,7 +22,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       attr_accessor :@odatatype
 
       # @return [Duration] The time position on the timeline of the input
-      # media. It is usually specified as an ISO8601 period. e.g PT30S for 30
+      # media. It is usually speicified as an ISO8601 period. e.g PT30S for 30
       # seconds.
       attr_accessor :time
 
