@@ -739,6 +739,11 @@
                         "1.0": ["*"]
                     }
                 },
+                "Microsoft.CognitiveServices.Personalizer": {
+                    "data": {
+                        "v1.0": ["*"]
+                    }
+                },
                 "Microsoft.CognitiveServices.Qnamaker": {
                     "data": {
                         "4.0": ["*"]
@@ -2591,6 +2596,20 @@
                     }
                 },
                 "output_dir": "data/azure_cognitiveservices_newssearch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_personalizer": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.Personalizer": {
+                        "data": {
+                            "v1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_personalizer/lib/profiles",
                 "individual_gem_profile": true
             }
         ],

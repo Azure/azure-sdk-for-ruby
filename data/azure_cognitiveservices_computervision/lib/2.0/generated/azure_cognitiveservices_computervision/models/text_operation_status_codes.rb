@@ -9,7 +9,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # Defines values for TextOperationStatusCodes
     #
     module TextOperationStatusCodes
-      NotStarted = "Not Started"
+      NotStarted = "NotStarted"
       Running = "Running"
       Failed = "Failed"
       Succeeded = "Succeeded"

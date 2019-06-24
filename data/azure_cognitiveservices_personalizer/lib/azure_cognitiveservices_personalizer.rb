@@ -2,6 +2,5 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure
-  VERSION = '0.27.0'
-end
+require 'v1.0/generated/azure_cognitiveservices_personalizer'
+require 'profiles/latest/personalizer_latest_profile_client'
