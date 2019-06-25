@@ -29,14 +29,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
     # Gets service administrator, account administrator, and co-administrators for
     # the subscription.
     #
-    # @param api_version [String] The API version to use for this operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<ClassicAdministrator>] operation results.
     #
-    def list(api_version, custom_headers = nil)
-      first_page = list_as_lazy(api_version, custom_headers)
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -44,28 +43,26 @@ module Azure::Authorization::Mgmt::V2015_07_01
     # Gets service administrator, account administrator, and co-administrators for
     # the subscription.
     #
-    # @param api_version [String] The API version to use for this operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(api_version, custom_headers = nil)
-      list_async(api_version, custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
     # Gets service administrator, account administrator, and co-administrators for
     # the subscription.
     #
-    # @param api_version [String] The API version to use for this operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(api_version, custom_headers = nil)
-      fail ArgumentError, 'api_version is nil' if api_version.nil?
+    def list_async(custom_headers = nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -81,7 +78,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -208,15 +205,14 @@ module Azure::Authorization::Mgmt::V2015_07_01
     # Gets service administrator, account administrator, and co-administrators for
     # the subscription.
     #
-    # @param api_version [String] The API version to use for this operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ClassicAdministratorListResult] which provide lazy access to pages
     # of the response.
     #
-    def list_as_lazy(api_version, custom_headers = nil)
-      response = list_async(api_version, custom_headers).value!
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
