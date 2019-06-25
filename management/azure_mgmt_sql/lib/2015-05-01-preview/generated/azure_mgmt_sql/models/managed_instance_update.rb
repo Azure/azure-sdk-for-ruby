@@ -102,10 +102,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       # belongs to.
       attr_accessor :instance_pool_id
 
-      # @return [MaintenanceWindowSettings] Specifies maintenance window
-      # settings for a managed instance.
-      attr_accessor :maintenance_window_settings
-
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 
@@ -257,14 +253,6 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 serialized_name: 'properties.instancePoolId',
                 type: {
                   name: 'String'
-                }
-              },
-              maintenance_window_settings: {
-                required: false,
-                serialized_name: 'properties.maintenanceWindowSettings',
-                type: {
-                  name: 'Composite',
-                  class_name: 'MaintenanceWindowSettings'
                 }
               },
               tags: {
