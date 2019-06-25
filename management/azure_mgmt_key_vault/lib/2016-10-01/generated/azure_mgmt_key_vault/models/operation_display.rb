@@ -21,7 +21,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       # @return [String] Type of operation: get, read, delete, etc.
       attr_accessor :operation
 
-      # @return [String] Decription of operation.
+      # @return [String] Description of operation.
       attr_accessor :description
 
 

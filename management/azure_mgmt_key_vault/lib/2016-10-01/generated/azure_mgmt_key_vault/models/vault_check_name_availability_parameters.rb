@@ -6,7 +6,7 @@
 module Azure::KeyVault::Mgmt::V2016_10_01
   module Models
     #
-    # The parameters used to check the availabity of the vault name.
+    # The parameters used to check the availability of the vault name.
     #
     class VaultCheckNameAvailabilityParameters
 

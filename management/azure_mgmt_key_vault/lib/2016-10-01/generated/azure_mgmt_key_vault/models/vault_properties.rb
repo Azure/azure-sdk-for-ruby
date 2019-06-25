@@ -21,7 +21,9 @@ module Azure::KeyVault::Mgmt::V2016_10_01
 
       # @return [Array<AccessPolicyEntry>] An array of 0 to 16 identities that
       # have access to the key vault. All identities in the array must use the
-      # same tenant ID as the key vault's tenant ID.
+      # same tenant ID as the key vault's tenant ID. When `createMode` is set
+      # to `recover`, access policies are not required. Otherwise, access
+      # policies are required.
       attr_accessor :access_policies
 
       # @return [String] The URI of the vault for performing operations on keys
