@@ -12,7 +12,6 @@ module Azure::Profiles::Latest
     PersonGroupOperations = Azure::CognitiveServices::Face::V1_0::PersonGroupOperations
 
     module Models
-      FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
       FindSimilarRequest = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
       SimilarFace = Azure::CognitiveServices::Face::V1_0::Models::SimilarFace
       GroupRequest = Azure::CognitiveServices::Face::V1_0::Models::GroupRequest
@@ -55,9 +54,10 @@ module Azure::Profiles::Latest
       Gender = Azure::CognitiveServices::Face::V1_0::Models::Gender
       TrainingStatusType = Azure::CognitiveServices::Face::V1_0::Models::TrainingStatusType
       FindSimilarMatchMode = Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
-      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+      Error = Azure::CognitiveServices::Face::V1_0::Models::Error
       APIError = Azure::CognitiveServices::Face::V1_0::Models::APIError
+      FaceRectangle = Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
     end
 
     class FaceDataClass
@@ -93,9 +93,6 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def face_rectangle
-          Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
-        end
         def find_similar_request
           Azure::CognitiveServices::Face::V1_0::Models::FindSimilarRequest
         end
@@ -222,14 +219,17 @@ module Azure::Profiles::Latest
         def find_similar_match_mode
           Azure::CognitiveServices::Face::V1_0::Models::FindSimilarMatchMode
         end
-        def error
-          Azure::CognitiveServices::Face::V1_0::Models::Error
-        end
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
         end
+        def error
+          Azure::CognitiveServices::Face::V1_0::Models::Error
+        end
         def apierror
           Azure::CognitiveServices::Face::V1_0::Models::APIError
+        end
+        def face_rectangle
+          Azure::CognitiveServices::Face::V1_0::Models::FaceRectangle
         end
       end
     end
