@@ -22,7 +22,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoleAssignmentFilter',
           type: {
@@ -30,7 +29,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleAssignmentFilter',
             model_properties: {
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'principalId',
                 type: {

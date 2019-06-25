@@ -11,18 +11,18 @@ module Azure::Profiles::Latest
       RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
 
       module Models
-        MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
         ResourceRateCardInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
         UsageAggregation = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
         InfoField = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::InfoField
         UsageAggregationListResult = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
         OfferTermInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
         RateCardQueryParameters = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
-        ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
         MonetaryCredit = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
         MonetaryCommitment = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
         RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
         AggregationGranularity = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
+        ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+        MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
       end
 
       class CommerceManagementClass
@@ -56,9 +56,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def meter_info
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
-          end
           def resource_rate_card_info
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
           end
@@ -77,9 +74,6 @@ module Azure::Profiles::Latest
           def rate_card_query_parameters
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
           end
-          def error_response
-            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
-          end
           def monetary_credit
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
           end
@@ -91,6 +85,12 @@ module Azure::Profiles::Latest
           end
           def aggregation_granularity
             Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
+          end
+          def error_response
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+          end
+          def meter_info
+            Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
           end
         end
       end

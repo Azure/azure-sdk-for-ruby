@@ -20,7 +20,7 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
       # principal, or security group.
       attr_accessor :principal_id
 
-      # @return [Boolean] The delgation flag used for creating a role
+      # @return [Boolean] The delegation flag used for creating a role
       # assignment
       attr_accessor :can_delegate
 
@@ -31,7 +31,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoleAssignmentCreateParameters',
           type: {
@@ -39,7 +38,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
             class_name: 'RoleAssignmentCreateParameters',
             model_properties: {
               role_definition_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.roleDefinitionId',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
                 }
               },
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.principalId',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Authorization::Mgmt::V2017_10_01_preview
                 }
               },
               can_delegate: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.canDelegate',
                 type: {

@@ -28,7 +28,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoleAssignmentPropertiesWithScope',
           type: {
@@ -36,7 +35,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleAssignmentPropertiesWithScope',
             model_properties: {
               scope: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'scope',
                 type: {
@@ -44,7 +42,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               role_definition_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'roleDefinitionId',
                 type: {
@@ -52,7 +49,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               principal_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'principalId',
                 type: {

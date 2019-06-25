@@ -21,9 +21,11 @@ module Azure::Authorization::Mgmt::V2015_07_01
       # @return [String] The type of the administrator.
       attr_accessor :type
 
-      # @return [ClassicAdministratorProperties] Properties for the classic
-      # administrator.
-      attr_accessor :properties
+      # @return [String] The email address of the administrator.
+      attr_accessor :email_address
+
+      # @return [String] The role of the administrator.
+      attr_accessor :role
 
 
       #
@@ -32,7 +34,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'ClassicAdministrator',
           type: {
@@ -40,7 +41,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'ClassicAdministrator',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -48,7 +48,6 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               name: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -56,20 +55,24 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               type: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              properties: {
-                client_side_validation: true,
+              email_address: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.emailAddress',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ClassicAdministratorProperties'
+                  name: 'String'
+                }
+              },
+              role: {
+                required: false,
+                serialized_name: 'properties.role',
+                type: {
+                  name: 'String'
                 }
               }
             }
