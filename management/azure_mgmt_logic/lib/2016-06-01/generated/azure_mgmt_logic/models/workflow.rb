@@ -42,7 +42,9 @@ module Azure::Logic::Mgmt::V2016_06_01
       # @return [ResourceReference] The integration account.
       attr_accessor :integration_account
 
-      # @return The definition.
+      # @return The definition. See [Schema reference for Workflow Definition
+      # Language in Azure Logic
+      # Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-definition-language).
       attr_accessor :definition
 
       # @return [Hash{String => WorkflowParameter}] The parameters.
