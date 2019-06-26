@@ -40,7 +40,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
 
       # @return [String] A string indicating whether the export to Log
       # Analytics should use the default destination type, i.e.
-      # AzureDiagnostics, or use a destinatin type constructed as follows:
+      # AzureDiagnostics, or use a destination type constructed as follows:
       # <normalized service identity>_<normalized category name>. Possible
       # values are: Dedicated and null (null is default.)
       attr_accessor :log_analytics_destination_type
