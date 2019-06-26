@@ -27,17 +27,23 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       # default event hub will be selected.
       attr_accessor :event_hub_name
 
-      # @return [Array<MetricSettings>] the list of metric settings.
+      # @return [Array<MetricSettings>] The list of metric settings.
       attr_accessor :metrics
 
-      # @return [Array<LogSettings>] the list of logs settings.
+      # @return [Array<LogSettings>] The list of logs settings.
       attr_accessor :logs
 
-      # @return [String] The workspace ID (resource ID of a Log Analytics
-      # workspace) for a Log Analytics workspace to which you would like to
-      # send Diagnostic Logs. Example:
+      # @return [String] The full ARM resource ID of the Log Analytics
+      # workspace to which you would like to send Diagnostic Logs. Example:
       # /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
       attr_accessor :workspace_id
+
+      # @return [String] A string indicating whether the export to Log
+      # Analytics should use the default destination type, i.e.
+      # AzureDiagnostics, or use a destinatin type constructed as follows:
+      # <normalized service identity>_<normalized category name>. Possible
+      # values are: Dedicated and null (null is default.)
+      attr_accessor :log_analytics_destination_type
 
 
       #
@@ -137,6 +143,13 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
               workspace_id: {
                 required: false,
                 serialized_name: 'properties.workspaceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              log_analytics_destination_type: {
+                required: false,
+                serialized_name: 'properties.logAnalyticsDestinationType',
                 type: {
                   name: 'String'
                 }
