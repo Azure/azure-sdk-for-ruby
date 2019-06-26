@@ -6,7 +6,7 @@
 module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
   module Models
     #
-    # The list workspace managmement groups operation response.
+    # The list workspace management groups operation response.
     #
     class WorkspaceListManagementGroupsResult
 

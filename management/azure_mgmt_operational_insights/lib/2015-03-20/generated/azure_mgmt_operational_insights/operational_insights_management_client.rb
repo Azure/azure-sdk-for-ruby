@@ -17,12 +17,10 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Gets subscription credentials which uniquely identify
-    # Microsoft Azure subscription. The subscription ID forms part of the URI
-    # for every service call.
+    # @return [String] The Subscription ID.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
+    # @return [String] The client API version.
     attr_reader :api_version
 
     # @return [WorkspacePurgeBody] Describes the body of a request to purge
@@ -146,7 +144,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_operational_insights'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.16.0"
         add_user_agent_information(sdk_information)
     end
   end

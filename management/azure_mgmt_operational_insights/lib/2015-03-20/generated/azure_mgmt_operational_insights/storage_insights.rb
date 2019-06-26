@@ -24,10 +24,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Create or update a storage insight.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that will contain
-    # the storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param storage_insight_name [String] Name of the storageInsightsConfigs
     # resource
     # @param parameters [StorageInsight] The parameters required to create or
@@ -45,10 +43,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Create or update a storage insight.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that will contain
-    # the storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param storage_insight_name [String] Name of the storageInsightsConfigs
     # resource
     # @param parameters [StorageInsight] The parameters required to create or
@@ -65,10 +61,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Create or update a storage insight.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that will contain
-    # the storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param storage_insight_name [String] Name of the storageInsightsConfigs
     # resource
     # @param parameters [StorageInsight] The parameters required to create or
@@ -156,10 +150,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Gets a storage insight instance.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that contains the
-    # storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param storage_insight_name [String] Name of the storageInsightsConfigs
     # resource
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -175,10 +167,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Gets a storage insight instance.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that contains the
-    # storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param storage_insight_name [String] Name of the storageInsightsConfigs
     # resource
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -193,10 +183,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Gets a storage insight instance.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that contains the
-    # storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param storage_insight_name [String] Name of the storageInsightsConfigs
     # resource
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -264,10 +252,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Deletes a storageInsightsConfigs resource
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that contains the
-    # storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param storage_insight_name [String] Name of the storageInsightsConfigs
     # resource
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -282,10 +268,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Deletes a storageInsightsConfigs resource
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that contains the
-    # storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param storage_insight_name [String] Name of the storageInsightsConfigs
     # resource
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -300,10 +284,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Deletes a storageInsightsConfigs resource
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that contains the
-    # storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param storage_insight_name [String] Name of the storageInsightsConfigs
     # resource
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -361,10 +343,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Lists the storage insight instances within a workspace
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that will contain
-    # the storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -378,10 +358,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Lists the storage insight instances within a workspace
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that will contain
-    # the storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -394,10 +372,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Lists the storage insight instances within a workspace
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that will contain
-    # the storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -550,10 +526,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Lists the storage insight instances within a workspace
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics Workspace name that will contain
-    # the storageInsightsConfigs resource
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
