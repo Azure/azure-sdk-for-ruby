@@ -21,7 +21,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       # @return [String] The resource name of the access policy.
       attr_accessor :type
 
-      # @return [String] The resource type of the the access policy.
+      # @return [String] The resource type of the access policy.
       attr_accessor :location
 
       # @return [VaultAccessPolicyProperties] Properties of the access policy
