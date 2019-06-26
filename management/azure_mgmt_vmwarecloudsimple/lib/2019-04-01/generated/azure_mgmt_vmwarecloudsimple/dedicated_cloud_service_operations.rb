@@ -24,7 +24,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
     #
     # Implements list of dedicatedCloudService objects within subscription method
     #
-    # Returns list of dedicated cloud service within within subscription
+    # Returns list of dedicated cloud services within a subscription
     #
     # @param filter [String] The filter to apply on the list operation
     # @param top [Integer] The maximum number of record sets to return
@@ -42,7 +42,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
     #
     # Implements list of dedicatedCloudService objects within subscription method
     #
-    # Returns list of dedicated cloud service within within subscription
+    # Returns list of dedicated cloud services within a subscription
     #
     # @param filter [String] The filter to apply on the list operation
     # @param top [Integer] The maximum number of record sets to return
@@ -59,7 +59,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
     #
     # Implements list of dedicatedCloudService objects within subscription method
     #
-    # Returns list of dedicated cloud service within within subscription
+    # Returns list of dedicated cloud services within a subscription
     #
     # @param filter [String] The filter to apply on the list operation
     # @param top [Integer] The maximum number of record sets to return
@@ -673,7 +673,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
     #
     # Implements list of dedicatedCloudService objects within subscription method
     #
-    # Returns list of dedicated cloud service within within subscription
+    # Returns list of dedicated cloud services within a subscription
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -690,7 +690,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
     #
     # Implements list of dedicatedCloudService objects within subscription method
     #
-    # Returns list of dedicated cloud service within within subscription
+    # Returns list of dedicated cloud services within a subscription
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -706,7 +706,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
     #
     # Implements list of dedicatedCloudService objects within subscription method
     #
-    # Returns list of dedicated cloud service within within subscription
+    # Returns list of dedicated cloud services within a subscription
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -859,7 +859,7 @@ module Azure::VMwareCloudSimple::Mgmt::V2019-04-01
     #
     # Implements list of dedicatedCloudService objects within subscription method
     #
-    # Returns list of dedicated cloud service within within subscription
+    # Returns list of dedicated cloud services within a subscription
     #
     # @param filter [String] The filter to apply on the list operation
     # @param top [Integer] The maximum number of record sets to return
