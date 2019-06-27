@@ -428,7 +428,7 @@
                 },
                 "Microsoft.MachineLearningServices": {
                     "management": {
-                        "2018-03-01-preview": ["*"]
+                        "2019-05-01": ["*"]
                     }
                 },
                 "Microsoft.ManagedApplications": {
@@ -1532,7 +1532,7 @@
             "resourceTypes": {
                 "Microsoft.MachineLearningServices": {
                     "management": {
-                        "2018-03-01-preview": ["*"]
+                        "2019-05-01": ["*"]
                     }
                 }
             },

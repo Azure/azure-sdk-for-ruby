@@ -826,9 +826,21 @@
   },
   "azure_mgmt_machine_learning_services": {
     "azure_mgmt_machine_learning_services_2018_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/machinelearningservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4d9e98e4bd1c4d493537048742e3a73384190e2a/specification/machinelearningservices/resource-manager/readme.md",
       "namespace": "Azure::MachineLearningServices::Mgmt::V2018_03_01_preview",
       "tag": "package-2018-03-preview",
+      "title": "MachineLearningServicesClient"
+    },
+    "azure_mgmt_machine_learning_services_2018_11_19": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4d9e98e4bd1c4d493537048742e3a73384190e2a/specification/machinelearningservices/resource-manager/readme.md",
+      "namespace": "Azure::MachineLearningServices::Mgmt::V2018_11_19",
+      "tag": "package-2018-11-19",
+      "title": "MachineLearningServicesClient"
+    },
+    "azure_mgmt_machine_learning_services_2019_05_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4d9e98e4bd1c4d493537048742e3a73384190e2a/specification/machinelearningservices/resource-manager/readme.md",
+      "namespace": "Azure::MachineLearningServices::Mgmt::V2019_05_01",
+      "tag": "package-2019-05-01",
       "title": "MachineLearningServicesClient"
     }
   },
