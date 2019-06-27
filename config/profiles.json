@@ -607,7 +607,7 @@
                 },
                 "Microsoft.Signalr": {
                     "management": {
-                        "2018-03-01-preview": ["*"]
+                        "2018-10-01": ["*"]
                     }
                 },
                 "Microsoft.SQL": {
@@ -2120,7 +2120,7 @@
             "resourceTypes": {
                 "Microsoft.Signalr": {
                     "management": {
-                        "2018-03-01-preview": ["*"]
+                        "2018-10-01": ["*"]
                     }
                 }
             },
