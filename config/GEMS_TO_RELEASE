@@ -1,4 +1,7 @@
 {
+    "management": [
+        "azure_mgmt_app_configuration"
+    ],
     "data": [
         "azure_cognitiveservices_face"
     ],

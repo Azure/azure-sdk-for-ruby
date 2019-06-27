@@ -232,6 +232,11 @@
                         "2019-01-01": ["*"]
                     }
                 },
+                "Microsoft.AppConfiguration": {
+                    "management": {
+                        "2019-02-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Authorization": {
                     "management": {
                         "2015-06-01-preview": ["*"],
@@ -821,6 +826,20 @@
             "output_dir": "management/azure_mgmt_api_management/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_app_configuration": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.AppConfiguration": {
+                        "management": {
+                            "2019-02-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_app_configuration/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_authorization": [
         {

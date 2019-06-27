@@ -44,6 +44,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_advisor', "~>#{gem_versions['management']['azure_mgmt_advisor']}"
   spec.add_runtime_dependency 'azure_mgmt_analysis_services', "~>#{gem_versions['management']['azure_mgmt_analysis_services']}"
   spec.add_runtime_dependency 'azure_mgmt_api_management', "~>#{gem_versions['management']['azure_mgmt_api_management']}"
+  spec.add_runtime_dependency 'azure_mgmt_app_configuration', "~>#{gem_versions['management']['azure_mgmt_app_configuration']}"
   spec.add_runtime_dependency 'azure_mgmt_authorization', "~>#{gem_versions['management']['azure_mgmt_authorization']}"
   spec.add_runtime_dependency 'azure_mgmt_automation', "~>#{gem_versions['management']['azure_mgmt_automation']}"
   spec.add_runtime_dependency 'azure_mgmt_batch', "~>#{gem_versions['management']['azure_mgmt_batch']}"

@@ -75,6 +75,13 @@
       "tag": "package-2019-01"
     }
   },
+  "azure_mgmt_app_configuration": {
+    "azure_mgmt_app_configuration_2019_02_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4d9e98e4bd1c4d493537048742e3a73384190e2a/specification/appconfiguration/resource-manager/readme.md",
+      "namespace": "Azure::AppConfiguration::Mgmt::V2019_02_01_preview",
+      "tag": "package-2019-02-01-preview"
+    }
+  },
   "azure_mgmt_authorization": {
     "azure_mgmt_authorization_2018_09_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/487d177c5fc08020c8c72ed11a4ab6e274927413/specification/authorization/resource-manager/readme.md",
