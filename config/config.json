@@ -2091,7 +2091,7 @@
   },
   "azure_cognitiveservices_face":{
     "azure_cognitiveservices_face_v1.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/223f0cb75e64e0e61a67b8a2d95c15c4d537c6e9/specification/cognitiveservices/data-plane/Face/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4d9e98e4bd1c4d493537048742e3a73384190e2a/specification/cognitiveservices/data-plane/Face/readme.md",
       "namespace": "Azure::CognitiveServices::Face::V1_0",
       "title": "FaceClient",
       "tag": "release_1_0"
