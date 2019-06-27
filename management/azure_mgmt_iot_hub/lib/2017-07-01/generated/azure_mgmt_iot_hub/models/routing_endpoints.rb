@@ -42,7 +42,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'RoutingEndpoints',
           type: {
@@ -50,13 +49,11 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'RoutingEndpoints',
             model_properties: {
               service_bus_queues: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceBusQueues',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RoutingServiceBusQueueEndpointPropertiesElementType',
                       type: {
@@ -67,13 +64,11 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               service_bus_topics: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceBusTopics',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RoutingServiceBusTopicEndpointPropertiesElementType',
                       type: {
@@ -84,13 +79,11 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               event_hubs: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventHubs',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RoutingEventHubPropertiesElementType',
                       type: {
@@ -101,13 +94,11 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               storage_containers: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageContainers',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RoutingStorageContainerPropertiesElementType',
                       type: {
