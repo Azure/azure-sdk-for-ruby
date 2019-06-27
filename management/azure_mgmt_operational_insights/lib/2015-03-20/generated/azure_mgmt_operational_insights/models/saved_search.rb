@@ -21,7 +21,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       # @return [String] The type of the saved search.
       attr_accessor :type
 
-      # @return [String] The etag of the saved search.
+      # @return [String] The ETag of the saved search.
       attr_accessor :e_tag
 
       # @return [String] The category of the saved search. This helps the user
@@ -36,8 +36,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       # for reference.
       attr_accessor :query
 
-      # @return [Integer] The version number of the query lanuage. Only verion
-      # 1 is allowed here.
+      # @return [Integer] The version number of the query language. The current
+      # version is 2 and is the default.
       attr_accessor :version
 
       # @return [Array<Tag>] The tags attached to the saved search.
@@ -118,10 +118,10 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               },
               version: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'properties.version',
                 constraints: {
-                  InclusiveMaximum: 1,
+                  InclusiveMaximum: 2,
                   InclusiveMinimum: 1
                 },
                 type: {

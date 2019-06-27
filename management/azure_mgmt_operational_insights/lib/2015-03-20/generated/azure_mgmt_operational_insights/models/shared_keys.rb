@@ -6,48 +6,46 @@
 module Azure::OperationalInsights::Mgmt::V2015_03_20
   module Models
     #
-    # Supported operation of OperationalInsights resource provider.
+    # The shared keys for a workspace.
     #
-    class Operation
+    class SharedKeys
 
       include MsRestAzure
 
-      # @return [String] Operation name: {provider}/{resource}/{operation}
-      attr_accessor :name
+      # @return [String] The primary shared key of a workspace.
+      attr_accessor :primary_shared_key
 
-      # @return [OperationDisplay] Display metadata associated with the
-      # operation.
-      attr_accessor :display
+      # @return [String] The secondary shared key of a workspace.
+      attr_accessor :secondary_shared_key
 
 
       #
-      # Mapper for Operation class as Ruby Hash.
+      # Mapper for SharedKeys class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Operation',
+          serialized_name: 'SharedKeys',
           type: {
             name: 'Composite',
-            class_name: 'Operation',
+            class_name: 'SharedKeys',
             model_properties: {
-              name: {
+              primary_shared_key: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'name',
+                serialized_name: 'primarySharedKey',
                 type: {
                   name: 'String'
                 }
               },
-              display: {
+              secondary_shared_key: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'display',
+                serialized_name: 'secondarySharedKey',
                 type: {
-                  name: 'Composite',
-                  class_name: 'OperationDisplay'
+                  name: 'String'
                 }
               }
             }

@@ -15,7 +15,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       # @return [Integer] The number to get from the top.
       attr_accessor :top
 
-      # @return [SearchHighlight] The highlight that looks for all occurences
+      # @return [SearchHighlight] The highlight that looks for all occurrences
       # of a string.
       attr_accessor :highlight
 

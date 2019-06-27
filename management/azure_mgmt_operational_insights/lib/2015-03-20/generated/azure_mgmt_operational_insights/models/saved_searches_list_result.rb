@@ -6,7 +6,7 @@
 module Azure::OperationalInsights::Mgmt::V2015_03_20
   module Models
     #
-    # The saved search operation response.
+    # The saved search list operation response.
     #
     class SavedSearchesListResult
 
@@ -35,7 +35,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
               metadata: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'metaData',
+                serialized_name: '__metadata',
                 type: {
                   name: 'Composite',
                   class_name: 'SearchMetadata'
