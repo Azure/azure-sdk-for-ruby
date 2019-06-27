@@ -40,7 +40,7 @@
         "azure_mgmt_batch": "0.17.2",
         "azure_mgmt_billing": "0.17.2",
         "azure_mgmt_cdn": "0.17.3",
-        "azure_mgmt_cognitive_services": "0.18.2",
+        "azure_mgmt_cognitive_services": "0.18.3",
         "azure_mgmt_commerce": "0.17.1",
         "azure_mgmt_compute": "0.18.7",
         "azure_mgmt_consumption": "0.17.2",

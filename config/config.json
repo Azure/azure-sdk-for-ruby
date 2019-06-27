@@ -194,12 +194,12 @@
   },
   "azure_mgmt_cognitive_services": {
     "azure_mgmt_cognitive_services_2017_04_18": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/cognitiveservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4d9e98e4bd1c4d493537048742e3a73384190e2a/specification/cognitiveservices/resource-manager/readme.md",
       "namespace": "Azure::CognitiveServices::Mgmt::V2017_04_18",
       "tag": "package-2017-04"
     },
     "azure_mgmt_cognitive_services_2016_02_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/cognitiveservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4d9e98e4bd1c4d493537048742e3a73384190e2a/specification/cognitiveservices/resource-manager/readme.md",
       "namespace": "Azure::CognitiveServices::Mgmt::V2016_02_01_preview",
       "tag": "package-2016-02-preview"
     }
