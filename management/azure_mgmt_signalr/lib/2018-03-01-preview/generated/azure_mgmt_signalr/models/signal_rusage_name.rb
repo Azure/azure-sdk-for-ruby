@@ -12,7 +12,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
 
       include MsRestAzure
 
-      # @return [String] The indentifier of the usage.
+      # @return [String] The identifier of the usage.
       attr_accessor :value
 
       # @return [String] Localized name of the usage.

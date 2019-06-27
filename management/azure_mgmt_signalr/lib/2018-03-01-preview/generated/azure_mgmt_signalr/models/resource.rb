@@ -15,21 +15,12 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # @return [String] Fully qualified resource Id for the resource.
       attr_accessor :id
 
-      # @return [String] The name of the resouce.
+      # @return [String] The name of the resource.
       attr_accessor :name
 
       # @return [String] The type of the service - e.g.
       # "Microsoft.SignalRService/SignalR"
       attr_accessor :type
-
-
-      # @return [String] the name of the resource group of the resource.
-      def resource_group
-        unless self.id.nil?
-          groups = self.id.match(/.+\/resourceGroups\/([^\/]+)\/.+/)
-          groups.captures[0].strip if groups
-        end
-      end
 
 
       #
