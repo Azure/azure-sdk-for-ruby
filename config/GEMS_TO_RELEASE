@@ -1,6 +1,6 @@
 {
-    "data": [
-        "azure_cognitiveservices_face"
+    "management": [
+        "azure_mgmt_app_configuration"
     ],
     "rollup": [
         "azure_sdk"
