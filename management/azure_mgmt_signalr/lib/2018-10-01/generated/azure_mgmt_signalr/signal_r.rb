@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Signalr::Mgmt::V2018_03_01_preview
+module Azure::Signalr::Mgmt::V2018_10_01
   #
   # REST API for Azure SignalR Service
   #
@@ -65,7 +65,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     #
     def check_name_availability_async(location, parameters:nil, custom_headers:nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -77,7 +77,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailabilityParameters.mapper()
+      request_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::NameAvailabilityParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -111,7 +111,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::NameAvailability.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::NameAvailability.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -158,7 +158,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_by_subscription_async(custom_headers:nil)
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -197,7 +197,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRResourceList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -253,7 +253,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_by_resource_group_async(resource_group_name, custom_headers:nil)
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
 
@@ -293,7 +293,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRResourceList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -352,7 +352,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_keys_async(resource_group_name, resource_name, custom_headers:nil)
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
@@ -393,7 +393,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -446,12 +446,12 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys.mapper()
+          result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRKeys.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise
@@ -503,7 +503,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_async(resource_group_name, resource_name, custom_headers:nil)
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
@@ -515,7 +515,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/SignalR/{resourceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -544,7 +544,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -596,7 +596,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource.mapper()
+          result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRResource.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -688,12 +688,54 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource.mapper()
+          result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRResource.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
         @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Operation to restart a SignalR service.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param resource_name [String] The name of the SignalR resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def restart(resource_group_name, resource_name, custom_headers:nil)
+      response = restart_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param resource_name [String] The name of the SignalR resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def restart_async(resource_group_name, resource_name, custom_headers:nil)
+      # Send request
+      promise = begin_restart_async(resource_group_name, resource_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
       end
 
       promise
@@ -754,7 +796,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def begin_regenerate_key_async(resource_group_name, resource_name, parameters:nil, custom_headers:nil)
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
@@ -768,7 +810,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::RegenerateKeyParameters.mapper()
+      request_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::RegenerateKeyParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -802,7 +844,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRKeys.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -867,7 +909,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def begin_create_or_update_async(resource_group_name, resource_name, parameters:nil, custom_headers:nil)
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
@@ -881,11 +923,11 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRCreateParameters.mapper()
+      request_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/SignalR/{resourceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -915,7 +957,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -973,7 +1015,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def begin_delete_async(resource_group_name, resource_name, custom_headers:nil)
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
@@ -985,7 +1027,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/SignalR/{resourceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -1069,7 +1111,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def begin_update_async(resource_group_name, resource_name, parameters:nil, custom_headers:nil)
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
@@ -1083,11 +1125,11 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRUpdateParameters.mapper()
+      request_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/SignalR/{resourceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -1117,12 +1159,101 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResource.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Operation to restart a SignalR service.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param resource_name [String] The name of the SignalR resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_restart(resource_group_name, resource_name, custom_headers:nil)
+      response = begin_restart_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Operation to restart a SignalR service.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param resource_name [String] The name of the SignalR resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_restart_with_http_info(resource_group_name, resource_name, custom_headers:nil)
+      begin_restart_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Operation to restart a SignalR service.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param resource_name [String] The name of the SignalR resource.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_restart_async(resource_group_name, resource_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/restart'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1207,7 +1338,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRResourceList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1297,7 +1428,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::SignalRResourceList.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::SignalRResourceList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

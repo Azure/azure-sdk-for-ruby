@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Signalr::Mgmt::V2018_03_01_preview
+module Azure::Signalr::Mgmt::V2018_10_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -62,7 +62,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       @operations = Operations.new(self)
       @signal_r = SignalR.new(self)
       @usages = Usages.new(self)
-      @api_version = '2018-03-01-preview'
+      @api_version = '2018-10-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

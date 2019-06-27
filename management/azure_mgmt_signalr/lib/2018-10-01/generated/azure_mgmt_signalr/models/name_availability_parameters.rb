@@ -3,47 +3,49 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Signalr::Mgmt::V2018_03_01_preview
+module Azure::Signalr::Mgmt::V2018_10_01
   module Models
     #
-    # Localizable String object containing the name and a localized value.
+    # Data POST-ed to the nameAvailability action
     #
-    class SignalRUsageName
+    class NameAvailabilityParameters
 
       include MsRestAzure
 
-      # @return [String] The identifier of the usage.
-      attr_accessor :value
+      # @return [String] The resource type. Should be always
+      # "Microsoft.SignalRService/SignalR".
+      attr_accessor :type
 
-      # @return [String] Localized name of the usage.
-      attr_accessor :localized_value
+      # @return [String] The SignalR service name to validate.
+      # e.g."my-signalR-name-here"
+      attr_accessor :name
 
 
       #
-      # Mapper for SignalRUsageName class as Ruby Hash.
+      # Mapper for NameAvailabilityParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SignalRUsageName',
+          serialized_name: 'NameAvailabilityParameters',
           type: {
             name: 'Composite',
-            class_name: 'SignalRUsageName',
+            class_name: 'NameAvailabilityParameters',
             model_properties: {
-              value: {
+              type: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'value',
+                required: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              localized_value: {
+              name: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'localizedValue',
+                required: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
