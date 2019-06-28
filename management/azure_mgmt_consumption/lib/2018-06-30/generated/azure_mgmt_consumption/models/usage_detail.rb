@@ -258,7 +258,7 @@ module Azure::Consumption::Mgmt::V2018_06_30
                 read_only: true,
                 serialized_name: 'properties.pretaxCost',
                 type: {
-                  name: 'Number'
+                  name: 'Double'
                 }
               },
               is_estimated: {
