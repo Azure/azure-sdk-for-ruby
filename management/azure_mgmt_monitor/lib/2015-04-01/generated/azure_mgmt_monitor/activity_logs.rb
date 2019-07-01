@@ -24,9 +24,10 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # Provides the list of records from the activity logs.
     #
-    # @param filter [String] Reduces the set of data collected.<br>The **$filter**
-    # argument is very restricted and allows only the following patterns.<br>-
-    # *List events for a resource group*: $filter=eventTimestamp ge
+    # @param filter [String] Reduces the set of data collected.<br>This argument is
+    # required and it also requires at least the start date/time.<br>The
+    # **$filter** argument is very restricted and allows only the following
+    # patterns.<br>- *List events for a resource group*: $filter=eventTimestamp ge
     # '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
     # '2014-07-20T04:36:37.6407898Z' and resourceGroupName eq
     # 'resourceGroupName'.<br>- *List events for resource*: $filter=eventTimestamp
@@ -53,7 +54,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # @return [Array<EventData>] operation results.
     #
-    def list(filter = nil, select = nil, custom_headers = nil)
+    def list(filter, select = nil, custom_headers = nil)
       first_page = list_as_lazy(filter, select, custom_headers)
       first_page.get_all_items
     end
@@ -61,9 +62,10 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # Provides the list of records from the activity logs.
     #
-    # @param filter [String] Reduces the set of data collected.<br>The **$filter**
-    # argument is very restricted and allows only the following patterns.<br>-
-    # *List events for a resource group*: $filter=eventTimestamp ge
+    # @param filter [String] Reduces the set of data collected.<br>This argument is
+    # required and it also requires at least the start date/time.<br>The
+    # **$filter** argument is very restricted and allows only the following
+    # patterns.<br>- *List events for a resource group*: $filter=eventTimestamp ge
     # '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
     # '2014-07-20T04:36:37.6407898Z' and resourceGroupName eq
     # 'resourceGroupName'.<br>- *List events for resource*: $filter=eventTimestamp
@@ -90,16 +92,17 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(filter = nil, select = nil, custom_headers = nil)
+    def list_with_http_info(filter, select = nil, custom_headers = nil)
       list_async(filter, select, custom_headers).value!
     end
 
     #
     # Provides the list of records from the activity logs.
     #
-    # @param filter [String] Reduces the set of data collected.<br>The **$filter**
-    # argument is very restricted and allows only the following patterns.<br>-
-    # *List events for a resource group*: $filter=eventTimestamp ge
+    # @param filter [String] Reduces the set of data collected.<br>This argument is
+    # required and it also requires at least the start date/time.<br>The
+    # **$filter** argument is very restricted and allows only the following
+    # patterns.<br>- *List events for a resource group*: $filter=eventTimestamp ge
     # '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
     # '2014-07-20T04:36:37.6407898Z' and resourceGroupName eq
     # 'resourceGroupName'.<br>- *List events for resource*: $filter=eventTimestamp
@@ -126,8 +129,9 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(filter = nil, select = nil, custom_headers = nil)
+    def list_async(filter, select = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'filter is nil' if filter.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -266,9 +270,10 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     # Provides the list of records from the activity logs.
     #
-    # @param filter [String] Reduces the set of data collected.<br>The **$filter**
-    # argument is very restricted and allows only the following patterns.<br>-
-    # *List events for a resource group*: $filter=eventTimestamp ge
+    # @param filter [String] Reduces the set of data collected.<br>This argument is
+    # required and it also requires at least the start date/time.<br>The
+    # **$filter** argument is very restricted and allows only the following
+    # patterns.<br>- *List events for a resource group*: $filter=eventTimestamp ge
     # '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
     # '2014-07-20T04:36:37.6407898Z' and resourceGroupName eq
     # 'resourceGroupName'.<br>- *List events for resource*: $filter=eventTimestamp
@@ -296,7 +301,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
     # @return [EventDataCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(filter = nil, select = nil, custom_headers = nil)
+    def list_as_lazy(filter, select = nil, custom_headers = nil)
       response = list_async(filter, select, custom_headers).value!
       unless response.nil?
         page = response.body
