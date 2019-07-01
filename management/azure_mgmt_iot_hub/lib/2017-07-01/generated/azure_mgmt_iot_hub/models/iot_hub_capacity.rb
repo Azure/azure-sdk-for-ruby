@@ -32,7 +32,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'IotHubCapacity',
           type: {
@@ -40,7 +39,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'IotHubCapacity',
             model_properties: {
               minimum: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'minimum',
@@ -53,7 +51,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               maximum: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'maximum',
@@ -62,7 +59,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               default: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'default',
@@ -71,7 +67,6 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               scale_type: {
-                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'scaleType',
