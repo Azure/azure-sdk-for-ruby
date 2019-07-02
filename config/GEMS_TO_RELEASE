@@ -1,8 +1,4 @@
 {
-    "data": [
-        "azure_cognitiveservices_computervision",
-        "azure_cognitiveservices_personalizer"
-    ],
     "rollup": [
         "azure_sdk"
     ]
