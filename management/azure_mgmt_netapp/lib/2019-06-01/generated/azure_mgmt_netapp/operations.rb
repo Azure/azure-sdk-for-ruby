@@ -3,15 +3,15 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::NetApp::Mgmt::V2019_05_01
+module Azure::NetApp::Mgmt::V2019_06_01
   #
   # Microsoft NetApp Azure Resource Provider specification
   #
-  class MountTargets
+  class Operations
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the MountTargets class.
+    # Creates and initializes a new instance of the Operations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,65 +22,45 @@ module Azure::NetApp::Mgmt::V2019_05_01
     attr_reader :client
 
     #
-    # Describe all mount targets
+    # Describes the Resource Provider
     #
-    # List all mount targets associated with the volume
+    # Lists all of the available Microsoft.NetApp Rest API operations
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param account_name [String] The name of the NetApp account
-    # @param pool_name [String] The name of the capacity pool
-    # @param volume_name [String] The name of the volume
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MountTargetList] operation results.
+    # @return [OperationListResult] operation results.
     #
-    def list(resource_group_name, account_name, pool_name, volume_name, custom_headers:nil)
-      response = list_async(resource_group_name, account_name, pool_name, volume_name, custom_headers:custom_headers).value!
+    def list(custom_headers:nil)
+      response = list_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Describe all mount targets
+    # Describes the Resource Provider
     #
-    # List all mount targets associated with the volume
+    # Lists all of the available Microsoft.NetApp Rest API operations
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param account_name [String] The name of the NetApp account
-    # @param pool_name [String] The name of the capacity pool
-    # @param volume_name [String] The name of the volume
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, account_name, pool_name, volume_name, custom_headers:nil)
-      list_async(resource_group_name, account_name, pool_name, volume_name, custom_headers:custom_headers).value!
+    def list_with_http_info(custom_headers:nil)
+      list_async(custom_headers:custom_headers).value!
     end
 
     #
-    # Describe all mount targets
+    # Describes the Resource Provider
     #
-    # List all mount targets associated with the volume
+    # Lists all of the available Microsoft.NetApp Rest API operations
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param account_name [String] The name of the NetApp account
-    # @param pool_name [String] The name of the capacity pool
-    # @param volume_name [String] The name of the volume
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, account_name, pool_name, volume_name, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, 'pool_name is nil' if pool_name.nil?
-      fail ArgumentError, 'volume_name is nil' if volume_name.nil?
+    def list_async(custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -90,13 +70,12 @@ module Azure::NetApp::Mgmt::V2019_05_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/mountTargets'
+      path_template = 'providers/Microsoft.NetApp/operations'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'poolName' => pool_name,'volumeName' => volume_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -119,7 +98,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::NetApp::Mgmt::V2019_05_01::Models::MountTargetList.mapper()
+            result_mapper = Azure::NetApp::Mgmt::V2019_06_01::Models::OperationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

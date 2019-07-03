@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::NetApp::Mgmt::V2019_05_01
+module Azure::NetApp::Mgmt::V2019_06_01
   module Models
     #
     # Volume resource
@@ -55,7 +55,8 @@ module Azure::NetApp::Mgmt::V2019_05_01
       # @return [String] Azure lifecycle management
       attr_accessor :provisioning_state
 
-      # @return [String] Snapshot ID. UUID v4 used to identify the Snapshot
+      # @return [String] Snapshot ID. UUID v4 or resource identifier used to
+      # identify the Snapshot.
       attr_accessor :snapshot_id
 
       # @return [String] Baremetal Tenant ID. Unique Baremetal Tenant
@@ -211,7 +212,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
                 constraints: {
                   MaxLength: 36,
                   MinLength: 36,
-                  Pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
+                  Pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}|(\\?([^\/]*[\/])*)([^\/]+)$'
                 },
                 type: {
                   name: 'String'

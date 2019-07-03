@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::NetApp::Mgmt::V2019_05_01
+module Azure::NetApp::Mgmt::V2019_06_01
   module Models
     #
     # Capacity pool resource
@@ -32,7 +32,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
 
       # @return [Integer] size. Provisioned size of the pool (in bytes).
       # Allowed values are in 4TiB chunks (value must be multiply of
-      # 4398046511104). Default value: 4398046511104 .
+      # 4398046511104).
       attr_accessor :size
 
       # @return [ServiceLevel] serviceLevel. The service level of the file
@@ -118,7 +118,6 @@ module Azure::NetApp::Mgmt::V2019_05_01
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.size',
-                default_value: 4398046511104,
                 constraints: {
                   InclusiveMaximum: 549755813888000,
                   InclusiveMinimum: 4398046511104

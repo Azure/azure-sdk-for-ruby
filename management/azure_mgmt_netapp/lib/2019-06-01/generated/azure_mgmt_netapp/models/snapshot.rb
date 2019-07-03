@@ -3,12 +3,12 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::NetApp::Mgmt::V2019_05_01
+module Azure::NetApp::Mgmt::V2019_06_01
   module Models
     #
-    # Capacity pool resource
+    # Snapshot of a Volume
     #
-    class CapacityPool
+    class Snapshot
 
       include MsRestAzure
 
@@ -27,35 +27,31 @@ module Azure::NetApp::Mgmt::V2019_05_01
       # @return Resource tags
       attr_accessor :tags
 
-      # @return [String] poolId. UUID v4 used to identify the Pool
-      attr_accessor :pool_id
+      # @return [String] snapshotId. UUID v4 used to identify the Snapshot
+      attr_accessor :snapshot_id
 
-      # @return [Integer] size. Provisioned size of the pool (in bytes).
-      # Allowed values are in 4TiB chunks (value must be multiply of
-      # 4398046511104). Default value: 4398046511104 .
-      attr_accessor :size
+      # @return [String] fileSystemId. UUID v4 used to identify the FileSystem
+      attr_accessor :file_system_id
 
-      # @return [ServiceLevel] serviceLevel. The service level of the file
-      # system. Possible values include: 'Standard', 'Premium', 'Ultra'.
-      # Default value: 'Premium' .
-      attr_accessor :service_level
+      # @return [DateTime] name. The creation date of the snapshot
+      attr_accessor :creation_date
 
       # @return [String] Azure lifecycle management
       attr_accessor :provisioning_state
 
 
       #
-      # Mapper for CapacityPool class as Ruby Hash.
+      # Mapper for Snapshot class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'capacityPool',
+          serialized_name: 'snapshot',
           type: {
             name: 'Composite',
-            class_name: 'CapacityPool',
+            class_name: 'Snapshot',
             model_properties: {
               location: {
                 client_side_validation: true,
@@ -100,11 +96,11 @@ module Azure::NetApp::Mgmt::V2019_05_01
                   name: 'Object'
                 }
               },
-              pool_id: {
+              snapshot_id: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.poolId',
+                serialized_name: 'properties.snapshotId',
                 constraints: {
                   MaxLength: 36,
                   MinLength: 36,
@@ -114,26 +110,26 @@ module Azure::NetApp::Mgmt::V2019_05_01
                   name: 'String'
                 }
               },
-              size: {
+              file_system_id: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.size',
-                default_value: 4398046511104,
+                required: false,
+                serialized_name: 'properties.fileSystemId',
                 constraints: {
-                  InclusiveMaximum: 549755813888000,
-                  InclusiveMinimum: 4398046511104
+                  MaxLength: 36,
+                  MinLength: 36,
+                  Pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
                 },
                 type: {
-                  name: 'Number'
+                  name: 'String'
                 }
               },
-              service_level: {
+              creation_date: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.serviceLevel',
-                default_value: 'Premium',
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.creationDate',
                 type: {
-                  name: 'String'
+                  name: 'DateTime'
                 }
               },
               provisioning_state: {

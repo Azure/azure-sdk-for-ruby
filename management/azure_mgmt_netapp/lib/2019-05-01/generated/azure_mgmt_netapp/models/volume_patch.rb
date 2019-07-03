@@ -34,8 +34,8 @@ module Azure::NetApp::Mgmt::V2019_05_01
 
       # @return [Integer] usageThreshold. Maximum storage quota allowed for a
       # file system in bytes. This is a soft quota used for alerting only.
-      # Minimum size is 100 GiB. Upper limit is 100TiB. Default value:
-      # 107374182400 .
+      # Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
+      # Default value: 107374182400 .
       attr_accessor :usage_threshold
 
       # @return [VolumePatchPropertiesExportPolicy] exportPolicy. Set of export

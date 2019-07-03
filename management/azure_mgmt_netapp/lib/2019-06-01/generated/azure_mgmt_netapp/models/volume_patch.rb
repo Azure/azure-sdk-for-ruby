@@ -3,12 +3,12 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::NetApp::Mgmt::V2019_05_01
+module Azure::NetApp::Mgmt::V2019_06_01
   module Models
     #
-    # Capacity pool resource
+    # Volume patch resource
     #
-    class CapacityPool
+    class VolumePatch
 
       include MsRestAzure
 
@@ -27,39 +27,38 @@ module Azure::NetApp::Mgmt::V2019_05_01
       # @return Resource tags
       attr_accessor :tags
 
-      # @return [String] poolId. UUID v4 used to identify the Pool
-      attr_accessor :pool_id
-
-      # @return [Integer] size. Provisioned size of the pool (in bytes).
-      # Allowed values are in 4TiB chunks (value must be multiply of
-      # 4398046511104). Default value: 4398046511104 .
-      attr_accessor :size
-
       # @return [ServiceLevel] serviceLevel. The service level of the file
       # system. Possible values include: 'Standard', 'Premium', 'Ultra'.
       # Default value: 'Premium' .
       attr_accessor :service_level
 
-      # @return [String] Azure lifecycle management
-      attr_accessor :provisioning_state
+      # @return [Integer] usageThreshold. Maximum storage quota allowed for a
+      # file system in bytes. This is a soft quota used for alerting only.
+      # Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
+      # Default value: 107374182400 .
+      attr_accessor :usage_threshold
+
+      # @return [VolumePatchPropertiesExportPolicy] exportPolicy. Set of export
+      # policy rules
+      attr_accessor :export_policy
 
 
       #
-      # Mapper for CapacityPool class as Ruby Hash.
+      # Mapper for VolumePatch class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'capacityPool',
+          serialized_name: 'volumePatch',
           type: {
             name: 'Composite',
-            class_name: 'CapacityPool',
+            class_name: 'VolumePatch',
             model_properties: {
               location: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -100,49 +99,35 @@ module Azure::NetApp::Mgmt::V2019_05_01
                   name: 'Object'
                 }
               },
-              pool_id: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.poolId',
-                constraints: {
-                  MaxLength: 36,
-                  MinLength: 36,
-                  Pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
-                },
-                type: {
-                  name: 'String'
-                }
-              },
-              size: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.size',
-                default_value: 4398046511104,
-                constraints: {
-                  InclusiveMaximum: 549755813888000,
-                  InclusiveMinimum: 4398046511104
-                },
-                type: {
-                  name: 'Number'
-                }
-              },
               service_level: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'properties.serviceLevel',
                 default_value: 'Premium',
                 type: {
                   name: 'String'
                 }
               },
-              provisioning_state: {
+              usage_threshold: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.provisioningState',
+                serialized_name: 'properties.usageThreshold',
+                default_value: 107374182400,
+                constraints: {
+                  InclusiveMaximum: 109951162777600,
+                  InclusiveMinimum: 107374182400
+                },
                 type: {
-                  name: 'String'
+                  name: 'Number'
+                }
+              },
+              export_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.exportPolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'VolumePatchPropertiesExportPolicy'
                 }
               }
             }

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::NetApp::Mgmt::V2019_05_01
+module Azure::NetApp::Mgmt::V2019_06_01
   #
   # Microsoft NetApp Azure Resource Provider specification
   #
@@ -119,7 +119,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::NetApp::Mgmt::V2019_05_01::Models::MountTargetList.mapper()
+            result_mapper = Azure::NetApp::Mgmt::V2019_06_01::Models::MountTargetList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
