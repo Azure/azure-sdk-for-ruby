@@ -694,12 +694,12 @@
   },
   "azure_mgmt_hdinsight": {
     "azure_mgmt_hdinsight_2015_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/hdinsight/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/hdinsight/resource-manager/readme.md",
       "namespace": "Azure::Hdinsight::Mgmt::V2015_03_01_preview",
       "tag": "package-2015-03-preview"
     },
     "azure_mgmt_hdinsight_2018_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/hdinsight/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/hdinsight/resource-manager/readme.md",
       "namespace": "Azure::Hdinsight::Mgmt::V2018_06_01_preview",
       "tag": "package-2018-06-preview"
     }

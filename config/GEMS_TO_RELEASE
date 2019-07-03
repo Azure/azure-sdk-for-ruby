@@ -5,7 +5,8 @@
         "azure_mgmt_container_registry",
         "azure_mgmt_netapp",
         "azure_mgmt_cognitive_services",
-        "azure_mgmt_machine_learning_services"
+        "azure_mgmt_machine_learning_services",
+        "azure_mgmt_hdinsight"
     ],
     "data": [
         "azure_service_fabric"
