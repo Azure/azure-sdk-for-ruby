@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_sqlvirtualmachine"
+        "azure_mgmt_sqlvirtualmachine",
+        "azure_mgmt_hanaonazure"
     ],
     "rollup": [
         "azure_sdk"

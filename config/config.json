@@ -666,7 +666,7 @@
   },
   "azure_mgmt_hanaonazure": {
     "azure_mgmt_hanaonazure_2017_11_03_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/979c8de354994fe5ceb7c6d1bdc5370b38306db8/specification/hanaonazure/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/hanaonazure/resource-manager/readme.md",
       "namespace": "Azure::Hanaonazure::Mgmt::V2017_11_03_preview",
       "tag": "package-2017-11"
     }
