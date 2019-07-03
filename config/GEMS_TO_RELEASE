@@ -7,6 +7,9 @@
         "azure_mgmt_cognitive_services",
         "azure_mgmt_machine_learning_services"
     ],
+    "data": [
+        "azure_service_fabric"
+    ],
     "rollup": [
         "azure_sdk"
     ]

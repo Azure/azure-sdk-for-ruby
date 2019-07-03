@@ -29,7 +29,7 @@
         "azure_event_grid": "0.18.0",
         "azure_graph_rbac": "0.17.1",
         "azure_key_vault": "0.17.3",
-        "azure_service_fabric": "0.17.1"
+        "azure_service_fabric": "0.17.2"
     },
     "management" : {
         "azure_mgmt_advisor": "0.17.0",
