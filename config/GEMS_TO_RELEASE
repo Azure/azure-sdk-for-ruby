@@ -1,4 +1,7 @@
 {
+    "management": [
+        "azure_mgmt_sqlvirtualmachine"
+    ],
     "rollup": [
         "azure_sdk"
     ]
