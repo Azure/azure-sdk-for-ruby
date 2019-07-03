@@ -1019,13 +1019,18 @@
     }
   },
   "azure_mgmt_netapp": {
+    "azure_mgmt_netapp_2019_06_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/netapp/resource-manager/readme.md",
+      "namespace": "Azure::NetApp::Mgmt::V2019_06_01",
+      "tag": "package-netapp-2019-06-01"
+    },
     "azure_mgmt_netapp_2019_05_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/979c8de354994fe5ceb7c6d1bdc5370b38306db8/specification/netapp/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/netapp/resource-manager/readme.md",
       "namespace": "Azure::NetApp::Mgmt::V2019_05_01",
       "tag": "package-netapp-2019-05-01"
     },
     "azure_mgmt_netapp_2017_08_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/979c8de354994fe5ceb7c6d1bdc5370b38306db8/specification/netapp/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/netapp/resource-manager/readme.md",
       "namespace": "Azure::NetApp::Mgmt::V2017_08_15_preview",
       "tag": "package-2017-08-15"
     }

@@ -2,7 +2,8 @@
     "management": [
         "azure_mgmt_sqlvirtualmachine",
         "azure_mgmt_hanaonazure",
-        "azure_mgmt_container_registry"
+        "azure_mgmt_container_registry",
+        "azure_mgmt_netapp"
     ],
     "rollup": [
         "azure_sdk"

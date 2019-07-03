@@ -478,7 +478,7 @@
                 },
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-05-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 },
                 "Microsoft.Network": {
@@ -1669,7 +1669,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-05-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 }
             },
