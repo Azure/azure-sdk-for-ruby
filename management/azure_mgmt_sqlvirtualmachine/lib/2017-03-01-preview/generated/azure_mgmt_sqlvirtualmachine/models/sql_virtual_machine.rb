@@ -20,7 +20,7 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
       # from SQL marketplace image.
       attr_accessor :virtual_machine_resource_id
 
-      # @return [String] Provisioning state to track the aysnc operation
+      # @return [String] Provisioning state to track the async operation
       # status.
       attr_accessor :provisioning_state
 
@@ -32,7 +32,11 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
       # include: 'PAYG', 'AHUB'
       attr_accessor :sql_server_license_type
 
-      # @return [SqlImageSku] SQL image sku. Possible values include:
+      # @return [SqlManagementMode] SQL Server Management type. Possible values
+      # include: 'Full', 'LightWeight', 'NoAgent'
+      attr_accessor :sql_management
+
+      # @return [SqlImageSku] SQL Server edition type. Possible values include:
       # 'Developer', 'Express', 'Standard', 'Enterprise', 'Web'
       attr_accessor :sql_image_sku
 
@@ -152,7 +156,6 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
               sql_image_offer: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.sqlImageOffer',
                 type: {
                   name: 'String'
@@ -166,10 +169,17 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
                   name: 'String'
                 }
               },
+              sql_management: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.sqlManagement',
+                type: {
+                  name: 'String'
+                }
+              },
               sql_image_sku: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.sqlImageSku',
                 type: {
                   name: 'String'
