@@ -17,7 +17,7 @@ module Azure::ServiceFabric::V6_4_0_36
 
       # @return [Array<HttpRouteConfig>] Route information to use for routing.
       # Routes are processed in the order they are specified. Specify routes
-      # that are more specific before routes that can hamdle general cases.
+      # that are more specific before routes that can handle general cases.
       attr_accessor :routes
 
 

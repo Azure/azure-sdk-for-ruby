@@ -24,7 +24,7 @@ module Azure::ServiceFabric::V6_4_0_36
       # scheme.
       attr_accessor :service_name
 
-      # @return The partition ID indentifying the partition.
+      # @return The partition ID identifying the partition.
       attr_accessor :partition_id
 
 
