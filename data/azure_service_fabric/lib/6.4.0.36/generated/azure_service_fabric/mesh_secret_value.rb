@@ -125,6 +125,8 @@ module Azure::ServiceFabric::V6_4_0_36
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -238,6 +240,8 @@ module Azure::ServiceFabric::V6_4_0_36
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -343,6 +347,8 @@ module Azure::ServiceFabric::V6_4_0_36
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -351,7 +357,7 @@ module Azure::ServiceFabric::V6_4_0_36
     end
 
     #
-    # List names of all values of the the specified secret resource.
+    # List names of all values of the specified secret resource.
     #
     # Gets information about all secret value resources of the specified secret
     # resource. The information includes the names of the secret value resources,
@@ -369,7 +375,7 @@ module Azure::ServiceFabric::V6_4_0_36
     end
 
     #
-    # List names of all values of the the specified secret resource.
+    # List names of all values of the specified secret resource.
     #
     # Gets information about all secret value resources of the specified secret
     # resource. The information includes the names of the secret value resources,
@@ -386,7 +392,7 @@ module Azure::ServiceFabric::V6_4_0_36
     end
 
     #
-    # List names of all values of the the specified secret resource.
+    # List names of all values of the specified secret resource.
     #
     # Gets information about all secret value resources of the specified secret
     # resource. The information includes the names of the secret value resources,
@@ -432,6 +438,8 @@ module Azure::ServiceFabric::V6_4_0_36
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -535,6 +543,8 @@ module Azure::ServiceFabric::V6_4_0_36
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

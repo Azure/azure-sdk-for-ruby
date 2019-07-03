@@ -21,6 +21,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [Integer] The instance count of the cluster.
       attr_accessor :target_instance_count
 
+      # @return [Autoscale] The autoscale configurations.
+      attr_accessor :autoscale_configuration
+
       # @return [HardwareProfile] The hardware profile.
       attr_accessor :hardware_profile
 
@@ -72,6 +75,15 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 serialized_name: 'targetInstanceCount',
                 type: {
                   name: 'Number'
+                }
+              },
+              autoscale_configuration: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'autoscale',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Autoscale'
                 }
               },
               hardware_profile: {

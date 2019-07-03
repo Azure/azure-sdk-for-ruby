@@ -80,6 +80,9 @@ module Azure::ContainerRegistry::Mgmt::V2019_04_01
       # or not. Default value: false .
       attr_accessor :is_archive_enabled
 
+      # @return [TimerTriggerDescriptor] The timer trigger that caused the run.
+      attr_accessor :timer_trigger
+
 
       #
       # Mapper for Run class as Ruby Hash.
@@ -286,6 +289,15 @@ module Azure::ContainerRegistry::Mgmt::V2019_04_01
                 default_value: false,
                 type: {
                   name: 'Boolean'
+                }
+              },
+              timer_trigger: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.timerTrigger',
+                type: {
+                  name: 'Composite',
+                  class_name: 'TimerTriggerDescriptor'
                 }
               }
             }

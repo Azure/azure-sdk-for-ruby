@@ -147,10 +147,10 @@ module Azure::NetApp::Mgmt::V2019_05_01
     # @param location [String] The location
     # @param name [String] Resource name to verify.
     # @param type [CheckNameResourceTypes] Resource type used for verification.
-    # Possible values include: 'Microsoft.NetApp/netAppAccount',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes/snapshots'
+    # Possible values include: 'Microsoft.NetApp/netAppAccounts',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots'
     # @param resource_group [String] Resource group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -170,10 +170,10 @@ module Azure::NetApp::Mgmt::V2019_05_01
     # @param location [String] The location
     # @param name [String] Resource name to verify.
     # @param type [CheckNameResourceTypes] Resource type used for verification.
-    # Possible values include: 'Microsoft.NetApp/netAppAccount',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes/snapshots'
+    # Possible values include: 'Microsoft.NetApp/netAppAccounts',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots'
     # @param resource_group [String] Resource group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -192,10 +192,10 @@ module Azure::NetApp::Mgmt::V2019_05_01
     # @param location [String] The location
     # @param name [String] Resource name to verify.
     # @param type [CheckNameResourceTypes] Resource type used for verification.
-    # Possible values include: 'Microsoft.NetApp/netAppAccount',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes/snapshots'
+    # Possible values include: 'Microsoft.NetApp/netAppAccounts',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots'
     # @param resource_group [String] Resource group name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -253,6 +253,8 @@ module Azure::NetApp::Mgmt::V2019_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -278,10 +280,10 @@ module Azure::NetApp::Mgmt::V2019_05_01
     # @param location [String] The location
     # @param name [String] Resource name to verify.
     # @param type [CheckNameResourceTypes] Resource type used for verification.
-    # Possible values include: 'Microsoft.NetApp/netAppAccount',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes/snapshots'
+    # Possible values include: 'Microsoft.NetApp/netAppAccounts',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots'
     # @param resource_group [String] Resource group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -301,10 +303,10 @@ module Azure::NetApp::Mgmt::V2019_05_01
     # @param location [String] The location
     # @param name [String] Resource name to verify.
     # @param type [CheckNameResourceTypes] Resource type used for verification.
-    # Possible values include: 'Microsoft.NetApp/netAppAccount',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes/snapshots'
+    # Possible values include: 'Microsoft.NetApp/netAppAccounts',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots'
     # @param resource_group [String] Resource group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -323,10 +325,10 @@ module Azure::NetApp::Mgmt::V2019_05_01
     # @param location [String] The location
     # @param name [String] Resource name to verify.
     # @param type [CheckNameResourceTypes] Resource type used for verification.
-    # Possible values include: 'Microsoft.NetApp/netAppAccount',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes',
-    # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes/snapshots'
+    # Possible values include: 'Microsoft.NetApp/netAppAccounts',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes',
+    # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots'
     # @param resource_group [String] Resource group name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -384,6 +386,8 @@ module Azure::NetApp::Mgmt::V2019_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -408,7 +412,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_netapp'
-        sdk_information = "#{sdk_information}/0.17.3"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

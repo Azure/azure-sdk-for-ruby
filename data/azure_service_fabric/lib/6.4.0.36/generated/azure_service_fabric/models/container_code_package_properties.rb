@@ -64,7 +64,7 @@ module Azure::ServiceFabric::V6_4_0_36
 
       # @return [Array<ReliableCollectionsRef>] A list of ReliableCollection
       # resources used by this particular code package. Please refer to
-      # ReliablecollectionsRef for more details.
+      # ReliableCollectionsRef for more details.
       attr_accessor :reliable_collections_refs
 
       # @return [ContainerInstanceView] Runtime information of a container

@@ -24,6 +24,12 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [Integer] The public port to connect to.
       attr_accessor :public_port
 
+      # @return [String] The subDomainSuffix of the application.
+      attr_accessor :sub_domain_suffix
+
+      # @return [Boolean] The value indicates whether to disable GatewayAuth.
+      attr_accessor :disable_gateway_auth
+
 
       #
       # Mapper for ApplicationGetHttpsEndpoint class as Ruby Hash.
@@ -76,6 +82,22 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 serialized_name: 'publicPort',
                 type: {
                   name: 'Number'
+                }
+              },
+              sub_domain_suffix: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'subDomainSuffix',
+                type: {
+                  name: 'String'
+                }
+              },
+              disable_gateway_auth: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'disableGatewayAuth',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

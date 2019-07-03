@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.27.1"
+        "azure_sdk": "0.28.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -29,7 +29,7 @@
         "azure_event_grid": "0.18.0",
         "azure_graph_rbac": "0.17.1",
         "azure_key_vault": "0.17.3",
-        "azure_service_fabric": "0.17.1"
+        "azure_service_fabric": "0.17.2"
     },
     "management" : {
         "azure_mgmt_advisor": "0.17.0",
@@ -40,12 +40,12 @@
         "azure_mgmt_batch": "0.17.2",
         "azure_mgmt_billing": "0.17.2",
         "azure_mgmt_cdn": "0.17.3",
-        "azure_mgmt_cognitive_services": "0.18.2",
+        "azure_mgmt_cognitive_services": "0.18.3",
         "azure_mgmt_commerce": "0.17.1",
         "azure_mgmt_compute": "0.18.7",
         "azure_mgmt_consumption": "0.17.2",
         "azure_mgmt_container_instance": "0.17.4",
-        "azure_mgmt_container_registry": "0.18.2",
+        "azure_mgmt_container_registry": "0.18.3",
         "azure_mgmt_container_service": "0.18.5",
         "azure_mgmt_cosmosdb": "0.17.0",
         "azure_mgmt_customer_insights": "0.17.2",
@@ -59,8 +59,8 @@
         "azure_mgmt_event_grid": "0.17.6",
         "azure_mgmt_event_hub": "0.17.3",
         "azure_mgmt_features": "0.17.2",
-        "azure_mgmt_hanaonazure": "0.17.0",
-        "azure_mgmt_hdinsight": "0.17.3",
+        "azure_mgmt_hanaonazure": "0.17.1",
+        "azure_mgmt_hdinsight": "0.17.4",
         "azure_mgmt_iot_central": "0.17.3",
         "azure_mgmt_iot_hub": "0.17.3",
         "azure_mgmt_key_vault": "0.17.4",
@@ -70,7 +70,7 @@
         "azure_mgmt_locks": "0.17.3",
         "azure_mgmt_logic": "0.18.1",
         "azure_mgmt_machine_learning": "0.17.2",
-        "azure_mgmt_machine_learning_services": "0.17.1",
+        "azure_mgmt_machine_learning_services": "0.17.2",
         "azure_mgmt_managed_applications": "0.17.2",
         "azure_mgmt_mariadb": "0.17.1",
         "azure_mgmt_marketplace_ordering": "0.17.4",
@@ -78,7 +78,7 @@
         "azure_mgmt_mixedreality": "0.17.1",
         "azure_mgmt_monitor": "0.17.4",
         "azure_mgmt_msi": "0.17.1",
-        "azure_mgmt_netapp": "0.17.3",
+        "azure_mgmt_netapp": "0.18.0",
         "azure_mgmt_network": "0.18.8",
         "azure_mgmt_notification_hubs": "0.17.2",
         "azure_mgmt_operational_insights": "0.17.2",
@@ -104,7 +104,7 @@
         "azure_mgmt_service_fabric": "0.17.2",
         "azure_mgmt_signalr": "0.17.3",
         "azure_mgmt_sql": "0.17.3",
-        "azure_mgmt_sqlvirtualmachine": "0.17.2",
+        "azure_mgmt_sqlvirtualmachine": "0.18.0",
         "azure_mgmt_stor_simple8000_series": "0.17.2",
         "azure_mgmt_storage": "0.17.10",
         "azure_mgmt_storagesync": "0.17.0",

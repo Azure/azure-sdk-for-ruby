@@ -116,7 +116,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
               },
               size: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.size',
                 default_value: 4398046511104,
                 constraints: {
@@ -129,7 +129,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
               },
               service_level: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.serviceLevel',
                 default_value: 'Premium',
                 type: {

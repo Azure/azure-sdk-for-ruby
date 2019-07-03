@@ -20,56 +20,66 @@ module Azure::Profiles::Latest
         ClusterListPersistedScriptActionsResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterListPersistedScriptActionsResult
         ScriptActionExecutionSummary = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionExecutionSummary
         SecurityProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SecurityProfile
-        VirtualNetworkProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::VirtualNetworkProfile
+        AutoscaleSchedule = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AutoscaleSchedule
         ClusterListRuntimeScriptActionDetailResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterListRuntimeScriptActionDetailResult
-        SshPublicKey = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SshPublicKey
+        AutoscaleRecurrence = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AutoscaleRecurrence
         ClusterListResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterListResult
-        LinuxOperatingSystemProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::LinuxOperatingSystemProfile
-        ClusterResizeParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterResizeParameters
-        ScriptAction = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptAction
-        ClusterDiskEncryptionParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDiskEncryptionParameters
-        ComputeProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ComputeProfile
-        UpdateGatewaySettingsParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::UpdateGatewaySettingsParameters
-        StorageProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::StorageProfile
-        GatewaySettings = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::GatewaySettings
-        ClusterCreateProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterCreateProperties
-        OperationResource = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OperationResource
-        ClusterIdentity = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterIdentity
-        Resource = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Resource
-        ClusterPatchParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterPatchParameters
-        OperationListResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OperationListResult
-        Errors = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Errors
-        Operation = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Operation
-        ClusterGetProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterGetProperties
-        ErrorResponse = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ErrorResponse
-        RuntimeScriptAction = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::RuntimeScriptAction
-        ApplicationGetHttpsEndpoint = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationGetHttpsEndpoint
-        ClusterDefinition = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDefinition
-        ApplicationGetEndpoint = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationGetEndpoint
-        DataDisksGroups = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DataDisksGroups
-        ApplicationProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationProperties
-        OsProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OsProfile
-        OperationDisplay = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OperationDisplay
-        StorageAccount = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::StorageAccount
-        ApplicationListResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationListResult
-        ClusterIdentityUserAssignedIdentitiesValue = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterIdentityUserAssignedIdentitiesValue
-        LocalizedName = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::LocalizedName
-        QuotaInfo = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::QuotaInfo
-        Usage = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Usage
-        ScriptActionsList = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionsList
-        ExecuteScriptActionParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ExecuteScriptActionParameters
-        UsagesListResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::UsagesListResult
-        SshProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SshProfile
-        ClusterConfigurations = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterConfigurations
-        DiskEncryptionProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DiskEncryptionProperties
-        Extension = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Extension
-        ConnectivityEndpoint = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ConnectivityEndpoint
-        ClusterMonitoringResponse = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterMonitoringResponse
-        Role = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Role
-        ClusterMonitoringRequest = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterMonitoringRequest
         HardwareProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::HardwareProfile
-        ScriptActionExecutionHistoryList = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionExecutionHistoryList
+        ClusterResizeParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterResizeParameters
+        DataDisksGroups = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DataDisksGroups
+        ClusterDiskEncryptionParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDiskEncryptionParameters
+        SshProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SshProfile
+        UpdateGatewaySettingsParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::UpdateGatewaySettingsParameters
+        OsProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OsProfile
+        GatewaySettings = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::GatewaySettings
+        Role = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Role
+        OperationResource = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OperationResource
+        StorageAccount = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::StorageAccount
+        Resource = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Resource
+        DiskEncryptionProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DiskEncryptionProperties
+        OperationListResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OperationListResult
+        ClusterIdentityUserAssignedIdentitiesValue = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterIdentityUserAssignedIdentitiesValue
+        Operation = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Operation
         ClusterCreateParametersExtended = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterCreateParametersExtended
+        ErrorResponse = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ErrorResponse
+        QuotaInfo = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::QuotaInfo
+        ApplicationGetHttpsEndpoint = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationGetHttpsEndpoint
+        ConnectivityEndpoint = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ConnectivityEndpoint
+        ApplicationGetEndpoint = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationGetEndpoint
+        ScriptActionsList = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionsList
+        RuntimeScriptAction = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::RuntimeScriptAction
+        ApplicationProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationProperties
+        ClusterDefinition = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDefinition
+        OperationDisplay = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OperationDisplay
+        AutoscaleCapacity = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AutoscaleCapacity
+        ApplicationListResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationListResult
+        VirtualNetworkProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::VirtualNetworkProfile
+        LocalizedName = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::LocalizedName
+        LinuxOperatingSystemProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::LinuxOperatingSystemProfile
+        Usage = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Usage
+        ComputeProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ComputeProfile
+        UsagesListResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::UsagesListResult
+        ClusterCreateProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterCreateProperties
+        VmSizeCompatibilityFilterV2 = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::VmSizeCompatibilityFilterV2
+        ClusterPatchParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterPatchParameters
+        BillingMeters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::BillingMeters
+        ClusterGetProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterGetProperties
+        DiskBillingMeters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DiskBillingMeters
+        AutoscaleTimeAndCapacity = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AutoscaleTimeAndCapacity
+        BillingResources = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::BillingResources
+        SshPublicKey = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SshPublicKey
+        BillingResponseListResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::BillingResponseListResult
+        StorageProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::StorageProfile
+        ClusterConfigurations = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterConfigurations
+        Errors = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Errors
+        Extension = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Extension
+        Autoscale = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Autoscale
+        ClusterMonitoringResponse = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterMonitoringResponse
+        ClusterIdentity = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterIdentity
+        ClusterMonitoringRequest = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterMonitoringRequest
+        ScriptAction = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptAction
+        ScriptActionExecutionHistoryList = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionExecutionHistoryList
+        ExecuteScriptActionParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ExecuteScriptActionParameters
         ScriptActionPersistedGetResponseSpec = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionPersistedGetResponseSpec
         Cluster = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Cluster
         RuntimeScriptActionDetail = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::RuntimeScriptActionDetail
@@ -77,12 +87,14 @@ module Azure::Profiles::Latest
         ProxyResource = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ProxyResource
         Application = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Application
         DirectoryType = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DirectoryType
+        DaysOfWeek = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DaysOfWeek
         OSType = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OSType
         Tier = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Tier
         JsonWebKeyEncryptionAlgorithm = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::JsonWebKeyEncryptionAlgorithm
         ResourceIdentityType = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ResourceIdentityType
         HDInsightClusterProvisioningState = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::HDInsightClusterProvisioningState
         AsyncOperationState = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AsyncOperationState
+        FilterMode = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::FilterMode
       end
 
       class HdinsightManagementClass
@@ -131,155 +143,185 @@ module Azure::Profiles::Latest
           def security_profile
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SecurityProfile
           end
-          def virtual_network_profile
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::VirtualNetworkProfile
+          def autoscale_schedule
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AutoscaleSchedule
           end
           def cluster_list_runtime_script_action_detail_result
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterListRuntimeScriptActionDetailResult
           end
-          def ssh_public_key
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SshPublicKey
+          def autoscale_recurrence
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AutoscaleRecurrence
           end
           def cluster_list_result
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterListResult
           end
-          def linux_operating_system_profile
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::LinuxOperatingSystemProfile
+          def hardware_profile
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::HardwareProfile
           end
           def cluster_resize_parameters
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterResizeParameters
           end
-          def script_action
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptAction
+          def data_disks_groups
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DataDisksGroups
           end
           def cluster_disk_encryption_parameters
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDiskEncryptionParameters
           end
-          def compute_profile
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ComputeProfile
+          def ssh_profile
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SshProfile
           end
           def update_gateway_settings_parameters
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::UpdateGatewaySettingsParameters
           end
-          def storage_profile
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::StorageProfile
+          def os_profile
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OsProfile
           end
           def gateway_settings
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::GatewaySettings
           end
-          def cluster_create_properties
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterCreateProperties
+          def role
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Role
           end
           def operation_resource
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OperationResource
           end
-          def cluster_identity
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterIdentity
+          def storage_account
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::StorageAccount
           end
           def resource
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Resource
           end
-          def cluster_patch_parameters
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterPatchParameters
+          def disk_encryption_properties
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DiskEncryptionProperties
           end
           def operation_list_result
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OperationListResult
           end
-          def errors
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Errors
+          def cluster_identity_user_assigned_identities_value
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterIdentityUserAssignedIdentitiesValue
           end
           def operation
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Operation
           end
-          def cluster_get_properties
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterGetProperties
+          def cluster_create_parameters_extended
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterCreateParametersExtended
           end
           def error_response
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ErrorResponse
           end
-          def runtime_script_action
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::RuntimeScriptAction
+          def quota_info
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::QuotaInfo
           end
           def application_get_https_endpoint
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationGetHttpsEndpoint
           end
-          def cluster_definition
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDefinition
+          def connectivity_endpoint
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ConnectivityEndpoint
           end
           def application_get_endpoint
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationGetEndpoint
           end
-          def data_disks_groups
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DataDisksGroups
+          def script_actions_list
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionsList
+          end
+          def runtime_script_action
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::RuntimeScriptAction
           end
           def application_properties
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationProperties
           end
-          def os_profile
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OsProfile
+          def cluster_definition
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDefinition
           end
           def operation_display
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OperationDisplay
           end
-          def storage_account
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::StorageAccount
+          def autoscale_capacity
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AutoscaleCapacity
           end
           def application_list_result
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ApplicationListResult
           end
-          def cluster_identity_user_assigned_identities_value
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterIdentityUserAssignedIdentitiesValue
+          def virtual_network_profile
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::VirtualNetworkProfile
           end
           def localized_name
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::LocalizedName
           end
-          def quota_info
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::QuotaInfo
+          def linux_operating_system_profile
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::LinuxOperatingSystemProfile
           end
           def usage
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Usage
           end
-          def script_actions_list
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionsList
-          end
-          def execute_script_action_parameters
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ExecuteScriptActionParameters
+          def compute_profile
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ComputeProfile
           end
           def usages_list_result
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::UsagesListResult
           end
-          def ssh_profile
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SshProfile
+          def cluster_create_properties
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterCreateProperties
+          end
+          def vm_size_compatibility_filter_v2
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::VmSizeCompatibilityFilterV2
+          end
+          def cluster_patch_parameters
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterPatchParameters
+          end
+          def billing_meters
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::BillingMeters
+          end
+          def cluster_get_properties
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterGetProperties
+          end
+          def disk_billing_meters
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DiskBillingMeters
+          end
+          def autoscale_time_and_capacity
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AutoscaleTimeAndCapacity
+          end
+          def billing_resources
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::BillingResources
+          end
+          def ssh_public_key
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SshPublicKey
+          end
+          def billing_response_list_result
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::BillingResponseListResult
+          end
+          def storage_profile
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::StorageProfile
           end
           def cluster_configurations
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterConfigurations
           end
-          def disk_encryption_properties
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DiskEncryptionProperties
+          def errors
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Errors
           end
           def extension
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Extension
           end
-          def connectivity_endpoint
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ConnectivityEndpoint
+          def autoscale
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Autoscale
           end
           def cluster_monitoring_response
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterMonitoringResponse
           end
-          def role
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Role
+          def cluster_identity
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterIdentity
           end
           def cluster_monitoring_request
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterMonitoringRequest
           end
-          def hardware_profile
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::HardwareProfile
+          def script_action
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptAction
           end
           def script_action_execution_history_list
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionExecutionHistoryList
           end
-          def cluster_create_parameters_extended
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterCreateParametersExtended
+          def execute_script_action_parameters
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ExecuteScriptActionParameters
           end
           def script_action_persisted_get_response_spec
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionPersistedGetResponseSpec
@@ -302,6 +344,9 @@ module Azure::Profiles::Latest
           def directory_type
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DirectoryType
           end
+          def days_of_week
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DaysOfWeek
+          end
           def ostype
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OSType
           end
@@ -319,6 +364,9 @@ module Azure::Profiles::Latest
           end
           def async_operation_state
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AsyncOperationState
+          end
+          def filter_mode
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::FilterMode
           end
         end
       end

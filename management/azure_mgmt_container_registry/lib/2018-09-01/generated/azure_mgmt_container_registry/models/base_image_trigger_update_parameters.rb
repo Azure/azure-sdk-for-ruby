@@ -17,7 +17,7 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
       attr_accessor :base_image_trigger_type
 
       # @return [TriggerStatus] The current status of trigger. Possible values
-      # include: 'Disabled', 'Enabled'
+      # include: 'Disabled', 'Enabled'. Default value: 'Enabled' .
       attr_accessor :status
 
       # @return [String] The name of the trigger.
@@ -49,6 +49,7 @@ module Azure::ContainerRegistry::Mgmt::V2018_09_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
+                default_value: 'Enabled',
                 type: {
                   name: 'String'
                 }
