@@ -80,7 +80,6 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
               location: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'

@@ -19,7 +19,8 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
       # @return [HanaInstanceSizeNamesEnum] Specifies the HANA instance SKU.
       # Possible values include: 'S72m', 'S144m', 'S72', 'S144', 'S192',
       # 'S192m', 'S192xm', 'S96', 'S384', 'S384m', 'S384xm', 'S384xxm',
-      # 'S576m', 'S576xm', 'S768', 'S768m', 'S768xm', 'S960m'
+      # 'S576m', 'S576xm', 'S768', 'S768m', 'S768xm', 'S960m', 'S224o',
+      # 'S224m', 'S224om', 'S224oxm', 'S224oxxm'
       attr_accessor :hana_instance_size
 
 

@@ -32,7 +32,6 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
               ip_address: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'ipAddress',
                 type: {
                   name: 'String'

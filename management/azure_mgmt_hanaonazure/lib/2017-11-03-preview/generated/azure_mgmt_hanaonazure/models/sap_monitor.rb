@@ -6,45 +6,29 @@
 module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
   module Models
     #
-    # HANA instance info on Azure (ARM properties and HANA properties)
+    # SAP monitor info on Azure (ARM properties and SAP monitor properties)
     #
-    class HanaInstance < Resource
+    class SapMonitor < Resource
 
       include MsRestAzure
 
-      # @return [HardwareProfile] Specifies the hardware settings for the HANA
-      # instance.
-      attr_accessor :hardware_profile
+      # @return [String] Specifies the SAP monitor unique ID.
+      attr_accessor :hana_subnet
 
-      # @return [StorageProfile] Specifies the storage settings for the HANA
-      # instance disks.
-      attr_accessor :storage_profile
+      # @return [String] Hostname of the HANA instance.
+      attr_accessor :hana_hostname
 
-      # @return [OSProfile] Specifies the operating system settings for the
-      # HANA instance.
-      attr_accessor :os_profile
+      # @return [String] Database name of the HANA instance.
+      attr_accessor :hana_db_name
 
-      # @return [NetworkProfile] Specifies the network settings for the HANA
-      # instance.
-      attr_accessor :network_profile
+      # @return [Integer] Database port of the HANA instance.
+      attr_accessor :hana_db_sql_port
 
-      # @return [String] Specifies the HANA instance unique ID.
-      attr_accessor :hana_instance_id
+      # @return [String] Database username of the HANA instance.
+      attr_accessor :hana_db_username
 
-      # @return [HanaInstancePowerStateEnum] Resource power state. Possible
-      # values include: 'starting', 'started', 'stopping', 'stopped',
-      # 'restarting', 'unknown'
-      attr_accessor :power_state
-
-      # @return [String] Resource proximity placement group
-      attr_accessor :proximity_placement_group
-
-      # @return [String] Hardware revision of a HANA instance
-      attr_accessor :hw_revision
-
-      # @return [String] ARM ID of another HanaInstance that will share a
-      # network with this HanaInstance
-      attr_accessor :partner_node_id
+      # @return [String] Database password of the HANA instance.
+      attr_accessor :hana_db_password
 
       # @return [HanaProvisioningStatesEnum] State of provisioning of the
       # HanaInstance. Possible values include: 'Accepted', 'Creating',
@@ -53,17 +37,17 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
 
 
       #
-      # Mapper for HanaInstance class as Ruby Hash.
+      # Mapper for SapMonitor class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'HanaInstance',
+          serialized_name: 'SapMonitor',
           type: {
             name: 'Composite',
-            class_name: 'HanaInstance',
+            class_name: 'SapMonitor',
             model_properties: {
               id: {
                 client_side_validation: true,
@@ -117,82 +101,50 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
                   }
                 }
               },
-              hardware_profile: {
+              hana_subnet: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.hardwareProfile',
-                type: {
-                  name: 'Composite',
-                  class_name: 'HardwareProfile'
-                }
-              },
-              storage_profile: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.storageProfile',
-                type: {
-                  name: 'Composite',
-                  class_name: 'StorageProfile'
-                }
-              },
-              os_profile: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.osProfile',
-                type: {
-                  name: 'Composite',
-                  class_name: 'OSProfile'
-                }
-              },
-              network_profile: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.networkProfile',
-                type: {
-                  name: 'Composite',
-                  class_name: 'NetworkProfile'
-                }
-              },
-              hana_instance_id: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.hanaInstanceId',
+                serialized_name: 'properties.hanaSubnet',
                 type: {
                   name: 'String'
                 }
               },
-              power_state: {
+              hana_hostname: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.powerState',
+                serialized_name: 'properties.hanaHostname',
                 type: {
                   name: 'String'
                 }
               },
-              proximity_placement_group: {
+              hana_db_name: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.proximityPlacementGroup',
+                serialized_name: 'properties.hanaDbName',
                 type: {
                   name: 'String'
                 }
               },
-              hw_revision: {
+              hana_db_sql_port: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.hwRevision',
+                serialized_name: 'properties.hanaDbSqlPort',
+                type: {
+                  name: 'Number'
+                }
+              },
+              hana_db_username: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.hanaDbUsername',
                 type: {
                   name: 'String'
                 }
               },
-              partner_node_id: {
+              hana_db_password: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.partnerNodeId',
+                serialized_name: 'properties.hanaDbPassword',
                 type: {
                   name: 'String'
                 }
