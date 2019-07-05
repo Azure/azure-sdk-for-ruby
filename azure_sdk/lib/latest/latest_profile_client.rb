@@ -293,10 +293,11 @@ module Azure::Profiles::Latest
       end
     end
 
-    class BatchAdapter
+    class BatchAdapter < Azure::Profiles::Latest::Batch::BatchDataClass
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
+        super(context)
         @mgmt = Azure::Profiles::Latest::Batch::Mgmt::BatchManagementClass.new(context, base_url, options)
       end
     end
