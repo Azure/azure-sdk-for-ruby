@@ -248,6 +248,9 @@
                 "Microsoft.Batch": {
                     "management": {
                         "2017-09-01": ["*"]
+                    },
+                    "data": {
+                        "2019-06-01.9.0": ["*"]
                     }
                 },
                 "Microsoft.Billing": {
@@ -2361,6 +2364,20 @@
         ]
     },
     "data": {
+        "azure_batch": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.Batch" : {
+                        "data": {
+                            "2019-06-01.9.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_batch/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_graph_rbac": [
             {
                 "name": "Latest",

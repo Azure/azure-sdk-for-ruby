@@ -39,6 +39,11 @@
       "path": "management/azure_mgmt_batch",
       "namespace": "Azure::Batch::Mgmt",
       "module_require": "azure_mgmt_batch"
+    },
+    "data": {
+      "path": "data/azure_batch",
+      "namespace": "Azure::Batch",
+      "module_require": "azure_batch"
     }
   },
   "Microsoft.Billing": {

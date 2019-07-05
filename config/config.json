@@ -2012,6 +2012,38 @@
       "tag": "package-2018-02"
     }
   },
+  "azure_batch": {
+    "azure_batch_v2017-06-01.5.1": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f6e96392dd7f1069b6d600cfda549bf786d009b0/specification/batch/data-plane/readme.md",
+      "namespace": "Azure::Batch::V2017_06_01_5_1",
+      "tag": "package-2017-06.5.1"
+    },
+    "azure_batch_v2017-09-01.6.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f6e96392dd7f1069b6d600cfda549bf786d009b0/specification/batch/data-plane/readme.md",
+      "namespace": "Azure::Batch::V2017_09_01_6_0",
+      "tag": "package-2017-09.6.0"
+    },
+    "azure_batch_v2018-03-01.6.1": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f6e96392dd7f1069b6d600cfda549bf786d009b0/specification/batch/data-plane/readme.md",
+      "namespace": "Azure::Batch::V2018_03_01_6_1",
+      "tag": "package-2018-03.6.1"
+    },
+    "azure_batch_v2018-08-01.7.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f6e96392dd7f1069b6d600cfda549bf786d009b0/specification/batch/data-plane/readme.md",
+      "namespace": "Azure::Batch::V2018_08_01_7_0",
+      "tag": "package-2018-08.7.0"
+    },
+    "azure_batch_v2018-12-01.8.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f6e96392dd7f1069b6d600cfda549bf786d009b0/specification/batch/data-plane/readme.md",
+      "namespace": "Azure::Batch::V2018_12_01_8_0",
+      "tag": "package-2018-12.8.0"
+    },
+    "azure_batch_v2019-06-01.9.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f6e96392dd7f1069b6d600cfda549bf786d009b0/specification/batch/data-plane/readme.md",
+      "namespace": "Azure::Batch::V2019_06_01_9_0",
+      "tag": "package-2019-06.9.0"
+    }
+  },
   "azure_cognitiveservices_anomalydetector": {
     "azure_cognitiveservices_anomalydetector_v1.0": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/012facd689722521bf10eeaad9d1dc5b407793a7/specification/cognitiveservices/data-plane/AnomalyDetector/readme.md",

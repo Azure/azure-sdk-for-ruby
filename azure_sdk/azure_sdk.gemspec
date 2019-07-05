@@ -121,6 +121,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', "~>#{gem_versions['management']['azure_mgmt_subscriptions']}"
   spec.add_runtime_dependency 'azure_mgmt_traffic_manager', "~>#{gem_versions['management']['azure_mgmt_traffic_manager']}"
   spec.add_runtime_dependency 'azure_mgmt_web', "~>#{gem_versions['management']['azure_mgmt_web']}"
+  spec.add_runtime_dependency 'azure_batch', "~>#{gem_versions['data']['azure_batch']}"
   spec.add_runtime_dependency 'azure_cognitiveservices_anomalydetector', "~>#{gem_versions['data']['azure_cognitiveservices_anomalydetector']}"
   spec.add_runtime_dependency 'azure_cognitiveservices_autosuggest', "~>#{gem_versions['data']['azure_cognitiveservices_autosuggest']}"
   spec.add_runtime_dependency 'azure_cognitiveservices_customimagesearch', "~>#{gem_versions['data']['azure_cognitiveservices_customimagesearch']}"
