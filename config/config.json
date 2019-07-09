@@ -162,6 +162,13 @@
       "tag": "package-2015-10"
     }
   },
+  "azure_mgmt_azurestack": {
+    "azure_mgmt_azurestack_2017_06_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/597f7dd325c864dd4db48d9374451c16e0337158/specification/azurestack/resource-manager/readme.md",
+      "namespace": "Azure::AzureStack::Mgmt::V2017_06_01",
+      "tag": "package-2017-06-01"
+    }
+  },
   "azure_mgmt_batch": {
     "azure_mgmt_batch_2017_09_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/batch/resource-manager/readme.md",

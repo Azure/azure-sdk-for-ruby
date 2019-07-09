@@ -55,6 +55,13 @@
       "module_require": "azure_mgmt_automation"
     }
   },
+  "Microsoft.AzureStack": {
+    "management": {
+      "path": "management/azure_mgmt_azurestack",
+      "namespace": "Azure::AzureStack::Mgmt",
+      "module_require": "azure_mgmt_azurestack"
+    }
+  },
   "Microsoft.Batch": {
     "management": {
       "path": "management/azure_mgmt_batch",

@@ -35,6 +35,7 @@
         "azure_mgmt_adhybridhealth_service": "0.17.0",
         "azure_mgmt_advisor": "0.17.0",
         "azure_mgmt_alerts_management": "0.17.0",
+        "azure_mgmt_azurestack": "0.17.0",
         "azure_mgmt_analysis_services": "0.17.2",
         "azure_mgmt_api_management": "0.18.3",
         "azure_mgmt_appconfiguration": "0.17.0",

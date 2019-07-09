@@ -21,6 +21,7 @@ gem 'azure_mgmt_api_management',            path: 'management/azure_mgmt_api_man
 gem 'azure_mgmt_appconfiguration',          path: 'management/azure_mgmt_appconfiguration'
 gem 'azure_mgmt_authorization',             path: 'management/azure_mgmt_authorization'
 gem 'azure_mgmt_automation',                path: 'management/azure_mgmt_automation'
+gem 'azure_mgmt_azurestack',                path: 'management/azure_mgmt_azurestack'
 gem 'azure_mgmt_batch',                     path: 'management/azure_mgmt_batch'
 gem 'azure_mgmt_billing',                   path: 'management/azure_mgmt_billing'
 gem 'azure_mgmt_cdn',                       path: 'management/azure_mgmt_cdn'

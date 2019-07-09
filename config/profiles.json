@@ -260,6 +260,11 @@
                         "2015-10-31": ["*"]
                     }
                 },
+                "Microsoft.AzureStack": {
+                    "management": {
+                        "2017-06-01": ["*"]
+                    }
+                },
                 "Microsoft.Batch": {
                     "management": {
                         "2017-09-01": ["*"]
@@ -951,6 +956,20 @@
             "output_dir": "management/azure_mgmt_automation/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_azurestack": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.AzureStack" : {
+                        "management": {
+                            "2017-06-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_azurestack/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_batch": [
         {
