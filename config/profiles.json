@@ -227,6 +227,11 @@
                         "2017-04-19": ["*"]
                     }
                 },
+                "Microsoft.AlertsManagement": {
+                    "management": {
+                        "2019-05-05-preview": ["*"]
+                    }
+                },
                 "Microsoft.AnalysisServices": {
                     "management": {
                         "2017-08-01": ["*"]
@@ -822,6 +827,20 @@
             "output_dir": "management/azure_mgmt_advisor/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_alerts_management": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.AlertsManagement": {
+                        "management": {
+                            "2019-05-05-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_alerts_management/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_analysis_services": [
         {
