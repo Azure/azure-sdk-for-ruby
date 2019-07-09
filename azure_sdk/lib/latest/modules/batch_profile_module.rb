@@ -294,7 +294,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        @client_0 = Azure::Batch::V2019_06_01_9_0::BatchServiceClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::Batch::V2019_06_01_9_0::BatchServiceClient.new(configurable.credentials, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
