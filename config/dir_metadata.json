@@ -1,4 +1,11 @@
 {
+  "Microsoft.ADHybridHealthService": {
+    "management": {
+      "path": "management/azure_mgmt_adhybridhealth_service",
+      "namespace": "Azure::ADHybridHealthService::Mgmt",
+      "module_require": "azure_mgmt_adhybridhealth_service"
+    }
+  },
   "Microsoft.Advisor": {
     "management": {
       "path": "management/azure_mgmt_advisor",

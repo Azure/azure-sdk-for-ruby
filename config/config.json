@@ -1,4 +1,11 @@
 {
+  "azure_mgmt_adhybridhealth_service": {
+    "azure_mgmt_adhybridhealth_service_2014_01_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/597f7dd325c864dd4db48d9374451c16e0337158/specification/adhybridhealthservice/resource-manager/readme.md",
+      "namespace": "Azure::ADHybridHealthService::Mgmt::V2014_01_01",
+      "tag": "package-2014-01"
+    }
+  },
   "azure_mgmt_advisor": {
     "azure_mgmt_advisor_2017_04_19": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a3fb7cc7cb3adb16f9da603e91c1c55048129d1/specification/advisor/resource-manager/readme.md",

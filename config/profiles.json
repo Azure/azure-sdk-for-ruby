@@ -217,6 +217,11 @@
         {
             "name": "Latest",
             "resourceTypes": {
+                "Microsoft.ADHybridHealthService": {
+                    "management": {
+                        "2014-01-01": ["*"]
+                    }
+                },
                 "Microsoft.Advisor": {
                     "management": {
                         "2017-04-19": ["*"]
@@ -790,6 +795,20 @@
         ]
     },
     "management" : {
+        "azure_mgmt_adhybridhealth_service": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.ADHybridHealthService": {
+                        "management": {
+                            "2014-01-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_adhybridhealth_service/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_advisor": [
         {
             "name": "Latest",

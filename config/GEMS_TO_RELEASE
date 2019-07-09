@@ -1,17 +1,6 @@
 {
     "management": [
-        "azure_mgmt_data_migration",
-        "azure_mgmt_appconfiguration",
-        "azure_mgmt_resourcegraph",
-        "azure_mgmt_cosmosdb",
-        "azure_mgmt_network",
-        "azure_mgmt_postgresql",
-        "azure_mgmt_mariadb",
-        "azure_mgmt_mysql",
-        "azure_mgmt_resources"
-    ],
-    "data": [
-        "azure_cognitiveservices_face"
+        "azure_mgmt_adhybridhealth_service"
     ],
     "rollup": [
         "azure_sdk"
