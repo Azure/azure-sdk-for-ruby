@@ -492,6 +492,13 @@
       "module_require": "azure_mgmt_powerbi_embedded"
     }
   },
+  "Microsoft.PowerBiDedicated": {
+    "management": {
+      "path": "management/azure_mgmt_powerbi_dedicated",
+      "namespace": "Azure::PowerBiDedicated::Mgmt",
+      "module_require": "azure_mgmt_powerbi_dedicated"
+    }
+  },
   "Microsoft.PrivateDns": {
     "management": {
       "path": "management/azure_mgmt_privatedns",

@@ -107,6 +107,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_policy_insights', "~>#{gem_versions['management']['azure_mgmt_policy_insights']}"
   spec.add_runtime_dependency 'azure_mgmt_postgresql', "~>#{gem_versions['management']['azure_mgmt_postgresql']}"
   spec.add_runtime_dependency 'azure_mgmt_powerbi_embedded', "~>#{gem_versions['management']['azure_mgmt_powerbi_embedded']}"
+  spec.add_runtime_dependency 'azure_mgmt_powerbi_dedicated', "~>#{gem_versions['management']['azure_mgmt_powerbi_dedicated']}"
   spec.add_runtime_dependency 'azure_mgmt_privatedns', "~>#{gem_versions['management']['azure_mgmt_privatedns']}"
   spec.add_runtime_dependency 'azure_mgmt_recovery_services', "~>#{gem_versions['management']['azure_mgmt_recovery_services']}"
   spec.add_runtime_dependency 'azure_mgmt_recovery_services_backup', "~>#{gem_versions['management']['azure_mgmt_recovery_services_backup']}"

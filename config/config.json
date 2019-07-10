@@ -1712,6 +1712,13 @@
       "tag": "package-2016-01"
     }
   },
+  "azure_mgmt_powerbi_dedicated": {
+    "azure_mgmt_powerbi_dedicated_2017_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/powerbidedicated/resource-manager/readme.md",
+      "namespace": "Azure::PowerBiDedicated::Mgmt::V2017_10_01",
+      "tag": "package-2017-10-01"
+    }
+  },
   "azure_mgmt_privatedns": {
     "azure_mgmt_privatedns_2018_09_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f3a5ad9f80f867d1c546c101310d36a8df863b5b/specification/privatedns/resource-manager/readme.md",

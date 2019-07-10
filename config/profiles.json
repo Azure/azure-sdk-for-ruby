@@ -579,6 +579,11 @@
                         "2016-01-29": ["*"]
                     }
                 },
+                "Microsoft.PowerBiDedicated" : {
+                    "management": {
+                        "2017-10-01": ["*"]
+                    }
+                },
                 "Microsoft.PrivateDns": {
                     "management": {
                         "2018-09-01": ["*"]
@@ -2078,6 +2083,20 @@
             "output_dir": "management/azure_mgmt_powerbi_embedded/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_powerbi_dedicated": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.PowerBiDedicated" : {
+                        "management": {
+                            "2017-10-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_powerbi_dedicated/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_privatedns": [
         {
