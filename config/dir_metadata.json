@@ -195,6 +195,13 @@
       "module_require": "azure_mgmt_data_migration"
     }
   },
+  "Microsoft.DataFactory":{
+    "management": {
+      "path": "management/azure_mgmt_data_factory",
+      "namespace": "Azure::DataFactory::Mgmt",
+      "module_require": "azure_mgmt_data_factory"
+    }
+  },
   "Microsoft.DevSpaces": {
     "management": {
       "path": "management/azure_mgmt_dev_spaces",

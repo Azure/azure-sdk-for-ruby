@@ -365,6 +365,11 @@
                         "2018-07-15-preview": ["*"]
                     }
                 },
+                "Microsoft.DataFactory" : {
+                    "management": {
+                        "2018-06-01": ["*"]
+                    }
+                },
                 "Microsoft.DevSpaces": {
                     "management": {
                         "2018-06-01-preview": ["*"]
@@ -1284,6 +1289,20 @@
             "output_dir": "management/azure_mgmt_datalake_store/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_data_factory": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DataFactory" : {
+                        "management": {
+                            "2018-06-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_data_factory/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_dev_spaces": [
             {

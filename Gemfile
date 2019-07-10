@@ -41,6 +41,7 @@ gem 'azure_mgmt_databox',                   path: 'management/azure_mgmt_databox
 gem 'azure_mgmt_datalake_analytics',        path: 'management/azure_mgmt_datalake_analytics'
 gem 'azure_mgmt_datalake_store',            path: 'management/azure_mgmt_datalake_store'
 gem 'azure_mgmt_data_migration',            path: 'management/azure_mgmt_data_migration'
+gem 'azure_mgmt_data_factory',              path: 'management/azure_mgmt_data_factory'
 gem 'azure_mgmt_dev_spaces',                path: 'management/azure_mgmt_dev_spaces'
 gem 'azure_mgmt_devtestlabs',               path: 'management/azure_mgmt_devtestlabs'
 gem 'azure_mgmt_dns',                       path: 'management/azure_mgmt_dns'
