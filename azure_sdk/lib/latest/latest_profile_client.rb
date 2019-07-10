@@ -27,6 +27,7 @@ require 'latest/modules/containerservice_profile_module'
 require 'latest/modules/cosmosdb_profile_module'
 require 'latest/modules/costmanagement_profile_module'
 require 'latest/modules/customerinsights_profile_module'
+require 'latest/modules/databox_profile_module'
 require 'latest/modules/datalakeanalytics_profile_module'
 require 'latest/modules/datalakestore_profile_module'
 require 'latest/modules/datamigration_profile_module'
@@ -123,7 +124,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :adhybrid_health_service, :advisor, :alerts_management, :analysis_services, :api_management, :app_configuration, :authorization, :automation, :azure_stack, :batch, :batch_ai, :billing, :bot_service, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :cost_management, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :postgresql, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :adhybrid_health_service, :advisor, :alerts_management, :analysis_services, :api_management, :app_configuration, :authorization, :automation, :azure_stack, :batch, :batch_ai, :billing, :bot_service, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :cost_management, :customer_insights, :data_box, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :postgresql, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -179,6 +180,7 @@ module Azure::Profiles::Latest
       @cosmosdb = CosmosdbAdapter.new(self, base_url, sdk_options)
       @cost_management = CostManagementAdapter.new(self, base_url, sdk_options)
       @customer_insights = CustomerInsightsAdapter.new(self, base_url, sdk_options)
+      @data_box = DataBoxAdapter.new(self, base_url, sdk_options)
       @data_lake_analytics = DataLakeAnalyticsAdapter.new(self, base_url, sdk_options)
       @data_lake_store = DataLakeStoreAdapter.new(self, base_url, sdk_options)
       @data_migration = DataMigrationAdapter.new(self, base_url, sdk_options)
@@ -458,6 +460,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::CustomerInsights::Mgmt::CustomerInsightsManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class DataBoxAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::DataBox::Mgmt::DataBoxManagementClass.new(context, base_url, options)
       end
     end
 
