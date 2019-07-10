@@ -167,6 +167,13 @@
       "module_require": "azure_mgmt_customer_insights"
     }
   },
+  "Microsoft.DataBox": {
+    "management": {
+      "path": "management/azure_mgmt_databox",
+      "namespace": "Azure::DataBox::Mgmt",
+      "module_require": "azure_mgmt_databox"
+    }
+  },
   "Microsoft.DataLakeAnalytics": {
     "management": {
       "path": "management/azure_mgmt_datalake_analytics",

@@ -345,6 +345,11 @@
                         "2017-04-26": ["*"]
                     }
                 },
+                "Microsoft.DataBox": {
+                    "management": {
+                        "2018-01-01": ["*"]
+                    }
+                },
                 "Microsoft.DataLakeAnalytics": {
                     "management": {
                         "2016-11-01": ["*"]
@@ -1237,6 +1242,20 @@
             "output_dir": "management/azure_mgmt_customer_insights/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_databox": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DataBox" : {
+                        "management": {
+                            "2018-01-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_databox/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_datalake_analytics": [
         {

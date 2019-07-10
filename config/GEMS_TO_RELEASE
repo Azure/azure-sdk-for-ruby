@@ -6,7 +6,8 @@
         "azure_mgmt_azurestack",
         "azure_mgmt_batchai",
         "azure_mgmt_bot_service",
-        "azure_mgmt_cost_management"
+        "azure_mgmt_cost_management",
+        "azure_mgmt_databox"
     ],
     "rollup": [
         "azure_sdk"
