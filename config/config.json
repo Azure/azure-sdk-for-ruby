@@ -573,6 +573,28 @@
       "title": "ContainerServiceClient"
     }
   },
+  "azure_mgmt_cost_management": {
+    "azure_mgmt_cost_management_2018_05_31": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/cost-management/resource-manager/readme.md",
+      "namespace": "Azure::CostManagement::Mgmt::V2018_05_31",
+      "tag": "package-2018-05"
+    },
+    "azure_mgmt_cost_management_2019_03_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/cost-management/resource-manager/readme.md",
+      "namespace": "Azure::CostManagement::Mgmt::V2019_03_01_preview",
+      "tag": "package-preview-2019-03"
+    },
+    "azure_mgmt_cost_management_2019_01_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/cost-management/resource-manager/readme.md",
+      "namespace": "Azure::CostManagement::Mgmt::V2019_01_01",
+      "tag": "package-2019-01"
+    },
+    "azure_mgmt_cost_management_2019_04_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/cost-management/resource-manager/readme.md",
+      "namespace": "Azure::CostManagement::Mgmt::V2019_04_01_preview",
+      "tag": "package-preview-2019-04"
+    }
+  },
   "azure_mgmt_cosmosdb": {
     "azure_mgmt_cosmosdb_2015_04_08": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/cosmos-db/resource-manager/readme.md",

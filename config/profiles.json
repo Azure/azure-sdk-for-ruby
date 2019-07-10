@@ -335,6 +335,11 @@
                         "2015-04-08": ["*"]
                     }
                 },
+                "Microsoft.CostManagement": {
+                    "management": {
+                        "2019-04-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.CustomerInsights": {
                     "management": {
                         "2017-04-26": ["*"]
@@ -1204,6 +1209,20 @@
             "output_dir": "management/azure_mgmt_cosmosdb/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_cost_management": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CostManagement": {
+                        "management": {
+                            "2019-04-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_cost_management/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_customer_insights": [
         {

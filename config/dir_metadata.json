@@ -153,6 +153,13 @@
       "module_require": "azure_mgmt_cosmosdb"
     }
   },
+  "Microsoft.CostManagement": {
+    "management": {
+      "path": "management/azure_mgmt_cost_management",
+      "namespace": "Azure::CostManagement::Mgmt",
+      "module_require": "azure_mgmt_cost_management"
+    }
+  },
   "Microsoft.CustomerInsights": {
     "management": {
       "path": "management/azure_mgmt_customer_insights",

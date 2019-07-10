@@ -63,6 +63,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_container_registry', "~>#{gem_versions['management']['azure_mgmt_container_registry']}"
   spec.add_runtime_dependency 'azure_mgmt_container_service', "~>#{gem_versions['management']['azure_mgmt_container_service']}"
   spec.add_runtime_dependency 'azure_mgmt_cosmosdb', "~>#{gem_versions['management']['azure_mgmt_cosmosdb']}"
+  spec.add_runtime_dependency 'azure_mgmt_cost_management', "~>#{gem_versions['management']['azure_mgmt_cost_management']}"
   spec.add_runtime_dependency 'azure_mgmt_customer_insights', "~>#{gem_versions['management']['azure_mgmt_customer_insights']}"
   spec.add_runtime_dependency 'azure_mgmt_datalake_analytics', "~>#{gem_versions['management']['azure_mgmt_datalake_analytics']}"
   spec.add_runtime_dependency 'azure_mgmt_datalake_store', "~>#{gem_versions['management']['azure_mgmt_datalake_store']}"
