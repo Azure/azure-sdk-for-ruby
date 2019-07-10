@@ -553,6 +553,11 @@
                         "2015-11-01-preview": ["*"]
                     }
                 },
+                "Microsoft.OperationsManagement" : {
+                    "management": {
+                        "2015-11-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Policy": {
                     "management": {
                         "2018-05-01": ["*"]
@@ -1966,6 +1971,20 @@
             "output_dir": "management/azure_mgmt_operational_insights/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_operations_management": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.OperationsManagement" : {
+                        "management": {
+                            "2015-11-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_operations_management/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_policy": [
         {

@@ -9,7 +9,8 @@
         "azure_mgmt_cost_management",
         "azure_mgmt_databox",
         "azure_mgmt_data_factory",
-        "azure_mgmt_migrate"
+        "azure_mgmt_migrate",
+        "azure_mgmt_operations_management"
     ],
     "rollup": [
         "azure_sdk"

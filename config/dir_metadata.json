@@ -457,6 +457,13 @@
       "module_require": "azure_mgmt_operational_insights"
     }
   },
+  "Microsoft.OperationsManagement": {
+    "management": {
+      "path": "management/azure_mgmt_operations_management",
+      "namespace": "Azure::OperationsManagement::Mgmt",
+      "module_require": "azure_mgmt_operations_management"
+    }
+  },
   "Microsoft.Policy": {
     "management": {
       "path": "management/azure_mgmt_policy",

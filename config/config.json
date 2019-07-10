@@ -1620,6 +1620,13 @@
       "tag": "package-2015-03"
     }
   },
+  "azure_mgmt_operations_management": {
+    "azure_mgmt_operations_management_2015_11_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/operationsmanagement/resource-manager/readme.md",
+      "namespace": "Azure::OperationsManagement::Mgmt::V2015_11_01_preview",
+      "tag": "package-2015-11-preview"
+    }
+  },
   "azure_mgmt_policy": {
     "azure_mgmt_policy_2018_05_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2d5af451c03759d1979554d7189ca0c2c7529cb3/specification/resources/resource-manager/readme.md",
