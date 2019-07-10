@@ -1036,6 +1036,13 @@
       "tag": "package-2018-07"
     }
   },
+  "azure_mgmt_migrate": {
+    "azure_mgmt_migrate_2018_02_02": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/migrate/resource-manager/readme.md",
+      "namespace": "Azure::Migrate::Mgmt::V2018_02_02",
+      "tag": "package-2018-02"
+    }
+  },
   "azure_mgmt_mixedreality": {
     "azure_mgmt_mixedreality_2019_02_28_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f3a5ad9f80f867d1c546c101310d36a8df863b5b/specification/mixedreality/resource-manager/readme.md",

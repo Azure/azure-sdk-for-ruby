@@ -387,6 +387,13 @@
       "module_require": "azure_mgmt_media_services"
     }
   },
+  "Microsoft.Migrate": {
+    "management": {
+      "path": "management/azure_mgmt_migrate",
+      "namespace": "Azure::Migrate::Mgmt",
+      "module_require": "azure_mgmt_migrate"
+    }
+  },
   "Microsoft.MixedReality": {
     "management": {
       "path": "management/azure_mgmt_mixedreality",

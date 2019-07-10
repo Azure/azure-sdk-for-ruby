@@ -65,6 +65,7 @@ gem 'azure_mgmt_managed_applications',      path: 'management/azure_mgmt_managed
 gem 'azure_mgmt_mariadb',                   path: 'management/azure_mgmt_mariadb'
 gem 'azure_mgmt_marketplace_ordering',      path: 'management/azure_mgmt_marketplace_ordering'
 gem 'azure_mgmt_media_services',            path: 'management/azure_mgmt_media_services'
+gem 'azure_mgmt_migrate',                   path: 'management/azure_mgmt_migrate'
 gem 'azure_mgmt_mixedreality',              path: 'management/azure_mgmt_mixedreality'
 gem 'azure_mgmt_monitor',                   path: 'management/azure_mgmt_monitor'
 gem 'azure_mgmt_msi',                       path: 'management/azure_mgmt_msi'

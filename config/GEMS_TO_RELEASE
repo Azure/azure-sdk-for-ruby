@@ -8,7 +8,8 @@
         "azure_mgmt_bot_service",
         "azure_mgmt_cost_management",
         "azure_mgmt_databox",
-        "azure_mgmt_data_factory"
+        "azure_mgmt_data_factory",
+        "azure_mgmt_migrate"
     ],
     "rollup": [
         "azure_sdk"

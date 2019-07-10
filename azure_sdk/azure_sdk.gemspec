@@ -93,6 +93,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_mariadb', "~>#{gem_versions['management']['azure_mgmt_mariadb']}"
   spec.add_runtime_dependency 'azure_mgmt_marketplace_ordering', "~>#{gem_versions['management']['azure_mgmt_marketplace_ordering']}"
   spec.add_runtime_dependency 'azure_mgmt_media_services', "~>#{gem_versions['management']['azure_mgmt_media_services']}"
+  spec.add_runtime_dependency 'azure_mgmt_migrate', "~>#{gem_versions['management']['azure_mgmt_migrate']}"
   spec.add_runtime_dependency 'azure_mgmt_mixedreality', "~>#{gem_versions['management']['azure_mgmt_mixedreality']}"
   spec.add_runtime_dependency 'azure_mgmt_monitor', "~>#{gem_versions['management']['azure_mgmt_monitor']}"
   spec.add_runtime_dependency 'azure_mgmt_msi', "~>#{gem_versions['management']['azure_mgmt_msi']}"
