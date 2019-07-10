@@ -83,6 +83,13 @@
       "module_require": "azure_mgmt_billing"
     }
   },
+  "Microsoft.BotService": {
+    "management": {
+      "path": "management/azure_mgmt_bot_service",
+      "namespace": "Azure::BotService::Mgmt",
+      "module_require": "azure_mgmt_bot_service"
+    }
+  },
   "Microsoft.CDN": {
     "management": {
       "path": "management/azure_mgmt_cdn",

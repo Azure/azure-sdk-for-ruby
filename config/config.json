@@ -225,6 +225,18 @@
       "tag": "package-2017-02-preview"
     }
   },
+  "azure_mgmt_bot_service": {
+    "azure_mgmt_bot_service_2018_07_12_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/botservice/resource-manager/readme.md",
+      "namespace": "Azure::BotService::Mgmt::V2018_07_12_preview",
+      "tag": "package-2018-07-12"
+    },
+    "azure_mgmt_bot_service_2017_12_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/botservice/resource-manager/readme.md",
+      "namespace": "Azure::BotService::Mgmt::V2017_12_01_preview",
+      "tag": "package-2017-12-01"
+    }
+  },
   "azure_mgmt_cdn": {
     "azure_mgmt_cdn_2017_10_12": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1e7a3ce32b5ed2ecf968507eb3388aa07fbaff81/specification/cdn/resource-manager/readme.md",

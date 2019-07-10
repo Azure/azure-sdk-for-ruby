@@ -4,7 +4,8 @@
         "azure_mgmt_adhybridhealth_service",
         "azure_mgmt_alerts_management",
         "azure_mgmt_azurestack",
-        "azure_mgmt_batchai"
+        "azure_mgmt_batchai",
+        "azure_mgmt_bot_service"
     ],
     "rollup": [
         "azure_sdk"

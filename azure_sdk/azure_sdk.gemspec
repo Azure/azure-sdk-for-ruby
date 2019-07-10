@@ -53,6 +53,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_batch', "~>#{gem_versions['management']['azure_mgmt_batch']}"
   spec.add_runtime_dependency 'azure_mgmt_batchai', "~>#{gem_versions['management']['azure_mgmt_batchai']}"
   spec.add_runtime_dependency 'azure_mgmt_billing', "~>#{gem_versions['management']['azure_mgmt_billing']}"
+  spec.add_runtime_dependency 'azure_mgmt_bot_service', "~>#{gem_versions['management']['azure_mgmt_bot_service']}"
   spec.add_runtime_dependency 'azure_mgmt_cdn', "~>#{gem_versions['management']['azure_mgmt_cdn']}"
   spec.add_runtime_dependency 'azure_mgmt_cognitive_services', "~>#{gem_versions['management']['azure_mgmt_cognitive_services']}"
   spec.add_runtime_dependency 'azure_mgmt_commerce', "~>#{gem_versions['management']['azure_mgmt_commerce']}"

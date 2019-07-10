@@ -280,6 +280,11 @@
                         "2018-03-01-preview": ["*"]
                     }
                 },
+                "Microsoft.BotService" : {
+                    "management": {
+                        "2018-07-12-preview": ["*"]
+                    }
+                },
                 "Microsoft.CDN": {
                     "management": {
                         "2017-10-12": ["*"]
@@ -1017,6 +1022,20 @@
             "output_dir": "management/azure_mgmt_billing/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_bot_service": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.BotService" : {
+                        "management": {
+                            "2018-07-12-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_bot_service/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_cdn": [
         {
