@@ -23,6 +23,7 @@ gem 'azure_mgmt_authorization',             path: 'management/azure_mgmt_authori
 gem 'azure_mgmt_automation',                path: 'management/azure_mgmt_automation'
 gem 'azure_mgmt_azurestack',                path: 'management/azure_mgmt_azurestack'
 gem 'azure_mgmt_batch',                     path: 'management/azure_mgmt_batch'
+gem 'azure_mgmt_batchai',                   path: 'management/azure_mgmt_batchai'
 gem 'azure_mgmt_billing',                   path: 'management/azure_mgmt_billing'
 gem 'azure_mgmt_cdn',                       path: 'management/azure_mgmt_cdn'
 gem 'azure_mgmt_cognitive_services',        path: 'management/azure_mgmt_cognitive_services'

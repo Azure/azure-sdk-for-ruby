@@ -69,6 +69,13 @@
       "module_require": "azure_mgmt_batch"
     }
   },
+  "Microsoft.BatchAI": {
+    "management": {
+      "path": "management/azure_mgmt_batchai",
+      "namespace": "Azure::BatchAI::Mgmt",
+      "module_require": "azure_mgmt_batchai"
+    }
+  },
   "Microsoft.Billing": {
     "management": {
       "path": "management/azure_mgmt_billing",
