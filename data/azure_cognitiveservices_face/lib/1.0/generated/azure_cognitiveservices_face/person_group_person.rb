@@ -113,6 +113,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -223,6 +225,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -257,8 +261,8 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete an existing person from a person group. All stored person data, and
-    # face features in the person entry will be deleted.
+    # Delete an existing person from a person group. The persistedFaceId, userData,
+    # person name and face feature in the person entry will all be deleted.
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -272,8 +276,8 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete an existing person from a person group. All stored person data, and
-    # face features in the person entry will be deleted.
+    # Delete an existing person from a person group. The persistedFaceId, userData,
+    # person name and face feature in the person entry will all be deleted.
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -287,8 +291,8 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete an existing person from a person group. All stored person data, and
-    # face features in the person entry will be deleted.
+    # Delete an existing person from a person group. The persistedFaceId, userData,
+    # person name and face feature in the person entry will all be deleted.
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -334,6 +338,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -420,6 +426,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -532,6 +540,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -540,8 +550,11 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete a face from a person. Relative feature for the persisted face will
-    # also be deleted.
+    # Delete a face from a person in a person group by specified personGroupId,
+    # personId and persistedFaceId.
+    # <br /> Adding/deleting faces to/from a same person will be processed
+    # sequentially. Adding/deleting faces to/from different persons are processed
+    # in parallel.
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -557,8 +570,11 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete a face from a person. Relative feature for the persisted face will
-    # also be deleted.
+    # Delete a face from a person in a person group by specified personGroupId,
+    # personId and persistedFaceId.
+    # <br /> Adding/deleting faces to/from a same person will be processed
+    # sequentially. Adding/deleting faces to/from different persons are processed
+    # in parallel.
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -574,8 +590,11 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Delete a face from a person. Relative feature for the persisted face will
-    # also be deleted.
+    # Delete a face from a person in a person group by specified personGroupId,
+    # personId and persistedFaceId.
+    # <br /> Adding/deleting faces to/from a same person will be processed
+    # sequentially. Adding/deleting faces to/from different persons are processed
+    # in parallel.
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -624,6 +643,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -717,6 +738,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -735,7 +758,35 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Update a person persisted face's userData field.
+    # Add a face to a person into a person group for face identification or
+    # verification. To deal with an image contains multiple faces, input face can
+    # be specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [PersonGroup
+    # PersonFace -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e),
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # * Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # * Each person entry can hold up to 248 faces.
+    # * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed
+    # image file size is from 1KB to 6MB.
+    # * "targetFace" rectangle should contain one face. Zero or multiple faces will
+    # be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # * Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose, or
+    # large occlusions will cause failures.
+    # * Adding/deleting faces to/from a same person will be processed sequentially.
+    # Adding/deleting faces to/from different persons are processed in parallel.
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -753,7 +804,35 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Update a person persisted face's userData field.
+    # Add a face to a person into a person group for face identification or
+    # verification. To deal with an image contains multiple faces, input face can
+    # be specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [PersonGroup
+    # PersonFace -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e),
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # * Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # * Each person entry can hold up to 248 faces.
+    # * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed
+    # image file size is from 1KB to 6MB.
+    # * "targetFace" rectangle should contain one face. Zero or multiple faces will
+    # be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # * Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose, or
+    # large occlusions will cause failures.
+    # * Adding/deleting faces to/from a same person will be processed sequentially.
+    # Adding/deleting faces to/from different persons are processed in parallel.
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -771,7 +850,35 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Update a person persisted face's userData field.
+    # Add a face to a person into a person group for face identification or
+    # verification. To deal with an image contains multiple faces, input face can
+    # be specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [PersonGroup
+    # PersonFace -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e),
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # * Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # * Each person entry can hold up to 248 faces.
+    # * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed
+    # image file size is from 1KB to 6MB.
+    # * "targetFace" rectangle should contain one face. Zero or multiple faces will
+    # be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # * Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose, or
+    # large occlusions will cause failures.
+    # * Adding/deleting faces to/from a same person will be processed sequentially.
+    # Adding/deleting faces to/from different persons are processed in parallel.
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -834,6 +941,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -842,8 +951,51 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Add a representative face to a person for identification. The input face is
-    # specified as an image with a targetFace rectangle.
+    # Add a face to a person into a person group for face identification or
+    # verification. To deal with an image contains multiple faces, input face can
+    # be specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [PersonGroup
+    # PersonFace -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e),
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # *   Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # *   Each person entry can hold up to 248 faces.
+    # *   JPEG, PNG, GIF (the first frame), and BMP format are supported. The
+    # allowed image file size is from 1KB to 6MB.
+    # *   "targetFace" rectangle should contain one face. Zero or multiple faces
+    # will be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # *   Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose,
+    # or large occlusions will cause failures.
+    # *   Adding/deleting faces to/from a same person will be processed
+    # sequentially. Adding/deleting faces to/from different persons are processed
+    # in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [PersonGroup Person - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -856,19 +1008,68 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PersistedFace] operation results.
     #
-    def add_face_from_url(person_group_id, person_id, url, user_data:nil, target_face:nil, custom_headers:nil)
-      response = add_face_from_url_async(person_group_id, person_id, url, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
+    def add_face_from_url(person_group_id, person_id, url, user_data:nil, target_face:nil, detection_model:nil, custom_headers:nil)
+      response = add_face_from_url_async(person_group_id, person_id, url, user_data:user_data, target_face:target_face, detection_model:detection_model, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Add a representative face to a person for identification. The input face is
-    # specified as an image with a targetFace rectangle.
+    # Add a face to a person into a person group for face identification or
+    # verification. To deal with an image contains multiple faces, input face can
+    # be specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [PersonGroup
+    # PersonFace -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e),
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # *   Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # *   Each person entry can hold up to 248 faces.
+    # *   JPEG, PNG, GIF (the first frame), and BMP format are supported. The
+    # allowed image file size is from 1KB to 6MB.
+    # *   "targetFace" rectangle should contain one face. Zero or multiple faces
+    # will be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # *   Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose,
+    # or large occlusions will cause failures.
+    # *   Adding/deleting faces to/from a same person will be processed
+    # sequentially. Adding/deleting faces to/from different persons are processed
+    # in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [PersonGroup Person - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -881,18 +1082,67 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_face_from_url_with_http_info(person_group_id, person_id, url, user_data:nil, target_face:nil, custom_headers:nil)
-      add_face_from_url_async(person_group_id, person_id, url, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
+    def add_face_from_url_with_http_info(person_group_id, person_id, url, user_data:nil, target_face:nil, detection_model:nil, custom_headers:nil)
+      add_face_from_url_async(person_group_id, person_id, url, user_data:user_data, target_face:target_face, detection_model:detection_model, custom_headers:custom_headers).value!
     end
 
     #
-    # Add a representative face to a person for identification. The input face is
-    # specified as an image with a targetFace rectangle.
+    # Add a face to a person into a person group for face identification or
+    # verification. To deal with an image contains multiple faces, input face can
+    # be specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [PersonGroup
+    # PersonFace -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e),
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # *   Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # *   Each person entry can hold up to 248 faces.
+    # *   JPEG, PNG, GIF (the first frame), and BMP format are supported. The
+    # allowed image file size is from 1KB to 6MB.
+    # *   "targetFace" rectangle should contain one face. Zero or multiple faces
+    # will be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # *   Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose,
+    # or large occlusions will cause failures.
+    # *   Adding/deleting faces to/from a same person will be processed
+    # sequentially. Adding/deleting faces to/from different persons are processed
+    # in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [PersonGroup Person - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -905,12 +1155,18 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_face_from_url_async(person_group_id, person_id, url, user_data:nil, target_face:nil, custom_headers:nil)
+    def add_face_from_url_async(person_group_id, person_id, url, user_data:nil, target_face:nil, detection_model:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
@@ -944,7 +1200,7 @@ module Azure::CognitiveServices::Face::V1_0
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'personGroupId' => person_group_id,'personId' => person_id},
-          query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(',')},
+          query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(','),'detectionModel' => detection_model},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -961,6 +1217,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -979,8 +1237,51 @@ module Azure::CognitiveServices::Face::V1_0
     end
 
     #
-    # Add a representative face to a person for identification. The input face is
-    # specified as an image with a targetFace rectangle.
+    # Add a face to a person into a person group for face identification or
+    # verification. To deal with an image contains multiple faces, input face can
+    # be specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [PersonGroup
+    # PersonFace -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e),
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # *   Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # *   Each person entry can hold up to 248 faces.
+    # *   JPEG, PNG, GIF (the first frame), and BMP format are supported. The
+    # allowed image file size is from 1KB to 6MB.
+    # *   "targetFace" rectangle should contain one face. Zero or multiple faces
+    # will be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # *   Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose,
+    # or large occlusions will cause failures.
+    # *   Adding/deleting faces to/from a same person will be processed
+    # sequentially. Adding/deleting faces to/from different persons are processed
+    # in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [PersonGroup Person - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -993,19 +1294,68 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PersistedFace] operation results.
     #
-    def add_face_from_stream(person_group_id, person_id, image, user_data:nil, target_face:nil, custom_headers:nil)
-      response = add_face_from_stream_async(person_group_id, person_id, image, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
+    def add_face_from_stream(person_group_id, person_id, image, user_data:nil, target_face:nil, detection_model:nil, custom_headers:nil)
+      response = add_face_from_stream_async(person_group_id, person_id, image, user_data:user_data, target_face:target_face, detection_model:detection_model, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Add a representative face to a person for identification. The input face is
-    # specified as an image with a targetFace rectangle.
+    # Add a face to a person into a person group for face identification or
+    # verification. To deal with an image contains multiple faces, input face can
+    # be specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [PersonGroup
+    # PersonFace -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e),
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # *   Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # *   Each person entry can hold up to 248 faces.
+    # *   JPEG, PNG, GIF (the first frame), and BMP format are supported. The
+    # allowed image file size is from 1KB to 6MB.
+    # *   "targetFace" rectangle should contain one face. Zero or multiple faces
+    # will be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # *   Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose,
+    # or large occlusions will cause failures.
+    # *   Adding/deleting faces to/from a same person will be processed
+    # sequentially. Adding/deleting faces to/from different persons are processed
+    # in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [PersonGroup Person - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -1018,18 +1368,67 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_face_from_stream_with_http_info(person_group_id, person_id, image, user_data:nil, target_face:nil, custom_headers:nil)
-      add_face_from_stream_async(person_group_id, person_id, image, user_data:user_data, target_face:target_face, custom_headers:custom_headers).value!
+    def add_face_from_stream_with_http_info(person_group_id, person_id, image, user_data:nil, target_face:nil, detection_model:nil, custom_headers:nil)
+      add_face_from_stream_async(person_group_id, person_id, image, user_data:user_data, target_face:target_face, detection_model:detection_model, custom_headers:custom_headers).value!
     end
 
     #
-    # Add a representative face to a person for identification. The input face is
-    # specified as an image with a targetFace rectangle.
+    # Add a face to a person into a person group for face identification or
+    # verification. To deal with an image contains multiple faces, input face can
+    # be specified as an image with a targetFace rectangle. It returns a
+    # persistedFaceId representing the added face. No image will be stored. Only
+    # the extracted face feature will be stored on server until [PersonGroup
+    # PersonFace -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e),
+    # [PersonGroup Person -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+    # or [PersonGroup -
+    # Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+    # is called.
+    # <br /> Note persistedFaceId is different from faceId generated by [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+    # *   Higher face image quality means better recognition precision. Please
+    # consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+    # (100 pixels between eyes) or bigger.
+    # *   Each person entry can hold up to 248 faces.
+    # *   JPEG, PNG, GIF (the first frame), and BMP format are supported. The
+    # allowed image file size is from 1KB to 6MB.
+    # *   "targetFace" rectangle should contain one face. Zero or multiple faces
+    # will be regarded as an error. If the provided "targetFace" rectangle is not
+    # returned from [Face -
+    # Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+    # there’s no guarantee to detect and add the face successfully.
+    # *   Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose,
+    # or large occlusions will cause failures.
+    # *   Adding/deleting faces to/from a same person will be processed
+    # sequentially. Adding/deleting faces to/from different persons are processed
+    # in parallel.
+    # * The minimum detectable face size is 36x36 pixels in an image no larger than
+    # 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will
+    # need a proportionally larger minimum face size.
+    # * Different 'detectionModel' values can be provided. To use and compare
+    # different detection models, please refer to [How to specify a detection
+    # model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)
+    # | Model | Recommended use-case(s) |
+    # | ---------- | -------- |
+    # | 'detection_01': | The default detection model for [PersonGroup Person - Add
+    # Face](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
+    # Recommend for near frontal face detection. For scenarios with exceptionally
+    # large angle (head-pose) faces, occluded faces or wrong image orientation, the
+    # faces in such cases may not be detected. |
+    # | 'detection_02': | Detection model released in 2019 May with improved
+    # accuracy especially on small, side and blurry faces. |
     #
     # @param person_group_id [String] Id referencing a particular person group.
     # @param person_id Id referencing a particular person.
@@ -1042,12 +1441,18 @@ module Azure::CognitiveServices::Face::V1_0
     # is more than one face in the image, targetFace is required to specify which
     # face to add. No targetFace means there is only one face detected in the
     # entire image.
+    # @param detection_model [DetectionModel] Name of detection model. Detection
+    # model is used to detect faces in the submitted image. A detection model name
+    # can be provided when performing Face - Detect or (Large)FaceList - Add Face
+    # or (Large)PersonGroup - Add Face. The default value is 'detection_01', if
+    # another model is needed, please explicitly specify it. Possible values
+    # include: 'detection_01', 'detection_02'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_face_from_stream_async(person_group_id, person_id, image, user_data:nil, target_face:nil, custom_headers:nil)
+    def add_face_from_stream_async(person_group_id, person_id, image, user_data:nil, target_face:nil, detection_model:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'person_group_id is nil' if person_group_id.nil?
       fail ArgumentError, "'person_group_id' should satisfy the constraint - 'MaxLength': '64'" if !person_group_id.nil? && person_group_id.length > 64
@@ -1083,7 +1488,7 @@ module Azure::CognitiveServices::Face::V1_0
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'personGroupId' => person_group_id,'personId' => person_id},
-          query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(',')},
+          query_params: {'userData' => user_data,'targetFace' => target_face.nil? ? nil : target_face.join(','),'detectionModel' => detection_model},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1100,6 +1505,8 @@ module Azure::CognitiveServices::Face::V1_0
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

@@ -6,6 +6,9 @@
         "azure_mgmt_cosmosdb",
         "azure_mgmt_network"
     ],
+    "data": [
+        "azure_cognitiveservices_face"
+    ],
     "rollup": [
         "azure_sdk"
     ]
