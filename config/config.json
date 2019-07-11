@@ -546,7 +546,7 @@
   },
   "azure_mgmt_data_migration":{
     "azure_mgmt_data_migration_2018_07_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1f3cc4eada45a048c8287981f1e04d9850abf5a6/specification/datamigration/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/datamigration/resource-manager/readme.md",
       "namespace": "Azure::DataMigration::Mgmt::V2018_07_15_preview",
       "tag": "package-2018-07-15-preview"
     },

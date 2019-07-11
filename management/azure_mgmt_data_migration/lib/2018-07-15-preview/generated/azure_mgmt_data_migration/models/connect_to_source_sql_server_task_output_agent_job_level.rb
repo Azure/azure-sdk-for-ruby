@@ -39,7 +39,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       # @return [Array<ReportableException>] Validation errors
       attr_accessor :validation_errors
 
-      # @return [MigrationEligibilityInfo] Information about eligiblity of
+      # @return [MigrationEligibilityInfo] Information about eligibility of
       # agent job for migration.
       attr_accessor :migration_eligibility
 

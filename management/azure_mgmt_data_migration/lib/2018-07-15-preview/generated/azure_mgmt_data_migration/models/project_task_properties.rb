@@ -15,26 +15,40 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
 
       @@discriminatorMap = Hash.new
       @@discriminatorMap["GetTDECertificates.Sql"] = "GetTdeCertificatesSqlTaskProperties"
+      @@discriminatorMap["Validate.Oracle.AzureDbPostgreSql.Sync"] = "ValidateOracleAzureDbForPostgreSqlSyncTaskProperties"
       @@discriminatorMap["Validate.MongoDb"] = "ValidateMongoDbTaskProperties"
+      @@discriminatorMap["ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS"] = "ValidateMigrationInputSqlServerSqlMISyncTaskProperties"
       @@discriminatorMap["ValidateMigrationInput.SqlServer.AzureSqlDbMI"] = "ValidateMigrationInputSqlServerSqlMITaskProperties"
       @@discriminatorMap["ValidateMigrationInput.SqlServer.SqlDb.Sync"] = "ValidateMigrationInputSqlServerSqlDbSyncTaskProperties"
+      @@discriminatorMap["Migrate.Oracle.Sql.Sync"] = "MigrateOracleAzureDbForPostgreSqlSyncTaskProperties"
       @@discriminatorMap["Migrate.PostgreSql.AzureDbForPostgreSql.Sync"] = "MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties"
       @@discriminatorMap["Migrate.MySql.AzureDbForMySql.Sync"] = "MigrateMySqlAzureDbForMySqlSyncTaskProperties"
       @@discriminatorMap["Migrate.SqlServer.AzureSqlDb.Sync"] = "MigrateSqlServerSqlDbSyncTaskProperties"
       @@discriminatorMap["Migrate.SqlServer.SqlDb"] = "MigrateSqlServerSqlDbTaskProperties"
+      @@discriminatorMap["Migrate.SqlServer.AzureSqlDbMI.Sync.LRS"] = "MigrateSqlServerSqlMISyncTaskProperties"
       @@discriminatorMap["Migrate.SqlServer.AzureSqlDbMI"] = "MigrateSqlServerSqlMITaskProperties"
       @@discriminatorMap["Migrate.MongoDb"] = "MigrateMongoDbTaskProperties"
       @@discriminatorMap["ConnectToTarget.AzureDbForMySql"] = "ConnectToTargetAzureDbForMySqlTaskProperties"
+      @@discriminatorMap["ConnectToTarget.AzureSqlDbMI.Sync.LRS"] = "ConnectToTargetSqlMISyncTaskProperties"
       @@discriminatorMap["ConnectToTarget.AzureSqlDbMI"] = "ConnectToTargetSqlMITaskProperties"
+      @@discriminatorMap["GetUserTablesPostgreSql"] = "GetUserTablesPostgreSqlTaskProperties"
+      @@discriminatorMap["GetUserTablesOracle"] = "GetUserTablesOracleTaskProperties"
       @@discriminatorMap["GetUserTables.AzureSqlDb.Sync"] = "GetUserTablesSqlSyncTaskProperties"
       @@discriminatorMap["GetUserTables.Sql"] = "GetUserTablesSqlTaskProperties"
+      @@discriminatorMap["ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync"] = "ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskProperties"
+      @@discriminatorMap["ConnectToTarget.AzureDbForPostgreSql.Sync"] = "ConnectToTargetAzureDbForPostgreSqlSyncTaskProperties"
       @@discriminatorMap["ConnectToTarget.SqlDb.Sync"] = "ConnectToTargetSqlSqlDbSyncTaskProperties"
       @@discriminatorMap["ConnectToTarget.SqlDb"] = "ConnectToTargetSqlDbTaskProperties"
+      @@discriminatorMap["ConnectToSource.Oracle.Sync"] = "ConnectToSourceOracleSyncTaskProperties"
+      @@discriminatorMap["ConnectToSource.PostgreSql.Sync"] = "ConnectToSourcePostgreSqlSyncTaskProperties"
       @@discriminatorMap["ConnectToSource.SqlServer.Sync"] = "ConnectToSourceSqlServerSyncTaskProperties"
       @@discriminatorMap["ConnectToSource.SqlServer"] = "ConnectToSourceSqlServerTaskProperties"
       @@discriminatorMap["Connect.MongoDb"] = "ConnectToMongoDbTaskProperties"
       @@discriminatorMap["ConnectToSource.MySql"] = "ConnectToSourceMySqlTaskProperties"
       @@discriminatorMap["MigrateSchemaSqlServerSqlDb"] = "MigrateSchemaSqlServerSqlDbTaskProperties"
+      @@discriminatorMap["Service.Check.OCI"] = "CheckOCIDriverTaskProperties"
+      @@discriminatorMap["Service.Upload.OCI"] = "UploadOCIDriverTaskProperties"
+      @@discriminatorMap["Service.Install.OCI"] = "InstallOCIDriverTaskProperties"
 
       def initialize
         @taskType = "Unknown"
@@ -53,6 +67,10 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
 
       # @return [Array<CommandProperties>] Array of command properties.
       attr_accessor :commands
+
+      # @return [Hash{String => String}] Key value pairs of client data to
+      # attach meta data information to task
+      attr_accessor :client_data
 
 
       #
@@ -113,6 +131,22 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                         polymorphic_discriminator: 'commandType',
                         uber_parent: 'CommandProperties',
                         class_name: 'CommandProperties'
+                      }
+                  }
+                }
+              },
+              client_data: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'clientData',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }

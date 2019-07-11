@@ -6,7 +6,7 @@
 module Azure::DataMigration::Mgmt::V2018_07_15_preview
   module Models
     #
-    # Server properties for Oracle, MySQL type source
+    # Server properties for MySQL type source
     #
     class ServerProperties
 

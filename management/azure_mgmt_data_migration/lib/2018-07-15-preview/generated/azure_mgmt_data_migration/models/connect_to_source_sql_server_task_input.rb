@@ -63,7 +63,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                 required: false,
                 serialized_name: 'checkPermissionsGroup',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'ServerLevelPermissionsGroup'
                 }
               },
               collect_logins: {

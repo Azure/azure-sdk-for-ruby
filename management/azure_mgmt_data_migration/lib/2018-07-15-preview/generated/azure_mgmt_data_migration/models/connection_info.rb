@@ -13,7 +13,9 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["MiSqlConnectionInfo"] = "MiSqlConnectionInfo"
       @@discriminatorMap["PostgreSqlConnectionInfo"] = "PostgreSqlConnectionInfo"
+      @@discriminatorMap["OracleConnectionInfo"] = "OracleConnectionInfo"
       @@discriminatorMap["MySqlConnectionInfo"] = "MySqlConnectionInfo"
       @@discriminatorMap["MongoDbConnectionInfo"] = "MongoDbConnectionInfo"
       @@discriminatorMap["SqlConnectionInfo"] = "SqlConnectionInfo"

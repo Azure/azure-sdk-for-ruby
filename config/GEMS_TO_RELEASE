@@ -1,15 +1,6 @@
 {
     "management": [
-        "azure_mgmt_sqlvirtualmachine",
-        "azure_mgmt_hanaonazure",
-        "azure_mgmt_container_registry",
-        "azure_mgmt_netapp",
-        "azure_mgmt_cognitive_services",
-        "azure_mgmt_machine_learning_services",
-        "azure_mgmt_hdinsight"
-    ],
-    "data": [
-        "azure_service_fabric"
+        "azure_mgmt_data_migration"
     ],
     "rollup": [
         "azure_sdk"

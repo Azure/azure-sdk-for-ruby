@@ -23,7 +23,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       # @return [DateTime] Modification DateTime.
       attr_accessor :last_modified
 
-      # @return [String] File content type. This propery can be modified to
+      # @return [String] File content type. This property can be modified to
       # reflect the file content type.
       attr_accessor :media_type
 

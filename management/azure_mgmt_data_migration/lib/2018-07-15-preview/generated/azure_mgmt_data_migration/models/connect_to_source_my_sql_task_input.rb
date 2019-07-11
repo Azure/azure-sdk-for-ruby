@@ -17,7 +17,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       attr_accessor :source_connection_info
 
       # @return [MySqlTargetPlatformType] Target Platform for the migration.
-      # Possible values include: 'AzureDbForMySQL'
+      # Possible values include: 'SqlServer', 'AzureDbForMySQL'
       attr_accessor :target_platform
 
       # @return [ServerLevelPermissionsGroup] Permission group for validations.
@@ -62,7 +62,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                 required: false,
                 serialized_name: 'checkPermissionsGroup',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'ServerLevelPermissionsGroup'
                 }
               }
             }

@@ -118,6 +118,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -141,7 +143,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
     # The tasks resource is a nested, proxy-only resource representing work
     # performed by a DMS instance. The PUT method creates a new task or updates an
     # existing one, although since tasks have no mutable custom properties, there
-    # is little reason to update an exising one.
+    # is little reason to update an existing one.
     #
     # @param parameters [ProjectTask] Information about the task
     # @param group_name [String] Name of the resource group
@@ -164,7 +166,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
     # The tasks resource is a nested, proxy-only resource representing work
     # performed by a DMS instance. The PUT method creates a new task or updates an
     # existing one, although since tasks have no mutable custom properties, there
-    # is little reason to update an exising one.
+    # is little reason to update an existing one.
     #
     # @param parameters [ProjectTask] Information about the task
     # @param group_name [String] Name of the resource group
@@ -186,7 +188,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
     # The tasks resource is a nested, proxy-only resource representing work
     # performed by a DMS instance. The PUT method creates a new task or updates an
     # existing one, although since tasks have no mutable custom properties, there
-    # is little reason to update an exising one.
+    # is little reason to update an existing one.
     #
     # @param parameters [ProjectTask] Information about the task
     # @param group_name [String] Name of the resource group
@@ -244,6 +246,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -369,6 +373,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -486,6 +492,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -602,6 +610,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -714,6 +724,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -837,6 +849,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -940,6 +954,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

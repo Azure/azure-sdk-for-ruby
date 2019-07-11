@@ -87,6 +87,22 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                   }
                 }
               },
+              client_data: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'clientData',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               taskType: {
                 client_side_validation: true,
                 required: true,

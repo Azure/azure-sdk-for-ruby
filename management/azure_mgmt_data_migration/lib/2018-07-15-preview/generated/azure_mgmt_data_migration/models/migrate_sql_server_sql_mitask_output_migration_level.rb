@@ -52,9 +52,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       # server role migration results.
       attr_accessor :server_role_results
 
-      # @return [Hash{String => String}] Map of users to database name of
-      # orphaned users.
-      attr_accessor :orphaned_users
+      # @return [Array<OrphanedUserInfo>] List of orphaned users.
+      attr_accessor :orphaned_users_info
 
       # @return [Hash{String => String}] Selected databases as a map from
       # database name to database id
@@ -204,19 +203,20 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                   }
                 }
               },
-              orphaned_users: {
+              orphaned_users_info: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'orphanedUsers',
+                serialized_name: 'orphanedUsersInfo',
                 type: {
-                  name: 'Dictionary',
-                  value: {
+                  name: 'Sequence',
+                  element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'StringElementType',
+                      serialized_name: 'OrphanedUserInfoElementType',
                       type: {
-                        name: 'String'
+                        name: 'Composite',
+                        class_name: 'OrphanedUserInfo'
                       }
                   }
                 }
