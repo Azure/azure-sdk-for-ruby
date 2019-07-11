@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2017_03_30
   module Models
     #
-    # Tap configuration in a Network Interface
+    # Tap configuration in a Network Interface.
     #
     class NetworkInterfaceTapConfiguration < SubResource
 

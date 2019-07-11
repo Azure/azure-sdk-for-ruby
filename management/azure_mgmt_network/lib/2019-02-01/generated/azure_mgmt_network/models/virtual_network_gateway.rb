@@ -52,7 +52,7 @@ module Azure::Network::Mgmt::V2019_02_01
       attr_accessor :bgp_settings
 
       # @return [AddressSpace] The reference of the address space resource
-      # which represents the custom routes address space specified by the the
+      # which represents the custom routes address space specified by the
       # customer for virtual network gateway and VpnClient.
       attr_accessor :custom_routes
 

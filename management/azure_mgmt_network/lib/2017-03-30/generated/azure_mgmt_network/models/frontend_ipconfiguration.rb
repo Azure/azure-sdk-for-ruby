@@ -35,6 +35,11 @@ module Azure::Network::Mgmt::V2017_03_30
       # values include: 'Static', 'Dynamic'
       attr_accessor :private_ipallocation_method
 
+      # @return [IPVersion] It represents whether the specific ipconfiguration
+      # is IPv4 or IPv6. Default is taken as IPv4. Possible values include:
+      # 'IPv4', 'IPv6'
+      attr_accessor :private_ipaddress_version
+
       # @return [Subnet] The reference of the subnet resource.
       attr_accessor :subnet
 
@@ -166,6 +171,14 @@ module Azure::Network::Mgmt::V2017_03_30
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAllocationMethod',
+                type: {
+                  name: 'String'
+                }
+              },
+              private_ipaddress_version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.privateIPAddressVersion',
                 type: {
                   name: 'String'
                 }

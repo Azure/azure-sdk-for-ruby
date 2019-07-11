@@ -216,6 +216,12 @@ module Azure::Network::Mgmt::V2019_02_01
     # @return [Subnets] subnets
     attr_reader :subnets
 
+    # @return [ResourceNavigationLinks] resource_navigation_links
+    attr_reader :resource_navigation_links
+
+    # @return [ServiceAssociationLinks] service_association_links
+    attr_reader :service_association_links
+
     # @return [VirtualNetworkPeerings] virtual_network_peerings
     attr_reader :virtual_network_peerings
 
@@ -332,6 +338,8 @@ module Azure::Network::Mgmt::V2019_02_01
       @usages = Usages.new(self)
       @virtual_networks = VirtualNetworks.new(self)
       @subnets = Subnets.new(self)
+      @resource_navigation_links = ResourceNavigationLinks.new(self)
+      @service_association_links = ServiceAssociationLinks.new(self)
       @virtual_network_peerings = VirtualNetworkPeerings.new(self)
       @virtual_network_gateways = VirtualNetworkGateways.new(self)
       @virtual_network_gateway_connections = VirtualNetworkGatewayConnections.new(self)
@@ -616,7 +624,7 @@ module Azure::Network::Mgmt::V2019_02_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.18.8"
+        sdk_information = "#{sdk_information}/0.18.9"
         add_user_agent_information(sdk_information)
     end
   end

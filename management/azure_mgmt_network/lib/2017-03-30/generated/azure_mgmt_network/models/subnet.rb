@@ -15,7 +15,7 @@ module Azure::Network::Mgmt::V2017_03_30
       # @return [String] The address prefix for the subnet.
       attr_accessor :address_prefix
 
-      # @return [Array<String>] List of  address prefixes for the subnet.
+      # @return [Array<String>] List of address prefixes for the subnet.
       attr_accessor :address_prefixes
 
       # @return [NetworkSecurityGroup] The reference of the
@@ -36,9 +36,9 @@ module Azure::Network::Mgmt::V2017_03_30
       # policies.
       attr_accessor :service_endpoint_policies
 
-      # @return [Array<InterfaceEndpoint>] An array of references to interface
-      # endpoints
-      attr_accessor :interface_endpoints
+      # @return [Array<PrivateEndpoint>] An array of references to private
+      # endpoints.
+      attr_accessor :private_endpoints
 
       # @return [Array<IPConfiguration>] Gets an array of references to the
       # network interface IP configurations using subnet.
@@ -182,20 +182,20 @@ module Azure::Network::Mgmt::V2017_03_30
                   }
                 }
               },
-              interface_endpoints: {
+              private_endpoints: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.interfaceEndpoints',
+                serialized_name: 'properties.privateEndpoints',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'InterfaceEndpointElementType',
+                      serialized_name: 'PrivateEndpointElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'InterfaceEndpoint'
+                        class_name: 'PrivateEndpoint'
                       }
                   }
                 }

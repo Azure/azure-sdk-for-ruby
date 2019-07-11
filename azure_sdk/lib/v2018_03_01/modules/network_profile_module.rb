@@ -47,11 +47,12 @@ module Azure::Profiles::V2018_03_01
 
       module Models
         IpTag = Azure::Network::Mgmt::V2017_03_30::Models::IpTag
-        EndpointService = Azure::Network::Mgmt::V2017_03_30::Models::EndpointService
+        PrivateLinkServiceConnectionState = Azure::Network::Mgmt::V2017_03_30::Models::PrivateLinkServiceConnectionState
         DdosSettings = Azure::Network::Mgmt::V2017_03_30::Models::DdosSettings
         Delegation = Azure::Network::Mgmt::V2017_03_30::Models::Delegation
         ServiceAssociationLink = Azure::Network::Mgmt::V2017_03_30::Models::ServiceAssociationLink
-        InterfaceEndpoint = Azure::Network::Mgmt::V2017_03_30::Models::InterfaceEndpoint
+        PrivateLinkServiceConnection = Azure::Network::Mgmt::V2017_03_30::Models::PrivateLinkServiceConnection
+        PrivateEndpoint = Azure::Network::Mgmt::V2017_03_30::Models::PrivateEndpoint
         NetworkInterfaceTapConfiguration = Azure::Network::Mgmt::V2017_03_30::Models::NetworkInterfaceTapConfiguration
         VirtualNetworkTap = Azure::Network::Mgmt::V2017_03_30::Models::VirtualNetworkTap
         ServiceEndpointPolicyDefinition = Azure::Network::Mgmt::V2017_03_30::Models::ServiceEndpointPolicyDefinition
@@ -422,8 +423,8 @@ module Azure::Profiles::V2018_03_01
           def ip_tag
             Azure::Network::Mgmt::V2017_03_30::Models::IpTag
           end
-          def endpoint_service
-            Azure::Network::Mgmt::V2017_03_30::Models::EndpointService
+          def private_link_service_connection_state
+            Azure::Network::Mgmt::V2017_03_30::Models::PrivateLinkServiceConnectionState
           end
           def ddos_settings
             Azure::Network::Mgmt::V2017_03_30::Models::DdosSettings
@@ -434,8 +435,11 @@ module Azure::Profiles::V2018_03_01
           def service_association_link
             Azure::Network::Mgmt::V2017_03_30::Models::ServiceAssociationLink
           end
-          def interface_endpoint
-            Azure::Network::Mgmt::V2017_03_30::Models::InterfaceEndpoint
+          def private_link_service_connection
+            Azure::Network::Mgmt::V2017_03_30::Models::PrivateLinkServiceConnection
+          end
+          def private_endpoint
+            Azure::Network::Mgmt::V2017_03_30::Models::PrivateEndpoint
           end
           def network_interface_tap_configuration
             Azure::Network::Mgmt::V2017_03_30::Models::NetworkInterfaceTapConfiguration

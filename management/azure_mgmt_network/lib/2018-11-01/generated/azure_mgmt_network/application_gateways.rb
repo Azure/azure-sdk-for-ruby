@@ -550,7 +550,7 @@ module Azure::Network::Mgmt::V2018_11_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ApplicationGatewayAvailableServerVariablesResult] operation results.
+    # @return [Array] operation results.
     #
     def list_available_server_variables(custom_headers:nil)
       response = list_available_server_variables_async(custom_headers:custom_headers).value!
@@ -617,7 +617,22 @@ module Azure::Network::Mgmt::V2018_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2018_11_01::Models::ApplicationGatewayAvailableServerVariablesResult.mapper()
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'StringElementType',
+                    type: {
+                      name: 'String'
+                    }
+                }
+              }
+            }
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -636,7 +651,7 @@ module Azure::Network::Mgmt::V2018_11_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ApplicationGatewayAvailableRequestHeadersResult] operation results.
+    # @return [Array] operation results.
     #
     def list_available_request_headers(custom_headers:nil)
       response = list_available_request_headers_async(custom_headers:custom_headers).value!
@@ -703,7 +718,22 @@ module Azure::Network::Mgmt::V2018_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2018_11_01::Models::ApplicationGatewayAvailableRequestHeadersResult.mapper()
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'StringElementType',
+                    type: {
+                      name: 'String'
+                    }
+                }
+              }
+            }
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -722,7 +752,7 @@ module Azure::Network::Mgmt::V2018_11_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ApplicationGatewayAvailableResponseHeadersResult] operation results.
+    # @return [Array] operation results.
     #
     def list_available_response_headers(custom_headers:nil)
       response = list_available_response_headers_async(custom_headers:custom_headers).value!
@@ -789,7 +819,22 @@ module Azure::Network::Mgmt::V2018_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2018_11_01::Models::ApplicationGatewayAvailableResponseHeadersResult.mapper()
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'StringElementType',
+                    type: {
+                      name: 'String'
+                    }
+                }
+              }
+            }
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

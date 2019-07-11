@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2017_03_30
   module Models
     #
-    # Virtual Network Tap resource
+    # Virtual Network Tap resource.
     #
     class VirtualNetworkTap < Resource
 
@@ -25,11 +25,11 @@ module Azure::Network::Mgmt::V2017_03_30
       attr_accessor :provisioning_state
 
       # @return [NetworkInterfaceIPConfiguration] The reference to the private
-      # IP Address of the collector nic that will receive the tap
+      # IP Address of the collector nic that will receive the tap.
       attr_accessor :destination_network_interface_ipconfiguration
 
       # @return [FrontendIPConfiguration] The reference to the private IP
-      # address on the internal Load Balancer that will receive the tap
+      # address on the internal Load Balancer that will receive the tap.
       attr_accessor :destination_load_balancer_front_end_ipconfiguration
 
       # @return [Integer] The VXLAN destination port that will receive the

@@ -8,7 +8,7 @@ module Azure::Network::Mgmt::V2018_07_01
     #
     # VpnConnection Resource.
     #
-    class VpnConnection < Resource
+    class VpnConnection < SubResource
 
       include MsRestAzure
 
@@ -45,6 +45,10 @@ module Azure::Network::Mgmt::V2018_07_01
       # Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
       attr_accessor :provisioning_state
 
+      # @return [String] The name of the resource that is unique within a
+      # resource group. This name can be used to access the resource.
+      attr_accessor :name
+
       # @return [String] Gets a unique read-only string that changes whenever
       # the resource is updated.
       attr_accessor :etag
@@ -69,48 +73,6 @@ module Azure::Network::Mgmt::V2018_07_01
                 serialized_name: 'id',
                 type: {
                   name: 'String'
-                }
-              },
-              name: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               remote_vpn_site: {
@@ -202,6 +164,14 @@ module Azure::Network::Mgmt::V2018_07_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
