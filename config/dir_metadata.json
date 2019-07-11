@@ -20,6 +20,13 @@
       "module_require": "azure_mgmt_api_management"
     }
   },
+  "Microsoft.Appconfiguration": {
+    "management": {
+      "path": "management/azure_mgmt_appconfiguration",
+      "namespace": "Azure::Appconfiguration::Mgmt",
+      "module_require": "azure_mgmt_appconfiguration"
+    }
+  },
   "Microsoft.Authorization": {
     "management": {
       "path": "management/azure_mgmt_authorization",
