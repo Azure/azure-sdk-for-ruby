@@ -18,6 +18,9 @@ module Azure::Resources::Mgmt::V2018_05_01
       # @return [String] The name of the resource group.
       attr_accessor :name
 
+      # @return [String] The type of the resource group.
+      attr_accessor :type
+
       # @return [ResourceGroupProperties]
       attr_accessor :properties
 
@@ -62,6 +65,15 @@ module Azure::Resources::Mgmt::V2018_05_01
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

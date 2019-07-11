@@ -31,7 +31,7 @@ module Azure::Resources::Mgmt::V2016_09_01
     # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -43,7 +43,7 @@ module Azure::Resources::Mgmt::V2016_09_01
 
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -896,7 +896,7 @@ module Azure::Resources::Mgmt::V2016_09_01
     # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -917,7 +917,7 @@ module Azure::Resources::Mgmt::V2016_09_01
     # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -938,7 +938,7 @@ module Azure::Resources::Mgmt::V2016_09_01
     # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

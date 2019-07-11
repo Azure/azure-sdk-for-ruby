@@ -573,7 +573,7 @@
                 },
                 "Microsoft.Resources": {
                     "management": {
-                        "2018-05-01": ["*"]
+                        "2019-05-10": ["*"]
                     }
                 },
                 "Microsoft.ResourcesManagement": {
@@ -2059,7 +2059,7 @@
             "resourceTypes": {
                 "Microsoft.Resources" : {
                     "management": {
-                        "2018-05-01": ["*"]
+                        "2019-05-10": ["*"]
                     }
                 }
             },

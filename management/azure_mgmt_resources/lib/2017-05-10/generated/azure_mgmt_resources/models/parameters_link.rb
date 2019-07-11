@@ -6,7 +6,7 @@
 module Azure::Resources::Mgmt::V2017_05_10
   module Models
     #
-    # Entity representing the reference to the deployment paramaters.
+    # Entity representing the reference to the deployment parameters.
     #
     class ParametersLink
 

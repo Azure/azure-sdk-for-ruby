@@ -21,7 +21,7 @@ module Azure::Resources::Mgmt::V2016_09_01
       # @return [DateTime] The timestamp of the template deployment.
       attr_accessor :timestamp
 
-      # @return Key/value pairs that represent deploymentoutput.
+      # @return Key/value pairs that represent deployment output.
       attr_accessor :outputs
 
       # @return [Array<Provider>] The list of resource providers needed for the

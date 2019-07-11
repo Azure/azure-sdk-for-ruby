@@ -112,7 +112,8 @@ module Azure::Resources::Mgmt::V2018_05_01
     # Creates or updates a resource group.
     #
     # @param resource_group_name [String] The name of the resource group to create
-    # or update.
+    # or update. Can include alphanumeric, underscore, parentheses, hyphen, period
+    # (except at end), and Unicode characters that match the allowed characters.
     # @param parameters [ResourceGroup] Parameters supplied to the create or update
     # a resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -129,7 +130,8 @@ module Azure::Resources::Mgmt::V2018_05_01
     # Creates or updates a resource group.
     #
     # @param resource_group_name [String] The name of the resource group to create
-    # or update.
+    # or update. Can include alphanumeric, underscore, parentheses, hyphen, period
+    # (except at end), and Unicode characters that match the allowed characters.
     # @param parameters [ResourceGroup] Parameters supplied to the create or update
     # a resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -145,7 +147,8 @@ module Azure::Resources::Mgmt::V2018_05_01
     # Creates or updates a resource group.
     #
     # @param resource_group_name [String] The name of the resource group to create
-    # or update.
+    # or update. Can include alphanumeric, underscore, parentheses, hyphen, period
+    # (except at end), and Unicode characters that match the allowed characters.
     # @param parameters [ResourceGroup] Parameters supplied to the create or update
     # a resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -601,7 +604,9 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # Gets all the resource groups for a subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation.<br><br>You can
+    # filter by tag names and values. For example, to filter for a tag name and
+    # value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resource groups.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -617,7 +622,9 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # Gets all the resource groups for a subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation.<br><br>You can
+    # filter by tag names and values. For example, to filter for a tag name and
+    # value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resource groups.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -632,7 +639,9 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # Gets all the resource groups for a subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation.<br><br>You can
+    # filter by tag names and values. For example, to filter for a tag name and
+    # value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resource groups.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -883,7 +892,9 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # Gets all the resource groups for a subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation.<br><br>You can
+    # filter by tag names and values. For example, to filter for a tag name and
+    # value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resource groups.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
