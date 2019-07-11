@@ -69,6 +69,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -528,6 +529,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -630,6 +632,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -818,6 +821,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -920,6 +924,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -1059,6 +1064,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -1164,6 +1170,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'filter is nil' if filter.nil?
 
@@ -1273,6 +1280,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -1372,6 +1380,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -1471,6 +1480,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -1523,8 +1533,8 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
-    # Gets the SQL databases under an existing Azure Cosmos DB database account
-    # with the provided name.
+    # Gets the SQL database under an existing Azure Cosmos DB database account with
+    # the provided name.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
     # @param account_name [String] Cosmos DB database account name.
@@ -1540,8 +1550,8 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
-    # Gets the SQL databases under an existing Azure Cosmos DB database account
-    # with the provided name.
+    # Gets the SQL database under an existing Azure Cosmos DB database account with
+    # the provided name.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
     # @param account_name [String] Cosmos DB database account name.
@@ -1556,8 +1566,8 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
-    # Gets the SQL databases under an existing Azure Cosmos DB database account
-    # with the provided name.
+    # Gets the SQL database under an existing Azure Cosmos DB database account with
+    # the provided name.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
     # @param account_name [String] Cosmos DB database account name.
@@ -1576,6 +1586,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -1719,6 +1730,161 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
+    # Gets the RUs per second of the SQL database under an existing Azure Cosmos DB
+    # database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def get_sql_database_throughput(resource_group_name, account_name, database_name, custom_headers:nil)
+      response = get_sql_database_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the RUs per second of the SQL database under an existing Azure Cosmos DB
+    # database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_sql_database_throughput_with_http_info(resource_group_name, account_name, database_name, custom_headers:nil)
+      get_sql_database_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the RUs per second of the SQL database under an existing Azure Cosmos DB
+    # database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_sql_database_throughput_async(resource_group_name, account_name, database_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB SQL database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def update_sql_database_throughput(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      response = update_sql_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_sql_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_sql_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Lists the SQL container under an existing Azure Cosmos DB database account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
@@ -1769,6 +1935,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -1875,6 +2042,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'container_name is nil' if container_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -2023,6 +2191,167 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
+    # Gets the RUs per second of the SQL container under an existing Azure Cosmos
+    # DB database account.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param container_name [String] Cosmos DB container name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def get_sql_container_throughput(resource_group_name, account_name, database_name, container_name, custom_headers:nil)
+      response = get_sql_container_throughput_async(resource_group_name, account_name, database_name, container_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the RUs per second of the SQL container under an existing Azure Cosmos
+    # DB database account.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param container_name [String] Cosmos DB container name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_sql_container_throughput_with_http_info(resource_group_name, account_name, database_name, container_name, custom_headers:nil)
+      get_sql_container_throughput_async(resource_group_name, account_name, database_name, container_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the RUs per second of the SQL container under an existing Azure Cosmos
+    # DB database account.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param container_name [String] Cosmos DB container name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_sql_container_throughput_async(resource_group_name, account_name, database_name, container_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'container_name is nil' if container_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/containers/{containerName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name,'containerName' => container_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB SQL container
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param container_name [String] Cosmos DB container name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL container.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def update_sql_container_throughput(resource_group_name, account_name, database_name, container_name, update_throughput_parameters, custom_headers:nil)
+      response = update_sql_container_throughput_async(resource_group_name, account_name, database_name, container_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param container_name [String] Cosmos DB container name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL container.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_sql_container_throughput_async(resource_group_name, account_name, database_name, container_name, update_throughput_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_sql_container_throughput_async(resource_group_name, account_name, database_name, container_name, update_throughput_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Lists the MongoDB databases under an existing Azure Cosmos DB database
     # account.
     #
@@ -2073,6 +2402,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -2178,6 +2508,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -2321,6 +2652,161 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
+    # Gets the RUs per second of the MongoDB database under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def get_mongo_dbdatabase_throughput(resource_group_name, account_name, database_name, custom_headers:nil)
+      response = get_mongo_dbdatabase_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the RUs per second of the MongoDB database under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_mongo_dbdatabase_throughput_with_http_info(resource_group_name, account_name, database_name, custom_headers:nil)
+      get_mongo_dbdatabase_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the RUs per second of the MongoDB database under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_mongo_dbdatabase_throughput_async(resource_group_name, account_name, database_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of the an Azure Cosmos DB MongoDB database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def update_mongo_dbdatabase_throughput(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      response = update_mongo_dbdatabase_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_mongo_dbdatabase_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_mongo_dbdatabase_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Lists the MongoDB collection under an existing Azure Cosmos DB database
     # account.
     #
@@ -2374,6 +2860,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -2483,6 +2970,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'collection_name is nil' if collection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -2631,6 +3119,167 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
+    # Gets the RUs per second of the MongoDB collection under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param collection_name [String] Cosmos DB collection name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def get_mongo_dbcollection_throughput(resource_group_name, account_name, database_name, collection_name, custom_headers:nil)
+      response = get_mongo_dbcollection_throughput_async(resource_group_name, account_name, database_name, collection_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the RUs per second of the MongoDB collection under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param collection_name [String] Cosmos DB collection name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_mongo_dbcollection_throughput_with_http_info(resource_group_name, account_name, database_name, collection_name, custom_headers:nil)
+      get_mongo_dbcollection_throughput_async(resource_group_name, account_name, database_name, collection_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the RUs per second of the MongoDB collection under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param collection_name [String] Cosmos DB collection name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_mongo_dbcollection_throughput_async(resource_group_name, account_name, database_name, collection_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'collection_name is nil' if collection_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/collections/{collectionName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name,'collectionName' => collection_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update the RUs per second of an Azure Cosmos DB MongoDB collection
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param collection_name [String] Cosmos DB collection name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB collection.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def update_mongo_dbcollection_throughput(resource_group_name, account_name, database_name, collection_name, update_throughput_parameters, custom_headers:nil)
+      response = update_mongo_dbcollection_throughput_async(resource_group_name, account_name, database_name, collection_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param collection_name [String] Cosmos DB collection name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB collection.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_mongo_dbcollection_throughput_async(resource_group_name, account_name, database_name, collection_name, update_throughput_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_mongo_dbcollection_throughput_async(resource_group_name, account_name, database_name, collection_name, update_throughput_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Lists the Tables under an existing Azure Cosmos DB database account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
@@ -2678,6 +3327,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -2783,6 +3433,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'table_name is nil' if table_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -2924,6 +3575,161 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
+    # Gets the RUs per second of the Table under an existing Azure Cosmos DB
+    # database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def get_table_throughput(resource_group_name, account_name, table_name, custom_headers:nil)
+      response = get_table_throughput_async(resource_group_name, account_name, table_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the RUs per second of the Table under an existing Azure Cosmos DB
+    # database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_table_throughput_with_http_info(resource_group_name, account_name, table_name, custom_headers:nil)
+      get_table_throughput_async(resource_group_name, account_name, table_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the RUs per second of the Table under an existing Azure Cosmos DB
+    # database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_table_throughput_async(resource_group_name, account_name, table_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'table_name is nil' if table_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/table/tables/{tableName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'tableName' => table_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Table
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current Table.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def update_table_throughput(resource_group_name, account_name, table_name, update_throughput_parameters, custom_headers:nil)
+      response = update_table_throughput_async(resource_group_name, account_name, table_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current Table.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_table_throughput_async(resource_group_name, account_name, table_name, update_throughput_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_table_throughput_async(resource_group_name, account_name, table_name, update_throughput_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Lists the Cassandra keyspaces under an existing Azure Cosmos DB database
     # account.
     #
@@ -2974,6 +3780,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -3079,6 +3886,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -3222,6 +4030,161 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
+    # Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def get_cassandra_keyspace_throughput(resource_group_name, account_name, keyspace_name, custom_headers:nil)
+      response = get_cassandra_keyspace_throughput_async(resource_group_name, account_name, keyspace_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_cassandra_keyspace_throughput_with_http_info(resource_group_name, account_name, keyspace_name, custom_headers:nil)
+      get_cassandra_keyspace_throughput_async(resource_group_name, account_name, keyspace_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_cassandra_keyspace_throughput_async(resource_group_name, account_name, keyspace_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'keyspaceName' => keyspace_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Cassandra Keyspace
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra Keyspace.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def update_cassandra_keyspace_throughput(resource_group_name, account_name, keyspace_name, update_throughput_parameters, custom_headers:nil)
+      response = update_cassandra_keyspace_throughput_async(resource_group_name, account_name, keyspace_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra Keyspace.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_cassandra_keyspace_throughput_async(resource_group_name, account_name, keyspace_name, update_throughput_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_cassandra_keyspace_throughput_async(resource_group_name, account_name, keyspace_name, update_throughput_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Lists the Cassandra table under an existing Azure Cosmos DB database account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
@@ -3272,6 +4235,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -3378,6 +4342,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
       fail ArgumentError, 'table_name is nil' if table_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -3526,6 +4491,167 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
+    # Gets the RUs per second of the Cassandra table under an existing Azure Cosmos
+    # DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def get_cassandra_table_throughput(resource_group_name, account_name, keyspace_name, table_name, custom_headers:nil)
+      response = get_cassandra_table_throughput_async(resource_group_name, account_name, keyspace_name, table_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the RUs per second of the Cassandra table under an existing Azure Cosmos
+    # DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_cassandra_table_throughput_with_http_info(resource_group_name, account_name, keyspace_name, table_name, custom_headers:nil)
+      get_cassandra_table_throughput_async(resource_group_name, account_name, keyspace_name, table_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the RUs per second of the Cassandra table under an existing Azure Cosmos
+    # DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_cassandra_table_throughput_async(resource_group_name, account_name, keyspace_name, table_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
+      fail ArgumentError, 'table_name is nil' if table_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/tables/{tableName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'keyspaceName' => keyspace_name,'tableName' => table_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Cassandra table
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra table.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def update_cassandra_table_throughput(resource_group_name, account_name, keyspace_name, table_name, update_throughput_parameters, custom_headers:nil)
+      response = update_cassandra_table_throughput_async(resource_group_name, account_name, keyspace_name, table_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra table.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_cassandra_table_throughput_async(resource_group_name, account_name, keyspace_name, table_name, update_throughput_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_cassandra_table_throughput_async(resource_group_name, account_name, keyspace_name, table_name, update_throughput_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Lists the Gremlin databases under an existing Azure Cosmos DB database
     # account.
     #
@@ -3576,6 +4702,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -3681,6 +4808,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -3824,6 +4952,161 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
+    # Gets the RUs per second of the Gremlin database under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def get_gremlin_database_throughput(resource_group_name, account_name, database_name, custom_headers:nil)
+      response = get_gremlin_database_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the RUs per second of the Gremlin database under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_gremlin_database_throughput_with_http_info(resource_group_name, account_name, database_name, custom_headers:nil)
+      get_gremlin_database_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the RUs per second of the Gremlin database under an existing Azure
+    # Cosmos DB database account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_gremlin_database_throughput_async(resource_group_name, account_name, database_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Gremlin database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def update_gremlin_database_throughput(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      response = update_gremlin_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_gremlin_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_gremlin_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Lists the Gremlin graph under an existing Azure Cosmos DB database account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
@@ -3874,6 +5157,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -3980,6 +5264,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'graph_name is nil' if graph_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -4128,6 +5413,167 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     end
 
     #
+    # Gets the Gremlin graph throughput under an existing Azure Cosmos DB database
+    # account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def get_gremlin_graph_throughput(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      response = get_gremlin_graph_throughput_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the Gremlin graph throughput under an existing Azure Cosmos DB database
+    # account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_gremlin_graph_throughput_with_http_info(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      get_gremlin_graph_throughput_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the Gremlin graph throughput under an existing Azure Cosmos DB database
+    # account with the provided name.
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_gremlin_graph_throughput_async(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'graph_name is nil' if graph_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/graphs/{graphName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name,'graphName' => graph_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Gremlin graph
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin graph.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def update_gremlin_graph_throughput(resource_group_name, account_name, database_name, graph_name, update_throughput_parameters, custom_headers:nil)
+      response = update_gremlin_graph_throughput_async(resource_group_name, account_name, database_name, graph_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin graph.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_gremlin_graph_throughput_async(resource_group_name, account_name, database_name, graph_name, update_throughput_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_gremlin_graph_throughput_async(resource_group_name, account_name, database_name, graph_name, update_throughput_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Patches the properties of an existing Azure Cosmos DB database account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
@@ -4181,6 +5627,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'update_parameters is nil' if update_parameters.nil?
 
@@ -4294,6 +5741,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'create_update_parameters is nil' if create_update_parameters.nil?
 
@@ -4400,6 +5848,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -4503,6 +5952,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'failover_parameters is nil' if failover_parameters.nil?
 
@@ -4608,6 +6058,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'region_parameter_for_offline is nil' if region_parameter_for_offline.nil?
 
@@ -4713,6 +6164,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'region_parameter_for_online is nil' if region_parameter_for_online.nil?
 
@@ -4815,6 +6267,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'key_to_regenerate is nil' if key_to_regenerate.nil?
 
@@ -4924,6 +6377,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'create_update_sql_database_parameters is nil' if create_update_sql_database_parameters.nil?
@@ -5034,6 +6488,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -5069,6 +6524,124 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB SQL database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def begin_update_sql_database_throughput(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      response = begin_update_sql_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB SQL database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_sql_database_throughput_with_http_info(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      begin_update_sql_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB SQL database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL database.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_sql_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'update_throughput_parameters is nil' if update_throughput_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ThroughputUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_throughput_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -5139,6 +6712,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'container_name is nil' if container_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -5253,6 +6827,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'container_name is nil' if container_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -5289,6 +6864,128 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB SQL container
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param container_name [String] Cosmos DB container name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL container.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def begin_update_sql_container_throughput(resource_group_name, account_name, database_name, container_name, update_throughput_parameters, custom_headers:nil)
+      response = begin_update_sql_container_throughput_async(resource_group_name, account_name, database_name, container_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB SQL container
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param container_name [String] Cosmos DB container name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL container.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_sql_container_throughput_with_http_info(resource_group_name, account_name, database_name, container_name, update_throughput_parameters, custom_headers:nil)
+      begin_update_sql_container_throughput_async(resource_group_name, account_name, database_name, container_name, update_throughput_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB SQL container
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param container_name [String] Cosmos DB container name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current SQL container.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_sql_container_throughput_async(resource_group_name, account_name, database_name, container_name, update_throughput_parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'container_name is nil' if container_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'update_throughput_parameters is nil' if update_throughput_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ThroughputUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_throughput_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/sql/databases/{databaseName}/containers/{containerName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name,'containerName' => container_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -5356,6 +7053,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'create_update_mongo_dbdatabase_parameters is nil' if create_update_mongo_dbdatabase_parameters.nil?
@@ -5466,6 +7164,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -5501,6 +7200,124 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of the an Azure Cosmos DB MongoDB database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def begin_update_mongo_dbdatabase_throughput(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      response = begin_update_mongo_dbdatabase_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update RUs per second of the an Azure Cosmos DB MongoDB database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_mongo_dbdatabase_throughput_with_http_info(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      begin_update_mongo_dbdatabase_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update RUs per second of the an Azure Cosmos DB MongoDB database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB database.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_mongo_dbdatabase_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'update_throughput_parameters is nil' if update_throughput_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ThroughputUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_throughput_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -5571,6 +7388,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'collection_name is nil' if collection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -5685,6 +7503,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'collection_name is nil' if collection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -5721,6 +7540,128 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update the RUs per second of an Azure Cosmos DB MongoDB collection
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param collection_name [String] Cosmos DB collection name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB collection.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def begin_update_mongo_dbcollection_throughput(resource_group_name, account_name, database_name, collection_name, update_throughput_parameters, custom_headers:nil)
+      response = begin_update_mongo_dbcollection_throughput_async(resource_group_name, account_name, database_name, collection_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update the RUs per second of an Azure Cosmos DB MongoDB collection
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param collection_name [String] Cosmos DB collection name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB collection.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_mongo_dbcollection_throughput_with_http_info(resource_group_name, account_name, database_name, collection_name, update_throughput_parameters, custom_headers:nil)
+      begin_update_mongo_dbcollection_throughput_async(resource_group_name, account_name, database_name, collection_name, update_throughput_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update the RUs per second of an Azure Cosmos DB MongoDB collection
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param collection_name [String] Cosmos DB collection name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current MongoDB collection.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_mongo_dbcollection_throughput_async(resource_group_name, account_name, database_name, collection_name, update_throughput_parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'collection_name is nil' if collection_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'update_throughput_parameters is nil' if update_throughput_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ThroughputUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_throughput_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/mongodb/databases/{databaseName}/collections/{collectionName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name,'collectionName' => collection_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -5785,6 +7726,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'table_name is nil' if table_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'create_update_table_parameters is nil' if create_update_table_parameters.nil?
@@ -5895,6 +7837,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'table_name is nil' if table_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -5930,6 +7873,124 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Table
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current Table.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def begin_update_table_throughput(resource_group_name, account_name, table_name, update_throughput_parameters, custom_headers:nil)
+      response = begin_update_table_throughput_async(resource_group_name, account_name, table_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Table
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current Table.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_table_throughput_with_http_info(resource_group_name, account_name, table_name, update_throughput_parameters, custom_headers:nil)
+      begin_update_table_throughput_async(resource_group_name, account_name, table_name, update_throughput_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Table
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The
+    # parameters to provide for the RUs per second of the current Table.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_table_throughput_async(resource_group_name, account_name, table_name, update_throughput_parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'table_name is nil' if table_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'update_throughput_parameters is nil' if update_throughput_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ThroughputUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_throughput_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/table/tables/{tableName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'tableName' => table_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -5997,6 +8058,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'create_update_cassandra_keyspace_parameters is nil' if create_update_cassandra_keyspace_parameters.nil?
@@ -6107,6 +8169,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -6142,6 +8205,124 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Cassandra Keyspace
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra Keyspace.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def begin_update_cassandra_keyspace_throughput(resource_group_name, account_name, keyspace_name, update_throughput_parameters, custom_headers:nil)
+      response = begin_update_cassandra_keyspace_throughput_async(resource_group_name, account_name, keyspace_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Cassandra Keyspace
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra Keyspace.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_cassandra_keyspace_throughput_with_http_info(resource_group_name, account_name, keyspace_name, update_throughput_parameters, custom_headers:nil)
+      begin_update_cassandra_keyspace_throughput_async(resource_group_name, account_name, keyspace_name, update_throughput_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Cassandra Keyspace
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra Keyspace.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_cassandra_keyspace_throughput_async(resource_group_name, account_name, keyspace_name, update_throughput_parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'update_throughput_parameters is nil' if update_throughput_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ThroughputUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_throughput_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'keyspaceName' => keyspace_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -6212,6 +8393,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
       fail ArgumentError, 'table_name is nil' if table_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -6326,6 +8508,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
       fail ArgumentError, 'table_name is nil' if table_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -6362,6 +8545,128 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Cassandra table
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra table.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def begin_update_cassandra_table_throughput(resource_group_name, account_name, keyspace_name, table_name, update_throughput_parameters, custom_headers:nil)
+      response = begin_update_cassandra_table_throughput_async(resource_group_name, account_name, keyspace_name, table_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Cassandra table
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra table.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_cassandra_table_throughput_with_http_info(resource_group_name, account_name, keyspace_name, table_name, update_throughput_parameters, custom_headers:nil)
+      begin_update_cassandra_table_throughput_async(resource_group_name, account_name, keyspace_name, table_name, update_throughput_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Cassandra table
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param keyspace_name [String] Cosmos DB keyspace name.
+    # @param table_name [String] Cosmos DB table name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Cassandra table.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_cassandra_table_throughput_async(resource_group_name, account_name, keyspace_name, table_name, update_throughput_parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'keyspace_name is nil' if keyspace_name.nil?
+      fail ArgumentError, 'table_name is nil' if table_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'update_throughput_parameters is nil' if update_throughput_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ThroughputUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_throughput_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/cassandra/keyspaces/{keyspaceName}/tables/{tableName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'keyspaceName' => keyspace_name,'tableName' => table_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -6429,6 +8734,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'create_update_gremlin_database_parameters is nil' if create_update_gremlin_database_parameters.nil?
@@ -6539,6 +8845,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -6574,6 +8881,124 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Gremlin database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def begin_update_gremlin_database_throughput(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      response = begin_update_gremlin_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Gremlin database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_gremlin_database_throughput_with_http_info(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      begin_update_gremlin_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Gremlin database
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin database.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_gremlin_database_throughput_async(resource_group_name, account_name, database_name, update_throughput_parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'update_throughput_parameters is nil' if update_throughput_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ThroughputUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_throughput_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -6644,6 +9069,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'graph_name is nil' if graph_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -6758,6 +9184,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'graph_name is nil' if graph_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -6794,6 +9221,128 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Gremlin graph
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin graph.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Throughput] operation results.
+    #
+    def begin_update_gremlin_graph_throughput(resource_group_name, account_name, database_name, graph_name, update_throughput_parameters, custom_headers:nil)
+      response = begin_update_gremlin_graph_throughput_async(resource_group_name, account_name, database_name, graph_name, update_throughput_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Gremlin graph
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin graph.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_gremlin_graph_throughput_with_http_info(resource_group_name, account_name, database_name, graph_name, update_throughput_parameters, custom_headers:nil)
+      begin_update_gremlin_graph_throughput_async(resource_group_name, account_name, database_name, graph_name, update_throughput_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update RUs per second of an Azure Cosmos DB Gremlin graph
+    #
+    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param update_throughput_parameters [ThroughputUpdateParameters] The RUs per
+    # second of the parameters to provide for the current Gremlin graph.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_gremlin_graph_throughput_async(resource_group_name, account_name, database_name, graph_name, update_throughput_parameters, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'graph_name is nil' if graph_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'update_throughput_parameters is nil' if update_throughput_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ThroughputUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_throughput_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/apis/gremlin/databases/{databaseName}/graphs/{graphName}/settings/throughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name,'graphName' => graph_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end

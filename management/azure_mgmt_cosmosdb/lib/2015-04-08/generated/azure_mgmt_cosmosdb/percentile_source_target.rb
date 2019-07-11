@@ -99,6 +99,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       fail ArgumentError, 'source_region is nil' if source_region.nil?
       fail ArgumentError, 'target_region is nil' if target_region.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?

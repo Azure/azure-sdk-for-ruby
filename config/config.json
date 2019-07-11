@@ -510,7 +510,7 @@
   },
   "azure_mgmt_cosmosdb": {
     "azure_mgmt_cosmosdb_2015_04_08": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/24b69e7457d12e3048f20e54211322d09c04960c/specification/cosmos-db/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/cosmos-db/resource-manager/readme.md",
       "namespace": "Azure::Cosmosdb::Mgmt::V2015_04_08",
       "tag": "package-2015-04"
     }
