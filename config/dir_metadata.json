@@ -359,6 +359,13 @@
       "module_require": "azure_mgmt_msi"
     }
   },
+  "Microsoft.Mysql": {
+    "management": {
+      "path": "management/azure_mgmt_mysql",
+      "namespace": "Azure::Mysql::Mgmt",
+      "module_require": "azure_mgmt_mysql"
+    }
+  },
   "Microsoft.NetApp": {
     "management": {
       "path": "management/azure_mgmt_netapp",

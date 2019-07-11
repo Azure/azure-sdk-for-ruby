@@ -6,7 +6,8 @@
         "azure_mgmt_cosmosdb",
         "azure_mgmt_network",
         "azure_mgmt_postgresql",
-        "azure_mgmt_mariadb"
+        "azure_mgmt_mariadb",
+        "azure_mgmt_mysql"
     ],
     "data": [
         "azure_cognitiveservices_face"

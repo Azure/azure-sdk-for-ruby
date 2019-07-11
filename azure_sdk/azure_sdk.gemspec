@@ -88,6 +88,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_mixedreality', "~>#{gem_versions['management']['azure_mgmt_mixedreality']}"
   spec.add_runtime_dependency 'azure_mgmt_monitor', "~>#{gem_versions['management']['azure_mgmt_monitor']}"
   spec.add_runtime_dependency 'azure_mgmt_msi', "~>#{gem_versions['management']['azure_mgmt_msi']}"
+  spec.add_runtime_dependency 'azure_mgmt_mysql', "~>#{gem_versions['management']['azure_mgmt_mysql']}"
   spec.add_runtime_dependency 'azure_mgmt_netapp', "~>#{gem_versions['management']['azure_mgmt_netapp']}"
   spec.add_runtime_dependency 'azure_mgmt_network', "~>#{gem_versions['management']['azure_mgmt_network']}"
   spec.add_runtime_dependency 'azure_mgmt_notification_hubs', "~>#{gem_versions['management']['azure_mgmt_notification_hubs']}"

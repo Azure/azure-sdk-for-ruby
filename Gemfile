@@ -60,6 +60,7 @@ gem 'azure_mgmt_media_services',            path: 'management/azure_mgmt_media_s
 gem 'azure_mgmt_mixedreality',              path: 'management/azure_mgmt_mixedreality'
 gem 'azure_mgmt_monitor',                   path: 'management/azure_mgmt_monitor'
 gem 'azure_mgmt_msi',                       path: 'management/azure_mgmt_msi'
+gem 'azure_mgmt_mysql',                     path: 'management/azure_mgmt_mysql'
 gem 'azure_mgmt_netapp',                    path: 'management/azure_mgmt_netapp'
 gem 'azure_mgmt_network',                   path: 'management/azure_mgmt_network'
 gem 'azure_mgmt_notification_hubs',         path: 'management/azure_mgmt_notification_hubs'
