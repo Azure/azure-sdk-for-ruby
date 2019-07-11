@@ -29,7 +29,7 @@ module Azure::ResourceGraph::Mgmt::V2019_04_01
       # current request) to retrieve the next page of data.
       attr_accessor :skip_token
 
-      # @return [Table] Query output in tabular format.
+      # @return Query output in tabular format.
       attr_accessor :data
 
       # @return [Array<Facet>] Query facets.
@@ -87,8 +87,7 @@ module Azure::ResourceGraph::Mgmt::V2019_04_01
                 required: true,
                 serialized_name: 'data',
                 type: {
-                  name: 'Composite',
-                  class_name: 'Table'
+                  name: 'Object'
                 }
               },
               facets: {

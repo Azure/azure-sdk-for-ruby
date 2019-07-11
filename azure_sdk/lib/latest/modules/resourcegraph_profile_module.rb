@@ -10,22 +10,23 @@ module Azure::Profiles::Latest
       Operations = Azure::ResourceGraph::Mgmt::V2019_04_01::Operations
 
       module Models
-        QueryResponse = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::QueryResponse
+        Table = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Table
         QueryRequestOptions = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::QueryRequestOptions
         FacetRequest = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::FacetRequest
         ErrorDetails = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::ErrorDetails
-        Column = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Column
-        OperationListResult = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::OperationListResult
         Facet = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Facet
+        OperationListResult = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::OperationListResult
+        Column = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Column
         Error = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Error
         QueryRequest = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::QueryRequest
         ErrorResponse = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::ErrorResponse
         FacetRequestOptions = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::FacetRequestOptions
         OperationDisplay = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::OperationDisplay
-        Table = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Table
+        QueryResponse = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::QueryResponse
         Operation = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Operation
         FacetResult = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::FacetResult
         FacetError = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::FacetError
+        ResultFormat = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::ResultFormat
         FacetSortOrder = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::FacetSortOrder
         ResultTruncated = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::ResultTruncated
         ColumnDataType = Azure::ResourceGraph::Mgmt::V2019_04_01::Models::ColumnDataType
@@ -61,8 +62,8 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def query_response
-            Azure::ResourceGraph::Mgmt::V2019_04_01::Models::QueryResponse
+          def table
+            Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Table
           end
           def query_request_options
             Azure::ResourceGraph::Mgmt::V2019_04_01::Models::QueryRequestOptions
@@ -73,14 +74,14 @@ module Azure::Profiles::Latest
           def error_details
             Azure::ResourceGraph::Mgmt::V2019_04_01::Models::ErrorDetails
           end
-          def column
-            Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Column
+          def facet
+            Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Facet
           end
           def operation_list_result
             Azure::ResourceGraph::Mgmt::V2019_04_01::Models::OperationListResult
           end
-          def facet
-            Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Facet
+          def column
+            Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Column
           end
           def error
             Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Error
@@ -97,8 +98,8 @@ module Azure::Profiles::Latest
           def operation_display
             Azure::ResourceGraph::Mgmt::V2019_04_01::Models::OperationDisplay
           end
-          def table
-            Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Table
+          def query_response
+            Azure::ResourceGraph::Mgmt::V2019_04_01::Models::QueryResponse
           end
           def operation
             Azure::ResourceGraph::Mgmt::V2019_04_01::Models::Operation
@@ -108,6 +109,9 @@ module Azure::Profiles::Latest
           end
           def facet_error
             Azure::ResourceGraph::Mgmt::V2019_04_01::Models::FacetError
+          end
+          def result_format
+            Azure::ResourceGraph::Mgmt::V2019_04_01::Models::ResultFormat
           end
           def facet_sort_order
             Azure::ResourceGraph::Mgmt::V2019_04_01::Models::FacetSortOrder

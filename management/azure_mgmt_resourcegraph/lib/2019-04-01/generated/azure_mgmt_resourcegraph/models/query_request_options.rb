@@ -26,6 +26,10 @@ module Azure::ResourceGraph::Mgmt::V2019_04_01
       # is present.
       attr_accessor :skip
 
+      # @return [ResultFormat] Defines in which format query result returned.
+      # Possible values include: 'table', 'objectArray'
+      attr_accessor :result_format
+
 
       #
       # Mapper for QueryRequestOptions class as Ruby Hash.
@@ -69,6 +73,15 @@ module Azure::ResourceGraph::Mgmt::V2019_04_01
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              result_format: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'resultFormat',
+                type: {
+                  name: 'Enum',
+                  module: 'ResultFormat'
                 }
               }
             }

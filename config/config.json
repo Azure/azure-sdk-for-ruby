@@ -1645,7 +1645,7 @@
   },
   "azure_mgmt_resourcegraph": {
     "azure_mgmt_resourcegraph_2019_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/223f0cb75e64e0e61a67b8a2d95c15c4d537c6e9/specification/resourcegraph/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/resourcegraph/resource-manager/readme.md",
       "namespace": "Azure::ResourceGraph::Mgmt::V2019_04_01",
       "tag": "package-2019-04"
     }
