@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Postgresql::Mgmt::V2017_12_01
+module Azure::Postgresql::Mgmt::V2017_12_01_preview
   #
   # The Microsoft Azure management API provides create, read, update, and
   # delete functionality for Azure PostgreSQL resources including servers,
@@ -112,7 +112,7 @@ module Azure::Postgresql::Mgmt::V2017_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Postgresql::Mgmt::V2017_12_01::Models::ServerSecurityAlertPolicy.mapper()
+            result_mapper = Azure::Postgresql::Mgmt::V2017_12_01_preview::Models::ServerSecurityAlertPolicy.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -164,7 +164,7 @@ module Azure::Postgresql::Mgmt::V2017_12_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Postgresql::Mgmt::V2017_12_01::Models::ServerSecurityAlertPolicy.mapper()
+          result_mapper = Azure::Postgresql::Mgmt::V2017_12_01_preview::Models::ServerSecurityAlertPolicy.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -243,7 +243,7 @@ module Azure::Postgresql::Mgmt::V2017_12_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Postgresql::Mgmt::V2017_12_01::Models::ServerSecurityAlertPolicy.mapper()
+      request_mapper = Azure::Postgresql::Mgmt::V2017_12_01_preview::Models::ServerSecurityAlertPolicy.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -277,7 +277,7 @@ module Azure::Postgresql::Mgmt::V2017_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Postgresql::Mgmt::V2017_12_01::Models::ServerSecurityAlertPolicy.mapper()
+            result_mapper = Azure::Postgresql::Mgmt::V2017_12_01_preview::Models::ServerSecurityAlertPolicy.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

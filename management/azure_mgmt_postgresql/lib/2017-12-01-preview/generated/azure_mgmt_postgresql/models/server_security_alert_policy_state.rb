@@ -6,15 +6,11 @@
 module Azure::Postgresql::Mgmt::V2017_12_01_preview
   module Models
     #
-    # Defines values for ServerVersion
+    # Defines values for ServerSecurityAlertPolicyState
     #
-    module ServerVersion
-      NineFullStopFive = "9.5"
-      NineFullStopSix = "9.6"
-      OneZero = "10"
-      OneZeroFullStopZero = "10.0"
-      OneZeroFullStopTwo = "10.2"
-      OneOne = "11"
+    module ServerSecurityAlertPolicyState
+      Enabled = "Enabled"
+      Disabled = "Disabled"
     end
   end
 end

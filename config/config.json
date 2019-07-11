@@ -1563,12 +1563,12 @@
   },
   "azure_mgmt_postgresql": {
     "azure_mgmt_postgresql_2017_12_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/postgresql/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/postgresql/resource-manager/readme.md",
       "namespace": "Azure::Postgresql::Mgmt::V2017_12_01_preview",
       "tag": "package-2017-12-01-preview"
     },
     "azure_mgmt_postgresql_2017_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/postgresql/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/postgresql/resource-manager/readme.md",
       "namespace": "Azure::Postgresql::Mgmt::V2017_12_01",
       "tag": "package-2017-12-01"
     }

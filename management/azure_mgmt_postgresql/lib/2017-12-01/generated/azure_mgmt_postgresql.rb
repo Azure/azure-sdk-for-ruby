@@ -70,6 +70,7 @@ module Azure::Postgresql::Mgmt::V2017_12_01
     autoload :SslEnforcementEnum,                                 '2017-12-01/generated/azure_mgmt_postgresql/models/ssl_enforcement_enum.rb'
     autoload :ServerState,                                        '2017-12-01/generated/azure_mgmt_postgresql/models/server_state.rb'
     autoload :GeoRedundantBackup,                                 '2017-12-01/generated/azure_mgmt_postgresql/models/geo_redundant_backup.rb'
+    autoload :StorageAutogrow,                                    '2017-12-01/generated/azure_mgmt_postgresql/models/storage_autogrow.rb'
     autoload :SkuTier,                                            '2017-12-01/generated/azure_mgmt_postgresql/models/sku_tier.rb'
     autoload :VirtualNetworkRuleState,                            '2017-12-01/generated/azure_mgmt_postgresql/models/virtual_network_rule_state.rb'
     autoload :OperationOrigin,                                    '2017-12-01/generated/azure_mgmt_postgresql/models/operation_origin.rb'

@@ -45,6 +45,9 @@ module Azure::Postgresql::Mgmt::V2017_12_01_preview
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
+    # @return [VirtualNetworkRules] virtual_network_rules
+    attr_reader :virtual_network_rules
+
     # @return [Databases] databases
     attr_reader :databases
 
@@ -59,6 +62,9 @@ module Azure::Postgresql::Mgmt::V2017_12_01_preview
 
     # @return [CheckNameAvailability] check_name_availability
     attr_reader :check_name_availability
+
+    # @return [ServerSecurityAlertPolicies] server_security_alert_policies
+    attr_reader :server_security_alert_policies
 
     # @return [Operations] operations
     attr_reader :operations
@@ -79,11 +85,13 @@ module Azure::Postgresql::Mgmt::V2017_12_01_preview
       @servers = Servers.new(self)
       @replicas = Replicas.new(self)
       @firewall_rules = FirewallRules.new(self)
+      @virtual_network_rules = VirtualNetworkRules.new(self)
       @databases = Databases.new(self)
       @configurations = Configurations.new(self)
       @log_files = LogFiles.new(self)
       @location_based_performance_tier = LocationBasedPerformanceTier.new(self)
       @check_name_availability = CheckNameAvailability.new(self)
+      @server_security_alert_policies = ServerSecurityAlertPolicies.new(self)
       @operations = Operations.new(self)
       @api_version = '2017-12-01-preview'
       @accept_language = 'en-US'
@@ -157,7 +165,7 @@ module Azure::Postgresql::Mgmt::V2017_12_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_postgresql'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end
