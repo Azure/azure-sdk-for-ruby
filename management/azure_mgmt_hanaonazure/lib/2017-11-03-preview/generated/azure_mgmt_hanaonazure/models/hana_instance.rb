@@ -42,6 +42,15 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
       # @return [String] Hardware revision of a HANA instance
       attr_accessor :hw_revision
 
+      # @return [String] ARM ID of another HanaInstance that will share a
+      # network with this HanaInstance
+      attr_accessor :partner_node_id
+
+      # @return [HanaProvisioningStatesEnum] State of provisioning of the
+      # HanaInstance. Possible values include: 'Accepted', 'Creating',
+      # 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'
+      attr_accessor :provisioning_state
+
 
       #
       # Mapper for HanaInstance class as Ruby Hash.
@@ -86,7 +95,6 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
               location: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -177,6 +185,23 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hwRevision',
+                type: {
+                  name: 'String'
+                }
+              },
+              partner_node_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.partnerNodeId',
+                type: {
+                  name: 'String'
+                }
+              },
+              provisioning_state: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
                 }

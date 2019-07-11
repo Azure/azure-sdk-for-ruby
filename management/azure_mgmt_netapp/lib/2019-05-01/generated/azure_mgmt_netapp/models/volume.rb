@@ -41,13 +41,16 @@ module Azure::NetApp::Mgmt::V2019_05_01
 
       # @return [Integer] usageThreshold. Maximum storage quota allowed for a
       # file system in bytes. This is a soft quota used for alerting only.
-      # Minimum size is 100 GiB. Upper limit is 100TiB. Default value:
-      # 107374182400 .
+      # Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
+      # Default value: 107374182400 .
       attr_accessor :usage_threshold
 
       # @return [VolumePropertiesExportPolicy] exportPolicy. Set of export
       # policy rules
       attr_accessor :export_policy
+
+      # @return [Array<String>] protocolTypes. Set of protocol types
+      attr_accessor :protocol_types
 
       # @return [String] Azure lifecycle management
       attr_accessor :provisioning_state
@@ -62,6 +65,9 @@ module Azure::NetApp::Mgmt::V2019_05_01
       # @return [String] The Azure Resource URI for a delegated subnet. Must
       # have the delegation Microsoft.NetApp/volumes
       attr_accessor :subnet_id
+
+      # @return mountTargets. List of mount targets
+      attr_accessor :mount_targets
 
 
       #
@@ -144,7 +150,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
               },
               service_level: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'properties.serviceLevel',
                 default_value: 'Premium',
                 type: {
@@ -153,7 +159,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
               },
               usage_threshold: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.usageThreshold',
                 default_value: 107374182400,
                 constraints: {
@@ -171,6 +177,22 @@ module Azure::NetApp::Mgmt::V2019_05_01
                 type: {
                   name: 'Composite',
                   class_name: 'VolumePropertiesExportPolicy'
+                }
+              },
+              protocol_types: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.protocolTypes',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               provisioning_state: {
@@ -211,10 +233,18 @@ module Azure::NetApp::Mgmt::V2019_05_01
               },
               subnet_id: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.subnetId',
                 type: {
                   name: 'String'
+                }
+              },
+              mount_targets: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.mountTargets',
+                type: {
+                  name: 'Object'
                 }
               }
             }

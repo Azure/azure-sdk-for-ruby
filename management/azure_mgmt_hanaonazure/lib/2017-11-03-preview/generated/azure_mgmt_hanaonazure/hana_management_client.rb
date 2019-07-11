@@ -43,6 +43,9 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
     # @return [HanaInstances] hana_instances
     attr_reader :hana_instances
 
+    # @return [SapMonitors] sap_monitors
+    attr_reader :sap_monitors
+
     #
     # Creates initializes a new instance of the HanaManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -58,6 +61,7 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
 
       @operations = Operations.new(self)
       @hana_instances = HanaInstances.new(self)
+      @sap_monitors = SapMonitors.new(self)
       @api_version = '2017-11-03-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -130,7 +134,7 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_hanaonazure'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end

@@ -35,7 +35,7 @@ module Azure::ServiceFabric::V6_3_0_9
       # All types of faults (restart node, restart code package, remove
       # replica, restart replica, move primary, and move secondary) are enabled
       # for the nodes of these node types.
-      # If a nodetype (say NodeTypeX) does not appear in the
+      # If a node type (say NodeTypeX) does not appear in the
       # NodeTypeInclusionList, then node level faults (like NodeRestart) will
       # never be enabled for the nodes of
       # NodeTypeX, but code package and replica faults can still be enabled for
@@ -46,7 +46,7 @@ module Azure::ServiceFabric::V6_3_0_9
       # MaxNumberOfNodeTypesInChaosEntityFilter configuration.
       attr_accessor :node_type_inclusion_list
 
-      # @return [Array<String>] A list of application URI's to include in Chaos
+      # @return [Array<String>] A list of application URIs to include in Chaos
       # faults.
       # All replicas belonging to services of these applications are amenable
       # to replica faults (restart replica, remove replica, move primary, and

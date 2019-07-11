@@ -12,7 +12,7 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
 
       include MsRestAzure
 
-      # @return [String] Provisioning state to track the aysnc operation
+      # @return [String] Provisioning state to track the async operation
       # status.
       attr_accessor :provisioning_state
 

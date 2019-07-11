@@ -15,12 +15,12 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
       # @return [Integer] Virtual machine disk count.
       attr_accessor :disk_count
 
+      # @return [Integer] Device id of the first disk to be updated.
+      attr_accessor :starting_device_id
+
       # @return [DiskConfigurationType] Disk configuration to apply to SQL
       # Server. Possible values include: 'NEW', 'EXTEND', 'ADD'
       attr_accessor :disk_configuration_type
-
-      # @return [Integer] Device id of the first disk to be updated.
-      attr_accessor :starting_device_id
 
 
       #
@@ -44,20 +44,20 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
                   name: 'Number'
                 }
               },
-              disk_configuration_type: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'diskConfigurationType',
-                type: {
-                  name: 'String'
-                }
-              },
               starting_device_id: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'startingDeviceId',
                 type: {
                   name: 'Number'
+                }
+              },
+              disk_configuration_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'diskConfigurationType',
+                type: {
+                  name: 'String'
                 }
               }
             }

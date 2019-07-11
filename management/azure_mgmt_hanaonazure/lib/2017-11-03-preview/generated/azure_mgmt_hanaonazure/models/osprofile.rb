@@ -22,6 +22,10 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
       # @return [String] Specifies version of operating system.
       attr_accessor :version
 
+      # @return [String] Specifies the SSH public key used to access the
+      # operating system.
+      attr_accessor :ssh_public_key
+
 
       #
       # Mapper for OSProfile class as Ruby Hash.
@@ -39,7 +43,6 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
               computer_name: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'computerName',
                 type: {
                   name: 'String'
@@ -59,6 +62,14 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'version',
+                type: {
+                  name: 'String'
+                }
+              },
+              ssh_public_key: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sshPublicKey',
                 type: {
                   name: 'String'
                 }

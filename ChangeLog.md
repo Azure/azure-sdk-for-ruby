@@ -1,10 +1,14 @@
+## 2019.06.05 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_event_grid - v0.17.6
+    - azure_sdk - v0.26.1
+    
 ## 2019.05.20 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_resources - v0.17.5
     - azure_mgmt_network - v0.18.8
     - azure_mgmt_storage - v0.17.10
     - azure_mgmt_compute - v0.18.7
-    - azure_sdk - v0.26.1
     
 ## 2019.05.16 - Azure Ruby SDK Release
 * Released the following SDKs

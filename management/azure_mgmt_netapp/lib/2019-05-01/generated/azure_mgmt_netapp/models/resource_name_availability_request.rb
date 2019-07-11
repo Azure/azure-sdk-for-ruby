@@ -16,10 +16,10 @@ module Azure::NetApp::Mgmt::V2019_05_01
       attr_accessor :name
 
       # @return [CheckNameResourceTypes] Resource type used for verification.
-      # Possible values include: 'Microsoft.NetApp/netAppAccount',
-      # 'Microsoft.NetApp/netAppAccount/capacityPools',
-      # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes',
-      # 'Microsoft.NetApp/netAppAccount/capacityPools/volumes/snapshots'
+      # Possible values include: 'Microsoft.NetApp/netAppAccounts',
+      # 'Microsoft.NetApp/netAppAccounts/capacityPools',
+      # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes',
+      # 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots'
       attr_accessor :type
 
       # @return [String] Resource group name.

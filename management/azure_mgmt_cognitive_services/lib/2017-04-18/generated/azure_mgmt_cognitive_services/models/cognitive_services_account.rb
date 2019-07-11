@@ -43,6 +43,10 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # authentication.
       attr_accessor :custom_sub_domain_name
 
+      # @return [NetworkRuleSet] A collection of rules governing the
+      # accessibility from specific network locations.
+      attr_accessor :network_acls
+
       # @return [Sku] The SKU of Cognitive Services account.
       attr_accessor :sku
 
@@ -143,6 +147,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 serialized_name: 'properties.customSubDomainName',
                 type: {
                   name: 'String'
+                }
+              },
+              network_acls: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.networkAcls',
+                type: {
+                  name: 'Composite',
+                  class_name: 'NetworkRuleSet'
                 }
               },
               sku: {

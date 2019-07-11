@@ -27,6 +27,11 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
       S768m = "S768m"
       S768xm = "S768xm"
       S960m = "S960m"
+      S224o = "S224o"
+      S224m = "S224m"
+      S224om = "S224om"
+      S224oxm = "S224oxm"
+      S224oxxm = "S224oxxm"
     end
   end
 end

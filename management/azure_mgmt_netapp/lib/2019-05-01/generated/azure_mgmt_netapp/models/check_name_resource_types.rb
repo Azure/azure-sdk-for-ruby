@@ -9,10 +9,10 @@ module Azure::NetApp::Mgmt::V2019_05_01
     # Defines values for CheckNameResourceTypes
     #
     module CheckNameResourceTypes
-      MicrosoftNetAppnetAppAccount = "Microsoft.NetApp/netAppAccount"
-      MicrosoftNetAppnetAppAccountcapacityPools = "Microsoft.NetApp/netAppAccount/capacityPools"
-      MicrosoftNetAppnetAppAccountcapacityPoolsvolumes = "Microsoft.NetApp/netAppAccount/capacityPools/volumes"
-      MicrosoftNetAppnetAppAccountcapacityPoolsvolumessnapshots = "Microsoft.NetApp/netAppAccount/capacityPools/volumes/snapshots"
+      MicrosoftNetAppnetAppAccounts = "Microsoft.NetApp/netAppAccounts"
+      MicrosoftNetAppnetAppAccountscapacityPools = "Microsoft.NetApp/netAppAccounts/capacityPools"
+      MicrosoftNetAppnetAppAccountscapacityPoolsvolumes = "Microsoft.NetApp/netAppAccounts/capacityPools/volumes"
+      MicrosoftNetAppnetAppAccountscapacityPoolsvolumessnapshots = "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots"
     end
   end
 end

@@ -289,8 +289,8 @@
                 },
                 "Microsoft.ContainerRegistry": {
                     "management": {
-                        "2017-10-01": ["*"],
-                        "2019-04-01": ["*"]
+                        "2019-05-01": ["*"],
+                        "2019-06-01-preview": ["*"]
                     }
                 },
                 "Microsoft.ContainerService": {
@@ -347,7 +347,7 @@
                 },
                 "Microsoft.EventGrid": {
                     "management": {
-                        "2019-02-01-preview": ["*"]
+                        "2019-06-01": ["*"]
                     },
                     "data": {
                         "2018-01-01": ["*"]
@@ -428,7 +428,7 @@
                 },
                 "Microsoft.MachineLearningServices": {
                     "management": {
-                        "2018-03-01-preview": ["*"]
+                        "2019-05-01": ["*"]
                     }
                 },
                 "Microsoft.ManagedApplications": {
@@ -478,7 +478,7 @@
                 },
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-05-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 },
                 "Microsoft.Network": {
@@ -602,7 +602,7 @@
                         "2018-02-01": ["*"]
                     },
                     "data": {
-                        "6.4.0.36": ["*"]
+                        "6.5.0.36": ["*"]
                     }
                 },
                 "Microsoft.Signalr": {
@@ -737,6 +737,11 @@
                 "Microsoft.CognitiveServices.NewsSearch": {
                     "data": {
                         "1.0": ["*"]
+                    }
+                },
+                "Microsoft.CognitiveServices.Personalizer": {
+                    "data": {
+                        "v1.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.Qnamaker": {
@@ -1042,8 +1047,8 @@
             "resourceTypes": {
                 "Microsoft.ContainerRegistry" : {
                     "management": {
-                        "2017-10-01": ["*"],
-                        "2019-04-01": ["*"]
+                        "2019-05-01": ["*"],
+                        "2019-06-01-preview": ["*"]
                     }
                 }
             },
@@ -1235,7 +1240,7 @@
             "resourceTypes": {
                 "Microsoft.EventGrid" : {
                     "management": {
-                        "2019-02-01-preview": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 }
             },
@@ -1527,7 +1532,7 @@
             "resourceTypes": {
                 "Microsoft.MachineLearningServices": {
                     "management": {
-                        "2018-03-01-preview": ["*"]
+                        "2019-05-01": ["*"]
                     }
                 }
             },
@@ -1664,7 +1669,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-05-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 }
             },
@@ -2594,6 +2599,20 @@
                 "individual_gem_profile": true
             }
         ],
+        "azure_cognitiveservices_personalizer": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.Personalizer": {
+                        "data": {
+                            "v1.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_personalizer/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_cognitiveservices_qnamaker": [
             {
                 "name": "Latest",
@@ -2748,7 +2767,7 @@
             "resourceTypes": {
                 "Microsoft.ServiceFabric": {
                     "data": {
-                        "6.4.0.36": ["*"]
+                        "6.5.0.36": ["*"]
                     }
                 }
             },
