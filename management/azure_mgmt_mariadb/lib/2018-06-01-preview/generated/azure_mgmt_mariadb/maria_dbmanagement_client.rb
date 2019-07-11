@@ -39,6 +39,9 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
     # @return [Servers] servers
     attr_reader :servers
 
+    # @return [Replicas] replicas
+    attr_reader :replicas
+
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
@@ -80,6 +83,7 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
       @credentials = credentials
 
       @servers = Servers.new(self)
+      @replicas = Replicas.new(self)
       @firewall_rules = FirewallRules.new(self)
       @virtual_network_rules = VirtualNetworkRules.new(self)
       @databases = Databases.new(self)

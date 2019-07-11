@@ -3,15 +3,15 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::MariaDB::Mgmt::V2018_06_01
+module Azure::MariaDB::Mgmt::V2018_06_01_preview
   #
   # MariaDB Client
   #
-  class LogFiles
+  class Replicas
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the LogFiles class.
+    # Creates and initializes a new instance of the Replicas class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,7 +22,7 @@ module Azure::MariaDB::Mgmt::V2018_06_01
     attr_reader :client
 
     #
-    # List all the log files in a given server.
+    # List all the replicas for a given server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -31,7 +31,7 @@ module Azure::MariaDB::Mgmt::V2018_06_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [LogFileListResult] operation results.
+    # @return [ServerListResult] operation results.
     #
     def list_by_server(resource_group_name, server_name, custom_headers:nil)
       response = list_by_server_async(resource_group_name, server_name, custom_headers:custom_headers).value!
@@ -39,7 +39,7 @@ module Azure::MariaDB::Mgmt::V2018_06_01
     end
 
     #
-    # List all the log files in a given server.
+    # List all the replicas for a given server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -55,7 +55,7 @@ module Azure::MariaDB::Mgmt::V2018_06_01
     end
 
     #
-    # List all the log files in a given server.
+    # List all the replicas for a given server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -79,7 +79,7 @@ module Azure::MariaDB::Mgmt::V2018_06_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/logFiles'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/replicas'
 
       request_url = @base_url || @client.base_url
 
@@ -108,7 +108,7 @@ module Azure::MariaDB::Mgmt::V2018_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MariaDB::Mgmt::V2018_06_01::Models::LogFileListResult.mapper()
+            result_mapper = Azure::MariaDB::Mgmt::V2018_06_01_preview::Models::ServerListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

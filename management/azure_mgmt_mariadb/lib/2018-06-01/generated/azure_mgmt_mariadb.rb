@@ -70,6 +70,7 @@ module Azure::MariaDB::Mgmt::V2018_06_01
     autoload :SslEnforcementEnum,                                 '2018-06-01/generated/azure_mgmt_mariadb/models/ssl_enforcement_enum.rb'
     autoload :ServerState,                                        '2018-06-01/generated/azure_mgmt_mariadb/models/server_state.rb'
     autoload :GeoRedundantBackup,                                 '2018-06-01/generated/azure_mgmt_mariadb/models/geo_redundant_backup.rb'
+    autoload :StorageAutogrow,                                    '2018-06-01/generated/azure_mgmt_mariadb/models/storage_autogrow.rb'
     autoload :SkuTier,                                            '2018-06-01/generated/azure_mgmt_mariadb/models/sku_tier.rb'
     autoload :VirtualNetworkRuleState,                            '2018-06-01/generated/azure_mgmt_mariadb/models/virtual_network_rule_state.rb'
     autoload :OperationOrigin,                                    '2018-06-01/generated/azure_mgmt_mariadb/models/operation_origin.rb'

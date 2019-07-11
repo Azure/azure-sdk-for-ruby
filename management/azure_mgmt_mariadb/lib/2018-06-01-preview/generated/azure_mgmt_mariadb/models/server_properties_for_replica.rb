@@ -6,50 +6,35 @@
 module Azure::MariaDB::Mgmt::V2018_06_01_preview
   module Models
     #
-    # The properties used to create a new server.
+    # The properties to create a new replica.
     #
-    class ServerPropertiesForCreate
+    class ServerPropertiesForReplica < ServerPropertiesForCreate
 
       include MsRestAzure
 
-      @@discriminatorMap = Hash.new
-      @@discriminatorMap["Default"] = "ServerPropertiesForDefaultCreate"
-      @@discriminatorMap["PointInTimeRestore"] = "ServerPropertiesForRestore"
-      @@discriminatorMap["GeoRestore"] = "ServerPropertiesForGeoRestore"
-      @@discriminatorMap["Replica"] = "ServerPropertiesForReplica"
 
       def initialize
-        @createMode = "ServerPropertiesForCreate"
+        @createMode = "Replica"
       end
 
       attr_accessor :createMode
 
-      # @return [ServerVersion] Server version. Possible values include: '5.6',
-      # '5.7'
-      attr_accessor :version
-
-      # @return [SslEnforcementEnum] Enable ssl enforcement or not when connect
-      # to server. Possible values include: 'Enabled', 'Disabled'
-      attr_accessor :ssl_enforcement
-
-      # @return [StorageProfile] Storage profile of a server.
-      attr_accessor :storage_profile
+      # @return [String] The master server id to create replica from.
+      attr_accessor :source_server_id
 
 
       #
-      # Mapper for ServerPropertiesForCreate class as Ruby Hash.
+      # Mapper for ServerPropertiesForReplica class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ServerPropertiesForCreate',
+          serialized_name: 'Replica',
           type: {
             name: 'Composite',
-            polymorphic_discriminator: 'createMode',
-            uber_parent: 'ServerPropertiesForCreate',
-            class_name: 'ServerPropertiesForCreate',
+            class_name: 'ServerPropertiesForReplica',
             model_properties: {
               version: {
                 client_side_validation: true,
@@ -75,6 +60,22 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'StorageProfile'
+                }
+              },
+              createMode: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'createMode',
+                type: {
+                  name: 'String'
+                }
+              },
+              source_server_id: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'sourceServerId',
+                type: {
+                  name: 'String'
                 }
               }
             }
