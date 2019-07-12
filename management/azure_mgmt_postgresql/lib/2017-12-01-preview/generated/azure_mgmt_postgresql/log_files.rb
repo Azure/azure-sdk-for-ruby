@@ -7,8 +7,8 @@ module Azure::Postgresql::Mgmt::V2017_12_01_preview
   #
   # The Microsoft Azure management API provides create, read, update, and
   # delete functionality for Azure PostgreSQL resources including servers,
-  # databases, firewall rules, log files and configurations with new business
-  # model.
+  # databases, firewall rules, VNET rules, security alert policies, log files
+  # and configurations with new business model.
   #
   class LogFiles
     include MsRestAzure
@@ -105,6 +105,8 @@ module Azure::Postgresql::Mgmt::V2017_12_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

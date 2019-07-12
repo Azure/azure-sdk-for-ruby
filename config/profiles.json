@@ -232,6 +232,11 @@
                         "2019-01-01": ["*"]
                     }
                 },
+                "Microsoft.Appconfiguration": {
+                    "management": {
+                        "2019-02-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Authorization": {
                     "management": {
                         "2015-06-01-preview": ["*"],
@@ -476,6 +481,11 @@
                         "2015-08-31-preview": ["*"]
                     }
                 },
+                "Microsoft.Mysql": {
+                    "management": {
+                        "2017-12-01": ["*"]
+                    }
+                },
                 "Microsoft.NetApp": {
                     "management": {
                         "2019-06-01": ["*"]
@@ -484,7 +494,7 @@
                 "Microsoft.Network": {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2019-02-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -563,7 +573,7 @@
                 },
                 "Microsoft.Resources": {
                     "management": {
-                        "2018-05-01": ["*"]
+                        "2019-05-10": ["*"]
                     }
                 },
                 "Microsoft.ResourcesManagement": {
@@ -819,6 +829,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_api_management/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_appconfiguration": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Appconfiguration": {
+                    "management": {
+                        "2019-02-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_appconfiguration/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -1663,6 +1687,20 @@
             "individual_gem_profile": true
         }
          ],
+        "azure_mgmt_mysql": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Mysql": {
+                    "management": {
+                        "2017-12-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_mysql/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_netapp": [
         {
             "name": "Latest",
@@ -1721,7 +1759,7 @@
                 "Microsoft.Network" : {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2019-02-01": ["*"]
+                        "2019-04-01": ["*"]
                     }
                 }
             },
@@ -2021,7 +2059,7 @@
             "resourceTypes": {
                 "Microsoft.Resources" : {
                     "management": {
-                        "2018-05-01": ["*"]
+                        "2019-05-10": ["*"]
                     }
                 }
             },

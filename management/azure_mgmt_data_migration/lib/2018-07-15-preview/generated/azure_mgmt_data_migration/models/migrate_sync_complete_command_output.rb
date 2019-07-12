@@ -12,6 +12,9 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
 
       include MsRestAzure
 
+      # @return [String] Result identifier
+      attr_accessor :id
+
       # @return [Array<ReportableException>] List of errors that happened
       # during the command execution
       attr_accessor :errors
@@ -30,9 +33,19 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
             name: 'Composite',
             class_name: 'MigrateSyncCompleteCommandOutput',
             model_properties: {
+              id: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               errors: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'errors',
                 type: {
                   name: 'Sequence',

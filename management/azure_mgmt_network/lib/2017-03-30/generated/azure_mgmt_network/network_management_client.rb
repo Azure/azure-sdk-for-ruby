@@ -22,6 +22,9 @@ module Azure::Network::Mgmt::V2017_03_30
     # for every service call.
     attr_accessor :subscription_id
 
+    # @return [String] Client API version.
+    attr_reader :api_version
+
     # @return [String] The preferred language for the response.
     attr_accessor :accept_language
 
@@ -55,6 +58,7 @@ module Azure::Network::Mgmt::V2017_03_30
 
       @network_interfaces = NetworkInterfaces.new(self)
       @public_ipaddresses = PublicIPAddresses.new(self)
+      @api_version = '2017-03-30'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -126,7 +130,7 @@ module Azure::Network::Mgmt::V2017_03_30
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.18.8"
+        sdk_information = "#{sdk_information}/0.18.9"
         add_user_agent_information(sdk_information)
     end
   end

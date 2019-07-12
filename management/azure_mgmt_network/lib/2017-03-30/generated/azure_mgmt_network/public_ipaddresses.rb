@@ -72,7 +72,7 @@ module Azure::Network::Mgmt::V2017_03_30
     def list_virtual_machine_scale_set_public_ipaddresses_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
-      api_version = '2017-03-30'
+      @client.api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -89,7 +89,7 @@ module Azure::Network::Mgmt::V2017_03_30
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'virtualMachineScaleSetName' => virtual_machine_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -184,7 +184,7 @@ module Azure::Network::Mgmt::V2017_03_30
       fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
       fail ArgumentError, 'ip_configuration_name is nil' if ip_configuration_name.nil?
-      api_version = '2017-03-30'
+      @client.api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -201,7 +201,7 @@ module Azure::Network::Mgmt::V2017_03_30
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'virtualMachineScaleSetName' => virtual_machine_scale_set_name,'virtualmachineIndex' => virtualmachine_index,'networkInterfaceName' => network_interface_name,'ipConfigurationName' => ip_configuration_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -300,7 +300,7 @@ module Azure::Network::Mgmt::V2017_03_30
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
       fail ArgumentError, 'ip_configuration_name is nil' if ip_configuration_name.nil?
       fail ArgumentError, 'public_ip_address_name is nil' if public_ip_address_name.nil?
-      api_version = '2017-03-30'
+      @client.api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -317,7 +317,7 @@ module Azure::Network::Mgmt::V2017_03_30
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'virtualMachineScaleSetName' => virtual_machine_scale_set_name,'virtualmachineIndex' => virtualmachine_index,'networkInterfaceName' => network_interface_name,'ipConfigurationName' => ip_configuration_name,'publicIpAddressName' => public_ip_address_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version,'$expand' => expand},
+          query_params: {'api-version' => @client.api_version,'$expand' => expand},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

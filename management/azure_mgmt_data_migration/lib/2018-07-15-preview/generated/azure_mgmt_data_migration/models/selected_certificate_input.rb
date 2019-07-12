@@ -6,7 +6,7 @@
 module Azure::DataMigration::Mgmt::V2018_07_15_preview
   module Models
     #
-    # Info for ertificate to be exported for TDE enabled databases.
+    # Info for certificate to be exported for TDE enabled databases.
     #
     class SelectedCertificateInput
 

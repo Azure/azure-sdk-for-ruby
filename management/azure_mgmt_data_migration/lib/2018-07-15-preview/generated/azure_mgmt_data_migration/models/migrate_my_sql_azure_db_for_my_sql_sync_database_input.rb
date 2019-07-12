@@ -20,6 +20,18 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       # truncated before starting migration.
       attr_accessor :target_database_name
 
+      # @return [Hash{String => String}] Migration settings which tune the
+      # migration behavior
+      attr_accessor :migration_setting
+
+      # @return [Hash{String => String}] Source settings to tune source
+      # endpoint migration behavior
+      attr_accessor :source_setting
+
+      # @return [Hash{String => String}] Target settings to tune target
+      # endpoint migration behavior
+      attr_accessor :target_setting
+
 
       #
       # Mapper for MigrateMySqlAzureDbForMySqlSyncDatabaseInput class as Ruby
@@ -49,6 +61,54 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                 serialized_name: 'targetDatabaseName',
                 type: {
                   name: 'String'
+                }
+              },
+              migration_setting: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'migrationSetting',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              source_setting: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sourceSetting',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              target_setting: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'targetSetting',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

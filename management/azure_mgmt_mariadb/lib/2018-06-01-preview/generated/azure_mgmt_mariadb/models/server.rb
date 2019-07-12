@@ -42,6 +42,16 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
       # @return [StorageProfile] Storage profile of a server.
       attr_accessor :storage_profile
 
+      # @return [String] The replication role of the server.
+      attr_accessor :replication_role
+
+      # @return [String] The master server id of a replica server.
+      attr_accessor :master_server_id
+
+      # @return [Integer] The maximum number of replicas that a master server
+      # can have.
+      attr_accessor :replica_capacity
+
 
       #
       # Mapper for Server class as Ruby Hash.
@@ -172,6 +182,33 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'StorageProfile'
+                }
+              },
+              replication_role: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.replicationRole',
+                type: {
+                  name: 'String'
+                }
+              },
+              master_server_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.masterServerId',
+                type: {
+                  name: 'String'
+                }
+              },
+              replica_capacity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.replicaCapacity',
+                constraints: {
+                  InclusiveMinimum: 0
+                },
+                type: {
+                  name: 'Number'
                 }
               }
             }

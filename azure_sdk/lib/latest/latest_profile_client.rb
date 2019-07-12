@@ -6,6 +6,7 @@ require 'latest/module_definition'
 require 'latest/modules/advisor_profile_module'
 require 'latest/modules/analysisservices_profile_module'
 require 'latest/modules/apimanagement_profile_module'
+require 'latest/modules/appconfiguration_profile_module'
 require 'latest/modules/authorization_profile_module'
 require 'latest/modules/automation_profile_module'
 require 'latest/modules/batch_profile_module'
@@ -50,6 +51,7 @@ require 'latest/modules/mediaservices_profile_module'
 require 'latest/modules/mixedreality_profile_module'
 require 'latest/modules/monitor_profile_module'
 require 'latest/modules/managedserviceidentity_profile_module'
+require 'latest/modules/mysql_profile_module'
 require 'latest/modules/netapp_profile_module'
 require 'latest/modules/network_profile_module'
 require 'latest/modules/notificationhubs_profile_module'
@@ -115,7 +117,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :advisor, :analysis_services, :api_management, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :postgresql, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :advisor, :analysis_services, :api_management, :appconfiguration, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :mysql, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :postgresql, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -150,6 +152,7 @@ module Azure::Profiles::Latest
       @advisor = AdvisorAdapter.new(self, base_url, sdk_options)
       @analysis_services = AnalysisServicesAdapter.new(self, base_url, sdk_options)
       @api_management = ApiManagementAdapter.new(self, base_url, sdk_options)
+      @appconfiguration = AppconfigurationAdapter.new(self, base_url, sdk_options)
       @authorization = AuthorizationAdapter.new(self, base_url, sdk_options)
       @automation = AutomationAdapter.new(self, base_url, sdk_options)
       @batch = BatchAdapter.new(self, base_url, sdk_options)
@@ -194,6 +197,7 @@ module Azure::Profiles::Latest
       @mixed_reality = MixedRealityAdapter.new(self, base_url, sdk_options)
       @monitor = MonitorAdapter.new(self, base_url, sdk_options)
       @managed_service_identity = ManagedServiceIdentityAdapter.new(self, base_url, sdk_options)
+      @mysql = MysqlAdapter.new(self, base_url, sdk_options)
       @net_app = NetAppAdapter.new(self, base_url, sdk_options)
       @network = NetworkAdapter.new(self, base_url, sdk_options)
       @notification_hubs = NotificationHubsAdapter.new(self, base_url, sdk_options)
@@ -274,6 +278,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::ApiManagement::Mgmt::ApiManagementManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class AppconfigurationAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Appconfiguration::Mgmt::AppconfigurationManagementClass.new(context, base_url, options)
       end
     end
 
@@ -627,6 +639,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::ManagedServiceIdentity::Mgmt::ManagedServiceIdentityManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class MysqlAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Mysql::Mgmt::MysqlManagementClass.new(context, base_url, options)
       end
     end
 

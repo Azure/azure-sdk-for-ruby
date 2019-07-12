@@ -44,6 +44,9 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
     # @return [Tasks] tasks
     attr_reader :tasks
 
+    # @return [ServiceTasks] service_tasks
+    attr_reader :service_tasks
+
     # @return [Projects] projects
     attr_reader :projects
 
@@ -72,6 +75,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       @resource_skus = ResourceSkus.new(self)
       @services = Services.new(self)
       @tasks = Tasks.new(self)
+      @service_tasks = ServiceTasks.new(self)
       @projects = Projects.new(self)
       @usages = Usages.new(self)
       @operations = Operations.new(self)
@@ -148,7 +152,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_data_migration'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end

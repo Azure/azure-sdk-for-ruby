@@ -16,6 +16,7 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
       @@discriminatorMap["Default"] = "ServerPropertiesForDefaultCreate"
       @@discriminatorMap["PointInTimeRestore"] = "ServerPropertiesForRestore"
       @@discriminatorMap["GeoRestore"] = "ServerPropertiesForGeoRestore"
+      @@discriminatorMap["Replica"] = "ServerPropertiesForReplica"
 
       def initialize
         @createMode = "ServerPropertiesForCreate"

@@ -22,6 +22,10 @@ module Azure::Postgresql::Mgmt::V2017_12_01_preview
       # @return [Integer] Max storage allowed for a server.
       attr_accessor :storage_mb
 
+      # @return [StorageAutogrow] Enable Storage Auto Grow. Possible values
+      # include: 'Enabled', 'Disabled'
+      attr_accessor :storage_autogrow
+
 
       #
       # Mapper for StorageProfile class as Ruby Hash.
@@ -58,6 +62,14 @@ module Azure::Postgresql::Mgmt::V2017_12_01_preview
                 serialized_name: 'storageMB',
                 type: {
                   name: 'Number'
+                }
+              },
+              storage_autogrow: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'storageAutogrow',
+                type: {
+                  name: 'String'
                 }
               }
             }

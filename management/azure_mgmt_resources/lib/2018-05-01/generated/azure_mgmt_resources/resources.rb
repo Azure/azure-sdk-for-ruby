@@ -26,8 +26,24 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # @param resource_group_name [String] The resource group with the resources to
     # get.
-    # @param filter [String] The filter to apply on the operation.
-    # @param expand [String] The $expand query parameter
+    # @param filter [String] The filter to apply on the operation.<br><br>The
+    # properties you can use for eq (equals) or ne (not equals) are: location,
+    # resourceType, name, resourceGroup, identity, identity/principalId, plan,
+    # plan/publisher, plan/product, plan/name, plan/version, and
+    # plan/promotionCode.<br><br>For example, to filter by a resource type, use:
+    # $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can
+    # use substringof(value, property) in the filter. The properties you can use
+    # for substring are: name and resourceGroup.<br><br>For example, to get all
+    # resources with 'demo' anywhere in the name, use: $filter=substringof('demo',
+    # name)<br><br>You can link more than one substringof together by adding and/or
+    # operators.<br><br>You can filter by tag names and values. For example, to
+    # filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+    # eq 'Value1'<br><br>You can use some properties together when filtering. The
+    # combinations you can use are: substringof and/or resourceType, plan and
+    # plan/publisher and plan/name, identity and identity/principalId.
+    # @param expand [String] The $expand query parameter. You can expand
+    # createdTime and changedTime. For example, to expand both properties, use
+    # $expand=changedTime,createdTime
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -45,8 +61,24 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # @param resource_group_name [String] The resource group with the resources to
     # get.
-    # @param filter [String] The filter to apply on the operation.
-    # @param expand [String] The $expand query parameter
+    # @param filter [String] The filter to apply on the operation.<br><br>The
+    # properties you can use for eq (equals) or ne (not equals) are: location,
+    # resourceType, name, resourceGroup, identity, identity/principalId, plan,
+    # plan/publisher, plan/product, plan/name, plan/version, and
+    # plan/promotionCode.<br><br>For example, to filter by a resource type, use:
+    # $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can
+    # use substringof(value, property) in the filter. The properties you can use
+    # for substring are: name and resourceGroup.<br><br>For example, to get all
+    # resources with 'demo' anywhere in the name, use: $filter=substringof('demo',
+    # name)<br><br>You can link more than one substringof together by adding and/or
+    # operators.<br><br>You can filter by tag names and values. For example, to
+    # filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+    # eq 'Value1'<br><br>You can use some properties together when filtering. The
+    # combinations you can use are: substringof and/or resourceType, plan and
+    # plan/publisher and plan/name, identity and identity/principalId.
+    # @param expand [String] The $expand query parameter. You can expand
+    # createdTime and changedTime. For example, to expand both properties, use
+    # $expand=changedTime,createdTime
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -63,8 +95,24 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # @param resource_group_name [String] The resource group with the resources to
     # get.
-    # @param filter [String] The filter to apply on the operation.
-    # @param expand [String] The $expand query parameter
+    # @param filter [String] The filter to apply on the operation.<br><br>The
+    # properties you can use for eq (equals) or ne (not equals) are: location,
+    # resourceType, name, resourceGroup, identity, identity/principalId, plan,
+    # plan/publisher, plan/product, plan/name, plan/version, and
+    # plan/promotionCode.<br><br>For example, to filter by a resource type, use:
+    # $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can
+    # use substringof(value, property) in the filter. The properties you can use
+    # for substring are: name and resourceGroup.<br><br>For example, to get all
+    # resources with 'demo' anywhere in the name, use: $filter=substringof('demo',
+    # name)<br><br>You can link more than one substringof together by adding and/or
+    # operators.<br><br>You can filter by tag names and values. For example, to
+    # filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+    # eq 'Value1'<br><br>You can use some properties together when filtering. The
+    # combinations you can use are: substringof and/or resourceType, plan and
+    # plan/publisher and plan/name, identity and identity/principalId.
+    # @param expand [String] The $expand query parameter. You can expand
+    # createdTime and changedTime. For example, to expand both properties, use
+    # $expand=changedTime,createdTime
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -227,8 +275,24 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # Get all the resources in a subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
-    # @param expand [String] The $expand query parameter.
+    # @param filter [String] The filter to apply on the operation.<br><br>The
+    # properties you can use for eq (equals) or ne (not equals) are: location,
+    # resourceType, name, resourceGroup, identity, identity/principalId, plan,
+    # plan/publisher, plan/product, plan/name, plan/version, and
+    # plan/promotionCode.<br><br>For example, to filter by a resource type, use:
+    # $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can
+    # use substringof(value, property) in the filter. The properties you can use
+    # for substring are: name and resourceGroup.<br><br>For example, to get all
+    # resources with 'demo' anywhere in the name, use: $filter=substringof('demo',
+    # name)<br><br>You can link more than one substringof together by adding and/or
+    # operators.<br><br>You can filter by tag names and values. For example, to
+    # filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+    # eq 'Value1'<br><br>You can use some properties together when filtering. The
+    # combinations you can use are: substringof and/or resourceType, plan and
+    # plan/publisher and plan/name, identity and identity/principalId.
+    # @param expand [String] The $expand query parameter. You can expand
+    # createdTime and changedTime. For example, to expand both properties, use
+    # $expand=changedTime,createdTime
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resource groups.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -244,8 +308,24 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # Get all the resources in a subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
-    # @param expand [String] The $expand query parameter.
+    # @param filter [String] The filter to apply on the operation.<br><br>The
+    # properties you can use for eq (equals) or ne (not equals) are: location,
+    # resourceType, name, resourceGroup, identity, identity/principalId, plan,
+    # plan/publisher, plan/product, plan/name, plan/version, and
+    # plan/promotionCode.<br><br>For example, to filter by a resource type, use:
+    # $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can
+    # use substringof(value, property) in the filter. The properties you can use
+    # for substring are: name and resourceGroup.<br><br>For example, to get all
+    # resources with 'demo' anywhere in the name, use: $filter=substringof('demo',
+    # name)<br><br>You can link more than one substringof together by adding and/or
+    # operators.<br><br>You can filter by tag names and values. For example, to
+    # filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+    # eq 'Value1'<br><br>You can use some properties together when filtering. The
+    # combinations you can use are: substringof and/or resourceType, plan and
+    # plan/publisher and plan/name, identity and identity/principalId.
+    # @param expand [String] The $expand query parameter. You can expand
+    # createdTime and changedTime. For example, to expand both properties, use
+    # $expand=changedTime,createdTime
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resource groups.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -260,8 +340,24 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # Get all the resources in a subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
-    # @param expand [String] The $expand query parameter.
+    # @param filter [String] The filter to apply on the operation.<br><br>The
+    # properties you can use for eq (equals) or ne (not equals) are: location,
+    # resourceType, name, resourceGroup, identity, identity/principalId, plan,
+    # plan/publisher, plan/product, plan/name, plan/version, and
+    # plan/promotionCode.<br><br>For example, to filter by a resource type, use:
+    # $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can
+    # use substringof(value, property) in the filter. The properties you can use
+    # for substring are: name and resourceGroup.<br><br>For example, to get all
+    # resources with 'demo' anywhere in the name, use: $filter=substringof('demo',
+    # name)<br><br>You can link more than one substringof together by adding and/or
+    # operators.<br><br>You can filter by tag names and values. For example, to
+    # filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+    # eq 'Value1'<br><br>You can use some properties together when filtering. The
+    # combinations you can use are: substringof and/or resourceType, plan and
+    # plan/publisher and plan/name, identity and identity/principalId.
+    # @param expand [String] The $expand query parameter. You can expand
+    # createdTime and changedTime. For example, to expand both properties, use
+    # $expand=changedTime,createdTime
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resource groups.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -2161,8 +2257,24 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # @param resource_group_name [String] The resource group with the resources to
     # get.
-    # @param filter [String] The filter to apply on the operation.
-    # @param expand [String] The $expand query parameter
+    # @param filter [String] The filter to apply on the operation.<br><br>The
+    # properties you can use for eq (equals) or ne (not equals) are: location,
+    # resourceType, name, resourceGroup, identity, identity/principalId, plan,
+    # plan/publisher, plan/product, plan/name, plan/version, and
+    # plan/promotionCode.<br><br>For example, to filter by a resource type, use:
+    # $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can
+    # use substringof(value, property) in the filter. The properties you can use
+    # for substring are: name and resourceGroup.<br><br>For example, to get all
+    # resources with 'demo' anywhere in the name, use: $filter=substringof('demo',
+    # name)<br><br>You can link more than one substringof together by adding and/or
+    # operators.<br><br>You can filter by tag names and values. For example, to
+    # filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+    # eq 'Value1'<br><br>You can use some properties together when filtering. The
+    # combinations you can use are: substringof and/or resourceType, plan and
+    # plan/publisher and plan/name, identity and identity/principalId.
+    # @param expand [String] The $expand query parameter. You can expand
+    # createdTime and changedTime. For example, to expand both properties, use
+    # $expand=changedTime,createdTime
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2185,8 +2297,24 @@ module Azure::Resources::Mgmt::V2018_05_01
     #
     # Get all the resources in a subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
-    # @param expand [String] The $expand query parameter.
+    # @param filter [String] The filter to apply on the operation.<br><br>The
+    # properties you can use for eq (equals) or ne (not equals) are: location,
+    # resourceType, name, resourceGroup, identity, identity/principalId, plan,
+    # plan/publisher, plan/product, plan/name, plan/version, and
+    # plan/promotionCode.<br><br>For example, to filter by a resource type, use:
+    # $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can
+    # use substringof(value, property) in the filter. The properties you can use
+    # for substring are: name and resourceGroup.<br><br>For example, to get all
+    # resources with 'demo' anywhere in the name, use: $filter=substringof('demo',
+    # name)<br><br>You can link more than one substringof together by adding and/or
+    # operators.<br><br>You can filter by tag names and values. For example, to
+    # filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+    # eq 'Value1'<br><br>You can use some properties together when filtering. The
+    # combinations you can use are: substringof and/or resourceType, plan and
+    # plan/publisher and plan/name, identity and identity/principalId.
+    # @param expand [String] The $expand query parameter. You can expand
+    # createdTime and changedTime. For example, to expand both properties, use
+    # $expand=changedTime,createdTime
     # @param top [Integer] The number of results to return. If null is passed,
     # returns all resource groups.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

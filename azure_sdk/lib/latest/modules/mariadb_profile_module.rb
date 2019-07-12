@@ -56,6 +56,7 @@ module Azure::Profiles::Latest
         SslEnforcementEnum = Azure::MariaDB::Mgmt::V2018_06_01::Models::SslEnforcementEnum
         ServerState = Azure::MariaDB::Mgmt::V2018_06_01::Models::ServerState
         GeoRedundantBackup = Azure::MariaDB::Mgmt::V2018_06_01::Models::GeoRedundantBackup
+        StorageAutogrow = Azure::MariaDB::Mgmt::V2018_06_01::Models::StorageAutogrow
         SkuTier = Azure::MariaDB::Mgmt::V2018_06_01::Models::SkuTier
         VirtualNetworkRuleState = Azure::MariaDB::Mgmt::V2018_06_01::Models::VirtualNetworkRuleState
         OperationOrigin = Azure::MariaDB::Mgmt::V2018_06_01::Models::OperationOrigin
@@ -209,6 +210,9 @@ module Azure::Profiles::Latest
           end
           def geo_redundant_backup
             Azure::MariaDB::Mgmt::V2018_06_01::Models::GeoRedundantBackup
+          end
+          def storage_autogrow
+            Azure::MariaDB::Mgmt::V2018_06_01::Models::StorageAutogrow
           end
           def sku_tier
             Azure::MariaDB::Mgmt::V2018_06_01::Models::SkuTier

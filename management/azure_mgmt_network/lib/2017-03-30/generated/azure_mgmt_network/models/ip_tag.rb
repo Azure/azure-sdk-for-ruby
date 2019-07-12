@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2017_03_30
   module Models
     #
-    # Contains the IpTag associated with the object
+    # Contains the IpTag associated with the object.
     #
     class IpTag
 
@@ -16,7 +16,7 @@ module Azure::Network::Mgmt::V2017_03_30
       attr_accessor :ip_tag_type
 
       # @return [String] Gets or sets value of the IpTag associated with the
-      # public IP. Example SQL, Storage etc
+      # public IP. Example SQL, Storage etc.
       attr_accessor :tag
 
 

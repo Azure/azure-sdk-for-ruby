@@ -16,7 +16,7 @@ module Azure::Network::Mgmt::V2017_03_30
       # references to IPs defined in network interfaces.
       attr_accessor :backend_ipconfigurations
 
-      # @return [Array<ApplicationGatewayBackendAddress>] Backend addresses
+      # @return [Array<ApplicationGatewayBackendAddress>] Backend addresses.
       attr_accessor :backend_addresses
 
       # @return [String] Provisioning state of the backend address pool

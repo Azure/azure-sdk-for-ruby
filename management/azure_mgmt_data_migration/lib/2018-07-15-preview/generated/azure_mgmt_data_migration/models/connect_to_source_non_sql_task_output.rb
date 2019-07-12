@@ -6,7 +6,7 @@
 module Azure::DataMigration::Mgmt::V2018_07_15_preview
   module Models
     #
-    # Output for connect to Oracle, MySQL type source
+    # Output for connect to MySQL type source
     #
     class ConnectToSourceNonSqlTaskOutput
 

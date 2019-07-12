@@ -22,7 +22,7 @@ module Azure::Postgresql::Mgmt::V2017_12_01
       attr_accessor :administrator_login_password
 
       # @return [ServerVersion] The version of a server. Possible values
-      # include: '9.5', '9.6', '10', '10.0', '10.2'
+      # include: '9.5', '9.6', '10', '10.0', '10.2', '11'
       attr_accessor :version
 
       # @return [SslEnforcementEnum] Enable ssl enforcement or not when connect

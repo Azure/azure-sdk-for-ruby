@@ -29,6 +29,9 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
       # to server. Possible values include: 'Enabled', 'Disabled'
       attr_accessor :ssl_enforcement
 
+      # @return [String] The replication role of the server.
+      attr_accessor :replication_role
+
       # @return [Hash{String => String}] Application-specific metadata in the
       # form of key-value pairs.
       attr_accessor :tags
@@ -88,6 +91,14 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Enum',
                   module: 'SslEnforcementEnum'
+                }
+              },
+              replication_role: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.replicationRole',
+                type: {
+                  name: 'String'
                 }
               },
               tags: {

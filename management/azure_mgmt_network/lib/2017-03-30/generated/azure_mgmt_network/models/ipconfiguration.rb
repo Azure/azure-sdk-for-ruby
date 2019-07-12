@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2017_03_30
   module Models
     #
-    # IP configuration
+    # IP configuration.
     #
     class IPConfiguration < SubResource
 

@@ -1,15 +1,17 @@
 {
     "management": [
-        "azure_mgmt_sqlvirtualmachine",
-        "azure_mgmt_hanaonazure",
-        "azure_mgmt_container_registry",
-        "azure_mgmt_netapp",
-        "azure_mgmt_cognitive_services",
-        "azure_mgmt_machine_learning_services",
-        "azure_mgmt_hdinsight"
+        "azure_mgmt_data_migration",
+        "azure_mgmt_appconfiguration",
+        "azure_mgmt_resourcegraph",
+        "azure_mgmt_cosmosdb",
+        "azure_mgmt_network",
+        "azure_mgmt_postgresql",
+        "azure_mgmt_mariadb",
+        "azure_mgmt_mysql",
+        "azure_mgmt_resources"
     ],
     "data": [
-        "azure_service_fabric"
+        "azure_cognitiveservices_face"
     ],
     "rollup": [
         "azure_sdk"

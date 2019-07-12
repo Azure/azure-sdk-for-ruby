@@ -11,6 +11,10 @@ module Azure::Postgresql::Mgmt::V2017_12_01_preview
     module ServerVersion
       NineFullStopFive = "9.5"
       NineFullStopSix = "9.6"
+      OneZero = "10"
+      OneZeroFullStopZero = "10.0"
+      OneZeroFullStopTwo = "10.2"
+      OneOne = "11"
     end
   end
 end

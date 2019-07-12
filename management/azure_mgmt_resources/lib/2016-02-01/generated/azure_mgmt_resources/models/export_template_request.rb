@@ -12,14 +12,14 @@ module Azure::Resources::Mgmt::V2016_02_01
 
       include MsRestAzure
 
-      # @return [Array<String>] The ids of the resources. The only supported
-      # string currently is '*' (all resources). Future api updates will
-      # support exporting specific resources.
+      # @return [Array<String>] The IDs of the resources to filter the export
+      # by. To export all resources, supply an array with single entry '*'.
       attr_accessor :resources
 
-      # @return [String] The export template options. Supported values include
-      # 'IncludeParameterDefaultValue', 'IncludeComments' or
-      # 'IncludeParameterDefaultValue, IncludeComments
+      # @return [String] The export template options. A CSV-formatted list
+      # containing zero or more of the following:
+      # 'IncludeParameterDefaultValue', 'IncludeComments',
+      # 'SkipResourceNameParameterization', 'SkipAllParameterization'
       attr_accessor :options
 
 

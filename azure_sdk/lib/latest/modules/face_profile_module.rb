@@ -74,6 +74,7 @@ module Azure::Profiles::Latest
       SnapshotObjectType = Azure::CognitiveServices::Face::V1_0::Models::SnapshotObjectType
       OperationStatusType = Azure::CognitiveServices::Face::V1_0::Models::OperationStatusType
       FaceAttributeType = Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+      DetectionModel = Azure::CognitiveServices::Face::V1_0::Models::DetectionModel
     end
 
     class FaceDataClass
@@ -286,6 +287,9 @@ module Azure::Profiles::Latest
         end
         def face_attribute_type
           Azure::CognitiveServices::Face::V1_0::Models::FaceAttributeType
+        end
+        def detection_model
+          Azure::CognitiveServices::Face::V1_0::Models::DetectionModel
         end
       end
     end

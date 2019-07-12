@@ -14,6 +14,7 @@ module Azure::Postgresql::Mgmt::V2017_12_01
       OneZero = "10"
       OneZeroFullStopZero = "10.0"
       OneZeroFullStopTwo = "10.2"
+      OneOne = "11"
     end
   end
 end

@@ -16,8 +16,7 @@ module Azure::Network::Mgmt::V2017_03_30
       attr_accessor :description
 
       # @return [SecurityRuleProtocol] Network protocol this rule applies to.
-      # Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'. Possible
-      # values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*'
+      # Possible values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*'
       attr_accessor :protocol
 
       # @return [String] The source port or range. Integer or range between 0

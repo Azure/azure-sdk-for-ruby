@@ -9,6 +9,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
     # Defines values for MySqlTargetPlatformType
     #
     module MySqlTargetPlatformType
+      SqlServer = "SqlServer"
       AzureDbForMySQL = "AzureDbForMySQL"
     end
   end

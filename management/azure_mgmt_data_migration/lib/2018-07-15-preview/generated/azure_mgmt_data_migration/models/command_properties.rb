@@ -14,6 +14,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["Migrate.SqlServer.AzureDbSqlMi.Complete"] = "MigrateMISyncCompleteCommandProperties"
       @@discriminatorMap["Migrate.Sync.Complete.Database"] = "MigrateSyncCompleteCommandProperties"
       @@discriminatorMap["cancel"] = "MongoDbCancelCommand"
       @@discriminatorMap["finish"] = "MongoDbFinishCommand"

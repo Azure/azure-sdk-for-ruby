@@ -26,8 +26,8 @@ module Azure::ResourceGraph::Mgmt::V2019_04_01
       # @return [Integer] Number of records returned in the facet response.
       attr_accessor :count
 
-      # @return [Table] A table containing the desired facets. Only present if
-      # the facet is valid.
+      # @return A table containing the desired facets. Only present if the
+      # facet is valid.
       attr_accessor :data
 
 
@@ -81,8 +81,7 @@ module Azure::ResourceGraph::Mgmt::V2019_04_01
                 required: true,
                 serialized_name: 'data',
                 type: {
-                  name: 'Composite',
-                  class_name: 'Table'
+                  name: 'Object'
                 }
               }
             }

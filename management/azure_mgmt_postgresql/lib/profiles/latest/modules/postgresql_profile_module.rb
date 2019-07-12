@@ -55,6 +55,7 @@ module Azure::Postgresql::Profiles::Latest
       SslEnforcementEnum = Azure::Postgresql::Mgmt::V2017_12_01::Models::SslEnforcementEnum
       ServerState = Azure::Postgresql::Mgmt::V2017_12_01::Models::ServerState
       GeoRedundantBackup = Azure::Postgresql::Mgmt::V2017_12_01::Models::GeoRedundantBackup
+      StorageAutogrow = Azure::Postgresql::Mgmt::V2017_12_01::Models::StorageAutogrow
       SkuTier = Azure::Postgresql::Mgmt::V2017_12_01::Models::SkuTier
       VirtualNetworkRuleState = Azure::Postgresql::Mgmt::V2017_12_01::Models::VirtualNetworkRuleState
       OperationOrigin = Azure::Postgresql::Mgmt::V2017_12_01::Models::OperationOrigin
@@ -223,6 +224,9 @@ module Azure::Postgresql::Profiles::Latest
       end
       def geo_redundant_backup
         Azure::Postgresql::Mgmt::V2017_12_01::Models::GeoRedundantBackup
+      end
+      def storage_autogrow
+        Azure::Postgresql::Mgmt::V2017_12_01::Models::StorageAutogrow
       end
       def sku_tier
         Azure::Postgresql::Mgmt::V2017_12_01::Models::SkuTier

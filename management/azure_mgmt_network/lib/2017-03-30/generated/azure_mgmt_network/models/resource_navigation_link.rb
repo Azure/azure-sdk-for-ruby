@@ -15,7 +15,7 @@ module Azure::Network::Mgmt::V2017_03_30
       # @return [String] Resource type of the linked resource.
       attr_accessor :linked_resource_type
 
-      # @return [String] Link to the external resource
+      # @return [String] Link to the external resource.
       attr_accessor :link
 
       # @return [String] Provisioning state of the ResourceNavigationLink
@@ -29,6 +29,9 @@ module Azure::Network::Mgmt::V2017_03_30
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag
+
+      # @return [String] Resource type.
+      attr_accessor :type
 
 
       #
@@ -90,6 +93,15 @@ module Azure::Network::Mgmt::V2017_03_30
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

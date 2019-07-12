@@ -89,5 +89,6 @@ module Azure::CognitiveServices::Face::V1_0
     autoload :SnapshotObjectType,                                 '1.0/generated/azure_cognitiveservices_face/models/snapshot_object_type.rb'
     autoload :OperationStatusType,                                '1.0/generated/azure_cognitiveservices_face/models/operation_status_type.rb'
     autoload :FaceAttributeType,                                  '1.0/generated/azure_cognitiveservices_face/models/face_attribute_type.rb'
+    autoload :DetectionModel,                                     '1.0/generated/azure_cognitiveservices_face/models/detection_model.rb'
   end
 end

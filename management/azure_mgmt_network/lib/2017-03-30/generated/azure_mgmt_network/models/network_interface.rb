@@ -19,9 +19,9 @@ module Azure::Network::Mgmt::V2017_03_30
       # NetworkSecurityGroup resource.
       attr_accessor :network_security_group
 
-      # @return [InterfaceEndpoint] A reference to the interface endpoint to
-      # which the network interface is linked.
-      attr_accessor :interface_endpoint
+      # @return [PrivateEndpoint] A reference to the private endpoint to which
+      # the network interface is linked.
+      attr_accessor :private_endpoint
 
       # @return [Array<NetworkInterfaceIPConfiguration>] A list of
       # IPConfigurations of the network interface.
@@ -51,7 +51,7 @@ module Azure::Network::Mgmt::V2017_03_30
       attr_accessor :enable_ipforwarding
 
       # @return [Array<String>] A list of references to linked BareMetal
-      # resources
+      # resources.
       attr_accessor :hosted_workloads
 
       # @return [String] The resource GUID property of the network interface
@@ -149,14 +149,14 @@ module Azure::Network::Mgmt::V2017_03_30
                   class_name: 'NetworkSecurityGroup'
                 }
               },
-              interface_endpoint: {
+              private_endpoint: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.interfaceEndpoint',
+                serialized_name: 'properties.privateEndpoint',
                 type: {
                   name: 'Composite',
-                  class_name: 'InterfaceEndpoint'
+                  class_name: 'PrivateEndpoint'
                 }
               },
               ip_configurations: {

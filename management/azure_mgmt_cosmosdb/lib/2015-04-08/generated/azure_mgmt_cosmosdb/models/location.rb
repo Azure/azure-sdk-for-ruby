@@ -34,6 +34,10 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       # account exists.
       attr_accessor :failover_priority
 
+      # @return [Boolean] Flag to indicate whether or not this region is an
+      # AvailabilityZone region
+      attr_accessor :is_zone_redundant
+
 
       #
       # Mapper for Location class as Ruby Hash.
@@ -91,6 +95,14 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              is_zone_redundant: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'isZoneRedundant',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
