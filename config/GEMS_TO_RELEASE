@@ -1,6 +1,5 @@
 {
     "management": [
-        "azure_mgmt_app_configuration",
         "azure_mgmt_adhybridhealth_service",
         "azure_mgmt_alerts_management",
         "azure_mgmt_azurestack",
