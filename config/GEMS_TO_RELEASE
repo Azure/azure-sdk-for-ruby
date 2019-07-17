@@ -10,7 +10,8 @@
         "azure_mgmt_data_factory",
         "azure_mgmt_migrate",
         "azure_mgmt_operations_management",
-        "azure_mgmt_powerbi_dedicated"
+        "azure_mgmt_powerbi_dedicated",
+        "azure_mgmt_network"
     ],
     "rollup": [
         "azure_sdk"
