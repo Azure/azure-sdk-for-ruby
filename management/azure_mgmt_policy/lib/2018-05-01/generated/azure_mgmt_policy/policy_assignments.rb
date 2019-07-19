@@ -136,6 +136,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -275,6 +277,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -400,6 +404,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -431,8 +437,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # assignments that apply to the resource group, which is everything in the
     # unfiltered list except those applied to resources contained within the
     # resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
-    # returned list includes only policy assignments that apply to the resource
-    # group and assign the policy definition whose id is {value}.
+    # returned list includes all policy assignments of the policy definition whose
+    # id is {value} that apply to the resource group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains policy assignments.
@@ -463,8 +469,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # assignments that apply to the resource group, which is everything in the
     # unfiltered list except those applied to resources contained within the
     # resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
-    # returned list includes only policy assignments that apply to the resource
-    # group and assign the policy definition whose id is {value}.
+    # returned list includes all policy assignments of the policy definition whose
+    # id is {value} that apply to the resource group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains policy assignments.
@@ -494,8 +500,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # assignments that apply to the resource group, which is everything in the
     # unfiltered list except those applied to resources contained within the
     # resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
-    # returned list includes only policy assignments that apply to the resource
-    # group and assign the policy definition whose id is {value}.
+    # returned list includes all policy assignments of the policy definition whose
+    # id is {value} that apply to the resource group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains policy assignments.
@@ -546,6 +552,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -576,13 +584,13 @@ module Azure::Policy::Mgmt::V2018_05_01
     # is provided, the returned list includes all policy assignments that apply to
     # the resource, which is everything in the unfiltered list except those applied
     # to resources contained within the resource. If $filter=policyDefinitionId eq
-    # '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the resource and assign the policy definition whose id is
-    # {value}. Three parameters plus the resource name are used to identify a
-    # specific resource. If the resource is not part of a parent resource (the more
-    # common case), the parent resource path should not be provided (or provided as
-    # ''). For example a web app could be specified as ({resourceProviderNamespace}
-    # == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
+    # '{value}' is provided, the returned list includes all policy assignments of
+    # the policy definition whose id is {value} that apply to the resource. Three
+    # parameters plus the resource name are used to identify a specific resource.
+    # If the resource is not part of a parent resource (the more common case), the
+    # parent resource path should not be provided (or provided as ''). For example
+    # a web app could be specified as ({resourceProviderNamespace} ==
+    # 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
     # {resourceName} == 'MyWebApp'). If the resource is part of a parent resource,
     # then all parameters should be provided. For example a virtual machine DNS
     # name could be specified as ({resourceProviderNamespace} ==
@@ -630,13 +638,13 @@ module Azure::Policy::Mgmt::V2018_05_01
     # is provided, the returned list includes all policy assignments that apply to
     # the resource, which is everything in the unfiltered list except those applied
     # to resources contained within the resource. If $filter=policyDefinitionId eq
-    # '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the resource and assign the policy definition whose id is
-    # {value}. Three parameters plus the resource name are used to identify a
-    # specific resource. If the resource is not part of a parent resource (the more
-    # common case), the parent resource path should not be provided (or provided as
-    # ''). For example a web app could be specified as ({resourceProviderNamespace}
-    # == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
+    # '{value}' is provided, the returned list includes all policy assignments of
+    # the policy definition whose id is {value} that apply to the resource. Three
+    # parameters plus the resource name are used to identify a specific resource.
+    # If the resource is not part of a parent resource (the more common case), the
+    # parent resource path should not be provided (or provided as ''). For example
+    # a web app could be specified as ({resourceProviderNamespace} ==
+    # 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
     # {resourceName} == 'MyWebApp'). If the resource is part of a parent resource,
     # then all parameters should be provided. For example a virtual machine DNS
     # name could be specified as ({resourceProviderNamespace} ==
@@ -683,13 +691,13 @@ module Azure::Policy::Mgmt::V2018_05_01
     # is provided, the returned list includes all policy assignments that apply to
     # the resource, which is everything in the unfiltered list except those applied
     # to resources contained within the resource. If $filter=policyDefinitionId eq
-    # '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the resource and assign the policy definition whose id is
-    # {value}. Three parameters plus the resource name are used to identify a
-    # specific resource. If the resource is not part of a parent resource (the more
-    # common case), the parent resource path should not be provided (or provided as
-    # ''). For example a web app could be specified as ({resourceProviderNamespace}
-    # == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
+    # '{value}' is provided, the returned list includes all policy assignments of
+    # the policy definition whose id is {value} that apply to the resource. Three
+    # parameters plus the resource name are used to identify a specific resource.
+    # If the resource is not part of a parent resource (the more common case), the
+    # parent resource path should not be provided (or provided as ''). For example
+    # a web app could be specified as ({resourceProviderNamespace} ==
+    # 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
     # {resourceName} == 'MyWebApp'). If the resource is part of a parent resource,
     # then all parameters should be provided. For example a virtual machine DNS
     # name could be specified as ({resourceProviderNamespace} ==
@@ -762,6 +770,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -792,9 +802,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # provided, the returned list includes all policy assignments that apply to the
     # subscription, which is everything in the unfiltered list except those applied
     # to objects contained within the subscription. If $filter=policyDefinitionId
-    # eq '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the subscription and assign the policy definition whose id is
-    # {value}.
+    # eq '{value}' is provided, the returned list includes all policy assignments
+    # of the policy definition whose id is {value}.
     #
     # @param filter [String] The filter to apply on the operation. Valid values for
     # $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter is
@@ -822,9 +831,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # provided, the returned list includes all policy assignments that apply to the
     # subscription, which is everything in the unfiltered list except those applied
     # to objects contained within the subscription. If $filter=policyDefinitionId
-    # eq '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the subscription and assign the policy definition whose id is
-    # {value}.
+    # eq '{value}' is provided, the returned list includes all policy assignments
+    # of the policy definition whose id is {value}.
     #
     # @param filter [String] The filter to apply on the operation. Valid values for
     # $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter is
@@ -851,9 +859,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # provided, the returned list includes all policy assignments that apply to the
     # subscription, which is everything in the unfiltered list except those applied
     # to objects contained within the subscription. If $filter=policyDefinitionId
-    # eq '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the subscription and assign the policy definition whose id is
-    # {value}.
+    # eq '{value}' is provided, the returned list includes all policy assignments
+    # of the policy definition whose id is {value}.
     #
     # @param filter [String] The filter to apply on the operation. Valid values for
     # $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter is
@@ -897,6 +904,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1023,6 +1032,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1169,6 +1180,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -1295,6 +1308,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1326,8 +1341,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # assignments that apply to the resource group, which is everything in the
     # unfiltered list except those applied to resources contained within the
     # resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
-    # returned list includes only policy assignments that apply to the resource
-    # group and assign the policy definition whose id is {value}.
+    # returned list includes all policy assignments of the policy definition whose
+    # id is {value} that apply to the resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1355,8 +1370,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # assignments that apply to the resource group, which is everything in the
     # unfiltered list except those applied to resources contained within the
     # resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
-    # returned list includes only policy assignments that apply to the resource
-    # group and assign the policy definition whose id is {value}.
+    # returned list includes all policy assignments of the policy definition whose
+    # id is {value} that apply to the resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1383,8 +1398,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # assignments that apply to the resource group, which is everything in the
     # unfiltered list except those applied to resources contained within the
     # resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
-    # returned list includes only policy assignments that apply to the resource
-    # group and assign the policy definition whose id is {value}.
+    # returned list includes all policy assignments of the policy definition whose
+    # id is {value} that apply to the resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1425,6 +1440,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1455,13 +1472,13 @@ module Azure::Policy::Mgmt::V2018_05_01
     # is provided, the returned list includes all policy assignments that apply to
     # the resource, which is everything in the unfiltered list except those applied
     # to resources contained within the resource. If $filter=policyDefinitionId eq
-    # '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the resource and assign the policy definition whose id is
-    # {value}. Three parameters plus the resource name are used to identify a
-    # specific resource. If the resource is not part of a parent resource (the more
-    # common case), the parent resource path should not be provided (or provided as
-    # ''). For example a web app could be specified as ({resourceProviderNamespace}
-    # == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
+    # '{value}' is provided, the returned list includes all policy assignments of
+    # the policy definition whose id is {value} that apply to the resource. Three
+    # parameters plus the resource name are used to identify a specific resource.
+    # If the resource is not part of a parent resource (the more common case), the
+    # parent resource path should not be provided (or provided as ''). For example
+    # a web app could be specified as ({resourceProviderNamespace} ==
+    # 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
     # {resourceName} == 'MyWebApp'). If the resource is part of a parent resource,
     # then all parameters should be provided. For example a virtual machine DNS
     # name could be specified as ({resourceProviderNamespace} ==
@@ -1498,13 +1515,13 @@ module Azure::Policy::Mgmt::V2018_05_01
     # is provided, the returned list includes all policy assignments that apply to
     # the resource, which is everything in the unfiltered list except those applied
     # to resources contained within the resource. If $filter=policyDefinitionId eq
-    # '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the resource and assign the policy definition whose id is
-    # {value}. Three parameters plus the resource name are used to identify a
-    # specific resource. If the resource is not part of a parent resource (the more
-    # common case), the parent resource path should not be provided (or provided as
-    # ''). For example a web app could be specified as ({resourceProviderNamespace}
-    # == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
+    # '{value}' is provided, the returned list includes all policy assignments of
+    # the policy definition whose id is {value} that apply to the resource. Three
+    # parameters plus the resource name are used to identify a specific resource.
+    # If the resource is not part of a parent resource (the more common case), the
+    # parent resource path should not be provided (or provided as ''). For example
+    # a web app could be specified as ({resourceProviderNamespace} ==
+    # 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
     # {resourceName} == 'MyWebApp'). If the resource is part of a parent resource,
     # then all parameters should be provided. For example a virtual machine DNS
     # name could be specified as ({resourceProviderNamespace} ==
@@ -1540,13 +1557,13 @@ module Azure::Policy::Mgmt::V2018_05_01
     # is provided, the returned list includes all policy assignments that apply to
     # the resource, which is everything in the unfiltered list except those applied
     # to resources contained within the resource. If $filter=policyDefinitionId eq
-    # '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the resource and assign the policy definition whose id is
-    # {value}. Three parameters plus the resource name are used to identify a
-    # specific resource. If the resource is not part of a parent resource (the more
-    # common case), the parent resource path should not be provided (or provided as
-    # ''). For example a web app could be specified as ({resourceProviderNamespace}
-    # == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
+    # '{value}' is provided, the returned list includes all policy assignments of
+    # the policy definition whose id is {value} that apply to the resource. Three
+    # parameters plus the resource name are used to identify a specific resource.
+    # If the resource is not part of a parent resource (the more common case), the
+    # parent resource path should not be provided (or provided as ''). For example
+    # a web app could be specified as ({resourceProviderNamespace} ==
+    # 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
     # {resourceName} == 'MyWebApp'). If the resource is part of a parent resource,
     # then all parameters should be provided. For example a virtual machine DNS
     # name could be specified as ({resourceProviderNamespace} ==
@@ -1597,6 +1614,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1627,9 +1646,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # provided, the returned list includes all policy assignments that apply to the
     # subscription, which is everything in the unfiltered list except those applied
     # to objects contained within the subscription. If $filter=policyDefinitionId
-    # eq '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the subscription and assign the policy definition whose id is
-    # {value}.
+    # eq '{value}' is provided, the returned list includes all policy assignments
+    # of the policy definition whose id is {value}.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1656,9 +1674,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # provided, the returned list includes all policy assignments that apply to the
     # subscription, which is everything in the unfiltered list except those applied
     # to objects contained within the subscription. If $filter=policyDefinitionId
-    # eq '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the subscription and assign the policy definition whose id is
-    # {value}.
+    # eq '{value}' is provided, the returned list includes all policy assignments
+    # of the policy definition whose id is {value}.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1684,9 +1701,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # provided, the returned list includes all policy assignments that apply to the
     # subscription, which is everything in the unfiltered list except those applied
     # to objects contained within the subscription. If $filter=policyDefinitionId
-    # eq '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the subscription and assign the policy definition whose id is
-    # {value}.
+    # eq '{value}' is provided, the returned list includes all policy assignments
+    # of the policy definition whose id is {value}.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1727,6 +1743,8 @@ module Azure::Policy::Mgmt::V2018_05_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1758,8 +1776,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # assignments that apply to the resource group, which is everything in the
     # unfiltered list except those applied to resources contained within the
     # resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
-    # returned list includes only policy assignments that apply to the resource
-    # group and assign the policy definition whose id is {value}.
+    # returned list includes all policy assignments of the policy definition whose
+    # id is {value} that apply to the resource group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains policy assignments.
@@ -1796,13 +1814,13 @@ module Azure::Policy::Mgmt::V2018_05_01
     # is provided, the returned list includes all policy assignments that apply to
     # the resource, which is everything in the unfiltered list except those applied
     # to resources contained within the resource. If $filter=policyDefinitionId eq
-    # '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the resource and assign the policy definition whose id is
-    # {value}. Three parameters plus the resource name are used to identify a
-    # specific resource. If the resource is not part of a parent resource (the more
-    # common case), the parent resource path should not be provided (or provided as
-    # ''). For example a web app could be specified as ({resourceProviderNamespace}
-    # == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
+    # '{value}' is provided, the returned list includes all policy assignments of
+    # the policy definition whose id is {value} that apply to the resource. Three
+    # parameters plus the resource name are used to identify a specific resource.
+    # If the resource is not part of a parent resource (the more common case), the
+    # parent resource path should not be provided (or provided as ''). For example
+    # a web app could be specified as ({resourceProviderNamespace} ==
+    # 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites',
     # {resourceName} == 'MyWebApp'). If the resource is part of a parent resource,
     # then all parameters should be provided. For example a virtual machine DNS
     # name could be specified as ({resourceProviderNamespace} ==
@@ -1857,9 +1875,8 @@ module Azure::Policy::Mgmt::V2018_05_01
     # provided, the returned list includes all policy assignments that apply to the
     # subscription, which is everything in the unfiltered list except those applied
     # to objects contained within the subscription. If $filter=policyDefinitionId
-    # eq '{value}' is provided, the returned list includes only policy assignments
-    # that apply to the subscription and assign the policy definition whose id is
-    # {value}.
+    # eq '{value}' is provided, the returned list includes all policy assignments
+    # of the policy definition whose id is {value}.
     #
     # @param filter [String] The filter to apply on the operation. Valid values for
     # $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter is
