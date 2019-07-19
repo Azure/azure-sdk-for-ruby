@@ -14,7 +14,7 @@ module Azure::Network::Mgmt::V2019_04_01
 
       # @return [Array<FrontendIPConfiguration>] An array of references to the
       # load balancer IP configurations.
-      attr_accessor :load_balancer_frontend_ipconfigurations
+      attr_accessor :load_balancer_frontend_ip_configurations
 
       # @return [Array<PrivateLinkServiceIpConfiguration>] An array of
       # references to the private link service IP configuration.
@@ -114,10 +114,10 @@ module Azure::Network::Mgmt::V2019_04_01
                   }
                 }
               },
-              load_balancer_frontend_ipconfigurations: {
+              load_balancer_frontend_ip_configurations: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.loadBalancerFrontendIPConfigurations',
+                serialized_name: 'properties.loadBalancerFrontendIpConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
