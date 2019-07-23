@@ -3,14 +3,19 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require 'latest/module_definition'
+require 'latest/modules/adhybridhealthservice_profile_module'
 require 'latest/modules/advisor_profile_module'
+require 'latest/modules/alertsmanagement_profile_module'
 require 'latest/modules/analysisservices_profile_module'
 require 'latest/modules/apimanagement_profile_module'
 require 'latest/modules/appconfiguration_profile_module'
 require 'latest/modules/authorization_profile_module'
 require 'latest/modules/automation_profile_module'
+require 'latest/modules/azurestack_profile_module'
 require 'latest/modules/batch_profile_module'
+require 'latest/modules/batchai_profile_module'
 require 'latest/modules/billing_profile_module'
+require 'latest/modules/botservice_profile_module'
 require 'latest/modules/cdn_profile_module'
 require 'latest/modules/cognitiveservices_profile_module'
 require 'latest/modules/commerce_profile_module'
@@ -20,10 +25,13 @@ require 'latest/modules/containerinstance_profile_module'
 require 'latest/modules/containerregistry_profile_module'
 require 'latest/modules/containerservice_profile_module'
 require 'latest/modules/cosmosdb_profile_module'
+require 'latest/modules/costmanagement_profile_module'
 require 'latest/modules/customerinsights_profile_module'
+require 'latest/modules/databox_profile_module'
 require 'latest/modules/datalakeanalytics_profile_module'
 require 'latest/modules/datalakestore_profile_module'
 require 'latest/modules/datamigration_profile_module'
+require 'latest/modules/datafactory_profile_module'
 require 'latest/modules/devspaces_profile_module'
 require 'latest/modules/devtestlabs_profile_module'
 require 'latest/modules/dns_profile_module'
@@ -48,6 +56,7 @@ require 'latest/modules/managedapplications_profile_module'
 require 'latest/modules/mariadb_profile_module'
 require 'latest/modules/marketplaceordering_profile_module'
 require 'latest/modules/mediaservices_profile_module'
+require 'latest/modules/migrate_profile_module'
 require 'latest/modules/mixedreality_profile_module'
 require 'latest/modules/monitor_profile_module'
 require 'latest/modules/managedserviceidentity_profile_module'
@@ -56,10 +65,12 @@ require 'latest/modules/netapp_profile_module'
 require 'latest/modules/network_profile_module'
 require 'latest/modules/notificationhubs_profile_module'
 require 'latest/modules/operationalinsights_profile_module'
+require 'latest/modules/operationsmanagement_profile_module'
 require 'latest/modules/policy_profile_module'
 require 'latest/modules/policyinsights_profile_module'
 require 'latest/modules/postgresql_profile_module'
 require 'latest/modules/powerbiembedded_profile_module'
+require 'latest/modules/powerbidedicated_profile_module'
 require 'latest/modules/privatedns_profile_module'
 require 'latest/modules/recoveryservices_profile_module'
 require 'latest/modules/recoveryservicesbackup_profile_module'
@@ -117,7 +128,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :advisor, :analysis_services, :api_management, :appconfiguration, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :customer_insights, :data_lake_analytics, :data_lake_store, :data_migration, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :mixed_reality, :monitor, :managed_service_identity, :mysql, :net_app, :network, :notification_hubs, :operational_insights, :policy, :policy_insights, :postgresql, :power_bi_embedded, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :adhybrid_health_service, :advisor, :alerts_management, :analysis_services, :api_management, :appconfiguration, :authorization, :automation, :azure_stack, :batch, :batch_ai, :billing, :bot_service, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :cost_management, :customer_insights, :data_box, :data_lake_analytics, :data_lake_store, :data_migration, :data_factory, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :migrate, :mixed_reality, :monitor, :managed_service_identity, :mysql, :net_app, :network, :notification_hubs, :operational_insights, :operations_management, :policy, :policy_insights, :postgresql, :power_bi_embedded, :power_bi_dedicated, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :stream_analytics, :subscriptions, :traffic_manager, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -149,14 +160,19 @@ module Azure::Profiles::Latest
       base_url = options[:base_url].nil? ? nil:options[:base_url]
       sdk_options = options[:options].nil? ? nil:options[:options]
 
+      @adhybrid_health_service = ADHybridHealthServiceAdapter.new(self, base_url, sdk_options)
       @advisor = AdvisorAdapter.new(self, base_url, sdk_options)
+      @alerts_management = AlertsManagementAdapter.new(self, base_url, sdk_options)
       @analysis_services = AnalysisServicesAdapter.new(self, base_url, sdk_options)
       @api_management = ApiManagementAdapter.new(self, base_url, sdk_options)
       @appconfiguration = AppconfigurationAdapter.new(self, base_url, sdk_options)
       @authorization = AuthorizationAdapter.new(self, base_url, sdk_options)
       @automation = AutomationAdapter.new(self, base_url, sdk_options)
+      @azure_stack = AzureStackAdapter.new(self, base_url, sdk_options)
       @batch = BatchAdapter.new(self, base_url, sdk_options)
+      @batch_ai = BatchAIAdapter.new(self, base_url, sdk_options)
       @billing = BillingAdapter.new(self, base_url, sdk_options)
+      @bot_service = BotServiceAdapter.new(self, base_url, sdk_options)
       @cdn = CDNAdapter.new(self, base_url, sdk_options)
       @cognitive_services = CognitiveServicesAdapter.new(self, base_url, sdk_options)
       @commerce = CommerceAdapter.new(self, base_url, sdk_options)
@@ -166,10 +182,13 @@ module Azure::Profiles::Latest
       @container_registry = ContainerRegistryAdapter.new(self, base_url, sdk_options)
       @container_service = ContainerServiceAdapter.new(self, base_url, sdk_options)
       @cosmosdb = CosmosdbAdapter.new(self, base_url, sdk_options)
+      @cost_management = CostManagementAdapter.new(self, base_url, sdk_options)
       @customer_insights = CustomerInsightsAdapter.new(self, base_url, sdk_options)
+      @data_box = DataBoxAdapter.new(self, base_url, sdk_options)
       @data_lake_analytics = DataLakeAnalyticsAdapter.new(self, base_url, sdk_options)
       @data_lake_store = DataLakeStoreAdapter.new(self, base_url, sdk_options)
       @data_migration = DataMigrationAdapter.new(self, base_url, sdk_options)
+      @data_factory = DataFactoryAdapter.new(self, base_url, sdk_options)
       @dev_spaces = DevSpacesAdapter.new(self, base_url, sdk_options)
       @dev_test_labs = DevTestLabsAdapter.new(self, base_url, sdk_options)
       @dns = DnsAdapter.new(self, base_url, sdk_options)
@@ -194,6 +213,7 @@ module Azure::Profiles::Latest
       @maria_db = MariaDBAdapter.new(self, base_url, sdk_options)
       @marketplace_ordering = MarketplaceOrderingAdapter.new(self, base_url, sdk_options)
       @media_services = MediaServicesAdapter.new(self, base_url, sdk_options)
+      @migrate = MigrateAdapter.new(self, base_url, sdk_options)
       @mixed_reality = MixedRealityAdapter.new(self, base_url, sdk_options)
       @monitor = MonitorAdapter.new(self, base_url, sdk_options)
       @managed_service_identity = ManagedServiceIdentityAdapter.new(self, base_url, sdk_options)
@@ -202,10 +222,12 @@ module Azure::Profiles::Latest
       @network = NetworkAdapter.new(self, base_url, sdk_options)
       @notification_hubs = NotificationHubsAdapter.new(self, base_url, sdk_options)
       @operational_insights = OperationalInsightsAdapter.new(self, base_url, sdk_options)
+      @operations_management = OperationsManagementAdapter.new(self, base_url, sdk_options)
       @policy = PolicyAdapter.new(self, base_url, sdk_options)
       @policy_insights = PolicyInsightsAdapter.new(self, base_url, sdk_options)
       @postgresql = PostgresqlAdapter.new(self, base_url, sdk_options)
       @power_bi_embedded = PowerBiEmbeddedAdapter.new(self, base_url, sdk_options)
+      @power_bi_dedicated = PowerBiDedicatedAdapter.new(self, base_url, sdk_options)
       @private_dns = PrivateDnsAdapter.new(self, base_url, sdk_options)
       @recovery_services = RecoveryServicesAdapter.new(self, base_url, sdk_options)
       @recovery_services_backup = RecoveryServicesBackupAdapter.new(self, base_url, sdk_options)
@@ -257,11 +279,27 @@ module Azure::Profiles::Latest
       @visual_search = VisualSearchAdapter.new(self, base_url, sdk_options)
     end
 
+    class ADHybridHealthServiceAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ADHybridHealthService::Mgmt::ADHybridHealthServiceManagementClass.new(context, base_url, options)
+      end
+    end
+
     class AdvisorAdapter
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::Advisor::Mgmt::AdvisorManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class AlertsManagementAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::AlertsManagement::Mgmt::AlertsManagementManagementClass.new(context, base_url, options)
       end
     end
 
@@ -305,6 +343,14 @@ module Azure::Profiles::Latest
       end
     end
 
+    class AzureStackAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::AzureStack::Mgmt::AzureStackManagementClass.new(context, base_url, options)
+      end
+    end
+
     class BatchAdapter
       attr_accessor :mgmt
 
@@ -313,11 +359,27 @@ module Azure::Profiles::Latest
       end
     end
 
+    class BatchAIAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::BatchAI::Mgmt::BatchAIManagementClass.new(context, base_url, options)
+      end
+    end
+
     class BillingAdapter
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::Billing::Mgmt::BillingManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class BotServiceAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::BotService::Mgmt::BotServiceManagementClass.new(context, base_url, options)
       end
     end
 
@@ -393,11 +455,27 @@ module Azure::Profiles::Latest
       end
     end
 
+    class CostManagementAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::CostManagement::Mgmt::CostManagementManagementClass.new(context, base_url, options)
+      end
+    end
+
     class CustomerInsightsAdapter
       attr_accessor :mgmt
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::CustomerInsights::Mgmt::CustomerInsightsManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class DataBoxAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::DataBox::Mgmt::DataBoxManagementClass.new(context, base_url, options)
       end
     end
 
@@ -422,6 +500,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::DataMigration::Mgmt::DataMigrationManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class DataFactoryAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::DataFactory::Mgmt::DataFactoryManagementClass.new(context, base_url, options)
       end
     end
 
@@ -618,6 +704,14 @@ module Azure::Profiles::Latest
       end
     end
 
+    class MigrateAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Migrate::Mgmt::MigrateManagementClass.new(context, base_url, options)
+      end
+    end
+
     class MixedRealityAdapter
       attr_accessor :mgmt
 
@@ -682,6 +776,14 @@ module Azure::Profiles::Latest
       end
     end
 
+    class OperationsManagementAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::OperationsManagement::Mgmt::OperationsManagementManagementClass.new(context, base_url, options)
+      end
+    end
+
     class PolicyAdapter
       attr_accessor :mgmt
 
@@ -711,6 +813,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::PowerBiEmbedded::Mgmt::PowerBiEmbeddedManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class PowerBiDedicatedAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::PowerBiDedicated::Mgmt::PowerBiDedicatedManagementClass.new(context, base_url, options)
       end
     end
 

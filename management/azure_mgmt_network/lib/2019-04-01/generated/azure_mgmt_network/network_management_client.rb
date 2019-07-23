@@ -53,13 +53,6 @@ module Azure::Network::Mgmt::V2019_04_01
     # available_resource_group_delegations
     attr_reader :available_resource_group_delegations
 
-    # @return [AvailablePrivateEndpointTypes] available_private_endpoint_types
-    attr_reader :available_private_endpoint_types
-
-    # @return [AvailableResourceGroupPrivateEndpointTypes]
-    # available_resource_group_private_endpoint_types
-    attr_reader :available_resource_group_private_endpoint_types
-
     # @return [AzureFirewalls] azure_firewalls
     attr_reader :azure_firewalls
 
@@ -123,6 +116,9 @@ module Azure::Network::Mgmt::V2019_04_01
 
     # @return [PrivateEndpoints] private_endpoints
     attr_reader :private_endpoints
+
+    # @return [AvailablePrivateEndpointTypes] available_private_endpoint_types
+    attr_reader :available_private_endpoint_types
 
     # @return [PrivateLinkServices] private_link_services
     attr_reader :private_link_services
@@ -305,8 +301,6 @@ module Azure::Network::Mgmt::V2019_04_01
       @application_security_groups = ApplicationSecurityGroups.new(self)
       @available_delegations = AvailableDelegations.new(self)
       @available_resource_group_delegations = AvailableResourceGroupDelegations.new(self)
-      @available_private_endpoint_types = AvailablePrivateEndpointTypes.new(self)
-      @available_resource_group_private_endpoint_types = AvailableResourceGroupPrivateEndpointTypes.new(self)
       @azure_firewalls = AzureFirewalls.new(self)
       @azure_firewall_fqdn_tags = AzureFirewallFqdnTags.new(self)
       @bastion_hosts = BastionHosts.new(self)
@@ -327,6 +321,7 @@ module Azure::Network::Mgmt::V2019_04_01
       @express_route_ports = ExpressRoutePorts.new(self)
       @express_route_links = ExpressRouteLinks.new(self)
       @private_endpoints = PrivateEndpoints.new(self)
+      @available_private_endpoint_types = AvailablePrivateEndpointTypes.new(self)
       @private_link_services = PrivateLinkServices.new(self)
       @load_balancers = LoadBalancers.new(self)
       @load_balancer_backend_address_pools = LoadBalancerBackendAddressPools.new(self)
@@ -649,7 +644,7 @@ module Azure::Network::Mgmt::V2019_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.18.9"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

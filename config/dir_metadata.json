@@ -1,9 +1,23 @@
 {
+  "Microsoft.ADHybridHealthService": {
+    "management": {
+      "path": "management/azure_mgmt_adhybridhealth_service",
+      "namespace": "Azure::ADHybridHealthService::Mgmt",
+      "module_require": "azure_mgmt_adhybridhealth_service"
+    }
+  },
   "Microsoft.Advisor": {
     "management": {
       "path": "management/azure_mgmt_advisor",
       "namespace": "Azure::Advisor::Mgmt",
       "module_require": "azure_mgmt_advisor"
+    }
+  },
+  "Microsoft.AlertsManagement": {
+    "management": {
+      "path": "management/azure_mgmt_alerts_management",
+      "namespace": "Azure::AlertsManagement::Mgmt",
+      "module_require": "azure_mgmt_alerts_management"
     }
   },
   "Microsoft.AnalysisServices": {
@@ -41,6 +55,13 @@
       "module_require": "azure_mgmt_automation"
     }
   },
+  "Microsoft.AzureStack": {
+    "management": {
+      "path": "management/azure_mgmt_azurestack",
+      "namespace": "Azure::AzureStack::Mgmt",
+      "module_require": "azure_mgmt_azurestack"
+    }
+  },
   "Microsoft.Batch": {
     "management": {
       "path": "management/azure_mgmt_batch",
@@ -48,11 +69,25 @@
       "module_require": "azure_mgmt_batch"
     }
   },
+  "Microsoft.BatchAI": {
+    "management": {
+      "path": "management/azure_mgmt_batchai",
+      "namespace": "Azure::BatchAI::Mgmt",
+      "module_require": "azure_mgmt_batchai"
+    }
+  },
   "Microsoft.Billing": {
     "management": {
       "path": "management/azure_mgmt_billing",
       "namespace": "Azure::Billing::Mgmt",
       "module_require": "azure_mgmt_billing"
+    }
+  },
+  "Microsoft.BotService": {
+    "management": {
+      "path": "management/azure_mgmt_bot_service",
+      "namespace": "Azure::BotService::Mgmt",
+      "module_require": "azure_mgmt_bot_service"
     }
   },
   "Microsoft.CDN": {
@@ -118,11 +153,25 @@
       "module_require": "azure_mgmt_cosmosdb"
     }
   },
+  "Microsoft.CostManagement": {
+    "management": {
+      "path": "management/azure_mgmt_cost_management",
+      "namespace": "Azure::CostManagement::Mgmt",
+      "module_require": "azure_mgmt_cost_management"
+    }
+  },
   "Microsoft.CustomerInsights": {
     "management": {
       "path": "management/azure_mgmt_customer_insights",
       "namespace": "Azure::CustomerInsights::Mgmt",
       "module_require": "azure_mgmt_customer_insights"
+    }
+  },
+  "Microsoft.DataBox": {
+    "management": {
+      "path": "management/azure_mgmt_databox",
+      "namespace": "Azure::DataBox::Mgmt",
+      "module_require": "azure_mgmt_databox"
     }
   },
   "Microsoft.DataLakeAnalytics": {
@@ -144,6 +193,13 @@
       "path": "management/azure_mgmt_data_migration",
       "namespace": "Azure::DataMigration::Mgmt",
       "module_require": "azure_mgmt_data_migration"
+    }
+  },
+  "Microsoft.DataFactory":{
+    "management": {
+      "path": "management/azure_mgmt_data_factory",
+      "namespace": "Azure::DataFactory::Mgmt",
+      "module_require": "azure_mgmt_data_factory"
     }
   },
   "Microsoft.DevSpaces": {
@@ -331,6 +387,13 @@
       "module_require": "azure_mgmt_media_services"
     }
   },
+  "Microsoft.Migrate": {
+    "management": {
+      "path": "management/azure_mgmt_migrate",
+      "namespace": "Azure::Migrate::Mgmt",
+      "module_require": "azure_mgmt_migrate"
+    }
+  },
   "Microsoft.MixedReality": {
     "management": {
       "path": "management/azure_mgmt_mixedreality",
@@ -394,6 +457,13 @@
       "module_require": "azure_mgmt_operational_insights"
     }
   },
+  "Microsoft.OperationsManagement": {
+    "management": {
+      "path": "management/azure_mgmt_operations_management",
+      "namespace": "Azure::OperationsManagement::Mgmt",
+      "module_require": "azure_mgmt_operations_management"
+    }
+  },
   "Microsoft.Policy": {
     "management": {
       "path": "management/azure_mgmt_policy",
@@ -420,6 +490,13 @@
       "path": "management/azure_mgmt_powerbi_embedded",
       "namespace": "Azure::PowerBiEmbedded::Mgmt",
       "module_require": "azure_mgmt_powerbi_embedded"
+    }
+  },
+  "Microsoft.PowerBiDedicated": {
+    "management": {
+      "path": "management/azure_mgmt_powerbi_dedicated",
+      "namespace": "Azure::PowerBiDedicated::Mgmt",
+      "module_require": "azure_mgmt_powerbi_dedicated"
     }
   },
   "Microsoft.PrivateDns": {

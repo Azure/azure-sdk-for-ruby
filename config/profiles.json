@@ -217,9 +217,19 @@
         {
             "name": "Latest",
             "resourceTypes": {
+                "Microsoft.ADHybridHealthService": {
+                    "management": {
+                        "2014-01-01": ["*"]
+                    }
+                },
                 "Microsoft.Advisor": {
                     "management": {
                         "2017-04-19": ["*"]
+                    }
+                },
+                "Microsoft.AlertsManagement": {
+                    "management": {
+                        "2019-05-05-preview": ["*"]
                     }
                 },
                 "Microsoft.AnalysisServices": {
@@ -250,14 +260,29 @@
                         "2015-10-31": ["*"]
                     }
                 },
+                "Microsoft.AzureStack": {
+                    "management": {
+                        "2017-06-01": ["*"]
+                    }
+                },
                 "Microsoft.Batch": {
                     "management": {
                         "2017-09-01": ["*"]
                     }
                 },
+                "Microsoft.BatchAI": {
+                    "management": {
+                        "2018-05-01": ["*"]
+                    }
+                },
                 "Microsoft.Billing": {
                     "management": {
                         "2018-03-01-preview": ["*"]
+                    }
+                },
+                "Microsoft.BotService" : {
+                    "management": {
+                        "2018-07-12-preview": ["*"]
                     }
                 },
                 "Microsoft.CDN": {
@@ -310,9 +335,19 @@
                         "2015-04-08": ["*"]
                     }
                 },
+                "Microsoft.CostManagement": {
+                    "management": {
+                        "2019-04-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.CustomerInsights": {
                     "management": {
                         "2017-04-26": ["*"]
+                    }
+                },
+                "Microsoft.DataBox": {
+                    "management": {
+                        "2018-01-01": ["*"]
                     }
                 },
                 "Microsoft.DataLakeAnalytics": {
@@ -328,6 +363,11 @@
                 "Microsoft.DataMigration": {
                     "management": {
                         "2018-07-15-preview": ["*"]
+                    }
+                },
+                "Microsoft.DataFactory" : {
+                    "management": {
+                        "2018-06-01": ["*"]
                     }
                 },
                 "Microsoft.DevSpaces": {
@@ -456,6 +496,11 @@
                         "2018-07-01": ["*"]
                     }
                 },
+                "Microsoft.Migrate" : {
+                    "management": {
+                        "2018-02-02": ["*"]
+                    }
+                },
                 "Microsoft.MixedReality": {
                     "management": {
                         "2019-02-28-preview": ["*"]
@@ -494,7 +539,7 @@
                 "Microsoft.Network": {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2019-04-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -508,9 +553,14 @@
                         "2015-11-01-preview": ["*"]
                     }
                 },
+                "Microsoft.OperationsManagement" : {
+                    "management": {
+                        "2015-11-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Policy": {
                     "management": {
-                        "2018-05-01": ["*"]
+                        "2019-01-01": ["*"]
                     }
                 },
                 "Microsoft.PolicyInsights": {
@@ -527,6 +577,11 @@
                 "Microsoft.PowerBiEmbedded": {
                     "management": {
                         "2016-01-29": ["*"]
+                    }
+                },
+                "Microsoft.PowerBiDedicated" : {
+                    "management": {
+                        "2017-10-01": ["*"]
                     }
                 },
                 "Microsoft.PrivateDns": {
@@ -790,6 +845,20 @@
         ]
     },
     "management" : {
+        "azure_mgmt_adhybridhealth_service": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.ADHybridHealthService": {
+                        "management": {
+                            "2014-01-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_adhybridhealth_service/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_advisor": [
         {
             "name": "Latest",
@@ -803,6 +872,20 @@
             "output_dir": "management/azure_mgmt_advisor/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_alerts_management": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.AlertsManagement": {
+                        "management": {
+                            "2019-05-05-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_alerts_management/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_analysis_services": [
         {
@@ -914,6 +997,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_azurestack": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.AzureStack" : {
+                        "management": {
+                            "2017-06-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_azurestack/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_batch": [
         {
             "name": "Latest",
@@ -928,6 +1025,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_batchai": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.BatchAI" : {
+                        "management": {
+                            "2018-05-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_batchai/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_billing": [
         {
             "name": "Latest",
@@ -941,6 +1052,20 @@
             "output_dir": "management/azure_mgmt_billing/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_bot_service": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.BotService" : {
+                        "management": {
+                            "2018-07-12-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_bot_service/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_cdn": [
         {
@@ -1110,6 +1235,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_cost_management": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CostManagement": {
+                        "management": {
+                            "2019-04-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_cost_management/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_customer_insights": [
         {
             "name": "Latest",
@@ -1123,6 +1262,20 @@
             "output_dir": "management/azure_mgmt_customer_insights/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_databox": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DataBox" : {
+                        "management": {
+                            "2018-01-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_databox/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_datalake_analytics": [
         {
@@ -1151,6 +1304,20 @@
             "output_dir": "management/azure_mgmt_datalake_store/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_data_factory": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DataFactory" : {
+                        "management": {
+                            "2018-06-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_data_factory/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_dev_spaces": [
             {
@@ -1620,6 +1787,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_migrate": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.Migrate" : {
+                        "management": {
+                            "2018-02-02": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_migrate/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_mixedreality": [
         {
             "name": "Latest",
@@ -1759,7 +1940,7 @@
                 "Microsoft.Network" : {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2019-04-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 }
             },
@@ -1795,6 +1976,20 @@
             "output_dir": "management/azure_mgmt_operational_insights/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_operations_management": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.OperationsManagement" : {
+                        "management": {
+                            "2015-11-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_operations_management/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_policy": [
         {
@@ -1838,7 +2033,7 @@
             "resourceTypes": {
                 "Microsoft.Policy" : {
                     "management": {
-                        "2018-05-01": ["*"]
+                        "2019-01-01": ["*"]
                     }
                 }
             },
@@ -1888,6 +2083,20 @@
             "output_dir": "management/azure_mgmt_powerbi_embedded/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_powerbi_dedicated": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.PowerBiDedicated" : {
+                        "management": {
+                            "2017-10-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_powerbi_dedicated/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_privatedns": [
         {

@@ -190,9 +190,6 @@ module Azure::Network::Mgmt::V2018_11_01
     # @return [Routes] routes
     attr_reader :routes
 
-    # @return [BgpServiceCommunities] bgp_service_communities
-    attr_reader :bgp_service_communities
-
     # @return [ServiceEndpointPolicies] service_endpoint_policies
     attr_reader :service_endpoint_policies
 
@@ -313,7 +310,6 @@ module Azure::Network::Mgmt::V2018_11_01
       @route_filter_rules = RouteFilterRules.new(self)
       @route_tables = RouteTables.new(self)
       @routes = Routes.new(self)
-      @bgp_service_communities = BgpServiceCommunities.new(self)
       @service_endpoint_policies = ServiceEndpointPolicies.new(self)
       @service_endpoint_policy_definitions = ServiceEndpointPolicyDefinitions.new(self)
       @usages = Usages.new(self)
@@ -602,7 +598,7 @@ module Azure::Network::Mgmt::V2018_11_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.18.9"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

@@ -1,3 +1,19 @@
+## 2019.07.23 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_adhybridhealth_service - v0.17.0
+    - azure_mgmt_alerts_management - v0.17.0
+    - azure_mgmt_azurestack - v0.17.0
+    - azure_mgmt_batchai - v0.17.0
+    - azure_mgmt_bot_service - v0.17.0	     
+    - azure_mgmt_cost_management - v0.17.0
+    - azure_mgmt_databox - v0.17.0	 
+    - azure_mgmt_data_factory  - v0.17.0  
+    - azure_mgmt_migrate - v0.17.0
+    - azure_mgmt_operations_management - v0.17.0	      
+    - azure_mgmt_powerbi_dedicated - v0.17.0 
+    - azure_mgmt_network - v0.19.0   
+    - azure_mgmt_policy - v0.17.5   
+    - azure_sdk - v0.30.0
 ## 2019.06.05 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_event_grid - v0.17.6

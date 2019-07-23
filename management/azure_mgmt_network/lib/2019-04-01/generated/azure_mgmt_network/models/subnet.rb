@@ -67,6 +67,12 @@ module Azure::Network::Mgmt::V2019_04_01
       # @return [String] The provisioning state of the resource.
       attr_accessor :provisioning_state
 
+      # @return [String] Enable or Disable private end point on the subnet.
+      attr_accessor :private_endpoint_network_policies
+
+      # @return [String] Enable or Disable private link service on the subnet.
+      attr_accessor :private_link_service_network_policies
+
       # @return [String] The name of the resource that is unique within a
       # resource group. This name can be used to access the resource.
       attr_accessor :name
@@ -300,6 +306,22 @@ module Azure::Network::Mgmt::V2019_04_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              private_endpoint_network_policies: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.privateEndpointNetworkPolicies',
+                type: {
+                  name: 'String'
+                }
+              },
+              private_link_service_network_policies: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.privateLinkServiceNetworkPolicies',
                 type: {
                   name: 'String'
                 }

@@ -12,6 +12,9 @@ module Azure::Network::Mgmt::V2019_04_01
 
       include MsRestAzure
 
+      # @return [String] The name of the service and resource.
+      attr_accessor :name
+
       # @return [String] A unique identifier of the AvailablePrivateEndpoint
       # Type resource.
       attr_accessor :id
@@ -20,7 +23,7 @@ module Azure::Network::Mgmt::V2019_04_01
       attr_accessor :type
 
       # @return [String] The name of the service and resource.
-      attr_accessor :service_name
+      attr_accessor :resource_name
 
 
       #
@@ -36,6 +39,14 @@ module Azure::Network::Mgmt::V2019_04_01
             name: 'Composite',
             class_name: 'AvailablePrivateEndpointType',
             model_properties: {
+              name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
               id: {
                 client_side_validation: true,
                 required: false,
@@ -52,10 +63,10 @@ module Azure::Network::Mgmt::V2019_04_01
                   name: 'String'
                 }
               },
-              service_name: {
+              resource_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'serviceName',
+                serialized_name: 'resourceName',
                 type: {
                   name: 'String'
                 }
