@@ -112,6 +112,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -224,6 +226,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -322,6 +326,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -425,6 +431,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -526,6 +534,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -534,7 +544,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Modify properties of schedules.
+    # Allows modifying tags of schedules. All other properties will be ignored.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the schedule.
@@ -550,7 +560,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Modify properties of schedules.
+    # Allows modifying tags of schedules. All other properties will be ignored.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the schedule.
@@ -565,7 +575,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Modify properties of schedules.
+    # Allows modifying tags of schedules. All other properties will be ignored.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the schedule.
@@ -619,6 +629,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -791,6 +803,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -889,6 +903,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -967,6 +983,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1055,6 +1073,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

@@ -11,6 +11,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     module VirtualMachineCreationSource
       FromCustomImage = "FromCustomImage"
       FromGalleryImage = "FromGalleryImage"
+      FromSharedGalleryImage = "FromSharedGalleryImage"
     end
   end
 end

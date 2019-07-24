@@ -14,7 +14,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
 
       # @return [StorageType] Type of storage used by the lab. It can be either
       # Premium or Standard. Default is Premium. Possible values include:
-      # 'Standard', 'Premium'
+      # 'Standard', 'Premium', 'StandardSSD'
       attr_accessor :lab_storage_type
 
       # @return [Array<String>] The ordered list of artifact resource IDs that

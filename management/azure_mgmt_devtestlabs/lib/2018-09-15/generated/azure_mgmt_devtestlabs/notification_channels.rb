@@ -120,6 +120,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -142,7 +144,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param expand [String] Specify the $expand query. Example:
     # 'properties($select=webHookUrl)'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -160,7 +162,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param expand [String] Specify the $expand query. Example:
     # 'properties($select=webHookUrl)'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -177,7 +179,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param expand [String] Specify the $expand query. Example:
     # 'properties($select=webHookUrl)'
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -222,6 +224,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -240,11 +244,11 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Create or replace an existing notificationChannel.
+    # Create or replace an existing notification channel.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param notification_channel [NotificationChannel] A notification.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -257,11 +261,11 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Create or replace an existing notificationChannel.
+    # Create or replace an existing notification channel.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param notification_channel [NotificationChannel] A notification.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -273,11 +277,11 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Create or replace an existing notificationChannel.
+    # Create or replace an existing notification channel.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param notification_channel [NotificationChannel] A notification.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -329,6 +333,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -361,7 +367,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -376,7 +382,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -391,7 +397,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -434,6 +440,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -442,11 +450,12 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Modify properties of notification channels.
+    # Allows modifying tags of notification channels. All other properties will be
+    # ignored.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param notification_channel [NotificationChannelFragment] A notification.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -459,11 +468,12 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Modify properties of notification channels.
+    # Allows modifying tags of notification channels. All other properties will be
+    # ignored.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param notification_channel [NotificationChannelFragment] A notification.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -475,11 +485,12 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Modify properties of notification channels.
+    # Allows modifying tags of notification channels. All other properties will be
+    # ignored.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param notification_channel [NotificationChannelFragment] A notification.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -531,6 +542,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -553,7 +566,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param notify_parameters [NotifyParameters] Properties for generating a
     # Notification.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -570,7 +583,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param notify_parameters [NotifyParameters] Properties for generating a
     # Notification.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -587,7 +600,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
-    # @param name [String] The name of the notificationChannel.
+    # @param name [String] The name of the notification channel.
     # @param notify_parameters [NotifyParameters] Properties for generating a
     # Notification.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -640,6 +653,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -718,6 +733,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

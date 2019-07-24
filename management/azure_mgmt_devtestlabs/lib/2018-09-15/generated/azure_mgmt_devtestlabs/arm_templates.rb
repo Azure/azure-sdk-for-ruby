@@ -124,6 +124,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -147,7 +149,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param artifact_source_name [String] The name of the artifact source.
-    # @param name [String] The name of the azure Resource Manager template.
+    # @param name [String] The name of the azure resource manager template.
     # @param expand [String] Specify the $expand query. Example:
     # 'properties($select=displayName)'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -166,7 +168,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param artifact_source_name [String] The name of the artifact source.
-    # @param name [String] The name of the azure Resource Manager template.
+    # @param name [String] The name of the azure resource manager template.
     # @param expand [String] Specify the $expand query. Example:
     # 'properties($select=displayName)'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -184,7 +186,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param artifact_source_name [String] The name of the artifact source.
-    # @param name [String] The name of the azure Resource Manager template.
+    # @param name [String] The name of the azure resource manager template.
     # @param expand [String] Specify the $expand query. Example:
     # 'properties($select=displayName)'
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -230,6 +232,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -318,6 +322,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

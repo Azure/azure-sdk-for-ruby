@@ -11,6 +11,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     module StorageType
       Standard = "Standard"
       Premium = "Premium"
+      StandardSSD = "StandardSSD"
     end
   end
 end
