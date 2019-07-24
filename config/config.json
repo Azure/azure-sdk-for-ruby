@@ -693,12 +693,12 @@
   },
   "azure_mgmt_devtestlabs": {
     "azure_mgmt_devtestlabs_2018_09_15": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/devtestlabs/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2fcd0139889b923094b39a6aae015e1ea3604b68/specification/devtestlabs/resource-manager/readme.md",
       "namespace": "Azure::DevTestLabs::Mgmt::V2018_09_15",
       "tag": "package-2018-09"
     },
     "azure_mgmt_devtestlabs_2016_05_15": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6f4cee5d63793225c9f93f7952b02f619a46dd5d/specification/devtestlabs/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2fcd0139889b923094b39a6aae015e1ea3604b68/specification/devtestlabs/resource-manager/readme.md",
       "namespace": "Azure::DevTestLabs::Mgmt::V2016_05_15",
       "tag": "package-2016-05"
     }

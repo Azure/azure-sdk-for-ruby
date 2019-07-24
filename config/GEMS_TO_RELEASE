@@ -1,17 +1,6 @@
 {
     "management": [
-        "azure_mgmt_adhybridhealth_service",
-        "azure_mgmt_alerts_management",
-        "azure_mgmt_azurestack",
-        "azure_mgmt_batchai",
-        "azure_mgmt_bot_service",
-        "azure_mgmt_cost_management",
-        "azure_mgmt_databox",
-        "azure_mgmt_data_factory",
-        "azure_mgmt_migrate",
-        "azure_mgmt_operations_management",
-        "azure_mgmt_powerbi_dedicated",
-        "azure_mgmt_network"
+        "azure_mgmt_devtestlabs"
     ],
     "rollup": [
         "azure_sdk"
