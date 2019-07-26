@@ -124,6 +124,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -147,7 +149,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param expand [String] Specify the $expand query. Example:
     # 'properties($expand=applicableSchedule)'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -166,7 +168,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param expand [String] Specify the $expand query. Example:
     # 'properties($expand=applicableSchedule)'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -184,7 +186,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param expand [String] Specify the $expand query. Example:
     # 'properties($expand=applicableSchedule)'
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -230,6 +232,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -248,13 +252,13 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Create or replace an existing Service Fabric. This operation can take a while
+    # Create or replace an existing service fabric. This operation can take a while
     # to complete.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param service_fabric [ServiceFabric] A Service Fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -270,7 +274,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param service_fabric [ServiceFabric] A Service Fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -302,7 +306,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -315,7 +319,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -339,12 +343,13 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Modify properties of service fabrics.
+    # Allows modifying tags of service fabrics. All other properties will be
+    # ignored.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param service_fabric [ServiceFabricFragment] A Service Fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -357,12 +362,13 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Modify properties of service fabrics.
+    # Allows modifying tags of service fabrics. All other properties will be
+    # ignored.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param service_fabric [ServiceFabricFragment] A Service Fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -374,12 +380,13 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Modify properties of service fabrics.
+    # Allows modifying tags of service fabrics. All other properties will be
+    # ignored.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param service_fabric [ServiceFabricFragment] A Service Fabric.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -432,6 +439,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -455,7 +464,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -472,7 +481,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -488,7 +497,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -532,6 +541,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -555,7 +566,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -568,7 +579,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -597,7 +608,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -610,7 +621,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -634,13 +645,13 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Create or replace an existing Service Fabric. This operation can take a while
+    # Create or replace an existing service fabric. This operation can take a while
     # to complete.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param service_fabric [ServiceFabric] A Service Fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -653,13 +664,13 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Create or replace an existing Service Fabric. This operation can take a while
+    # Create or replace an existing service fabric. This operation can take a while
     # to complete.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param service_fabric [ServiceFabric] A Service Fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -671,13 +682,13 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     end
 
     #
-    # Create or replace an existing Service Fabric. This operation can take a while
+    # Create or replace an existing service fabric. This operation can take a while
     # to complete.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param service_fabric [ServiceFabric] A Service Fabric.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -730,6 +741,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -763,7 +776,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -779,7 +792,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -795,7 +808,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -839,6 +852,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -852,7 +867,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -868,7 +883,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -884,7 +899,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -928,6 +943,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -941,7 +958,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -957,7 +974,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -973,7 +990,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
     # @param resource_group_name [String] The name of the resource group.
     # @param lab_name [String] The name of the lab.
     # @param user_name [String] The name of the user profile.
-    # @param name [String] The name of the service Fabric.
+    # @param name [String] The name of the service fabric.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1017,6 +1034,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1095,6 +1114,8 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

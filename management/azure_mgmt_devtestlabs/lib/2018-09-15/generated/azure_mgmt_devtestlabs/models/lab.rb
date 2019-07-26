@@ -29,7 +29,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
 
       # @return [StorageType] Type of storage used by the lab. It can be either
       # Premium or Standard. Default is Premium. Possible values include:
-      # 'Standard', 'Premium'
+      # 'Standard', 'Premium', 'StandardSSD'
       attr_accessor :lab_storage_type
 
       # @return [Array<String>] The ordered list of artifact resource IDs that
@@ -66,8 +66,9 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
       # message associated with this lab
       attr_accessor :support
 
-      # @return [String] The resource group in which lab virtual machines will
-      # be created in.
+      # @return [String] The resource group in which all new lab virtual
+      # machines will be created. To let DevTest Labs manage resource group
+      # creation, set this value to null.
       attr_accessor :vm_creation_resource_group
 
       # @return [String] The public IP address for the lab's load balancer.

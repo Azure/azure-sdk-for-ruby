@@ -13,10 +13,10 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
       include MsRestAzure
 
       # @return [StorageType] The storage type for the disk (i.e. Standard,
-      # Premium). Possible values include: 'Standard', 'Premium'
+      # Premium). Possible values include: 'Standard', 'Premium', 'StandardSSD'
       attr_accessor :disk_type
 
-      # @return [Integer] The size of the disk in Gibibytes.
+      # @return [Integer] The size of the disk in GibiBytes.
       attr_accessor :disk_size_gi_b
 
       # @return [String] The resource ID of the VM to which this disk is

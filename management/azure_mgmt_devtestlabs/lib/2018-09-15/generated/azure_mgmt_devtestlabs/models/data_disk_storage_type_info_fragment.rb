@@ -16,7 +16,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
       attr_accessor :lun
 
       # @return [StorageType] Disk Storage Type. Possible values include:
-      # 'Standard', 'Premium'
+      # 'Standard', 'Premium', 'StandardSSD'
       attr_accessor :storage_type
 
 

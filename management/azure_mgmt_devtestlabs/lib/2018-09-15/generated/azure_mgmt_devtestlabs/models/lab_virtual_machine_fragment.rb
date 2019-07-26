@@ -106,7 +106,7 @@ module Azure::DevTestLabs::Mgmt::V2018_09_15
 
       # @return [VirtualMachineCreationSource] Tells source of creation of lab
       # virtual machine. Output property only. Possible values include:
-      # 'FromCustomImage', 'FromGalleryImage'
+      # 'FromCustomImage', 'FromGalleryImage', 'FromSharedGalleryImage'
       attr_accessor :virtual_machine_creation_source
 
       # @return [String] The resource ID of the environment that contains this

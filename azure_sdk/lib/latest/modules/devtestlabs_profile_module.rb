@@ -34,19 +34,19 @@ module Azure::Profiles::Latest
       VirtualNetworks = Azure::DevTestLabs::Mgmt::V2018_09_15::VirtualNetworks
 
       module Models
+        InboundNatRule = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::InboundNatRule
         SharedPublicIpAddressConfiguration = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SharedPublicIpAddressConfiguration
-        WeekDetails = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WeekDetails
+        DayDetails = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DayDetails
         NetworkInterfaceProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NetworkInterfaceProperties
-        HourDetails = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::HourDetails
+        NotificationSettings = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotificationSettings
         ScheduleCreationParameter = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleCreationParameter
         EnvironmentDeploymentPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EnvironmentDeploymentPropertiesFragment
-        VirtualNetworkList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::VirtualNetworkList
-        Subnet = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Subnet
+        SubnetFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetFragment
         DayDetailsFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DayDetailsFragment
         DtlEnvironmentList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DtlEnvironmentList
         NotificationSettingsFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotificationSettingsFragment
         EvaluatePoliciesProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EvaluatePoliciesProperties
-        UserSecretStoreFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserSecretStoreFragment
+        UserList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserList
         EvaluatePoliciesRequest = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EvaluatePoliciesRequest
         ArtifactInstallProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactInstallProperties
         PolicyViolation = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PolicyViolation
@@ -56,116 +56,115 @@ module Azure::Profiles::Latest
         EvaluatePoliciesResponse = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EvaluatePoliciesResponse
         ArmTemplateParameterProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArmTemplateParameterProperties
         Event = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Event
-        UserSecretStore = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserSecretStore
+        UserIdentityFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserIdentityFragment
         EventFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EventFragment
         ArtifactDeploymentStatusPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactDeploymentStatusPropertiesFragment
         ExportResourceUsageParameters = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ExportResourceUsageParameters
         ArtifactInstallPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactInstallPropertiesFragment
         ExternalSubnet = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ExternalSubnet
-        UserIdentity = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserIdentity
+        UserSecretStore = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserSecretStore
         ExternalSubnetFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ExternalSubnetFragment
         ArtifactSourceList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactSourceList
         GalleryImageReference = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GalleryImageReference
         AttachNewDataDiskOptions = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachNewDataDiskOptions
-        InboundNatRule = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::InboundNatRule
+        WeekDetails = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WeekDetails
         BulkCreationParameters = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::BulkCreationParameters
-        DayDetails = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DayDetails
-        NotificationSettings = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotificationSettings
-        ComputeDataDisk = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeDataDisk
-        ShutdownNotificationContent = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ShutdownNotificationContent
-        ComputeVmInstanceViewStatus = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmInstanceViewStatus
-        LabVirtualMachineCreationParameter = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineCreationParameter
-        ComputeVmProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmProperties
-        FormulaPropertiesFromVm = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaPropertiesFromVm
-        PercentageCostThresholdProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PercentageCostThresholdProperties
-        ServiceRunnerList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ServiceRunnerList
-        WindowsOsInfo = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WindowsOsInfo
-        GalleryImageReferenceFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GalleryImageReferenceFragment
-        CustomImagePropertiesFromVm = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromVm
-        InboundNatRuleFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::InboundNatRuleFragment
-        DataDiskStorageTypeInfo = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskStorageTypeInfo
-        SharedPublicIpAddressConfigurationFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SharedPublicIpAddressConfigurationFragment
-        SubnetOverrideFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetOverrideFragment
-        NetworkInterfacePropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NetworkInterfacePropertiesFragment
-        LinuxOsInfoFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LinuxOsInfoFragment
-        ScheduleCreationParameterFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleCreationParameterFragment
-        CustomImagePropertiesCustomFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesCustomFragment
-        LabVirtualMachineCreationParameterFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineCreationParameterFragment
-        CustomImagePropertiesFromPlanFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromPlanFragment
-        FormulaPropertiesFromVmFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaPropertiesFromVmFragment
-        CustomImageList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImageList
-        ServiceFabricList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ServiceFabricList
-        DataDiskPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskPropertiesFragment
-        FormulaList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaList
-        DetachDiskProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DetachDiskProperties
-        SecretList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SecretList
-        SubnetSharedPublicIpAddressConfiguration = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetSharedPublicIpAddressConfiguration
-        GalleryImageList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GalleryImageList
-        EnvironmentDeploymentProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EnvironmentDeploymentProperties
-        ParameterInfo = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ParameterInfo
-        WeekDetailsFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WeekDetailsFragment
-        GenerateArmTemplateRequest = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateArmTemplateRequest
-        UserList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserList
-        GenerateUploadUriParameter = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateUploadUriParameter
-        ApplyArtifactsRequest = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ApplyArtifactsRequest
-        GenerateUploadUriResponse = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateUploadUriResponse
-        ArmTemplateList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArmTemplateList
-        IdentityProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::IdentityProperties
-        ArtifactDeploymentStatusProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactDeploymentStatusProperties
-        ImportLabVirtualMachineRequest = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ImportLabVirtualMachineRequest
-        ArtifactList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactList
-        LabAnnouncementProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabAnnouncementProperties
-        AttachDiskProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachDiskProperties
-        LabSupportProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabSupportProperties
-        BulkCreationParametersFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::BulkCreationParametersFragment
-        ScheduleList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleList
-        ComputeDataDiskFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeDataDiskFragment
-        LabAnnouncementPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabAnnouncementPropertiesFragment
-        ComputeVmPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmPropertiesFragment
-        TargetCostProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::TargetCostProperties
-        LinuxOsInfo = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LinuxOsInfo
-        LabCostSummaryProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabCostSummaryProperties
-        CustomImagePropertiesFromPlan = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromPlan
-        LabCostDetailsProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabCostDetailsProperties
-        CustomImagePropertiesFromVmFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromVmFragment
-        LabResourceCostProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabResourceCostProperties
-        SubnetSharedPublicIpAddressConfigurationFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetSharedPublicIpAddressConfigurationFragment
-        RetargetScheduleProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::RetargetScheduleProperties
-        DetachDataDiskProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DetachDataDiskProperties
-        LabSupportPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabSupportPropertiesFragment
-        DiskList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DiskList
-        Resource = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Resource
-        HourDetailsFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::HourDetailsFragment
-        LabList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabList
-        UserIdentityFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserIdentityFragment
-        LabVhd = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVhd
-        ArtifactParameterPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactParameterPropertiesFragment
-        LabVhdList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVhdList
-        AttachNewDataDiskOptionsFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachNewDataDiskOptionsFragment
-        ResizeLabVirtualMachineProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ResizeLabVirtualMachineProperties
-        ComputeVmInstanceViewStatusFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmInstanceViewStatusFragment
-        RdpConnection = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::RdpConnection
-        CustomImagePropertiesCustom = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesCustom
-        LabVirtualMachineList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineList
-        DataDiskStorageTypeInfoFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskStorageTypeInfoFragment
-        ProviderOperationResult = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ProviderOperationResult
-        SubnetOverride = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetOverride
-        PortFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PortFragment
-        ArtifactParameterProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactParameterProperties
-        NotificationChannelList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotificationChannelList
-        UpdateResource = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UpdateResource
-        NotifyParameters = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotifyParameters
-        CostThresholdProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CostThresholdProperties
-        OperationError = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationError
-        DataDiskProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskProperties
-        OperationMetadataDisplay = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationMetadataDisplay
-        ArmTemplateParameterPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArmTemplateParameterPropertiesFragment
-        OperationMetadata = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationMetadata
-        WindowsOsInfoFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WindowsOsInfoFragment
-        OperationResult = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationResult
-        Port = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Port
-        SubnetFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetFragment
+        HourDetails = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::HourDetails
         PolicyList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PolicyList
+        ComputeDataDiskFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeDataDiskFragment
+        Subnet = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Subnet
+        ComputeVmInstanceViewStatusFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmInstanceViewStatusFragment
+        LabVirtualMachineCreationParameter = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineCreationParameter
+        ComputeVmPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmPropertiesFragment
+        FormulaPropertiesFromVm = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaPropertiesFromVm
+        CostThresholdProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CostThresholdProperties
+        ShutdownNotificationContent = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ShutdownNotificationContent
+        LinuxOsInfo = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LinuxOsInfo
+        GalleryImageReferenceFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GalleryImageReferenceFragment
+        CustomImagePropertiesCustom = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesCustom
+        InboundNatRuleFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::InboundNatRuleFragment
+        CustomImagePropertiesFromPlan = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromPlan
+        SharedPublicIpAddressConfigurationFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SharedPublicIpAddressConfigurationFragment
+        WindowsOsInfoFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WindowsOsInfoFragment
+        NetworkInterfacePropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NetworkInterfacePropertiesFragment
+        CustomImagePropertiesFromVmFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromVmFragment
+        ScheduleCreationParameterFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleCreationParameterFragment
+        DataDiskStorageTypeInfoFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskStorageTypeInfoFragment
+        LabVirtualMachineCreationParameterFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineCreationParameterFragment
+        SubnetOverrideFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetOverrideFragment
+        FormulaPropertiesFromVmFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaPropertiesFromVmFragment
+        DataDiskProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskProperties
+        ServiceFabricList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ServiceFabricList
+        DetachDataDiskProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DetachDataDiskProperties
+        FormulaList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaList
+        SubnetSharedPublicIpAddressConfigurationFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetSharedPublicIpAddressConfigurationFragment
+        SecretList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SecretList
+        DiskList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DiskList
+        GalleryImageList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GalleryImageList
+        SubnetSharedPublicIpAddressConfiguration = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetSharedPublicIpAddressConfiguration
+        ParameterInfo = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ParameterInfo
+        HourDetailsFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::HourDetailsFragment
+        GenerateArmTemplateRequest = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateArmTemplateRequest
+        ArtifactParameterProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactParameterProperties
+        GenerateUploadUriParameter = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateUploadUriParameter
+        UserSecretStoreFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserSecretStoreFragment
+        GenerateUploadUriResponse = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateUploadUriResponse
+        ArmTemplateParameterPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArmTemplateParameterPropertiesFragment
+        IdentityProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::IdentityProperties
+        ArtifactParameterPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactParameterPropertiesFragment
+        ImportLabVirtualMachineRequest = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ImportLabVirtualMachineRequest
+        UserIdentity = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserIdentity
+        LabAnnouncementProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabAnnouncementProperties
+        AttachNewDataDiskOptionsFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachNewDataDiskOptionsFragment
+        LabSupportProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabSupportProperties
+        ComputeDataDisk = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeDataDisk
+        ScheduleList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleList
+        ComputeVmProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmProperties
+        LabAnnouncementPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabAnnouncementPropertiesFragment
+        WindowsOsInfo = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WindowsOsInfo
+        TargetCostProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::TargetCostProperties
+        DataDiskStorageTypeInfo = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskStorageTypeInfo
+        LabCostSummaryProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabCostSummaryProperties
+        LinuxOsInfoFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LinuxOsInfoFragment
+        LabCostDetailsProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabCostDetailsProperties
+        CustomImagePropertiesFromPlanFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromPlanFragment
+        LabResourceCostProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabResourceCostProperties
+        DataDiskPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskPropertiesFragment
+        RetargetScheduleProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::RetargetScheduleProperties
+        SubnetOverride = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetOverride
+        LabSupportPropertiesFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabSupportPropertiesFragment
+        WeekDetailsFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WeekDetailsFragment
+        Resource = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Resource
+        ApplyArtifactsRequest = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ApplyArtifactsRequest
+        LabList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabList
+        ArtifactDeploymentStatusProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactDeploymentStatusProperties
+        LabVhd = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVhd
+        AttachDiskProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachDiskProperties
+        LabVhdList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVhdList
+        ComputeVmInstanceViewStatus = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmInstanceViewStatus
+        ResizeLabVirtualMachineProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ResizeLabVirtualMachineProperties
+        CustomImagePropertiesFromVm = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromVm
+        RdpConnection = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::RdpConnection
+        CustomImagePropertiesCustomFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesCustomFragment
+        LabVirtualMachineList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineList
+        DetachDiskProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DetachDiskProperties
+        ProviderOperationResult = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ProviderOperationResult
+        VirtualNetworkList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::VirtualNetworkList
+        PortFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PortFragment
+        ArtifactList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactList
+        NotificationChannelList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotificationChannelList
+        PercentageCostThresholdProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PercentageCostThresholdProperties
+        NotifyParameters = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotifyParameters
+        CustomImageList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImageList
+        OperationError = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationError
+        ArmTemplateList = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArmTemplateList
+        OperationMetadataDisplay = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationMetadataDisplay
+        UpdateResource = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UpdateResource
+        OperationMetadata = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationMetadata
+        BulkCreationParametersFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::BulkCreationParametersFragment
+        OperationResult = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationResult
+        EnvironmentDeploymentProperties = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EnvironmentDeploymentProperties
+        Port = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Port
         Schedule = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Schedule
         ApplicableSchedule = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ApplicableSchedule
         ScheduleFragment = Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleFragment
@@ -279,17 +278,20 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def inbound_nat_rule
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::InboundNatRule
+          end
           def shared_public_ip_address_configuration
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SharedPublicIpAddressConfiguration
           end
-          def week_details
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WeekDetails
+          def day_details
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DayDetails
           end
           def network_interface_properties
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NetworkInterfaceProperties
           end
-          def hour_details
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::HourDetails
+          def notification_settings
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotificationSettings
           end
           def schedule_creation_parameter
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleCreationParameter
@@ -297,11 +299,8 @@ module Azure::Profiles::Latest
           def environment_deployment_properties_fragment
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EnvironmentDeploymentPropertiesFragment
           end
-          def virtual_network_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::VirtualNetworkList
-          end
-          def subnet
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Subnet
+          def subnet_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetFragment
           end
           def day_details_fragment
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DayDetailsFragment
@@ -315,8 +314,8 @@ module Azure::Profiles::Latest
           def evaluate_policies_properties
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EvaluatePoliciesProperties
           end
-          def user_secret_store_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserSecretStoreFragment
+          def user_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserList
           end
           def evaluate_policies_request
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EvaluatePoliciesRequest
@@ -345,8 +344,8 @@ module Azure::Profiles::Latest
           def event
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Event
           end
-          def user_secret_store
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserSecretStore
+          def user_identity_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserIdentityFragment
           end
           def event_fragment
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EventFragment
@@ -363,8 +362,8 @@ module Azure::Profiles::Latest
           def external_subnet
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ExternalSubnet
           end
-          def user_identity
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserIdentity
+          def user_secret_store
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserSecretStore
           end
           def external_subnet_fragment
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ExternalSubnetFragment
@@ -378,302 +377,299 @@ module Azure::Profiles::Latest
           def attach_new_data_disk_options
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachNewDataDiskOptions
           end
-          def inbound_nat_rule
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::InboundNatRule
+          def week_details
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WeekDetails
           end
           def bulk_creation_parameters
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::BulkCreationParameters
           end
-          def day_details
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DayDetails
+          def hour_details
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::HourDetails
           end
-          def notification_settings
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotificationSettings
-          end
-          def compute_data_disk
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeDataDisk
-          end
-          def shutdown_notification_content
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ShutdownNotificationContent
-          end
-          def compute_vm_instance_view_status
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmInstanceViewStatus
-          end
-          def lab_virtual_machine_creation_parameter
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineCreationParameter
-          end
-          def compute_vm_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmProperties
-          end
-          def formula_properties_from_vm
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaPropertiesFromVm
-          end
-          def percentage_cost_threshold_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PercentageCostThresholdProperties
-          end
-          def service_runner_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ServiceRunnerList
-          end
-          def windows_os_info
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WindowsOsInfo
-          end
-          def gallery_image_reference_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GalleryImageReferenceFragment
-          end
-          def custom_image_properties_from_vm
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromVm
-          end
-          def inbound_nat_rule_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::InboundNatRuleFragment
-          end
-          def data_disk_storage_type_info
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskStorageTypeInfo
-          end
-          def shared_public_ip_address_configuration_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SharedPublicIpAddressConfigurationFragment
-          end
-          def subnet_override_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetOverrideFragment
-          end
-          def network_interface_properties_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NetworkInterfacePropertiesFragment
-          end
-          def linux_os_info_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LinuxOsInfoFragment
-          end
-          def schedule_creation_parameter_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleCreationParameterFragment
-          end
-          def custom_image_properties_custom_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesCustomFragment
-          end
-          def lab_virtual_machine_creation_parameter_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineCreationParameterFragment
-          end
-          def custom_image_properties_from_plan_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromPlanFragment
-          end
-          def formula_properties_from_vm_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaPropertiesFromVmFragment
-          end
-          def custom_image_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImageList
-          end
-          def service_fabric_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ServiceFabricList
-          end
-          def data_disk_properties_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskPropertiesFragment
-          end
-          def formula_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaList
-          end
-          def detach_disk_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DetachDiskProperties
-          end
-          def secret_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SecretList
-          end
-          def subnet_shared_public_ip_address_configuration
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetSharedPublicIpAddressConfiguration
-          end
-          def gallery_image_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GalleryImageList
-          end
-          def environment_deployment_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EnvironmentDeploymentProperties
-          end
-          def parameter_info
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ParameterInfo
-          end
-          def week_details_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WeekDetailsFragment
-          end
-          def generate_arm_template_request
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateArmTemplateRequest
-          end
-          def user_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserList
-          end
-          def generate_upload_uri_parameter
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateUploadUriParameter
-          end
-          def apply_artifacts_request
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ApplyArtifactsRequest
-          end
-          def generate_upload_uri_response
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateUploadUriResponse
-          end
-          def arm_template_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArmTemplateList
-          end
-          def identity_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::IdentityProperties
-          end
-          def artifact_deployment_status_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactDeploymentStatusProperties
-          end
-          def import_lab_virtual_machine_request
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ImportLabVirtualMachineRequest
-          end
-          def artifact_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactList
-          end
-          def lab_announcement_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabAnnouncementProperties
-          end
-          def attach_disk_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachDiskProperties
-          end
-          def lab_support_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabSupportProperties
-          end
-          def bulk_creation_parameters_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::BulkCreationParametersFragment
-          end
-          def schedule_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleList
+          def policy_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PolicyList
           end
           def compute_data_disk_fragment
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeDataDiskFragment
           end
-          def lab_announcement_properties_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabAnnouncementPropertiesFragment
-          end
-          def compute_vm_properties_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmPropertiesFragment
-          end
-          def target_cost_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::TargetCostProperties
-          end
-          def linux_os_info
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LinuxOsInfo
-          end
-          def lab_cost_summary_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabCostSummaryProperties
-          end
-          def custom_image_properties_from_plan
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromPlan
-          end
-          def lab_cost_details_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabCostDetailsProperties
-          end
-          def custom_image_properties_from_vm_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromVmFragment
-          end
-          def lab_resource_cost_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabResourceCostProperties
-          end
-          def subnet_shared_public_ip_address_configuration_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetSharedPublicIpAddressConfigurationFragment
-          end
-          def retarget_schedule_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::RetargetScheduleProperties
-          end
-          def detach_data_disk_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DetachDataDiskProperties
-          end
-          def lab_support_properties_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabSupportPropertiesFragment
-          end
-          def disk_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DiskList
-          end
-          def resource
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Resource
-          end
-          def hour_details_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::HourDetailsFragment
-          end
-          def lab_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabList
-          end
-          def user_identity_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserIdentityFragment
-          end
-          def lab_vhd
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVhd
-          end
-          def artifact_parameter_properties_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactParameterPropertiesFragment
-          end
-          def lab_vhd_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVhdList
-          end
-          def attach_new_data_disk_options_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachNewDataDiskOptionsFragment
-          end
-          def resize_lab_virtual_machine_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ResizeLabVirtualMachineProperties
+          def subnet
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Subnet
           end
           def compute_vm_instance_view_status_fragment
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmInstanceViewStatusFragment
           end
-          def rdp_connection
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::RdpConnection
+          def lab_virtual_machine_creation_parameter
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineCreationParameter
           end
-          def custom_image_properties_custom
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesCustom
+          def compute_vm_properties_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmPropertiesFragment
           end
-          def lab_virtual_machine_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineList
-          end
-          def data_disk_storage_type_info_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskStorageTypeInfoFragment
-          end
-          def provider_operation_result
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ProviderOperationResult
-          end
-          def subnet_override
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetOverride
-          end
-          def port_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PortFragment
-          end
-          def artifact_parameter_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactParameterProperties
-          end
-          def notification_channel_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotificationChannelList
-          end
-          def update_resource
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UpdateResource
-          end
-          def notify_parameters
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotifyParameters
+          def formula_properties_from_vm
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaPropertiesFromVm
           end
           def cost_threshold_properties
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CostThresholdProperties
           end
-          def operation_error
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationError
+          def shutdown_notification_content
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ShutdownNotificationContent
           end
-          def data_disk_properties
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskProperties
+          def linux_os_info
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LinuxOsInfo
           end
-          def operation_metadata_display
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationMetadataDisplay
+          def gallery_image_reference_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GalleryImageReferenceFragment
           end
-          def arm_template_parameter_properties_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArmTemplateParameterPropertiesFragment
+          def custom_image_properties_custom
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesCustom
           end
-          def operation_metadata
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationMetadata
+          def inbound_nat_rule_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::InboundNatRuleFragment
+          end
+          def custom_image_properties_from_plan
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromPlan
+          end
+          def shared_public_ip_address_configuration_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SharedPublicIpAddressConfigurationFragment
           end
           def windows_os_info_fragment
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WindowsOsInfoFragment
           end
+          def network_interface_properties_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NetworkInterfacePropertiesFragment
+          end
+          def custom_image_properties_from_vm_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromVmFragment
+          end
+          def schedule_creation_parameter_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleCreationParameterFragment
+          end
+          def data_disk_storage_type_info_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskStorageTypeInfoFragment
+          end
+          def lab_virtual_machine_creation_parameter_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineCreationParameterFragment
+          end
+          def subnet_override_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetOverrideFragment
+          end
+          def formula_properties_from_vm_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaPropertiesFromVmFragment
+          end
+          def data_disk_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskProperties
+          end
+          def service_fabric_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ServiceFabricList
+          end
+          def detach_data_disk_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DetachDataDiskProperties
+          end
+          def formula_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::FormulaList
+          end
+          def subnet_shared_public_ip_address_configuration_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetSharedPublicIpAddressConfigurationFragment
+          end
+          def secret_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SecretList
+          end
+          def disk_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DiskList
+          end
+          def gallery_image_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GalleryImageList
+          end
+          def subnet_shared_public_ip_address_configuration
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetSharedPublicIpAddressConfiguration
+          end
+          def parameter_info
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ParameterInfo
+          end
+          def hour_details_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::HourDetailsFragment
+          end
+          def generate_arm_template_request
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateArmTemplateRequest
+          end
+          def artifact_parameter_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactParameterProperties
+          end
+          def generate_upload_uri_parameter
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateUploadUriParameter
+          end
+          def user_secret_store_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserSecretStoreFragment
+          end
+          def generate_upload_uri_response
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::GenerateUploadUriResponse
+          end
+          def arm_template_parameter_properties_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArmTemplateParameterPropertiesFragment
+          end
+          def identity_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::IdentityProperties
+          end
+          def artifact_parameter_properties_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactParameterPropertiesFragment
+          end
+          def import_lab_virtual_machine_request
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ImportLabVirtualMachineRequest
+          end
+          def user_identity
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UserIdentity
+          end
+          def lab_announcement_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabAnnouncementProperties
+          end
+          def attach_new_data_disk_options_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachNewDataDiskOptionsFragment
+          end
+          def lab_support_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabSupportProperties
+          end
+          def compute_data_disk
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeDataDisk
+          end
+          def schedule_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ScheduleList
+          end
+          def compute_vm_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmProperties
+          end
+          def lab_announcement_properties_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabAnnouncementPropertiesFragment
+          end
+          def windows_os_info
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WindowsOsInfo
+          end
+          def target_cost_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::TargetCostProperties
+          end
+          def data_disk_storage_type_info
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskStorageTypeInfo
+          end
+          def lab_cost_summary_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabCostSummaryProperties
+          end
+          def linux_os_info_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LinuxOsInfoFragment
+          end
+          def lab_cost_details_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabCostDetailsProperties
+          end
+          def custom_image_properties_from_plan_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromPlanFragment
+          end
+          def lab_resource_cost_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabResourceCostProperties
+          end
+          def data_disk_properties_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DataDiskPropertiesFragment
+          end
+          def retarget_schedule_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::RetargetScheduleProperties
+          end
+          def subnet_override
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetOverride
+          end
+          def lab_support_properties_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabSupportPropertiesFragment
+          end
+          def week_details_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::WeekDetailsFragment
+          end
+          def resource
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Resource
+          end
+          def apply_artifacts_request
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ApplyArtifactsRequest
+          end
+          def lab_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabList
+          end
+          def artifact_deployment_status_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactDeploymentStatusProperties
+          end
+          def lab_vhd
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVhd
+          end
+          def attach_disk_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::AttachDiskProperties
+          end
+          def lab_vhd_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVhdList
+          end
+          def compute_vm_instance_view_status
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ComputeVmInstanceViewStatus
+          end
+          def resize_lab_virtual_machine_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ResizeLabVirtualMachineProperties
+          end
+          def custom_image_properties_from_vm
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesFromVm
+          end
+          def rdp_connection
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::RdpConnection
+          end
+          def custom_image_properties_custom_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImagePropertiesCustomFragment
+          end
+          def lab_virtual_machine_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::LabVirtualMachineList
+          end
+          def detach_disk_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::DetachDiskProperties
+          end
+          def provider_operation_result
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ProviderOperationResult
+          end
+          def virtual_network_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::VirtualNetworkList
+          end
+          def port_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PortFragment
+          end
+          def artifact_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArtifactList
+          end
+          def notification_channel_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotificationChannelList
+          end
+          def percentage_cost_threshold_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PercentageCostThresholdProperties
+          end
+          def notify_parameters
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::NotifyParameters
+          end
+          def custom_image_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::CustomImageList
+          end
+          def operation_error
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationError
+          end
+          def arm_template_list
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::ArmTemplateList
+          end
+          def operation_metadata_display
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationMetadataDisplay
+          end
+          def update_resource
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::UpdateResource
+          end
+          def operation_metadata
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationMetadata
+          end
+          def bulk_creation_parameters_fragment
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::BulkCreationParametersFragment
+          end
           def operation_result
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::OperationResult
           end
+          def environment_deployment_properties
+            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::EnvironmentDeploymentProperties
+          end
           def port
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Port
-          end
-          def subnet_fragment
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::SubnetFragment
-          end
-          def policy_list
-            Azure::DevTestLabs::Mgmt::V2018_09_15::Models::PolicyList
           end
           def schedule
             Azure::DevTestLabs::Mgmt::V2018_09_15::Models::Schedule
