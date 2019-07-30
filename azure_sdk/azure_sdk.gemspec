@@ -152,6 +152,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_cognitiveservices_newssearch', "~>#{gem_versions['data']['azure_cognitiveservices_newssearch']}"
   spec.add_runtime_dependency 'azure_cognitiveservices_personalizer', "~>#{gem_versions['data']['azure_cognitiveservices_personalizer']}"
   spec.add_runtime_dependency 'azure_cognitiveservices_qnamaker', "~>#{gem_versions['data']['azure_cognitiveservices_qnamaker']}"
+  spec.add_runtime_dependency 'azure_cognitiveservices_qnamakerruntime', "~>#{gem_versions['data']['azure_cognitiveservices_qnamakerruntime']}"
   spec.add_runtime_dependency 'azure_cognitiveservices_spellcheck', "~>#{gem_versions['data']['azure_cognitiveservices_spellcheck']}"
   spec.add_runtime_dependency 'azure_cognitiveservices_textanalytics', "~>#{gem_versions['data']['azure_cognitiveservices_textanalytics']}"
   spec.add_runtime_dependency 'azure_cognitiveservices_videosearch', "~>#{gem_versions['data']['azure_cognitiveservices_videosearch']}"

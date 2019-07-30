@@ -2443,10 +2443,22 @@
   },
   "azure_cognitiveservices_qnamaker":{
     "azure_cognitiveservices_qnamaker_v4.0":{
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1a66a41ea1bde833fa94bb38bb8c87a7c1ce2142/specification/cognitiveservices/data-plane/QnAMaker/readme.md",
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ad67077b46e7eea880a03324b127d5d30b3adbe2/specification/cognitiveservices/data-plane/QnAMaker/stable/v4.0/QnAMaker.json"]
+      ,
       "namespace": "Azure::CognitiveServices::Qnamaker::V4_0",
       "title": "QnamakerClient",
       "tag": "release_4_0"
+    }
+  },
+  "azure_cognitiveservices_qnamakerruntime":{
+    "azure_cognitiveservices_qnamakerruntime_v4.0":{
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ad67077b46e7eea880a03324b127d5d30b3adbe2/specification/cognitiveservices/data-plane/QnAMaker/stable/v4.0/QnAMakerRuntime.json"]
+      ,
+      "namespace": "Azure::CognitiveServices::QnamakerRuntime::V4_0",
+      "title": "QnamakerRuntimeClient",
+      "tag": "runtime_release_4_0"
     }
   },
   "azure_cognitiveservices_spellcheck":{

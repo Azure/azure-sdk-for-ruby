@@ -814,6 +814,11 @@
                         "4.0": ["*"]
                     }
                 },
+                "Microsoft.CognitiveServices.QnamakerRuntime": {
+                    "data": {
+                        "4.0": ["*"]
+                    }
+                },
                 "Microsoft.CognitiveServices.SpellCheck": {
                     "data": {
                         "1.0": ["*"]
@@ -2871,6 +2876,20 @@
                     }
                 },
                 "output_dir": "data/azure_cognitiveservices_qnamaker/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_cognitiveservices_qnamakerruntime": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.CognitiveServices.QnamakerRuntime": {
+                        "data": {
+                            "4.0": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "data/azure_cognitiveservices_qnamakerruntime/lib/profiles",
                 "individual_gem_profile": true
             }
         ],
