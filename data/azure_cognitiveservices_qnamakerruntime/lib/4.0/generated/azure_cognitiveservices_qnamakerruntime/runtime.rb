@@ -3,59 +3,67 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::Qnamaker::V4_0
+module Azure::CognitiveServices::QnamakerRuntime::V4_0
   #
-  # An API for QnAMaker Service
+  # An API for QnAMaker runtime
   #
-  class Alterations
+  class Runtime
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Alterations class.
+    # Creates and initializes a new instance of the Runtime class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
       @client = client
     end
 
-    # @return [QnamakerClient] reference to the QnamakerClient
+    # @return [QnamakerRuntimeClient] reference to the QnamakerRuntimeClient
     attr_reader :client
 
     #
-    # Download alterations from runtime.
+    # GenerateAnswer call to query the knowledgebase.
     #
+    # @param kb_id [String] Knowledgebase id.
+    # @param generate_answer_payload [QueryDTO] Post body of the request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WordAlterationsDTO] operation results.
+    # @return [QnASearchResultList] operation results.
     #
-    def get(custom_headers:nil)
-      response = get_async(custom_headers:custom_headers).value!
+    def generate_answer(kb_id, generate_answer_payload, custom_headers:nil)
+      response = generate_answer_async(kb_id, generate_answer_payload, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Download alterations from runtime.
+    # GenerateAnswer call to query the knowledgebase.
     #
+    # @param kb_id [String] Knowledgebase id.
+    # @param generate_answer_payload [QueryDTO] Post body of the request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(custom_headers:nil)
-      get_async(custom_headers:custom_headers).value!
+    def generate_answer_with_http_info(kb_id, generate_answer_payload, custom_headers:nil)
+      generate_answer_async(kb_id, generate_answer_payload, custom_headers:custom_headers).value!
     end
 
     #
-    # Download alterations from runtime.
+    # GenerateAnswer call to query the knowledgebase.
     #
+    # @param kb_id [String] Knowledgebase id.
+    # @param generate_answer_payload [QueryDTO] Post body of the request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(custom_headers:nil)
-      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
+    def generate_answer_async(kb_id, generate_answer_payload, custom_headers:nil)
+      fail ArgumentError, '@client.runtime_endpoint is nil' if @client.runtime_endpoint.nil?
+      fail ArgumentError, 'kb_id is nil' if kb_id.nil?
+      fail ArgumentError, 'generate_answer_payload is nil' if generate_answer_payload.nil?
 
 
       request_headers = {}
@@ -64,17 +72,25 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'alterations'
+
+      # Serialize Request
+      request_mapper = Azure::CognitiveServices::QnamakerRuntime::V4_0::Models::QueryDTO.mapper()
+      request_content = @client.serialize(request_mapper,  generate_answer_payload)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'knowledgebases/{kbId}/generateAnswer'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
+    request_url = request_url.gsub('{RuntimeEndpoint}', @client.runtime_endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'kbId' => kb_id},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:get, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -92,7 +108,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::Qnamaker::V4_0::Models::WordAlterationsDTO.mapper()
+            result_mapper = Azure::CognitiveServices::QnamakerRuntime::V4_0::Models::QnASearchResultList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -106,43 +122,47 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     end
 
     #
-    # Replace alterations data.
+    # Train call to add suggestions to the knowledgebase.
     #
-    # @param word_alterations [WordAlterationsDTO] New alterations data.
+    # @param kb_id [String] Knowledgebase id.
+    # @param train_payload [FeedbackRecordsDTO] Post body of the request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def replace(word_alterations, custom_headers:nil)
-      response = replace_async(word_alterations, custom_headers:custom_headers).value!
+    def train(kb_id, train_payload, custom_headers:nil)
+      response = train_async(kb_id, train_payload, custom_headers:custom_headers).value!
       nil
     end
 
     #
-    # Replace alterations data.
+    # Train call to add suggestions to the knowledgebase.
     #
-    # @param word_alterations [WordAlterationsDTO] New alterations data.
+    # @param kb_id [String] Knowledgebase id.
+    # @param train_payload [FeedbackRecordsDTO] Post body of the request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def replace_with_http_info(word_alterations, custom_headers:nil)
-      replace_async(word_alterations, custom_headers:custom_headers).value!
+    def train_with_http_info(kb_id, train_payload, custom_headers:nil)
+      train_async(kb_id, train_payload, custom_headers:custom_headers).value!
     end
 
     #
-    # Replace alterations data.
+    # Train call to add suggestions to the knowledgebase.
     #
-    # @param word_alterations [WordAlterationsDTO] New alterations data.
+    # @param kb_id [String] Knowledgebase id.
+    # @param train_payload [FeedbackRecordsDTO] Post body of the request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def replace_async(word_alterations, custom_headers:nil)
-      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'word_alterations is nil' if word_alterations.nil?
+    def train_async(kb_id, train_payload, custom_headers:nil)
+      fail ArgumentError, '@client.runtime_endpoint is nil' if @client.runtime_endpoint.nil?
+      fail ArgumentError, 'kb_id is nil' if kb_id.nil?
+      fail ArgumentError, 'train_payload is nil' if train_payload.nil?
 
 
       request_headers = {}
@@ -153,22 +173,23 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::Qnamaker::V4_0::Models::WordAlterationsDTO.mapper()
-      request_content = @client.serialize(request_mapper,  word_alterations)
+      request_mapper = Azure::CognitiveServices::QnamakerRuntime::V4_0::Models::FeedbackRecordsDTO.mapper()
+      request_content = @client.serialize(request_mapper,  train_payload)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'alterations'
+      path_template = 'knowledgebases/{kbId}/train'
 
       request_url = @base_url || @client.base_url
-    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
+    request_url = request_url.gsub('{RuntimeEndpoint}', @client.runtime_endpoint)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'kbId' => kb_id},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:put, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response

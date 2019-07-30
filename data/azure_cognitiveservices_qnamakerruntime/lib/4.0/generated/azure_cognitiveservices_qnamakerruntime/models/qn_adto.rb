@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::Qnamaker::V4_0
+module Azure::CognitiveServices::QnamakerRuntime::V4_0
   module Models
     #
     # Q-A object.

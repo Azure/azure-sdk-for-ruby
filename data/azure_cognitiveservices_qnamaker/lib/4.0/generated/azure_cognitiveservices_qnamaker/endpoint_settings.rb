@@ -7,11 +7,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
   #
   # An API for QnAMaker Service
   #
-  class Alterations
+  class EndpointSettings
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Alterations class.
+    # Creates and initializes a new instance of the EndpointSettings class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,39 +22,39 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     attr_reader :client
 
     #
-    # Download alterations from runtime.
+    # Gets endpoint settings for an endpoint.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WordAlterationsDTO] operation results.
+    # @return [EndpointSettingsDTO] operation results.
     #
-    def get(custom_headers:nil)
-      response = get_async(custom_headers:custom_headers).value!
+    def get_settings(custom_headers:nil)
+      response = get_settings_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Download alterations from runtime.
+    # Gets endpoint settings for an endpoint.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(custom_headers:nil)
-      get_async(custom_headers:custom_headers).value!
+    def get_settings_with_http_info(custom_headers:nil)
+      get_settings_async(custom_headers:custom_headers).value!
     end
 
     #
-    # Download alterations from runtime.
+    # Gets endpoint settings for an endpoint.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(custom_headers:nil)
+    def get_settings_async(custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
@@ -64,7 +64,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'alterations'
+      path_template = 'endpointSettings'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
@@ -92,7 +92,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::Qnamaker::V4_0::Models::WordAlterationsDTO.mapper()
+            result_mapper = Azure::CognitiveServices::Qnamaker::V4_0::Models::EndpointSettingsDTO.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -106,43 +106,47 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     end
 
     #
-    # Replace alterations data.
+    # Updates endpoint settings for an endpoint.
     #
-    # @param word_alterations [WordAlterationsDTO] New alterations data.
+    # @param endpoint_settings_payload [EndpointSettingsDTO] Post body of the
+    # request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [String] operation results.
     #
-    def replace(word_alterations, custom_headers:nil)
-      response = replace_async(word_alterations, custom_headers:custom_headers).value!
-      nil
+    def update_settings(endpoint_settings_payload, custom_headers:nil)
+      response = update_settings_async(endpoint_settings_payload, custom_headers:custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
-    # Replace alterations data.
+    # Updates endpoint settings for an endpoint.
     #
-    # @param word_alterations [WordAlterationsDTO] New alterations data.
+    # @param endpoint_settings_payload [EndpointSettingsDTO] Post body of the
+    # request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def replace_with_http_info(word_alterations, custom_headers:nil)
-      replace_async(word_alterations, custom_headers:custom_headers).value!
+    def update_settings_with_http_info(endpoint_settings_payload, custom_headers:nil)
+      update_settings_async(endpoint_settings_payload, custom_headers:custom_headers).value!
     end
 
     #
-    # Replace alterations data.
+    # Updates endpoint settings for an endpoint.
     #
-    # @param word_alterations [WordAlterationsDTO] New alterations data.
+    # @param endpoint_settings_payload [EndpointSettingsDTO] Post body of the
+    # request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def replace_async(word_alterations, custom_headers:nil)
+    def update_settings_async(endpoint_settings_payload, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
-      fail ArgumentError, 'word_alterations is nil' if word_alterations.nil?
+      fail ArgumentError, 'endpoint_settings_payload is nil' if endpoint_settings_payload.nil?
 
 
       request_headers = {}
@@ -153,11 +157,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::Qnamaker::V4_0::Models::WordAlterationsDTO.mapper()
-      request_content = @client.serialize(request_mapper,  word_alterations)
+      request_mapper = Azure::CognitiveServices::Qnamaker::V4_0::Models::EndpointSettingsDTO.mapper()
+      request_content = @client.serialize(request_mapper,  endpoint_settings_payload)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'alterations'
+      path_template = 'endpointSettings'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{Endpoint}', @client.endpoint)
@@ -168,13 +172,13 @@ module Azure::CognitiveServices::Qnamaker::V4_0
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:put, path_template, options)
+      promise = @client.make_request_async(:patch, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -182,6 +186,23 @@ module Azure::CognitiveServices::Qnamaker::V4_0
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'String'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end

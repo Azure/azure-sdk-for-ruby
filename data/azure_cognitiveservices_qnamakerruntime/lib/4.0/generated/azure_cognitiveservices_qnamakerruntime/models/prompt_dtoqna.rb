@@ -3,48 +3,28 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::Qnamaker::V4_0
+module Azure::CognitiveServices::QnamakerRuntime::V4_0
   module Models
     #
-    # Q-A object.
+    # QnADTO - Either QnaId or QnADTO needs to be present in a PromptDTO object
     #
-    class QnADTO
+    class PromptDTOQna < QnADTO
 
       include MsRestAzure
 
-      # @return [Integer] Unique id for the Q-A.
-      attr_accessor :id
-
-      # @return [String] Answer text
-      attr_accessor :answer
-
-      # @return [String] Source from which Q-A was indexed. eg.
-      # https://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/FAQs
-      attr_accessor :source
-
-      # @return [Array<String>] List of questions associated with the answer.
-      attr_accessor :questions
-
-      # @return [Array<MetadataDTO>] List of metadata associated with the
-      # answer.
-      attr_accessor :metadata
-
-      # @return [QnADTOContext] Context of a QnA
-      attr_accessor :context
-
 
       #
-      # Mapper for QnADTO class as Ruby Hash.
+      # Mapper for PromptDTOQna class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'QnADTO',
+          serialized_name: 'PromptDTO_qna',
           type: {
             name: 'Composite',
-            class_name: 'QnADTO',
+            class_name: 'PromptDTOQna',
             model_properties: {
               id: {
                 client_side_validation: true,

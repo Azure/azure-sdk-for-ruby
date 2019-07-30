@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::Qnamaker::V4_0
+module Azure::CognitiveServices::QnamakerRuntime::V4_0
   #
   # A service client - single point of access to the REST API.
   #
-  class QnamakerClient < MsRestAzure::AzureServiceClient
+  class QnamakerRuntimeClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -17,9 +17,9 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Supported Cognitive Services endpoints (protocol and
-    # hostname, for example: https://westus.api.cognitive.microsoft.com).
-    attr_accessor :endpoint
+    # @return [String] QnA Maker App Service endpoint (for example:
+    # https://{qnaservice-hostname}.azurewebsites.net).
+    attr_accessor :runtime_endpoint
 
     # @return [String] The preferred language for the response.
     attr_accessor :accept_language
@@ -33,38 +33,22 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [EndpointSettings] endpoint_settings
-    attr_reader :endpoint_settings
-
-    # @return [EndpointKeys] endpoint_keys
-    attr_reader :endpoint_keys
-
-    # @return [Alterations] alterations
-    attr_reader :alterations
-
-    # @return [Knowledgebase] knowledgebase
-    attr_reader :knowledgebase
-
-    # @return [Operations] operations
-    attr_reader :operations
+    # @return [Runtime] runtime
+    attr_reader :runtime
 
     #
-    # Creates initializes a new instance of the QnamakerClient class.
+    # Creates initializes a new instance of the QnamakerRuntimeClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param options [Array] filters to be applied to the HTTP requests.
     #
     def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = '{Endpoint}/qnamaker/v4.0'
+      @base_url = '{RuntimeEndpoint}/qnamaker'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @endpoint_settings = EndpointSettings.new(self)
-      @endpoint_keys = EndpointKeys.new(self)
-      @alterations = Alterations.new(self)
-      @knowledgebase = Knowledgebase.new(self)
-      @operations = Operations.new(self)
+      @runtime = Runtime.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -135,8 +119,8 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     # Adds telemetry information.
     #
     def add_telemetry
-        sdk_information = 'azure_cognitiveservices_qnamaker'
-        sdk_information = "#{sdk_information}/0.17.2"
+        sdk_information = 'azure_cognitiveservices_qnamakerruntime'
+        sdk_information = "#{sdk_information}/0.17.0"
         add_user_agent_information(sdk_information)
     end
   end

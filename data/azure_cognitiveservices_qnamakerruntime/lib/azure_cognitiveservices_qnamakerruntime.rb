@@ -2,6 +2,5 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure::CognitiveServices::Qnamaker
-  VERSION = '0.17.2'
-end
+require '4.0/generated/azure_cognitiveservices_qnamakerruntime'
+require 'profiles/latest/qnamakerruntime_latest_profile_client'

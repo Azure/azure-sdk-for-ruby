@@ -6,64 +6,60 @@
 module Azure::CognitiveServices::Qnamaker::V4_0
   module Models
     #
-    # PATCH Body schema to represent list of Metadata to be updated
+    # Context associated with Qna.
     #
-    class UpdateMetadataDTO
+    class ContextDTO
 
       include MsRestAzure
 
-      # @return [Array<MetadataDTO>] List of Metadata associated with answer to
-      # be deleted
-      attr_accessor :delete
+      # @return [Boolean] To mark if a prompt is relevant only with a previous
+      # question or not.
+      # true - Do not include this QnA as search result for queries without
+      # context
+      # false - ignores context and includes this QnA in search result
+      attr_accessor :is_context_only
 
-      # @return [Array<MetadataDTO>] List of metadata associated with answer to
-      # be added
-      attr_accessor :add
+      # @return [Array<PromptDTO>] List of prompts associated with the answer.
+      attr_accessor :prompts
 
 
       #
-      # Mapper for UpdateMetadataDTO class as Ruby Hash.
+      # Mapper for ContextDTO class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'UpdateMetadataDTO',
+          serialized_name: 'ContextDTO',
           type: {
             name: 'Composite',
-            class_name: 'UpdateMetadataDTO',
+            class_name: 'ContextDTO',
             model_properties: {
-              delete: {
+              is_context_only: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'delete',
+                serialized_name: 'isContextOnly',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'MetadataDTOElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'MetadataDTO'
-                      }
-                  }
+                  name: 'Boolean'
                 }
               },
-              add: {
+              prompts: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'add',
+                serialized_name: 'prompts',
+                constraints: {
+                  MaxItems: 20
+                },
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'MetadataDTOElementType',
+                      serialized_name: 'PromptDTOElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'MetadataDTO'
+                        class_name: 'PromptDTO'
                       }
                   }
                 }
