@@ -819,6 +819,13 @@
       "module_require": "azure_cognitiveservices_qnamaker"
     }
   },
+  "Microsoft.CognitiveServices.QnamakerRuntime":{
+    "data": {
+      "path": "data/azure_cognitiveservices_qnamakerruntime",
+      "namespace": "Azure::CognitiveServices::QnamakerRuntime",
+      "module_require": "azure_cognitiveservices_qnamakerruntime"
+    }
+  },
   "Microsoft.CognitiveServices.SpellCheck": {
     "data": {
       "path": "data/azure_cognitiveservices_spellcheck",

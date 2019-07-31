@@ -96,7 +96,6 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
       fail ArgumentError, 'api_id is nil' if api_id.nil?
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -132,6 +131,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -211,7 +212,6 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
       fail ArgumentError, 'api_id is nil' if api_id.nil?
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'diagnostic_id is nil' if diagnostic_id.nil?
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MaxLength': '80'" if !diagnostic_id.nil? && diagnostic_id.length > 80
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MinLength': '1'" if !diagnostic_id.nil? && diagnostic_id.length < 1
@@ -249,6 +249,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -316,7 +318,6 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
       fail ArgumentError, 'api_id is nil' if api_id.nil?
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'diagnostic_id is nil' if diagnostic_id.nil?
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MaxLength': '80'" if !diagnostic_id.nil? && diagnostic_id.length > 80
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MinLength': '1'" if !diagnostic_id.nil? && diagnostic_id.length < 1
@@ -354,6 +355,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -440,7 +443,6 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
       fail ArgumentError, 'api_id is nil' if api_id.nil?
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'diagnostic_id is nil' if diagnostic_id.nil?
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MaxLength': '80'" if !diagnostic_id.nil? && diagnostic_id.length > 80
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MinLength': '1'" if !diagnostic_id.nil? && diagnostic_id.length < 1
@@ -487,6 +489,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -585,7 +589,6 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
       fail ArgumentError, 'api_id is nil' if api_id.nil?
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'diagnostic_id is nil' if diagnostic_id.nil?
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MaxLength': '80'" if !diagnostic_id.nil? && diagnostic_id.length > 80
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MinLength': '1'" if !diagnostic_id.nil? && diagnostic_id.length < 1
@@ -633,6 +636,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -708,7 +713,6 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
       fail ArgumentError, 'api_id is nil' if api_id.nil?
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'diagnostic_id is nil' if diagnostic_id.nil?
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MaxLength': '80'" if !diagnostic_id.nil? && diagnostic_id.length > 80
       fail ArgumentError, "'diagnostic_id' should satisfy the constraint - 'MinLength': '1'" if !diagnostic_id.nil? && diagnostic_id.length < 1
@@ -748,6 +752,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -826,6 +832,8 @@ module Azure::ApiManagement::Mgmt::V2019_01_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

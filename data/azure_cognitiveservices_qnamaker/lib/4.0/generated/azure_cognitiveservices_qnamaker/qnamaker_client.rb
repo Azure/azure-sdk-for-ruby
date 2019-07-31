@@ -15,15 +15,11 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     attr_reader :base_url
 
     # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials1
+    attr_reader :credentials
 
     # @return [String] Supported Cognitive Services endpoints (protocol and
     # hostname, for example: https://westus.api.cognitive.microsoft.com).
     attr_accessor :endpoint
-
-    # @return Subscription credentials which uniquely identify client
-    # subscription.
-    attr_accessor :credentials
 
     # @return [String] The preferred language for the response.
     attr_accessor :accept_language
@@ -36,6 +32,9 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     # generated. When set to true a unique x-ms-client-request-id value is
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
+
+    # @return [EndpointSettings] endpoint_settings
+    attr_reader :endpoint_settings
 
     # @return [EndpointKeys] endpoint_keys
     attr_reader :endpoint_keys
@@ -61,6 +60,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @endpoint_settings = EndpointSettings.new(self)
       @endpoint_keys = EndpointKeys.new(self)
       @alterations = Alterations.new(self)
       @knowledgebase = Knowledgebase.new(self)
@@ -136,7 +136,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_qnamaker'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end

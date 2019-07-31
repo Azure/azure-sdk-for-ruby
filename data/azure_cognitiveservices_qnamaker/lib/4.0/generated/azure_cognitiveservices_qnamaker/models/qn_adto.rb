@@ -29,6 +29,9 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # answer.
       attr_accessor :metadata
 
+      # @return [QnADTOContext] Context of a QnA
+      attr_accessor :context
+
 
       #
       # Mapper for QnADTO class as Ruby Hash.
@@ -105,6 +108,15 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                         class_name: 'MetadataDTO'
                       }
                   }
+                }
+              },
+              context: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'context',
+                type: {
+                  name: 'Composite',
+                  class_name: 'QnADTOContext'
                 }
               }
             }

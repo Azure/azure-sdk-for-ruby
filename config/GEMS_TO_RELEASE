@@ -1,6 +1,10 @@
 {
     "management": [
-        "azure_mgmt_devtestlabs"
+        "azure_mgmt_api_management"
+    ],
+    "data": [
+        "azure_cognitiveservices_qnamaker",
+        "azure_cognitiveservices_qnamakerruntime"
     ],
     "rollup": [
         "azure_sdk"

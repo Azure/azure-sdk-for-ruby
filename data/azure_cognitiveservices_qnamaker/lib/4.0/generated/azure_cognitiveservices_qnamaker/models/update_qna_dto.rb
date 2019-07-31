@@ -30,6 +30,10 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # answer to be updated
       attr_accessor :metadata
 
+      # @return [UpdateQnaDTOContext] Context associated with Qna to be
+      # updated.
+      attr_accessor :context
+
 
       #
       # Mapper for UpdateQnaDTO class as Ruby Hash.
@@ -91,6 +95,15 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 type: {
                   name: 'Composite',
                   class_name: 'UpdateQnaDTOMetadata'
+                }
+              },
+              context: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'context',
+                type: {
+                  name: 'Composite',
+                  class_name: 'UpdateQnaDTOContext'
                 }
               }
             }

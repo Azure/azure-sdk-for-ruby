@@ -16,7 +16,7 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # be deleted
       attr_accessor :delete
 
-      # @return [Array<MetadataDTO>] List of Metadat associated with answer to
+      # @return [Array<MetadataDTO>] List of metadata associated with answer to
       # be added
       attr_accessor :add
 
