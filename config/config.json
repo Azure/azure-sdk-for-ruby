@@ -1973,12 +1973,47 @@
     }
   },
   "azure_mgmt_security": {
+    "azure_mgmt_security_2015_06_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/476f7fd20e3022f798e600ff312e9a8700f557b0/specification/security/resource-manager/readme.md",
+      "namespace": "Azure::Security::Mgmt::V2015_06_01_preview",
+      "title": "SecurityManagementClient",
+      "tag": "package-2015-06-preview-only"
+    },
     "azure_mgmt_security_2017_08_01_preview": {
-      "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/security.json"
-      ],
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/476f7fd20e3022f798e600ff312e9a8700f557b0/specification/security/resource-manager/readme.md",
       "namespace": "Azure::Security::Mgmt::V2017_08_01_preview",
-      "title": "SecurityManagementClient"
+      "title": "SecurityManagementClient",
+      "tag": "package-2017-08-preview-only"
+    },
+    "azure_mgmt_security_2019_01_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/476f7fd20e3022f798e600ff312e9a8700f557b0/specification/security/resource-manager/readme.md",
+      "namespace": "Azure::Security::Mgmt::V2019_01_01_preview",
+      "title": "SecurityManagementClient",
+      "tag": "package-2019-01-preview-only"
+    },
+    "azure_mgmt_security_2017_08_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/476f7fd20e3022f798e600ff312e9a8700f557b0/specification/security/resource-manager/readme.md",
+      "namespace": "Azure::Security::Mgmt::V2017_08_01",
+      "title": "SecurityManagementClient",
+      "tag": "package-2017-08-only"
+    },
+    "azure_mgmt_security_2018_06_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/476f7fd20e3022f798e600ff312e9a8700f557b0/specification/security/resource-manager/readme.md",
+      "namespace": "Azure::Security::Mgmt::V2018_06_01",
+      "title": "SecurityManagementClient",
+      "tag": "package-2018-06-only"
+    },
+    "azure_mgmt_security_2019_01_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/476f7fd20e3022f798e600ff312e9a8700f557b0/specification/security/resource-manager/readme.md",
+      "namespace": "Azure::Security::Mgmt::V2019_01_01",
+      "title": "SecurityManagementClient",
+      "tag": "package-2019-01-only"
+    },
+    "azure_mgmt_security_2019_08_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/476f7fd20e3022f798e600ff312e9a8700f557b0/specification/security/resource-manager/readme.md",
+      "namespace": "Azure::Security::Mgmt::V2019_08_01",
+      "title": "SecurityManagementClient",
+      "tag": "package-2019-08-only"
     }
   },
   "azure_mgmt_serialconsole": {

@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_signalr",
-        "azure_mgmt_hdinsight"
+        "azure_mgmt_hdinsight",
+        "azure_mgmt_security"
     ],
     "rollup": [
         "azure_sdk"
