@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Hdinsight::Mgmt::V2015_03_01_preview
+module Azure::Hdinsight::Mgmt::V2018_06_01_preview
   module Models
     #
     # The regional quota capacity.
