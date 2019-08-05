@@ -78,7 +78,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
               },
               phone: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'properties.phone',
                 type: {
                   name: 'String'

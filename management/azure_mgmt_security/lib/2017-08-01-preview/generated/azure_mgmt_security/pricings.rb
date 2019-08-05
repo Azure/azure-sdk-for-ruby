@@ -18,7 +18,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
       @client = client
     end
 
-    # @return [SecurityManagementClient] reference to the SecurityManagementClient
+    # @return [SecurityCenter] reference to the SecurityCenter
     attr_reader :client
 
     #
@@ -55,7 +55,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
 
@@ -89,6 +89,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -146,7 +148,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_by_resource_group_async(resource_group_name, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -184,6 +186,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -241,7 +245,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_subscription_pricing_async(pricing_name, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, 'pricing_name is nil' if pricing_name.nil?
@@ -276,6 +280,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -333,7 +339,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def update_subscription_pricing_async(pricing_name, pricing, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, 'pricing_name is nil' if pricing_name.nil?
@@ -376,6 +382,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -436,7 +444,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_resource_group_pricing_async(resource_group_name, pricing_name, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -475,6 +483,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -538,7 +548,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_or_update_resource_group_pricing_async(resource_group_name, pricing_name, pricing, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -585,6 +595,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -673,6 +685,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -761,6 +775,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

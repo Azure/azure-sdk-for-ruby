@@ -12,6 +12,12 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
 
       include MsRestAzure
 
+      # @return [Integer] The number of cores used in the subscription.
+      attr_accessor :cores_used
+
+      # @return [Integer] The number of cores that the subscription allowed.
+      attr_accessor :max_cores_allowed
+
       # @return [Array<RegionalQuotaCapability>] The list of region quota
       # capabilities.
       attr_accessor :regional_quotas
@@ -30,6 +36,22 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
             name: 'Composite',
             class_name: 'QuotaCapability',
             model_properties: {
+              cores_used: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'cores_used',
+                type: {
+                  name: 'Number'
+                }
+              },
+              max_cores_allowed: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'max_cores_allowed',
+                type: {
+                  name: 'Number'
+                }
+              },
               regional_quotas: {
                 client_side_validation: true,
                 required: false,

@@ -15,7 +15,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
       # @return [String] Fully qualified resource Id for the resource.
       attr_accessor :id
 
-      # @return [String] The name of the resouce.
+      # @return [String] The name of the resource.
       attr_accessor :name
 
       # @return [String] The type of the service - e.g.

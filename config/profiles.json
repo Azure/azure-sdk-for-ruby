@@ -648,7 +648,13 @@
                 },
                 "Microsoft.Security": {
                     "management": {
-                        "2017-08-01-preview": ["*"]
+                        "2015-06-01-preview": ["*"],
+                        "2017-08-01-preview": ["*"],
+                        "2017-08-01": ["*"],
+                        "2018-06-01": ["*"],
+                        "2019-01-01-preview": ["*"],
+                        "2019-01-01": ["*"],
+                        "2019-08-01": ["*"]
                     }
                 },
                 "Microsoft.Serialconsole": {
@@ -672,7 +678,7 @@
                 },
                 "Microsoft.Signalr": {
                     "management": {
-                        "2018-03-01-preview": ["*"]
+                        "2018-10-01": ["*"]
                     }
                 },
                 "Microsoft.SQL": {
@@ -2315,7 +2321,13 @@
             "resourceTypes": {
                 "Microsoft.Security": {
                     "management": {
-                        "2017-08-01-preview": ["*"]
+                        "2015-06-01-preview": ["*"],
+                        "2017-08-01-preview": ["*"],
+                        "2017-08-01": ["*"],
+                        "2018-06-01": ["*"],
+                        "2019-01-01-preview": ["*"],
+                        "2019-01-01": ["*"],
+                        "2019-08-01": ["*"]
                     }
                 }
             },
@@ -2372,7 +2384,7 @@
             "resourceTypes": {
                 "Microsoft.Signalr": {
                     "management": {
-                        "2018-03-01-preview": ["*"]
+                        "2018-10-01": ["*"]
                     }
                 }
             },

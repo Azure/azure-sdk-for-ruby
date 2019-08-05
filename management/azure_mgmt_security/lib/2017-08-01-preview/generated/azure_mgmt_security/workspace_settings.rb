@@ -18,11 +18,12 @@ module Azure::Security::Mgmt::V2017_08_01_preview
       @client = client
     end
 
-    # @return [SecurityManagementClient] reference to the SecurityManagementClient
+    # @return [SecurityCenter] reference to the SecurityCenter
     attr_reader :client
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -35,7 +36,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -47,7 +49,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -55,7 +58,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
 
@@ -89,6 +92,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -107,7 +112,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param workspace_setting_name [String] Name of the security setting
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -121,7 +127,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param workspace_setting_name [String] Name of the security setting
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -134,7 +141,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param workspace_setting_name [String] Name of the security setting
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -143,7 +151,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_async(workspace_setting_name, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, 'workspace_setting_name is nil' if workspace_setting_name.nil?
@@ -178,6 +186,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -235,7 +245,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_async(workspace_setting_name, workspace_setting, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, 'workspace_setting_name is nil' if workspace_setting_name.nil?
@@ -278,6 +288,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -335,7 +347,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def update_async(workspace_setting_name, workspace_setting, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, 'workspace_setting_name is nil' if workspace_setting_name.nil?
@@ -378,6 +390,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -434,7 +448,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(workspace_setting_name, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, 'workspace_setting_name is nil' if workspace_setting_name.nil?
@@ -469,6 +483,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -477,7 +493,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -492,7 +509,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -506,7 +524,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -547,6 +566,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -565,7 +586,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Settings about where we should store your security data and logs
+    # Settings about where we should store your security data and logs. If the
+    # result is empty, it means that no custom-workspace configuration was set
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

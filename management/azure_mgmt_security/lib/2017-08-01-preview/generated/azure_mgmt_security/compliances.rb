@@ -18,7 +18,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
       @client = client
     end
 
-    # @return [SecurityManagementClient] reference to the SecurityManagementClient
+    # @return [SecurityCenter] reference to the SecurityCenter
     attr_reader :client
 
     #
@@ -64,7 +64,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(scope, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'scope is nil' if scope.nil?
 
 
@@ -97,6 +97,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -160,7 +162,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_async(scope, compliance_name, custom_headers:nil)
-      @client.api_version = '2017-08-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'compliance_name is nil' if compliance_name.nil?
 
@@ -194,6 +196,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -282,6 +286,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

@@ -18,7 +18,7 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
       # @return [Integer] The number of cores used in the region.
       attr_accessor :cores_used
 
-      # @return [Integer] The number of courses available in the region.
+      # @return [Integer] The number of cores available in the region.
       attr_accessor :cores_available
 
 

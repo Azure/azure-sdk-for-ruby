@@ -24,7 +24,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [Integer] The public port to connect to.
       attr_accessor :public_port
 
-      # @return [String] The subDomainSuffix of the application.
+      # @return [String] The subdomain suffix of the application.
       attr_accessor :sub_domain_suffix
 
       # @return [Boolean] The value indicates whether to disable GatewayAuth.
