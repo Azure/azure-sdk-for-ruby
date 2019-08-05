@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Signalr::Mgmt::V2018_03_01_preview
+module Azure::Signalr::Mgmt::V2018_10_01
   module Models
     #
     # The core properties of ARM resources.

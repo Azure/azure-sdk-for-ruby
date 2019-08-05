@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Signalr::Mgmt::V2018_03_01_preview
+module Azure::Signalr::Mgmt::V2018_10_01
   #
   # REST API for Azure SignalR Service
   #
@@ -58,7 +58,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(custom_headers:nil)
-      @client.api_version = '2018-03-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -95,7 +95,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::OperationList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -188,7 +188,7 @@ module Azure::Signalr::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Signalr::Mgmt::V2018_03_01_preview::Models::OperationList.mapper()
+            result_mapper = Azure::Signalr::Mgmt::V2018_10_01::Models::OperationList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
