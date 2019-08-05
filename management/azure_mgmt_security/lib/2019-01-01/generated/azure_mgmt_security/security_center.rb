@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Security::Mgmt::V2017_08_01_preview
+module Azure::Security::Mgmt::V2019_01_01
   #
   # A service client - single point of access to the REST API.
   #
-  class SecurityManagementClient < MsRestAzure::AzureServiceClient
+  class SecurityCenter < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -16,6 +16,10 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
+
+    # @return [String] The location where ASC stores the data of the
+    # subscription. can be retrieved from Get locations
+    attr_accessor :asc_location
 
     # @return [String] Azure subscription ID
     attr_accessor :subscription_id
@@ -35,23 +39,14 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Pricings] pricings
-    attr_reader :pricings
+    # @return [Alerts] alerts
+    attr_reader :alerts
 
-    # @return [SecurityContacts] security_contacts
-    attr_reader :security_contacts
-
-    # @return [WorkspaceSettings] workspace_settings
-    attr_reader :workspace_settings
-
-    # @return [AutoProvisioningSettings] auto_provisioning_settings
-    attr_reader :auto_provisioning_settings
-
-    # @return [Compliances] compliances
-    attr_reader :compliances
+    # @return [Settings] settings
+    attr_reader :settings
 
     #
-    # Creates initializes a new instance of the SecurityManagementClient class.
+    # Creates initializes a new instance of the SecurityCenter class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -63,12 +58,9 @@ module Azure::Security::Mgmt::V2017_08_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @pricings = Pricings.new(self)
-      @security_contacts = SecurityContacts.new(self)
-      @workspace_settings = WorkspaceSettings.new(self)
-      @auto_provisioning_settings = AutoProvisioningSettings.new(self)
-      @compliances = Compliances.new(self)
-      @api_version = '2017-08-01-preview'
+      @alerts = Alerts.new(self)
+      @settings = Settings.new(self)
+      @api_version = '2019-01-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -140,7 +132,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_security'
-        sdk_information = "#{sdk_information}/0.17.2"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end
