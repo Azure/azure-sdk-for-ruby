@@ -2024,8 +2024,13 @@
     }
   },
   "azure_mgmt_signalr": {
+    "azure_mgmt_signalr_2018_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/476f7fd20e3022f798e600ff312e9a8700f557b0/specification/signalr/resource-manager/readme.md",
+      "namespace": "Azure::Signalr::Mgmt::V2018_10_01",
+      "tag": "package-2018-10-01"
+    },
     "azure_mgmt_signalr_2018_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/57cc3b1c16e4d747ac1163c2da6e73c06f28fdcb/specification/signalr/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/476f7fd20e3022f798e600ff312e9a8700f557b0/specification/signalr/resource-manager/readme.md",
       "namespace": "Azure::Signalr::Mgmt::V2018_03_01_preview",
       "tag": "package-2018-03-01-preview"
     }

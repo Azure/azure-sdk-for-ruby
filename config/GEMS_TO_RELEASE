@@ -1,10 +1,6 @@
 {
     "management": [
-        "azure_mgmt_api_management"
-    ],
-    "data": [
-        "azure_cognitiveservices_qnamaker",
-        "azure_cognitiveservices_qnamakerruntime"
+        "azure_mgmt_signalr"
     ],
     "rollup": [
         "azure_sdk"
