@@ -3,37 +3,37 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2018_03_01_preview
+module Azure::Subscriptions::Mgmt::V2019_03_01_preview
   module Models
     #
-    # Active Directory Principal who’ll get owner access on the new
-    # subscription.
+    # The ID of the subscriptions that is being renamed
     #
-    class AdPrincipal
+    class RenamedSubscriptionId
 
       include MsRestAzure
 
-      # @return [String] Object id of the Principal
-      attr_accessor :object_id
+      # @return [String] The ID of the subscriptions that is being renamed
+      attr_accessor :value
 
 
       #
-      # Mapper for AdPrincipal class as Ruby Hash.
+      # Mapper for RenamedSubscriptionId class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'AdPrincipal',
+          serialized_name: 'RenamedSubscriptionId',
           type: {
             name: 'Composite',
-            class_name: 'AdPrincipal',
+            class_name: 'RenamedSubscriptionId',
             model_properties: {
-              object_id: {
+              value: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'objectId',
+                required: false,
+                read_only: true,
+                serialized_name: 'value',
                 type: {
                   name: 'String'
                 }

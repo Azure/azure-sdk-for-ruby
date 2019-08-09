@@ -33,9 +33,6 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Operations] operations
-    attr_reader :operations
-
     # @return [SubscriptionOperations] subscription_operations
     attr_reader :subscription_operations
 
@@ -55,7 +52,6 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @operations = Operations.new(self)
       @subscription_operations = SubscriptionOperations.new(self)
       @subscription_factory = SubscriptionFactory.new(self)
       @api_version = '2018-03-01-preview'
@@ -130,7 +126,7 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_subscriptions'
-        sdk_information = "#{sdk_information}/0.17.3"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

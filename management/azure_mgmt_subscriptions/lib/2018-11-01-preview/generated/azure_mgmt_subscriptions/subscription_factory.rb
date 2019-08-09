@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2018_03_01_preview
+module Azure::Subscriptions::Mgmt::V2018_11_01_preview
   #
   # Subscription client provides an interface to create and manage Azure
   # subscriptions programmatically.
@@ -23,26 +23,30 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
     attr_reader :client
 
     #
-    # Creates an Azure subscription
+    # The operation to create a new Azure subscription
     #
-    # @param enrollment_account_name [String] The name of the enrollment account to
-    # which the subscription will be billed.
-    # @param body [SubscriptionCreationParameters] The subscription creation
+    # @param billing_account_name [String] The name of the Microsoft Customer
+    # Agreement billing account for which you want to create the subscription.
+    # @param invoice_section_name [String] The name of the invoice section in the
+    # billing account for which you want to create the subscription.
+    # @param body [ModernSubscriptionCreationParameters] The subscription creation
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SubscriptionCreationResult] operation results.
     #
-    def create_subscription_in_enrollment_account(enrollment_account_name, body, custom_headers:nil)
-      response = create_subscription_in_enrollment_account_async(enrollment_account_name, body, custom_headers:custom_headers).value!
+    def create_subscription(billing_account_name, invoice_section_name, body, custom_headers:nil)
+      response = create_subscription_async(billing_account_name, invoice_section_name, body, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param enrollment_account_name [String] The name of the enrollment account to
-    # which the subscription will be billed.
-    # @param body [SubscriptionCreationParameters] The subscription creation
+    # @param billing_account_name [String] The name of the Microsoft Customer
+    # Agreement billing account for which you want to create the subscription.
+    # @param invoice_section_name [String] The name of the invoice section in the
+    # billing account for which you want to create the subscription.
+    # @param body [ModernSubscriptionCreationParameters] The subscription creation
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -50,14 +54,14 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_subscription_in_enrollment_account_async(enrollment_account_name, body, custom_headers:nil)
+    def create_subscription_async(billing_account_name, invoice_section_name, body, custom_headers:nil)
       # Send request
-      promise = begin_create_subscription_in_enrollment_account_async(enrollment_account_name, body, custom_headers:custom_headers)
+      promise = begin_create_subscription_async(billing_account_name, invoice_section_name, body, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Subscriptions::Mgmt::V2018_03_01_preview::Models::SubscriptionCreationResult.mapper()
+          result_mapper = Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::SubscriptionCreationResult.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -69,52 +73,59 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
     end
 
     #
-    # Creates an Azure subscription
+    # The operation to create a new Azure subscription
     #
-    # @param enrollment_account_name [String] The name of the enrollment account to
-    # which the subscription will be billed.
-    # @param body [SubscriptionCreationParameters] The subscription creation
+    # @param billing_account_name [String] The name of the Microsoft Customer
+    # Agreement billing account for which you want to create the subscription.
+    # @param invoice_section_name [String] The name of the invoice section in the
+    # billing account for which you want to create the subscription.
+    # @param body [ModernSubscriptionCreationParameters] The subscription creation
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SubscriptionCreationResult] operation results.
     #
-    def begin_create_subscription_in_enrollment_account(enrollment_account_name, body, custom_headers:nil)
-      response = begin_create_subscription_in_enrollment_account_async(enrollment_account_name, body, custom_headers:custom_headers).value!
+    def begin_create_subscription(billing_account_name, invoice_section_name, body, custom_headers:nil)
+      response = begin_create_subscription_async(billing_account_name, invoice_section_name, body, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates an Azure subscription
+    # The operation to create a new Azure subscription
     #
-    # @param enrollment_account_name [String] The name of the enrollment account to
-    # which the subscription will be billed.
-    # @param body [SubscriptionCreationParameters] The subscription creation
+    # @param billing_account_name [String] The name of the Microsoft Customer
+    # Agreement billing account for which you want to create the subscription.
+    # @param invoice_section_name [String] The name of the invoice section in the
+    # billing account for which you want to create the subscription.
+    # @param body [ModernSubscriptionCreationParameters] The subscription creation
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_subscription_in_enrollment_account_with_http_info(enrollment_account_name, body, custom_headers:nil)
-      begin_create_subscription_in_enrollment_account_async(enrollment_account_name, body, custom_headers:custom_headers).value!
+    def begin_create_subscription_with_http_info(billing_account_name, invoice_section_name, body, custom_headers:nil)
+      begin_create_subscription_async(billing_account_name, invoice_section_name, body, custom_headers:custom_headers).value!
     end
 
     #
-    # Creates an Azure subscription
+    # The operation to create a new Azure subscription
     #
-    # @param enrollment_account_name [String] The name of the enrollment account to
-    # which the subscription will be billed.
-    # @param body [SubscriptionCreationParameters] The subscription creation
+    # @param billing_account_name [String] The name of the Microsoft Customer
+    # Agreement billing account for which you want to create the subscription.
+    # @param invoice_section_name [String] The name of the invoice section in the
+    # billing account for which you want to create the subscription.
+    # @param body [ModernSubscriptionCreationParameters] The subscription creation
     # parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_subscription_in_enrollment_account_async(enrollment_account_name, body, custom_headers:nil)
-      fail ArgumentError, 'enrollment_account_name is nil' if enrollment_account_name.nil?
+    def begin_create_subscription_async(billing_account_name, invoice_section_name, body, custom_headers:nil)
+      fail ArgumentError, 'billing_account_name is nil' if billing_account_name.nil?
+      fail ArgumentError, 'invoice_section_name is nil' if invoice_section_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'body is nil' if body.nil?
 
@@ -127,17 +138,17 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Subscriptions::Mgmt::V2018_03_01_preview::Models::SubscriptionCreationParameters.mapper()
+      request_mapper = Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::ModernSubscriptionCreationParameters.mapper()
       request_content = @client.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountName}/providers/Microsoft.Subscription/createSubscription'
+      path_template = 'providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoiceSections/{invoiceSectionName}/providers/Microsoft.Subscription/createSubscription'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'enrollmentAccountName' => enrollment_account_name},
+          path_params: {'billingAccountName' => billing_account_name,'invoiceSectionName' => invoice_section_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -161,7 +172,7 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Subscriptions::Mgmt::V2018_03_01_preview::Models::SubscriptionCreationResult.mapper()
+            result_mapper = Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::SubscriptionCreationResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

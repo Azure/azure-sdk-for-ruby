@@ -3,37 +3,37 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2018_03_01_preview
+module Azure::Subscriptions::Mgmt::V2018_11_01_preview
   module Models
     #
-    # Active Directory Principal who’ll get owner access on the new
-    # subscription.
+    # The created subscription object.
     #
-    class AdPrincipal
+    class SubscriptionCreationResult
 
       include MsRestAzure
 
-      # @return [String] Object id of the Principal
-      attr_accessor :object_id
+      # @return [String] The link to the new subscription. Use this link to
+      # check the status of subscription creation operation.
+      attr_accessor :subscription_link
 
 
       #
-      # Mapper for AdPrincipal class as Ruby Hash.
+      # Mapper for SubscriptionCreationResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'AdPrincipal',
+          serialized_name: 'SubscriptionCreationResult',
           type: {
             name: 'Composite',
-            class_name: 'AdPrincipal',
+            class_name: 'SubscriptionCreationResult',
             model_properties: {
-              object_id: {
+              subscription_link: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'objectId',
+                required: false,
+                serialized_name: 'subscriptionLink',
                 type: {
                   name: 'String'
                 }

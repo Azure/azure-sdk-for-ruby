@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2018_03_01_preview
+module Azure::Subscriptions::Mgmt::V2019_03_01_preview
   module Models
     #
     # Result of the request to list operations. It contains a list of

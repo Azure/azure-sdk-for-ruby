@@ -3,16 +3,16 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2018_03_01_preview
+module Azure::Subscriptions::Mgmt::V2018_11_01_preview
   #
   # Subscription client provides an interface to create and manage Azure
   # subscriptions programmatically.
   #
-  class Operations
+  class SubscriptionOperationOperations
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Operations class.
+    # Creates and initializes a new instance of the SubscriptionOperationOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,39 +23,46 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
     attr_reader :client
 
     #
-    # Lists all of the available Microsoft.Subscription API operations.
+    # Get the status of the pending Microsoft.Subscription API operations.
     #
+    # @param operation_id [String] The operation ID, which can be found from the
+    # Location field in the generate recommendation response header.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [OperationListResult] operation results.
+    # @return [SubscriptionCreationResult] operation results.
     #
-    def list(custom_headers:nil)
-      response = list_async(custom_headers:custom_headers).value!
+    def get(operation_id, custom_headers:nil)
+      response = get_async(operation_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Lists all of the available Microsoft.Subscription API operations.
+    # Get the status of the pending Microsoft.Subscription API operations.
     #
+    # @param operation_id [String] The operation ID, which can be found from the
+    # Location field in the generate recommendation response header.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers:nil)
-      list_async(custom_headers:custom_headers).value!
+    def get_with_http_info(operation_id, custom_headers:nil)
+      get_async(operation_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Lists all of the available Microsoft.Subscription API operations.
+    # Get the status of the pending Microsoft.Subscription API operations.
     #
+    # @param operation_id [String] The operation ID, which can be found from the
+    # Location field in the generate recommendation response header.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers:nil)
+    def get_async(operation_id, custom_headers:nil)
+      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -65,12 +72,13 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.Subscription/operations'
+      path_template = 'providers/Microsoft.Subscription/subscriptionOperations/{operationId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'operationId' => operation_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -81,17 +89,19 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Subscriptions::Mgmt::V2018_03_01_preview::Models::OperationListResult.mapper()
+            result_mapper = Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::SubscriptionCreationResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

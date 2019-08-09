@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2017_11_01_preview
+module Azure::Subscriptions::Mgmt::V2018_11_01_preview
   #
   # A service client - single point of access to the REST API.
   #
-  class SubscriptionDefinitionsClient < MsRestAzure::AzureServiceClient
+  class SubscriptionClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -18,7 +18,7 @@ module Azure::Subscriptions::Mgmt::V2017_11_01_preview
     attr_reader :credentials
 
     # @return [String] Version of the API to be used with the client request.
-    # Current version is 2015-06-01
+    # Current version is 2018-11-01-preview
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -33,15 +33,15 @@ module Azure::Subscriptions::Mgmt::V2017_11_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [SubscriptionDefinitionsOperationMetadata]
-    # subscription_definitions_operation_metadata
-    attr_reader :subscription_definitions_operation_metadata
+    # @return [SubscriptionOperationOperations]
+    # subscription_operation_operations
+    attr_reader :subscription_operation_operations
 
-    # @return [SubscriptionDefinitions] subscription_definitions
-    attr_reader :subscription_definitions
+    # @return [SubscriptionFactory] subscription_factory
+    attr_reader :subscription_factory
 
     #
-    # Creates initializes a new instance of the SubscriptionDefinitionsClient class.
+    # Creates initializes a new instance of the SubscriptionClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -53,9 +53,9 @@ module Azure::Subscriptions::Mgmt::V2017_11_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @subscription_definitions_operation_metadata = SubscriptionDefinitionsOperationMetadata.new(self)
-      @subscription_definitions = SubscriptionDefinitions.new(self)
-      @api_version = '2017-11-01-preview'
+      @subscription_operation_operations = SubscriptionOperationOperations.new(self)
+      @subscription_factory = SubscriptionFactory.new(self)
+      @api_version = '2018-11-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

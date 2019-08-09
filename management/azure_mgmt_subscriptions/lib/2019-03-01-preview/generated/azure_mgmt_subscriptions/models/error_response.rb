@@ -3,47 +3,47 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2015_11_01
+module Azure::Subscriptions::Mgmt::V2019_03_01_preview
   module Models
     #
-    # Tenant Id information
+    # Describes the format of Error response.
     #
-    class TenantIdDescription
+    class ErrorResponse
 
       include MsRestAzure
 
-      # @return [String] Gets or sets Id
-      attr_accessor :id
+      # @return [String] Error code
+      attr_accessor :code
 
-      # @return [String] Gets or sets tenantId
-      attr_accessor :tenant_id
+      # @return [String] Error message indicating why the operation failed.
+      attr_accessor :message
 
 
       #
-      # Mapper for TenantIdDescription class as Ruby Hash.
+      # Mapper for ErrorResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TenantIdDescription',
+          serialized_name: 'ErrorResponse',
           type: {
             name: 'Composite',
-            class_name: 'TenantIdDescription',
+            class_name: 'ErrorResponse',
             model_properties: {
-              id: {
+              code: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'id',
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              tenant_id: {
+              message: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'tenantId',
+                serialized_name: 'message',
                 type: {
                   name: 'String'
                 }

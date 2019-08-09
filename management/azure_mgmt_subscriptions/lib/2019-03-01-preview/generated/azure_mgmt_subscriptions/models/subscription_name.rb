@@ -3,37 +3,36 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2018_03_01_preview
+module Azure::Subscriptions::Mgmt::V2019_03_01_preview
   module Models
     #
-    # Active Directory Principal who’ll get owner access on the new
-    # subscription.
+    # The new name of the subscription.
     #
-    class AdPrincipal
+    class SubscriptionName
 
       include MsRestAzure
 
-      # @return [String] Object id of the Principal
-      attr_accessor :object_id
+      # @return [String] New subscription name
+      attr_accessor :subscription_name
 
 
       #
-      # Mapper for AdPrincipal class as Ruby Hash.
+      # Mapper for SubscriptionName class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'AdPrincipal',
+          serialized_name: 'SubscriptionName',
           type: {
             name: 'Composite',
-            class_name: 'AdPrincipal',
+            class_name: 'SubscriptionName',
             model_properties: {
-              object_id: {
+              subscription_name: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'objectId',
+                required: false,
+                serialized_name: 'subscriptionName',
                 type: {
                   name: 'String'
                 }

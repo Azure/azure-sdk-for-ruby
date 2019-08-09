@@ -12,7 +12,8 @@ module Azure::Subscriptions::Mgmt::V2018_03_01_preview
 
       include MsRestAzure
 
-      # @return [String] The link to the new subscription.
+      # @return [String] The link to the new subscription. Use this link to
+      # check the status of subscription creation operation.
       attr_accessor :subscription_link
 
 
