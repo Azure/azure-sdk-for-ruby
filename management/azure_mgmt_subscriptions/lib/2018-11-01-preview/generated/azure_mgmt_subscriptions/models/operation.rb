@@ -3,49 +3,50 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2015_11_01
+module Azure::Subscriptions::Mgmt::V2018_11_01_preview
   module Models
     #
-    # Subscription policies.
+    # REST API operation
     #
-    class SubscriptionPolicies
+    class Operation
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the subscription location placement Id.
-      attr_accessor :location_placement_id
+      # @return [String] Operation name: {provider}/{resource}/{operation}
+      attr_accessor :name
 
-      # @return [String] Gets or sets the subscription quota Id.
-      attr_accessor :quota_id
+      # @return [OperationDisplay] The object that represents the operation.
+      attr_accessor :display
 
 
       #
-      # Mapper for SubscriptionPolicies class as Ruby Hash.
+      # Mapper for Operation class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SubscriptionPolicies',
+          serialized_name: 'Operation',
           type: {
             name: 'Composite',
-            class_name: 'SubscriptionPolicies',
+            class_name: 'Operation',
             model_properties: {
-              location_placement_id: {
+              name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'locationPlacementId',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              quota_id: {
+              display: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'quotaId',
+                serialized_name: 'display',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'OperationDisplay'
                 }
               }
             }

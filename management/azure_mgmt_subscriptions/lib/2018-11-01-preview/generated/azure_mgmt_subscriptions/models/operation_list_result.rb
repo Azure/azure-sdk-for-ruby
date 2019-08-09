@@ -3,31 +3,36 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2015_11_01
+module Azure::Subscriptions::Mgmt::V2018_11_01_preview
   module Models
     #
-    # Location list operation response.
+    # Result of the request to list operations. It contains a list of
+    # operations and a URL link to get the next set of results.
     #
-    class LocationListResult
+    class OperationListResult
 
       include MsRestAzure
 
-      # @return [Array<Location>] Gets the locations.
+      # @return [Array<Operation>] List of operations.
       attr_accessor :value
+
+      # @return [String] URL to get the next set of operation list results if
+      # there are any.
+      attr_accessor :next_link
 
 
       #
-      # Mapper for LocationListResult class as Ruby Hash.
+      # Mapper for OperationListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'LocationListResult',
+          serialized_name: 'OperationListResult',
           type: {
             name: 'Composite',
-            class_name: 'LocationListResult',
+            class_name: 'OperationListResult',
             model_properties: {
               value: {
                 client_side_validation: true,
@@ -38,12 +43,20 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'LocationElementType',
+                      serialized_name: 'OperationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Location'
+                        class_name: 'Operation'
                       }
                   }
+                }
+              },
+              next_link: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

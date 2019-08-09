@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2015_11_01
+module Azure::Subscriptions::Mgmt::V2019_03_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,7 +17,8 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Client Api Version.
+    # @return [String] Version of the API to be used with the client request.
+    # Current version is 2019-03-01-preview
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -35,9 +36,6 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
     # @return [Subscriptions] subscriptions
     attr_reader :subscriptions
 
-    # @return [Tenants] tenants
-    attr_reader :tenants
-
     #
     # Creates initializes a new instance of the SubscriptionClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -52,8 +50,7 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
       @credentials = credentials
 
       @subscriptions = Subscriptions.new(self)
-      @tenants = Tenants.new(self)
-      @api_version = '2015-11-01'
+      @api_version = '2019-03-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -125,7 +122,7 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_subscriptions'
-        sdk_information = "#{sdk_information}/0.17.3"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

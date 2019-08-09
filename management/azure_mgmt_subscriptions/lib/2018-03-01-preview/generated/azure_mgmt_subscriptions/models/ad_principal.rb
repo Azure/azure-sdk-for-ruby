@@ -6,7 +6,8 @@
 module Azure::Subscriptions::Mgmt::V2018_03_01_preview
   module Models
     #
-    # Active Directory Principal for subscription creation delegated permission
+    # Active Directory Principal who’ll get owner access on the new
+    # subscription.
     #
     class AdPrincipal
 

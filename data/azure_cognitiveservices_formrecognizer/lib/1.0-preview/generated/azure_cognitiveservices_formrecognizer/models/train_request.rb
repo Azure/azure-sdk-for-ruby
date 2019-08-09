@@ -15,6 +15,10 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
       # @return [String] Get or set source path.
       attr_accessor :source
 
+      # @return [TrainSourceFilter] Get or set filter to further search the
+      # source path for content.
+      attr_accessor :source_filter
+
 
       #
       # Mapper for TrainRequest class as Ruby Hash.
@@ -39,6 +43,15 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
                 },
                 type: {
                   name: 'String'
+                }
+              },
+              source_filter: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sourceFilter',
+                type: {
+                  name: 'Composite',
+                  class_name: 'TrainSourceFilter'
                 }
               }
             }

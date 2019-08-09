@@ -6,4 +6,4 @@
 module Azure end
 module Azure::Subscriptions end
 module Azure::Subscriptions::Mgmt end
-module Azure::Subscriptions::Mgmt::V2015_11_01 end
+module Azure::Subscriptions::Mgmt::V2018_11_01_preview end

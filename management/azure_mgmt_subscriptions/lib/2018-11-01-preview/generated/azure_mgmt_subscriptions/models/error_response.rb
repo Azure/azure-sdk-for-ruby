@@ -3,50 +3,49 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2018_03_01_preview
+module Azure::Subscriptions::Mgmt::V2018_11_01_preview
   module Models
     #
-    # REST API operation
+    # Describes the format of Error response.
     #
-    class Operation
+    class ErrorResponse
 
       include MsRestAzure
 
-      # @return [String] Operation name: {provider}/{resource}/{operation}
-      attr_accessor :name
+      # @return [String] Error code
+      attr_accessor :code
 
-      # @return [OperationDisplay] The object that represents the operation.
-      attr_accessor :display
+      # @return [String] Error message indicating why the operation failed.
+      attr_accessor :message
 
 
       #
-      # Mapper for Operation class as Ruby Hash.
+      # Mapper for ErrorResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Operation',
+          serialized_name: 'ErrorResponse',
           type: {
             name: 'Composite',
-            class_name: 'Operation',
+            class_name: 'ErrorResponse',
             model_properties: {
-              name: {
+              code: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'name',
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              display: {
+              message: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'display',
+                serialized_name: 'message',
                 type: {
-                  name: 'Composite',
-                  class_name: 'OperationDisplay'
+                  name: 'String'
                 }
               }
             }

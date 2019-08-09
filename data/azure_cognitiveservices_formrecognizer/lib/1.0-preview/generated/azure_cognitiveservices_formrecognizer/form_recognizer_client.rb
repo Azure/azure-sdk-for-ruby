@@ -116,17 +116,18 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Train Model
     #
-    # The train request must include a source parameter that is either an
-    # externally accessible Azure Storage blob container Uri (preferably a Shared
-    # Access Signature Uri) or valid path to a data folder in a locally mounted
-    # drive. When local paths are specified, they must follow the Linux/Unix path
-    # format and be an absolute path rooted to the input mount configuration
+    # Create and train a custom model. The train request must include a source
+    # parameter that is either an externally accessible Azure Storage blob
+    # container Uri (preferably a Shared Access Signature Uri) or valid path to a
+    # data folder in a locally mounted drive. When local paths are specified, they
+    # must follow the Linux/Unix path format and be an absolute path rooted to the
+    # input mount configuration
     # setting value e.g., if '{Mounts:Input}' configuration setting value is
     # '/input' then a valid source path would be '/input/contosodataset'. All data
-    # to be trained are expected to be under the source. Models are trained using
-    # documents that are of the following content type - 'application/pdf',
-    # 'image/jpeg' and 'image/png'."
-    # Other content is ignored when training a model.
+    # to be trained is expected to be directly under the source folder. Subfolders
+    # are not supported. Models are trained using documents that are of the
+    # following content type - 'application/pdf', 'image/jpeg' and 'image/png'."
+    # Other type of content is ignored.
     #
     # @param train_request [TrainRequest] Request object for training.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -142,17 +143,18 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Train Model
     #
-    # The train request must include a source parameter that is either an
-    # externally accessible Azure Storage blob container Uri (preferably a Shared
-    # Access Signature Uri) or valid path to a data folder in a locally mounted
-    # drive. When local paths are specified, they must follow the Linux/Unix path
-    # format and be an absolute path rooted to the input mount configuration
+    # Create and train a custom model. The train request must include a source
+    # parameter that is either an externally accessible Azure Storage blob
+    # container Uri (preferably a Shared Access Signature Uri) or valid path to a
+    # data folder in a locally mounted drive. When local paths are specified, they
+    # must follow the Linux/Unix path format and be an absolute path rooted to the
+    # input mount configuration
     # setting value e.g., if '{Mounts:Input}' configuration setting value is
     # '/input' then a valid source path would be '/input/contosodataset'. All data
-    # to be trained are expected to be under the source. Models are trained using
-    # documents that are of the following content type - 'application/pdf',
-    # 'image/jpeg' and 'image/png'."
-    # Other content is ignored when training a model.
+    # to be trained is expected to be directly under the source folder. Subfolders
+    # are not supported. Models are trained using documents that are of the
+    # following content type - 'application/pdf', 'image/jpeg' and 'image/png'."
+    # Other type of content is ignored.
     #
     # @param train_request [TrainRequest] Request object for training.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -167,17 +169,18 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Train Model
     #
-    # The train request must include a source parameter that is either an
-    # externally accessible Azure Storage blob container Uri (preferably a Shared
-    # Access Signature Uri) or valid path to a data folder in a locally mounted
-    # drive. When local paths are specified, they must follow the Linux/Unix path
-    # format and be an absolute path rooted to the input mount configuration
+    # Create and train a custom model. The train request must include a source
+    # parameter that is either an externally accessible Azure Storage blob
+    # container Uri (preferably a Shared Access Signature Uri) or valid path to a
+    # data folder in a locally mounted drive. When local paths are specified, they
+    # must follow the Linux/Unix path format and be an absolute path rooted to the
+    # input mount configuration
     # setting value e.g., if '{Mounts:Input}' configuration setting value is
     # '/input' then a valid source path would be '/input/contosodataset'. All data
-    # to be trained are expected to be under the source. Models are trained using
-    # documents that are of the following content type - 'application/pdf',
-    # 'image/jpeg' and 'image/png'."
-    # Other content is ignored when training a model.
+    # to be trained is expected to be directly under the source folder. Subfolders
+    # are not supported. Models are trained using documents that are of the
+    # following content type - 'application/pdf', 'image/jpeg' and 'image/png'."
+    # Other type of content is ignored.
     #
     # @param train_request [TrainRequest] Request object for training.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -225,6 +228,8 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -245,8 +250,8 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Get Keys
     #
-    # Use the API to retrieve the keys that were
-    # extracted by the specified model.
+    # Retrieve the keys that were
+    # extracted during the training of the specified model.
     #
     # @param id Model identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -262,8 +267,8 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Get Keys
     #
-    # Use the API to retrieve the keys that were
-    # extracted by the specified model.
+    # Retrieve the keys that were
+    # extracted during the training of the specified model.
     #
     # @param id Model identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -278,8 +283,8 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Get Keys
     #
-    # Use the API to retrieve the keys that were
-    # extracted by the specified model.
+    # Retrieve the keys that were
+    # extracted during the training of the specified model.
     #
     # @param id Model identifier.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -321,6 +326,8 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -341,7 +348,7 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Get Models
     #
-    # Get information about all trained models
+    # Get information about all trained custom models
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -356,7 +363,7 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Get Models
     #
-    # Get information about all trained models
+    # Get information about all trained custom models
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -370,7 +377,7 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Get Models
     #
-    # Get information about all trained models
+    # Get information about all trained custom models
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -409,6 +416,8 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -502,6 +511,8 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -594,6 +605,8 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -604,10 +617,9 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Analyze Form
     #
-    # The document to analyze must be of a supported content type -
-    # 'application/pdf', 'image/jpeg' or 'image/png'. The response contains not
-    # just the extracted information of the analyzed form but also information
-    # about content that was not extracted along with a reason.
+    # Extract key-value pairs from a given document. The input document must be of
+    # one of the supported content types - 'application/pdf', 'image/jpeg' or
+    # 'image/png'. A success response is returned in JSON.
     #
     # @param id Model Identifier to analyze the document with.
     # @param form_stream A pdf document or image (jpg,png) file to analyze.
@@ -626,10 +638,9 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Analyze Form
     #
-    # The document to analyze must be of a supported content type -
-    # 'application/pdf', 'image/jpeg' or 'image/png'. The response contains not
-    # just the extracted information of the analyzed form but also information
-    # about content that was not extracted along with a reason.
+    # Extract key-value pairs from a given document. The input document must be of
+    # one of the supported content types - 'application/pdf', 'image/jpeg' or
+    # 'image/png'. A success response is returned in JSON.
     #
     # @param id Model Identifier to analyze the document with.
     # @param form_stream A pdf document or image (jpg,png) file to analyze.
@@ -647,10 +658,9 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     # Analyze Form
     #
-    # The document to analyze must be of a supported content type -
-    # 'application/pdf', 'image/jpeg' or 'image/png'. The response contains not
-    # just the extracted information of the analyzed form but also information
-    # about content that was not extracted along with a reason.
+    # Extract key-value pairs from a given document. The input document must be of
+    # one of the supported content types - 'application/pdf', 'image/jpeg' or
+    # 'image/png'. A success response is returned in JSON.
     #
     # @param id Model Identifier to analyze the document with.
     # @param form_stream A pdf document or image (jpg,png) file to analyze.
@@ -703,6 +713,8 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -720,6 +732,297 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
       promise.execute
     end
 
+    #
+    # Batch Read Receipt operation. The response contains a field called
+    # 'Operation-Location', which contains the URL that you must use for your 'Get
+    # Read Receipt Result' operation.
+    #
+    # @param url [String] Publicly reachable URL of an image.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def batch_read_receipt(url, custom_headers:nil)
+      response = batch_read_receipt_async(url, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Batch Read Receipt operation. The response contains a field called
+    # 'Operation-Location', which contains the URL that you must use for your 'Get
+    # Read Receipt Result' operation.
+    #
+    # @param url [String] Publicly reachable URL of an image.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def batch_read_receipt_with_http_info(url, custom_headers:nil)
+      batch_read_receipt_async(url, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Batch Read Receipt operation. The response contains a field called
+    # 'Operation-Location', which contains the URL that you must use for your 'Get
+    # Read Receipt Result' operation.
+    #
+    # @param url [String] Publicly reachable URL of an image.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def batch_read_receipt_async(url, custom_headers:nil)
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
+      fail ArgumentError, 'url is nil' if url.nil?
+
+      image_url = ImageUrl.new
+      unless url.nil?
+        image_url.url = url
+      end
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::CognitiveServices::FormRecognizer::V1_0_preview::Models::ImageUrl.mapper()
+      request_content = self.serialize(request_mapper,  image_url)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'prebuilt/receipt/asyncBatchAnalyze'
+
+      request_url = @base_url || self.base_url
+    request_url = request_url.gsub('{Endpoint}', endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # This interface is used for getting the analysis results of a 'Batch Read
+    # Receipt' operation. The URL to this interface should be retrieved from the
+    # 'Operation-Location' field returned from the 'Batch Read Receipt' operation.
+    #
+    # @param operation_id [String] Id of read operation returned in the response of
+    # a 'Batch Read Receipt' operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ReadReceiptResult] operation results.
+    #
+    def get_read_receipt_result(operation_id, custom_headers:nil)
+      response = get_read_receipt_result_async(operation_id, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # This interface is used for getting the analysis results of a 'Batch Read
+    # Receipt' operation. The URL to this interface should be retrieved from the
+    # 'Operation-Location' field returned from the 'Batch Read Receipt' operation.
+    #
+    # @param operation_id [String] Id of read operation returned in the response of
+    # a 'Batch Read Receipt' operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_read_receipt_result_with_http_info(operation_id, custom_headers:nil)
+      get_read_receipt_result_async(operation_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # This interface is used for getting the analysis results of a 'Batch Read
+    # Receipt' operation. The URL to this interface should be retrieved from the
+    # 'Operation-Location' field returned from the 'Batch Read Receipt' operation.
+    #
+    # @param operation_id [String] Id of read operation returned in the response of
+    # a 'Batch Read Receipt' operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_read_receipt_result_async(operation_id, custom_headers:nil)
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
+      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = 'prebuilt/receipt/operations/{operationId}'
+
+      request_url = @base_url || self.base_url
+    request_url = request_url.gsub('{Endpoint}', endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'operationId' => operation_id},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CognitiveServices::FormRecognizer::V1_0_preview::Models::ReadReceiptResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Read Receipt operation. When you use the 'Batch Read Receipt' interface, the
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your 'Get
+    # Read Receipt Result' operation.
+    #
+    # @param image An image stream.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def batch_read_receipt_in_stream(image, custom_headers:nil)
+      response = batch_read_receipt_in_stream_async(image, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Read Receipt operation. When you use the 'Batch Read Receipt' interface, the
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your 'Get
+    # Read Receipt Result' operation.
+    #
+    # @param image An image stream.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def batch_read_receipt_in_stream_with_http_info(image, custom_headers:nil)
+      batch_read_receipt_in_stream_async(image, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Read Receipt operation. When you use the 'Batch Read Receipt' interface, the
+    # response contains a field called 'Operation-Location'. The
+    # 'Operation-Location' field contains the URL that you must use for your 'Get
+    # Read Receipt Result' operation.
+    #
+    # @param image An image stream.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def batch_read_receipt_in_stream_async(image, custom_headers:nil)
+      fail ArgumentError, 'endpoint is nil' if endpoint.nil?
+      fail ArgumentError, 'image is nil' if image.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/octet-stream'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = {
+        client_side_validation: true,
+        required: true,
+        serialized_name: 'Image',
+        type: {
+          name: 'Stream'
+        }
+      }
+      request_content = self.serialize(request_mapper,  image)
+
+      path_template = 'prebuilt/receipt/asyncBatchAnalyze'
+
+      request_url = @base_url || self.base_url
+    request_url = request_url.gsub('{Endpoint}', endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
 
     private
     #
@@ -727,7 +1030,7 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_formrecognizer'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end
