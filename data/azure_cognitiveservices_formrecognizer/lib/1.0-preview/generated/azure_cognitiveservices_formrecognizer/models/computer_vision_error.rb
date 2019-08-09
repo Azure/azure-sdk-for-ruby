@@ -6,52 +6,58 @@
 module Azure::CognitiveServices::FormRecognizer::V1_0_preview
   module Models
     #
-    # Contract to initiate a train request.
+    # Details about the API request error.
     #
-    class TrainRequest
+    class ComputerVisionError
 
       include MsRestAzure
 
-      # @return [String] Get or set source path.
-      attr_accessor :source
+      # @return The error code.
+      attr_accessor :code
 
-      # @return [TrainSourceFilter] Get or set filter to further search the
-      # source path for content.
-      attr_accessor :source_filter
+      # @return [String] A message explaining the error reported by the
+      # service.
+      attr_accessor :message
+
+      # @return [String] A unique request identifier.
+      attr_accessor :request_id
 
 
       #
-      # Mapper for TrainRequest class as Ruby Hash.
+      # Mapper for ComputerVisionError class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TrainRequest',
+          serialized_name: 'ComputerVisionError',
           type: {
             name: 'Composite',
-            class_name: 'TrainRequest',
+            class_name: 'ComputerVisionError',
             model_properties: {
-              source: {
+              code: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'source',
-                constraints: {
-                  MaxLength: 2048,
-                  MinLength: 0
-                },
+                serialized_name: 'code',
+                type: {
+                  name: 'Object'
+                }
+              },
+              message: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'message',
                 type: {
                   name: 'String'
                 }
               },
-              source_filter: {
+              request_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'sourceFilter',
+                serialized_name: 'requestId',
                 type: {
-                  name: 'Composite',
-                  class_name: 'TrainSourceFilter'
+                  name: 'String'
                 }
               }
             }

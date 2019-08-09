@@ -6,52 +6,54 @@
 module Azure::CognitiveServices::FormRecognizer::V1_0_preview
   module Models
     #
-    # Contract to initiate a train request.
+    # Filters to be applied when traversing a data source.
     #
-    class TrainRequest
+    class TrainSourceFilter
 
       include MsRestAzure
 
-      # @return [String] Get or set source path.
-      attr_accessor :source
+      # @return [String] A case-sensitive prefix string to filter content
+      # under the source location. For e.g., when using a Azure Blob
+      # Uri use the prefix to restrict subfolders for content.
+      attr_accessor :prefix
 
-      # @return [TrainSourceFilter] Get or set filter to further search the
-      # source path for content.
-      attr_accessor :source_filter
+      # @return [Boolean] A flag to indicate if sub folders within the set of
+      # prefix folders will also need to be included when searching
+      # for content to be preprocessed.
+      attr_accessor :include_sub_folders
 
 
       #
-      # Mapper for TrainRequest class as Ruby Hash.
+      # Mapper for TrainSourceFilter class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TrainRequest',
+          serialized_name: 'TrainSourceFilter',
           type: {
             name: 'Composite',
-            class_name: 'TrainRequest',
+            class_name: 'TrainSourceFilter',
             model_properties: {
-              source: {
+              prefix: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'source',
+                required: false,
+                serialized_name: 'prefix',
                 constraints: {
-                  MaxLength: 2048,
+                  MaxLength: 128,
                   MinLength: 0
                 },
                 type: {
                   name: 'String'
                 }
               },
-              source_filter: {
+              include_sub_folders: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'sourceFilter',
+                serialized_name: 'includeSubFolders',
                 type: {
-                  name: 'Composite',
-                  class_name: 'TrainSourceFilter'
+                  name: 'Boolean'
                 }
               }
             }
