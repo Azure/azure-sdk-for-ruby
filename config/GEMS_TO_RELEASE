@@ -2,6 +2,9 @@
     "management": [
         "azure_mgmt_subscriptions"
     ],
+    "data": [
+        "azure_cognitiveservices_formrecognizer"
+    ],
     "rollup": [
         "azure_sdk"
     ]

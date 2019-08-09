@@ -2429,7 +2429,7 @@
   },
   "azure_cognitiveservices_formrecognizer": {
     "azure_cognitiveservices_formrecognizer_v1.0_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/16b54e92aff2d71871a6d680ec572dbd384a7ebe/specification/cognitiveservices/data-plane/FormRecognizer/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/d753d28f32643d8062e1f7863d8f8e188dac9556/specification/cognitiveservices/data-plane/FormRecognizer/readme.md",
       "namespace": "Azure::CognitiveServices::FormRecognizer::V1_0_preview",
       "title": "FormRecognizerClient",
       "tag": "release_1_0"
