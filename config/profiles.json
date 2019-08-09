@@ -717,7 +717,11 @@
                 },
                 "Microsoft.Subscriptions": {
                     "management": {
-                        "2016-06-01": ["*"]
+                        "2016-06-01": ["*"],
+                        "2017-11-01-preview": ["*"],
+                        "2018-03-01-preview": ["*"],
+                        "2018-11-01-preview": ["*"],
+                        "2019-03-01-preview": ["*"]
                     }
                 },
                 "Microsoft.TrafficManager": {
@@ -2558,7 +2562,11 @@
             "resourceTypes": {
                 "Microsoft.Subscriptions" : {
                     "management": {
-                        "2016-06-01": ["*"]
+                        "2016-06-01": ["*"],
+                        "2017-11-01-preview": ["*"],
+                        "2018-03-01-preview": ["*"],
+                        "2018-11-01-preview": ["*"],
+                        "2019-03-01-preview": ["*"]
                     }
                 }
             },

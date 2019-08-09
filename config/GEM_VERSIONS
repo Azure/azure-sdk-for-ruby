@@ -123,7 +123,7 @@
         "azure_mgmt_storage": "0.17.10",
         "azure_mgmt_storagesync": "0.17.0",
         "azure_mgmt_stream_analytics": "0.17.2",
-        "azure_mgmt_subscriptions": "0.17.3",
+        "azure_mgmt_subscriptions": "0.18.0",
         "azure_mgmt_traffic_manager": "0.17.2",
         "azure_mgmt_web": "0.17.4"
     }
