@@ -663,27 +663,27 @@
   },
   "azure_mgmt_data_migration":{
     "azure_mgmt_data_migration_2018_07_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/datamigration/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5272743ecf85c1a5c95ab4fad9b06a956f58b464/specification/datamigration/resource-manager/readme.md",
       "namespace": "Azure::DataMigration::Mgmt::V2018_07_15_preview",
       "tag": "package-2018-07-15-preview"
     },
     "azure_mgmt_data_migration_2018_04_19": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1f3cc4eada45a048c8287981f1e04d9850abf5a6/specification/datamigration/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5272743ecf85c1a5c95ab4fad9b06a956f58b464/specification/datamigration/resource-manager/readme.md",
       "namespace": "Azure::DataMigration::Mgmt::V2018_04_19",
       "tag": "package-2018-04-19"
     },
     "azure_mgmt_data_migration_2018_03_31_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1f3cc4eada45a048c8287981f1e04d9850abf5a6/specification/datamigration/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5272743ecf85c1a5c95ab4fad9b06a956f58b464/specification/datamigration/resource-manager/readme.md",
       "namespace": "Azure::DataMigration::Mgmt::V2018_03_31_preview",
       "tag": "package-2018-03-31-preview"
     },
     "azure_mgmt_data_migration_2018_03_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1f3cc4eada45a048c8287981f1e04d9850abf5a6/specification/datamigration/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5272743ecf85c1a5c95ab4fad9b06a956f58b464/specification/datamigration/resource-manager/readme.md",
       "namespace": "Azure::DataMigration::Mgmt::V2018_03_15_preview",
       "tag": "package-2018-03-15-preview"
     },
     "azure_mgmt_data_migration_2017_11_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1f3cc4eada45a048c8287981f1e04d9850abf5a6/specification/datamigration/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5272743ecf85c1a5c95ab4fad9b06a956f58b464/specification/datamigration/resource-manager/readme.md",
       "namespace": "Azure::DataMigration::Mgmt::V2017_11_15_preview",
       "tag": "package-2017-11-15-preview"
     }
