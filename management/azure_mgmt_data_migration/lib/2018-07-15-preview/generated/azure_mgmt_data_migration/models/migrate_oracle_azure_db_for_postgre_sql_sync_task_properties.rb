@@ -15,7 +15,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
 
 
       def initialize
-        @taskType = "Migrate.Oracle.Sql.Sync"
+        @taskType = "Migrate.Oracle.AzureDbForPostgreSql.Sync"
       end
 
       attr_accessor :taskType
@@ -37,7 +37,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Migrate.Oracle.Sql.Sync',
+          serialized_name: 'Migrate.Oracle.AzureDbForPostgreSql.Sync',
           type: {
             name: 'Composite',
             class_name: 'MigrateOracleAzureDbForPostgreSqlSyncTaskProperties',

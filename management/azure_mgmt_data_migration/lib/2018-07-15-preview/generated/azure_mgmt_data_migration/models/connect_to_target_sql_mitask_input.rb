@@ -17,6 +17,18 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       # Server
       attr_accessor :target_connection_info
 
+      # @return [Boolean] Flag for whether to collect logins from target SQL MI
+      # server. Default value: true .
+      attr_accessor :collect_logins
+
+      # @return [Boolean] Flag for whether to collect agent jobs from target
+      # SQL MI server. Default value: true .
+      attr_accessor :collect_agent_jobs
+
+      # @return [Boolean] Flag for whether to validate SSIS catalog is
+      # reachable on the target SQL MI server. Default value: false .
+      attr_accessor :validate_ssis_catalog_only
+
 
       #
       # Mapper for ConnectToTargetSqlMITaskInput class as Ruby Hash.
@@ -38,6 +50,33 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                 type: {
                   name: 'Composite',
                   class_name: 'SqlConnectionInfo'
+                }
+              },
+              collect_logins: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'collectLogins',
+                default_value: true,
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              collect_agent_jobs: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'collectAgentJobs',
+                default_value: true,
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              validate_ssis_catalog_only: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'validateSsisCatalogOnly',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

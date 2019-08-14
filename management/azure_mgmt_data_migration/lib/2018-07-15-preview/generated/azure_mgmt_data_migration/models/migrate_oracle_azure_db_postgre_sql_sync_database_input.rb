@@ -13,6 +13,10 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
 
       include MsRestAzure
 
+      # @return [String] How to handle object name casing: either Preserve or
+      # ToLower
+      attr_accessor :case_manipulation
+
       # @return [String] Name of the migration pipeline
       attr_accessor :name
 
@@ -53,6 +57,14 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
             name: 'Composite',
             class_name: 'MigrateOracleAzureDbPostgreSqlSyncDatabaseInput',
             model_properties: {
+              case_manipulation: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'caseManipulation',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 client_side_validation: true,
                 required: false,

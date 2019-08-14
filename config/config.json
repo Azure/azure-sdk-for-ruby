@@ -493,81 +493,97 @@
     }
   },
   "azure_mgmt_container_service": {
+    "azure_mgmt_container_service_2019_08_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-08-01/location.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-08-01/managedClusters.json"
+      ],
+      "namespace": "Azure::ContainerService::Mgmt::V2019_08_01",
+      "title": "ContainerServiceClient"
+    },
+    "azure_mgmt_container_service_2019_06_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-06-01/location.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-06-01/managedClusters.json"
+      ],
+      "namespace": "Azure::ContainerService::Mgmt::V2019_06_01",
+      "title": "ContainerServiceClient"
+    },
     "azure_mgmt_container_service_2019_04_30": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-04-30/openShiftManagedClusters.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-04-30/openShiftManagedClusters.json"
       ],
       "namespace": "Azure::ContainerService::Mgmt::V2019_04_30",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2019_04_01": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-04-01/location.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-04-01/managedClusters.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-04-01/location.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-04-01/managedClusters.json"
       ],
       "namespace": "Azure::ContainerService::Mgmt::V2019_04_01",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2019_02_01": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-02-01/managedClusters.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-02-01/managedClusters.json"
       ],
       "namespace": "Azure::ContainerService::Mgmt::V2019_02_01",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2018_09_30_preview": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/Microsoft.ContainerService/preview/2018-09-30-preview/openShiftManagedClusters.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/preview/2018-09-30-preview/openShiftManagedClusters.json"
       ],
       "namespace": "Azure::ContainerService::Mgmt::V2018_09_30_preview",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2018_08_01_preview": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/Microsoft.ContainerService/preview/2018-08-01-preview/managedClusters.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/preview/2018-08-01-preview/managedClusters.json"
       ],
       "namespace": "Azure::ContainerService::Mgmt::V2018_08_01_preview",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2018_03_31": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2018-03-31/managedClusters.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2018-03-31/managedClusters.json"
       ],
       "namespace": "Azure::ContainerService::Mgmt::V2018_03_31",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2017_09_30": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/readme.md",
       "namespace": "Azure::ContainerService::Mgmt::V2017_09_30",
       "tag": "package-2017-09-only",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2017_08_31": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/readme.md",
       "namespace": "Azure::ContainerService::Mgmt::V2017_08_31",
       "tag": "package-2017-08-only",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2017_07_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/readme.md",
       "namespace": "Azure::ContainerService::Mgmt::V2017_07_01",
       "tag": "package-2017-07",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2017_01_31": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/readme.md",
       "namespace": "Azure::ContainerService::Mgmt::V2017_01_31",
       "tag": "package-2017-01-only",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2016_09_30": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/readme.md",
       "namespace": "Azure::ContainerService::Mgmt::V2016_09_30",
       "tag": "package-2016-09-only",
       "title": "ContainerServiceClient"
     },
     "azure_mgmt_container_service_2016_03_30": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/containerservice/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/readme.md",
       "namespace": "Azure::ContainerService::Mgmt::V2016_03_30",
       "tag": "package-2016-03-only",
       "title": "ContainerServiceClient"
@@ -647,7 +663,7 @@
   },
   "azure_mgmt_data_migration":{
     "azure_mgmt_data_migration_2018_07_15_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/datamigration/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5272743ecf85c1a5c95ab4fad9b06a956f58b464/specification/datamigration/resource-manager/readme.md",
       "namespace": "Azure::DataMigration::Mgmt::V2018_07_15_preview",
       "tag": "package-2018-07-15-preview"
     },

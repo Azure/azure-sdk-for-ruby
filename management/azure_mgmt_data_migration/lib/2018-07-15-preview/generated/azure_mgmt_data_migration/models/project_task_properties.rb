@@ -14,13 +14,14 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["Migrate.Ssis"] = "MigrateSsisTaskProperties"
       @@discriminatorMap["GetTDECertificates.Sql"] = "GetTdeCertificatesSqlTaskProperties"
       @@discriminatorMap["Validate.Oracle.AzureDbPostgreSql.Sync"] = "ValidateOracleAzureDbForPostgreSqlSyncTaskProperties"
       @@discriminatorMap["Validate.MongoDb"] = "ValidateMongoDbTaskProperties"
       @@discriminatorMap["ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS"] = "ValidateMigrationInputSqlServerSqlMISyncTaskProperties"
       @@discriminatorMap["ValidateMigrationInput.SqlServer.AzureSqlDbMI"] = "ValidateMigrationInputSqlServerSqlMITaskProperties"
       @@discriminatorMap["ValidateMigrationInput.SqlServer.SqlDb.Sync"] = "ValidateMigrationInputSqlServerSqlDbSyncTaskProperties"
-      @@discriminatorMap["Migrate.Oracle.Sql.Sync"] = "MigrateOracleAzureDbForPostgreSqlSyncTaskProperties"
+      @@discriminatorMap["Migrate.Oracle.AzureDbForPostgreSql.Sync"] = "MigrateOracleAzureDbForPostgreSqlSyncTaskProperties"
       @@discriminatorMap["Migrate.PostgreSql.AzureDbForPostgreSql.Sync"] = "MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties"
       @@discriminatorMap["Migrate.MySql.AzureDbForMySql.Sync"] = "MigrateMySqlAzureDbForMySqlSyncTaskProperties"
       @@discriminatorMap["Migrate.SqlServer.AzureSqlDb.Sync"] = "MigrateSqlServerSqlDbSyncTaskProperties"

@@ -28,15 +28,14 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # returns properties of each agent pool.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<AgentPool>] operation results.
     #
-    def list(resource_group_name, managed_cluster_name, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, managed_cluster_name, custom_headers:custom_headers)
+    def list(resource_group_name, resource_name, custom_headers:nil)
+      first_page = list_as_lazy(resource_group_name, resource_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -47,15 +46,14 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # returns properties of each agent pool.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, managed_cluster_name, custom_headers:nil)
-      list_async(resource_group_name, managed_cluster_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, resource_name, custom_headers:nil)
+      list_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -65,19 +63,21 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # returns properties of each agent pool.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, managed_cluster_name, custom_headers:nil)
+    def list_async(resource_group_name, resource_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'managed_cluster_name is nil' if managed_cluster_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
 
 
       request_headers = {}
@@ -86,13 +86,13 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{managedClusterName}/agentPools'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'managedClusterName' => managed_cluster_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -109,6 +109,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -132,16 +134,15 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Gets the details of the agent pool by managed cluster and resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AgentPool] operation results.
     #
-    def get(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:nil)
-      response = get_async(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, resource_name, agent_pool_name, custom_headers:nil)
+      response = get_async(resource_group_name, resource_name, agent_pool_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -151,16 +152,15 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Gets the details of the agent pool by managed cluster and resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:nil)
-      get_async(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, resource_name, agent_pool_name, custom_headers:nil)
+      get_async(resource_group_name, resource_name, agent_pool_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -169,20 +169,22 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Gets the details of the agent pool by managed cluster and resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:nil)
+    def get_async(resource_group_name, resource_name, agent_pool_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'managed_cluster_name is nil' if managed_cluster_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
       fail ArgumentError, 'agent_pool_name is nil' if agent_pool_name.nil?
 
 
@@ -192,13 +194,13 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{managedClusterName}/agentPools/{agentPoolName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'managedClusterName' => managed_cluster_name,'agentPoolName' => agent_pool_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'agentPoolName' => agent_pool_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -215,6 +217,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -238,8 +242,7 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Creates or updates an agent pool in the specified managed cluster.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param parameters [AgentPool] Parameters supplied to the Create or Update an
     # agent pool operation.
@@ -248,15 +251,14 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     #
     # @return [AgentPool] operation results.
     #
-    def create_or_update(resource_group_name, managed_cluster_name, agent_pool_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, managed_cluster_name, agent_pool_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, resource_name, agent_pool_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, resource_name, agent_pool_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param parameters [AgentPool] Parameters supplied to the Create or Update an
     # agent pool operation.
@@ -266,9 +268,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, managed_cluster_name, agent_pool_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, resource_name, agent_pool_name, parameters, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, managed_cluster_name, agent_pool_name, parameters, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, resource_name, agent_pool_name, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -290,21 +292,19 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Deletes the agent pool in the specified managed cluster.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:nil)
-      response = delete_async(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, resource_name, agent_pool_name, custom_headers:nil)
+      response = delete_async(resource_group_name, resource_name, agent_pool_name, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -312,9 +312,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:nil)
+    def delete_async(resource_group_name, resource_name, agent_pool_name, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, resource_name, agent_pool_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -334,8 +334,7 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Creates or updates an agent pool in the specified managed cluster.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param parameters [AgentPool] Parameters supplied to the Create or Update an
     # agent pool operation.
@@ -344,8 +343,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     #
     # @return [AgentPool] operation results.
     #
-    def begin_create_or_update(resource_group_name, managed_cluster_name, agent_pool_name, parameters, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, managed_cluster_name, agent_pool_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, resource_name, agent_pool_name, parameters, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, resource_name, agent_pool_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -355,8 +354,7 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Creates or updates an agent pool in the specified managed cluster.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param parameters [AgentPool] Parameters supplied to the Create or Update an
     # agent pool operation.
@@ -365,8 +363,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, managed_cluster_name, agent_pool_name, parameters, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, managed_cluster_name, agent_pool_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, resource_name, agent_pool_name, parameters, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, resource_name, agent_pool_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -375,8 +373,7 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Creates or updates an agent pool in the specified managed cluster.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param parameters [AgentPool] Parameters supplied to the Create or Update an
     # agent pool operation.
@@ -385,12 +382,15 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, managed_cluster_name, agent_pool_name, parameters, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, resource_name, agent_pool_name, parameters, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'managed_cluster_name is nil' if managed_cluster_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
       fail ArgumentError, 'agent_pool_name is nil' if agent_pool_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -407,13 +407,13 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{managedClusterName}/agentPools/{agentPoolName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'managedClusterName' => managed_cluster_name,'agentPoolName' => agent_pool_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'agentPoolName' => agent_pool_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -431,6 +431,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -464,15 +466,14 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Deletes the agent pool in the specified managed cluster.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, resource_name, agent_pool_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, resource_name, agent_pool_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -482,16 +483,15 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Deletes the agent pool in the specified managed cluster.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, resource_name, agent_pool_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, resource_name, agent_pool_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -500,20 +500,22 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # Deletes the agent pool in the specified managed cluster.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param agent_pool_name [String] The name of the agent pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, managed_cluster_name, agent_pool_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, resource_name, agent_pool_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'managed_cluster_name is nil' if managed_cluster_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
       fail ArgumentError, 'agent_pool_name is nil' if agent_pool_name.nil?
 
 
@@ -523,13 +525,13 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{managedClusterName}/agentPools/{agentPoolName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'managedClusterName' => managed_cluster_name,'agentPoolName' => agent_pool_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'agentPoolName' => agent_pool_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -546,6 +548,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -633,6 +637,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -657,16 +663,15 @@ module Azure::ContainerService::Mgmt::V2019_04_01
     # returns properties of each agent pool.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param managed_cluster_name [String] The name of the managed cluster
-    # resource.
+    # @param resource_name [String] The name of the managed cluster resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AgentPoolListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(resource_group_name, managed_cluster_name, custom_headers:nil)
-      response = list_async(resource_group_name, managed_cluster_name, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, resource_name, custom_headers:nil)
+      response = list_async(resource_group_name, resource_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

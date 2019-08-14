@@ -97,6 +97,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -195,6 +197,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -266,6 +270,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
 
 
       request_headers = {}
@@ -297,6 +304,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -374,6 +383,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
       fail ArgumentError, 'role_name is nil' if role_name.nil?
 
 
@@ -406,6 +418,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -477,6 +491,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
 
 
       request_headers = {}
@@ -508,6 +525,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -579,6 +598,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
 
 
       request_headers = {}
@@ -610,6 +632,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -681,6 +705,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
 
 
       request_headers = {}
@@ -712,6 +739,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1014,6 +1043,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -1053,6 +1085,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1137,6 +1171,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -1176,6 +1213,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1243,6 +1282,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
 
 
       request_headers = {}
@@ -1274,6 +1316,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1337,6 +1381,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -1376,6 +1423,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1439,6 +1488,9 @@ module Azure::ContainerService::Mgmt::V2019_04_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MaxLength': '63'" if !resource_name.nil? && resource_name.length > 63
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'MinLength': '1'" if !resource_name.nil? && resource_name.length < 1
+      fail ArgumentError, "'resource_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$'" if !resource_name.nil? && resource_name.match(Regexp.new('^^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -1478,6 +1530,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1565,6 +1619,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1662,6 +1718,8 @@ module Azure::ContainerService::Mgmt::V2019_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
