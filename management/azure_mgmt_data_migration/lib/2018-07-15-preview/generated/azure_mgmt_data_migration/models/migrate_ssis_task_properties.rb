@@ -6,41 +6,40 @@
 module Azure::DataMigration::Mgmt::V2018_07_15_preview
   module Models
     #
-    # Properties for the task that migrates Oracle to Azure Database for
-    # PostgreSQL for online migrations
+    # Properties for task that migrates SSIS packages from SQL Server databases
+    # to Azure SQL Database Managed Instance.
     #
-    class MigrateOracleAzureDbForPostgreSqlSyncTaskProperties < ProjectTaskProperties
+    class MigrateSsisTaskProperties < ProjectTaskProperties
 
       include MsRestAzure
 
 
       def initialize
-        @taskType = "Migrate.Oracle.AzureDbForPostgreSql.Sync"
+        @taskType = "Migrate.Ssis"
       end
 
       attr_accessor :taskType
 
-      # @return [MigrateOracleAzureDbPostgreSqlSyncTaskInput] Task input
+      # @return [MigrateSsisTaskInput] Task input
       attr_accessor :input
 
-      # @return [Array<MigrateOracleAzureDbPostgreSqlSyncTaskOutput>] Task
-      # output. This is ignored if submitted.
+      # @return [Array<MigrateSsisTaskOutput>] Task output. This is ignored if
+      # submitted.
       attr_accessor :output
 
 
       #
-      # Mapper for MigrateOracleAzureDbForPostgreSqlSyncTaskProperties class as
-      # Ruby Hash.
+      # Mapper for MigrateSsisTaskProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Migrate.Oracle.AzureDbForPostgreSql.Sync',
+          serialized_name: 'Migrate.Ssis',
           type: {
             name: 'Composite',
-            class_name: 'MigrateOracleAzureDbForPostgreSqlSyncTaskProperties',
+            class_name: 'MigrateSsisTaskProperties',
             model_properties: {
               errors: {
                 client_side_validation: true,
@@ -119,7 +118,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                 serialized_name: 'input',
                 type: {
                   name: 'Composite',
-                  class_name: 'MigrateOracleAzureDbPostgreSqlSyncTaskInput'
+                  class_name: 'MigrateSsisTaskInput'
                 }
               },
               output: {
@@ -132,12 +131,12 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'MigrateOracleAzureDbPostgreSqlSyncTaskOutputElementType',
+                      serialized_name: 'MigrateSsisTaskOutputElementType',
                       type: {
                         name: 'Composite',
                         polymorphic_discriminator: 'resultType',
-                        uber_parent: 'MigrateOracleAzureDbPostgreSqlSyncTaskOutput',
-                        class_name: 'MigrateOracleAzureDbPostgreSqlSyncTaskOutput'
+                        uber_parent: 'MigrateSsisTaskOutput',
+                        class_name: 'MigrateSsisTaskOutput'
                       }
                   }
                 }

@@ -17,172 +17,178 @@ module Azure::Profiles::Latest
       Files = Azure::DataMigration::Mgmt::V2018_07_15_preview::Files
 
       module Models
-        MigrationValidationResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationResult
-        MigrationValidationDatabaseSummaryResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationDatabaseSummaryResult
-        Resource = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Resource
-        MigrateMySqlAzureDbForMySqlSyncDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncDatabaseInput
-        MigrateMySqlAzureDbForMySqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncTaskInput
-        ODataError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ODataError
-        ConnectToTargetSqlDbTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskInput
-        MigrateMISyncCompleteCommandOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMISyncCompleteCommandOutput
-        Database = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Database
-        ServiceOperation = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperation
-        ConnectToTargetSqlSqlDbSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlSqlDbSyncTaskInput
-        MigrateSyncCompleteCommandInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandInput
-        ConnectToTargetSqlDbTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskOutput
-        CommandProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CommandProperties
-        DatabaseObjectName = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseObjectName
-        SelectedCertificateInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SelectedCertificateInput
-        ConnectToTargetAzureDbForPostgreSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForPostgreSqlSyncTaskInput
-        FileList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileList
-        MigrateSqlServerSqlDbSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbSyncTaskOutput
-        ApiError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ApiError
-        SqlMigrationTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlMigrationTaskInput
-        DatabaseInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseInfo
-        MigrationValidationOptions = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationOptions
-        NameAvailabilityRequest = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameAvailabilityRequest
-        ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput
-        ConnectToSourceMySqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceMySqlTaskInput
-        MigrationTableMetadata = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationTableMetadata
-        MigrateOracleAzureDbPostgreSqlSyncDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncDatabaseInput
-        ValidationError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidationError
-        ServiceSku = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceSku
-        WaitStatistics = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::WaitStatistics
-        ServerProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServerProperties
-        ExecutionStatistics = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ExecutionStatistics
-        MongoDbProgress = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbProgress
-        QueryExecutionResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QueryExecutionResult
-        MongoDbThrottlingSettings = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbThrottlingSettings
-        QueryAnalysisValidationResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QueryAnalysisValidationResult
-        MongoDbShardKeySetting = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeySetting
-        SchemaComparisonValidationResultType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaComparisonValidationResultType
-        MongoDbDatabaseSettings = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbDatabaseSettings
-        SchemaComparisonValidationResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaComparisonValidationResult
-        MongoDbClusterInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbClusterInfo
-        DataIntegrityValidationResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataIntegrityValidationResult
-        AzureActiveDirectoryApp = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AzureActiveDirectoryApp
-        MigrationValidationDatabaseLevelResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationDatabaseLevelResult
-        SqlServerSqlMISyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlServerSqlMISyncTaskInput
-        ProjectFileProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectFileProperties
-        MongoDbObjectInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbObjectInfo
-        ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput
-        ValidateMigrationInputSqlServerSqlMITaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMITaskOutput
-        NameAvailabilityResponse = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameAvailabilityResponse
-        ValidateMigrationInputSqlServerSqlMITaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMITaskInput
-        QuotaList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QuotaList
-        ValidateSyncMigrationInputSqlServerTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateSyncMigrationInputSqlServerTaskOutput
-        DataItemMigrationSummaryResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataItemMigrationSummaryResult
-        ValidateSyncMigrationInputSqlServerTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateSyncMigrationInputSqlServerTaskInput
-        Quota = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Quota
-        SyncMigrationDatabaseErrorEvent = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SyncMigrationDatabaseErrorEvent
-        MigrationReportResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationReportResult
-        MongoDbCommandInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbCommandInput
-        QuotaName = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QuotaName
-        ConnectToSourceSqlServerTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskOutput
-        ResourceSku = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSku
-        MigrateOracleAzureDbPostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncTaskOutput
-        MigrateSqlServerSqlDbTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbTaskOutput
-        DatabaseFileInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileInfo
-        MigrateSqlServerSqlDbDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbDatabaseInput
-        UploadOCIDriverTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UploadOCIDriverTaskInput
-        ResourceSkuCapacity = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCapacity
-        UploadOCIDriverTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UploadOCIDriverTaskOutput
-        ResourceSkuCosts = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCosts
-        MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput
-        ResourceSkuCapabilities = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCapabilities
-        ConnectToSourcePostgreSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourcePostgreSqlSyncTaskInput
-        BackupFileInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupFileInfo
-        InstallOCIDriverTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::InstallOCIDriverTaskInput
-        BackupSetInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupSetInfo
-        ConnectToSourceOracleSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceOracleSyncTaskOutput
-        ResourceSkuRestrictions = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuRestrictions
-        MigrateMySqlAzureDbForMySqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncTaskOutput
-        DataMigrationServiceStatusResponse = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationServiceStatusResponse
-        ReportableException = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ReportableException
-        MigrateSqlServerSqlMISyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMISyncTaskOutput
-        MigrateSyncCompleteCommandOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandOutput
-        ServiceSkuList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceSkuList
-        GetTdeCertificatesSqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskOutput
-        AvailableServiceSku = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AvailableServiceSku
-        FileStorageInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileStorageInfo
-        AvailableServiceSkuCapacity = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AvailableServiceSkuCapacity
-        ConnectionInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectionInfo
-        AvailableServiceSkuSku = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AvailableServiceSkuSku
-        ValidateOracleAzureDbPostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateOracleAzureDbPostgreSqlSyncTaskOutput
-        TaskList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::TaskList
-        MongoDbError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbError
-        DataMigrationServiceList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationServiceList
-        ConnectToSourceNonSqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceNonSqlTaskOutput
-        OrphanedUserInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::OrphanedUserInfo
-        MongoDbCollectionSettings = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbCollectionSettings
         StartMigrationScenarioServerRoleResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::StartMigrationScenarioServerRoleResult
-        ValidateMigrationInputSqlServerSqlMISyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMISyncTaskOutput
-        ProjectList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectList
-        SchemaMigrationSetting = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaMigrationSetting
-        MigrateSqlServerSqlMITaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutput
-        BlobShare = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BlobShare
-        MigrateSqlServerSqlDbSyncDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbSyncDatabaseInput
+        ServiceSkuList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceSkuList
+        AvailableServiceSku = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AvailableServiceSku
+        ProjectFileProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectFileProperties
+        AvailableServiceSkuCapacity = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AvailableServiceSkuCapacity
+        ODataError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ODataError
+        AvailableServiceSkuSku = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AvailableServiceSkuSku
+        MigrateMISyncCompleteCommandOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMISyncCompleteCommandOutput
+        TaskList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::TaskList
         MigrateSqlServerSqlServerDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlServerDatabaseInput
-        MigrateSchemaSqlServerSqlDbTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSchemaSqlServerSqlDbTaskOutput
-        DatabaseFileInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileInput
-        OracleOCIDriverInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::OracleOCIDriverInfo
-        ConnectToTargetAzureDbForMySqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForMySqlTaskOutput
-        CheckOCIDriverTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CheckOCIDriverTaskOutput
-        ConnectToTargetAzureDbForMySqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForMySqlTaskInput
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutput
-        NonSqlMigrationTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlMigrationTaskOutput
-        ConnectToSourcePostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourcePostgreSqlSyncTaskOutput
-        ConnectToTargetSqlMISyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMISyncTaskOutput
-        InstallOCIDriverTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::InstallOCIDriverTaskOutput
-        ConnectToTargetSqlMISyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMISyncTaskInput
-        MigrateMISyncCompleteCommandInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMISyncCompleteCommandInput
+        DataMigrationServiceList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationServiceList
+        MigrateSyncCompleteCommandInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandInput
+        MigrateMySqlAzureDbForMySqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncTaskOutput
+        CommandProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CommandProperties
+        MigrateMySqlAzureDbForMySqlSyncDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncDatabaseInput
         NonSqlDataMigrationTableResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlDataMigrationTableResult
-        FileShare = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileShare
-        ConnectToTargetSqlMITaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMITaskOutput
-        GetTdeCertificatesSqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskInput
-        ConnectToTargetSqlMITaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMITaskInput
-        ProjectTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectTaskProperties
-        DataMigrationError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationError
-        MongoDbMigrationSettings = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbMigrationSettings
-        DatabaseTable = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseTable
-        DatabaseBackupInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseBackupInfo
-        GetUserTablesPostgreSqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesPostgreSqlTaskOutput
-        MongoDbShardKeyInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeyInfo
-        GetUserTablesPostgreSqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesPostgreSqlTaskInput
-        CheckOCIDriverTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CheckOCIDriverTaskInput
+        MigrateMySqlAzureDbForMySqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncTaskInput
+        SsisMigrationInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SsisMigrationInfo
+        ProjectList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectList
         NonSqlMigrationTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlMigrationTaskInput
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput
-        GetUserTablesOracleTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesOracleTaskOutput
-        ServiceOperationList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperationList
-        GetUserTablesOracleTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesOracleTaskInput
-        ResourceSkusResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkusResult
-        NonSqlDataMigrationTable = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlDataMigrationTable
-        MongoDbShardKeyField = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeyField
-        GetUserTablesSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlSyncTaskOutput
-        MigrateSchemaSqlServerSqlDbDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSchemaSqlServerSqlDbDatabaseInput
-        GetUserTablesSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlSyncTaskInput
-        MigrationEligibilityInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationEligibilityInfo
+        NameAvailabilityResponse = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameAvailabilityResponse
         GetProjectDetailsNonSqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetProjectDetailsNonSqlTaskInput
-        ServiceOperationDisplay = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperationDisplay
-        GetUserTablesSqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlTaskOutput
-        MigrateSqlServerSqlMIDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMIDatabaseInput
-        GetUserTablesSqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlTaskInput
-        ConnectToSourceOracleSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceOracleSyncTaskInput
-        DataMigrationProjectMetadata = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationProjectMetadata
-        ConnectToSourceSqlServerTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskInput
-        ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputDatabaseSchemaMapItem = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputDatabaseSchemaMapItem
+        QuotaList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QuotaList
+        ConnectionInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectionInfo
+        Quota = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Quota
+        SqlMigrationTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlMigrationTaskInput
+        QuotaName = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QuotaName
+        Database = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Database
+        ServiceOperationList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperationList
+        SelectedCertificateInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SelectedCertificateInput
+        MigrateSqlServerSqlDbSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbSyncTaskOutput
+        GetTdeCertificatesSqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskInput
+        MigrationValidationOptions = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationOptions
+        ValidateOracleAzureDbPostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateOracleAzureDbPostgreSqlSyncTaskOutput
+        ServiceOperation = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperation
         MigrateOracleAzureDbPostgreSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncTaskInput
+        ServiceOperationDisplay = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperationDisplay
+        MongoDbError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbError
+        ValidationError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidationError
+        UploadOCIDriverTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UploadOCIDriverTaskInput
+        WaitStatistics = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::WaitStatistics
+        CheckOCIDriverTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CheckOCIDriverTaskOutput
+        ExecutionStatistics = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ExecutionStatistics
+        MongoDbShardKeyField = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeyField
+        QueryExecutionResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QueryExecutionResult
+        MongoDbCollectionSettings = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbCollectionSettings
+        QueryAnalysisValidationResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QueryAnalysisValidationResult
+        MongoDbMigrationSettings = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbMigrationSettings
+        SchemaComparisonValidationResultType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaComparisonValidationResultType
+        ValidateMigrationInputSqlServerSqlMISyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMISyncTaskOutput
+        SchemaComparisonValidationResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaComparisonValidationResult
+        MigrateSqlServerSqlMIDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMIDatabaseInput
+        DataIntegrityValidationResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataIntegrityValidationResult
+        OracleOCIDriverInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::OracleOCIDriverInfo
+        MigrationValidationDatabaseLevelResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationDatabaseLevelResult
+        DatabaseBackupInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseBackupInfo
+        MigrationValidationDatabaseSummaryResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationDatabaseSummaryResult
+        BlobShare = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BlobShare
+        MigrationValidationResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationResult
+        MigrateSchemaSqlServerSqlDbTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSchemaSqlServerSqlDbTaskOutput
+        FileList = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileList
+        MigrateSqlServerSqlDbSyncDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbSyncDatabaseInput
+        FileStorageInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileStorageInfo
+        MigrateSchemaSqlServerSqlDbDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSchemaSqlServerSqlDbDatabaseInput
+        DataItemMigrationSummaryResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataItemMigrationSummaryResult
+        SchemaMigrationSetting = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaMigrationSetting
+        ApiError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ApiError
+        ServerProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServerProperties
+        MigrationReportResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationReportResult
+        ResourceSkusResult = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkusResult
+        DatabaseInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseInfo
+        ResourceSku = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSku
+        NameAvailabilityRequest = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameAvailabilityRequest
+        ResourceSkuCosts = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCosts
+        MigrateSqlServerSqlDbTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbTaskOutput
+        ResourceSkuRestrictions = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuRestrictions
+        MigrateSqlServerSqlDbDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbDatabaseInput
+        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutput
+        ServiceSku = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceSku
+        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput
+        ProjectTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectTaskProperties
+        MongoDbClusterInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbClusterInfo
+        MigrateMISyncCompleteCommandInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMISyncCompleteCommandInput
+        BackupFileInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupFileInfo
+        DatabaseFileInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileInput
+        BackupSetInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupSetInfo
+        MigrateSsisTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskOutput
+        MongoDbObjectInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbObjectInfo
+        NonSqlDataMigrationTable = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlDataMigrationTable
+        MongoDbShardKeyInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeyInfo
+        MigrationTableMetadata = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationTableMetadata
+        MigrateSqlServerSqlMISyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMISyncTaskOutput
+        GetTdeCertificatesSqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskOutput
+        ConnectToSourceSqlServerTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskInput
+        InstallOCIDriverTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::InstallOCIDriverTaskOutput
+        ConnectToSourceSqlServerTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskOutput
+        InstallOCIDriverTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::InstallOCIDriverTaskInput
+        DatabaseFileInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileInfo
+        MongoDbProgress = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbProgress
+        MigrationEligibilityInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationEligibilityInfo
+        MongoDbShardKeySetting = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeySetting
+        ConnectToSourcePostgreSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourcePostgreSqlSyncTaskInput
+        CheckOCIDriverTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CheckOCIDriverTaskInput
+        ConnectToSourcePostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourcePostgreSqlSyncTaskOutput
+        SqlServerSqlMISyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlServerSqlMISyncTaskInput
+        OrphanedUserInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::OrphanedUserInfo
+        ValidateMigrationInputSqlServerSqlMITaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMITaskOutput
+        ConnectToSourceOracleSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceOracleSyncTaskInput
+        ValidateSyncMigrationInputSqlServerTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateSyncMigrationInputSqlServerTaskOutput
+        ConnectToSourceOracleSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceOracleSyncTaskOutput
+        SyncMigrationDatabaseErrorEvent = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SyncMigrationDatabaseErrorEvent
+        MigrateSqlServerSqlMITaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutput
+        ConnectToSourceMySqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceMySqlTaskInput
+        ConnectToTargetSqlDbTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskInput
+        ResourceSkuCapacity = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCapacity
+        ConnectToTargetSqlSqlDbSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlSqlDbSyncTaskInput
+        DataMigrationServiceStatusResponse = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationServiceStatusResponse
+        ConnectToTargetSqlDbTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskOutput
+        Resource = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Resource
+        ConnectToTargetAzureDbForMySqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForMySqlTaskOutput
+        MigrateSyncCompleteCommandOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandOutput
+        ConnectToTargetAzureDbForMySqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForMySqlTaskInput
+        DataMigrationError = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationError
+        ConnectToTargetAzureDbForPostgreSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForPostgreSqlSyncTaskInput
+        DatabaseObjectName = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseObjectName
+        ConnectToTargetSqlMISyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMISyncTaskOutput
+        MigrateOracleAzureDbPostgreSqlSyncDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncDatabaseInput
+        ConnectToTargetSqlMISyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMISyncTaskInput
+        MongoDbThrottlingSettings = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbThrottlingSettings
+        ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput
+        AzureActiveDirectoryApp = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AzureActiveDirectoryApp
+        ConnectToTargetSqlMITaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMITaskOutput
+        ValidateMigrationInputSqlServerSqlMITaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMITaskInput
+        ConnectToTargetSqlMITaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMITaskInput
+        ConnectToSourceNonSqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceNonSqlTaskOutput
+        ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput
+        ResourceSkuCapabilities = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCapabilities
+        DatabaseTable = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseTable
+        ReportableException = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ReportableException
+        GetUserTablesPostgreSqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesPostgreSqlTaskOutput
+        DataMigrationProjectMetadata = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationProjectMetadata
+        GetUserTablesPostgreSqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesPostgreSqlTaskInput
+        UploadOCIDriverTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UploadOCIDriverTaskOutput
         ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutput
+        MongoDbCommandInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbCommandInput
+        GetUserTablesOracleTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesOracleTaskOutput
+        MigrateOracleAzureDbPostgreSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncTaskOutput
+        GetUserTablesOracleTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesOracleTaskInput
+        NonSqlMigrationTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlMigrationTaskOutput
+        ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputDatabaseSchemaMapItem = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputDatabaseSchemaMapItem
+        MongoDbDatabaseSettings = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbDatabaseSettings
+        GetUserTablesSqlSyncTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlSyncTaskOutput
+        MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput
+        GetUserTablesSqlSyncTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlSyncTaskInput
+        ValidateSyncMigrationInputSqlServerTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateSyncMigrationInputSqlServerTaskInput
+        GetUserTablesSqlTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlTaskInput
+        FileShare = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileShare
+        GetUserTablesSqlTaskOutput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlTaskOutput
         TrackedResource = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::TrackedResource
         ProjectFile = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectFile
         MigrateMISyncCompleteCommandProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMISyncCompleteCommandProperties
         MigrateSyncCompleteCommandProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandProperties
+        MigrateSsisTaskOutputProjectLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskOutputProjectLevel
+        MigrateSsisTaskOutputMigrationLevel = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskOutputMigrationLevel
         MiSqlConnectionInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MiSqlConnectionInfo
         PostgreSqlConnectionInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::PostgreSqlConnectionInfo
         OracleConnectionInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::OracleConnectionInfo
         MySqlConnectionInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MySqlConnectionInfo
         MongoDbConnectionInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbConnectionInfo
         SqlConnectionInfo = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlConnectionInfo
+        MigrateSsisTaskInput = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskInput
+        MigrateSsisTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskProperties
         GetTdeCertificatesSqlTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskProperties
         ValidateOracleAzureDbForPostgreSqlSyncTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateOracleAzureDbForPostgreSqlSyncTaskProperties
         MongoDbCollectionProgress = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbCollectionProgress
@@ -278,6 +284,11 @@ module Azure::Profiles::Latest
         UploadOCIDriverTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UploadOCIDriverTaskProperties
         InstallOCIDriverTaskProperties = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::InstallOCIDriverTaskProperties
         CommandState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CommandState
+        SsisMigrationStage = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SsisMigrationStage
+        MigrationState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationState
+        MigrationStatus = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationStatus
+        SsisMigrationOverwriteOption = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SsisMigrationOverwriteOption
+        SsisStoreType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SsisStoreType
         SqlSourcePlatform = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlSourcePlatform
         AuthenticationType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AuthenticationType
         MongoDbErrorType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbErrorType
@@ -292,9 +303,7 @@ module Azure::Profiles::Latest
         Severity = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Severity
         UpdateActionType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UpdateActionType
         ObjectType = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ObjectType
-        MigrationState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationState
         DatabaseMigrationStage = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseMigrationStage
-        MigrationStatus = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationStatus
         BackupFileStatus = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupFileStatus
         DatabaseMigrationState = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseMigrationState
         LoginMigrationStage = Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::LoginMigrationStage
@@ -358,473 +367,479 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def migration_validation_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationResult
-          end
-          def migration_validation_database_summary_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationDatabaseSummaryResult
-          end
-          def resource
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Resource
-          end
-          def migrate_my_sql_azure_db_for_my_sql_sync_database_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncDatabaseInput
-          end
-          def migrate_my_sql_azure_db_for_my_sql_sync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncTaskInput
-          end
-          def odata_error
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ODataError
-          end
-          def connect_to_target_sql_db_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskInput
-          end
-          def migrate_misync_complete_command_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMISyncCompleteCommandOutput
-          end
-          def database
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Database
-          end
-          def service_operation
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperation
-          end
-          def connect_to_target_sql_sql_db_sync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlSqlDbSyncTaskInput
-          end
-          def migrate_sync_complete_command_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandInput
-          end
-          def connect_to_target_sql_db_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskOutput
-          end
-          def command_properties
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CommandProperties
-          end
-          def database_object_name
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseObjectName
-          end
-          def selected_certificate_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SelectedCertificateInput
-          end
-          def connect_to_target_azure_db_for_postgre_sql_sync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForPostgreSqlSyncTaskInput
-          end
-          def file_list
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileList
-          end
-          def migrate_sql_server_sql_db_sync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbSyncTaskOutput
-          end
-          def api_error
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ApiError
-          end
-          def sql_migration_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlMigrationTaskInput
-          end
-          def database_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseInfo
-          end
-          def migration_validation_options
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationOptions
-          end
-          def name_availability_request
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameAvailabilityRequest
-          end
-          def connect_to_target_azure_db_for_postgre_sql_sync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput
-          end
-          def connect_to_source_my_sql_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceMySqlTaskInput
-          end
-          def migration_table_metadata
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationTableMetadata
-          end
-          def migrate_oracle_azure_db_postgre_sql_sync_database_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncDatabaseInput
-          end
-          def validation_error
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidationError
-          end
-          def service_sku
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceSku
-          end
-          def wait_statistics
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::WaitStatistics
-          end
-          def server_properties
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServerProperties
-          end
-          def execution_statistics
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ExecutionStatistics
-          end
-          def mongo_db_progress
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbProgress
-          end
-          def query_execution_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QueryExecutionResult
-          end
-          def mongo_db_throttling_settings
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbThrottlingSettings
-          end
-          def query_analysis_validation_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QueryAnalysisValidationResult
-          end
-          def mongo_db_shard_key_setting
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeySetting
-          end
-          def schema_comparison_validation_result_type
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaComparisonValidationResultType
-          end
-          def mongo_db_database_settings
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbDatabaseSettings
-          end
-          def schema_comparison_validation_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaComparisonValidationResult
-          end
-          def mongo_db_cluster_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbClusterInfo
-          end
-          def data_integrity_validation_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataIntegrityValidationResult
-          end
-          def azure_active_directory_app
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AzureActiveDirectoryApp
-          end
-          def migration_validation_database_level_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationDatabaseLevelResult
-          end
-          def sql_server_sql_misync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlServerSqlMISyncTaskInput
-          end
-          def project_file_properties
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectFileProperties
-          end
-          def mongo_db_object_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbObjectInfo
-          end
-          def connect_to_target_oracle_azure_db_for_postgre_sql_sync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput
-          end
-          def validate_migration_input_sql_server_sql_mitask_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMITaskOutput
-          end
-          def name_availability_response
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameAvailabilityResponse
-          end
-          def validate_migration_input_sql_server_sql_mitask_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMITaskInput
-          end
-          def quota_list
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QuotaList
-          end
-          def validate_sync_migration_input_sql_server_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateSyncMigrationInputSqlServerTaskOutput
-          end
-          def data_item_migration_summary_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataItemMigrationSummaryResult
-          end
-          def validate_sync_migration_input_sql_server_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateSyncMigrationInputSqlServerTaskInput
-          end
-          def quota
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Quota
-          end
-          def sync_migration_database_error_event
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SyncMigrationDatabaseErrorEvent
-          end
-          def migration_report_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationReportResult
-          end
-          def mongo_db_command_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbCommandInput
-          end
-          def quota_name
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QuotaName
-          end
-          def connect_to_source_sql_server_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskOutput
-          end
-          def resource_sku
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSku
-          end
-          def migrate_oracle_azure_db_postgre_sql_sync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncTaskOutput
-          end
-          def migrate_sql_server_sql_db_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbTaskOutput
-          end
-          def database_file_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileInfo
-          end
-          def migrate_sql_server_sql_db_database_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbDatabaseInput
-          end
-          def upload_ocidriver_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UploadOCIDriverTaskInput
-          end
-          def resource_sku_capacity
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCapacity
-          end
-          def upload_ocidriver_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UploadOCIDriverTaskOutput
-          end
-          def resource_sku_costs
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCosts
-          end
-          def migrate_postgre_sql_azure_db_for_postgre_sql_sync_database_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput
-          end
-          def resource_sku_capabilities
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCapabilities
-          end
-          def connect_to_source_postgre_sql_sync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourcePostgreSqlSyncTaskInput
-          end
-          def backup_file_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupFileInfo
-          end
-          def install_ocidriver_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::InstallOCIDriverTaskInput
-          end
-          def backup_set_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupSetInfo
-          end
-          def connect_to_source_oracle_sync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceOracleSyncTaskOutput
-          end
-          def resource_sku_restrictions
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuRestrictions
-          end
-          def migrate_my_sql_azure_db_for_my_sql_sync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncTaskOutput
-          end
-          def data_migration_service_status_response
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationServiceStatusResponse
-          end
-          def reportable_exception
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ReportableException
-          end
-          def migrate_sql_server_sql_misync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMISyncTaskOutput
-          end
-          def migrate_sync_complete_command_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandOutput
+          def start_migration_scenario_server_role_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::StartMigrationScenarioServerRoleResult
           end
           def service_sku_list
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceSkuList
           end
-          def get_tde_certificates_sql_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskOutput
-          end
           def available_service_sku
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AvailableServiceSku
           end
-          def file_storage_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileStorageInfo
+          def project_file_properties
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectFileProperties
           end
           def available_service_sku_capacity
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AvailableServiceSkuCapacity
           end
-          def connection_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectionInfo
+          def odata_error
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ODataError
           end
           def available_service_sku_sku
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AvailableServiceSkuSku
           end
-          def validate_oracle_azure_db_postgre_sql_sync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateOracleAzureDbPostgreSqlSyncTaskOutput
+          def migrate_misync_complete_command_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMISyncCompleteCommandOutput
           end
           def task_list
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::TaskList
           end
-          def mongo_db_error
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbError
+          def migrate_sql_server_sql_server_database_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlServerDatabaseInput
           end
           def data_migration_service_list
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationServiceList
           end
-          def connect_to_source_non_sql_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceNonSqlTaskOutput
+          def migrate_sync_complete_command_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandInput
           end
-          def orphaned_user_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::OrphanedUserInfo
+          def migrate_my_sql_azure_db_for_my_sql_sync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncTaskOutput
           end
-          def mongo_db_collection_settings
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbCollectionSettings
+          def command_properties
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CommandProperties
           end
-          def start_migration_scenario_server_role_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::StartMigrationScenarioServerRoleResult
-          end
-          def validate_migration_input_sql_server_sql_misync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMISyncTaskOutput
-          end
-          def project_list
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectList
-          end
-          def schema_migration_setting
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaMigrationSetting
-          end
-          def migrate_sql_server_sql_mitask_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutput
-          end
-          def blob_share
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BlobShare
-          end
-          def migrate_sql_server_sql_db_sync_database_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbSyncDatabaseInput
-          end
-          def migrate_sql_server_sql_server_database_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlServerDatabaseInput
-          end
-          def migrate_schema_sql_server_sql_db_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSchemaSqlServerSqlDbTaskOutput
-          end
-          def database_file_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileInput
-          end
-          def oracle_ocidriver_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::OracleOCIDriverInfo
-          end
-          def connect_to_target_azure_db_for_my_sql_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForMySqlTaskOutput
-          end
-          def check_ocidriver_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CheckOCIDriverTaskOutput
-          end
-          def connect_to_target_azure_db_for_my_sql_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForMySqlTaskInput
-          end
-          def migrate_postgre_sql_azure_db_for_postgre_sql_sync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutput
-          end
-          def non_sql_migration_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlMigrationTaskOutput
-          end
-          def connect_to_source_postgre_sql_sync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourcePostgreSqlSyncTaskOutput
-          end
-          def connect_to_target_sql_misync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMISyncTaskOutput
-          end
-          def install_ocidriver_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::InstallOCIDriverTaskOutput
-          end
-          def connect_to_target_sql_misync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMISyncTaskInput
-          end
-          def migrate_misync_complete_command_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMISyncCompleteCommandInput
+          def migrate_my_sql_azure_db_for_my_sql_sync_database_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncDatabaseInput
           end
           def non_sql_data_migration_table_result
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlDataMigrationTableResult
           end
-          def file_share
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileShare
+          def migrate_my_sql_azure_db_for_my_sql_sync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMySqlAzureDbForMySqlSyncTaskInput
           end
-          def connect_to_target_sql_mitask_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMITaskOutput
+          def ssis_migration_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SsisMigrationInfo
           end
-          def get_tde_certificates_sql_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskInput
-          end
-          def connect_to_target_sql_mitask_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMITaskInput
-          end
-          def project_task_properties
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectTaskProperties
-          end
-          def data_migration_error
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationError
-          end
-          def mongo_db_migration_settings
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbMigrationSettings
-          end
-          def database_table
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseTable
-          end
-          def database_backup_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseBackupInfo
-          end
-          def get_user_tables_postgre_sql_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesPostgreSqlTaskOutput
-          end
-          def mongo_db_shard_key_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeyInfo
-          end
-          def get_user_tables_postgre_sql_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesPostgreSqlTaskInput
-          end
-          def check_ocidriver_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CheckOCIDriverTaskInput
+          def project_list
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectList
           end
           def non_sql_migration_task_input
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlMigrationTaskInput
           end
-          def migrate_postgre_sql_azure_db_for_postgre_sql_sync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput
-          end
-          def get_user_tables_oracle_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesOracleTaskOutput
-          end
-          def service_operation_list
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperationList
-          end
-          def get_user_tables_oracle_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesOracleTaskInput
-          end
-          def resource_skus_result
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkusResult
-          end
-          def non_sql_data_migration_table
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlDataMigrationTable
-          end
-          def mongo_db_shard_key_field
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeyField
-          end
-          def get_user_tables_sql_sync_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlSyncTaskOutput
-          end
-          def migrate_schema_sql_server_sql_db_database_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSchemaSqlServerSqlDbDatabaseInput
-          end
-          def get_user_tables_sql_sync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlSyncTaskInput
-          end
-          def migration_eligibility_info
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationEligibilityInfo
+          def name_availability_response
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameAvailabilityResponse
           end
           def get_project_details_non_sql_task_input
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetProjectDetailsNonSqlTaskInput
           end
-          def service_operation_display
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperationDisplay
+          def quota_list
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QuotaList
           end
-          def get_user_tables_sql_task_output
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlTaskOutput
+          def connection_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectionInfo
           end
-          def migrate_sql_server_sql_midatabase_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMIDatabaseInput
+          def quota
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Quota
           end
-          def get_user_tables_sql_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlTaskInput
+          def sql_migration_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlMigrationTaskInput
           end
-          def connect_to_source_oracle_sync_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceOracleSyncTaskInput
+          def quota_name
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QuotaName
           end
-          def data_migration_project_metadata
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationProjectMetadata
+          def database
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Database
           end
-          def connect_to_source_sql_server_task_input
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskInput
+          def service_operation_list
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperationList
           end
-          def connect_to_target_oracle_azure_db_for_postgre_sql_sync_task_output_database_schema_map_item
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputDatabaseSchemaMapItem
+          def selected_certificate_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SelectedCertificateInput
+          end
+          def migrate_sql_server_sql_db_sync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbSyncTaskOutput
+          end
+          def get_tde_certificates_sql_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskInput
+          end
+          def migration_validation_options
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationOptions
+          end
+          def validate_oracle_azure_db_postgre_sql_sync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateOracleAzureDbPostgreSqlSyncTaskOutput
+          end
+          def service_operation
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperation
           end
           def migrate_oracle_azure_db_postgre_sql_sync_task_input
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncTaskInput
           end
+          def service_operation_display
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceOperationDisplay
+          end
+          def mongo_db_error
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbError
+          end
+          def validation_error
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidationError
+          end
+          def upload_ocidriver_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UploadOCIDriverTaskInput
+          end
+          def wait_statistics
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::WaitStatistics
+          end
+          def check_ocidriver_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CheckOCIDriverTaskOutput
+          end
+          def execution_statistics
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ExecutionStatistics
+          end
+          def mongo_db_shard_key_field
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeyField
+          end
+          def query_execution_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QueryExecutionResult
+          end
+          def mongo_db_collection_settings
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbCollectionSettings
+          end
+          def query_analysis_validation_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::QueryAnalysisValidationResult
+          end
+          def mongo_db_migration_settings
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbMigrationSettings
+          end
+          def schema_comparison_validation_result_type
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaComparisonValidationResultType
+          end
+          def validate_migration_input_sql_server_sql_misync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMISyncTaskOutput
+          end
+          def schema_comparison_validation_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaComparisonValidationResult
+          end
+          def migrate_sql_server_sql_midatabase_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMIDatabaseInput
+          end
+          def data_integrity_validation_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataIntegrityValidationResult
+          end
+          def oracle_ocidriver_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::OracleOCIDriverInfo
+          end
+          def migration_validation_database_level_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationDatabaseLevelResult
+          end
+          def database_backup_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseBackupInfo
+          end
+          def migration_validation_database_summary_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationDatabaseSummaryResult
+          end
+          def blob_share
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BlobShare
+          end
+          def migration_validation_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationValidationResult
+          end
+          def migrate_schema_sql_server_sql_db_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSchemaSqlServerSqlDbTaskOutput
+          end
+          def file_list
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileList
+          end
+          def migrate_sql_server_sql_db_sync_database_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbSyncDatabaseInput
+          end
+          def file_storage_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileStorageInfo
+          end
+          def migrate_schema_sql_server_sql_db_database_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSchemaSqlServerSqlDbDatabaseInput
+          end
+          def data_item_migration_summary_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataItemMigrationSummaryResult
+          end
+          def schema_migration_setting
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SchemaMigrationSetting
+          end
+          def api_error
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ApiError
+          end
+          def server_properties
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServerProperties
+          end
+          def migration_report_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationReportResult
+          end
+          def resource_skus_result
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkusResult
+          end
+          def database_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseInfo
+          end
+          def resource_sku
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSku
+          end
+          def name_availability_request
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NameAvailabilityRequest
+          end
+          def resource_sku_costs
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCosts
+          end
+          def migrate_sql_server_sql_db_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbTaskOutput
+          end
+          def resource_sku_restrictions
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuRestrictions
+          end
+          def migrate_sql_server_sql_db_database_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlDbDatabaseInput
+          end
+          def migrate_postgre_sql_azure_db_for_postgre_sql_sync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutput
+          end
+          def service_sku
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ServiceSku
+          end
+          def migrate_postgre_sql_azure_db_for_postgre_sql_sync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput
+          end
+          def project_task_properties
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ProjectTaskProperties
+          end
+          def mongo_db_cluster_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbClusterInfo
+          end
+          def migrate_misync_complete_command_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateMISyncCompleteCommandInput
+          end
+          def backup_file_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupFileInfo
+          end
+          def database_file_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileInput
+          end
+          def backup_set_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupSetInfo
+          end
+          def migrate_ssis_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskOutput
+          end
+          def mongo_db_object_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbObjectInfo
+          end
+          def non_sql_data_migration_table
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlDataMigrationTable
+          end
+          def mongo_db_shard_key_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeyInfo
+          end
+          def migration_table_metadata
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationTableMetadata
+          end
+          def migrate_sql_server_sql_misync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMISyncTaskOutput
+          end
+          def get_tde_certificates_sql_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskOutput
+          end
+          def connect_to_source_sql_server_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskInput
+          end
+          def install_ocidriver_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::InstallOCIDriverTaskOutput
+          end
+          def connect_to_source_sql_server_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceSqlServerTaskOutput
+          end
+          def install_ocidriver_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::InstallOCIDriverTaskInput
+          end
+          def database_file_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseFileInfo
+          end
+          def mongo_db_progress
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbProgress
+          end
+          def migration_eligibility_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationEligibilityInfo
+          end
+          def mongo_db_shard_key_setting
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbShardKeySetting
+          end
+          def connect_to_source_postgre_sql_sync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourcePostgreSqlSyncTaskInput
+          end
+          def check_ocidriver_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CheckOCIDriverTaskInput
+          end
+          def connect_to_source_postgre_sql_sync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourcePostgreSqlSyncTaskOutput
+          end
+          def sql_server_sql_misync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlServerSqlMISyncTaskInput
+          end
+          def orphaned_user_info
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::OrphanedUserInfo
+          end
+          def validate_migration_input_sql_server_sql_mitask_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMITaskOutput
+          end
+          def connect_to_source_oracle_sync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceOracleSyncTaskInput
+          end
+          def validate_sync_migration_input_sql_server_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateSyncMigrationInputSqlServerTaskOutput
+          end
+          def connect_to_source_oracle_sync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceOracleSyncTaskOutput
+          end
+          def sync_migration_database_error_event
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SyncMigrationDatabaseErrorEvent
+          end
+          def migrate_sql_server_sql_mitask_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSqlServerSqlMITaskOutput
+          end
+          def connect_to_source_my_sql_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceMySqlTaskInput
+          end
+          def connect_to_target_sql_db_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskInput
+          end
+          def resource_sku_capacity
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCapacity
+          end
+          def connect_to_target_sql_sql_db_sync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlSqlDbSyncTaskInput
+          end
+          def data_migration_service_status_response
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationServiceStatusResponse
+          end
+          def connect_to_target_sql_db_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlDbTaskOutput
+          end
+          def resource
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::Resource
+          end
+          def connect_to_target_azure_db_for_my_sql_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForMySqlTaskOutput
+          end
+          def migrate_sync_complete_command_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandOutput
+          end
+          def connect_to_target_azure_db_for_my_sql_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForMySqlTaskInput
+          end
+          def data_migration_error
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationError
+          end
+          def connect_to_target_azure_db_for_postgre_sql_sync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForPostgreSqlSyncTaskInput
+          end
+          def database_object_name
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseObjectName
+          end
+          def connect_to_target_sql_misync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMISyncTaskOutput
+          end
+          def migrate_oracle_azure_db_postgre_sql_sync_database_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncDatabaseInput
+          end
+          def connect_to_target_sql_misync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMISyncTaskInput
+          end
+          def mongo_db_throttling_settings
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbThrottlingSettings
+          end
+          def connect_to_target_azure_db_for_postgre_sql_sync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput
+          end
+          def azure_active_directory_app
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::AzureActiveDirectoryApp
+          end
+          def connect_to_target_sql_mitask_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMITaskOutput
+          end
+          def validate_migration_input_sql_server_sql_mitask_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateMigrationInputSqlServerSqlMITaskInput
+          end
+          def connect_to_target_sql_mitask_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetSqlMITaskInput
+          end
+          def connect_to_source_non_sql_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToSourceNonSqlTaskOutput
+          end
+          def connect_to_target_oracle_azure_db_for_postgre_sql_sync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput
+          end
+          def resource_sku_capabilities
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ResourceSkuCapabilities
+          end
+          def database_table
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseTable
+          end
+          def reportable_exception
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ReportableException
+          end
+          def get_user_tables_postgre_sql_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesPostgreSqlTaskOutput
+          end
+          def data_migration_project_metadata
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DataMigrationProjectMetadata
+          end
+          def get_user_tables_postgre_sql_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesPostgreSqlTaskInput
+          end
+          def upload_ocidriver_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::UploadOCIDriverTaskOutput
+          end
           def connect_to_target_oracle_azure_db_for_postgre_sql_sync_task_output
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutput
+          end
+          def mongo_db_command_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbCommandInput
+          end
+          def get_user_tables_oracle_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesOracleTaskOutput
+          end
+          def migrate_oracle_azure_db_postgre_sql_sync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateOracleAzureDbPostgreSqlSyncTaskOutput
+          end
+          def get_user_tables_oracle_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesOracleTaskInput
+          end
+          def non_sql_migration_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::NonSqlMigrationTaskOutput
+          end
+          def connect_to_target_oracle_azure_db_for_postgre_sql_sync_task_output_database_schema_map_item
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputDatabaseSchemaMapItem
+          end
+          def mongo_db_database_settings
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MongoDbDatabaseSettings
+          end
+          def get_user_tables_sql_sync_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlSyncTaskOutput
+          end
+          def migrate_postgre_sql_azure_db_for_postgre_sql_sync_database_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput
+          end
+          def get_user_tables_sql_sync_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlSyncTaskInput
+          end
+          def validate_sync_migration_input_sql_server_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ValidateSyncMigrationInputSqlServerTaskInput
+          end
+          def get_user_tables_sql_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlTaskInput
+          end
+          def file_share
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::FileShare
+          end
+          def get_user_tables_sql_task_output
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetUserTablesSqlTaskOutput
           end
           def tracked_resource
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::TrackedResource
@@ -837,6 +852,12 @@ module Azure::Profiles::Latest
           end
           def migrate_sync_complete_command_properties
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSyncCompleteCommandProperties
+          end
+          def migrate_ssis_task_output_project_level
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskOutputProjectLevel
+          end
+          def migrate_ssis_task_output_migration_level
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskOutputMigrationLevel
           end
           def mi_sql_connection_info
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MiSqlConnectionInfo
@@ -855,6 +876,12 @@ module Azure::Profiles::Latest
           end
           def sql_connection_info
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlConnectionInfo
+          end
+          def migrate_ssis_task_input
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskInput
+          end
+          def migrate_ssis_task_properties
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrateSsisTaskProperties
           end
           def get_tde_certificates_sql_task_properties
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::GetTdeCertificatesSqlTaskProperties
@@ -1141,6 +1168,21 @@ module Azure::Profiles::Latest
           def command_state
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::CommandState
           end
+          def ssis_migration_stage
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SsisMigrationStage
+          end
+          def migration_state
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationState
+          end
+          def migration_status
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationStatus
+          end
+          def ssis_migration_overwrite_option
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SsisMigrationOverwriteOption
+          end
+          def ssis_store_type
+            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SsisStoreType
+          end
           def sql_source_platform
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::SqlSourcePlatform
           end
@@ -1183,14 +1225,8 @@ module Azure::Profiles::Latest
           def object_type
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::ObjectType
           end
-          def migration_state
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationState
-          end
           def database_migration_stage
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::DatabaseMigrationStage
-          end
-          def migration_status
-            Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::MigrationStatus
           end
           def backup_file_status
             Azure::DataMigration::Mgmt::V2018_07_15_preview::Models::BackupFileStatus

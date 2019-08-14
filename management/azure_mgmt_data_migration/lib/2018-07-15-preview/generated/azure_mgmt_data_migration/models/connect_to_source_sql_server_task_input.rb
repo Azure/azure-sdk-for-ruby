@@ -23,6 +23,10 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       # 'MigrationFromMySQLToAzureDBForMySQL'
       attr_accessor :check_permissions_group
 
+      # @return [Boolean] Flag for whether to collect databases from source
+      # server. Default value: true .
+      attr_accessor :collect_databases
+
       # @return [Boolean] Flag for whether to collect logins from source
       # server. Default value: false .
       attr_accessor :collect_logins
@@ -34,6 +38,10 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       # @return [Boolean] Flag for whether to collect TDE Certificate names
       # from source server. Default value: false .
       attr_accessor :collect_tde_certificate_info
+
+      # @return [Boolean] Flag for whether to validate SSIS catalog is
+      # reachable on the source server. Default value: false .
+      attr_accessor :validate_ssis_catalog_only
 
 
       #
@@ -67,6 +75,15 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                   module: 'ServerLevelPermissionsGroup'
                 }
               },
+              collect_databases: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'collectDatabases',
+                default_value: true,
+                type: {
+                  name: 'Boolean'
+                }
+              },
               collect_logins: {
                 client_side_validation: true,
                 required: false,
@@ -89,6 +106,15 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'collectTdeCertificateInfo',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              validate_ssis_catalog_only: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'validateSsisCatalogOnly',
                 default_value: false,
                 type: {
                   name: 'Boolean'
