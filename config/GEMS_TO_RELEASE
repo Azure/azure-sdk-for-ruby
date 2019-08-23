@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_cosmosdb",
-        "azure_mgmt_network"
+        "azure_mgmt_network",
+        "azure_mgmt_kusto"
     ],
     "data": [
         "azure_cognitiveservices_luisauthoring"
