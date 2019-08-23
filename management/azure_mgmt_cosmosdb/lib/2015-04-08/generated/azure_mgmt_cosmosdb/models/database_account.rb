@@ -74,6 +74,14 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       # @return [Boolean] Enables the account to write in multiple locations
       attr_accessor :enable_multiple_write_locations
 
+      # @return [Boolean] Enables the cassandra connector on the Cosmos DB C*
+      # account
+      attr_accessor :enable_cassandra_connector
+
+      # @return [ConnectorOffer] The cassandra connector offer type for the
+      # Cosmos DB database C* account. Possible values include: 'Small'
+      attr_accessor :connector_offer
+
 
       #
       # Mapper for DatabaseAccount class as Ruby Hash.
@@ -302,6 +310,22 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
                 serialized_name: 'properties.enableMultipleWriteLocations',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              enable_cassandra_connector: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.enableCassandraConnector',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              connector_offer: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.connectorOffer',
+                type: {
+                  name: 'String'
                 }
               }
             }
