@@ -2,6 +2,9 @@
     "management": [
         "azure_mgmt_cosmosdb"
     ],
+    "data": [
+        "azure_cognitiveservices_luisauthoring"
+    ]
     "rollup": [
         "azure_sdk"
     ]
