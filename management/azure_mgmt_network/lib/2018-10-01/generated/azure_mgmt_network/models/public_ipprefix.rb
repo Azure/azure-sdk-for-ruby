@@ -33,6 +33,10 @@ module Azure::Network::Mgmt::V2018_10_01
       # PublicIPAddresses
       attr_accessor :public_ipaddresses
 
+      # @return [SubResource] The reference to load balancer frontend IP
+      # configuration associated with the public IP prefix.
+      attr_accessor :load_balancer_frontend_ip_configuration
+
       # @return [String] The resource GUID property of the public IP prefix
       # resource.
       attr_accessor :resource_guid
@@ -178,6 +182,16 @@ module Azure::Network::Mgmt::V2018_10_01
                         class_name: 'ReferencedPublicIpAddress'
                       }
                   }
+                }
+              },
+              load_balancer_frontend_ip_configuration: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.loadBalancerFrontendIpConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
                 }
               },
               resource_guid: {

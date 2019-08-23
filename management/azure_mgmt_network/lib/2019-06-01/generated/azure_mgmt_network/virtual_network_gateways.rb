@@ -1495,7 +1495,7 @@ module Azure::Network::Mgmt::V2019_06_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 202 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end

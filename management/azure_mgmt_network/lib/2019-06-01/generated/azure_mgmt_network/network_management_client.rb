@@ -114,14 +114,11 @@ module Azure::Network::Mgmt::V2019_06_01
     # @return [ExpressRouteLinks] express_route_links
     attr_reader :express_route_links
 
-    # @return [PrivateEndpoints] private_endpoints
-    attr_reader :private_endpoints
+    # @return [FirewallPolicies] firewall_policies
+    attr_reader :firewall_policies
 
-    # @return [AvailablePrivateEndpointTypes] available_private_endpoint_types
-    attr_reader :available_private_endpoint_types
-
-    # @return [PrivateLinkServices] private_link_services
-    attr_reader :private_link_services
+    # @return [FirewallPolicyRuleGroups] firewall_policy_rule_groups
+    attr_reader :firewall_policy_rule_groups
 
     # @return [LoadBalancers] load_balancers
     attr_reader :load_balancers
@@ -190,6 +187,15 @@ module Azure::Network::Mgmt::V2019_06_01
 
     # @return [Operations] operations
     attr_reader :operations
+
+    # @return [PrivateEndpoints] private_endpoints
+    attr_reader :private_endpoints
+
+    # @return [AvailablePrivateEndpointTypes] available_private_endpoint_types
+    attr_reader :available_private_endpoint_types
+
+    # @return [PrivateLinkServices] private_link_services
+    attr_reader :private_link_services
 
     # @return [PublicIPAddresses] public_ipaddresses
     attr_reader :public_ipaddresses
@@ -329,9 +335,8 @@ module Azure::Network::Mgmt::V2019_06_01
       @express_route_ports_locations = ExpressRoutePortsLocations.new(self)
       @express_route_ports = ExpressRoutePorts.new(self)
       @express_route_links = ExpressRouteLinks.new(self)
-      @private_endpoints = PrivateEndpoints.new(self)
-      @available_private_endpoint_types = AvailablePrivateEndpointTypes.new(self)
-      @private_link_services = PrivateLinkServices.new(self)
+      @firewall_policies = FirewallPolicies.new(self)
+      @firewall_policy_rule_groups = FirewallPolicyRuleGroups.new(self)
       @load_balancers = LoadBalancers.new(self)
       @load_balancer_backend_address_pools = LoadBalancerBackendAddressPools.new(self)
       @load_balancer_frontend_ipconfigurations = LoadBalancerFrontendIPConfigurations.new(self)
@@ -353,6 +358,9 @@ module Azure::Network::Mgmt::V2019_06_01
       @packet_captures = PacketCaptures.new(self)
       @connection_monitors = ConnectionMonitors.new(self)
       @operations = Operations.new(self)
+      @private_endpoints = PrivateEndpoints.new(self)
+      @available_private_endpoint_types = AvailablePrivateEndpointTypes.new(self)
+      @private_link_services = PrivateLinkServices.new(self)
       @public_ipaddresses = PublicIPAddresses.new(self)
       @public_ipprefixes = PublicIPPrefixes.new(self)
       @route_filters = RouteFilters.new(self)
@@ -656,7 +664,7 @@ module Azure::Network::Mgmt::V2019_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.19.0"
+        sdk_information = "#{sdk_information}/0.19.1"
         add_user_agent_information(sdk_information)
     end
   end

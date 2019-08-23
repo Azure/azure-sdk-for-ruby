@@ -36,13 +36,13 @@ module Azure::Network::Mgmt::V2019_04_01
       # classifying a healthy probe response.
       attr_accessor :match
 
-      # @return [String] Name of backend pool of application gateway to which
-      # probe request will be sent.
-      attr_accessor :backend_pool_name
+      # @return [SubResource] Reference of backend pool of application gateway
+      # to which probe request will be sent.
+      attr_accessor :backend_address_pool
 
-      # @return [String] Name of backend http setting of application gateway to
-      # be used for test probe.
-      attr_accessor :backend_http_setting_name
+      # @return [SubResource] Reference of backend http setting of application
+      # gateway to be used for test probe.
+      attr_accessor :backend_http_settings
 
 
       #
@@ -107,20 +107,22 @@ module Azure::Network::Mgmt::V2019_04_01
                   class_name: 'ApplicationGatewayProbeHealthResponseMatch'
                 }
               },
-              backend_pool_name: {
+              backend_address_pool: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'backendPoolName',
+                serialized_name: 'backendAddressPool',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'SubResource'
                 }
               },
-              backend_http_setting_name: {
+              backend_http_settings: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'backendHttpSettingName',
+                serialized_name: 'backendHttpSettings',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'SubResource'
                 }
               }
             }

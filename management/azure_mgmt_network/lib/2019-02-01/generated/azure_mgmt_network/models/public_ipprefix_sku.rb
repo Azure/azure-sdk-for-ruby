@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2019_02_01
   module Models
     #
-    # SKU of a public IP prefix
+    # SKU of a public IP prefix.
     #
     class PublicIPPrefixSku
 

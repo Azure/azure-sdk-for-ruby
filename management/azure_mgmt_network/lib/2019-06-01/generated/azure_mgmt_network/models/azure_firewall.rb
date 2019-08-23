@@ -36,6 +36,16 @@ module Azure::Network::Mgmt::V2019_06_01
       # Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
       attr_accessor :threat_intel_mode
 
+      # @return [SubResource] The virtualHub to which the firewall belongs.
+      attr_accessor :virtual_hub
+
+      # @return [SubResource] The firewallPolicy associated with this azure
+      # firewall.
+      attr_accessor :firewall_policy
+
+      # @return [HubIPAddresses] IP addresses associated with AzureFirewall.
+      attr_accessor :hub_ip_addresses
+
       # @return [Array<String>] A list of availability zones denoting where the
       # resource needs to come from.
       attr_accessor :zones
@@ -190,6 +200,34 @@ module Azure::Network::Mgmt::V2019_06_01
                 serialized_name: 'properties.threatIntelMode',
                 type: {
                   name: 'String'
+                }
+              },
+              virtual_hub: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.virtualHub',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
+              firewall_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.firewallPolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
+              hub_ip_addresses: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.hubIpAddresses',
+                type: {
+                  name: 'Composite',
+                  class_name: 'HubIPAddresses'
                 }
               },
               zones: {
