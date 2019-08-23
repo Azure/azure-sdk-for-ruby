@@ -4,7 +4,7 @@
     ],
     "data": [
         "azure_cognitiveservices_luisauthoring"
-    ]
+    ],
     "rollup": [
         "azure_sdk"
     ]
