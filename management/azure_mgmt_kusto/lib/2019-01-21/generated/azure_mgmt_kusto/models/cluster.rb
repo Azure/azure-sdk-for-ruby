@@ -103,7 +103,6 @@ module Azure::Kusto::Mgmt::V2019_01_21
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
-                default_value: {},
                 type: {
                   name: 'Composite',
                   class_name: 'AzureSku'

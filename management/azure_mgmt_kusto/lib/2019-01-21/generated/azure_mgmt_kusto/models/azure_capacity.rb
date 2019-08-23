@@ -16,10 +16,10 @@ module Azure::Kusto::Mgmt::V2019_01_21
       # 'automatic', 'manual', 'none'
       attr_accessor :scale_type
 
-      # @return [Integer] Minimum allowed capacity.
+      # @return [Integer] Minimum allowed instances count.
       attr_accessor :minimum
 
-      # @return [Integer] Maximum allowed capacity.
+      # @return [Integer] Maximum allowed instances count.
       attr_accessor :maximum
 
       # @return [Integer] The default capacity that would be used.

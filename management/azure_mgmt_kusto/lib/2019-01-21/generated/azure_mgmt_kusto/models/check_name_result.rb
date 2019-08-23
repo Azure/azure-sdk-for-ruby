@@ -23,6 +23,10 @@ module Azure::Kusto::Mgmt::V2019_01_21
       # conflict, or a description of the naming rules that are violated.
       attr_accessor :message
 
+      # @return [Reason] Message providing the reason why the given name is
+      # invalid. Possible values include: 'Invalid', 'AlreadyExists'
+      attr_accessor :reason
+
 
       #
       # Mapper for CheckNameResult class as Ruby Hash.
@@ -57,6 +61,14 @@ module Azure::Kusto::Mgmt::V2019_01_21
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
+                type: {
+                  name: 'String'
+                }
+              },
+              reason: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'reason',
                 type: {
                   name: 'String'
                 }
