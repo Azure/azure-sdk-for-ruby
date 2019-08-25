@@ -18,7 +18,7 @@ module Azure::Kusto::Mgmt::V2019_01_21
       # @return [AzureSku] The SKU details.
       attr_accessor :sku
 
-      # @return [AzureCapacity] The SKU capacity.
+      # @return [AzureCapacity] The number of instances of the cluster.
       attr_accessor :capacity
 
 

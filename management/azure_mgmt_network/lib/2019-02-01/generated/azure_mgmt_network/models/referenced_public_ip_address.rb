@@ -12,7 +12,7 @@ module Azure::Network::Mgmt::V2019_02_01
 
       include MsRestAzure
 
-      # @return [String] The PublicIPAddress Reference
+      # @return [String] The PublicIPAddress Reference.
       attr_accessor :id
 
 

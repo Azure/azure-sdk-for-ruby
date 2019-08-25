@@ -8,7 +8,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
     #
     # The access keys for the given database account.
     #
-    class DatabaseAccountListKeysResult
+    class DatabaseAccountListKeysResult < DatabaseAccountListReadOnlyKeysResult
 
       include MsRestAzure
 
@@ -17,12 +17,6 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
 
       # @return [String] Base 64 encoded value of the secondary read-write key.
       attr_accessor :secondary_master_key
-
-      # @return [String] Base 64 encoded value of the primary read-only key.
-      attr_accessor :primary_readonly_master_key
-
-      # @return [String] Base 64 encoded value of the secondary read-only key.
-      attr_accessor :secondary_readonly_master_key
 
 
       #
@@ -38,6 +32,24 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
             name: 'Composite',
             class_name: 'DatabaseAccountListKeysResult',
             model_properties: {
+              primary_readonly_master_key: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'primaryReadonlyMasterKey',
+                type: {
+                  name: 'String'
+                }
+              },
+              secondary_readonly_master_key: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'secondaryReadonlyMasterKey',
+                type: {
+                  name: 'String'
+                }
+              },
               primary_master_key: {
                 client_side_validation: true,
                 required: false,
@@ -52,24 +64,6 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
                 required: false,
                 read_only: true,
                 serialized_name: 'secondaryMasterKey',
-                type: {
-                  name: 'String'
-                }
-              },
-              primary_readonly_master_key: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.primaryReadonlyMasterKey',
-                type: {
-                  name: 'String'
-                }
-              },
-              secondary_readonly_master_key: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.secondaryReadonlyMasterKey',
                 type: {
                   name: 'String'
                 }

@@ -445,7 +445,7 @@
                 },
                 "Microsoft.Kusto": {
                     "management": {
-                        "2019-01-21": ["*"]
+                        "2019-05-15": ["*"]
                     }
                 },
                 "Microsoft.Labservices": {
@@ -1610,7 +1610,7 @@
             "resourceTypes": {
                 "Microsoft.Kusto": {
                     "management": {
-                        "2019-01-21": ["*"]
+                        "2019-05-15": ["*"]
                     }
                 }
             },

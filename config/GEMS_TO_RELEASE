@@ -1,7 +1,11 @@
 {
     "management": [
-        "azure_mgmt_container_service",
-        "azure_mgmt_data_migration"
+        "azure_mgmt_cosmosdb",
+        "azure_mgmt_network",
+        "azure_mgmt_kusto"
+    ],
+    "data": [
+        "azure_cognitiveservices_luisauthoring"
     ],
     "rollup": [
         "azure_sdk"

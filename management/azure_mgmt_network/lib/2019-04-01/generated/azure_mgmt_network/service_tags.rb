@@ -24,7 +24,10 @@ module Azure::Network::Mgmt::V2019_04_01
     #
     # Gets a list of service tag information resources.
     #
-    # @param location [String] The location.
+    # @param location [String] The location that will be used as a reference for
+    # version (not as a filter based on location, you will get the list of service
+    # tags with prefix details across all regions but limited to the cloud that
+    # your subscription belongs to).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -38,7 +41,10 @@ module Azure::Network::Mgmt::V2019_04_01
     #
     # Gets a list of service tag information resources.
     #
-    # @param location [String] The location.
+    # @param location [String] The location that will be used as a reference for
+    # version (not as a filter based on location, you will get the list of service
+    # tags with prefix details across all regions but limited to the cloud that
+    # your subscription belongs to).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -51,7 +57,10 @@ module Azure::Network::Mgmt::V2019_04_01
     #
     # Gets a list of service tag information resources.
     #
-    # @param location [String] The location.
+    # @param location [String] The location that will be used as a reference for
+    # version (not as a filter based on location, you will get the list of service
+    # tags with prefix details across all regions but limited to the cloud that
+    # your subscription belongs to).
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

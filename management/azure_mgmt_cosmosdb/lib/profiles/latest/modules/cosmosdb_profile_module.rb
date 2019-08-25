@@ -60,44 +60,43 @@ module Azure::Cosmosdb::Profiles::Latest
       CassandraPartitionKey = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraPartitionKey
       Resource = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Resource
       ClusterKey = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ClusterKey
-      RegionForOnlineOffline = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::RegionForOnlineOffline
-      ExtendedResourceProperties = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ExtendedResourceProperties
-      DatabaseAccountListReadOnlyKeysResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListReadOnlyKeysResult
-      PartitionMetricListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionMetricListResult
-      DatabaseAccountConnectionString = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountConnectionString
-      CassandraSchema = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraSchema
-      DatabaseAccountRegenerateKeyParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountRegenerateKeyParameters
-      CassandraTableResource = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraTableResource
-      FailoverPolicy = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::FailoverPolicy
-      CassandraTableCreateUpdateParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraTableCreateUpdateParameters
-      DatabaseAccountListKeysResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListKeysResult
-      Indexes = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Indexes
-      DatabaseAccountListConnectionStringsResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListConnectionStringsResult
-      ContainerPartitionKey = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ContainerPartitionKey
-      Capability = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Capability
-      PercentileMetric = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PercentileMetric
-      MetricListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricListResult
-      UsagesResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::UsagesResult
-      MetricValue = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricValue
-      PercentileMetricListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PercentileMetricListResult
-      MetricDefinition = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricDefinition
-      GremlinDatabaseResource = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinDatabaseResource
-      PartitionUsagesResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionUsagesResult
-      GremlinDatabaseCreateUpdateParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinDatabaseCreateUpdateParameters
-      DatabaseAccountPatchParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountPatchParameters
-      GremlinGraphResource = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinGraphResource
-      UniqueKeyPolicy = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::UniqueKeyPolicy
-      GremlinGraphCreateUpdateParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinGraphCreateUpdateParameters
-      MetricDefinitionsListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricDefinitionsListResult
-      OperationDisplay = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::OperationDisplay
       ErrorResponse = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ErrorResponse
-      Operation = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Operation
+      RegionForOnlineOffline = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::RegionForOnlineOffline
+      DatabaseAccountPatchParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountPatchParameters
+      ExtendedResourceProperties = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ExtendedResourceProperties
+      PartitionMetricListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionMetricListResult
+      PercentileMetricListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PercentileMetricListResult
+      DatabaseAccountListConnectionStringsResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListConnectionStringsResult
+      CassandraSchema = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraSchema
+      Capability = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Capability
+      CassandraTableResource = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraTableResource
+      DatabaseAccountListReadOnlyKeysResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListReadOnlyKeysResult
+      Indexes = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Indexes
+      DatabaseAccountConnectionString = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountConnectionString
+      ContainerPartitionKey = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ContainerPartitionKey
+      DatabaseAccountRegenerateKeyParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountRegenerateKeyParameters
       Metric = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Metric
-      OperationListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::OperationListResult
-      ExcludedPath = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ExcludedPath
-      MetricName = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricName
-      MetricAvailability = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricAvailability
+      FailoverPolicy = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::FailoverPolicy
+      MetricDefinitionsListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricDefinitionsListResult
       Usage = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Usage
+      MetricAvailability = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricAvailability
+      CassandraTableCreateUpdateParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraTableCreateUpdateParameters
+      PercentileMetric = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PercentileMetric
+      GremlinDatabaseResource = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinDatabaseResource
+      MetricListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricListResult
+      GremlinDatabaseCreateUpdateParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinDatabaseCreateUpdateParameters
+      UniqueKeyPolicy = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::UniqueKeyPolicy
+      GremlinGraphResource = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinGraphResource
+      MetricDefinition = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricDefinition
+      GremlinGraphCreateUpdateParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinGraphCreateUpdateParameters
+      UsagesResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::UsagesResult
+      OperationDisplay = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::OperationDisplay
+      MetricValue = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricValue
+      Operation = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Operation
+      ExcludedPath = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ExcludedPath
+      OperationListResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::OperationListResult
+      PartitionUsagesResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionUsagesResult
+      MetricName = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricName
       DatabaseAccount = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccount
       SqlDatabase = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::SqlDatabase
       SqlContainer = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::SqlContainer
@@ -110,12 +109,14 @@ module Azure::Cosmosdb::Profiles::Latest
       GremlinGraph = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinGraph
       Throughput = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Throughput
       DatabaseAccountCreateUpdateParameters = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountCreateUpdateParameters
+      DatabaseAccountListKeysResult = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListKeysResult
       PartitionUsage = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionUsage
       PercentileMetricValue = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PercentileMetricValue
       PartitionMetric = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionMetric
       DatabaseAccountKind = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountKind
       DatabaseAccountOfferType = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountOfferType
       DefaultConsistencyLevel = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DefaultConsistencyLevel
+      ConnectorOffer = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ConnectorOffer
       IndexingMode = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::IndexingMode
       DataType = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DataType
       IndexKind = Azure::Cosmosdb::Mgmt::V2015_04_08::Models::IndexKind
@@ -300,119 +301,116 @@ module Azure::Cosmosdb::Profiles::Latest
       def cluster_key
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ClusterKey
       end
+      def error_response
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ErrorResponse
+      end
       def region_for_online_offline
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::RegionForOnlineOffline
-      end
-      def extended_resource_properties
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ExtendedResourceProperties
-      end
-      def database_account_list_read_only_keys_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListReadOnlyKeysResult
-      end
-      def partition_metric_list_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionMetricListResult
-      end
-      def database_account_connection_string
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountConnectionString
-      end
-      def cassandra_schema
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraSchema
-      end
-      def database_account_regenerate_key_parameters
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountRegenerateKeyParameters
-      end
-      def cassandra_table_resource
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraTableResource
-      end
-      def failover_policy
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::FailoverPolicy
-      end
-      def cassandra_table_create_update_parameters
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraTableCreateUpdateParameters
-      end
-      def database_account_list_keys_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListKeysResult
-      end
-      def indexes
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Indexes
-      end
-      def database_account_list_connection_strings_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListConnectionStringsResult
-      end
-      def container_partition_key
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ContainerPartitionKey
-      end
-      def capability
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Capability
-      end
-      def percentile_metric
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PercentileMetric
-      end
-      def metric_list_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricListResult
-      end
-      def usages_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::UsagesResult
-      end
-      def metric_value
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricValue
-      end
-      def percentile_metric_list_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PercentileMetricListResult
-      end
-      def metric_definition
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricDefinition
-      end
-      def gremlin_database_resource
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinDatabaseResource
-      end
-      def partition_usages_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionUsagesResult
-      end
-      def gremlin_database_create_update_parameters
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinDatabaseCreateUpdateParameters
       end
       def database_account_patch_parameters
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountPatchParameters
       end
-      def gremlin_graph_resource
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinGraphResource
+      def extended_resource_properties
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ExtendedResourceProperties
       end
-      def unique_key_policy
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::UniqueKeyPolicy
+      def partition_metric_list_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionMetricListResult
       end
-      def gremlin_graph_create_update_parameters
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinGraphCreateUpdateParameters
+      def percentile_metric_list_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PercentileMetricListResult
       end
-      def metric_definitions_list_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricDefinitionsListResult
+      def database_account_list_connection_strings_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListConnectionStringsResult
       end
-      def operation_display
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::OperationDisplay
+      def cassandra_schema
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraSchema
       end
-      def error_response
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ErrorResponse
+      def capability
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Capability
       end
-      def operation
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Operation
+      def cassandra_table_resource
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraTableResource
+      end
+      def database_account_list_read_only_keys_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListReadOnlyKeysResult
+      end
+      def indexes
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Indexes
+      end
+      def database_account_connection_string
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountConnectionString
+      end
+      def container_partition_key
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ContainerPartitionKey
+      end
+      def database_account_regenerate_key_parameters
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountRegenerateKeyParameters
       end
       def metric
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Metric
       end
-      def operation_list_result
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::OperationListResult
+      def failover_policy
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::FailoverPolicy
       end
-      def excluded_path
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ExcludedPath
+      def metric_definitions_list_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricDefinitionsListResult
       end
-      def metric_name
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricName
+      def usage
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Usage
       end
       def metric_availability
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricAvailability
       end
-      def usage
-        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Usage
+      def cassandra_table_create_update_parameters
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::CassandraTableCreateUpdateParameters
+      end
+      def percentile_metric
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PercentileMetric
+      end
+      def gremlin_database_resource
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinDatabaseResource
+      end
+      def metric_list_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricListResult
+      end
+      def gremlin_database_create_update_parameters
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinDatabaseCreateUpdateParameters
+      end
+      def unique_key_policy
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::UniqueKeyPolicy
+      end
+      def gremlin_graph_resource
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinGraphResource
+      end
+      def metric_definition
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricDefinition
+      end
+      def gremlin_graph_create_update_parameters
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::GremlinGraphCreateUpdateParameters
+      end
+      def usages_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::UsagesResult
+      end
+      def operation_display
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::OperationDisplay
+      end
+      def metric_value
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricValue
+      end
+      def operation
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::Operation
+      end
+      def excluded_path
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ExcludedPath
+      end
+      def operation_list_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::OperationListResult
+      end
+      def partition_usages_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionUsagesResult
+      end
+      def metric_name
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::MetricName
       end
       def database_account
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccount
@@ -450,6 +448,9 @@ module Azure::Cosmosdb::Profiles::Latest
       def database_account_create_update_parameters
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountCreateUpdateParameters
       end
+      def database_account_list_keys_result
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DatabaseAccountListKeysResult
+      end
       def partition_usage
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::PartitionUsage
       end
@@ -467,6 +468,9 @@ module Azure::Cosmosdb::Profiles::Latest
       end
       def default_consistency_level
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::DefaultConsistencyLevel
+      end
+      def connector_offer
+        Azure::Cosmosdb::Mgmt::V2015_04_08::Models::ConnectorOffer
       end
       def indexing_mode
         Azure::Cosmosdb::Mgmt::V2015_04_08::Models::IndexingMode

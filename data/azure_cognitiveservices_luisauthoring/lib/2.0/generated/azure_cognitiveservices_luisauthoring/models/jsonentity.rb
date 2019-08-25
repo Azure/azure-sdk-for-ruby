@@ -23,6 +23,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       # @return [String] The entity name.
       attr_accessor :entity
 
+      # @return [String] The role of the entity within the utterance.
+      attr_accessor :role
+
 
       #
       # Mapper for JSONEntity class as Ruby Hash.
@@ -57,6 +60,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'entity',
+                type: {
+                  name: 'String'
+                }
+              },
+              role: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'role',
                 type: {
                   name: 'String'
                 }

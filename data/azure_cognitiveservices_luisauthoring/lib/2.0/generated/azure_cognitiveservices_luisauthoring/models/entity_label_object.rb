@@ -24,6 +24,9 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
       # entity ends.
       attr_accessor :end_char_index
 
+      # @return [String] The role of the entity within the utterance.
+      attr_accessor :role
+
 
       #
       # Mapper for EntityLabelObject class as Ruby Hash.
@@ -60,6 +63,14 @@ module Azure::CognitiveServices::LuisAuthoring::V2_0
                 serialized_name: 'endCharIndex',
                 type: {
                   name: 'Number'
+                }
+              },
+              role: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'role',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -257,6 +257,52 @@ module Azure::Network::Mgmt::V2019_06_01
     end
 
     #
+    # Unprepares a subnet by removing network intent policies.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
+    # @param unprepare_network_policies_request_parameters
+    # [UnprepareNetworkPoliciesRequest] Parameters supplied to unprepare subnet to
+    # remove network intent policies.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def unprepare_network_policies(resource_group_name, virtual_network_name, subnet_name, unprepare_network_policies_request_parameters, custom_headers:nil)
+      response = unprepare_network_policies_async(resource_group_name, virtual_network_name, subnet_name, unprepare_network_policies_request_parameters, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
+    # @param unprepare_network_policies_request_parameters
+    # [UnprepareNetworkPoliciesRequest] Parameters supplied to unprepare subnet to
+    # remove network intent policies.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def unprepare_network_policies_async(resource_group_name, virtual_network_name, subnet_name, unprepare_network_policies_request_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_unprepare_network_policies_async(resource_group_name, virtual_network_name, subnet_name, unprepare_network_policies_request_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
+      end
+
+      promise
+    end
+
+    #
     # Gets all subnets in a virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -631,6 +677,110 @@ module Azure::Network::Mgmt::V2019_06_01
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/PrepareNetworkPolicies'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkName' => virtual_network_name,'subnetName' => subnet_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Unprepares a subnet by removing network intent policies.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
+    # @param unprepare_network_policies_request_parameters
+    # [UnprepareNetworkPoliciesRequest] Parameters supplied to unprepare subnet to
+    # remove network intent policies.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_unprepare_network_policies(resource_group_name, virtual_network_name, subnet_name, unprepare_network_policies_request_parameters, custom_headers:nil)
+      response = begin_unprepare_network_policies_async(resource_group_name, virtual_network_name, subnet_name, unprepare_network_policies_request_parameters, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Unprepares a subnet by removing network intent policies.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
+    # @param unprepare_network_policies_request_parameters
+    # [UnprepareNetworkPoliciesRequest] Parameters supplied to unprepare subnet to
+    # remove network intent policies.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_unprepare_network_policies_with_http_info(resource_group_name, virtual_network_name, subnet_name, unprepare_network_policies_request_parameters, custom_headers:nil)
+      begin_unprepare_network_policies_async(resource_group_name, virtual_network_name, subnet_name, unprepare_network_policies_request_parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Unprepares a subnet by removing network intent policies.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
+    # @param unprepare_network_policies_request_parameters
+    # [UnprepareNetworkPoliciesRequest] Parameters supplied to unprepare subnet to
+    # remove network intent policies.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_unprepare_network_policies_async(resource_group_name, virtual_network_name, subnet_name, unprepare_network_policies_request_parameters, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
+      fail ArgumentError, 'subnet_name is nil' if subnet_name.nil?
+      fail ArgumentError, 'unprepare_network_policies_request_parameters is nil' if unprepare_network_policies_request_parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_06_01::Models::UnprepareNetworkPoliciesRequest.mapper()
+      request_content = @client.serialize(request_mapper,  unprepare_network_policies_request_parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/UnprepareNetworkPolicies'
 
       request_url = @base_url || @client.base_url
 

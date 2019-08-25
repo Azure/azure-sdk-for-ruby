@@ -12,14 +12,19 @@ module Azure::Kusto::Mgmt::V2019_01_21
 
       include MsRestAzure
 
-      # @return [AzureSkuName] SKU name. Possible values include: 'D13_v2',
-      # 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
+      # @return [AzureSkuName] SKU name. Possible values include:
+      # 'Standard_DS13_v2+1TB_PS', 'Standard_DS13_v2+2TB_PS',
+      # 'Standard_DS14_v2+3TB_PS', 'Standard_DS14_v2+4TB_PS',
+      # 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_L8s', 'Standard_L16s',
+      # 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_L4s', 'Dev(No
+      # SLA)_Standard_D11_v2'
       attr_accessor :name
 
-      # @return [Integer] SKU capacity.
+      # @return [Integer] The number of instances of the cluster.
       attr_accessor :capacity
 
-      # @return [String] SKU tier. Default value: 'Standard' .
+      # @return [AzureSkuTier] SKU tier. Possible values include: 'Basic',
+      # 'Standard'
       attr_accessor :tier
 
 
@@ -55,9 +60,7 @@ module Azure::Kusto::Mgmt::V2019_01_21
               tier: {
                 client_side_validation: true,
                 required: true,
-                is_constant: true,
                 serialized_name: 'tier',
-                default_value: 'Standard',
                 type: {
                   name: 'String'
                 }
