@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::MixedReality::Mgmt::V2019_02_28_preview
+module Azure::MixedReality::Mgmt::V2019_12_02_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -38,6 +38,9 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     # @return [Operations] operations
     attr_reader :operations
 
+    # @return [RemoteRenderingAccounts] remote_rendering_accounts
+    attr_reader :remote_rendering_accounts
+
     # @return [SpatialAnchorsAccounts] spatial_anchors_accounts
     attr_reader :spatial_anchors_accounts
 
@@ -55,8 +58,9 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       @credentials = credentials
 
       @operations = Operations.new(self)
+      @remote_rendering_accounts = RemoteRenderingAccounts.new(self)
       @spatial_anchors_accounts = SpatialAnchorsAccounts.new(self)
-      @api_version = '2019-02-28-preview'
+      @api_version = '2019-12-02-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -122,7 +126,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # Check Name Availability for global uniqueness
+    # Check Name Availability for local uniqueness
     #
     # @param location [String] The location in which uniqueness will be verified.
     # @param check_name_availability [CheckNameAvailabilityRequest] Check Name
@@ -138,7 +142,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # Check Name Availability for global uniqueness
+    # Check Name Availability for local uniqueness
     #
     # @param location [String] The location in which uniqueness will be verified.
     # @param check_name_availability [CheckNameAvailabilityRequest] Check Name
@@ -153,7 +157,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # Check Name Availability for global uniqueness
+    # Check Name Availability for local uniqueness
     #
     # @param location [String] The location in which uniqueness will be verified.
     # @param check_name_availability [CheckNameAvailabilityRequest] Check Name
@@ -181,7 +185,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::CheckNameAvailabilityRequest.mapper()
+      request_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::CheckNameAvailabilityRequest.mapper()
       request_content = self.serialize(request_mapper,  check_name_availability)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -215,7 +219,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::CheckNameAvailabilityResponse.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::CheckNameAvailabilityResponse.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

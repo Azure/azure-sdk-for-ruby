@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::MixedReality::Mgmt::V2019_02_28_preview
+module Azure::MixedReality::Mgmt::V2019_12_02_preview
   #
   # Mixed Reality Client
   #
@@ -92,7 +92,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::OperationList.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::OperationPage.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -113,7 +113,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [OperationList] operation results.
+    # @return [OperationPage] operation results.
     #
     def list_next(next_page_link, custom_headers:nil)
       response = list_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -182,7 +182,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::OperationList.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::OperationPage.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -201,7 +201,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [OperationList] which provide lazy access to pages of the response.
+    # @return [OperationPage] which provide lazy access to pages of the response.
     #
     def list_as_lazy(custom_headers:nil)
       response = list_async(custom_headers:custom_headers).value!

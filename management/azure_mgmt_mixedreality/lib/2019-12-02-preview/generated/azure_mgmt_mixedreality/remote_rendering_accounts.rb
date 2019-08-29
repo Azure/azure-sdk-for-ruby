@@ -3,15 +3,15 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::MixedReality::Mgmt::V2019_02_28_preview
+module Azure::MixedReality::Mgmt::V2019_12_02_preview
   #
   # Mixed Reality Client
   #
-  class SpatialAnchorsAccounts
+  class RemoteRenderingAccounts
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the SpatialAnchorsAccounts class.
+    # Creates and initializes a new instance of the RemoteRenderingAccounts class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,12 +22,12 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     attr_reader :client
 
     #
-    # List Spatial Anchors Accounts by Subscription
+    # List Remote Rendering Accounts by Subscription
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<SpatialAnchorsAccount>] operation results.
+    # @return [Array<RemoteRenderingAccount>] operation results.
     #
     def list_by_subscription(custom_headers:nil)
       first_page = list_by_subscription_as_lazy(custom_headers:custom_headers)
@@ -35,7 +35,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # List Spatial Anchors Accounts by Subscription
+    # List Remote Rendering Accounts by Subscription
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -47,7 +47,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # List Spatial Anchors Accounts by Subscription
+    # List Remote Rendering Accounts by Subscription
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -65,7 +65,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.MixedReality/spatialAnchorsAccounts'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.MixedReality/remoteRenderingAccounts'
 
       request_url = @base_url || @client.base_url
 
@@ -94,7 +94,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountList.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccountPage.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -114,7 +114,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<SpatialAnchorsAccount>] operation results.
+    # @return [Array<RemoteRenderingAccount>] operation results.
     #
     def list_by_resource_group(resource_group_name, custom_headers:nil)
       first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers:custom_headers)
@@ -158,7 +158,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/spatialAnchorsAccounts'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/remoteRenderingAccounts'
 
       request_url = @base_url || @client.base_url
 
@@ -187,7 +187,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountList.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccountPage.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -201,56 +201,53 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # Delete a Spatial Anchors Account.
+    # Delete a Remote Rendering Account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
+    # @param account_name [String] Name of an Mixed Reality Account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, spatial_anchors_account_name, custom_headers:nil)
-      response = delete_async(resource_group_name, spatial_anchors_account_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, account_name, custom_headers:nil)
+      response = delete_async(resource_group_name, account_name, custom_headers:custom_headers).value!
       nil
     end
 
     #
-    # Delete a Spatial Anchors Account.
+    # Delete a Remote Rendering Account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
+    # @param account_name [String] Name of an Mixed Reality Account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, spatial_anchors_account_name, custom_headers:nil)
-      delete_async(resource_group_name, spatial_anchors_account_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, account_name, custom_headers:nil)
+      delete_async(resource_group_name, account_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Delete a Spatial Anchors Account.
+    # Delete a Remote Rendering Account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
+    # @param account_name [String] Name of an Mixed Reality Account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, spatial_anchors_account_name, custom_headers:nil)
+    def delete_async(resource_group_name, account_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'spatial_anchors_account_name is nil' if spatial_anchors_account_name.nil?
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MaxLength': '90'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length > 90
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MinLength': '1'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length < 1
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '90'" if !account_name.nil? && account_name.length > 90
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '1'" if !account_name.nil? && account_name.length < 1
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -260,13 +257,13 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/spatialAnchorsAccounts/{spatialAnchorsAccountName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/remoteRenderingAccounts/{accountName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'spatialAnchorsAccountName' => spatial_anchors_account_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -293,57 +290,54 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # Retrieve a Spatial Anchors Account.
+    # Retrieve a Remote Rendering Account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
+    # @param account_name [String] Name of an Mixed Reality Account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SpatialAnchorsAccount] operation results.
+    # @return [RemoteRenderingAccount] operation results.
     #
-    def get(resource_group_name, spatial_anchors_account_name, custom_headers:nil)
-      response = get_async(resource_group_name, spatial_anchors_account_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, account_name, custom_headers:nil)
+      response = get_async(resource_group_name, account_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Retrieve a Spatial Anchors Account.
+    # Retrieve a Remote Rendering Account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
+    # @param account_name [String] Name of an Mixed Reality Account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, spatial_anchors_account_name, custom_headers:nil)
-      get_async(resource_group_name, spatial_anchors_account_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, account_name, custom_headers:nil)
+      get_async(resource_group_name, account_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Retrieve a Spatial Anchors Account.
+    # Retrieve a Remote Rendering Account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
+    # @param account_name [String] Name of an Mixed Reality Account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, spatial_anchors_account_name, custom_headers:nil)
+    def get_async(resource_group_name, account_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'spatial_anchors_account_name is nil' if spatial_anchors_account_name.nil?
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MaxLength': '90'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length > 90
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MinLength': '1'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length < 1
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '90'" if !account_name.nil? && account_name.length > 90
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '1'" if !account_name.nil? && account_name.length < 1
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -353,13 +347,13 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/spatialAnchorsAccounts/{spatialAnchorsAccountName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/remoteRenderingAccounts/{accountName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'spatialAnchorsAccountName' => spatial_anchors_account_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -382,7 +376,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccount.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -396,64 +390,61 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # Updating a Spatial Anchors Account
+    # Updating a Remote Rendering Account
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
-    # @param spatial_anchors_account [SpatialAnchorsAccount] Spatial Anchors
+    # @param account_name [String] Name of an Mixed Reality Account.
+    # @param remote_rendering_account [RemoteRenderingAccount] Remote Rendering
     # Account parameter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SpatialAnchorsAccount] operation results.
+    # @return [RemoteRenderingAccount] operation results.
     #
-    def update(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:nil)
-      response = update_async(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:custom_headers).value!
+    def update(resource_group_name, account_name, remote_rendering_account, custom_headers:nil)
+      response = update_async(resource_group_name, account_name, remote_rendering_account, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Updating a Spatial Anchors Account
+    # Updating a Remote Rendering Account
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
-    # @param spatial_anchors_account [SpatialAnchorsAccount] Spatial Anchors
+    # @param account_name [String] Name of an Mixed Reality Account.
+    # @param remote_rendering_account [RemoteRenderingAccount] Remote Rendering
     # Account parameter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:nil)
-      update_async(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, remote_rendering_account, custom_headers:nil)
+      update_async(resource_group_name, account_name, remote_rendering_account, custom_headers:custom_headers).value!
     end
 
     #
-    # Updating a Spatial Anchors Account
+    # Updating a Remote Rendering Account
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
-    # @param spatial_anchors_account [SpatialAnchorsAccount] Spatial Anchors
+    # @param account_name [String] Name of an Mixed Reality Account.
+    # @param remote_rendering_account [RemoteRenderingAccount] Remote Rendering
     # Account parameter.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:nil)
+    def update_async(resource_group_name, account_name, remote_rendering_account, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'spatial_anchors_account_name is nil' if spatial_anchors_account_name.nil?
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MaxLength': '90'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length > 90
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MinLength': '1'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length < 1
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'spatial_anchors_account is nil' if spatial_anchors_account.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '90'" if !account_name.nil? && account_name.length > 90
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '1'" if !account_name.nil? && account_name.length < 1
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'remote_rendering_account is nil' if remote_rendering_account.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -465,17 +456,17 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccount.mapper()
-      request_content = @client.serialize(request_mapper,  spatial_anchors_account)
+      request_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccount.mapper()
+      request_content = @client.serialize(request_mapper,  remote_rendering_account)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/spatialAnchorsAccounts/{spatialAnchorsAccountName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/remoteRenderingAccounts/{accountName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'spatialAnchorsAccountName' => spatial_anchors_account_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -499,7 +490,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccount.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -513,64 +504,61 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # Creating or Updating a Spatial Anchors Account.
+    # Creating or Updating a Remote Rendering Account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
-    # @param spatial_anchors_account [SpatialAnchorsAccount] Spatial Anchors
+    # @param account_name [String] Name of an Mixed Reality Account.
+    # @param remote_rendering_account [RemoteRenderingAccount] Remote Rendering
     # Account parameter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SpatialAnchorsAccount] operation results.
+    # @return [RemoteRenderingAccount] operation results.
     #
-    def create(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:nil)
-      response = create_async(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:custom_headers).value!
+    def create(resource_group_name, account_name, remote_rendering_account, custom_headers:nil)
+      response = create_async(resource_group_name, account_name, remote_rendering_account, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creating or Updating a Spatial Anchors Account.
+    # Creating or Updating a Remote Rendering Account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
-    # @param spatial_anchors_account [SpatialAnchorsAccount] Spatial Anchors
+    # @param account_name [String] Name of an Mixed Reality Account.
+    # @param remote_rendering_account [RemoteRenderingAccount] Remote Rendering
     # Account parameter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:nil)
-      create_async(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:custom_headers).value!
+    def create_with_http_info(resource_group_name, account_name, remote_rendering_account, custom_headers:nil)
+      create_async(resource_group_name, account_name, remote_rendering_account, custom_headers:custom_headers).value!
     end
 
     #
-    # Creating or Updating a Spatial Anchors Account.
+    # Creating or Updating a Remote Rendering Account.
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
-    # @param spatial_anchors_account [SpatialAnchorsAccount] Spatial Anchors
+    # @param account_name [String] Name of an Mixed Reality Account.
+    # @param remote_rendering_account [RemoteRenderingAccount] Remote Rendering
     # Account parameter.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, spatial_anchors_account_name, spatial_anchors_account, custom_headers:nil)
+    def create_async(resource_group_name, account_name, remote_rendering_account, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'spatial_anchors_account_name is nil' if spatial_anchors_account_name.nil?
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MaxLength': '90'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length > 90
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MinLength': '1'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length < 1
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'spatial_anchors_account is nil' if spatial_anchors_account.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '90'" if !account_name.nil? && account_name.length > 90
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '1'" if !account_name.nil? && account_name.length < 1
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'remote_rendering_account is nil' if remote_rendering_account.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -582,17 +570,17 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccount.mapper()
-      request_content = @client.serialize(request_mapper,  spatial_anchors_account)
+      request_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccount.mapper()
+      request_content = @client.serialize(request_mapper,  remote_rendering_account)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/spatialAnchorsAccounts/{spatialAnchorsAccountName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/remoteRenderingAccounts/{accountName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'spatialAnchorsAccountName' => spatial_anchors_account_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -616,7 +604,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccount.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -626,7 +614,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccount.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -640,57 +628,54 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # Get Both of the 2 Keys of a Spatial Anchors Account
+    # Get Both of the 2 Keys of a Remote Rendering Account
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
+    # @param account_name [String] Name of an Mixed Reality Account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SpatialAnchorsAccountKeys] operation results.
+    # @return [AccountKeys] operation results.
     #
-    def get_keys(resource_group_name, spatial_anchors_account_name, custom_headers:nil)
-      response = get_keys_async(resource_group_name, spatial_anchors_account_name, custom_headers:custom_headers).value!
+    def get_keys(resource_group_name, account_name, custom_headers:nil)
+      response = get_keys_async(resource_group_name, account_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get Both of the 2 Keys of a Spatial Anchors Account
+    # Get Both of the 2 Keys of a Remote Rendering Account
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
+    # @param account_name [String] Name of an Mixed Reality Account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_keys_with_http_info(resource_group_name, spatial_anchors_account_name, custom_headers:nil)
-      get_keys_async(resource_group_name, spatial_anchors_account_name, custom_headers:custom_headers).value!
+    def get_keys_with_http_info(resource_group_name, account_name, custom_headers:nil)
+      get_keys_async(resource_group_name, account_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Get Both of the 2 Keys of a Spatial Anchors Account
+    # Get Both of the 2 Keys of a Remote Rendering Account
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
+    # @param account_name [String] Name of an Mixed Reality Account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_keys_async(resource_group_name, spatial_anchors_account_name, custom_headers:nil)
+    def get_keys_async(resource_group_name, account_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'spatial_anchors_account_name is nil' if spatial_anchors_account_name.nil?
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MaxLength': '90'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length > 90
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MinLength': '1'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length < 1
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '90'" if !account_name.nil? && account_name.length > 90
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '1'" if !account_name.nil? && account_name.length < 1
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -700,13 +685,13 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/spatialAnchorsAccounts/{spatialAnchorsAccountName}/keys'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/remoteRenderingAccounts/{accountName}/keys'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'spatialAnchorsAccountName' => spatial_anchors_account_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -729,7 +714,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountKeys.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::AccountKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -743,67 +728,61 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # Regenerate 1 Key of a Spatial Anchors Account
+    # Regenerate specified Key of a Remote Rendering Account
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
-    # @param spatial_anchors_account_key_regenerate
-    # [SpatialAnchorsAccountKeyRegenerateRequest] Specifying which key to be
-    # regenerated.
+    # @param account_name [String] Name of an Mixed Reality Account.
+    # @param regenerate [AccountKeyRegenerateRequest] Required information for key
+    # regeneration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SpatialAnchorsAccountKeys] operation results.
+    # @return [AccountKeys] operation results.
     #
-    def regenerate_keys(resource_group_name, spatial_anchors_account_name, spatial_anchors_account_key_regenerate, custom_headers:nil)
-      response = regenerate_keys_async(resource_group_name, spatial_anchors_account_name, spatial_anchors_account_key_regenerate, custom_headers:custom_headers).value!
+    def regenerate_keys(resource_group_name, account_name, regenerate, custom_headers:nil)
+      response = regenerate_keys_async(resource_group_name, account_name, regenerate, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Regenerate 1 Key of a Spatial Anchors Account
+    # Regenerate specified Key of a Remote Rendering Account
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
-    # @param spatial_anchors_account_key_regenerate
-    # [SpatialAnchorsAccountKeyRegenerateRequest] Specifying which key to be
-    # regenerated.
+    # @param account_name [String] Name of an Mixed Reality Account.
+    # @param regenerate [AccountKeyRegenerateRequest] Required information for key
+    # regeneration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def regenerate_keys_with_http_info(resource_group_name, spatial_anchors_account_name, spatial_anchors_account_key_regenerate, custom_headers:nil)
-      regenerate_keys_async(resource_group_name, spatial_anchors_account_name, spatial_anchors_account_key_regenerate, custom_headers:custom_headers).value!
+    def regenerate_keys_with_http_info(resource_group_name, account_name, regenerate, custom_headers:nil)
+      regenerate_keys_async(resource_group_name, account_name, regenerate, custom_headers:custom_headers).value!
     end
 
     #
-    # Regenerate 1 Key of a Spatial Anchors Account
+    # Regenerate specified Key of a Remote Rendering Account
     #
     # @param resource_group_name [String] Name of an Azure resource group.
-    # @param spatial_anchors_account_name [String] Name of an Mixed Reality Spatial
-    # Anchors Account.
-    # @param spatial_anchors_account_key_regenerate
-    # [SpatialAnchorsAccountKeyRegenerateRequest] Specifying which key to be
-    # regenerated.
+    # @param account_name [String] Name of an Mixed Reality Account.
+    # @param regenerate [AccountKeyRegenerateRequest] Required information for key
+    # regeneration.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def regenerate_keys_async(resource_group_name, spatial_anchors_account_name, spatial_anchors_account_key_regenerate, custom_headers:nil)
+    def regenerate_keys_async(resource_group_name, account_name, regenerate, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'spatial_anchors_account_name is nil' if spatial_anchors_account_name.nil?
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MaxLength': '90'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length > 90
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'MinLength': '1'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.length < 1
-      fail ArgumentError, "'spatial_anchors_account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !spatial_anchors_account_name.nil? && spatial_anchors_account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'spatial_anchors_account_key_regenerate is nil' if spatial_anchors_account_key_regenerate.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '90'" if !account_name.nil? && account_name.length > 90
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '1'" if !account_name.nil? && account_name.length < 1
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'regenerate is nil' if regenerate.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -815,17 +794,17 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountKeyRegenerateRequest.mapper()
-      request_content = @client.serialize(request_mapper,  spatial_anchors_account_key_regenerate)
+      request_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::AccountKeyRegenerateRequest.mapper()
+      request_content = @client.serialize(request_mapper,  regenerate)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/spatialAnchorsAccounts/{spatialAnchorsAccountName}/keys'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/remoteRenderingAccounts/{accountName}/keys'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'spatialAnchorsAccountName' => spatial_anchors_account_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -849,7 +828,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountKeys.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::AccountKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -863,14 +842,14 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # List Spatial Anchors Accounts by Subscription
+    # List Remote Rendering Accounts by Subscription
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SpatialAnchorsAccountList] operation results.
+    # @return [RemoteRenderingAccountPage] operation results.
     #
     def list_by_subscription_next(next_page_link, custom_headers:nil)
       response = list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -878,7 +857,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # List Spatial Anchors Accounts by Subscription
+    # List Remote Rendering Accounts by Subscription
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -892,7 +871,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # List Spatial Anchors Accounts by Subscription
+    # List Remote Rendering Accounts by Subscription
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -939,7 +918,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountList.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccountPage.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -960,7 +939,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SpatialAnchorsAccountList] operation results.
+    # @return [RemoteRenderingAccountPage] operation results.
     #
     def list_by_resource_group_next(next_page_link, custom_headers:nil)
       response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -1029,7 +1008,7 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountList.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccountPage.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1043,13 +1022,13 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     end
 
     #
-    # List Spatial Anchors Accounts by Subscription
+    # List Remote Rendering Accounts by Subscription
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SpatialAnchorsAccountList] which provide lazy access to pages of the
-    # response.
+    # @return [RemoteRenderingAccountPage] which provide lazy access to pages of
+    # the response.
     #
     def list_by_subscription_as_lazy(custom_headers:nil)
       response = list_by_subscription_async(custom_headers:custom_headers).value!
@@ -1069,8 +1048,8 @@ module Azure::MixedReality::Mgmt::V2019_02_28_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SpatialAnchorsAccountList] which provide lazy access to pages of the
-    # response.
+    # @return [RemoteRenderingAccountPage] which provide lazy access to pages of
+    # the response.
     #
     def list_by_resource_group_as_lazy(resource_group_name, custom_headers:nil)
       response = list_by_resource_group_async(resource_group_name, custom_headers:custom_headers).value!
