@@ -505,7 +505,7 @@
                 },
                 "Microsoft.MixedReality": {
                     "management": {
-                        "2019-02-28-preview": ["*"]
+                        "2019-12-02-preview": ["*"]
                     }
                 },
                 "Microsoft.Monitor": {
@@ -1826,7 +1826,7 @@
             "resourceTypes": {
                 "Microsoft.MixedReality": {
                     "management": {
-                        "2019-02-28-preview": ["*"]
+                        "2019-12-02-preview": ["*"]
                     }
                 }
             },
