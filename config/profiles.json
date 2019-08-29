@@ -247,6 +247,11 @@
                         "2019-02-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Attestation": {
+                    "management": {
+                        "2018-09-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Authorization": {
                     "management": {
                         "2015-06-01-preview": ["*"],
@@ -943,6 +948,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_appconfiguration/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_attestation": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Attestation": {
+                    "management": {
+                        "2018-09-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_attestation/lib/profiles",
             "individual_gem_profile": true
         }
         ],

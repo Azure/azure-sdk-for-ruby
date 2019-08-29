@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_mixedreality"
+        "azure_mgmt_mixedreality",
+        "azure_mgmt_attestation"
     ],
     "rollup": [
         "azure_sdk"

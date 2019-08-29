@@ -19,6 +19,7 @@ gem 'azure_mgmt_alerts_management',         path: 'management/azure_mgmt_alerts_
 gem 'azure_mgmt_analysis_services',         path: 'management/azure_mgmt_analysis_services'
 gem 'azure_mgmt_api_management',            path: 'management/azure_mgmt_api_management'
 gem 'azure_mgmt_appconfiguration',          path: 'management/azure_mgmt_appconfiguration'
+gem 'azure_mgmt_attestation',               path: 'management/azure_mgmt_attestation'
 gem 'azure_mgmt_authorization',             path: 'management/azure_mgmt_authorization'
 gem 'azure_mgmt_automation',                path: 'management/azure_mgmt_automation'
 gem 'azure_mgmt_azurestack',                path: 'management/azure_mgmt_azurestack'
