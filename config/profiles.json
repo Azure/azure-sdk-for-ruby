@@ -247,6 +247,11 @@
                         "2019-02-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Attestation": {
+                    "management": {
+                        "2018-09-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Authorization": {
                     "management": {
                         "2015-06-01-preview": ["*"],
@@ -505,7 +510,7 @@
                 },
                 "Microsoft.MixedReality": {
                     "management": {
-                        "2019-02-28-preview": ["*"]
+                        "2019-12-02-preview": ["*"]
                     }
                 },
                 "Microsoft.Monitor": {
@@ -562,7 +567,7 @@
                 },
                 "Microsoft.Policy": {
                     "management": {
-                        "2019-01-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 },
                 "Microsoft.PolicyInsights": {
@@ -710,6 +715,11 @@
                 "Microsoft.StorageSync": {
                     "management": {
                         "2019-02-01": ["*"]
+                    }
+                },
+                "Microsoft.StorageCache": {
+                    "management": {
+                        "2019-08-01-preview": ["*"]
                     }
                 },
                 "Microsoft.StreamAnalytics": {
@@ -943,6 +953,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_appconfiguration/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_attestation": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Attestation": {
+                    "management": {
+                        "2018-09-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_attestation/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -1826,7 +1850,7 @@
             "resourceTypes": {
                 "Microsoft.MixedReality": {
                     "management": {
-                        "2019-02-28-preview": ["*"]
+                        "2019-12-02-preview": ["*"]
                     }
                 }
             },
@@ -2052,7 +2076,7 @@
             "resourceTypes": {
                 "Microsoft.Policy" : {
                     "management": {
-                        "2019-01-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 }
             },
@@ -2510,6 +2534,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_storagecache": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.StorageCache": {
+                        "management": {
+                            "2019-08-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_storagecache/lib/profiles",
+                "individual_gem_profile": true
+            }
+            ],
         "azure_mgmt_stream_analytics": [
         {
             "name": "Latest",

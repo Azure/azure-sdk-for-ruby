@@ -6,23 +6,24 @@ require 'azure_mgmt_policy'
 
 module Azure::Policy::Profiles::Latest
   module Mgmt
-    PolicyAssignments = Azure::Policy::Mgmt::V2019_01_01::PolicyAssignments
-    PolicyDefinitions = Azure::Policy::Mgmt::V2019_01_01::PolicyDefinitions
-    PolicySetDefinitions = Azure::Policy::Mgmt::V2019_01_01::PolicySetDefinitions
+    PolicyAssignments = Azure::Policy::Mgmt::V2019_06_01::PolicyAssignments
+    PolicyDefinitions = Azure::Policy::Mgmt::V2019_06_01::PolicyDefinitions
+    PolicySetDefinitions = Azure::Policy::Mgmt::V2019_06_01::PolicySetDefinitions
 
     module Models
-      PolicyDefinition = Azure::Policy::Mgmt::V2019_01_01::Models::PolicyDefinition
-      PolicySku = Azure::Policy::Mgmt::V2019_01_01::Models::PolicySku
-      PolicyDefinitionListResult = Azure::Policy::Mgmt::V2019_01_01::Models::PolicyDefinitionListResult
-      PolicyAssignment = Azure::Policy::Mgmt::V2019_01_01::Models::PolicyAssignment
-      PolicyDefinitionReference = Azure::Policy::Mgmt::V2019_01_01::Models::PolicyDefinitionReference
-      ErrorResponse = Azure::Policy::Mgmt::V2019_01_01::Models::ErrorResponse
-      PolicySetDefinition = Azure::Policy::Mgmt::V2019_01_01::Models::PolicySetDefinition
-      PolicyAssignmentListResult = Azure::Policy::Mgmt::V2019_01_01::Models::PolicyAssignmentListResult
-      PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2019_01_01::Models::PolicySetDefinitionListResult
-      Identity = Azure::Policy::Mgmt::V2019_01_01::Models::Identity
-      ResourceIdentityType = Azure::Policy::Mgmt::V2019_01_01::Models::ResourceIdentityType
-      PolicyType = Azure::Policy::Mgmt::V2019_01_01::Models::PolicyType
+      PolicyDefinition = Azure::Policy::Mgmt::V2019_06_01::Models::PolicyDefinition
+      PolicySku = Azure::Policy::Mgmt::V2019_06_01::Models::PolicySku
+      PolicyDefinitionListResult = Azure::Policy::Mgmt::V2019_06_01::Models::PolicyDefinitionListResult
+      PolicyAssignment = Azure::Policy::Mgmt::V2019_06_01::Models::PolicyAssignment
+      PolicyDefinitionReference = Azure::Policy::Mgmt::V2019_06_01::Models::PolicyDefinitionReference
+      ErrorResponse = Azure::Policy::Mgmt::V2019_06_01::Models::ErrorResponse
+      PolicySetDefinition = Azure::Policy::Mgmt::V2019_06_01::Models::PolicySetDefinition
+      PolicyAssignmentListResult = Azure::Policy::Mgmt::V2019_06_01::Models::PolicyAssignmentListResult
+      PolicySetDefinitionListResult = Azure::Policy::Mgmt::V2019_06_01::Models::PolicySetDefinitionListResult
+      Identity = Azure::Policy::Mgmt::V2019_06_01::Models::Identity
+      EnforcementMode = Azure::Policy::Mgmt::V2019_06_01::Models::EnforcementMode
+      ResourceIdentityType = Azure::Policy::Mgmt::V2019_06_01::Models::ResourceIdentityType
+      PolicyType = Azure::Policy::Mgmt::V2019_06_01::Models::PolicyType
     end
 
     #
@@ -44,7 +45,7 @@ module Azure::Policy::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        @client_0 = Azure::Policy::Mgmt::V2019_01_01::PolicyClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::Policy::Mgmt::V2019_06_01::PolicyClient.new(configurable.credentials, base_url, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
@@ -73,40 +74,43 @@ module Azure::Policy::Profiles::Latest
 
     class ModelClasses
       def policy_definition
-        Azure::Policy::Mgmt::V2019_01_01::Models::PolicyDefinition
+        Azure::Policy::Mgmt::V2019_06_01::Models::PolicyDefinition
       end
       def policy_sku
-        Azure::Policy::Mgmt::V2019_01_01::Models::PolicySku
+        Azure::Policy::Mgmt::V2019_06_01::Models::PolicySku
       end
       def policy_definition_list_result
-        Azure::Policy::Mgmt::V2019_01_01::Models::PolicyDefinitionListResult
+        Azure::Policy::Mgmt::V2019_06_01::Models::PolicyDefinitionListResult
       end
       def policy_assignment
-        Azure::Policy::Mgmt::V2019_01_01::Models::PolicyAssignment
+        Azure::Policy::Mgmt::V2019_06_01::Models::PolicyAssignment
       end
       def policy_definition_reference
-        Azure::Policy::Mgmt::V2019_01_01::Models::PolicyDefinitionReference
+        Azure::Policy::Mgmt::V2019_06_01::Models::PolicyDefinitionReference
       end
       def error_response
-        Azure::Policy::Mgmt::V2019_01_01::Models::ErrorResponse
+        Azure::Policy::Mgmt::V2019_06_01::Models::ErrorResponse
       end
       def policy_set_definition
-        Azure::Policy::Mgmt::V2019_01_01::Models::PolicySetDefinition
+        Azure::Policy::Mgmt::V2019_06_01::Models::PolicySetDefinition
       end
       def policy_assignment_list_result
-        Azure::Policy::Mgmt::V2019_01_01::Models::PolicyAssignmentListResult
+        Azure::Policy::Mgmt::V2019_06_01::Models::PolicyAssignmentListResult
       end
       def policy_set_definition_list_result
-        Azure::Policy::Mgmt::V2019_01_01::Models::PolicySetDefinitionListResult
+        Azure::Policy::Mgmt::V2019_06_01::Models::PolicySetDefinitionListResult
       end
       def identity
-        Azure::Policy::Mgmt::V2019_01_01::Models::Identity
+        Azure::Policy::Mgmt::V2019_06_01::Models::Identity
+      end
+      def enforcement_mode
+        Azure::Policy::Mgmt::V2019_06_01::Models::EnforcementMode
       end
       def resource_identity_type
-        Azure::Policy::Mgmt::V2019_01_01::Models::ResourceIdentityType
+        Azure::Policy::Mgmt::V2019_06_01::Models::ResourceIdentityType
       end
       def policy_type
-        Azure::Policy::Mgmt::V2019_01_01::Models::PolicyType
+        Azure::Policy::Mgmt::V2019_06_01::Models::PolicyType
       end
     end
   end

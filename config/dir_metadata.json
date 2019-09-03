@@ -41,6 +41,13 @@
       "module_require": "azure_mgmt_appconfiguration"
     }
   },
+  "Microsoft.Attestation": {
+    "management": {
+      "path": "management/azure_mgmt_attestation",
+      "namespace": "Azure::Attestation::Mgmt",
+      "module_require": "azure_mgmt_attestation"
+    }
+  },
   "Microsoft.Authorization": {
     "management": {
       "path": "management/azure_mgmt_authorization",
@@ -663,6 +670,13 @@
       "path": "management/azure_mgmt_storagesync",
       "namespace": "Azure::StorageSync::Mgmt",
       "module_require": "azure_mgmt_storagesync"
+    }
+  },
+  "Microsoft.StorageCache": {
+    "management": {
+      "path": "management/azure_mgmt_storagecache",
+      "namespace": "Azure::StorageCache::Mgmt",
+      "module_require": "azure_mgmt_storagecache"
     }
   },
   "Microsoft.StreamAnalytics": {

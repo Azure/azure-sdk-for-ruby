@@ -7,40 +7,44 @@ require 'azure_mgmt_mixedreality'
 module Azure::Profiles::Latest
   module MixedReality
     module Mgmt
-      Operations = Azure::MixedReality::Mgmt::V2019_02_28_preview::Operations
-      SpatialAnchorsAccounts = Azure::MixedReality::Mgmt::V2019_02_28_preview::SpatialAnchorsAccounts
+      Operations = Azure::MixedReality::Mgmt::V2019_12_02_preview::Operations
+      RemoteRenderingAccounts = Azure::MixedReality::Mgmt::V2019_12_02_preview::RemoteRenderingAccounts
+      SpatialAnchorsAccounts = Azure::MixedReality::Mgmt::V2019_12_02_preview::SpatialAnchorsAccounts
 
       module Models
-        SpatialAnchorsAccountKeys = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountKeys
-        CheckNameAvailabilityRequest = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::CheckNameAvailabilityRequest
-        SpatialAnchorsAccountKeyRegenerateRequest = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountKeyRegenerateRequest
-        ErrorResponse = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::ErrorResponse
-        SpatialAnchorsAccountList = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountList
-        Operation = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::Operation
-        OperationDisplay = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::OperationDisplay
-        OperationList = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::OperationList
-        CheckNameAvailabilityResponse = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::CheckNameAvailabilityResponse
-        Resource = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::Resource
-        SpatialAnchorsAccount = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccount
-        ProxyResource = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::ProxyResource
-        AzureEntityResource = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::AzureEntityResource
-        TrackedResource = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::TrackedResource
-        NameAvailability = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::NameAvailability
-        NameUnavailableReason = Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::NameUnavailableReason
+        ErrorResponse = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::ErrorResponse
+        AccountKeys = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::AccountKeys
+        CheckNameAvailabilityResponse = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::CheckNameAvailabilityResponse
+        RemoteRenderingAccountPage = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccountPage
+        Operation = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::Operation
+        CheckNameAvailabilityRequest = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::CheckNameAvailabilityRequest
+        SpatialAnchorsAccountPage = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::SpatialAnchorsAccountPage
+        OperationPage = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::OperationPage
+        Resource = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::Resource
+        OperationDisplay = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::OperationDisplay
+        AccountKeyRegenerateRequest = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::AccountKeyRegenerateRequest
+        RemoteRenderingAccount = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccount
+        ProxyResource = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::ProxyResource
+        AzureEntityResource = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::AzureEntityResource
+        TrackedResource = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::TrackedResource
+        SpatialAnchorsAccount = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::SpatialAnchorsAccount
+        NameAvailability = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::NameAvailability
+        NameUnavailableReason = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::NameUnavailableReason
       end
 
       class MixedRealityManagementClass
-        attr_reader :operations, :spatial_anchors_accounts, :configurable, :base_url, :options, :model_classes
+        attr_reader :operations, :remote_rendering_accounts, :spatial_anchors_accounts, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
 
-          @client_0 = Azure::MixedReality::Mgmt::V2019_02_28_preview::MixedRealityClient.new(configurable.credentials, base_url, options)
+          @client_0 = Azure::MixedReality::Mgmt::V2019_12_02_preview::MixedRealityClient.new(configurable.credentials, base_url, options)
           if(@client_0.respond_to?(:subscription_id))
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
           @operations = @client_0.operations
+          @remote_rendering_accounts = @client_0.remote_rendering_accounts
           @spatial_anchors_accounts = @client_0.spatial_anchors_accounts
 
           @model_classes = ModelClasses.new
@@ -60,53 +64,59 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def spatial_anchors_account_keys
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountKeys
-          end
-          def check_name_availability_request
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::CheckNameAvailabilityRequest
-          end
-          def spatial_anchors_account_key_regenerate_request
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountKeyRegenerateRequest
-          end
           def error_response
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::ErrorResponse
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::ErrorResponse
           end
-          def spatial_anchors_account_list
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccountList
-          end
-          def operation
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::Operation
-          end
-          def operation_display
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::OperationDisplay
-          end
-          def operation_list
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::OperationList
+          def account_keys
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::AccountKeys
           end
           def check_name_availability_response
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::CheckNameAvailabilityResponse
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::CheckNameAvailabilityResponse
+          end
+          def remote_rendering_account_page
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccountPage
+          end
+          def operation
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::Operation
+          end
+          def check_name_availability_request
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::CheckNameAvailabilityRequest
+          end
+          def spatial_anchors_account_page
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::SpatialAnchorsAccountPage
+          end
+          def operation_page
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::OperationPage
           end
           def resource
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::Resource
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::Resource
           end
-          def spatial_anchors_account
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::SpatialAnchorsAccount
+          def operation_display
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::OperationDisplay
+          end
+          def account_key_regenerate_request
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::AccountKeyRegenerateRequest
+          end
+          def remote_rendering_account
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::RemoteRenderingAccount
           end
           def proxy_resource
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::ProxyResource
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::ProxyResource
           end
           def azure_entity_resource
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::AzureEntityResource
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::AzureEntityResource
           end
           def tracked_resource
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::TrackedResource
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::TrackedResource
+          end
+          def spatial_anchors_account
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::SpatialAnchorsAccount
           end
           def name_availability
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::NameAvailability
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::NameAvailability
           end
           def name_unavailable_reason
-            Azure::MixedReality::Mgmt::V2019_02_28_preview::Models::NameUnavailableReason
+            Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::NameUnavailableReason
           end
         end
       end

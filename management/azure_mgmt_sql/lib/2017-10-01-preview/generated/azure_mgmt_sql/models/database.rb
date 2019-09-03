@@ -101,7 +101,8 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       # 'Suspect', 'Offline', 'Standby', 'Shutdown', 'EmergencyMode',
       # 'AutoClosed', 'Copying', 'Creating', 'Inaccessible',
       # 'OfflineSecondary', 'Pausing', 'Paused', 'Resuming', 'Scaling',
-      # 'OfflineChangingDwPerformanceTiers', 'OnlineChangingDwPerformanceTiers'
+      # 'OfflineChangingDwPerformanceTiers',
+      # 'OnlineChangingDwPerformanceTiers', 'Disabled'
       attr_accessor :status
 
       # @return The ID of the database.
@@ -169,11 +170,18 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       # restore is available for this database (ISO8601 format).
       attr_accessor :earliest_restore_date
 
-      # @return [DatabaseReadScale] The state of read-only routing. If enabled,
-      # connections that have application intent set to readonly in their
-      # connection string may be routed to a readonly secondary replica in the
-      # same region. Possible values include: 'Enabled', 'Disabled'
+      # @return [DatabaseReadScale] If enabled, connections that have
+      # application intent set to readonly in their connection string may be
+      # routed to a readonly secondary replica. This property is only settable
+      # for Premium and Business Critical databases. Possible values include:
+      # 'Enabled', 'Disabled'
       attr_accessor :read_scale
+
+      # @return [Integer] The number of readonly secondary replicas associated
+      # with the database to which readonly application intent connections may
+      # be routed. This property is only settable for Hyperscale edition
+      # databases.
+      attr_accessor :read_replica_count
 
       # @return [Sku] The name and tier of the SKU.
       attr_accessor :current_sku
@@ -185,6 +193,15 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       # @return [Float] Minimal capacity that database will always have
       # allocated, if not paused
       attr_accessor :min_capacity
+
+      # @return [DateTime] The date when database was paused by user
+      # configuration or action (ISO8601 format). Null if the database is
+      # ready.
+      attr_accessor :paused_date
+
+      # @return [DateTime] The date when database was resumed by user action or
+      # database login (ISO8601 format). Null if the database is paused.
+      attr_accessor :resumed_date
 
 
       #
@@ -487,6 +504,14 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
                   name: 'String'
                 }
               },
+              read_replica_count: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.readReplicaCount',
+                type: {
+                  name: 'Number'
+                }
+              },
               current_sku: {
                 client_side_validation: true,
                 required: false,
@@ -511,6 +536,24 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
                 serialized_name: 'properties.minCapacity',
                 type: {
                   name: 'Double'
+                }
+              },
+              paused_date: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.pausedDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              resumed_date: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.resumedDate',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

@@ -29,6 +29,7 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       Scaling = "Scaling"
       OfflineChangingDwPerformanceTiers = "OfflineChangingDwPerformanceTiers"
       OnlineChangingDwPerformanceTiers = "OnlineChangingDwPerformanceTiers"
+      Disabled = "Disabled"
     end
   end
 end
