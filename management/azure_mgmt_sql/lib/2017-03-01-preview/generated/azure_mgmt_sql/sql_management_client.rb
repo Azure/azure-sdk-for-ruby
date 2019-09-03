@@ -142,6 +142,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # @return [SensitivityLabels] sensitivity_labels
     attr_reader :sensitivity_labels
 
+    # @return [ManagedInstanceAdministrators] managed_instance_administrators
+    attr_reader :managed_instance_administrators
+
     #
     # Creates initializes a new instance of the SqlManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -186,6 +189,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       @managed_database_security_alert_policies = ManagedDatabaseSecurityAlertPolicies.new(self)
       @managed_server_security_alert_policies = ManagedServerSecurityAlertPolicies.new(self)
       @sensitivity_labels = SensitivityLabels.new(self)
+      @managed_instance_administrators = ManagedInstanceAdministrators.new(self)
       @api_version = '2017-03-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -258,7 +262,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_sql'
-        sdk_information = "#{sdk_information}/0.17.3"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

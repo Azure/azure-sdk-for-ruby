@@ -3,18 +3,18 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::SQL::Mgmt::V2017_10_01_preview
+module Azure::SQL::Mgmt::V2017_03_01_preview
   #
   # The Azure SQL Database management API provides a RESTful set of web
   # services that interact with Azure SQL Database services to manage your
   # databases. The API enables you to create, retrieve, update, and delete
   # databases.
   #
-  class ManagedDatabaseVulnerabilityAssessmentScans
+  class ManagedInstanceAdministrators
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the ManagedDatabaseVulnerabilityAssessmentScans class.
+    # Creates and initializes a new instance of the ManagedInstanceAdministrators class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -25,58 +25,53 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     attr_reader :client
 
     #
-    # Lists the vulnerability assessment scans of a database.
+    # Gets a list of managed instance administrators.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<VulnerabilityAssessmentScanRecord>] operation results.
+    # @return [Array<ManagedInstanceAdministrator>] operation results.
     #
-    def list_by_database(resource_group_name, managed_instance_name, database_name, custom_headers:nil)
-      first_page = list_by_database_as_lazy(resource_group_name, managed_instance_name, database_name, custom_headers:custom_headers)
+    def list_by_instance(resource_group_name, managed_instance_name, custom_headers:nil)
+      first_page = list_by_instance_as_lazy(resource_group_name, managed_instance_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Lists the vulnerability assessment scans of a database.
+    # Gets a list of managed instance administrators.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_database_with_http_info(resource_group_name, managed_instance_name, database_name, custom_headers:nil)
-      list_by_database_async(resource_group_name, managed_instance_name, database_name, custom_headers:custom_headers).value!
+    def list_by_instance_with_http_info(resource_group_name, managed_instance_name, custom_headers:nil)
+      list_by_instance_async(resource_group_name, managed_instance_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Lists the vulnerability assessment scans of a database.
+    # Gets a list of managed instance administrators.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_database_async(resource_group_name, managed_instance_name, database_name, custom_headers:nil)
+    def list_by_instance_async(resource_group_name, managed_instance_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'managed_instance_name is nil' if managed_instance_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-      vulnerability_assessment_name = 'default'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -87,13 +82,13 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'managedInstanceName' => managed_instance_name,'databaseName' => database_name,'vulnerabilityAssessmentName' => vulnerability_assessment_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'managedInstanceName' => managed_instance_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -116,7 +111,7 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentScanRecordListResult.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedInstanceAdministratorListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -130,65 +125,57 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     end
 
     #
-    # Gets a vulnerability assessment scan record of a database.
+    # Gets a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
-    # @param scan_id [String] The vulnerability assessment scan Id of the scan to
-    # retrieve.
+    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VulnerabilityAssessmentScanRecord] operation results.
+    # @return [ManagedInstanceAdministrator] operation results.
     #
-    def get(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
-      response = get_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:custom_headers).value!
+    def get(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
+      response = get_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a vulnerability assessment scan record of a database.
+    # Gets a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
-    # @param scan_id [String] The vulnerability assessment scan Id of the scan to
-    # retrieve.
+    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
-      get_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
+      get_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Gets a vulnerability assessment scan record of a database.
+    # Gets a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
-    # @param scan_id [String] The vulnerability assessment scan Id of the scan to
-    # retrieve.
+    # @param administrator_name [String] The administrator name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
+    def get_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'managed_instance_name is nil' if managed_instance_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-      vulnerability_assessment_name = 'default'
-      fail ArgumentError, 'scan_id is nil' if scan_id.nil?
+      fail ArgumentError, 'administrator_name is nil' if administrator_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -199,13 +186,13 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'managedInstanceName' => managed_instance_name,'databaseName' => database_name,'vulnerabilityAssessmentName' => vulnerability_assessment_name,'scanId' => scan_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'managedInstanceName' => managed_instance_name,'administratorName' => administrator_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -228,7 +215,7 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentScanRecord.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedInstanceAdministrator.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -242,20 +229,70 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     end
 
     #
-    # Executes a Vulnerability Assessment database scan.
+    # Creates or updates a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
-    # @param scan_id [String] The vulnerability assessment scan Id of the scan to
-    # retrieve.
+    # @param administrator_name [String] The requested administrator name.
+    # @param parameters [ManagedInstanceAdministrator] The requested administrator
+    # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def initiate_scan(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
-      response = initiate_scan_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:custom_headers).value!
+    # @return [ManagedInstanceAdministrator] operation results.
+    #
+    def create_or_update(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param managed_instance_name [String] The name of the managed instance.
+    # @param administrator_name [String] The requested administrator name.
+    # @param parameters [ManagedInstanceAdministrator] The requested administrator
+    # parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedInstanceAdministrator.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Deletes a managed instance administrator.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param managed_instance_name [String] The name of the managed instance.
+    # @param administrator_name [String] The administrator name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def delete(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
+      response = delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -264,18 +301,16 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
-    # @param scan_id [String] The vulnerability assessment scan Id of the scan to
-    # retrieve.
+    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def initiate_scan_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
+    def delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
       # Send request
-      promise = begin_initiate_scan_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -290,65 +325,64 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     end
 
     #
-    # Convert an existing scan result to a human readable format. If already exists
-    # nothing happens
+    # Creates or updates a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the scanned database.
-    # @param scan_id [String] The vulnerability assessment scan Id.
+    # @param administrator_name [String] The requested administrator name.
+    # @param parameters [ManagedInstanceAdministrator] The requested administrator
+    # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DatabaseVulnerabilityAssessmentScansExport] operation results.
+    # @return [ManagedInstanceAdministrator] operation results.
     #
-    def export(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
-      response = export_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Convert an existing scan result to a human readable format. If already exists
-    # nothing happens
+    # Creates or updates a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the scanned database.
-    # @param scan_id [String] The vulnerability assessment scan Id.
+    # @param administrator_name [String] The requested administrator name.
+    # @param parameters [ManagedInstanceAdministrator] The requested administrator
+    # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def export_with_http_info(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
-      export_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
-    # Convert an existing scan result to a human readable format. If already exists
-    # nothing happens
+    # Creates or updates a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the scanned database.
-    # @param scan_id [String] The vulnerability assessment scan Id.
+    # @param administrator_name [String] The requested administrator name.
+    # @param parameters [ManagedInstanceAdministrator] The requested administrator
+    # parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def export_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'managed_instance_name is nil' if managed_instance_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-      vulnerability_assessment_name = 'default'
-      fail ArgumentError, 'scan_id is nil' if scan_id.nil?
+      fail ArgumentError, 'administrator_name is nil' if administrator_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -359,24 +393,31 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/export'
+
+      # Serialize Request
+      request_mapper = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedInstanceAdministrator.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'managedInstanceName' => managed_instance_name,'databaseName' => database_name,'vulnerabilityAssessmentName' => vulnerability_assessment_name,'scanId' => scan_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'managedInstanceName' => managed_instance_name,'administratorName' => administrator_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:put, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 201
+        unless status_code == 200 || status_code == 202 || status_code == 201
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -388,7 +429,7 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseVulnerabilityAssessmentScansExport.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedInstanceAdministrator.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -398,7 +439,7 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2017_10_01_preview::Models::DatabaseVulnerabilityAssessmentScansExport.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedInstanceAdministrator.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -412,64 +453,56 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     end
 
     #
-    # Executes a Vulnerability Assessment database scan.
+    # Deletes a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
-    # @param scan_id [String] The vulnerability assessment scan Id of the scan to
-    # retrieve.
+    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_initiate_scan(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
-      response = begin_initiate_scan_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
       nil
     end
 
     #
-    # Executes a Vulnerability Assessment database scan.
+    # Deletes a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
-    # @param scan_id [String] The vulnerability assessment scan Id of the scan to
-    # retrieve.
+    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_initiate_scan_with_http_info(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
-      begin_initiate_scan_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Executes a Vulnerability Assessment database scan.
+    # Deletes a managed instance administrator.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
-    # @param scan_id [String] The vulnerability assessment scan Id of the scan to
-    # retrieve.
+    # @param administrator_name [String] The administrator name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_initiate_scan_async(resource_group_name, managed_instance_name, database_name, scan_id, custom_headers:nil)
+    def begin_delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'managed_instance_name is nil' if managed_instance_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-      vulnerability_assessment_name = 'default'
-      fail ArgumentError, 'scan_id is nil' if scan_id.nil?
+      fail ArgumentError, 'administrator_name is nil' if administrator_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -480,18 +513,18 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/initiateScan'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators/{administratorName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'managedInstanceName' => managed_instance_name,'databaseName' => database_name,'vulnerabilityAssessmentName' => vulnerability_assessment_name,'scanId' => scan_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'managedInstanceName' => managed_instance_name,'administratorName' => administrator_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:delete, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -513,22 +546,22 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     end
 
     #
-    # Lists the vulnerability assessment scans of a database.
+    # Gets a list of managed instance administrators.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VulnerabilityAssessmentScanRecordListResult] operation results.
+    # @return [ManagedInstanceAdministratorListResult] operation results.
     #
-    def list_by_database_next(next_page_link, custom_headers:nil)
-      response = list_by_database_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_instance_next(next_page_link, custom_headers:nil)
+      response = list_by_instance_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Lists the vulnerability assessment scans of a database.
+    # Gets a list of managed instance administrators.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -537,12 +570,12 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_database_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_database_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_by_instance_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_instance_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
-    # Lists the vulnerability assessment scans of a database.
+    # Gets a list of managed instance administrators.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -551,7 +584,7 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_database_next_async(next_page_link, custom_headers:nil)
+    def list_by_instance_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -589,7 +622,7 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2017_10_01_preview::Models::VulnerabilityAssessmentScanRecordListResult.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2017_03_01_preview::Models::ManagedInstanceAdministratorListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -603,25 +636,24 @@ module Azure::SQL::Mgmt::V2017_10_01_preview
     end
 
     #
-    # Lists the vulnerability assessment scans of a database.
+    # Gets a list of managed instance administrators.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VulnerabilityAssessmentScanRecordListResult] which provide lazy
-    # access to pages of the response.
+    # @return [ManagedInstanceAdministratorListResult] which provide lazy access to
+    # pages of the response.
     #
-    def list_by_database_as_lazy(resource_group_name, managed_instance_name, database_name, custom_headers:nil)
-      response = list_by_database_async(resource_group_name, managed_instance_name, database_name, custom_headers:custom_headers).value!
+    def list_by_instance_as_lazy(resource_group_name, managed_instance_name, custom_headers:nil)
+      response = list_by_instance_async(resource_group_name, managed_instance_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_database_next_async(next_page_link, custom_headers:custom_headers)
+          list_by_instance_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

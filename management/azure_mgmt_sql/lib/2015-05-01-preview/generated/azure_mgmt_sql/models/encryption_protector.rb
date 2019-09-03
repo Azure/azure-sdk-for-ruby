@@ -80,6 +80,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
               kind: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'kind',
                 type: {
                   name: 'String'
