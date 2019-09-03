@@ -672,6 +672,13 @@
       "module_require": "azure_mgmt_storagesync"
     }
   },
+  "Microsoft.StorageCache": {
+    "management": {
+      "path": "management/azure_mgmt_storagecache",
+      "namespace": "Azure::StorageCache::Mgmt",
+      "module_require": "azure_mgmt_storagecache"
+    }
+  },
   "Microsoft.StreamAnalytics": {
     "management": {
       "path": "management/azure_mgmt_stream_analytics",

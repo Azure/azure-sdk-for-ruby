@@ -131,6 +131,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_stor_simple8000_series', "~>#{gem_versions['management']['azure_mgmt_stor_simple8000_series']}"
   spec.add_runtime_dependency 'azure_mgmt_storage', "~>#{gem_versions['management']['azure_mgmt_storage']}"
   spec.add_runtime_dependency 'azure_mgmt_storagesync', "~>#{gem_versions['management']['azure_mgmt_storagesync']}"
+  spec.add_runtime_dependency 'azure_mgmt_storagecache', "~>#{gem_versions['management']['azure_mgmt_storagecache']}"
   spec.add_runtime_dependency 'azure_mgmt_stream_analytics', "~>#{gem_versions['management']['azure_mgmt_stream_analytics']}"
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', "~>#{gem_versions['management']['azure_mgmt_subscriptions']}"
   spec.add_runtime_dependency 'azure_mgmt_traffic_manager', "~>#{gem_versions['management']['azure_mgmt_traffic_manager']}"

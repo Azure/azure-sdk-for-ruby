@@ -103,6 +103,7 @@ gem 'azure_mgmt_sqlvirtualmachine',         path: 'management/azure_mgmt_sqlvirt
 gem 'azure_mgmt_stor_simple8000_series',    path: 'management/azure_mgmt_stor_simple8000_series'
 gem 'azure_mgmt_storage',                   path: 'management/azure_mgmt_storage'
 gem 'azure_mgmt_storagesync',               path: 'management/azure_mgmt_storagesync'
+gem 'azure_mgmt_storagecache',              path: 'management/azure_mgmt_storagecache'
 gem 'azure_mgmt_stream_analytics',          path: 'management/azure_mgmt_stream_analytics'
 gem 'azure_mgmt_subscriptions',             path: 'management/azure_mgmt_subscriptions'
 gem 'azure_mgmt_traffic_manager',           path: 'management/azure_mgmt_traffic_manager'

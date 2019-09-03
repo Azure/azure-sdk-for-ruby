@@ -717,6 +717,11 @@
                         "2019-02-01": ["*"]
                     }
                 },
+                "Microsoft.StorageCache": {
+                    "management": {
+                        "2019-08-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.StreamAnalytics": {
                     "management": {
                         "2016-03-01": ["*"]
@@ -2529,6 +2534,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_storagecache": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.StorageCache": {
+                        "management": {
+                            "2019-08-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_storagecache/lib/profiles",
+                "individual_gem_profile": true
+            }
+            ],
         "azure_mgmt_stream_analytics": [
         {
             "name": "Latest",
