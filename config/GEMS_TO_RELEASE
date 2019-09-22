@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_subscriptions",
-        "azure_mgmt_reservations"
+        "azure_mgmt_reservations",
+        "azure_mgmt_storage"
     ],
     "data": [
         "azure_cognitiveservices_computervision"
