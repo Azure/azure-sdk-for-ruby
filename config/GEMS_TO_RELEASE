@@ -2,7 +2,8 @@
     "management": [
         "azure_mgmt_subscriptions",
         "azure_mgmt_reservations",
-        "azure_mgmt_storage"
+        "azure_mgmt_storage",
+        "azure_mgmt_netapp"
     ],
     "data": [
         "azure_cognitiveservices_computervision"
