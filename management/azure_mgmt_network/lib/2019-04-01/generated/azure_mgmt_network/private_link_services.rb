@@ -162,7 +162,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the private link service.
     # @param parameters [PrivateLinkService] Parameters supplied to the create or
-    # update private link service operation
+    # update private link service operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -177,7 +177,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the private link service.
     # @param parameters [PrivateLinkService] Parameters supplied to the create or
-    # update private link service operation
+    # update private link service operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1030,7 +1030,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the private link service.
     # @param parameters [PrivateLinkService] Parameters supplied to the create or
-    # update private link service operation
+    # update private link service operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1047,7 +1047,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the private link service.
     # @param parameters [PrivateLinkService] Parameters supplied to the create or
-    # update private link service operation
+    # update private link service operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1063,7 +1063,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the private link service.
     # @param parameters [PrivateLinkService] Parameters supplied to the create or
-    # update private link service operation
+    # update private link service operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

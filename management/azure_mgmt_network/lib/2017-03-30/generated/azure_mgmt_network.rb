@@ -66,6 +66,7 @@ module Azure::Network::Mgmt::V2017_03_30
     autoload :SecurityRuleProtocol,                               '2017-03-30/generated/azure_mgmt_network/models/security_rule_protocol.rb'
     autoload :SecurityRuleAccess,                                 '2017-03-30/generated/azure_mgmt_network/models/security_rule_access.rb'
     autoload :SecurityRuleDirection,                              '2017-03-30/generated/azure_mgmt_network/models/security_rule_direction.rb'
+    autoload :ProvisioningState,                                  '2017-03-30/generated/azure_mgmt_network/models/provisioning_state.rb'
     autoload :IPAllocationMethod,                                 '2017-03-30/generated/azure_mgmt_network/models/ipallocation_method.rb'
     autoload :IPVersion,                                          '2017-03-30/generated/azure_mgmt_network/models/ipversion.rb'
     autoload :PublicIPAddressSkuName,                             '2017-03-30/generated/azure_mgmt_network/models/public_ipaddress_sku_name.rb'

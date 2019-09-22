@@ -20,8 +20,9 @@ module Azure::Network::Mgmt::V2017_03_30
       # network interfaces created for this private endpoint.
       attr_accessor :network_interfaces
 
-      # @return [String] The provisioning state of the private endpoint.
-      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      # @return [ProvisioningState] The provisioning state of the private
+      # endpoint. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+      # 'Failed'
       attr_accessor :provisioning_state
 
       # @return [Array<PrivateLinkServiceConnection>] A grouping of information
@@ -34,8 +35,8 @@ module Azure::Network::Mgmt::V2017_03_30
       # resource.
       attr_accessor :manual_private_link_service_connections
 
-      # @return [String] Gets a unique read-only string that changes whenever
-      # the resource is updated.
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated.
       attr_accessor :etag
 
 

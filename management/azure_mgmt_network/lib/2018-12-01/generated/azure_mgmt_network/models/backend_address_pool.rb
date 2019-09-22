@@ -24,6 +24,10 @@ module Azure::Network::Mgmt::V2018_12_01
       # pool.
       attr_accessor :outbound_rule
 
+      # @return [Array<SubResource>] Gets outbound rules that use this backend
+      # address pool.
+      attr_accessor :outbound_rules
+
       # @return [String] Get provisioning state of the public IP resource.
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
@@ -102,6 +106,24 @@ module Azure::Network::Mgmt::V2018_12_01
                 type: {
                   name: 'Composite',
                   class_name: 'SubResource'
+                }
+              },
+              outbound_rules: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.outboundRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'SubResourceElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SubResource'
+                      }
+                  }
                 }
               },
               provisioning_state: {

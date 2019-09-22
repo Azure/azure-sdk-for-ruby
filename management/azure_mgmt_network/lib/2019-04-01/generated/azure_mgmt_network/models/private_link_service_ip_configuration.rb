@@ -8,7 +8,7 @@ module Azure::Network::Mgmt::V2019_04_01
     #
     # The private link service ip configuration.
     #
-    class PrivateLinkServiceIpConfiguration
+    class PrivateLinkServiceIpConfiguration < SubResource
 
       include MsRestAzure
 
@@ -22,11 +22,12 @@ module Azure::Network::Mgmt::V2019_04_01
       # @return [Subnet] The reference of the subnet resource.
       attr_accessor :subnet
 
-      # @return [PublicIPAddress] The reference of the public IP resource.
-      attr_accessor :public_ipaddress
+      # @return [Boolean] Whether the ip configuration is primary or not.
+      attr_accessor :primary
 
-      # @return [String] Gets the provisioning state of the public IP resource.
-      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      # @return [ProvisioningState] The provisioning state of the private link
+      # service ip configuration. Possible values include: 'Succeeded',
+      # 'Updating', 'Deleting', 'Failed'
       attr_accessor :provisioning_state
 
       # @return [IPVersion] Available from Api-Version 2016-03-30 onwards, it
@@ -36,6 +37,13 @@ module Azure::Network::Mgmt::V2019_04_01
 
       # @return [String] The name of private link service ip configuration.
       attr_accessor :name
+
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated.
+      attr_accessor :etag
+
+      # @return [String] The resource type.
+      attr_accessor :type
 
 
       #
@@ -51,6 +59,14 @@ module Azure::Network::Mgmt::V2019_04_01
             name: 'Composite',
             class_name: 'PrivateLinkServiceIpConfiguration',
             model_properties: {
+              id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               private_ipaddress: {
                 client_side_validation: true,
                 required: false,
@@ -76,18 +92,18 @@ module Azure::Network::Mgmt::V2019_04_01
                   class_name: 'Subnet'
                 }
               },
-              public_ipaddress: {
+              primary: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.publicIPAddress',
+                serialized_name: 'properties.primary',
                 type: {
-                  name: 'Composite',
-                  class_name: 'PublicIPAddress'
+                  name: 'Boolean'
                 }
               },
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -105,6 +121,24 @@ module Azure::Network::Mgmt::V2019_04_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              etag: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'etag',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

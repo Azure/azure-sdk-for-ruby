@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::Network::Mgmt
-    VERSION = '0.19.1'
+    VERSION = '0.20.0'
 end

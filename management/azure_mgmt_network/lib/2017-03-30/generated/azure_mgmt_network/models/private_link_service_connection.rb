@@ -12,6 +12,11 @@ module Azure::Network::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      # @return [ProvisioningState] The provisioning state of the private link
+      # service connection. Possible values include: 'Succeeded', 'Updating',
+      # 'Deleting', 'Failed'
+      attr_accessor :provisioning_state
+
       # @return [String] The resource id of private link service.
       attr_accessor :private_link_service_id
 
@@ -31,6 +36,13 @@ module Azure::Network::Mgmt::V2017_03_30
       # resource group. This name can be used to access the resource.
       attr_accessor :name
 
+      # @return [String] The resource type.
+      attr_accessor :type
+
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated.
+      attr_accessor :etag
+
 
       #
       # Mapper for PrivateLinkServiceConnection class as Ruby Hash.
@@ -49,6 +61,15 @@ module Azure::Network::Mgmt::V2017_03_30
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              provisioning_state: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
                 }
@@ -98,6 +119,24 @@ module Azure::Network::Mgmt::V2017_03_30
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              etag: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'etag',
                 type: {
                   name: 'String'
                 }
