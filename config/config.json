@@ -2284,6 +2284,13 @@
       ],
       "namespace": "Azure::Subscriptions::Mgmt::V2019_03_01_preview",
       "title": "SubscriptionClient"
+    },
+    "azure_mgmt_subscriptions_2019_06_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6af8695dc10de4c764d617172e15b38dc775345b/specification/resources/resource-manager/Microsoft.Resources/stable/2019-06-01/subscriptions.json"
+      ],
+      "namespace": "Azure::Subscriptions::Mgmt::V2019_06_01",
+      "title": "SubscriptionClient"
     }
   },
   "azure_mgmt_traffic_manager": {
