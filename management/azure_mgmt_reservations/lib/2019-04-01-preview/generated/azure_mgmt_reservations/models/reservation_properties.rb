@@ -14,7 +14,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       include MsRestAzure
 
       # @return [ReservedResourceType] Possible values include:
-      # 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb'
+      # 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat',
+      # 'SqlDataWarehouse', 'VMwareCloudSimple', 'RedHatOsa'
       attr_accessor :reserved_resource_type
 
       # @return [InstanceFlexibility] Possible values include: 'On', 'Off'
@@ -53,11 +54,37 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       # @return [ExtendedStatusInfo]
       attr_accessor :extended_status_info
 
+      # @return [ReservationBillingPlan] Possible values include: 'Upfront',
+      # 'Monthly'
+      attr_accessor :billing_plan
+
       # @return [ReservationSplitProperties]
       attr_accessor :split_properties
 
       # @return [ReservationMergeProperties]
       attr_accessor :merge_properties
+
+      # @return [String]
+      attr_accessor :billing_scope_id
+
+      # @return [Boolean]
+      attr_accessor :renew
+
+      # @return [String] Reservation Id of the reservation from which this
+      # reservation is renewed. Format of the resource Id is
+      # /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}.
+      attr_accessor :renew_source
+
+      # @return [String] Reservation Id of the reservation which is purchased
+      # because of renew. Format of the resource Id is
+      # /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}.
+      attr_accessor :renew_destination
+
+      # @return [RenewPropertiesResponse]
+      attr_accessor :renew_properties
+
+      # @return [ReservationTerm] Possible values include: 'P1Y', 'P3Y'
+      attr_accessor :term
 
 
       #
@@ -179,6 +206,14 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
                   class_name: 'ExtendedStatusInfo'
                 }
               },
+              billing_plan: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'billingPlan',
+                type: {
+                  name: 'String'
+                }
+              },
               split_properties: {
                 client_side_validation: true,
                 required: false,
@@ -195,6 +230,55 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'ReservationMergeProperties'
+                }
+              },
+              billing_scope_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'billingScopeId',
+                type: {
+                  name: 'String'
+                }
+              },
+              renew: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'renew',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              renew_source: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'renewSource',
+                type: {
+                  name: 'String'
+                }
+              },
+              renew_destination: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'renewDestination',
+                type: {
+                  name: 'String'
+                }
+              },
+              renew_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'renewProperties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RenewPropertiesResponse'
+                }
+              },
+              term: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'term',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -6,42 +6,55 @@ require 'azure_mgmt_reservations'
 
 module Azure::Reservations::Profiles::Latest
   module Mgmt
-    ReservationOrder = Azure::Reservations::Mgmt::V2019_04_01_preview::ReservationOrder
     Reservation = Azure::Reservations::Mgmt::V2019_04_01_preview::Reservation
+    ReservationOrder = Azure::Reservations::Mgmt::V2019_04_01_preview::ReservationOrder
     Operation = Azure::Reservations::Mgmt::V2019_04_01_preview::Operation
 
     module Models
-      PurchaseRequestPropertiesReservedResourceProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PurchaseRequestPropertiesReservedResourceProperties
-      SkuName = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuName
-      MergeRequest = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::MergeRequest
-      SkuRestriction = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuRestriction
-      PurchaseRequest = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PurchaseRequest
-      ExtendedStatusInfo = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ExtendedStatusInfo
-      Patch = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Patch
-      ReservationMergeProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationMergeProperties
-      SplitRequest = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SplitRequest
-      ReservationResponse = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationResponse
-      ExtendedErrorInfo = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ExtendedErrorInfo
       CalculatePriceResponsePropertiesBillingCurrencyTotal = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesBillingCurrencyTotal
-      Error = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Error
+      CalculatePriceResponsePropertiesPricingCurrencyTotal = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesPricingCurrencyTotal
+      CatalogBillingPlansItem = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CatalogBillingPlansItem
       CalculatePriceResponseProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponseProperties
-      ReservationOrderList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderList
-      SkuProperty = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuProperty
-      ReservationList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationList
-      ReservationSplitProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationSplitProperties
-      AppliedReservationList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedReservationList
-      ReservationOrderResponse = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderResponse
-      AppliedReservations = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedReservations
+      SkuRestriction = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuRestriction
       CalculatePriceResponse = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponse
+      Price = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Price
+      PatchPropertiesRenewProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PatchPropertiesRenewProperties
+      PaymentDetail = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PaymentDetail
+      MergeRequest = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::MergeRequest
+      ReservationSplitProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationSplitProperties
+      Patch = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Patch
+      PurchaseRequestPropertiesReservedResourceProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PurchaseRequestPropertiesReservedResourceProperties
+      SplitRequest = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SplitRequest
+      RenewPropertiesResponsePricingCurrencyTotal = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::RenewPropertiesResponsePricingCurrencyTotal
+      ExtendedErrorInfo = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ExtendedErrorInfo
+      RenewPropertiesResponse = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::RenewPropertiesResponse
+      Error = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Error
+      ReservationResponse = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationResponse
+      ReservationOrderList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderList
+      SkuName = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuName
+      ReservationList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationList
+      Catalog = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Catalog
+      AppliedReservationList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedReservationList
+      ReservationOrderBillingPlanInformation = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderBillingPlanInformation
+      AppliedReservations = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedReservations
+      PurchaseRequest = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PurchaseRequest
       OperationDisplay = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::OperationDisplay
       ReservationProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationProperties
       OperationResponse = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::OperationResponse
-      Catalog = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Catalog
+      SkuProperty = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuProperty
       OperationList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::OperationList
-      CalculatePriceResponsePropertiesPricingCurrencyTotal = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesPricingCurrencyTotal
+      ReservationMergeProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationMergeProperties
+      ScopeProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ScopeProperties
+      ReservationOrderResponse = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderResponse
+      SubscriptionScopeProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SubscriptionScopeProperties
+      RenewPropertiesResponseBillingCurrencyTotal = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::RenewPropertiesResponseBillingCurrencyTotal
+      Properties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Properties
+      ExtendedStatusInfo = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ExtendedStatusInfo
       ReservationStatusCode = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationStatusCode
       ErrorResponseCode = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ErrorResponseCode
+      ReservationBillingPlan = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationBillingPlan
       ReservationTerm = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationTerm
+      PaymentStatus = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PaymentStatus
       ReservedResourceType = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservedResourceType
       InstanceFlexibility = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::InstanceFlexibility
       AppliedScopeType = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedScopeType
@@ -51,7 +64,7 @@ module Azure::Reservations::Profiles::Latest
     # ReservationsManagementClass
     #
     class ReservationsManagementClass
-      attr_reader :reservation_order, :reservation, :operation, :configurable, :base_url, :options, :model_classes
+      attr_reader :reservation, :reservation_order, :operation, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -71,8 +84,8 @@ module Azure::Reservations::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @reservation_order = @client_0.reservation_order
         @reservation = @client_0.reservation
+        @reservation_order = @client_0.reservation_order
         @operation = @client_0.operation
 
         @model_classes = ModelClasses.new
@@ -94,71 +107,86 @@ module Azure::Reservations::Profiles::Latest
     end
 
     class ModelClasses
-      def purchase_request_properties_reserved_resource_properties
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PurchaseRequestPropertiesReservedResourceProperties
-      end
-      def sku_name
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuName
-      end
-      def merge_request
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::MergeRequest
-      end
-      def sku_restriction
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuRestriction
-      end
-      def purchase_request
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PurchaseRequest
-      end
-      def extended_status_info
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ExtendedStatusInfo
-      end
-      def patch
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Patch
-      end
-      def reservation_merge_properties
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationMergeProperties
-      end
-      def split_request
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SplitRequest
-      end
-      def reservation_response
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationResponse
-      end
-      def extended_error_info
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ExtendedErrorInfo
-      end
       def calculate_price_response_properties_billing_currency_total
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesBillingCurrencyTotal
       end
-      def error
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Error
+      def calculate_price_response_properties_pricing_currency_total
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesPricingCurrencyTotal
+      end
+      def catalog_billing_plans_item
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CatalogBillingPlansItem
       end
       def calculate_price_response_properties
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponseProperties
       end
-      def reservation_order_list
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderList
+      def sku_restriction
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuRestriction
       end
-      def sku_property
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuProperty
+      def calculate_price_response
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponse
       end
-      def reservation_list
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationList
+      def price
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Price
+      end
+      def patch_properties_renew_properties
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PatchPropertiesRenewProperties
+      end
+      def payment_detail
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PaymentDetail
+      end
+      def merge_request
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::MergeRequest
       end
       def reservation_split_properties
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationSplitProperties
       end
+      def patch
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Patch
+      end
+      def purchase_request_properties_reserved_resource_properties
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PurchaseRequestPropertiesReservedResourceProperties
+      end
+      def split_request
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SplitRequest
+      end
+      def renew_properties_response_pricing_currency_total
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::RenewPropertiesResponsePricingCurrencyTotal
+      end
+      def extended_error_info
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ExtendedErrorInfo
+      end
+      def renew_properties_response
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::RenewPropertiesResponse
+      end
+      def error
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Error
+      end
+      def reservation_response
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationResponse
+      end
+      def reservation_order_list
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderList
+      end
+      def sku_name
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuName
+      end
+      def reservation_list
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationList
+      end
+      def catalog
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Catalog
+      end
       def applied_reservation_list
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedReservationList
       end
-      def reservation_order_response
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderResponse
+      def reservation_order_billing_plan_information
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderBillingPlanInformation
       end
       def applied_reservations
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedReservations
       end
-      def calculate_price_response
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponse
+      def purchase_request
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PurchaseRequest
       end
       def operation_display
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::OperationDisplay
@@ -169,14 +197,32 @@ module Azure::Reservations::Profiles::Latest
       def operation_response
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::OperationResponse
       end
-      def catalog
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Catalog
+      def sku_property
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuProperty
       end
       def operation_list
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::OperationList
       end
-      def calculate_price_response_properties_pricing_currency_total
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesPricingCurrencyTotal
+      def reservation_merge_properties
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationMergeProperties
+      end
+      def scope_properties
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ScopeProperties
+      end
+      def reservation_order_response
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderResponse
+      end
+      def subscription_scope_properties
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SubscriptionScopeProperties
+      end
+      def renew_properties_response_billing_currency_total
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::RenewPropertiesResponseBillingCurrencyTotal
+      end
+      def properties
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Properties
+      end
+      def extended_status_info
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ExtendedStatusInfo
       end
       def reservation_status_code
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationStatusCode
@@ -184,8 +230,14 @@ module Azure::Reservations::Profiles::Latest
       def error_response_code
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ErrorResponseCode
       end
+      def reservation_billing_plan
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationBillingPlan
+      end
       def reservation_term
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationTerm
+      end
+      def payment_status
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::PaymentStatus
       end
       def reserved_resource_type
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservedResourceType

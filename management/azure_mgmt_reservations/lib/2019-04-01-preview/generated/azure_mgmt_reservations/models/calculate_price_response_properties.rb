@@ -37,6 +37,9 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       # refund limit. Tax is not included.
       attr_accessor :pricing_currency_total
 
+      # @return [Array<PaymentDetail>]
+      attr_accessor :payment_schedule
+
 
       #
       # Mapper for CalculatePriceResponseProperties class as Ruby Hash.
@@ -99,6 +102,23 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'CalculatePriceResponsePropertiesPricingCurrencyTotal'
+                }
+              },
+              payment_schedule: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'paymentSchedule',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'PaymentDetailElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PaymentDetail'
+                      }
+                  }
                 }
               }
             }

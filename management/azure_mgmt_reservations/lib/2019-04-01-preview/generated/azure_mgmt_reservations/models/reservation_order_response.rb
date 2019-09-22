@@ -46,6 +46,13 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       # @return [String] Current state of the reservation.
       attr_accessor :provisioning_state
 
+      # @return [ReservationBillingPlan] Possible values include: 'Upfront',
+      # 'Monthly'
+      attr_accessor :billing_plan
+
+      # @return [ReservationOrderBillingPlanInformation]
+      attr_accessor :plan_information
+
       # @return [Array<ReservationResponse>]
       attr_accessor :reservations
 
@@ -146,6 +153,23 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              billing_plan: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.billingPlan',
+                type: {
+                  name: 'String'
+                }
+              },
+              plan_information: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.planInformation',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ReservationOrderBillingPlanInformation'
                 }
               },
               reservations: {

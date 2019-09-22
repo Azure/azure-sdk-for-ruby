@@ -106,6 +106,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -197,6 +199,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -266,13 +270,14 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
     # Get the details of the `ReservationOrder`.
     #
     # @param reservation_order_id [String] Order Id of the reservation
+    # @param expand [String] May be used to expand the planInformation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ReservationOrderResponse] operation results.
     #
-    def get(reservation_order_id, custom_headers:nil)
-      response = get_async(reservation_order_id, custom_headers:custom_headers).value!
+    def get(reservation_order_id, expand:nil, custom_headers:nil)
+      response = get_async(reservation_order_id, expand:expand, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -282,13 +287,14 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
     # Get the details of the `ReservationOrder`.
     #
     # @param reservation_order_id [String] Order Id of the reservation
+    # @param expand [String] May be used to expand the planInformation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(reservation_order_id, custom_headers:nil)
-      get_async(reservation_order_id, custom_headers:custom_headers).value!
+    def get_with_http_info(reservation_order_id, expand:nil, custom_headers:nil)
+      get_async(reservation_order_id, expand:expand, custom_headers:custom_headers).value!
     end
 
     #
@@ -297,12 +303,13 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
     # Get the details of the `ReservationOrder`.
     #
     # @param reservation_order_id [String] Order Id of the reservation
+    # @param expand [String] May be used to expand the planInformation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(reservation_order_id, custom_headers:nil)
+    def get_async(reservation_order_id, expand:nil, custom_headers:nil)
       fail ArgumentError, 'reservation_order_id is nil' if reservation_order_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -320,7 +327,7 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'reservationOrderId' => reservation_order_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$expand' => expand},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -336,6 +343,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -443,6 +452,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -550,6 +561,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
