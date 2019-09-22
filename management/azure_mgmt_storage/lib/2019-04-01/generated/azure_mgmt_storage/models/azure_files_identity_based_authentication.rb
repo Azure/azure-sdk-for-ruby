@@ -6,40 +6,36 @@
 module Azure::Storage::Mgmt::V2019_04_01
   module Models
     #
-    # Object to define the number of days after last modification.
+    # Settings for Azure Files identity based authentication.
     #
-    class DateAfterModification
+    class AzureFilesIdentityBasedAuthentication
 
       include MsRestAzure
 
-      # @return [Float] Value indicating the age in days after last
-      # modification
-      attr_accessor :days_after_modification_greater_than
+      # @return [DirectoryServiceOptions] Indicates the directory service used.
+      # Possible values include: 'None', 'AADDS'
+      attr_accessor :directory_service_options
 
 
       #
-      # Mapper for DateAfterModification class as Ruby Hash.
+      # Mapper for AzureFilesIdentityBasedAuthentication class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'DateAfterModification',
+          serialized_name: 'AzureFilesIdentityBasedAuthentication',
           type: {
             name: 'Composite',
-            class_name: 'DateAfterModification',
+            class_name: 'AzureFilesIdentityBasedAuthentication',
             model_properties: {
-              days_after_modification_greater_than: {
+              directory_service_options: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'daysAfterModificationGreaterThan',
-                constraints: {
-                  InclusiveMinimum: 0,
-                  MultipleOf: 1
-                },
+                serialized_name: 'directoryServiceOptions',
                 type: {
-                  name: 'Double'
+                  name: 'String'
                 }
               }
             }

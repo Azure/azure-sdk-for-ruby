@@ -6,39 +6,36 @@
 module Azure::Storage::Mgmt::V2019_04_01
   module Models
     #
-    # Object to define the number of days after creation.
+    # The blob service properties for change feed events.
     #
-    class DateAfterCreation
+    class ChangeFeed
 
       include MsRestAzure
 
-      # @return [Float] Value indicating the age in days after creation
-      attr_accessor :days_after_creation_greater_than
+      # @return [Boolean] Indicates whether change feed event logging is
+      # enabled for the Blob service.
+      attr_accessor :enabled
 
 
       #
-      # Mapper for DateAfterCreation class as Ruby Hash.
+      # Mapper for ChangeFeed class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'DateAfterCreation',
+          serialized_name: 'ChangeFeed',
           type: {
             name: 'Composite',
-            class_name: 'DateAfterCreation',
+            class_name: 'ChangeFeed',
             model_properties: {
-              days_after_creation_greater_than: {
+              enabled: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'daysAfterCreationGreaterThan',
-                constraints: {
-                  InclusiveMinimum: 0,
-                  MultipleOf: 1
-                },
+                required: false,
+                serialized_name: 'enabled',
                 type: {
-                  name: 'Double'
+                  name: 'Boolean'
                 }
               }
             }

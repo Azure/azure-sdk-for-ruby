@@ -44,9 +44,8 @@ module Azure::Storage::Mgmt::V2019_04_01
       # an empty string for the custom domain name property.
       attr_accessor :custom_domain
 
-      # @return [Encryption] Provides the encryption settings on the account.
-      # If left unspecified the account encryption settings will remain the
-      # same. The default setting is unencrypted.
+      # @return [Encryption] Not applicable. Azure Storage encryption is
+      # enabled for all storage accounts and cannot be disabled.
       attr_accessor :encryption
 
       # @return [NetworkRuleSet] Network rule set
@@ -57,12 +56,12 @@ module Azure::Storage::Mgmt::V2019_04_01
       # 'Hot', 'Cool'
       attr_accessor :access_tier
 
-      # @return [Boolean] Enables Azure Files AAD Integration for SMB if sets
-      # to true.
-      attr_accessor :enable_azure_files_aad_integration
+      # @return [AzureFilesIdentityBasedAuthentication] Provides the identity
+      # based authentication settings for Azure Files.
+      attr_accessor :azure_files_identity_based_authentication
 
       # @return [Boolean] Allows https traffic only to storage service if sets
-      # to true.
+      # to true. The default value is true since API version 2019-04-01.
       attr_accessor :enable_https_traffic_only
 
       # @return [Boolean] Account HierarchicalNamespace enabled if sets to
@@ -169,12 +168,13 @@ module Azure::Storage::Mgmt::V2019_04_01
                   module: 'AccessTier'
                 }
               },
-              enable_azure_files_aad_integration: {
+              azure_files_identity_based_authentication: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.azureFilesAadIntegration',
+                serialized_name: 'properties.azureFilesIdentityBasedAuthentication',
                 type: {
-                  name: 'Boolean'
+                  name: 'Composite',
+                  class_name: 'AzureFilesIdentityBasedAuthentication'
                 }
               },
               enable_https_traffic_only: {

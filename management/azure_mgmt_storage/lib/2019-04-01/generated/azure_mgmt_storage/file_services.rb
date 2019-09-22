@@ -7,11 +7,11 @@ module Azure::Storage::Mgmt::V2019_04_01
   #
   # The Azure Storage Management API.
   #
-  class BlobServices
+  class FileServices
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the BlobServices class.
+    # Creates and initializes a new instance of the FileServices class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,8 +22,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     attr_reader :client
 
     #
-    # List blob services of storage account. It returns a collection of one object
-    # named default.
+    # List all file services in storage accounts
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
@@ -33,7 +32,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [BlobServiceItems] operation results.
+    # @return [FileServiceItems] operation results.
     #
     def list(resource_group_name, account_name, custom_headers:nil)
       response = list_async(resource_group_name, account_name, custom_headers:custom_headers).value!
@@ -41,8 +40,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # List blob services of storage account. It returns a collection of one object
-    # named default.
+    # List all file services in storage accounts
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
@@ -59,8 +57,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # List blob services of storage account. It returns a collection of one object
-    # named default.
+    # List all file services in storage accounts
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
@@ -92,7 +89,7 @@ module Azure::Storage::Mgmt::V2019_04_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices'
 
       request_url = @base_url || @client.base_url
 
@@ -121,7 +118,7 @@ module Azure::Storage::Mgmt::V2019_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Storage::Mgmt::V2019_04_01::Models::BlobServiceItems.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2019_04_01::Models::FileServiceItems.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -135,21 +132,20 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Sets the properties of a storage account’s Blob service, including properties
-    # for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+    # Sets the properties of file services in storage accounts, including CORS
+    # (Cross-Origin Resource Sharing) rules.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
-    # @param parameters [BlobServiceProperties] The properties of a storage
-    # account’s Blob service, including properties for Storage Analytics and CORS
-    # (Cross-Origin Resource Sharing) rules.
+    # @param parameters [FileServiceProperties] The properties of file services in
+    # storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [BlobServiceProperties] operation results.
+    # @return [FileServiceProperties] operation results.
     #
     def set_service_properties(resource_group_name, account_name, parameters, custom_headers:nil)
       response = set_service_properties_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
@@ -157,17 +153,16 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Sets the properties of a storage account’s Blob service, including properties
-    # for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+    # Sets the properties of file services in storage accounts, including CORS
+    # (Cross-Origin Resource Sharing) rules.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
-    # @param parameters [BlobServiceProperties] The properties of a storage
-    # account’s Blob service, including properties for Storage Analytics and CORS
-    # (Cross-Origin Resource Sharing) rules.
+    # @param parameters [FileServiceProperties] The properties of file services in
+    # storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -178,17 +173,16 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Sets the properties of a storage account’s Blob service, including properties
-    # for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+    # Sets the properties of file services in storage accounts, including CORS
+    # (Cross-Origin Resource Sharing) rules.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
-    # @param parameters [BlobServiceProperties] The properties of a storage
-    # account’s Blob service, including properties for Storage Analytics and CORS
-    # (Cross-Origin Resource Sharing) rules.
+    # @param parameters [FileServiceProperties] The properties of file services in
+    # storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -206,7 +200,7 @@ module Azure::Storage::Mgmt::V2019_04_01
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
-      blob_services_name = 'default'
+      file_services_name = 'default'
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -218,17 +212,17 @@ module Azure::Storage::Mgmt::V2019_04_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Storage::Mgmt::V2019_04_01::Models::BlobServiceProperties.mapper()
+      request_mapper = Azure::Storage::Mgmt::V2019_04_01::Models::FileServiceProperties.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id,'BlobServicesName' => blob_services_name},
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id,'FileServicesName' => file_services_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -252,7 +246,7 @@ module Azure::Storage::Mgmt::V2019_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Storage::Mgmt::V2019_04_01::Models::BlobServiceProperties.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2019_04_01::Models::FileServiceProperties.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -266,8 +260,8 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Gets the properties of a storage account’s Blob service, including properties
-    # for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+    # Gets the properties of file services in storage accounts, including CORS
+    # (Cross-Origin Resource Sharing) rules.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
@@ -277,7 +271,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [BlobServiceProperties] operation results.
+    # @return [FileServiceProperties] operation results.
     #
     def get_service_properties(resource_group_name, account_name, custom_headers:nil)
       response = get_service_properties_async(resource_group_name, account_name, custom_headers:custom_headers).value!
@@ -285,8 +279,8 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Gets the properties of a storage account’s Blob service, including properties
-    # for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+    # Gets the properties of file services in storage accounts, including CORS
+    # (Cross-Origin Resource Sharing) rules.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
@@ -303,8 +297,8 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Gets the properties of a storage account’s Blob service, including properties
-    # for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+    # Gets the properties of file services in storage accounts, including CORS
+    # (Cross-Origin Resource Sharing) rules.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
@@ -328,7 +322,7 @@ module Azure::Storage::Mgmt::V2019_04_01
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
-      blob_services_name = 'default'
+      file_services_name = 'default'
 
 
       request_headers = {}
@@ -337,13 +331,13 @@ module Azure::Storage::Mgmt::V2019_04_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id,'BlobServicesName' => blob_services_name},
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id,'FileServicesName' => file_services_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -366,7 +360,7 @@ module Azure::Storage::Mgmt::V2019_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Storage::Mgmt::V2019_04_01::Models::BlobServiceProperties.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2019_04_01::Models::FileServiceProperties.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

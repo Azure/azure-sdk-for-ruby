@@ -6,20 +6,20 @@
 module Azure::Storage::Mgmt::V2019_04_01
   module Models
     #
-    # Response schema. Contains list of blobs returned, and if paging is
-    # requested or required, a URL to next page of containers.
+    # Response schema. Contains list of shares returned, and if paging is
+    # requested or required, a URL to next page of shares.
     #
-    class ListContainerItems
+    class FileShareItems
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<ListContainerItem>] List of blobs containers returned.
+      # @return [Array<FileShareItem>] List of file shares returned.
       attr_accessor :value
 
       # @return [String] Request URL that can be used to query next page of
-      # containers. Returned when total number of requested containers exceed
-      # maximum page size.
+      # shares. Returned when total number of requested shares exceed maximum
+      # page size.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -28,7 +28,7 @@ module Azure::Storage::Mgmt::V2019_04_01
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<ListContainerItem>] operation results.
+      # @return [Array<FileShareItem>] operation results.
       #
       def get_all_items
         items = @value
@@ -43,7 +43,7 @@ module Azure::Storage::Mgmt::V2019_04_01
       #
       # Gets the next page of results.
       #
-      # @return [ListContainerItems] with next page content.
+      # @return [FileShareItems] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -55,17 +55,17 @@ module Azure::Storage::Mgmt::V2019_04_01
       end
 
       #
-      # Mapper for ListContainerItems class as Ruby Hash.
+      # Mapper for FileShareItems class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ListContainerItems',
+          serialized_name: 'FileShareItems',
           type: {
             name: 'Composite',
-            class_name: 'ListContainerItems',
+            class_name: 'FileShareItems',
             model_properties: {
               value: {
                 client_side_validation: true,
@@ -77,10 +77,10 @@ module Azure::Storage::Mgmt::V2019_04_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'ListContainerItemElementType',
+                      serialized_name: 'FileShareItemElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ListContainerItem'
+                        class_name: 'FileShareItem'
                       }
                   }
                 }
