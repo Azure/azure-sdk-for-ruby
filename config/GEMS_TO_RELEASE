@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_subscriptions"
+        "azure_mgmt_subscriptions",
+        "azure_mgmt_reservations"
     ],
     "rollup": [
         "azure_sdk"
