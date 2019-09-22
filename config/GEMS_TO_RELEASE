@@ -3,6 +3,9 @@
         "azure_mgmt_subscriptions",
         "azure_mgmt_reservations"
     ],
+    "data": [
+        "azure_cognitiveservices_computervision"
+    ],
     "rollup": [
         "azure_sdk"
     ]
