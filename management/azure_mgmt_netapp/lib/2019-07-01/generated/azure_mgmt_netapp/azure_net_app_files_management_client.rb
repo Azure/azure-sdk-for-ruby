@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::NetApp::Mgmt::V2019_05_01
+module Azure::NetApp::Mgmt::V2019_07_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -74,7 +74,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
       @volumes = Volumes.new(self)
       @mount_targets = MountTargets.new(self)
       @snapshots = Snapshots.new(self)
-      @api_version = '2019-05-01'
+      @api_version = '2019-07-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -225,7 +225,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::NetApp::Mgmt::V2019_05_01::Models::ResourceNameAvailabilityRequest.mapper()
+      request_mapper = Azure::NetApp::Mgmt::V2019_07_01::Models::ResourceNameAvailabilityRequest.mapper()
       request_content = self.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -259,7 +259,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::NetApp::Mgmt::V2019_05_01::Models::ResourceNameAvailability.mapper()
+            result_mapper = Azure::NetApp::Mgmt::V2019_07_01::Models::ResourceNameAvailability.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -358,7 +358,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::NetApp::Mgmt::V2019_05_01::Models::ResourceNameAvailabilityRequest.mapper()
+      request_mapper = Azure::NetApp::Mgmt::V2019_07_01::Models::ResourceNameAvailabilityRequest.mapper()
       request_content = self.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -392,7 +392,7 @@ module Azure::NetApp::Mgmt::V2019_05_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::NetApp::Mgmt::V2019_05_01::Models::ResourceNameAvailability.mapper()
+            result_mapper = Azure::NetApp::Mgmt::V2019_07_01::Models::ResourceNameAvailability.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
