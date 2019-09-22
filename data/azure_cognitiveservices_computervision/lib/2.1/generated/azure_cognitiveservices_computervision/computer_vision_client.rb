@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::ComputerVision::V2_0
+module Azure::CognitiveServices::ComputerVision::V2_1
   #
   # A service client - single point of access to the REST API.
   #
@@ -43,7 +43,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = '{Endpoint}/vision/v2.0'
+      @base_url = '{Endpoint}/vision/v2.1'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
@@ -134,11 +134,12 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # ImageType - detects if image is clipart or a line drawing. Color - determines
     # the accent color, dominant color, and whether an image is black&white. Adult
     # - detects if the image is pornographic in nature (depicts nudity or a sex
-    # act).  Sexually suggestive content is also detected. Objects - detects
-    # various objects within an image, including the approximate location. The
-    # Objects argument is only available in English. Brands - detects various
-    # brands within an image, including the approximate location. The Brands
-    # argument is only available in English.
+    # act), or is gory (depicts extreme violence or blood). Sexually suggestive
+    # content (aka racy content) is also detected. Objects - detects various
+    # objects within an image, including the approximate location. The Objects
+    # argument is only available in English. Brands - detects various brands within
+    # an image, including the approximate location. The Brands argument is only
+    # available in English.
     # @param details [Array<Details>] A string indicating which domain-specific
     # details to return. Multiple values should be comma-separated. Valid visual
     # feature types include: Celebrities - identifies celebrities if detected in
@@ -148,13 +149,15 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ImageAnalysis] operation results.
     #
-    def analyze_image(url, visual_features:nil, details:nil, language:nil, custom_headers:nil)
-      response = analyze_image_async(url, visual_features:visual_features, details:details, language:language, custom_headers:custom_headers).value!
+    def analyze_image(url, visual_features:nil, details:nil, language:nil, description_exclude:nil, custom_headers:nil)
+      response = analyze_image_async(url, visual_features:visual_features, details:details, language:language, description_exclude:description_exclude, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -180,11 +183,12 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # ImageType - detects if image is clipart or a line drawing. Color - determines
     # the accent color, dominant color, and whether an image is black&white. Adult
     # - detects if the image is pornographic in nature (depicts nudity or a sex
-    # act).  Sexually suggestive content is also detected. Objects - detects
-    # various objects within an image, including the approximate location. The
-    # Objects argument is only available in English. Brands - detects various
-    # brands within an image, including the approximate location. The Brands
-    # argument is only available in English.
+    # act), or is gory (depicts extreme violence or blood). Sexually suggestive
+    # content (aka racy content) is also detected. Objects - detects various
+    # objects within an image, including the approximate location. The Objects
+    # argument is only available in English. Brands - detects various brands within
+    # an image, including the approximate location. The Brands argument is only
+    # available in English.
     # @param details [Array<Details>] A string indicating which domain-specific
     # details to return. Multiple values should be comma-separated. Valid visual
     # feature types include: Celebrities - identifies celebrities if detected in
@@ -194,13 +198,15 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def analyze_image_with_http_info(url, visual_features:nil, details:nil, language:nil, custom_headers:nil)
-      analyze_image_async(url, visual_features:visual_features, details:details, language:language, custom_headers:custom_headers).value!
+    def analyze_image_with_http_info(url, visual_features:nil, details:nil, language:nil, description_exclude:nil, custom_headers:nil)
+      analyze_image_async(url, visual_features:visual_features, details:details, language:language, description_exclude:description_exclude, custom_headers:custom_headers).value!
     end
 
     #
@@ -225,11 +231,12 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # ImageType - detects if image is clipart or a line drawing. Color - determines
     # the accent color, dominant color, and whether an image is black&white. Adult
     # - detects if the image is pornographic in nature (depicts nudity or a sex
-    # act).  Sexually suggestive content is also detected. Objects - detects
-    # various objects within an image, including the approximate location. The
-    # Objects argument is only available in English. Brands - detects various
-    # brands within an image, including the approximate location. The Brands
-    # argument is only available in English.
+    # act), or is gory (depicts extreme violence or blood). Sexually suggestive
+    # content (aka racy content) is also detected. Objects - detects various
+    # objects within an image, including the approximate location. The Objects
+    # argument is only available in English. Brands - detects various brands within
+    # an image, including the approximate location. The Brands argument is only
+    # available in English.
     # @param details [Array<Details>] A string indicating which domain-specific
     # details to return. Multiple values should be comma-separated. Valid visual
     # feature types include: Celebrities - identifies celebrities if detected in
@@ -239,12 +246,14 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def analyze_image_async(url, visual_features:nil, details:nil, language:nil, custom_headers:nil)
+    def analyze_image_async(url, visual_features:nil, details:nil, language:nil, description_exclude:nil, custom_headers:nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -261,7 +270,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -272,7 +281,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'visualFeatures' => visual_features.nil? ? nil : visual_features.join(','),'details' => details.nil? ? nil : details.join(','),'language' => language},
+          query_params: {'visualFeatures' => visual_features.nil? ? nil : visual_features.join(','),'details' => details.nil? ? nil : details.join(','),'language' => language,'descriptionExclude' => description_exclude.nil? ? nil : description_exclude.join(',')},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -295,7 +304,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageAnalysis.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -313,7 +322,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # with complete sentences. The description is based on a collection of content
     # tags, which are also returned by the operation. More than one description can
     # be generated for each image. Descriptions are ordered by their confidence
-    # score. All descriptions are in English.
+    # score. Descriptions may include results from celebrity and landmark domain
+    # models, if applicable.
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -328,13 +338,15 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ImageDescription] operation results.
     #
-    def describe_image(url, max_candidates:1, language:nil, custom_headers:nil)
-      response = describe_image_async(url, max_candidates:max_candidates, language:language, custom_headers:custom_headers).value!
+    def describe_image(url, max_candidates:1, language:nil, description_exclude:nil, custom_headers:nil)
+      response = describe_image_async(url, max_candidates:max_candidates, language:language, description_exclude:description_exclude, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -343,7 +355,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # with complete sentences. The description is based on a collection of content
     # tags, which are also returned by the operation. More than one description can
     # be generated for each image. Descriptions are ordered by their confidence
-    # score. All descriptions are in English.
+    # score. Descriptions may include results from celebrity and landmark domain
+    # models, if applicable.
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -358,13 +371,15 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def describe_image_with_http_info(url, max_candidates:1, language:nil, custom_headers:nil)
-      describe_image_async(url, max_candidates:max_candidates, language:language, custom_headers:custom_headers).value!
+    def describe_image_with_http_info(url, max_candidates:1, language:nil, description_exclude:nil, custom_headers:nil)
+      describe_image_async(url, max_candidates:max_candidates, language:language, description_exclude:description_exclude, custom_headers:custom_headers).value!
     end
 
     #
@@ -372,7 +387,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # with complete sentences. The description is based on a collection of content
     # tags, which are also returned by the operation. More than one description can
     # be generated for each image. Descriptions are ordered by their confidence
-    # score. All descriptions are in English.
+    # score. Descriptions may include results from celebrity and landmark domain
+    # models, if applicable.
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -387,12 +403,14 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def describe_image_async(url, max_candidates:1, language:nil, custom_headers:nil)
+    def describe_image_async(url, max_candidates:1, language:nil, description_exclude:nil, custom_headers:nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
@@ -409,7 +427,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -420,7 +438,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'maxCandidates' => max_candidates,'language' => language},
+          query_params: {'maxCandidates' => max_candidates,'language' => language,'descriptionExclude' => description_exclude.nil? ? nil : description_exclude.join(',')},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -443,7 +461,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageDescription.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -524,7 +542,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -557,7 +575,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::DetectResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::DetectResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -656,7 +674,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ListModelsResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ListModelsResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -768,7 +786,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -803,7 +821,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::DomainModelResults.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::DomainModelResults.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -915,7 +933,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -949,7 +967,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::OcrResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -968,8 +986,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag "cello" may be accompanied
-    # by the hint "musical instrument". All tags are in English.
+    # ambiguity or provide context, for example the tag "ascomycete" may be
+    # accompanied by the hint "fungus".
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -998,8 +1016,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag "cello" may be accompanied
-    # by the hint "musical instrument". All tags are in English.
+    # ambiguity or provide context, for example the tag "ascomycete" may be
+    # accompanied by the hint "fungus".
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -1027,8 +1045,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag "cello" may be accompanied
-    # by the hint "musical instrument". All tags are in English.
+    # ambiguity or provide context, for example the tag "ascomycete" may be
+    # accompanied by the hint "fungus".
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -1063,7 +1081,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1097,7 +1115,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::TagResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1217,7 +1235,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1345,7 +1363,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1378,7 +1396,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::AreaOfInterestResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::AreaOfInterestResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1459,7 +1477,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1581,7 +1599,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::TextOperationResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::TextOperationResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1661,7 +1679,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageUrl.mapper()
+      request_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageUrl.mapper()
       request_content = self.serialize(request_mapper,  image_url)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1782,7 +1800,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ReadOperationResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ReadOperationResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1817,11 +1835,12 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # ImageType - detects if image is clipart or a line drawing. Color - determines
     # the accent color, dominant color, and whether an image is black&white. Adult
     # - detects if the image is pornographic in nature (depicts nudity or a sex
-    # act).  Sexually suggestive content is also detected. Objects - detects
-    # various objects within an image, including the approximate location. The
-    # Objects argument is only available in English. Brands - detects various
-    # brands within an image, including the approximate location. The Brands
-    # argument is only available in English.
+    # act), or is gory (depicts extreme violence or blood). Sexually suggestive
+    # content (aka racy content) is also detected. Objects - detects various
+    # objects within an image, including the approximate location. The Objects
+    # argument is only available in English. Brands - detects various brands within
+    # an image, including the approximate location. The Brands argument is only
+    # available in English.
     # @param details [Array<Details>] A string indicating which domain-specific
     # details to return. Multiple values should be comma-separated. Valid visual
     # feature types include: Celebrities - identifies celebrities if detected in
@@ -1831,13 +1850,15 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ImageAnalysis] operation results.
     #
-    def analyze_image_in_stream(image, visual_features:nil, details:nil, language:nil, custom_headers:nil)
-      response = analyze_image_in_stream_async(image, visual_features:visual_features, details:details, language:language, custom_headers:custom_headers).value!
+    def analyze_image_in_stream(image, visual_features:nil, details:nil, language:nil, description_exclude:nil, custom_headers:nil)
+      response = analyze_image_in_stream_async(image, visual_features:visual_features, details:details, language:language, description_exclude:description_exclude, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1863,11 +1884,12 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # ImageType - detects if image is clipart or a line drawing. Color - determines
     # the accent color, dominant color, and whether an image is black&white. Adult
     # - detects if the image is pornographic in nature (depicts nudity or a sex
-    # act).  Sexually suggestive content is also detected. Objects - detects
-    # various objects within an image, including the approximate location. The
-    # Objects argument is only available in English. Brands - detects various
-    # brands within an image, including the approximate location. The Brands
-    # argument is only available in English.
+    # act), or is gory (depicts extreme violence or blood). Sexually suggestive
+    # content (aka racy content) is also detected. Objects - detects various
+    # objects within an image, including the approximate location. The Objects
+    # argument is only available in English. Brands - detects various brands within
+    # an image, including the approximate location. The Brands argument is only
+    # available in English.
     # @param details [Array<Details>] A string indicating which domain-specific
     # details to return. Multiple values should be comma-separated. Valid visual
     # feature types include: Celebrities - identifies celebrities if detected in
@@ -1877,13 +1899,15 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def analyze_image_in_stream_with_http_info(image, visual_features:nil, details:nil, language:nil, custom_headers:nil)
-      analyze_image_in_stream_async(image, visual_features:visual_features, details:details, language:language, custom_headers:custom_headers).value!
+    def analyze_image_in_stream_with_http_info(image, visual_features:nil, details:nil, language:nil, description_exclude:nil, custom_headers:nil)
+      analyze_image_in_stream_async(image, visual_features:visual_features, details:details, language:language, description_exclude:description_exclude, custom_headers:custom_headers).value!
     end
 
     #
@@ -1908,11 +1932,12 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # ImageType - detects if image is clipart or a line drawing. Color - determines
     # the accent color, dominant color, and whether an image is black&white. Adult
     # - detects if the image is pornographic in nature (depicts nudity or a sex
-    # act).  Sexually suggestive content is also detected. Objects - detects
-    # various objects within an image, including the approximate location. The
-    # Objects argument is only available in English. Brands - detects various
-    # brands within an image, including the approximate location. The Brands
-    # argument is only available in English.
+    # act), or is gory (depicts extreme violence or blood). Sexually suggestive
+    # content (aka racy content) is also detected. Objects - detects various
+    # objects within an image, including the approximate location. The Objects
+    # argument is only available in English. Brands - detects various brands within
+    # an image, including the approximate location. The Brands argument is only
+    # available in English.
     # @param details [Array<Details>] A string indicating which domain-specific
     # details to return. Multiple values should be comma-separated. Valid visual
     # feature types include: Celebrities - identifies celebrities if detected in
@@ -1922,12 +1947,14 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def analyze_image_in_stream_async(image, visual_features:nil, details:nil, language:nil, custom_headers:nil)
+    def analyze_image_in_stream_async(image, visual_features:nil, details:nil, language:nil, description_exclude:nil, custom_headers:nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
@@ -1957,7 +1984,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'visualFeatures' => visual_features.nil? ? nil : visual_features.join(','),'details' => details.nil? ? nil : details.join(','),'language' => language},
+          query_params: {'visualFeatures' => visual_features.nil? ? nil : visual_features.join(','),'details' => details.nil? ? nil : details.join(','),'language' => language,'descriptionExclude' => description_exclude.nil? ? nil : description_exclude.join(',')},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1980,7 +2007,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageAnalysis.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageAnalysis.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2102,7 +2129,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::AreaOfInterestResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::AreaOfInterestResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2120,7 +2147,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # with complete sentences. The description is based on a collection of content
     # tags, which are also returned by the operation. More than one description can
     # be generated for each image. Descriptions are ordered by their confidence
-    # score. All descriptions are in English.
+    # score. Descriptions may include results from celebrity and landmark domain
+    # models, if applicable.
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -2135,13 +2163,15 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ImageDescription] operation results.
     #
-    def describe_image_in_stream(image, max_candidates:1, language:nil, custom_headers:nil)
-      response = describe_image_in_stream_async(image, max_candidates:max_candidates, language:language, custom_headers:custom_headers).value!
+    def describe_image_in_stream(image, max_candidates:1, language:nil, description_exclude:nil, custom_headers:nil)
+      response = describe_image_in_stream_async(image, max_candidates:max_candidates, language:language, description_exclude:description_exclude, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2150,7 +2180,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # with complete sentences. The description is based on a collection of content
     # tags, which are also returned by the operation. More than one description can
     # be generated for each image. Descriptions are ordered by their confidence
-    # score. All descriptions are in English.
+    # score. Descriptions may include results from celebrity and landmark domain
+    # models, if applicable.
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -2165,13 +2196,15 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def describe_image_in_stream_with_http_info(image, max_candidates:1, language:nil, custom_headers:nil)
-      describe_image_in_stream_async(image, max_candidates:max_candidates, language:language, custom_headers:custom_headers).value!
+    def describe_image_in_stream_with_http_info(image, max_candidates:1, language:nil, description_exclude:nil, custom_headers:nil)
+      describe_image_in_stream_async(image, max_candidates:max_candidates, language:language, description_exclude:description_exclude, custom_headers:custom_headers).value!
     end
 
     #
@@ -2179,7 +2212,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # with complete sentences. The description is based on a collection of content
     # tags, which are also returned by the operation. More than one description can
     # be generated for each image. Descriptions are ordered by their confidence
-    # score. All descriptions are in English.
+    # score. Descriptions may include results from celebrity and landmark domain
+    # models, if applicable.
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -2194,12 +2228,14 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # languages:en - English, Default. es - Spanish, ja - Japanese, pt -
     # Portuguese, zh - Simplified Chinese. Possible values include: 'en', 'es',
     # 'ja', 'pt', 'zh'
+    # @param description_exclude [Array<DescriptionExclude>] Turn off specified
+    # domain models when generating the description.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def describe_image_in_stream_async(image, max_candidates:1, language:nil, custom_headers:nil)
+    def describe_image_in_stream_async(image, max_candidates:1, language:nil, description_exclude:nil, custom_headers:nil)
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
       fail ArgumentError, 'image is nil' if image.nil?
 
@@ -2229,7 +2265,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'maxCandidates' => max_candidates,'language' => language},
+          query_params: {'maxCandidates' => max_candidates,'language' => language,'descriptionExclude' => description_exclude.nil? ? nil : description_exclude.join(',')},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -2252,7 +2288,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::ImageDescription.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::ImageDescription.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2368,7 +2404,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::DetectResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::DetectResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2680,7 +2716,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::DomainModelResults.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::DomainModelResults.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2828,7 +2864,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::OcrResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::OcrResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2847,8 +2883,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag "cello" may be accompanied
-    # by the hint "musical instrument". All tags are in English.
+    # ambiguity or provide context, for example the tag "ascomycete" may be
+    # accompanied by the hint "fungus".
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -2877,8 +2913,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag "cello" may be accompanied
-    # by the hint "musical instrument". All tags are in English.
+    # ambiguity or provide context, for example the tag "ascomycete" may be
+    # accompanied by the hint "fungus".
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -2906,8 +2942,8 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     # on objects, living beings, scenery or actions found in images. Unlike
     # categories, tags are not organized according to a hierarchical classification
     # system, but correspond to image content. Tags may contain hints to avoid
-    # ambiguity or provide context, for example the tag "cello" may be accompanied
-    # by the hint "musical instrument". All tags are in English.
+    # ambiguity or provide context, for example the tag "ascomycete" may be
+    # accompanied by the hint "fungus".
     # Two input methods are supported -- (1) Uploading an image or (2) specifying
     # an image URL.
     # A successful response will be returned in JSON. If the request failed, the
@@ -2978,7 +3014,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::ComputerVision::V2_0::Models::TagResult.mapper()
+            result_mapper = Azure::CognitiveServices::ComputerVision::V2_1::Models::TagResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
