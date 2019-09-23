@@ -31,6 +31,10 @@ module Azure::Storage::Mgmt::V2019_04_01
       # @return [Boolean] Automatic Snapshot is enabled if set to true.
       attr_accessor :automatic_snapshot_policy_enabled
 
+      # @return [ChangeFeed] The blob service properties for change feed
+      # events.
+      attr_accessor :change_feed
+
 
       #
       # Mapper for BlobServiceProperties class as Ruby Hash.
@@ -104,6 +108,15 @@ module Azure::Storage::Mgmt::V2019_04_01
                 serialized_name: 'properties.automaticSnapshotPolicyEnabled',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              change_feed: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.changeFeed',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ChangeFeed'
                 }
               }
             }

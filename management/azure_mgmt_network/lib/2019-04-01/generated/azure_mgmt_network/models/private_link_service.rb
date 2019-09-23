@@ -24,8 +24,9 @@ module Azure::Network::Mgmt::V2019_04_01
       # network interfaces created for this private link service.
       attr_accessor :network_interfaces
 
-      # @return [String] The provisioning state of the private link service.
-      # Possible values are: 'Updating', 'Succeeded', and 'Failed'.
+      # @return [ProvisioningState] The provisioning state of the private link
+      # service. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+      # 'Failed'
       attr_accessor :provisioning_state
 
       # @return [Array<PrivateEndpointConnection>] An array of list about
@@ -46,8 +47,8 @@ module Azure::Network::Mgmt::V2019_04_01
       # @return [String] The alias of the private link service.
       attr_accessor :alias_property
 
-      # @return [String] Gets a unique read-only string that changes whenever
-      # the resource is updated.
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated.
       attr_accessor :etag
 
 

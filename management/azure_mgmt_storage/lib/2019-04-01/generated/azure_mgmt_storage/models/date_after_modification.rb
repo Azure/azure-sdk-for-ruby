@@ -12,7 +12,7 @@ module Azure::Storage::Mgmt::V2019_04_01
 
       include MsRestAzure
 
-      # @return [Integer] Integer value indicating the age in days after last
+      # @return [Float] Value indicating the age in days after last
       # modification
       attr_accessor :days_after_modification_greater_than
 
@@ -35,10 +35,11 @@ module Azure::Storage::Mgmt::V2019_04_01
                 required: true,
                 serialized_name: 'daysAfterModificationGreaterThan',
                 constraints: {
-                  InclusiveMinimum: 0
+                  InclusiveMinimum: 0,
+                  MultipleOf: 1
                 },
                 type: {
-                  name: 'Number'
+                  name: 'Double'
                 }
               }
             }

@@ -12,8 +12,7 @@ module Azure::Storage::Mgmt::V2019_04_01
 
       include MsRestAzure
 
-      # @return [Integer] Integer value indicating the age in days after
-      # creation
+      # @return [Float] Value indicating the age in days after creation
       attr_accessor :days_after_creation_greater_than
 
 
@@ -35,10 +34,11 @@ module Azure::Storage::Mgmt::V2019_04_01
                 required: true,
                 serialized_name: 'daysAfterCreationGreaterThan',
                 constraints: {
-                  InclusiveMinimum: 0
+                  InclusiveMinimum: 0,
+                  MultipleOf: 1
                 },
                 type: {
-                  name: 'Number'
+                  name: 'Double'
                 }
               }
             }

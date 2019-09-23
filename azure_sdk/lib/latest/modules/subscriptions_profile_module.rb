@@ -7,25 +7,16 @@ require 'azure_mgmt_subscriptions'
 module Azure::Profiles::Latest
   module Subscriptions
     module Mgmt
-      Operations = Azure::Subscriptions::Mgmt::V2016_06_01::Operations
-      Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
       SubscriptionDefinitionsOperationMetadata = Azure::Subscriptions::Mgmt::V2017_11_01_preview::SubscriptionDefinitionsOperationMetadata
       SubscriptionDefinitions = Azure::Subscriptions::Mgmt::V2017_11_01_preview::SubscriptionDefinitions
       SubscriptionOperations = Azure::Subscriptions::Mgmt::V2018_03_01_preview::SubscriptionOperations
       SubscriptionOperationOperations = Azure::Subscriptions::Mgmt::V2018_11_01_preview::SubscriptionOperationOperations
       SubscriptionFactory = Azure::Subscriptions::Mgmt::V2018_11_01_preview::SubscriptionFactory
-      Subscriptions = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Subscriptions
+      Operations = Azure::Subscriptions::Mgmt::V2019_06_01::Operations
+      Subscriptions = Azure::Subscriptions::Mgmt::V2019_06_01::Subscriptions
+      Tenants = Azure::Subscriptions::Mgmt::V2019_06_01::Tenants
 
       module Models
-        TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
-        Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
-        TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
-        SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
-        SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
-        Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
-        LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
-        SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
-        SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
         SubscriptionDefinition = Azure::Subscriptions::Mgmt::V2017_11_01_preview::Models::SubscriptionDefinition
         SubscriptionDefinitionList = Azure::Subscriptions::Mgmt::V2017_11_01_preview::Models::SubscriptionDefinitionList
         SubscriptionCreationParameters = Azure::Subscriptions::Mgmt::V2018_03_01_preview::Models::SubscriptionCreationParameters
@@ -36,16 +27,26 @@ module Azure::Profiles::Latest
         ModernSubscriptionCreationParameters = Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::ModernSubscriptionCreationParameters
         SubscriptionCreationResult = Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::SubscriptionCreationResult
         SubscriptionName = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::SubscriptionName
-        OperationDisplay = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::OperationDisplay
         CanceledSubscriptionId = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::CanceledSubscriptionId
-        Operation = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::Operation
         ErrorResponse = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::ErrorResponse
-        OperationListResult = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::OperationListResult
         RenamedSubscriptionId = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::RenamedSubscriptionId
+        SubscriptionListResult = Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionListResult
+        TenantIdDescription = Azure::Subscriptions::Mgmt::V2019_06_01::Models::TenantIdDescription
+        LocationListResult = Azure::Subscriptions::Mgmt::V2019_06_01::Models::LocationListResult
+        TenantListResult = Azure::Subscriptions::Mgmt::V2019_06_01::Models::TenantListResult
+        ManagedByTenant = Azure::Subscriptions::Mgmt::V2019_06_01::Models::ManagedByTenant
+        OperationDisplay = Azure::Subscriptions::Mgmt::V2019_06_01::Models::OperationDisplay
+        Location = Azure::Subscriptions::Mgmt::V2019_06_01::Models::Location
+        Operation = Azure::Subscriptions::Mgmt::V2019_06_01::Models::Operation
+        Subscription = Azure::Subscriptions::Mgmt::V2019_06_01::Models::Subscription
+        OperationListResult = Azure::Subscriptions::Mgmt::V2019_06_01::Models::OperationListResult
+        SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionPolicies
+        SubscriptionState = Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionState
+        SpendingLimit = Azure::Subscriptions::Mgmt::V2019_06_01::Models::SpendingLimit
       end
 
       class SubscriptionsManagementClass
-        attr_reader :operations, :tenants, :subscription_definitions_operation_metadata, :subscription_definitions, :subscription_operations, :subscription_operation_operations, :subscription_factory, :subscriptions, :configurable, :base_url, :options, :model_classes
+        attr_reader :subscription_definitions_operation_metadata, :subscription_definitions, :subscription_operations, :subscription_operation_operations, :subscription_factory, :operations, :subscriptions, :tenants, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -55,8 +56,6 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @operations = @client_0.operations
-          @tenants = @client_0.tenants
 
           @client_1 = Azure::Subscriptions::Mgmt::V2017_11_01_preview::SubscriptionDefinitionsClient.new(configurable.credentials, base_url, options)
           if(@client_1.respond_to?(:subscription_id))
@@ -86,7 +85,15 @@ module Azure::Profiles::Latest
             @client_4.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_4)
-          @subscriptions = @client_4.subscriptions
+
+          @client_5 = Azure::Subscriptions::Mgmt::V2019_06_01::SubscriptionClient.new(configurable.credentials, base_url, options)
+          if(@client_5.respond_to?(:subscription_id))
+            @client_5.subscription_id = configurable.subscription_id
+          end
+          add_telemetry(@client_5)
+          @operations = @client_5.operations
+          @subscriptions = @client_5.subscriptions
+          @tenants = @client_5.tenants
 
           @model_classes = ModelClasses.new
         end
@@ -97,7 +104,9 @@ module Azure::Profiles::Latest
         end
 
         def method_missing(method, *args)
-          if @client_4.respond_to?method
+          if @client_5.respond_to?method
+            @client_5.send(method, *args)
+          elsif @client_4.respond_to?method
             @client_4.send(method, *args)
           elsif @client_3.respond_to?method
             @client_3.send(method, *args)
@@ -113,33 +122,6 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def tenant_id_description
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
-          end
-          def location
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
-          end
-          def tenant_list_result
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
-          end
-          def subscription_policies
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
-          end
-          def subscription_list_result
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
-          end
-          def subscription
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
-          end
-          def location_list_result
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
-          end
-          def subscription_state
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
-          end
-          def spending_limit
-            Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
-          end
           def subscription_definition
             Azure::Subscriptions::Mgmt::V2017_11_01_preview::Models::SubscriptionDefinition
           end
@@ -170,23 +152,53 @@ module Azure::Profiles::Latest
           def subscription_name
             Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::SubscriptionName
           end
-          def operation_display
-            Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::OperationDisplay
-          end
           def canceled_subscription_id
             Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::CanceledSubscriptionId
-          end
-          def operation
-            Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::Operation
           end
           def error_response
             Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::ErrorResponse
           end
-          def operation_list_result
-            Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::OperationListResult
-          end
           def renamed_subscription_id
             Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::RenamedSubscriptionId
+          end
+          def subscription_list_result
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionListResult
+          end
+          def tenant_id_description
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::TenantIdDescription
+          end
+          def location_list_result
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::LocationListResult
+          end
+          def tenant_list_result
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::TenantListResult
+          end
+          def managed_by_tenant
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::ManagedByTenant
+          end
+          def operation_display
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::OperationDisplay
+          end
+          def location
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::Location
+          end
+          def operation
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::Operation
+          end
+          def subscription
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::Subscription
+          end
+          def operation_list_result
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::OperationListResult
+          end
+          def subscription_policies
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionPolicies
+          end
+          def subscription_state
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionState
+          end
+          def spending_limit
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::SpendingLimit
           end
         end
       end

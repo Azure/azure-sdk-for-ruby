@@ -44,9 +44,9 @@ module Azure::Storage::Mgmt::V2019_04_01
       # 'Hot', 'Cool'
       attr_accessor :access_tier
 
-      # @return [Boolean] Enables Azure Files AAD Integration for SMB if sets
-      # to true.
-      attr_accessor :enable_azure_files_aad_integration
+      # @return [AzureFilesIdentityBasedAuthentication] Provides the identity
+      # based authentication settings for Azure Files.
+      attr_accessor :azure_files_identity_based_authentication
 
       # @return [Boolean] Allows https traffic only to storage service if sets
       # to true.
@@ -136,12 +136,13 @@ module Azure::Storage::Mgmt::V2019_04_01
                   module: 'AccessTier'
                 }
               },
-              enable_azure_files_aad_integration: {
+              azure_files_identity_based_authentication: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.azureFilesAadIntegration',
+                serialized_name: 'properties.azureFilesIdentityBasedAuthentication',
                 type: {
-                  name: 'Boolean'
+                  name: 'Composite',
+                  class_name: 'AzureFilesIdentityBasedAuthentication'
                 }
               },
               enable_https_traffic_only: {

@@ -162,7 +162,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param private_endpoint_name [String] The name of the private endpoint.
     # @param parameters [PrivateEndpoint] Parameters supplied to the create or
-    # update private endpoint operation
+    # update private endpoint operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -177,7 +177,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param private_endpoint_name [String] The name of the private endpoint.
     # @param parameters [PrivateEndpoint] Parameters supplied to the create or
-    # update private endpoint operation
+    # update private endpoint operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -467,7 +467,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param private_endpoint_name [String] The name of the private endpoint.
     # @param parameters [PrivateEndpoint] Parameters supplied to the create or
-    # update private endpoint operation
+    # update private endpoint operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -484,7 +484,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param private_endpoint_name [String] The name of the private endpoint.
     # @param parameters [PrivateEndpoint] Parameters supplied to the create or
-    # update private endpoint operation
+    # update private endpoint operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -500,7 +500,7 @@ module Azure::Network::Mgmt::V2019_04_01
     # @param resource_group_name [String] The name of the resource group.
     # @param private_endpoint_name [String] The name of the private endpoint.
     # @param parameters [PrivateEndpoint] Parameters supplied to the create or
-    # update private endpoint operation
+    # update private endpoint operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

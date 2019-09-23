@@ -540,13 +540,14 @@
                 },
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-06-01": ["*"]
+                        "2019-07-01": ["*"]
                     }
                 },
                 "Microsoft.Network": {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2019-06-01": ["*"]
+                        "2019-06-01": ["*"],
+                        "2019-07-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -733,7 +734,8 @@
                         "2017-11-01-preview": ["*"],
                         "2018-03-01-preview": ["*"],
                         "2018-11-01-preview": ["*"],
-                        "2019-03-01-preview": ["*"]
+                        "2019-03-01-preview": ["*"],
+                        "2019-06-01": ["*"]
                     }
                 },
                 "Microsoft.TrafficManager": {
@@ -763,7 +765,7 @@
                 },
                 "Microsoft.CognitiveServices.ComputerVision": {
                     "data": {
-                        "2.0": ["*"]
+                        "2.1": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.ContentModerator": {
@@ -1931,7 +1933,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-06-01": ["*"]
+                        "2019-07-01": ["*"]
                     }
                 }
             },
@@ -1983,7 +1985,8 @@
                 "Microsoft.Network" : {
                     "management": {
                         "2017-03-30": ["*"],
-                        "2019-06-01": ["*"]
+                        "2019-06-01": ["*"],
+                        "2019-07-01": ["*"]
                     }
                 }
             },
@@ -2608,7 +2611,8 @@
                         "2017-11-01-preview": ["*"],
                         "2018-03-01-preview": ["*"],
                         "2018-11-01-preview": ["*"],
-                        "2019-03-01-preview": ["*"]
+                        "2019-03-01-preview": ["*"],
+                        "2019-06-01": ["*"]
                     }
                 }
             },
@@ -2737,7 +2741,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.ComputerVision" : {
                         "data": {
-                            "2.0": ["*"]
+                            "2.1": ["*"]
                         }
                     }
                 },

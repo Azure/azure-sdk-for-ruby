@@ -32,11 +32,11 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [ReservationOrder] reservation_order
-    attr_reader :reservation_order
-
     # @return [Reservation] reservation
     attr_reader :reservation
+
+    # @return [ReservationOrder] reservation_order
+    attr_reader :reservation_order
 
     # @return [Operation] operation
     attr_reader :operation
@@ -54,8 +54,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @reservation_order = ReservationOrder.new(self)
       @reservation = Reservation.new(self)
+      @reservation_order = ReservationOrder.new(self)
       @operation = Operation.new(self)
       @api_version = '2019-04-01'
       @accept_language = 'en-US'
@@ -208,6 +208,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -244,7 +246,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
     #
     # Get list of applicable `Reservation`s.
     #
-    # Get applicable `Reservation`s that are applied to this subscription.
+    # Get applicable `Reservation`s that are applied to this subscription or a
+    # resource group under this subscription.
     #
     # @param subscription_id [String] Id of the subscription
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -260,7 +263,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
     #
     # Get list of applicable `Reservation`s.
     #
-    # Get applicable `Reservation`s that are applied to this subscription.
+    # Get applicable `Reservation`s that are applied to this subscription or a
+    # resource group under this subscription.
     #
     # @param subscription_id [String] Id of the subscription
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -275,7 +279,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
     #
     # Get list of applicable `Reservation`s.
     #
-    # Get applicable `Reservation`s that are applied to this subscription.
+    # Get applicable `Reservation`s that are applied to this subscription or a
+    # resource group under this subscription.
     #
     # @param subscription_id [String] Id of the subscription
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -317,6 +322,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -341,7 +348,7 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_reservations'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2018_07_01
   module Models
     #
-    # Outbound pool of the load balancer.
+    # Outbound rule of the load balancer.
     #
     class OutboundRule < SubResource
 

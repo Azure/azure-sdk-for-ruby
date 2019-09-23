@@ -25,6 +25,12 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       # @return [String] Name of the Reservation
       attr_accessor :name
 
+      # @return [Boolean]
+      attr_accessor :renew
+
+      # @return [PatchPropertiesRenewProperties]
+      attr_accessor :renew_properties
+
 
       #
       # Mapper for Patch class as Ruby Hash.
@@ -77,6 +83,23 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
                 serialized_name: 'properties.name',
                 type: {
                   name: 'String'
+                }
+              },
+              renew: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.renew',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              renew_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.renewProperties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'PatchPropertiesRenewProperties'
                 }
               }
             }

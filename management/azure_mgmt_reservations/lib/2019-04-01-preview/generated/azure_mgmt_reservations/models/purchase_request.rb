@@ -20,7 +20,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       attr_accessor :location
 
       # @return [ReservedResourceType] Possible values include:
-      # 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb'
+      # 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat',
+      # 'SqlDataWarehouse', 'VMwareCloudSimple', 'RedHatOsa'
       attr_accessor :reserved_resource_type
 
       # @return [String]
@@ -28,6 +29,10 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
 
       # @return [ReservationTerm] Possible values include: 'P1Y', 'P3Y'
       attr_accessor :term
+
+      # @return [ReservationBillingPlan] Possible values include: 'Upfront',
+      # 'Monthly'
+      attr_accessor :billing_plan
 
       # @return [Integer]
       attr_accessor :quantity
@@ -40,6 +45,9 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
 
       # @return [Array<String>]
       attr_accessor :applied_scopes
+
+      # @return [Boolean]
+      attr_accessor :renew
 
       # @return [PurchaseRequestPropertiesReservedResourceProperties]
       # Properties specific to each reserved resource type. Not required if not
@@ -101,6 +109,14 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
                   name: 'String'
                 }
               },
+              billing_plan: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.billingPlan',
+                type: {
+                  name: 'String'
+                }
+              },
               quantity: {
                 client_side_validation: true,
                 required: false,
@@ -139,6 +155,14 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
                         name: 'String'
                       }
                   }
+                }
+              },
+              renew: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.renew',
+                type: {
+                  name: 'Boolean'
                 }
               },
               reserved_resource_properties: {

@@ -6,15 +6,53 @@
 module Azure::Storage::Mgmt::V2019_04_01
   module Models
     #
-    # The list of blob containers.
+    # Response schema. Contains list of blobs returned, and if paging is
+    # requested or required, a URL to next page of containers.
     #
     class ListContainerItems
 
       include MsRestAzure
 
-      # @return [Array<ListContainerItem>] The list of blob containers.
+      include MsRest::JSONable
+      # @return [Array<ListContainerItem>] List of blobs containers returned.
       attr_accessor :value
 
+      # @return [String] Request URL that can be used to query next page of
+      # containers. Returned when total number of requested containers exceed
+      # maximum page size.
+      attr_accessor :next_link
+
+      # return [Proc] with next page method call.
+      attr_accessor :next_method
+
+      #
+      # Gets the rest of the items for the request, enabling auto-pagination.
+      #
+      # @return [Array<ListContainerItem>] operation results.
+      #
+      def get_all_items
+        items = @value
+        page = self
+        while page.next_link != nil && !page.next_link.strip.empty? do
+          page = page.get_next_page
+          items.concat(page.value)
+        end
+        items
+      end
+
+      #
+      # Gets the next page of results.
+      #
+      # @return [ListContainerItems] with next page content.
+      #
+      def get_next_page
+        response = @next_method.call(@next_link).value! unless @next_method.nil?
+        unless response.nil?
+          @next_link = response.body.next_link
+          @value = response.body.value
+          self
+        end
+      end
 
       #
       # Mapper for ListContainerItems class as Ruby Hash.
@@ -32,6 +70,7 @@ module Azure::Storage::Mgmt::V2019_04_01
               value: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
@@ -44,6 +83,15 @@ module Azure::Storage::Mgmt::V2019_04_01
                         class_name: 'ListContainerItem'
                       }
                   }
+                }
+              },
+              next_link: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

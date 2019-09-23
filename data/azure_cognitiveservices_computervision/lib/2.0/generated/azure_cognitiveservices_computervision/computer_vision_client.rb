@@ -3210,7 +3210,7 @@ module Azure::CognitiveServices::ComputerVision::V2_0
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_computervision'
-        sdk_information = "#{sdk_information}/0.20.0"
+        sdk_information = "#{sdk_information}/0.20.1"
         add_user_agent_information(sdk_information)
     end
   end

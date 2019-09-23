@@ -19,6 +19,10 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       # @return [String] The name of SKU
       attr_accessor :name
 
+      # @return [Array<CatalogBillingPlansItem>] The billing plan options
+      # available for this SKU.
+      attr_accessor :billing_plans
+
       # @return [Array<ReservationTerm>] Available reservation terms for this
       # resource
       attr_accessor :terms
@@ -62,6 +66,23 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
                 serialized_name: 'name',
                 type: {
                   name: 'String'
+                }
+              },
+              billing_plans: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'billingPlans',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'CatalogBillingPlansItemElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'CatalogBillingPlansItem'
+                      }
+                  }
                 }
               },
               terms: {

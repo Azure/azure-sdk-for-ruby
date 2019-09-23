@@ -13,6 +13,10 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       SqlDatabases = "SqlDatabases"
       SuseLinux = "SuseLinux"
       CosmosDb = "CosmosDb"
+      RedHat = "RedHat"
+      SqlDataWarehouse = "SqlDataWarehouse"
+      VMwareCloudSimple = "VMwareCloudSimple"
+      RedHatOsa = "RedHatOsa"
     end
   end
 end
