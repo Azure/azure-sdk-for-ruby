@@ -4,7 +4,8 @@
         "azure_mgmt_peering",
         "azure_mgmt_storage",
         "azure_mgmt_datashare",
-        "azure_mgmt_resources"
+        "azure_mgmt_resources",
+        "azure_mgmt_vmware_cloudsimple"
     ],
     "rollup": [
         "azure_sdk"

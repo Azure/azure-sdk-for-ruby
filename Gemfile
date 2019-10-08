@@ -110,6 +110,7 @@ gem 'azure_mgmt_stream_analytics',          path: 'management/azure_mgmt_stream_
 gem 'azure_mgmt_subscriptions',             path: 'management/azure_mgmt_subscriptions'
 gem 'azure_mgmt_traffic_manager',           path: 'management/azure_mgmt_traffic_manager'
 gem 'azure_mgmt_web',                       path: 'management/azure_mgmt_web'
+gem 'azure_mgmt_vmware_cloudsimple',        path: 'management/azure_mgmt_vmware_cloudsimple'
 gem 'azure_cognitiveservices_anomalydetector',  path: 'data/azure_cognitiveservices_anomalydetector'
 gem 'azure_graph_rbac',                     path: 'data/azure_graph_rbac'
 gem 'azure_cognitiveservices_autosuggest',  path: 'data/azure_cognitiveservices_autosuggest'

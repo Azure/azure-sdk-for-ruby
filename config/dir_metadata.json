@@ -714,6 +714,13 @@
       "module_require": "azure_mgmt_traffic_manager"
     }
   },
+  "Microsoft.VMwareCloudSimple": {
+    "management": {
+      "path": "management/azure_mgmt_vmware_cloudsimple",
+      "namespace": "Azure::VMwareCloudSimple::Mgmt",
+      "module_require": "azure_mgmt_vmware_cloudsimple"
+    }
+  },
   "Microsoft.Web": {
     "management": {
       "path": "management/azure_mgmt_web",

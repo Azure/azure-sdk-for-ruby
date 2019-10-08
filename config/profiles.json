@@ -753,6 +753,11 @@
                         "2018-04-01": ["*"]
                     }
                 },
+                "Microsoft.VMwareCloudSimple": {
+                    "management": {
+                        "2019-04-01": ["*"]
+                    }
+                },
                 "Microsoft.Web": {
                     "management": {
                         "2018-02-01": ["*"]
@@ -2712,6 +2717,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_web/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_vmware_cloudsimple": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.VMwareCloudSimple" : {
+                    "management": {
+                        "2019-04-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_vmware_cloudsimple/lib/profiles",
             "individual_gem_profile": true
         }
         ]
