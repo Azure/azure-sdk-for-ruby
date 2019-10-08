@@ -1,13 +1,6 @@
 {
     "management": [
-        "azure_mgmt_subscriptions",
-        "azure_mgmt_reservations",
-        "azure_mgmt_storage",
-        "azure_mgmt_netapp",
         "azure_mgmt_network"
-    ],
-    "data": [
-        "azure_cognitiveservices_computervision"
     ],
     "rollup": [
         "azure_sdk"
