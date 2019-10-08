@@ -14,14 +14,18 @@ module Azure::Resources::Profiles::V2017_03_09
     DeploymentOperations = Azure::Resources::Mgmt::V2016_02_01::DeploymentOperations
 
     module Models
+      ProviderListResult = Azure::Resources::Mgmt::V2016_02_01::Models::ProviderListResult
+      Plan = Azure::Resources::Mgmt::V2016_02_01::Models::Plan
+      GenericResourceFilter = Azure::Resources::Mgmt::V2016_02_01::Models::GenericResourceFilter
       Sku = Azure::Resources::Mgmt::V2016_02_01::Models::Sku
-      DeploymentExtendedFilter = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExtendedFilter
-      Identity = Azure::Resources::Mgmt::V2016_02_01::Models::Identity
-      ResourceGroupFilter = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroupFilter
       TemplateLink = Azure::Resources::Mgmt::V2016_02_01::Models::TemplateLink
+      Identity = Azure::Resources::Mgmt::V2016_02_01::Models::Identity
       DebugSetting = Azure::Resources::Mgmt::V2016_02_01::Models::DebugSetting
+      DeploymentProperties = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentProperties
+      TemplateHashResult = Azure::Resources::Mgmt::V2016_02_01::Models::TemplateHashResult
+      DeploymentExportResult = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExportResult
       ResourceListResult = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceListResult
-      Deployment = Azure::Resources::Mgmt::V2016_02_01::Models::Deployment
+      ErrorResponse = Azure::Resources::Mgmt::V2016_02_01::Models::ErrorResponse
       ResourceGroupProperties = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroupProperties
       ResourceManagementErrorWithDetails = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceManagementErrorWithDetails
       ResourceGroup = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroup
@@ -35,23 +39,22 @@ module Azure::Resources::Profiles::V2017_03_09
       TagCount = Azure::Resources::Mgmt::V2016_02_01::Models::TagCount
       DeploymentListResult = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentListResult
       TagValue = Azure::Resources::Mgmt::V2016_02_01::Models::TagValue
-      Plan = Azure::Resources::Mgmt::V2016_02_01::Models::Plan
+      ResourceGroupFilter = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroupFilter
       TagDetails = Azure::Resources::Mgmt::V2016_02_01::Models::TagDetails
-      ParametersLink = Azure::Resources::Mgmt::V2016_02_01::Models::ParametersLink
+      Deployment = Azure::Resources::Mgmt::V2016_02_01::Models::Deployment
       TagsListResult = Azure::Resources::Mgmt::V2016_02_01::Models::TagsListResult
-      DeploymentExportResult = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExportResult
       TargetResource = Azure::Resources::Mgmt::V2016_02_01::Models::TargetResource
       ProviderResourceType = Azure::Resources::Mgmt::V2016_02_01::Models::ProviderResourceType
       HttpMessage = Azure::Resources::Mgmt::V2016_02_01::Models::HttpMessage
       DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentPropertiesExtended
       DeploymentOperationProperties = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentOperationProperties
-      ProviderListResult = Azure::Resources::Mgmt::V2016_02_01::Models::ProviderListResult
+      DeploymentExtendedFilter = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExtendedFilter
       DeploymentOperation = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentOperation
-      DeploymentProperties = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentProperties
+      ErrorAdditionalInfo = Azure::Resources::Mgmt::V2016_02_01::Models::ErrorAdditionalInfo
       DeploymentOperationsListResult = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentOperationsListResult
       BasicDependency = Azure::Resources::Mgmt::V2016_02_01::Models::BasicDependency
       ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2016_02_01::Models::ResourceProviderOperationDisplayProperties
-      GenericResourceFilter = Azure::Resources::Mgmt::V2016_02_01::Models::GenericResourceFilter
+      ParametersLink = Azure::Resources::Mgmt::V2016_02_01::Models::ParametersLink
       Resource = Azure::Resources::Mgmt::V2016_02_01::Models::Resource
       DeploymentExtended = Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExtended
       SubResource = Azure::Resources::Mgmt::V2016_02_01::Models::SubResource
@@ -112,29 +115,41 @@ module Azure::Resources::Profiles::V2017_03_09
     end
 
     class ModelClasses
+      def provider_list_result
+        Azure::Resources::Mgmt::V2016_02_01::Models::ProviderListResult
+      end
+      def plan
+        Azure::Resources::Mgmt::V2016_02_01::Models::Plan
+      end
+      def generic_resource_filter
+        Azure::Resources::Mgmt::V2016_02_01::Models::GenericResourceFilter
+      end
       def sku
         Azure::Resources::Mgmt::V2016_02_01::Models::Sku
-      end
-      def deployment_extended_filter
-        Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExtendedFilter
-      end
-      def identity
-        Azure::Resources::Mgmt::V2016_02_01::Models::Identity
-      end
-      def resource_group_filter
-        Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroupFilter
       end
       def template_link
         Azure::Resources::Mgmt::V2016_02_01::Models::TemplateLink
       end
+      def identity
+        Azure::Resources::Mgmt::V2016_02_01::Models::Identity
+      end
       def debug_setting
         Azure::Resources::Mgmt::V2016_02_01::Models::DebugSetting
+      end
+      def deployment_properties
+        Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentProperties
+      end
+      def template_hash_result
+        Azure::Resources::Mgmt::V2016_02_01::Models::TemplateHashResult
+      end
+      def deployment_export_result
+        Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExportResult
       end
       def resource_list_result
         Azure::Resources::Mgmt::V2016_02_01::Models::ResourceListResult
       end
-      def deployment
-        Azure::Resources::Mgmt::V2016_02_01::Models::Deployment
+      def error_response
+        Azure::Resources::Mgmt::V2016_02_01::Models::ErrorResponse
       end
       def resource_group_properties
         Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroupProperties
@@ -175,20 +190,17 @@ module Azure::Resources::Profiles::V2017_03_09
       def tag_value
         Azure::Resources::Mgmt::V2016_02_01::Models::TagValue
       end
-      def plan
-        Azure::Resources::Mgmt::V2016_02_01::Models::Plan
+      def resource_group_filter
+        Azure::Resources::Mgmt::V2016_02_01::Models::ResourceGroupFilter
       end
       def tag_details
         Azure::Resources::Mgmt::V2016_02_01::Models::TagDetails
       end
-      def parameters_link
-        Azure::Resources::Mgmt::V2016_02_01::Models::ParametersLink
+      def deployment
+        Azure::Resources::Mgmt::V2016_02_01::Models::Deployment
       end
       def tags_list_result
         Azure::Resources::Mgmt::V2016_02_01::Models::TagsListResult
-      end
-      def deployment_export_result
-        Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExportResult
       end
       def target_resource
         Azure::Resources::Mgmt::V2016_02_01::Models::TargetResource
@@ -205,14 +217,14 @@ module Azure::Resources::Profiles::V2017_03_09
       def deployment_operation_properties
         Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentOperationProperties
       end
-      def provider_list_result
-        Azure::Resources::Mgmt::V2016_02_01::Models::ProviderListResult
+      def deployment_extended_filter
+        Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentExtendedFilter
       end
       def deployment_operation
         Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentOperation
       end
-      def deployment_properties
-        Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentProperties
+      def error_additional_info
+        Azure::Resources::Mgmt::V2016_02_01::Models::ErrorAdditionalInfo
       end
       def deployment_operations_list_result
         Azure::Resources::Mgmt::V2016_02_01::Models::DeploymentOperationsListResult
@@ -223,8 +235,8 @@ module Azure::Resources::Profiles::V2017_03_09
       def resource_provider_operation_display_properties
         Azure::Resources::Mgmt::V2016_02_01::Models::ResourceProviderOperationDisplayProperties
       end
-      def generic_resource_filter
-        Azure::Resources::Mgmt::V2016_02_01::Models::GenericResourceFilter
+      def parameters_link
+        Azure::Resources::Mgmt::V2016_02_01::Models::ParametersLink
       end
       def resource
         Azure::Resources::Mgmt::V2016_02_01::Models::Resource

@@ -148,7 +148,7 @@ module Azure::Resources::Mgmt::V2019_05_10
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_resources'
-        sdk_information = "#{sdk_information}/0.17.6"
+        sdk_information = "#{sdk_information}/0.17.7"
         add_user_agent_information(sdk_information)
     end
   end
