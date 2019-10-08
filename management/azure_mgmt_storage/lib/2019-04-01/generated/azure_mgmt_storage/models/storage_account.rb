@@ -103,6 +103,11 @@ module Azure::Storage::Mgmt::V2019_04_01
       # true, otherwise, it will be null.
       attr_accessor :failover_in_progress
 
+      # @return [LargeFileSharesState] Allow large file shares if sets to
+      # Enabled. It cannot be disabled once it is enabled. Possible values
+      # include: 'Disabled', 'Enabled'
+      attr_accessor :large_file_shares_state
+
 
       #
       # Mapper for StorageAccount class as Ruby Hash.
@@ -364,6 +369,14 @@ module Azure::Storage::Mgmt::V2019_04_01
                 serialized_name: 'properties.failoverInProgress',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              large_file_shares_state: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.largeFileSharesState',
+                type: {
+                  name: 'String'
                 }
               }
             }
