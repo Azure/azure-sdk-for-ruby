@@ -357,6 +357,11 @@
                         "2018-01-01": ["*"]
                     }
                 },
+                "Microsoft.DataShare": {
+                    "management": {
+                        "2018-11-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.DataLakeAnalytics": {
                     "management": {
                         "2016-11-01": ["*"]
@@ -1324,6 +1329,20 @@
                     }
                 },
                 "output_dir": "management/azure_mgmt_databox/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_mgmt_datashare": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DataShare" : {
+                        "management": {
+                            "2018-11-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_datashare/lib/profiles",
                 "individual_gem_profile": true
             }
         ],

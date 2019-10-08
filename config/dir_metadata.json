@@ -181,6 +181,13 @@
       "module_require": "azure_mgmt_databox"
     }
   },
+  "Microsoft.DataShare": {
+    "management": {
+      "path": "management/azure_mgmt_datashare",
+      "namespace": "Azure::DataShare::Mgmt",
+      "module_require": "azure_mgmt_datashare"
+    }
+  },
   "Microsoft.DataLakeAnalytics": {
     "management": {
       "path": "management/azure_mgmt_datalake_analytics",
