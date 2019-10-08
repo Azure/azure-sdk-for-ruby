@@ -76,6 +76,7 @@ gem 'azure_mgmt_network',                   path: 'management/azure_mgmt_network
 gem 'azure_mgmt_notification_hubs',         path: 'management/azure_mgmt_notification_hubs'
 gem 'azure_mgmt_operational_insights',      path: 'management/azure_mgmt_operational_insights'
 gem 'azure_mgmt_operations_management',     path: 'management/azure_mgmt_operations_management'
+gem 'azure_mgmt_peering',                   path: 'management/azure_mgmt_peering'
 gem 'azure_mgmt_policy',                    path: 'management/azure_mgmt_policy'
 gem 'azure_mgmt_policy_insights',           path: 'management/azure_mgmt_policy_insights'
 gem 'azure_mgmt_postgresql',                path: 'management/azure_mgmt_postgresql'

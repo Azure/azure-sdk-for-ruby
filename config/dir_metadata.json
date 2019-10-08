@@ -471,6 +471,13 @@
       "module_require": "azure_mgmt_operations_management"
     }
   },
+  "Microsoft.Peering": {
+    "management": {
+      "path": "management/azure_mgmt_peering",
+      "namespace": "Azure::Peering::Mgmt",
+      "module_require": "azure_mgmt_peering"
+    }
+  },
   "Microsoft.Policy": {
     "management": {
       "path": "management/azure_mgmt_policy",

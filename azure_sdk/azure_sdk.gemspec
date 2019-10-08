@@ -104,6 +104,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_notification_hubs', "~>#{gem_versions['management']['azure_mgmt_notification_hubs']}"
   spec.add_runtime_dependency 'azure_mgmt_operational_insights', "~>#{gem_versions['management']['azure_mgmt_operational_insights']}"
   spec.add_runtime_dependency 'azure_mgmt_operations_management', "~>#{gem_versions['management']['azure_mgmt_operations_management']}"
+  spec.add_runtime_dependency 'azure_mgmt_peering', "~>#{gem_versions['management']['azure_mgmt_peering']}"
   spec.add_runtime_dependency 'azure_mgmt_policy', "~>#{gem_versions['management']['azure_mgmt_policy']}"
   spec.add_runtime_dependency 'azure_mgmt_policy_insights', "~>#{gem_versions['management']['azure_mgmt_policy_insights']}"
   spec.add_runtime_dependency 'azure_mgmt_postgresql', "~>#{gem_versions['management']['azure_mgmt_postgresql']}"

@@ -566,6 +566,11 @@
                         "2015-11-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Peering": {
+                    "management": {
+                        "2019-08-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Policy": {
                     "management": {
                         "2019-06-01": ["*"]
@@ -2036,6 +2041,20 @@
                 "output_dir": "management/azure_mgmt_operations_management/lib/profiles",
                 "individual_gem_profile": true
             }
+        ],
+        "azure_mgmt_peering": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Peering" : {
+                    "management": {
+                        "2019-08-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_peering/lib/profiles",
+            "individual_gem_profile": true
+        }
         ],
         "azure_mgmt_policy": [
         {

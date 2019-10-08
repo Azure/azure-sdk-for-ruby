@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_network"
+        "azure_mgmt_network",
+        "azure_mgmt_peering"
     ],
     "rollup": [
         "azure_sdk"
