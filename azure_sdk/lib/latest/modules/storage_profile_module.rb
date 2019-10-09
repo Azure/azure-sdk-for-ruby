@@ -104,6 +104,7 @@ module Azure::Profiles::Latest
         DefaultAction = Azure::Storage::Mgmt::V2019_04_01::Models::DefaultAction
         DirectoryServiceOptions = Azure::Storage::Mgmt::V2019_04_01::Models::DirectoryServiceOptions
         AccessTier = Azure::Storage::Mgmt::V2019_04_01::Models::AccessTier
+        LargeFileSharesState = Azure::Storage::Mgmt::V2019_04_01::Models::LargeFileSharesState
         GeoReplicationStatus = Azure::Storage::Mgmt::V2019_04_01::Models::GeoReplicationStatus
         ProvisioningState = Azure::Storage::Mgmt::V2019_04_01::Models::ProvisioningState
         AccountStatus = Azure::Storage::Mgmt::V2019_04_01::Models::AccountStatus
@@ -418,6 +419,9 @@ module Azure::Profiles::Latest
           end
           def access_tier
             Azure::Storage::Mgmt::V2019_04_01::Models::AccessTier
+          end
+          def large_file_shares_state
+            Azure::Storage::Mgmt::V2019_04_01::Models::LargeFileSharesState
           end
           def geo_replication_status
             Azure::Storage::Mgmt::V2019_04_01::Models::GeoReplicationStatus

@@ -68,6 +68,11 @@ module Azure::Storage::Mgmt::V2019_04_01
       # true.
       attr_accessor :is_hns_enabled
 
+      # @return [LargeFileSharesState] Allow large file shares if sets to
+      # Enabled. It cannot be disabled once it is enabled. Possible values
+      # include: 'Disabled', 'Enabled'
+      attr_accessor :large_file_shares_state
+
 
       #
       # Mapper for StorageAccountCreateParameters class as Ruby Hash.
@@ -191,6 +196,14 @@ module Azure::Storage::Mgmt::V2019_04_01
                 serialized_name: 'properties.isHnsEnabled',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              large_file_shares_state: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.largeFileSharesState',
+                type: {
+                  name: 'String'
                 }
               }
             }

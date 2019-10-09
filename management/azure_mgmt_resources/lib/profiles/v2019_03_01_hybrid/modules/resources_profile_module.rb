@@ -15,15 +15,19 @@ module Azure::Resources::Profiles::V2019_03_01_Hybrid
     DeploymentOperations = Azure::Resources::Mgmt::V2018_05_01::DeploymentOperations
 
     module Models
+      Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
+      DeploymentExtendedFilter = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtendedFilter
       IdentityUserAssignedIdentitiesValue = Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
-      Identity = Azure::Resources::Mgmt::V2018_05_01::Models::Identity
-      GenericResourceFilter = Azure::Resources::Mgmt::V2018_05_01::Models::GenericResourceFilter
       ResourceGroupFilter = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
+      Identity = Azure::Resources::Mgmt::V2018_05_01::Models::Identity
       ParametersLink = Azure::Resources::Mgmt::V2018_05_01::Models::ParametersLink
+      DebugSetting = Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
+      TemplateHashResult = Azure::Resources::Mgmt::V2018_05_01::Models::TemplateHashResult
+      DeploymentProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
       ResourceListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
-      OnErrorDeployment = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeployment
+      DeploymentExportResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
       ResourceGroupProperties = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupProperties
-      Deployment = Azure::Resources::Mgmt::V2018_05_01::Models::Deployment
+      ErrorResponse = Azure::Resources::Mgmt::V2018_05_01::Models::ErrorResponse
       ResourceGroup = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroup
       ResourceManagementErrorWithDetails = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceManagementErrorWithDetails
       ResourceGroupPatchable = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupPatchable
@@ -39,11 +43,11 @@ module Azure::Resources::Profiles::V2019_03_01_Hybrid
       TagValue = Azure::Resources::Mgmt::V2018_05_01::Models::TagValue
       ProviderListResult = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderListResult
       TagDetails = Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
-      Sku = Azure::Resources::Mgmt::V2018_05_01::Models::Sku
+      GenericResourceFilter = Azure::Resources::Mgmt::V2018_05_01::Models::GenericResourceFilter
       TagsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
-      TemplateLink = Azure::Resources::Mgmt::V2018_05_01::Models::TemplateLink
+      OnErrorDeployment = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeployment
       TargetResource = Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
-      DeploymentProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
+      ErrorAdditionalInfo = Azure::Resources::Mgmt::V2018_05_01::Models::ErrorAdditionalInfo
       HttpMessage = Azure::Resources::Mgmt::V2018_05_01::Models::HttpMessage
       AliasPathType = Azure::Resources::Mgmt::V2018_05_01::Models::AliasPathType
       DeploymentOperationProperties = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationProperties
@@ -53,15 +57,14 @@ module Azure::Resources::Profiles::V2019_03_01_Hybrid
       DeploymentOperationsListResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentOperationsListResult
       Plan = Azure::Resources::Mgmt::V2018_05_01::Models::Plan
       ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceProviderOperationDisplayProperties
-      DebugSetting = Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
+      Deployment = Azure::Resources::Mgmt::V2018_05_01::Models::Deployment
       Resource = Azure::Resources::Mgmt::V2018_05_01::Models::Resource
       ProviderResourceType = Azure::Resources::Mgmt::V2018_05_01::Models::ProviderResourceType
       SubResource = Azure::Resources::Mgmt::V2018_05_01::Models::SubResource
       DeploymentListResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentListResult
       ResourceGroupExportResult = Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupExportResult
-      DeploymentExportResult = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
       OperationDisplay = Azure::Resources::Mgmt::V2018_05_01::Models::OperationDisplay
-      DeploymentExtendedFilter = Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtendedFilter
+      TemplateLink = Azure::Resources::Mgmt::V2018_05_01::Models::TemplateLink
       Operation = Azure::Resources::Mgmt::V2018_05_01::Models::Operation
       OnErrorDeploymentExtended = Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeploymentExtended
       OperationListResult = Azure::Resources::Mgmt::V2018_05_01::Models::OperationListResult
@@ -122,32 +125,44 @@ module Azure::Resources::Profiles::V2019_03_01_Hybrid
     end
 
     class ModelClasses
+      def sku
+        Azure::Resources::Mgmt::V2018_05_01::Models::Sku
+      end
+      def deployment_extended_filter
+        Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtendedFilter
+      end
       def identity_user_assigned_identities_value
         Azure::Resources::Mgmt::V2018_05_01::Models::IdentityUserAssignedIdentitiesValue
-      end
-      def identity
-        Azure::Resources::Mgmt::V2018_05_01::Models::Identity
-      end
-      def generic_resource_filter
-        Azure::Resources::Mgmt::V2018_05_01::Models::GenericResourceFilter
       end
       def resource_group_filter
         Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupFilter
       end
+      def identity
+        Azure::Resources::Mgmt::V2018_05_01::Models::Identity
+      end
       def parameters_link
         Azure::Resources::Mgmt::V2018_05_01::Models::ParametersLink
+      end
+      def debug_setting
+        Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
+      end
+      def template_hash_result
+        Azure::Resources::Mgmt::V2018_05_01::Models::TemplateHashResult
+      end
+      def deployment_properties
+        Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
       end
       def resource_list_result
         Azure::Resources::Mgmt::V2018_05_01::Models::ResourceListResult
       end
-      def on_error_deployment
-        Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeployment
+      def deployment_export_result
+        Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
       end
       def resource_group_properties
         Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupProperties
       end
-      def deployment
-        Azure::Resources::Mgmt::V2018_05_01::Models::Deployment
+      def error_response
+        Azure::Resources::Mgmt::V2018_05_01::Models::ErrorResponse
       end
       def resource_group
         Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroup
@@ -194,20 +209,20 @@ module Azure::Resources::Profiles::V2019_03_01_Hybrid
       def tag_details
         Azure::Resources::Mgmt::V2018_05_01::Models::TagDetails
       end
-      def sku
-        Azure::Resources::Mgmt::V2018_05_01::Models::Sku
+      def generic_resource_filter
+        Azure::Resources::Mgmt::V2018_05_01::Models::GenericResourceFilter
       end
       def tags_list_result
         Azure::Resources::Mgmt::V2018_05_01::Models::TagsListResult
       end
-      def template_link
-        Azure::Resources::Mgmt::V2018_05_01::Models::TemplateLink
+      def on_error_deployment
+        Azure::Resources::Mgmt::V2018_05_01::Models::OnErrorDeployment
       end
       def target_resource
         Azure::Resources::Mgmt::V2018_05_01::Models::TargetResource
       end
-      def deployment_properties
-        Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentProperties
+      def error_additional_info
+        Azure::Resources::Mgmt::V2018_05_01::Models::ErrorAdditionalInfo
       end
       def http_message
         Azure::Resources::Mgmt::V2018_05_01::Models::HttpMessage
@@ -236,8 +251,8 @@ module Azure::Resources::Profiles::V2019_03_01_Hybrid
       def resource_provider_operation_display_properties
         Azure::Resources::Mgmt::V2018_05_01::Models::ResourceProviderOperationDisplayProperties
       end
-      def debug_setting
-        Azure::Resources::Mgmt::V2018_05_01::Models::DebugSetting
+      def deployment
+        Azure::Resources::Mgmt::V2018_05_01::Models::Deployment
       end
       def resource
         Azure::Resources::Mgmt::V2018_05_01::Models::Resource
@@ -254,14 +269,11 @@ module Azure::Resources::Profiles::V2019_03_01_Hybrid
       def resource_group_export_result
         Azure::Resources::Mgmt::V2018_05_01::Models::ResourceGroupExportResult
       end
-      def deployment_export_result
-        Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExportResult
-      end
       def operation_display
         Azure::Resources::Mgmt::V2018_05_01::Models::OperationDisplay
       end
-      def deployment_extended_filter
-        Azure::Resources::Mgmt::V2018_05_01::Models::DeploymentExtendedFilter
+      def template_link
+        Azure::Resources::Mgmt::V2018_05_01::Models::TemplateLink
       end
       def operation
         Azure::Resources::Mgmt::V2018_05_01::Models::Operation

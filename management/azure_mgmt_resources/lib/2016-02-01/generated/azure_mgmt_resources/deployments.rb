@@ -716,6 +716,108 @@ module Azure::Resources::Mgmt::V2016_02_01
     end
 
     #
+    # Calculate the hash of the given template.
+    #
+    # @param template The template provided to calculate hash.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [TemplateHashResult] operation results.
+    #
+    def calculate_template_hash(template, custom_headers:nil)
+      response = calculate_template_hash_async(template, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Calculate the hash of the given template.
+    #
+    # @param template The template provided to calculate hash.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def calculate_template_hash_with_http_info(template, custom_headers:nil)
+      calculate_template_hash_async(template, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Calculate the hash of the given template.
+    #
+    # @param template The template provided to calculate hash.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def calculate_template_hash_async(template, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'template is nil' if template.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = {
+        client_side_validation: true,
+        required: true,
+        serialized_name: 'template',
+        type: {
+          name: 'Object'
+        }
+      }
+      request_content = @client.serialize(request_mapper,  template)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'providers/Microsoft.Resources/calculateTemplateHash'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Resources::Mgmt::V2016_02_01::Models::TemplateHashResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Delete deployment.
     #
     # @param resource_group_name [String] The name of the resource group. The name

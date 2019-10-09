@@ -181,6 +181,13 @@
       "module_require": "azure_mgmt_databox"
     }
   },
+  "Microsoft.DataShare": {
+    "management": {
+      "path": "management/azure_mgmt_datashare",
+      "namespace": "Azure::DataShare::Mgmt",
+      "module_require": "azure_mgmt_datashare"
+    }
+  },
   "Microsoft.DataLakeAnalytics": {
     "management": {
       "path": "management/azure_mgmt_datalake_analytics",
@@ -471,6 +478,13 @@
       "module_require": "azure_mgmt_operations_management"
     }
   },
+  "Microsoft.Peering": {
+    "management": {
+      "path": "management/azure_mgmt_peering",
+      "namespace": "Azure::Peering::Mgmt",
+      "module_require": "azure_mgmt_peering"
+    }
+  },
   "Microsoft.Policy": {
     "management": {
       "path": "management/azure_mgmt_policy",
@@ -698,6 +712,13 @@
       "path": "management/azure_mgmt_traffic_manager",
       "namespace": "Azure::TrafficManager::Mgmt",
       "module_require": "azure_mgmt_traffic_manager"
+    }
+  },
+  "Microsoft.VMwareCloudSimple": {
+    "management": {
+      "path": "management/azure_mgmt_vmware_cloudsimple",
+      "namespace": "Azure::VMwareCloudSimple::Mgmt",
+      "module_require": "azure_mgmt_vmware_cloudsimple"
     }
   },
   "Microsoft.Web": {

@@ -55,6 +55,11 @@ module Azure::Storage::Mgmt::V2019_04_01
       # @return [NetworkRuleSet] Network rule set
       attr_accessor :network_rule_set
 
+      # @return [LargeFileSharesState] Allow large file shares if sets to
+      # Enabled. It cannot be disabled once it is enabled. Possible values
+      # include: 'Disabled', 'Enabled'
+      attr_accessor :large_file_shares_state
+
       # @return [Kind] Optional. Indicates the type of storage account.
       # Currently only StorageV2 value supported by server. Possible values
       # include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
@@ -160,6 +165,14 @@ module Azure::Storage::Mgmt::V2019_04_01
                 type: {
                   name: 'Composite',
                   class_name: 'NetworkRuleSet'
+                }
+              },
+              large_file_shares_state: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.largeFileSharesState',
+                type: {
+                  name: 'String'
                 }
               },
               kind: {
