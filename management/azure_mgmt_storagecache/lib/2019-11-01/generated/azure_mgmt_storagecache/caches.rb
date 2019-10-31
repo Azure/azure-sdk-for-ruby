@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::StorageCache::Mgmt::V2019_08_01_preview
+module Azure::StorageCache::Mgmt::V2019_11_01
   #
   # A Storage Cache provides scalable caching service for NAS clients, serving
   # data from either NFSv3 or Blob at-rest storage (referred to as "Storage
-  # Targets"). These operations allow you to manage caches.
+  # Targets"). These operations allow you to manage Caches.
   #
   class Caches
     include MsRestAzure
@@ -96,7 +96,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::CachesListResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::CachesListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -110,8 +110,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns all Caches the user has access to under a resource group and
-    # subscription.
+    # Returns all Caches the user has access to under a resource group.
     #
     # @param resource_group_name [String] Target resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -125,8 +124,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns all Caches the user has access to under a resource group and
-    # subscription.
+    # Returns all Caches the user has access to under a resource group.
     #
     # @param resource_group_name [String] Target resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -139,8 +137,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns all Caches the user has access to under a resource group and
-    # subscription.
+    # Returns all Caches the user has access to under a resource group.
     #
     # @param resource_group_name [String] Target resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -189,7 +186,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::CachesListResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::CachesListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -206,7 +203,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Schedules a Cache for deletion.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -219,7 +216,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
 
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -255,7 +252,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Returns a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -270,7 +267,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Returns a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -284,7 +281,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Returns a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -333,7 +330,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::Cache.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::Cache.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -347,43 +344,43 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Create/update a Cache instance.
+    # Create or update a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param cache [Cache] Object containing the user selectable properties of the
-    # new cache.  If read-only properties are included, they must match the
-    # existing values of those properties.
+    # @param cache_name [String] Name of Cache.
+    # @param cache [Cache] Object containing the user-selectable properties of the
+    # new Cache. If read-only properties are included, they must match the existing
+    # values of those properties.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Cache] operation results.
     #
-    def create(resource_group_name, cache_name, cache:nil, custom_headers:nil)
-      response = create_async(resource_group_name, cache_name, cache:cache, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, cache_name, cache:nil, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, cache_name, cache:cache, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param cache [Cache] Object containing the user selectable properties of the
-    # new cache.  If read-only properties are included, they must match the
-    # existing values of those properties.
+    # @param cache_name [String] Name of Cache.
+    # @param cache [Cache] Object containing the user-selectable properties of the
+    # new Cache. If read-only properties are included, they must match the existing
+    # values of those properties.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, cache_name, cache:nil, custom_headers:nil)
+    def create_or_update_async(resource_group_name, cache_name, cache:nil, custom_headers:nil)
       # Send request
-      promise = begin_create_async(resource_group_name, cache_name, cache:cache, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, cache_name, cache:cache, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::Cache.mapper()
+          result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::Cache.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -398,10 +395,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Update a Cache instance.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param cache [Cache] Object containing the user selectable properties of the
-    # new cache.  If read-only properties are included, they must match the
-    # existing values of those properties.
+    # @param cache_name [String] Name of Cache.
+    # @param cache [Cache] Object containing the user-selectable properties of the
+    # Cache. If read-only properties are included, they must match the existing
+    # values of those properties.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -416,10 +413,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Update a Cache instance.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param cache [Cache] Object containing the user selectable properties of the
-    # new cache.  If read-only properties are included, they must match the
-    # existing values of those properties.
+    # @param cache_name [String] Name of Cache.
+    # @param cache [Cache] Object containing the user-selectable properties of the
+    # Cache. If read-only properties are included, they must match the existing
+    # values of those properties.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -433,10 +430,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Update a Cache instance.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param cache [Cache] Object containing the user selectable properties of the
-    # new cache.  If read-only properties are included, they must match the
-    # existing values of those properties.
+    # @param cache_name [String] Name of Cache.
+    # @param cache [Cache] Object containing the user-selectable properties of the
+    # Cache. If read-only properties are included, they must match the existing
+    # values of those properties.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -458,7 +455,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::Cache.mapper()
+      request_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::Cache.mapper()
       request_content = @client.serialize(request_mapper,  cache)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -492,7 +489,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::Cache.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::Cache.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -506,11 +503,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a cache to write all dirty data to the StorageTarget(s).  During the
+    # Tells a Cache to write all dirty data to the Storage Target(s). During the
     # flush, clients will see errors returned until the flush is complete.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -523,7 +520,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
 
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -556,10 +553,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a Stopped state cache to transition to Active state.
+    # Tells a Stopped state Cache to transition to Active state.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -572,7 +569,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
 
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -605,10 +602,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells an Active cache to transition to Stopped state.
+    # Tells an Active Cache to transition to Stopped state.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -621,7 +618,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
 
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -654,10 +651,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a cache to upgrade its firmware.
+    # Upgrade a Cache's firmware if a new version is available. Otherwise, this
+    # operation has no effect.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -670,7 +668,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
 
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -706,7 +704,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Schedules a Cache for deletion.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -721,7 +719,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Schedules a Cache for deletion.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -735,7 +733,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # Schedules a Cache for deletion.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -788,54 +786,54 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Create/update a Cache instance.
+    # Create or update a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param cache [Cache] Object containing the user selectable properties of the
-    # new cache.  If read-only properties are included, they must match the
-    # existing values of those properties.
+    # @param cache_name [String] Name of Cache.
+    # @param cache [Cache] Object containing the user-selectable properties of the
+    # new Cache. If read-only properties are included, they must match the existing
+    # values of those properties.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Cache] operation results.
     #
-    def begin_create(resource_group_name, cache_name, cache:nil, custom_headers:nil)
-      response = begin_create_async(resource_group_name, cache_name, cache:cache, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, cache_name, cache:nil, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, cache_name, cache:cache, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create/update a Cache instance.
+    # Create or update a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param cache [Cache] Object containing the user selectable properties of the
-    # new cache.  If read-only properties are included, they must match the
-    # existing values of those properties.
+    # @param cache_name [String] Name of Cache.
+    # @param cache [Cache] Object containing the user-selectable properties of the
+    # new Cache. If read-only properties are included, they must match the existing
+    # values of those properties.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, cache_name, cache:nil, custom_headers:nil)
-      begin_create_async(resource_group_name, cache_name, cache:cache, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, cache_name, cache:nil, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, cache_name, cache:cache, custom_headers:custom_headers).value!
     end
 
     #
-    # Create/update a Cache instance.
+    # Create or update a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param cache [Cache] Object containing the user selectable properties of the
-    # new cache.  If read-only properties are included, they must match the
-    # existing values of those properties.
+    # @param cache_name [String] Name of Cache.
+    # @param cache [Cache] Object containing the user-selectable properties of the
+    # new Cache. If read-only properties are included, they must match the existing
+    # values of those properties.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, cache_name, cache:nil, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, cache_name, cache:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -851,7 +849,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::Cache.mapper()
+      request_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::Cache.mapper()
       request_content = @client.serialize(request_mapper,  cache)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -885,7 +883,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::Cache.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::Cache.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -895,7 +893,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::Cache.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::Cache.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -909,11 +907,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a cache to write all dirty data to the StorageTarget(s).  During the
+    # Tells a Cache to write all dirty data to the Storage Target(s). During the
     # flush, clients will see errors returned until the flush is complete.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -925,11 +923,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a cache to write all dirty data to the StorageTarget(s).  During the
+    # Tells a Cache to write all dirty data to the Storage Target(s). During the
     # flush, clients will see errors returned until the flush is complete.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -940,11 +938,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a cache to write all dirty data to the StorageTarget(s).  During the
+    # Tells a Cache to write all dirty data to the Storage Target(s). During the
     # flush, clients will see errors returned until the flush is complete.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -981,7 +979,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -997,10 +995,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a Stopped state cache to transition to Active state.
+    # Tells a Stopped state Cache to transition to Active state.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1012,10 +1010,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a Stopped state cache to transition to Active state.
+    # Tells a Stopped state Cache to transition to Active state.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1026,10 +1024,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a Stopped state cache to transition to Active state.
+    # Tells a Stopped state Cache to transition to Active state.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1066,7 +1064,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1082,10 +1080,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells an Active cache to transition to Stopped state.
+    # Tells an Active Cache to transition to Stopped state.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1097,10 +1095,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells an Active cache to transition to Stopped state.
+    # Tells an Active Cache to transition to Stopped state.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1111,10 +1109,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells an Active cache to transition to Stopped state.
+    # Tells an Active Cache to transition to Stopped state.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1151,7 +1149,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1167,10 +1165,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a cache to upgrade its firmware.
+    # Upgrade a Cache's firmware if a new version is available. Otherwise, this
+    # operation has no effect.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1182,10 +1181,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a cache to upgrade its firmware.
+    # Upgrade a Cache's firmware if a new version is available. Otherwise, this
+    # operation has no effect.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1196,10 +1196,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Tells a cache to upgrade its firmware.
+    # Upgrade a Cache's firmware if a new version is available. Otherwise, this
+    # operation has no effect.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1236,7 +1237,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 201 || status_code == 202
+        unless status_code == 201 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1328,7 +1329,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::CachesListResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::CachesListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1342,8 +1343,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns all Caches the user has access to under a resource group and
-    # subscription.
+    # Returns all Caches the user has access to under a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1358,8 +1358,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns all Caches the user has access to under a resource group and
-    # subscription.
+    # Returns all Caches the user has access to under a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1373,8 +1372,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns all Caches the user has access to under a resource group and
-    # subscription.
+    # Returns all Caches the user has access to under a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1421,7 +1419,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::CachesListResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::CachesListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1455,8 +1453,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns all Caches the user has access to under a resource group and
-    # subscription.
+    # Returns all Caches the user has access to under a resource group.
     #
     # @param resource_group_name [String] Target resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

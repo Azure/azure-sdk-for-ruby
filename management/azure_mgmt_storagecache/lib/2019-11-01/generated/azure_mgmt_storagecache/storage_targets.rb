@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::StorageCache::Mgmt::V2019_08_01_preview
+module Azure::StorageCache::Mgmt::V2019_11_01
   #
   # A Storage Cache provides scalable caching service for NAS clients, serving
   # data from either NFSv3 or Blob at-rest storage (referred to as "Storage
-  # Targets"). These operations allow you to manage caches.
+  # Targets"). These operations allow you to manage Caches.
   #
   class StorageTargets
     include MsRestAzure
@@ -24,11 +24,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     attr_reader :client
 
     #
-    # Returns the StorageTargets for this cache in the subscription and resource
-    # group.
+    # Returns a list of Storage Targets for the specified Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,11 +39,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns the StorageTargets for this cache in the subscription and resource
-    # group.
+    # Returns a list of Storage Targets for the specified Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -55,11 +53,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns the StorageTargets for this cache in the subscription and resource
-    # group.
+    # Returns a list of Storage Targets for the specified Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -108,7 +105,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::StorageTargetsResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::StorageTargetsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -122,13 +119,15 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Removes a storage target from a cache.  This operation is allowed at any
-    # time, but if the cache is down or unhealthy, the actual removal of the
-    # storage target may be delayed until the cache is healthy again.
+    # Removes a Storage Target from a Cache. This operation is allowed at any time,
+    # but if the Cache is down or unhealthy, the actual removal of the Storage
+    # Target may be delayed until the Cache is healthy again. Note that if the
+    # Cache has data to flush to the Storage Target, the data will be flushed
+    # before the Storage Target will be deleted.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -141,8 +140,8 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
 
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -175,11 +174,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns a storage target from a cache.
+    # Returns a Storage Target from a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of the Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -191,11 +190,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns a storage target from a cache.
+    # Returns a Storage Target from a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of the Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -206,11 +205,11 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns a storage target from a cache.
+    # Returns a Storage Target from a Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of the Storage Target.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -261,7 +260,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::StorageTarget.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::StorageTarget.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -275,45 +274,45 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Create/update a storage target.  This operation is allowed at any time, but
-    # if the cache is down or unhealthy, the actual creation/modification of the
-    # storage target may be delayed until the cache is healthy again.
+    # Create or update a Storage Target. This operation is allowed at any time, but
+    # if the Cache is down or unhealthy, the actual creation/modification of the
+    # Storage Target may be delayed until the Cache is healthy again.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of the Storage Target.
     # @param storagetarget [StorageTarget] Object containing the definition of a
-    # storage target.
+    # Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [StorageTarget] operation results.
     #
-    def create(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
-      response = create_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of the Storage Target.
     # @param storagetarget [StorageTarget] Object containing the definition of a
-    # storage target.
+    # Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
+    def create_or_update_async(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
       # Send request
-      promise = begin_create_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::StorageTarget.mapper()
+          result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::StorageTarget.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -325,132 +324,15 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Update a storage target.  This operation is allowed at any time, but if the
-    # cache is down or unhealthy, the actual creation/modification of the storage
-    # target may be delayed until the cache is healthy again.
+    # Removes a Storage Target from a Cache. This operation is allowed at any time,
+    # but if the Cache is down or unhealthy, the actual removal of the Storage
+    # Target may be delayed until the Cache is healthy again. Note that if the
+    # Cache has data to flush to the Storage Target, the data will be flushed
+    # before the Storage Target will be deleted.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
-    # @param storagetarget [StorageTarget] Object containing the definition of a
-    # storage target.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [StorageTarget] operation results.
-    #
-    def update(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
-      response = update_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Update a storage target.  This operation is allowed at any time, but if the
-    # cache is down or unhealthy, the actual creation/modification of the storage
-    # target may be delayed until the cache is healthy again.
-    #
-    # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
-    # @param storagetarget [StorageTarget] Object containing the definition of a
-    # storage target.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def update_with_http_info(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
-      update_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Update a storage target.  This operation is allowed at any time, but if the
-    # cache is down or unhealthy, the actual creation/modification of the storage
-    # target may be delayed until the cache is healthy again.
-    #
-    # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
-    # @param storagetarget [StorageTarget] Object containing the definition of a
-    # storage target.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def update_async(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'cache_name is nil' if cache_name.nil?
-      fail ArgumentError, "'cache_name' should satisfy the constraint - 'Pattern': '^[-0-9a-zA-Z_]{1,31}$'" if !cache_name.nil? && cache_name.match(Regexp.new('^^[-0-9a-zA-Z_]{1,31}$$')).nil?
-      fail ArgumentError, 'storage_target_name is nil' if storage_target_name.nil?
-      fail ArgumentError, "'storage_target_name' should satisfy the constraint - 'Pattern': '^[-0-9a-zA-Z_]{1,31}$'" if !storage_target_name.nil? && storage_target_name.match(Regexp.new('^^[-0-9a-zA-Z_]{1,31}$$')).nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::StorageTarget.mapper()
-      request_content = @client.serialize(request_mapper,  storagetarget)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id,'cacheName' => cache_name,'storageTargetName' => storage_target_name},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:patch, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::StorageTarget.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Removes a storage target from a cache.  This operation is allowed at any
-    # time, but if the cache is down or unhealthy, the actual removal of the
-    # storage target may be delayed until the cache is healthy again.
-    #
-    # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -462,13 +344,15 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Removes a storage target from a cache.  This operation is allowed at any
-    # time, but if the cache is down or unhealthy, the actual removal of the
-    # storage target may be delayed until the cache is healthy again.
+    # Removes a Storage Target from a Cache. This operation is allowed at any time,
+    # but if the Cache is down or unhealthy, the actual removal of the Storage
+    # Target may be delayed until the Cache is healthy again. Note that if the
+    # Cache has data to flush to the Storage Target, the data will be flushed
+    # before the Storage Target will be deleted.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -479,13 +363,15 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Removes a storage target from a cache.  This operation is allowed at any
-    # time, but if the cache is down or unhealthy, the actual removal of the
-    # storage target may be delayed until the cache is healthy again.
+    # Removes a Storage Target from a Cache. This operation is allowed at any time,
+    # but if the Cache is down or unhealthy, the actual removal of the Storage
+    # Target may be delayed until the Cache is healthy again. Note that if the
+    # Cache has data to flush to the Storage Target, the data will be flushed
+    # before the Storage Target will be deleted.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of Storage Target.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -540,60 +426,60 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Create/update a storage target.  This operation is allowed at any time, but
-    # if the cache is down or unhealthy, the actual creation/modification of the
-    # storage target may be delayed until the cache is healthy again.
+    # Create or update a Storage Target. This operation is allowed at any time, but
+    # if the Cache is down or unhealthy, the actual creation/modification of the
+    # Storage Target may be delayed until the Cache is healthy again.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of the Storage Target.
     # @param storagetarget [StorageTarget] Object containing the definition of a
-    # storage target.
+    # Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [StorageTarget] operation results.
     #
-    def begin_create(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
-      response = begin_create_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create/update a storage target.  This operation is allowed at any time, but
-    # if the cache is down or unhealthy, the actual creation/modification of the
-    # storage target may be delayed until the cache is healthy again.
+    # Create or update a Storage Target. This operation is allowed at any time, but
+    # if the Cache is down or unhealthy, the actual creation/modification of the
+    # Storage Target may be delayed until the Cache is healthy again.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of the Storage Target.
     # @param storagetarget [StorageTarget] Object containing the definition of a
-    # storage target.
+    # Storage Target.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
-      begin_create_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, cache_name, storage_target_name, storagetarget:storagetarget, custom_headers:custom_headers).value!
     end
 
     #
-    # Create/update a storage target.  This operation is allowed at any time, but
-    # if the cache is down or unhealthy, the actual creation/modification of the
-    # storage target may be delayed until the cache is healthy again.
+    # Create or update a Storage Target. This operation is allowed at any time, but
+    # if the Cache is down or unhealthy, the actual creation/modification of the
+    # Storage Target may be delayed until the Cache is healthy again.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
-    # @param storage_target_name [String] Name of storage target.
+    # @param cache_name [String] Name of Cache.
+    # @param storage_target_name [String] Name of the Storage Target.
     # @param storagetarget [StorageTarget] Object containing the definition of a
-    # storage target.
+    # Storage Target.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, cache_name, storage_target_name, storagetarget:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -611,7 +497,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::StorageTarget.mapper()
+      request_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::StorageTarget.mapper()
       request_content = @client.serialize(request_mapper,  storagetarget)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -645,7 +531,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::StorageTarget.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::StorageTarget.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -655,7 +541,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::StorageTarget.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::StorageTarget.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -669,8 +555,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns the StorageTargets for this cache in the subscription and resource
-    # group.
+    # Returns a list of Storage Targets for the specified Cache.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -685,8 +570,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns the StorageTargets for this cache in the subscription and resource
-    # group.
+    # Returns a list of Storage Targets for the specified Cache.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -700,8 +584,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns the StorageTargets for this cache in the subscription and resource
-    # group.
+    # Returns a list of Storage Targets for the specified Cache.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -748,7 +631,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::StorageTargetsResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::StorageTargetsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -762,11 +645,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Returns the StorageTargets for this cache in the subscription and resource
-    # group.
+    # Returns a list of Storage Targets for the specified Cache.
     #
     # @param resource_group_name [String] Target resource group.
-    # @param cache_name [String] Name of cache.
+    # @param cache_name [String] Name of Cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

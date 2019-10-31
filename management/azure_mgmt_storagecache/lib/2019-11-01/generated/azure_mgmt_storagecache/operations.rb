@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::StorageCache::Mgmt::V2019_08_01_preview
+module Azure::StorageCache::Mgmt::V2019_11_01
   #
   # A Storage Cache provides scalable caching service for NAS clients, serving
   # data from either NFSv3 or Blob at-rest storage (referred to as "Storage
-  # Targets"). These operations allow you to manage caches.
+  # Targets"). These operations allow you to manage Caches.
   #
   class Operations
     include MsRestAzure
@@ -24,7 +24,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     attr_reader :client
 
     #
-    # Lists all of the available RP operations.
+    # Lists all of the available Resource Provider operations.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -37,7 +37,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Lists all of the available Resource Provider operations.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -49,7 +49,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Lists all of the available Resource Provider operations.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -94,7 +94,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::ApiOperationListResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::ApiOperationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -108,7 +108,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Lists all of the available Resource Provider operations.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -123,7 +123,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Lists all of the available Resource Provider operations.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -137,7 +137,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Lists all of the available Resource Provider operations.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -184,7 +184,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::ApiOperationListResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::ApiOperationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -198,7 +198,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Lists all of the available Resource Provider operations.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

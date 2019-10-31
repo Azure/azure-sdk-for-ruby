@@ -3,17 +3,17 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::StorageCache::Mgmt::V2019_08_01_preview
+module Azure::StorageCache::Mgmt::V2019_11_01
   #
   # A Storage Cache provides scalable caching service for NAS clients, serving
   # data from either NFSv3 or Blob at-rest storage (referred to as "Storage
-  # Targets"). These operations allow you to manage caches.
+  # Targets"). These operations allow you to manage Caches.
   #
-  class Operations
+  class Skus
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Operations class.
+    # Creates and initializes a new instance of the Skus class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -24,12 +24,12 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     attr_reader :client
 
     #
-    # Lists all of the available RP operations.
+    # Get the list of StorageCache.Cache SKUs available to this subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<ApiOperation>] operation results.
+    # @return [Array<ResourceSku>] operation results.
     #
     def list(custom_headers:nil)
       first_page = list_as_lazy(custom_headers:custom_headers)
@@ -37,7 +37,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Get the list of StorageCache.Cache SKUs available to this subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -49,7 +49,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Get the list of StorageCache.Cache SKUs available to this subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -58,6 +58,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     #
     def list_async(custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -66,12 +67,13 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.StorageCache/operations'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/skus'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -94,7 +96,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::ApiOperationListResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::ResourceSkusResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -108,14 +110,14 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Get the list of StorageCache.Cache SKUs available to this subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ApiOperationListResult] operation results.
+    # @return [ResourceSkusResult] operation results.
     #
     def list_next(next_page_link, custom_headers:nil)
       response = list_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -123,7 +125,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Get the list of StorageCache.Cache SKUs available to this subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -137,7 +139,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Get the list of StorageCache.Cache SKUs available to this subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -184,7 +186,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StorageCache::Mgmt::V2019_08_01_preview::Models::ApiOperationListResult.mapper()
+            result_mapper = Azure::StorageCache::Mgmt::V2019_11_01::Models::ResourceSkusResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -198,12 +200,12 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     end
 
     #
-    # Lists all of the available RP operations.
+    # Get the list of StorageCache.Cache SKUs available to this subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ApiOperationListResult] which provide lazy access to pages of the
+    # @return [ResourceSkusResult] which provide lazy access to pages of the
     # response.
     #
     def list_as_lazy(custom_headers:nil)

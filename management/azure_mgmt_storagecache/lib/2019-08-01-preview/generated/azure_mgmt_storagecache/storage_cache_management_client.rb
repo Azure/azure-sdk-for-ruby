@@ -7,7 +7,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
   #
   # A service client - single point of access to the REST API.
   #
-  class StorageCacheMgmtClient < MsRestAzure::AzureServiceClient
+  class StorageCacheManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -15,7 +15,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     attr_accessor :base_url
 
     # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials
+    attr_reader :credentials1
 
     # @return [String] Subscription credentials which uniquely identify
     # Microsoft Azure subscription. The subscription ID forms part of the URI
@@ -24,6 +24,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
 
     # @return [String] Client Api Version.
     attr_reader :api_version
+
+    # @return Subscription credentials which uniquely identify client
+    # subscription.
+    attr_accessor :credentials
 
     # @return [String] The preferred language for the response.
     attr_accessor :accept_language
@@ -53,7 +57,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     attr_reader :storage_targets
 
     #
-    # Creates initializes a new instance of the StorageCacheMgmtClient class.
+    # Creates initializes a new instance of the StorageCacheManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -142,7 +146,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_storagecache'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end
