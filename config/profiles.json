@@ -730,7 +730,7 @@
                 },
                 "Microsoft.StorageCache": {
                     "management": {
-                        "2019-08-01-preview": ["*"]
+                        "2019-11-01": ["*"]
                     }
                 },
                 "Microsoft.StreamAnalytics": {
@@ -2586,7 +2586,7 @@
                 "resourceTypes": {
                     "Microsoft.StorageCache": {
                         "management": {
-                            "2019-08-01-preview": ["*"]
+                            "2019-11-01": ["*"]
                         }
                     }
                 },
