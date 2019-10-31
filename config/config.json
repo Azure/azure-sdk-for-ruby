@@ -2644,14 +2644,14 @@
     }
   },
   "azure_cognitiveservices_luisruntime": {
-    "azure_cognitiveservices_luisruntime_v3.0_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/cognitiveservices/data-plane/LUIS/Runtime/readme.md",
-      "namespace": "Azure::CognitiveServices::LuisRuntime::V3_0_preview",
+    "azure_cognitiveservices_luisruntime_v3.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0e99ef8c7d92e4d8e192fcf8badac2e9dedbd0ff/specification/cognitiveservices/data-plane/LUIS/Runtime/readme.md",
+      "namespace": "Azure::CognitiveServices::LuisRuntime::V3_0",
       "title": "LuisRuntimeClient",
-      "tag": "runtime_3_0_preview"
+      "tag": "runtime_3_0"
     },
     "azure_cognitiveservices_luisruntime_v2.0": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/cognitiveservices/data-plane/LUIS/Runtime/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0e99ef8c7d92e4d8e192fcf8badac2e9dedbd0ff/specification/cognitiveservices/data-plane/LUIS/Runtime/readme.md",
       "namespace": "Azure::CognitiveServices::LuisRuntime::V2_0",
       "title": "LuisRuntimeClient",
       "tag": "runtime_2_0"

@@ -4,6 +4,9 @@
         "azure_mgmt_data_migration",
         "azure_mgmt_storage"
     ],
+    "data": [
+        "azure_cognitiveservices_luisruntime"
+    ],
     "rollup": [
         "azure_sdk"
     ]
