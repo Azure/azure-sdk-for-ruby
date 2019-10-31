@@ -23,7 +23,7 @@ module Azure::DataMigration::Mgmt::V2018_03_15_preview
       @@discriminatorMap["ConnectToSource.SqlServer"] = "ConnectToSourceSqlServerTaskProperties"
 
       def initialize
-        @taskType = "Unknown"
+        @taskType = "ProjectTaskProperties"
       end
 
       attr_accessor :taskType
@@ -46,7 +46,7 @@ module Azure::DataMigration::Mgmt::V2018_03_15_preview
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Unknown',
+          serialized_name: 'ProjectTaskProperties',
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'taskType',

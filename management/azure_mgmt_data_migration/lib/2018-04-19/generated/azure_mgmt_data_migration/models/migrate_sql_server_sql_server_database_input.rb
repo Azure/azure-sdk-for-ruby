@@ -18,8 +18,8 @@ module Azure::DataMigration::Mgmt::V2018_04_19
       # @return [String] Name of the database at destination
       attr_accessor :restore_database_name
 
-      # @return [FileShare] Backup file share information for this database.
-      attr_accessor :backup_file_share
+      # @return [String] The backup and restore folder
+      attr_accessor :backup_and_restore_folder
 
       # @return [Array<DatabaseFileInput>] The list of database files
       attr_accessor :database_files
@@ -54,13 +54,12 @@ module Azure::DataMigration::Mgmt::V2018_04_19
                   name: 'String'
                 }
               },
-              backup_file_share: {
+              backup_and_restore_folder: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'backupFileShare',
+                serialized_name: 'backupAndRestoreFolder',
                 type: {
-                  name: 'Composite',
-                  class_name: 'FileShare'
+                  name: 'String'
                 }
               },
               database_files: {

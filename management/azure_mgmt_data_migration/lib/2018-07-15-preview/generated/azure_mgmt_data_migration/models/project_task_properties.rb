@@ -52,7 +52,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       @@discriminatorMap["Service.Install.OCI"] = "InstallOCIDriverTaskProperties"
 
       def initialize
-        @taskType = "Unknown"
+        @taskType = "ProjectTaskProperties"
       end
 
       attr_accessor :taskType
@@ -82,7 +82,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Unknown',
+          serialized_name: 'ProjectTaskProperties',
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'taskType',

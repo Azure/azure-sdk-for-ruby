@@ -143,7 +143,7 @@ module Azure::DataMigration::Mgmt::V2017_11_15_preview
     # The tasks resource is a nested, proxy-only resource representing work
     # performed by a DMS instance. The PUT method creates a new task or updates an
     # existing one, although since tasks have no mutable custom properties, there
-    # is little reason to update an exising one.
+    # is little reason to update an existing one.
     #
     # @param parameters [ProjectTask] Information about the task
     # @param group_name [String] Name of the resource group
@@ -166,7 +166,7 @@ module Azure::DataMigration::Mgmt::V2017_11_15_preview
     # The tasks resource is a nested, proxy-only resource representing work
     # performed by a DMS instance. The PUT method creates a new task or updates an
     # existing one, although since tasks have no mutable custom properties, there
-    # is little reason to update an exising one.
+    # is little reason to update an existing one.
     #
     # @param parameters [ProjectTask] Information about the task
     # @param group_name [String] Name of the resource group
@@ -188,7 +188,7 @@ module Azure::DataMigration::Mgmt::V2017_11_15_preview
     # The tasks resource is a nested, proxy-only resource representing work
     # performed by a DMS instance. The PUT method creates a new task or updates an
     # existing one, although since tasks have no mutable custom properties, there
-    # is little reason to update an exising one.
+    # is little reason to update an existing one.
     #
     # @param parameters [ProjectTask] Information about the task
     # @param group_name [String] Name of the resource group

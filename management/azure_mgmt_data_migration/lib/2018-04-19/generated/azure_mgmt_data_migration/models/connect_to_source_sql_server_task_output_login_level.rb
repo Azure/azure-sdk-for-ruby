@@ -34,7 +34,7 @@ module Azure::DataMigration::Mgmt::V2018_04_19
       # @return [Boolean] The state of the login.
       attr_accessor :is_enabled
 
-      # @return [MigrationEligibilityInfo] Information about eligiblity of
+      # @return [MigrationEligibilityInfo] Information about eligibility of
       # login for migration.
       attr_accessor :migration_eligibility
 
@@ -85,8 +85,7 @@ module Azure::DataMigration::Mgmt::V2018_04_19
                 read_only: true,
                 serialized_name: 'loginType',
                 type: {
-                  name: 'Enum',
-                  module: 'LoginType'
+                  name: 'String'
                 }
               },
               default_database: {

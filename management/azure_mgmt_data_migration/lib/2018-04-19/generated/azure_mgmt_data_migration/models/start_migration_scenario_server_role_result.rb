@@ -6,7 +6,7 @@
 module Azure::DataMigration::Mgmt::V2018_04_19
   module Models
     #
-    # Migration results from a server role.
+    # Server role migration result
     #
     class StartMigrationScenarioServerRoleResult
 

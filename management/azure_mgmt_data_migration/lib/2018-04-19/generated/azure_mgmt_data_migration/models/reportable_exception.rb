@@ -15,6 +15,9 @@ module Azure::DataMigration::Mgmt::V2018_04_19
       # @return [String] Error message
       attr_accessor :message
 
+      # @return [String] Actionable steps for this exception
+      attr_accessor :actionable_message
+
       # @return [String] The path to the file where exception occurred
       attr_accessor :file_path
 
@@ -47,6 +50,14 @@ module Azure::DataMigration::Mgmt::V2018_04_19
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
+                type: {
+                  name: 'String'
+                }
+              },
+              actionable_message: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'actionableMessage',
                 type: {
                   name: 'String'
                 }

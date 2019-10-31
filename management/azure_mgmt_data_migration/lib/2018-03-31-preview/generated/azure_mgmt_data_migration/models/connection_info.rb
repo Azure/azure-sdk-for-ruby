@@ -16,7 +16,7 @@ module Azure::DataMigration::Mgmt::V2018_03_31_preview
       @@discriminatorMap["SqlConnectionInfo"] = "SqlConnectionInfo"
 
       def initialize
-        @type = "Unknown"
+        @type = "ConnectionInfo"
       end
 
       attr_accessor :type
@@ -36,7 +36,7 @@ module Azure::DataMigration::Mgmt::V2018_03_31_preview
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Unknown',
+          serialized_name: 'ConnectionInfo',
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'type',

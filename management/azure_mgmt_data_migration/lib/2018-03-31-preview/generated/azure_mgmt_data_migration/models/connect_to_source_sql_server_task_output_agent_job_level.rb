@@ -36,7 +36,7 @@ module Azure::DataMigration::Mgmt::V2018_03_31_preview
       # executed.
       attr_accessor :last_executed_on
 
-      # @return [MigrationEligibilityInfo] Information about eligiblity of
+      # @return [MigrationEligibilityInfo] Information about eligibility of
       # agent job for migration.
       attr_accessor :migration_eligibility
 

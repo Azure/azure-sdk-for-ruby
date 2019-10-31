@@ -13,10 +13,13 @@ module Azure::DataMigration::Mgmt::V2018_04_19
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["MiSqlConnectionInfo"] = "MiSqlConnectionInfo"
+      @@discriminatorMap["PostgreSqlConnectionInfo"] = "PostgreSqlConnectionInfo"
+      @@discriminatorMap["MySqlConnectionInfo"] = "MySqlConnectionInfo"
       @@discriminatorMap["SqlConnectionInfo"] = "SqlConnectionInfo"
 
       def initialize
-        @type = "Unknown"
+        @type = "ConnectionInfo"
       end
 
       attr_accessor :type
@@ -36,7 +39,7 @@ module Azure::DataMigration::Mgmt::V2018_04_19
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Unknown',
+          serialized_name: 'ConnectionInfo',
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'type',

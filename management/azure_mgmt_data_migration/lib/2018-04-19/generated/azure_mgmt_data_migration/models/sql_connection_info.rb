@@ -40,6 +40,10 @@ module Azure::DataMigration::Mgmt::V2018_04_19
       # value: false .
       attr_accessor :trust_server_certificate
 
+      # @return [SqlSourcePlatform] Server platform type for connection.
+      # Possible values include: 'SqlOnPrem'
+      attr_accessor :platform
+
 
       #
       # Mapper for SqlConnectionInfo class as Ruby Hash.
@@ -118,6 +122,14 @@ module Azure::DataMigration::Mgmt::V2018_04_19
                 default_value: false,
                 type: {
                   name: 'Boolean'
+                }
+              },
+              platform: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'platform',
+                type: {
+                  name: 'String'
                 }
               }
             }
