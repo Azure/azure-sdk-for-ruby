@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   module Models
     #
     # Defines a sub-list to append to an existing list entity.

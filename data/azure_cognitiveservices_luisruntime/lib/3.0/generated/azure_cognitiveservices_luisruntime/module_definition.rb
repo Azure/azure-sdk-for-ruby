@@ -6,4 +6,4 @@
 module Azure end
 module Azure::CognitiveServices end
 module Azure::CognitiveServices::LuisRuntime end
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview end
+module Azure::CognitiveServices::LuisRuntime::V3_0 end

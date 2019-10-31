@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   module Models
     #
     # Represents the prediction of a query.
@@ -11,9 +11,6 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
     class Prediction
 
       include MsRestAzure
-
-      # @return [String] The query after pre-processing and normalization.
-      attr_accessor :normalized_query
 
       # @return [String] The query after spell checking. Only set if spell
       # check was enabled and a spelling mistake was found.
@@ -26,7 +23,7 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
       # that fired.
       attr_accessor :intents
 
-      # @return The dictionary representing the entities that fired.
+      # @return A dictionary representing the entities that fired.
       attr_accessor :entities
 
       # @return [Sentiment] The result of the sentiment analysis.
@@ -46,14 +43,6 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
             name: 'Composite',
             class_name: 'Prediction',
             model_properties: {
-              normalized_query: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'normalizedQuery',
-                type: {
-                  name: 'String'
-                }
-              },
               altered_query: {
                 client_side_validation: true,
                 required: false,

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   #
   # PredictionOperations
   #
@@ -96,7 +96,7 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionRequest.mapper()
+      request_mapper = Azure::CognitiveServices::LuisRuntime::V3_0::Models::PredictionRequest.mapper()
       request_content = @client.serialize(request_mapper,  prediction_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -125,11 +125,13 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionResponse.mapper()
+            result_mapper = Azure::CognitiveServices::LuisRuntime::V3_0::Models::PredictionResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -217,7 +219,7 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionRequest.mapper()
+      request_mapper = Azure::CognitiveServices::LuisRuntime::V3_0::Models::PredictionRequest.mapper()
       request_content = @client.serialize(request_mapper,  prediction_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -246,11 +248,13 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CognitiveServices::LuisRuntime::V3_0_preview::Models::PredictionResponse.mapper()
+            result_mapper = Azure::CognitiveServices::LuisRuntime::V3_0::Models::PredictionResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   #
   # A service client - single point of access to the REST API.
   #
@@ -47,7 +47,7 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
     #
     def initialize(credentials = nil, options = nil)
       super(credentials, options)
-      @base_url = '{Endpoint}/luis/v3.0-preview'
+      @base_url = '{Endpoint}/luis/prediction/v3.0'
 
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
@@ -124,7 +124,7 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_luisruntime'
-        sdk_information = "#{sdk_information}/0.17.2"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

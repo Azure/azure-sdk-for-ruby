@@ -3,49 +3,50 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   module Models
     #
-    # The result of the sentiment analysis.
+    # Represents an intent prediction.
     #
-    class Sentiment
+    class Intent
 
       include MsRestAzure
 
-      # @return [Float] The sentiment score of the query.
+      # @return [Float] The score of the fired intent.
       attr_accessor :score
 
-      # @return [String] The label of the sentiment analysis result.
-      attr_accessor :label
+      # @return [Prediction] The prediction of the dispatched application.
+      attr_accessor :child_app
 
 
       #
-      # Mapper for Sentiment class as Ruby Hash.
+      # Mapper for Intent class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Sentiment',
+          serialized_name: 'Intent',
           type: {
             name: 'Composite',
-            class_name: 'Sentiment',
+            class_name: 'Intent',
             model_properties: {
               score: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'score',
                 type: {
                   name: 'Double'
                 }
               },
-              label: {
+              child_app: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'label',
+                serialized_name: 'childApp',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'Prediction'
                 }
               }
             }

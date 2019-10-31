@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   module Models
     #
     # The custom options for the prediction request.
@@ -18,7 +18,7 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
 
       # @return [Boolean] Whether to make the external entities resolution
       # override the predictions if an overlap occurs.
-      attr_accessor :override_predictions
+      attr_accessor :prefer_external_entities
 
 
       #
@@ -42,10 +42,10 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
                   name: 'DateTime'
                 }
               },
-              override_predictions: {
+              prefer_external_entities: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'overridePredictions',
+                serialized_name: 'preferExternalEntities',
                 type: {
                   name: 'Boolean'
                 }

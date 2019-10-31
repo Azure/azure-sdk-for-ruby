@@ -3,47 +3,47 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   module Models
     #
-    # Represents an intent prediction.
+    # Represents the prediction response.
     #
-    class Intent
+    class PredictionResponse
 
       include MsRestAzure
 
-      # @return [Float] The score of the fired intent.
-      attr_accessor :score
+      # @return [String] The query used in the prediction.
+      attr_accessor :query
 
-      # @return [Prediction] The prediction of the dispatched application.
-      attr_accessor :child_app
+      # @return [Prediction] The prediction of the requested query.
+      attr_accessor :prediction
 
 
       #
-      # Mapper for Intent class as Ruby Hash.
+      # Mapper for PredictionResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Intent',
+          serialized_name: 'PredictionResponse',
           type: {
             name: 'Composite',
-            class_name: 'Intent',
+            class_name: 'PredictionResponse',
             model_properties: {
-              score: {
+              query: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'score',
+                required: true,
+                serialized_name: 'query',
                 type: {
-                  name: 'Double'
+                  name: 'String'
                 }
               },
-              child_app: {
+              prediction: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'childApp',
+                required: true,
+                serialized_name: 'prediction',
                 type: {
                   name: 'Composite',
                   class_name: 'Prediction'

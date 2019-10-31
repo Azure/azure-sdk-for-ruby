@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   module Models
     #
     # Represents the prediction request parameters.
@@ -12,7 +12,7 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
 
       include MsRestAzure
 
-      # @return [String] The query to predict
+      # @return [String] The query to predict.
       attr_accessor :query
 
       # @return [PredictionRequestOptions] The custom options defined for this
@@ -20,11 +20,11 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
       attr_accessor :options
 
       # @return [Array<ExternalEntity>] The externally predicted entities for
-      # this request
+      # this request.
       attr_accessor :external_entities
 
       # @return [Array<DynamicList>] The dynamically created list entities for
-      # this request
+      # this request.
       attr_accessor :dynamic_lists
 
 

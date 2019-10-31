@@ -3,49 +3,49 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   module Models
     #
-    # Represents the definition of the error that occurred.
+    # The result of the sentiment analysis.
     #
-    class ErrorBody
+    class Sentiment
 
       include MsRestAzure
 
-      # @return [String] The error code.
-      attr_accessor :code
+      # @return [String] The label of the sentiment analysis result.
+      attr_accessor :label
 
-      # @return [String] The error message.
-      attr_accessor :message
+      # @return [Float] The sentiment score of the query.
+      attr_accessor :score
 
 
       #
-      # Mapper for ErrorBody class as Ruby Hash.
+      # Mapper for Sentiment class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ErrorBody',
+          serialized_name: 'Sentiment',
           type: {
             name: 'Composite',
-            class_name: 'ErrorBody',
+            class_name: 'Sentiment',
             model_properties: {
-              code: {
+              label: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'code',
+                required: false,
+                serialized_name: 'label',
                 type: {
                   name: 'String'
                 }
               },
-              message: {
+              score: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'message',
+                serialized_name: 'score',
                 type: {
-                  name: 'String'
+                  name: 'Double'
                 }
               }
             }

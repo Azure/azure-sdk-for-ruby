@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   module Models
     #
     # Defines a user predicted entity that extends an already existing one.
@@ -24,6 +24,10 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
       # @return A user supplied custom resolution to return as the entity's
       # prediction.
       attr_accessor :resolution
+
+      # @return [Float] A user supplied score to return as the entity's
+      # prediction score.
+      attr_accessor :score
 
 
       #
@@ -69,6 +73,14 @@ module Azure::CognitiveServices::LuisRuntime::V3_0_preview
                 serialized_name: 'resolution',
                 type: {
                   name: 'Object'
+                }
+              },
+              score: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'score',
+                type: {
+                  name: 'Double'
                 }
               }
             }

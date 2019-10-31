@@ -3,50 +3,49 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::LuisRuntime::V3_0_preview
+module Azure::CognitiveServices::LuisRuntime::V3_0
   module Models
     #
-    # Represents the prediction response.
+    # Represents the definition of the error that occurred.
     #
-    class PredictionResponse
+    class ErrorBody
 
       include MsRestAzure
 
-      # @return [String] The query used in the prediction.
-      attr_accessor :query
+      # @return [String] The error code.
+      attr_accessor :code
 
-      # @return [Prediction] The prediction of the requested query.
-      attr_accessor :prediction
+      # @return [String] The error message.
+      attr_accessor :message
 
 
       #
-      # Mapper for PredictionResponse class as Ruby Hash.
+      # Mapper for ErrorBody class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'PredictionResponse',
+          serialized_name: 'ErrorBody',
           type: {
             name: 'Composite',
-            class_name: 'PredictionResponse',
+            class_name: 'ErrorBody',
             model_properties: {
-              query: {
+              code: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'query',
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              prediction: {
+              message: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'prediction',
+                serialized_name: 'message',
                 type: {
-                  name: 'Composite',
-                  class_name: 'Prediction'
+                  name: 'String'
                 }
               }
             }
