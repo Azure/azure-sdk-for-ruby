@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_reservations"
+        "azure_mgmt_reservations",
+        "azure_mgmt_data_migration"
     ],
     "rollup": [
         "azure_sdk"
