@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::Reservations::Mgmt
-    VERSION = '0.18.0'
+    VERSION = '0.19.0'
 end

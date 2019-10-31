@@ -19,8 +19,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
       # @return [String] The name of SKU
       attr_accessor :name
 
-      # @return [Array<CatalogBillingPlansItem>] The billing plan options
-      # available for this SKU.
+      # @return [Hash{String => Array<ReservationBillingPlan>}] The billing
+      # plan options available for this SKU.
       attr_accessor :billing_plans
 
       # @return [Array<ReservationTerm>] Available reservation terms for this
@@ -73,14 +73,21 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
                 required: false,
                 serialized_name: 'billingPlans',
                 type: {
-                  name: 'Sequence',
-                  element: {
+                  name: 'Dictionary',
+                  value: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'CatalogBillingPlansItemElementType',
+                      serialized_name: 'ArrayElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'CatalogBillingPlansItem'
+                        name: 'Sequence',
+                        element: {
+                            client_side_validation: true,
+                            required: false,
+                            serialized_name: 'ReservationBillingPlanElementType',
+                            type: {
+                              name: 'String'
+                            }
+                        }
                       }
                   }
                 }
