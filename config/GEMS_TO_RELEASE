@@ -4,7 +4,8 @@
         "azure_mgmt_data_migration",
         "azure_mgmt_storage",
         "azure_mgmt_event_grid",
-        "azure_mgmt_storagecache"
+        "azure_mgmt_storagecache",
+        "azure_mgmt_network"
     ],
     "data": [
         "azure_cognitiveservices_luisruntime"
