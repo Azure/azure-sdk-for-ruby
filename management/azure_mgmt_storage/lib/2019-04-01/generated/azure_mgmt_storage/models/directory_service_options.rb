@@ -11,6 +11,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     module DirectoryServiceOptions
       None = "None"
       AADDS = "AADDS"
+      AD = "AD"
     end
   end
 end
