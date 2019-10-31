@@ -404,7 +404,7 @@
                 },
                 "Microsoft.EventGrid": {
                     "management": {
-                        "2019-06-01": ["*"]
+                        "2020-01-01-preview": ["*"]
                     },
                     "data": {
                         "2018-01-01": ["*"]
@@ -1505,7 +1505,7 @@
             "resourceTypes": {
                 "Microsoft.EventGrid" : {
                     "management": {
-                        "2019-06-01": ["*"]
+                        "2020-01-01-preview": ["*"]
                     }
                 }
             },

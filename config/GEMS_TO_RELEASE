@@ -2,7 +2,8 @@
     "management": [
         "azure_mgmt_reservations",
         "azure_mgmt_data_migration",
-        "azure_mgmt_storage"
+        "azure_mgmt_storage",
+        "azure_mgmt_event_grid"
     ],
     "data": [
         "azure_cognitiveservices_luisruntime"
