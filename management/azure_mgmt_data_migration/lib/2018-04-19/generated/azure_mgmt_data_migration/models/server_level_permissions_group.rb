@@ -11,6 +11,8 @@ module Azure::DataMigration::Mgmt::V2018_04_19
     module ServerLevelPermissionsGroup
       Default = "Default"
       MigrationFromSqlServerToAzureDB = "MigrationFromSqlServerToAzureDB"
+      MigrationFromSqlServerToAzureMI = "MigrationFromSqlServerToAzureMI"
+      MigrationFromMySQLToAzureDBForMySQL = "MigrationFromMySQLToAzureDBForMySQL"
     end
   end
 end

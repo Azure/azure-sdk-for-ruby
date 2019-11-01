@@ -13,8 +13,11 @@ module Azure::Storage::Mgmt::V2019_04_01
       include MsRestAzure
 
       # @return [DirectoryServiceOptions] Indicates the directory service used.
-      # Possible values include: 'None', 'AADDS'
+      # Possible values include: 'None', 'AADDS', 'AD'
       attr_accessor :directory_service_options
+
+      # @return [ActiveDirectoryProperties] Required if choose AD.
+      attr_accessor :active_directory_properties
 
 
       #
@@ -36,6 +39,15 @@ module Azure::Storage::Mgmt::V2019_04_01
                 serialized_name: 'directoryServiceOptions',
                 type: {
                   name: 'String'
+                }
+              },
+              active_directory_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'activeDirectoryProperties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ActiveDirectoryProperties'
                 }
               }
             }

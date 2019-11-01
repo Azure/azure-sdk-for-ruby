@@ -12,8 +12,8 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
 
       include MsRestAzure
 
-      # @return [Hash{String => Array<OracleOCIDriverInfo>}] Information about
-      # the installed driver if found and valid.
+      # @return [OracleOCIDriverInfo] Information about the installed driver if
+      # found and valid.
       attr_accessor :installed_driver
 
       # @return [Array<ReportableException>] Validation errors
@@ -36,27 +36,10 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
               installed_driver: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'installedDriver',
                 type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'ArrayElementType',
-                      type: {
-                        name: 'Sequence',
-                        element: {
-                            client_side_validation: true,
-                            required: false,
-                            serialized_name: 'OracleOCIDriverInfoElementType',
-                            type: {
-                              name: 'Composite',
-                              class_name: 'OracleOCIDriverInfo'
-                            }
-                        }
-                      }
-                  }
+                  name: 'Composite',
+                  class_name: 'OracleOCIDriverInfo'
                 }
               },
               validation_errors: {

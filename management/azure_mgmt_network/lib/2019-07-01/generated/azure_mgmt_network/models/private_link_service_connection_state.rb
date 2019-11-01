@@ -22,7 +22,7 @@ module Azure::Network::Mgmt::V2019_07_01
 
       # @return [String] A message indicating if changes on the service
       # provider require any updates on the consumer.
-      attr_accessor :action_required
+      attr_accessor :actions_required
 
 
       #
@@ -54,10 +54,10 @@ module Azure::Network::Mgmt::V2019_07_01
                   name: 'String'
                 }
               },
-              action_required: {
+              actions_required: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'actionRequired',
+                serialized_name: 'actionsRequired',
                 type: {
                   name: 'String'
                 }

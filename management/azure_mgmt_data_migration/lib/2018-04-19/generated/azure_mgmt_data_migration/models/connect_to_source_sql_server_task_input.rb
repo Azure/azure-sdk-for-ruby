@@ -18,7 +18,9 @@ module Azure::DataMigration::Mgmt::V2018_04_19
       attr_accessor :source_connection_info
 
       # @return [ServerLevelPermissionsGroup] Permission group for validations.
-      # Possible values include: 'Default', 'MigrationFromSqlServerToAzureDB'
+      # Possible values include: 'Default', 'MigrationFromSqlServerToAzureDB',
+      # 'MigrationFromSqlServerToAzureMI',
+      # 'MigrationFromMySQLToAzureDBForMySQL'
       attr_accessor :check_permissions_group
 
       # @return [Boolean] Flag for whether to collect logins from source
@@ -57,7 +59,8 @@ module Azure::DataMigration::Mgmt::V2018_04_19
                 required: false,
                 serialized_name: 'checkPermissionsGroup',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'ServerLevelPermissionsGroup'
                 }
               },
               collect_logins: {

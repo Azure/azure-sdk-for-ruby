@@ -25,7 +25,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
   autoload :UsageModels,                                        '2019-08-01-preview/generated/azure_mgmt_storagecache/usage_models.rb'
   autoload :Caches,                                             '2019-08-01-preview/generated/azure_mgmt_storagecache/caches.rb'
   autoload :StorageTargets,                                     '2019-08-01-preview/generated/azure_mgmt_storagecache/storage_targets.rb'
-  autoload :StorageCacheMgmtClient,                             '2019-08-01-preview/generated/azure_mgmt_storagecache/storage_cache_mgmt_client.rb'
+  autoload :StorageCacheManagementClient,                       '2019-08-01-preview/generated/azure_mgmt_storagecache/storage_cache_management_client.rb'
 
   module Models
     autoload :ClfsTarget,                                         '2019-08-01-preview/generated/azure_mgmt_storagecache/models/clfs_target.rb'

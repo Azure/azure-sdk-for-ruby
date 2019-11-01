@@ -27,7 +27,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Unknown',
+          serialized_name: 'FileStorageInfo',
           type: {
             name: 'Composite',
             class_name: 'FileStorageInfo',

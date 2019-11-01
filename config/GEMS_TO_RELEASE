@@ -1,11 +1,14 @@
 {
     "management": [
-        "azure_mgmt_network",
-        "azure_mgmt_peering",
+        "azure_mgmt_reservations",
+        "azure_mgmt_data_migration",
         "azure_mgmt_storage",
-        "azure_mgmt_datashare",
-        "azure_mgmt_resources",
-        "azure_mgmt_vmware_cloudsimple"
+        "azure_mgmt_event_grid",
+        "azure_mgmt_storagecache",
+        "azure_mgmt_network"
+    ],
+    "data": [
+        "azure_cognitiveservices_luisruntime"
     ],
     "rollup": [
         "azure_sdk"

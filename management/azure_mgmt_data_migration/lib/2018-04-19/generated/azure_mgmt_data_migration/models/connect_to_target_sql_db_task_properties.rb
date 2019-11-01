@@ -44,6 +44,7 @@ module Azure::DataMigration::Mgmt::V2018_04_19
               errors: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'errors',
                 type: {
                   name: 'Sequence',
@@ -65,6 +66,26 @@ module Azure::DataMigration::Mgmt::V2018_04_19
                 serialized_name: 'state',
                 type: {
                   name: 'String'
+                }
+              },
+              commands: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'commands',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'CommandPropertiesElementType',
+                      type: {
+                        name: 'Composite',
+                        polymorphic_discriminator: 'commandType',
+                        uber_parent: 'CommandProperties',
+                        class_name: 'CommandProperties'
+                      }
+                  }
                 }
               },
               taskType: {

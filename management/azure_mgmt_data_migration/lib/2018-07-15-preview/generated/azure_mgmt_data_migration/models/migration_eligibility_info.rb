@@ -13,7 +13,7 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       include MsRestAzure
 
       # @return [Boolean] Whether object is eligible for migration or not.
-      attr_accessor :is_eligibile_for_migration
+      attr_accessor :is_eligible_for_migration
 
       # @return [Array<String>] Information about eligibility failure for the
       # server object.
@@ -33,11 +33,11 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
             name: 'Composite',
             class_name: 'MigrationEligibilityInfo',
             model_properties: {
-              is_eligibile_for_migration: {
+              is_eligible_for_migration: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'isEligibileForMigration',
+                serialized_name: 'isEligibleForMigration',
                 type: {
                   name: 'Boolean'
                 }

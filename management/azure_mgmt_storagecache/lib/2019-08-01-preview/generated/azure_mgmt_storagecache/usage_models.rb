@@ -20,7 +20,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
       @client = client
     end
 
-    # @return [StorageCacheMgmtClient] reference to the StorageCacheMgmtClient
+    # @return [StorageCacheManagementClient] reference to the StorageCacheManagementClient
     attr_reader :client
 
     #

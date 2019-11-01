@@ -6,7 +6,7 @@
 module Azure::DataMigration::Mgmt::V2017_11_15_preview
   module Models
     #
-    # Describes The SKU capabilites object.
+    # Describes The SKU capabilities object.
     #
     class ResourceSkuCapabilities
 

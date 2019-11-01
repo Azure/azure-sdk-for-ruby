@@ -26,9 +26,8 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
   autoload :ReservationsManagementClient,                       '2019-04-01-preview/generated/azure_mgmt_reservations/reservations_management_client.rb'
 
   module Models
-    autoload :CalculatePriceResponsePropertiesBillingCurrencyTotal, '2019-04-01-preview/generated/azure_mgmt_reservations/models/calculate_price_response_properties_billing_currency_total.rb'
     autoload :CalculatePriceResponsePropertiesPricingCurrencyTotal, '2019-04-01-preview/generated/azure_mgmt_reservations/models/calculate_price_response_properties_pricing_currency_total.rb'
-    autoload :CatalogBillingPlansItem,                            '2019-04-01-preview/generated/azure_mgmt_reservations/models/catalog_billing_plans_item.rb'
+    autoload :SkuName,                                            '2019-04-01-preview/generated/azure_mgmt_reservations/models/sku_name.rb'
     autoload :CalculatePriceResponseProperties,                   '2019-04-01-preview/generated/azure_mgmt_reservations/models/calculate_price_response_properties.rb'
     autoload :SkuRestriction,                                     '2019-04-01-preview/generated/azure_mgmt_reservations/models/sku_restriction.rb'
     autoload :CalculatePriceResponse,                             '2019-04-01-preview/generated/azure_mgmt_reservations/models/calculate_price_response.rb'
@@ -46,7 +45,7 @@ module Azure::Reservations::Mgmt::V2019_04_01_preview
     autoload :Error,                                              '2019-04-01-preview/generated/azure_mgmt_reservations/models/error.rb'
     autoload :ReservationResponse,                                '2019-04-01-preview/generated/azure_mgmt_reservations/models/reservation_response.rb'
     autoload :ReservationOrderList,                               '2019-04-01-preview/generated/azure_mgmt_reservations/models/reservation_order_list.rb'
-    autoload :SkuName,                                            '2019-04-01-preview/generated/azure_mgmt_reservations/models/sku_name.rb'
+    autoload :CalculatePriceResponsePropertiesBillingCurrencyTotal, '2019-04-01-preview/generated/azure_mgmt_reservations/models/calculate_price_response_properties_billing_currency_total.rb'
     autoload :ReservationList,                                    '2019-04-01-preview/generated/azure_mgmt_reservations/models/reservation_list.rb'
     autoload :Catalog,                                            '2019-04-01-preview/generated/azure_mgmt_reservations/models/catalog.rb'
     autoload :AppliedReservationList,                             '2019-04-01-preview/generated/azure_mgmt_reservations/models/applied_reservation_list.rb'

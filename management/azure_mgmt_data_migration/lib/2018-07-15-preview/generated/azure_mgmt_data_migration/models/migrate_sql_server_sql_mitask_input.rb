@@ -37,6 +37,11 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
       # include: 'CreateBackup', 'ExistingBackup'
       attr_accessor :backup_mode
 
+      # @return [String] Azure Active Directory domain name in the format of
+      # 'contoso.com' for federated Azure AD or 'contoso.onmicrosoft.com' for
+      # managed domain, required if and only if Windows logins are selected
+      attr_accessor :aad_domain_name
+
 
       #
       # Mapper for MigrateSqlServerSqlMITaskInput class as Ruby Hash.
@@ -140,6 +145,14 @@ module Azure::DataMigration::Mgmt::V2018_07_15_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'backupMode',
+                type: {
+                  name: 'String'
+                }
+              },
+              aad_domain_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'aadDomainName',
                 type: {
                   name: 'String'
                 }

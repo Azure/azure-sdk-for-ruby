@@ -404,7 +404,7 @@
                 },
                 "Microsoft.EventGrid": {
                     "management": {
-                        "2019-06-01": ["*"]
+                        "2020-01-01-preview": ["*"]
                     },
                     "data": {
                         "2018-01-01": ["*"]
@@ -552,7 +552,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2019-08-01": ["*"]
+                        "2019-09-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -720,7 +720,7 @@
                 },
                 "Microsoft.Storage": {
                     "management": {
-                        "2019-04-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 },
                 "Microsoft.StorageSync": {
@@ -730,7 +730,7 @@
                 },
                 "Microsoft.StorageCache": {
                     "management": {
-                        "2019-08-01-preview": ["*"]
+                        "2019-11-01": ["*"]
                     }
                 },
                 "Microsoft.StreamAnalytics": {
@@ -830,7 +830,7 @@
                 },
                 "Microsoft.CognitiveServices.LuisRuntime": {
                     "data": {
-                        "3.0-preview": ["*"]
+                        "3.0": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.LuisAuthoring": {
@@ -1505,7 +1505,7 @@
             "resourceTypes": {
                 "Microsoft.EventGrid" : {
                     "management": {
-                        "2019-06-01": ["*"]
+                        "2020-01-01-preview": ["*"]
                     }
                 }
             },
@@ -2015,7 +2015,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2019-08-01": ["*"]
+                        "2019-09-01": ["*"]
                     }
                 }
             },
@@ -2558,7 +2558,7 @@
             "resourceTypes": {
                 "Microsoft.Storage" : {
                     "management": {
-                        "2019-04-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 }
             },
@@ -2586,7 +2586,7 @@
                 "resourceTypes": {
                     "Microsoft.StorageCache": {
                         "management": {
-                            "2019-08-01-preview": ["*"]
+                            "2019-11-01": ["*"]
                         }
                     }
                 },
@@ -2938,7 +2938,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.LuisRuntime": {
                         "data": {
-                            "3.0-preview": ["*"]
+                            "3.0": ["*"]
                         }
                     }
                 },

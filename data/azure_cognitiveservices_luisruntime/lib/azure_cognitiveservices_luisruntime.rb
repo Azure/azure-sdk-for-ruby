@@ -2,6 +2,6 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
+require '3.0/generated/azure_cognitiveservices_luisruntime'
 require '2.0/generated/azure_cognitiveservices_luisruntime'
-require '3.0-preview/generated/azure_cognitiveservices_luisruntime'
 require 'profiles/latest/luisruntime_latest_profile_client'

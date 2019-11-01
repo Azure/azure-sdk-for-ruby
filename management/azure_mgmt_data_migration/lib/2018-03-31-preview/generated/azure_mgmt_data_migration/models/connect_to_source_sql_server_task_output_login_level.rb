@@ -34,7 +34,7 @@ module Azure::DataMigration::Mgmt::V2018_03_31_preview
       # @return [Boolean] The state of the login.
       attr_accessor :is_enabled
 
-      # @return [MigrationEligibilityInfo] Information about eligiblity of
+      # @return [MigrationEligibilityInfo] Information about eligibility of
       # login for migration.
       attr_accessor :migration_eligibility
 

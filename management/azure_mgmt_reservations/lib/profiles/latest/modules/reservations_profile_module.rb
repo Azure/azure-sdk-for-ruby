@@ -11,9 +11,8 @@ module Azure::Reservations::Profiles::Latest
     Operation = Azure::Reservations::Mgmt::V2019_04_01_preview::Operation
 
     module Models
-      CalculatePriceResponsePropertiesBillingCurrencyTotal = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesBillingCurrencyTotal
       CalculatePriceResponsePropertiesPricingCurrencyTotal = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesPricingCurrencyTotal
-      CatalogBillingPlansItem = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CatalogBillingPlansItem
+      SkuName = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuName
       CalculatePriceResponseProperties = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponseProperties
       SkuRestriction = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuRestriction
       CalculatePriceResponse = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponse
@@ -31,7 +30,7 @@ module Azure::Reservations::Profiles::Latest
       Error = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Error
       ReservationResponse = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationResponse
       ReservationOrderList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderList
-      SkuName = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuName
+      CalculatePriceResponsePropertiesBillingCurrencyTotal = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesBillingCurrencyTotal
       ReservationList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationList
       Catalog = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::Catalog
       AppliedReservationList = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedReservationList
@@ -107,14 +106,11 @@ module Azure::Reservations::Profiles::Latest
     end
 
     class ModelClasses
-      def calculate_price_response_properties_billing_currency_total
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesBillingCurrencyTotal
-      end
       def calculate_price_response_properties_pricing_currency_total
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesPricingCurrencyTotal
       end
-      def catalog_billing_plans_item
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CatalogBillingPlansItem
+      def sku_name
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuName
       end
       def calculate_price_response_properties
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponseProperties
@@ -167,8 +163,8 @@ module Azure::Reservations::Profiles::Latest
       def reservation_order_list
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationOrderList
       end
-      def sku_name
-        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::SkuName
+      def calculate_price_response_properties_billing_currency_total
+        Azure::Reservations::Mgmt::V2019_04_01_preview::Models::CalculatePriceResponsePropertiesBillingCurrencyTotal
       end
       def reservation_list
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservationList

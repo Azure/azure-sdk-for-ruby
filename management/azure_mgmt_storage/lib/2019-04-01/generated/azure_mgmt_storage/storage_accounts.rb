@@ -753,54 +753,63 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Lists the access keys for the specified storage account.
+    # Lists the access keys or Kerberos keys (if active directory enabled) for the
+    # specified storage account.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
+    # @param expand [ListKeyExpand] Specifies type of the key to be listed.
+    # Possible value is kerb. Possible values include: 'kerb'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [StorageAccountListKeysResult] operation results.
     #
-    def list_keys(resource_group_name, account_name, custom_headers:nil)
-      response = list_keys_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_keys(resource_group_name, account_name, expand:nil, custom_headers:nil)
+      response = list_keys_async(resource_group_name, account_name, expand:expand, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Lists the access keys for the specified storage account.
+    # Lists the access keys or Kerberos keys (if active directory enabled) for the
+    # specified storage account.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
+    # @param expand [ListKeyExpand] Specifies type of the key to be listed.
+    # Possible value is kerb. Possible values include: 'kerb'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_with_http_info(resource_group_name, account_name, custom_headers:nil)
-      list_keys_async(resource_group_name, account_name, custom_headers:custom_headers).value!
+    def list_keys_with_http_info(resource_group_name, account_name, expand:nil, custom_headers:nil)
+      list_keys_async(resource_group_name, account_name, expand:expand, custom_headers:custom_headers).value!
     end
 
     #
-    # Lists the access keys for the specified storage account.
+    # Lists the access keys or Kerberos keys (if active directory enabled) for the
+    # specified storage account.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
+    # @param expand [ListKeyExpand] Specifies type of the key to be listed.
+    # Possible value is kerb. Possible values include: 'kerb'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_async(resource_group_name, account_name, custom_headers:nil)
+    def list_keys_async(resource_group_name, account_name, expand:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -827,7 +836,7 @@ module Azure::Storage::Mgmt::V2019_04_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$expand' => expand},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -863,7 +872,8 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Regenerates one of the access keys for the specified storage account.
+    # Regenerates one of the access keys or Kerberos keys for the specified storage
+    # account.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
@@ -871,7 +881,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
     # @param regenerate_key [StorageAccountRegenerateKeyParameters] Specifies name
-    # of the key which should be regenerated -- key1 or key2.
+    # of the key which should be regenerated -- key1, key2, kerb1, kerb2.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -883,7 +893,8 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Regenerates one of the access keys for the specified storage account.
+    # Regenerates one of the access keys or Kerberos keys for the specified storage
+    # account.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
@@ -891,7 +902,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
     # @param regenerate_key [StorageAccountRegenerateKeyParameters] Specifies name
-    # of the key which should be regenerated -- key1 or key2.
+    # of the key which should be regenerated -- key1, key2, kerb1, kerb2.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -902,7 +913,8 @@ module Azure::Storage::Mgmt::V2019_04_01
     end
 
     #
-    # Regenerates one of the access keys for the specified storage account.
+    # Regenerates one of the access keys or Kerberos keys for the specified storage
+    # account.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
@@ -910,7 +922,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
     # @param regenerate_key [StorageAccountRegenerateKeyParameters] Specifies name
-    # of the key which should be regenerated -- key1 or key2.
+    # of the key which should be regenerated -- key1, key2, kerb1, kerb2.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
