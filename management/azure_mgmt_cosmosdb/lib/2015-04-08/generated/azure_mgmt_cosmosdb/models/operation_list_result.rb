@@ -33,7 +33,7 @@ module Azure::Cosmosdb::Mgmt::V2015_04_08
       def get_all_items
         items = @value
         page = self
-        while page.next_link != nil && !page.next_link.strip.empty? do
+        while page.next_link != nil do
           page = page.get_next_page
           items.concat(page.value)
         end

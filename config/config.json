@@ -623,6 +623,11 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/86796b0f17d82b046fddbc7cce463a159774f6d6/specification/cosmos-db/resource-manager/readme.md",
       "namespace": "Azure::Cosmosdb::Mgmt::V2015_04_08",
       "tag": "package-2015-04"
+    },
+    "azure_mgmt_cosmosdb_2019_08_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5ec8997672bc62c8032dd6d4755bf6b8379b3e5/specification/cosmos-db/resource-manager/readme.md",
+      "namespace": "Azure::Cosmosdb::Mgmt::V2019_08_01",
+      "tag": "package-2019-08"
     }
   },
   "azure_mgmt_customer_insights": {
