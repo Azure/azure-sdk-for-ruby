@@ -1,4 +1,7 @@
 {
+    "data": [
+        "azure_cognitiveservices_luisauthoring"
+    ],
     "management": [
         "azure_mgmt_cosmosdb"
     ],

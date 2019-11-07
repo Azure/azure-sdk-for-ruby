@@ -835,7 +835,7 @@
                 },
                 "Microsoft.CognitiveServices.LuisAuthoring": {
                     "data": {
-                        "2.0": ["*"]
+                        "3.0-preview": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices.NewsSearch": {
@@ -2952,7 +2952,7 @@
                 "resourceTypes": {
                     "Microsoft.CognitiveServices.LuisAuthoring": {
                         "data": {
-                            "2.0": ["*"]
+                            "3.0-preview": ["*"]
                         }
                     }
                 },
