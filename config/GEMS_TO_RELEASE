@@ -3,7 +3,8 @@
         "azure_cognitiveservices_luisauthoring"
     ],
     "management": [
-        "azure_mgmt_cosmosdb"
+        "azure_mgmt_cosmosdb",
+        "azure_mgmt_kusto"
     ],
     "rollup": [
         "azure_sdk"
