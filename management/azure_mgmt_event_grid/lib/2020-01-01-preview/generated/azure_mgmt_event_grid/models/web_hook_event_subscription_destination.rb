@@ -33,8 +33,13 @@ module Azure::EventGrid::Mgmt::V2020_01_01_preview
       # @return [Integer] Preferred batch size in Kilobytes.
       attr_accessor :preferred_batch_size_in_kilobytes
 
-      # @return [String] The AAD application ID or URI to get the access token
-      # that will be included as the bearer token in delivery requests.
+      # @return [String] The Azure Active Directory Tenant ID to get the access
+      # token that will be included as the bearer token in delivery requests.
+      attr_accessor :azure_active_directory_tenant_id
+
+      # @return [String] The Azure Active Directory Application ID or URI to
+      # get the access token that will be included as the bearer token in
+      # delivery requests.
       attr_accessor :azure_active_directory_application_id_or_uri
 
 
@@ -90,6 +95,14 @@ module Azure::EventGrid::Mgmt::V2020_01_01_preview
                 serialized_name: 'properties.preferredBatchSizeInKilobytes',
                 type: {
                   name: 'Number'
+                }
+              },
+              azure_active_directory_tenant_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.azureActiveDirectoryTenantId',
+                type: {
+                  name: 'String'
                 }
               },
               azure_active_directory_application_id_or_uri: {

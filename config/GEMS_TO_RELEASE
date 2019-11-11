@@ -4,6 +4,7 @@
     ],
     "management": [
         "azure_mgmt_cosmosdb",
+        "azure_mgmt_event_grid",
         "azure_mgmt_kusto"
     ],
     "rollup": [
