@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2019-08-01-preview/generated/azure_mgmt_cosmosdb/module_definition'
 require 'ms_rest_azure'
 
-module Azure::Cosmosdb::Mgmt::V2019_08_01_preview_only
+module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
   autoload :PrivateLinkResources,                               '2019-08-01-preview/generated/azure_mgmt_cosmosdb/private_link_resources.rb'
   autoload :PrivateEndpointConnections,                         '2019-08-01-preview/generated/azure_mgmt_cosmosdb/private_endpoint_connections.rb'
   autoload :CosmosDB,                                           '2019-08-01-preview/generated/azure_mgmt_cosmosdb/cosmos_db.rb'

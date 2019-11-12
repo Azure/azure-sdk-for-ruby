@@ -6,4 +6,4 @@
 module Azure end
 module Azure::Cosmosdb end
 module Azure::Cosmosdb::Mgmt end
-module Azure::Cosmosdb::Mgmt::V2019_08_01_preview_only end
+module Azure::Cosmosdb::Mgmt::V2019_08_01_preview end

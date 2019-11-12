@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Cosmosdb::Mgmt::V2019_08_01_preview_only
+module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
   module Models
     #
     # A list of private endpoint connections

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Cosmosdb::Mgmt::V2019_08_01_preview_only
+module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
   #
   # Azure Cosmos DB Database Service Resource Provider REST API
   #
@@ -111,7 +111,7 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview_only
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Cosmosdb::Mgmt::V2019_08_01_preview_only::Models::PrivateLinkResourceListResult.mapper()
+            result_mapper = Azure::Cosmosdb::Mgmt::V2019_08_01_preview::Models::PrivateLinkResourceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -218,7 +218,7 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview_only
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Cosmosdb::Mgmt::V2019_08_01_preview_only::Models::PrivateLinkResource.mapper()
+            result_mapper = Azure::Cosmosdb::Mgmt::V2019_08_01_preview::Models::PrivateLinkResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
