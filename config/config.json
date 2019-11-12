@@ -623,6 +623,11 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/86796b0f17d82b046fddbc7cce463a159774f6d6/specification/cosmos-db/resource-manager/readme.md",
       "namespace": "Azure::Cosmosdb::Mgmt::V2015_04_08",
       "tag": "package-2015-04"
+    },
+    "azure_mgmt_cosmosdb_2019_08_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5ec8997672bc62c8032dd6d4755bf6b8379b3e5/specification/cosmos-db/resource-manager/readme.md",
+      "namespace": "Azure::Cosmosdb::Mgmt::V2019_08_01",
+      "tag": "package-2019-08"
     }
   },
   "azure_mgmt_customer_insights": {
@@ -764,7 +769,7 @@
   },
   "azure_mgmt_event_grid": {
     "azure_mgmt_event_grid_2020_01_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/df6ab1d2b2f424bdc10a69a0e0b8fc065f7fc70e/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/80a458c51677166e259b90316678e16c1ec614a0/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2020_01_01_preview",
       "tag": "package-2020-01-preview"
     },
@@ -927,6 +932,11 @@
     }
   },
   "azure_mgmt_kusto": {
+    "azure_mgmt_kusto_2019_09_07": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/80a458c51677166e259b90316678e16c1ec614a0/specification/azure-kusto/resource-manager/readme.md",
+      "namespace": "Azure::Kusto::Mgmt::V2019_09_07",
+      "tag": "package-2019-09-07"
+    },
     "azure_mgmt_kusto_2019_05_15": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/8afd6663d145c938b80a9a9709aa2a9b101b3df2/specification/azure-kusto/resource-manager/readme.md",
       "namespace": "Azure::Kusto::Mgmt::V2019_05_15",
@@ -2715,13 +2725,18 @@
     }
   },
   "azure_cognitiveservices_luisauthoring": {
+    "azure_cognitiveservices_luisauthoring_v3.0_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/80a458c51677166e259b90316678e16c1ec614a0/specification/cognitiveservices/data-plane/LUIS/Authoring/readme.md",
+      "namespace": "Azure::CognitiveServices::LuisAuthoring::V3_0_preview",
+      "title": "LuisAuthoringClient",
+      "tag": "authoring_3_0_preview"
+    },
     "azure_cognitiveservices_luisauthoring_v2.0": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/86796b0f17d82b046fddbc7cce463a159774f6d6/specification/cognitiveservices/data-plane/LUIS/Authoring/readme.md",
       "namespace": "Azure::CognitiveServices::LuisAuthoring::V2_0",
       "title": "LuisAuthoringClient",
       "tag": "authoring_2_0"
     }
-
   },
   "azure_cognitiveservices_newssearch":{
     "azure_cognitiveservices_newssearch_v1.0": {
