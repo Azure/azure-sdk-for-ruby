@@ -938,7 +938,8 @@ module Azure::Compute::Mgmt::V2019_03_01
     end
 
     #
-    # Redeploy one or more virtual machines in a VM scale set.
+    # Shuts down all the virtual machines in the virtual machine scale set, moves
+    # them to a new node, and powers them back on.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -2174,7 +2175,8 @@ module Azure::Compute::Mgmt::V2019_03_01
     end
 
     #
-    # Redeploy one or more virtual machines in a VM scale set.
+    # Shuts down all the virtual machines in the virtual machine scale set, moves
+    # them to a new node, and powers them back on.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -2190,7 +2192,8 @@ module Azure::Compute::Mgmt::V2019_03_01
     end
 
     #
-    # Redeploy one or more virtual machines in a VM scale set.
+    # Shuts down all the virtual machines in the virtual machine scale set, moves
+    # them to a new node, and powers them back on.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -2206,7 +2209,8 @@ module Azure::Compute::Mgmt::V2019_03_01
     end
 
     #
-    # Redeploy one or more virtual machines in a VM scale set.
+    # Shuts down all the virtual machines in the virtual machine scale set, moves
+    # them to a new node, and powers them back on.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.

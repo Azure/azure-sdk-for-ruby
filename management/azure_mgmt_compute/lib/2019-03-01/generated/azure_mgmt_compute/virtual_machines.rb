@@ -1057,7 +1057,8 @@ module Azure::Compute::Mgmt::V2019_03_01
     end
 
     #
-    # The operation to redeploy a virtual machine.
+    # Shuts down the virtual machine, moves it to a new node, and powers it back
+    # on.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -2091,7 +2092,8 @@ module Azure::Compute::Mgmt::V2019_03_01
     end
 
     #
-    # The operation to redeploy a virtual machine.
+    # Shuts down the virtual machine, moves it to a new node, and powers it back
+    # on.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -2105,7 +2107,8 @@ module Azure::Compute::Mgmt::V2019_03_01
     end
 
     #
-    # The operation to redeploy a virtual machine.
+    # Shuts down the virtual machine, moves it to a new node, and powers it back
+    # on.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -2119,7 +2122,8 @@ module Azure::Compute::Mgmt::V2019_03_01
     end
 
     #
-    # The operation to redeploy a virtual machine.
+    # Shuts down the virtual machine, moves it to a new node, and powers it back
+    # on.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.

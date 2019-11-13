@@ -12,28 +12,8 @@ module Azure::Compute::Mgmt::V2019_03_01
 
       include MsRestAzure
 
-      # @return [Integer] The number of replicas of the Image Version to be
-      # created per region. This property would take effect for a region when
-      # regionalReplicaCount is not specified. This property is updatable.
-      attr_accessor :replica_count
-
-      # @return [Boolean] If set to true, Virtual Machines deployed from the
-      # latest version of the Image Definition won't use this Image Version.
-      attr_accessor :exclude_from_latest
-
-      # @return [DateTime] The timestamp for when the gallery Image Version is
-      # published.
-      attr_accessor :published_date
-
-      # @return [DateTime] The end of life date of the gallery Image Version.
-      # This property can be used for decommissioning purposes. This property
-      # is updatable.
-      attr_accessor :end_of_life_date
-
-      # @return [StorageAccountType] Specifies the storage account type to be
-      # used to store the image. This property is not updatable. Possible
-      # values include: 'Standard_LRS', 'Standard_ZRS'
-      attr_accessor :storage_account_type
+      # @return [GalleryArtifactSource]
+      attr_accessor :source
 
 
       #
@@ -64,15 +44,6 @@ module Azure::Compute::Mgmt::V2019_03_01
                         class_name: 'TargetRegion'
                       }
                   }
-                }
-              },
-              source: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'source',
-                type: {
-                  name: 'Composite',
-                  class_name: 'GalleryArtifactSource'
                 }
               },
               replica_count: {
@@ -114,6 +85,15 @@ module Azure::Compute::Mgmt::V2019_03_01
                 serialized_name: 'storageAccountType',
                 type: {
                   name: 'String'
+                }
+              },
+              source: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'source',
+                type: {
+                  name: 'Composite',
+                  class_name: 'GalleryArtifactSource'
                 }
               }
             }

@@ -11,6 +11,7 @@ module Azure::Compute::Mgmt::V2019_03_01
     module VirtualMachinePriorityTypes
       Regular = "Regular"
       Low = "Low"
+      Spot = "Spot"
     end
   end
 end

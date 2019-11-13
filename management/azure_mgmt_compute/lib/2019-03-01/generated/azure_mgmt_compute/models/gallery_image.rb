@@ -32,8 +32,10 @@ module Azure::Compute::Mgmt::V2019_03_01
       # <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
       attr_accessor :os_type
 
-      # @return [OperatingSystemStateTypes] The allowed values for OS State are
-      # 'Generalized'. Possible values include: 'Generalized', 'Specialized'
+      # @return [OperatingSystemStateTypes] This property allows the user to
+      # specify whether the virtual machines created under this image are
+      # 'Generalized' or 'Specialized'. Possible values include: 'Generalized',
+      # 'Specialized'
       attr_accessor :os_state
 
       # @return [DateTime] The end of life date of the gallery Image

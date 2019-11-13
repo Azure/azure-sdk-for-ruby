@@ -16,8 +16,28 @@ module Azure::Compute::Mgmt::V2019_03_01
       # Version is going to be replicated to. This property is updatable.
       attr_accessor :target_regions
 
-      # @return [GalleryArtifactSource]
-      attr_accessor :source
+      # @return [Integer] The number of replicas of the Image Version to be
+      # created per region. This property would take effect for a region when
+      # regionalReplicaCount is not specified. This property is updatable.
+      attr_accessor :replica_count
+
+      # @return [Boolean] If set to true, Virtual Machines deployed from the
+      # latest version of the Image Definition won't use this Image Version.
+      attr_accessor :exclude_from_latest
+
+      # @return [DateTime] The timestamp for when the gallery Image Version is
+      # published.
+      attr_accessor :published_date
+
+      # @return [DateTime] The end of life date of the gallery Image Version.
+      # This property can be used for decommissioning purposes. This property
+      # is updatable.
+      attr_accessor :end_of_life_date
+
+      # @return [StorageAccountType] Specifies the storage account type to be
+      # used to store the image. This property is not updatable. Possible
+      # values include: 'Standard_LRS', 'Standard_ZRS'
+      attr_accessor :storage_account_type
 
 
       #
@@ -50,13 +70,45 @@ module Azure::Compute::Mgmt::V2019_03_01
                   }
                 }
               },
-              source: {
+              replica_count: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'source',
+                required: false,
+                serialized_name: 'replicaCount',
                 type: {
-                  name: 'Composite',
-                  class_name: 'GalleryArtifactSource'
+                  name: 'Number'
+                }
+              },
+              exclude_from_latest: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'excludeFromLatest',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              published_date: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'publishedDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              end_of_life_date: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'endOfLifeDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              storage_account_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'storageAccountType',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -36,6 +36,14 @@ module Azure::Compute::Mgmt::V2019_03_01
       # scenario.
       attr_accessor :license_type
 
+      # @return [BillingProfile] Specifies the billing related details of a low
+      # priority VMSS. <br><br>Minimum api-version: 2019-03-01.
+      attr_accessor :billing_profile
+
+      # @return [ScheduledEventsProfile] Specifies Scheduled Event related
+      # configurations.
+      attr_accessor :scheduled_events_profile
+
 
       #
       # Mapper for VirtualMachineScaleSetUpdateVMProfile class as Ruby Hash.
@@ -101,6 +109,24 @@ module Azure::Compute::Mgmt::V2019_03_01
                 serialized_name: 'licenseType',
                 type: {
                   name: 'String'
+                }
+              },
+              billing_profile: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'billingProfile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'BillingProfile'
+                }
+              },
+              scheduled_events_profile: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'scheduledEventsProfile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ScheduledEventsProfile'
                 }
               }
             }

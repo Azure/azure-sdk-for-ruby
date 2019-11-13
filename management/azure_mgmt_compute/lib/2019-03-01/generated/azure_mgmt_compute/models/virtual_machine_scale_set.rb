@@ -27,6 +27,9 @@ module Azure::Compute::Mgmt::V2019_03_01
       # @return [UpgradePolicy] The upgrade policy.
       attr_accessor :upgrade_policy
 
+      # @return [AutomaticRepairsPolicy] Policy for automatic repairs.
+      attr_accessor :automatic_repairs_policy
+
       # @return [VirtualMachineScaleSetVMProfile] The virtual machine profile.
       attr_accessor :virtual_machine_profile
 
@@ -70,6 +73,11 @@ module Azure::Compute::Mgmt::V2019_03_01
       # capability to support attaching managed data disks with UltraSSD_LRS
       # storage account type.
       attr_accessor :additional_capabilities
+
+      # @return [ScaleInPolicy] Specifies the scale-in policy that decides
+      # which virtual machines are chosen for removal when a Virtual Machine
+      # Scale Set is scaled-in.
+      attr_accessor :scale_in_policy
 
       # @return [VirtualMachineScaleSetIdentity] The identity of the virtual
       # machine scale set, if configured.
@@ -170,6 +178,15 @@ module Azure::Compute::Mgmt::V2019_03_01
                   class_name: 'UpgradePolicy'
                 }
               },
+              automatic_repairs_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.automaticRepairsPolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AutomaticRepairsPolicy'
+                }
+              },
               virtual_machine_profile: {
                 client_side_validation: true,
                 required: false,
@@ -253,6 +270,15 @@ module Azure::Compute::Mgmt::V2019_03_01
                 type: {
                   name: 'Composite',
                   class_name: 'AdditionalCapabilities'
+                }
+              },
+              scale_in_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.scaleInPolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ScaleInPolicy'
                 }
               },
               identity: {

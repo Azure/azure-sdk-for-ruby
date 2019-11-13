@@ -417,37 +417,40 @@ module Azure::Compute::Mgmt::V2019_03_01
     #
     # Lists all availability sets in a subscription.
     #
+    # @param expand [String] The expand expression to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<AvailabilitySet>] operation results.
     #
-    def list_by_subscription(custom_headers:nil)
-      first_page = list_by_subscription_as_lazy(custom_headers:custom_headers)
+    def list_by_subscription(expand:nil, custom_headers:nil)
+      first_page = list_by_subscription_as_lazy(expand:expand, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
     # Lists all availability sets in a subscription.
     #
+    # @param expand [String] The expand expression to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_with_http_info(custom_headers:nil)
-      list_by_subscription_async(custom_headers:custom_headers).value!
+    def list_by_subscription_with_http_info(expand:nil, custom_headers:nil)
+      list_by_subscription_async(expand:expand, custom_headers:custom_headers).value!
     end
 
     #
     # Lists all availability sets in a subscription.
     #
+    # @param expand [String] The expand expression to apply to the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_async(custom_headers:nil)
+    def list_by_subscription_async(expand:nil, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -465,7 +468,7 @@ module Azure::Compute::Mgmt::V2019_03_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$expand' => expand},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -870,14 +873,15 @@ module Azure::Compute::Mgmt::V2019_03_01
     #
     # Lists all availability sets in a subscription.
     #
+    # @param expand [String] The expand expression to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AvailabilitySetListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_subscription_as_lazy(custom_headers:nil)
-      response = list_by_subscription_async(custom_headers:custom_headers).value!
+    def list_by_subscription_as_lazy(expand:nil, custom_headers:nil)
+      response = list_by_subscription_async(expand:expand, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
