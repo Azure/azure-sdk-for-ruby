@@ -14,11 +14,10 @@ module Azure::Compute::Mgmt::V2019_03_01
 
       # @return [Boolean] Indicates whether OS upgrades should automatically be
       # applied to scale set instances in a rolling fashion when a newer
-      # version of the OS image becomes available. Default value is false. If
-      # this is set to true for Windows based scale sets, recommendation is to
-      # set
+      # version of the OS image becomes available. Default value is false.
+      # <br><br> If this is set to true for Windows based scale sets,
       # [enableAutomaticUpdates](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.windowsconfiguration.enableautomaticupdates?view=azure-dotnet)
-      # to false.
+      # is automatically set to false and cannot be set to true.
       attr_accessor :enable_automatic_osupgrade
 
       # @return [Boolean] Whether OS image rollback feature should be disabled.

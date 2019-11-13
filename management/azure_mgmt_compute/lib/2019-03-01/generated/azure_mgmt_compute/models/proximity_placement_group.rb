@@ -14,8 +14,9 @@ module Azure::Compute::Mgmt::V2019_03_01
 
       # @return [ProximityPlacementGroupType] Specifies the type of the
       # proximity placement group. <br><br> Possible values are: <br><br>
-      # **Standard** <br><br> **Ultra**. Possible values include: 'Standard',
-      # 'Ultra'
+      # **Standard** : Co-locate resources within an Azure region or
+      # Availability Zone. <br><br> **Ultra** : For future use. Possible values
+      # include: 'Standard', 'Ultra'
       attr_accessor :proximity_placement_group_type
 
       # @return [Array<SubResource>] A list of references to all virtual

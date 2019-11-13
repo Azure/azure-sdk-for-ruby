@@ -85,6 +85,10 @@ module Azure::Compute::Mgmt::V2019_03_01
       # when no extensions are present on the virtual machine.
       attr_accessor :allow_extension_operations
 
+      # @return [Boolean] Specifies whether the guest provision signal is
+      # required from the virtual machine.
+      attr_accessor :require_guest_provision_signal
+
 
       #
       # Mapper for OSProfile class as Ruby Hash.
@@ -170,6 +174,14 @@ module Azure::Compute::Mgmt::V2019_03_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'allowExtensionOperations',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              require_guest_provision_signal: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'requireGuestProvisionSignal',
                 type: {
                   name: 'Boolean'
                 }

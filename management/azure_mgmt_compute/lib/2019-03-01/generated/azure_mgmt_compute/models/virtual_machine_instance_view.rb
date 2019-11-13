@@ -28,6 +28,10 @@ module Azure::Compute::Mgmt::V2019_03_01
       # machine.
       attr_accessor :os_version
 
+      # @return [HyperVGenerationType] Specifies the HyperVGeneration Type
+      # associated with a resource. Possible values include: 'V1', 'V2'
+      attr_accessor :hyper_vgeneration
+
       # @return [String] The Remote desktop certificate thumbprint.
       attr_accessor :rdp_thumb_print
 
@@ -106,6 +110,14 @@ module Azure::Compute::Mgmt::V2019_03_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'osVersion',
+                type: {
+                  name: 'String'
+                }
+              },
+              hyper_vgeneration: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'hyperVGeneration',
                 type: {
                   name: 'String'
                 }

@@ -24,6 +24,9 @@ module Azure::Compute::Mgmt::V2019_03_01
       # @return [AutomaticOSUpgradeProperties]
       attr_accessor :automatic_osupgrade_properties
 
+      # @return [HyperVGenerationTypes] Possible values include: 'V1', 'V2'
+      attr_accessor :hyper_vgeneration
+
 
       #
       # Mapper for VirtualMachineImage class as Ruby Hash.
@@ -120,6 +123,14 @@ module Azure::Compute::Mgmt::V2019_03_01
                 type: {
                   name: 'Composite',
                   class_name: 'AutomaticOSUpgradeProperties'
+                }
+              },
+              hyper_vgeneration: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.hyperVGeneration',
+                type: {
+                  name: 'String'
                 }
               }
             }

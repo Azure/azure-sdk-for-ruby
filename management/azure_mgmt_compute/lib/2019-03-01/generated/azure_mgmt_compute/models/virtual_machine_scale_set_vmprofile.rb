@@ -46,14 +46,22 @@ module Azure::Compute::Mgmt::V2019_03_01
 
       # @return [VirtualMachinePriorityTypes] Specifies the priority for the
       # virtual machines in the scale set. <br><br>Minimum api-version:
-      # 2017-10-30-preview. Possible values include: 'Regular', 'Low'
+      # 2017-10-30-preview. Possible values include: 'Regular', 'Low', 'Spot'
       attr_accessor :priority
 
       # @return [VirtualMachineEvictionPolicyTypes] Specifies the eviction
-      # policy for virtual machines in a low priority scale set.
-      # <br><br>Minimum api-version: 2017-10-30-preview. Possible values
-      # include: 'Deallocate', 'Delete'
+      # policy for virtual machines in a Azure Spot scale set. <br><br>Minimum
+      # api-version: 2017-10-30-preview. Possible values include: 'Deallocate',
+      # 'Delete'
       attr_accessor :eviction_policy
+
+      # @return [BillingProfile] Specifies the billing related details of a
+      # Azure Spot VMSS. <br><br>Minimum api-version: 2019-03-01.
+      attr_accessor :billing_profile
+
+      # @return [ScheduledEventsProfile] Specifies Scheduled Event related
+      # configurations.
+      attr_accessor :scheduled_events_profile
 
 
       #
@@ -136,6 +144,24 @@ module Azure::Compute::Mgmt::V2019_03_01
                 serialized_name: 'evictionPolicy',
                 type: {
                   name: 'String'
+                }
+              },
+              billing_profile: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'billingProfile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'BillingProfile'
+                }
+              },
+              scheduled_events_profile: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'scheduledEventsProfile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ScheduledEventsProfile'
                 }
               }
             }

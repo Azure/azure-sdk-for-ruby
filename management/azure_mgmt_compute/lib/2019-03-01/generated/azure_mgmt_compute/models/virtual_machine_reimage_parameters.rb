@@ -14,7 +14,8 @@ module Azure::Compute::Mgmt::V2019_03_01
       include MsRestAzure
 
       # @return [Boolean] Specifies whether to reimage temp disk. Default
-      # value: false.
+      # value: false. Note: This temp disk reimage parameter is only supported
+      # for VM/VMSS with Ephemeral OS disk.
       attr_accessor :temp_disk
 
 

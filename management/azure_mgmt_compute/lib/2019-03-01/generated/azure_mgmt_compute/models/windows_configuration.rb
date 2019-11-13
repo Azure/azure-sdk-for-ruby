@@ -19,10 +19,10 @@ module Azure::Compute::Mgmt::V2019_03_01
       # extensions can be added to the VM later.
       attr_accessor :provision_vmagent
 
-      # @return [Boolean] Indicates whether virtual machine is enabled for
-      # automatic Windows updates. Default value is true. <br><br> For virtual
-      # machine scale sets, this property can be updated and updates will take
-      # effect on OS reprovisioning.
+      # @return [Boolean] Indicates whether Automatic Updates is enabled for
+      # the Windows virtual machine. Default value is true. <br><br> For
+      # virtual machine scale sets, this property can be updated and updates
+      # will take effect on OS reprovisioning.
       attr_accessor :enable_automatic_updates
 
       # @return [String] Specifies the time zone of the virtual machine. e.g.

@@ -6,7 +6,7 @@
 module Azure::Compute::Mgmt::V2019_03_01
   module Models
     #
-    # This is the storage profile of a gallery Image Version.
+    # This is the storage profile of a Gallery Image Version.
     #
     class GalleryImageVersionStorageProfile
 

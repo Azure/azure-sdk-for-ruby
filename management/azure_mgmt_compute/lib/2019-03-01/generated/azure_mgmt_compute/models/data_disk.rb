@@ -60,7 +60,7 @@ module Azure::Compute::Mgmt::V2019_03_01
       # @return [ManagedDiskParameters] The managed disk parameters.
       attr_accessor :managed_disk
 
-      # @return [Boolean] Specifies whether the datadisk is in process of
+      # @return [Boolean] Specifies whether the data disk is in process of
       # detachment from the VirtualMachine/VirtualMachineScaleset
       attr_accessor :to_be_detached
 

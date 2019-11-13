@@ -24,37 +24,40 @@ module Azure::Compute::Mgmt::V2019_04_01
     #
     # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
+    # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<ResourceSku>] operation results.
     #
-    def list(custom_headers:nil)
-      first_page = list_as_lazy(custom_headers:custom_headers)
+    def list(filter:nil, custom_headers:nil)
+      first_page = list_as_lazy(filter:filter, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
     # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
+    # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers:nil)
-      list_async(custom_headers:custom_headers).value!
+    def list_with_http_info(filter:nil, custom_headers:nil)
+      list_async(filter:filter, custom_headers:custom_headers).value!
     end
 
     #
     # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
+    # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers:nil)
+    def list_async(filter:nil, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -72,7 +75,7 @@ module Azure::Compute::Mgmt::V2019_04_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -200,14 +203,15 @@ module Azure::Compute::Mgmt::V2019_04_01
     #
     # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
+    # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ResourceSkusResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(custom_headers:nil)
-      response = list_async(custom_headers:custom_headers).value!
+    def list_as_lazy(filter:nil, custom_headers:nil)
+      response = list_async(filter:filter, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

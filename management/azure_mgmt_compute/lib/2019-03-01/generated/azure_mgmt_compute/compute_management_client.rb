@@ -46,6 +46,12 @@ module Azure::Compute::Mgmt::V2019_03_01
     # @return [ProximityPlacementGroups] proximity_placement_groups
     attr_reader :proximity_placement_groups
 
+    # @return [DedicatedHostGroups] dedicated_host_groups
+    attr_reader :dedicated_host_groups
+
+    # @return [DedicatedHosts] dedicated_hosts
+    attr_reader :dedicated_hosts
+
     # @return [VirtualMachineExtensionImages] virtual_machine_extension_images
     attr_reader :virtual_machine_extension_images
 
@@ -96,6 +102,18 @@ module Azure::Compute::Mgmt::V2019_03_01
     # @return [GalleryImageVersions] gallery_image_versions
     attr_reader :gallery_image_versions
 
+    # @return [GalleryApplications] gallery_applications
+    attr_reader :gallery_applications
+
+    # @return [GalleryApplicationVersions] gallery_application_versions
+    attr_reader :gallery_application_versions
+
+    # @return [Disks] disks
+    attr_reader :disks
+
+    # @return [Snapshots] snapshots
+    attr_reader :snapshots
+
     #
     # Creates initializes a new instance of the ComputeManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -112,6 +130,8 @@ module Azure::Compute::Mgmt::V2019_03_01
       @operations = Operations.new(self)
       @availability_sets = AvailabilitySets.new(self)
       @proximity_placement_groups = ProximityPlacementGroups.new(self)
+      @dedicated_host_groups = DedicatedHostGroups.new(self)
+      @dedicated_hosts = DedicatedHosts.new(self)
       @virtual_machine_extension_images = VirtualMachineExtensionImages.new(self)
       @virtual_machine_extensions = VirtualMachineExtensions.new(self)
       @virtual_machine_images = VirtualMachineImages.new(self)
@@ -128,6 +148,10 @@ module Azure::Compute::Mgmt::V2019_03_01
       @galleries = Galleries.new(self)
       @gallery_images = GalleryImages.new(self)
       @gallery_image_versions = GalleryImageVersions.new(self)
+      @gallery_applications = GalleryApplications.new(self)
+      @gallery_application_versions = GalleryApplicationVersions.new(self)
+      @disks = Disks.new(self)
+      @snapshots = Snapshots.new(self)
       @api_version = '2019-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -200,7 +224,7 @@ module Azure::Compute::Mgmt::V2019_03_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        sdk_information = "#{sdk_information}/0.18.7"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

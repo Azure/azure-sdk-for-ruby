@@ -56,12 +56,44 @@ module Azure::Compute::Mgmt::V2019_03_01
       # Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
       # <br><br> Currently, a VM can only be added to availability set at
       # creation time. An existing VM cannot be added to an availability set.
+      # <br><br>This property cannot exist along with a non-null
+      # properties.virtualMachineScaleSet reference.
       attr_accessor :availability_set
+
+      # @return [SubResource] Specifies information about the virtual machine
+      # scale set that the virtual machine should be assigned to. Virtual
+      # machines specified in the same virtual machine scale set are allocated
+      # to different nodes to maximize availability. Currently, a VM can only
+      # be added to virtual machine scale set at creation time. An existing VM
+      # cannot be added to a virtual machine scale set. <br><br>This property
+      # cannot exist along with a non-null properties.availabilitySet
+      # reference. <br><br>Minimum api‐version: 2019‐03‐01
+      attr_accessor :virtual_machine_scale_set
 
       # @return [SubResource] Specifies information about the proximity
       # placement group that the virtual machine should be assigned to.
       # <br><br>Minimum api-version: 2018-04-01.
       attr_accessor :proximity_placement_group
+
+      # @return [VirtualMachinePriorityTypes] Specifies the priority for the
+      # virtual machine. <br><br>Minimum api-version: 2019-03-01. Possible
+      # values include: 'Regular', 'Low', 'Spot'
+      attr_accessor :priority
+
+      # @return [VirtualMachineEvictionPolicyTypes] Specifies the eviction
+      # policy for the Azure Spot virtual machine. Only supported value is
+      # 'Deallocate'. <br><br>Minimum api-version: 2019-03-01. Possible values
+      # include: 'Deallocate', 'Delete'
+      attr_accessor :eviction_policy
+
+      # @return [BillingProfile] Specifies the billing related details of a
+      # Azure Spot virtual machine. <br><br>Minimum api-version: 2019-03-01.
+      attr_accessor :billing_profile
+
+      # @return [SubResource] Specifies information about the dedicated host
+      # that the virtual machine resides in. <br><br>Minimum api-version:
+      # 2018-10-01.
+      attr_accessor :host
 
       # @return [String] The provisioning state, which only appears in the
       # response.
@@ -195,10 +227,53 @@ module Azure::Compute::Mgmt::V2019_03_01
                   class_name: 'SubResource'
                 }
               },
+              virtual_machine_scale_set: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.virtualMachineScaleSet',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
               proximity_placement_group: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.proximityPlacementGroup',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
+              priority: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.priority',
+                type: {
+                  name: 'String'
+                }
+              },
+              eviction_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.evictionPolicy',
+                type: {
+                  name: 'String'
+                }
+              },
+              billing_profile: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.billingProfile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'BillingProfile'
+                }
+              },
+              host: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.host',
                 type: {
                   name: 'Composite',
                   class_name: 'SubResource'
