@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Cosmosdb::Mgmt::V2019_08_01
+module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,12 +17,18 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Azure subscription ID.
-    attr_accessor :subscription_id
-
     # @return [String] Version of the API to be used with the client request.
     # The current version is 2019-08-01.
     attr_reader :api_version
+
+    # @return [String] Azure subscription ID.
+    attr_accessor :subscription_id
+
+    # @return [String] The API version to use for this operation.
+    attr_accessor :api_version1
+
+    # @return [String] The ID of the target subscription.
+    attr_accessor :subscription_id1
 
     # @return [String] The preferred language for the response.
     attr_accessor :accept_language
@@ -36,59 +42,11 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [DatabaseAccounts] database_accounts
-    attr_reader :database_accounts
+    # @return [PrivateLinkResources] private_link_resources
+    attr_reader :private_link_resources
 
-    # @return [Operations] operations
-    attr_reader :operations
-
-    # @return [Database] database
-    attr_reader :database
-
-    # @return [Collection] collection
-    attr_reader :collection
-
-    # @return [CollectionRegion] collection_region
-    attr_reader :collection_region
-
-    # @return [DatabaseAccountRegion] database_account_region
-    attr_reader :database_account_region
-
-    # @return [PercentileSourceTarget] percentile_source_target
-    attr_reader :percentile_source_target
-
-    # @return [PercentileTarget] percentile_target
-    attr_reader :percentile_target
-
-    # @return [Percentile] percentile
-    attr_reader :percentile
-
-    # @return [CollectionPartitionRegion] collection_partition_region
-    attr_reader :collection_partition_region
-
-    # @return [CollectionPartition] collection_partition
-    attr_reader :collection_partition
-
-    # @return [PartitionKeyRangeId] partition_key_range_id
-    attr_reader :partition_key_range_id
-
-    # @return [PartitionKeyRangeIdRegion] partition_key_range_id_region
-    attr_reader :partition_key_range_id_region
-
-    # @return [SqlResources] sql_resources
-    attr_reader :sql_resources
-
-    # @return [MongoDBResources] mongo_dbresources
-    attr_reader :mongo_dbresources
-
-    # @return [TableResources] table_resources
-    attr_reader :table_resources
-
-    # @return [CassandraResources] cassandra_resources
-    attr_reader :cassandra_resources
-
-    # @return [GremlinResources] gremlin_resources
-    attr_reader :gremlin_resources
+    # @return [PrivateEndpointConnections] private_endpoint_connections
+    attr_reader :private_endpoint_connections
 
     #
     # Creates initializes a new instance of the CosmosDB class.
@@ -103,25 +61,9 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @database_accounts = DatabaseAccounts.new(self)
-      @operations = Operations.new(self)
-      @database = Database.new(self)
-      @collection = Collection.new(self)
-      @collection_region = CollectionRegion.new(self)
-      @database_account_region = DatabaseAccountRegion.new(self)
-      @percentile_source_target = PercentileSourceTarget.new(self)
-      @percentile_target = PercentileTarget.new(self)
-      @percentile = Percentile.new(self)
-      @collection_partition_region = CollectionPartitionRegion.new(self)
-      @collection_partition = CollectionPartition.new(self)
-      @partition_key_range_id = PartitionKeyRangeId.new(self)
-      @partition_key_range_id_region = PartitionKeyRangeIdRegion.new(self)
-      @sql_resources = SqlResources.new(self)
-      @mongo_dbresources = MongoDBResources.new(self)
-      @table_resources = TableResources.new(self)
-      @cassandra_resources = CassandraResources.new(self)
-      @gremlin_resources = GremlinResources.new(self)
-      @api_version = '2019-08-01'
+      @private_link_resources = PrivateLinkResources.new(self)
+      @private_endpoint_connections = PrivateEndpointConnections.new(self)
+      @api_version = '2019-08-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

@@ -1,13 +1,8 @@
 {
-    "data": [
-        "azure_cognitiveservices_luisauthoring"
+    "management":[
+        "azure_mgmt_cosmosdb"
     ],
-    "management": [
-        "azure_mgmt_cosmosdb",
-        "azure_mgmt_event_grid",
-        "azure_mgmt_kusto"
-    ],
-    "rollup": [
+    "rollup":[
         "azure_sdk"
     ]
 }
