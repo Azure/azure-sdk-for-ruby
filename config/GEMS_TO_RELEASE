@@ -1,4 +1,7 @@
 {
+    "data":[
+        "azure_cognitiveservices_imagesearch"
+    ],
     "management":[
         "azure_mgmt_network"
     ],
