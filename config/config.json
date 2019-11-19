@@ -1039,6 +1039,13 @@
       "title": "MachineLearningServicesClient"
     }
   },
+  "azure_mgmt_maintenance": {
+    "azure_mgmt_maintenance_2018_06_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/maintenance/resource-manager/readme.md",
+      "namespace": "Azure::Maintenance::Mgmt::V2018_06_01_preview",
+      "tag": "package-2018-06-preview"
+    }
+  },
   "azure_mgmt_managed_applications": {
     "azure_mgmt_managed_applications_2018_06_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/resources/resource-manager/readme.md",
@@ -1230,6 +1237,11 @@
     }
   },
   "azure_mgmt_netapp": {
+    "azure_mgmt_netapp_2019_08_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/netapp/resource-manager/readme.md",
+      "namespace": "Azure::NetApp::Mgmt::V2019_08_01",
+      "tag": "package-netapp-2019-08-01"
+    },
     "azure_mgmt_netapp_2019_07_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6af8695dc10de4c764d617172e15b38dc775345b/specification/netapp/resource-manager/readme.md",
       "namespace": "Azure::NetApp::Mgmt::V2019_07_01",
@@ -2314,24 +2326,24 @@
       "tag": "package-pure-2015-05-preview"
     },
     "azure_mgmt_sql_2017_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5011c5f0f18345c1a97aacd0cac220dd7326b79a/specification/sql/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/sql/resource-manager/readme.md",
       "namespace": "Azure::SQL::Mgmt::V2017_03_01_preview",
       "tag": "package-pure-2017-03-preview"
     },
     "azure_mgmt_sql_2017_10_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5011c5f0f18345c1a97aacd0cac220dd7326b79a/specification/sql/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/sql/resource-manager/readme.md",
       "namespace": "Azure::SQL::Mgmt::V2017_10_01_preview",
       "tag": "package-pure-2017-10-preview"
     },
     "azure_mgmt_sql_2018_06_01_preview": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5011c5f0f18345c1a97aacd0cac220dd7326b79a/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/DatabaseSchema.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5011c5f0f18345c1a97aacd0cac220dd7326b79a/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/DatabaseSecurityAlertPolicies.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5011c5f0f18345c1a97aacd0cac220dd7326b79a/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/ManagedDatabaseSchema.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5011c5f0f18345c1a97aacd0cac220dd7326b79a/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/ManagedInstanceVulnerabilityAssessments.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5011c5f0f18345c1a97aacd0cac220dd7326b79a/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/ServerVulnerabilityAssessments.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5011c5f0f18345c1a97aacd0cac220dd7326b79a/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/instancePools.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5011c5f0f18345c1a97aacd0cac220dd7326b79a/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/managedDatabaseSensitivityLabels.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/DatabaseSchema.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/DatabaseSecurityAlertPolicies.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/ManagedDatabaseSchema.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/ManagedInstanceVulnerabilityAssessments.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/ServerVulnerabilityAssessments.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/instancePools.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/sql/resource-manager/Microsoft.Sql/preview/2018-06-01-preview/managedDatabaseSensitivityLabels.json"
       ],
       "namespace": "Azure::SQL::Mgmt::V2018_06_01_preview",
       "title": "SqlManagementClient"

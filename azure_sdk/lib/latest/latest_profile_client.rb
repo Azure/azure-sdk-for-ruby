@@ -54,6 +54,7 @@ require 'latest/modules/locks_profile_module'
 require 'latest/modules/logic_profile_module'
 require 'latest/modules/machinelearning_profile_module'
 require 'latest/modules/machinelearningservices_profile_module'
+require 'latest/modules/maintenance_profile_module'
 require 'latest/modules/managedapplications_profile_module'
 require 'latest/modules/mariadb_profile_module'
 require 'latest/modules/marketplaceordering_profile_module'
@@ -134,7 +135,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :adhybrid_health_service, :advisor, :alerts_management, :analysis_services, :api_management, :appconfiguration, :attestation, :authorization, :automation, :azure_stack, :batch, :batch_ai, :billing, :bot_service, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :cost_management, :customer_insights, :data_box, :data_share, :data_lake_analytics, :data_lake_store, :data_migration, :data_factory, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :migrate, :mixed_reality, :monitor, :managed_service_identity, :mysql, :net_app, :network, :notification_hubs, :operational_insights, :operations_management, :peering, :policy, :policy_insights, :postgresql, :power_bi_embedded, :power_bi_dedicated, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :storage_cache, :stream_analytics, :subscriptions, :traffic_manager, :vmware_cloud_simple, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :qnamaker_runtime, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :adhybrid_health_service, :advisor, :alerts_management, :analysis_services, :api_management, :appconfiguration, :attestation, :authorization, :automation, :azure_stack, :batch, :batch_ai, :billing, :bot_service, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :cost_management, :customer_insights, :data_box, :data_share, :data_lake_analytics, :data_lake_store, :data_migration, :data_factory, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :maintenance, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :migrate, :mixed_reality, :monitor, :managed_service_identity, :mysql, :net_app, :network, :notification_hubs, :operational_insights, :operations_management, :peering, :policy, :policy_insights, :postgresql, :power_bi_embedded, :power_bi_dedicated, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :storage_cache, :stream_analytics, :subscriptions, :traffic_manager, :vmware_cloud_simple, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :qnamaker_runtime, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -217,6 +218,7 @@ module Azure::Profiles::Latest
       @logic = LogicAdapter.new(self, base_url, sdk_options)
       @machine_learning = MachineLearningAdapter.new(self, base_url, sdk_options)
       @machine_learning_services = MachineLearningServicesAdapter.new(self, base_url, sdk_options)
+      @maintenance = MaintenanceAdapter.new(self, base_url, sdk_options)
       @managed_applications = ManagedApplicationsAdapter.new(self, base_url, sdk_options)
       @maria_db = MariaDBAdapter.new(self, base_url, sdk_options)
       @marketplace_ordering = MarketplaceOrderingAdapter.new(self, base_url, sdk_options)
@@ -697,6 +699,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::MachineLearningServices::Mgmt::MachineLearningServicesManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class MaintenanceAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Maintenance::Mgmt::MaintenanceManagementClass.new(context, base_url, options)
       end
     end
 

@@ -22,7 +22,7 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
 
       # @return [String] Specifies the blob storage endpoint (e.g.
       # https://MyAccount.blob.core.windows.net). If state is Enabled,
-      # storageEndpoint is required.
+      # storageEndpoint or isAzureMonitorTargetEnabled is required.
       attr_accessor :storage_endpoint
 
       # @return [String] Specifies the identifier key of the auditing storage
@@ -136,6 +136,12 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
       # PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
       #
       attr_accessor :is_azure_monitor_target_enabled
+
+      # @return [Integer] Specifies the amount of time in milliseconds that can
+      # elapse before audit actions are forced to be processed.
+      # The default minimum value is 1000 (1 second). The maximum is
+      # 2,147,483,647.
+      attr_accessor :queue_delay_ms
 
 
       #
@@ -258,6 +264,14 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
                 serialized_name: 'properties.isAzureMonitorTargetEnabled',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              queue_delay_ms: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.queueDelayMs',
+                type: {
+                  name: 'Number'
                 }
               }
             }
