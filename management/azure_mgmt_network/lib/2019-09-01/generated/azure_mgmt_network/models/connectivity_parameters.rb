@@ -26,6 +26,10 @@ module Azure::Network::Mgmt::V2019_09_01
       # @return [ProtocolConfiguration] Configuration of the protocol.
       attr_accessor :protocol_configuration
 
+      # @return [IPVersion] Preferred IP version of the connection. Possible
+      # values include: 'IPv4', 'IPv6'
+      attr_accessor :preferred_ipversion
+
 
       #
       # Mapper for ConnectivityParameters class as Ruby Hash.
@@ -73,6 +77,14 @@ module Azure::Network::Mgmt::V2019_09_01
                 type: {
                   name: 'Composite',
                   class_name: 'ProtocolConfiguration'
+                }
+              },
+              preferred_ipversion: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'preferredIPVersion',
+                type: {
+                  name: 'String'
                 }
               }
             }

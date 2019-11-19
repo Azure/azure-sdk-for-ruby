@@ -17,7 +17,7 @@ module Azure::Network::Mgmt::V2019_08_01
 
       # @return [Array<P2SConnectionConfiguration>] List of all p2s connection
       # configurations of the gateway.
-      attr_accessor :p2s_connection_configurations
+      attr_accessor :p2sconnection_configurations
 
       # @return [ProvisioningState] The provisioning state of the P2S VPN
       # gateway resource. Possible values include: 'Succeeded', 'Updating',
@@ -27,8 +27,8 @@ module Azure::Network::Mgmt::V2019_08_01
       # @return [Integer] The scale unit for this p2s vpn gateway.
       attr_accessor :vpn_gateway_scale_unit
 
-      # @return [VpnServerConfiguration] The VpnServerConfiguration to which
-      # the p2sVpnGateway is attached to.
+      # @return [SubResource] The VpnServerConfiguration to which the
+      # p2sVpnGateway is attached to.
       attr_accessor :vpn_server_configuration
 
       # @return [VpnClientConnectionHealth] All P2S VPN clients' connection
@@ -112,10 +112,10 @@ module Azure::Network::Mgmt::V2019_08_01
                   class_name: 'SubResource'
                 }
               },
-              p2s_connection_configurations: {
+              p2sconnection_configurations: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.p2sConnectionConfigurations',
+                serialized_name: 'properties.p2SConnectionConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -151,7 +151,7 @@ module Azure::Network::Mgmt::V2019_08_01
                 serialized_name: 'properties.vpnServerConfiguration',
                 type: {
                   name: 'Composite',
-                  class_name: 'VpnServerConfiguration'
+                  class_name: 'SubResource'
                 }
               },
               vpn_client_connection_health: {
