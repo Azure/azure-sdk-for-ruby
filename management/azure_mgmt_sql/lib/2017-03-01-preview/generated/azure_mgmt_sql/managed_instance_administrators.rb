@@ -131,14 +131,13 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ManagedInstanceAdministrator] operation results.
     #
-    def get(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
-      response = get_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, managed_instance_name, custom_headers:nil)
+      response = get_async(resource_group_name, managed_instance_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -149,14 +148,13 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
-      get_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, managed_instance_name, custom_headers:nil)
+      get_async(resource_group_name, managed_instance_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -166,16 +164,15 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The administrator name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
+    def get_async(resource_group_name, managed_instance_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'managed_instance_name is nil' if managed_instance_name.nil?
-      fail ArgumentError, 'administrator_name is nil' if administrator_name.nil?
+      administrator_name = 'ActiveDirectory'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -235,7 +232,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The requested administrator name.
     # @param parameters [ManagedInstanceAdministrator] The requested administrator
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -243,8 +239,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [ManagedInstanceAdministrator] operation results.
     #
-    def create_or_update(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, managed_instance_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, managed_instance_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -253,7 +249,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The requested administrator name.
     # @param parameters [ManagedInstanceAdministrator] The requested administrator
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -262,9 +257,9 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, managed_instance_name, parameters, custom_headers:nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, managed_instance_name, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -287,12 +282,11 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
-      response = delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, managed_instance_name, custom_headers:nil)
+      response = delete_async(resource_group_name, managed_instance_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -301,16 +295,15 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
+    def delete_async(resource_group_name, managed_instance_name, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, managed_instance_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -331,7 +324,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The requested administrator name.
     # @param parameters [ManagedInstanceAdministrator] The requested administrator
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -339,8 +331,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [ManagedInstanceAdministrator] operation results.
     #
-    def begin_create_or_update(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, managed_instance_name, parameters, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, managed_instance_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -351,7 +343,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The requested administrator name.
     # @param parameters [ManagedInstanceAdministrator] The requested administrator
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -359,8 +350,8 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, managed_instance_name, parameters, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, managed_instance_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -370,7 +361,6 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The requested administrator name.
     # @param parameters [ManagedInstanceAdministrator] The requested administrator
     # parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -378,10 +368,10 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, managed_instance_name, administrator_name, parameters, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, managed_instance_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'managed_instance_name is nil' if managed_instance_name.nil?
-      fail ArgumentError, 'administrator_name is nil' if administrator_name.nil?
+      administrator_name = 'ActiveDirectory'
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -459,13 +449,12 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, managed_instance_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, managed_instance_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -476,14 +465,13 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The administrator name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, managed_instance_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, managed_instance_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -493,16 +481,15 @@ module Azure::SQL::Mgmt::V2017_03_01_preview
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param managed_instance_name [String] The name of the managed instance.
-    # @param administrator_name [String] The administrator name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, managed_instance_name, administrator_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, managed_instance_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'managed_instance_name is nil' if managed_instance_name.nil?
-      fail ArgumentError, 'administrator_name is nil' if administrator_name.nil?
+      administrator_name = 'ActiveDirectory'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 

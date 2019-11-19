@@ -489,6 +489,11 @@
                         "2019-05-01": ["*"]
                     }
                 },
+                "Microsoft.Maintenance": {
+                    "management": {
+                        "2018-06-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.ManagedApplications": {
                     "management": {
                         "2018-06-01": ["*"]
@@ -546,7 +551,7 @@
                 },
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-07-01": ["*"]
+                        "2019-08-01": ["*"]
                     }
                 },
                 "Microsoft.Network": {
@@ -1807,6 +1812,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_maintenance": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Maintenance" : {
+                    "management": {
+                        "2018-06-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_maintenance/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_managed_applications": [
         {
             "name": "Latest",
@@ -1964,7 +1983,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-07-01": ["*"]
+                        "2019-08-01": ["*"]
                     }
                 }
             },

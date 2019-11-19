@@ -91,6 +91,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_logic', "~>#{gem_versions['management']['azure_mgmt_logic']}"
   spec.add_runtime_dependency 'azure_mgmt_machine_learning', "~>#{gem_versions['management']['azure_mgmt_machine_learning']}"
   spec.add_runtime_dependency 'azure_mgmt_machine_learning_services', "~>#{gem_versions['management']['azure_mgmt_machine_learning_services']}"
+  spec.add_runtime_dependency 'azure_mgmt_maintenance', "~>#{gem_versions['management']['azure_mgmt_maintenance']}"
   spec.add_runtime_dependency 'azure_mgmt_managed_applications', "~>#{gem_versions['management']['azure_mgmt_managed_applications']}"
   spec.add_runtime_dependency 'azure_mgmt_mariadb', "~>#{gem_versions['management']['azure_mgmt_mariadb']}"
   spec.add_runtime_dependency 'azure_mgmt_marketplace_ordering', "~>#{gem_versions['management']['azure_mgmt_marketplace_ordering']}"
