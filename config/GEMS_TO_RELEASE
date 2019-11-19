@@ -1,6 +1,7 @@
 {
     "management":[
-        "azure_mgmt_netapp"
+        "azure_mgmt_netapp",
+        "azure_mgmt_sql"
     ],
     "rollup":[
         "azure_sdk"
