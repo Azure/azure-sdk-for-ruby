@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.43.0"
+        "azure_sdk": "0.44.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -87,7 +87,7 @@
         "azure_mgmt_managed_applications": "0.17.2",
         "azure_mgmt_mariadb": "0.17.1",
         "azure_mgmt_marketplace_ordering": "0.17.4",
-        "azure_mgmt_media_services": "0.19.0",
+        "azure_mgmt_media_services": "0.19.1",
         "azure_mgmt_migrate": "0.17.0",
         "azure_mgmt_mixedreality": "0.17.2",
         "azure_mgmt_monitor": "0.17.4",
