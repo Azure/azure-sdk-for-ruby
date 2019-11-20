@@ -26,19 +26,19 @@ module Azure::Network::Mgmt::V2019_08_01
 
       # @return [Array<VpnServerConfigVpnClientRootCertificate>] VPN client
       # root certificate of VpnServerConfiguration.
-      attr_accessor :vpn_server_config_vpn_client_root_certificates
+      attr_accessor :vpn_client_root_certificates
 
       # @return [Array<VpnServerConfigVpnClientRevokedCertificate>] VPN client
       # revoked certificate of VpnServerConfiguration.
-      attr_accessor :vpn_server_config_vpn_client_revoked_certificates
+      attr_accessor :vpn_client_revoked_certificates
 
       # @return [Array<VpnServerConfigRadiusServerRootCertificate>] Radius
       # Server root certificate of VpnServerConfiguration.
-      attr_accessor :vpn_server_config_radius_server_root_certificates
+      attr_accessor :radius_server_root_certificates
 
       # @return [Array<VpnServerConfigRadiusClientRootCertificate>] Radius
       # client root certificate of VpnServerConfiguration.
-      attr_accessor :vpn_server_config_radius_client_root_certificates
+      attr_accessor :radius_client_root_certificates
 
       # @return [Array<IpsecPolicy>] VpnClientIpsecPolicies for
       # VpnServerConfiguration.
@@ -175,10 +175,10 @@ module Azure::Network::Mgmt::V2019_08_01
                   }
                 }
               },
-              vpn_server_config_vpn_client_root_certificates: {
+              vpn_client_root_certificates: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.vpnServerConfigVpnClientRootCertificates',
+                serialized_name: 'properties.vpnClientRootCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -192,10 +192,10 @@ module Azure::Network::Mgmt::V2019_08_01
                   }
                 }
               },
-              vpn_server_config_vpn_client_revoked_certificates: {
+              vpn_client_revoked_certificates: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.vpnServerConfigVpnClientRevokedCertificates',
+                serialized_name: 'properties.vpnClientRevokedCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -209,10 +209,10 @@ module Azure::Network::Mgmt::V2019_08_01
                   }
                 }
               },
-              vpn_server_config_radius_server_root_certificates: {
+              radius_server_root_certificates: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.vpnServerConfigRadiusServerRootCertificates',
+                serialized_name: 'properties.radiusServerRootCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -226,10 +226,10 @@ module Azure::Network::Mgmt::V2019_08_01
                   }
                 }
               },
-              vpn_server_config_radius_client_root_certificates: {
+              radius_client_root_certificates: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.vpnServerConfigRadiusClientRootCertificates',
+                serialized_name: 'properties.radiusClientRootCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
