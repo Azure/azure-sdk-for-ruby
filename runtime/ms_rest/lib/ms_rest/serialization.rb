@@ -60,7 +60,7 @@ module MsRest
         object_name = mapper[:serialized_name]
         mapper_type = mapper[:type][:name]
 
-        if !mapper_type.match(/^(Number|Double|ByteArray|Boolean|Date|DateTime|DateTimeRfc1123|UnixTime|Enum|String|Object|Stream)$/i).nil?
+        if !mapper_type.match(/^(Number|Double|ByteArray|Boolean|Date|DateTime|DateTimeRfc1123|TimeSpan|UnixTime|Enum|String|Object|Stream)$/i).nil?
           payload = deserialize_primary_type(mapper, response_body)
         elsif !mapper_type.match(/^Dictionary$/i).nil?
           payload = deserialize_dictionary_type(mapper, response_body, object_name)
@@ -92,7 +92,7 @@ module MsRest
             result = Float(response_body) unless response_body.to_s.empty?
           when 'ByteArray'
             result = Base64.strict_decode64(response_body).unpack('C*') unless response_body.to_s.empty?
-          when 'String', 'Boolean', 'Object', 'Stream'
+          when 'String', 'Boolean', 'Object', 'Stream', 'TimeSpan'
             result = response_body
           when 'Enum'
             unless response_body.nil?
@@ -229,7 +229,7 @@ module MsRest
 
         payload = Hash.new
         mapper_type = mapper[:type][:name]
-        if !mapper_type.match(/^(Number|Double|ByteArray|Boolean|Date|DateTime|DateTimeRfc1123|UnixTime|Enum|String|Object|Stream)$/i).nil?
+        if !mapper_type.match(/^(Number|Double|ByteArray|Boolean|Date|DateTime|DateTimeRfc1123|TimeSpan|UnixTime|Enum|String|Object|Stream)$/i).nil?
           payload = serialize_primary_type(mapper, object)
         elsif !mapper_type.match(/^Dictionary$/i).nil?
           payload = serialize_dictionary_type(mapper, object, object_name)
@@ -289,7 +289,7 @@ module MsRest
         mapper_type = mapper[:type][:name]
         payload = nil
         case mapper_type
-          when 'Number', 'Double', 'String', 'Date', 'Boolean', 'Object', 'Stream'
+          when 'Number', 'Double', 'String', 'Date', 'TimeSpan', 'Boolean', 'Object', 'Stream'
             payload = object != nil ? object : nil
           when  'Enum'
             unless object.nil?
