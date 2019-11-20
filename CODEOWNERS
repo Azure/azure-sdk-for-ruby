@@ -1,14 +1,14 @@
-/azure_sdk/ @sarangan12
-/config/ @sarangan12
-/data/ @sarangan12
-/generators/ @sarangan12
-/management/ @sarangan12
-/runtime/ @sarangan12
-/scripts/ @sarangan12
-.env_sample @sarangan12
-.travis.yml @sarangan12
-Gemfile @sarangan12
-Rakefile @sarangan12
-README.md @sarangan12
-vcr_helper.rb @sarangan12
-swagger_to_sdk_config.json @sarangan12
+/azure_sdk/ @MyronFanQiu @bim-msft
+/config/ @MyronFanQiu @bim-msft
+/data/ @MyronFanQiu @bim-msft
+/generators/ @MyronFanQiu @bim-msft
+/management/ @MyronFanQiu @bim-msft
+/runtime/ @MyronFanQiu @bim-msft
+/scripts/ @MyronFanQiu @bim-msft
+.env_sample @MyronFanQiu @bim-msft
+.travis.yml @MyronFanQiu @bim-msft
+Gemfile @MyronFanQiu @bim-msft
+Rakefile @MyronFanQiu @bim-msft
+README.md @MyronFanQiu @bim-msft
+vcr_helper.rb @MyronFanQiu @bim-msft
+swagger_to_sdk_config.json @MyronFanQiu @bim-msft
