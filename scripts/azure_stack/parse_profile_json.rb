@@ -26,8 +26,46 @@ def get_profile_detail(version_data)
     return profile_detail
 end
 
-def process_single_version_profile_detail(version, detail, profiles_file)
-    profiles = parse_json profiles_file
+def process_differences(version, profiles, version_data)
+    if not version_data[version].include? "differences" or not version_data[version]["differences"]
+        return profiles
+    end
+
+    differences = version_data[version]["differences"]
+    azure_sdk_arr = profiles["rollup"]["azure_sdk"]
+    new_azure_sdk_arr = []
+
+    azure_sdk_arr.each do |item|
+        if item["name"].downcase == version.downcase
+            new_azure_sdk_arr.push patch_differences(item, differences)
+        elsif
+            new_azure_sdk_arr.push item
+        end
+    end
+
+    profiles["rollup"]["azure_sdk"] = new_azure_sdk_arr
+    return profiles
+end
+
+def patch_differences(item, differences)
+    resource_types = item["resourceTypes"]
+    differences.each do |service_name, sub_differences|
+        ["management", "data"].each do |key|
+            if sub_differences.include? key
+                sub_differences[key].each do |old_version, new_version|
+                    if not new_version.empty?
+                        resource_types[service_name][key][new_version] = resource_types[service_name][key][old_version]
+                    end
+                    resource_types[service_name][key].delete old_version
+                end
+            end
+        end
+    end
+    item["resourceTypes"] = resource_types
+    return item
+end
+
+def process_single_version_profile_detail(version, detail, profiles)
     azure_sdk_arr = profiles["rollup"]["azure_sdk"]
     new_azure_sdk_arr = []
     is_new_version = true
@@ -44,29 +82,33 @@ def process_single_version_profile_detail(version, detail, profiles_file)
     if is_new_version
         new_azure_sdk_arr.unshift convert_profile_format(version, detail)
     end
-    profiles["rollup"]["azure_sdk"] = new_azure_sdk_arr
 
+    profiles["rollup"]["azure_sdk"] = new_azure_sdk_arr
+    return profiles
+end
+
+def write_profiles(profiles, profiles_file)
     File.open(profiles_file, "w") do |f|
         f.write(JSON.pretty_generate(profiles, :indent => "    "))
     end
 end
 
 def convert_profile_format(version, detail)
-    resource_type = {}
+    resource_types = {}
     ["management", "data"].each do |key|
         detail[key].each do |service_name_and_versions|
             service_name_and_versions.each do |service_name, versions|
-                if not resource_type.has_key? service_name
-                    resource_type[service_name] = {}
+                if not resource_types.has_key? service_name
+                    resource_types[service_name] = {}
                 end
-                resource_type[service_name][key] = {}
+                resource_types[service_name][key] = {}
                 versions.each do |version|
-                    resource_type[service_name][key][version] = ["*"]
+                    resource_types[service_name][key][version] = ["*"]
                 end
             end
         end
     end
-    return {"name" => version, "resourceType" => resource_type, "output_dir" => "azure_sdk/lib"}
+    return {"name" => version, "resourceTypes" => resource_types, "output_dir" => "azure_sdk/lib"}
 end
 
 def get_single_version_profile_detail(version, profile_json_url)
@@ -116,8 +158,12 @@ if __FILE__ == $0
     version_data = parse_json config_file
     puts "Getting profile detail ..."
     profile_detail = get_profile_detail version_data
+
     profile_detail.each do |version, detail|
         puts "Processing version: #{version}"
-        process_single_version_profile_detail(version, detail, profiles_file)
+        profiles = parse_json profiles_file
+        profiles = process_single_version_profile_detail(version, detail, profiles)
+        profiles = process_differences(version, profiles, version_data)
+        write_profiles(profiles, profiles_file)
     end
 end

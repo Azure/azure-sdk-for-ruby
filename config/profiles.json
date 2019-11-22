@@ -1,3 +1,6 @@
+// 20191127162057
+// https://raw.githubusercontent.com/Azure/azure-sdk-for-ruby/master/config/profiles.json
+
 {
     "rollup": {
       "azure_sdk": [
