@@ -3,11 +3,12 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '2015-04-01/generated/azure_mgmt_web'
-require '2018-02-01/generated/azure_mgmt_web'
-require '2016-03-01/generated/azure_mgmt_web'
 require '2015-08-01/generated/azure_mgmt_web'
-require '2016-09-01/generated/azure_mgmt_web'
+require '2016-03-01/generated/azure_mgmt_web'
+require '2016-06-01/generated/azure_mgmt_web'
 require '2016-08-01/generated/azure_mgmt_web'
+require '2016-09-01/generated/azure_mgmt_web'
+require '2018-02-01/generated/azure_mgmt_web'
 require 'profiles/latest/web_latest_profile_client'
-require 'profiles/v2019_03_01_hybrid/web_v2019_03_01_hybrid_profile_client'
 require 'profiles/v2018_03_01/web_v2018_03_01_profile_client'
+require 'profiles/v2019_03_01_hybrid/web_v2019_03_01_hybrid_profile_client'

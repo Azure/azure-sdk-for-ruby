@@ -2575,6 +2575,12 @@
     }
   },
   "azure_mgmt_web": {
+    "azure_mgmt_web_2016_06_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/web/resource-manager/Microsoft.Web/stable/2016-06-01/logicAppsManagementClient.json"
+      ],
+      "namespace": "Azure::Web::Mgmt::V2016_06_01"
+    },
     "azure_mgmt_web_2015_08_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/web/resource-manager/readme.md",
       "namespace": "Azure::Web::Mgmt::V2015_08_01",
