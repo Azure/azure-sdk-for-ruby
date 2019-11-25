@@ -645,6 +645,11 @@
                         "2019-04-01-preview": ["*"]
                     }
                 },
+                "Microsoft.ResourceHealth": {
+                    "management": {
+                        "2017-07-01": ["*"]
+                    }
+                },
                 "Microsoft.ResourceGraph": {
                     "management": {
                         "2019-04-01": ["*"]
@@ -2308,6 +2313,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_resource_health": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.ResourceHealth": {
+                        "management": {
+                            "2017-07-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_resource_health/lib/profiles",
+                "individual_gem_profile": true
+            }
+            ],
         "azure_mgmt_resourcegraph": [
         {
             "name": "Latest",

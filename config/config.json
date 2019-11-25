@@ -2131,6 +2131,36 @@
       "title": "ReservationsManagementClient"
     }
   },
+  "azure_mgmt_resource_health": {
+    "azure_mgmt_resource_health_2017_07_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2017-07-01/resourcehealth.json"
+      ],
+      "namespace": "Azure::ResourceHealth::Mgmt::V2017_07_01",
+      "title": "ResourceHealthClient"
+    },
+    "azure_mgmt_resource_health_2015_01_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2015-01-01/resourcehealth.json"
+      ],
+      "namespace": "Azure::ResourceHealth::Mgmt::V2015_01_01",
+      "title": "ResourceHealthClient"
+    },
+    "azure_mgmt_resource_health_2018_07_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2018-07-01/ResourceHealth.json"
+      ],
+      "namespace": "Azure::ResourceHealth::Mgmt::V2018_07_01",
+      "title": "ResourceHealthClient"
+    },
+    "azure_mgmt_resource_health_2018_08_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/preview/2018-08-01/ResourceHealth.json"
+      ],
+      "namespace": "Azure::ResourceHealth::Mgmt::V2018_08_01_preview",
+      "title": "ResourceHealthClient"
+    }
+  },
   "azure_mgmt_resourcegraph": {
     "azure_mgmt_resourcegraph_2019_04_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/resourcegraph/resource-manager/readme.md",

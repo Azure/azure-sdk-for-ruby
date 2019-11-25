@@ -576,6 +576,13 @@
       "module_require": "azure_mgmt_reservations"
     }
   },
+  "Microsoft.ResourceHealth": {
+    "management": {
+      "path": "management/azure_mgmt_resource_health",
+      "namespace": "Azure::ResourceHealth::Mgmt",
+      "module_require": "azure_mgmt_resource_health"
+    }
+  },
   "Microsoft.ResourceGraph": {
     "management": {
       "path": "management/azure_mgmt_resourcegraph",

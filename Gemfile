@@ -91,6 +91,7 @@ gem 'azure_mgmt_recovery_services_site_recovery',  path: 'management/azure_mgmt_
 gem 'azure_mgmt_redis',                     path: 'management/azure_mgmt_redis'
 gem 'azure_mgmt_relay',                     path: 'management/azure_mgmt_relay'
 gem 'azure_mgmt_reservations',              path: 'management/azure_mgmt_reservations'
+gem 'azure_mgmt_resource_health',           path: 'management/azure_mgmt_resource_health'
 gem 'azure_mgmt_resourcegraph',             path: 'management/azure_mgmt_resourcegraph'
 gem 'azure_mgmt_resources',                 path: 'management/azure_mgmt_resources'
 gem 'azure_mgmt_resources_management',      path: 'management/azure_mgmt_resources_management'
