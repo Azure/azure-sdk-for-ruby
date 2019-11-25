@@ -2356,7 +2356,7 @@
   },
   "azure_mgmt_sqlvirtualmachine": {
     "azure_mgmt_sqlvirtualmachine_2017_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/sqlvirtualmachine/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/sqlvirtualmachine/resource-manager/readme.md",
       "namespace": "Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview",
       "tag": "package-2017-03-01-preview"
     }

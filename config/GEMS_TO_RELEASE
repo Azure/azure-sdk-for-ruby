@@ -1,10 +1,18 @@
 {
-    "data":[
-        "azure_cognitiveservices_imagesearch"
-    ],
     "management":[
-        "azure_mgmt_media_services",
-        "azure_mgmt_network"
+        "azure_mgmt_authorization",
+        "azure_mgmt_batch",
+        "azure_mgmt_consumption",
+        "azure_mgmt_event_hub",
+        "azure_mgmt_import_export",
+        "azure_mgmt_key_vault",
+        "azure_mgmt_dns",
+        "azure_mgmt_portal",
+        "azure_mgmt_resource_health",
+        "azure_mgmt_resources",
+        "azure_mgmt_web",
+        "azure_mgmt_monitor",
+        "azure_mgmt_sqlvirtualmachine"
     ],
     "rollup":[
         "azure_sdk"

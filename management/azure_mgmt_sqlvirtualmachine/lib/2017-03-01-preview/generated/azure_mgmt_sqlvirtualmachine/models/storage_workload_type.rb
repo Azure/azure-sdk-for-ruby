@@ -6,12 +6,12 @@
 module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
   module Models
     #
-    # Defines values for SqlServerLicenseType
+    # Defines values for StorageWorkloadType
     #
-    module SqlServerLicenseType
-      PAYG = "PAYG"
-      AHUB = "AHUB"
-      DR = "DR"
+    module StorageWorkloadType
+      GENERAL = "GENERAL"
+      OLTP = "OLTP"
+      DW = "DW"
     end
   end
 end
