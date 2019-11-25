@@ -50,8 +50,27 @@ end
 def patch_differences(item, differences)
     resource_types = item["resourceTypes"]
     differences.each do |service_name, sub_differences|
+        if sub_differences.include? "new_name"
+            old_service_name = service_name
+            service_name = sub_differences["new_name"]
+            resource_types[service_name] = resource_types[old_service_name]
+            resource_types.delete old_service_name
+        end
         ["management", "data"].each do |key|
             if sub_differences.include? key
+                if sub_differences[key].include? "new_names"
+                    sub_differences[key]["new_names"].each do |version, new_name|
+                        if not resource_types.include? new_name
+                            resource_types[new_name] = {}
+                        end
+                        if not resource_types[new_name].include? key
+                            resource_types[new_name][key] = {}
+                        end
+                        resource_types[new_name][key][version] = resource_types[service_name][key][version]
+                        resource_types[service_name][key].delete version
+                    end
+                    sub_differences[key].delete "new_names"
+                end
                 sub_differences[key].each do |old_version, new_version|
                     if not new_version.empty?
                         resource_types[service_name][key][new_version] = resource_types[service_name][key][old_version]

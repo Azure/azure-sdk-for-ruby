@@ -7,6 +7,57 @@
           "2015-06-01": "2015-06-01-preview", 
           "2018-05-01": ""
         }
+      },
+      "Microsoft.BotService": {
+        "management": {
+          "2018-07-12": "2018-07-12-preview"
+        }
+      },
+      "Microsoft.Cache": {
+        "new_name": "Microsoft.Redis"
+      }, 
+      "Microsoft.DBforMySQL": {
+        "new_name": "Microsoft.Mysql"
+      },
+      "Microsoft.DBforPostgreSQL": {
+        "new_name": "Microsoft.Postgresql"
+      },
+      "Microsoft.Devices": {
+        "new_name": "Microsoft.IotHub"
+      },
+      "microsoft.insights": {
+        "new_name": "Microsoft.Monitor",
+        "management": {
+          "2017-10-01": "2017-10-01-preview"
+        }
+      },
+      "Microsoft.Media": {
+        "new_name": "Microsoft.MediaServices"
+      },
+      "Microsoft.Network": {
+        "management": {
+          "2018-05-01": ""
+        }
+      },
+      "Microsoft.PowerBI": {
+        "new_name": "Microsoft.PowerBiEmbedded"
+      },
+      "Microsoft.PowerBIDedicated": {
+        "new_name": "Microsoft.PowerBiDedicated"
+      },
+      "Microsoft.RecoveryServices": {
+        "management": {
+          "new_names": {
+            "2016-08-10": "Microsoft.RecoveryServicesSiteRecovery",
+            "2017-07-01": "Microsoft.RecoveryServicesBackup"
+          }
+        }
+      },
+      "Microsoft.Solutions": {
+        "new_name": "Microsoft.Resources"
+      },
+      "Microsoft.Sql": {
+        "new_name": "Microsoft.SQL"
       }
     }
   }
