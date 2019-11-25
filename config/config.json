@@ -2139,6 +2139,16 @@
     }
   },
   "azure_mgmt_resources": {
+    "azure_mgmt_resources_2018_06_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/resources/resource-manager/readme.md",
+      "namespace": "Azure::Resources::Mgmt::V2018_06_01",
+      "tag": "package-managedapplications-2018-06"
+    },
+    "azure_mgmt_resources_2016_06_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/resources/resource-manager/readme.md",
+      "namespace": "Azure::Resources::Mgmt::V2016_06_01",
+      "tag": "package-subscriptions-2016-06"
+    },
     "azure_mgmt_resources_2019_07_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ca2289cac0d7604ce1602a6e3a3b318e18800a62/specification/resources/resource-manager/readme.md",
       "title": "ResourceManagementClient",

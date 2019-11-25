@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Resources::Mgmt::V2019_03_01
+module Azure::Resources::Mgmt::V2016_06_01
   #
   # A service client - single point of access to the REST API.
   #
-  class ResourceManagementClient < MsRestAzure::AzureServiceClient
+  class SubscriptionClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -17,10 +17,7 @@ module Azure::Resources::Mgmt::V2019_03_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] The ID of the target subscription.
-    attr_accessor :subscription_id
-
-    # @return [String] The API version to use for this operation.
+    # @return [String] The API version to use for the operation.
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -38,26 +35,14 @@ module Azure::Resources::Mgmt::V2019_03_01
     # @return [Operations] operations
     attr_reader :operations
 
-    # @return [Deployments] deployments
-    attr_reader :deployments
+    # @return [Subscriptions] subscriptions
+    attr_reader :subscriptions
 
-    # @return [Providers] providers
-    attr_reader :providers
-
-    # @return [Resources] resources
-    attr_reader :resources
-
-    # @return [ResourceGroups] resource_groups
-    attr_reader :resource_groups
-
-    # @return [Tags] tags
-    attr_reader :tags
-
-    # @return [DeploymentOperations] deployment_operations
-    attr_reader :deployment_operations
+    # @return [Tenants] tenants
+    attr_reader :tenants
 
     #
-    # Creates initializes a new instance of the ResourceManagementClient class.
+    # Creates initializes a new instance of the SubscriptionClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -70,13 +55,9 @@ module Azure::Resources::Mgmt::V2019_03_01
       @credentials = credentials
 
       @operations = Operations.new(self)
-      @deployments = Deployments.new(self)
-      @providers = Providers.new(self)
-      @resources = Resources.new(self)
-      @resource_groups = ResourceGroups.new(self)
-      @tags = Tags.new(self)
-      @deployment_operations = DeploymentOperations.new(self)
-      @api_version = '2019-03-01'
+      @subscriptions = Subscriptions.new(self)
+      @tenants = Tenants.new(self)
+      @api_version = '2016-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

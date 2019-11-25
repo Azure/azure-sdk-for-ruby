@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Resources::Mgmt::V2019_03_01
+module Azure::Resources::Mgmt::V2018_06_01
   #
   # A service client - single point of access to the REST API.
   #
-  class ResourceManagementClient < MsRestAzure::AzureServiceClient
+  class ApplicationClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -35,29 +35,14 @@ module Azure::Resources::Mgmt::V2019_03_01
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Operations] operations
-    attr_reader :operations
+    # @return [Applications] applications
+    attr_reader :applications
 
-    # @return [Deployments] deployments
-    attr_reader :deployments
-
-    # @return [Providers] providers
-    attr_reader :providers
-
-    # @return [Resources] resources
-    attr_reader :resources
-
-    # @return [ResourceGroups] resource_groups
-    attr_reader :resource_groups
-
-    # @return [Tags] tags
-    attr_reader :tags
-
-    # @return [DeploymentOperations] deployment_operations
-    attr_reader :deployment_operations
+    # @return [ApplicationDefinitions] application_definitions
+    attr_reader :application_definitions
 
     #
-    # Creates initializes a new instance of the ResourceManagementClient class.
+    # Creates initializes a new instance of the ApplicationClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -69,14 +54,9 @@ module Azure::Resources::Mgmt::V2019_03_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @operations = Operations.new(self)
-      @deployments = Deployments.new(self)
-      @providers = Providers.new(self)
-      @resources = Resources.new(self)
-      @resource_groups = ResourceGroups.new(self)
-      @tags = Tags.new(self)
-      @deployment_operations = DeploymentOperations.new(self)
-      @api_version = '2019-03-01'
+      @applications = Applications.new(self)
+      @application_definitions = ApplicationDefinitions.new(self)
+      @api_version = '2018-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
