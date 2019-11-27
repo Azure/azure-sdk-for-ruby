@@ -6,7 +6,6 @@
         "azure_mgmt_event_hub",
         "azure_mgmt_import_export",
         "azure_mgmt_key_vault",
-        "azure_mgmt_dns",
         "azure_mgmt_portal",
         "azure_mgmt_resource_health",
         "azure_mgmt_resources",
