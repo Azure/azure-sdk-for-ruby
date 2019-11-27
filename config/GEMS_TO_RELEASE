@@ -1,6 +1,5 @@
 {
     "management":[
-        "azure_mgmt_authorization",
         "azure_mgmt_batch",
         "azure_mgmt_consumption",
         "azure_mgmt_event_hub",

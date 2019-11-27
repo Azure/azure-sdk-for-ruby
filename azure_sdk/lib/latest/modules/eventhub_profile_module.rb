@@ -13,24 +13,28 @@ module Azure::Profiles::Latest
       Namespaces = Azure::EventHub::Mgmt::V2018_01_01_preview::Namespaces
 
       module Models
-        EHNamespaceIdListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceIdListResult
-        OperationDisplay = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
         Sku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
+        OperationDisplay = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
+        Identity = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Identity
         OperationListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
+        KeyVaultProperties = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::KeyVaultProperties
         Operation = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
-        Subnet = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Subnet
-        AvailableClustersList = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::AvailableClustersList
+        AvailableCluster = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::AvailableCluster
         ClusterSku = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterSku
-        ClusterQuotaConfigurationProperties = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
-        VirtualNetworkRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
-        Resource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
-        EHNamespaceListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
         ClusterListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
+        ErrorResponse = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
+        Encryption = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Encryption
+        Resource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
         NWRuleSetVirtualNetworkRules = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::NWRuleSetVirtualNetworkRules
+        EHNamespaceIdListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceIdListResult
+        EHNamespaceListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
+        ClusterQuotaConfigurationProperties = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
+        NWRuleSetIpRules = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::NWRuleSetIpRules
         EHNamespaceIdContainer = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceIdContainer
         IpFilterRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
-        ErrorResponse = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
-        NWRuleSetIpRules = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::NWRuleSetIpRules
+        VirtualNetworkRuleListResult = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
+        AvailableClustersList = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::AvailableClustersList
+        Subnet = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Subnet
         TrackedResource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
         Cluster = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster
         EHNamespace = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespace
@@ -39,6 +43,8 @@ module Azure::Profiles::Latest
         NetworkRuleSet = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::NetworkRuleSet
         SkuName = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuName
         SkuTier = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
+        IdentityType = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IdentityType
+        KeySource = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::KeySource
         IPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
         NetworkRuleIPAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::NetworkRuleIPAction
         DefaultAction = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::DefaultAction
@@ -77,47 +83,56 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def ehnamespace_id_list_result
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceIdListResult
+          def sku
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
           end
           def operation_display
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationDisplay
           end
-          def sku
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Sku
+          def identity
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Identity
           end
           def operation_list_result
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::OperationListResult
           end
+          def key_vault_properties
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::KeyVaultProperties
+          end
           def operation
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Operation
           end
-          def subnet
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Subnet
-          end
-          def available_clusters_list
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::AvailableClustersList
+          def available_cluster
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::AvailableCluster
           end
           def cluster_sku
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterSku
           end
-          def cluster_quota_configuration_properties
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
+          def cluster_list_result
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
           end
-          def virtual_network_rule_list_result
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
+          def error_response
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
+          end
+          def encryption
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Encryption
           end
           def resource
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Resource
           end
+          def nwrule_set_virtual_network_rules
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::NWRuleSetVirtualNetworkRules
+          end
+          def ehnamespace_id_list_result
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceIdListResult
+          end
           def ehnamespace_list_result
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceListResult
           end
-          def cluster_list_result
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterListResult
+          def cluster_quota_configuration_properties
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ClusterQuotaConfigurationProperties
           end
-          def nwrule_set_virtual_network_rules
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::NWRuleSetVirtualNetworkRules
+          def nwrule_set_ip_rules
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::NWRuleSetIpRules
           end
           def ehnamespace_id_container
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::EHNamespaceIdContainer
@@ -125,11 +140,14 @@ module Azure::Profiles::Latest
           def ip_filter_rule_list_result
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IpFilterRuleListResult
           end
-          def error_response
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::ErrorResponse
+          def virtual_network_rule_list_result
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::VirtualNetworkRuleListResult
           end
-          def nwrule_set_ip_rules
-            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::NWRuleSetIpRules
+          def available_clusters_list
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::AvailableClustersList
+          end
+          def subnet
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Subnet
           end
           def tracked_resource
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::TrackedResource
@@ -154,6 +172,12 @@ module Azure::Profiles::Latest
           end
           def sku_tier
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::SkuTier
+          end
+          def identity_type
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IdentityType
+          end
+          def key_source
+            Azure::EventHub::Mgmt::V2018_01_01_preview::Models::KeySource
           end
           def ipaction
             Azure::EventHub::Mgmt::V2018_01_01_preview::Models::IPAction
