@@ -593,6 +593,11 @@
                         "2018-07-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Portal": {
+                    "management": {
+                        "2019-01-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Postgresql": {
                     "management": {
                         "2017-12-01": ["*"]
@@ -2171,6 +2176,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_portal": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.Portal": {
+                        "management": {
+                            "2019-01-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_portal/lib/profiles",
+                "individual_gem_profile": true
+            }
+            ],
         "azure_mgmt_postgresql": [
         {
             "name": "Latest",

@@ -1998,6 +1998,29 @@
       "title": "PolicyInsightsClient"
     }
   },
+  "azure_mgmt_portal": {
+    "azure_mgmt_portal_2019_01_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/portal/resource-manager/Microsoft.Portal/preview/2019-01-01-preview/portal.json"
+      ],
+      "namespace": "Azure::Portal::Mgmt::V2019_01_01_preview",
+      "title": "PortalClient"
+    },
+    "azure_mgmt_portal_2018_10_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/portal/resource-manager/Microsoft.Portal/preview/2018-10-01-preview/portal.json"
+      ],
+      "namespace": "Azure::Portal::Mgmt::V2018_10_01_preview",
+      "title": "PortalClient"
+    },
+    "azure_mgmt_portal_2015_08_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/portal/resource-manager/Microsoft.Portal/preview/2015-08-01-preview/portal.json"
+      ],
+      "namespace": "Azure::Portal::Mgmt::V2015_08_01_preview",
+      "title": "PortalClient"
+    }
+  },
   "azure_mgmt_postgresql": {
     "azure_mgmt_postgresql_2017_12_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/postgresql/resource-manager/readme.md",

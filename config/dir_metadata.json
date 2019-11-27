@@ -506,6 +506,13 @@
       "module_require": "azure_mgmt_policy_insights"
     }
   },
+  "Microsoft.Portal": {
+    "management": {
+      "path": "management/azure_mgmt_portal",
+      "namespace": "Azure::Portal::Mgmt",
+      "module_require": "azure_mgmt_portal"
+    }
+  },
   "Microsoft.Postgresql": {
     "management": {
       "path": "management/azure_mgmt_postgresql",
