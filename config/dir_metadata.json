@@ -611,13 +611,6 @@
       "module_require": "azure_mgmt_resources"
     }
   },
-  "Microsoft.ResourceHealth": {
-    "management": {
-      "path": "management/azure_mgmt_resource_health",
-      "namespace": "Azure::ResourceHealth::Mgmt",
-      "module_require": "azure_mgmt_resource_health"
-    }
-  },
   "Microsoft.ResourcesManagement": {
     "management": {
       "path": "management/azure_mgmt_resources_management",
@@ -691,20 +684,6 @@
       "path": "management/azure_mgmt_sql",
       "namespace": "Azure::SQL::Mgmt",
       "module_require": "azure_mgmt_sql"
-    }
-  },
-  "Microsoft.ImportExport": {
-    "management": {
-      "path": "management/azure_mgmt_import_export",
-      "namespace": "Azure::ImportExport::Mgmt",
-      "module_require": "azure_mgmt_import_export"
-    }
-  },
-  "Microsoft.Portal": {
-    "management": {
-      "path": "management/azure_mgmt_portal",
-      "namespace": "Azure::Portal::Mgmt",
-      "module_require": "azure_mgmt_portal"
     }
   },
   "Microsoft.Sqlvirtualmachine": {
