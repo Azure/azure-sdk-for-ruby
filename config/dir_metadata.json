@@ -291,6 +291,13 @@
       "module_require": "azure_graph_rbac"
     }
   },
+  "Microsoft.ImportExport": {
+    "management": {
+      "path": "management/azure_mgmt_import_export",
+      "namespace": "Azure::ImportExport::Mgmt",
+      "module_require": "azure_mgmt_import_export"
+    }
+  },
   "Microsoft.Insights": {
     "management": {
       "path": "management/azure_mgmt_insights",

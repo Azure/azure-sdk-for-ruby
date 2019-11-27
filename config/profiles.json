@@ -436,6 +436,11 @@
                         "1.6": ["*"]
                     }
                 },
+                "Microsoft.ImportExport": {
+                    "management": {
+                        "2016-11-01": ["*"]
+                    }
+                },
                 "Microsoft.IotCentral": {
                     "management": {
                         "2018-09-01": ["*"]
@@ -1595,6 +1600,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_hdinsight/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_import_export": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.ImportExport": {
+                    "management": {
+                        "2016-11-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_import_export/lib/profiles",
             "individual_gem_profile": true
         }
         ],

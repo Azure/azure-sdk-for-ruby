@@ -876,6 +876,13 @@
       "tag": "1.6"
     }
   },
+  "azure_mgmt_import_export": {
+    "azure_mgmt_import_export_2016_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/storageimportexport/resource-manager/readme.md",
+      "namespace": "Azure::ImportExport::Mgmt::V2016_11_01",
+      "tag": "package-2016-11"
+    }
+  },
   "azure_mgmt_iot_central":{
     "azure_mgmt_iot_central_2018_09_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7fa78609d2e3dc179ea1985dae98f91bdbc21854/specification/iotcentral/resource-manager/readme.md",
