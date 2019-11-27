@@ -272,7 +272,7 @@
                 },
                 "Microsoft.Batch": {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2019-08-01": ["*"]
                     }
                 },
                 "Microsoft.BatchAI": {
@@ -1096,7 +1096,7 @@
             "resourceTypes": {
                 "Microsoft.Batch" : {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2019-08-01": ["*"]
                     }
                 }
             },
