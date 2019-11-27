@@ -315,7 +315,7 @@
                 },
                 "Microsoft.Consumption": {
                     "management": {
-                        "2018-06-30": ["*"]
+                        "2019-10-01": ["*"]
                     }
                 },
                 "Microsoft.ContainerInstance": {
@@ -1248,7 +1248,7 @@
             "resourceTypes": {
                 "Microsoft.Consumption" : {
                     "management": {
-                        "2018-06-30": ["*"]
+                        "2019-10-01": ["*"]
                     }
                 }
             },
