@@ -12,7 +12,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
 
       include MsRestAzure
 
-      # @return [String]
+      # @return [String] id parameter
       attr_accessor :id
 
 

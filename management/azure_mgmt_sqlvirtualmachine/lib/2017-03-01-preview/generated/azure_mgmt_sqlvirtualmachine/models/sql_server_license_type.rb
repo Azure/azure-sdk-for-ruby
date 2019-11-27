@@ -11,6 +11,7 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
     module SqlServerLicenseType
       PAYG = "PAYG"
       AHUB = "AHUB"
+      DR = "DR"
     end
   end
 end

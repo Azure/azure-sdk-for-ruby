@@ -125,6 +125,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -201,6 +203,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -243,6 +246,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -312,6 +317,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -346,6 +352,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -406,6 +414,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -440,6 +449,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -510,6 +521,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -544,6 +556,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -620,6 +634,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
       fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
@@ -664,6 +679,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -737,6 +754,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
       fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
@@ -773,6 +791,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -845,6 +865,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
       fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
@@ -881,6 +902,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -944,6 +967,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
       fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
@@ -980,6 +1004,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1059,6 +1085,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
       fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
@@ -1103,6 +1130,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1191,6 +1220,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1279,6 +1310,8 @@ module Azure::EventHub::Mgmt::V2017_04_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

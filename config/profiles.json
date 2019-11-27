@@ -272,7 +272,7 @@
                 },
                 "Microsoft.Batch": {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2019-08-01": ["*"]
                     }
                 },
                 "Microsoft.BatchAI": {
@@ -315,7 +315,7 @@
                 },
                 "Microsoft.Consumption": {
                     "management": {
-                        "2018-06-30": ["*"]
+                        "2019-10-01": ["*"]
                     }
                 },
                 "Microsoft.ContainerInstance": {
@@ -434,6 +434,11 @@
                 "Microsoft.GraphRbac": {
                     "data": {
                         "1.6": ["*"]
+                    }
+                },
+                "Microsoft.ImportExport": {
+                    "management": {
+                        "2016-11-01": ["*"]
                     }
                 },
                 "Microsoft.IotCentral": {
@@ -593,6 +598,11 @@
                         "2018-07-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Portal": {
+                    "management": {
+                        "2019-01-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Postgresql": {
                     "management": {
                         "2017-12-01": ["*"]
@@ -643,6 +653,11 @@
                 "Microsoft.Reservations": {
                     "management": {
                         "2019-04-01-preview": ["*"]
+                    }
+                },
+                "Microsoft.ResourceHealth": {
+                    "management": {
+                        "2017-07-01": ["*"]
                     }
                 },
                 "Microsoft.ResourceGraph": {
@@ -1081,7 +1096,7 @@
             "resourceTypes": {
                 "Microsoft.Batch" : {
                     "management": {
-                        "2017-09-01": ["*"]
+                        "2019-08-01": ["*"]
                     }
                 }
             },
@@ -1233,7 +1248,7 @@
             "resourceTypes": {
                 "Microsoft.Consumption" : {
                     "management": {
-                        "2018-06-30": ["*"]
+                        "2019-10-01": ["*"]
                     }
                 }
             },
@@ -1585,6 +1600,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_hdinsight/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_import_export": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.ImportExport": {
+                    "management": {
+                        "2016-11-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_import_export/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -2166,6 +2195,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_portal": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.Portal": {
+                        "management": {
+                            "2019-01-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_portal/lib/profiles",
+                "individual_gem_profile": true
+            }
+            ],
         "azure_mgmt_postgresql": [
         {
             "name": "Latest",
@@ -2308,6 +2351,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_resource_health": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.ResourceHealth": {
+                        "management": {
+                            "2017-07-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_resource_health/lib/profiles",
+                "individual_gem_profile": true
+            }
+            ],
         "azure_mgmt_resourcegraph": [
         {
             "name": "Latest",

@@ -12,28 +12,30 @@ module Azure::Sqlvirtualmachine::Profiles::Latest
     SqlVirtualMachines = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::SqlVirtualMachines
 
     module Models
-      SqlVirtualMachineGroupListResult = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineGroupListResult
       ResourceIdentity = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::ResourceIdentity
-      LoadBalancerConfiguration = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::LoadBalancerConfiguration
       WsfcDomainCredentials = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::WsfcDomainCredentials
+      LoadBalancerConfiguration = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::LoadBalancerConfiguration
+      AutoPatchingSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AutoPatchingSettings
       PrivateIPAddress = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::PrivateIPAddress
       Resource = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::Resource
       OperationDisplay = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::OperationDisplay
-      ServerConfigurationsManagementSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::ServerConfigurationsManagementSettings
+      StorageConfigurationSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::StorageConfigurationSettings
       OperationListResult = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::OperationListResult
-      AutoPatchingSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AutoPatchingSettings
-      SqlVirtualMachineUpdate = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineUpdate
       AutoBackupSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AutoBackupSettings
-      SqlVirtualMachineGroupUpdate = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineGroupUpdate
+      SqlVirtualMachineUpdate = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineUpdate
       KeyVaultCredentialSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::KeyVaultCredentialSettings
-      Operation = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::Operation
+      SqlVirtualMachineGroupUpdate = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineGroupUpdate
       SqlConnectivityUpdateSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlConnectivityUpdateSettings
-      SqlVirtualMachineListResult = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineListResult
+      AvailabilityGroupListenerListResult = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AvailabilityGroupListenerListResult
       SqlWorkloadTypeUpdateSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlWorkloadTypeUpdateSettings
       WsfcDomainProfile = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::WsfcDomainProfile
       SqlStorageUpdateSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlStorageUpdateSettings
-      AvailabilityGroupListenerListResult = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AvailabilityGroupListenerListResult
+      SqlVirtualMachineGroupListResult = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineGroupListResult
       AdditionalFeaturesServerConfigurations = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AdditionalFeaturesServerConfigurations
+      SqlVirtualMachineListResult = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineListResult
+      ServerConfigurationsManagementSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::ServerConfigurationsManagementSettings
+      Operation = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::Operation
+      SQLStorageSettings = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SQLStorageSettings
       ProxyResource = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::ProxyResource
       AvailabilityGroupListener = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AvailabilityGroupListener
       TrackedResource = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::TrackedResource
@@ -54,6 +56,7 @@ module Azure::Sqlvirtualmachine::Profiles::Latest
       ConnectivityType = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::ConnectivityType
       SqlWorkloadType = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlWorkloadType
       DiskConfigurationType = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::DiskConfigurationType
+      StorageWorkloadType = Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::StorageWorkloadType
     end
 
     #
@@ -104,17 +107,17 @@ module Azure::Sqlvirtualmachine::Profiles::Latest
     end
 
     class ModelClasses
-      def sql_virtual_machine_group_list_result
-        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineGroupListResult
-      end
       def resource_identity
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::ResourceIdentity
+      end
+      def wsfc_domain_credentials
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::WsfcDomainCredentials
       end
       def load_balancer_configuration
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::LoadBalancerConfiguration
       end
-      def wsfc_domain_credentials
-        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::WsfcDomainCredentials
+      def auto_patching_settings
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AutoPatchingSettings
       end
       def private_ipaddress
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::PrivateIPAddress
@@ -125,35 +128,29 @@ module Azure::Sqlvirtualmachine::Profiles::Latest
       def operation_display
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::OperationDisplay
       end
-      def server_configurations_management_settings
-        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::ServerConfigurationsManagementSettings
+      def storage_configuration_settings
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::StorageConfigurationSettings
       end
       def operation_list_result
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::OperationListResult
       end
-      def auto_patching_settings
-        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AutoPatchingSettings
+      def auto_backup_settings
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AutoBackupSettings
       end
       def sql_virtual_machine_update
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineUpdate
       end
-      def auto_backup_settings
-        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AutoBackupSettings
+      def key_vault_credential_settings
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::KeyVaultCredentialSettings
       end
       def sql_virtual_machine_group_update
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineGroupUpdate
       end
-      def key_vault_credential_settings
-        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::KeyVaultCredentialSettings
-      end
-      def operation
-        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::Operation
-      end
       def sql_connectivity_update_settings
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlConnectivityUpdateSettings
       end
-      def sql_virtual_machine_list_result
-        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineListResult
+      def availability_group_listener_list_result
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AvailabilityGroupListenerListResult
       end
       def sql_workload_type_update_settings
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlWorkloadTypeUpdateSettings
@@ -164,11 +161,23 @@ module Azure::Sqlvirtualmachine::Profiles::Latest
       def sql_storage_update_settings
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlStorageUpdateSettings
       end
-      def availability_group_listener_list_result
-        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AvailabilityGroupListenerListResult
+      def sql_virtual_machine_group_list_result
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineGroupListResult
       end
       def additional_features_server_configurations
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::AdditionalFeaturesServerConfigurations
+      end
+      def sql_virtual_machine_list_result
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SqlVirtualMachineListResult
+      end
+      def server_configurations_management_settings
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::ServerConfigurationsManagementSettings
+      end
+      def operation
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::Operation
+      end
+      def sqlstorage_settings
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::SQLStorageSettings
       end
       def proxy_resource
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::ProxyResource
@@ -229,6 +238,9 @@ module Azure::Sqlvirtualmachine::Profiles::Latest
       end
       def disk_configuration_type
         Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::DiskConfigurationType
+      end
+      def storage_workload_type
+        Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview::Models::StorageWorkloadType
       end
     end
   end

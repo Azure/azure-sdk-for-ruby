@@ -103,6 +103,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -222,6 +224,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -326,6 +330,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -421,6 +427,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -526,6 +534,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -651,6 +661,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -762,6 +774,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -792,8 +806,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
     #
     # @return [SharedAccessAuthorizationRuleResource] operation results.
     #
-    def postt_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      response = postt_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    def post_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      response = post_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -810,8 +824,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def postt_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      postt_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    def post_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      post_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -827,7 +841,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def postt_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+    def post_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -873,6 +887,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -983,6 +999,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1084,6 +1102,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1209,6 +1229,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1297,6 +1319,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1385,6 +1409,8 @@ module Azure::EventHub::Mgmt::V2015_08_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

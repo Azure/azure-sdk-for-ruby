@@ -26,6 +26,9 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       # service and not modifiable by the user.
       attr_accessor :metric_id
 
+      # @return [String] Status of the Cluster resource
+      attr_accessor :status
+
 
       #
       # Mapper for Cluster class as Ruby Hash.
@@ -123,6 +126,15 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.metricId',
+                type: {
+                  name: 'String'
+                }
+              },
+              status: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.status',
                 type: {
                   name: 'String'
                 }

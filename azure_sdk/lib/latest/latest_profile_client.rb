@@ -44,6 +44,7 @@ require 'latest/modules/features_profile_module'
 require 'latest/modules/hanaonazure_profile_module'
 require 'latest/modules/hdinsight_profile_module'
 require 'latest/modules/graphrbac_profile_module'
+require 'latest/modules/importexport_profile_module'
 require 'latest/modules/iotcentral_profile_module'
 require 'latest/modules/iothub_profile_module'
 require 'latest/modules/keyvault_profile_module'
@@ -72,6 +73,7 @@ require 'latest/modules/operationsmanagement_profile_module'
 require 'latest/modules/peering_profile_module'
 require 'latest/modules/policy_profile_module'
 require 'latest/modules/policyinsights_profile_module'
+require 'latest/modules/portal_profile_module'
 require 'latest/modules/postgresql_profile_module'
 require 'latest/modules/powerbiembedded_profile_module'
 require 'latest/modules/powerbidedicated_profile_module'
@@ -82,6 +84,7 @@ require 'latest/modules/recoveryservicessiterecovery_profile_module'
 require 'latest/modules/redis_profile_module'
 require 'latest/modules/relay_profile_module'
 require 'latest/modules/reservations_profile_module'
+require 'latest/modules/resourcehealth_profile_module'
 require 'latest/modules/resourcegraph_profile_module'
 require 'latest/modules/resources_profile_module'
 require 'latest/modules/resourcesmanagement_profile_module'
@@ -135,7 +138,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :adhybrid_health_service, :advisor, :alerts_management, :analysis_services, :api_management, :appconfiguration, :attestation, :authorization, :automation, :azure_stack, :batch, :batch_ai, :billing, :bot_service, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :cost_management, :customer_insights, :data_box, :data_share, :data_lake_analytics, :data_lake_store, :data_migration, :data_factory, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :maintenance, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :migrate, :mixed_reality, :monitor, :managed_service_identity, :mysql, :net_app, :network, :notification_hubs, :operational_insights, :operations_management, :peering, :policy, :policy_insights, :postgresql, :power_bi_embedded, :power_bi_dedicated, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :storage_cache, :stream_analytics, :subscriptions, :traffic_manager, :vmware_cloud_simple, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :qnamaker_runtime, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :adhybrid_health_service, :advisor, :alerts_management, :analysis_services, :api_management, :appconfiguration, :attestation, :authorization, :automation, :azure_stack, :batch, :batch_ai, :billing, :bot_service, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :cost_management, :customer_insights, :data_box, :data_share, :data_lake_analytics, :data_lake_store, :data_migration, :data_factory, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :import_export, :iot_central, :iot_hub, :key_vault, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :maintenance, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :migrate, :mixed_reality, :monitor, :managed_service_identity, :mysql, :net_app, :network, :notification_hubs, :operational_insights, :operations_management, :peering, :policy, :policy_insights, :portal, :postgresql, :power_bi_embedded, :power_bi_dedicated, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_health, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :storage_cache, :stream_analytics, :subscriptions, :traffic_manager, :vmware_cloud_simple, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :qnamaker_runtime, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -208,6 +211,7 @@ module Azure::Profiles::Latest
       @hanaonazure = HanaonazureAdapter.new(self, base_url, sdk_options)
       @hdinsight = HdinsightAdapter.new(self, base_url, sdk_options)
       @graph_rbac = GraphRbacAdapter.new(self, base_url, sdk_options)
+      @import_export = ImportExportAdapter.new(self, base_url, sdk_options)
       @iot_central = IotCentralAdapter.new(self, base_url, sdk_options)
       @iot_hub = IotHubAdapter.new(self, base_url, sdk_options)
       @key_vault = KeyVaultAdapter.new(self, base_url, sdk_options)
@@ -236,6 +240,7 @@ module Azure::Profiles::Latest
       @peering = PeeringAdapter.new(self, base_url, sdk_options)
       @policy = PolicyAdapter.new(self, base_url, sdk_options)
       @policy_insights = PolicyInsightsAdapter.new(self, base_url, sdk_options)
+      @portal = PortalAdapter.new(self, base_url, sdk_options)
       @postgresql = PostgresqlAdapter.new(self, base_url, sdk_options)
       @power_bi_embedded = PowerBiEmbeddedAdapter.new(self, base_url, sdk_options)
       @power_bi_dedicated = PowerBiDedicatedAdapter.new(self, base_url, sdk_options)
@@ -246,6 +251,7 @@ module Azure::Profiles::Latest
       @redis = RedisAdapter.new(self, base_url, sdk_options)
       @relay = RelayAdapter.new(self, base_url, sdk_options)
       @reservations = ReservationsAdapter.new(self, base_url, sdk_options)
+      @resource_health = ResourceHealthAdapter.new(self, base_url, sdk_options)
       @resource_graph = ResourceGraphAdapter.new(self, base_url, sdk_options)
       @resources = ResourcesAdapter.new(self, base_url, sdk_options)
       @resources_management = ResourcesManagementAdapter.new(self, base_url, sdk_options)
@@ -621,6 +627,14 @@ module Azure::Profiles::Latest
       end
     end
 
+    class ImportExportAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ImportExport::Mgmt::ImportExportManagementClass.new(context, base_url, options)
+      end
+    end
+
     class IotCentralAdapter
       attr_accessor :mgmt
 
@@ -846,6 +860,14 @@ module Azure::Profiles::Latest
       end
     end
 
+    class PortalAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::Portal::Mgmt::PortalManagementClass.new(context, base_url, options)
+      end
+    end
+
     class PostgresqlAdapter
       attr_accessor :mgmt
 
@@ -923,6 +945,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::Reservations::Mgmt::ReservationsManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class ResourceHealthAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::ResourceHealth::Mgmt::ResourceHealthManagementClass.new(context, base_url, options)
       end
     end
 
