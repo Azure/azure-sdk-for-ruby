@@ -4,8 +4,10 @@
     "differences": {
       "Microsoft.Authorization": {
         "management": {
-          "2015-06-01": "2015-06-01-preview", 
-          "2018-05-01": ""
+          "new_names": {
+            "2018-05-01": "Microsoft.Resources"
+          },
+          "2015-06-01": "2015-06-01-preview"
         }
       },
       "Microsoft.BotService": {
