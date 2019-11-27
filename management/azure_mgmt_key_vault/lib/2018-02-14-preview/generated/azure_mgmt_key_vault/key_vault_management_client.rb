@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::KeyVault::Mgmt::V2015_06_01
+module Azure::KeyVault::Mgmt::V2018_02_14_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,7 +17,7 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Gets subscription credentials which uniquely identify
+    # @return [String] Subscription credentials which uniquely identify
     # Microsoft Azure subscription. The subscription ID forms part of the URI
     # for every service call.
     attr_accessor :subscription_id
@@ -40,6 +40,12 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     # @return [Vaults] vaults
     attr_reader :vaults
 
+    # @return [Operations] operations
+    attr_reader :operations
+
+    # @return [Secrets] secrets
+    attr_reader :secrets
+
     #
     # Creates initializes a new instance of the KeyVaultManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -54,7 +60,9 @@ module Azure::KeyVault::Mgmt::V2015_06_01
       @credentials = credentials
 
       @vaults = Vaults.new(self)
-      @api_version = '2015-06-01'
+      @operations = Operations.new(self)
+      @secrets = Secrets.new(self)
+      @api_version = '2018-02-14-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

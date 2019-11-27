@@ -3,16 +3,16 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::KeyVault::Mgmt::V2015_06_01
+module Azure::KeyVault::Mgmt::V2018_02_14_preview
   #
   # The Azure management API provides a RESTful set of web services that
   # interact with Azure Key Vault.
   #
-  class Vaults
+  class Secrets
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Vaults class.
+    # Creates and initializes a new instance of the Secrets class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,57 +23,68 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     attr_reader :client
 
     #
-    # Create or update a key vault in the specified subscription.
+    # Create or update a secret in a key vault in the specified subscription.
+    # NOTE: This API is intended for internal use in ARM deployments. Users should
+    # use the data-plane REST service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
-    # the server belongs.
+    # the vault belongs.
     # @param vault_name [String] Name of the vault
-    # @param parameters [VaultCreateOrUpdateParameters] Parameters to create or
-    # update the vault
+    # @param secret_name [String] Name of the secret
+    # @param parameters [SecretCreateOrUpdateParameters] Parameters to create or
+    # update the secret
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Vault] operation results.
+    # @return [Secret] operation results.
     #
-    def create_or_update(resource_group_name, vault_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, vault_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, vault_name, secret_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, vault_name, secret_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create or update a key vault in the specified subscription.
+    # Create or update a secret in a key vault in the specified subscription.
+    # NOTE: This API is intended for internal use in ARM deployments. Users should
+    # use the data-plane REST service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
-    # the server belongs.
+    # the vault belongs.
     # @param vault_name [String] Name of the vault
-    # @param parameters [VaultCreateOrUpdateParameters] Parameters to create or
-    # update the vault
+    # @param secret_name [String] Name of the secret
+    # @param parameters [SecretCreateOrUpdateParameters] Parameters to create or
+    # update the secret
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, vault_name, parameters, custom_headers:nil)
-      create_or_update_async(resource_group_name, vault_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, vault_name, secret_name, parameters, custom_headers:nil)
+      create_or_update_async(resource_group_name, vault_name, secret_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
-    # Create or update a key vault in the specified subscription.
+    # Create or update a secret in a key vault in the specified subscription.
+    # NOTE: This API is intended for internal use in ARM deployments. Users should
+    # use the data-plane REST service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
-    # the server belongs.
+    # the vault belongs.
     # @param vault_name [String] Name of the vault
-    # @param parameters [VaultCreateOrUpdateParameters] Parameters to create or
-    # update the vault
+    # @param secret_name [String] Name of the secret
+    # @param parameters [SecretCreateOrUpdateParameters] Parameters to create or
+    # update the secret
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, vault_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, vault_name, secret_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, "'vault_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]{3,24}$'" if !vault_name.nil? && vault_name.match(Regexp.new('^^[a-zA-Z0-9-]{3,24}$$')).nil?
+      fail ArgumentError, 'secret_name is nil' if secret_name.nil?
+      fail ArgumentError, "'secret_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]{1,127}$'" if !secret_name.nil? && secret_name.match(Regexp.new('^^[a-zA-Z0-9-]{1,127}$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -87,17 +98,17 @@ module Azure::KeyVault::Mgmt::V2015_06_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::KeyVault::Mgmt::V2015_06_01::Models::VaultCreateOrUpdateParameters.mapper()
+      request_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::SecretCreateOrUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'secretName' => secret_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -121,7 +132,7 @@ module Azure::KeyVault::Mgmt::V2015_06_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::Mgmt::V2015_06_01::Models::Vault.mapper()
+            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::Secret.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -131,7 +142,7 @@ module Azure::KeyVault::Mgmt::V2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::Mgmt::V2015_06_01::Models::Vault.mapper()
+            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::Secret.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -145,50 +156,67 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     end
 
     #
-    # Deletes the specified Azure key vault.
+    # Update a secret in the specified subscription.  NOTE: This API is intended
+    # for internal use in ARM deployments.  Users should use the data-plane REST
+    # service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
-    # @param vault_name [String] The name of the vault to delete
+    # @param vault_name [String] Name of the vault
+    # @param secret_name [String] Name of the secret
+    # @param parameters [SecretPatchParameters] Parameters to patch the secret
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [Secret] operation results.
     #
-    def delete(resource_group_name, vault_name, custom_headers:nil)
-      response = delete_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
-      nil
+    def update(resource_group_name, vault_name, secret_name, parameters, custom_headers:nil)
+      response = update_async(resource_group_name, vault_name, secret_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
-    # Deletes the specified Azure key vault.
+    # Update a secret in the specified subscription.  NOTE: This API is intended
+    # for internal use in ARM deployments.  Users should use the data-plane REST
+    # service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
-    # @param vault_name [String] The name of the vault to delete
+    # @param vault_name [String] Name of the vault
+    # @param secret_name [String] Name of the secret
+    # @param parameters [SecretPatchParameters] Parameters to patch the secret
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, vault_name, custom_headers:nil)
-      delete_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, vault_name, secret_name, parameters, custom_headers:nil)
+      update_async(resource_group_name, vault_name, secret_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
-    # Deletes the specified Azure key vault.
+    # Update a secret in the specified subscription.  NOTE: This API is intended
+    # for internal use in ARM deployments.  Users should use the data-plane REST
+    # service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
-    # @param vault_name [String] The name of the vault to delete
+    # @param vault_name [String] Name of the vault
+    # @param secret_name [String] Name of the secret
+    # @param parameters [SecretPatchParameters] Parameters to patch the secret
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, vault_name, custom_headers:nil)
+    def update_async(resource_group_name, vault_name, secret_name, parameters, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      fail ArgumentError, "'vault_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]{3,24}$'" if !vault_name.nil? && vault_name.match(Regexp.new('^^[a-zA-Z0-9-]{3,24}$$')).nil?
+      fail ArgumentError, 'secret_name is nil' if secret_name.nil?
+      fail ArgumentError, "'secret_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]{1,127}$'" if !secret_name.nil? && secret_name.match(Regexp.new('^^[a-zA-Z0-9-]{1,127}$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -198,24 +226,31 @@ module Azure::KeyVault::Mgmt::V2015_06_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}'
+
+      # Serialize Request
+      request_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::SecretPatchParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'secretName' => secret_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:delete, path_template, options)
+      promise = @client.make_request_async(:patch, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 201 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -223,6 +258,26 @@ module Azure::KeyVault::Mgmt::V2015_06_01
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::Secret.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::Secret.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -231,50 +286,60 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     end
 
     #
-    # Gets the specified Azure key vault.
+    # Gets the specified secret.  NOTE: This API is intended for internal use in
+    # ARM deployments. Users should use the data-plane REST service for interaction
+    # with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
     # @param vault_name [String] The name of the vault.
+    # @param secret_name [String] The name of the secret.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Vault] operation results.
+    # @return [Secret] operation results.
     #
-    def get(resource_group_name, vault_name, custom_headers:nil)
-      response = get_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, vault_name, secret_name, custom_headers:nil)
+      response = get_async(resource_group_name, vault_name, secret_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the specified Azure key vault.
+    # Gets the specified secret.  NOTE: This API is intended for internal use in
+    # ARM deployments. Users should use the data-plane REST service for interaction
+    # with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
     # @param vault_name [String] The name of the vault.
+    # @param secret_name [String] The name of the secret.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, vault_name, custom_headers:nil)
-      get_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, vault_name, secret_name, custom_headers:nil)
+      get_async(resource_group_name, vault_name, secret_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Gets the specified Azure key vault.
+    # Gets the specified secret.  NOTE: This API is intended for internal use in
+    # ARM deployments. Users should use the data-plane REST service for interaction
+    # with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
     # @param vault_name [String] The name of the vault.
+    # @param secret_name [String] The name of the secret.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, vault_name, custom_headers:nil)
+    def get_async(resource_group_name, vault_name, secret_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      fail ArgumentError, 'secret_name is nil' if secret_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -285,13 +350,13 @@ module Azure::KeyVault::Mgmt::V2015_06_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'secretName' => secret_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -314,7 +379,7 @@ module Azure::KeyVault::Mgmt::V2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::Mgmt::V2015_06_01::Models::Vault.mapper()
+            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::Secret.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -328,52 +393,59 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     end
 
     #
-    # The List operation gets information about the vaults associated with the
-    # subscription and within the specified resource group.
+    # The List operation gets information about the secrets in a vault.  NOTE: This
+    # API is intended for internal use in ARM deployments. Users should use the
+    # data-plane REST service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
+    # @param vault_name [String] The name of the vault.
     # @param top [Integer] Maximum number of results to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<Vault>] operation results.
+    # @return [Array<Secret>] operation results.
     #
-    def list_by_resource_group(resource_group_name, top:nil, custom_headers:nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, top:top, custom_headers:custom_headers)
+    def list(resource_group_name, vault_name, top:nil, custom_headers:nil)
+      first_page = list_as_lazy(resource_group_name, vault_name, top:top, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
-    # The List operation gets information about the vaults associated with the
-    # subscription and within the specified resource group.
+    # The List operation gets information about the secrets in a vault.  NOTE: This
+    # API is intended for internal use in ARM deployments. Users should use the
+    # data-plane REST service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
+    # @param vault_name [String] The name of the vault.
     # @param top [Integer] Maximum number of results to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, top:nil, custom_headers:nil)
-      list_by_resource_group_async(resource_group_name, top:top, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, vault_name, top:nil, custom_headers:nil)
+      list_async(resource_group_name, vault_name, top:top, custom_headers:custom_headers).value!
     end
 
     #
-    # The List operation gets information about the vaults associated with the
-    # subscription and within the specified resource group.
+    # The List operation gets information about the secrets in a vault.  NOTE: This
+    # API is intended for internal use in ARM deployments. Users should use the
+    # data-plane REST service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
+    # @param vault_name [String] The name of the vault.
     # @param top [Integer] Maximum number of results to return.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, top:nil, custom_headers:nil)
+    def list_async(resource_group_name, vault_name, top:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -384,13 +456,13 @@ module Azure::KeyVault::Mgmt::V2015_06_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$top' => top,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -413,7 +485,7 @@ module Azure::KeyVault::Mgmt::V2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::Mgmt::V2015_06_01::Models::VaultListResult.mapper()
+            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::SecretListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -427,201 +499,16 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     end
 
     #
-    # The List operation gets information about the vaults associated with the
-    # subscription.
-    #
-    # @param top [Integer] Maximum number of results to return.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<Resource>] operation results.
-    #
-    def list(top:nil, custom_headers:nil)
-      first_page = list_as_lazy(top:top, custom_headers:custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # The List operation gets information about the vaults associated with the
-    # subscription.
-    #
-    # @param top [Integer] Maximum number of results to return.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_with_http_info(top:nil, custom_headers:nil)
-      list_async(top:top, custom_headers:custom_headers).value!
-    end
-
-    #
-    # The List operation gets information about the vaults associated with the
-    # subscription.
-    #
-    # @param top [Integer] Maximum number of results to return.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_async(top:nil, custom_headers:nil)
-      filter = 'resourceType eq \'Microsoft.KeyVault/vaults\''
-      api_version = '2015-11-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resources'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'$top' => top,'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::Mgmt::V2015_06_01::Models::ResourceListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # The List operation gets information about the vaults associated with the
-    # subscription and within the specified resource group.
+    # The List operation gets information about the secrets in a vault.  NOTE: This
+    # API is intended for internal use in ARM deployments. Users should use the
+    # data-plane REST service for interaction with vault secrets.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VaultListResult] operation results.
-    #
-    def list_by_resource_group_next(next_page_link, custom_headers:nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # The List operation gets information about the vaults associated with the
-    # subscription and within the specified resource group.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
-    end
-
-    #
-    # The List operation gets information about the vaults associated with the
-    # subscription and within the specified resource group.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::Mgmt::V2015_06_01::Models::VaultListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # The List operation gets information about the vaults associated with the
-    # subscription.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ResourceListResult] operation results.
+    # @return [SecretListResult] operation results.
     #
     def list_next(next_page_link, custom_headers:nil)
       response = list_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -629,8 +516,9 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     end
 
     #
-    # The List operation gets information about the vaults associated with the
-    # subscription.
+    # The List operation gets information about the secrets in a vault.  NOTE: This
+    # API is intended for internal use in ARM deployments. Users should use the
+    # data-plane REST service for interaction with vault secrets.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -644,8 +532,9 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     end
 
     #
-    # The List operation gets information about the vaults associated with the
-    # subscription.
+    # The List operation gets information about the secrets in a vault.  NOTE: This
+    # API is intended for internal use in ARM deployments. Users should use the
+    # data-plane REST service for interaction with vault secrets.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -692,7 +581,7 @@ module Azure::KeyVault::Mgmt::V2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::Mgmt::V2015_06_01::Models::ResourceListResult.mapper()
+            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::SecretListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -706,41 +595,22 @@ module Azure::KeyVault::Mgmt::V2015_06_01
     end
 
     #
-    # The List operation gets information about the vaults associated with the
-    # subscription and within the specified resource group.
+    # The List operation gets information about the secrets in a vault.  NOTE: This
+    # API is intended for internal use in ARM deployments. Users should use the
+    # data-plane REST service for interaction with vault secrets.
     #
     # @param resource_group_name [String] The name of the Resource Group to which
     # the vault belongs.
+    # @param vault_name [String] The name of the vault.
     # @param top [Integer] Maximum number of results to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VaultListResult] which provide lazy access to pages of the response.
-    #
-    def list_by_resource_group_as_lazy(resource_group_name, top:nil, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group_name, top:top, custom_headers:custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
-        end
-        page
-      end
-    end
-
-    #
-    # The List operation gets information about the vaults associated with the
-    # subscription.
-    #
-    # @param top [Integer] Maximum number of results to return.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ResourceListResult] which provide lazy access to pages of the
+    # @return [SecretListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(top:nil, custom_headers:nil)
-      response = list_async(top:top, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, vault_name, top:nil, custom_headers:nil)
+      response = list_async(resource_group_name, vault_name, top:top, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

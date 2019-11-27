@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::KeyVault::Mgmt::V2018_02_14
+module Azure::KeyVault::Mgmt::V2018_02_14_preview
   #
   # The Azure management API provides a RESTful set of web services that
   # interact with Azure Key Vault.
@@ -93,7 +93,7 @@ module Azure::KeyVault::Mgmt::V2018_02_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult.mapper()
+            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::OperationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -183,7 +183,7 @@ module Azure::KeyVault::Mgmt::V2018_02_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14::Models::OperationListResult.mapper()
+            result_mapper = Azure::KeyVault::Mgmt::V2018_02_14_preview::Models::OperationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

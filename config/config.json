@@ -926,6 +926,11 @@
     }
   },
   "azure_mgmt_key_vault": {
+    "azure_mgmt_key_vault_2018_02_14_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/keyvault/resource-manager/readme.md",
+      "namespace": "Azure::KeyVault::Mgmt::V2018_02_14_preview",
+      "tag": "package-2018-02-14-preview"
+    },
     "azure_mgmt_key_vault_2018_02_14": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/keyvault/resource-manager/readme.md",
       "namespace": "Azure::KeyVault::Mgmt::V2018_02_14",
