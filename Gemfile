@@ -96,7 +96,6 @@ gem 'azure_mgmt_reservations',              path: 'management/azure_mgmt_reserva
 gem 'azure_mgmt_resource_health',           path: 'management/azure_mgmt_resource_health'
 gem 'azure_mgmt_resourcegraph',             path: 'management/azure_mgmt_resourcegraph'
 gem 'azure_mgmt_resources',                 path: 'management/azure_mgmt_resources'
-gem 'azure_mgmt_resource_health',           path: 'management/azure_mgmt_resource_health'
 gem 'azure_mgmt_resources_management',      path: 'management/azure_mgmt_resources_management'
 gem 'azure_mgmt_scheduler',                 path: 'management/azure_mgmt_scheduler'
 gem 'azure_mgmt_search',                    path: 'management/azure_mgmt_search'
