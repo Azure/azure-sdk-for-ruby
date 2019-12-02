@@ -29,7 +29,7 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
       attr_accessor :sql_image_offer
 
       # @return [SqlServerLicenseType] SQL Server license type. Possible values
-      # include: 'PAYG', 'AHUB'
+      # include: 'PAYG', 'AHUB', 'DR'
       attr_accessor :sql_server_license_type
 
       # @return [SqlManagementMode] SQL Server Management type. Possible values
@@ -61,6 +61,9 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
       # @return [ServerConfigurationsManagementSettings] SQL Server
       # configuration management settings.
       attr_accessor :server_configurations_management_settings
+
+      # @return [StorageConfigurationSettings] Storage Configuration Settings.
+      attr_accessor :storage_configuration_settings
 
 
       #
@@ -236,6 +239,15 @@ module Azure::Sqlvirtualmachine::Mgmt::V2017_03_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'ServerConfigurationsManagementSettings'
+                }
+              },
+              storage_configuration_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.storageConfigurationSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'StorageConfigurationSettings'
                 }
               }
             }

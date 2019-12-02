@@ -28,6 +28,9 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       # operations.
       attr_accessor :service_bus_endpoint
 
+      # @return [String] Cluster ARM ID of the Namespace.
+      attr_accessor :cluster_arm_id
+
       # @return [String] Identifier for Azure Insights metrics.
       attr_accessor :metric_id
 
@@ -47,6 +50,12 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       # @return [Boolean] Enabling this property creates a Standard Event Hubs
       # Namespace in regions supported availability zones.
       attr_accessor :zone_redundant
+
+      # @return [Identity] Properties of BYOK Identity description
+      attr_accessor :identity
+
+      # @return [Encryption] Properties of BYOK Encryption description
+      attr_accessor :encryption
 
 
       #
@@ -158,6 +167,14 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                   name: 'String'
                 }
               },
+              cluster_arm_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.clusterArmId',
+                type: {
+                  name: 'String'
+                }
+              },
               metric_id: {
                 client_side_validation: true,
                 required: false,
@@ -201,6 +218,24 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                 serialized_name: 'properties.zoneRedundant',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Identity'
+                }
+              },
+              encryption: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.encryption',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Encryption'
                 }
               }
             }

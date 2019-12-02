@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.44.0"
+        "azure_sdk": "0.45.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -43,7 +43,7 @@
         "azure_mgmt_attestation": "0.17.0",
         "azure_mgmt_authorization": "0.18.4",
         "azure_mgmt_automation": "0.17.2",
-        "azure_mgmt_batch": "0.17.2",
+        "azure_mgmt_batch": "0.18.0",
         "azure_mgmt_batchai": "0.17.0",
         "azure_mgmt_billing": "0.17.2",
         "azure_mgmt_bot_service": "0.17.0",
@@ -51,7 +51,7 @@
         "azure_mgmt_cognitive_services": "0.18.3",
         "azure_mgmt_commerce": "0.17.1",
         "azure_mgmt_compute": "0.19.0",
-        "azure_mgmt_consumption": "0.17.2",
+        "azure_mgmt_consumption": "0.18.0",
         "azure_mgmt_container_instance": "0.17.4",
         "azure_mgmt_container_registry": "0.18.3",
         "azure_mgmt_container_service": "0.19.0",
@@ -69,13 +69,14 @@
         "azure_mgmt_dns": "0.17.4",
         "azure_mgmt_edgegateway": "0.18.0",
         "azure_mgmt_event_grid": "0.17.8",
-        "azure_mgmt_event_hub": "0.17.3",
+        "azure_mgmt_event_hub": "0.18.0",
         "azure_mgmt_features": "0.17.2",
         "azure_mgmt_hanaonazure": "0.17.1",
         "azure_mgmt_hdinsight": "0.17.5",
+        "azure_mgmt_import_export": "0.17.0",
         "azure_mgmt_iot_central": "0.17.3",
         "azure_mgmt_iot_hub": "0.17.3",
-        "azure_mgmt_key_vault": "0.17.4",
+        "azure_mgmt_key_vault": "0.17.5",
         "azure_mgmt_kusto": "0.19.0",
         "azure_mgmt_labservices": "0.17.1",
         "azure_mgmt_links": "0.17.2",
@@ -90,7 +91,7 @@
         "azure_mgmt_media_services": "0.19.1",
         "azure_mgmt_migrate": "0.17.0",
         "azure_mgmt_mixedreality": "0.17.2",
-        "azure_mgmt_monitor": "0.17.4",
+        "azure_mgmt_monitor": "0.17.5",
         "azure_mgmt_msi": "0.17.1",
         "azure_mgmt_mysql": "0.17.0",
         "azure_mgmt_netapp": "0.18.2",
@@ -101,6 +102,7 @@
         "azure_mgmt_peering": "0.17.0",
         "azure_mgmt_policy": "0.17.6",
         "azure_mgmt_policy_insights": "0.17.4",
+        "azure_mgmt_portal": "0.17.0",
         "azure_mgmt_postgresql": "0.17.1",
         "azure_mgmt_powerbi_embedded": "0.17.1",
         "azure_mgmt_powerbi_dedicated": "0.17.0",
@@ -111,8 +113,9 @@
         "azure_mgmt_redis": "0.17.3",
         "azure_mgmt_relay": "0.17.2",
         "azure_mgmt_reservations": "0.19.0",
+        "azure_mgmt_resource_health": "0.17.0",
         "azure_mgmt_resourcegraph": "0.17.1",
-        "azure_mgmt_resources": "0.17.7",
+        "azure_mgmt_resources": "0.17.8",
         "azure_mgmt_resources_management": "0.17.1",
         "azure_mgmt_scheduler": "0.17.1",
         "azure_mgmt_search": "0.17.2",
@@ -122,7 +125,7 @@
         "azure_mgmt_service_fabric": "0.17.2",
         "azure_mgmt_signalr": "0.17.4",
         "azure_mgmt_sql": "0.19.0",
-        "azure_mgmt_sqlvirtualmachine": "0.18.0",
+        "azure_mgmt_sqlvirtualmachine": "0.18.1",
         "azure_mgmt_stor_simple8000_series": "0.17.2",
         "azure_mgmt_storage": "0.18.2",
         "azure_mgmt_storagesync": "0.17.0",
@@ -131,6 +134,6 @@
         "azure_mgmt_subscriptions": "0.18.1",
         "azure_mgmt_traffic_manager": "0.17.2",
         "azure_mgmt_vmware_cloudsimple": "0.17.0",
-        "azure_mgmt_web": "0.17.4"
+        "azure_mgmt_web": "0.17.5"
     }
 }

@@ -291,6 +291,13 @@
       "module_require": "azure_graph_rbac"
     }
   },
+  "Microsoft.ImportExport": {
+    "management": {
+      "path": "management/azure_mgmt_import_export",
+      "namespace": "Azure::ImportExport::Mgmt",
+      "module_require": "azure_mgmt_import_export"
+    }
+  },
   "Microsoft.Insights": {
     "management": {
       "path": "management/azure_mgmt_insights",
@@ -506,6 +513,13 @@
       "module_require": "azure_mgmt_policy_insights"
     }
   },
+  "Microsoft.Portal": {
+    "management": {
+      "path": "management/azure_mgmt_portal",
+      "namespace": "Azure::Portal::Mgmt",
+      "module_require": "azure_mgmt_portal"
+    }
+  },
   "Microsoft.Postgresql": {
     "management": {
       "path": "management/azure_mgmt_postgresql",
@@ -574,6 +588,13 @@
       "path": "management/azure_mgmt_reservations",
       "namespace": "Azure::Reservations::Mgmt",
       "module_require": "azure_mgmt_reservations"
+    }
+  },
+  "Microsoft.ResourceHealth": {
+    "management": {
+      "path": "management/azure_mgmt_resource_health",
+      "namespace": "Azure::ResourceHealth::Mgmt",
+      "module_require": "azure_mgmt_resource_health"
     }
   },
   "Microsoft.ResourceGraph": {

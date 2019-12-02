@@ -12,8 +12,8 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
 
       include MsRestAzure
 
-      # @return [Array<Hash{String => Integer}>] The count of readily available
-      # and pre-provisioned Event Hubs Clusters per region.
+      # @return [Array<AvailableCluster>] The count of readily available and
+      # pre-provisioned Event Hubs Clusters per region.
       attr_accessor :value
 
 
@@ -39,17 +39,10 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'HashElementType',
+                      serialized_name: 'AvailableClusterElementType',
                       type: {
-                        name: 'Dictionary',
-                        value: {
-                            client_side_validation: true,
-                            required: false,
-                            serialized_name: 'NumberElementType',
-                            type: {
-                              name: 'Number'
-                            }
-                        }
+                        name: 'Composite',
+                        class_name: 'AvailableCluster'
                       }
                   }
                 }
