@@ -21,7 +21,8 @@ module Azure::Storage::Mgmt::V2019_06_01
       attr_accessor :metadata
 
       # @return [Integer] The maximum size of the share, in gigabytes. Must be
-      # greater than 0, and less than or equal to 5TB (5120).
+      # greater than 0, and less than or equal to 5TB (5120). For Large File
+      # Shares, the maximum size is 100000.
       attr_accessor :share_quota
 
 
@@ -104,7 +105,7 @@ module Azure::Storage::Mgmt::V2019_06_01
                 required: false,
                 serialized_name: 'properties.shareQuota',
                 constraints: {
-                  InclusiveMaximum: 5120,
+                  InclusiveMaximum: 100000,
                   InclusiveMinimum: 1
                 },
                 type: {

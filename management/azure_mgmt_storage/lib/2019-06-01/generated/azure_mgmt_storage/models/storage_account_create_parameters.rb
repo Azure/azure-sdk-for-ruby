@@ -73,6 +73,10 @@ module Azure::Storage::Mgmt::V2019_06_01
       # include: 'Disabled', 'Enabled'
       attr_accessor :large_file_shares_state
 
+      # @return [RoutingPreference] Maintains information about the network
+      # routing choice opted by the user for data transfer
+      attr_accessor :routing_preference
+
 
       #
       # Mapper for StorageAccountCreateParameters class as Ruby Hash.
@@ -204,6 +208,15 @@ module Azure::Storage::Mgmt::V2019_06_01
                 serialized_name: 'properties.largeFileSharesState',
                 type: {
                   name: 'String'
+                }
+              },
+              routing_preference: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.routingPreference',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RoutingPreference'
                 }
               }
             }

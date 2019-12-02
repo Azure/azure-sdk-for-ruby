@@ -12,8 +12,8 @@ module Azure::Storage::Mgmt::V2019_06_01
 
       include MsRestAzure
 
-      # @return [Array<Sku>] Get the list result of storage SKUs and their
-      # properties.
+      # @return [Array<SkuInformation>] Get the list result of storage SKUs and
+      # their properties.
       attr_accessor :value
 
 
@@ -40,10 +40,10 @@ module Azure::Storage::Mgmt::V2019_06_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'SkuElementType',
+                      serialized_name: 'SkuInformationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Sku'
+                        class_name: 'SkuInformation'
                       }
                   }
                 }

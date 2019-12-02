@@ -112,6 +112,10 @@ module Azure::Storage::Mgmt::V2019_06_01
       # connection associated with the specified storage account
       attr_accessor :private_endpoint_connections
 
+      # @return [RoutingPreference] Maintains information about the network
+      # routing choice opted by the user for data transfer
+      attr_accessor :routing_preference
+
 
       #
       # Mapper for StorageAccount class as Ruby Hash.
@@ -399,6 +403,15 @@ module Azure::Storage::Mgmt::V2019_06_01
                         class_name: 'PrivateEndpointConnection'
                       }
                   }
+                }
+              },
+              routing_preference: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.routingPreference',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RoutingPreference'
                 }
               }
             }

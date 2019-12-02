@@ -35,9 +35,8 @@ module Azure::Storage::Mgmt::V2019_06_01
       # events.
       attr_accessor :change_feed
 
-      # @return [DeleteRetentionPolicy] The blob service properties for
-      # container soft delete.
-      attr_accessor :container_delete_retention_policy
+      # @return [Sku] Sku name and tier.
+      attr_accessor :sku
 
 
       #
@@ -123,13 +122,14 @@ module Azure::Storage::Mgmt::V2019_06_01
                   class_name: 'ChangeFeed'
                 }
               },
-              container_delete_retention_policy: {
+              sku: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.containerDeleteRetentionPolicy',
+                read_only: true,
+                serialized_name: 'sku',
                 type: {
                   name: 'Composite',
-                  class_name: 'DeleteRetentionPolicy'
+                  class_name: 'Sku'
                 }
               }
             }
