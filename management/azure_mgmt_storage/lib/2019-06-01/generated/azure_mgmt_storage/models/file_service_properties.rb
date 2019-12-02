@@ -22,6 +22,9 @@ module Azure::Storage::Mgmt::V2019_06_01
       # soft delete.
       attr_accessor :share_delete_retention_policy
 
+      # @return [Sku] Sku name and tier.
+      attr_accessor :sku
+
 
       #
       # Mapper for FileServiceProperties class as Ruby Hash.
@@ -79,6 +82,16 @@ module Azure::Storage::Mgmt::V2019_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'DeleteRetentionPolicy'
+                }
+              },
+              sku: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Sku'
                 }
               }
             }

@@ -6,17 +6,16 @@
 module Azure::Storage::Mgmt::V2019_06_01
   module Models
     #
-    # The blob service properties for soft delete.
+    # The service properties for soft delete.
     #
     class DeleteRetentionPolicy
 
       include MsRestAzure
 
-      # @return [Boolean] Indicates whether DeleteRetentionPolicy is enabled
-      # for the Blob service.
+      # @return [Boolean] Indicates whether DeleteRetentionPolicy is enabled.
       attr_accessor :enabled
 
-      # @return [Integer] Indicates the number of days that the deleted blob
+      # @return [Integer] Indicates the number of days that the deleted item
       # should be retained. The minimum specified value can be 1 and the
       # maximum value can be 365.
       attr_accessor :days

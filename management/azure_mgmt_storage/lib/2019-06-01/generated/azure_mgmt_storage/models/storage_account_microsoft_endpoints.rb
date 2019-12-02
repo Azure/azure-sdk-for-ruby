@@ -7,9 +7,9 @@ module Azure::Storage::Mgmt::V2019_06_01
   module Models
     #
     # The URIs that are used to perform a retrieval of a public blob, queue,
-    # table, web or dfs object.
+    # table, web or dfs object via a microsoft routing endpoint.
     #
-    class Endpoints
+    class StorageAccountMicrosoftEndpoints
 
       include MsRestAzure
 
@@ -31,27 +31,19 @@ module Azure::Storage::Mgmt::V2019_06_01
       # @return [String] Gets the dfs endpoint.
       attr_accessor :dfs
 
-      # @return [StorageAccountMicrosoftEndpoints] Gets the microsoft routing
-      # storage endpoints.
-      attr_accessor :microsoft_endpoints
-
-      # @return [StorageAccountInternetEndpoints] Gets the internet routing
-      # storage endpoints
-      attr_accessor :internet_endpoints
-
 
       #
-      # Mapper for Endpoints class as Ruby Hash.
+      # Mapper for StorageAccountMicrosoftEndpoints class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Endpoints',
+          serialized_name: 'StorageAccountMicrosoftEndpoints',
           type: {
             name: 'Composite',
-            class_name: 'Endpoints',
+            class_name: 'StorageAccountMicrosoftEndpoints',
             model_properties: {
               blob: {
                 client_side_validation: true,
@@ -105,24 +97,6 @@ module Azure::Storage::Mgmt::V2019_06_01
                 serialized_name: 'dfs',
                 type: {
                   name: 'String'
-                }
-              },
-              microsoft_endpoints: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'microsoftEndpoints',
-                type: {
-                  name: 'Composite',
-                  class_name: 'StorageAccountMicrosoftEndpoints'
-                }
-              },
-              internet_endpoints: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'internetEndpoints',
-                type: {
-                  name: 'Composite',
-                  class_name: 'StorageAccountInternetEndpoints'
                 }
               }
             }

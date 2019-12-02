@@ -22,10 +22,9 @@ doc/
 lib/bundler/man
 pkg
 rdoc
-
-
 .DS_Store
 .ruby-version
 .env
 *.pem
 *.publishsettings
+.vscode
