@@ -22,7 +22,7 @@ require 'ms_rest_azure'
 module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
   autoload :PrivateLinkResources,                               '2019-08-01-preview/generated/azure_mgmt_cosmosdb/private_link_resources.rb'
   autoload :PrivateEndpointConnections,                         '2019-08-01-preview/generated/azure_mgmt_cosmosdb/private_endpoint_connections.rb'
-  autoload :CosmosDB,                                           '2019-08-01-preview/generated/azure_mgmt_cosmosdb/cosmos_db.rb'
+  autoload :CosmosDBManagementClient,                           '2019-08-01-preview/generated/azure_mgmt_cosmosdb/cosmos_dbmanagement_client.rb'
 
   module Models
     autoload :PrivateEndpointProperty,                            '2019-08-01-preview/generated/azure_mgmt_cosmosdb/models/private_endpoint_property.rb'

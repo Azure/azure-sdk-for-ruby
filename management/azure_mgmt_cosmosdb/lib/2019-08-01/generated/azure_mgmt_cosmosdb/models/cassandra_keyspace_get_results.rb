@@ -12,19 +12,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
 
       include MsRestAzure
 
-      # @return [String] Name of the Cosmos DB Cassandra keyspace
-      attr_accessor :cassandra_keyspace_get_results_id
-
-      # @return [String] A system generated property. A unique identifier.
-      attr_accessor :_rid
-
-      # @return A system generated property that denotes the last updated
-      # timestamp of the resource.
-      attr_accessor :_ts
-
-      # @return [String] A system generated property representing the resource
-      # etag required for optimistic concurrency control.
-      attr_accessor :_etag
+      # @return [CassandraKeyspaceGetPropertiesResource]
+      attr_accessor :resource
 
 
       #
@@ -91,39 +80,13 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
                   }
                 }
               },
-              cassandra_keyspace_get_results_id: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.id',
-                type: {
-                  name: 'String'
-                }
-              },
-              _rid: {
+              resource: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties._rid',
+                serialized_name: 'properties.resource',
                 type: {
-                  name: 'String'
-                }
-              },
-              _ts: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._ts',
-                type: {
-                  name: 'Object'
-                }
-              },
-              _etag: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._etag',
-                type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'CassandraKeyspaceGetPropertiesResource'
                 }
               }
             }

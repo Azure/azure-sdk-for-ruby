@@ -6,87 +6,98 @@
 module Azure::Cosmosdb::Mgmt::V2019_08_01
   module Models
     #
-    # An Azure Cosmos DB userDefinedFunction.
+    # Model object.
     #
-    class SqlUserDefinedFunctionGetResults < ARMResourceProperties
+    #
+    class SqlDatabaseGetPropertiesResource
 
       include MsRestAzure
 
-      # @return [SqlUserDefinedFunctionGetPropertiesResource]
-      attr_accessor :resource
+      # @return [String] Name of the Cosmos DB SQL database
+      attr_accessor :id
+
+      # @return [String] A system generated property. A unique identifier.
+      attr_accessor :_rid
+
+      # @return A system generated property that denotes the last updated
+      # timestamp of the resource.
+      attr_accessor :_ts
+
+      # @return [String] A system generated property representing the resource
+      # etag required for optimistic concurrency control.
+      attr_accessor :_etag
+
+      # @return [String] A system generated property that specified the
+      # addressable path of the collections resource.
+      attr_accessor :_colls
+
+      # @return [String] A system generated property that specifies the
+      # addressable path of the users resource.
+      attr_accessor :_users
 
 
       #
-      # Mapper for SqlUserDefinedFunctionGetResults class as Ruby Hash.
+      # Mapper for SqlDatabaseGetPropertiesResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SqlUserDefinedFunctionGetResults',
+          serialized_name: 'SqlDatabaseGetProperties_resource',
           type: {
             name: 'Composite',
-            class_name: 'SqlUserDefinedFunctionGetResults',
+            class_name: 'SqlDatabaseGetPropertiesResource',
             model_properties: {
               id: {
                 client_side_validation: true,
-                required: false,
-                read_only: true,
+                required: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
-              name: {
+              _rid: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: '_rid',
                 type: {
                   name: 'String'
                 }
               },
-              type: {
+              _ts: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: '_ts',
+                type: {
+                  name: 'Object'
+                }
+              },
+              _etag: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: '_etag',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
+              _colls: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'location',
+                serialized_name: '_colls',
                 type: {
                   name: 'String'
                 }
               },
-              tags: {
+              _users: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: '_users',
                 type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              resource: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.resource',
-                type: {
-                  name: 'Composite',
-                  class_name: 'SqlUserDefinedFunctionGetPropertiesResource'
+                  name: 'String'
                 }
               }
             }

@@ -12,26 +12,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
 
       include MsRestAzure
 
-      # @return [String] Name of the Cosmos DB MongoDB collection
-      attr_accessor :mongo_dbcollection_get_results_id
-
-      # @return [Hash{String => String}] A key-value pair of shard keys to be
-      # applied for the request.
-      attr_accessor :shard_key
-
-      # @return [Array<MongoIndex>] List of index keys
-      attr_accessor :indexes
-
-      # @return [String] A system generated property. A unique identifier.
-      attr_accessor :_rid
-
-      # @return A system generated property that denotes the last updated
-      # timestamp of the resource.
-      attr_accessor :_ts
-
-      # @return [String] A system generated property representing the resource
-      # etag required for optimistic concurrency control.
-      attr_accessor :_etag
+      # @return [MongoDBCollectionGetPropertiesResource]
+      attr_accessor :resource
 
 
       #
@@ -98,72 +80,13 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
                   }
                 }
               },
-              mongo_dbcollection_get_results_id: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.id',
-                type: {
-                  name: 'String'
-                }
-              },
-              shard_key: {
+              resource: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.shardKey',
+                serialized_name: 'properties.resource',
                 type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              indexes: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.indexes',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'MongoIndexElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'MongoIndex'
-                      }
-                  }
-                }
-              },
-              _rid: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._rid',
-                type: {
-                  name: 'String'
-                }
-              },
-              _ts: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._ts',
-                type: {
-                  name: 'Object'
-                }
-              },
-              _etag: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._etag',
-                type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'MongoDBCollectionGetPropertiesResource'
                 }
               }
             }

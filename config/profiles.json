@@ -340,7 +340,8 @@
                 },
                 "Microsoft.Cosmosdb": {
                     "management": {
-                        "2019-08-01": ["*"]
+                        "2019-08-01": ["*"],
+                        "2019-08-01-preview": ["*"]
                     }
                 },
                 "Microsoft.CostManagement": {
@@ -1309,7 +1310,8 @@
             "resourceTypes": {
                 "Microsoft.Cosmosdb": {
                     "management": {
-                        "2019-08-01": ["*"]
+                        "2019-08-01": ["*"],
+                        "2019-08-01-preview": ["*"]
                     }
                 }
             },

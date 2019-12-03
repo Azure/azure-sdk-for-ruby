@@ -7,7 +7,7 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
   #
   # A service client - single point of access to the REST API.
   #
-  class CosmosDB < MsRestAzure::AzureServiceClient
+  class CosmosDBManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -49,7 +49,7 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     attr_reader :private_endpoint_connections
 
     #
-    # Creates initializes a new instance of the CosmosDB class.
+    # Creates initializes a new instance of the CosmosDBManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -135,7 +135,7 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cosmosdb'
-        sdk_information = "#{sdk_information}/0.20.0"
+        sdk_information = "#{sdk_information}/0.21.0"
         add_user_agent_information(sdk_information)
     end
   end

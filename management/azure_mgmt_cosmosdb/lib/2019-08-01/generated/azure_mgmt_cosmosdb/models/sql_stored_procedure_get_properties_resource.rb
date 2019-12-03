@@ -6,87 +6,85 @@
 module Azure::Cosmosdb::Mgmt::V2019_08_01
   module Models
     #
-    # An Azure Cosmos DB Table.
+    # Model object.
     #
-    class TableGetResults < ARMResourceProperties
+    #
+    class SqlStoredProcedureGetPropertiesResource
 
       include MsRestAzure
 
-      # @return [TableGetPropertiesResource]
-      attr_accessor :resource
+      # @return [String] Name of the Cosmos DB SQL storedProcedure
+      attr_accessor :id
+
+      # @return [String] Body of the Stored Procedure
+      attr_accessor :body
+
+      # @return [String] A system generated property. A unique identifier.
+      attr_accessor :_rid
+
+      # @return A system generated property that denotes the last updated
+      # timestamp of the resource.
+      attr_accessor :_ts
+
+      # @return [String] A system generated property representing the resource
+      # etag required for optimistic concurrency control.
+      attr_accessor :_etag
 
 
       #
-      # Mapper for TableGetResults class as Ruby Hash.
+      # Mapper for SqlStoredProcedureGetPropertiesResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TableGetResults',
+          serialized_name: 'SqlStoredProcedureGetProperties_resource',
           type: {
             name: 'Composite',
-            class_name: 'TableGetResults',
+            class_name: 'SqlStoredProcedureGetPropertiesResource',
             model_properties: {
               id: {
                 client_side_validation: true,
-                required: false,
-                read_only: true,
+                required: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
-              name: {
+              body: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'body',
+                type: {
+                  name: 'String'
+                }
+              },
+              _rid: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: '_rid',
                 type: {
                   name: 'String'
                 }
               },
-              type: {
+              _ts: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: '_ts',
+                type: {
+                  name: 'Object'
+                }
+              },
+              _etag: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: '_etag',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              resource: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.resource',
-                type: {
-                  name: 'Composite',
-                  class_name: 'TableGetPropertiesResource'
                 }
               }
             }
