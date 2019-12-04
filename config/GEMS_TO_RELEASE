@@ -1,6 +1,7 @@
 {
     "management":[
-        "azure_mgmt_cosmosdb"
+        "azure_mgmt_cosmosdb",
+        "azure_mgmt_policy"
     ],
     "rollup":[
         "azure_sdk"

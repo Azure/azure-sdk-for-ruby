@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Policy::Mgmt::V2018_03_01
+module Azure::Policy::Mgmt::V2019_09_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -60,7 +60,7 @@ module Azure::Policy::Mgmt::V2018_03_01
       @policy_assignments = PolicyAssignments.new(self)
       @policy_definitions = PolicyDefinitions.new(self)
       @policy_set_definitions = PolicySetDefinitions.new(self)
-      @api_version = '2018-03-01'
+      @api_version = '2019-09-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
