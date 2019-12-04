@@ -1,4 +1,7 @@
 {
+    "data":[
+        "azure_service_fabric"
+    ],
     "management":[
         "azure_mgmt_cosmosdb",
         "azure_mgmt_policy"

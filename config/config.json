@@ -3040,6 +3040,11 @@
     }
   },
   "azure_service_fabric": {
+    "azure_service_fabric_v7.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/servicefabric/data-plane/readme.md",
+      "namespace": "Azure::ServiceFabric::V7_0_0_42",
+      "tag": "7.0"
+    },
     "azure_service_fabric_v6.2": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/servicefabric/data-plane/readme.md",
       "namespace": "Azure::ServiceFabric::V6_2_0_9",
