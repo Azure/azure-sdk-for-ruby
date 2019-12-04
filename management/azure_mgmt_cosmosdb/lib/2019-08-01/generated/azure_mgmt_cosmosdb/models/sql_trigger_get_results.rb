@@ -12,31 +12,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
 
       include MsRestAzure
 
-      # @return [String] Name of the Cosmos DB SQL trigger
-      attr_accessor :sql_trigger_get_results_id
-
-      # @return [String] Body of the Trigger
-      attr_accessor :body
-
-      # @return [TriggerType] Type of the Trigger. Possible values include:
-      # 'Pre', 'Post'
-      attr_accessor :trigger_type
-
-      # @return [TriggerOperation] The operation the trigger is associated
-      # with. Possible values include: 'All', 'Create', 'Update', 'Delete',
-      # 'Replace'
-      attr_accessor :trigger_operation
-
-      # @return [String] A system generated property. A unique identifier.
-      attr_accessor :_rid
-
-      # @return A system generated property that denotes the last updated
-      # timestamp of the resource.
-      attr_accessor :_ts
-
-      # @return [String] A system generated property representing the resource
-      # etag required for optimistic concurrency control.
-      attr_accessor :_etag
+      # @return [SqlTriggerGetPropertiesResource]
+      attr_accessor :resource
 
 
       #
@@ -103,63 +80,13 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
                   }
                 }
               },
-              sql_trigger_get_results_id: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.id',
-                type: {
-                  name: 'String'
-                }
-              },
-              body: {
+              resource: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.body',
+                serialized_name: 'properties.resource',
                 type: {
-                  name: 'String'
-                }
-              },
-              trigger_type: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.triggerType',
-                type: {
-                  name: 'String'
-                }
-              },
-              trigger_operation: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.triggerOperation',
-                type: {
-                  name: 'String'
-                }
-              },
-              _rid: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._rid',
-                type: {
-                  name: 'String'
-                }
-              },
-              _ts: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._ts',
-                type: {
-                  name: 'Object'
-                }
-              },
-              _etag: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._etag',
-                type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'SqlTriggerGetPropertiesResource'
                 }
               }
             }

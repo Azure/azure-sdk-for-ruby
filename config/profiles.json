@@ -340,7 +340,8 @@
                 },
                 "Microsoft.Cosmosdb": {
                     "management": {
-                        "2019-08-01": ["*"]
+                        "2019-08-01": ["*"],
+                        "2019-08-01-preview": ["*"]
                     }
                 },
                 "Microsoft.CostManagement": {
@@ -1309,7 +1310,8 @@
             "resourceTypes": {
                 "Microsoft.Cosmosdb": {
                     "management": {
-                        "2019-08-01": ["*"]
+                        "2019-08-01": ["*"],
+                        "2019-08-01-preview": ["*"]
                     }
                 }
             },
@@ -3234,7 +3236,7 @@
             "resourceTypes": {
                 "Microsoft.ServiceFabric": {
                     "data": {
-                        "6.5.0.36": ["*"]
+                        "7.0.0.42": ["*"]
                     }
                 }
             },

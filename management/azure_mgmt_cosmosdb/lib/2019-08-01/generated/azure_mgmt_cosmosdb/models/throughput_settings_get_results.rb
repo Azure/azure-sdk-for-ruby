@@ -12,14 +12,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
 
       include MsRestAzure
 
-      # @return [Integer] Value of the Cosmos DB resource throughput
-      attr_accessor :throughput
-
-      # @return [String] The minimum throughput of the resource
-      attr_accessor :minimum_throughput
-
-      # @return [String] The throughput replace is pending
-      attr_accessor :offer_replace_pending
+      # @return [ThroughputSettingsGetPropertiesResource]
+      attr_accessor :resource
 
 
       #
@@ -86,30 +80,13 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
                   }
                 }
               },
-              throughput: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.throughput',
-                type: {
-                  name: 'Number'
-                }
-              },
-              minimum_throughput: {
+              resource: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.minimumThroughput',
+                serialized_name: 'properties.resource',
                 type: {
-                  name: 'String'
-                }
-              },
-              offer_replace_pending: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.offerReplacePending',
-                type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'ThroughputSettingsGetPropertiesResource'
                 }
               }
             }

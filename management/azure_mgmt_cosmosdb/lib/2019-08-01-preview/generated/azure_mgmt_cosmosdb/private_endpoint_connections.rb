@@ -18,7 +18,7 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
       @client = client
     end
 
-    # @return [CosmosDB] reference to the CosmosDB
+    # @return [CosmosDBManagementClient] reference to the CosmosDBManagementClient
     attr_reader :client
 
     #

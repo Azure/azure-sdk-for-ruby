@@ -676,14 +676,17 @@
       "tag": "package-2015-04"
     },
     "azure_mgmt_cosmosdb_2019_08_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5ec8997672bc62c8032dd6d4755bf6b8379b3e5/specification/cosmos-db/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/readme.md",
       "namespace": "Azure::Cosmosdb::Mgmt::V2019_08_01",
       "tag": "package-2019-08"
     },
     "azure_mgmt_cosmosdb_2019_08_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/de100e16eabbd5d41551cba8b1d8cd97f3701bf9/specification/cosmos-db/resource-manager/readme.md",
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateLinkResources.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateEndpointConnection.json"
+      ],
       "namespace": "Azure::Cosmosdb::Mgmt::V2019_08_01_preview",
-      "tag": "package-2019-08-preview-only"
+      "title": "CosmosDBManagementClient"
     }
   },
   "azure_mgmt_customer_insights": {
@@ -1983,6 +1986,12 @@
     }
   },
   "azure_mgmt_policy": {
+    "azure_mgmt_policy_2019_09_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/resources/resource-manager/readme.md",
+      "namespace": "Azure::Policy::Mgmt::V2019_09_01",
+      "title": "PolicyClient",
+      "tag": "package-policy-2019-09"
+    },
     "azure_mgmt_policy_2019_06_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1241f9604ddd76bac1a778e9bf26d739110e0928/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Policy::Mgmt::V2019_06_01",
@@ -3031,6 +3040,11 @@
     }
   },
   "azure_service_fabric": {
+    "azure_service_fabric_v7.0": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/servicefabric/data-plane/readme.md",
+      "namespace": "Azure::ServiceFabric::V7_0_0_42",
+      "tag": "7.0"
+    },
     "azure_service_fabric_v6.2": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/servicefabric/data-plane/readme.md",
       "namespace": "Azure::ServiceFabric::V6_2_0_9",

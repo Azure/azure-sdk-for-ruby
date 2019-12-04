@@ -12,40 +12,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
 
       include MsRestAzure
 
-      # @return [String] Name of the Cosmos DB SQL container
-      attr_accessor :sql_container_get_results_id
-
-      # @return [IndexingPolicy] The configuration of the indexing policy. By
-      # default, the indexing is automatic for all document paths within the
-      # container
-      attr_accessor :indexing_policy
-
-      # @return [ContainerPartitionKey] The configuration of the partition key
-      # to be used for partitioning data into multiple partitions
-      attr_accessor :partition_key
-
-      # @return [Integer] Default time to live
-      attr_accessor :default_ttl
-
-      # @return [UniqueKeyPolicy] The unique key policy configuration for
-      # specifying uniqueness constraints on documents in the collection in the
-      # Azure Cosmos DB service.
-      attr_accessor :unique_key_policy
-
-      # @return [ConflictResolutionPolicy] The conflict resolution policy for
-      # the container.
-      attr_accessor :conflict_resolution_policy
-
-      # @return [String] A system generated property. A unique identifier.
-      attr_accessor :_rid
-
-      # @return A system generated property that denotes the last updated
-      # timestamp of the resource.
-      attr_accessor :_ts
-
-      # @return [String] A system generated property representing the resource
-      # etag required for optimistic concurrency control.
-      attr_accessor :_etag
+      # @return [SqlContainerGetPropertiesResource]
+      attr_accessor :resource
 
 
       #
@@ -112,83 +80,13 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
                   }
                 }
               },
-              sql_container_get_results_id: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.id',
-                type: {
-                  name: 'String'
-                }
-              },
-              indexing_policy: {
+              resource: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.indexingPolicy',
+                serialized_name: 'properties.resource',
                 type: {
                   name: 'Composite',
-                  class_name: 'IndexingPolicy'
-                }
-              },
-              partition_key: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.partitionKey',
-                type: {
-                  name: 'Composite',
-                  class_name: 'ContainerPartitionKey'
-                }
-              },
-              default_ttl: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.defaultTtl',
-                type: {
-                  name: 'Number'
-                }
-              },
-              unique_key_policy: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.uniqueKeyPolicy',
-                type: {
-                  name: 'Composite',
-                  class_name: 'UniqueKeyPolicy'
-                }
-              },
-              conflict_resolution_policy: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.conflictResolutionPolicy',
-                type: {
-                  name: 'Composite',
-                  class_name: 'ConflictResolutionPolicy'
-                }
-              },
-              _rid: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._rid',
-                type: {
-                  name: 'String'
-                }
-              },
-              _ts: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._ts',
-                type: {
-                  name: 'Object'
-                }
-              },
-              _etag: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties._etag',
-                type: {
-                  name: 'String'
+                  class_name: 'SqlContainerGetPropertiesResource'
                 }
               }
             }

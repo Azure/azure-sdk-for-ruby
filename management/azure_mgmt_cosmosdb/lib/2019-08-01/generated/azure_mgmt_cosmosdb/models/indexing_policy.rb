@@ -25,6 +25,12 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
       # @return [Array<ExcludedPath>] List of paths to exclude from indexing
       attr_accessor :excluded_paths
 
+      # @return [Array<Array<CompositePath>>] List of composite path list
+      attr_accessor :composite_indexes
+
+      # @return [Array<SpatialSpec>] List of spatial specifics
+      attr_accessor :spatial_indexes
+
 
       #
       # Mapper for IndexingPolicy class as Ruby Hash.
@@ -86,6 +92,48 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01
                       type: {
                         name: 'Composite',
                         class_name: 'ExcludedPath'
+                      }
+                  }
+                }
+              },
+              composite_indexes: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'compositeIndexes',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ArrayElementType',
+                      type: {
+                        name: 'Sequence',
+                        element: {
+                            client_side_validation: true,
+                            required: false,
+                            serialized_name: 'CompositePathElementType',
+                            type: {
+                              name: 'Composite',
+                              class_name: 'CompositePath'
+                            }
+                        }
+                      }
+                  }
+                }
+              },
+              spatial_indexes: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'spatialIndexes',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'SpatialSpecElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SpatialSpec'
                       }
                   }
                 }
