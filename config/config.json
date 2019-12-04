@@ -676,14 +676,14 @@
       "tag": "package-2015-04"
     },
     "azure_mgmt_cosmosdb_2019_08_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1a9f8e392421b4767e1137586ec95b73c2858097/specification/cosmos-db/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/readme.md",
       "namespace": "Azure::Cosmosdb::Mgmt::V2019_08_01",
       "tag": "package-2019-08"
     },
     "azure_mgmt_cosmosdb_2019_08_01_preview": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1a9f8e392421b4767e1137586ec95b73c2858097/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateLinkResources.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1a9f8e392421b4767e1137586ec95b73c2858097/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateEndpointConnection.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateLinkResources.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateEndpointConnection.json"
       ],
       "namespace": "Azure::Cosmosdb::Mgmt::V2019_08_01_preview",
       "title": "CosmosDBManagementClient"
