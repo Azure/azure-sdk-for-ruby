@@ -24,7 +24,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       attr_accessor :container
 
       # @return [String] The filesystem, only to be specified for Azure Data
-      # Lake Storage type Gen 2.
+      # Lake Storage Gen 2.
       attr_accessor :file_system
 
       # @return [String] The storage account access key.

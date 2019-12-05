@@ -17,7 +17,9 @@ module Azure::Profiles::Latest
       Operations = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Operations
 
       module Models
+        ClusterResizeParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterResizeParameters
         ClusterDiskEncryptionParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDiskEncryptionParameters
+        ClientGroupInfo = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClientGroupInfo
         UpdateGatewaySettingsParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::UpdateGatewaySettingsParameters
         SecurityProfile = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::SecurityProfile
         GatewaySettings = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::GatewaySettings
@@ -54,7 +56,7 @@ module Azure::Profiles::Latest
         VmSizesCapability = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::VmSizesCapability
         ClusterListRuntimeScriptActionDetailResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterListRuntimeScriptActionDetailResult
         VmSizeCompatibilityFilter = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::VmSizeCompatibilityFilter
-        ClusterResizeParameters = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterResizeParameters
+        ClusterDefinition = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDefinition
         RegionalQuotaCapability = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::RegionalQuotaCapability
         AutoscaleTimeAndCapacity = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::AutoscaleTimeAndCapacity
         QuotaCapability = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::QuotaCapability
@@ -87,7 +89,7 @@ module Azure::Profiles::Latest
         ClusterMonitoringRequest = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterMonitoringRequest
         ClusterCreateProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterCreateProperties
         ScriptActionExecutionHistoryList = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionExecutionHistoryList
-        ClusterDefinition = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDefinition
+        KafkaRestProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::KafkaRestProperties
         ScriptActionPersistedGetResponseSpec = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionPersistedGetResponseSpec
         RuntimeScriptActionDetail = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::RuntimeScriptActionDetail
         TrackedResource = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::TrackedResource
@@ -142,8 +144,14 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
+          def cluster_resize_parameters
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterResizeParameters
+          end
           def cluster_disk_encryption_parameters
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDiskEncryptionParameters
+          end
+          def client_group_info
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClientGroupInfo
           end
           def update_gateway_settings_parameters
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::UpdateGatewaySettingsParameters
@@ -253,8 +261,8 @@ module Azure::Profiles::Latest
           def vm_size_compatibility_filter
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::VmSizeCompatibilityFilter
           end
-          def cluster_resize_parameters
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterResizeParameters
+          def cluster_definition
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDefinition
           end
           def regional_quota_capability
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::RegionalQuotaCapability
@@ -352,8 +360,8 @@ module Azure::Profiles::Latest
           def script_action_execution_history_list
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionExecutionHistoryList
           end
-          def cluster_definition
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterDefinition
+          def kafka_rest_properties
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::KafkaRestProperties
           end
           def script_action_persisted_get_response_spec
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ScriptActionPersistedGetResponseSpec
