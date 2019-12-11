@@ -13,7 +13,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       include MsRestAzure
 
       # @return [AppSku] The name of the SKU. Possible values include: 'F1',
-      # 'S1'
+      # 'S1', 'ST0', 'ST1', 'ST2'
       attr_accessor :name
 
 

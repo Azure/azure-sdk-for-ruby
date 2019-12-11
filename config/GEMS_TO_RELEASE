@@ -1,6 +1,7 @@
 {
     "management":[
-        "azure_mgmt_container_service"
+        "azure_mgmt_container_service",
+        "azure_mgmt_iot_central"
     ],
     "rollup":[
         "azure_sdk"
