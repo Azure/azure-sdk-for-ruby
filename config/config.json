@@ -551,6 +551,20 @@
     }
   },
   "azure_mgmt_container_service": {
+    "azure_mgmt_container_service_2019_10_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3edf22120f19731ca9fa586ec9f6cff6a69c1857/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-10-01/managedClusters.json"
+      ],
+      "namespace": "Azure::ContainerService::Mgmt::V2019_10_01",
+      "title": "ContainerServiceClient"
+    },
+    "azure_mgmt_container_service_2019_09_30_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3edf22120f19731ca9fa586ec9f6cff6a69c1857/specification/containerservice/resource-manager/Microsoft.ContainerService/preview/2019-09-30/openShiftManagedClusters.json"
+      ],
+      "namespace": "Azure::ContainerService::Mgmt::V2019_09_30_preview",
+      "title": "ContainerServiceClient"
+    },
     "azure_mgmt_container_service_2019_08_01": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1d4ce22d74be61952118f936eded544e53892629/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-08-01/location.json",
