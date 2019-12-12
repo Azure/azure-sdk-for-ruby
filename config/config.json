@@ -2053,6 +2053,14 @@
     }
   },
   "azure_mgmt_policy_insights": {
+    "azure_mgmt_policy_insights_2019_10_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a8353533efc393b1b72519ae10beb3c6a42a9a79/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyStates.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a8353533efc393b1b72519ae10beb3c6a42a9a79/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/policyMetadata.json"
+      ],
+      "namespace": "Azure::PolicyInsights::Mgmt::V2019_10_01",
+      "title": "PolicyInsightsClient"
+    },
     "azure_mgmt_policy_insights_2017_08_09_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/policyinsights/resource-manager/readme.md",
       "namespace": "Azure::PolicyInsights::Mgmt::V2017_08_09_preview",
