@@ -383,6 +383,11 @@
                         "2018-06-01": ["*"]
                     }
                 },
+                "Microsoft.DeploymentManager": {
+                    "management": {
+                        "2019-11-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.DevSpaces": {
                     "management": {
                         "2018-06-01-preview": ["*"]
@@ -1413,6 +1418,20 @@
                     }
                 },
                 "output_dir": "management/azure_mgmt_data_factory/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_mgmt_deployment_manager": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DeploymentManager": {
+                        "management": {
+                            "2019-11-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_deployment_manager/lib/profiles",
                 "individual_gem_profile": true
             }
         ],
