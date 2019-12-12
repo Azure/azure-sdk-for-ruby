@@ -102,28 +102,34 @@ module Azure::Profiles::Latest
           end
           add_telemetry(@client_0)
 
-          @client_1 = Azure::ContainerService::Mgmt::V2019_04_30::ContainerServiceClient.new(configurable.credentials, base_url, options)
+          @client_1 = Azure::ContainerService::Mgmt::V2019_04_01::ContainerServiceClient.new(configurable.credentials, base_url, options)
           if(@client_1.respond_to?(:subscription_id))
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @open_shift_managed_clusters = @client_1.open_shift_managed_clusters
 
-          @client_2 = Azure::ContainerService::Mgmt::V2019_08_01::ContainerServiceClient.new(configurable.credentials, base_url, options)
+          @client_2 = Azure::ContainerService::Mgmt::V2019_04_30::ContainerServiceClient.new(configurable.credentials, base_url, options)
           if(@client_2.respond_to?(:subscription_id))
             @client_2.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_2)
-          @container_services = @client_2.container_services
+          @open_shift_managed_clusters = @client_2.open_shift_managed_clusters
 
-          @client_3 = Azure::ContainerService::Mgmt::V2019_10_01::ContainerServiceClient.new(configurable.credentials, base_url, options)
+          @client_3 = Azure::ContainerService::Mgmt::V2019_08_01::ContainerServiceClient.new(configurable.credentials, base_url, options)
           if(@client_3.respond_to?(:subscription_id))
             @client_3.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_3)
-          @operations = @client_3.operations
-          @managed_clusters = @client_3.managed_clusters
-          @agent_pools = @client_3.agent_pools
+          @container_services = @client_3.container_services
+
+          @client_4 = Azure::ContainerService::Mgmt::V2019_10_01::ContainerServiceClient.new(configurable.credentials, base_url, options)
+          if(@client_4.respond_to?(:subscription_id))
+            @client_4.subscription_id = configurable.subscription_id
+          end
+          add_telemetry(@client_4)
+          @operations = @client_4.operations
+          @managed_clusters = @client_4.managed_clusters
+          @agent_pools = @client_4.agent_pools
 
           @model_classes = ModelClasses.new
         end
@@ -134,7 +140,9 @@ module Azure::Profiles::Latest
         end
 
         def method_missing(method, *args)
-          if @client_3.respond_to?method
+          if @client_4.respond_to?method
+            @client_4.send(method, *args)
+          elsif @client_3.respond_to?method
             @client_3.send(method, *args)
           elsif @client_2.respond_to?method
             @client_2.send(method, *args)
