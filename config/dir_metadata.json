@@ -216,6 +216,13 @@
       "module_require": "azure_mgmt_data_factory"
     }
   },
+  "Microsoft.DeploymentManager": {
+    "management": {
+      "path": "management/azure_mgmt_deployment_manager",
+      "namespace": "Azure::DeploymentManager::Mgmt",
+      "module_require": "azure_mgmt_deployment_manager"
+    }
+  },
   "Microsoft.DevSpaces": {
     "management": {
       "path": "management/azure_mgmt_dev_spaces",

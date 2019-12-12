@@ -72,6 +72,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_datalake_store', "~>#{gem_versions['management']['azure_mgmt_datalake_store']}"
   spec.add_runtime_dependency 'azure_mgmt_data_migration', "~>#{gem_versions['management']['azure_mgmt_data_migration']}"
   spec.add_runtime_dependency 'azure_mgmt_data_factory', "~>#{gem_versions['management']['azure_mgmt_data_factory']}"
+  spec.add_runtime_dependency 'azure_mgmt_deployment_manager', "~>#{gem_versions['management']['azure_mgmt_deployment_manager']}"
   spec.add_runtime_dependency 'azure_mgmt_dev_spaces', "~>#{gem_versions['management']['azure_mgmt_dev_spaces']}"
   spec.add_runtime_dependency 'azure_mgmt_devtestlabs', "~>#{gem_versions['management']['azure_mgmt_devtestlabs']}"
   spec.add_runtime_dependency 'azure_mgmt_dns', "~>#{gem_versions['management']['azure_mgmt_dns']}"

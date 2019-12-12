@@ -334,8 +334,8 @@
                         "2017-07-01": ["*"],
                         "2019-04-01": ["*"],
                         "2019-04-30": ["*"],
-                        "2019-06-01": ["*"],
-                        "2019-08-01": ["*"]
+                        "2019-08-01": ["*"],
+                        "2019-10-01": ["*"]
                     }
                 },
                 "Microsoft.Cosmosdb": {
@@ -382,6 +382,11 @@
                 "Microsoft.DataFactory" : {
                     "management": {
                         "2018-06-01": ["*"]
+                    }
+                },
+                "Microsoft.DeploymentManager": {
+                    "management": {
+                        "2019-11-01-preview": ["*"]
                     }
                 },
                 "Microsoft.DevSpaces": {
@@ -595,6 +600,7 @@
                 },
                 "Microsoft.PolicyInsights": {
                     "management": {
+                        "2019-10-01": ["*"],
                         "2018-04-04": ["*"],
                         "2018-07-01-preview": ["*"]
                     }
@@ -1295,8 +1301,8 @@
                         "2017-07-01": ["*"],
                         "2019-04-01": ["*"],
                         "2019-04-30": ["*"],
-                        "2019-06-01": ["*"],
-                        "2019-08-01": ["*"]
+                        "2019-08-01": ["*"],
+                        "2019-10-01": ["*"]
                     }
                 }
             },
@@ -1414,6 +1420,20 @@
                     }
                 },
                 "output_dir": "management/azure_mgmt_data_factory/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_mgmt_deployment_manager": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DeploymentManager": {
+                        "management": {
+                            "2019-11-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_deployment_manager/lib/profiles",
                 "individual_gem_profile": true
             }
         ],
@@ -2188,6 +2208,7 @@
             "resourceTypes": {
                 "Microsoft.PolicyInsights": {
                     "management": {
+                        "2019-10-01": ["*"],
                         "2018-04-04": ["*"],
                         "2018-07-01-preview": ["*"]
                     }

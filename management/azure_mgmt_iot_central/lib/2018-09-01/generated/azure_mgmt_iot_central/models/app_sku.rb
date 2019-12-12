@@ -11,6 +11,9 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     module AppSku
       F1 = "F1"
       S1 = "S1"
+      ST0 = "ST0"
+      ST1 = "ST1"
+      ST2 = "ST2"
     end
   end
 end

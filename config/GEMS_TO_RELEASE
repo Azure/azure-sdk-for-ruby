@@ -1,6 +1,9 @@
 {
     "management":[
-        "azure_mgmt_hdinsight"
+        "azure_mgmt_container_service",
+        "azure_mgmt_deployment_manager",
+        "azure_mgmt_policy_insights",
+        "azure_mgmt_iot_central"
     ],
     "rollup":[
         "azure_sdk"

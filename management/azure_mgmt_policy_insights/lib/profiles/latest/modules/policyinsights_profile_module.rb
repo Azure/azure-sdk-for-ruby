@@ -6,6 +6,7 @@ require 'azure_mgmt_policy_insights'
 
 module Azure::PolicyInsights::Profiles::Latest
   module Mgmt
+    PolicyMetadataOperations = Azure::PolicyInsights::Mgmt::V2019_10_01::PolicyMetadataOperations
     PolicyEvents = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyEvents
     PolicyTrackedResources = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::PolicyTrackedResources
     Remediations = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Remediations
@@ -13,6 +14,11 @@ module Azure::PolicyInsights::Profiles::Latest
     Operations = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Operations
 
     module Models
+      PolicyGroupSummary = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyGroupSummary
+      PolicyMetadata = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadata
+      SlimPolicyMetadata = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::SlimPolicyMetadata
+      PolicyMetadataCollection = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadataCollection
+      ComplianceDetail = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComplianceDetail
       PolicyEventsQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
       PolicyEvent = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
       ErrorResponse = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::ErrorResponse
@@ -51,7 +57,7 @@ module Azure::PolicyInsights::Profiles::Latest
     # PolicyInsightsManagementClass
     #
     class PolicyInsightsManagementClass
-      attr_reader :policy_events, :policy_tracked_resources, :remediations, :policy_states, :operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :policy_metadata_operations, :policy_events, :policy_tracked_resources, :remediations, :policy_states, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -66,22 +72,29 @@ module Azure::PolicyInsights::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        @client_0 = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyInsightsClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::PolicyInsights::Mgmt::V2019_10_01::PolicyInsightsClient.new(configurable.credentials, base_url, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @policy_events = @client_0.policy_events
+        @policy_metadata_operations = @client_0.policy_metadata_operations
 
-        @client_1 = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::PolicyInsightsClient.new(configurable.credentials, base_url, options)
+        @client_1 = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyInsightsClient.new(configurable.credentials, base_url, options)
         if(@client_1.respond_to?(:subscription_id))
           @client_1.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_1)
-        @policy_tracked_resources = @client_1.policy_tracked_resources
-        @remediations = @client_1.remediations
-        @policy_states = @client_1.policy_states
-        @operations = @client_1.operations
+        @policy_events = @client_1.policy_events
+
+        @client_2 = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::PolicyInsightsClient.new(configurable.credentials, base_url, options)
+        if(@client_2.respond_to?(:subscription_id))
+          @client_2.subscription_id = configurable.subscription_id
+        end
+        add_telemetry(@client_2)
+        @policy_tracked_resources = @client_2.policy_tracked_resources
+        @remediations = @client_2.remediations
+        @policy_states = @client_2.policy_states
+        @operations = @client_2.operations
 
         @model_classes = ModelClasses.new
       end
@@ -92,7 +105,9 @@ module Azure::PolicyInsights::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_1.respond_to?method
+        if @client_2.respond_to?method
+          @client_2.send(method, *args)
+        elsif @client_1.respond_to?method
           @client_1.send(method, *args)
         elsif @client_0.respond_to?method
           @client_0.send(method, *args)
@@ -104,6 +119,21 @@ module Azure::PolicyInsights::Profiles::Latest
     end
 
     class ModelClasses
+      def policy_group_summary
+        Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyGroupSummary
+      end
+      def policy_metadata
+        Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadata
+      end
+      def slim_policy_metadata
+        Azure::PolicyInsights::Mgmt::V2019_10_01::Models::SlimPolicyMetadata
+      end
+      def policy_metadata_collection
+        Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadataCollection
+      end
+      def compliance_detail
+        Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComplianceDetail
+      end
       def policy_events_query_results
         Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
       end
