@@ -36,6 +36,10 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # 'StandardDefinition'
       attr_accessor :resolution
 
+      # @return [Hash{String => String}] Dictionary containing key value pairs
+      # for parameters not exposed in the preset itself
+      attr_accessor :experimental_options
+
 
       #
       # Mapper for FaceDetectorPreset class as Ruby Hash.
@@ -64,6 +68,22 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 serialized_name: 'resolution',
                 type: {
                   name: 'String'
+                }
+              },
+              experimental_options: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'experimentalOptions',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

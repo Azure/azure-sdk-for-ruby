@@ -1,9 +1,6 @@
 {
     "management":[
-        "azure_mgmt_container_service",
-        "azure_mgmt_deployment_manager",
-        "azure_mgmt_policy_insights",
-        "azure_mgmt_iot_central"
+        "azure_mgmt_media_services"
     ],
     "rollup":[
         "azure_sdk"

@@ -33,12 +33,16 @@ module Azure::MediaServices::Mgmt::V2018_07_01
 
       # @return [ContentKeyPolicyFairPlayRentalAndLeaseKeyType] The rental and
       # lease key type. Possible values include: 'Unknown', 'Undefined',
-      # 'PersistentUnlimited', 'PersistentLimited'
+      # 'DualExpiry', 'PersistentUnlimited', 'PersistentLimited'
       attr_accessor :rental_and_lease_key_type
 
       # @return [Integer] The rental duration. Must be greater than or equal to
       # 0.
       attr_accessor :rental_duration
+
+      # @return [ContentKeyPolicyFairPlayOfflineRentalConfiguration] Offline
+      # rental policy
+      attr_accessor :offline_rental_configuration
 
 
       #
@@ -100,6 +104,15 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 serialized_name: 'rentalDuration',
                 type: {
                   name: 'Number'
+                }
+              },
+              offline_rental_configuration: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'offlineRentalConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ContentKeyPolicyFairPlayOfflineRentalConfiguration'
                 }
               }
             }

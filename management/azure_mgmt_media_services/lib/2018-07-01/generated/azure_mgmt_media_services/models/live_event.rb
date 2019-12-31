@@ -165,8 +165,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 read_only: true,
                 serialized_name: 'properties.resourceState',
                 type: {
-                  name: 'Enum',
-                  module: 'LiveEventResourceState'
+                  name: 'String'
                 }
               },
               cross_site_access_policies: {
@@ -197,8 +196,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                       required: false,
                       serialized_name: 'StreamOptionsFlagElementType',
                       type: {
-                        name: 'Enum',
-                        module: 'StreamOptionsFlag'
+                        name: 'String'
                       }
                   }
                 }
