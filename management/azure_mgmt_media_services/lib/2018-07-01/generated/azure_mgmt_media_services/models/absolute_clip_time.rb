@@ -6,41 +6,39 @@
 module Azure::MediaServices::Mgmt::V2018_07_01
   module Models
     #
-    # Describes a built-in preset for encoding the input video with the
-    # Standard Encoder.
+    # Specifies the clip time as an absolute time position in the media file.
+    # The absolute time can point to a different position depending on whether
+    # the media file starts from a timestamp of zero or not.
     #
-    class BuiltInStandardEncoderPreset < Preset
+    class AbsoluteClipTime < ClipTime
 
       include MsRestAzure
 
 
       def initialize
-        @odatatype = "#Microsoft.Media.BuiltInStandardEncoderPreset"
+        @odatatype = "#Microsoft.Media.AbsoluteClipTime"
       end
 
       attr_accessor :odatatype
 
-      # @return [EncoderNamedPreset] The built-in preset to be used for
-      # encoding videos. Possible values include: 'H264SingleBitrateSD',
-      # 'H264SingleBitrate720p', 'H264SingleBitrate1080p', 'AdaptiveStreaming',
-      # 'AACGoodQualityAudio', 'ContentAwareEncodingExperimental',
-      # 'ContentAwareEncoding', 'H264MultipleBitrate1080p',
-      # 'H264MultipleBitrate720p', 'H264MultipleBitrateSD'
-      attr_accessor :preset_name
+      # @return [Duration] The time position on the timeline of the input
+      # media. It is usually specified as an ISO8601 period. e.g PT30S for 30
+      # seconds.
+      attr_accessor :time
 
 
       #
-      # Mapper for BuiltInStandardEncoderPreset class as Ruby Hash.
+      # Mapper for AbsoluteClipTime class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: '#Microsoft.Media.BuiltInStandardEncoderPreset',
+          serialized_name: '#Microsoft.Media.AbsoluteClipTime',
           type: {
             name: 'Composite',
-            class_name: 'BuiltInStandardEncoderPreset',
+            class_name: 'AbsoluteClipTime',
             model_properties: {
               odatatype: {
                 client_side_validation: true,
@@ -50,12 +48,12 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                   name: 'String'
                 }
               },
-              preset_name: {
+              time: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'presetName',
+                serialized_name: 'time',
                 type: {
-                  name: 'String'
+                  name: 'TimeSpan'
                 }
               }
             }

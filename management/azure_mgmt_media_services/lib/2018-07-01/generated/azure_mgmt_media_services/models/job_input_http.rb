@@ -63,6 +63,28 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                   }
                 }
               },
+              start: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'start',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: '@odata.type',
+                  uber_parent: 'ClipTime',
+                  class_name: 'ClipTime'
+                }
+              },
+              end_property: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'end',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: '@odata.type',
+                  uber_parent: 'ClipTime',
+                  class_name: 'ClipTime'
+                }
+              },
               label: {
                 client_side_validation: true,
                 required: false,

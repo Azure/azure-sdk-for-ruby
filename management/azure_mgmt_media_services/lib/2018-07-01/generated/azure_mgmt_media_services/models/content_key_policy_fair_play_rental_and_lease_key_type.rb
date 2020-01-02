@@ -11,6 +11,7 @@ module Azure::MediaServices::Mgmt::V2018_07_01
     module ContentKeyPolicyFairPlayRentalAndLeaseKeyType
       Unknown = "Unknown"
       Undefined = "Undefined"
+      DualExpiry = "DualExpiry"
       PersistentUnlimited = "PersistentUnlimited"
       PersistentLimited = "PersistentLimited"
     end

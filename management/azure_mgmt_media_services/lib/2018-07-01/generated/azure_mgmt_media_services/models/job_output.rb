@@ -51,6 +51,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # TransformOutput within its Transform.
       attr_accessor :label
 
+      # @return [DateTime] The UTC date and time at which this Job Output began
+      # processing.
+      attr_accessor :start_time
+
+      # @return [DateTime] The UTC date and time at which this Job Output
+      # finished processing.
+      attr_accessor :end_time
+
 
       #
       # Mapper for JobOutput class as Ruby Hash.
@@ -101,6 +109,24 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                 serialized_name: 'label',
                 type: {
                   name: 'String'
+                }
+              },
+              start_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'startTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              end_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'endTime',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

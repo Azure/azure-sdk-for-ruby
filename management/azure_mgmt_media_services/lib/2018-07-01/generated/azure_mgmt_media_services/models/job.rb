@@ -45,6 +45,14 @@ module Azure::MediaServices::Mgmt::V2018_07_01
       # that will be returned in Job and JobOutput state events.
       attr_accessor :correlation_data
 
+      # @return [DateTime] The UTC date and time at which this Job began
+      # processing.
+      attr_accessor :start_time
+
+      # @return [DateTime] The UTC date and time at which this Job finished
+      # processing.
+      attr_accessor :end_time
+
 
       #
       # Mapper for Job class as Ruby Hash.
@@ -173,6 +181,24 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                         name: 'String'
                       }
                   }
+                }
+              },
+              start_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.startTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              end_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.endTime',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

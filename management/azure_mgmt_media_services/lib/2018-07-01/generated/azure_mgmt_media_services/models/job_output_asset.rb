@@ -72,6 +72,24 @@ module Azure::MediaServices::Mgmt::V2018_07_01
                   name: 'String'
                 }
               },
+              start_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'startTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              end_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'endTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               odatatype: {
                 client_side_validation: true,
                 required: true,

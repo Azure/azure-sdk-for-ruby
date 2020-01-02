@@ -1195,7 +1195,7 @@
       "tag": "package-2018-06-preview"
     },
     "azure_mgmt_media_services_2018_07_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/mediaservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/85d6e58c37868ca84f8f6eec5650dc4ab2d9a19a/specification/mediaservices/resource-manager/readme.md",
       "namespace": "Azure::MediaServices::Mgmt::V2018_07_01",
       "tag": "package-2018-07"
     }
