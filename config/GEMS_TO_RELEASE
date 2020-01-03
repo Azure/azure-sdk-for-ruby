@@ -1,6 +1,6 @@
 {
     "management":[
-        "azure_mgmt_media_services"
+        "azure_mgmt_netapp"
     ],
     "rollup":[
         "azure_sdk"
