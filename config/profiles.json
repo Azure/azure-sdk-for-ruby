@@ -755,7 +755,7 @@
                 },
                 "Microsoft.StorageSync": {
                     "management": {
-                        "2019-02-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 },
                 "Microsoft.StorageCache": {
@@ -2677,7 +2677,7 @@
             "resourceTypes": {
                 "Microsoft.StorageSync": {
                     "management": {
-                        "2019-02-01": ["*"]
+                        "2019-06-01": ["*"]
                     }
                 }
             },

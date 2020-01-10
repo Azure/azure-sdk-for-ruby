@@ -1,6 +1,6 @@
 {
     "management":[
-        "azure_mgmt_recovery_services_backup"
+        "azure_mgmt_storagesync"
     ],
     "rollup":[
         "azure_sdk"
