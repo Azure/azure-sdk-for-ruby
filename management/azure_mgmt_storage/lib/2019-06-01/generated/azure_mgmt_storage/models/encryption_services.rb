@@ -63,7 +63,6 @@ module Azure::Storage::Mgmt::V2019_06_01
               table: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'table',
                 type: {
                   name: 'Composite',
@@ -73,7 +72,6 @@ module Azure::Storage::Mgmt::V2019_06_01
               queue: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'queue',
                 type: {
                   name: 'Composite',

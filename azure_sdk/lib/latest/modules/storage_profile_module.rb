@@ -110,6 +110,7 @@ module Azure::Profiles::Latest
         SkuTier = Azure::Storage::Mgmt::V2019_06_01::Models::SkuTier
         Kind = Azure::Storage::Mgmt::V2019_06_01::Models::Kind
         Reason = Azure::Storage::Mgmt::V2019_06_01::Models::Reason
+        KeyType = Azure::Storage::Mgmt::V2019_06_01::Models::KeyType
         KeySource = Azure::Storage::Mgmt::V2019_06_01::Models::KeySource
         Action = Azure::Storage::Mgmt::V2019_06_01::Models::Action
         State = Azure::Storage::Mgmt::V2019_06_01::Models::State
@@ -450,6 +451,9 @@ module Azure::Profiles::Latest
           end
           def reason
             Azure::Storage::Mgmt::V2019_06_01::Models::Reason
+          end
+          def key_type
+            Azure::Storage::Mgmt::V2019_06_01::Models::KeyType
           end
           def key_source
             Azure::Storage::Mgmt::V2019_06_01::Models::KeySource
