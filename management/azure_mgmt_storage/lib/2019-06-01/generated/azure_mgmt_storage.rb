@@ -124,6 +124,7 @@ module Azure::Storage::Mgmt::V2019_06_01
     autoload :SkuTier,                                            '2019-06-01/generated/azure_mgmt_storage/models/sku_tier.rb'
     autoload :Kind,                                               '2019-06-01/generated/azure_mgmt_storage/models/kind.rb'
     autoload :Reason,                                             '2019-06-01/generated/azure_mgmt_storage/models/reason.rb'
+    autoload :KeyType,                                            '2019-06-01/generated/azure_mgmt_storage/models/key_type.rb'
     autoload :KeySource,                                          '2019-06-01/generated/azure_mgmt_storage/models/key_source.rb'
     autoload :Action,                                             '2019-06-01/generated/azure_mgmt_storage/models/action.rb'
     autoload :State,                                              '2019-06-01/generated/azure_mgmt_storage/models/state.rb'

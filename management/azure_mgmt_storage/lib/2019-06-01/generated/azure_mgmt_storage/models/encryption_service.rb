@@ -22,6 +22,12 @@ module Azure::Storage::Mgmt::V2019_06_01
       # after this time, as it is just a rough estimate.
       attr_accessor :last_enabled_time
 
+      # @return [KeyType] Encryption key type to be used for the encryption
+      # service. 'Account' key type implies that an account-scoped encryption
+      # key will be used. 'Service' key type implies that a default service key
+      # is used. Possible values include: 'Service', 'Account'
+      attr_accessor :key_type
+
 
       #
       # Mapper for EncryptionService class as Ruby Hash.
@@ -51,6 +57,14 @@ module Azure::Storage::Mgmt::V2019_06_01
                 serialized_name: 'lastEnabledTime',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              key_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'keyType',
+                type: {
+                  name: 'String'
                 }
               }
             }
