@@ -26,6 +26,10 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
       # @return [ClusterDefinition] The cluster definition.
       attr_accessor :cluster_definition
 
+      # @return [KafkaRestProperties] The cluster kafka rest proxy
+      # configuration.
+      attr_accessor :kafka_rest_properties
+
       # @return [SecurityProfile] The security profile.
       attr_accessor :security_profile
 
@@ -55,6 +59,9 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
 
       # @return [DiskEncryptionProperties] The disk encryption properties.
       attr_accessor :disk_encryption_properties
+
+      # @return [String] The minimal supported tls version.
+      attr_accessor :min_supported_tls_version
 
 
       #
@@ -103,6 +110,15 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'ClusterDefinition'
+                }
+              },
+              kafka_rest_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'kafkaRestProperties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'KafkaRestProperties'
                 }
               },
               security_profile: {
@@ -198,6 +214,14 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'DiskEncryptionProperties'
+                }
+              },
+              min_supported_tls_version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'minSupportedTlsVersion',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -66,6 +66,9 @@ module Azure::AzureStack::Mgmt::V2017_06_01
       # @return [ProductProperties] Additional properties for the product.
       attr_accessor :product_properties
 
+      # @return [Compatibility] Product compatibility with current device.
+      attr_accessor :compatibility
+
 
       #
       # Mapper for Product class as Ruby Hash.
@@ -260,6 +263,15 @@ module Azure::AzureStack::Mgmt::V2017_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'ProductProperties'
+                }
+              },
+              compatibility: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.compatibility',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Compatibility'
                 }
               }
             }

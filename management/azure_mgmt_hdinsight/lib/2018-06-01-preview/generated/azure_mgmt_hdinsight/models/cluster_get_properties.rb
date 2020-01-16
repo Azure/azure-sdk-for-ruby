@@ -60,6 +60,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [DiskEncryptionProperties] The disk encryption properties.
       attr_accessor :disk_encryption_properties
 
+      # @return [String] The minimal supported tls version.
+      attr_accessor :min_supported_tls_version
+
 
       #
       # Mapper for ClusterGetProperties class as Ruby Hash.
@@ -211,6 +214,14 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'DiskEncryptionProperties'
+                }
+              },
+              min_supported_tls_version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'minSupportedTlsVersion',
+                type: {
+                  name: 'String'
                 }
               }
             }

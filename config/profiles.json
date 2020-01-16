@@ -778,6 +778,11 @@
                         "2019-06-01": ["*"]
                     }
                 },
+                "Microsoft.TimeSeriesInsights": {
+                    "management": {
+                        "2018-08-15-preview": ["*"]
+                    }
+                },
                 "Microsoft.TrafficManager": {
                     "management": {
                         "2018-04-01": ["*"]
@@ -2765,6 +2770,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_subscriptions/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_time_series_insights": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.TimeSeriesInsights": {
+                    "management": {
+                        "2018-08-15-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_time_series_insights/lib/profiles",
             "individual_gem_profile": true
         }
         ],

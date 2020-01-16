@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.51.0"
+        "azure_sdk": "0.51.1"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -36,7 +36,7 @@
         "azure_mgmt_adhybridhealth_service": "0.17.0",
         "azure_mgmt_advisor": "0.17.0",
         "azure_mgmt_alerts_management": "0.17.0",
-        "azure_mgmt_azurestack": "0.17.0",
+        "azure_mgmt_azurestack": "0.17.1",
         "azure_mgmt_analysis_services": "0.17.2",
         "azure_mgmt_api_management": "0.18.4",
         "azure_mgmt_appconfiguration": "0.17.0",
@@ -73,7 +73,7 @@
         "azure_mgmt_event_hub": "0.18.0",
         "azure_mgmt_features": "0.17.2",
         "azure_mgmt_hanaonazure": "0.17.1",
-        "azure_mgmt_hdinsight": "0.17.6",
+        "azure_mgmt_hdinsight": "0.17.7",
         "azure_mgmt_import_export": "0.17.0",
         "azure_mgmt_iot_central": "0.18.0",
         "azure_mgmt_iot_hub": "0.17.3",
@@ -133,6 +133,7 @@
         "azure_mgmt_storagecache": "0.17.1",
         "azure_mgmt_stream_analytics": "0.17.2",
         "azure_mgmt_subscriptions": "0.18.1",
+        "azure_mgmt_time_series_insights": "0.17.0",
         "azure_mgmt_traffic_manager": "0.17.2",
         "azure_mgmt_vmware_cloudsimple": "0.17.0",
         "azure_mgmt_web": "0.17.5"

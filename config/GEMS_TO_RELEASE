@@ -1,8 +1,8 @@
 {
     "management":[
-        "azure_mgmt_event_grid",
-        "azure_mgmt_storage",
-        "azure_mgmt_storagesync"
+        "azure_mgmt_azurestack",
+        "azure_mgmt_hdinsight",
+        "azure_mgmt_time_series_insights"
     ],
     "rollup":[
         "azure_sdk"
