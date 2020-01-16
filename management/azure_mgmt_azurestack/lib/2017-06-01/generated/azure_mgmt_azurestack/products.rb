@@ -314,6 +314,320 @@ module Azure::AzureStack::Mgmt::V2017_06_01
     #
     # Returns a list of products.
     #
+    # @param resource_group [String] Name of the resource group.
+    # @param registration_name [String] Name of the Azure Stack registration.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ProductList] operation results.
+    #
+    def get_products(resource_group, registration_name, custom_headers:nil)
+      response = get_products_async(resource_group, registration_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns a list of products.
+    #
+    # @param resource_group [String] Name of the resource group.
+    # @param registration_name [String] Name of the Azure Stack registration.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_products_with_http_info(resource_group, registration_name, custom_headers:nil)
+      get_products_async(resource_group, registration_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns a list of products.
+    #
+    # @param resource_group [String] Name of the resource group.
+    # @param registration_name [String] Name of the Azure Stack registration.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_products_async(resource_group, registration_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group is nil' if resource_group.nil?
+      fail ArgumentError, 'registration_name is nil' if registration_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+      device_configuration = nil
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::AzureStack::Mgmt::V2017_06_01::Models::DeviceConfiguration.mapper()
+      request_content = @client.serialize(request_mapper,  device_configuration)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/_all/GetProducts'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroup' => resource_group,'registrationName' => registration_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the specified product.
+    #
+    # @param resource_group [String] Name of the resource group.
+    # @param registration_name [String] Name of the Azure Stack registration.
+    # @param product_name [String] Name of the product.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Product] operation results.
+    #
+    def get_product(resource_group, registration_name, product_name, custom_headers:nil)
+      response = get_product_async(resource_group, registration_name, product_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns the specified product.
+    #
+    # @param resource_group [String] Name of the resource group.
+    # @param registration_name [String] Name of the Azure Stack registration.
+    # @param product_name [String] Name of the product.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_product_with_http_info(resource_group, registration_name, product_name, custom_headers:nil)
+      get_product_async(resource_group, registration_name, product_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the specified product.
+    #
+    # @param resource_group [String] Name of the resource group.
+    # @param registration_name [String] Name of the Azure Stack registration.
+    # @param product_name [String] Name of the product.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_product_async(resource_group, registration_name, product_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group is nil' if resource_group.nil?
+      fail ArgumentError, 'registration_name is nil' if registration_name.nil?
+      fail ArgumentError, 'product_name is nil' if product_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+      device_configuration = nil
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::AzureStack::Mgmt::V2017_06_01::Models::DeviceConfiguration.mapper()
+      request_content = @client.serialize(request_mapper,  device_configuration)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/GetProduct'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroup' => resource_group,'registrationName' => registration_name,'productName' => product_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::AzureStack::Mgmt::V2017_06_01::Models::Product.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the specified product.
+    #
+    # @param resource_group [String] Name of the resource group.
+    # @param registration_name [String] Name of the Azure Stack registration.
+    # @param product_name [String] Name of the product.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ProductLog] operation results.
+    #
+    def upload_log(resource_group, registration_name, product_name, custom_headers:nil)
+      response = upload_log_async(resource_group, registration_name, product_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns the specified product.
+    #
+    # @param resource_group [String] Name of the resource group.
+    # @param registration_name [String] Name of the Azure Stack registration.
+    # @param product_name [String] Name of the product.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def upload_log_with_http_info(resource_group, registration_name, product_name, custom_headers:nil)
+      upload_log_async(resource_group, registration_name, product_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the specified product.
+    #
+    # @param resource_group [String] Name of the resource group.
+    # @param registration_name [String] Name of the Azure Stack registration.
+    # @param product_name [String] Name of the product.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def upload_log_async(resource_group, registration_name, product_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group is nil' if resource_group.nil?
+      fail ArgumentError, 'registration_name is nil' if registration_name.nil?
+      fail ArgumentError, 'product_name is nil' if product_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+      marketplace_product_log_update = nil
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::AzureStack::Mgmt::V2017_06_01::Models::MarketplaceProductLogUpdate.mapper()
+      request_content = @client.serialize(request_mapper,  marketplace_product_log_update)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/uploadProductLog'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroup' => resource_group,'registrationName' => registration_name,'productName' => product_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductLog.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns a list of products.
+    #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

@@ -12,25 +12,29 @@ module Azure::AzureStack::Profiles::Latest
     CustomerSubscriptions = Azure::AzureStack::Mgmt::V2017_06_01::CustomerSubscriptions
 
     module Models
-      VirtualMachineProductProperties = Azure::AzureStack::Mgmt::V2017_06_01::Models::VirtualMachineProductProperties
-      IconUris = Azure::AzureStack::Mgmt::V2017_06_01::Models::IconUris
-      TrackedResource = Azure::AzureStack::Mgmt::V2017_06_01::Models::TrackedResource
       ProductLink = Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductLink
-      Operation = Azure::AzureStack::Mgmt::V2017_06_01::Models::Operation
       ProductProperties = Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductProperties
-      ErrorDetails = Azure::AzureStack::Mgmt::V2017_06_01::Models::ErrorDetails
+      TrackedResource = Azure::AzureStack::Mgmt::V2017_06_01::Models::TrackedResource
+      Compatibility = Azure::AzureStack::Mgmt::V2017_06_01::Models::Compatibility
+      Operation = Azure::AzureStack::Mgmt::V2017_06_01::Models::Operation
+      Display = Azure::AzureStack::Mgmt::V2017_06_01::Models::Display
       OperationList = Azure::AzureStack::Mgmt::V2017_06_01::Models::OperationList
       ErrorResponse = Azure::AzureStack::Mgmt::V2017_06_01::Models::ErrorResponse
       DataDiskImage = Azure::AzureStack::Mgmt::V2017_06_01::Models::DataDiskImage
-      VirtualMachineExtensionProductProperties = Azure::AzureStack::Mgmt::V2017_06_01::Models::VirtualMachineExtensionProductProperties
       ProductList = Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductList
-      Display = Azure::AzureStack::Mgmt::V2017_06_01::Models::Display
-      CustomerSubscriptionList = Azure::AzureStack::Mgmt::V2017_06_01::Models::CustomerSubscriptionList
+      VirtualMachineExtensionProductProperties = Azure::AzureStack::Mgmt::V2017_06_01::Models::VirtualMachineExtensionProductProperties
+      DeviceConfiguration = Azure::AzureStack::Mgmt::V2017_06_01::Models::DeviceConfiguration
+      IconUris = Azure::AzureStack::Mgmt::V2017_06_01::Models::IconUris
+      MarketplaceProductLogUpdate = Azure::AzureStack::Mgmt::V2017_06_01::Models::MarketplaceProductLogUpdate
+      ErrorDetails = Azure::AzureStack::Mgmt::V2017_06_01::Models::ErrorDetails
+      ProductLog = Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductLog
       ExtendedProduct = Azure::AzureStack::Mgmt::V2017_06_01::Models::ExtendedProduct
-      RegistrationList = Azure::AzureStack::Mgmt::V2017_06_01::Models::RegistrationList
-      OsDiskImage = Azure::AzureStack::Mgmt::V2017_06_01::Models::OsDiskImage
-      ActivationKeyResult = Azure::AzureStack::Mgmt::V2017_06_01::Models::ActivationKeyResult
+      CustomerSubscriptionList = Azure::AzureStack::Mgmt::V2017_06_01::Models::CustomerSubscriptionList
       Resource = Azure::AzureStack::Mgmt::V2017_06_01::Models::Resource
+      RegistrationList = Azure::AzureStack::Mgmt::V2017_06_01::Models::RegistrationList
+      VirtualMachineProductProperties = Azure::AzureStack::Mgmt::V2017_06_01::Models::VirtualMachineProductProperties
+      ActivationKeyResult = Azure::AzureStack::Mgmt::V2017_06_01::Models::ActivationKeyResult
+      OsDiskImage = Azure::AzureStack::Mgmt::V2017_06_01::Models::OsDiskImage
       RegistrationParameter = Azure::AzureStack::Mgmt::V2017_06_01::Models::RegistrationParameter
       Product = Azure::AzureStack::Mgmt::V2017_06_01::Models::Product
       Registration = Azure::AzureStack::Mgmt::V2017_06_01::Models::Registration
@@ -38,6 +42,8 @@ module Azure::AzureStack::Profiles::Latest
       ProvisioningState = Azure::AzureStack::Mgmt::V2017_06_01::Models::ProvisioningState
       ComputeRole = Azure::AzureStack::Mgmt::V2017_06_01::Models::ComputeRole
       OperatingSystem = Azure::AzureStack::Mgmt::V2017_06_01::Models::OperatingSystem
+      CompatibilityIssue = Azure::AzureStack::Mgmt::V2017_06_01::Models::CompatibilityIssue
+      Category = Azure::AzureStack::Mgmt::V2017_06_01::Models::Category
       Location = Azure::AzureStack::Mgmt::V2017_06_01::Models::Location
     end
 
@@ -89,26 +95,23 @@ module Azure::AzureStack::Profiles::Latest
     end
 
     class ModelClasses
-      def virtual_machine_product_properties
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::VirtualMachineProductProperties
-      end
-      def icon_uris
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::IconUris
-      end
-      def tracked_resource
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::TrackedResource
-      end
       def product_link
         Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductLink
-      end
-      def operation
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::Operation
       end
       def product_properties
         Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductProperties
       end
-      def error_details
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::ErrorDetails
+      def tracked_resource
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::TrackedResource
+      end
+      def compatibility
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::Compatibility
+      end
+      def operation
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::Operation
+      end
+      def display
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::Display
       end
       def operation_list
         Azure::AzureStack::Mgmt::V2017_06_01::Models::OperationList
@@ -119,32 +122,47 @@ module Azure::AzureStack::Profiles::Latest
       def data_disk_image
         Azure::AzureStack::Mgmt::V2017_06_01::Models::DataDiskImage
       end
-      def virtual_machine_extension_product_properties
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::VirtualMachineExtensionProductProperties
-      end
       def product_list
         Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductList
       end
-      def display
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::Display
+      def virtual_machine_extension_product_properties
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::VirtualMachineExtensionProductProperties
       end
-      def customer_subscription_list
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::CustomerSubscriptionList
+      def device_configuration
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::DeviceConfiguration
+      end
+      def icon_uris
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::IconUris
+      end
+      def marketplace_product_log_update
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::MarketplaceProductLogUpdate
+      end
+      def error_details
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::ErrorDetails
+      end
+      def product_log
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::ProductLog
       end
       def extended_product
         Azure::AzureStack::Mgmt::V2017_06_01::Models::ExtendedProduct
       end
+      def customer_subscription_list
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::CustomerSubscriptionList
+      end
+      def resource
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::Resource
+      end
       def registration_list
         Azure::AzureStack::Mgmt::V2017_06_01::Models::RegistrationList
       end
-      def os_disk_image
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::OsDiskImage
+      def virtual_machine_product_properties
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::VirtualMachineProductProperties
       end
       def activation_key_result
         Azure::AzureStack::Mgmt::V2017_06_01::Models::ActivationKeyResult
       end
-      def resource
-        Azure::AzureStack::Mgmt::V2017_06_01::Models::Resource
+      def os_disk_image
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::OsDiskImage
       end
       def registration_parameter
         Azure::AzureStack::Mgmt::V2017_06_01::Models::RegistrationParameter
@@ -166,6 +184,12 @@ module Azure::AzureStack::Profiles::Latest
       end
       def operating_system
         Azure::AzureStack::Mgmt::V2017_06_01::Models::OperatingSystem
+      end
+      def compatibility_issue
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::CompatibilityIssue
+      end
+      def category
+        Azure::AzureStack::Mgmt::V2017_06_01::Models::Category
       end
       def location
         Azure::AzureStack::Mgmt::V2017_06_01::Models::Location
