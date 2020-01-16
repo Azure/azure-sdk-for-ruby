@@ -31,7 +31,9 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
   autoload :HDInsightManagementClient,                          '2015-03-01-preview/generated/azure_mgmt_hdinsight/hdinsight_management_client.rb'
 
   module Models
+    autoload :ClusterResizeParameters,                            '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/cluster_resize_parameters.rb'
     autoload :ClusterDiskEncryptionParameters,                    '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/cluster_disk_encryption_parameters.rb'
+    autoload :ClientGroupInfo,                                    '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/client_group_info.rb'
     autoload :UpdateGatewaySettingsParameters,                    '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/update_gateway_settings_parameters.rb'
     autoload :SecurityProfile,                                    '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/security_profile.rb'
     autoload :GatewaySettings,                                    '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/gateway_settings.rb'
@@ -68,7 +70,7 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
     autoload :VmSizesCapability,                                  '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/vm_sizes_capability.rb'
     autoload :ClusterListRuntimeScriptActionDetailResult,         '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/cluster_list_runtime_script_action_detail_result.rb'
     autoload :VmSizeCompatibilityFilter,                          '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/vm_size_compatibility_filter.rb'
-    autoload :ClusterResizeParameters,                            '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/cluster_resize_parameters.rb'
+    autoload :ClusterDefinition,                                  '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/cluster_definition.rb'
     autoload :RegionalQuotaCapability,                            '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/regional_quota_capability.rb'
     autoload :AutoscaleTimeAndCapacity,                           '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/autoscale_time_and_capacity.rb'
     autoload :QuotaCapability,                                    '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/quota_capability.rb'
@@ -101,7 +103,7 @@ module Azure::Hdinsight::Mgmt::V2015_03_01_preview
     autoload :ClusterMonitoringRequest,                           '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/cluster_monitoring_request.rb'
     autoload :ClusterCreateProperties,                            '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/cluster_create_properties.rb'
     autoload :ScriptActionExecutionHistoryList,                   '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/script_action_execution_history_list.rb'
-    autoload :ClusterDefinition,                                  '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/cluster_definition.rb'
+    autoload :KafkaRestProperties,                                '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/kafka_rest_properties.rb'
     autoload :ScriptActionPersistedGetResponseSpec,               '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/script_action_persisted_get_response_spec.rb'
     autoload :RuntimeScriptActionDetail,                          '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/runtime_script_action_detail.rb'
     autoload :TrackedResource,                                    '2015-03-01-preview/generated/azure_mgmt_hdinsight/models/tracked_resource.rb'

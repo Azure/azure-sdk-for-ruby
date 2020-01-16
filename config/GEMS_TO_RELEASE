@@ -1,6 +1,7 @@
 {
     "management":[
         "azure_mgmt_azurestack",
+        "azure_mgmt_hdinsight",
         "azure_mgmt_time_series_insights"
     ],
     "rollup":[
