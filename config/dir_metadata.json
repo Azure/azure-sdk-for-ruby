@@ -742,6 +742,13 @@
       "module_require": "azure_mgmt_subscriptions"
     }
   },
+  "Microsoft.TimeSeriesInsights": {
+    "management": {
+      "path": "management/azure_mgmt_time_series_insights",
+      "namespace": "Azure::TimeSeriesInsights::Mgmt",
+      "module_require": "azure_mgmt_time_series_insights"
+    }
+  },
   "Microsoft.TrafficManager": {
     "management": {
       "path": "management/azure_mgmt_traffic_manager",

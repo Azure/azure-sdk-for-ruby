@@ -2728,6 +2728,23 @@
       "title": "SubscriptionClient"
     }
   },
+  "azure_mgmt_time_series_insights": {
+    "azure_mgmt_time_series_insights_2018_08_15_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e6a133198d4bc7e0cc8a3e42f8e10c5353a1d4ed/specification/timeseriesinsights/resource-manager/readme.md",
+      "namespace": "Azure::TimeSeriesInsights::Mgmt::V2018_08_15_preview",
+      "tag": "package-2018-08-preview"
+    },
+    "azure_mgmt_time_series_insights_2017_11_15": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e6a133198d4bc7e0cc8a3e42f8e10c5353a1d4ed/specification/timeseriesinsights/resource-manager/readme.md",
+      "namespace": "Azure::TimeSeriesInsights::Mgmt::V2017_11_15",
+      "tag": "package-2017-11-15"
+    },
+    "azure_mgmt_time_series_insights_2017_02_28_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e6a133198d4bc7e0cc8a3e42f8e10c5353a1d4ed/specification/timeseriesinsights/resource-manager/readme.md",
+      "namespace": "Azure::TimeSeriesInsights::Mgmt::V2017_02_28_preview",
+      "tag": "package-2017-02-preview"
+    }
+  },
   "azure_mgmt_traffic_manager": {
     "azure_mgmt_traffic_manager_2018_04_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/trafficmanager/resource-manager/readme.md",

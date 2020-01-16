@@ -141,6 +141,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_storagecache', "~>#{gem_versions['management']['azure_mgmt_storagecache']}"
   spec.add_runtime_dependency 'azure_mgmt_stream_analytics', "~>#{gem_versions['management']['azure_mgmt_stream_analytics']}"
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', "~>#{gem_versions['management']['azure_mgmt_subscriptions']}"
+  spec.add_runtime_dependency 'azure_mgmt_time_series_insights', "~>#{gem_versions['management']['azure_mgmt_time_series_insights']}"
   spec.add_runtime_dependency 'azure_mgmt_traffic_manager', "~>#{gem_versions['management']['azure_mgmt_traffic_manager']}"
   spec.add_runtime_dependency 'azure_mgmt_web', "~>#{gem_versions['management']['azure_mgmt_web']}"
   spec.add_runtime_dependency 'azure_mgmt_vmware_cloudsimple', "~>#{gem_versions['management']['azure_mgmt_vmware_cloudsimple']}"
