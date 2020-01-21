@@ -6,8 +6,7 @@
 module Azure::Policy::Mgmt::V2019_09_01
   module Models
     #
-    # Model object.
-    #
+    # The definition of a parameter that can be provided to the policy.
     #
     class ParameterDefinitionsValue
 
