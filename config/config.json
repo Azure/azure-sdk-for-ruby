@@ -859,7 +859,7 @@
   },
   "azure_mgmt_event_grid": {
     "azure_mgmt_event_grid_2020_04_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/92fe2688002a403cda267abe8f427c31a4cd73e4/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/38392c627b36e858225fa5c9dcb70788640b3f06/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2020_04_01_preview",
       "tag": "package-2020-04-preview"
     },
