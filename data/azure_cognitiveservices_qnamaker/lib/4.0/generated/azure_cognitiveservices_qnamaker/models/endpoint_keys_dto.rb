@@ -24,6 +24,9 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # @return [String] Latest version of runtime.
       attr_accessor :last_stable_version
 
+      # @return [String] Language setting of runtime.
+      attr_accessor :language
+
 
       #
       # Mapper for EndpointKeysDTO class as Ruby Hash.
@@ -66,6 +69,14 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'lastStableVersion',
+                type: {
+                  name: 'String'
+                }
+              },
+              language: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'language',
                 type: {
                   name: 'String'
                 }

@@ -3030,7 +3030,7 @@
   "azure_cognitiveservices_qnamaker":{
     "azure_cognitiveservices_qnamaker_v4.0":{
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ad67077b46e7eea880a03324b127d5d30b3adbe2/specification/cognitiveservices/data-plane/QnAMaker/stable/v4.0/QnAMaker.json"]
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/38392c627b36e858225fa5c9dcb70788640b3f06/specification/cognitiveservices/data-plane/QnAMaker/stable/v4.0/QnAMaker.json"]
       ,
       "namespace": "Azure::CognitiveServices::Qnamaker::V4_0",
       "title": "QnamakerClient",
