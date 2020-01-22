@@ -244,7 +244,7 @@
                 },
                 "Microsoft.Appconfiguration": {
                     "management": {
-                        "2019-02-01-preview": ["*"]
+                        "2019-11-01-preview": ["*"]
                     }
                 },
                 "Microsoft.Attestation": {
@@ -1000,7 +1000,7 @@
             "resourceTypes": {
                 "Microsoft.Appconfiguration": {
                     "management": {
-                        "2019-02-01-preview": ["*"]
+                        "2019-11-01-preview": ["*"]
                     }
                 }
             },
