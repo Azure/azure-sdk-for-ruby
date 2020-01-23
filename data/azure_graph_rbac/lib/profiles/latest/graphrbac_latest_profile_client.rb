@@ -31,7 +31,18 @@ module Azure::GraphRbac::Profiles::Latest
     #   Also, base_url, active_directory_settings & options are optional.
     #
     def initialize(options = {})
+      options[:active_directory_settings] ||= default_active_directory_settings
       super(options)
+      @client_0.tenant_id = tenant_id if @client_0
+    end
+
+    private
+
+    def default_active_directory_settings
+      MsRestAzure::ActiveDirectoryServiceSettings.new.tap do |ad|
+        ad.authentication_endpoint = MsRestAzure::AzureEnvironments::AzureCloud.active_directory_endpoint_url
+        ad.token_audience = MsRestAzure::AzureEnvironments::AzureCloud.active_directory_graph_resource_id
+      end
     end
 
   end
