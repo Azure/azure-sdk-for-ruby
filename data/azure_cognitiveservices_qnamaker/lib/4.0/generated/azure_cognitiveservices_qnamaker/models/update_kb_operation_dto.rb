@@ -24,6 +24,16 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # for Update Operation
       attr_accessor :update
 
+      # @return [Boolean] Enable hierarchical extraction of Q-A from files and
+      # urls. The value set during KB creation will be used if this field is
+      # not present.
+      attr_accessor :enable_hierarchical_extraction
+
+      # @return [String] Text string to be used as the answer in any Q-A which
+      # has no extracted answer from the document but has a hierarchy. Required
+      # when EnableHierarchicalExtraction field is set to True.
+      attr_accessor :default_answer_used_for_extraction
+
 
       #
       # Mapper for UpdateKbOperationDTO class as Ruby Hash.
@@ -63,6 +73,26 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                 type: {
                   name: 'Composite',
                   class_name: 'UpdateKbOperationDTOUpdate'
+                }
+              },
+              enable_hierarchical_extraction: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'enableHierarchicalExtraction',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              default_answer_used_for_extraction: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'defaultAnswerUsedForExtraction',
+                constraints: {
+                  MaxLength: 300,
+                  MinLength: 1
+                },
+                type: {
+                  name: 'String'
                 }
               }
             }

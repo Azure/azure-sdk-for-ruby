@@ -65,7 +65,6 @@ module Azure::CognitiveServices::Qnamaker::V4_0
     autoload :QnADTOContext,                                      '4.0/generated/azure_cognitiveservices_qnamaker/models/qn_adtocontext.rb'
     autoload :ErrorResponseError,                                 '4.0/generated/azure_cognitiveservices_qnamaker/models/error_response_error.rb'
     autoload :EndpointSettingsDTOActiveLearning,                  '4.0/generated/azure_cognitiveservices_qnamaker/models/endpoint_settings_dtoactive_learning.rb'
-    autoload :KnowledgebaseEnvironmentType,                       '4.0/generated/azure_cognitiveservices_qnamaker/models/knowledgebase_environment_type.rb'
     autoload :ErrorCodeType,                                      '4.0/generated/azure_cognitiveservices_qnamaker/models/error_code_type.rb'
     autoload :OperationStateType,                                 '4.0/generated/azure_cognitiveservices_qnamaker/models/operation_state_type.rb'
     autoload :EnvironmentType,                                    '4.0/generated/azure_cognitiveservices_qnamaker/models/environment_type.rb'

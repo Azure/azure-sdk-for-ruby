@@ -6,8 +6,7 @@
 module Azure::Policy::Mgmt::V2019_09_01
   module Models
     #
-    # Model object.
-    #
+    # The value of a parameter.
     #
     class ParameterValuesValue
 

@@ -49,7 +49,6 @@ module Azure::Qnamaker::Profiles::Latest
     QnADTOContext = Azure::CognitiveServices::Qnamaker::V4_0::Models::QnADTOContext
     ErrorResponseError = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorResponseError
     EndpointSettingsDTOActiveLearning = Azure::CognitiveServices::Qnamaker::V4_0::Models::EndpointSettingsDTOActiveLearning
-    KnowledgebaseEnvironmentType = Azure::CognitiveServices::Qnamaker::V4_0::Models::KnowledgebaseEnvironmentType
     ErrorCodeType = Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorCodeType
     OperationStateType = Azure::CognitiveServices::Qnamaker::V4_0::Models::OperationStateType
     EnvironmentType = Azure::CognitiveServices::Qnamaker::V4_0::Models::EnvironmentType
@@ -214,9 +213,6 @@ module Azure::Qnamaker::Profiles::Latest
     end
     def endpoint_settings_dtoactive_learning
       Azure::CognitiveServices::Qnamaker::V4_0::Models::EndpointSettingsDTOActiveLearning
-    end
-    def knowledgebase_environment_type
-      Azure::CognitiveServices::Qnamaker::V4_0::Models::KnowledgebaseEnvironmentType
     end
     def error_code_type
       Azure::CognitiveServices::Qnamaker::V4_0::Models::ErrorCodeType

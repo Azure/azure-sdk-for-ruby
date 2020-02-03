@@ -148,6 +148,7 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
               metric_resource_id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.metricResourceId',
                 type: {
                   name: 'String'

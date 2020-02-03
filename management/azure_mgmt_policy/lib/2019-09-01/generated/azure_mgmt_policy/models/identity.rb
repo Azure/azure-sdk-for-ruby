@@ -18,8 +18,9 @@ module Azure::Policy::Mgmt::V2019_09_01
       # @return [String] The tenant ID of the resource identity.
       attr_accessor :tenant_id
 
-      # @return [ResourceIdentityType] The identity type. Possible values
-      # include: 'SystemAssigned', 'None'
+      # @return [ResourceIdentityType] The identity type. This is the only
+      # required field when adding a system assigned identity to a resource.
+      # Possible values include: 'SystemAssigned', 'None'
       attr_accessor :type
 
 
