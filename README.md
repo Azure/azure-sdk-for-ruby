@@ -379,7 +379,7 @@ bundle install
  cd ./management/azure_mgmt_compute
  rspec spec/2017-03-30/virtual_machines_spec.rb
 ```
-**If vcr cassette exist then it'll replay the test otherwise it'll record it.**
+**If the vcr cassette exists, then it'll replay the test, otherwise it'll record it.**
 
 ### Generate Documentation
 
