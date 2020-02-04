@@ -26,6 +26,18 @@ module Azure::CognitiveServices::Qnamaker::V4_0
       # @return [Array<FileDTO>] List of files from which to Extract Q-A.
       attr_accessor :files
 
+      # @return [Boolean] Enable hierarchical extraction of Q-A from files and
+      # urls. Value to be considered False if this field is not present.
+      attr_accessor :enable_hierarchical_extraction
+
+      # @return [String] Text string to be used as the answer in any Q-A which
+      # has no extracted answer from the document but has a hierarchy. Required
+      # when EnableHierarchicalExtraction field is set to True.
+      attr_accessor :default_answer_used_for_extraction
+
+      # @return [String] Language of the knowledgebase.
+      attr_accessor :language
+
 
       #
       # Mapper for CreateKbDTO class as Ruby Hash.
@@ -100,6 +112,38 @@ module Azure::CognitiveServices::Qnamaker::V4_0
                         class_name: 'FileDTO'
                       }
                   }
+                }
+              },
+              enable_hierarchical_extraction: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'enableHierarchicalExtraction',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              default_answer_used_for_extraction: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'defaultAnswerUsedForExtraction',
+                constraints: {
+                  MaxLength: 300,
+                  MinLength: 1
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              language: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'language',
+                constraints: {
+                  MaxLength: 100,
+                  MinLength: 1
+                },
+                type: {
+                  name: 'String'
                 }
               }
             }

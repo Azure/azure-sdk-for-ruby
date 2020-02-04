@@ -15,6 +15,15 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
       # @return [Hash{String => String}] Tags of the domains resource
       attr_accessor :tags
 
+      # @return [Boolean] This determines if IP filtering rules ought to be
+      # evaluated or not. By default it will not evaluate and will allow
+      # traffic from all IPs.
+      attr_accessor :allow_traffic_from_all_ips
+
+      # @return [Array<InboundIpRule>] This determines the IP filtering rules
+      # that ought be applied when events are received on this domain.
+      attr_accessor :inbound_ip_rules
+
 
       #
       # Mapper for DomainUpdateParameters class as Ruby Hash.
@@ -41,6 +50,31 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
+                      }
+                  }
+                }
+              },
+              allow_traffic_from_all_ips: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'allowTrafficFromAllIPs',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              inbound_ip_rules: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'inboundIpRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'InboundIpRuleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'InboundIpRule'
                       }
                   }
                 }

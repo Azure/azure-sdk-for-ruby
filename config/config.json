@@ -105,6 +105,11 @@
     }
   },
   "azure_mgmt_appconfiguration": {
+    "azure_mgmt_appconfiguration_2019_11_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/38392c627b36e858225fa5c9dcb70788640b3f06/specification/appconfiguration/resource-manager/readme.md",
+      "namespace": "Azure::Appconfiguration::Mgmt::V2019_11_01_preview",
+      "tag": "package-2019-11-01-preview"
+    },
     "azure_mgmt_appconfiguration_2019_02_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/appconfiguration/resource-manager/readme.md",
       "namespace": "Azure::Appconfiguration::Mgmt::V2019_02_01_preview",
@@ -854,7 +859,7 @@
   },
   "azure_mgmt_event_grid": {
     "azure_mgmt_event_grid_2020_04_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/92fe2688002a403cda267abe8f427c31a4cd73e4/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/38392c627b36e858225fa5c9dcb70788640b3f06/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2020_04_01_preview",
       "tag": "package-2020-04-preview"
     },
@@ -2023,7 +2028,7 @@
   },
   "azure_mgmt_policy": {
     "azure_mgmt_policy_2019_09_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/38392c627b36e858225fa5c9dcb70788640b3f06/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Policy::Mgmt::V2019_09_01",
       "title": "PolicyClient",
       "tag": "package-policy-2019-09"
@@ -3025,7 +3030,7 @@
   "azure_cognitiveservices_qnamaker":{
     "azure_cognitiveservices_qnamaker_v4.0":{
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ad67077b46e7eea880a03324b127d5d30b3adbe2/specification/cognitiveservices/data-plane/QnAMaker/stable/v4.0/QnAMaker.json"]
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/38392c627b36e858225fa5c9dcb70788640b3f06/specification/cognitiveservices/data-plane/QnAMaker/stable/v4.0/QnAMaker.json"]
       ,
       "namespace": "Azure::CognitiveServices::Qnamaker::V4_0",
       "title": "QnamakerClient",

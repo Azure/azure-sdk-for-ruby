@@ -790,6 +790,133 @@ module Azure::Policy::Mgmt::V2019_09_01
     end
 
     #
+    # Retrieves all policy assignments that apply to a management group.
+    #
+    # This operation retrieves the list of all policy assignments applicable to the
+    # management group that match the given $filter. Valid values for $filter are:
+    # 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is
+    # provided, the returned list includes all policy assignments that are assigned
+    # to the management group or the management group's ancestors. If
+    # $filter=policyDefinitionId eq '{value}' is provided, the returned list
+    # includes all policy assignments of the policy definition whose id is {value}
+    # that apply to the management group.
+    #
+    # @param management_group_id [String] The ID of the management group.
+    # @param filter [String] The filter to apply on the operation. Valid values for
+    # $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. A filter is
+    # required when listing policy assignments at management group scope.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<PolicyAssignment>] operation results.
+    #
+    def list_for_management_group(management_group_id, filter, custom_headers:nil)
+      first_page = list_for_management_group_as_lazy(management_group_id, filter, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Retrieves all policy assignments that apply to a management group.
+    #
+    # This operation retrieves the list of all policy assignments applicable to the
+    # management group that match the given $filter. Valid values for $filter are:
+    # 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is
+    # provided, the returned list includes all policy assignments that are assigned
+    # to the management group or the management group's ancestors. If
+    # $filter=policyDefinitionId eq '{value}' is provided, the returned list
+    # includes all policy assignments of the policy definition whose id is {value}
+    # that apply to the management group.
+    #
+    # @param management_group_id [String] The ID of the management group.
+    # @param filter [String] The filter to apply on the operation. Valid values for
+    # $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. A filter is
+    # required when listing policy assignments at management group scope.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_for_management_group_with_http_info(management_group_id, filter, custom_headers:nil)
+      list_for_management_group_async(management_group_id, filter, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Retrieves all policy assignments that apply to a management group.
+    #
+    # This operation retrieves the list of all policy assignments applicable to the
+    # management group that match the given $filter. Valid values for $filter are:
+    # 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is
+    # provided, the returned list includes all policy assignments that are assigned
+    # to the management group or the management group's ancestors. If
+    # $filter=policyDefinitionId eq '{value}' is provided, the returned list
+    # includes all policy assignments of the policy definition whose id is {value}
+    # that apply to the management group.
+    #
+    # @param management_group_id [String] The ID of the management group.
+    # @param filter [String] The filter to apply on the operation. Valid values for
+    # $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. A filter is
+    # required when listing policy assignments at management group scope.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_for_management_group_async(management_group_id, filter, custom_headers:nil)
+      fail ArgumentError, 'management_group_id is nil' if management_group_id.nil?
+      fail ArgumentError, 'filter is nil' if filter.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'managementGroupId' => management_group_id},
+          query_params: {'api-version' => @client.api_version},
+          skip_encoding_query_params: {'$filter' => filter},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Policy::Mgmt::V2019_09_01::Models::PolicyAssignmentListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Retrieves all policy assignments that apply to a subscription.
     #
     # This operation retrieves the list of all policy assignments associated with
@@ -1634,6 +1761,123 @@ module Azure::Policy::Mgmt::V2019_09_01
     end
 
     #
+    # Retrieves all policy assignments that apply to a management group.
+    #
+    # This operation retrieves the list of all policy assignments applicable to the
+    # management group that match the given $filter. Valid values for $filter are:
+    # 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is
+    # provided, the returned list includes all policy assignments that are assigned
+    # to the management group or the management group's ancestors. If
+    # $filter=policyDefinitionId eq '{value}' is provided, the returned list
+    # includes all policy assignments of the policy definition whose id is {value}
+    # that apply to the management group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyAssignmentListResult] operation results.
+    #
+    def list_for_management_group_next(next_page_link, custom_headers:nil)
+      response = list_for_management_group_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Retrieves all policy assignments that apply to a management group.
+    #
+    # This operation retrieves the list of all policy assignments applicable to the
+    # management group that match the given $filter. Valid values for $filter are:
+    # 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is
+    # provided, the returned list includes all policy assignments that are assigned
+    # to the management group or the management group's ancestors. If
+    # $filter=policyDefinitionId eq '{value}' is provided, the returned list
+    # includes all policy assignments of the policy definition whose id is {value}
+    # that apply to the management group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_for_management_group_next_with_http_info(next_page_link, custom_headers:nil)
+      list_for_management_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Retrieves all policy assignments that apply to a management group.
+    #
+    # This operation retrieves the list of all policy assignments applicable to the
+    # management group that match the given $filter. Valid values for $filter are:
+    # 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is
+    # provided, the returned list includes all policy assignments that are assigned
+    # to the management group or the management group's ancestors. If
+    # $filter=policyDefinitionId eq '{value}' is provided, the returned list
+    # includes all policy assignments of the policy definition whose id is {value}
+    # that apply to the management group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_for_management_group_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Policy::Mgmt::V2019_09_01::Models::PolicyAssignmentListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Retrieves all policy assignments that apply to a subscription.
     #
     # This operation retrieves the list of all policy assignments associated with
@@ -1857,6 +2101,39 @@ module Azure::Policy::Mgmt::V2019_09_01
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_for_resource_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Retrieves all policy assignments that apply to a management group.
+    #
+    # This operation retrieves the list of all policy assignments applicable to the
+    # management group that match the given $filter. Valid values for $filter are:
+    # 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is
+    # provided, the returned list includes all policy assignments that are assigned
+    # to the management group or the management group's ancestors. If
+    # $filter=policyDefinitionId eq '{value}' is provided, the returned list
+    # includes all policy assignments of the policy definition whose id is {value}
+    # that apply to the management group.
+    #
+    # @param management_group_id [String] The ID of the management group.
+    # @param filter [String] The filter to apply on the operation. Valid values for
+    # $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. A filter is
+    # required when listing policy assignments at management group scope.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyAssignmentListResult] which provide lazy access to pages of
+    # the response.
+    #
+    def list_for_management_group_as_lazy(management_group_id, filter, custom_headers:nil)
+      response = list_for_management_group_async(management_group_id, filter, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_for_management_group_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

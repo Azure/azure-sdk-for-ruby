@@ -207,11 +207,11 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     end
 
     #
-    # List event types
+    # List event types.
     #
-    # List event types for a topic type
+    # List event types for a topic type.
     #
-    # @param topic_type_name [String] Name of the topic type
+    # @param topic_type_name [String] Name of the topic type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -223,11 +223,11 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     end
 
     #
-    # List event types
+    # List event types.
     #
-    # List event types for a topic type
+    # List event types for a topic type.
     #
-    # @param topic_type_name [String] Name of the topic type
+    # @param topic_type_name [String] Name of the topic type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -238,11 +238,11 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     end
 
     #
-    # List event types
+    # List event types.
     #
-    # List event types for a topic type
+    # List event types for a topic type.
     #
-    # @param topic_type_name [String] Name of the topic type
+    # @param topic_type_name [String] Name of the topic type.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

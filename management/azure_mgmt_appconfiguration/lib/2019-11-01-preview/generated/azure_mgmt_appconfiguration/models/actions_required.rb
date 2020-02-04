@@ -3,14 +3,14 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::CognitiveServices::Qnamaker::V4_0
+module Azure::Appconfiguration::Mgmt::V2019_11_01_preview
   module Models
     #
-    # Defines values for KnowledgebaseEnvironmentType
+    # Defines values for ActionsRequired
     #
-    module KnowledgebaseEnvironmentType
-      Prod = "Prod"
-      Test = "Test"
+    module ActionsRequired
+      None = "None"
+      Recreate = "Recreate"
     end
   end
 end

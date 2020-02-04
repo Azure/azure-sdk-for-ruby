@@ -1,8 +1,9 @@
 {
     "management":[
-        "azure_mgmt_azurestack",
-        "azure_mgmt_hdinsight",
-        "azure_mgmt_time_series_insights"
+        "azure_mgmt_appconfiguration",
+        "azure_mgmt_event_grid",
+        "azure_mgmt_policy",
+        "azure_cognitiveservices_qnamaker"
     ],
     "rollup":[
         "azure_sdk"
