@@ -21,6 +21,7 @@ Additional info on Azure deployment models [https://docs.microsoft.com/azure/azu
 * [Features](https://rubygems.org/gems/azure_mgmt_features) Feature Exposure Controls
 * [Graph](https://rubygems.org/gems/azure_mgmt_graph) Azure Active Directory Applications, Users, etc...
 * [Monitor](https://rubygems.org/gems/azure_mgmt_monitor) Azure Monitor management
+* [IoTCentral](https://rubygems.org/gems/azure_mgmt_iot_central) Azure IoTCentral's Resource Management
 * [IoTHub](https://rubygems.org/gems/azure_mgmt_iot_hub) Azure IoTHub's Resource Management
 * [Key Vault](https://rubygems.org/gems/azure_mgmt_key_vault) Azure Key Vault's vault management
 * [Locks](https://rubygems.org/gems/azure_mgmt_locks) Management locks for Azure Resources
