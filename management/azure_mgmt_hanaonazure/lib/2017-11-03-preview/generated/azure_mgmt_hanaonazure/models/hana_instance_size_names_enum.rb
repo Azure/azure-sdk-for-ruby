@@ -17,6 +17,13 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
       S192m = "S192m"
       S192xm = "S192xm"
       S96 = "S96"
+      S112 = "S112"
+      S224 = "S224"
+      S224m = "S224m"
+      S224om = "S224om"
+      S224oo = "S224oo"
+      S224oom = "S224oom"
+      S224ooo = "S224ooo"
       S384 = "S384"
       S384m = "S384m"
       S384xm = "S384xm"
@@ -27,11 +34,6 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
       S768m = "S768m"
       S768xm = "S768xm"
       S960m = "S960m"
-      S224o = "S224o"
-      S224m = "S224m"
-      S224om = "S224om"
-      S224oxm = "S224oxm"
-      S224oxxm = "S224oxxm"
     end
   end
 end

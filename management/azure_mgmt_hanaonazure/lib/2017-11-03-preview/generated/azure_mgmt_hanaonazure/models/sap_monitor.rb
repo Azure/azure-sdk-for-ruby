@@ -30,10 +30,41 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
       # @return [String] Database password of the HANA instance.
       attr_accessor :hana_db_password
 
+      # @return [String] KeyVault URL link to the password for the HANA
+      # database.
+      attr_accessor :hana_db_password_key_vault_url
+
+      # @return [String] MSI ID passed by customer which has access to
+      # customer's KeyVault and to be assigned to the Collector VM.
+      attr_accessor :hana_db_credentials_msi_id
+
+      # @return [String] Key Vault ID containing customer's HANA credentials.
+      attr_accessor :key_vault_id
+
       # @return [HanaProvisioningStatesEnum] State of provisioning of the
       # HanaInstance. Possible values include: 'Accepted', 'Creating',
       # 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'
       attr_accessor :provisioning_state
+
+      # @return [String] The name of the resource group the SAP Monitor
+      # resources get deployed into.
+      attr_accessor :managed_resource_group_name
+
+      # @return [String] The ARM ID of the Log Analytics Workspace that is used
+      # for monitoring
+      attr_accessor :log_analytics_workspace_arm_id
+
+      # @return [Boolean] The value indicating whether to send analytics to
+      # Microsoft
+      attr_accessor :enable_customer_analytics
+
+      # @return [String] The workspace ID of the log analytics workspace to be
+      # used for monitoring
+      attr_accessor :log_analytics_workspace_id
+
+      # @return [String] The shared key of the log analytics workspace that is
+      # used for monitoring
+      attr_accessor :log_analytics_workspace_shared_key
 
 
       #
@@ -149,11 +180,76 @@ module Azure::Hanaonazure::Mgmt::V2017_11_03_preview
                   name: 'String'
                 }
               },
+              hana_db_password_key_vault_url: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.hanaDbPasswordKeyVaultUrl',
+                type: {
+                  name: 'String'
+                }
+              },
+              hana_db_credentials_msi_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.hanaDbCredentialsMsiId',
+                type: {
+                  name: 'String'
+                }
+              },
+              key_vault_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.keyVaultId',
+                type: {
+                  name: 'String'
+                }
+              },
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              managed_resource_group_name: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.managedResourceGroupName',
+                type: {
+                  name: 'String'
+                }
+              },
+              log_analytics_workspace_arm_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.logAnalyticsWorkspaceArmId',
+                type: {
+                  name: 'String'
+                }
+              },
+              enable_customer_analytics: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.enableCustomerAnalytics',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              log_analytics_workspace_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.logAnalyticsWorkspaceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              log_analytics_workspace_shared_key: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.logAnalyticsWorkspaceSharedKey',
                 type: {
                   name: 'String'
                 }
