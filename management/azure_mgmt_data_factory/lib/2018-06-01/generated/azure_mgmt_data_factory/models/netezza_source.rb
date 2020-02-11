@@ -8,7 +8,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # A copy activity Netezza source.
     #
-    class NetezzaSource < CopySource
+    class NetezzaSource < TabularSource
 
       include MsRestAzure
 
@@ -22,6 +22,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return A query to retrieve data from source. Type: string (or
       # Expression with resultType string).
       attr_accessor :query
+
+      # @return [NetezzaPartitionOption] The partition mechanism that will be
+      # used for Netezza read in parallel. Possible values include: 'None',
+      # 'DataSlice', 'DynamicRange'
+      attr_accessor :partition_option
+
+      # @return [NetezzaPartitionSettings] The settings that will be leveraged
+      # for Netezza source partitioning.
+      attr_accessor :partition_settings
 
 
       #
@@ -84,12 +93,37 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              query_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'queryTimeout',
+                type: {
+                  name: 'Object'
+                }
+              },
               query: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'query',
                 type: {
                   name: 'Object'
+                }
+              },
+              partition_option: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionOption',
+                type: {
+                  name: 'String'
+                }
+              },
+              partition_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'NetezzaPartitionSettings'
                 }
               }
             }

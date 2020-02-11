@@ -19,7 +19,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
-      # @return [SecretBase] The connection string.
+      # @return The connection string.
       attr_accessor :connection_string
 
       # @return [AzureKeyVaultSecretReference] The Azure key vault secret
@@ -123,10 +123,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: true,
                 serialized_name: 'typeProperties.connectionString',
                 type: {
-                  name: 'Composite',
-                  polymorphic_discriminator: 'type',
-                  uber_parent: 'SecretBase',
-                  class_name: 'SecretBase'
+                  name: 'Object'
                 }
               },
               password: {

@@ -31,6 +31,19 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # allowPolyBase is true.
       attr_accessor :poly_base_settings
 
+      # @return Indicates to use Copy Command to copy data into SQL Data
+      # Warehouse. Type: boolean (or Expression with resultType boolean).
+      attr_accessor :allow_copy_command
+
+      # @return [DWCopyCommandSettings] Specifies Copy Command related settings
+      # when allowCopyCommand is true.
+      attr_accessor :copy_command_settings
+
+      # @return The option to handle sink table, such as autoCreate. For now
+      # only 'autoCreate' value is supported. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :table_option
+
 
       #
       # Mapper for SqlDWSink class as Ruby Hash.
@@ -131,6 +144,31 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'PolybaseSettings'
+                }
+              },
+              allow_copy_command: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'allowCopyCommand',
+                type: {
+                  name: 'Object'
+                }
+              },
+              copy_command_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'copyCommandSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DWCopyCommandSettings'
+                }
+              },
+              table_option: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'tableOption',
+                type: {
+                  name: 'Object'
                 }
               }
             }

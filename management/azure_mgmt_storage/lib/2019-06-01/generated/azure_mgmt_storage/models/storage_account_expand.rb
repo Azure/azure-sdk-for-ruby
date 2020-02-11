@@ -10,6 +10,7 @@ module Azure::Storage::Mgmt::V2019_06_01
     #
     module StorageAccountExpand
       GeoReplicationStats = "geoReplicationStats"
+      BlobRestoreStatus = "blobRestoreStatus"
     end
   end
 end

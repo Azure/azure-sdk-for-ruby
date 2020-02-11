@@ -28,22 +28,36 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # string (or Expression with resultType string).
       attr_accessor :access_token
 
-      # @return The id of an existing cluster that will be used for all runs of
-      # this job. Type: string (or Expression with resultType string).
+      # @return The id of an existing interactive cluster that will be used for
+      # all runs of this activity. Type: string (or Expression with resultType
+      # string).
       attr_accessor :existing_cluster_id
 
-      # @return The Spark version of new cluster. Type: string (or Expression
-      # with resultType string).
+      # @return The id of an existing instance pool that will be used for all
+      # runs of this activity. Type: string (or Expression with resultType
+      # string).
+      attr_accessor :instance_pool_id
+
+      # @return If not using an existing interactive cluster, this specifies
+      # the Spark version of a new job cluster or instance pool nodes created
+      # for each run of this activity. Required if instancePoolId is specified.
+      # Type: string (or Expression with resultType string).
       attr_accessor :new_cluster_version
 
-      # @return Number of worker nodes that new cluster should have. A string
-      # formatted Int32, like '1' means numOfWorker is 1 or '1:10' means
-      # auto-scale from 1 as min and 10 as max. Type: string (or Expression
-      # with resultType string).
+      # @return If not using an existing interactive cluster, this specifies
+      # the number of worker nodes to use for the new job cluster or instance
+      # pool. For new job clusters, this a string-formatted Int32, like '1'
+      # means numOfWorker is 1 or '1:10' means auto-scale from 1 (min) to 10
+      # (max). For instance pools, this is a string-formatted Int32, and can
+      # only specify a fixed number of worker nodes, such as '2'. Required if
+      # newClusterVersion is specified. Type: string (or Expression with
+      # resultType string).
       attr_accessor :new_cluster_num_of_worker
 
-      # @return The node types of new cluster. Type: string (or Expression with
-      # resultType string).
+      # @return The node type of the new job cluster. This property is required
+      # if newClusterVersion is specified and instancePoolId is not specified.
+      # If instancePoolId is specified, this property is ignored. Type: string
+      # (or Expression with resultType string).
       attr_accessor :new_cluster_node_type
 
       # @return A set of optional, user-specified Spark configuration key-value
@@ -54,19 +68,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # key-value pairs.
       attr_accessor :new_cluster_spark_env_vars
 
-      # @return Additional tags for cluster resources.
+      # @return Additional tags for cluster resources. This property is ignored
+      # in instance pool configurations.
       attr_accessor :new_cluster_custom_tags
 
-      # @return The driver node type for the new cluster. Type: string (or
-      # Expression with resultType string).
+      # @return The driver node type for the new job cluster. This property is
+      # ignored in instance pool configurations. Type: string (or Expression
+      # with resultType string).
       attr_accessor :new_cluster_driver_node_type
 
       # @return User-defined initialization scripts for the new cluster. Type:
       # array of strings (or Expression with resultType array of strings).
       attr_accessor :new_cluster_init_scripts
 
-      # @return Enable the elastic disk on the new cluster. Type: boolean (or
-      # Expression with resultType boolean).
+      # @return Enable the elastic disk on the new cluster. This property is
+      # now ignored, and takes the default elastic disk behavior in Databricks
+      # (elastic disks are always enabled). Type: boolean (or Expression with
+      # resultType boolean).
       attr_accessor :new_cluster_enable_elastic_disk
 
       # @return The encrypted credential used for authentication. Credentials
@@ -184,6 +202,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.existingClusterId',
+                type: {
+                  name: 'Object'
+                }
+              },
+              instance_pool_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.instancePoolId',
                 type: {
                   name: 'Object'
                 }

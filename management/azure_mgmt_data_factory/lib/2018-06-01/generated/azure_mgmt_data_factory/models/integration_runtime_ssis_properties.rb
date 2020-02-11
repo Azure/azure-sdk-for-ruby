@@ -37,6 +37,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Integration Runtime. Possible values include: 'Standard', 'Enterprise'
       attr_accessor :edition
 
+      # @return [Array<CustomSetupBase>] Custom setup without script properties
+      # for a SSIS integration runtime.
+      attr_accessor :express_custom_setup_properties
+
 
       #
       # Mapper for IntegrationRuntimeSsisProperties class as Ruby Hash.
@@ -107,6 +111,25 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'edition',
                 type: {
                   name: 'String'
+                }
+              },
+              express_custom_setup_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'expressCustomSetupProperties',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'CustomSetupBaseElementType',
+                      type: {
+                        name: 'Composite',
+                        polymorphic_discriminator: 'type',
+                        uber_parent: 'CustomSetupBase',
+                        class_name: 'CustomSetupBase'
+                      }
+                  }
                 }
               }
             }

@@ -36,6 +36,10 @@ module Azure::CognitiveServices::QnamakerRuntime::V4_0
       # information.
       attr_accessor :context
 
+      # @return [String] Optional field. Set to 'QuestionOnly' for using a
+      # question only Ranker.
+      attr_accessor :ranker_type
+
       # @return [Array<MetadataDTO>] Find only answers that contain these
       # metadata.
       attr_accessor :strict_filters
@@ -109,6 +113,14 @@ module Azure::CognitiveServices::QnamakerRuntime::V4_0
                 type: {
                   name: 'Composite',
                   class_name: 'QueryDTOContext'
+                }
+              },
+              ranker_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'rankerType',
+                type: {
+                  name: 'String'
                 }
               },
               strict_filters: {

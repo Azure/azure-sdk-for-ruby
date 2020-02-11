@@ -50,6 +50,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # to web endpoint.
       attr_accessor :linked_services
 
+      # @return [IntegrationRuntimeReference] The integration runtime
+      # reference.
+      attr_accessor :connect_via
+
 
       #
       # Mapper for WebActivity class as Ruby Hash.
@@ -228,6 +232,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         class_name: 'LinkedServiceReference'
                       }
                   }
+                }
+              },
+              connect_via: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.connectVia',
+                type: {
+                  name: 'Composite',
+                  class_name: 'IntegrationRuntimeReference'
                 }
               }
             }

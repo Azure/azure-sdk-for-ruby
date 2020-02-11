@@ -12,6 +12,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
+
+      def initialize
+        @type = "AzureBlobStorageLocation"
+      end
+
+      attr_accessor :type
+
       # @return Specify the container of azure blob. Type: string (or
       # Expression with resultType string).
       attr_accessor :container
@@ -45,14 +52,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   }
                 }
               },
-              type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
               folder_path: {
                 client_side_validation: true,
                 required: false,
@@ -67,6 +66,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'fileName',
                 type: {
                   name: 'Object'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
                 }
               },
               container: {

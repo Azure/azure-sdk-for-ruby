@@ -4,5 +4,6 @@
 
 require '2018-06-01-preview/generated/azure_mgmt_reservations'
 require '2019-04-01-preview/generated/azure_mgmt_reservations'
+require '2019-07-19-preview/generated/azure_mgmt_reservations'
 require '2017-11-01/generated/azure_mgmt_reservations'
 require 'profiles/latest/reservations_latest_profile_client'

@@ -16,15 +16,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # (Basic/ClientCertificate/MSI)
       attr_accessor :type
 
-      # @return [SecureString] Base64-encoded contents of a PFX file.
+      # @return [SecretBase] Base64-encoded contents of a PFX file.
       attr_accessor :pfx
 
       # @return [String] Web activity authentication user name for basic
       # authentication.
       attr_accessor :username
 
-      # @return [SecureString] Password for the PFX file or basic
-      # authentication.
+      # @return [SecretBase] Password for the PFX file or basic authentication.
       attr_accessor :password
 
       # @return [String] Resource for which Azure Auth token will be requested
@@ -59,7 +58,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'pfx',
                 type: {
                   name: 'Composite',
-                  class_name: 'SecureString'
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'SecretBase',
+                  class_name: 'SecretBase'
                 }
               },
               username: {
@@ -76,7 +77,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'password',
                 type: {
                   name: 'Composite',
-                  class_name: 'SecureString'
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'SecretBase',
+                  class_name: 'SecretBase'
                 }
               },
               resource: {

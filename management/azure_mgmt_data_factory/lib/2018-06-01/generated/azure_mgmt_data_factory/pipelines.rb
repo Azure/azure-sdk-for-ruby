@@ -477,6 +477,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     # under the same groupId.
     # @param start_activity_name [String] In recovery mode, the rerun will start
     # from this activity. If not specified, all activities will run.
+    # @param start_from_failure [Boolean] In recovery mode, if set to true, the
+    # rerun will start from failed activities. The property will be used only if
+    # startActivityName is not specified.
     # @param parameters Parameters of the pipeline run. These parameters will be
     # used only if the runId is not specified.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -484,8 +487,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # @return [CreateRunResponse] operation results.
     #
-    def create_run(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:nil, is_recovery:nil, start_activity_name:nil, parameters:nil, custom_headers:nil)
-      response = create_run_async(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:reference_pipeline_run_id, is_recovery:is_recovery, start_activity_name:start_activity_name, parameters:parameters, custom_headers:custom_headers).value!
+    def create_run(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:nil, is_recovery:nil, start_activity_name:nil, start_from_failure:nil, parameters:nil, custom_headers:nil)
+      response = create_run_async(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:reference_pipeline_run_id, is_recovery:is_recovery, start_activity_name:start_activity_name, start_from_failure:start_from_failure, parameters:parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -503,6 +506,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     # under the same groupId.
     # @param start_activity_name [String] In recovery mode, the rerun will start
     # from this activity. If not specified, all activities will run.
+    # @param start_from_failure [Boolean] In recovery mode, if set to true, the
+    # rerun will start from failed activities. The property will be used only if
+    # startActivityName is not specified.
     # @param parameters Parameters of the pipeline run. These parameters will be
     # used only if the runId is not specified.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -510,8 +516,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_run_with_http_info(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:nil, is_recovery:nil, start_activity_name:nil, parameters:nil, custom_headers:nil)
-      create_run_async(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:reference_pipeline_run_id, is_recovery:is_recovery, start_activity_name:start_activity_name, parameters:parameters, custom_headers:custom_headers).value!
+    def create_run_with_http_info(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:nil, is_recovery:nil, start_activity_name:nil, start_from_failure:nil, parameters:nil, custom_headers:nil)
+      create_run_async(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:reference_pipeline_run_id, is_recovery:is_recovery, start_activity_name:start_activity_name, start_from_failure:start_from_failure, parameters:parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -528,6 +534,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     # under the same groupId.
     # @param start_activity_name [String] In recovery mode, the rerun will start
     # from this activity. If not specified, all activities will run.
+    # @param start_from_failure [Boolean] In recovery mode, if set to true, the
+    # rerun will start from failed activities. The property will be used only if
+    # startActivityName is not specified.
     # @param parameters Parameters of the pipeline run. These parameters will be
     # used only if the runId is not specified.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -535,7 +544,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_run_async(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:nil, is_recovery:nil, start_activity_name:nil, parameters:nil, custom_headers:nil)
+    def create_run_async(resource_group_name, factory_name, pipeline_name, reference_pipeline_run_id:nil, is_recovery:nil, start_activity_name:nil, start_from_failure:nil, parameters:nil, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
@@ -586,7 +595,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name,'pipelineName' => pipeline_name},
-          query_params: {'api-version' => @client.api_version,'referencePipelineRunId' => reference_pipeline_run_id,'isRecovery' => is_recovery,'startActivityName' => start_activity_name},
+          query_params: {'api-version' => @client.api_version,'referencePipelineRunId' => reference_pipeline_run_id,'isRecovery' => is_recovery,'startActivityName' => start_activity_name,'startFromFailure' => start_from_failure},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

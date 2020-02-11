@@ -1,9 +1,14 @@
 {
     "management":[
-        "azure_mgmt_appconfiguration",
-        "azure_mgmt_event_grid",
-        "azure_mgmt_policy",
-        "azure_cognitiveservices_qnamaker"
+        "azure_mgmt_kusto",
+        "azure_mgmt_hanaonazure",
+        "azure_mgmt_cognitive_services",
+        "azure_mgmt_data_factory",
+        "azure_mgmt_storage",
+        "azure_mgmt_reservations"
+    ],
+    "data":[
+        "azure_cognitiveservices_qnamakerruntime"
     ],
     "rollup":[
         "azure_sdk"

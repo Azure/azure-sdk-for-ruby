@@ -14,6 +14,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["ChainingTrigger"] = "ChainingTrigger"
       @@discriminatorMap["RerunTumblingWindowTrigger"] = "RerunTumblingWindowTrigger"
       @@discriminatorMap["TumblingWindowTrigger"] = "TumblingWindowTrigger"
       @@discriminatorMap["BlobEventsTrigger"] = "BlobEventsTrigger"

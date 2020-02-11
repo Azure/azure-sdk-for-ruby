@@ -19,6 +19,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
+      # @return The HTTP method used to call the RESTful API. The default is
+      # GET. Type: string (or Expression with resultType string).
+      attr_accessor :request_method
+
+      # @return The HTTP request body to the RESTful API if requestMethod is
+      # POST. Type: string (or Expression with resultType string).
+      attr_accessor :request_body
+
+      # @return The additional HTTP headers in the request to the RESTful API.
+      # Type: string (or Expression with resultType string).
+      attr_accessor :additional_headers
+
+      # @return The pagination rules to compose next page requests. Type:
+      # string (or Expression with resultType string).
+      attr_accessor :pagination_rules
+
       # @return The timeout (TimeSpan) to get an HTTP response. It is the
       # timeout to get a response, not the timeout to read response data.
       # Default value: 00:01:40. Type: string (or Expression with resultType
@@ -87,6 +103,38 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              request_method: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'requestMethod',
+                type: {
+                  name: 'Object'
+                }
+              },
+              request_body: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'requestBody',
+                type: {
+                  name: 'Object'
+                }
+              },
+              additional_headers: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'additionalHeaders',
+                type: {
+                  name: 'Object'
+                }
+              },
+              pagination_rules: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'paginationRules',
+                type: {
+                  name: 'Object'
                 }
               },
               http_request_timeout: {

@@ -28,6 +28,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Type: boolean (or Expression with resultType boolean).
       attr_accessor :ignore_null_values
 
+      # @return The logical name of the alternate key which will be used when
+      # upserting records. Type: string (or Expression with resultType string).
+      attr_accessor :alternate_key_name
+
 
       #
       # Mapper for DynamicsSink class as Ruby Hash.
@@ -119,6 +123,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'ignoreNullValues',
+                type: {
+                  name: 'Object'
+                }
+              },
+              alternate_key_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'alternateKeyName',
                 type: {
                   name: 'Object'
                 }

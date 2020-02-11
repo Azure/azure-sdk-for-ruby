@@ -29,15 +29,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
     # @param account_name [String] The name of Cognitive Services account.
-    # @param parameters [CognitiveServicesAccountCreateParameters] The parameters
-    # to provide for the created account.
+    # @param account [CognitiveServicesAccount] The parameters to provide for the
+    # created account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CognitiveServicesAccount] operation results.
     #
-    def create(resource_group_name, account_name, parameters, custom_headers:nil)
-      response = create_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
+    def create(resource_group_name, account_name, account, custom_headers:nil)
+      response = create_async(resource_group_name, account_name, account, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -49,15 +49,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
     # @param account_name [String] The name of Cognitive Services account.
-    # @param parameters [CognitiveServicesAccountCreateParameters] The parameters
-    # to provide for the created account.
+    # @param account [CognitiveServicesAccount] The parameters to provide for the
+    # created account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, account_name, parameters, custom_headers:nil)
-      create_async(resource_group_name, account_name, parameters, custom_headers:custom_headers).value!
+    def create_with_http_info(resource_group_name, account_name, account, custom_headers:nil)
+      create_async(resource_group_name, account_name, account, custom_headers:custom_headers).value!
     end
 
     #
@@ -68,20 +68,20 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
     # @param account_name [String] The name of Cognitive Services account.
-    # @param parameters [CognitiveServicesAccountCreateParameters] The parameters
-    # to provide for the created account.
+    # @param account [CognitiveServicesAccount] The parameters to provide for the
+    # created account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, account_name, parameters, custom_headers:nil)
+    def create_async(resource_group_name, account_name, account, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, 'account is nil' if account.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -94,8 +94,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount.mapper()
+      request_content = @client.serialize(request_mapper,  account)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}'
@@ -116,7 +116,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 201
+        unless status_code == 200 || status_code == 201 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -144,6 +144,16 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -157,21 +167,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
     # @param account_name [String] The name of Cognitive Services account.
-    # @param sku [Sku] Gets or sets the SKU of the resource.
-    # @param tags [Hash{String => String}] Gets or sets a list of key value pairs
-    # that describe the resource. These tags can be used in viewing and grouping
-    # this resource (across resource groups). A maximum of 15 tags can be provided
-    # for a resource. Each tag must have a key no greater than 128 characters and
-    # value no greater than 256 characters.
-    # @param properties Additional properties for Account. Only provided fields
-    # will be updated.
+    # @param account [CognitiveServicesAccount] The parameters to provide for the
+    # created account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CognitiveServicesAccount] operation results.
     #
-    def update(resource_group_name, account_name, sku:nil, tags:nil, properties:nil, custom_headers:nil)
-      response = update_async(resource_group_name, account_name, sku:sku, tags:tags, properties:properties, custom_headers:custom_headers).value!
+    def update(resource_group_name, account_name, account, custom_headers:nil)
+      response = update_async(resource_group_name, account_name, account, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -181,21 +185,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
     # @param account_name [String] The name of Cognitive Services account.
-    # @param sku [Sku] Gets or sets the SKU of the resource.
-    # @param tags [Hash{String => String}] Gets or sets a list of key value pairs
-    # that describe the resource. These tags can be used in viewing and grouping
-    # this resource (across resource groups). A maximum of 15 tags can be provided
-    # for a resource. Each tag must have a key no greater than 128 characters and
-    # value no greater than 256 characters.
-    # @param properties Additional properties for Account. Only provided fields
-    # will be updated.
+    # @param account [CognitiveServicesAccount] The parameters to provide for the
+    # created account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, account_name, sku:nil, tags:nil, properties:nil, custom_headers:nil)
-      update_async(resource_group_name, account_name, sku:sku, tags:tags, properties:properties, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, account, custom_headers:nil)
+      update_async(resource_group_name, account_name, account, custom_headers:custom_headers).value!
     end
 
     #
@@ -204,34 +202,23 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
     # @param account_name [String] The name of Cognitive Services account.
-    # @param sku [Sku] Gets or sets the SKU of the resource.
-    # @param tags [Hash{String => String}] Gets or sets a list of key value pairs
-    # that describe the resource. These tags can be used in viewing and grouping
-    # this resource (across resource groups). A maximum of 15 tags can be provided
-    # for a resource. Each tag must have a key no greater than 128 characters and
-    # value no greater than 256 characters.
-    # @param properties Additional properties for Account. Only provided fields
-    # will be updated.
+    # @param account [CognitiveServicesAccount] The parameters to provide for the
+    # created account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, account_name, sku:nil, tags:nil, properties:nil, custom_headers:nil)
+    def update_async(resource_group_name, account_name, account, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
+      fail ArgumentError, 'account is nil' if account.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      parameters = CognitiveServicesAccountUpdateParameters.new
-      unless sku.nil? && tags.nil? && properties.nil?
-        parameters.sku = sku
-        parameters.tags = tags
-        parameters.properties = properties
-      end
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -241,8 +228,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount.mapper()
+      request_content = @client.serialize(request_mapper,  account)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}'
@@ -263,7 +250,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -273,6 +260,16 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount.mapper()
@@ -362,7 +359,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 204
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end

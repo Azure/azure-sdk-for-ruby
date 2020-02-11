@@ -47,7 +47,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       # @return The authentication type to connect to Dynamics server.
       # 'Office365' for online scenario, 'Ifd' for on-premises with Ifd
-      # scenario. Type: string (or Expression with resultType string).
+      # scenario, 'AADServicePrincipal' for Server-To-Server authentication in
+      # online scenario. Type: string (or Expression with resultType string).
       attr_accessor :authentication_type
 
       # @return User name to access the Dynamics instance. Type: string (or
@@ -56,6 +57,25 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       # @return [SecretBase] Password to access the Dynamics instance.
       attr_accessor :password
+
+      # @return The client ID of the application in Azure Active Directory used
+      # for Server-To-Server authentication. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :service_principal_id
+
+      # @return The service principal credential type to use in
+      # Server-To-Server authentication. 'ServicePrincipalKey' for key/secret,
+      # 'ServicePrincipalCert' for certificate. Type: string (or Expression
+      # with resultType string).
+      attr_accessor :service_principal_credential_type
+
+      # @return [SecretBase] The credential of the service principal object in
+      # Azure Active Directory. If servicePrincipalCredentialType is
+      # 'ServicePrincipalKey', servicePrincipalCredential can be SecureString
+      # or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is
+      # 'ServicePrincipalCert', servicePrincipalCredential can only be
+      # AzureKeyVaultSecretReference.
+      attr_accessor :service_principal_credential
 
       # @return The encrypted credential used for authentication. Credentials
       # are encrypted using the integration runtime credential manager. Type:
@@ -199,7 +219,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               username: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.username',
                 type: {
                   name: 'Object'
@@ -209,6 +229,33 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.password',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'SecretBase',
+                  class_name: 'SecretBase'
+                }
+              },
+              service_principal_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.servicePrincipalId',
+                type: {
+                  name: 'Object'
+                }
+              },
+              service_principal_credential_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.servicePrincipalCredentialType',
+                type: {
+                  name: 'Object'
+                }
+              },
+              service_principal_credential: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.servicePrincipalCredential',
                 type: {
                   name: 'Composite',
                   polymorphic_discriminator: 'type',

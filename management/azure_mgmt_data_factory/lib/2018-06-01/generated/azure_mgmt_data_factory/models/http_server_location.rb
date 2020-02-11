@@ -12,6 +12,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
+
+      def initialize
+        @type = "HttpServerLocation"
+      end
+
+      attr_accessor :type
+
       # @return Specify the relativeUrl of http server. Type: string (or
       # Expression with resultType string)
       attr_accessor :relative_url
@@ -45,14 +52,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   }
                 }
               },
-              type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
               folder_path: {
                 client_side_validation: true,
                 required: false,
@@ -67,6 +66,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'fileName',
                 type: {
                   name: 'Object'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
                 }
               },
               relative_url: {

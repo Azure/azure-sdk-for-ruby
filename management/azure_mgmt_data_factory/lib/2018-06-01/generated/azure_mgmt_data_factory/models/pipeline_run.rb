@@ -34,6 +34,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # name, value pair used in the pipeline run.
       attr_accessor :parameters
 
+      # @return [Hash{String => String}] Run dimensions emitted by Pipeline
+      # run.
+      attr_accessor :run_dimensions
+
       # @return [PipelineRunInvokedBy] Entity that started the pipeline run.
       attr_accessor :invoked_by
 
@@ -126,6 +130,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 read_only: true,
                 serialized_name: 'parameters',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              run_dimensions: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'runDimensions',
                 type: {
                   name: 'Dictionary',
                   value: {

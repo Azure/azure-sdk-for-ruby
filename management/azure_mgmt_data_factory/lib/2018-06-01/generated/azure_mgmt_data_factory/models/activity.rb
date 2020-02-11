@@ -13,16 +13,19 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["ExecuteDataFlow"] = "ExecuteDataFlowActivity"
       @@discriminatorMap["AzureFunctionActivity"] = "AzureFunctionActivity"
       @@discriminatorMap["DatabricksSparkPython"] = "DatabricksSparkPythonActivity"
       @@discriminatorMap["DatabricksSparkJar"] = "DatabricksSparkJarActivity"
       @@discriminatorMap["DatabricksNotebook"] = "DatabricksNotebookActivity"
       @@discriminatorMap["DataLakeAnalyticsU-SQL"] = "DataLakeAnalyticsUSQLActivity"
+      @@discriminatorMap["AzureMLExecutePipeline"] = "AzureMLExecutePipelineActivity"
       @@discriminatorMap["AzureMLUpdateResource"] = "AzureMLUpdateResourceActivity"
       @@discriminatorMap["AzureMLBatchExecution"] = "AzureMLBatchExecutionActivity"
       @@discriminatorMap["GetMetadata"] = "GetMetadataActivity"
       @@discriminatorMap["WebActivity"] = "WebActivity"
       @@discriminatorMap["Lookup"] = "LookupActivity"
+      @@discriminatorMap["AzureDataExplorerCommand"] = "AzureDataExplorerCommandActivity"
       @@discriminatorMap["Delete"] = "DeleteActivity"
       @@discriminatorMap["SqlServerStoredProcedure"] = "SqlServerStoredProcedureActivity"
       @@discriminatorMap["Custom"] = "CustomActivity"
@@ -42,6 +45,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @@discriminatorMap["Until"] = "UntilActivity"
       @@discriminatorMap["Wait"] = "WaitActivity"
       @@discriminatorMap["ForEach"] = "ForEachActivity"
+      @@discriminatorMap["Switch"] = "SwitchActivity"
       @@discriminatorMap["IfCondition"] = "IfConditionActivity"
       @@discriminatorMap["ExecutePipeline"] = "ExecutePipelineActivity"
       @@discriminatorMap["Container"] = "ControlActivity"

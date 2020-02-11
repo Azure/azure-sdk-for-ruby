@@ -12,12 +12,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
-      # @return [NetworkRuleBypassOptions] Tells what traffic can bypass
-      # network rules. This can be 'AzureServices' or 'None'.  If not specified
-      # the default is 'AzureServices'. Possible values include:
-      # 'AzureServices', 'None'
-      attr_accessor :bypass
-
       # @return [NetworkRuleAction] The default action when no rule from
       # ipRules and from virtualNetworkRules match. This is only used after the
       # bypass property has been evaluated. Possible values include: 'Allow',
@@ -44,14 +38,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             name: 'Composite',
             class_name: 'NetworkRuleSet',
             model_properties: {
-              bypass: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'bypass',
-                type: {
-                  name: 'String'
-                }
-              },
               default_action: {
                 client_side_validation: true,
                 required: false,

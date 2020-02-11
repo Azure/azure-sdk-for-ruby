@@ -35,6 +35,10 @@ module Azure::Storage::Mgmt::V2019_06_01
       # events.
       attr_accessor :change_feed
 
+      # @return [RestorePolicyProperties] The blob service properties for blob
+      # restore policy.
+      attr_accessor :restore_policy
+
       # @return [Sku] Sku name and tier.
       attr_accessor :sku
 
@@ -120,6 +124,15 @@ module Azure::Storage::Mgmt::V2019_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'ChangeFeed'
+                }
+              },
+              restore_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.restorePolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RestorePolicyProperties'
                 }
               },
               sku: {

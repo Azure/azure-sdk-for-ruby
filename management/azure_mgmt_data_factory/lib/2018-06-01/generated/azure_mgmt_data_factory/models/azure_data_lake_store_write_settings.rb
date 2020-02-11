@@ -13,6 +13,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
 
+      def initialize
+        @type = "AzureDataLakeStoreWriteSettings"
+      end
+
+      attr_accessor :type
+
+
       #
       # Mapper for AzureDataLakeStoreWriteSettings class as Ruby Hash.
       # This will be used for serialization/deserialization.
@@ -41,14 +48,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   }
                 }
               },
-              type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
               max_concurrent_connections: {
                 client_side_validation: true,
                 required: false,
@@ -63,6 +62,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'copyBehavior',
                 type: {
                   name: 'Object'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
                 }
               }
             }

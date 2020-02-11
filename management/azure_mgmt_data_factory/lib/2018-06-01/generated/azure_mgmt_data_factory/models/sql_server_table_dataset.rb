@@ -19,9 +19,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
+      # @return This property will be retired. Please consider using schema +
+      # table properties instead.
+      attr_accessor :table_name
+
+      # @return The schema name of the SQL Server dataset. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :sql_server_table_dataset_schema
+
       # @return The table name of the SQL Server dataset. Type: string (or
       # Expression with resultType string).
-      attr_accessor :table_name
+      attr_accessor :table
 
 
       #
@@ -140,6 +148,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.tableName',
+                type: {
+                  name: 'Object'
+                }
+              },
+              sql_server_table_dataset_schema: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.schema',
+                type: {
+                  name: 'Object'
+                }
+              },
+              table: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.table',
                 type: {
                   name: 'Object'
                 }
