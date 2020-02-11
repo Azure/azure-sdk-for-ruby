@@ -19,7 +19,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # @return [String] The id of the created account
       attr_accessor :id
 
-      # @return [String] Type of cognitive service account.
+      # @return [String] The Kind of the resource.
       attr_accessor :kind
 
       # @return [String] The location of the resource
@@ -28,24 +28,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # @return [String] The name of the created account
       attr_accessor :name
 
-      # @return [ProvisioningState] Gets the status of the cognitive services
-      # account at the time the operation was called. Possible values include:
-      # 'Creating', 'ResolvingDNS', 'Moving', 'Deleting', 'Succeeded', 'Failed'
-      attr_accessor :provisioning_state
-
-      # @return [String] Endpoint of the created account.
-      attr_accessor :endpoint
-
-      # @return [String] The internal identifier.
-      attr_accessor :internal_id
-
-      # @return [String] Optional subdomain name used for token-based
-      # authentication.
-      attr_accessor :custom_sub_domain_name
-
-      # @return [NetworkRuleSet] A collection of rules governing the
-      # accessibility from specific network locations.
-      attr_accessor :network_acls
+      # @return [CognitiveServicesAccountProperties] Properties of Cognitive
+      # Services account.
+      attr_accessor :properties
 
       # @return [Sku] The SKU of Cognitive Services account.
       attr_accessor :sku
@@ -77,6 +62,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
               etag: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'
@@ -116,46 +102,13 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                   name: 'String'
                 }
               },
-              provisioning_state: {
+              properties: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.provisioningState',
-                type: {
-                  name: 'String'
-                }
-              },
-              endpoint: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.endpoint',
-                type: {
-                  name: 'String'
-                }
-              },
-              internal_id: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.internalId',
-                type: {
-                  name: 'String'
-                }
-              },
-              custom_sub_domain_name: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.customSubDomainName',
-                type: {
-                  name: 'String'
-                }
-              },
-              network_acls: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.networkAcls',
+                serialized_name: 'properties',
                 type: {
                   name: 'Composite',
-                  class_name: 'NetworkRuleSet'
+                  class_name: 'CognitiveServicesAccountProperties'
                 }
               },
               sku: {
