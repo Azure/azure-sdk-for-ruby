@@ -116,6 +116,9 @@ module Azure::Storage::Mgmt::V2019_06_01
       # routing choice opted by the user for data transfer
       attr_accessor :routing_preference
 
+      # @return [BlobRestoreStatus] Blob restore status
+      attr_accessor :blob_restore_status
+
 
       #
       # Mapper for StorageAccount class as Ruby Hash.
@@ -412,6 +415,16 @@ module Azure::Storage::Mgmt::V2019_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'RoutingPreference'
+                }
+              },
+              blob_restore_status: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.blobRestoreStatus',
+                type: {
+                  name: 'Composite',
+                  class_name: 'BlobRestoreStatus'
                 }
               }
             }

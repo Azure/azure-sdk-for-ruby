@@ -12,12 +12,28 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["HdfsReadSettings"] = "HdfsReadSettings"
+      @@discriminatorMap["HttpReadSettings"] = "HttpReadSettings"
+      @@discriminatorMap["SftpReadSettings"] = "SftpReadSettings"
+      @@discriminatorMap["FtpReadSettings"] = "FtpReadSettings"
+      @@discriminatorMap["GoogleCloudStorageReadSettings"] = "GoogleCloudStorageReadSettings"
+      @@discriminatorMap["AzureFileStorageReadSettings"] = "AzureFileStorageReadSettings"
+      @@discriminatorMap["FileServerReadSettings"] = "FileServerReadSettings"
+      @@discriminatorMap["AmazonS3ReadSettings"] = "AmazonS3ReadSettings"
+      @@discriminatorMap["AzureDataLakeStoreReadSettings"] = "AzureDataLakeStoreReadSettings"
+      @@discriminatorMap["AzureBlobFSReadSettings"] = "AzureBlobFSReadSettings"
+      @@discriminatorMap["AzureBlobStorageReadSettings"] = "AzureBlobStorageReadSettings"
+
+      def initialize
+        @type = "StoreReadSettings"
+      end
+
+      attr_accessor :type
+
       # @return Unmatched properties from the message are deserialized this
       # collection
       attr_accessor :additional_properties
-
-      # @return [String] The read setting type.
-      attr_accessor :type
 
       # @return The maximum concurrent connection count for the source data
       # store. Type: integer (or Expression with resultType integer).
@@ -35,6 +51,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
           serialized_name: 'StoreReadSettings',
           type: {
             name: 'Composite',
+            polymorphic_discriminator: 'type',
+            uber_parent: 'StoreReadSettings',
             class_name: 'StoreReadSettings',
             model_properties: {
               additional_properties: {
@@ -50,14 +68,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         name: 'Object'
                       }
                   }
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
                 }
               },
               max_concurrent_connections: {

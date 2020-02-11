@@ -24,6 +24,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # join.
       attr_accessor :subnet
 
+      # @return [Array<String>] Resource IDs of the public IP addresses that
+      # this integration runtime will use.
+      attr_accessor :public_ips
+
 
       #
       # Mapper for IntegrationRuntimeVNetProperties class as Ruby Hash.
@@ -67,6 +71,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'subnet',
                 type: {
                   name: 'String'
+                }
+              },
+              public_ips: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'publicIPs',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

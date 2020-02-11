@@ -19,9 +19,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
-      # @return The table name. Type: string (or Expression with resultType
-      # string).
+      # @return This property will be retired. Please consider using schema +
+      # table properties instead.
       attr_accessor :table_name
+
+      # @return The table name of the Spark. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :table
+
+      # @return The schema name of the Spark. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :spark_object_dataset_schema
 
 
       #
@@ -140,6 +148,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.tableName',
+                type: {
+                  name: 'Object'
+                }
+              },
+              table: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.table',
+                type: {
+                  name: 'Object'
+                }
+              },
+              spark_object_dataset_schema: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.schema',
                 type: {
                   name: 'Object'
                 }

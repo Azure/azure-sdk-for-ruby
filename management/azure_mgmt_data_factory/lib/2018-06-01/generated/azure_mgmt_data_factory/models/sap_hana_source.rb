@@ -8,7 +8,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # A copy activity source for SAP HANA source.
     #
-    class SapHanaSource < CopySource
+    class SapHanaSource < TabularSource
 
       include MsRestAzure
 
@@ -26,6 +26,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return The packet size of data read from SAP HANA. Type: integer(or
       # Expression with resultType integer).
       attr_accessor :packet_size
+
+      # @return [SapHanaPartitionOption] The partition mechanism that will be
+      # used for SAP HANA read in parallel. Possible values include: 'None',
+      # 'PhysicalPartitionsOfTable', 'SapHanaDynamicRange'
+      attr_accessor :partition_option
+
+      # @return [SapHanaPartitionSettings] The settings that will be leveraged
+      # for SAP HANA source partitioning.
+      attr_accessor :partition_settings
 
 
       #
@@ -88,6 +97,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              query_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'queryTimeout',
+                type: {
+                  name: 'Object'
+                }
+              },
               query: {
                 client_side_validation: true,
                 required: false,
@@ -102,6 +119,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'packetSize',
                 type: {
                   name: 'Object'
+                }
+              },
+              partition_option: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionOption',
+                type: {
+                  name: 'String'
+                }
+              },
+              partition_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SapHanaPartitionSettings'
                 }
               }
             }

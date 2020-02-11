@@ -8,7 +8,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # A copy activity SQL Data Warehouse source.
     #
-    class SqlDWSource < CopySource
+    class SqlDWSource < TabularSource
 
       include MsRestAzure
 
@@ -92,6 +92,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              query_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'queryTimeout',
+                type: {
+                  name: 'Object'
                 }
               },
               sql_reader_query: {

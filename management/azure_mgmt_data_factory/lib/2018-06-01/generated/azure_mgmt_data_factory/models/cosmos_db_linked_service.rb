@@ -23,8 +23,16 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # AzureKeyVaultSecretReference.
       attr_accessor :connection_string
 
-      # @return [AzureKeyVaultSecretReference] The Azure key vault secret
-      # reference of accountKey in connection string.
+      # @return The endpoint of the Azure CosmosDB account. Type: string (or
+      # Expression with resultType string)
+      attr_accessor :account_endpoint
+
+      # @return The name of the database. Type: string (or Expression with
+      # resultType string)
+      attr_accessor :database
+
+      # @return [SecretBase] The account key of the Azure CosmosDB account.
+      # Type: SecureString or AzureKeyVaultSecretReference.
       attr_accessor :account_key
 
       # @return The encrypted credential used for authentication. Credentials
@@ -121,8 +129,24 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               connection_string: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.connectionString',
+                type: {
+                  name: 'Object'
+                }
+              },
+              account_endpoint: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.accountEndpoint',
+                type: {
+                  name: 'Object'
+                }
+              },
+              database: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.database',
                 type: {
                   name: 'Object'
                 }
@@ -133,7 +157,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'typeProperties.accountKey',
                 type: {
                   name: 'Composite',
-                  class_name: 'AzureKeyVaultSecretReference'
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'SecretBase',
+                  class_name: 'SecretBase'
                 }
               },
               encrypted_credential: {

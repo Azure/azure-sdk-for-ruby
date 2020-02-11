@@ -23,8 +23,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # (or Expression with resultType string).
       attr_accessor :nesting_separator
 
-      # @return Describes how to write data to Azure Cosmos DB. Allowed values:
-      # insert and upsert.
+      # @return Describes how to write data to Azure Cosmos DB. Type: string
+      # (or Expression with resultType string). Allowed values: insert and
+      # upsert.
       attr_accessor :write_behavior
 
 

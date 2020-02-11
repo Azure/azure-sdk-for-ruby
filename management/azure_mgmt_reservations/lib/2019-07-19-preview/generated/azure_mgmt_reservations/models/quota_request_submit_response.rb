@@ -3,31 +3,40 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::DataFactory::Mgmt::V2018_06_01
+module Azure::Reservations::Mgmt::V2019_07_19_preview
   module Models
     #
-    # RerunTrigger resource type.
+    # Quota submit request response
     #
-    class RerunTriggerResource < SubResource
+    class QuotaRequestSubmitResponse
 
       include MsRestAzure
 
-      # @return [RerunTumblingWindowTrigger] Properties of the rerun trigger.
+      # @return [String] The quota request Id.
+      attr_accessor :id
+
+      # @return [String] The name of the quota request.
+      attr_accessor :name
+
+      # @return [QuotaRequestProperties] The quota request details.
       attr_accessor :properties
+
+      # @return [String] Type of resource. "Microsoft.Capacity/serviceLimits"
+      attr_accessor :type
 
 
       #
-      # Mapper for RerunTriggerResource class as Ruby Hash.
+      # Mapper for QuotaRequestSubmitResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'RerunTriggerResource',
+          serialized_name: 'QuotaRequestSubmitResponse',
           type: {
             name: 'Composite',
-            class_name: 'RerunTriggerResource',
+            class_name: 'QuotaRequestSubmitResponse',
             model_properties: {
               id: {
                 client_side_validation: true,
@@ -47,6 +56,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'QuotaRequestProperties'
+                }
+              },
               type: {
                 client_side_validation: true,
                 required: false,
@@ -54,24 +72,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              etag: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'etag',
-                type: {
-                  name: 'String'
-                }
-              },
-              properties: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties',
-                type: {
-                  name: 'Composite',
-                  class_name: 'RerunTumblingWindowTrigger'
                 }
               }
             }

@@ -8,7 +8,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # A copy activity Amazon Marketplace Web Service source.
     #
-    class AmazonMWSSource < CopySource
+    class AmazonMWSSource < TabularSource
 
       include MsRestAzure
 
@@ -82,6 +82,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              query_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'queryTimeout',
+                type: {
+                  name: 'Object'
                 }
               },
               query: {

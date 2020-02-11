@@ -33,6 +33,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # managed integration runtime.
       attr_accessor :max_parallel_executions_per_node
 
+      # @return [IntegrationRuntimeDataFlowProperties] Data flow properties for
+      # managed integration runtime.
+      attr_accessor :data_flow_properties
+
       # @return [IntegrationRuntimeVNetProperties] VNet properties for managed
       # integration runtime.
       attr_accessor :v_net_properties
@@ -102,6 +106,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              data_flow_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'dataFlowProperties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'IntegrationRuntimeDataFlowProperties'
                 }
               },
               v_net_properties: {

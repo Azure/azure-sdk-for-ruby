@@ -6,18 +6,19 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # A list of rerun triggers.
+    # A list of active debug sessions.
     #
-    class RerunTriggerListResponse
+    class QueryDataFlowDebugSessionsResponse
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<RerunTriggerResource>] List of rerun triggers.
+      # @return [Array<DataFlowDebugSessionInfo>] Array with all active debug
+      # sessions.
       attr_accessor :value
 
-      # @return [String] The continuation token for getting the next page of
-      # results, if any remaining results exist, null otherwise.
+      # @return [String] The link to the next page of results, if any remaining
+      # results exist.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -26,7 +27,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<RerunTriggerResource>] operation results.
+      # @return [Array<DataFlowDebugSessionInfo>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +42,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       #
       # Gets the next page of results.
       #
-      # @return [RerunTriggerListResponse] with next page content.
+      # @return [QueryDataFlowDebugSessionsResponse] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,31 +54,31 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       end
 
       #
-      # Mapper for RerunTriggerListResponse class as Ruby Hash.
+      # Mapper for QueryDataFlowDebugSessionsResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'RerunTriggerListResponse',
+          serialized_name: 'QueryDataFlowDebugSessionsResponse',
           type: {
             name: 'Composite',
-            class_name: 'RerunTriggerListResponse',
+            class_name: 'QueryDataFlowDebugSessionsResponse',
             model_properties: {
               value: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'RerunTriggerResourceElementType',
+                      serialized_name: 'DataFlowDebugSessionInfoElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'RerunTriggerResource'
+                        class_name: 'DataFlowDebugSessionInfo'
                       }
                   }
                 }
@@ -85,7 +86,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               next_link: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

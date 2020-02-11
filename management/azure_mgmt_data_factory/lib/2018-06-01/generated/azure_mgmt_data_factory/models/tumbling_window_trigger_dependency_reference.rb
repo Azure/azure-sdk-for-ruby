@@ -66,7 +66,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 constraints: {
                   MaxLength: 15,
                   MinLength: 8,
-                  Pattern: '((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9]))'
+                  Pattern: '-?((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9]))'
                 },
                 type: {
                   name: 'String'

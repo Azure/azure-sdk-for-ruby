@@ -23,6 +23,106 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     attr_reader :client
 
     #
+    # Rerun single trigger instance by runId.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param trigger_name [String] The trigger name.
+    # @param run_id [String] The pipeline run identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def rerun(resource_group_name, factory_name, trigger_name, run_id, custom_headers:nil)
+      response = rerun_async(resource_group_name, factory_name, trigger_name, run_id, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Rerun single trigger instance by runId.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param trigger_name [String] The trigger name.
+    # @param run_id [String] The pipeline run identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def rerun_with_http_info(resource_group_name, factory_name, trigger_name, run_id, custom_headers:nil)
+      rerun_async(resource_group_name, factory_name, trigger_name, run_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Rerun single trigger instance by runId.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param trigger_name [String] The trigger name.
+    # @param run_id [String] The pipeline run identifier.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def rerun_async(resource_group_name, factory_name, trigger_name, run_id, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'factory_name is nil' if factory_name.nil?
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MaxLength': '63'" if !factory_name.nil? && factory_name.length > 63
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MinLength': '3'" if !factory_name.nil? && factory_name.length < 3
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$'" if !factory_name.nil? && factory_name.match(Regexp.new('^^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$$')).nil?
+      fail ArgumentError, 'trigger_name is nil' if trigger_name.nil?
+      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !trigger_name.nil? && trigger_name.length > 260
+      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MinLength': '1'" if !trigger_name.nil? && trigger_name.length < 1
+      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !trigger_name.nil? && trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
+      fail ArgumentError, 'run_id is nil' if run_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/triggerRuns/{runId}/rerun'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name,'triggerName' => trigger_name,'runId' => run_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Query trigger runs.
     #
     # @param resource_group_name [String] The resource group name.

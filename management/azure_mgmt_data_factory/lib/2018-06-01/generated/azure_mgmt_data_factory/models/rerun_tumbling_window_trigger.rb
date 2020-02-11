@@ -33,7 +33,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       # @return [Integer] The max number of parallel time windows (ready for
       # execution) for which a rerun is triggered.
-      attr_accessor :max_concurrency
+      attr_accessor :rerun_concurrency
 
 
       #
@@ -129,10 +129,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'DateTime'
                 }
               },
-              max_concurrency: {
+              rerun_concurrency: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'typeProperties.maxConcurrency',
+                serialized_name: 'typeProperties.rerunConcurrency',
                 constraints: {
                   InclusiveMaximum: 50,
                   InclusiveMinimum: 1

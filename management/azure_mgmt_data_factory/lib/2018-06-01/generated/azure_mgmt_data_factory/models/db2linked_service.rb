@@ -38,6 +38,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [SecretBase] Password for authentication.
       attr_accessor :password
 
+      # @return Under where packages are created when querying database. Type:
+      # string (or Expression with resultType string).
+      attr_accessor :package_collection
+
+      # @return Certificate Common Name when TLS is enabled. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :certificate_common_name
+
       # @return The encrypted credential used for authentication. Credentials
       # are encrypted using the integration runtime credential manager. Type:
       # string (or Expression with resultType string).
@@ -171,6 +179,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   polymorphic_discriminator: 'type',
                   uber_parent: 'SecretBase',
                   class_name: 'SecretBase'
+                }
+              },
+              package_collection: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.packageCollection',
+                type: {
+                  name: 'Object'
+                }
+              },
+              certificate_common_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.certificateCommonName',
+                type: {
+                  name: 'Object'
                 }
               },
               encrypted_credential: {

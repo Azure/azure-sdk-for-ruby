@@ -19,6 +19,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
+      # @return Teradata ODBC connection string. Type: string, SecureString or
+      # AzureKeyVaultSecretReference.
+      attr_accessor :connection_string
+
       # @return Server name for connection. Type: string (or Expression with
       # resultType string).
       attr_accessor :server
@@ -126,9 +130,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              connection_string: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.connectionString',
+                type: {
+                  name: 'Object'
+                }
+              },
               server: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.server',
                 type: {
                   name: 'Object'

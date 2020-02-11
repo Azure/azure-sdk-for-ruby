@@ -39,6 +39,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # string (or Expression with resultType string).
       attr_accessor :stored_procedure_table_type_parameter_name
 
+      # @return The option to handle sink table, such as autoCreate. For now
+      # only 'autoCreate' value is supported. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :table_option
+
 
       #
       # Mapper for SqlSink class as Ruby Hash.
@@ -161,6 +166,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'storedProcedureTableTypeParameterName',
+                type: {
+                  name: 'Object'
+                }
+              },
+              table_option: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'tableOption',
                 type: {
                   name: 'Object'
                 }

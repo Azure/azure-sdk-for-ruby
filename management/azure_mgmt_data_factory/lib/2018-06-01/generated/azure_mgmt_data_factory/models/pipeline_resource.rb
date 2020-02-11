@@ -36,6 +36,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return List of tags that can be used for describing the Pipeline.
       attr_accessor :annotations
 
+      # @return Dimensions emitted by Pipeline.
+      attr_accessor :run_dimensions
+
       # @return [PipelineFolder] The folder that this Pipeline is in. If not
       # specified, Pipeline will appear at the root level.
       attr_accessor :folder
@@ -184,6 +187,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
+              run_dimensions: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.runDimensions',
+                type: {
+                  name: 'Dictionary',
+                  value: {
                       client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',

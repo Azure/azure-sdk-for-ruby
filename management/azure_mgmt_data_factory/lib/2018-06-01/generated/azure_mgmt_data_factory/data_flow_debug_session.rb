@@ -8,11 +8,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
   # The Azure Data Factory V2 management API provides a RESTful set of web
   # services that interact with Azure Data Factory V2 services.
   #
-  class RerunTriggers
+  class DataFlowDebugSession
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the RerunTriggers class.
+    # Creates and initializes a new instance of the DataFlowDebugSession class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,60 +23,91 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     attr_reader :client
 
     #
-    # Creates a rerun trigger.
+    # Creates a data flow debug session.
     #
     # @param resource_group_name [String] The resource group name.
     # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param rerun_tumbling_window_trigger_action_parameters
-    # [RerunTumblingWindowTriggerActionParameters] Rerun tumbling window trigger
-    # action parameters.
+    # @param request [CreateDataFlowDebugSessionRequest] Data flow debug session
+    # definition
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [TriggerResource] operation results.
+    # @return [CreateDataFlowDebugSessionResponse] operation results.
     #
-    def create(resource_group_name, factory_name, trigger_name, rerun_trigger_name, rerun_tumbling_window_trigger_action_parameters, custom_headers:nil)
-      response = create_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, rerun_tumbling_window_trigger_action_parameters, custom_headers:custom_headers).value!
+    def create(resource_group_name, factory_name, request, custom_headers:nil)
+      response = create_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates a rerun trigger.
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [CreateDataFlowDebugSessionRequest] Data flow debug session
+    # definition
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_async(resource_group_name, factory_name, request, custom_headers:nil)
+      # Send request
+      promise = begin_create_async(resource_group_name, factory_name, request, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Query all active data flow debug sessions.
     #
     # @param resource_group_name [String] The resource group name.
     # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param rerun_tumbling_window_trigger_action_parameters
-    # [RerunTumblingWindowTriggerActionParameters] Rerun tumbling window trigger
-    # action parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<DataFlowDebugSessionInfo>] operation results.
+    #
+    def query_by_factory(resource_group_name, factory_name, custom_headers:nil)
+      first_page = query_by_factory_as_lazy(resource_group_name, factory_name, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Query all active data flow debug sessions.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, factory_name, trigger_name, rerun_trigger_name, rerun_tumbling_window_trigger_action_parameters, custom_headers:nil)
-      create_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, rerun_tumbling_window_trigger_action_parameters, custom_headers:custom_headers).value!
+    def query_by_factory_with_http_info(resource_group_name, factory_name, custom_headers:nil)
+      query_by_factory_async(resource_group_name, factory_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Creates a rerun trigger.
+    # Query all active data flow debug sessions.
     #
     # @param resource_group_name [String] The resource group name.
     # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param rerun_tumbling_window_trigger_action_parameters
-    # [RerunTumblingWindowTriggerActionParameters] Rerun tumbling window trigger
-    # action parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, rerun_tumbling_window_trigger_action_parameters, custom_headers:nil)
+    def query_by_factory_async(resource_group_name, factory_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
@@ -86,16 +117,114 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       fail ArgumentError, "'factory_name' should satisfy the constraint - 'MaxLength': '63'" if !factory_name.nil? && factory_name.length > 63
       fail ArgumentError, "'factory_name' should satisfy the constraint - 'MinLength': '3'" if !factory_name.nil? && factory_name.length < 3
       fail ArgumentError, "'factory_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$'" if !factory_name.nil? && factory_name.match(Regexp.new('^^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$$')).nil?
-      fail ArgumentError, 'trigger_name is nil' if trigger_name.nil?
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !trigger_name.nil? && trigger_name.length > 260
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MinLength': '1'" if !trigger_name.nil? && trigger_name.length < 1
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !trigger_name.nil? && trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
-      fail ArgumentError, 'rerun_trigger_name is nil' if rerun_trigger_name.nil?
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !rerun_trigger_name.nil? && rerun_trigger_name.length > 260
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'MinLength': '1'" if !rerun_trigger_name.nil? && rerun_trigger_name.length < 1
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !rerun_trigger_name.nil? && rerun_trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'rerun_tumbling_window_trigger_action_parameters is nil' if rerun_tumbling_window_trigger_action_parameters.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryDataFlowDebugSessions'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::QueryDataFlowDebugSessionsResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Add a data flow into debug session.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [DataFlowDebugPackage] Data flow debug session definition with
+    # debug content.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AddDataFlowToDebugSessionResponse] operation results.
+    #
+    def add_data_flow(resource_group_name, factory_name, request, custom_headers:nil)
+      response = add_data_flow_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Add a data flow into debug session.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [DataFlowDebugPackage] Data flow debug session definition with
+    # debug content.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def add_data_flow_with_http_info(resource_group_name, factory_name, request, custom_headers:nil)
+      add_data_flow_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Add a data flow into debug session.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [DataFlowDebugPackage] Data flow debug session definition with
+    # debug content.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def add_data_flow_async(resource_group_name, factory_name, request, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'factory_name is nil' if factory_name.nil?
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MaxLength': '63'" if !factory_name.nil? && factory_name.length > 63
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MinLength': '3'" if !factory_name.nil? && factory_name.length < 3
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$'" if !factory_name.nil? && factory_name.match(Regexp.new('^^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$$')).nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'request is nil' if request.nil?
 
 
       request_headers = {}
@@ -106,23 +235,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::RerunTumblingWindowTriggerActionParameters.mapper()
-      request_content = @client.serialize(request_mapper,  rerun_tumbling_window_trigger_action_parameters)
+      request_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugPackage.mapper()
+      request_content = @client.serialize(request_mapper,  request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/rerunTriggers/{rerunTriggerName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/addDataFlowToDebugSession'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name,'triggerName' => trigger_name,'rerunTriggerName' => rerun_trigger_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:put, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -140,7 +269,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerResource.mapper()
+            result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::AddDataFlowToDebugSessionResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -154,174 +283,50 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     end
 
     #
-    # Starts a trigger.
+    # Deletes a data flow debug session.
     #
     # @param resource_group_name [String] The resource group name.
     # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
+    # @param request [DeleteDataFlowDebugSessionRequest] Data flow debug session
+    # definition for deletion
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def start(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      response = start_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers).value!
+    #
+    def delete(resource_group_name, factory_name, request, custom_headers:nil)
+      response = delete_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
       nil
     end
 
     #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def start_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      # Send request
-      promise = begin_start_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Stops a trigger.
+    # Deletes a data flow debug session.
     #
     # @param resource_group_name [String] The resource group name.
     # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    def stop(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      response = stop_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers).value!
-      nil
-    end
-
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def stop_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      # Send request
-      promise = begin_stop_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Cancels a trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    def cancel(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      response = cancel_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers).value!
-      nil
-    end
-
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def cancel_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      # Send request
-      promise = begin_cancel_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Lists rerun triggers by an original trigger name.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<RerunTriggerResource>] operation results.
-    #
-    def list_by_trigger(resource_group_name, factory_name, trigger_name, custom_headers:nil)
-      first_page = list_by_trigger_as_lazy(resource_group_name, factory_name, trigger_name, custom_headers:custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # Lists rerun triggers by an original trigger name.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
+    # @param request [DeleteDataFlowDebugSessionRequest] Data flow debug session
+    # definition for deletion
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_trigger_with_http_info(resource_group_name, factory_name, trigger_name, custom_headers:nil)
-      list_by_trigger_async(resource_group_name, factory_name, trigger_name, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, factory_name, request, custom_headers:nil)
+      delete_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
     end
 
     #
-    # Lists rerun triggers by an original trigger name.
+    # Deletes a data flow debug session.
     #
     # @param resource_group_name [String] The resource group name.
     # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
+    # @param request [DeleteDataFlowDebugSessionRequest] Data flow debug session
+    # definition for deletion
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_trigger_async(resource_group_name, factory_name, trigger_name, custom_headers:nil)
+    def delete_async(resource_group_name, factory_name, request, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
@@ -331,11 +336,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       fail ArgumentError, "'factory_name' should satisfy the constraint - 'MaxLength': '63'" if !factory_name.nil? && factory_name.length > 63
       fail ArgumentError, "'factory_name' should satisfy the constraint - 'MinLength': '3'" if !factory_name.nil? && factory_name.length < 3
       fail ArgumentError, "'factory_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$'" if !factory_name.nil? && factory_name.match(Regexp.new('^^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$$')).nil?
-      fail ArgumentError, 'trigger_name is nil' if trigger_name.nil?
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !trigger_name.nil? && trigger_name.length > 260
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MinLength': '1'" if !trigger_name.nil? && trigger_name.length < 1
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !trigger_name.nil? && trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'request is nil' if request.nil?
 
 
       request_headers = {}
@@ -344,127 +346,21 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/rerunTriggers'
+
+      # Serialize Request
+      request_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::DeleteDataFlowDebugSessionRequest.mapper()
+      request_content = @client.serialize(request_mapper,  request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/deleteDataFlowDebugSession'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name,'triggerName' => trigger_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::RerunTriggerListResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Starts a trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def begin_start(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      response = begin_start_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers).value!
-      nil
-    end
-
-    #
-    # Starts a trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_start_with_http_info(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      begin_start_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Starts a trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_start_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'factory_name is nil' if factory_name.nil?
-      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MaxLength': '63'" if !factory_name.nil? && factory_name.length > 63
-      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MinLength': '3'" if !factory_name.nil? && factory_name.length < 3
-      fail ArgumentError, "'factory_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$'" if !factory_name.nil? && factory_name.match(Regexp.new('^^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$$')).nil?
-      fail ArgumentError, 'trigger_name is nil' if trigger_name.nil?
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !trigger_name.nil? && trigger_name.length > 260
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MinLength': '1'" if !trigger_name.nil? && trigger_name.length < 1
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !trigger_name.nil? && trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
-      fail ArgumentError, 'rerun_trigger_name is nil' if rerun_trigger_name.nil?
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !rerun_trigger_name.nil? && rerun_trigger_name.length > 260
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'MinLength': '1'" if !rerun_trigger_name.nil? && rerun_trigger_name.length < 1
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !rerun_trigger_name.nil? && rerun_trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/rerunTriggers/{rerunTriggerName}/start'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name,'triggerName' => trigger_name,'rerunTriggerName' => rerun_trigger_name},
-          query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -490,228 +386,296 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     end
 
     #
-    # Stops a trigger.
+    # Execute a data flow debug command.
     #
     # @param resource_group_name [String] The resource group name.
     # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
+    # @param request [DataFlowDebugCommandRequest] Data flow debug command
+    # definition.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [DataFlowDebugCommandResponse] operation results.
     #
-    def begin_stop(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      response = begin_stop_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers).value!
-      nil
-    end
-
-    #
-    # Stops a trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_stop_with_http_info(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      begin_stop_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Stops a trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_stop_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'factory_name is nil' if factory_name.nil?
-      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MaxLength': '63'" if !factory_name.nil? && factory_name.length > 63
-      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MinLength': '3'" if !factory_name.nil? && factory_name.length < 3
-      fail ArgumentError, "'factory_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$'" if !factory_name.nil? && factory_name.match(Regexp.new('^^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$$')).nil?
-      fail ArgumentError, 'trigger_name is nil' if trigger_name.nil?
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !trigger_name.nil? && trigger_name.length > 260
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MinLength': '1'" if !trigger_name.nil? && trigger_name.length < 1
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !trigger_name.nil? && trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
-      fail ArgumentError, 'rerun_trigger_name is nil' if rerun_trigger_name.nil?
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !rerun_trigger_name.nil? && rerun_trigger_name.length > 260
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'MinLength': '1'" if !rerun_trigger_name.nil? && rerun_trigger_name.length < 1
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !rerun_trigger_name.nil? && rerun_trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/rerunTriggers/{rerunTriggerName}/stop'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name,'triggerName' => trigger_name,'rerunTriggerName' => rerun_trigger_name},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Cancels a trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def begin_cancel(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      response = begin_cancel_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers).value!
-      nil
-    end
-
-    #
-    # Cancels a trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_cancel_with_http_info(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      begin_cancel_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Cancels a trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
-    # @param rerun_trigger_name [String] The rerun trigger name.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_cancel_async(resource_group_name, factory_name, trigger_name, rerun_trigger_name, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'factory_name is nil' if factory_name.nil?
-      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MaxLength': '63'" if !factory_name.nil? && factory_name.length > 63
-      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MinLength': '3'" if !factory_name.nil? && factory_name.length < 3
-      fail ArgumentError, "'factory_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$'" if !factory_name.nil? && factory_name.match(Regexp.new('^^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$$')).nil?
-      fail ArgumentError, 'trigger_name is nil' if trigger_name.nil?
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !trigger_name.nil? && trigger_name.length > 260
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'MinLength': '1'" if !trigger_name.nil? && trigger_name.length < 1
-      fail ArgumentError, "'trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !trigger_name.nil? && trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
-      fail ArgumentError, 'rerun_trigger_name is nil' if rerun_trigger_name.nil?
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'MaxLength': '260'" if !rerun_trigger_name.nil? && rerun_trigger_name.length > 260
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'MinLength': '1'" if !rerun_trigger_name.nil? && rerun_trigger_name.length < 1
-      fail ArgumentError, "'rerun_trigger_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$'" if !rerun_trigger_name.nil? && rerun_trigger_name.match(Regexp.new('^^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/rerunTriggers/{rerunTriggerName}/cancel'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name,'triggerName' => trigger_name,'rerunTriggerName' => rerun_trigger_name},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists rerun triggers by an original trigger name.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RerunTriggerListResponse] operation results.
-    #
-    def list_by_trigger_next(next_page_link, custom_headers:nil)
-      response = list_by_trigger_next_async(next_page_link, custom_headers:custom_headers).value!
+    def execute_command(resource_group_name, factory_name, request, custom_headers:nil)
+      response = execute_command_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Lists rerun triggers by an original trigger name.
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [DataFlowDebugCommandRequest] Data flow debug command
+    # definition.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def execute_command_async(resource_group_name, factory_name, request, custom_headers:nil)
+      # Send request
+      promise = begin_execute_command_async(resource_group_name, factory_name, request, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugCommandResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Creates a data flow debug session.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [CreateDataFlowDebugSessionRequest] Data flow debug session
+    # definition
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CreateDataFlowDebugSessionResponse] operation results.
+    #
+    def begin_create(resource_group_name, factory_name, request, custom_headers:nil)
+      response = begin_create_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a data flow debug session.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [CreateDataFlowDebugSessionRequest] Data flow debug session
+    # definition
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_with_http_info(resource_group_name, factory_name, request, custom_headers:nil)
+      begin_create_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates a data flow debug session.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [CreateDataFlowDebugSessionRequest] Data flow debug session
+    # definition
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_async(resource_group_name, factory_name, request, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'factory_name is nil' if factory_name.nil?
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MaxLength': '63'" if !factory_name.nil? && factory_name.length > 63
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MinLength': '3'" if !factory_name.nil? && factory_name.length < 3
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$'" if !factory_name.nil? && factory_name.match(Regexp.new('^^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$$')).nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'request is nil' if request.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionRequest.mapper()
+      request_content = @client.serialize(request_mapper,  request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/createDataFlowDebugSession'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Execute a data flow debug command.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [DataFlowDebugCommandRequest] Data flow debug command
+    # definition.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DataFlowDebugCommandResponse] operation results.
+    #
+    def begin_execute_command(resource_group_name, factory_name, request, custom_headers:nil)
+      response = begin_execute_command_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Execute a data flow debug command.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [DataFlowDebugCommandRequest] Data flow debug command
+    # definition.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_execute_command_with_http_info(resource_group_name, factory_name, request, custom_headers:nil)
+      begin_execute_command_async(resource_group_name, factory_name, request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Execute a data flow debug command.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param factory_name [String] The factory name.
+    # @param request [DataFlowDebugCommandRequest] Data flow debug command
+    # definition.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_execute_command_async(resource_group_name, factory_name, request, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'factory_name is nil' if factory_name.nil?
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MaxLength': '63'" if !factory_name.nil? && factory_name.length > 63
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'MinLength': '3'" if !factory_name.nil? && factory_name.length < 3
+      fail ArgumentError, "'factory_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$'" if !factory_name.nil? && factory_name.match(Regexp.new('^^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$$')).nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'request is nil' if request.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugCommandRequest.mapper()
+      request_content = @client.serialize(request_mapper,  request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/executeDataFlowDebugCommand'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'factoryName' => factory_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugCommandResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Query all active data flow debug sessions.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [QueryDataFlowDebugSessionsResponse] operation results.
+    #
+    def query_by_factory_next(next_page_link, custom_headers:nil)
+      response = query_by_factory_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Query all active data flow debug sessions.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -720,12 +684,12 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_trigger_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_trigger_next_async(next_page_link, custom_headers:custom_headers).value!
+    def query_by_factory_next_with_http_info(next_page_link, custom_headers:nil)
+      query_by_factory_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
-    # Lists rerun triggers by an original trigger name.
+    # Query all active data flow debug sessions.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -734,7 +698,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_trigger_next_async(next_page_link, custom_headers:nil)
+    def query_by_factory_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -754,7 +718,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:get, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -772,7 +736,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::RerunTriggerListResponse.mapper()
+            result_mapper = Azure::DataFactory::Mgmt::V2018_06_01::Models::QueryDataFlowDebugSessionsResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -786,23 +750,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     end
 
     #
-    # Lists rerun triggers by an original trigger name.
+    # Query all active data flow debug sessions.
     #
     # @param resource_group_name [String] The resource group name.
     # @param factory_name [String] The factory name.
-    # @param trigger_name [String] The trigger name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RerunTriggerListResponse] which provide lazy access to pages of the
-    # response.
+    # @return [QueryDataFlowDebugSessionsResponse] which provide lazy access to
+    # pages of the response.
     #
-    def list_by_trigger_as_lazy(resource_group_name, factory_name, trigger_name, custom_headers:nil)
-      response = list_by_trigger_async(resource_group_name, factory_name, trigger_name, custom_headers:custom_headers).value!
+    def query_by_factory_as_lazy(resource_group_name, factory_name, custom_headers:nil)
+      response = query_by_factory_async(resource_group_name, factory_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_trigger_next_async(next_page_link, custom_headers:custom_headers)
+          query_by_factory_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

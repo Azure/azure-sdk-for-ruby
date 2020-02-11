@@ -27,6 +27,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # resultType string).
       attr_accessor :nesting_separator
 
+      # @return Query timeout. Type: string (or Expression with resultType
+      # string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+      attr_accessor :query_timeout
+
 
       #
       # Mapper for DocumentDbCollectionSource class as Ruby Hash.
@@ -100,6 +104,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'nestingSeparator',
+                type: {
+                  name: 'Object'
+                }
+              },
+              query_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'queryTimeout',
                 type: {
                   name: 'Object'
                 }

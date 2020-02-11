@@ -23,6 +23,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType string).
       attr_accessor :table_name
 
+      # @return The name of Azure MySQL database table. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :table
+
 
       #
       # Mapper for AzureMySqlTableDataset class as Ruby Hash.
@@ -140,6 +144,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.tableName',
+                type: {
+                  name: 'Object'
+                }
+              },
+              table: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.table',
                 type: {
                   name: 'Object'
                 }

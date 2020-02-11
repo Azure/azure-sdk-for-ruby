@@ -12,6 +12,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
+
+      def initialize
+        @type = "DelimitedTextReadSettings"
+      end
+
+      attr_accessor :type
+
       # @return Indicates the number of non-empty rows to skip when reading
       # data from input files. Type: integer (or Expression with resultType
       # integer).

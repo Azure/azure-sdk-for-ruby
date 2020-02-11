@@ -72,11 +72,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     # @return [Triggers] triggers
     attr_reader :triggers
 
-    # @return [RerunTriggers] rerun_triggers
-    attr_reader :rerun_triggers
-
     # @return [TriggerRuns] trigger_runs
     attr_reader :trigger_runs
+
+    # @return [DataFlows] data_flows
+    attr_reader :data_flows
+
+    # @return [DataFlowDebugSession] data_flow_debug_session
+    attr_reader :data_flow_debug_session
 
     #
     # Creates initializes a new instance of the DataFactoryManagementClient class.
@@ -103,8 +106,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @pipeline_runs = PipelineRuns.new(self)
       @activity_runs = ActivityRuns.new(self)
       @triggers = Triggers.new(self)
-      @rerun_triggers = RerunTriggers.new(self)
       @trigger_runs = TriggerRuns.new(self)
+      @data_flows = DataFlows.new(self)
+      @data_flow_debug_session = DataFlowDebugSession.new(self)
       @api_version = '2018-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -177,7 +181,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_data_factory'
-        sdk_information = "#{sdk_information}/0.17.0"
+        sdk_information = "#{sdk_information}/0.17.1"
         add_user_agent_information(sdk_information)
     end
   end

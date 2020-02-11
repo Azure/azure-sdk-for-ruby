@@ -16,6 +16,33 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # resultType string).
       attr_accessor :package_path
 
+      # @return [SsisPackageLocationType] The type of SSIS package location.
+      # Possible values include: 'SSISDB', 'File', 'InlinePackage'
+      attr_accessor :type
+
+      # @return [SecretBase] Password of the package.
+      attr_accessor :package_password
+
+      # @return [SSISAccessCredential] The package access credential.
+      attr_accessor :access_credential
+
+      # @return The configuration file of the package execution. Type: string
+      # (or Expression with resultType string).
+      attr_accessor :configuration_path
+
+      # @return [String] The package name.
+      attr_accessor :package_name
+
+      # @return The embedded package content. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :package_content
+
+      # @return [String] The embedded package last modified date.
+      attr_accessor :package_last_modified_date
+
+      # @return [Array<SSISChildPackage>] The embedded child package list.
+      attr_accessor :child_packages
+
 
       #
       # Mapper for SSISPackageLocation class as Ruby Hash.
@@ -32,10 +59,87 @@ module Azure::DataFactory::Mgmt::V2018_06_01
             model_properties: {
               package_path: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'packagePath',
                 type: {
                   name: 'Object'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              package_password: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.packagePassword',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'SecretBase',
+                  class_name: 'SecretBase'
+                }
+              },
+              access_credential: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.accessCredential',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SSISAccessCredential'
+                }
+              },
+              configuration_path: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.configurationPath',
+                type: {
+                  name: 'Object'
+                }
+              },
+              package_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.packageName',
+                type: {
+                  name: 'String'
+                }
+              },
+              package_content: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.packageContent',
+                type: {
+                  name: 'Object'
+                }
+              },
+              package_last_modified_date: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.packageLastModifiedDate',
+                type: {
+                  name: 'String'
+                }
+              },
+              child_packages: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.childPackages',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'SSISChildPackageElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SSISChildPackage'
+                      }
+                  }
                 }
               }
             }

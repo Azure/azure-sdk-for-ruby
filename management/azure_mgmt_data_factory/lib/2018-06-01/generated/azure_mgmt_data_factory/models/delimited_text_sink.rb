@@ -108,6 +108,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'storeSettings',
                 type: {
                   name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'StoreWriteSettings',
                   class_name: 'StoreWriteSettings'
                 }
               },

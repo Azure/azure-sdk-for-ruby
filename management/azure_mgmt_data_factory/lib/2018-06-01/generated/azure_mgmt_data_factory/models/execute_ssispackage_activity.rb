@@ -61,6 +61,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # to execute the SSIS package.
       attr_accessor :property_overrides
 
+      # @return [SSISLogLocation] SSIS package execution log location.
+      attr_accessor :log_location
+
 
       #
       # Mapper for ExecuteSSISPackageActivity class as Ruby Hash.
@@ -317,6 +320,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         class_name: 'SSISPropertyOverride'
                       }
                   }
+                }
+              },
+              log_location: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.logLocation',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SSISLogLocation'
                 }
               }
             }

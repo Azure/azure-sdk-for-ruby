@@ -12,12 +12,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["FileServerWriteSettings"] = "FileServerWriteSettings"
+      @@discriminatorMap["AzureDataLakeStoreWriteSettings"] = "AzureDataLakeStoreWriteSettings"
+      @@discriminatorMap["AzureBlobFSWriteSettings"] = "AzureBlobFSWriteSettings"
+      @@discriminatorMap["AzureBlobStorageWriteSettings"] = "AzureBlobStorageWriteSettings"
+      @@discriminatorMap["SftpWriteSettings"] = "SftpWriteSettings"
+
+      def initialize
+        @type = "StoreWriteSettings"
+      end
+
+      attr_accessor :type
+
       # @return Unmatched properties from the message are deserialized this
       # collection
       attr_accessor :additional_properties
-
-      # @return [String] The write setting type.
-      attr_accessor :type
 
       # @return The maximum concurrent connection count for the source data
       # store. Type: integer (or Expression with resultType integer).
@@ -38,6 +48,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
           serialized_name: 'StoreWriteSettings',
           type: {
             name: 'Composite',
+            polymorphic_discriminator: 'type',
+            uber_parent: 'StoreWriteSettings',
             class_name: 'StoreWriteSettings',
             model_properties: {
               additional_properties: {
@@ -53,14 +65,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         name: 'Object'
                       }
                   }
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
                 }
               },
               max_concurrent_connections: {

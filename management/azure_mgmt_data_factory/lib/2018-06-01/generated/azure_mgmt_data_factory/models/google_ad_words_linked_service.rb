@@ -37,8 +37,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # authorizing access to AdWords for UserAuthentication.
       attr_accessor :refresh_token
 
-      # @return [SecretBase] The client id of the google application used to
-      # acquire the refresh token.
+      # @return The client id of the google application used to acquire the
+      # refresh token. Type: string (or Expression with resultType string).
       attr_accessor :client_id
 
       # @return [SecretBase] The client secret of the google application used
@@ -199,10 +199,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'typeProperties.clientId',
                 type: {
-                  name: 'Composite',
-                  polymorphic_discriminator: 'type',
-                  uber_parent: 'SecretBase',
-                  class_name: 'SecretBase'
+                  name: 'Object'
                 }
               },
               client_secret: {
