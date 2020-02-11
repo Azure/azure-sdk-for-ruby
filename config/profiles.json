@@ -661,7 +661,8 @@
                 },
                 "Microsoft.Reservations": {
                     "management": {
-                        "2019-04-01-preview": ["*"]
+                        "2019-04-01-preview": ["*"],
+                        "2019-07-19-preview": ["*"]
                     }
                 },
                 "Microsoft.ResourceHealth": {
@@ -2375,7 +2376,8 @@
             "resourceTypes": {
                 "Microsoft.Reservations": {
                     "management": {
-                        "2019-04-01-preview": ["*"]
+                        "2019-04-01-preview": ["*"],
+                        "2019-07-19-preview": ["*"]
                     }
                 }
             },
