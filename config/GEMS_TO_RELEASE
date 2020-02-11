@@ -9,7 +9,7 @@
     ],
     "data":[
         "azure_cognitiveservices_qnamakerruntime"
-    ]
+    ],
     "rollup":[
         "azure_sdk"
     ]
