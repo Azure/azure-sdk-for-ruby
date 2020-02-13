@@ -45,9 +45,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @return [Operations] operations
     attr_reader :operations
 
-    # @return [CheckSkuAvailability] check_sku_availability
-    attr_reader :check_sku_availability
-
     #
     # Creates initializes a new instance of the CognitiveServicesManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -64,7 +61,6 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       @accounts = Accounts.new(self)
       @resource_skus = ResourceSkus.new(self)
       @operations = Operations.new(self)
-      @check_sku_availability = CheckSkuAvailability.new(self)
       @api_version = '2017-04-18'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -131,6 +127,121 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     end
 
     #
+    # Check available SKUs.
+    #
+    # @param location [String] Resource location.
+    # @param skus [Array<String>] The SKU of the resource.
+    # @param kind [String] The Kind of the resource.
+    # @param type [String] The Type of the resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CheckSkuAvailabilityResultList] operation results.
+    #
+    def check_sku_availability(location, skus, kind, type, custom_headers:nil)
+      response = check_sku_availability_async(location, skus, kind, type, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Check available SKUs.
+    #
+    # @param location [String] Resource location.
+    # @param skus [Array<String>] The SKU of the resource.
+    # @param kind [String] The Kind of the resource.
+    # @param type [String] The Type of the resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_sku_availability_with_http_info(location, skus, kind, type, custom_headers:nil)
+      check_sku_availability_async(location, skus, kind, type, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Check available SKUs.
+    #
+    # @param location [String] Resource location.
+    # @param skus [Array<String>] The SKU of the resource.
+    # @param kind [String] The Kind of the resource.
+    # @param type [String] The Type of the resource.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_sku_availability_async(location, skus, kind, type, custom_headers:nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'skus is nil' if skus.nil?
+      fail ArgumentError, 'kind is nil' if kind.nil?
+      fail ArgumentError, 'type is nil' if type.nil?
+
+      parameters = CheckSkuAvailabilityParameter.new
+      unless skus.nil? && kind.nil? && type.nil?
+        parameters.skus = skus
+        parameters.kind = kind
+        parameters.type = type
+      end
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter.mapper()
+      request_content = self.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id,'location' => location},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Check whether a domain is available.
     #
     # @param subdomain_name [String] The subdomain name to use.
@@ -170,6 +281,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def check_domain_availability_async(subdomain_name, type, custom_headers:nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'subdomain_name is nil' if subdomain_name.nil?
       fail ArgumentError, 'type is nil' if type.nil?
@@ -192,12 +304,13 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       request_content = self.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'providers/Microsoft.CognitiveServices/checkDomainAvailability'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/checkDomainAvailability'
 
       request_url = @base_url || self.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -241,7 +354,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cognitive_services'
-        sdk_information = "#{sdk_information}/0.18.3"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

@@ -6,7 +6,7 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Azure ML Web Service linked service.
+    # Azure ML Studio Web Service linked service.
     #
     class AzureMLLinkedService < LinkedService
 
@@ -19,7 +19,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
-      # @return The Batch Execution REST URL for an Azure ML Web Service
+      # @return The Batch Execution REST URL for an Azure ML Studio Web Service
       # endpoint. Type: string (or Expression with resultType string).
       attr_accessor :ml_endpoint
 
@@ -27,18 +27,18 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # endpoint.
       attr_accessor :api_key
 
-      # @return The Update Resource REST URL for an Azure ML Web Service
+      # @return The Update Resource REST URL for an Azure ML Studio Web Service
       # endpoint. Type: string (or Expression with resultType string).
       attr_accessor :update_resource_endpoint
 
       # @return The ID of the service principal used to authenticate against
-      # the ARM-based updateResourceEndpoint of an Azure ML web service. Type:
-      # string (or Expression with resultType string).
+      # the ARM-based updateResourceEndpoint of an Azure ML Studio web service.
+      # Type: string (or Expression with resultType string).
       attr_accessor :service_principal_id
 
       # @return [SecretBase] The key of the service principal used to
       # authenticate against the ARM-based updateResourceEndpoint of an Azure
-      # ML web service.
+      # ML Studio web service.
       attr_accessor :service_principal_key
 
       # @return The name or ID of the tenant to which the service principal

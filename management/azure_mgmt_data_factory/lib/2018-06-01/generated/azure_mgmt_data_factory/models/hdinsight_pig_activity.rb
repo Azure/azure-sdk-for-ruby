@@ -23,7 +23,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # references.
       attr_accessor :storage_linked_services
 
-      # @return User specified arguments to HDInsightActivity.
+      # @return User specified arguments to HDInsightActivity. Type: array (or
+      # Expression with resultType array).
       attr_accessor :arguments
 
       # @return [HDInsightActivityDebugInfoOption] Debug info option. Possible
@@ -167,15 +168,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'typeProperties.arguments',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'ObjectElementType',
-                      type: {
-                        name: 'Object'
-                      }
-                  }
+                  name: 'Object'
                 }
               },
               get_debug_info: {

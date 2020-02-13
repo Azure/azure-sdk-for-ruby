@@ -293,7 +293,7 @@
   },
   "azure_mgmt_cognitive_services": {
     "azure_mgmt_cognitive_services_2017_04_18": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/cognitiveservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/cognitiveservices/resource-manager/readme.md",
       "namespace": "Azure::CognitiveServices::Mgmt::V2017_04_18",
       "tag": "package-2017-04"
     },
@@ -792,7 +792,7 @@
       "tag": "package-2017-09-preview"
     },
     "azure_mgmt_data_factory_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/datafactory/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/datafactory/resource-manager/readme.md",
       "namespace": "Azure::DataFactory::Mgmt::V2018_06_01",
       "tag": "package-2018-06"
     }
@@ -940,7 +940,7 @@
   },
   "azure_mgmt_hanaonazure": {
     "azure_mgmt_hanaonazure_2017_11_03_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/hanaonazure/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/hanaonazure/resource-manager/readme.md",
       "namespace": "Azure::Hanaonazure::Mgmt::V2017_11_03_preview",
       "tag": "package-2017-11"
     }
@@ -1044,6 +1044,11 @@
     }
   },
   "azure_mgmt_kusto": {
+    "azure_mgmt_kusto_2019_11_09": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0b92e30512bdbd6974f0ee8f2876673b0b0fd0d9/specification/azure-kusto/resource-manager/readme.md",
+      "namespace": "Azure::Kusto::Mgmt::V2019_11_09",
+      "tag": "package-2019-11-09"
+    },
     "azure_mgmt_kusto_2019_09_07": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/80a458c51677166e259b90316678e16c1ec614a0/specification/azure-kusto/resource-manager/readme.md",
       "namespace": "Azure::Kusto::Mgmt::V2019_09_07",
@@ -2286,6 +2291,13 @@
       "namespace": "Azure::Reservations::Mgmt::V2019_04_01_preview",
       "tag": "package-preview-2019-04",
       "title": "ReservationsManagementClient"
+    },
+    "azure_mgmt_reservations_2019_07_19_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/reservations/resource-manager/Microsoft.Capacity/preview/2019-07-19/quota.json"
+      ],
+      "namespace": "Azure::Reservations::Mgmt::V2019_07_19_preview",
+      "title": "ReservationsManagementClient"
     }
   },
   "azure_mgmt_resource_health": {
@@ -2582,7 +2594,7 @@
   },
   "azure_mgmt_storage": {
     "azure_mgmt_storage_2019_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/92fe2688002a403cda267abe8f427c31a4cd73e4/specification/storage/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/storage/resource-manager/readme.md",
       "namespace": "Azure::Storage::Mgmt::V2019_06_01",
       "tag": "package-2019-06"
     },
@@ -3040,7 +3052,7 @@
   "azure_cognitiveservices_qnamakerruntime":{
     "azure_cognitiveservices_qnamakerruntime_v4.0":{
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ad67077b46e7eea880a03324b127d5d30b3adbe2/specification/cognitiveservices/data-plane/QnAMaker/stable/v4.0/QnAMakerRuntime.json"]
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/cognitiveservices/data-plane/QnAMaker/stable/v4.0/QnAMakerRuntime.json"]
       ,
       "namespace": "Azure::CognitiveServices::QnamakerRuntime::V4_0",
       "title": "QnamakerRuntimeClient",

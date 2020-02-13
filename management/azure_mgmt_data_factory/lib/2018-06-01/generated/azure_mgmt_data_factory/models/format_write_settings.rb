@@ -12,12 +12,20 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["JsonWriteSettings"] = "JsonWriteSettings"
+      @@discriminatorMap["DelimitedTextWriteSettings"] = "DelimitedTextWriteSettings"
+      @@discriminatorMap["AvroWriteSettings"] = "AvroWriteSettings"
+
+      def initialize
+        @type = "FormatWriteSettings"
+      end
+
+      attr_accessor :type
+
       # @return Unmatched properties from the message are deserialized this
       # collection
       attr_accessor :additional_properties
-
-      # @return [String] The write setting type.
-      attr_accessor :type
 
 
       #
@@ -31,6 +39,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
           serialized_name: 'FormatWriteSettings',
           type: {
             name: 'Composite',
+            polymorphic_discriminator: 'type',
+            uber_parent: 'FormatWriteSettings',
             class_name: 'FormatWriteSettings',
             model_properties: {
               additional_properties: {
@@ -46,14 +56,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         name: 'Object'
                       }
                   }
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
                 }
               }
             }

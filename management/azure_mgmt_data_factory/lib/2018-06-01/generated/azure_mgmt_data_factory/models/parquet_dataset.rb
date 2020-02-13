@@ -144,6 +144,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'typeProperties.location',
                 type: {
                   name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'DatasetLocation',
                   class_name: 'DatasetLocation'
                 }
               },

@@ -8,7 +8,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # A copy activity Google AdWords service source.
     #
-    class GoogleAdWordsSource < CopySource
+    class GoogleAdWordsSource < TabularSource
 
       include MsRestAzure
 
@@ -82,6 +82,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              query_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'queryTimeout',
+                type: {
+                  name: 'Object'
                 }
               },
               query: {

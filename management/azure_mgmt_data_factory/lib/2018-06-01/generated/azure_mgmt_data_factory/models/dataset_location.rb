@@ -12,12 +12,28 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["HdfsLocation"] = "HdfsLocation"
+      @@discriminatorMap["HttpServerLocation"] = "HttpServerLocation"
+      @@discriminatorMap["SftpLocation"] = "SftpLocation"
+      @@discriminatorMap["FtpServerLocation"] = "FtpServerLocation"
+      @@discriminatorMap["GoogleCloudStorageLocation"] = "GoogleCloudStorageLocation"
+      @@discriminatorMap["AzureFileStorageLocation"] = "AzureFileStorageLocation"
+      @@discriminatorMap["FileServerLocation"] = "FileServerLocation"
+      @@discriminatorMap["AmazonS3Location"] = "AmazonS3Location"
+      @@discriminatorMap["AzureDataLakeStoreLocation"] = "AzureDataLakeStoreLocation"
+      @@discriminatorMap["AzureBlobFSLocation"] = "AzureBlobFSLocation"
+      @@discriminatorMap["AzureBlobStorageLocation"] = "AzureBlobStorageLocation"
+
+      def initialize
+        @type = "DatasetLocation"
+      end
+
+      attr_accessor :type
+
       # @return Unmatched properties from the message are deserialized this
       # collection
       attr_accessor :additional_properties
-
-      # @return [String] Type of dataset storage location.
-      attr_accessor :type
 
       # @return Specify the folder path of dataset. Type: string (or Expression
       # with resultType string)
@@ -39,6 +55,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
           serialized_name: 'DatasetLocation',
           type: {
             name: 'Composite',
+            polymorphic_discriminator: 'type',
+            uber_parent: 'DatasetLocation',
             class_name: 'DatasetLocation',
             model_properties: {
               additional_properties: {
@@ -54,14 +72,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         name: 'Object'
                       }
                   }
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
                 }
               },
               folder_path: {

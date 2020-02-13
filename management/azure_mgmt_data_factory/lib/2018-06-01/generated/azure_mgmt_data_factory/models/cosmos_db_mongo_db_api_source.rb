@@ -30,10 +30,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       # @return Specifies the number of documents to return in each batch of
       # the response from MongoDB instance. In most cases, modifying the batch
-      # size will not affect the user or the application. This property�s main
+      # size will not affect the user or the application. This property's main
       # purpose is to avoid hit the limitation of response size. Type: integer
       # (or Expression with resultType integer).
       attr_accessor :batch_size
+
+      # @return Query timeout. Type: string (or Expression with resultType
+      # string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+      attr_accessor :query_timeout
 
 
       #
@@ -117,6 +121,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'batchSize',
+                type: {
+                  name: 'Object'
+                }
+              },
+              query_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'queryTimeout',
                 type: {
                   name: 'Object'
                 }

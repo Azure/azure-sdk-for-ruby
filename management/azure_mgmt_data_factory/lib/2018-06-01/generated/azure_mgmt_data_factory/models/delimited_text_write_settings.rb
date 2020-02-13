@@ -12,6 +12,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
+
+      def initialize
+        @type = "DelimitedTextWriteSettings"
+      end
+
+      attr_accessor :type
+
       # @return Indicates whether string values should always be enclosed with
       # quotes. Type: boolean (or Expression with resultType boolean).
       attr_accessor :quote_all_text

@@ -43,6 +43,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # triggered by the trigger run.
       attr_accessor :triggered_pipelines
 
+      # @return [Hash{String => String}] Run dimension for which trigger was
+      # fired.
+      attr_accessor :run_dimension
+
+      # @return Status of the upstream pipelines.
+      attr_accessor :dependency_status
+
 
       #
       # Mapper for TriggerRun class as Ruby Hash.
@@ -156,6 +163,40 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
+                      }
+                  }
+                }
+              },
+              run_dimension: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'runDimension',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              dependency_status: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'dependencyStatus',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
                       }
                   }
                 }

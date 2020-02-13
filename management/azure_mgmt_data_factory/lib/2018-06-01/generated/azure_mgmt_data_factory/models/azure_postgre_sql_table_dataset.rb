@@ -19,9 +19,18 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
-      # @return The table name. Type: string (or Expression with resultType
+      # @return The table name of the Azure PostgreSQL database which includes
+      # both schema and table. Type: string (or Expression with resultType
       # string).
       attr_accessor :table_name
+
+      # @return The table name of the Azure PostgreSQL database. Type: string
+      # (or Expression with resultType string).
+      attr_accessor :table
+
+      # @return The schema name of the Azure PostgreSQL database. Type: string
+      # (or Expression with resultType string).
+      attr_accessor :azure_postgre_sql_table_dataset_schema
 
 
       #
@@ -140,6 +149,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.tableName',
+                type: {
+                  name: 'Object'
+                }
+              },
+              table: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.table',
+                type: {
+                  name: 'Object'
+                }
+              },
+              azure_postgre_sql_table_dataset_schema: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.schema',
                 type: {
                   name: 'Object'
                 }

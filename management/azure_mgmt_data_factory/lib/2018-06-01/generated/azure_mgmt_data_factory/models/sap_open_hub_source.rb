@@ -9,7 +9,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     # A copy activity source for SAP Business Warehouse Open Hub Destination
     # source.
     #
-    class SapOpenHubSource < CopySource
+    class SapOpenHubSource < TabularSource
 
       include MsRestAzure
 
@@ -19,6 +19,16 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       end
 
       attr_accessor :type
+
+      # @return Whether to exclude the records of the last request. The default
+      # value is true. Type: boolean (or Expression with resultType boolean).
+      attr_accessor :exclude_last_request
+
+      # @return The ID of request for delta loading. Once it is set, only data
+      # with requestId larger than the value of this property will be
+      # retrieved. The default value is 0. Type: integer (or Expression with
+      # resultType integer ).
+      attr_accessor :base_request_id
 
 
       #
@@ -79,6 +89,30 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              query_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'queryTimeout',
+                type: {
+                  name: 'Object'
+                }
+              },
+              exclude_last_request: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'excludeLastRequest',
+                type: {
+                  name: 'Object'
+                }
+              },
+              base_request_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'baseRequestId',
+                type: {
+                  name: 'Object'
                 }
               }
             }

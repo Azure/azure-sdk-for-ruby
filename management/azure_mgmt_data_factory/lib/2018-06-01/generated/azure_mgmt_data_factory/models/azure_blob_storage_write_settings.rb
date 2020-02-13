@@ -13,6 +13,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
 
+      def initialize
+        @type = "AzureBlobStorageWriteSettings"
+      end
+
+      attr_accessor :type
+
+      # @return Indicates the block size(MB) when writing data to blob. Type:
+      # integer (or Expression with resultType integer).
+      attr_accessor :block_size_in_mb
+
+
       #
       # Mapper for AzureBlobStorageWriteSettings class as Ruby Hash.
       # This will be used for serialization/deserialization.
@@ -41,14 +52,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   }
                 }
               },
-              type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
               max_concurrent_connections: {
                 client_side_validation: true,
                 required: false,
@@ -61,6 +64,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'copyBehavior',
+                type: {
+                  name: 'Object'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              block_size_in_mb: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'blockSizeInMB',
                 type: {
                   name: 'Object'
                 }

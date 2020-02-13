@@ -8,7 +8,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     # A copy activity source for SAP Table source.
     #
-    class SapTableSource < CopySource
+    class SapTableSource < TabularSource
 
       include MsRestAzure
 
@@ -46,6 +46,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # read data from SAP Table. Type: string (or Expression with resultType
       # string).
       attr_accessor :custom_rfc_read_table_function_module
+
+      # @return [SapTablePartitionOption] The partition mechanism that will be
+      # used for SAP table read in parallel. Possible values include: 'None',
+      # 'PartitionOnInt', 'PartitionOnCalendarYear',
+      # 'PartitionOnCalendarMonth', 'PartitionOnCalendarDate',
+      # 'PartitionOnTime'
+      attr_accessor :partition_option
+
+      # @return [SapTablePartitionSettings] The settings that will be leveraged
+      # for SAP table source partitioning.
+      attr_accessor :partition_settings
 
 
       #
@@ -108,6 +119,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              query_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'queryTimeout',
+                type: {
+                  name: 'Object'
+                }
+              },
               row_count: {
                 client_side_validation: true,
                 required: false,
@@ -154,6 +173,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'customRfcReadTableFunctionModule',
                 type: {
                   name: 'Object'
+                }
+              },
+              partition_option: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionOption',
+                type: {
+                  name: 'String'
+                }
+              },
+              partition_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SapTablePartitionSettings'
                 }
               }
             }

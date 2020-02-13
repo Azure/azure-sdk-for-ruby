@@ -9,16 +9,15 @@ module Azure::CognitiveServices::Profiles::Latest
     Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
     ResourceSkus = Azure::CognitiveServices::Mgmt::V2017_04_18::ResourceSkus
     Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
-    CheckSkuAvailability = Azure::CognitiveServices::Mgmt::V2017_04_18::CheckSkuAvailability
 
     module Models
       UsagesResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UsagesResult
       ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
-      CognitiveServicesAccountCreateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters
-      Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
       IpRule = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IpRule
-      OperationDisplayInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
+      Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
       NetworkRuleSet = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleSet
+      OperationDisplayInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
+      CognitiveServicesAccountProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountProperties
       OperationEntity = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
       CognitiveServicesAccountListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
       OperationEntityListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
@@ -28,7 +27,7 @@ module Azure::CognitiveServices::Profiles::Latest
       CheckSkuAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
       Usage = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
       CheckSkuAvailabilityResultList = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
-      CognitiveServicesAccountUpdateParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
+      VirtualNetworkRule = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
       CheckDomainAvailabilityParameter = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityParameter
       CognitiveServicesAccount = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount
       CheckDomainAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityResult
@@ -38,12 +37,11 @@ module Azure::CognitiveServices::Profiles::Latest
       ResourceSkuRestrictions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
       CognitiveServicesAccountKeys = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
       ResourceSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
-      VirtualNetworkRule = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
+      CognitiveServicesAccountApiProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountApiProperties
       ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
       MetricName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
       SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
       ProvisioningState = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
-      NetworkRuleBypassOptions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleBypassOptions
       NetworkRuleAction = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleAction
       KeyName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
       UnitType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UnitType
@@ -56,7 +54,7 @@ module Azure::CognitiveServices::Profiles::Latest
     # CognitiveServicesManagementClass
     #
     class CognitiveServicesManagementClass
-      attr_reader :accounts, :resource_skus, :operations, :check_sku_availability, :configurable, :base_url, :options, :model_classes
+      attr_reader :accounts, :resource_skus, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -79,7 +77,6 @@ module Azure::CognitiveServices::Profiles::Latest
         @accounts = @client_0.accounts
         @resource_skus = @client_0.resource_skus
         @operations = @client_0.operations
-        @check_sku_availability = @client_0.check_sku_availability
 
         @model_classes = ModelClasses.new
       end
@@ -106,20 +103,20 @@ module Azure::CognitiveServices::Profiles::Latest
       def error_body
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
       end
-      def cognitive_services_account_create_parameters
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters
+      def ip_rule
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IpRule
       end
       def error
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
       end
-      def ip_rule
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IpRule
+      def network_rule_set
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleSet
       end
       def operation_display_info
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
       end
-      def network_rule_set
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleSet
+      def cognitive_services_account_properties
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountProperties
       end
       def operation_entity
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
@@ -148,8 +145,8 @@ module Azure::CognitiveServices::Profiles::Latest
       def check_sku_availability_result_list
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
       end
-      def cognitive_services_account_update_parameters
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters
+      def virtual_network_rule
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
       end
       def check_domain_availability_parameter
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityParameter
@@ -178,8 +175,8 @@ module Azure::CognitiveServices::Profiles::Latest
       def resource_sku
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
       end
-      def virtual_network_rule
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
+      def cognitive_services_account_api_properties
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountApiProperties
       end
       def resource_skus_result
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
@@ -192,9 +189,6 @@ module Azure::CognitiveServices::Profiles::Latest
       end
       def provisioning_state
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
-      end
-      def network_rule_bypass_options
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleBypassOptions
       end
       def network_rule_action
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleAction

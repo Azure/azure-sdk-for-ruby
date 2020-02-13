@@ -12,6 +12,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
+
+      def initialize
+        @type = "FtpReadSettings"
+      end
+
+      attr_accessor :type
+
       # @return If true, files under the folder path will be read recursively.
       # Default is true. Type: boolean (or Expression with resultType boolean).
       attr_accessor :recursive
@@ -57,20 +64,20 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   }
                 }
               },
-              type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
               max_concurrent_connections: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'maxConcurrentConnections',
                 type: {
                   name: 'Object'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
                 }
               },
               recursive: {
