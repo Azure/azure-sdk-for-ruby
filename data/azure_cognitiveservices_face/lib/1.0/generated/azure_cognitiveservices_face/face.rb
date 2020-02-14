@@ -607,7 +607,7 @@ module Azure::CognitiveServices::Face::V1_0
       fail ArgumentError, "'max_num_of_candidates_returned' should satisfy the constraint - 'InclusiveMaximum': '5'" if !max_num_of_candidates_returned.nil? && max_num_of_candidates_returned > 5
       fail ArgumentError, "'max_num_of_candidates_returned' should satisfy the constraint - 'InclusiveMinimum': '1'" if !max_num_of_candidates_returned.nil? && max_num_of_candidates_returned < 1
 
-      body = IdentifyRequest.new
+      body = Azure::CognitiveServices::Face::V1_0::Models::IdentifyRequest.new
       unless face_ids.nil? && person_group_id.nil? && large_person_group_id.nil? && max_num_of_candidates_returned.nil? && confidence_threshold.nil?
         body.face_ids = face_ids
         body.person_group_id = person_group_id
