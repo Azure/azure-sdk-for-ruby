@@ -556,6 +556,13 @@
     }
   },
   "azure_mgmt_container_service": {
+    "azure_mgmt_container_service_2020_02_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/28cb8bae84ee6508add21f463c88028ef8148bbe/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2020-02-01/managedClusters.json"
+      ],
+      "namespace": "Azure::ContainerService::Mgmt::V2020_02_01",
+      "title": "ContainerServiceClient"
+    },
     "azure_mgmt_container_service_2019_10_01": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3edf22120f19731ca9fa586ec9f6cff6a69c1857/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-10-01/managedClusters.json"

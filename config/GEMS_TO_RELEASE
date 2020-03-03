@@ -1,14 +1,6 @@
 {
     "management":[
-        "azure_mgmt_kusto",
-        "azure_mgmt_hanaonazure",
-        "azure_mgmt_cognitive_services",
-        "azure_mgmt_data_factory",
-        "azure_mgmt_storage",
-        "azure_mgmt_reservations"
-    ],
-    "data":[
-        "azure_cognitiveservices_qnamakerruntime"
+        "azure_mgmt_container_service"
     ],
     "rollup":[
         "azure_sdk"
