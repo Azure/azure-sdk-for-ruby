@@ -799,7 +799,7 @@
       "tag": "package-2017-09-preview"
     },
     "azure_mgmt_data_factory_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/datafactory/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/28cb8bae84ee6508add21f463c88028ef8148bbe/specification/datafactory/resource-manager/readme.md",
       "namespace": "Azure::DataFactory::Mgmt::V2018_06_01",
       "tag": "package-2018-06"
     }
