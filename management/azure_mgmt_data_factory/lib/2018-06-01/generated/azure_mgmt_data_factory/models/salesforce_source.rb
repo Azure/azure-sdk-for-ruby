@@ -97,6 +97,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'Object'
                 }
               },
+              additional_columns: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'additionalColumns',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'AdditionalColumnsElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AdditionalColumns'
+                      }
+                  }
+                }
+              },
               query: {
                 client_side_validation: true,
                 required: false,

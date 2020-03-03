@@ -19,6 +19,12 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
+      # @return Specifies the expiry time of the written files. The time is
+      # applied to the UTC time zone in the format of "2018-12-01T05:00:00Z".
+      # Default value is NULL. Type: integer (or Expression with resultType
+      # integer).
+      attr_accessor :expiry_date_time
+
 
       #
       # Mapper for AzureDataLakeStoreWriteSettings class as Ruby Hash.
@@ -70,6 +76,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              expiry_date_time: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'expiryDateTime',
+                type: {
+                  name: 'Object'
                 }
               }
             }

@@ -34,9 +34,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Salesforce instance.
       attr_accessor :password
 
-      # @return [SecretBase] The security token is required to remotely access
+      # @return [SecretBase] The security token is optional to remotely access
       # Salesforce instance.
       attr_accessor :security_token
+
+      # @return The Salesforce API version used in ADF. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :api_version
 
       # @return The encrypted credential used for authentication. Credentials
       # are encrypted using the integration runtime credential manager. Type:
@@ -166,6 +170,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   polymorphic_discriminator: 'type',
                   uber_parent: 'SecretBase',
                   class_name: 'SecretBase'
+                }
+              },
+              api_version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.apiVersion',
+                type: {
+                  name: 'Object'
                 }
               },
               encrypted_credential: {

@@ -19,36 +19,49 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
-      # @return Server name for connection. Type: string (or Expression with
-      # resultType string).
+      # @return The connection string. It is mutually exclusive with server,
+      # database, authenticationType, userName, packageCollection and
+      # certificateCommonName property. Type: string, SecureString or
+      # AzureKeyVaultSecretReference.
+      attr_accessor :connection_string
+
+      # @return Server name for connection. It is mutually exclusive with
+      # connectionString property. Type: string (or Expression with resultType
+      # string).
       attr_accessor :server
 
-      # @return Database name for connection. Type: string (or Expression with
-      # resultType string).
+      # @return Database name for connection. It is mutually exclusive with
+      # connectionString property. Type: string (or Expression with resultType
+      # string).
       attr_accessor :database
 
       # @return [Db2AuthenticationType] AuthenticationType to be used for
-      # connection. Possible values include: 'Basic'
+      # connection. It is mutually exclusive with connectionString property.
+      # Possible values include: 'Basic'
       attr_accessor :authentication_type
 
-      # @return Username for authentication. Type: string (or Expression with
-      # resultType string).
+      # @return Username for authentication. It is mutually exclusive with
+      # connectionString property. Type: string (or Expression with resultType
+      # string).
       attr_accessor :username
 
       # @return [SecretBase] Password for authentication.
       attr_accessor :password
 
-      # @return Under where packages are created when querying database. Type:
-      # string (or Expression with resultType string).
+      # @return Under where packages are created when querying database. It is
+      # mutually exclusive with connectionString property. Type: string (or
+      # Expression with resultType string).
       attr_accessor :package_collection
 
-      # @return Certificate Common Name when TLS is enabled. Type: string (or
-      # Expression with resultType string).
+      # @return Certificate Common Name when TLS is enabled. It is mutually
+      # exclusive with connectionString property. Type: string (or Expression
+      # with resultType string).
       attr_accessor :certificate_common_name
 
       # @return The encrypted credential used for authentication. Credentials
-      # are encrypted using the integration runtime credential manager. Type:
-      # string (or Expression with resultType string).
+      # are encrypted using the integration runtime credential manager. It is
+      # mutually exclusive with connectionString property. Type: string (or
+      # Expression with resultType string).
       attr_accessor :encrypted_credential
 
 
@@ -138,9 +151,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              connection_string: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.connectionString',
+                type: {
+                  name: 'Object'
+                }
+              },
               server: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.server',
                 type: {
                   name: 'Object'
@@ -148,7 +169,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               database: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.database',
                 type: {
                   name: 'Object'
