@@ -4,7 +4,7 @@
 This project provides a Ruby package for Azure Resource Management (ARM).
 If you're looking for Azure Service Management (ASM) please refer to this [repo](https://github.com/Azure/azure-sdk-for-ruby/tree/asm)
 
-Additional info on Azure deployment models [https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model`)
+Additional info on Azure deployment models [https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)
 
 ## Azure Resource Management (preview)
 * [Authorization](https://rubygems.org/gems/azure_mgmt_authorization) Azure Resource Manager role based authorization
