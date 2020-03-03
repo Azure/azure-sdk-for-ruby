@@ -35,6 +35,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType string).
       attr_accessor :prefix
 
+      # @return Point to a text file that lists each file (relative path to the
+      # path configured in the dataset) that you want to copy. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :file_list_path
+
       # @return [Boolean] Indicates whether to enable partition discovery.
       attr_accessor :enable_partition_discovery
 
@@ -119,6 +124,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'prefix',
+                type: {
+                  name: 'Object'
+                }
+              },
+              file_list_path: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'fileListPath',
                 type: {
                   name: 'Object'
                 }

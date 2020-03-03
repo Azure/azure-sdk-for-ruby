@@ -33,6 +33,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # "1", type: "int"}}".
       attr_accessor :stored_procedure_parameters
 
+      # @return Specifies the transaction locking behavior for the SQL source.
+      # Allowed values:
+      # ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The
+      # default value is ReadCommitted. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :isolation_level
+
 
       #
       # Mapper for SqlSource class as Ruby Hash.
@@ -102,6 +109,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'Object'
                 }
               },
+              additional_columns: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'additionalColumns',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'AdditionalColumnsElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AdditionalColumns'
+                      }
+                  }
+                }
+              },
               sql_reader_query: {
                 client_side_validation: true,
                 required: false,
@@ -133,6 +157,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         class_name: 'StoredProcedureParameter'
                       }
                   }
+                }
+              },
+              isolation_level: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'isolationLevel',
+                type: {
+                  name: 'Object'
                 }
               }
             }

@@ -23,6 +23,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Default is true. Type: boolean (or Expression with resultType boolean).
       attr_accessor :recursive
 
+      # @return [Array<AdditionalColumns>] Specifies the additional columns to
+      # be added to source data. Type: array of objects (or Expression with
+      # resultType array of objects).
+      attr_accessor :additional_columns
+
 
       #
       # Mapper for FileSystemSource class as Ruby Hash.
@@ -90,6 +95,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'recursive',
                 type: {
                   name: 'Object'
+                }
+              },
+              additional_columns: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'additionalColumns',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'AdditionalColumnsElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AdditionalColumns'
+                      }
+                  }
                 }
               }
             }

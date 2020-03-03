@@ -556,6 +556,13 @@
     }
   },
   "azure_mgmt_container_service": {
+    "azure_mgmt_container_service_2020_02_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/28cb8bae84ee6508add21f463c88028ef8148bbe/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2020-02-01/managedClusters.json"
+      ],
+      "namespace": "Azure::ContainerService::Mgmt::V2020_02_01",
+      "title": "ContainerServiceClient"
+    },
     "azure_mgmt_container_service_2019_10_01": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3edf22120f19731ca9fa586ec9f6cff6a69c1857/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-10-01/managedClusters.json"
@@ -792,7 +799,7 @@
       "tag": "package-2017-09-preview"
     },
     "azure_mgmt_data_factory_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/datafactory/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/28cb8bae84ee6508add21f463c88028ef8148bbe/specification/datafactory/resource-manager/readme.md",
       "namespace": "Azure::DataFactory::Mgmt::V2018_06_01",
       "tag": "package-2018-06"
     }
@@ -2594,7 +2601,7 @@
   },
   "azure_mgmt_storage": {
     "azure_mgmt_storage_2019_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/storage/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/28cb8bae84ee6508add21f463c88028ef8148bbe/specification/storage/resource-manager/readme.md",
       "namespace": "Azure::Storage::Mgmt::V2019_06_01",
       "tag": "package-2019-06"
     },

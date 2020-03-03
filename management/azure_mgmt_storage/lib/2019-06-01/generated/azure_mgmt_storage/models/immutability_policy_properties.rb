@@ -21,6 +21,14 @@ module Azure::Storage::Mgmt::V2019_06_01
       # values include: 'Locked', 'Unlocked'
       attr_accessor :state
 
+      # @return [Boolean] This property can only be changed for unlocked
+      # time-based retention policies. When enabled, new blocks can be written
+      # to an append blob while maintaining immutability protection and
+      # compliance. Only new blocks can be added and any existing blocks cannot
+      # be modified or deleted. This property cannot be changed with
+      # ExtendImmutabilityPolicy API
+      attr_accessor :allow_protected_append_writes
+
       # @return [String] ImmutabilityPolicy Etag.
       attr_accessor :etag
 
@@ -44,7 +52,7 @@ module Azure::Storage::Mgmt::V2019_06_01
             model_properties: {
               immutability_period_since_creation_in_days: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'properties.immutabilityPeriodSinceCreationInDays',
                 type: {
                   name: 'Number'
@@ -57,6 +65,14 @@ module Azure::Storage::Mgmt::V2019_06_01
                 serialized_name: 'properties.state',
                 type: {
                   name: 'String'
+                }
+              },
+              allow_protected_append_writes: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.allowProtectedAppendWrites',
+                type: {
+                  name: 'Boolean'
                 }
               },
               etag: {

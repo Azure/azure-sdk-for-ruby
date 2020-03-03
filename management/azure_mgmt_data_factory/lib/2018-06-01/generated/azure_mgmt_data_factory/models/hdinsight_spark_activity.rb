@@ -19,7 +19,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
-      # @return The root path in 'sparkJobLinkedService' for all the job��s
+      # @return The root path in 'sparkJobLinkedService' for all the job’s
       # files. Type: string (or Expression with resultType string).
       attr_accessor :root_path
 
