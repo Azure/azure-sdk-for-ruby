@@ -13,91 +13,95 @@ module Azure::Storage::Profiles::Latest
     ManagementPolicies = Azure::Storage::Mgmt::V2019_06_01::ManagementPolicies
     PrivateEndpointConnections = Azure::Storage::Mgmt::V2019_06_01::PrivateEndpointConnections
     PrivateLinkResources = Azure::Storage::Mgmt::V2019_06_01::PrivateLinkResources
+    EncryptionScopes = Azure::Storage::Mgmt::V2019_06_01::EncryptionScopes
     BlobServices = Azure::Storage::Mgmt::V2019_06_01::BlobServices
     BlobContainers = Azure::Storage::Mgmt::V2019_06_01::BlobContainers
     FileServices = Azure::Storage::Mgmt::V2019_06_01::FileServices
     FileShares = Azure::Storage::Mgmt::V2019_06_01::FileShares
 
     module Models
-      AccountSasParameters = Azure::Storage::Mgmt::V2019_06_01::Models::AccountSasParameters
-      OperationDisplay = Azure::Storage::Mgmt::V2019_06_01::Models::OperationDisplay
       ListAccountSasResponse = Azure::Storage::Mgmt::V2019_06_01::Models::ListAccountSasResponse
-      MetricSpecification = Azure::Storage::Mgmt::V2019_06_01::Models::MetricSpecification
       ServiceSasParameters = Azure::Storage::Mgmt::V2019_06_01::Models::ServiceSasParameters
-      Operation = Azure::Storage::Mgmt::V2019_06_01::Models::Operation
+      Dimension = Azure::Storage::Mgmt::V2019_06_01::Models::Dimension
       ListServiceSasResponse = Azure::Storage::Mgmt::V2019_06_01::Models::ListServiceSasResponse
-      StorageAccountCheckNameAvailabilityParameters = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountCheckNameAvailabilityParameters
+      ServiceSpecification = Azure::Storage::Mgmt::V2019_06_01::Models::ServiceSpecification
       DateAfterModification = Azure::Storage::Mgmt::V2019_06_01::Models::DateAfterModification
-      Restriction = Azure::Storage::Mgmt::V2019_06_01::Models::Restriction
+      OperationListResult = Azure::Storage::Mgmt::V2019_06_01::Models::OperationListResult
       ManagementPolicyBaseBlob = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyBaseBlob
-      StorageSkuListResult = Azure::Storage::Mgmt::V2019_06_01::Models::StorageSkuListResult
+      SKUCapability = Azure::Storage::Mgmt::V2019_06_01::Models::SKUCapability
       DateAfterCreation = Azure::Storage::Mgmt::V2019_06_01::Models::DateAfterCreation
-      CustomDomain = Azure::Storage::Mgmt::V2019_06_01::Models::CustomDomain
+      SkuInformation = Azure::Storage::Mgmt::V2019_06_01::Models::SkuInformation
       ManagementPolicySnapShot = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicySnapShot
-      EncryptionServices = Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionServices
+      CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2019_06_01::Models::CheckNameAvailabilityResult
       ManagementPolicyAction = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyAction
-      Encryption = Azure::Storage::Mgmt::V2019_06_01::Models::Encryption
+      EncryptionService = Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionService
       ManagementPolicyFilter = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyFilter
-      IPRule = Azure::Storage::Mgmt::V2019_06_01::Models::IPRule
-      ManagementPolicyDefinition = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyDefinition
-      ActiveDirectoryProperties = Azure::Storage::Mgmt::V2019_06_01::Models::ActiveDirectoryProperties
-      ManagementPolicyRule = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyRule
-      RoutingPreference = Azure::Storage::Mgmt::V2019_06_01::Models::RoutingPreference
-      ManagementPolicySchema = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicySchema
-      Sku = Azure::Storage::Mgmt::V2019_06_01::Models::Sku
       KeyVaultProperties = Azure::Storage::Mgmt::V2019_06_01::Models::KeyVaultProperties
-      StorageAccountMicrosoftEndpoints = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountMicrosoftEndpoints
+      ManagementPolicyDefinition = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyDefinition
       VirtualNetworkRule = Azure::Storage::Mgmt::V2019_06_01::Models::VirtualNetworkRule
-      Endpoints = Azure::Storage::Mgmt::V2019_06_01::Models::Endpoints
+      ManagementPolicyRule = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyRule
       NetworkRuleSet = Azure::Storage::Mgmt::V2019_06_01::Models::NetworkRuleSet
-      BlobRestoreRange = Azure::Storage::Mgmt::V2019_06_01::Models::BlobRestoreRange
+      ManagementPolicySchema = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicySchema
       AzureFilesIdentityBasedAuthentication = Azure::Storage::Mgmt::V2019_06_01::Models::AzureFilesIdentityBasedAuthentication
+      StorageSkuListResult = Azure::Storage::Mgmt::V2019_06_01::Models::StorageSkuListResult
+      CustomDomain = Azure::Storage::Mgmt::V2019_06_01::Models::CustomDomain
+      Sku = Azure::Storage::Mgmt::V2019_06_01::Models::Sku
+      EncryptionServices = Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionServices
+      StorageAccountMicrosoftEndpoints = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountMicrosoftEndpoints
+      Encryption = Azure::Storage::Mgmt::V2019_06_01::Models::Encryption
+      Endpoints = Azure::Storage::Mgmt::V2019_06_01::Models::Endpoints
+      IPRule = Azure::Storage::Mgmt::V2019_06_01::Models::IPRule
+      BlobRestoreRange = Azure::Storage::Mgmt::V2019_06_01::Models::BlobRestoreRange
+      ActiveDirectoryProperties = Azure::Storage::Mgmt::V2019_06_01::Models::ActiveDirectoryProperties
       BlobRestoreStatus = Azure::Storage::Mgmt::V2019_06_01::Models::BlobRestoreStatus
-      Identity = Azure::Storage::Mgmt::V2019_06_01::Models::Identity
+      RoutingPreference = Azure::Storage::Mgmt::V2019_06_01::Models::RoutingPreference
       PrivateLinkServiceConnectionState = Azure::Storage::Mgmt::V2019_06_01::Models::PrivateLinkServiceConnectionState
-      StorageAccountCreateParameters = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountCreateParameters
-      ChangeFeed = Azure::Storage::Mgmt::V2019_06_01::Models::ChangeFeed
+      DeleteRetentionPolicy = Azure::Storage::Mgmt::V2019_06_01::Models::DeleteRetentionPolicy
       StorageAccountKey = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountKey
       StorageAccountListKeysResult = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountListKeysResult
-      StorageAccountUpdateParameters = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountUpdateParameters
       PrivateLinkResourceListResult = Azure::Storage::Mgmt::V2019_06_01::Models::PrivateLinkResourceListResult
+      StorageAccountUpdateParameters = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountUpdateParameters
+      EncryptionScopeKeyVaultProperties = Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScopeKeyVaultProperties
       Usage = Azure::Storage::Mgmt::V2019_06_01::Models::Usage
-      ErrorResponse = Azure::Storage::Mgmt::V2019_06_01::Models::ErrorResponse
-      Dimension = Azure::Storage::Mgmt::V2019_06_01::Models::Dimension
       FileShareItems = Azure::Storage::Mgmt::V2019_06_01::Models::FileShareItems
-      OperationListResult = Azure::Storage::Mgmt::V2019_06_01::Models::OperationListResult
+      AccountSasParameters = Azure::Storage::Mgmt::V2019_06_01::Models::AccountSasParameters
+      EncryptionScopeListResult = Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScopeListResult
+      MetricSpecification = Azure::Storage::Mgmt::V2019_06_01::Models::MetricSpecification
+      ErrorResponse = Azure::Storage::Mgmt::V2019_06_01::Models::ErrorResponse
+      StorageAccountCheckNameAvailabilityParameters = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountCheckNameAvailabilityParameters
       FileServiceItems = Azure::Storage::Mgmt::V2019_06_01::Models::FileServiceItems
-      SkuInformation = Azure::Storage::Mgmt::V2019_06_01::Models::SkuInformation
+      Identity = Azure::Storage::Mgmt::V2019_06_01::Models::Identity
       LeaseContainerResponse = Azure::Storage::Mgmt::V2019_06_01::Models::LeaseContainerResponse
-      EncryptionService = Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionService
-      Resource = Azure::Storage::Mgmt::V2019_06_01::Models::Resource
-      GeoReplicationStats = Azure::Storage::Mgmt::V2019_06_01::Models::GeoReplicationStats
-      UpdateHistoryProperty = Azure::Storage::Mgmt::V2019_06_01::Models::UpdateHistoryProperty
-      PrivateEndpoint = Azure::Storage::Mgmt::V2019_06_01::Models::PrivateEndpoint
-      ImmutabilityPolicyProperties = Azure::Storage::Mgmt::V2019_06_01::Models::ImmutabilityPolicyProperties
-      StorageAccountListResult = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountListResult
-      TagProperty = Azure::Storage::Mgmt::V2019_06_01::Models::TagProperty
-      UsageName = Azure::Storage::Mgmt::V2019_06_01::Models::UsageName
-      LegalHoldProperties = Azure::Storage::Mgmt::V2019_06_01::Models::LegalHoldProperties
-      ServiceSpecification = Azure::Storage::Mgmt::V2019_06_01::Models::ServiceSpecification
+      StorageAccountInternetEndpoints = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountInternetEndpoints
       LeaseContainerRequest = Azure::Storage::Mgmt::V2019_06_01::Models::LeaseContainerRequest
-      CheckNameAvailabilityResult = Azure::Storage::Mgmt::V2019_06_01::Models::CheckNameAvailabilityResult
-      BlobServiceItems = Azure::Storage::Mgmt::V2019_06_01::Models::BlobServiceItems
       BlobRestoreParameters = Azure::Storage::Mgmt::V2019_06_01::Models::BlobRestoreParameters
-      LegalHold = Azure::Storage::Mgmt::V2019_06_01::Models::LegalHold
+      Resource = Azure::Storage::Mgmt::V2019_06_01::Models::Resource
+      CorsRules = Azure::Storage::Mgmt::V2019_06_01::Models::CorsRules
+      StorageAccountListResult = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountListResult
+      UpdateHistoryProperty = Azure::Storage::Mgmt::V2019_06_01::Models::UpdateHistoryProperty
+      UsageName = Azure::Storage::Mgmt::V2019_06_01::Models::UsageName
+      ImmutabilityPolicyProperties = Azure::Storage::Mgmt::V2019_06_01::Models::ImmutabilityPolicyProperties
+      OperationDisplay = Azure::Storage::Mgmt::V2019_06_01::Models::OperationDisplay
+      TagProperty = Azure::Storage::Mgmt::V2019_06_01::Models::TagProperty
+      Restriction = Azure::Storage::Mgmt::V2019_06_01::Models::Restriction
+      LegalHoldProperties = Azure::Storage::Mgmt::V2019_06_01::Models::LegalHoldProperties
+      GeoReplicationStats = Azure::Storage::Mgmt::V2019_06_01::Models::GeoReplicationStats
+      BlobServiceItems = Azure::Storage::Mgmt::V2019_06_01::Models::BlobServiceItems
       StorageAccountRegenerateKeyParameters = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountRegenerateKeyParameters
       RestorePolicyProperties = Azure::Storage::Mgmt::V2019_06_01::Models::RestorePolicyProperties
-      SKUCapability = Azure::Storage::Mgmt::V2019_06_01::Models::SKUCapability
+      Operation = Azure::Storage::Mgmt::V2019_06_01::Models::Operation
+      LegalHold = Azure::Storage::Mgmt::V2019_06_01::Models::LegalHold
+      PrivateEndpoint = Azure::Storage::Mgmt::V2019_06_01::Models::PrivateEndpoint
+      ChangeFeed = Azure::Storage::Mgmt::V2019_06_01::Models::ChangeFeed
+      StorageAccountCreateParameters = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountCreateParameters
       ListContainerItems = Azure::Storage::Mgmt::V2019_06_01::Models::ListContainerItems
-      DeleteRetentionPolicy = Azure::Storage::Mgmt::V2019_06_01::Models::DeleteRetentionPolicy
       UsageListResult = Azure::Storage::Mgmt::V2019_06_01::Models::UsageListResult
       CorsRule = Azure::Storage::Mgmt::V2019_06_01::Models::CorsRule
-      StorageAccountInternetEndpoints = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountInternetEndpoints
-      CorsRules = Azure::Storage::Mgmt::V2019_06_01::Models::CorsRules
       PrivateEndpointConnection = Azure::Storage::Mgmt::V2019_06_01::Models::PrivateEndpointConnection
       StorageAccount = Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccount
       ManagementPolicy = Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicy
       PrivateLinkResource = Azure::Storage::Mgmt::V2019_06_01::Models::PrivateLinkResource
+      EncryptionScope = Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScope
       ProxyResource = Azure::Storage::Mgmt::V2019_06_01::Models::ProxyResource
       TrackedResource = Azure::Storage::Mgmt::V2019_06_01::Models::TrackedResource
       AzureEntityResource = Azure::Storage::Mgmt::V2019_06_01::Models::AzureEntityResource
@@ -136,6 +140,8 @@ module Azure::Storage::Profiles::Latest
       Permissions = Azure::Storage::Mgmt::V2019_06_01::Models::Permissions
       HttpProtocol = Azure::Storage::Mgmt::V2019_06_01::Models::HttpProtocol
       SignedResource = Azure::Storage::Mgmt::V2019_06_01::Models::SignedResource
+      EncryptionScopeSource = Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScopeSource
+      EncryptionScopeState = Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScopeState
       PublicAccess = Azure::Storage::Mgmt::V2019_06_01::Models::PublicAccess
       LeaseStatus = Azure::Storage::Mgmt::V2019_06_01::Models::LeaseStatus
       LeaseState = Azure::Storage::Mgmt::V2019_06_01::Models::LeaseState
@@ -150,7 +156,7 @@ module Azure::Storage::Profiles::Latest
     # StorageManagementClass
     #
     class StorageManagementClass
-      attr_reader :operations, :skus, :storage_accounts, :usages, :management_policies, :private_endpoint_connections, :private_link_resources, :blob_services, :blob_containers, :file_services, :file_shares, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :skus, :storage_accounts, :usages, :management_policies, :private_endpoint_connections, :private_link_resources, :encryption_scopes, :blob_services, :blob_containers, :file_services, :file_shares, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -177,6 +183,7 @@ module Azure::Storage::Profiles::Latest
         @management_policies = @client_0.management_policies
         @private_endpoint_connections = @client_0.private_endpoint_connections
         @private_link_resources = @client_0.private_link_resources
+        @encryption_scopes = @client_0.encryption_scopes
         @blob_services = @client_0.blob_services
         @blob_containers = @client_0.blob_containers
         @file_services = @client_0.file_services
@@ -201,119 +208,116 @@ module Azure::Storage::Profiles::Latest
     end
 
     class ModelClasses
-      def account_sas_parameters
-        Azure::Storage::Mgmt::V2019_06_01::Models::AccountSasParameters
-      end
-      def operation_display
-        Azure::Storage::Mgmt::V2019_06_01::Models::OperationDisplay
-      end
       def list_account_sas_response
         Azure::Storage::Mgmt::V2019_06_01::Models::ListAccountSasResponse
-      end
-      def metric_specification
-        Azure::Storage::Mgmt::V2019_06_01::Models::MetricSpecification
       end
       def service_sas_parameters
         Azure::Storage::Mgmt::V2019_06_01::Models::ServiceSasParameters
       end
-      def operation
-        Azure::Storage::Mgmt::V2019_06_01::Models::Operation
+      def dimension
+        Azure::Storage::Mgmt::V2019_06_01::Models::Dimension
       end
       def list_service_sas_response
         Azure::Storage::Mgmt::V2019_06_01::Models::ListServiceSasResponse
       end
-      def storage_account_check_name_availability_parameters
-        Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountCheckNameAvailabilityParameters
+      def service_specification
+        Azure::Storage::Mgmt::V2019_06_01::Models::ServiceSpecification
       end
       def date_after_modification
         Azure::Storage::Mgmt::V2019_06_01::Models::DateAfterModification
       end
-      def restriction
-        Azure::Storage::Mgmt::V2019_06_01::Models::Restriction
+      def operation_list_result
+        Azure::Storage::Mgmt::V2019_06_01::Models::OperationListResult
       end
       def management_policy_base_blob
         Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyBaseBlob
       end
-      def storage_sku_list_result
-        Azure::Storage::Mgmt::V2019_06_01::Models::StorageSkuListResult
+      def skucapability
+        Azure::Storage::Mgmt::V2019_06_01::Models::SKUCapability
       end
       def date_after_creation
         Azure::Storage::Mgmt::V2019_06_01::Models::DateAfterCreation
       end
-      def custom_domain
-        Azure::Storage::Mgmt::V2019_06_01::Models::CustomDomain
+      def sku_information
+        Azure::Storage::Mgmt::V2019_06_01::Models::SkuInformation
       end
       def management_policy_snap_shot
         Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicySnapShot
       end
-      def encryption_services
-        Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionServices
+      def check_name_availability_result
+        Azure::Storage::Mgmt::V2019_06_01::Models::CheckNameAvailabilityResult
       end
       def management_policy_action
         Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyAction
       end
-      def encryption
-        Azure::Storage::Mgmt::V2019_06_01::Models::Encryption
+      def encryption_service
+        Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionService
       end
       def management_policy_filter
         Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyFilter
       end
-      def iprule
-        Azure::Storage::Mgmt::V2019_06_01::Models::IPRule
+      def key_vault_properties
+        Azure::Storage::Mgmt::V2019_06_01::Models::KeyVaultProperties
       end
       def management_policy_definition
         Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyDefinition
       end
-      def active_directory_properties
-        Azure::Storage::Mgmt::V2019_06_01::Models::ActiveDirectoryProperties
+      def virtual_network_rule
+        Azure::Storage::Mgmt::V2019_06_01::Models::VirtualNetworkRule
       end
       def management_policy_rule
         Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicyRule
       end
-      def routing_preference
-        Azure::Storage::Mgmt::V2019_06_01::Models::RoutingPreference
+      def network_rule_set
+        Azure::Storage::Mgmt::V2019_06_01::Models::NetworkRuleSet
       end
       def management_policy_schema
         Azure::Storage::Mgmt::V2019_06_01::Models::ManagementPolicySchema
       end
+      def azure_files_identity_based_authentication
+        Azure::Storage::Mgmt::V2019_06_01::Models::AzureFilesIdentityBasedAuthentication
+      end
+      def storage_sku_list_result
+        Azure::Storage::Mgmt::V2019_06_01::Models::StorageSkuListResult
+      end
+      def custom_domain
+        Azure::Storage::Mgmt::V2019_06_01::Models::CustomDomain
+      end
       def sku
         Azure::Storage::Mgmt::V2019_06_01::Models::Sku
       end
-      def key_vault_properties
-        Azure::Storage::Mgmt::V2019_06_01::Models::KeyVaultProperties
+      def encryption_services
+        Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionServices
       end
       def storage_account_microsoft_endpoints
         Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountMicrosoftEndpoints
       end
-      def virtual_network_rule
-        Azure::Storage::Mgmt::V2019_06_01::Models::VirtualNetworkRule
+      def encryption
+        Azure::Storage::Mgmt::V2019_06_01::Models::Encryption
       end
       def endpoints
         Azure::Storage::Mgmt::V2019_06_01::Models::Endpoints
       end
-      def network_rule_set
-        Azure::Storage::Mgmt::V2019_06_01::Models::NetworkRuleSet
+      def iprule
+        Azure::Storage::Mgmt::V2019_06_01::Models::IPRule
       end
       def blob_restore_range
         Azure::Storage::Mgmt::V2019_06_01::Models::BlobRestoreRange
       end
-      def azure_files_identity_based_authentication
-        Azure::Storage::Mgmt::V2019_06_01::Models::AzureFilesIdentityBasedAuthentication
+      def active_directory_properties
+        Azure::Storage::Mgmt::V2019_06_01::Models::ActiveDirectoryProperties
       end
       def blob_restore_status
         Azure::Storage::Mgmt::V2019_06_01::Models::BlobRestoreStatus
       end
-      def identity
-        Azure::Storage::Mgmt::V2019_06_01::Models::Identity
+      def routing_preference
+        Azure::Storage::Mgmt::V2019_06_01::Models::RoutingPreference
       end
       def private_link_service_connection_state
         Azure::Storage::Mgmt::V2019_06_01::Models::PrivateLinkServiceConnectionState
       end
-      def storage_account_create_parameters
-        Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountCreateParameters
-      end
-      def change_feed
-        Azure::Storage::Mgmt::V2019_06_01::Models::ChangeFeed
+      def delete_retention_policy
+        Azure::Storage::Mgmt::V2019_06_01::Models::DeleteRetentionPolicy
       end
       def storage_account_key
         Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountKey
@@ -321,83 +325,89 @@ module Azure::Storage::Profiles::Latest
       def storage_account_list_keys_result
         Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountListKeysResult
       end
+      def private_link_resource_list_result
+        Azure::Storage::Mgmt::V2019_06_01::Models::PrivateLinkResourceListResult
+      end
       def storage_account_update_parameters
         Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountUpdateParameters
       end
-      def private_link_resource_list_result
-        Azure::Storage::Mgmt::V2019_06_01::Models::PrivateLinkResourceListResult
+      def encryption_scope_key_vault_properties
+        Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScopeKeyVaultProperties
       end
       def usage
         Azure::Storage::Mgmt::V2019_06_01::Models::Usage
       end
-      def error_response
-        Azure::Storage::Mgmt::V2019_06_01::Models::ErrorResponse
-      end
-      def dimension
-        Azure::Storage::Mgmt::V2019_06_01::Models::Dimension
-      end
       def file_share_items
         Azure::Storage::Mgmt::V2019_06_01::Models::FileShareItems
       end
-      def operation_list_result
-        Azure::Storage::Mgmt::V2019_06_01::Models::OperationListResult
+      def account_sas_parameters
+        Azure::Storage::Mgmt::V2019_06_01::Models::AccountSasParameters
+      end
+      def encryption_scope_list_result
+        Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScopeListResult
+      end
+      def metric_specification
+        Azure::Storage::Mgmt::V2019_06_01::Models::MetricSpecification
+      end
+      def error_response
+        Azure::Storage::Mgmt::V2019_06_01::Models::ErrorResponse
+      end
+      def storage_account_check_name_availability_parameters
+        Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountCheckNameAvailabilityParameters
       end
       def file_service_items
         Azure::Storage::Mgmt::V2019_06_01::Models::FileServiceItems
       end
-      def sku_information
-        Azure::Storage::Mgmt::V2019_06_01::Models::SkuInformation
+      def identity
+        Azure::Storage::Mgmt::V2019_06_01::Models::Identity
       end
       def lease_container_response
         Azure::Storage::Mgmt::V2019_06_01::Models::LeaseContainerResponse
       end
-      def encryption_service
-        Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionService
-      end
-      def resource
-        Azure::Storage::Mgmt::V2019_06_01::Models::Resource
-      end
-      def geo_replication_stats
-        Azure::Storage::Mgmt::V2019_06_01::Models::GeoReplicationStats
-      end
-      def update_history_property
-        Azure::Storage::Mgmt::V2019_06_01::Models::UpdateHistoryProperty
-      end
-      def private_endpoint
-        Azure::Storage::Mgmt::V2019_06_01::Models::PrivateEndpoint
-      end
-      def immutability_policy_properties
-        Azure::Storage::Mgmt::V2019_06_01::Models::ImmutabilityPolicyProperties
-      end
-      def storage_account_list_result
-        Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountListResult
-      end
-      def tag_property
-        Azure::Storage::Mgmt::V2019_06_01::Models::TagProperty
-      end
-      def usage_name
-        Azure::Storage::Mgmt::V2019_06_01::Models::UsageName
-      end
-      def legal_hold_properties
-        Azure::Storage::Mgmt::V2019_06_01::Models::LegalHoldProperties
-      end
-      def service_specification
-        Azure::Storage::Mgmt::V2019_06_01::Models::ServiceSpecification
+      def storage_account_internet_endpoints
+        Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountInternetEndpoints
       end
       def lease_container_request
         Azure::Storage::Mgmt::V2019_06_01::Models::LeaseContainerRequest
       end
-      def check_name_availability_result
-        Azure::Storage::Mgmt::V2019_06_01::Models::CheckNameAvailabilityResult
-      end
-      def blob_service_items
-        Azure::Storage::Mgmt::V2019_06_01::Models::BlobServiceItems
-      end
       def blob_restore_parameters
         Azure::Storage::Mgmt::V2019_06_01::Models::BlobRestoreParameters
       end
-      def legal_hold
-        Azure::Storage::Mgmt::V2019_06_01::Models::LegalHold
+      def resource
+        Azure::Storage::Mgmt::V2019_06_01::Models::Resource
+      end
+      def cors_rules
+        Azure::Storage::Mgmt::V2019_06_01::Models::CorsRules
+      end
+      def storage_account_list_result
+        Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountListResult
+      end
+      def update_history_property
+        Azure::Storage::Mgmt::V2019_06_01::Models::UpdateHistoryProperty
+      end
+      def usage_name
+        Azure::Storage::Mgmt::V2019_06_01::Models::UsageName
+      end
+      def immutability_policy_properties
+        Azure::Storage::Mgmt::V2019_06_01::Models::ImmutabilityPolicyProperties
+      end
+      def operation_display
+        Azure::Storage::Mgmt::V2019_06_01::Models::OperationDisplay
+      end
+      def tag_property
+        Azure::Storage::Mgmt::V2019_06_01::Models::TagProperty
+      end
+      def restriction
+        Azure::Storage::Mgmt::V2019_06_01::Models::Restriction
+      end
+      def legal_hold_properties
+        Azure::Storage::Mgmt::V2019_06_01::Models::LegalHoldProperties
+      end
+      def geo_replication_stats
+        Azure::Storage::Mgmt::V2019_06_01::Models::GeoReplicationStats
+      end
+      def blob_service_items
+        Azure::Storage::Mgmt::V2019_06_01::Models::BlobServiceItems
       end
       def storage_account_regenerate_key_parameters
         Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountRegenerateKeyParameters
@@ -405,26 +415,29 @@ module Azure::Storage::Profiles::Latest
       def restore_policy_properties
         Azure::Storage::Mgmt::V2019_06_01::Models::RestorePolicyProperties
       end
-      def skucapability
-        Azure::Storage::Mgmt::V2019_06_01::Models::SKUCapability
+      def operation
+        Azure::Storage::Mgmt::V2019_06_01::Models::Operation
+      end
+      def legal_hold
+        Azure::Storage::Mgmt::V2019_06_01::Models::LegalHold
+      end
+      def private_endpoint
+        Azure::Storage::Mgmt::V2019_06_01::Models::PrivateEndpoint
+      end
+      def change_feed
+        Azure::Storage::Mgmt::V2019_06_01::Models::ChangeFeed
+      end
+      def storage_account_create_parameters
+        Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountCreateParameters
       end
       def list_container_items
         Azure::Storage::Mgmt::V2019_06_01::Models::ListContainerItems
-      end
-      def delete_retention_policy
-        Azure::Storage::Mgmt::V2019_06_01::Models::DeleteRetentionPolicy
       end
       def usage_list_result
         Azure::Storage::Mgmt::V2019_06_01::Models::UsageListResult
       end
       def cors_rule
         Azure::Storage::Mgmt::V2019_06_01::Models::CorsRule
-      end
-      def storage_account_internet_endpoints
-        Azure::Storage::Mgmt::V2019_06_01::Models::StorageAccountInternetEndpoints
-      end
-      def cors_rules
-        Azure::Storage::Mgmt::V2019_06_01::Models::CorsRules
       end
       def private_endpoint_connection
         Azure::Storage::Mgmt::V2019_06_01::Models::PrivateEndpointConnection
@@ -437,6 +450,9 @@ module Azure::Storage::Profiles::Latest
       end
       def private_link_resource
         Azure::Storage::Mgmt::V2019_06_01::Models::PrivateLinkResource
+      end
+      def encryption_scope
+        Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScope
       end
       def proxy_resource
         Azure::Storage::Mgmt::V2019_06_01::Models::ProxyResource
@@ -551,6 +567,12 @@ module Azure::Storage::Profiles::Latest
       end
       def signed_resource
         Azure::Storage::Mgmt::V2019_06_01::Models::SignedResource
+      end
+      def encryption_scope_source
+        Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScopeSource
+      end
+      def encryption_scope_state
+        Azure::Storage::Mgmt::V2019_06_01::Models::EncryptionScopeState
       end
       def public_access
         Azure::Storage::Mgmt::V2019_06_01::Models::PublicAccess

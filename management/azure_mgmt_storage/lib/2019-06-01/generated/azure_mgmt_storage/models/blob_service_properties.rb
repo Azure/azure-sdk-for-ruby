@@ -28,7 +28,10 @@ module Azure::Storage::Mgmt::V2019_06_01
       # soft delete.
       attr_accessor :delete_retention_policy
 
-      # @return [Boolean] Automatic Snapshot is enabled if set to true.
+      # @return [Boolean] Versioning is enabled if set to true.
+      attr_accessor :is_versioning_enabled
+
+      # @return [Boolean] Deprecated in favor of isVersioningEnabled property.
       attr_accessor :automatic_snapshot_policy_enabled
 
       # @return [ChangeFeed] The blob service properties for change feed
@@ -38,6 +41,10 @@ module Azure::Storage::Mgmt::V2019_06_01
       # @return [RestorePolicyProperties] The blob service properties for blob
       # restore policy.
       attr_accessor :restore_policy
+
+      # @return [DeleteRetentionPolicy] The blob service properties for
+      # container soft delete.
+      attr_accessor :container_delete_retention_policy
 
       # @return [Sku] Sku name and tier.
       attr_accessor :sku
@@ -109,6 +116,14 @@ module Azure::Storage::Mgmt::V2019_06_01
                   class_name: 'DeleteRetentionPolicy'
                 }
               },
+              is_versioning_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.isVersioningEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               automatic_snapshot_policy_enabled: {
                 client_side_validation: true,
                 required: false,
@@ -133,6 +148,15 @@ module Azure::Storage::Mgmt::V2019_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'RestorePolicyProperties'
+                }
+              },
+              container_delete_retention_policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.containerDeleteRetentionPolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DeleteRetentionPolicy'
                 }
               },
               sku: {
