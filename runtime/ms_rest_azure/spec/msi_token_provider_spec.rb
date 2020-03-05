@@ -16,6 +16,9 @@ module MsRestAzure
       azure_cloud = MsRestAzure::AzureEnvironments::AzureCloud
 
       token_provider = MSITokenProvider.new
+      token_expires_on = token_provider.token_expires_on
+      token_type = token_provider.token_type
+      token = token_provider.token
       expect(token_provider.send(:port)).to eq(50342)
       settings = token_provider.send(:settings)
       expect(settings.authentication_endpoint).to eq(azure_cloud.active_directory_endpoint_url)

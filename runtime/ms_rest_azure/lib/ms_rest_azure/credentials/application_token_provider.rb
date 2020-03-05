@@ -27,18 +27,24 @@ module MsRestAzure
     attr_accessor :client_secret
 
     # @return [String] auth token.
-    attr_accessor :token
+    attr_writer :token
 
     # @return [Time] the date when the current token expires.
-    attr_accessor :token_expires_on
+    attr_writer :token_expires_on
 
     # @return [Integer] the amount of time we refresh token before it expires.
     attr_reader :expiration_threshold
 
+    public
+
+    # @return [Time] the date when the current token expires.
+    attr_reader :token_expires_on
+
     # @return [String] the type of token.
     attr_reader :token_type
 
-    public
+    # @return [String] auth token.
+    attr_reader :token
 
     #
     # Creates and initialize new instance of the ApplicationTokenProvider class.
