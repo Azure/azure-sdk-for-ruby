@@ -1,3 +1,9 @@
+##2020.03.05 ms_rest version 0.7.6
+* [Enhancement] Update faraday version to allow 1.0.0.
+
+##2019.12.02 ms_rest version 0.7.5
+* [Bug Fix] Support serializing TimeSpan type properly
+
 ##2019.05.15 ms_rest version 0.7.4
 * [Bug Fix] Fix timeliness version to 0.3.10 to fix the issue with parse method.
 
