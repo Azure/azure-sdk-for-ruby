@@ -8,7 +8,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
     #
     # Details of error response.
     #
-    class ErrorResponseBody
+    class CloudErrorBody
 
       include MsRestAzure
 
@@ -21,23 +21,23 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # @return [String] The target of the particular error.
       attr_accessor :target
 
-      # @return [Array<ErrorResponseBody>] A list of additional details about
-      # the error.
+      # @return [Array<CloudErrorBody>] A list of additional details about the
+      # error.
       attr_accessor :details
 
 
       #
-      # Mapper for ErrorResponseBody class as Ruby Hash.
+      # Mapper for CloudErrorBody class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ErrorResponseBody',
+          serialized_name: 'CloudErrorBody',
           type: {
             name: 'Composite',
-            class_name: 'ErrorResponseBody',
+            class_name: 'CloudErrorBody',
             model_properties: {
               code: {
                 client_side_validation: true,
@@ -75,10 +75,10 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'ErrorResponseBodyElementType',
+                      serialized_name: 'CloudErrorBodyElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ErrorResponseBody'
+                        class_name: 'CloudErrorBody'
                       }
                   }
                 }
