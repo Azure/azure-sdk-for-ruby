@@ -742,6 +742,13 @@
       "module_require": "azure_mgmt_subscriptions"
     }
   },
+  "Microsoft.Support": {
+    "management": {
+      "path": "management/azure_mgmt_support",
+      "namespace": "Azure::Support::Mgmt",
+      "module_require": "azure_mgmt_support"
+    }
+  },
   "Microsoft.Synapse": {
     "management": {
       "path": "management/azure_mgmt_synapse",
