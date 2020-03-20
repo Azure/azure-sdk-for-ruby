@@ -224,7 +224,7 @@
                 },
                 "Microsoft.Advisor": {
                     "management": {
-                        "2017-04-19": ["*"]
+                        "2020-01-01": ["*"]
                     }
                 },
                 "Microsoft.AlertsManagement": {
@@ -310,7 +310,7 @@
                         "2018-09-30": ["*"],
                         "2019-03-01": ["*"],
                         "2019-04-01": ["*"],
-                        "2019-07-01": ["*"]
+                        "2019-11-01": ["*"]
                     }
                 },
                 "Microsoft.Consumption": {
@@ -569,7 +569,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2019-09-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -776,7 +776,18 @@
                         "2018-03-01-preview": ["*"],
                         "2018-11-01-preview": ["*"],
                         "2019-03-01-preview": ["*"],
-                        "2019-06-01": ["*"]
+                        "2019-06-01": ["*"],
+                        "2019-11-01": ["*"]
+                    }
+                },
+                "Microsoft.Support": {
+                    "management": {
+                        "2020-04-01": ["*"]
+                    }
+                },
+                "Microsoft.Synapse": {
+                    "management": {
+                        "2019-06-01-preview": ["*"]
                     }
                 },
                 "Microsoft.TimeSeriesInsights": {
@@ -945,7 +956,7 @@
             "resourceTypes": {
                 "Microsoft.Advisor": {
                     "management": {
-                        "2017-04-19": ["*"]
+                        "2020-01-01": ["*"]
                     }
                 }
             },
@@ -1249,7 +1260,7 @@
                         "2018-09-30": ["*"],
                         "2019-03-01": ["*"],
                         "2019-04-01": ["*"],
-                        "2019-07-01": ["*"]
+                        "2019-11-01": ["*"]
                     }
                 }
             },
@@ -2095,7 +2106,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2019-09-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 }
             },
@@ -2767,13 +2778,42 @@
                         "2018-03-01-preview": ["*"],
                         "2018-11-01-preview": ["*"],
                         "2019-03-01-preview": ["*"],
-                        "2019-06-01": ["*"]
+                        "2019-06-01": ["*"],
+                        "2019-11-01": ["*"]
                     }
                 }
             },
             "output_dir": "management/azure_mgmt_subscriptions/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_support": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.Support": {
+                        "management": {
+                            "2020-04-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_support/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_mgmt_synapse": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.Synapse": {
+                        "management": {
+                            "2019-06-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_synapse/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_time_series_insights": [
         {

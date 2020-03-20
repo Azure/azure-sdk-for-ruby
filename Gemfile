@@ -12,7 +12,7 @@ group :development, :test do
   gem 'vcr'
 end
 
-gem 'octokit', '~> 4.0'
+gem 'octokit', '~> 4.16.0'
 gem 'azure_mgmt_adhybridhealth_service',    path: 'management/azure_mgmt_adhybridhealth_service'
 gem 'azure_mgmt_advisor',                   path: 'management/azure_mgmt_advisor'
 gem 'azure_mgmt_alerts_management',         path: 'management/azure_mgmt_alerts_management'
@@ -113,6 +113,8 @@ gem 'azure_mgmt_storagesync',               path: 'management/azure_mgmt_storage
 gem 'azure_mgmt_storagecache',              path: 'management/azure_mgmt_storagecache'
 gem 'azure_mgmt_stream_analytics',          path: 'management/azure_mgmt_stream_analytics'
 gem 'azure_mgmt_subscriptions',             path: 'management/azure_mgmt_subscriptions'
+gem 'azure_mgmt_support',                   path: 'management/azure_mgmt_support'
+gem 'azure_mgmt_synapse',                   path: 'management/azure_mgmt_synapse'
 gem 'azure_mgmt_time_series_insights',      path: 'management/azure_mgmt_time_series_insights'
 gem 'azure_mgmt_traffic_manager',           path: 'management/azure_mgmt_traffic_manager'
 gem 'azure_mgmt_web',                       path: 'management/azure_mgmt_web'
