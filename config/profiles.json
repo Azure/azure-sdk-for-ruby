@@ -779,6 +779,11 @@
                         "2019-06-01": ["*"]
                     }
                 },
+                "Microsoft.Synapse": {
+                    "management": {
+                        "2019-06-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.TimeSeriesInsights": {
                     "management": {
                         "2018-08-15-preview": ["*"]
@@ -2774,6 +2779,20 @@
             "output_dir": "management/azure_mgmt_subscriptions/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_synapse": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.Synapse": {
+                        "management": {
+                            "2019-06-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_synapse/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_time_series_insights": [
         {

@@ -2752,6 +2752,13 @@
       "title": "SubscriptionClient"
     }
   },
+  "azure_mgmt_synapse": {
+    "azure_mgmt_synapse_2019_06_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b01b2ea007c4524e4fcb6af74aac96f53ecb45e1/specification/synapse/resource-manager/readme.md",
+      "namespace": "Azure::Subscriptions::Mgmt::V2019_06_01_preview",
+      "tag": "package-2019-06-01-preview"
+    }
+  },
   "azure_mgmt_time_series_insights": {
     "azure_mgmt_time_series_insights_2018_08_15_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e6a133198d4bc7e0cc8a3e42f8e10c5353a1d4ed/specification/timeseriesinsights/resource-manager/readme.md",

@@ -113,6 +113,7 @@ gem 'azure_mgmt_storagesync',               path: 'management/azure_mgmt_storage
 gem 'azure_mgmt_storagecache',              path: 'management/azure_mgmt_storagecache'
 gem 'azure_mgmt_stream_analytics',          path: 'management/azure_mgmt_stream_analytics'
 gem 'azure_mgmt_subscriptions',             path: 'management/azure_mgmt_subscriptions'
+gem 'azure_mgmt_synapse',                   path: 'management/azure_mgmt_synapse'
 gem 'azure_mgmt_time_series_insights',      path: 'management/azure_mgmt_time_series_insights'
 gem 'azure_mgmt_traffic_manager',           path: 'management/azure_mgmt_traffic_manager'
 gem 'azure_mgmt_web',                       path: 'management/azure_mgmt_web'
