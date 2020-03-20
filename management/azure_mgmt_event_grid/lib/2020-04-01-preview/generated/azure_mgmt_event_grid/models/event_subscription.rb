@@ -23,7 +23,17 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
       # @return [EventSubscriptionDestination] Information about the
       # destination where events have to be delivered for the event
       # subscription.
+      # Uses Azure Event Grid's identity to acquire the authentication tokens
+      # being used during delivery / dead-lettering.
       attr_accessor :destination
+
+      # @return [DeliveryWithResourceIdentity] Information about the
+      # destination where events have to be delivered for the event
+      # subscription.
+      # Uses the managed identity setup on the parent resource (namely, topic
+      # or domain) to acquire the authentication tokens being used during
+      # delivery / dead-lettering.
+      attr_accessor :delivery_with_resource_identity
 
       # @return [EventSubscriptionFilter] Information about the filter for the
       # event subscription.
@@ -45,9 +55,20 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
       # events.
       attr_accessor :retry_policy
 
-      # @return [DeadLetterDestination] The DeadLetter destination of the event
-      # subscription.
+      # @return [DeadLetterDestination] The dead letter destination of the
+      # event subscription. Any event that cannot be delivered to its'
+      # destination is sent to the dead letter destination.
+      # Uses Azure Event Grid's identity to acquire the authentication tokens
+      # being used during delivery / dead-lettering.
       attr_accessor :dead_letter_destination
+
+      # @return [DeadLetterWithResourceIdentity] The dead letter destination of
+      # the event subscription. Any event that cannot be delivered to its'
+      # destination is sent to the dead letter destination.
+      # Uses the managed identity setup on the parent resource (namely, topic
+      # or domain) to acquire the authentication tokens being used during
+      # delivery / dead-lettering.
+      attr_accessor :dead_letter_with_resource_identity
 
 
       #
@@ -119,6 +140,15 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                   class_name: 'EventSubscriptionDestination'
                 }
               },
+              delivery_with_resource_identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.deliveryWithResourceIdentity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DeliveryWithResourceIdentity'
+                }
+              },
               filter: {
                 client_side_validation: true,
                 required: false,
@@ -178,6 +208,15 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                   polymorphic_discriminator: 'endpointType',
                   uber_parent: 'DeadLetterDestination',
                   class_name: 'DeadLetterDestination'
+                }
+              },
+              dead_letter_with_resource_identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.deadLetterWithResourceIdentity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DeadLetterWithResourceIdentity'
                 }
               }
             }

@@ -12,6 +12,10 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
 
       include MsRestAzure
 
+      # @return [Array<PrivateEndpointConnection>] List of private endpoint
+      # connections.
+      attr_accessor :private_endpoint_connections
+
       # @return [DomainProvisioningState] Provisioning state of the domain.
       # Possible values include: 'Creating', 'Updating', 'Deleting',
       # 'Succeeded', 'Canceled', 'Failed'
@@ -33,14 +37,23 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
       # @return [String] Metric resource id for the domain.
       attr_accessor :metric_resource_id
 
-      # @return [Boolean] This determines if IP filtering rules ought to be
-      # evaluated or not. By default it will not evaluate and will allow
-      # traffic from all IPs.
-      attr_accessor :allow_traffic_from_all_ips
+      # @return [PublicNetworkAccess] This determines if traffic is allowed
+      # over public network. By default it is enabled.
+      # You can further restrict to specific IPs by configuring <seealso
+      # cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules"
+      # />. Possible values include: 'Enabled', 'Disabled'
+      attr_accessor :public_network_access
 
-      # @return [Array<InboundIpRule>] This determines the IP filtering rules
-      # that ought be applied when events are received on this domain.
+      # @return [Array<InboundIpRule>] This can be used to restrict traffic
+      # from specific IPs instead of all IPs. Note: These are considered only
+      # if PublicNetworkAccess is enabled.
       attr_accessor :inbound_ip_rules
+
+      # @return [ResourceSku] The Sku pricing tier for the domain.
+      attr_accessor :sku
+
+      # @return [IdentityInfo] Identity information for the resource.
+      attr_accessor :identity
 
 
       #
@@ -107,6 +120,23 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                   }
                 }
               },
+              private_endpoint_connections: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.privateEndpointConnections',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'PrivateEndpointConnectionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PrivateEndpointConnection'
+                      }
+                  }
+                }
+              },
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
@@ -154,12 +184,12 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                   name: 'String'
                 }
               },
-              allow_traffic_from_all_ips: {
+              public_network_access: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.allowTrafficFromAllIPs',
+                serialized_name: 'properties.publicNetworkAccess',
                 type: {
-                  name: 'Boolean'
+                  name: 'String'
                 }
               },
               inbound_ip_rules: {
@@ -177,6 +207,24 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                         class_name: 'InboundIpRule'
                       }
                   }
+                }
+              },
+              sku: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ResourceSku'
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'IdentityInfo'
                 }
               }
             }
