@@ -3,15 +3,15 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Advisor::Mgmt::V2017_04_19
+module Azure::Advisor::Mgmt::V2020_01_01
   #
   # REST APIs for Azure Advisor
   #
-  class Configurations
+  class Suppressions
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Configurations class.
+    # Creates and initializes a new instance of the Suppressions class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,50 +22,371 @@ module Azure::Advisor::Mgmt::V2017_04_19
     attr_reader :client
 
     #
-    # Retrieve Azure Advisor configurations.
+    # Obtains the details of a suppression.
     #
-    # Retrieve Azure Advisor configurations and also retrieve configurations of
-    # contained resource groups.
-    #
+    # @param resource_uri [String] The fully qualified Azure Resource Manager
+    # identifier of the resource to which the recommendation applies.
+    # @param recommendation_id [String] The recommendation ID.
+    # @param name [String] The name of the suppression.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<ConfigData>] operation results.
+    # @return [SuppressionContract] operation results.
     #
-    def list_by_subscription(custom_headers:nil)
-      first_page = list_by_subscription_as_lazy(custom_headers:custom_headers)
+    def get(resource_uri, recommendation_id, name, custom_headers:nil)
+      response = get_async(resource_uri, recommendation_id, name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Obtains the details of a suppression.
+    #
+    # @param resource_uri [String] The fully qualified Azure Resource Manager
+    # identifier of the resource to which the recommendation applies.
+    # @param recommendation_id [String] The recommendation ID.
+    # @param name [String] The name of the suppression.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_with_http_info(resource_uri, recommendation_id, name, custom_headers:nil)
+      get_async(resource_uri, recommendation_id, name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Obtains the details of a suppression.
+    #
+    # @param resource_uri [String] The fully qualified Azure Resource Manager
+    # identifier of the resource to which the recommendation applies.
+    # @param recommendation_id [String] The recommendation ID.
+    # @param name [String] The name of the suppression.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_async(resource_uri, recommendation_id, name, custom_headers:nil)
+      fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
+      fail ArgumentError, 'recommendation_id is nil' if recommendation_id.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceUri' => resource_uri,'recommendationId' => recommendation_id,'name' => name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Advisor::Mgmt::V2020_01_01::Models::SuppressionContract.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Enables the snoozed or dismissed attribute of a recommendation. The snoozed
+    # or dismissed attribute is referred to as a suppression. Use this API to
+    # create or update the snoozed or dismissed status of a recommendation.
+    #
+    # @param resource_uri [String] The fully qualified Azure Resource Manager
+    # identifier of the resource to which the recommendation applies.
+    # @param recommendation_id [String] The recommendation ID.
+    # @param name [String] The name of the suppression.
+    # @param suppression_contract [SuppressionContract] The snoozed or dismissed
+    # attribute; for example, the snooze duration.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SuppressionContract] operation results.
+    #
+    def create(resource_uri, recommendation_id, name, suppression_contract, custom_headers:nil)
+      response = create_async(resource_uri, recommendation_id, name, suppression_contract, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Enables the snoozed or dismissed attribute of a recommendation. The snoozed
+    # or dismissed attribute is referred to as a suppression. Use this API to
+    # create or update the snoozed or dismissed status of a recommendation.
+    #
+    # @param resource_uri [String] The fully qualified Azure Resource Manager
+    # identifier of the resource to which the recommendation applies.
+    # @param recommendation_id [String] The recommendation ID.
+    # @param name [String] The name of the suppression.
+    # @param suppression_contract [SuppressionContract] The snoozed or dismissed
+    # attribute; for example, the snooze duration.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_with_http_info(resource_uri, recommendation_id, name, suppression_contract, custom_headers:nil)
+      create_async(resource_uri, recommendation_id, name, suppression_contract, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Enables the snoozed or dismissed attribute of a recommendation. The snoozed
+    # or dismissed attribute is referred to as a suppression. Use this API to
+    # create or update the snoozed or dismissed status of a recommendation.
+    #
+    # @param resource_uri [String] The fully qualified Azure Resource Manager
+    # identifier of the resource to which the recommendation applies.
+    # @param recommendation_id [String] The recommendation ID.
+    # @param name [String] The name of the suppression.
+    # @param suppression_contract [SuppressionContract] The snoozed or dismissed
+    # attribute; for example, the snooze duration.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_async(resource_uri, recommendation_id, name, suppression_contract, custom_headers:nil)
+      fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
+      fail ArgumentError, 'recommendation_id is nil' if recommendation_id.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'suppression_contract is nil' if suppression_contract.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Advisor::Mgmt::V2020_01_01::Models::SuppressionContract.mapper()
+      request_content = @client.serialize(request_mapper,  suppression_contract)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceUri' => resource_uri,'recommendationId' => recommendation_id,'name' => name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Advisor::Mgmt::V2020_01_01::Models::SuppressionContract.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Enables the activation of a snoozed or dismissed recommendation. The snoozed
+    # or dismissed attribute of a recommendation is referred to as a suppression.
+    #
+    # @param resource_uri [String] The fully qualified Azure Resource Manager
+    # identifier of the resource to which the recommendation applies.
+    # @param recommendation_id [String] The recommendation ID.
+    # @param name [String] The name of the suppression.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete(resource_uri, recommendation_id, name, custom_headers:nil)
+      response = delete_async(resource_uri, recommendation_id, name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Enables the activation of a snoozed or dismissed recommendation. The snoozed
+    # or dismissed attribute of a recommendation is referred to as a suppression.
+    #
+    # @param resource_uri [String] The fully qualified Azure Resource Manager
+    # identifier of the resource to which the recommendation applies.
+    # @param recommendation_id [String] The recommendation ID.
+    # @param name [String] The name of the suppression.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(resource_uri, recommendation_id, name, custom_headers:nil)
+      delete_async(resource_uri, recommendation_id, name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Enables the activation of a snoozed or dismissed recommendation. The snoozed
+    # or dismissed attribute of a recommendation is referred to as a suppression.
+    #
+    # @param resource_uri [String] The fully qualified Azure Resource Manager
+    # identifier of the resource to which the recommendation applies.
+    # @param recommendation_id [String] The recommendation ID.
+    # @param name [String] The name of the suppression.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_async(resource_uri, recommendation_id, name, custom_headers:nil)
+      fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
+      fail ArgumentError, 'recommendation_id is nil' if recommendation_id.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceUri' => resource_uri,'recommendationId' => recommendation_id,'name' => name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Retrieves the list of snoozed or dismissed suppressions for a subscription.
+    # The snoozed or dismissed attribute of a recommendation is referred to as a
+    # suppression.
+    #
+    # @param top [Integer] The number of suppressions per page if a paged version
+    # of this API is being used.
+    # @param skip_token [String] The page-continuation token to use with a paged
+    # version of this API.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<SuppressionContract>] operation results.
+    #
+    def list(top:nil, skip_token:nil, custom_headers:nil)
+      first_page = list_as_lazy(top:top, skip_token:skip_token, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Retrieve Azure Advisor configurations.
+    # Retrieves the list of snoozed or dismissed suppressions for a subscription.
+    # The snoozed or dismissed attribute of a recommendation is referred to as a
+    # suppression.
     #
-    # Retrieve Azure Advisor configurations and also retrieve configurations of
-    # contained resource groups.
-    #
+    # @param top [Integer] The number of suppressions per page if a paged version
+    # of this API is being used.
+    # @param skip_token [String] The page-continuation token to use with a paged
+    # version of this API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_with_http_info(custom_headers:nil)
-      list_by_subscription_async(custom_headers:custom_headers).value!
+    def list_with_http_info(top:nil, skip_token:nil, custom_headers:nil)
+      list_async(top:top, skip_token:skip_token, custom_headers:custom_headers).value!
     end
 
     #
-    # Retrieve Azure Advisor configurations.
+    # Retrieves the list of snoozed or dismissed suppressions for a subscription.
+    # The snoozed or dismissed attribute of a recommendation is referred to as a
+    # suppression.
     #
-    # Retrieve Azure Advisor configurations and also retrieve configurations of
-    # contained resource groups.
-    #
+    # @param top [Integer] The number of suppressions per page if a paged version
+    # of this API is being used.
+    # @param skip_token [String] The page-continuation token to use with a paged
+    # version of this API.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_async(custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+    def list_async(top:nil, skip_token:nil, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -74,14 +395,14 @@ module Azure::Advisor::Mgmt::V2017_04_19
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Advisor/suppressions'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$top' => top,'$skipToken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -103,7 +424,7 @@ module Azure::Advisor::Mgmt::V2017_04_19
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Advisor::Mgmt::V2017_04_19::Models::ConfigurationListResult.mapper()
+            result_mapper = Azure::Advisor::Mgmt::V2020_01_01::Models::SuppressionContractListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -117,331 +438,26 @@ module Azure::Advisor::Mgmt::V2017_04_19
     end
 
     #
-    # Create/Overwrite Azure Advisor configuration.
-    #
-    # Create/Overwrite Azure Advisor configuration and also delete all
-    # configurations of contained resource groups.
-    #
-    # @param config_contract [ConfigData] The Azure Advisor configuration data
-    # structure.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ARMErrorResponseBody] operation results.
-    #
-    def create_in_subscription(config_contract, custom_headers:nil)
-      response = create_in_subscription_async(config_contract, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Create/Overwrite Azure Advisor configuration.
-    #
-    # Create/Overwrite Azure Advisor configuration and also delete all
-    # configurations of contained resource groups.
-    #
-    # @param config_contract [ConfigData] The Azure Advisor configuration data
-    # structure.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def create_in_subscription_with_http_info(config_contract, custom_headers:nil)
-      create_in_subscription_async(config_contract, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Create/Overwrite Azure Advisor configuration.
-    #
-    # Create/Overwrite Azure Advisor configuration and also delete all
-    # configurations of contained resource groups.
-    #
-    # @param config_contract [ConfigData] The Azure Advisor configuration data
-    # structure.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def create_in_subscription_async(config_contract, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'config_contract is nil' if config_contract.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::Advisor::Mgmt::V2017_04_19::Models::ConfigData.mapper()
-      request_content = @client.serialize(request_mapper,  config_contract)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 204 || status_code == 400
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 400
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Advisor::Mgmt::V2017_04_19::Models::ARMErrorResponseBody.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Retrieve Azure Advisor configurations.
-    #
-    # @param resource_group [String] The name of the Azure resource group.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ConfigurationListResult] operation results.
-    #
-    def list_by_resource_group(resource_group, custom_headers:nil)
-      response = list_by_resource_group_async(resource_group, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Retrieve Azure Advisor configurations.
-    #
-    # @param resource_group [String] The name of the Azure resource group.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_by_resource_group_with_http_info(resource_group, custom_headers:nil)
-      list_by_resource_group_async(resource_group, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Retrieve Azure Advisor configurations.
-    #
-    # @param resource_group [String] The name of the Azure resource group.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_by_resource_group_async(resource_group, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group is nil' if resource_group.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Advisor/configurations'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroup' => resource_group},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Advisor::Mgmt::V2017_04_19::Models::ConfigurationListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Create/Overwrite Azure Advisor configuration.
-    #
-    # @param config_contract [ConfigData] The Azure Advisor configuration data
-    # structure.
-    # @param resource_group [String] The name of the Azure resource group.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ARMErrorResponseBody] operation results.
-    #
-    def create_in_resource_group(config_contract, resource_group, custom_headers:nil)
-      response = create_in_resource_group_async(config_contract, resource_group, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Create/Overwrite Azure Advisor configuration.
-    #
-    # @param config_contract [ConfigData] The Azure Advisor configuration data
-    # structure.
-    # @param resource_group [String] The name of the Azure resource group.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def create_in_resource_group_with_http_info(config_contract, resource_group, custom_headers:nil)
-      create_in_resource_group_async(config_contract, resource_group, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Create/Overwrite Azure Advisor configuration.
-    #
-    # @param config_contract [ConfigData] The Azure Advisor configuration data
-    # structure.
-    # @param resource_group [String] The name of the Azure resource group.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def create_in_resource_group_async(config_contract, resource_group, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'config_contract is nil' if config_contract.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group is nil' if resource_group.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::Advisor::Mgmt::V2017_04_19::Models::ConfigData.mapper()
-      request_content = @client.serialize(request_mapper,  config_contract)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Advisor/configurations'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroup' => resource_group},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 204 || status_code == 400
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 400
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Advisor::Mgmt::V2017_04_19::Models::ARMErrorResponseBody.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Retrieve Azure Advisor configurations.
-    #
-    # Retrieve Azure Advisor configurations and also retrieve configurations of
-    # contained resource groups.
+    # Retrieves the list of snoozed or dismissed suppressions for a subscription.
+    # The snoozed or dismissed attribute of a recommendation is referred to as a
+    # suppression.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ConfigurationListResult] operation results.
+    # @return [SuppressionContractListResult] operation results.
     #
-    def list_by_subscription_next(next_page_link, custom_headers:nil)
-      response = list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Retrieve Azure Advisor configurations.
-    #
-    # Retrieve Azure Advisor configurations and also retrieve configurations of
-    # contained resource groups.
+    # Retrieves the list of snoozed or dismissed suppressions for a subscription.
+    # The snoozed or dismissed attribute of a recommendation is referred to as a
+    # suppression.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -450,15 +466,14 @@ module Azure::Advisor::Mgmt::V2017_04_19
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
-    # Retrieve Azure Advisor configurations.
-    #
-    # Retrieve Azure Advisor configurations and also retrieve configurations of
-    # contained resource groups.
+    # Retrieves the list of snoozed or dismissed suppressions for a subscription.
+    # The snoozed or dismissed attribute of a recommendation is referred to as a
+    # suppression.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -467,7 +482,7 @@ module Azure::Advisor::Mgmt::V2017_04_19
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -505,7 +520,7 @@ module Azure::Advisor::Mgmt::V2017_04_19
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Advisor::Mgmt::V2017_04_19::Models::ConfigurationListResult.mapper()
+            result_mapper = Azure::Advisor::Mgmt::V2020_01_01::Models::SuppressionContractListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -519,23 +534,26 @@ module Azure::Advisor::Mgmt::V2017_04_19
     end
 
     #
-    # Retrieve Azure Advisor configurations.
+    # Retrieves the list of snoozed or dismissed suppressions for a subscription.
+    # The snoozed or dismissed attribute of a recommendation is referred to as a
+    # suppression.
     #
-    # Retrieve Azure Advisor configurations and also retrieve configurations of
-    # contained resource groups.
-    #
+    # @param top [Integer] The number of suppressions per page if a paged version
+    # of this API is being used.
+    # @param skip_token [String] The page-continuation token to use with a paged
+    # version of this API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ConfigurationListResult] which provide lazy access to pages of the
-    # response.
+    # @return [SuppressionContractListResult] which provide lazy access to pages of
+    # the response.
     #
-    def list_by_subscription_as_lazy(custom_headers:nil)
-      response = list_by_subscription_async(custom_headers:custom_headers).value!
+    def list_as_lazy(top:nil, skip_token:nil, custom_headers:nil)
+      response = list_async(top:top, skip_token:skip_token, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_subscription_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

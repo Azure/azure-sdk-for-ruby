@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Advisor::Mgmt::V2016_07_12_preview
+module Azure::Advisor::Mgmt::V2020_01_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -36,6 +36,12 @@ module Azure::Advisor::Mgmt::V2016_07_12_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [RecommendationMetadata] recommendation_metadata
+    attr_reader :recommendation_metadata
+
+    # @return [Configurations] configurations
+    attr_reader :configurations
+
     # @return [Recommendations] recommendations
     attr_reader :recommendations
 
@@ -58,10 +64,12 @@ module Azure::Advisor::Mgmt::V2016_07_12_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @recommendation_metadata = RecommendationMetadata.new(self)
+      @configurations = Configurations.new(self)
       @recommendations = Recommendations.new(self)
       @operations = Operations.new(self)
       @suppressions = Suppressions.new(self)
-      @api_version = '2016-07-12-preview'
+      @api_version = '2020-01-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
