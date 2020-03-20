@@ -4,7 +4,8 @@
         "azure_mgmt_compute",
         "azure_mgmt_iot_central",
         "azure_mgmt_event_grid",
-        "azure_mgmt_network"
+        "azure_mgmt_network",
+        "azure_mgmt_advisor"
     ],
     "rollup":[
         "azure_sdk"

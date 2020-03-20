@@ -224,7 +224,7 @@
                 },
                 "Microsoft.Advisor": {
                     "management": {
-                        "2017-04-19": ["*"]
+                        "2020-01-01": ["*"]
                     }
                 },
                 "Microsoft.AlertsManagement": {
@@ -950,7 +950,7 @@
             "resourceTypes": {
                 "Microsoft.Advisor": {
                     "management": {
-                        "2017-04-19": ["*"]
+                        "2020-01-01": ["*"]
                     }
                 }
             },
