@@ -12,7 +12,7 @@ group :development, :test do
   gem 'vcr'
 end
 
-gem 'octokit', '~> 4.0'
+gem 'octokit', '~> 4.16.0'
 gem 'azure_mgmt_adhybridhealth_service',    path: 'management/azure_mgmt_adhybridhealth_service'
 gem 'azure_mgmt_advisor',                   path: 'management/azure_mgmt_advisor'
 gem 'azure_mgmt_alerts_management',         path: 'management/azure_mgmt_alerts_management'
