@@ -1408,6 +1408,18 @@
     }
   },
   "azure_mgmt_network": {
+    "azure_mgmt_network_2019_12_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b01b2ea007c4524e4fcb6af74aac96f53ecb45e1/specification/network/resource-manager/readme.md",
+      "namespace": "Azure::Network::Mgmt::V2019_12_01",
+      "tag": "package-2019-12"
+      
+    },
+    "azure_mgmt_network_2019_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b01b2ea007c4524e4fcb6af74aac96f53ecb45e1/specification/network/resource-manager/readme.md",
+      "namespace": "Azure::Network::Mgmt::V2019_11_01",
+      "tag": "package-2019-11"
+      
+    },
     "azure_mgmt_network_2019_09_01": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/network/resource-manager/Microsoft.Network/stable/2019-09-01/applicationGateway.json",
