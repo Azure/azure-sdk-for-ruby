@@ -1,6 +1,7 @@
 {
     "management":[
-        "azure_mgmt_synapse"
+        "azure_mgmt_synapse",
+        "azure_mgmt_compute"
     ],
     "rollup":[
         "azure_sdk"

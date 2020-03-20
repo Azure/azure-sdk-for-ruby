@@ -311,6 +311,12 @@
     }
   },
   "azure_mgmt_compute": {
+    "azure_mgmt_compute_2019_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b01b2ea007c4524e4fcb6af74aac96f53ecb45e1/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2019_11_01",
+      "tag": "package-2019-11-01-only",
+      "title": "ComputeManagementClient"
+    },
     "azure_mgmt_compute_2019_07_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4e644fc9ee1cf774f68b01d6b6be4fdf7118809c/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2019_07_01",
