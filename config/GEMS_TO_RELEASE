@@ -1,7 +1,8 @@
 {
     "management":[
         "azure_mgmt_synapse",
-        "azure_mgmt_compute"
+        "azure_mgmt_compute",
+        "azure_mgmt_iot_central"
     ],
     "rollup":[
         "azure_sdk"
