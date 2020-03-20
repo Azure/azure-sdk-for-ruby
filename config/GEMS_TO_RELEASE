@@ -7,7 +7,8 @@
         "azure_mgmt_network",
         "azure_mgmt_advisor",
         "azure_mgmt_subscriptions",
-        "azure_mgmt_support"
+        "azure_mgmt_support",
+        "azure_mgmt_policy_insights"
     ],
     "rollup":[
         "azure_sdk"
