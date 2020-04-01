@@ -1,6 +1,7 @@
 {
     "management":[
-        "azure_mgmt_recovery_services_backup"
+        "azure_mgmt_recovery_services_backup",
+        "azure_mgmt_api_management"
     ],
     "rollup":[
         "azure_sdk"

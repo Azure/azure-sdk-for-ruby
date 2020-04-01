@@ -73,6 +73,11 @@
     }
   },
   "azure_mgmt_api_management": {
+    "azure_mgmt_api_management_2019_12_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e072b14cbd4bb79a6a89787535f16fab8a3d01a1/specification/apimanagement/resource-manager/readme.md",
+      "namespace": "Azure::ApiManagement::Mgmt::V2019_12_01",
+      "tag": "package-2019-12"
+    },
     "azure_mgmt_api_management_2019_01_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/30c4f57844896fe41d0f179f5649760dad9101d4/specification/apimanagement/resource-manager/readme.md",
       "namespace": "Azure::ApiManagement::Mgmt::V2019_01_01",

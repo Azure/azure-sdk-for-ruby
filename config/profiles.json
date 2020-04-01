@@ -239,7 +239,7 @@
                 },
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2019-01-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 },
                 "Microsoft.Appconfiguration": {
@@ -999,7 +999,7 @@
             "resourceTypes": {
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2019-01-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 }
             },

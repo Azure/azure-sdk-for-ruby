@@ -38,7 +38,7 @@
         "azure_mgmt_alerts_management": "0.17.0",
         "azure_mgmt_azurestack": "0.17.1",
         "azure_mgmt_analysis_services": "0.17.2",
-        "azure_mgmt_api_management": "0.18.4",
+        "azure_mgmt_api_management": "0.18.5",
         "azure_mgmt_appconfiguration": "0.17.1",
         "azure_mgmt_attestation": "0.17.0",
         "azure_mgmt_authorization": "0.18.4",
