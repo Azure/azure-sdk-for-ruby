@@ -2304,7 +2304,7 @@
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e072b14cbd4bb79a6a89787535f16fab8a3d01a1/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2020-02-02/bms.json"
       ],
-      "namespace": "Azure::RecoveryServicesBackup::Mgmt::V2020_02_12",
+      "namespace": "Azure::RecoveryServicesBackup::Mgmt::V2020_02_02",
       "title": "RecoveryServicesBackupClient"
     },
     "azure_mgmt_recovery_services_backup_2019_06_15": {
