@@ -31,6 +31,13 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # accessibility from specific network locations.
       attr_accessor :network_acls
 
+      # @return [Encryption] The encryption properties for this resource.
+      attr_accessor :encryption
+
+      # @return [Array<UserOwnedStorage>] The storage accounts for this
+      # resource.
+      attr_accessor :user_owned_storage
+
       # @return [CognitiveServicesAccountApiProperties] The api properties for
       # special APIs.
       attr_accessor :api_properties
@@ -91,6 +98,32 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 type: {
                   name: 'Composite',
                   class_name: 'NetworkRuleSet'
+                }
+              },
+              encryption: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'encryption',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Encryption'
+                }
+              },
+              user_owned_storage: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'userOwnedStorage',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'UserOwnedStorageElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'UserOwnedStorage'
+                      }
+                  }
                 }
               },
               api_properties: {
