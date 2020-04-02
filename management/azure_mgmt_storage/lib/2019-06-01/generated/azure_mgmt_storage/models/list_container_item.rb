@@ -12,6 +12,14 @@ module Azure::Storage::Mgmt::V2019_06_01
 
       include MsRestAzure
 
+      # @return [String] Default the container to use specified encryption
+      # scope for all writes.
+      attr_accessor :default_encryption_scope
+
+      # @return [Boolean] Block override of encryption scope from the container
+      # default.
+      attr_accessor :deny_encryption_scope_override
+
       # @return [PublicAccess] Specifies whether data in the container may be
       # accessed publicly and the level of access. Possible values include:
       # 'Container', 'Blob', 'None'
@@ -106,6 +114,22 @@ module Azure::Storage::Mgmt::V2019_06_01
                 serialized_name: 'etag',
                 type: {
                   name: 'String'
+                }
+              },
+              default_encryption_scope: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.defaultEncryptionScope',
+                type: {
+                  name: 'String'
+                }
+              },
+              deny_encryption_scope_override: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.denyEncryptionScopeOverride',
+                type: {
+                  name: 'Boolean'
                 }
               },
               public_access: {

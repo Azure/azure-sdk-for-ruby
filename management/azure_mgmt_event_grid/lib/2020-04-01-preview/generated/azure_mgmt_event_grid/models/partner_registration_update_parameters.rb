@@ -12,6 +12,10 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
 
       include MsRestAzure
 
+      # @return [Hash{String => String}] Tags of the partner registration
+      # resource.
+      attr_accessor :tags
+
       # @return [String] Name of the partner topic type.
       attr_accessor :partner_topic_type_name
 
@@ -52,6 +56,22 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
             name: 'Composite',
             class_name: 'PartnerRegistrationUpdateParameters',
             model_properties: {
+              tags: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               partner_topic_type_name: {
                 client_side_validation: true,
                 required: false,

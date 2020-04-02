@@ -1,14 +1,11 @@
 {
     "management":[
-        "azure_mgmt_synapse",
-        "azure_mgmt_compute",
-        "azure_mgmt_iot_central",
-        "azure_mgmt_event_grid",
-        "azure_mgmt_network",
-        "azure_mgmt_advisor",
-        "azure_mgmt_subscriptions",
-        "azure_mgmt_support",
-        "azure_mgmt_policy_insights"
+        "azure_mgmt_recovery_services_backup",
+        "azure_mgmt_api_management",
+        "azure_mgmt_cognitive_services",
+        "azure_mgmt_storage",
+        "azure_mgmt_netapp",
+        "azure_mgmt_event_grid"
     ],
     "rollup":[
         "azure_sdk"

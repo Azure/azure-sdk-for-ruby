@@ -51,6 +51,10 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # @return [String] A resource identifier for the related ApiVersionSet.
       attr_accessor :api_version_set_id
 
+      # @return [Boolean] Specifies whether an API or Product subscription is
+      # required for accessing the API.
+      attr_accessor :subscription_required
+
       # @return [String] API name.
       attr_accessor :display_name
 
@@ -77,7 +81,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # @return [ContentFormat] Format of the Content in which the API is
       # getting imported. Possible values include: 'wadl-xml',
       # 'wadl-link-json', 'swagger-json', 'swagger-link-json', 'wsdl',
-      # 'wsdl-link'
+      # 'wsdl-link', 'openapi', 'openapi+json', 'openapi-link'
       attr_accessor :content_format
 
       # @return [ApiCreateOrUpdatePropertiesWsdlSelector] Criteria to limit
@@ -207,6 +211,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                 serialized_name: 'properties.apiVersionSetId',
                 type: {
                   name: 'String'
+                }
+              },
+              subscription_required: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.subscriptionRequired',
+                type: {
+                  name: 'Boolean'
                 }
               },
               display_name: {

@@ -59,7 +59,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
               identities: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'identities',
                 type: {
                   name: 'Sequence',

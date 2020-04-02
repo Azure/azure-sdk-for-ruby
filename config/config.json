@@ -73,6 +73,11 @@
     }
   },
   "azure_mgmt_api_management": {
+    "azure_mgmt_api_management_2019_12_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e072b14cbd4bb79a6a89787535f16fab8a3d01a1/specification/apimanagement/resource-manager/readme.md",
+      "namespace": "Azure::ApiManagement::Mgmt::V2019_12_01",
+      "tag": "package-2019-12"
+    },
     "azure_mgmt_api_management_2019_01_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/30c4f57844896fe41d0f179f5649760dad9101d4/specification/apimanagement/resource-manager/readme.md",
       "namespace": "Azure::ApiManagement::Mgmt::V2019_01_01",
@@ -104,7 +109,7 @@
       "tag": "package-2018-01"
     },
     "azure_mgmt_api_management_2018_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/30c4f57844896fe41d0f179f5649760dad9101d4/specification/apimanagement/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fb4ca77438f245d8d22966716a33e09fe6b6d2dd/specification/apimanagement/resource-manager/readme.md",
       "namespace": "Azure::ApiManagement::Mgmt::V2018_06_01_preview",
       "tag": "package-2018-06-preview"
     }
@@ -298,7 +303,7 @@
   },
   "azure_mgmt_cognitive_services": {
     "azure_mgmt_cognitive_services_2017_04_18": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/cognitiveservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cc2e1c16072c24d7ba5c11d9c0c679c4b1bf0527/specification/cognitiveservices/resource-manager/readme.md",
       "namespace": "Azure::CognitiveServices::Mgmt::V2017_04_18",
       "tag": "package-2017-04"
     },
@@ -877,7 +882,7 @@
   },
   "azure_mgmt_event_grid": {
     "azure_mgmt_event_grid_2020_04_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b01b2ea007c4524e4fcb6af74aac96f53ecb45e1/specification/eventgrid/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cc2e1c16072c24d7ba5c11d9c0c679c4b1bf0527/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2020_04_01_preview",
       "tag": "package-2020-04-preview"
     },
@@ -1381,6 +1386,11 @@
     }
   },
   "azure_mgmt_netapp": {
+    "azure_mgmt_netapp_2019_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cc2e1c16072c24d7ba5c11d9c0c679c4b1bf0527/specification/netapp/resource-manager/readme.md",
+      "namespace": "Azure::NetApp::Mgmt::V2019_11_01",
+      "tag": "package-netapp-2019-11-01"
+    },
     "azure_mgmt_netapp_2019_10_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/91e257ee832b4007e40c5b543ce71a5fd7399e9b/specification/netapp/resource-manager/readme.md",
       "namespace": "Azure::NetApp::Mgmt::V2019_10_01",
@@ -2300,6 +2310,13 @@
     }
   },
   "azure_mgmt_recovery_services_backup": {
+    "azure_mgmt_recovery_services_backup_2020_02_02": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e072b14cbd4bb79a6a89787535f16fab8a3d01a1/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2020-02-02/bms.json"
+      ],
+      "namespace": "Azure::RecoveryServicesBackup::Mgmt::V2020_02_02",
+      "title": "RecoveryServicesBackupClient"
+    },
     "azure_mgmt_recovery_services_backup_2019_06_15": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5a9e1dbaa54a34dfa7557bf9215da13b7b7df898/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2019-06-15/bms.json"
@@ -2707,7 +2724,7 @@
   },
   "azure_mgmt_storage": {
     "azure_mgmt_storage_2019_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/28cb8bae84ee6508add21f463c88028ef8148bbe/specification/storage/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cc2e1c16072c24d7ba5c11d9c0c679c4b1bf0527/specification/storage/resource-manager/readme.md",
       "namespace": "Azure::Storage::Mgmt::V2019_06_01",
       "tag": "package-2019-06"
     },

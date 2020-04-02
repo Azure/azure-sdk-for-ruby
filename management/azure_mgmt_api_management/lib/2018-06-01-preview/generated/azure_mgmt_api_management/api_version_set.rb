@@ -26,23 +26,11 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field            | Supported operators    |
-    # Supported functions               |
-    # |------------------|------------------------|-----------------------------------|
-    # | id               | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | firstName        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | lastName         | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | email            | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | state            | eq                     | N/A
-    # |
-    # | registrationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
-    # | note             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -60,23 +48,11 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field            | Supported operators    |
-    # Supported functions               |
-    # |------------------|------------------------|-----------------------------------|
-    # | id               | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | firstName        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | lastName         | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | email            | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | state            | eq                     | N/A
-    # |
-    # | registrationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
-    # | note             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -93,23 +69,11 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field            | Supported operators    |
-    # Supported functions               |
-    # |------------------|------------------------|-----------------------------------|
-    # | id               | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | firstName        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | lastName         | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | email            | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | state            | eq                     | N/A
-    # |
-    # | registrationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
-    # | note             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -123,10 +87,10 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -142,7 +106,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version,'$filter' => filter,'$top' => top,'$skip' => skip},
+          query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -158,6 +122,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -228,12 +194,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'version_set_id is nil' if version_set_id.nil?
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MaxLength': '80'" if !version_set_id.nil? && version_set_id.length > 80
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MinLength': '1'" if !version_set_id.nil? && version_set_id.length < 1
-      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -248,7 +214,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id,'versionSetId' => version_set_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'versionSetId' => version_set_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -265,6 +231,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -323,12 +291,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'version_set_id is nil' if version_set_id.nil?
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MaxLength': '80'" if !version_set_id.nil? && version_set_id.length > 80
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MinLength': '1'" if !version_set_id.nil? && version_set_id.length < 1
-      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -343,7 +311,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id,'versionSetId' => version_set_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'versionSetId' => version_set_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -360,6 +328,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -437,13 +407,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'version_set_id is nil' if version_set_id.nil?
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MaxLength': '80'" if !version_set_id.nil? && version_set_id.length > 80
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MinLength': '1'" if !version_set_id.nil? && version_set_id.length < 1
-      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -465,7 +435,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id,'versionSetId' => version_set_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'versionSetId' => version_set_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -477,14 +447,16 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 201
+        unless status_code == 201 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
-        if status_code == 200
+        if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiVersionSetContract.mapper()
@@ -494,7 +466,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
           end
         end
         # Deserialize Response
-        if status_code == 201
+        if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiVersionSetContract.mapper()
@@ -572,14 +544,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'version_set_id is nil' if version_set_id.nil?
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MaxLength': '80'" if !version_set_id.nil? && version_set_id.length > 80
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MinLength': '1'" if !version_set_id.nil? && version_set_id.length < 1
-      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -601,7 +573,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id,'versionSetId' => version_set_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'versionSetId' => version_set_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -619,6 +591,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -685,13 +659,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'version_set_id is nil' if version_set_id.nil?
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MaxLength': '80'" if !version_set_id.nil? && version_set_id.length > 80
       fail ArgumentError, "'version_set_id' should satisfy the constraint - 'MinLength': '1'" if !version_set_id.nil? && version_set_id.length < 1
-      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'version_set_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !version_set_id.nil? && version_set_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -707,7 +681,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id,'versionSetId' => version_set_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'versionSetId' => version_set_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -724,6 +698,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -802,6 +778,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -824,23 +802,11 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field            | Supported operators    |
-    # Supported functions               |
-    # |------------------|------------------------|-----------------------------------|
-    # | id               | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | firstName        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | lastName         | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | email            | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | state            | eq                     | N/A
-    # |
-    # | registrationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
-    # | note             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

@@ -12,8 +12,7 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
 
       include MsRestAzure
 
-      # @return [Array<PrivateEndpointConnection>] List of private endpoint
-      # connections.
+      # @return [Array<PrivateEndpointConnection>]
       attr_accessor :private_endpoint_connections
 
       # @return [TopicProvisioningState] Provisioning state of the topic.

@@ -6,7 +6,7 @@
 module Azure::EventGrid::Mgmt::V2020_04_01_preview
   module Models
     #
-    # ConnectionState Information.
+    # ConnectionState information.
     #
     class ConnectionState
 

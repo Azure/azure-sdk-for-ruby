@@ -51,6 +51,10 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # @return [String] A resource identifier for the related ApiVersionSet.
       attr_accessor :api_version_set_id
 
+      # @return [Boolean] Specifies whether an API or Product subscription is
+      # required for accessing the API.
+      attr_accessor :subscription_required
+
 
       #
       # Mapper for ApiEntityBaseContract class as Ruby Hash.
@@ -168,6 +172,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                 serialized_name: 'apiVersionSetId',
                 type: {
                   name: 'String'
+                }
+              },
+              subscription_required: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'subscriptionRequired',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

@@ -13,14 +13,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       include MsRestAzure
 
       # @return [String] The user resource identifier of the subscription
-      # owner. The value is a valid relative URL in the format of /users/{uid}
-      # where {uid} is a user identifier.
-      attr_accessor :user_id
+      # owner. The value is a valid relative URL in the format of
+      # /users/{userId} where {userId} is a user identifier.
+      attr_accessor :owner_id
 
-      # @return [String] The product resource identifier of the subscribed
-      # product. The value is a valid relative URL in the format of
-      # /products/{productId} where {productId} is a product identifier.
-      attr_accessor :product_id
+      # @return [String] Scope like /products/{productId} or /apis or
+      # /apis/{apiId}.
+      attr_accessor :scope
 
       # @return [String] The name of the subscription, or null if the
       # subscription has no name.
@@ -84,6 +83,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # administrator.
       attr_accessor :state_comment
 
+      # @return [Boolean] Determines whether tracing is enabled
+      attr_accessor :allow_tracing
+
 
       #
       # Mapper for SubscriptionContract class as Ruby Hash.
@@ -125,18 +127,18 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                   name: 'String'
                 }
               },
-              user_id: {
+              owner_id: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.userId',
+                required: false,
+                serialized_name: 'properties.ownerId',
                 type: {
                   name: 'String'
                 }
               },
-              product_id: {
+              scope: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'properties.productId',
+                serialized_name: 'properties.scope',
                 type: {
                   name: 'String'
                 }
@@ -233,6 +235,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                 serialized_name: 'properties.stateComment',
                 type: {
                   name: 'String'
+                }
+              },
+              allow_tracing: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.allowTracing',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

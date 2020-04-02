@@ -22,29 +22,26 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     attr_reader :client
 
     #
-    # Lists a collection of the members of the group, specified by its identifier.
+    # Lists a collection of user entities associated with the group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param filter [String] | Field            | Supported operators    |
-    # Supported functions               |
-    # |------------------|------------------------|-----------------------------------|
-    # | id               | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | firstName        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | lastName         | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | email            | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | state            | eq                     | N/A
-    # |
-    # | registrationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
-    # | note             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |firstName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |lastName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |email | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |registrationDate | ge, le, eq, ne, gt, lt |    |
+    # |note | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -58,29 +55,26 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists a collection of the members of the group, specified by its identifier.
+    # Lists a collection of user entities associated with the group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param filter [String] | Field            | Supported operators    |
-    # Supported functions               |
-    # |------------------|------------------------|-----------------------------------|
-    # | id               | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | firstName        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | lastName         | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | email            | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | state            | eq                     | N/A
-    # |
-    # | registrationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
-    # | note             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |firstName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |lastName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |email | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |registrationDate | ge, le, eq, ne, gt, lt |    |
+    # |note | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -93,29 +87,26 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists a collection of the members of the group, specified by its identifier.
+    # Lists a collection of user entities associated with the group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param filter [String] | Field            | Supported operators    |
-    # Supported functions               |
-    # |------------------|------------------------|-----------------------------------|
-    # | id               | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | firstName        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | lastName         | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | email            | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | state            | eq                     | N/A
-    # |
-    # | registrationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
-    # | note             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |firstName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |lastName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |email | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |registrationDate | ge, le, eq, ne, gt, lt |    |
+    # |note | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -130,9 +121,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'group_id is nil' if group_id.nil?
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '80'" if !group_id.nil? && group_id.length > 80
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '256'" if !group_id.nil? && group_id.length > 256
       fail ArgumentError, "'group_id' should satisfy the constraint - 'MinLength': '1'" if !group_id.nil? && group_id.length < 1
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !group_id.nil? && group_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !group_id.nil? && group_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -168,6 +159,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -193,15 +186,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Boolean] operation results.
     #
-    def check_entity_exists(resource_group_name, service_name, group_id, uid, custom_headers:nil)
-      response = check_entity_exists_async(resource_group_name, service_name, group_id, uid, custom_headers:custom_headers).value!
+    def check_entity_exists(resource_group_name, service_name, group_id, user_id, custom_headers:nil)
+      response = check_entity_exists_async(resource_group_name, service_name, group_id, user_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -213,15 +206,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_entity_exists_with_http_info(resource_group_name, service_name, group_id, uid, custom_headers:nil)
-      check_entity_exists_async(resource_group_name, service_name, group_id, uid, custom_headers:custom_headers).value!
+    def check_entity_exists_with_http_info(resource_group_name, service_name, group_id, user_id, custom_headers:nil)
+      check_entity_exists_async(resource_group_name, service_name, group_id, user_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -232,27 +225,27 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_entity_exists_async(resource_group_name, service_name, group_id, uid, custom_headers:nil)
+    def check_entity_exists_async(resource_group_name, service_name, group_id, user_id, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'group_id is nil' if group_id.nil?
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '80'" if !group_id.nil? && group_id.length > 80
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '256'" if !group_id.nil? && group_id.length > 256
       fail ArgumentError, "'group_id' should satisfy the constraint - 'MinLength': '1'" if !group_id.nil? && group_id.length < 1
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !group_id.nil? && group_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
-      fail ArgumentError, 'uid is nil' if uid.nil?
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MaxLength': '80'" if !uid.nil? && uid.length > 80
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MinLength': '1'" if !uid.nil? && uid.length < 1
-      fail ArgumentError, "'uid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !uid.nil? && uid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !group_id.nil? && group_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
+      fail ArgumentError, 'user_id is nil' if user_id.nil?
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MaxLength': '80'" if !user_id.nil? && user_id.length > 80
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MinLength': '1'" if !user_id.nil? && user_id.length < 1
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !user_id.nil? && user_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -263,13 +256,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users/{uid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users/{userId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'groupId' => group_id,'uid' => uid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'groupId' => group_id,'userId' => user_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -287,6 +280,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
         result.body = (status_code == 204)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -295,70 +290,70 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Adds a user to the specified group.
+    # Add existing user to existing group
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [UserContract] operation results.
     #
-    def create(resource_group_name, service_name, group_id, uid, custom_headers:nil)
-      response = create_async(resource_group_name, service_name, group_id, uid, custom_headers:custom_headers).value!
+    def create(resource_group_name, service_name, group_id, user_id, custom_headers:nil)
+      response = create_async(resource_group_name, service_name, group_id, user_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Adds a user to the specified group.
+    # Add existing user to existing group
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, service_name, group_id, uid, custom_headers:nil)
-      create_async(resource_group_name, service_name, group_id, uid, custom_headers:custom_headers).value!
+    def create_with_http_info(resource_group_name, service_name, group_id, user_id, custom_headers:nil)
+      create_async(resource_group_name, service_name, group_id, user_id, custom_headers:custom_headers).value!
     end
 
     #
-    # Adds a user to the specified group.
+    # Add existing user to existing group
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, service_name, group_id, uid, custom_headers:nil)
+    def create_async(resource_group_name, service_name, group_id, user_id, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'group_id is nil' if group_id.nil?
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '80'" if !group_id.nil? && group_id.length > 80
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '256'" if !group_id.nil? && group_id.length > 256
       fail ArgumentError, "'group_id' should satisfy the constraint - 'MinLength': '1'" if !group_id.nil? && group_id.length < 1
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !group_id.nil? && group_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
-      fail ArgumentError, 'uid is nil' if uid.nil?
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MaxLength': '80'" if !uid.nil? && uid.length > 80
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MinLength': '1'" if !uid.nil? && uid.length < 1
-      fail ArgumentError, "'uid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !uid.nil? && uid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !group_id.nil? && group_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
+      fail ArgumentError, 'user_id is nil' if user_id.nil?
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MaxLength': '80'" if !user_id.nil? && user_id.length > 80
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MinLength': '1'" if !user_id.nil? && user_id.length < 1
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !user_id.nil? && user_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -369,13 +364,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users/{uid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users/{userId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'groupId' => group_id,'uid' => uid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'groupId' => group_id,'userId' => user_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -392,6 +387,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -426,14 +423,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, service_name, group_id, uid, custom_headers:nil)
-      response = delete_async(resource_group_name, service_name, group_id, uid, custom_headers:custom_headers).value!
+    def delete(resource_group_name, service_name, group_id, user_id, custom_headers:nil)
+      response = delete_async(resource_group_name, service_name, group_id, user_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -444,15 +441,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, service_name, group_id, uid, custom_headers:nil)
-      delete_async(resource_group_name, service_name, group_id, uid, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, service_name, group_id, user_id, custom_headers:nil)
+      delete_async(resource_group_name, service_name, group_id, user_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -462,27 +459,27 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, service_name, group_id, uid, custom_headers:nil)
+    def delete_async(resource_group_name, service_name, group_id, user_id, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'group_id is nil' if group_id.nil?
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '80'" if !group_id.nil? && group_id.length > 80
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '256'" if !group_id.nil? && group_id.length > 256
       fail ArgumentError, "'group_id' should satisfy the constraint - 'MinLength': '1'" if !group_id.nil? && group_id.length < 1
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !group_id.nil? && group_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
-      fail ArgumentError, 'uid is nil' if uid.nil?
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MaxLength': '80'" if !uid.nil? && uid.length > 80
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MinLength': '1'" if !uid.nil? && uid.length < 1
-      fail ArgumentError, "'uid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !uid.nil? && uid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !group_id.nil? && group_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
+      fail ArgumentError, 'user_id is nil' if user_id.nil?
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MaxLength': '80'" if !user_id.nil? && user_id.length > 80
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MinLength': '1'" if !user_id.nil? && user_id.length < 1
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !user_id.nil? && user_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -493,13 +490,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users/{uid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users/{userId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'groupId' => group_id,'uid' => uid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'groupId' => group_id,'userId' => user_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -516,6 +513,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -524,7 +523,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists a collection of the members of the group, specified by its identifier.
+    # Lists a collection of user entities associated with the group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -539,7 +538,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists a collection of the members of the group, specified by its identifier.
+    # Lists a collection of user entities associated with the group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -553,7 +552,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists a collection of the members of the group, specified by its identifier.
+    # Lists a collection of user entities associated with the group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -594,6 +593,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -612,29 +613,26 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists a collection of the members of the group, specified by its identifier.
+    # Lists a collection of user entities associated with the group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param group_id [String] Group identifier. Must be unique in the current API
     # Management service instance.
-    # @param filter [String] | Field            | Supported operators    |
-    # Supported functions               |
-    # |------------------|------------------------|-----------------------------------|
-    # | id               | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | firstName        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | lastName         | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | email            | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | state            | eq                     | N/A
-    # |
-    # | registrationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
-    # | note             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |firstName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |lastName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |email | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |registrationDate | ge, le, eq, ne, gt, lt |    |
+    # |note | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

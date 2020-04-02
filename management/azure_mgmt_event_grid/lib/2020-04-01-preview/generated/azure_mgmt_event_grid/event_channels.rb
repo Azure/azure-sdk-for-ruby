@@ -258,16 +258,11 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    #
     def delete(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:nil)
       response = delete_async(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:custom_headers).value!
       nil
     end
 
-    #
-    # Delete an event channel.
-    #
-    # Delete existing event channel.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription.
@@ -276,70 +271,23 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_with_http_info(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:nil)
-      delete_async(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Delete an event channel.
-    #
-    # Delete existing event channel.
-    #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
-    # @param partner_namespace_name [String] Name of the partner namespace.
-    # @param event_channel_name [String] Name of the event channel.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def delete_async(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'partner_namespace_name is nil' if partner_namespace_name.nil?
-      fail ArgumentError, 'event_channel_name is nil' if event_channel_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      # Send request
+      promise = begin_delete_async(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:custom_headers)
 
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/eventChannels/{eventChannelName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'partnerNamespaceName' => partner_namespace_name,'eventChannelName' => event_channel_name},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 202 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
@@ -471,6 +419,102 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Delete an event channel.
+    #
+    # Delete existing event channel.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
+    # @param partner_namespace_name [String] Name of the partner namespace.
+    # @param event_channel_name [String] Name of the event channel.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_delete(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Delete an event channel.
+    #
+    # Delete existing event channel.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
+    # @param partner_namespace_name [String] Name of the partner namespace.
+    # @param event_channel_name [String] Name of the event channel.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_delete_with_http_info(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Delete an event channel.
+    #
+    # Delete existing event channel.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
+    # @param partner_namespace_name [String] Name of the partner namespace.
+    # @param event_channel_name [String] Name of the event channel.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_delete_async(resource_group_name, partner_namespace_name, event_channel_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'partner_namespace_name is nil' if partner_namespace_name.nil?
+      fail ArgumentError, 'event_channel_name is nil' if event_channel_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/eventChannels/{eventChannelName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'partnerNamespaceName' => partner_namespace_name,'eventChannelName' => event_channel_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end

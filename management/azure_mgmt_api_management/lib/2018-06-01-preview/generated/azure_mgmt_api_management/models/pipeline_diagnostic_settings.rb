@@ -6,7 +6,7 @@
 module Azure::ApiManagement::Mgmt::V2018_06_01_preview
   module Models
     #
-    # Diagnostic settings for incoming/outcoming HTTP messages to the Gateway.
+    # Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
     #
     class PipelineDiagnosticSettings
 

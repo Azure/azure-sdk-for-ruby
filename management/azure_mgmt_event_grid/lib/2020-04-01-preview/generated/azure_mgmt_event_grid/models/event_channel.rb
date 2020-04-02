@@ -25,6 +25,10 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
       # 'Succeeded', 'Canceled', 'Failed'
       attr_accessor :provisioning_state
 
+      # @return [EventChannelFilter] Information about the filter for the event
+      # channel.
+      attr_accessor :filter
+
 
       #
       # Mapper for EventChannel class as Ruby Hash.
@@ -91,6 +95,15 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              filter: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.filter',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EventChannelFilter'
                 }
               }
             }

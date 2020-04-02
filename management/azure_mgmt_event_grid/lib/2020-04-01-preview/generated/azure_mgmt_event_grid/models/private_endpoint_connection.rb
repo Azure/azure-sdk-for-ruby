@@ -6,7 +6,8 @@
 module Azure::EventGrid::Mgmt::V2020_04_01_preview
   module Models
     #
-    # PrivateEndpointConnection resource information.
+    # Model object.
+    #
     #
     class PrivateEndpointConnection < Resource
 
