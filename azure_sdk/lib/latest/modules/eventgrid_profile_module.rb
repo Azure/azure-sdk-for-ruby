@@ -389,69 +389,66 @@ module Azure::Profiles::Latest
       TopicTypes = Azure::EventGrid::Mgmt::V2020_04_01_preview::TopicTypes
 
       module Models
-        DeadLetterWithResourceIdentity = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeadLetterWithResourceIdentity
-        PrivateEndpoint = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpoint
-        ConnectionState = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::ConnectionState
-        PartnerNamespaceSharedAccessKeys = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceSharedAccessKeys
-        InputSchemaMapping = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::InputSchemaMapping
-        PartnerRegistrationsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationsListResult
-        ResourceSku = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::ResourceSku
-        PartnerRegistrationUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationUpdateParameters
-        IdentityInfo = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::IdentityInfo
-        SkuDefinitionsForResourceType = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SkuDefinitionsForResourceType
-        JsonField = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::JsonField
-        PartnerNamespaceRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceRegenerateKeyRequest
-        Resource = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::Resource
-        PartnerNamespacesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespacesListResult
-        JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::JsonFieldWithDefault
-        DomainUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainUpdateParameters
-        Operation = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::Operation
-        DomainSharedAccessKeys = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainSharedAccessKeys
-        EventTypesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventTypesListResult
-        SkuDefinitionsForResourceTypeListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SkuDefinitionsForResourceTypeListResult
         PartnerTopicTypesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicTypesListResult
-        EventChannelSource = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelSource
-        PrivateEndpointConnectionListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpointConnectionListResult
-        OperationsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::OperationsListResult
+        PrivateEndpoint = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpoint
         PartnerTopicsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicsListResult
-        EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionDestination
-        PartnerTopicUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicUpdateParameters
-        DeliveryWithResourceIdentity = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeliveryWithResourceIdentity
-        PrivateLinkResource = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateLinkResource
-        EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionFilter
-        PartnerRegistrationEventTypesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationEventTypesListResult
-        DeadLetterDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeadLetterDestination
-        PrivateLinkResourcesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateLinkResourcesListResult
-        InboundIpRule = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::InboundIpRule
+        PartnerNamespacesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespacesListResult
         PartnerNamespaceUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceUpdateParameters
-        TopicTypesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicTypesListResult
-        DomainRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainRegenerateKeyRequest
-        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicRegenerateKeyRequest
-        EventChannelDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelDestination
-        TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicSharedAccessKeys
-        EventSubscriptionIdentity = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionIdentity
-        TopicsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicsListResult
-        RetryPolicy = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::RetryPolicy
-        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicUpdateParameters
+        InboundIpRule = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::InboundIpRule
+        PrivateLinkResource = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateLinkResource
         UserIdentityProperties = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::UserIdentityProperties
-        SystemTopicsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SystemTopicsListResult
-        DomainTopicsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainTopicsListResult
-        SystemTopicUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SystemTopicUpdateParameters
-        AdvancedFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::AdvancedFilter
-        EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionUpdateParameters
-        DomainsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainsListResult
-        EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionFullUrl
+        OperationsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::OperationsListResult
+        Resource = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::Resource
+        Operation = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::Operation
+        JsonFieldWithDefault = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::JsonFieldWithDefault
         OperationInfo = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::OperationInfo
-        EventChannelsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelsListResult
+        PartnerRegistrationEventTypesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationEventTypesListResult
         EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionsListResult
+        DomainUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainUpdateParameters
+        ConnectionState = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::ConnectionState
+        DomainSharedAccessKeys = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainSharedAccessKeys
+        EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionFullUrl
+        PartnerRegistrationsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationsListResult
+        EventChannelsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelsListResult
+        EventChannelSource = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelSource
+        EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionDestination
+        AdvancedFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::AdvancedFilter
+        EventSubscriptionIdentity = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionIdentity
+        PartnerRegistrationUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationUpdateParameters
+        DeliveryWithResourceIdentity = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeliveryWithResourceIdentity
+        PartnerNamespaceRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceRegenerateKeyRequest
+        EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionFilter
+        InputSchemaMapping = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::InputSchemaMapping
+        RetryPolicy = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::RetryPolicy
+        IdentityInfo = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::IdentityInfo
+        DeadLetterDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeadLetterDestination
+        PartnerTopicUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicUpdateParameters
+        DeadLetterWithResourceIdentity = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeadLetterWithResourceIdentity
+        DomainsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainsListResult
+        DomainTopicsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainTopicsListResult
+        TopicTypesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicTypesListResult
+        EventChannelFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelFilter
+        TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicRegenerateKeyRequest
+        PartnerNamespaceSharedAccessKeys = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceSharedAccessKeys
+        TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicSharedAccessKeys
+        JsonField = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::JsonField
+        TopicsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicsListResult
+        DomainRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainRegenerateKeyRequest
+        TopicUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicUpdateParameters
+        PrivateEndpointConnectionListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpointConnectionListResult
+        SystemTopicsListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SystemTopicsListResult
+        EventTypesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventTypesListResult
+        SystemTopicUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SystemTopicUpdateParameters
+        ResourceSku = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::ResourceSku
+        PrivateLinkResourcesListResult = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateLinkResourcesListResult
+        EventChannelDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelDestination
+        EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionUpdateParameters
         PrivateEndpointConnection = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpointConnection
         JsonInputSchemaMapping = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::JsonInputSchemaMapping
         TrackedResource = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TrackedResource
         Domain = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::Domain
         DomainTopic = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainTopic
-        EventChannel = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannel
         NumberInAdvancedFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::NumberInAdvancedFilter
-        StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::StorageBlobDeadLetterDestination
         NumberNotInAdvancedFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::NumberNotInAdvancedFilter
         NumberLessThanAdvancedFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::NumberLessThanAdvancedFilter
         NumberGreaterThanAdvancedFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::NumberGreaterThanAdvancedFilter
@@ -463,6 +460,8 @@ module Azure::Profiles::Latest
         StringBeginsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::StringBeginsWithAdvancedFilter
         StringEndsWithAdvancedFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::StringEndsWithAdvancedFilter
         StringContainsAdvancedFilter = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::StringContainsAdvancedFilter
+        EventChannel = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannel
+        StorageBlobDeadLetterDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::StorageBlobDeadLetterDestination
         WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::WebHookEventSubscriptionDestination
         EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventHubEventSubscriptionDestination
         StorageQueueEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::StorageQueueEventSubscriptionDestination
@@ -549,170 +548,167 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def dead_letter_with_resource_identity
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeadLetterWithResourceIdentity
+          def partner_topic_types_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicTypesListResult
           end
           def private_endpoint
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpoint
           end
-          def connection_state
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::ConnectionState
-          end
-          def partner_namespace_shared_access_keys
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceSharedAccessKeys
-          end
-          def input_schema_mapping
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::InputSchemaMapping
-          end
-          def partner_registrations_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationsListResult
-          end
-          def resource_sku
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::ResourceSku
-          end
-          def partner_registration_update_parameters
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationUpdateParameters
-          end
-          def identity_info
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::IdentityInfo
-          end
-          def sku_definitions_for_resource_type
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SkuDefinitionsForResourceType
-          end
-          def json_field
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::JsonField
-          end
-          def partner_namespace_regenerate_key_request
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceRegenerateKeyRequest
-          end
-          def resource
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::Resource
+          def partner_topics_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicsListResult
           end
           def partner_namespaces_list_result
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespacesListResult
           end
-          def json_field_with_default
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::JsonFieldWithDefault
-          end
-          def domain_update_parameters
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainUpdateParameters
-          end
-          def operation
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::Operation
-          end
-          def domain_shared_access_keys
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainSharedAccessKeys
-          end
-          def event_types_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventTypesListResult
-          end
-          def sku_definitions_for_resource_type_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SkuDefinitionsForResourceTypeListResult
-          end
-          def partner_topic_types_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicTypesListResult
-          end
-          def event_channel_source
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelSource
-          end
-          def private_endpoint_connection_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpointConnectionListResult
-          end
-          def operations_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::OperationsListResult
-          end
-          def partner_topics_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicsListResult
-          end
-          def event_subscription_destination
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionDestination
-          end
-          def partner_topic_update_parameters
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicUpdateParameters
-          end
-          def delivery_with_resource_identity
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeliveryWithResourceIdentity
-          end
-          def private_link_resource
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateLinkResource
-          end
-          def event_subscription_filter
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionFilter
-          end
-          def partner_registration_event_types_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationEventTypesListResult
-          end
-          def dead_letter_destination
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeadLetterDestination
-          end
-          def private_link_resources_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateLinkResourcesListResult
+          def partner_namespace_update_parameters
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceUpdateParameters
           end
           def inbound_ip_rule
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::InboundIpRule
           end
-          def partner_namespace_update_parameters
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceUpdateParameters
-          end
-          def topic_types_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicTypesListResult
-          end
-          def domain_regenerate_key_request
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainRegenerateKeyRequest
-          end
-          def topic_regenerate_key_request
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicRegenerateKeyRequest
-          end
-          def event_channel_destination
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelDestination
-          end
-          def topic_shared_access_keys
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicSharedAccessKeys
-          end
-          def event_subscription_identity
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionIdentity
-          end
-          def topics_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicsListResult
-          end
-          def retry_policy
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::RetryPolicy
-          end
-          def topic_update_parameters
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicUpdateParameters
+          def private_link_resource
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateLinkResource
           end
           def user_identity_properties
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::UserIdentityProperties
           end
-          def system_topics_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SystemTopicsListResult
+          def operations_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::OperationsListResult
           end
-          def domain_topics_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainTopicsListResult
+          def resource
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::Resource
           end
-          def system_topic_update_parameters
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SystemTopicUpdateParameters
+          def operation
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::Operation
           end
-          def advanced_filter
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::AdvancedFilter
-          end
-          def event_subscription_update_parameters
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionUpdateParameters
-          end
-          def domains_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainsListResult
-          end
-          def event_subscription_full_url
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionFullUrl
+          def json_field_with_default
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::JsonFieldWithDefault
           end
           def operation_info
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::OperationInfo
           end
-          def event_channels_list_result
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelsListResult
+          def partner_registration_event_types_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationEventTypesListResult
           end
           def event_subscriptions_list_result
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionsListResult
+          end
+          def domain_update_parameters
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainUpdateParameters
+          end
+          def connection_state
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::ConnectionState
+          end
+          def domain_shared_access_keys
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainSharedAccessKeys
+          end
+          def event_subscription_full_url
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionFullUrl
+          end
+          def partner_registrations_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationsListResult
+          end
+          def event_channels_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelsListResult
+          end
+          def event_channel_source
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelSource
+          end
+          def event_subscription_destination
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionDestination
+          end
+          def advanced_filter
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::AdvancedFilter
+          end
+          def event_subscription_identity
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionIdentity
+          end
+          def partner_registration_update_parameters
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerRegistrationUpdateParameters
+          end
+          def delivery_with_resource_identity
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeliveryWithResourceIdentity
+          end
+          def partner_namespace_regenerate_key_request
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceRegenerateKeyRequest
+          end
+          def event_subscription_filter
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionFilter
+          end
+          def input_schema_mapping
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::InputSchemaMapping
+          end
+          def retry_policy
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::RetryPolicy
+          end
+          def identity_info
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::IdentityInfo
+          end
+          def dead_letter_destination
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeadLetterDestination
+          end
+          def partner_topic_update_parameters
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicUpdateParameters
+          end
+          def dead_letter_with_resource_identity
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DeadLetterWithResourceIdentity
+          end
+          def domains_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainsListResult
+          end
+          def domain_topics_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainTopicsListResult
+          end
+          def topic_types_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicTypesListResult
+          end
+          def event_channel_filter
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelFilter
+          end
+          def topic_regenerate_key_request
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicRegenerateKeyRequest
+          end
+          def partner_namespace_shared_access_keys
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerNamespaceSharedAccessKeys
+          end
+          def topic_shared_access_keys
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicSharedAccessKeys
+          end
+          def json_field
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::JsonField
+          end
+          def topics_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicsListResult
+          end
+          def domain_regenerate_key_request
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainRegenerateKeyRequest
+          end
+          def topic_update_parameters
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::TopicUpdateParameters
+          end
+          def private_endpoint_connection_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpointConnectionListResult
+          end
+          def system_topics_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SystemTopicsListResult
+          end
+          def event_types_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventTypesListResult
+          end
+          def system_topic_update_parameters
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::SystemTopicUpdateParameters
+          end
+          def resource_sku
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::ResourceSku
+          end
+          def private_link_resources_list_result
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateLinkResourcesListResult
+          end
+          def event_channel_destination
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelDestination
+          end
+          def event_subscription_update_parameters
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionUpdateParameters
           end
           def private_endpoint_connection
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpointConnection
@@ -729,14 +725,8 @@ module Azure::Profiles::Latest
           def domain_topic
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainTopic
           end
-          def event_channel
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannel
-          end
           def number_in_advanced_filter
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::NumberInAdvancedFilter
-          end
-          def storage_blob_dead_letter_destination
-            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::StorageBlobDeadLetterDestination
           end
           def number_not_in_advanced_filter
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::NumberNotInAdvancedFilter
@@ -770,6 +760,12 @@ module Azure::Profiles::Latest
           end
           def string_contains_advanced_filter
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::StringContainsAdvancedFilter
+          end
+          def event_channel
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannel
+          end
+          def storage_blob_dead_letter_destination
+            Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::StorageBlobDeadLetterDestination
           end
           def web_hook_event_subscription_destination
             Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::WebHookEventSubscriptionDestination

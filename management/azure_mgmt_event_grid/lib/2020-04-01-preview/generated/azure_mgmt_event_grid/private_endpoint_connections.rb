@@ -154,13 +154,15 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     # the topic name or domain name).
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection connection.
+    # @param private_endpoint_connection [PrivateEndpointConnection] The private
+    # endpoint connection object to update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PrivateEndpointConnection] operation results.
     #
-    def update(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, custom_headers:nil)
-      response = update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, custom_headers:custom_headers).value!
+    def update(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, private_endpoint_connection, custom_headers:nil)
+      response = update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, private_endpoint_connection, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -173,15 +175,17 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     # the topic name or domain name).
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection connection.
+    # @param private_endpoint_connection [PrivateEndpointConnection] The private
+    # endpoint connection object to update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, custom_headers:nil)
+    def update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, private_endpoint_connection, custom_headers:nil)
       # Send request
-      promise = begin_update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, custom_headers:custom_headers)
+      promise = begin_update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, private_endpoint_connection, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -408,13 +412,15 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     # the topic name or domain name).
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection connection.
+    # @param private_endpoint_connection [PrivateEndpointConnection] The private
+    # endpoint connection object to update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PrivateEndpointConnection] operation results.
     #
-    def begin_update(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, custom_headers:nil)
-      response = begin_update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, custom_headers:custom_headers).value!
+    def begin_update(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, private_endpoint_connection, custom_headers:nil)
+      response = begin_update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, private_endpoint_connection, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -431,13 +437,15 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     # the topic name or domain name).
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection connection.
+    # @param private_endpoint_connection [PrivateEndpointConnection] The private
+    # endpoint connection object to update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, custom_headers:nil)
-      begin_update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, custom_headers:custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, private_endpoint_connection, custom_headers:nil)
+      begin_update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, private_endpoint_connection, custom_headers:custom_headers).value!
     end
 
     #
@@ -453,17 +461,20 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     # the topic name or domain name).
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection connection.
+    # @param private_endpoint_connection [PrivateEndpointConnection] The private
+    # endpoint connection object to update.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, custom_headers:nil)
+    def begin_update_async(resource_group_name, parent_type, parent_name, private_endpoint_connection_name, private_endpoint_connection, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'parent_type is nil' if parent_type.nil?
       fail ArgumentError, 'parent_name is nil' if parent_name.nil?
       fail ArgumentError, 'private_endpoint_connection_name is nil' if private_endpoint_connection_name.nil?
+      fail ArgumentError, 'private_endpoint_connection is nil' if private_endpoint_connection.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -473,6 +484,12 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PrivateEndpointConnection.mapper()
+      request_content = @client.serialize(request_mapper,  private_endpoint_connection)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}'
 
       request_url = @base_url || @client.base_url
@@ -481,6 +498,7 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'parentType' => parent_type,'parentName' => parent_name,'privateEndpointConnectionName' => private_endpoint_connection_name},
           query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
