@@ -13,12 +13,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       include MsRestAzure
 
       # @return [String] User (user id path) for whom subscription is being
-      # created in form /users/{uid}
-      attr_accessor :user_id
+      # created in form /users/{userId}
+      attr_accessor :owner_id
 
-      # @return [String] Product (product id path) for which subscription is
-      # being created in form /products/{productid}
-      attr_accessor :product_id
+      # @return [String] Scope like /products/{productId} or /apis or
+      # /apis/{apiId}.
+      attr_accessor :scope
 
       # @return [String] Subscription name.
       attr_accessor :display_name
@@ -44,6 +44,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # 'submitted', 'rejected', 'cancelled'
       attr_accessor :state
 
+      # @return [Boolean] Determines whether tracing can be enabled
+      attr_accessor :allow_tracing
+
 
       #
       # Mapper for SubscriptionCreateParameters class as Ruby Hash.
@@ -58,18 +61,18 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
             name: 'Composite',
             class_name: 'SubscriptionCreateParameters',
             model_properties: {
-              user_id: {
+              owner_id: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.userId',
+                required: false,
+                serialized_name: 'properties.ownerId',
                 type: {
                   name: 'String'
                 }
               },
-              product_id: {
+              scope: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'properties.productId',
+                serialized_name: 'properties.scope',
                 type: {
                   name: 'String'
                 }
@@ -117,6 +120,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Enum',
                   module: 'SubscriptionState'
+                }
+              },
+              allow_tracing: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.allowTracing',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

@@ -15,6 +15,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       SwaggerLinkJson = "swagger-link-json"
       Wsdl = "wsdl"
       WsdlLink = "wsdl-link"
+      Openapi = "openapi"
+      Openapijson = "openapi+json"
+      OpenapiLink = "openapi-link"
     end
   end
 end

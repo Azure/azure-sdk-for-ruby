@@ -28,11 +28,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param api_id [String] API identifier. Must be unique in the current API
     # Management service instance.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -52,11 +54,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param api_id [String] API identifier. Must be unique in the current API
     # Management service instance.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -75,11 +79,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param api_id [String] API identifier. Must be unique in the current API
     # Management service instance.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -96,7 +102,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'api_id is nil' if api_id.nil?
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '80'" if !api_id.nil? && api_id.length > 80
       fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !api_id.nil? && api_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -132,6 +138,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -220,6 +228,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -244,11 +254,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param api_id [String] API identifier. Must be unique in the current API
     # Management service instance.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

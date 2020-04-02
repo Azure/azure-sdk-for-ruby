@@ -23,12 +23,17 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       attr_accessor :sampling
 
       # @return [PipelineDiagnosticSettings] Diagnostic settings for
-      # incoming/outcoming HTTP messages to the Gateway.
+      # incoming/outgoing HTTP messages to the Gateway.
       attr_accessor :frontend
 
       # @return [PipelineDiagnosticSettings] Diagnostic settings for
-      # incoming/outcoming HTTP messages to the Backend
+      # incoming/outgoing HTTP messages to the Backend
       attr_accessor :backend
+
+      # @return [Boolean] Whether to process Correlation Headers coming to Api
+      # Management Service. Only applicable to Application Insights
+      # diagnostics. Default is true.
+      attr_accessor :enable_http_correlation_headers
 
 
       #
@@ -112,6 +117,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'PipelineDiagnosticSettings'
+                }
+              },
+              enable_http_correlation_headers: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.enableHttpCorrelationHeaders',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

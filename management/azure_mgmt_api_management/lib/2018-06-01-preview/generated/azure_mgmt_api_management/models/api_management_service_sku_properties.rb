@@ -13,7 +13,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       include MsRestAzure
 
       # @return [SkuType] Name of the Sku. Possible values include:
-      # 'Developer', 'Standard', 'Premium', 'Basic'
+      # 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
       attr_accessor :name
 
       # @return [Integer] Capacity of the SKU (number of deployed units of the

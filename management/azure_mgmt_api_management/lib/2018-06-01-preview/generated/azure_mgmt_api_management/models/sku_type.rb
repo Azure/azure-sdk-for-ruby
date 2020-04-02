@@ -13,6 +13,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       Standard = "Standard"
       Premium = "Premium"
       Basic = "Basic"
+      Consumption = "Consumption"
     end
   end
 end

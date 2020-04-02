@@ -28,7 +28,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       # @return [String] For external groups, this property contains the id of
       # the group from the external identity provider, e.g. for Azure Active
-      # Directory aad://<tenant>.onmicrosoft.com/groups/<group object id>;
+      # Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`;
       # otherwise the value is null.
       attr_accessor :external_id
 

@@ -28,21 +28,26 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param filter [String] | Field        | Supported operators    | Supported
-    # functions                         |
-    # |--------------|------------------------|---------------------------------------------|
-    # | id           | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name         | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | userId       | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | productId    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | state        | eq                     |
-    # |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |ownerId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |scope | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |userId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |productId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |state | eq |    |
+    # |user |     |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -62,21 +67,26 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param filter [String] | Field        | Supported operators    | Supported
-    # functions                         |
-    # |--------------|------------------------|---------------------------------------------|
-    # | id           | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name         | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | userId       | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | productId    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | state        | eq                     |
-    # |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |ownerId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |scope | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |userId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |productId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |state | eq |    |
+    # |user |     |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -95,21 +105,26 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param filter [String] | Field        | Supported operators    | Supported
-    # functions                         |
-    # |--------------|------------------------|---------------------------------------------|
-    # | id           | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name         | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | userId       | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | productId    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | state        | eq                     |
-    # |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |ownerId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |scope | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |userId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |productId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |state | eq |    |
+    # |user |     |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -124,9 +139,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'product_id is nil' if product_id.nil?
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '80'" if !product_id.nil? && product_id.length > 80
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '256'" if !product_id.nil? && product_id.length > 256
       fail ArgumentError, "'product_id' should satisfy the constraint - 'MinLength': '1'" if !product_id.nil? && product_id.length < 1
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !product_id.nil? && product_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !product_id.nil? && product_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -162,6 +177,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -250,6 +267,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -274,21 +293,26 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param service_name [String] The name of the API Management service.
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
-    # @param filter [String] | Field        | Supported operators    | Supported
-    # functions                         |
-    # |--------------|------------------------|---------------------------------------------|
-    # | id           | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name         | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | userId       | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | productId    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | state        | eq                     |
-    # |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |ownerId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |scope | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |userId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |productId | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |state | eq |    |
+    # |user |     |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

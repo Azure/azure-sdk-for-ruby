@@ -111,6 +111,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -218,6 +220,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -325,6 +329,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -432,6 +438,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -450,7 +458,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists report records by GeoGraphy.
+    # Lists report records by geography.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -468,7 +476,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists report records by GeoGraphy.
+    # Lists report records by geography.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -485,7 +493,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists report records by GeoGraphy.
+    # Lists report records by geography.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -538,6 +546,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -644,6 +654,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -670,7 +682,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # minutes and may not be zero. The value should be in ISO  8601 format
     # (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to
     # convert TimeSpan to a valid interval string: XmlConvert.ToString(new
-    # TimeSpan(hours, minutes, secconds))
+    # TimeSpan(hours, minutes, seconds))
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
@@ -693,7 +705,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # minutes and may not be zero. The value should be in ISO  8601 format
     # (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to
     # convert TimeSpan to a valid interval string: XmlConvert.ToString(new
-    # TimeSpan(hours, minutes, secconds))
+    # TimeSpan(hours, minutes, seconds))
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
@@ -715,7 +727,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # minutes and may not be zero. The value should be in ISO  8601 format
     # (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to
     # convert TimeSpan to a valid interval string: XmlConvert.ToString(new
-    # TimeSpan(hours, minutes, secconds))
+    # TimeSpan(hours, minutes, seconds))
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
@@ -766,6 +778,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -873,6 +887,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -961,6 +977,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1049,6 +1067,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1137,6 +1157,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1225,6 +1247,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1243,7 +1267,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists report records by GeoGraphy.
+    # Lists report records by geography.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1258,7 +1282,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists report records by GeoGraphy.
+    # Lists report records by geography.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1272,7 +1296,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists report records by GeoGraphy.
+    # Lists report records by geography.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1313,6 +1337,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1401,6 +1427,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1489,6 +1517,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1607,7 +1637,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists report records by GeoGraphy.
+    # Lists report records by geography.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -1665,7 +1695,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # minutes and may not be zero. The value should be in ISO  8601 format
     # (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to
     # convert TimeSpan to a valid interval string: XmlConvert.ToString(new
-    # TimeSpan(hours, minutes, secconds))
+    # TimeSpan(hours, minutes, seconds))
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.

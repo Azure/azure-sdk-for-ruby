@@ -26,17 +26,17 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field          | Supported operators    | Supported
-    # functions                         |
-    # |----------------|------------------------|---------------------------------------------|
-    # | id             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | subject        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | thumbprint     | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | expirationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |subject | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |thumbprint | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |expirationDate | ge, le, eq, ne, gt, lt |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -54,17 +54,17 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field          | Supported operators    | Supported
-    # functions                         |
-    # |----------------|------------------------|---------------------------------------------|
-    # | id             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | subject        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | thumbprint     | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | expirationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |subject | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |thumbprint | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |expirationDate | ge, le, eq, ne, gt, lt |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -81,17 +81,17 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field          | Supported operators    | Supported
-    # functions                         |
-    # |----------------|------------------------|---------------------------------------------|
-    # | id             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | subject        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | thumbprint     | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | expirationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |subject | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |thumbprint | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |expirationDate | ge, le, eq, ne, gt, lt |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -140,6 +140,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -213,7 +215,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'certificate_id is nil' if certificate_id.nil?
       fail ArgumentError, "'certificate_id' should satisfy the constraint - 'MaxLength': '80'" if !certificate_id.nil? && certificate_id.length > 80
       fail ArgumentError, "'certificate_id' should satisfy the constraint - 'MinLength': '1'" if !certificate_id.nil? && certificate_id.length < 1
-      fail ArgumentError, "'certificate_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !certificate_id.nil? && certificate_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'certificate_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !certificate_id.nil? && certificate_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -247,6 +249,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -308,7 +312,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'certificate_id is nil' if certificate_id.nil?
       fail ArgumentError, "'certificate_id' should satisfy the constraint - 'MaxLength': '80'" if !certificate_id.nil? && certificate_id.length > 80
       fail ArgumentError, "'certificate_id' should satisfy the constraint - 'MinLength': '1'" if !certificate_id.nil? && certificate_id.length < 1
-      fail ArgumentError, "'certificate_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !certificate_id.nil? && certificate_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'certificate_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !certificate_id.nil? && certificate_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -342,6 +346,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -428,7 +434,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'certificate_id is nil' if certificate_id.nil?
       fail ArgumentError, "'certificate_id' should satisfy the constraint - 'MaxLength': '80'" if !certificate_id.nil? && certificate_id.length > 80
       fail ArgumentError, "'certificate_id' should satisfy the constraint - 'MinLength': '1'" if !certificate_id.nil? && certificate_id.length < 1
-      fail ArgumentError, "'certificate_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !certificate_id.nil? && certificate_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'certificate_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !certificate_id.nil? && certificate_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -471,6 +477,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -560,7 +568,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'certificate_id is nil' if certificate_id.nil?
       fail ArgumentError, "'certificate_id' should satisfy the constraint - 'MaxLength': '80'" if !certificate_id.nil? && certificate_id.length > 80
       fail ArgumentError, "'certificate_id' should satisfy the constraint - 'MinLength': '1'" if !certificate_id.nil? && certificate_id.length < 1
-      fail ArgumentError, "'certificate_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !certificate_id.nil? && certificate_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'certificate_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !certificate_id.nil? && certificate_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -596,6 +604,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -674,6 +684,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -696,17 +708,17 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field          | Supported operators    | Supported
-    # functions                         |
-    # |----------------|------------------------|---------------------------------------------|
-    # | id             | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | subject        | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | thumbprint     | ge, le, eq, ne, gt, lt | substringof, contains,
-    # startswith, endswith |
-    # | expirationDate | ge, le, eq, ne, gt, lt | N/A
-    # |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |subject | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |thumbprint | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |expirationDate | ge, le, eq, ne, gt, lt |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

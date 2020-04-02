@@ -230,7 +230,7 @@ namespace :arm do
             end
           end
         end
-        command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --package-version=#{gem_versions[mode][dir]} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm"
+        command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --package-version=#{gem_versions[mode][dir]} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm --version=2.0.4413"
         execute_and_stream(command)
       end
       update_gem_version('lib/version.rb', gem_versions[mode][dir])
