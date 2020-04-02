@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::NetApp::Mgmt::V2017_08_15_preview
+module Azure::NetApp::Mgmt::V2019_11_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -40,6 +40,9 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
     # @return [Operations] operations
     attr_reader :operations
 
+    # @return [NetAppResource] net_app_resource
+    attr_reader :net_app_resource
+
     # @return [Accounts] accounts
     attr_reader :accounts
 
@@ -48,9 +51,6 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
 
     # @return [Volumes] volumes
     attr_reader :volumes
-
-    # @return [MountTargets] mount_targets
-    attr_reader :mount_targets
 
     # @return [Snapshots] snapshots
     attr_reader :snapshots
@@ -69,12 +69,12 @@ module Azure::NetApp::Mgmt::V2017_08_15_preview
       @credentials = credentials
 
       @operations = Operations.new(self)
+      @net_app_resource = NetAppResource.new(self)
       @accounts = Accounts.new(self)
       @pools = Pools.new(self)
       @volumes = Volumes.new(self)
-      @mount_targets = MountTargets.new(self)
       @snapshots = Snapshots.new(self)
-      @api_version = '2017-08-15'
+      @api_version = '2019-11-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
