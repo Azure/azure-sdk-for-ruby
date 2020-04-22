@@ -6,46 +6,46 @@
 module Azure::Storage::Mgmt::V2019_06_01
   module Models
     #
-    # Blob range
+    # The deleted share to be restored.
     #
-    class BlobRestoreRange
+    class DeletedShare
 
       include MsRestAzure
 
-      # @return [String] Blob start range. This is inclusive. Empty means
-      # account start.
-      attr_accessor :start_range
+      # @return [String] Required. Identify the name of the deleted share that
+      # will be restored.
+      attr_accessor :deleted_share_name
 
-      # @return [String] Blob end range. This is exclusive. Empty means account
-      # end.
-      attr_accessor :end_range
+      # @return [String] Required. Identify the version of the deleted share
+      # that will be restored.
+      attr_accessor :deleted_share_version
 
 
       #
-      # Mapper for BlobRestoreRange class as Ruby Hash.
+      # Mapper for DeletedShare class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'BlobRestoreRange',
+          serialized_name: 'DeletedShare',
           type: {
             name: 'Composite',
-            class_name: 'BlobRestoreRange',
+            class_name: 'DeletedShare',
             model_properties: {
-              start_range: {
+              deleted_share_name: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'startRange',
+                serialized_name: 'deletedShareName',
                 type: {
                   name: 'String'
                 }
               },
-              end_range: {
+              deleted_share_version: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'endRange',
+                serialized_name: 'deletedShareVersion',
                 type: {
                   name: 'String'
                 }

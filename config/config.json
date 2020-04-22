@@ -2724,7 +2724,7 @@
   },
   "azure_mgmt_storage": {
     "azure_mgmt_storage_2019_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cc2e1c16072c24d7ba5c11d9c0c679c4b1bf0527/specification/storage/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/98127bcfd62a92618a159936e7f05edb84aa9240/specification/storage/resource-manager/readme.md",
       "namespace": "Azure::Storage::Mgmt::V2019_06_01",
       "tag": "package-2019-06"
     },
