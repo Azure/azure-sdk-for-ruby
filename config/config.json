@@ -2304,7 +2304,7 @@
   },
   "azure_mgmt_recovery_services": {
     "azure_mgmt_recovery_services_2016_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/47052d86cc21ed8acc77860c141d0a687f0fb28a/specification/recoveryservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/98127bcfd62a92618a159936e7f05edb84aa9240/specification/recoveryservices/resource-manager/readme.md",
       "namespace": "Azure::RecoveryServices::Mgmt::V2016_06_01",
       "tag": "package-2016-06"
     }

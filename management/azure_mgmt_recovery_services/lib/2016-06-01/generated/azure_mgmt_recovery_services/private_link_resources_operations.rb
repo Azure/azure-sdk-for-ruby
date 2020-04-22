@@ -7,11 +7,11 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
   #
   # Recovery Services Client
   #
-  class VaultExtendedInfoOperations
+  class PrivateLinkResourcesOperations
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the VaultExtendedInfoOperations class.
+    # Creates and initializes a new instance of the PrivateLinkResourcesOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,7 +22,8 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     attr_reader :client
 
     #
-    # Get the vault extended info.
+    # Returns the list of private link resources that need to be created for Backup
+    # and SiteRecovery
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
@@ -30,15 +31,16 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VaultExtendedInfoResource] operation results.
+    # @return [Array<PrivateLinkResource>] operation results.
     #
-    def get(resource_group_name, vault_name, custom_headers:nil)
-      response = get_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+    def list(resource_group_name, vault_name, custom_headers:nil)
+      first_page = list_as_lazy(resource_group_name, vault_name, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Get the vault extended info.
+    # Returns the list of private link resources that need to be created for Backup
+    # and SiteRecovery
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
@@ -48,12 +50,13 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, vault_name, custom_headers:nil)
-      get_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, vault_name, custom_headers:nil)
+      list_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Get the vault extended info.
+    # Returns the list of private link resources that need to be created for Backup
+    # and SiteRecovery
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
@@ -63,11 +66,11 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, vault_name, custom_headers:nil)
+    def list_async(resource_group_name, vault_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -76,7 +79,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources'
 
       request_url = @base_url || @client.base_url
 
@@ -105,7 +108,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource.mapper()
+            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PrivateLinkResources.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -119,59 +122,59 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     end
 
     #
-    # Create vault extended info.
+    # Returns a specified private link resource that need to be created for Backup
+    # and SiteRecovery
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
     # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # Details of ResourceExtendedInfo
+    # @param private_link_resource_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VaultExtendedInfoResource] operation results.
+    # @return [PrivateLinkResource] operation results.
     #
-    def create_or_update(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:custom_headers).value!
+    def get(resource_group_name, vault_name, private_link_resource_name, custom_headers:nil)
+      response = get_async(resource_group_name, vault_name, private_link_resource_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create vault extended info.
+    # Returns a specified private link resource that need to be created for Backup
+    # and SiteRecovery
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
     # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # Details of ResourceExtendedInfo
+    # @param private_link_resource_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:nil)
-      create_or_update_async(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, vault_name, private_link_resource_name, custom_headers:nil)
+      get_async(resource_group_name, vault_name, private_link_resource_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Create vault extended info.
+    # Returns a specified private link resource that need to be created for Backup
+    # and SiteRecovery
     #
     # @param resource_group_name [String] The name of the resource group where the
     # recovery services vault is present.
     # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # Details of ResourceExtendedInfo
+    # @param private_link_resource_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:nil)
+    def get_async(resource_group_name, vault_name, private_link_resource_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'resource_resource_extended_info_details is nil' if resource_resource_extended_info_details.nil?
+      fail ArgumentError, 'private_link_resource_name is nil' if private_link_resource_name.nil?
 
 
       request_headers = {}
@@ -180,25 +183,18 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource.mapper()
-      request_content = @client.serialize(request_mapper,  resource_resource_extended_info_details)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources/{privateLinkResourceName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'vaultName' => vault_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'privateLinkResourceName' => private_link_resource_name},
           query_params: {'api-version' => @client.api_version},
-          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:put, path_template, options)
+      promise = @client.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -216,7 +212,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource.mapper()
+            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PrivateLinkResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -230,59 +226,49 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     end
 
     #
-    # Update vault extended info.
+    # Returns the list of private link resources that need to be created for Backup
+    # and SiteRecovery
     #
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # Details of ResourceExtendedInfo
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VaultExtendedInfoResource] operation results.
+    # @return [PrivateLinkResources] operation results.
     #
-    def update(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:nil)
-      response = update_async(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Update vault extended info.
+    # Returns the list of private link resources that need to be created for Backup
+    # and SiteRecovery
     #
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # Details of ResourceExtendedInfo
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:nil)
-      update_async(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
-    # Update vault extended info.
+    # Returns the list of private link resources that need to be created for Backup
+    # and SiteRecovery
     #
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_resource_extended_info_details [VaultExtendedInfoResource]
-    # Details of ResourceExtendedInfo
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, vault_name, resource_resource_extended_info_details, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'resource_resource_extended_info_details is nil' if resource_resource_extended_info_details.nil?
+    def list_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
@@ -291,25 +277,17 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource.mapper()
-      request_content = @client.serialize(request_mapper,  resource_resource_extended_info_details)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo'
+      path_template = '{nextLink}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'vaultName' => vault_name},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
+          skip_encoding_path_params: {'nextLink' => next_page_link},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:patch, path_template, options)
+      promise = @client.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -327,7 +305,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::VaultExtendedInfoResource.mapper()
+            result_mapper = Azure::RecoveryServices::Mgmt::V2016_06_01::Models::PrivateLinkResources.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -338,6 +316,30 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       end
 
       promise.execute
+    end
+
+    #
+    # Returns the list of private link resources that need to be created for Backup
+    # and SiteRecovery
+    #
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PrivateLinkResources] which provide lazy access to pages of the
+    # response.
+    #
+    def list_as_lazy(resource_group_name, vault_name, custom_headers:nil)
+      response = list_async(resource_group_name, vault_name, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
     end
 
   end
