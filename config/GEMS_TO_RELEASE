@@ -1,6 +1,7 @@
 {
     "management":[
-        "azure_mgmt_recovery_services"
+        "azure_mgmt_recovery_services",
+        "azure_mgmt_netapp"
     ],
     "rollup":[
         "azure_sdk"
