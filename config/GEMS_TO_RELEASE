@@ -2,7 +2,8 @@
     "management":[
         "azure_mgmt_recovery_services",
         "azure_mgmt_netapp",
-        "azure_mgmt_storage"
+        "azure_mgmt_storage",
+        "azure_mgmt_kubernetes_configuration"
     ],
     "rollup":[
         "azure_sdk"

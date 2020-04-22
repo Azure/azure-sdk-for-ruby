@@ -465,6 +465,11 @@
                         "7.0": ["*"]
                     }
                 },
+                "Microsoft.KubernetesConfiguration": {
+                    "management": {
+                        "2019-11-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Kusto": {
                     "management": {
                         "2019-11-09": ["*"]
@@ -1734,6 +1739,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_key_vault/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_kubernetes_configuration": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.KubernetesConfiguration": {
+                    "management": {
+                        "2019-11-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_kubernetes_configuration/lib/profiles",
             "individual_gem_profile": true
         }
         ],
