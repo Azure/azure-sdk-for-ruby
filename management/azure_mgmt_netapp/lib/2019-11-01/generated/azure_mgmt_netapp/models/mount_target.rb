@@ -37,6 +37,25 @@ module Azure::NetApp::Mgmt::V2019_11_01
       # @return [String] ipAddress. The mount target's IPv4 address
       attr_accessor :ip_address
 
+      # @return [String] subnet. The subnet
+      attr_accessor :subnet
+
+      # @return [String] startIp. The start of IPv4 address range to use when
+      # creating a new mount target
+      attr_accessor :start_ip
+
+      # @return [String] endIp. The end of IPv4 address range to use when
+      # creating a new mount target
+      attr_accessor :end_ip
+
+      # @return [String] gateway. The gateway of the IPv4 address range to use
+      # when creating a new mount target
+      attr_accessor :gateway
+
+      # @return [String] netmask. The netmask of the IPv4 address range to use
+      # when creating a new mount target
+      attr_accessor :netmask
+
       # @return [String] smbServerFQDN. The SMB server's Fully Qualified Domain
       # Name, FQDN
       attr_accessor :smb_server_fqdn
@@ -138,6 +157,46 @@ module Azure::NetApp::Mgmt::V2019_11_01
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.ipAddress',
+                type: {
+                  name: 'String'
+                }
+              },
+              subnet: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.subnet',
+                type: {
+                  name: 'String'
+                }
+              },
+              start_ip: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.startIp',
+                type: {
+                  name: 'String'
+                }
+              },
+              end_ip: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.endIp',
+                type: {
+                  name: 'String'
+                }
+              },
+              gateway: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.gateway',
+                type: {
+                  name: 'String'
+                }
+              },
+              netmask: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.netmask',
                 type: {
                   name: 'String'
                 }

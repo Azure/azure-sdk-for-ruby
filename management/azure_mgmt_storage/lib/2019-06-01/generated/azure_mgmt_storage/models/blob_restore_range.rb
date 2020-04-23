@@ -12,10 +12,12 @@ module Azure::Storage::Mgmt::V2019_06_01
 
       include MsRestAzure
 
-      # @return [String] Blob start range. Empty means account start.
+      # @return [String] Blob start range. This is inclusive. Empty means
+      # account start.
       attr_accessor :start_range
 
-      # @return [String] Blob end range. Empty means account end.
+      # @return [String] Blob end range. This is exclusive. Empty means account
+      # end.
       attr_accessor :end_range
 
 
