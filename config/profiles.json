@@ -465,6 +465,11 @@
                         "7.0": ["*"]
                     }
                 },
+                "Microsoft.KubernetesConfiguration": {
+                    "management": {
+                        "2019-11-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Kusto": {
                     "management": {
                         "2019-11-09": ["*"]
@@ -569,7 +574,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2019-12-01": ["*"]
+                        "2020-03-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -1737,6 +1742,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_kubernetes_configuration": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.KubernetesConfiguration": {
+                    "management": {
+                        "2019-11-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_kubernetes_configuration/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_kusto": [
         {
             "name": "Latest",
@@ -2107,7 +2126,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2019-12-01": ["*"]
+                        "2020-03-01": ["*"]
                     }
                 }
             },

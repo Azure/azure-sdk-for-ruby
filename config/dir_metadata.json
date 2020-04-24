@@ -338,6 +338,13 @@
       "module_require": "azure_key_vault"
     }
   },
+  "Microsoft.KubernetesConfiguration": {
+    "management": {
+      "path": "management/azure_mgmt_kubernetes_configuration",
+      "namespace": "Azure::KubernetesConfiguration::Mgmt",
+      "module_require": "azure_mgmt_kubernetes_configuration"
+    }
+  },
   "Microsoft.Kusto": {
     "management": {
       "path": "management/azure_mgmt_kusto",

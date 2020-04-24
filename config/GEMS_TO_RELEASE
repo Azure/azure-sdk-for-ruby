@@ -1,11 +1,10 @@
 {
     "management":[
-        "azure_mgmt_recovery_services_backup",
-        "azure_mgmt_api_management",
-        "azure_mgmt_cognitive_services",
-        "azure_mgmt_storage",
+        "azure_mgmt_recovery_services",
         "azure_mgmt_netapp",
-        "azure_mgmt_event_grid"
+        "azure_mgmt_storage",
+        "azure_mgmt_kubernetes_configuration",
+        "azure_mgmt_network"
     ],
     "rollup":[
         "azure_sdk"

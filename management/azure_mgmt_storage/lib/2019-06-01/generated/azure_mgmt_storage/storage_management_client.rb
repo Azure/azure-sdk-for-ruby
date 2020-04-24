@@ -56,6 +56,10 @@ module Azure::Storage::Mgmt::V2019_06_01
     # @return [PrivateLinkResources] private_link_resources
     attr_reader :private_link_resources
 
+    # @return [ObjectReplicationPoliciesOperations]
+    # object_replication_policies_operations
+    attr_reader :object_replication_policies_operations
+
     # @return [EncryptionScopes] encryption_scopes
     attr_reader :encryption_scopes
 
@@ -91,6 +95,7 @@ module Azure::Storage::Mgmt::V2019_06_01
       @management_policies = ManagementPolicies.new(self)
       @private_endpoint_connections = PrivateEndpointConnections.new(self)
       @private_link_resources = PrivateLinkResources.new(self)
+      @object_replication_policies_operations = ObjectReplicationPoliciesOperations.new(self)
       @encryption_scopes = EncryptionScopes.new(self)
       @blob_services = BlobServices.new(self)
       @blob_containers = BlobContainers.new(self)
@@ -168,7 +173,7 @@ module Azure::Storage::Mgmt::V2019_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_storage'
-        sdk_information = "#{sdk_information}/0.20.0"
+        sdk_information = "#{sdk_information}/0.20.1"
         add_user_agent_information(sdk_information)
     end
   end
