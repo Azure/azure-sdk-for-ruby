@@ -2,6 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
+require '2019-11-01/generated/azure_mgmt_subscriptions'
 require '2018-03-01-preview/generated/azure_mgmt_subscriptions'
 require '2018-11-01-preview/generated/azure_mgmt_subscriptions'
 require '2017-11-01-preview/generated/azure_mgmt_subscriptions'

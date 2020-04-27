@@ -13,6 +13,11 @@ module MsRestAzure
       expect { ApplicationTokenProvider.new('tenant_id', nil, 'client_secret') }.to raise_error(ArgumentError)
       expect { ApplicationTokenProvider.new(nil, 'client_id', nil) }.to raise_error(ArgumentError)
       expect { ApplicationTokenProvider.new(nil, 'client_id', 'client_secret', nil) }.to raise_error(ArgumentError)
+    
+      token_provider = ApplicationTokenProvider.new('tenant_id', 'client_id', 'client_secret')
+      token_expires_on = token_provider.token_expires_on
+      token_type = token_provider.token_type
+      token = token_provider.token
     end
   end
 

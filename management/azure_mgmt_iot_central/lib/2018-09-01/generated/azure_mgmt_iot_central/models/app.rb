@@ -111,9 +111,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
-                constraints: {
-                  Pattern: '^.{1,200}$'
-                },
                 type: {
                   name: 'String'
                 }
@@ -122,9 +119,6 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subdomain',
-                constraints: {
-                  Pattern: '^[a-z0-9-]{1,63}$'
-                },
                 type: {
                   name: 'String'
                 }

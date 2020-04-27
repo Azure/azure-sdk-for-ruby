@@ -30,16 +30,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | type        | eq, ne                 | N/A
-    # |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt |    |
+    # |displayName | eq, ne |    |
+    # |description | eq, ne |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -61,16 +58,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | type        | eq, ne                 | N/A
-    # |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt |    |
+    # |displayName | eq, ne |    |
+    # |description | eq, ne |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -91,16 +85,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | type        | eq, ne                 | N/A
-    # |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt |    |
+    # |displayName | eq, ne |    |
+    # |description | eq, ne |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -115,9 +106,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'product_id is nil' if product_id.nil?
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '80'" if !product_id.nil? && product_id.length > 80
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '256'" if !product_id.nil? && product_id.length > 256
       fail ArgumentError, "'product_id' should satisfy the constraint - 'MinLength': '1'" if !product_id.nil? && product_id.length < 1
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !product_id.nil? && product_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !product_id.nil? && product_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -153,6 +144,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -183,11 +176,10 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Boolean] operation results.
     #
     def check_entity_exists(resource_group_name, service_name, product_id, group_id, custom_headers:nil)
       response = check_entity_exists_async(resource_group_name, service_name, product_id, group_id, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -231,13 +223,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'product_id is nil' if product_id.nil?
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '80'" if !product_id.nil? && product_id.length > 80
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '256'" if !product_id.nil? && product_id.length > 256
       fail ArgumentError, "'product_id' should satisfy the constraint - 'MinLength': '1'" if !product_id.nil? && product_id.length < 1
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !product_id.nil? && product_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !product_id.nil? && product_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'group_id is nil' if group_id.nil?
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '80'" if !group_id.nil? && group_id.length > 80
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '256'" if !group_id.nil? && group_id.length > 256
       fail ArgumentError, "'group_id' should satisfy the constraint - 'MinLength': '1'" if !group_id.nil? && group_id.length < 1
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !group_id.nil? && group_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !group_id.nil? && group_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -265,13 +257,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204 || status_code == 404
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.body = (status_code == 204)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -340,13 +333,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'product_id is nil' if product_id.nil?
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '80'" if !product_id.nil? && product_id.length > 80
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '256'" if !product_id.nil? && product_id.length > 256
       fail ArgumentError, "'product_id' should satisfy the constraint - 'MinLength': '1'" if !product_id.nil? && product_id.length < 1
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !product_id.nil? && product_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !product_id.nil? && product_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'group_id is nil' if group_id.nil?
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '80'" if !group_id.nil? && group_id.length > 80
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '256'" if !group_id.nil? && group_id.length > 256
       fail ArgumentError, "'group_id' should satisfy the constraint - 'MinLength': '1'" if !group_id.nil? && group_id.length < 1
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !group_id.nil? && group_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !group_id.nil? && group_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -380,6 +373,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -464,13 +459,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'product_id is nil' if product_id.nil?
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '80'" if !product_id.nil? && product_id.length > 80
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'MaxLength': '256'" if !product_id.nil? && product_id.length > 256
       fail ArgumentError, "'product_id' should satisfy the constraint - 'MinLength': '1'" if !product_id.nil? && product_id.length < 1
-      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !product_id.nil? && product_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'product_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !product_id.nil? && product_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'group_id is nil' if group_id.nil?
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '80'" if !group_id.nil? && group_id.length > 80
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '256'" if !group_id.nil? && group_id.length > 256
       fail ArgumentError, "'group_id' should satisfy the constraint - 'MinLength': '1'" if !group_id.nil? && group_id.length < 1
-      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !group_id.nil? && group_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !group_id.nil? && group_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -504,6 +499,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -585,6 +582,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -611,16 +610,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param product_id [String] Product identifier. Must be unique in the current
     # API Management service instance.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | type        | eq, ne                 | N/A
-    # |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt |    |
+    # |displayName | eq, ne |    |
+    # |description | eq, ne |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

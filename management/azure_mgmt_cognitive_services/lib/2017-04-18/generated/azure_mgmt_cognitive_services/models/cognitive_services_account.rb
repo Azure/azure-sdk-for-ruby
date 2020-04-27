@@ -45,6 +45,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # @return [String] Resource type
       attr_accessor :type
 
+      # @return [Identity] The identity of Cognitive Services account.
+      attr_accessor :identity
+
 
       #
       # Mapper for CognitiveServicesAccount class as Ruby Hash.
@@ -143,6 +146,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Identity'
                 }
               }
             }

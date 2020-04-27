@@ -18,6 +18,18 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # @return [UpgradeDetails]
       attr_accessor :upgrade_details
 
+      # @return [Array<PrivateEndpointConnectionVaultProperties>] List of
+      # private endpoint connection.
+      attr_accessor :private_endpoint_connections
+
+      # @return [VaultPrivateEndpointState] Private endpoint state for backup.
+      # Possible values include: 'None', 'Enabled'
+      attr_accessor :private_endpoint_state_for_backup
+
+      # @return [VaultPrivateEndpointState] Private endpoint state for site
+      # recovery. Possible values include: 'None', 'Enabled'
+      attr_accessor :private_endpoint_state_for_site_recovery
+
 
       #
       # Mapper for VaultProperties class as Ruby Hash.
@@ -48,6 +60,42 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'UpgradeDetails'
+                }
+              },
+              private_endpoint_connections: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'privateEndpointConnections',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'PrivateEndpointConnectionVaultPropertiesElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PrivateEndpointConnectionVaultProperties'
+                      }
+                  }
+                }
+              },
+              private_endpoint_state_for_backup: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'privateEndpointStateForBackup',
+                type: {
+                  name: 'String'
+                }
+              },
+              private_endpoint_state_for_site_recovery: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'privateEndpointStateForSiteRecovery',
+                type: {
+                  name: 'String'
                 }
               }
             }

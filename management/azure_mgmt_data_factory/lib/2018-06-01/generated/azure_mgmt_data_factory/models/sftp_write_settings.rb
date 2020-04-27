@@ -24,6 +24,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # resultType string).
       attr_accessor :operation_timeout
 
+      # @return Upload to temporary file(s) and rename. Disable this option if
+      # your SFTP server doesn't support rename operation. Type: boolean (or
+      # Expression with resultType boolean).
+      attr_accessor :use_temp_file_rename
+
 
       #
       # Mapper for SftpWriteSettings class as Ruby Hash.
@@ -81,6 +86,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'operationTimeout',
+                type: {
+                  name: 'Object'
+                }
+              },
+              use_temp_file_rename: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'useTempFileRename',
                 type: {
                   name: 'Object'
                 }

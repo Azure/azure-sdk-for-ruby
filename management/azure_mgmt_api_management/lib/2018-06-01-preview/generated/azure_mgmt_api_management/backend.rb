@@ -26,13 +26,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | host  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |title | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |url | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -50,13 +52,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | host  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |title | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |url | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -73,13 +77,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | host  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |title | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |url | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -128,6 +134,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -151,14 +159,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def get_entity_tag(resource_group_name, service_name, backendid, custom_headers:nil)
-      response = get_entity_tag_async(resource_group_name, service_name, backendid, custom_headers:custom_headers).value!
+    def get_entity_tag(resource_group_name, service_name, backend_id, custom_headers:nil)
+      response = get_entity_tag_async(resource_group_name, service_name, backend_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -168,15 +176,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_entity_tag_with_http_info(resource_group_name, service_name, backendid, custom_headers:nil)
-      get_entity_tag_async(resource_group_name, service_name, backendid, custom_headers:custom_headers).value!
+    def get_entity_tag_with_http_info(resource_group_name, service_name, backend_id, custom_headers:nil)
+      get_entity_tag_async(resource_group_name, service_name, backend_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -185,23 +193,23 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_entity_tag_async(resource_group_name, service_name, backendid, custom_headers:nil)
+    def get_entity_tag_async(resource_group_name, service_name, backend_id, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, 'backendid is nil' if backendid.nil?
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MaxLength': '80'" if !backendid.nil? && backendid.length > 80
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MinLength': '1'" if !backendid.nil? && backendid.length < 1
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !backendid.nil? && backendid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, 'backend_id is nil' if backend_id.nil?
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MaxLength': '80'" if !backend_id.nil? && backend_id.length > 80
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MinLength': '1'" if !backend_id.nil? && backend_id.length < 1
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !backend_id.nil? && backend_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -212,13 +220,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendid' => backendid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendId' => backend_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -235,6 +243,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -247,15 +257,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [BackendContract] operation results.
     #
-    def get(resource_group_name, service_name, backendid, custom_headers:nil)
-      response = get_async(resource_group_name, service_name, backendid, custom_headers:custom_headers).value!
+    def get(resource_group_name, service_name, backend_id, custom_headers:nil)
+      response = get_async(resource_group_name, service_name, backend_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -264,15 +274,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, service_name, backendid, custom_headers:nil)
-      get_async(resource_group_name, service_name, backendid, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, service_name, backend_id, custom_headers:nil)
+      get_async(resource_group_name, service_name, backend_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -280,23 +290,23 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, service_name, backendid, custom_headers:nil)
+    def get_async(resource_group_name, service_name, backend_id, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, 'backendid is nil' if backendid.nil?
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MaxLength': '80'" if !backendid.nil? && backendid.length > 80
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MinLength': '1'" if !backendid.nil? && backendid.length < 1
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !backendid.nil? && backendid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, 'backend_id is nil' if backend_id.nil?
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MaxLength': '80'" if !backend_id.nil? && backend_id.length > 80
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MinLength': '1'" if !backend_id.nil? && backend_id.length < 1
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !backend_id.nil? && backend_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -307,13 +317,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendid' => backendid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendId' => backend_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -330,6 +340,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -352,8 +364,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param parameters [BackendContract] Create parameters.
     # @param if_match [String] ETag of the Entity. Not required when creating an
     # entity, but required when updating an entity.
@@ -362,8 +374,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [BackendContract] operation results.
     #
-    def create_or_update(resource_group_name, service_name, backendid, parameters, if_match:nil, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, service_name, backendid, parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, service_name, backend_id, parameters, if_match:nil, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, service_name, backend_id, parameters, if_match:if_match, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -372,8 +384,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param parameters [BackendContract] Create parameters.
     # @param if_match [String] ETag of the Entity. Not required when creating an
     # entity, but required when updating an entity.
@@ -382,8 +394,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, service_name, backendid, parameters, if_match:nil, custom_headers:nil)
-      create_or_update_async(resource_group_name, service_name, backendid, parameters, if_match:if_match, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, service_name, backend_id, parameters, if_match:nil, custom_headers:nil)
+      create_or_update_async(resource_group_name, service_name, backend_id, parameters, if_match:if_match, custom_headers:custom_headers).value!
     end
 
     #
@@ -391,8 +403,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param parameters [BackendContract] Create parameters.
     # @param if_match [String] ETag of the Entity. Not required when creating an
     # entity, but required when updating an entity.
@@ -401,16 +413,16 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, service_name, backendid, parameters, if_match:nil, custom_headers:nil)
+    def create_or_update_async(resource_group_name, service_name, backend_id, parameters, if_match:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, 'backendid is nil' if backendid.nil?
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MaxLength': '80'" if !backendid.nil? && backendid.length > 80
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MinLength': '1'" if !backendid.nil? && backendid.length < 1
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !backendid.nil? && backendid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, 'backend_id is nil' if backend_id.nil?
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MaxLength': '80'" if !backend_id.nil? && backend_id.length > 80
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MinLength': '1'" if !backend_id.nil? && backend_id.length < 1
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !backend_id.nil? && backend_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -429,13 +441,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendid' => backendid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendId' => backend_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -453,6 +465,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -485,8 +499,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param parameters [BackendUpdateParameters] Update parameters.
     # @param if_match [String] ETag of the Entity. ETag should match the current
     # entity state from the header response of the GET request or it should be *
@@ -495,8 +509,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # will be added to the HTTP request.
     #
     #
-    def update(resource_group_name, service_name, backendid, parameters, if_match, custom_headers:nil)
-      response = update_async(resource_group_name, service_name, backendid, parameters, if_match, custom_headers:custom_headers).value!
+    def update(resource_group_name, service_name, backend_id, parameters, if_match, custom_headers:nil)
+      response = update_async(resource_group_name, service_name, backend_id, parameters, if_match, custom_headers:custom_headers).value!
       nil
     end
 
@@ -505,8 +519,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param parameters [BackendUpdateParameters] Update parameters.
     # @param if_match [String] ETag of the Entity. ETag should match the current
     # entity state from the header response of the GET request or it should be *
@@ -516,8 +530,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, service_name, backendid, parameters, if_match, custom_headers:nil)
-      update_async(resource_group_name, service_name, backendid, parameters, if_match, custom_headers:custom_headers).value!
+    def update_with_http_info(resource_group_name, service_name, backend_id, parameters, if_match, custom_headers:nil)
+      update_async(resource_group_name, service_name, backend_id, parameters, if_match, custom_headers:custom_headers).value!
     end
 
     #
@@ -525,8 +539,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param parameters [BackendUpdateParameters] Update parameters.
     # @param if_match [String] ETag of the Entity. ETag should match the current
     # entity state from the header response of the GET request or it should be *
@@ -536,16 +550,16 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, service_name, backendid, parameters, if_match, custom_headers:nil)
+    def update_async(resource_group_name, service_name, backend_id, parameters, if_match, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, 'backendid is nil' if backendid.nil?
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MaxLength': '80'" if !backendid.nil? && backendid.length > 80
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MinLength': '1'" if !backendid.nil? && backendid.length < 1
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !backendid.nil? && backendid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, 'backend_id is nil' if backend_id.nil?
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MaxLength': '80'" if !backend_id.nil? && backend_id.length > 80
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MinLength': '1'" if !backend_id.nil? && backend_id.length < 1
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !backend_id.nil? && backend_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -565,13 +579,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendid' => backendid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendId' => backend_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -589,6 +603,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -601,8 +617,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param if_match [String] ETag of the Entity. ETag should match the current
     # entity state from the header response of the GET request or it should be *
     # for unconditional update.
@@ -610,8 +626,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, service_name, backendid, if_match, custom_headers:nil)
-      response = delete_async(resource_group_name, service_name, backendid, if_match, custom_headers:custom_headers).value!
+    def delete(resource_group_name, service_name, backend_id, if_match, custom_headers:nil)
+      response = delete_async(resource_group_name, service_name, backend_id, if_match, custom_headers:custom_headers).value!
       nil
     end
 
@@ -620,8 +636,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param if_match [String] ETag of the Entity. ETag should match the current
     # entity state from the header response of the GET request or it should be *
     # for unconditional update.
@@ -630,8 +646,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, service_name, backendid, if_match, custom_headers:nil)
-      delete_async(resource_group_name, service_name, backendid, if_match, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, service_name, backend_id, if_match, custom_headers:nil)
+      delete_async(resource_group_name, service_name, backend_id, if_match, custom_headers:custom_headers).value!
     end
 
     #
@@ -639,8 +655,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param if_match [String] ETag of the Entity. ETag should match the current
     # entity state from the header response of the GET request or it should be *
     # for unconditional update.
@@ -649,16 +665,16 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, service_name, backendid, if_match, custom_headers:nil)
+    def delete_async(resource_group_name, service_name, backend_id, if_match, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, 'backendid is nil' if backendid.nil?
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MaxLength': '80'" if !backendid.nil? && backendid.length > 80
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MinLength': '1'" if !backendid.nil? && backendid.length < 1
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !backendid.nil? && backendid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, 'backend_id is nil' if backend_id.nil?
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MaxLength': '80'" if !backend_id.nil? && backend_id.length > 80
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MinLength': '1'" if !backend_id.nil? && backend_id.length < 1
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !backend_id.nil? && backend_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -671,13 +687,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendid' => backendid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendId' => backend_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -694,6 +710,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -707,15 +725,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param parameters [BackendReconnectContract] Reconnect request parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def reconnect(resource_group_name, service_name, backendid, parameters:nil, custom_headers:nil)
-      response = reconnect_async(resource_group_name, service_name, backendid, parameters:parameters, custom_headers:custom_headers).value!
+    def reconnect(resource_group_name, service_name, backend_id, parameters:nil, custom_headers:nil)
+      response = reconnect_async(resource_group_name, service_name, backend_id, parameters:parameters, custom_headers:custom_headers).value!
       nil
     end
 
@@ -725,16 +743,16 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param parameters [BackendReconnectContract] Reconnect request parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def reconnect_with_http_info(resource_group_name, service_name, backendid, parameters:nil, custom_headers:nil)
-      reconnect_async(resource_group_name, service_name, backendid, parameters:parameters, custom_headers:custom_headers).value!
+    def reconnect_with_http_info(resource_group_name, service_name, backend_id, parameters:nil, custom_headers:nil)
+      reconnect_async(resource_group_name, service_name, backend_id, parameters:parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -743,24 +761,24 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param backendid [String] Identifier of the Backend entity. Must be unique in
-    # the current API Management service instance.
+    # @param backend_id [String] Identifier of the Backend entity. Must be unique
+    # in the current API Management service instance.
     # @param parameters [BackendReconnectContract] Reconnect request parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def reconnect_async(resource_group_name, service_name, backendid, parameters:nil, custom_headers:nil)
+    def reconnect_async(resource_group_name, service_name, backend_id, parameters:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, 'backendid is nil' if backendid.nil?
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MaxLength': '80'" if !backendid.nil? && backendid.length > 80
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'MinLength': '1'" if !backendid.nil? && backendid.length < 1
-      fail ArgumentError, "'backendid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !backendid.nil? && backendid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, 'backend_id is nil' if backend_id.nil?
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MaxLength': '80'" if !backend_id.nil? && backend_id.length > 80
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'MinLength': '1'" if !backend_id.nil? && backend_id.length < 1
+      fail ArgumentError, "'backend_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !backend_id.nil? && backend_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -777,13 +795,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendid}/reconnect'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendId}/reconnect'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendid' => backendid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'backendId' => backend_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -801,6 +819,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -879,6 +899,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -901,13 +923,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | host  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |title | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |url | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

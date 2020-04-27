@@ -43,6 +43,7 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
     Jobs = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Jobs
     BackupProtectedItems = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::BackupProtectedItems
     Operation = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Operation
+    PrivateEndpointConnectionOperations = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::PrivateEndpointConnectionOperations
 
     module Models
       ClientDiscoveryForProperties = Azure::RecoveryServicesBackup::Mgmt::V2016_08_10::Models::ClientDiscoveryForProperties
@@ -67,7 +68,6 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       ILRRequest = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ILRRequest
       BackupRequest = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupRequest
       ContainerIdentityInfo = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ContainerIdentityInfo
-      OperationStatusError = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatusError
       BMSWorkloadItemQueryObject = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BMSWorkloadItemQueryObject
       InstantItemRecoveryTarget = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::InstantItemRecoveryTarget
       InquiryValidation = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::InquiryValidation
@@ -83,7 +83,6 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       PreBackupValidation = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::PreBackupValidation
       MABContainerHealthDetails = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::MABContainerHealthDetails
       BMSPOQueryObject = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BMSPOQueryObject
-      OperationStatus = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatus
       AzureBackupServerContainer = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureBackupServerContainer
       AzureBackupServerEngine = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureBackupServerEngine
       AzureFileShareBackupRequest = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureFileShareBackupRequest
@@ -140,7 +139,6 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       BackupType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupType
       ContainerType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ContainerType
       BackupItemType = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupItemType
-      OperationStatusValues = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatusValues
       ProtectionIntent = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntent
       AzureVMResourceFeatureSupportResponse = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::AzureVMResourceFeatureSupportResponse
       NameInfo = Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::NameInfo
@@ -224,7 +222,6 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       ValidateOperationsResponse = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::ValidateOperationsResponse
       Day = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::Day
       ResourceList = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::ResourceList
-      Resource = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::Resource
       DPMProtectedItemExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::DPMProtectedItemExtendedInfo
       AzureStorageJobExtendedInfo = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::AzureStorageJobExtendedInfo
       EncryptionDetails = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::EncryptionDetails
@@ -332,13 +329,25 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       CreateMode = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::CreateMode
       HealthState = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::HealthState
       ScheduleRunType = Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::ScheduleRunType
+      PrivateEndpointConnection = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateEndpointConnection
+      OperationStatusError = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::OperationStatusError
+      PrivateEndpoint = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateEndpoint
+      Resource = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::Resource
+      OperationStatus = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::OperationStatus
+      ErrorAdditionalInfo = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::ErrorAdditionalInfo
+      PrivateLinkServiceConnectionState = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateLinkServiceConnectionState
+      ErrorResponse = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::ErrorResponse
+      PrivateEndpointConnectionResource = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateEndpointConnectionResource
+      OperationStatusValues = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::OperationStatusValues
+      ProvisioningState = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::ProvisioningState
+      PrivateEndpointConnectionStatus = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateEndpointConnectionStatus
     end
 
     #
     # RecoveryServicesBackupManagementClass
     #
     class RecoveryServicesBackupManagementClass
-      attr_reader :operations, :backup_engines, :protection_container_refresh_operation_results, :protectable_containers, :protection_containers, :backup_workload_items, :protection_container_operation_results, :backups, :protected_item_operation_statuses, :item_level_recovery_connections, :backup_operation_results, :backup_operation_statuses, :protection_policy_operation_statuses, :backup_protectable_items, :backup_protection_containers, :security_pins, :backup_resource_storage_configs, :protection_intent_operations, :backup_status, :feature_support, :backup_usage_summaries, :backup_resource_vault_configs, :protected_items, :protected_item_operation_results, :recovery_points, :restores, :backup_policies, :protection_policies, :protection_policy_operation_results, :backup_jobs, :job_details, :job_cancellations, :job_operation_results, :export_jobs_operation_results, :jobs, :backup_protected_items, :operation, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :backup_engines, :protection_container_refresh_operation_results, :protectable_containers, :protection_containers, :backup_workload_items, :protection_container_operation_results, :backups, :protected_item_operation_statuses, :item_level_recovery_connections, :backup_operation_results, :backup_operation_statuses, :protection_policy_operation_statuses, :backup_protectable_items, :backup_protection_containers, :security_pins, :backup_resource_storage_configs, :protection_intent_operations, :backup_status, :feature_support, :backup_usage_summaries, :backup_resource_vault_configs, :protected_items, :protected_item_operation_results, :recovery_points, :restores, :backup_policies, :protection_policies, :protection_policy_operation_results, :backup_jobs, :job_details, :job_cancellations, :job_operation_results, :export_jobs_operation_results, :jobs, :backup_protected_items, :operation, :private_endpoint_connection_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -420,6 +429,13 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
         @backup_protected_items = @client_4.backup_protected_items
         @operation = @client_4.operation
 
+        @client_5 = Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
+        if(@client_5.respond_to?(:subscription_id))
+          @client_5.subscription_id = configurable.subscription_id
+        end
+        add_telemetry(@client_5)
+        @private_endpoint_connection_operations = @client_5.private_endpoint_connection_operations
+
         @model_classes = ModelClasses.new
       end
 
@@ -429,7 +445,9 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_4.respond_to?method
+        if @client_5.respond_to?method
+          @client_5.send(method, *args)
+        elsif @client_4.respond_to?method
           @client_4.send(method, *args)
         elsif @client_3.respond_to?method
           @client_3.send(method, *args)
@@ -513,9 +531,6 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       def container_identity_info
         Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ContainerIdentityInfo
       end
-      def operation_status_error
-        Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatusError
-      end
       def bmsworkload_item_query_object
         Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BMSWorkloadItemQueryObject
       end
@@ -560,9 +575,6 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       end
       def bmspoquery_object
         Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BMSPOQueryObject
-      end
-      def operation_status
-        Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatus
       end
       def azure_backup_server_container
         Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::AzureBackupServerContainer
@@ -731,9 +743,6 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       end
       def backup_item_type
         Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::BackupItemType
-      end
-      def operation_status_values
-        Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::OperationStatusValues
       end
       def protection_intent
         Azure::RecoveryServicesBackup::Mgmt::V2017_07_01::Models::ProtectionIntent
@@ -983,9 +992,6 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       end
       def resource_list
         Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::ResourceList
-      end
-      def resource
-        Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::Resource
       end
       def dpmprotected_item_extended_info
         Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::DPMProtectedItemExtendedInfo
@@ -1307,6 +1313,42 @@ module Azure::RecoveryServicesBackup::Profiles::Latest
       end
       def schedule_run_type
         Azure::RecoveryServicesBackup::Mgmt::V2019_06_15::Models::ScheduleRunType
+      end
+      def private_endpoint_connection
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateEndpointConnection
+      end
+      def operation_status_error
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::OperationStatusError
+      end
+      def private_endpoint
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateEndpoint
+      end
+      def resource
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::Resource
+      end
+      def operation_status
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::OperationStatus
+      end
+      def error_additional_info
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::ErrorAdditionalInfo
+      end
+      def private_link_service_connection_state
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateLinkServiceConnectionState
+      end
+      def error_response
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::ErrorResponse
+      end
+      def private_endpoint_connection_resource
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateEndpointConnectionResource
+      end
+      def operation_status_values
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::OperationStatusValues
+      end
+      def provisioning_state
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::ProvisioningState
+      end
+      def private_endpoint_connection_status
+        Azure::RecoveryServicesBackup::Mgmt::V2020_02_02::Models::PrivateEndpointConnectionStatus
       end
     end
   end

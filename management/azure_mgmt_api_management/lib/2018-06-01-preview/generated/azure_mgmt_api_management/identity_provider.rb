@@ -64,13 +64,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_by_service_async(resource_group_name, service_name, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -85,7 +85,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serviceName' => service_name},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -102,6 +102,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -170,7 +172,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_entity_tag_async(resource_group_name, service_name, identity_provider_name, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
@@ -178,6 +179,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'identity_provider_name is nil' if identity_provider_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -192,7 +194,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serviceName' => service_name,'identityProviderName' => identity_provider_name},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'identityProviderName' => identity_provider_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -209,6 +211,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -268,7 +272,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_async(resource_group_name, service_name, identity_provider_name, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
@@ -276,6 +279,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'identity_provider_name is nil' if identity_provider_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -290,7 +294,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serviceName' => service_name,'identityProviderName' => identity_provider_name},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'identityProviderName' => identity_provider_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -307,6 +311,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -430,6 +436,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -566,6 +574,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -671,6 +681,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -752,6 +764,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

@@ -6,23 +6,32 @@
 module Azure::EventGrid::Mgmt::V2020_04_01_preview
   module Models
     #
-    # Properties of the Domain update
+    # Properties of the Domain update.
     #
     class DomainUpdateParameters
 
       include MsRestAzure
 
-      # @return [Hash{String => String}] Tags of the domains resource
+      # @return [Hash{String => String}] Tags of the domains resource.
       attr_accessor :tags
 
-      # @return [Boolean] This determines if IP filtering rules ought to be
-      # evaluated or not. By default it will not evaluate and will allow
-      # traffic from all IPs.
-      attr_accessor :allow_traffic_from_all_ips
+      # @return [PublicNetworkAccess] This determines if traffic is allowed
+      # over public network. By default it is enabled.
+      # You can further restrict to specific IPs by configuring <seealso
+      # cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainUpdateParameterProperties.InboundIpRules"
+      # />. Possible values include: 'Enabled', 'Disabled'
+      attr_accessor :public_network_access
 
-      # @return [Array<InboundIpRule>] This determines the IP filtering rules
-      # that ought be applied when events are received on this domain.
+      # @return [Array<InboundIpRule>] This can be used to restrict traffic
+      # from specific IPs instead of all IPs. Note: These are considered only
+      # if PublicNetworkAccess is enabled.
       attr_accessor :inbound_ip_rules
+
+      # @return [IdentityInfo] Identity information for the resource.
+      attr_accessor :identity
+
+      # @return [ResourceSku] The Sku pricing tier for the domain.
+      attr_accessor :sku
 
 
       #
@@ -54,18 +63,18 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                   }
                 }
               },
-              allow_traffic_from_all_ips: {
+              public_network_access: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'allowTrafficFromAllIPs',
+                serialized_name: 'properties.publicNetworkAccess',
                 type: {
-                  name: 'Boolean'
+                  name: 'String'
                 }
               },
               inbound_ip_rules: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'inboundIpRules',
+                serialized_name: 'properties.inboundIpRules',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -77,6 +86,24 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                         class_name: 'InboundIpRule'
                       }
                   }
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'IdentityInfo'
+                }
+              },
+              sku: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ResourceSku'
                 }
               }
             }

@@ -26,15 +26,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param scope [PolicyScopeContract] Policy scope. Possible values include:
-    # 'Tenant', 'Product', 'Api', 'Operation', 'All'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PolicyCollection] operation results.
     #
-    def list_by_service(resource_group_name, service_name, scope:nil, custom_headers:nil)
-      response = list_by_service_async(resource_group_name, service_name, scope:scope, custom_headers:custom_headers).value!
+    def list_by_service(resource_group_name, service_name, custom_headers:nil)
+      response = list_by_service_async(resource_group_name, service_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -43,15 +41,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param scope [PolicyScopeContract] Policy scope. Possible values include:
-    # 'Tenant', 'Product', 'Api', 'Operation', 'All'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_service_with_http_info(resource_group_name, service_name, scope:nil, custom_headers:nil)
-      list_by_service_async(resource_group_name, service_name, scope:scope, custom_headers:custom_headers).value!
+    def list_by_service_with_http_info(resource_group_name, service_name, custom_headers:nil)
+      list_by_service_async(resource_group_name, service_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -59,14 +55,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param scope [PolicyScopeContract] Policy scope. Possible values include:
-    # 'Tenant', 'Product', 'Api', 'Operation', 'All'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_service_async(resource_group_name, service_name, scope:nil, custom_headers:nil)
+    def list_by_service_async(resource_group_name, service_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
@@ -89,7 +83,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'scope' => scope,'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -101,10 +95,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -203,6 +199,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -289,6 +287,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -313,13 +313,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param parameters [PolicyContract] The policy contents to apply.
+    # @param if_match [String] ETag of the Entity. Not required when creating an
+    # entity, but required when updating an entity.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PolicyContract] operation results.
     #
-    def create_or_update(resource_group_name, service_name, parameters, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, service_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, service_name, parameters, if_match:nil, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, service_name, parameters, if_match:if_match, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -330,13 +332,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param parameters [PolicyContract] The policy contents to apply.
+    # @param if_match [String] ETag of the Entity. Not required when creating an
+    # entity, but required when updating an entity.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, service_name, parameters, custom_headers:nil)
-      create_or_update_async(resource_group_name, service_name, parameters, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, service_name, parameters, if_match:nil, custom_headers:nil)
+      create_or_update_async(resource_group_name, service_name, parameters, if_match:if_match, custom_headers:custom_headers).value!
     end
 
     #
@@ -346,12 +350,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param parameters [PolicyContract] The policy contents to apply.
+    # @param if_match [String] ETag of the Entity. Not required when creating an
+    # entity, but required when updating an entity.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, service_name, parameters, custom_headers:nil)
+    def create_or_update_async(resource_group_name, service_name, parameters, if_match:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
@@ -368,6 +374,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
@@ -399,6 +406,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -515,6 +524,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end

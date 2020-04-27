@@ -32,7 +32,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # where n is the revision number.
     # @param format [ExportFormat] Format in which to export the Api Details to the
     # Storage Blob with Sas Key valid for 5 minutes. Possible values include:
-    # 'Swagger', 'Wsdl', 'Wadl'
+    # 'Swagger', 'Wsdl', 'Wadl', 'OpenApi3'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -54,7 +54,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # where n is the revision number.
     # @param format [ExportFormat] Format in which to export the Api Details to the
     # Storage Blob with Sas Key valid for 5 minutes. Possible values include:
-    # 'Swagger', 'Wsdl', 'Wadl'
+    # 'Swagger', 'Wsdl', 'Wadl', 'OpenApi3'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -75,7 +75,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # where n is the revision number.
     # @param format [ExportFormat] Format in which to export the Api Details to the
     # Storage Blob with Sas Key valid for 5 minutes. Possible values include:
-    # 'Swagger', 'Wsdl', 'Wadl'
+    # 'Swagger', 'Wsdl', 'Wadl', 'OpenApi3'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -126,6 +126,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

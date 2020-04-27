@@ -21,6 +21,13 @@ module Azure::Storage::Mgmt::V2019_06_01
       # @return [String] The Uri of KeyVault.
       attr_accessor :key_vault_uri
 
+      # @return [String] The object identifier of the current versioned Key
+      # Vault Key in use.
+      attr_accessor :current_versioned_key_identifier
+
+      # @return [DateTime] Timestamp of last rotation of the Key Vault Key.
+      attr_accessor :last_key_rotation_timestamp
+
 
       #
       # Mapper for KeyVaultProperties class as Ruby Hash.
@@ -57,6 +64,24 @@ module Azure::Storage::Mgmt::V2019_06_01
                 serialized_name: 'keyvaulturi',
                 type: {
                   name: 'String'
+                }
+              },
+              current_versioned_key_identifier: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'currentVersionedKeyIdentifier',
+                type: {
+                  name: 'String'
+                }
+              },
+              last_key_rotation_timestamp: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'lastKeyRotationTimestamp',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

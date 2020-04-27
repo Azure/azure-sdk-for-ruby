@@ -32,12 +32,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # API Management service instance. Non-current revision has ;rev=n as a suffix
     # where n is the revision number.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -61,12 +62,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # API Management service instance. Non-current revision has ;rev=n as a suffix
     # where n is the revision number.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -89,12 +91,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # API Management service instance. Non-current revision has ;rev=n as a suffix
     # where n is the revision number.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -147,6 +150,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -230,7 +235,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'tag_id is nil' if tag_id.nil?
       fail ArgumentError, "'tag_id' should satisfy the constraint - 'MaxLength': '80'" if !tag_id.nil? && tag_id.length > 80
       fail ArgumentError, "'tag_id' should satisfy the constraint - 'MinLength': '1'" if !tag_id.nil? && tag_id.length < 1
-      fail ArgumentError, "'tag_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !tag_id.nil? && tag_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'tag_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !tag_id.nil? && tag_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -264,6 +269,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -272,7 +279,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Get tag associated with the API.
+    # Get Tag description in scope of API
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -292,7 +299,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Get tag associated with the API.
+    # Get Tag description in scope of API
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -311,7 +318,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Get tag associated with the API.
+    # Get Tag description in scope of API
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -338,7 +345,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'tag_id is nil' if tag_id.nil?
       fail ArgumentError, "'tag_id' should satisfy the constraint - 'MaxLength': '80'" if !tag_id.nil? && tag_id.length > 80
       fail ArgumentError, "'tag_id' should satisfy the constraint - 'MinLength': '1'" if !tag_id.nil? && tag_id.length < 1
-      fail ArgumentError, "'tag_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !tag_id.nil? && tag_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'tag_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !tag_id.nil? && tag_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -372,6 +379,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -390,7 +399,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Create/Update tag fescription in scope of the Api.
+    # Create/Update tag description in scope of the Api.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -413,7 +422,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Create/Update tag fescription in scope of the Api.
+    # Create/Update tag description in scope of the Api.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -435,7 +444,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Create/Update tag fescription in scope of the Api.
+    # Create/Update tag description in scope of the Api.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -465,7 +474,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'tag_id is nil' if tag_id.nil?
       fail ArgumentError, "'tag_id' should satisfy the constraint - 'MaxLength': '80'" if !tag_id.nil? && tag_id.length > 80
       fail ArgumentError, "'tag_id' should satisfy the constraint - 'MinLength': '1'" if !tag_id.nil? && tag_id.length < 1
-      fail ArgumentError, "'tag_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !tag_id.nil? && tag_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'tag_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !tag_id.nil? && tag_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -508,6 +517,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -610,7 +621,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'tag_id is nil' if tag_id.nil?
       fail ArgumentError, "'tag_id' should satisfy the constraint - 'MaxLength': '80'" if !tag_id.nil? && tag_id.length > 80
       fail ArgumentError, "'tag_id' should satisfy the constraint - 'MinLength': '1'" if !tag_id.nil? && tag_id.length < 1
-      fail ArgumentError, "'tag_id' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !tag_id.nil? && tag_id.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, "'tag_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !tag_id.nil? && tag_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -646,6 +657,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -730,6 +743,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -758,12 +773,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # API Management service instance. Non-current revision has ;rev=n as a suffix
     # where n is the revision number.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

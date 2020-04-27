@@ -16,9 +16,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # @return [Array<TagResourceContract>] Page values.
       attr_accessor :value
 
-      # @return [Integer] Total record count number across all pages.
-      attr_accessor :count
-
       # @return [String] Next page link if any.
       attr_accessor :next_link
 
@@ -82,14 +79,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                         class_name: 'TagResourceContract'
                       }
                   }
-                }
-              },
-              count: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'count',
-                type: {
-                  name: 'Number'
                 }
               },
               next_link: {

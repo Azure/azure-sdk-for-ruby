@@ -12,12 +12,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
       include MsRestAzure
 
-      # @return [String] The issue title.
-      attr_accessor :title
-
-      # @return [String] Text describing the issue.
-      attr_accessor :description
-
       # @return [DateTime] Date and time when the issue was created.
       attr_accessor :created_date
 
@@ -25,12 +19,18 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # 'proposed', 'open', 'removed', 'resolved', 'closed'
       attr_accessor :state
 
-      # @return [String] A resource identifier for the user created the issue.
-      attr_accessor :user_id
-
       # @return [String] A resource identifier for the API the issue was
       # created for.
       attr_accessor :api_id
+
+      # @return [String] The issue title.
+      attr_accessor :title
+
+      # @return [String] Text describing the issue.
+      attr_accessor :description
+
+      # @return [String] A resource identifier for the user created the issue.
+      attr_accessor :user_id
 
 
       #
@@ -73,22 +73,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                   name: 'String'
                 }
               },
-              title: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.title',
-                type: {
-                  name: 'String'
-                }
-              },
-              description: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.description',
-                type: {
-                  name: 'String'
-                }
-              },
               created_date: {
                 client_side_validation: true,
                 required: false,
@@ -105,18 +89,34 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                   name: 'String'
                 }
               },
-              user_id: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'properties.userId',
-                type: {
-                  name: 'String'
-                }
-              },
               api_id: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.apiId',
+                type: {
+                  name: 'String'
+                }
+              },
+              title: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'properties.title',
+                type: {
+                  name: 'String'
+                }
+              },
+              description: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'properties.description',
+                type: {
+                  name: 'String'
+                }
+              },
+              user_id: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'properties.userId',
                 type: {
                   name: 'String'
                 }

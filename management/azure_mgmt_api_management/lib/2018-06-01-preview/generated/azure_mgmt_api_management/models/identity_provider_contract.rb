@@ -21,6 +21,10 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # Active Directory login.
       attr_accessor :allowed_tenants
 
+      # @return [String] OpenID Connect discovery endpoint hostname for AAD or
+      # AAD B2C.
+      attr_accessor :authority
+
       # @return [String] Signup Policy Name. Only applies to AAD B2C Identity
       # Provider.
       attr_accessor :signup_policy_name
@@ -114,6 +118,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                         name: 'String'
                       }
                   }
+                }
+              },
+              authority: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.authority',
+                type: {
+                  name: 'String'
                 }
               },
               signup_policy_name: {

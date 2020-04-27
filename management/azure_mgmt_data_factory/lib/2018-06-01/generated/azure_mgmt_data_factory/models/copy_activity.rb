@@ -55,11 +55,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # settings when EnableSkipIncompatibleRow is true.
       attr_accessor :redirect_incompatible_row_settings
 
+      # @return [LogStorageSettings] Log storage settings customer need to
+      # provide when enabling session log.
+      attr_accessor :log_storage_settings
+
       # @return Preserve Rules.
       attr_accessor :preserve_rules
 
       # @return Preserve rules.
       attr_accessor :preserve
+
+      # @return Whether to enable Data Consistency validation. Type: boolean
+      # (or Expression with resultType boolean).
+      attr_accessor :validate_data_consistency
+
+      # @return [SkipErrorFile] Specify the fault tolerance for data
+      # consistency.
+      attr_accessor :skip_error_file
 
       # @return [Array<DatasetReference>] List of inputs for the activity.
       attr_accessor :inputs
@@ -252,6 +264,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   class_name: 'RedirectIncompatibleRowSettings'
                 }
               },
+              log_storage_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.logStorageSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'LogStorageSettings'
+                }
+              },
               preserve_rules: {
                 client_side_validation: true,
                 required: false,
@@ -282,6 +303,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         name: 'Object'
                       }
                   }
+                }
+              },
+              validate_data_consistency: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.validateDataConsistency',
+                type: {
+                  name: 'Object'
+                }
+              },
+              skip_error_file: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.skipErrorFile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SkipErrorFile'
                 }
               },
               inputs: {

@@ -151,6 +151,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
                   name: 'String'
                 }
               },
+              subscription_required: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'subscriptionRequired',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               display_name: {
                 client_side_validation: true,
                 required: false,

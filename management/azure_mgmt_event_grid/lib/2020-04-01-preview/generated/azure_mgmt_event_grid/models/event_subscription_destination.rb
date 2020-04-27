@@ -6,7 +6,7 @@
 module Azure::EventGrid::Mgmt::V2020_04_01_preview
   module Models
     #
-    # Information about the destination for an event subscription
+    # Information about the destination for an event subscription.
     #
     class EventSubscriptionDestination
 

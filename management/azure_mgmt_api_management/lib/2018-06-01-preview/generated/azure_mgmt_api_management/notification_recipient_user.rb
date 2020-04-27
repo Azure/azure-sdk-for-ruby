@@ -118,6 +118,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -146,16 +148,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # 'PurchasePublisherNotificationMessage', 'NewApplicationNotificationMessage',
     # 'BCC', 'NewIssuePublisherNotificationMessage', 'AccountClosedPublisher',
     # 'QuotaLimitApproachingPublisherNotificationMessage'
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Boolean] operation results.
     #
-    def check_entity_exists(resource_group_name, service_name, notification_name, uid, custom_headers:nil)
-      response = check_entity_exists_async(resource_group_name, service_name, notification_name, uid, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+    def check_entity_exists(resource_group_name, service_name, notification_name, user_id, custom_headers:nil)
+      response = check_entity_exists_async(resource_group_name, service_name, notification_name, user_id, custom_headers:custom_headers).value!
+      nil
     end
 
     #
@@ -169,15 +170,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # 'PurchasePublisherNotificationMessage', 'NewApplicationNotificationMessage',
     # 'BCC', 'NewIssuePublisherNotificationMessage', 'AccountClosedPublisher',
     # 'QuotaLimitApproachingPublisherNotificationMessage'
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_entity_exists_with_http_info(resource_group_name, service_name, notification_name, uid, custom_headers:nil)
-      check_entity_exists_async(resource_group_name, service_name, notification_name, uid, custom_headers:custom_headers).value!
+    def check_entity_exists_with_http_info(resource_group_name, service_name, notification_name, user_id, custom_headers:nil)
+      check_entity_exists_async(resource_group_name, service_name, notification_name, user_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -191,24 +192,24 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # 'PurchasePublisherNotificationMessage', 'NewApplicationNotificationMessage',
     # 'BCC', 'NewIssuePublisherNotificationMessage', 'AccountClosedPublisher',
     # 'QuotaLimitApproachingPublisherNotificationMessage'
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_entity_exists_async(resource_group_name, service_name, notification_name, uid, custom_headers:nil)
+    def check_entity_exists_async(resource_group_name, service_name, notification_name, user_id, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'notification_name is nil' if notification_name.nil?
-      fail ArgumentError, 'uid is nil' if uid.nil?
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MaxLength': '80'" if !uid.nil? && uid.length > 80
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MinLength': '1'" if !uid.nil? && uid.length < 1
-      fail ArgumentError, "'uid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !uid.nil? && uid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, 'user_id is nil' if user_id.nil?
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MaxLength': '80'" if !user_id.nil? && user_id.length > 80
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MinLength': '1'" if !user_id.nil? && user_id.length < 1
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !user_id.nil? && user_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -219,13 +220,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientUsers/{uid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientUsers/{userId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'notificationName' => notification_name,'uid' => uid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'notificationName' => notification_name,'userId' => user_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -236,13 +237,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204 || status_code == 404
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.body = (status_code == 204)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -260,15 +262,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # 'PurchasePublisherNotificationMessage', 'NewApplicationNotificationMessage',
     # 'BCC', 'NewIssuePublisherNotificationMessage', 'AccountClosedPublisher',
     # 'QuotaLimitApproachingPublisherNotificationMessage'
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [RecipientUserContract] operation results.
     #
-    def create_or_update(resource_group_name, service_name, notification_name, uid, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, service_name, notification_name, uid, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, service_name, notification_name, user_id, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, service_name, notification_name, user_id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -282,15 +284,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # 'PurchasePublisherNotificationMessage', 'NewApplicationNotificationMessage',
     # 'BCC', 'NewIssuePublisherNotificationMessage', 'AccountClosedPublisher',
     # 'QuotaLimitApproachingPublisherNotificationMessage'
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, service_name, notification_name, uid, custom_headers:nil)
-      create_or_update_async(resource_group_name, service_name, notification_name, uid, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, service_name, notification_name, user_id, custom_headers:nil)
+      create_or_update_async(resource_group_name, service_name, notification_name, user_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -303,24 +305,24 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # 'PurchasePublisherNotificationMessage', 'NewApplicationNotificationMessage',
     # 'BCC', 'NewIssuePublisherNotificationMessage', 'AccountClosedPublisher',
     # 'QuotaLimitApproachingPublisherNotificationMessage'
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, service_name, notification_name, uid, custom_headers:nil)
+    def create_or_update_async(resource_group_name, service_name, notification_name, user_id, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'notification_name is nil' if notification_name.nil?
-      fail ArgumentError, 'uid is nil' if uid.nil?
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MaxLength': '80'" if !uid.nil? && uid.length > 80
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MinLength': '1'" if !uid.nil? && uid.length < 1
-      fail ArgumentError, "'uid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !uid.nil? && uid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, 'user_id is nil' if user_id.nil?
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MaxLength': '80'" if !user_id.nil? && user_id.length > 80
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MinLength': '1'" if !user_id.nil? && user_id.length < 1
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !user_id.nil? && user_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -331,13 +333,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientUsers/{uid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientUsers/{userId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'notificationName' => notification_name,'uid' => uid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'notificationName' => notification_name,'userId' => user_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -354,6 +356,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -391,14 +395,14 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # 'PurchasePublisherNotificationMessage', 'NewApplicationNotificationMessage',
     # 'BCC', 'NewIssuePublisherNotificationMessage', 'AccountClosedPublisher',
     # 'QuotaLimitApproachingPublisherNotificationMessage'
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, service_name, notification_name, uid, custom_headers:nil)
-      response = delete_async(resource_group_name, service_name, notification_name, uid, custom_headers:custom_headers).value!
+    def delete(resource_group_name, service_name, notification_name, user_id, custom_headers:nil)
+      response = delete_async(resource_group_name, service_name, notification_name, user_id, custom_headers:custom_headers).value!
       nil
     end
 
@@ -412,15 +416,15 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # 'PurchasePublisherNotificationMessage', 'NewApplicationNotificationMessage',
     # 'BCC', 'NewIssuePublisherNotificationMessage', 'AccountClosedPublisher',
     # 'QuotaLimitApproachingPublisherNotificationMessage'
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, service_name, notification_name, uid, custom_headers:nil)
-      delete_async(resource_group_name, service_name, notification_name, uid, custom_headers:custom_headers).value!
+    def delete_with_http_info(resource_group_name, service_name, notification_name, user_id, custom_headers:nil)
+      delete_async(resource_group_name, service_name, notification_name, user_id, custom_headers:custom_headers).value!
     end
 
     #
@@ -433,24 +437,24 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # 'PurchasePublisherNotificationMessage', 'NewApplicationNotificationMessage',
     # 'BCC', 'NewIssuePublisherNotificationMessage', 'AccountClosedPublisher',
     # 'QuotaLimitApproachingPublisherNotificationMessage'
-    # @param uid [String] User identifier. Must be unique in the current API
+    # @param user_id [String] User identifier. Must be unique in the current API
     # Management service instance.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, service_name, notification_name, uid, custom_headers:nil)
+    def delete_async(resource_group_name, service_name, notification_name, user_id, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
       fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
       fail ArgumentError, 'notification_name is nil' if notification_name.nil?
-      fail ArgumentError, 'uid is nil' if uid.nil?
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MaxLength': '80'" if !uid.nil? && uid.length > 80
-      fail ArgumentError, "'uid' should satisfy the constraint - 'MinLength': '1'" if !uid.nil? && uid.length < 1
-      fail ArgumentError, "'uid' should satisfy the constraint - 'Pattern': '(^[\w]+$)|(^[\w][\w\-]+[\w]$)'" if !uid.nil? && uid.match(Regexp.new('^(^[\w]+$)|(^[\w][\w\-]+[\w]$)$')).nil?
+      fail ArgumentError, 'user_id is nil' if user_id.nil?
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MaxLength': '80'" if !user_id.nil? && user_id.length > 80
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'MinLength': '1'" if !user_id.nil? && user_id.length < 1
+      fail ArgumentError, "'user_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !user_id.nil? && user_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -461,13 +465,13 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientUsers/{uid}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications/{notificationName}/recipientUsers/{userId}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'notificationName' => notification_name,'uid' => uid,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'notificationName' => notification_name,'userId' => user_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -484,6 +488,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end

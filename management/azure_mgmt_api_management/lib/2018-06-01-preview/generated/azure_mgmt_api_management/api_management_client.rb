@@ -37,15 +37,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Policy] policy
-    attr_reader :policy
-
-    # @return [PolicySnippets] policy_snippets
-    attr_reader :policy_snippets
-
-    # @return [Regions] regions
-    attr_reader :regions
-
     # @return [Api] api
     attr_reader :api
 
@@ -60,6 +51,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
     # @return [ApiOperationPolicy] api_operation_policy
     attr_reader :api_operation_policy
+
+    # @return [Tag] tag
+    attr_reader :tag
 
     # @return [ApiProduct] api_product
     attr_reader :api_product
@@ -82,17 +76,29 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @return [ApiIssueAttachment] api_issue_attachment
     attr_reader :api_issue_attachment
 
+    # @return [TagDescription] tag_description
+    attr_reader :tag_description
+
+    # @return [OperationOperations] operation_operations
+    attr_reader :operation_operations
+
     # @return [AuthorizationServer] authorization_server
     attr_reader :authorization_server
 
     # @return [Backend] backend
     attr_reader :backend
 
+    # @return [Cache] cache
+    attr_reader :cache
+
     # @return [Certificate] certificate
     attr_reader :certificate
 
     # @return [ApiManagementOperations] api_management_operations
     attr_reader :api_management_operations
+
+    # @return [ApiManagementServiceSkus] api_management_service_skus
+    attr_reader :api_management_service_skus
 
     # @return [ApiManagementService] api_management_service
     attr_reader :api_management_service
@@ -112,6 +118,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @return [IdentityProvider] identity_provider
     attr_reader :identity_provider
 
+    # @return [Issue] issue
+    attr_reader :issue
+
     # @return [Logger] logger
     attr_reader :logger
 
@@ -129,6 +138,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
     # @return [OpenIdConnectProvider] open_id_connect_provider
     attr_reader :open_id_connect_provider
+
+    # @return [Policy] policy
+    attr_reader :policy
+
+    # @return [PolicySnippets] policy_snippets
+    attr_reader :policy_snippets
 
     # @return [SignInSettings] sign_in_settings
     attr_reader :sign_in_settings
@@ -163,6 +178,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @return [QuotaByPeriodKeys] quota_by_period_keys
     attr_reader :quota_by_period_keys
 
+    # @return [Region] region
+    attr_reader :region
+
     # @return [Reports] reports
     attr_reader :reports
 
@@ -171,15 +189,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
 
     # @return [TagResource] tag_resource
     attr_reader :tag_resource
-
-    # @return [Tag] tag
-    attr_reader :tag
-
-    # @return [TagDescription] tag_description
-    attr_reader :tag_description
-
-    # @return [OperationOperations] operation_operations
-    attr_reader :operation_operations
 
     # @return [TenantAccess] tenant_access
     attr_reader :tenant_access
@@ -202,6 +211,9 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @return [UserIdentities] user_identities
     attr_reader :user_identities
 
+    # @return [UserConfirmationPassword] user_confirmation_password
+    attr_reader :user_confirmation_password
+
     # @return [ApiVersionSet] api_version_set
     attr_reader :api_version_set
 
@@ -221,14 +233,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @policy = Policy.new(self)
-      @policy_snippets = PolicySnippets.new(self)
-      @regions = Regions.new(self)
       @api = Api.new(self)
       @api_revisions = ApiRevisions.new(self)
       @api_release = ApiRelease.new(self)
       @api_operation = ApiOperation.new(self)
       @api_operation_policy = ApiOperationPolicy.new(self)
+      @tag = Tag.new(self)
       @api_product = ApiProduct.new(self)
       @api_policy = ApiPolicy.new(self)
       @api_schema = ApiSchema.new(self)
@@ -236,22 +246,29 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       @api_issue = ApiIssue.new(self)
       @api_issue_comment = ApiIssueComment.new(self)
       @api_issue_attachment = ApiIssueAttachment.new(self)
+      @tag_description = TagDescription.new(self)
+      @operation_operations = OperationOperations.new(self)
       @authorization_server = AuthorizationServer.new(self)
       @backend = Backend.new(self)
+      @cache = Cache.new(self)
       @certificate = Certificate.new(self)
       @api_management_operations = ApiManagementOperations.new(self)
+      @api_management_service_skus = ApiManagementServiceSkus.new(self)
       @api_management_service = ApiManagementService.new(self)
       @diagnostic = Diagnostic.new(self)
       @email_template = EmailTemplate.new(self)
       @group = Group.new(self)
       @group_user = GroupUser.new(self)
       @identity_provider = IdentityProvider.new(self)
+      @issue = Issue.new(self)
       @logger = Logger.new(self)
       @notification = Notification.new(self)
       @notification_recipient_user = NotificationRecipientUser.new(self)
       @notification_recipient_email = NotificationRecipientEmail.new(self)
       @network_status = NetworkStatus.new(self)
       @open_id_connect_provider = OpenIdConnectProvider.new(self)
+      @policy = Policy.new(self)
+      @policy_snippets = PolicySnippets.new(self)
       @sign_in_settings = SignInSettings.new(self)
       @sign_up_settings = SignUpSettings.new(self)
       @delegation_settings = DelegationSettings.new(self)
@@ -263,12 +280,10 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       @property = Property.new(self)
       @quota_by_counter_keys = QuotaByCounterKeys.new(self)
       @quota_by_period_keys = QuotaByPeriodKeys.new(self)
+      @region = Region.new(self)
       @reports = Reports.new(self)
       @subscription = Subscription.new(self)
       @tag_resource = TagResource.new(self)
-      @tag = Tag.new(self)
-      @tag_description = TagDescription.new(self)
-      @operation_operations = OperationOperations.new(self)
       @tenant_access = TenantAccess.new(self)
       @tenant_access_git = TenantAccessGit.new(self)
       @tenant_configuration = TenantConfiguration.new(self)
@@ -276,6 +291,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       @user_group = UserGroup.new(self)
       @user_subscription = UserSubscription.new(self)
       @user_identities = UserIdentities.new(self)
+      @user_confirmation_password = UserConfirmationPassword.new(self)
       @api_version_set = ApiVersionSet.new(self)
       @api_export = ApiExport.new(self)
       @api_version = '2018-06-01-preview'
@@ -350,7 +366,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_api_management'
-        sdk_information = "#{sdk_information}/0.18.3"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

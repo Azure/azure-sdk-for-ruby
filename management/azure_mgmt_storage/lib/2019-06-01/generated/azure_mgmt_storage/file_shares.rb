@@ -33,13 +33,15 @@ module Azure::Storage::Mgmt::V2019_06_01
     # can be included in the list.
     # @param filter [String] Optional. When specified, only share names starting
     # with the filter will be listed.
+    # @param expand [ListSharesExpand] Optional, used to expand the properties
+    # within share's properties. Possible values include: 'deleted'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<FileShareItem>] operation results.
     #
-    def list(resource_group_name, account_name, maxpagesize:nil, filter:nil, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, custom_headers:custom_headers)
+    def list(resource_group_name, account_name, maxpagesize:nil, filter:nil, expand:nil, custom_headers:nil)
+      first_page = list_as_lazy(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, expand:expand, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -55,13 +57,15 @@ module Azure::Storage::Mgmt::V2019_06_01
     # can be included in the list.
     # @param filter [String] Optional. When specified, only share names starting
     # with the filter will be listed.
+    # @param expand [ListSharesExpand] Optional, used to expand the properties
+    # within share's properties. Possible values include: 'deleted'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, account_name, maxpagesize:nil, filter:nil, custom_headers:nil)
-      list_async(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, account_name, maxpagesize:nil, filter:nil, expand:nil, custom_headers:nil)
+      list_async(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, expand:expand, custom_headers:custom_headers).value!
     end
 
     #
@@ -76,12 +80,14 @@ module Azure::Storage::Mgmt::V2019_06_01
     # can be included in the list.
     # @param filter [String] Optional. When specified, only share names starting
     # with the filter will be listed.
+    # @param expand [ListSharesExpand] Optional, used to expand the properties
+    # within share's properties. Possible values include: 'deleted'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, account_name, maxpagesize:nil, filter:nil, custom_headers:nil)
+    def list_async(resource_group_name, account_name, maxpagesize:nil, filter:nil, expand:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -108,7 +114,7 @@ module Azure::Storage::Mgmt::V2019_06_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version,'$maxpagesize' => maxpagesize,'$filter' => filter},
+          query_params: {'api-version' => @client.api_version,'$maxpagesize' => maxpagesize,'$filter' => filter,'$expand' => expand},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -449,13 +455,15 @@ module Azure::Storage::Mgmt::V2019_06_01
     # storage account. File share names must be between 3 and 63 characters in
     # length and use numbers, lower-case letters and dash (-) only. Every dash (-)
     # character must be immediately preceded and followed by a letter or number.
+    # @param expand [GetShareExpand] Optional, used to expand the properties within
+    # share's properties. Possible values include: 'stats'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [FileShare] operation results.
     #
-    def get(resource_group_name, account_name, share_name, custom_headers:nil)
-      response = get_async(resource_group_name, account_name, share_name, custom_headers:custom_headers).value!
+    def get(resource_group_name, account_name, share_name, expand:nil, custom_headers:nil)
+      response = get_async(resource_group_name, account_name, share_name, expand:expand, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -471,13 +479,15 @@ module Azure::Storage::Mgmt::V2019_06_01
     # storage account. File share names must be between 3 and 63 characters in
     # length and use numbers, lower-case letters and dash (-) only. Every dash (-)
     # character must be immediately preceded and followed by a letter or number.
+    # @param expand [GetShareExpand] Optional, used to expand the properties within
+    # share's properties. Possible values include: 'stats'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, account_name, share_name, custom_headers:nil)
-      get_async(resource_group_name, account_name, share_name, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, account_name, share_name, expand:nil, custom_headers:nil)
+      get_async(resource_group_name, account_name, share_name, expand:expand, custom_headers:custom_headers).value!
     end
 
     #
@@ -492,12 +502,14 @@ module Azure::Storage::Mgmt::V2019_06_01
     # storage account. File share names must be between 3 and 63 characters in
     # length and use numbers, lower-case letters and dash (-) only. Every dash (-)
     # character must be immediately preceded and followed by a letter or number.
+    # @param expand [GetShareExpand] Optional, used to expand the properties within
+    # share's properties. Possible values include: 'stats'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, account_name, share_name, custom_headers:nil)
+    def get_async(resource_group_name, account_name, share_name, expand:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -527,7 +539,7 @@ module Azure::Storage::Mgmt::V2019_06_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'shareName' => share_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$expand' => expand},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -677,6 +689,134 @@ module Azure::Storage::Mgmt::V2019_06_01
     end
 
     #
+    # Restore a file share within a valid retention days if share soft delete is
+    # enabled
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param account_name [String] The name of the storage account within the
+    # specified resource group. Storage account names must be between 3 and 24
+    # characters in length and use numbers and lower-case letters only.
+    # @param share_name [String] The name of the file share within the specified
+    # storage account. File share names must be between 3 and 63 characters in
+    # length and use numbers, lower-case letters and dash (-) only. Every dash (-)
+    # character must be immediately preceded and followed by a letter or number.
+    # @param deleted_share [DeletedShare]
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def restore(resource_group_name, account_name, share_name, deleted_share, custom_headers:nil)
+      response = restore_async(resource_group_name, account_name, share_name, deleted_share, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Restore a file share within a valid retention days if share soft delete is
+    # enabled
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param account_name [String] The name of the storage account within the
+    # specified resource group. Storage account names must be between 3 and 24
+    # characters in length and use numbers and lower-case letters only.
+    # @param share_name [String] The name of the file share within the specified
+    # storage account. File share names must be between 3 and 63 characters in
+    # length and use numbers, lower-case letters and dash (-) only. Every dash (-)
+    # character must be immediately preceded and followed by a letter or number.
+    # @param deleted_share [DeletedShare]
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def restore_with_http_info(resource_group_name, account_name, share_name, deleted_share, custom_headers:nil)
+      restore_async(resource_group_name, account_name, share_name, deleted_share, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Restore a file share within a valid retention days if share soft delete is
+    # enabled
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param account_name [String] The name of the storage account within the
+    # specified resource group. Storage account names must be between 3 and 24
+    # characters in length and use numbers and lower-case letters only.
+    # @param share_name [String] The name of the file share within the specified
+    # storage account. File share names must be between 3 and 63 characters in
+    # length and use numbers, lower-case letters and dash (-) only. Every dash (-)
+    # character must be immediately preceded and followed by a letter or number.
+    # @param deleted_share [DeletedShare]
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def restore_async(resource_group_name, account_name, share_name, deleted_share, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, 'share_name is nil' if share_name.nil?
+      fail ArgumentError, "'share_name' should satisfy the constraint - 'MaxLength': '63'" if !share_name.nil? && share_name.length > 63
+      fail ArgumentError, "'share_name' should satisfy the constraint - 'MinLength': '3'" if !share_name.nil? && share_name.length < 3
+      fail ArgumentError, 'deleted_share is nil' if deleted_share.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Storage::Mgmt::V2019_06_01::Models::DeletedShare.mapper()
+      request_content = @client.serialize(request_mapper,  deleted_share)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'shareName' => share_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Lists all shares.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -778,13 +918,15 @@ module Azure::Storage::Mgmt::V2019_06_01
     # can be included in the list.
     # @param filter [String] Optional. When specified, only share names starting
     # with the filter will be listed.
+    # @param expand [ListSharesExpand] Optional, used to expand the properties
+    # within share's properties. Possible values include: 'deleted'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [FileShareItems] which provide lazy access to pages of the response.
     #
-    def list_as_lazy(resource_group_name, account_name, maxpagesize:nil, filter:nil, custom_headers:nil)
-      response = list_async(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, account_name, maxpagesize:nil, filter:nil, expand:nil, custom_headers:nil)
+      response = list_async(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, expand:expand, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
