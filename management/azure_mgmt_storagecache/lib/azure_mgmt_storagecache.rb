@@ -4,4 +4,5 @@
 
 require '2019-11-01/generated/azure_mgmt_storagecache'
 require '2019-08-01-preview/generated/azure_mgmt_storagecache'
+require '2020-03-01/generated/azure_mgmt_storagecache'
 require 'profiles/latest/storagecache_latest_profile_client'

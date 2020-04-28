@@ -3,39 +3,38 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::StorageCache::Mgmt::V2019_08_01_preview
+module Azure::StorageCache::Mgmt::V2020_03_01
   module Models
     #
-    # An error response.
+    # SKU for the Cache.
     #
-    class CloudError
+    class CacheSku
 
       include MsRestAzure
 
-      # @return [CloudErrorBody] The body of the error.
-      attr_accessor :error
+      # @return [String] SKU name for this Cache.
+      attr_accessor :name
 
 
       #
-      # Mapper for CloudError class as Ruby Hash.
+      # Mapper for CacheSku class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'CloudError',
+          serialized_name: 'Cache_sku',
           type: {
             name: 'Composite',
-            class_name: 'CloudError',
+            class_name: 'CacheSku',
             model_properties: {
-              error: {
+              name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'error',
+                serialized_name: 'name',
                 type: {
-                  name: 'Composite',
-                  class_name: 'CloudErrorBody'
+                  name: 'String'
                 }
               }
             }

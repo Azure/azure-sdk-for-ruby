@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.55.0"
+        "azure_sdk": "0.56.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.0",
@@ -131,7 +131,7 @@
         "azure_mgmt_stor_simple8000_series": "0.17.2",
         "azure_mgmt_storage": "0.20.1",
         "azure_mgmt_storagesync": "0.18.0",
-        "azure_mgmt_storagecache": "0.17.1",
+        "azure_mgmt_storagecache": "0.18.0",
         "azure_mgmt_stream_analytics": "0.17.2",
         "azure_mgmt_subscriptions": "0.18.2",
         "azure_mgmt_support": "0.17.0",

@@ -42,7 +42,6 @@ module Azure::StorageCache::Mgmt::V2019_11_01
     autoload :ResourceSkusResult,                                 '2019-11-01/generated/azure_mgmt_storagecache/models/resource_skus_result.rb'
     autoload :ApiOperationDisplay,                                '2019-11-01/generated/azure_mgmt_storagecache/models/api_operation_display.rb'
     autoload :NamespaceJunction,                                  '2019-11-01/generated/azure_mgmt_storagecache/models/namespace_junction.rb'
-    autoload :CloudError,                                         '2019-11-01/generated/azure_mgmt_storagecache/models/cloud_error.rb'
     autoload :StorageTarget,                                      '2019-11-01/generated/azure_mgmt_storagecache/models/storage_target.rb'
     autoload :Cache,                                              '2019-11-01/generated/azure_mgmt_storagecache/models/cache.rb'
     autoload :StorageTargetsResult,                               '2019-11-01/generated/azure_mgmt_storagecache/models/storage_targets_result.rb'

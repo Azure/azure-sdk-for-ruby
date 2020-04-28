@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::StorageCache::Mgmt::V2019_11_01
+module Azure::StorageCache::Mgmt::V2020_03_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -74,7 +74,7 @@ module Azure::StorageCache::Mgmt::V2019_11_01
       @usage_models = UsageModels.new(self)
       @caches = Caches.new(self)
       @storage_targets = StorageTargets.new(self)
-      @api_version = '2019-11-01'
+      @api_version = '2020-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

@@ -3,39 +3,38 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::StorageCache::Mgmt::V2019_11_01
+module Azure::StorageCache::Mgmt::V2020_03_01
   module Models
     #
-    # An error response.
+    # Cache security settings.
     #
-    class CloudError
+    class CacheSecuritySettings
 
       include MsRestAzure
 
-      # @return [CloudErrorBody] The body of the error.
-      attr_accessor :error
+      # @return [Boolean] root squash of cache property.
+      attr_accessor :root_squash
 
 
       #
-      # Mapper for CloudError class as Ruby Hash.
+      # Mapper for CacheSecuritySettings class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'CloudError',
+          serialized_name: 'CacheSecuritySettings',
           type: {
             name: 'Composite',
-            class_name: 'CloudError',
+            class_name: 'CacheSecuritySettings',
             model_properties: {
-              error: {
+              root_squash: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'error',
+                serialized_name: 'rootSquash',
                 type: {
-                  name: 'Composite',
-                  class_name: 'CloudErrorBody'
+                  name: 'Boolean'
                 }
               }
             }
