@@ -21,6 +21,10 @@ module Azure::Storage::Mgmt::V2019_06_01
       # blockBlob is supported.
       attr_accessor :blob_types
 
+      # @return [Array<TagFilter>] An array of blob index tag based filters,
+      # there can be at most 10 tag filters
+      attr_accessor :blob_index_match
+
 
       #
       # Mapper for ManagementPolicyFilter class as Ruby Hash.
@@ -63,6 +67,23 @@ module Azure::Storage::Mgmt::V2019_06_01
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
+                      }
+                  }
+                }
+              },
+              blob_index_match: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'blobIndexMatch',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'TagFilterElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'TagFilter'
                       }
                   }
                 }

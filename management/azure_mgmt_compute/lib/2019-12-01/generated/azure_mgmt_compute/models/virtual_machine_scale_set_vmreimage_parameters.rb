@@ -3,39 +3,36 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::StorageCache::Mgmt::V2019_08_01_preview
+module Azure::Compute::Mgmt::V2019_12_01
   module Models
     #
-    # An error response.
+    # Describes a Virtual Machine Scale Set VM Reimage Parameters.
     #
-    class CloudError
+    class VirtualMachineScaleSetVMReimageParameters < VirtualMachineReimageParameters
 
       include MsRestAzure
 
-      # @return [CloudErrorBody] The body of the error.
-      attr_accessor :error
-
 
       #
-      # Mapper for CloudError class as Ruby Hash.
+      # Mapper for VirtualMachineScaleSetVMReimageParameters class as Ruby
+      # Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'CloudError',
+          serialized_name: 'VirtualMachineScaleSetVMReimageParameters',
           type: {
             name: 'Composite',
-            class_name: 'CloudError',
+            class_name: 'VirtualMachineScaleSetVMReimageParameters',
             model_properties: {
-              error: {
+              temp_disk: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'error',
+                serialized_name: 'tempDisk',
                 type: {
-                  name: 'Composite',
-                  class_name: 'CloudErrorBody'
+                  name: 'Boolean'
                 }
               }
             }
