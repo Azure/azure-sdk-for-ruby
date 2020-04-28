@@ -1,6 +1,7 @@
 {
     "management":[
-        "azure_mgmt_storagecache"
+        "azure_mgmt_storagecache",
+        "azure_mgmt_storage"
     ],
     "rollup":[
         "azure_sdk"
