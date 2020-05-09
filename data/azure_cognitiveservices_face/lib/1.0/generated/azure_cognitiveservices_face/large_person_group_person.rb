@@ -1121,7 +1121,7 @@ module Azure::CognitiveServices::Face::V1_0
       fail ArgumentError, "'user_data' should satisfy the constraint - 'MaxLength': '1024'" if !user_data.nil? && user_data.length > 1024
       fail ArgumentError, 'url is nil' if url.nil?
 
-      image_url = ImageUrl.new
+      image_url = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl.new
       unless url.nil?
         image_url.url = url
       end
