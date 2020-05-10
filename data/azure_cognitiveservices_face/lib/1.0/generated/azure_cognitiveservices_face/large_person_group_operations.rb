@@ -490,7 +490,7 @@ module Azure::CognitiveServices::Face::V1_0
       fail ArgumentError, "'name' should satisfy the constraint - 'MaxLength': '128'" if !name.nil? && name.length > 128
       fail ArgumentError, "'user_data' should satisfy the constraint - 'MaxLength': '16384'" if !user_data.nil? && user_data.length > 16384
 
-      body = NameAndUserDataContract.new
+      body = Azure::CognitiveServices::Face::V1_0::Models::NameAndUserDataContract.new
       unless name.nil? && user_data.nil?
         body.name = name
         body.user_data = user_data
