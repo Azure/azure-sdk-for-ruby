@@ -1118,7 +1118,7 @@ module Azure::CognitiveServices::Face::V1_0
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'url is nil' if url.nil?
 
-      image_url = ImageUrl.new
+      image_url = Azure::CognitiveServices::Face::V1_0::Models::ImageUrl.new
       unless url.nil?
         image_url.url = url
       end
