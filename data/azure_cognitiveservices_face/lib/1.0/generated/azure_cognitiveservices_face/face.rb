@@ -1275,7 +1275,7 @@ module Azure::CognitiveServices::Face::V1_0
       fail ArgumentError, "'large_person_group_id' should satisfy the constraint - 'Pattern': '^[a-z0-9-_]+$'" if !large_person_group_id.nil? && large_person_group_id.match(Regexp.new('^^[a-z0-9-_]+$$')).nil?
       fail ArgumentError, 'person_id is nil' if person_id.nil?
 
-      body = VerifyFaceToPersonRequest.new
+      body = Azure::CognitiveServices::Face::V1_0::Models::VerifyFaceToPersonRequest.new
       unless face_id.nil? && person_group_id.nil? && large_person_group_id.nil? && person_id.nil?
         body.face_id = face_id
         body.person_group_id = person_group_id
