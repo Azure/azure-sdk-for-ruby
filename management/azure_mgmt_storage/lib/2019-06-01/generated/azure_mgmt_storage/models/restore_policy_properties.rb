@@ -19,6 +19,10 @@ module Azure::Storage::Mgmt::V2019_06_01
       # great than zero and less than DeleteRetentionPolicy.days.
       attr_accessor :days
 
+      # @return [DateTime] Returns the date and time the restore policy was
+      # last enabled.
+      attr_accessor :last_enabled_time
+
 
       #
       # Mapper for RestorePolicyProperties class as Ruby Hash.
@@ -51,6 +55,15 @@ module Azure::Storage::Mgmt::V2019_06_01
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              last_enabled_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'lastEnabledTime',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

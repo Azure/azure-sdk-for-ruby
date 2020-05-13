@@ -12,6 +12,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       Swagger = "swagger-link"
       Wsdl = "wsdl-link"
       Wadl = "wadl-link"
+      OpenApi3 = "openapi-link"
     end
   end
 end

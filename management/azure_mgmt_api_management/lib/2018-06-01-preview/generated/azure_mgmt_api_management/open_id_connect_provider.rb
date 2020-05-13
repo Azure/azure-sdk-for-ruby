@@ -22,17 +22,18 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     attr_reader :client
 
     #
-    # Lists all OpenID Connect Providers.
+    # Lists of all the OpenId Connect Providers.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -46,17 +47,18 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists all OpenID Connect Providers.
+    # Lists of all the OpenId Connect Providers.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -69,17 +71,18 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists all OpenID Connect Providers.
+    # Lists of all the OpenId Connect Providers.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -124,10 +127,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -231,6 +236,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -322,6 +329,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -441,6 +450,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 201
           begin
@@ -573,6 +584,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -677,6 +690,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -685,7 +700,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists all OpenID Connect Providers.
+    # Lists of all the OpenId Connect Providers.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -700,7 +715,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists all OpenID Connect Providers.
+    # Lists of all the OpenId Connect Providers.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -714,7 +729,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists all OpenID Connect Providers.
+    # Lists of all the OpenId Connect Providers.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -751,10 +766,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -773,17 +790,18 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Lists all OpenID Connect Providers.
+    # Lists of all the OpenId Connect Providers.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
-    # @param filter [String] | Field | Supported operators    | Supported functions
-    # |
-    # |-------|------------------------|---------------------------------------------|
-    # | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
+    # @param filter [String] | Field       | Supported operators    | Supported
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

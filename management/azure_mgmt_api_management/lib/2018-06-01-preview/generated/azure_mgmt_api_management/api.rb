@@ -29,13 +29,19 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param filter [String] | Field       | Supported operators    | Supported
     # functions               |
     # |-------------|------------------------|-----------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | path        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |serviceUrl | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |path | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
+    # @param tags [String] Include tags in the response.
     # @param expand_api_version_set [Boolean] Include full ApiVersionSet resource
     # in response
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -43,8 +49,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [Array<ApiContract>] operation results.
     #
-    def list_by_service(resource_group_name, service_name, filter:nil, top:nil, skip:nil, expand_api_version_set:false, custom_headers:nil)
-      first_page = list_by_service_as_lazy(resource_group_name, service_name, filter:filter, top:top, skip:skip, expand_api_version_set:expand_api_version_set, custom_headers:custom_headers)
+    def list_by_service(resource_group_name, service_name, filter:nil, top:nil, skip:nil, tags:nil, expand_api_version_set:nil, custom_headers:nil)
+      first_page = list_by_service_as_lazy(resource_group_name, service_name, filter:filter, top:top, skip:skip, tags:tags, expand_api_version_set:expand_api_version_set, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -56,13 +62,19 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param filter [String] | Field       | Supported operators    | Supported
     # functions               |
     # |-------------|------------------------|-----------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | path        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |serviceUrl | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |path | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
+    # @param tags [String] Include tags in the response.
     # @param expand_api_version_set [Boolean] Include full ApiVersionSet resource
     # in response
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -70,8 +82,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_service_with_http_info(resource_group_name, service_name, filter:nil, top:nil, skip:nil, expand_api_version_set:false, custom_headers:nil)
-      list_by_service_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, expand_api_version_set:expand_api_version_set, custom_headers:custom_headers).value!
+    def list_by_service_with_http_info(resource_group_name, service_name, filter:nil, top:nil, skip:nil, tags:nil, expand_api_version_set:nil, custom_headers:nil)
+      list_by_service_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, tags:tags, expand_api_version_set:expand_api_version_set, custom_headers:custom_headers).value!
     end
 
     #
@@ -82,13 +94,19 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param filter [String] | Field       | Supported operators    | Supported
     # functions               |
     # |-------------|------------------------|-----------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | path        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |serviceUrl | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |path | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
+    # @param tags [String] Include tags in the response.
     # @param expand_api_version_set [Boolean] Include full ApiVersionSet resource
     # in response
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -96,7 +114,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_service_async(resource_group_name, service_name, filter:nil, top:nil, skip:nil, expand_api_version_set:false, custom_headers:nil)
+    def list_by_service_async(resource_group_name, service_name, filter:nil, top:nil, skip:nil, tags:nil, expand_api_version_set:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
@@ -121,7 +139,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version,'expandApiVersionSet' => expand_api_version_set},
+          query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'tags' => tags,'expandApiVersionSet' => expand_api_version_set,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -137,6 +155,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -244,6 +264,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -342,6 +364,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -382,9 +406,6 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     end
 
     #
-    # Creates new or updates existing specified API of the API Management service
-    # instance.
-    #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param api_id [String] API revision identifier. Must be unique in the current
@@ -396,106 +417,25 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def create_or_update_with_http_info(resource_group_name, service_name, api_id, parameters, if_match:nil, custom_headers:nil)
-      create_or_update_async(resource_group_name, service_name, api_id, parameters, if_match:if_match, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Creates new or updates existing specified API of the API Management service
-    # instance.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param service_name [String] The name of the API Management service.
-    # @param api_id [String] API revision identifier. Must be unique in the current
-    # API Management service instance. Non-current revision has ;rev=n as a suffix
-    # where n is the revision number.
-    # @param parameters [ApiCreateOrUpdateParameter] Create or update parameters.
-    # @param if_match [String] ETag of the Entity. Not required when creating an
-    # entity, but required when updating an entity.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def create_or_update_async(resource_group_name, service_name, api_id, parameters, if_match:nil, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'service_name is nil' if service_name.nil?
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
-      fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
-      fail ArgumentError, 'api_id is nil' if api_id.nil?
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '256'" if !api_id.nil? && api_id.length > 256
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
-      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      # Send request
+      promise = begin_create_or_update_async(resource_group_name, service_name, api_id, parameters, if_match:if_match, custom_headers:custom_headers)
 
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['If-Match'] = if_match unless if_match.nil?
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCreateOrUpdateParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'apiId' => api_id,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 201 || status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContract.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContract.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContract.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
@@ -610,6 +550,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -721,6 +663,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -734,33 +678,31 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | aid         | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | apiRevision | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | path        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | isCurrent   | eq                     | substringof, contains, startswith,
-    # endswith |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |apiRevision | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |path | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |serviceUrl | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |isCurrent | eq |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
+    # @param include_not_tagged_apis [Boolean] Include not tagged APIs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<TagResourceContract>] operation results.
     #
-    def list_by_tags(resource_group_name, service_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
-      first_page = list_by_tags_as_lazy(resource_group_name, service_name, filter:filter, top:top, skip:skip, custom_headers:custom_headers)
+    def list_by_tags(resource_group_name, service_name, filter:nil, top:nil, skip:nil, include_not_tagged_apis:nil, custom_headers:nil)
+      first_page = list_by_tags_as_lazy(resource_group_name, service_name, filter:filter, top:top, skip:skip, include_not_tagged_apis:include_not_tagged_apis, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -770,33 +712,31 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | aid         | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | apiRevision | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | path        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | isCurrent   | eq                     | substringof, contains, startswith,
-    # endswith |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |apiRevision | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |path | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |serviceUrl | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |isCurrent | eq |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
+    # @param include_not_tagged_apis [Boolean] Include not tagged APIs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_tags_with_http_info(resource_group_name, service_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
-      list_by_tags_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, custom_headers:custom_headers).value!
+    def list_by_tags_with_http_info(resource_group_name, service_name, filter:nil, top:nil, skip:nil, include_not_tagged_apis:nil, custom_headers:nil)
+      list_by_tags_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, include_not_tagged_apis:include_not_tagged_apis, custom_headers:custom_headers).value!
     end
 
     #
@@ -805,32 +745,30 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | aid         | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | apiRevision | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | path        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | isCurrent   | eq                     | substringof, contains, startswith,
-    # endswith |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |apiRevision | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |path | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |serviceUrl | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |isCurrent | eq |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
+    # @param include_not_tagged_apis [Boolean] Include not tagged APIs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_tags_async(resource_group_name, service_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
+    def list_by_tags_async(resource_group_name, service_name, filter:nil, top:nil, skip:nil, include_not_tagged_apis:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
       fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
@@ -855,7 +793,7 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version},
+          query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'includeNotTaggedApis' => include_not_tagged_apis,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -867,15 +805,158 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::TagResourceCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates new or updates existing specified API of the API Management service
+    # instance.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param service_name [String] The name of the API Management service.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
+    # @param parameters [ApiCreateOrUpdateParameter] Create or update parameters.
+    # @param if_match [String] ETag of the Entity. Not required when creating an
+    # entity, but required when updating an entity.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ApiContract] operation results.
+    #
+    def begin_create_or_update(resource_group_name, service_name, api_id, parameters, if_match:nil, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, service_name, api_id, parameters, if_match:if_match, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates new or updates existing specified API of the API Management service
+    # instance.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param service_name [String] The name of the API Management service.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
+    # @param parameters [ApiCreateOrUpdateParameter] Create or update parameters.
+    # @param if_match [String] ETag of the Entity. Not required when creating an
+    # entity, but required when updating an entity.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_or_update_with_http_info(resource_group_name, service_name, api_id, parameters, if_match:nil, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, service_name, api_id, parameters, if_match:if_match, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates new or updates existing specified API of the API Management service
+    # instance.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param service_name [String] The name of the API Management service.
+    # @param api_id [String] API revision identifier. Must be unique in the current
+    # API Management service instance. Non-current revision has ;rev=n as a suffix
+    # where n is the revision number.
+    # @param parameters [ApiCreateOrUpdateParameter] Create or update parameters.
+    # @param if_match [String] ETag of the Entity. Not required when creating an
+    # entity, but required when updating an entity.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_or_update_async(resource_group_name, service_name, api_id, parameters, if_match:nil, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'service_name is nil' if service_name.nil?
+      fail ArgumentError, "'service_name' should satisfy the constraint - 'MaxLength': '50'" if !service_name.nil? && service_name.length > 50
+      fail ArgumentError, "'service_name' should satisfy the constraint - 'MinLength': '1'" if !service_name.nil? && service_name.length < 1
+      fail ArgumentError, "'service_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$'" if !service_name.nil? && service_name.match(Regexp.new('^^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$$')).nil?
+      fail ArgumentError, 'api_id is nil' if api_id.nil?
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'MaxLength': '256'" if !api_id.nil? && api_id.length > 256
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'MinLength': '1'" if !api_id.nil? && api_id.length < 1
+      fail ArgumentError, "'api_id' should satisfy the constraint - 'Pattern': '^[^*#&+:<>?]+$'" if !api_id.nil? && api_id.match(Regexp.new('^^[^*#&+:<>?]+$$')).nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['If-Match'] = if_match unless if_match.nil?
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiCreateOrUpdateParameter.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'apiId' => api_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContract.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ApiManagement::Mgmt::V2018_06_01_preview::Models::ApiContract.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -959,6 +1040,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1043,10 +1126,12 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1072,13 +1157,19 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param filter [String] | Field       | Supported operators    | Supported
     # functions               |
     # |-------------|------------------------|-----------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-    # | path        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |serviceUrl | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |path | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
+    # @param tags [String] Include tags in the response.
     # @param expand_api_version_set [Boolean] Include full ApiVersionSet resource
     # in response
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1086,8 +1177,8 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     #
     # @return [ApiCollection] which provide lazy access to pages of the response.
     #
-    def list_by_service_as_lazy(resource_group_name, service_name, filter:nil, top:nil, skip:nil, expand_api_version_set:false, custom_headers:nil)
-      response = list_by_service_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, expand_api_version_set:expand_api_version_set, custom_headers:custom_headers).value!
+    def list_by_service_as_lazy(resource_group_name, service_name, filter:nil, top:nil, skip:nil, tags:nil, expand_api_version_set:nil, custom_headers:nil)
+      response = list_by_service_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, tags:tags, expand_api_version_set:expand_api_version_set, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -1103,34 +1194,32 @@ module Azure::ApiManagement::Mgmt::V2018_06_01_preview
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
     # @param filter [String] | Field       | Supported operators    | Supported
-    # functions                         |
-    # |-------------|------------------------|---------------------------------------------|
-    # | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | aid         | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | apiRevision | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | path        | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-    # endswith |
-    # | isCurrent   | eq                     | substringof, contains, startswith,
-    # endswith |
+    # functions               |
+    # |-------------|------------------------|-----------------------------------|
+    #
+    # |name | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |displayName | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |apiRevision | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |path | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith|
+    # |description | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |serviceUrl | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+    # endswith|
+    # |isCurrent | eq |    |
+    #
     # @param top [Integer] Number of records to return.
     # @param skip [Integer] Number of records to skip.
+    # @param include_not_tagged_apis [Boolean] Include not tagged APIs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TagResourceCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_by_tags_as_lazy(resource_group_name, service_name, filter:nil, top:nil, skip:nil, custom_headers:nil)
-      response = list_by_tags_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, custom_headers:custom_headers).value!
+    def list_by_tags_as_lazy(resource_group_name, service_name, filter:nil, top:nil, skip:nil, include_not_tagged_apis:nil, custom_headers:nil)
+      response = list_by_tags_async(resource_group_name, service_name, filter:filter, top:top, skip:skip, include_not_tagged_apis:include_not_tagged_apis, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

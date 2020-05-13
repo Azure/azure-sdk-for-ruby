@@ -224,7 +224,7 @@
                 },
                 "Microsoft.Advisor": {
                     "management": {
-                        "2017-04-19": ["*"]
+                        "2020-01-01": ["*"]
                     }
                 },
                 "Microsoft.AlertsManagement": {
@@ -239,7 +239,7 @@
                 },
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2019-01-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 },
                 "Microsoft.Appconfiguration": {
@@ -310,7 +310,7 @@
                         "2018-09-30": ["*"],
                         "2019-03-01": ["*"],
                         "2019-04-01": ["*"],
-                        "2019-07-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 },
                 "Microsoft.Consumption": {
@@ -465,6 +465,11 @@
                         "7.0": ["*"]
                     }
                 },
+                "Microsoft.KubernetesConfiguration": {
+                    "management": {
+                        "2019-11-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Kusto": {
                     "management": {
                         "2019-11-09": ["*"]
@@ -562,14 +567,14 @@
                 },
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-10-01": ["*"]
+                        "2019-11-01": ["*"]
                     }
                 },
                 "Microsoft.Network": {
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2019-09-01": ["*"]
+                        "2020-03-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -641,7 +646,8 @@
                         "2016-12-01": ["*"],
                         "2017-07-01": ["*"],
                         "2019-05-13": ["*"],
-                        "2019-06-15": ["*"]
+                        "2019-06-15": ["*"],
+                        "2020-02-02": ["*"]
                     }
                 },
                 "Microsoft.RecoveryServicesSiteRecovery": {
@@ -761,7 +767,7 @@
                 },
                 "Microsoft.StorageCache": {
                     "management": {
-                        "2019-11-01": ["*"]
+                        "2020-03-01": ["*"]
                     }
                 },
                 "Microsoft.StreamAnalytics": {
@@ -776,7 +782,18 @@
                         "2018-03-01-preview": ["*"],
                         "2018-11-01-preview": ["*"],
                         "2019-03-01-preview": ["*"],
-                        "2019-06-01": ["*"]
+                        "2019-06-01": ["*"],
+                        "2019-11-01": ["*"]
+                    }
+                },
+                "Microsoft.Support": {
+                    "management": {
+                        "2020-04-01": ["*"]
+                    }
+                },
+                "Microsoft.Synapse": {
+                    "management": {
+                        "2019-06-01-preview": ["*"]
                     }
                 },
                 "Microsoft.TimeSeriesInsights": {
@@ -945,7 +962,7 @@
             "resourceTypes": {
                 "Microsoft.Advisor": {
                     "management": {
-                        "2017-04-19": ["*"]
+                        "2020-01-01": ["*"]
                     }
                 }
             },
@@ -987,7 +1004,7 @@
             "resourceTypes": {
                 "Microsoft.ApiManagement": {
                     "management": {
-                        "2019-01-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 }
             },
@@ -1249,7 +1266,7 @@
                         "2018-09-30": ["*"],
                         "2019-03-01": ["*"],
                         "2019-04-01": ["*"],
-                        "2019-07-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 }
             },
@@ -1725,6 +1742,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_kubernetes_configuration": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.KubernetesConfiguration": {
+                    "management": {
+                        "2019-11-01-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_kubernetes_configuration/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_kusto": [
         {
             "name": "Latest",
@@ -2042,7 +2073,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-10-01": ["*"]
+                        "2019-11-01": ["*"]
                     }
                 }
             },
@@ -2095,7 +2126,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2019-09-01": ["*"]
+                        "2020-03-01": ["*"]
                     }
                 }
             },
@@ -2306,7 +2337,8 @@
                         "2016-12-01": ["*"],
                         "2017-07-01": ["*"],
                         "2019-05-13": ["*"],
-                        "2019-06-15": ["*"]
+                        "2019-06-15": ["*"],
+                        "2020-02-02": ["*"]
                     }
                 }
             },
@@ -2698,7 +2730,7 @@
                 "resourceTypes": {
                     "Microsoft.StorageCache": {
                         "management": {
-                            "2019-11-01": ["*"]
+                            "2020-03-01": ["*"]
                         }
                     }
                 },
@@ -2767,13 +2799,42 @@
                         "2018-03-01-preview": ["*"],
                         "2018-11-01-preview": ["*"],
                         "2019-03-01-preview": ["*"],
-                        "2019-06-01": ["*"]
+                        "2019-06-01": ["*"],
+                        "2019-11-01": ["*"]
                     }
                 }
             },
             "output_dir": "management/azure_mgmt_subscriptions/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_support": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.Support": {
+                        "management": {
+                            "2020-04-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_support/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_mgmt_synapse": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.Synapse": {
+                        "management": {
+                            "2019-06-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_synapse/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_time_series_insights": [
         {

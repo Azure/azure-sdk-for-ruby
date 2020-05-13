@@ -12,6 +12,9 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      # @return [IdentityData]
+      attr_accessor :identity
+
       # @return [VaultProperties]
       attr_accessor :properties
 
@@ -89,6 +92,15 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                         name: 'String'
                       }
                   }
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'IdentityData'
                 }
               },
               properties: {

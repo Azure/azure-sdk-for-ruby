@@ -44,6 +44,10 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     # @return [ReplicationUsages] replication_usages
     attr_reader :replication_usages
 
+    # @return [PrivateLinkResourcesOperations]
+    # private_link_resources_operations
+    attr_reader :private_link_resources_operations
+
     # @return [RecoveryServices] recovery_services
     attr_reader :recovery_services
 
@@ -75,6 +79,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       @vault_certificates = VaultCertificates.new(self)
       @registered_identities = RegisteredIdentities.new(self)
       @replication_usages = ReplicationUsages.new(self)
+      @private_link_resources_operations = PrivateLinkResourcesOperations.new(self)
       @recovery_services = RecoveryServices.new(self)
       @vaults = Vaults.new(self)
       @operations = Operations.new(self)
@@ -152,7 +157,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_recovery_services'
-        sdk_information = "#{sdk_information}/0.17.3"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

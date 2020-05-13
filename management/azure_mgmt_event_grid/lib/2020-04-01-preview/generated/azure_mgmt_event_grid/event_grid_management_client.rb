@@ -43,14 +43,45 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     # @return [DomainTopics] domain_topics
     attr_reader :domain_topics
 
+    # @return [EventChannels] event_channels
+    attr_reader :event_channels
+
     # @return [EventSubscriptions] event_subscriptions
     attr_reader :event_subscriptions
+
+    # @return [SystemTopicEventSubscriptions] system_topic_event_subscriptions
+    attr_reader :system_topic_event_subscriptions
+
+    # @return [PartnerTopicEventSubscriptions]
+    # partner_topic_event_subscriptions
+    attr_reader :partner_topic_event_subscriptions
 
     # @return [Operations] operations
     attr_reader :operations
 
+    # @return [PartnerNamespaces] partner_namespaces
+    attr_reader :partner_namespaces
+
+    # @return [PartnerRegistrations] partner_registrations
+    attr_reader :partner_registrations
+
+    # @return [PartnerTopics] partner_topics
+    attr_reader :partner_topics
+
+    # @return [PrivateEndpointConnections] private_endpoint_connections
+    attr_reader :private_endpoint_connections
+
+    # @return [PrivateLinkResources] private_link_resources
+    attr_reader :private_link_resources
+
+    # @return [SystemTopics] system_topics
+    attr_reader :system_topics
+
     # @return [Topics] topics
     attr_reader :topics
+
+    # @return [ExtensionTopics] extension_topics
+    attr_reader :extension_topics
 
     # @return [TopicTypes] topic_types
     attr_reader :topic_types
@@ -70,9 +101,19 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
 
       @domains = Domains.new(self)
       @domain_topics = DomainTopics.new(self)
+      @event_channels = EventChannels.new(self)
       @event_subscriptions = EventSubscriptions.new(self)
+      @system_topic_event_subscriptions = SystemTopicEventSubscriptions.new(self)
+      @partner_topic_event_subscriptions = PartnerTopicEventSubscriptions.new(self)
       @operations = Operations.new(self)
+      @partner_namespaces = PartnerNamespaces.new(self)
+      @partner_registrations = PartnerRegistrations.new(self)
+      @partner_topics = PartnerTopics.new(self)
+      @private_endpoint_connections = PrivateEndpointConnections.new(self)
+      @private_link_resources = PrivateLinkResources.new(self)
+      @system_topics = SystemTopics.new(self)
       @topics = Topics.new(self)
+      @extension_topics = ExtensionTopics.new(self)
       @topic_types = TopicTypes.new(self)
       @api_version = '2020-04-01-preview'
       @accept_language = 'en-US'
@@ -146,7 +187,7 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_event_grid'
-        sdk_information = "#{sdk_information}/0.17.10"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

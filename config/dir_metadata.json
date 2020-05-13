@@ -338,6 +338,13 @@
       "module_require": "azure_key_vault"
     }
   },
+  "Microsoft.KubernetesConfiguration": {
+    "management": {
+      "path": "management/azure_mgmt_kubernetes_configuration",
+      "namespace": "Azure::KubernetesConfiguration::Mgmt",
+      "module_require": "azure_mgmt_kubernetes_configuration"
+    }
+  },
   "Microsoft.Kusto": {
     "management": {
       "path": "management/azure_mgmt_kusto",
@@ -740,6 +747,20 @@
       "path": "management/azure_mgmt_subscriptions",
       "namespace": "Azure::Subscriptions::Mgmt",
       "module_require": "azure_mgmt_subscriptions"
+    }
+  },
+  "Microsoft.Support": {
+    "management": {
+      "path": "management/azure_mgmt_support",
+      "namespace": "Azure::Support::Mgmt",
+      "module_require": "azure_mgmt_support"
+    }
+  },
+  "Microsoft.Synapse": {
+    "management": {
+      "path": "management/azure_mgmt_synapse",
+      "namespace": "Azure::Synapse::Mgmt",
+      "module_require": "azure_mgmt_synapse"
     }
   },
   "Microsoft.TimeSeriesInsights": {

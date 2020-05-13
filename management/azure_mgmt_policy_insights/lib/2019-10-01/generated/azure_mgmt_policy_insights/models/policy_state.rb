@@ -117,6 +117,15 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       # @return [Array<String>] Policy definition group names.
       attr_accessor :policy_definition_group_names
 
+      # @return [String] Evaluated policy definition version.
+      attr_accessor :policy_definition_version
+
+      # @return [String] Evaluated policy set definition version.
+      attr_accessor :policy_set_definition_version
+
+      # @return [String] Evaluated policy assignment version.
+      attr_accessor :policy_assignment_version
+
 
       #
       # Mapper for PolicyState class as Ruby Hash.
@@ -393,6 +402,33 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
                         name: 'String'
                       }
                   }
+                }
+              },
+              policy_definition_version: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'policyDefinitionVersion',
+                type: {
+                  name: 'String'
+                }
+              },
+              policy_set_definition_version: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'policySetDefinitionVersion',
+                type: {
+                  name: 'String'
+                }
+              },
+              policy_assignment_version: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'policyAssignmentVersion',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -1006,6 +1006,82 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
     end
 
     #
+    # Triggers a policy evaluation scan for all the resources under the
+    # subscription
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def trigger_subscription_evaluation(subscription_id, custom_headers:nil)
+      response = trigger_subscription_evaluation_async(subscription_id, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def trigger_subscription_evaluation_async(subscription_id, custom_headers:nil)
+      # Send request
+      promise = begin_trigger_subscription_evaluation_async(subscription_id, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
+      end
+
+      promise
+    end
+
+    #
+    # Triggers a policy evaluation scan for all the resources under the resource
+    # group.
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param resource_group_name [String] Resource group name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def trigger_resource_group_evaluation(subscription_id, resource_group_name, custom_headers:nil)
+      response = trigger_resource_group_evaluation_async(subscription_id, resource_group_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param resource_group_name [String] Resource group name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def trigger_resource_group_evaluation_async(subscription_id, resource_group_name, custom_headers:nil)
+      # Send request
+      promise = begin_trigger_resource_group_evaluation_async(subscription_id, resource_group_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
+      end
+
+      promise
+    end
+
+    #
     # Queries policy states for the subscription level policy set definition.
     #
     # @param policy_states_resource [PolicyStatesResource] The virtual resource
@@ -2014,6 +2090,172 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Triggers a policy evaluation scan for all the resources under the
+    # subscription
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_trigger_subscription_evaluation(subscription_id, custom_headers:nil)
+      response = begin_trigger_subscription_evaluation_async(subscription_id, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Triggers a policy evaluation scan for all the resources under the
+    # subscription
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_trigger_subscription_evaluation_with_http_info(subscription_id, custom_headers:nil)
+      begin_trigger_subscription_evaluation_async(subscription_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Triggers a policy evaluation scan for all the resources under the
+    # subscription
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_trigger_subscription_evaluation_async(subscription_id, custom_headers:nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Triggers a policy evaluation scan for all the resources under the resource
+    # group.
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param resource_group_name [String] Resource group name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_trigger_resource_group_evaluation(subscription_id, resource_group_name, custom_headers:nil)
+      response = begin_trigger_resource_group_evaluation_async(subscription_id, resource_group_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Triggers a policy evaluation scan for all the resources under the resource
+    # group.
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param resource_group_name [String] Resource group name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_trigger_resource_group_evaluation_with_http_info(subscription_id, resource_group_name, custom_headers:nil)
+      begin_trigger_resource_group_evaluation_async(subscription_id, resource_group_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Triggers a policy evaluation scan for all the resources under the resource
+    # group.
+    #
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param resource_group_name [String] Resource group name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_trigger_resource_group_evaluation_async(subscription_id, resource_group_name, custom_headers:nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id,'resourceGroupName' => resource_group_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
