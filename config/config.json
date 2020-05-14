@@ -2995,6 +2995,13 @@
       "namespace": "Azure::Subscriptions::Mgmt::V2019_06_01",
       "title": "SubscriptionClient"
     },
+    "azure_mgmt_subscriptions_2019_10_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/40e12023460046fc431382c86e0a99e85e30bfe6/specification/subscription/resource-manager/Microsoft.Subscription/stable/2019-10-01-preview/subscriptions.json"
+      ],
+      "namespace": "Azure::Subscriptions::Mgmt::V2019_10_01_preview",
+      "title": "SubscriptionClient"
+    },
     "azure_mgmt_subscriptions_2019_11_01": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b01b2ea007c4524e4fcb6af74aac96f53ecb45e1/specification/resources/resource-manager/Microsoft.Resources/stable/2019-11-01/subscriptions.json"
