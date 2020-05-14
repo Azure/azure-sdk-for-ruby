@@ -4,6 +4,7 @@
 
 require '2019-11-01/generated/azure_mgmt_subscriptions'
 require '2018-03-01-preview/generated/azure_mgmt_subscriptions'
+require '2019-10-01-preview/generated/azure_mgmt_subscriptions'
 require '2018-11-01-preview/generated/azure_mgmt_subscriptions'
 require '2017-11-01-preview/generated/azure_mgmt_subscriptions'
 require '2016-06-01/generated/azure_mgmt_subscriptions'
