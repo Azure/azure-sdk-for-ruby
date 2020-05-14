@@ -27,6 +27,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     # Assigns an Azure account to the application.
     #
     # @param app_id The application ID.
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -34,8 +36,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     #
     # @return [OperationStatus] operation results.
     #
-    def assign_to_app(app_id, azure_account_info_object:nil, custom_headers:nil)
-      response = assign_to_app_async(app_id, azure_account_info_object:azure_account_info_object, custom_headers:custom_headers).value!
+    def assign_to_app(app_id, arm_token:nil, azure_account_info_object:nil, custom_headers:nil)
+      response = assign_to_app_async(app_id, arm_token:arm_token, azure_account_info_object:azure_account_info_object, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -45,6 +47,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     # Assigns an Azure account to the application.
     #
     # @param app_id The application ID.
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -52,8 +56,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def assign_to_app_with_http_info(app_id, azure_account_info_object:nil, custom_headers:nil)
-      assign_to_app_async(app_id, azure_account_info_object:azure_account_info_object, custom_headers:custom_headers).value!
+    def assign_to_app_with_http_info(app_id, arm_token:nil, azure_account_info_object:nil, custom_headers:nil)
+      assign_to_app_async(app_id, arm_token:arm_token, azure_account_info_object:azure_account_info_object, custom_headers:custom_headers).value!
     end
 
     #
@@ -62,6 +66,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     # Assigns an Azure account to the application.
     #
     # @param app_id The application ID.
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -69,7 +75,7 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def assign_to_app_async(app_id, azure_account_info_object:nil, custom_headers:nil)
+    def assign_to_app_async(app_id, arm_token:nil, azure_account_info_object:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
 
@@ -79,6 +85,7 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['ArmToken'] = arm_token unless arm_token.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
@@ -136,13 +143,15 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     # his ARM token.
     #
     # @param app_id The application ID.
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def get_assigned(app_id, custom_headers:nil)
-      response = get_assigned_async(app_id, custom_headers:custom_headers).value!
+    def get_assigned(app_id, arm_token:nil, custom_headers:nil)
+      response = get_assigned_async(app_id, arm_token:arm_token, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -153,13 +162,15 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     # his ARM token.
     #
     # @param app_id The application ID.
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_assigned_with_http_info(app_id, custom_headers:nil)
-      get_assigned_async(app_id, custom_headers:custom_headers).value!
+    def get_assigned_with_http_info(app_id, arm_token:nil, custom_headers:nil)
+      get_assigned_async(app_id, arm_token:arm_token, custom_headers:custom_headers).value!
     end
 
     #
@@ -169,12 +180,14 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     # his ARM token.
     #
     # @param app_id The application ID.
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_assigned_async(app_id, custom_headers:nil)
+    def get_assigned_async(app_id, arm_token:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
 
@@ -184,6 +197,7 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['ArmToken'] = arm_token unless arm_token.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'apps/{appId}/azureaccounts'
 
@@ -249,6 +263,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     # Removes assigned Azure account from the application.
     #
     # @param app_id The application ID.
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -256,8 +272,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     #
     # @return [OperationStatus] operation results.
     #
-    def remove_from_app(app_id, azure_account_info_object:nil, custom_headers:nil)
-      response = remove_from_app_async(app_id, azure_account_info_object:azure_account_info_object, custom_headers:custom_headers).value!
+    def remove_from_app(app_id, arm_token:nil, azure_account_info_object:nil, custom_headers:nil)
+      response = remove_from_app_async(app_id, arm_token:arm_token, azure_account_info_object:azure_account_info_object, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -267,6 +283,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     # Removes assigned Azure account from the application.
     #
     # @param app_id The application ID.
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -274,8 +292,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def remove_from_app_with_http_info(app_id, azure_account_info_object:nil, custom_headers:nil)
-      remove_from_app_async(app_id, azure_account_info_object:azure_account_info_object, custom_headers:custom_headers).value!
+    def remove_from_app_with_http_info(app_id, arm_token:nil, azure_account_info_object:nil, custom_headers:nil)
+      remove_from_app_async(app_id, arm_token:arm_token, azure_account_info_object:azure_account_info_object, custom_headers:custom_headers).value!
     end
 
     #
@@ -284,6 +302,8 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     # Removes assigned Azure account from the application.
     #
     # @param app_id The application ID.
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param azure_account_info_object [AzureAccountInfoObject] The Azure account
     # information object.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -291,7 +311,7 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def remove_from_app_async(app_id, azure_account_info_object:nil, custom_headers:nil)
+    def remove_from_app_async(app_id, arm_token:nil, azure_account_info_object:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
       fail ArgumentError, 'app_id is nil' if app_id.nil?
 
@@ -301,6 +321,7 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['ArmToken'] = arm_token unless arm_token.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
@@ -356,13 +377,15 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     #
     # Gets the LUIS Azure accounts for the user using his ARM token.
     #
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def list_user_luisaccounts(custom_headers:nil)
-      response = list_user_luisaccounts_async(custom_headers:custom_headers).value!
+    def list_user_luisaccounts(arm_token:nil, custom_headers:nil)
+      response = list_user_luisaccounts_async(arm_token:arm_token, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -371,13 +394,15 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     #
     # Gets the LUIS Azure accounts for the user using his ARM token.
     #
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_user_luisaccounts_with_http_info(custom_headers:nil)
-      list_user_luisaccounts_async(custom_headers:custom_headers).value!
+    def list_user_luisaccounts_with_http_info(arm_token:nil, custom_headers:nil)
+      list_user_luisaccounts_async(arm_token:arm_token, custom_headers:custom_headers).value!
     end
 
     #
@@ -385,12 +410,14 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
     #
     # Gets the LUIS Azure accounts for the user using his ARM token.
     #
+    # @param arm_token [String] The custom arm token header to use; containing the
+    # user's ARM token used to validate azure accounts information.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_user_luisaccounts_async(custom_headers:nil)
+    def list_user_luisaccounts_async(arm_token:nil, custom_headers:nil)
       fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
 
 
@@ -399,6 +426,7 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['ArmToken'] = arm_token unless arm_token.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'azureaccounts'
 

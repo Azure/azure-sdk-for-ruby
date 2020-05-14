@@ -2270,5 +2270,242 @@ module Azure::CognitiveServices::LuisAuthoring::V3_0_preview
       promise.execute
     end
 
+    #
+    # Imports an application to LUIS, the application's structure is included in
+    # the request body.
+    #
+    # @param luis_app_v2 [LuisAppV2] A LUIS application structure.
+    # @param app_name [String] The application name to create. If not specified,
+    # the application name will be read from the imported object. If the
+    # application name already exists, an error is returned.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Uuid] operation results.
+    #
+    def import_v2app(luis_app_v2, app_name:nil, custom_headers:nil)
+      response = import_v2app_async(luis_app_v2, app_name:app_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Imports an application to LUIS, the application's structure is included in
+    # the request body.
+    #
+    # @param luis_app_v2 [LuisAppV2] A LUIS application structure.
+    # @param app_name [String] The application name to create. If not specified,
+    # the application name will be read from the imported object. If the
+    # application name already exists, an error is returned.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def import_v2app_with_http_info(luis_app_v2, app_name:nil, custom_headers:nil)
+      import_v2app_async(luis_app_v2, app_name:app_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Imports an application to LUIS, the application's structure is included in
+    # the request body.
+    #
+    # @param luis_app_v2 [LuisAppV2] A LUIS application structure.
+    # @param app_name [String] The application name to create. If not specified,
+    # the application name will be read from the imported object. If the
+    # application name already exists, an error is returned.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def import_v2app_async(luis_app_v2, app_name:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
+      fail ArgumentError, 'luis_app_v2 is nil' if luis_app_v2.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LuisAppV2.mapper()
+      request_content = @client.serialize(request_mapper,  luis_app_v2)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'apps/import'
+
+      request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'appName' => app_name},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'String'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Imports an application to LUIS, the application's structure is included in
+    # the request body.
+    #
+    # @param luis_app_lu [String] A LUIS application structure.
+    # @param app_name [String] The application name to create. If not specified,
+    # the application name will be read from the imported object. If the
+    # application name already exists, an error is returned.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Uuid] operation results.
+    #
+    def import_lu_format(luis_app_lu, app_name:nil, custom_headers:nil)
+      response = import_lu_format_async(luis_app_lu, app_name:app_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Imports an application to LUIS, the application's structure is included in
+    # the request body.
+    #
+    # @param luis_app_lu [String] A LUIS application structure.
+    # @param app_name [String] The application name to create. If not specified,
+    # the application name will be read from the imported object. If the
+    # application name already exists, an error is returned.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def import_lu_format_with_http_info(luis_app_lu, app_name:nil, custom_headers:nil)
+      import_lu_format_async(luis_app_lu, app_name:app_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Imports an application to LUIS, the application's structure is included in
+    # the request body.
+    #
+    # @param luis_app_lu [String] A LUIS application structure.
+    # @param app_name [String] The application name to create. If not specified,
+    # the application name will be read from the imported object. If the
+    # application name already exists, an error is returned.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def import_lu_format_async(luis_app_lu, app_name:nil, custom_headers:nil)
+      fail ArgumentError, '@client.endpoint is nil' if @client.endpoint.nil?
+      fail ArgumentError, 'luis_app_lu is nil' if luis_app_lu.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'text/plain'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = {
+        client_side_validation: true,
+        required: true,
+        serialized_name: 'luisAppLu',
+        type: {
+          name: 'String'
+        }
+      }
+      request_content = @client.serialize(request_mapper,  luis_app_lu)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'apps/import'
+
+      request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{Endpoint}', @client.endpoint)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'appName' => app_name},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'String'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
   end
 end
