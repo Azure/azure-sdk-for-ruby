@@ -139,6 +139,7 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
     autoload :IdentityType,                                       '2020-04-01-preview/generated/azure_mgmt_event_grid/models/identity_type.rb'
     autoload :DomainTopicProvisioningState,                       '2020-04-01-preview/generated/azure_mgmt_event_grid/models/domain_topic_provisioning_state.rb'
     autoload :EventChannelProvisioningState,                      '2020-04-01-preview/generated/azure_mgmt_event_grid/models/event_channel_provisioning_state.rb'
+    autoload :PartnerTopicReadinessState,                         '2020-04-01-preview/generated/azure_mgmt_event_grid/models/partner_topic_readiness_state.rb'
     autoload :EventSubscriptionProvisioningState,                 '2020-04-01-preview/generated/azure_mgmt_event_grid/models/event_subscription_provisioning_state.rb'
     autoload :EventSubscriptionIdentityType,                      '2020-04-01-preview/generated/azure_mgmt_event_grid/models/event_subscription_identity_type.rb'
     autoload :EventDeliverySchema,                                '2020-04-01-preview/generated/azure_mgmt_event_grid/models/event_delivery_schema.rb'

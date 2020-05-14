@@ -16,6 +16,11 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
       # represents a unique partner resource.
       attr_accessor :source
 
+      # @return [DateTime] Expiration time of the partner topic. If this timer
+      # expires while the partner topic is still never activated,
+      # the partner topic and corresponding event channel are deleted.
+      attr_accessor :expiration_time_if_not_activated_utc
+
       # @return [PartnerTopicProvisioningState] Provisioning state of the
       # partner topic. Possible values include: 'Creating', 'Updating',
       # 'Deleting', 'Succeeded', 'Canceled', 'Failed'
@@ -25,6 +30,13 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
       # topic. Possible values include: 'NeverActivated', 'Activated',
       # 'Deactivated'
       attr_accessor :activation_state
+
+      # @return [String] Friendly description about the topic. This can be set
+      # by the publisher/partner to show custom description for the customer
+      # partner topic.
+      # This will be helpful to remove any ambiguity of the origin of creation
+      # of the partner topic for the customer.
+      attr_accessor :partner_topic_friendly_description
 
 
       #
@@ -99,6 +111,14 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                   name: 'String'
                 }
               },
+              expiration_time_if_not_activated_utc: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.expirationTimeIfNotActivatedUtc',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
@@ -112,6 +132,14 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.activationState',
+                type: {
+                  name: 'String'
+                }
+              },
+              partner_topic_friendly_description: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.partnerTopicFriendlyDescription',
                 type: {
                   name: 'String'
                 }
