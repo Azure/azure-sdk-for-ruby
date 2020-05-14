@@ -1,7 +1,8 @@
 {
     "management":[
         "azure_mgmt_features",
-        "azure_mgmt_datashare"
+        "azure_mgmt_datashare",
+        "azure_mgmt_network"
     ],
     "rollup":[
         "azure_sdk"
