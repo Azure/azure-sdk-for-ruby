@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::DataShare::Mgmt::V2018_11_01_preview
+module Azure::DataShare::Mgmt::V2019_11_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -96,7 +96,7 @@ module Azure::DataShare::Mgmt::V2018_11_01_preview
       @consumer_source_data_sets = ConsumerSourceDataSets.new(self)
       @synchronization_settings = SynchronizationSettings.new(self)
       @triggers = Triggers.new(self)
-      @api_version = '2018-11-01-preview'
+      @api_version = '2019-11-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
