@@ -1487,7 +1487,7 @@
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/40e12023460046fc431382c86e0a99e85e30bfe6/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/virtualWan.json",
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/40e12023460046fc431382c86e0a99e85e30bfe6/specification/network/resource-manager/Microsoft.Network/stable/2020-04-01/webapplicationfirewall.json"
       ],
-      "namespace": "Az2020-03-01ure::Network::Mgmt::V2020_04_01",
+      "namespace": "Azure::Network::Mgmt::V2020_04_01",
       "title": "NetworkManagementClient"
     },
     "azure_mgmt_network_2020_03_01": {
