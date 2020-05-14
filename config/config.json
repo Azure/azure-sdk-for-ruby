@@ -757,6 +757,11 @@
     }
   },
   "azure_mgmt_datashare": {
+    "azure_mgmt_datashare_2019_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/40e12023460046fc431382c86e0a99e85e30bfe6/specification/datashare/resource-manager/readme.md",
+      "namespace": "Azure::DataShare::Mgmt::V2019_11_01",
+      "tag": "package-2019-11-01"
+    },
     "azure_mgmt_datashare_2018_11_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5e0762f0cdf27908b6aa3319dec3b384c144fb7c/specification/datashare/resource-manager/readme.md",
       "namespace": "Azure::DataShare::Mgmt::V2018_11_01_preview",

@@ -361,7 +361,7 @@
                 },
                 "Microsoft.DataShare": {
                     "management": {
-                        "2018-11-01-preview": ["*"]
+                        "2019-11-01": ["*"]
                     }
                 },
                 "Microsoft.DataLakeAnalytics": {
@@ -1398,7 +1398,7 @@
                 "resourceTypes": {
                     "Microsoft.DataShare" : {
                         "management": {
-                            "2018-11-01-preview": ["*"]
+                            "2019-11-01": ["*"]
                         }
                     }
                 },
