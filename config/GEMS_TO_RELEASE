@@ -4,6 +4,9 @@
         "azure_mgmt_datashare",
         "azure_mgmt_network"
     ],
+    "data":[
+        "azure_cognitiveservices_luisauthoring"
+    ],
     "rollup":[
         "azure_sdk"
     ]

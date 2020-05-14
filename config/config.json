@@ -3283,7 +3283,7 @@
   },
   "azure_cognitiveservices_luisauthoring": {
     "azure_cognitiveservices_luisauthoring_v3.0_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/80a458c51677166e259b90316678e16c1ec614a0/specification/cognitiveservices/data-plane/LUIS/Authoring/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/40e12023460046fc431382c86e0a99e85e30bfe6/specification/cognitiveservices/data-plane/LUIS/Authoring/readme.md",
       "namespace": "Azure::CognitiveServices::LuisAuthoring::V3_0_preview",
       "title": "LuisAuthoringClient",
       "tag": "authoring_3_0_preview"
