@@ -23,7 +23,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
       # the RelativeName with the DNS domain used by Azure Traffic Manager.
       attr_accessor :fqdn
 
-      # @return [Integer] Gets or sets the DNS Ttime-To-Live (TTL), in seconds.
+      # @return [Integer] Gets or sets the DNS Time-To-Live (TTL), in seconds.
       # This informs the local DNS resolvers and DNS clients how long to cache
       # DNS responses provided by this Traffic Manager profile.
       attr_accessor :ttl

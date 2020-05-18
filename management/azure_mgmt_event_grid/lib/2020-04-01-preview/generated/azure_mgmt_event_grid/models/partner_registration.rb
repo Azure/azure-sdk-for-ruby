@@ -27,8 +27,33 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
       # @return [String] Display name of the partner resource type.
       attr_accessor :partner_resource_type_display_name
 
-      # @return [String] Description of the partner resource type.
+      # @return [String] Short description of the partner resource type. The
+      # length of this description should not exceed 256 characters.
       attr_accessor :partner_resource_type_description
+
+      # @return [String] Long description for the custom scenarios and
+      # integration to be displayed in the portal if needed.
+      # Length of this description should not exceed 2048 characters.
+      attr_accessor :long_description
+
+      # @return [String] The customer service number of the publisher. The
+      # expected phone format should start with a '+' sign
+      # followed by the country code. The remaining digits are then followed.
+      # Only digits and spaces are allowed and its
+      # length cannot exceed 16 digits including country code. Examples of
+      # valid phone numbers are: +1 515 123 4567 and
+      # +966 7 5115 2471. Examples of invalid phone numbers are: +1 (515)
+      # 123-4567, 1 515 123 4567 and +966 121 5115 24 7 551 1234 43
+      attr_accessor :partner_customer_service_number
+
+      # @return [String] The extension of the customer service number of the
+      # publisher. Only digits are allowed and number of digits should not
+      # exceed 10.
+      attr_accessor :partner_customer_service_extension
+
+      # @return [String] The extension of the customer service URI of the
+      # publisher.
+      attr_accessor :customer_service_uri
 
       # @return [String] URI of the partner website that can be used by Azure
       # customers to setup Event Grid
@@ -154,6 +179,38 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.partnerResourceTypeDescription',
+                type: {
+                  name: 'String'
+                }
+              },
+              long_description: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.longDescription',
+                type: {
+                  name: 'String'
+                }
+              },
+              partner_customer_service_number: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.partnerCustomerServiceNumber',
+                type: {
+                  name: 'String'
+                }
+              },
+              partner_customer_service_extension: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.partnerCustomerServiceExtension',
+                type: {
+                  name: 'String'
+                }
+              },
+              customer_service_uri: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.customerServiceUri',
                 type: {
                   name: 'String'
                 }

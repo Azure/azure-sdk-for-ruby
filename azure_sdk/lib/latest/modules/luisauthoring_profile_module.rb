@@ -18,45 +18,47 @@ module Azure::Profiles::Latest
     AzureAccounts = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::AzureAccounts
 
     module Models
-      ChildEntity = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ChildEntity
-      EntityLabelObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityLabelObject
-      ExplicitListItem = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItem
-      PrebuiltDomainCreateBaseObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainCreateBaseObject
       ModelInfoResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelInfoResponse
+      EntityLabelObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityLabelObject
+      ChildEntity = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ChildEntity
+      PrebuiltDomainCreateBaseObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainCreateBaseObject
+      ExplicitListItem = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItem
       PrebuiltDomainModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainModelCreateObject
+      ApplicationCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationCreateObject
       ChildEntityModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ChildEntityModelCreateObject
-      HierarchicalEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalEntityExtractor
       EntityModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityModelUpdateObject
-      CompositeEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeEntityExtractor
+      HierarchicalEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalEntityExtractor
       ApplicationSettingUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationSettingUpdateObject
-      ClosedListEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListEntityExtractor
+      CompositeEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeEntityExtractor
       ExampleLabelObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExampleLabelObject
-      PrebuiltEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltEntityExtractor
+      ClosedListEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListEntityExtractor
       SubClosedList = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::SubClosedList
-      CompositeChildModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeChildModelCreateObject
+      PrebuiltEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltEntityExtractor
       ApplicationUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationUpdateObject
-      CustomPrebuiltModel = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CustomPrebuiltModel
+      CompositeChildModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeChildModelCreateObject
       ClosedList = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedList
-      HierarchicalChildModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalChildModelUpdateObject
+      CustomPrebuiltModel = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CustomPrebuiltModel
       ClosedListModelPatchObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListModelPatchObject
-      EntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityExtractor
+      HierarchicalChildModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalChildModelUpdateObject
       ModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelCreateObject
-      NDepthEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::NDepthEntityExtractor
+      EntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityExtractor
       JSONUtterance = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONUtterance
-      AzureAccountInfoObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AzureAccountInfoObject
+      NDepthEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::NDepthEntityExtractor
       ClosedListModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListModelUpdateObject
-      AppVersionSettingObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AppVersionSettingObject
+      AzureAccountInfoObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AzureAccountInfoObject
       VersionInfo = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::VersionInfo
-      FeaturesResponseObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::FeaturesResponseObject
+      AppVersionSettingObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AppVersionSettingObject
       PhraselistUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PhraselistUpdateObject
-      FeatureInfoObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::FeatureInfoObject
+      FeaturesResponseObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::FeaturesResponseObject
       JsonModelFeatureInformation = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JsonModelFeatureInformation
-      LabelExampleResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LabelExampleResponse
+      FeatureInfoObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::FeatureInfoObject
       HierarchicalModel = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalModel
+      LabelExampleResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LabelExampleResponse
+      ApplicationPublishObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationPublishObject
       OperationStatus = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::OperationStatus
-      PatternAny = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAny
+      RegexEntity = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexEntity
       BatchLabelExample = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::BatchLabelExample
-      PrebuiltEntity = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltEntity
+      PatternRule = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRule
       ApplicationInfoResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationInfoResponse
       LuisApp = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LuisApp
       ModelFeatureInformation = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelFeatureInformation
@@ -68,54 +70,54 @@ module Azure::Profiles::Latest
       ApplicationSettings = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationSettings
       ModelInfo = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelInfo
       PublishSettings = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PublishSettings
-      ApplicationCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationCreateObject
-      AvailablePrebuiltEntityModel = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AvailablePrebuiltEntityModel
-      CompositeEntityModel = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeEntityModel
-      EnqueueTrainingResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EnqueueTrainingResponse
-      JSONEntity = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONEntity
-      ModelTrainingDetails = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelTrainingDetails
-      PhraselistCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PhraselistCreateObject
-      ModelTrainingInfo = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelTrainingInfo
-      JSONRegexFeature = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONRegexFeature
-      UserAccessList = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::UserAccessList
-      JSONModelFeature = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONModelFeature
-      UserCollaborator = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::UserCollaborator
-      ModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelUpdateObject
-      CollaboratorsArray = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CollaboratorsArray
-      TaskUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::TaskUpdateObject
-      ErrorResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ErrorResponse
-      JsonChild = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JsonChild
-      OperationError = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::OperationError
-      RegexEntity = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexEntity
-      PrebuiltDomainItem = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainItem
-      EntityLabel = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityLabel
-      PrebuiltDomain = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomain
-      IntentsSuggestionExample = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::IntentsSuggestionExample
-      EntityRoleCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRoleCreateObject
-      EntityRole = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRole
-      RegexModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexModelCreateObject
-      EntityModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityModelCreateObject
-      PatternAnyModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAnyModelCreateObject
-      LabelTextObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LabelTextObject
-      WordListObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::WordListObject
-      ExplicitListItemCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItemCreateObject
-      ClosedListModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListModelCreateObject
-      RegexModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexModelUpdateObject
-      ApplicationPublishObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationPublishObject
-      PatternAnyModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAnyModelUpdateObject
-      EntityPrediction = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityPrediction
-      EntityRoleUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRoleUpdateObject
       PrebuiltDomainCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainCreateObject
-      ExplicitListItemUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItemUpdateObject
-      WordListBaseUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::WordListBaseUpdateObject
-      PatternRuleCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRuleCreateObject
-      PatternRule = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRule
-      PatternRuleUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRuleUpdateObject
+      AvailablePrebuiltEntityModel = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AvailablePrebuiltEntityModel
+      EntityModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityModelCreateObject
+      EnqueueTrainingResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EnqueueTrainingResponse
       PublishSettingUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PublishSettingUpdateObject
-      RegexEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexEntityExtractor
+      ModelTrainingDetails = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelTrainingDetails
+      LabelTextObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LabelTextObject
+      JSONRegexFeature = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONRegexFeature
+      ModelTrainingInfo = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelTrainingInfo
+      JSONModelFeature = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONModelFeature
+      UserAccessList = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::UserAccessList
+      ModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelUpdateObject
+      UserCollaborator = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::UserCollaborator
+      TaskUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::TaskUpdateObject
+      CollaboratorsArray = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CollaboratorsArray
+      JsonChild = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JsonChild
+      ErrorResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ErrorResponse
+      PatternAny = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAny
+      OperationError = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::OperationError
+      LuisAppV2 = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LuisAppV2
+      PrebuiltDomainItem = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainItem
+      EntityPrediction = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityPrediction
+      PrebuiltDomain = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomain
       PersonalAssistantsResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PersonalAssistantsResponse
-      PatternAnyEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAnyEntityExtractor
+      EntityRoleCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRoleCreateObject
+      CompositeEntityModel = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeEntityModel
+      RegexModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexModelCreateObject
+      PhraselistCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PhraselistCreateObject
+      PatternAnyModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAnyModelCreateObject
+      WordListBaseUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::WordListBaseUpdateObject
+      ExplicitListItemCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItemCreateObject
       PrebuiltDomainObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainObject
+      RegexModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexModelUpdateObject
+      PrebuiltEntity = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltEntity
+      PatternAnyModelUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAnyModelUpdateObject
+      IntentsSuggestionExample = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::IntentsSuggestionExample
+      EntityRoleUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRoleUpdateObject
+      JSONEntity = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONEntity
+      ExplicitListItemUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItemUpdateObject
+      ClosedListModelCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListModelCreateObject
+      PatternRuleCreateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRuleCreateObject
+      EntityLabel = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityLabel
+      PatternRuleUpdateObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRuleUpdateObject
+      WordListObject = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::WordListObject
+      RegexEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexEntityExtractor
+      EntityRole = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRole
+      PatternAnyEntityExtractor = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAnyEntityExtractor
+      HierarchicalModelV2 = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalModelV2
       PatternRuleInfo = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRuleInfo
       SubClosedListResponse = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::SubClosedListResponse
       EntityModelInfo = Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityModelInfo
@@ -167,122 +169,128 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
-        def child_entity
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ChildEntity
+        def model_info_response
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelInfoResponse
         end
         def entity_label_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityLabelObject
         end
-        def explicit_list_item
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItem
+        def child_entity
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ChildEntity
         end
         def prebuilt_domain_create_base_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainCreateBaseObject
         end
-        def model_info_response
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelInfoResponse
+        def explicit_list_item
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItem
         end
         def prebuilt_domain_model_create_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainModelCreateObject
         end
+        def application_create_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationCreateObject
+        end
         def child_entity_model_create_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ChildEntityModelCreateObject
-        end
-        def hierarchical_entity_extractor
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalEntityExtractor
         end
         def entity_model_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityModelUpdateObject
         end
-        def composite_entity_extractor
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeEntityExtractor
+        def hierarchical_entity_extractor
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalEntityExtractor
         end
         def application_setting_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationSettingUpdateObject
         end
-        def closed_list_entity_extractor
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListEntityExtractor
+        def composite_entity_extractor
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeEntityExtractor
         end
         def example_label_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExampleLabelObject
         end
-        def prebuilt_entity_extractor
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltEntityExtractor
+        def closed_list_entity_extractor
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListEntityExtractor
         end
         def sub_closed_list
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::SubClosedList
         end
-        def composite_child_model_create_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeChildModelCreateObject
+        def prebuilt_entity_extractor
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltEntityExtractor
         end
         def application_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationUpdateObject
         end
-        def custom_prebuilt_model
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CustomPrebuiltModel
+        def composite_child_model_create_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeChildModelCreateObject
         end
         def closed_list
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedList
         end
-        def hierarchical_child_model_update_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalChildModelUpdateObject
+        def custom_prebuilt_model
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CustomPrebuiltModel
         end
         def closed_list_model_patch_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListModelPatchObject
         end
-        def entity_extractor
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityExtractor
+        def hierarchical_child_model_update_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalChildModelUpdateObject
         end
         def model_create_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelCreateObject
         end
-        def ndepth_entity_extractor
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::NDepthEntityExtractor
+        def entity_extractor
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityExtractor
         end
         def jsonutterance
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONUtterance
         end
-        def azure_account_info_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AzureAccountInfoObject
+        def ndepth_entity_extractor
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::NDepthEntityExtractor
         end
         def closed_list_model_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListModelUpdateObject
         end
-        def app_version_setting_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AppVersionSettingObject
+        def azure_account_info_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AzureAccountInfoObject
         end
         def version_info
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::VersionInfo
         end
-        def features_response_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::FeaturesResponseObject
+        def app_version_setting_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AppVersionSettingObject
         end
         def phraselist_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PhraselistUpdateObject
         end
-        def feature_info_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::FeatureInfoObject
+        def features_response_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::FeaturesResponseObject
         end
         def json_model_feature_information
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JsonModelFeatureInformation
         end
-        def label_example_response
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LabelExampleResponse
+        def feature_info_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::FeatureInfoObject
         end
         def hierarchical_model
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalModel
         end
+        def label_example_response
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LabelExampleResponse
+        end
+        def application_publish_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationPublishObject
+        end
         def operation_status
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::OperationStatus
         end
-        def pattern_any
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAny
+        def regex_entity
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexEntity
         end
         def batch_label_example
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::BatchLabelExample
         end
-        def prebuilt_entity
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltEntity
+        def pattern_rule
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRule
         end
         def application_info_response
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationInfoResponse
@@ -317,149 +325,149 @@ module Azure::Profiles::Latest
         def publish_settings
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PublishSettings
         end
-        def application_create_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationCreateObject
+        def prebuilt_domain_create_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainCreateObject
         end
         def available_prebuilt_entity_model
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::AvailablePrebuiltEntityModel
         end
-        def composite_entity_model
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeEntityModel
+        def entity_model_create_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityModelCreateObject
         end
         def enqueue_training_response
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EnqueueTrainingResponse
         end
-        def jsonentity
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONEntity
+        def publish_setting_update_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PublishSettingUpdateObject
         end
         def model_training_details
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelTrainingDetails
         end
-        def phraselist_create_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PhraselistCreateObject
-        end
-        def model_training_info
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelTrainingInfo
+        def label_text_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LabelTextObject
         end
         def jsonregex_feature
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONRegexFeature
         end
-        def user_access_list
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::UserAccessList
+        def model_training_info
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelTrainingInfo
         end
         def jsonmodel_feature
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONModelFeature
         end
-        def user_collaborator
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::UserCollaborator
+        def user_access_list
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::UserAccessList
         end
         def model_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ModelUpdateObject
         end
-        def collaborators_array
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CollaboratorsArray
+        def user_collaborator
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::UserCollaborator
         end
         def task_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::TaskUpdateObject
         end
-        def error_response
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ErrorResponse
+        def collaborators_array
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CollaboratorsArray
         end
         def json_child
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JsonChild
         end
+        def error_response
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ErrorResponse
+        end
+        def pattern_any
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAny
+        end
         def operation_error
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::OperationError
         end
-        def regex_entity
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexEntity
+        def luis_app_v2
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LuisAppV2
         end
         def prebuilt_domain_item
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainItem
         end
-        def entity_label
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityLabel
+        def entity_prediction
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityPrediction
         end
         def prebuilt_domain
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomain
         end
-        def intents_suggestion_example
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::IntentsSuggestionExample
+        def personal_assistants_response
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PersonalAssistantsResponse
         end
         def entity_role_create_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRoleCreateObject
         end
-        def entity_role
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRole
+        def composite_entity_model
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::CompositeEntityModel
         end
         def regex_model_create_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexModelCreateObject
         end
-        def entity_model_create_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityModelCreateObject
+        def phraselist_create_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PhraselistCreateObject
         end
         def pattern_any_model_create_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAnyModelCreateObject
         end
-        def label_text_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::LabelTextObject
-        end
-        def word_list_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::WordListObject
+        def word_list_base_update_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::WordListBaseUpdateObject
         end
         def explicit_list_item_create_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItemCreateObject
         end
-        def closed_list_model_create_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListModelCreateObject
+        def prebuilt_domain_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainObject
         end
         def regex_model_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexModelUpdateObject
         end
-        def application_publish_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ApplicationPublishObject
+        def prebuilt_entity
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltEntity
         end
         def pattern_any_model_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAnyModelUpdateObject
         end
-        def entity_prediction
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityPrediction
+        def intents_suggestion_example
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::IntentsSuggestionExample
         end
         def entity_role_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRoleUpdateObject
         end
-        def prebuilt_domain_create_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainCreateObject
+        def jsonentity
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::JSONEntity
         end
         def explicit_list_item_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ExplicitListItemUpdateObject
         end
-        def word_list_base_update_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::WordListBaseUpdateObject
+        def closed_list_model_create_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::ClosedListModelCreateObject
         end
         def pattern_rule_create_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRuleCreateObject
         end
-        def pattern_rule
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRule
+        def entity_label
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityLabel
         end
         def pattern_rule_update_object
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRuleUpdateObject
         end
-        def publish_setting_update_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PublishSettingUpdateObject
+        def word_list_object
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::WordListObject
         end
         def regex_entity_extractor
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::RegexEntityExtractor
         end
-        def personal_assistants_response
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PersonalAssistantsResponse
+        def entity_role
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::EntityRole
         end
         def pattern_any_entity_extractor
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternAnyEntityExtractor
         end
-        def prebuilt_domain_object
-          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PrebuiltDomainObject
+        def hierarchical_model_v2
+          Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::HierarchicalModelV2
         end
         def pattern_rule_info
           Azure::CognitiveServices::LuisAuthoring::V3_0_preview::Models::PatternRuleInfo
