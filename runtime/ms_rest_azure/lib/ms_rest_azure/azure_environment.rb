@@ -130,7 +130,7 @@ module MsRestAzure
                                                         :sql_management_endpoint_url => 'https://management.core.usgovcloudapi.net:8443/',
                                                         :sql_server_hostname_suffix => '.database.usgovcloudapi.net',
                                                         :gallery_endpoint_url => 'https://gallery.usgovcloudapi.net/',
-                                                        :active_directory_endpoint_url => 'https://login-us.microsoftonline.com/',
+                                                        :active_directory_endpoint_url => 'https://login.microsoftonline.us/',
                                                         :active_directory_resource_id => 'https://management.core.usgovcloudapi.net/',
                                                         :active_directory_graph_resource_id => 'https://graph.windows.net/',
                                                         :active_directory_graph_api_version => '2013-04-05',
