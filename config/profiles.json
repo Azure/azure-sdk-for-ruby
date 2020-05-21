@@ -361,7 +361,7 @@
                 },
                 "Microsoft.DataShare": {
                     "management": {
-                        "2018-11-01-preview": ["*"]
+                        "2019-11-01": ["*"]
                     }
                 },
                 "Microsoft.DataLakeAnalytics": {
@@ -574,7 +574,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2020-03-01": ["*"]
+                        "2020-04-01": ["*"]
                     }
                 },
                 "Microsoft.NotificationHubs": {
@@ -1398,7 +1398,7 @@
                 "resourceTypes": {
                     "Microsoft.DataShare" : {
                         "management": {
-                            "2018-11-01-preview": ["*"]
+                            "2019-11-01": ["*"]
                         }
                     }
                 },
@@ -2126,7 +2126,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2020-03-01": ["*"]
+                        "2020-04-01": ["*"]
                     }
                 }
             },

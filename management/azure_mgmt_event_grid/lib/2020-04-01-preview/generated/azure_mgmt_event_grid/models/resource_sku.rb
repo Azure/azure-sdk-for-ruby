@@ -12,9 +12,8 @@ module Azure::EventGrid::Mgmt::V2020_04_01_preview
 
       include MsRestAzure
 
-      # @return [Sku] the Sku name of the resource.
-      # the possible values: Basic; Premium. Possible values include: 'Basic',
-      # 'Premium'
+      # @return [Sku] The Sku name of the resource. The possible values are:
+      # Basic or Premium. Possible values include: 'Basic', 'Premium'
       attr_accessor :name
 
 

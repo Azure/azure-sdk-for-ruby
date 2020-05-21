@@ -20,7 +20,7 @@ module Azure::TrafficManager::Mgmt::V2018_02_01
       attr_accessor :name
 
       # @return [String] The type of the resource. Ex-
-      # Microsoft.Network/trafficmanagerProfiles.
+      # Microsoft.Network/trafficManagerProfiles.
       attr_accessor :type
 
 

@@ -124,6 +124,7 @@ module Azure::EventGrid::Profiles::Latest
       IdentityType = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::IdentityType
       DomainTopicProvisioningState = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::DomainTopicProvisioningState
       EventChannelProvisioningState = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelProvisioningState
+      PartnerTopicReadinessState = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicReadinessState
       EventSubscriptionProvisioningState = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionProvisioningState
       EventSubscriptionIdentityType = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionIdentityType
       EventDeliverySchema = Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventDeliverySchema
@@ -497,6 +498,9 @@ module Azure::EventGrid::Profiles::Latest
       end
       def event_channel_provisioning_state
         Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventChannelProvisioningState
+      end
+      def partner_topic_readiness_state
+        Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::PartnerTopicReadinessState
       end
       def event_subscription_provisioning_state
         Azure::EventGrid::Mgmt::V2020_04_01_preview::Models::EventSubscriptionProvisioningState

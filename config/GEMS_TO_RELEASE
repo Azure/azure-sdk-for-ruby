@@ -1,8 +1,14 @@
 {
     "management":[
-        "azure_mgmt_storagecache",
-        "azure_mgmt_storage",
-        "azure_mgmt_compute"
+        "azure_mgmt_features",
+        "azure_mgmt_datashare",
+        "azure_mgmt_network",
+        "azure_mgmt_subscriptions",
+        "azure_mgmt_traffic_manager",
+        "azure_mgmt_event_grid"
+    ],
+    "data":[
+        "azure_cognitiveservices_luisauthoring"
     ],
     "rollup":[
         "azure_sdk"
