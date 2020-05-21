@@ -1,3 +1,7 @@
+##2020.05.21 ms_rest_azure version 0.11.3
+* Unpin unf_ext dependency version.
+* Update active_directory_endpoint_url in US Cloud.
+
 ##2020.03.05 ms_rest_azure version 0.11.2
 * Added Azure CLI Token provider.
 * Update faraday version to allow 1.0.0.
