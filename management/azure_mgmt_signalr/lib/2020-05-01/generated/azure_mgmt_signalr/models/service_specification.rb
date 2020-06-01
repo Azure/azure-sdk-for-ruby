@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Signalr::Mgmt::V2018_10_01
+module Azure::Signalr::Mgmt::V2020_05_01
   module Models
     #
     # An object that describes a specification.

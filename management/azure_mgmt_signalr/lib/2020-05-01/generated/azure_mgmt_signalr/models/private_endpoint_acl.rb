@@ -3,69 +3,70 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Signalr::Mgmt::V2018_10_01
+module Azure::Signalr::Mgmt::V2020_05_01
   module Models
     #
-    # An object that describes a specification.
+    # ACL for a private endpoint
     #
-    class ServiceSpecification
+    class PrivateEndpointACL < NetworkACL
 
       include MsRestAzure
 
-      # @return [Array<MetricSpecification>] Specifications of the Metrics for
-      # Azure Monitoring.
-      attr_accessor :metric_specifications
-
-      # @return [Array<LogSpecification>] Specifications of the Logs for Azure
-      # Monitoring.
-      attr_accessor :log_specifications
+      # @return [String] Name of the private endpoint connection
+      attr_accessor :name
 
 
       #
-      # Mapper for ServiceSpecification class as Ruby Hash.
+      # Mapper for PrivateEndpointACL class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ServiceSpecification',
+          serialized_name: 'PrivateEndpointACL',
           type: {
             name: 'Composite',
-            class_name: 'ServiceSpecification',
+            class_name: 'PrivateEndpointACL',
             model_properties: {
-              metric_specifications: {
+              allow: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'metricSpecifications',
+                serialized_name: 'allow',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'MetricSpecificationElementType',
+                      serialized_name: 'SignalRRequestTypeElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'MetricSpecification'
+                        name: 'String'
                       }
                   }
                 }
               },
-              log_specifications: {
+              deny: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'logSpecifications',
+                serialized_name: 'deny',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'LogSpecificationElementType',
+                      serialized_name: 'SignalRRequestTypeElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'LogSpecification'
+                        name: 'String'
                       }
                   }
+                }
+              },
+              name: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
                 }
               }
             }

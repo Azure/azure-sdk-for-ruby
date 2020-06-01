@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Signalr::Mgmt::V2018_10_01
+module Azure::Signalr::Mgmt::V2020_05_01
   module Models
     #
     # Feature of a SignalR resource, which controls the SignalR runtime
@@ -22,7 +22,7 @@ module Azure::Signalr::Mgmt::V2018_10_01
       # recommended; "PredefinedOnly": for future use.
       # - EnableConnectivityLogs: "true"/"false", to enable/disable the
       # connectivity log category respectively. Possible values include:
-      # 'ServiceMode', 'EnableConnectivityLogs'
+      # 'ServiceMode', 'EnableConnectivityLogs', 'EnableMessagingLogs'
       attr_accessor :flag
 
       # @return [String] Value of the feature flag. See Azure SignalR service

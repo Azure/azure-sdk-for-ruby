@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Signalr::Mgmt::V2018_10_01
+module Azure::Signalr::Mgmt::V2020_05_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -43,6 +43,13 @@ module Azure::Signalr::Mgmt::V2018_10_01
     # @return [SignalR] signal_r
     attr_reader :signal_r
 
+    # @return [SignalRPrivateEndpointConnections]
+    # signal_rprivate_endpoint_connections
+    attr_reader :signal_rprivate_endpoint_connections
+
+    # @return [SignalRPrivateLinkResources] signal_rprivate_link_resources
+    attr_reader :signal_rprivate_link_resources
+
     # @return [Usages] usages
     attr_reader :usages
 
@@ -61,8 +68,10 @@ module Azure::Signalr::Mgmt::V2018_10_01
 
       @operations = Operations.new(self)
       @signal_r = SignalR.new(self)
+      @signal_rprivate_endpoint_connections = SignalRPrivateEndpointConnections.new(self)
+      @signal_rprivate_link_resources = SignalRPrivateLinkResources.new(self)
       @usages = Usages.new(self)
-      @api_version = '2018-10-01'
+      @api_version = '2020-05-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
