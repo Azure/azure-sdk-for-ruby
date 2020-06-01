@@ -67,7 +67,8 @@ module Azure::NetApp::Mgmt::V2019_11_01
       # have the delegation Microsoft.NetApp/volumes
       attr_accessor :subnet_id
 
-      # @return [Array<MountTarget>] mountTargets. List of mount targets
+      # @return [Array<MountTargetProperties>] mountTargets. List of mount
+      # targets
       attr_accessor :mount_targets
 
       # @return [String] What type of volume is this
@@ -272,10 +273,10 @@ module Azure::NetApp::Mgmt::V2019_11_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'MountTargetElementType',
+                      serialized_name: 'MountTargetPropertiesElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'MountTarget'
+                        class_name: 'MountTargetProperties'
                       }
                   }
                 }

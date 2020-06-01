@@ -6,7 +6,6 @@
         "azure_mgmt_netapp"
     ],
     "data":[
-        "azure_cognitiveservices_luisauthoring"
     ],
     "rollup":[
         "azure_sdk"
