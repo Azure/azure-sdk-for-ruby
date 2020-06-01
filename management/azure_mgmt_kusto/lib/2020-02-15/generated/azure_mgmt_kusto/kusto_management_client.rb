@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Kusto::Mgmt::V2018_09_07_preview
+module Azure::Kusto::Mgmt::V2020_02_15
   #
   # A service client - single point of access to the REST API.
   #
@@ -40,11 +40,20 @@ module Azure::Kusto::Mgmt::V2018_09_07_preview
     # @return [Clusters] clusters
     attr_reader :clusters
 
+    # @return [ClusterPrincipalAssignments] cluster_principal_assignments
+    attr_reader :cluster_principal_assignments
+
     # @return [Databases] databases
     attr_reader :databases
 
-    # @return [EventHubConnections] event_hub_connections
-    attr_reader :event_hub_connections
+    # @return [DatabasePrincipalAssignments] database_principal_assignments
+    attr_reader :database_principal_assignments
+
+    # @return [AttachedDatabaseConfigurations] attached_database_configurations
+    attr_reader :attached_database_configurations
+
+    # @return [DataConnections] data_connections
+    attr_reader :data_connections
 
     # @return [Operations] operations
     attr_reader :operations
@@ -63,10 +72,13 @@ module Azure::Kusto::Mgmt::V2018_09_07_preview
       @credentials = credentials
 
       @clusters = Clusters.new(self)
+      @cluster_principal_assignments = ClusterPrincipalAssignments.new(self)
       @databases = Databases.new(self)
-      @event_hub_connections = EventHubConnections.new(self)
+      @database_principal_assignments = DatabasePrincipalAssignments.new(self)
+      @attached_database_configurations = AttachedDatabaseConfigurations.new(self)
+      @data_connections = DataConnections.new(self)
       @operations = Operations.new(self)
-      @api_version = '2018-09-07-preview'
+      @api_version = '2020-02-15'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
