@@ -1,6 +1,7 @@
 {
     "management":[
-        "azure_mgmt_operational_insights"
+        "azure_mgmt_operational_insights",
+        "azure_mgmt_mixedreality"
     ],
     "data":[
         "azure_cognitiveservices_luisauthoring"
