@@ -1282,7 +1282,7 @@
     "azure_mgmt_mixedreality_2019_12_02_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/aef7bda78247cfb37c0c46516824b65a04f1707c/specification/mixedreality/resource-manager/readme.md",
       "namespace": "Azure::MixedReality::Mgmt::V2019_12_02_preview",
-      "tag": "package-2019-12-preview"
+      "tag": "package-2019-12-02-preview"
     }
   },
   "azure_mgmt_monitor": {

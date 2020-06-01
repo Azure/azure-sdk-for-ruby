@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::MixedReality::Mgmt::V2019_12_02_preview
+module Azure::MixedReality::Mgmt::V2020_04_06_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,10 +17,11 @@ module Azure::MixedReality::Mgmt::V2019_12_02_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Version of the API to be used with the client request.
+    # @return [String] The API version to be used with the HTTP request.
     attr_reader :api_version
 
-    # @return [String] Azure subscription ID.
+    # @return [String] The Azure subscription ID. This is a GUID-formatted
+    # string (e.g. 00000000-0000-0000-0000-000000000000)
     attr_accessor :subscription_id
 
     # @return [String] The preferred language for the response.
@@ -41,9 +42,6 @@ module Azure::MixedReality::Mgmt::V2019_12_02_preview
     # @return [RemoteRenderingAccounts] remote_rendering_accounts
     attr_reader :remote_rendering_accounts
 
-    # @return [SpatialAnchorsAccounts] spatial_anchors_accounts
-    attr_reader :spatial_anchors_accounts
-
     #
     # Creates initializes a new instance of the MixedRealityClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -59,8 +57,7 @@ module Azure::MixedReality::Mgmt::V2019_12_02_preview
 
       @operations = Operations.new(self)
       @remote_rendering_accounts = RemoteRenderingAccounts.new(self)
-      @spatial_anchors_accounts = SpatialAnchorsAccounts.new(self)
-      @api_version = '2019-12-02-preview'
+      @api_version = '2020-04-06-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -185,7 +182,7 @@ module Azure::MixedReality::Mgmt::V2019_12_02_preview
       request_headers['accept-language'] = accept_language unless accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::CheckNameAvailabilityRequest.mapper()
+      request_mapper = Azure::MixedReality::Mgmt::V2020_04_06_preview::Models::CheckNameAvailabilityRequest.mapper()
       request_content = self.serialize(request_mapper,  check_name_availability)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -209,7 +206,7 @@ module Azure::MixedReality::Mgmt::V2019_12_02_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -219,7 +216,7 @@ module Azure::MixedReality::Mgmt::V2019_12_02_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MixedReality::Mgmt::V2019_12_02_preview::Models::CheckNameAvailabilityResponse.mapper()
+            result_mapper = Azure::MixedReality::Mgmt::V2020_04_06_preview::Models::CheckNameAvailabilityResponse.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
