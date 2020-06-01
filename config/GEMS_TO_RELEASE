@@ -4,7 +4,8 @@
         "azure_mgmt_mixedreality",
         "azure_mgmt_kusto",
         "azure_mgmt_netapp",
-        "azure_mgmt_cognitive_services"
+        "azure_mgmt_cognitive_services",
+        "azure_mgmt_hdinsight"
     ],
     "data":[
     ],

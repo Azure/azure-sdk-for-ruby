@@ -73,7 +73,7 @@
         "azure_mgmt_event_hub": "0.18.0",
         "azure_mgmt_features": "0.17.3",
         "azure_mgmt_hanaonazure": "0.18.0",
-        "azure_mgmt_hdinsight": "0.17.7",
+        "azure_mgmt_hdinsight": "0.17.8",
         "azure_mgmt_import_export": "0.17.0",
         "azure_mgmt_iot_central": "0.19.0",
         "azure_mgmt_iot_hub": "0.17.3",
