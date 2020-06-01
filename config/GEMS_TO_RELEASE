@@ -5,7 +5,8 @@
         "azure_mgmt_kusto",
         "azure_mgmt_netapp",
         "azure_mgmt_cognitive_services",
-        "azure_mgmt_hdinsight"
+        "azure_mgmt_hdinsight",
+        "azure_mgmt_signalr"
     ],
     "data":[
     ],
