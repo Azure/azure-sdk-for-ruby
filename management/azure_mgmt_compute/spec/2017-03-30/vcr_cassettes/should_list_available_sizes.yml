@@ -92,7 +92,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 658d3f27-0a1c-4379-a2b0-4d34f82baa83
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T234827Z:658d3f27-0a1c-4379-a2b0-4d34f82baa83
+      - CENTRALUS:20160.19.334827Z:658d3f27-0a1c-4379-a2b0-4d34f82baa83
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
@@ -144,7 +144,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - d6e20b48-08f2-4f42-9a5f-12c93681f4e8
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T234828Z:d6e20b48-08f2-4f42-9a5f-12c93681f4e8
+      - CENTRALUS:20160.19.334828Z:d6e20b48-08f2-4f42-9a5f-12c93681f4e8
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
@@ -195,7 +195,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 5acbc7ee-8d9d-4231-8e97-763006360d07
       x-ms-routing-request-id:
-      - WESTUS:20160519T235912Z:5acbc7ee-8d9d-4231-8e97-763006360d07
+      - WESTUS:20160.19.335912Z:5acbc7ee-8d9d-4231-8e97-763006360d07
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
@@ -253,7 +253,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 4a545cff-191b-4c38-af3d-7f679a18351a
       x-ms-routing-request-id:
-      - WESTUS:20160519T235912Z:4a545cff-191b-4c38-af3d-7f679a18351a
+      - WESTUS:20160.19.335912Z:4a545cff-191b-4c38-af3d-7f679a18351a
       date:
       - Thu, 19 May 2016 23:59:12 GMT
       connection:
@@ -316,7 +316,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 0ed59b36-42b5-422e-80ba-7945a470d317
       x-ms-routing-request-id:
-      - WESTUS:20160519T235943Z:0ed59b36-42b5-422e-80ba-7945a470d317
+      - WESTUS:20160.19.335943Z:0ed59b36-42b5-422e-80ba-7945a470d317
       date:
       - Thu, 19 May 2016 23:59:42 GMT
       connection:
@@ -367,7 +367,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 0b7accd7-af55-4133-b841-4b81ead81763
       x-ms-routing-request-id:
-      - WESTUS:20160519T235943Z:0b7accd7-af55-4133-b841-4b81ead81763
+      - WESTUS:20160.19.335943Z:0b7accd7-af55-4133-b841-4b81ead81763
       date:
       - Thu, 19 May 2016 23:59:42 GMT
       connection:
@@ -433,7 +433,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 24ceb6c4-1c60-4f25-bb19-e8a625ad3cb4
       x-ms-routing-request-id:
-      - WESTUS:20160519T235944Z:24ceb6c4-1c60-4f25-bb19-e8a625ad3cb4
+      - WESTUS:20160.19.335944Z:24ceb6c4-1c60-4f25-bb19-e8a625ad3cb4
       date:
       - Thu, 19 May 2016 23:59:43 GMT
       connection:

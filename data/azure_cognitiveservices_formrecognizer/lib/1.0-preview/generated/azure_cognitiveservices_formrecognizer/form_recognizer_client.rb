@@ -1030,7 +1030,7 @@ module Azure::CognitiveServices::FormRecognizer::V1_0_preview
     #
     def add_telemetry
         sdk_information = 'azure_cognitiveservices_formrecognizer'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end

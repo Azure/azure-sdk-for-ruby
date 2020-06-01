@@ -2268,7 +2268,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - b46593e6-3bcd-42c5-b31b-9ec331886203
       x-ms-routing-request-id:
-      - CENTRALUS:20160520T190200Z:b46593e6-3bcd-42c5-b31b-9ec331886203
+      - CENTRALUS:20160520.19.300Z:b46593e6-3bcd-42c5-b31b-9ec331886203
       date:
       - Fri, 20 May 2016 19:01:59 GMT
       connection:
@@ -2322,7 +2322,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 79711dc6-bd71-465b-86ed-f2bf00758f5a
       x-ms-routing-request-id:
-      - CENTRALUS:20160520T190230Z:79711dc6-bd71-465b-86ed-f2bf00758f5a
+      - CENTRALUS:20160520.19.330Z:79711dc6-bd71-465b-86ed-f2bf00758f5a
       date:
       - Fri, 20 May 2016 19:02:30 GMT
       connection:
