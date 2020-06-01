@@ -94,6 +94,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -130,9 +132,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Gets the schema for a given workspace.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -146,9 +147,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Gets the schema for a given workspace.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -161,9 +161,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Gets the schema for a given workspace.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -208,6 +207,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -226,166 +227,17 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     end
 
     #
-    # Submit a search for a given workspace. The response will contain an id to
-    # track the search. User can use the id to poll the search status and get the
-    # full search result later if the search takes long time to finish.
-    #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
-    # @param parameters [SearchParameters] The parameters required to execute a
-    # search query.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [SearchResultsResponse] operation results.
-    #
-    def get_search_results(resource_group_name, workspace_name, parameters, custom_headers:nil)
-      response = get_search_results_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
-    # @param parameters [SearchParameters] The parameters required to execute a
-    # search query.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def get_search_results_async(resource_group_name, workspace_name, parameters, custom_headers:nil)
-      # Send request
-      promise = begin_get_search_results_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Gets updated search results for a given search query.
-    #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
-    # @param id [String] The id of the search that will have results updated. You
-    # can get the id from the response of the GetResults call.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [SearchResultsResponse] operation results.
-    #
-    def update_search_results(resource_group_name, workspace_name, id, custom_headers:nil)
-      response = update_search_results_async(resource_group_name, workspace_name, id, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets updated search results for a given search query.
-    #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
-    # @param id [String] The id of the search that will have results updated. You
-    # can get the id from the response of the GetResults call.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def update_search_results_with_http_info(resource_group_name, workspace_name, id, custom_headers:nil)
-      update_search_results_async(resource_group_name, workspace_name, id, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets updated search results for a given search query.
-    #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
-    # @param id [String] The id of the search that will have results updated. You
-    # can get the id from the response of the GetResults call.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def update_search_results_async(resource_group_name, workspace_name, id, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
-      fail ArgumentError, 'id is nil' if id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/search/{id}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'id' => id,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
     # Purges data in an Log Analytics workspace by a set of user-defined filters.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
+    # In order to manage system resources, purge requests are throttled at 50
+    # requests per hour. You should batch the execution of purge requests by
+    # sending a single command whose predicate includes all user identities that
+    # require purging. Use the in operator to specify multiple identities. You
+    # should run the query prior to using for a purge request to verify that the
+    # results are expected.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -399,9 +251,15 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Purges data in an Log Analytics workspace by a set of user-defined filters.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
+    # In order to manage system resources, purge requests are throttled at 50
+    # requests per hour. You should batch the execution of purge requests by
+    # sending a single command whose predicate includes all user identities that
+    # require purging. Use the in operator to specify multiple identities. You
+    # should run the query prior to using for a purge request to verify that the
+    # results are expected.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -414,9 +272,15 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Purges data in an Log Analytics workspace by a set of user-defined filters.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
+    # In order to manage system resources, purge requests are throttled at 50
+    # requests per hour. You should batch the execution of purge requests by
+    # sending a single command whose predicate includes all user identities that
+    # require purging. Use the in operator to specify multiple identities. You
+    # should run the query prior to using for a purge request to verify that the
+    # results are expected.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -469,6 +333,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 202
           begin
@@ -489,9 +355,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Gets status of an ongoing purge operation.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -505,9 +370,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Gets status of an ongoing purge operation.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -520,9 +384,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     #
     # Gets status of an ongoing purge operation.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -568,6 +431,8 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -586,68 +451,55 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
     end
 
     #
-    # Submit a search for a given workspace. The response will contain an id to
-    # track the search. User can use the id to poll the search status and get the
-    # full search result later if the search takes long time to finish.
+    # Gets the shared keys for a Log Analytics Workspace. These keys are used to
+    # connect Microsoft Operational Insights agents to the workspace.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
-    # @param parameters [SearchParameters] The parameters required to execute a
-    # search query.
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SearchResultsResponse] operation results.
+    # @return [SharedKeys] operation results.
     #
-    def begin_get_search_results(resource_group_name, workspace_name, parameters, custom_headers:nil)
-      response = begin_get_search_results_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers).value!
+    def list_keys(resource_group_name, workspace_name, custom_headers:nil)
+      response = list_keys_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Submit a search for a given workspace. The response will contain an id to
-    # track the search. User can use the id to poll the search status and get the
-    # full search result later if the search takes long time to finish.
+    # Gets the shared keys for a Log Analytics Workspace. These keys are used to
+    # connect Microsoft Operational Insights agents to the workspace.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
-    # @param parameters [SearchParameters] The parameters required to execute a
-    # search query.
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_search_results_with_http_info(resource_group_name, workspace_name, parameters, custom_headers:nil)
-      begin_get_search_results_async(resource_group_name, workspace_name, parameters, custom_headers:custom_headers).value!
+    def list_keys_with_http_info(resource_group_name, workspace_name, custom_headers:nil)
+      list_keys_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Submit a search for a given workspace. The response will contain an id to
-    # track the search. User can use the id to poll the search status and get the
-    # full search result later if the search takes long time to finish.
+    # Gets the shared keys for a Log Analytics Workspace. These keys are used to
+    # connect Microsoft Operational Insights agents to the workspace.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param workspace_name [String] Log Analytics workspace name
-    # @param parameters [SearchParameters] The parameters required to execute a
-    # search query.
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_search_results_async(resource_group_name, workspace_name, parameters, custom_headers:nil)
+    def list_keys_async(resource_group_name, workspace_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -656,21 +508,14 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/search'
+      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/listKeys'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name},
           query_params: {'api-version' => @client.api_version},
-          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -680,17 +525,322 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchResultsResponse.mapper()
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SharedKeys.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Regenerates the shared keys for a Log Analytics Workspace. These keys are
+    # used to connect Microsoft Operational Insights agents to the workspace.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SharedKeys] operation results.
+    #
+    def regenerate_shared_keys(resource_group_name, workspace_name, custom_headers:nil)
+      response = regenerate_shared_keys_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Regenerates the shared keys for a Log Analytics Workspace. These keys are
+    # used to connect Microsoft Operational Insights agents to the workspace.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def regenerate_shared_keys_with_http_info(resource_group_name, workspace_name, custom_headers:nil)
+      regenerate_shared_keys_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Regenerates the shared keys for a Log Analytics Workspace. These keys are
+    # used to connect Microsoft Operational Insights agents to the workspace.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def regenerate_shared_keys_async(resource_group_name, workspace_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/regenerateSharedKey'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SharedKeys.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Delete a Log Analytics gateway.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
+    # @param gateway_id [String] The Log Analytics gateway Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_gateways(resource_group_name, workspace_name, gateway_id, custom_headers:nil)
+      response = delete_gateways_async(resource_group_name, workspace_name, gateway_id, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Delete a Log Analytics gateway.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
+    # @param gateway_id [String] The Log Analytics gateway Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_gateways_with_http_info(resource_group_name, workspace_name, gateway_id, custom_headers:nil)
+      delete_gateways_async(resource_group_name, workspace_name, gateway_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Delete a Log Analytics gateway.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
+    # @param gateway_id [String] The Log Analytics gateway Id.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_gateways_async(resource_group_name, workspace_name, gateway_id, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, 'gateway_id is nil' if gateway_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/gateways/{gatewayId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'gatewayId' => gateway_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the available service tiers for the workspace.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array] operation results.
+    #
+    def available_service_tiers(resource_group_name, workspace_name, custom_headers:nil)
+      response = available_service_tiers_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the available service tiers for the workspace.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def available_service_tiers_with_http_info(resource_group_name, workspace_name, custom_headers:nil)
+      available_service_tiers_async(resource_group_name, workspace_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the available service tiers for the workspace.
+    #
+    # @param resource_group_name [String] The Resource Group name.
+    # @param workspace_name [String] The Log Analytics Workspace name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def available_service_tiers_async(resource_group_name, workspace_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/availableServiceTiers'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'AvailableServiceTierElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'AvailableServiceTier'
+                    }
+                }
+              }
+            }
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

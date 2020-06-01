@@ -3,49 +3,49 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::OperationalInsights::Mgmt::V2015_03_20
+module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
   module Models
     #
-    # Highlight details.
+    # Schema metadata for search.
     #
-    class SearchHighlight
+    class SearchMetadataSchema
 
       include MsRestAzure
 
-      # @return [String] The string that is put before a matched result.
-      attr_accessor :pre
+      # @return [String] The name of the metadata schema.
+      attr_accessor :name
 
-      # @return [String] The string that is put after a matched result.
-      attr_accessor :post
+      # @return [Integer] The version of the metadata schema.
+      attr_accessor :version
 
 
       #
-      # Mapper for SearchHighlight class as Ruby Hash.
+      # Mapper for SearchMetadataSchema class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SearchHighlight',
+          serialized_name: 'SearchMetadataSchema',
           type: {
             name: 'Composite',
-            class_name: 'SearchHighlight',
+            class_name: 'SearchMetadataSchema',
             model_properties: {
-              pre: {
+              name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'pre',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              post: {
+              version: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'post',
+                serialized_name: 'version',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               }
             }

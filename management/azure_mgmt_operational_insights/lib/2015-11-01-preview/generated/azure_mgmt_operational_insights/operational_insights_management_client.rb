@@ -131,6 +131,100 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       super(request_url, method, path, options)
     end
 
+    #
+    # Get the status of an azure asynchronous operation.
+    #
+    # @param location [String] The region name of operation.
+    # @param async_operation_id [String] The operation Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [OperationStatus] operation results.
+    #
+    def get_async_operations_status(location, async_operation_id, custom_headers:nil)
+      response = get_async_operations_status_async(location, async_operation_id, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the status of an azure asynchronous operation.
+    #
+    # @param location [String] The region name of operation.
+    # @param async_operation_id [String] The operation Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_async_operations_status_with_http_info(location, async_operation_id, custom_headers:nil)
+      get_async_operations_status_async(location, async_operation_id, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Get the status of an azure asynchronous operation.
+    #
+    # @param location [String] The region name of operation.
+    # @param async_operation_id [String] The operation Id.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_async_operations_status_async(location, async_operation_id, custom_headers:nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'async_operation_id is nil' if async_operation_id.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/locations/{location}/operationStatuses/{asyncOperationId}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'location' => location,'asyncOperationId' => async_operation_id,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::OperationStatus.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
 
     private
     #
@@ -138,7 +232,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_operational_insights'
-        sdk_information = "#{sdk_information}/0.17.2"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

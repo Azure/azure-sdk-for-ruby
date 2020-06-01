@@ -12,7 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       include MsRestAzure
 
-      # @return [String] Service provider: Microsoft OperationsManagement.
+      # @return [String] Service provider: OperationalInsights.
       attr_accessor :provider
 
       # @return [String] Resource on which the operation is performed etc.

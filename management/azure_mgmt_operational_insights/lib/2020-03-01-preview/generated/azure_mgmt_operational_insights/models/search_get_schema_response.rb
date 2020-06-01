@@ -3,54 +3,39 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::OperationalInsights::Mgmt::V2015_03_20
+module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
   module Models
     #
-    # The get search result operation response.
+    # The get schema operation response.
     #
-    class SearchResultsResponse
+    class SearchGetSchemaResponse
 
       include MsRestAzure
-
-      # @return [String] The id of the search, which includes the full url.
-      attr_accessor :id
 
       # @return [SearchMetadata] The metadata from search results.
       attr_accessor :metadata
 
-      # @return The array of result values.
+      # @return [Array<SearchSchemaValue>] The array of result values.
       attr_accessor :value
-
-      # @return [SearchError] The error.
-      attr_accessor :error
 
 
       #
-      # Mapper for SearchResultsResponse class as Ruby Hash.
+      # Mapper for SearchGetSchemaResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SearchResultsResponse',
+          serialized_name: 'SearchGetSchemaResponse',
           type: {
             name: 'Composite',
-            class_name: 'SearchResultsResponse',
+            class_name: 'SearchGetSchemaResponse',
             model_properties: {
-              id: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
               metadata: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'metaData',
+                serialized_name: 'metadata',
                 type: {
                   name: 'Composite',
                   class_name: 'SearchMetadata'
@@ -65,20 +50,12 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'ObjectElementType',
+                      serialized_name: 'SearchSchemaValueElementType',
                       type: {
-                        name: 'Object'
+                        name: 'Composite',
+                        class_name: 'SearchSchemaValue'
                       }
                   }
-                }
-              },
-              error: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'error',
-                type: {
-                  name: 'Composite',
-                  class_name: 'SearchError'
                 }
               }
             }

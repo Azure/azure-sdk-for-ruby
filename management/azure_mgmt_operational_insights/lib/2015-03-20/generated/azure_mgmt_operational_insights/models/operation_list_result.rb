@@ -6,14 +6,14 @@
 module Azure::OperationalInsights::Mgmt::V2015_03_20
   module Models
     #
-    # Result of the request to list solution operations.
+    # Result of the request to list OperationalInsights operations.
     #
     class OperationListResult
 
       include MsRestAzure
 
-      # @return [Array<Operation>] List of solution operations supported by the
-      # OperationsManagement resource provider.
+      # @return [Array<Operation>] List of operations supported by the
+      # OperationalInsights resource provider.
       attr_accessor :value
 
 

@@ -17,20 +17,16 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       # 'Deleting', 'ProvisioningAccount'
       attr_accessor :provisioning_state
 
-      # @return [String] The source of the workspace.  Source defines where the
-      # workspace was created. 'Azure' implies it was created in Azure.
-      # 'External' implies it was created via the Operational Insights Portal.
-      # This value is set on the service side and read-only on the client side.
+      # @return [String] This is a read-only legacy property. It is always set
+      # to 'Azure' by the service. Kept here for backward compatibility.
       attr_accessor :source
 
-      # @return [String] The ID associated with the workspace.  Setting this
-      # value at creation time allows the workspace being created to be linked
-      # to an existing workspace.
+      # @return [String] This is a read-only property. Represents the ID
+      # associated with the workspace.
       attr_accessor :customer_id
 
-      # @return [String] The URL of the Operational Insights portal for this
-      # workspace.  This value is set on the service side and read-only on the
-      # client side.
+      # @return [String] This is a legacy property and is not used anymore.
+      # Kept here for backward compatibility.
       attr_accessor :portal_url
 
       # @return [Sku] The SKU of the workspace.
@@ -120,6 +116,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
               source: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.source',
                 type: {
                   name: 'String'
@@ -128,6 +125,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
               customer_id: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.customerId',
                 type: {
                   name: 'String'
@@ -136,6 +134,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
               portal_url: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.portalUrl',
                 type: {
                   name: 'String'

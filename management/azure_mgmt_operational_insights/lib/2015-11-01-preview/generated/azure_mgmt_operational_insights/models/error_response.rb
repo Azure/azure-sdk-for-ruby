@@ -3,39 +3,39 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::OperationalInsights::Mgmt::V2015_03_20
+module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
   module Models
     #
-    # Details for a search error.
+    # Describes the format of Error response.
     #
-    class SearchError
+    class ErrorResponse
 
       include MsRestAzure
 
-      # @return [String] The error type.
-      attr_accessor :type
+      # @return [String] Error code
+      attr_accessor :code
 
-      # @return [String] The error message.
+      # @return [String] Error message indicating why the operation failed.
       attr_accessor :message
 
 
       #
-      # Mapper for SearchError class as Ruby Hash.
+      # Mapper for ErrorResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SearchError',
+          serialized_name: 'ErrorResponse',
           type: {
             name: 'Composite',
-            class_name: 'SearchError',
+            class_name: 'ErrorResponse',
             model_properties: {
-              type: {
+              code: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'type',
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }

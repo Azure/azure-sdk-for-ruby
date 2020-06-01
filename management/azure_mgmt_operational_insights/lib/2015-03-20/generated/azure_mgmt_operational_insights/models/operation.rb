@@ -6,7 +6,7 @@
 module Azure::OperationalInsights::Mgmt::V2015_03_20
   module Models
     #
-    # Supported operation of OperationsManagement resource provider.
+    # Supported operation of OperationalInsights resource provider.
     #
     class Operation
 
