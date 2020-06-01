@@ -61,6 +61,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
     # @return [Operations] operations
     attr_reader :operations
 
+    # @return [VirtualMachines] virtual_machines
+    attr_reader :virtual_machines
+
     #
     # Creates initializes a new instance of the HDInsightManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -82,6 +85,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       @script_actions = ScriptActions.new(self)
       @script_execution_history = ScriptExecutionHistory.new(self)
       @operations = Operations.new(self)
+      @virtual_machines = VirtualMachines.new(self)
       @api_version = '2018-06-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -154,7 +158,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_hdinsight'
-        sdk_information = "#{sdk_information}/0.17.7"
+        sdk_information = "#{sdk_information}/0.17.8"
         add_user_agent_information(sdk_information)
     end
   end
