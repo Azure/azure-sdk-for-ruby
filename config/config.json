@@ -1085,6 +1085,11 @@
     }
   },
   "azure_mgmt_kusto": {
+    "azure_mgmt_kusto_2020_02_15": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/aef7bda78247cfb37c0c46516824b65a04f1707c/specification/azure-kusto/resource-manager/readme.md",
+      "namespace": "Azure::Kusto::Mgmt::V2020_02_15",
+      "tag": "package-2020-02-15"
+    },
     "azure_mgmt_kusto_2019_11_09": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0b92e30512bdbd6974f0ee8f2876673b0b0fd0d9/specification/azure-kusto/resource-manager/readme.md",
       "namespace": "Azure::Kusto::Mgmt::V2019_11_09",
