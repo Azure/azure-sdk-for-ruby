@@ -1,11 +1,6 @@
 {
     "management":[
-        "azure_mgmt_features",
-        "azure_mgmt_datashare",
-        "azure_mgmt_network",
-        "azure_mgmt_subscriptions",
-        "azure_mgmt_traffic_manager",
-        "azure_mgmt_event_grid"
+        "azure_mgmt_operational_insights"
     ],
     "data":[
         "azure_cognitiveservices_luisauthoring"
