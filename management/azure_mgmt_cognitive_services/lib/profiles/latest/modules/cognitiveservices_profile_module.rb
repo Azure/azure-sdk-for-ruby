@@ -9,46 +9,62 @@ module Azure::CognitiveServices::Profiles::Latest
     Accounts = Azure::CognitiveServices::Mgmt::V2017_04_18::Accounts
     ResourceSkus = Azure::CognitiveServices::Mgmt::V2017_04_18::ResourceSkus
     Operations = Azure::CognitiveServices::Mgmt::V2017_04_18::Operations
+    PrivateEndpointConnections = Azure::CognitiveServices::Mgmt::V2017_04_18::PrivateEndpointConnections
+    PrivateLinkResources = Azure::CognitiveServices::Mgmt::V2017_04_18::PrivateLinkResources
 
     module Models
-      MetricName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
-      Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
       Usage = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
-      VirtualNetworkRule = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
+      Sku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
       UsagesResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UsagesResult
-      KeyVaultProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyVaultProperties
-      ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
-      UserOwnedStorage = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UserOwnedStorage
-      Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
-      CognitiveServicesAccountProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountProperties
-      OperationDisplayInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
-      Identity = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Identity
-      OperationEntity = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
-      CognitiveServicesAccountListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
-      OperationEntityListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
-      RegenerateKeyParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
-      CheckSkuAvailabilityParameter = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
-      CognitiveServicesAccountEnumerateSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
-      CheckSkuAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
-      NetworkRuleSet = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleSet
-      CheckSkuAvailabilityResultList = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
-      CognitiveServicesAccountApiProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountApiProperties
-      CheckDomainAvailabilityParameter = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityParameter
-      CognitiveServicesAccount = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount
-      CheckDomainAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityResult
-      CognitiveServicesResourceAndSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
-      ResourceSkuRestrictionInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionInfo
-      Encryption = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Encryption
-      ResourceSkuRestrictions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
-      CognitiveServicesAccountKeys = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
-      ResourceSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
-      UserAssignedIdentity = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UserAssignedIdentity
-      ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
       IpRule = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IpRule
+      ErrorBody = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
+      NetworkRuleSet = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleSet
+      Error = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
+      Encryption = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Encryption
+      OperationDisplayInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
+      PrivateEndpoint = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateEndpoint
+      OperationEntity = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
+      PrivateEndpointConnectionProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateEndpointConnectionProperties
+      OperationEntityListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
+      CognitiveServicesAccountApiProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountApiProperties
+      CheckSkuAvailabilityParameter = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
+      UserAssignedIdentity = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UserAssignedIdentity
+      CheckSkuAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
+      CognitiveServicesAccount = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount
+      CheckSkuAvailabilityResultList = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
+      CognitiveServicesAccountKeys = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
+      CheckDomainAvailabilityParameter = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityParameter
+      CognitiveServicesResourceAndSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
+      CheckDomainAvailabilityResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityResult
+      MetricName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
+      ResourceSkuRestrictionInfo = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionInfo
+      VirtualNetworkRule = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
+      ResourceSkuRestrictions = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
+      UserOwnedStorage = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UserOwnedStorage
+      ResourceSku = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
+      KeyVaultProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyVaultProperties
+      CognitiveServicesAccountProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountProperties
+      PrivateLinkServiceConnectionState = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateLinkServiceConnectionState
+      CognitiveServicesAccountListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
+      CognitiveServicesAccountEnumerateSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
+      ResourceSkusResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
+      Identity = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Identity
+      PrivateLinkResourceProperties = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateLinkResourceProperties
+      SkuCapability = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuCapability
+      Resource = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Resource
+      RegenerateKeyParameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
+      PrivateLinkResourceListResult = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateLinkResourceListResult
+      PrivateEndpointConnection = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateEndpointConnection
+      PrivateLinkResource = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateLinkResource
+      ProxyResource = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProxyResource
+      TrackedResource = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::TrackedResource
+      AzureEntityResource = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::AzureEntityResource
       SkuTier = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
       ProvisioningState = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProvisioningState
       NetworkRuleAction = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleAction
       KeySource = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeySource
+      PrivateEndpointServiceConnectionStatus = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateEndpointServiceConnectionStatus
+      PublicNetworkAccess = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PublicNetworkAccess
       IdentityType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IdentityType
       KeyName = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyName
       UnitType = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UnitType
@@ -61,7 +77,7 @@ module Azure::CognitiveServices::Profiles::Latest
     # CognitiveServicesManagementClass
     #
     class CognitiveServicesManagementClass
-      attr_reader :accounts, :resource_skus, :operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :accounts, :resource_skus, :operations, :private_endpoint_connections, :private_link_resources, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -84,6 +100,8 @@ module Azure::CognitiveServices::Profiles::Latest
         @accounts = @client_0.accounts
         @resource_skus = @client_0.resource_skus
         @operations = @client_0.operations
+        @private_endpoint_connections = @client_0.private_endpoint_connections
+        @private_link_resources = @client_0.private_link_resources
 
         @model_classes = ModelClasses.new
       end
@@ -104,107 +122,143 @@ module Azure::CognitiveServices::Profiles::Latest
     end
 
     class ModelClasses
-      def metric_name
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
+      def usage
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
       end
       def sku
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Sku
       end
-      def usage
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Usage
-      end
-      def virtual_network_rule
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
-      end
       def usages_result
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UsagesResult
       end
-      def key_vault_properties
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyVaultProperties
+      def ip_rule
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IpRule
       end
       def error_body
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ErrorBody
       end
-      def user_owned_storage
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UserOwnedStorage
+      def network_rule_set
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleSet
       end
       def error
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Error
       end
-      def cognitive_services_account_properties
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountProperties
+      def encryption
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Encryption
       end
       def operation_display_info
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationDisplayInfo
       end
-      def identity
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Identity
+      def private_endpoint
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateEndpoint
       end
       def operation_entity
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntity
       end
-      def cognitive_services_account_list_result
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
+      def private_endpoint_connection_properties
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateEndpointConnectionProperties
       end
       def operation_entity_list_result
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::OperationEntityListResult
       end
-      def regenerate_key_parameters
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
+      def cognitive_services_account_api_properties
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountApiProperties
       end
       def check_sku_availability_parameter
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter
       end
-      def cognitive_services_account_enumerate_skus_result
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
+      def user_assigned_identity
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UserAssignedIdentity
       end
       def check_sku_availability_result
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResult
       end
-      def network_rule_set
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::NetworkRuleSet
+      def cognitive_services_account
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount
       end
       def check_sku_availability_result_list
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityResultList
       end
-      def cognitive_services_account_api_properties
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountApiProperties
+      def cognitive_services_account_keys
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
       end
       def check_domain_availability_parameter
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityParameter
       end
-      def cognitive_services_account
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount
+      def cognitive_services_resource_and_sku
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
       end
       def check_domain_availability_result
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityResult
       end
-      def cognitive_services_resource_and_sku
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesResourceAndSku
+      def metric_name
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::MetricName
       end
       def resource_sku_restriction_info
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictionInfo
       end
-      def encryption
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Encryption
+      def virtual_network_rule
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::VirtualNetworkRule
       end
       def resource_sku_restrictions
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkuRestrictions
       end
-      def cognitive_services_account_keys
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys
+      def user_owned_storage
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UserOwnedStorage
       end
       def resource_sku
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSku
       end
-      def user_assigned_identity
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::UserAssignedIdentity
+      def key_vault_properties
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeyVaultProperties
+      end
+      def cognitive_services_account_properties
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountProperties
+      end
+      def private_link_service_connection_state
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateLinkServiceConnectionState
+      end
+      def cognitive_services_account_list_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult
+      end
+      def cognitive_services_account_enumerate_skus_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult
       end
       def resource_skus_result
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ResourceSkusResult
       end
-      def ip_rule
-        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IpRule
+      def identity
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Identity
+      end
+      def private_link_resource_properties
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateLinkResourceProperties
+      end
+      def sku_capability
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuCapability
+      end
+      def resource
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::Resource
+      end
+      def regenerate_key_parameters
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters
+      end
+      def private_link_resource_list_result
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateLinkResourceListResult
+      end
+      def private_endpoint_connection
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateEndpointConnection
+      end
+      def private_link_resource
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateLinkResource
+      end
+      def proxy_resource
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::ProxyResource
+      end
+      def tracked_resource
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::TrackedResource
+      end
+      def azure_entity_resource
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::AzureEntityResource
       end
       def sku_tier
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::SkuTier
@@ -217,6 +271,12 @@ module Azure::CognitiveServices::Profiles::Latest
       end
       def key_source
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::KeySource
+      end
+      def private_endpoint_service_connection_status
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PrivateEndpointServiceConnectionStatus
+      end
+      def public_network_access
+        Azure::CognitiveServices::Mgmt::V2017_04_18::Models::PublicNetworkAccess
       end
       def identity_type
         Azure::CognitiveServices::Mgmt::V2017_04_18::Models::IdentityType

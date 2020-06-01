@@ -17,11 +17,10 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Azure Subscription ID.
+    # @return [String] The ID of the target subscription.
     attr_accessor :subscription_id
 
-    # @return [String] Version of the API to be used with the client request.
-    # Current version is 2017-04-18
+    # @return [String] The API version to use for this operation.
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -45,6 +44,12 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # @return [Operations] operations
     attr_reader :operations
 
+    # @return [PrivateEndpointConnections] private_endpoint_connections
+    attr_reader :private_endpoint_connections
+
+    # @return [PrivateLinkResources] private_link_resources
+    attr_reader :private_link_resources
+
     #
     # Creates initializes a new instance of the CognitiveServicesManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -61,6 +66,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       @accounts = Accounts.new(self)
       @resource_skus = ResourceSkus.new(self)
       @operations = Operations.new(self)
+      @private_endpoint_connections = PrivateEndpointConnections.new(self)
+      @private_link_resources = PrivateLinkResources.new(self)
       @api_version = '2017-04-18'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -173,7 +180,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def check_sku_availability_async(location, skus, kind, type, custom_headers:nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, "'subscription_id' should satisfy the constraint - 'MinLength': '1'" if !subscription_id.nil? && subscription_id.length < 1
       fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, "'api_version' should satisfy the constraint - 'MinLength': '1'" if !api_version.nil? && api_version.length < 1
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'skus is nil' if skus.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
@@ -282,7 +291,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def check_domain_availability_async(subdomain_name, type, custom_headers:nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, "'subscription_id' should satisfy the constraint - 'MinLength': '1'" if !subscription_id.nil? && subscription_id.length < 1
       fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, "'api_version' should satisfy the constraint - 'MinLength': '1'" if !api_version.nil? && api_version.length < 1
       fail ArgumentError, 'subdomain_name is nil' if subdomain_name.nil?
       fail ArgumentError, 'type is nil' if type.nil?
 
@@ -354,7 +365,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cognitive_services'
-        sdk_information = "#{sdk_information}/0.19.1"
+        sdk_information = "#{sdk_information}/0.19.2"
         add_user_agent_information(sdk_information)
     end
   end
