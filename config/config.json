@@ -1217,12 +1217,12 @@
   },
   "azure_mgmt_mariadb": {
     "azure_mgmt_mariadb_2018_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6090c3bc80aa2754aa77d80535c70a23564ce552/specification/mariadb/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/96165d9bd3616080bc4e4203400af9de906da2c1/specification/mariadb/resource-manager/readme.md",
       "namespace": "Azure::MariaDB::Mgmt::V2018_06_01_preview",
       "tag": "package-2018-06-01-preview"
     },
     "azure_mgmt_mariadb_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6090c3bc80aa2754aa77d80535c70a23564ce552/specification/mariadb/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/96165d9bd3616080bc4e4203400af9de906da2c1/specification/mariadb/resource-manager/readme.md",
       "namespace": "Azure::MariaDB::Mgmt::V2018_06_01",
       "tag": "package-2018-06-01"
     }
