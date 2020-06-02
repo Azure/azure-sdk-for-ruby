@@ -26,8 +26,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # type. It holds the keys for developer to access intelligent APIs. It's also
     # the resource type for billing.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param account [CognitiveServicesAccount] The parameters to provide for the
     # created account.
@@ -46,8 +46,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # type. It holds the keys for developer to access intelligent APIs. It's also
     # the resource type for billing.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param account [CognitiveServicesAccount] The parameters to provide for the
     # created account.
@@ -65,8 +65,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # type. It holds the keys for developer to access intelligent APIs. It's also
     # the resource type for billing.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param account [CognitiveServicesAccount] The parameters to provide for the
     # created account.
@@ -77,13 +77,18 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def create_async(resource_group_name, account_name, account, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, 'account is nil' if account.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
@@ -164,8 +169,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Updates a Cognitive Services account
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param account [CognitiveServicesAccount] The parameters to provide for the
     # created account.
@@ -182,8 +187,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Updates a Cognitive Services account
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param account [CognitiveServicesAccount] The parameters to provide for the
     # created account.
@@ -199,8 +204,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Updates a Cognitive Services account
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param account [CognitiveServicesAccount] The parameters to provide for the
     # created account.
@@ -211,13 +216,18 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def update_async(resource_group_name, account_name, account, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, 'account is nil' if account.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
@@ -288,8 +298,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Deletes a Cognitive Services account from the resource group.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -303,8 +313,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Deletes a Cognitive Services account from the resource group.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -318,8 +328,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Deletes a Cognitive Services account from the resource group.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -328,12 +338,17 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def delete_async(resource_group_name, account_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
@@ -377,8 +392,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Returns a Cognitive Services account specified by the parameters.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -393,8 +408,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Returns a Cognitive Services account specified by the parameters.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -408,8 +423,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Returns a Cognitive Services account specified by the parameters.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -418,12 +433,17 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def get_properties_async(resource_group_name, account_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
@@ -477,8 +497,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Returns all the resources of a particular type belonging to a resource group
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -492,8 +512,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Returns all the resources of a particular type belonging to a resource group
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -506,8 +526,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Returns all the resources of a particular type belonging to a resource group
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -515,8 +535,13 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def list_by_resource_group_async(resource_group_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
 
 
       request_headers = {}
@@ -602,7 +627,9 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def list_async(custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
@@ -656,8 +683,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Lists the account keys for the specified Cognitive Services account.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -672,8 +699,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Lists the account keys for the specified Cognitive Services account.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -687,8 +714,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Lists the account keys for the specified Cognitive Services account.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -697,12 +724,17 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def list_keys_async(resource_group_name, account_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
@@ -757,8 +789,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # Regenerates the specified account key for the specified Cognitive Services
     # account.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param key_name [KeyName] key name to generate (Key1|Key2). Possible values
     # include: 'Key1', 'Key2'
@@ -776,8 +808,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # Regenerates the specified account key for the specified Cognitive Services
     # account.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param key_name [KeyName] key name to generate (Key1|Key2). Possible values
     # include: 'Key1', 'Key2'
@@ -794,8 +826,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     # Regenerates the specified account key for the specified Cognitive Services
     # account.
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param key_name [KeyName] key name to generate (Key1|Key2). Possible values
     # include: 'Key1', 'Key2'
@@ -806,12 +838,17 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def regenerate_key_async(resource_group_name, account_name, key_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, 'key_name is nil' if key_name.nil?
 
       parameters = RegenerateKeyParameters.new
@@ -877,8 +914,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # List available SKUs for the requested Cognitive Services account
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -893,8 +930,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # List available SKUs for the requested Cognitive Services account
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -908,8 +945,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # List available SKUs for the requested Cognitive Services account
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -918,12 +955,17 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def list_skus_async(resource_group_name, account_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
@@ -977,8 +1019,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Get usages for the requested Cognitive Services account
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param filter [String] An OData filter expression that describes a subset of
     # usages to return. The supported parameter is name.value (name of the metric,
@@ -996,8 +1038,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Get usages for the requested Cognitive Services account
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param filter [String] An OData filter expression that describes a subset of
     # usages to return. The supported parameter is name.value (name of the metric,
@@ -1014,8 +1056,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Get usages for the requested Cognitive Services account
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] The name of Cognitive Services account.
     # @param filter [String] An OData filter expression that describes a subset of
     # usages to return. The supported parameter is name.value (name of the metric,
@@ -1027,12 +1069,17 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def get_usages_async(resource_group_name, account_name, filter:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '64'" if !account_name.nil? && account_name.length > 64
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '2'" if !account_name.nil? && account_name.length < 2
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9][a-zA-Z0-9_.-]*$'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-zA-Z0-9][a-zA-Z0-9_.-]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
 
 
       request_headers = {}
@@ -1266,8 +1313,8 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     # Returns all the resources of a particular type belonging to a resource group
     #
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

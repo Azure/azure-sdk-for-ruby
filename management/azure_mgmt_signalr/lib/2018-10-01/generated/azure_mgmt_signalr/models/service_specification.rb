@@ -16,6 +16,10 @@ module Azure::Signalr::Mgmt::V2018_10_01
       # Azure Monitoring.
       attr_accessor :metric_specifications
 
+      # @return [Array<LogSpecification>] Specifications of the Logs for Azure
+      # Monitoring.
+      attr_accessor :log_specifications
+
 
       #
       # Mapper for ServiceSpecification class as Ruby Hash.
@@ -43,6 +47,23 @@ module Azure::Signalr::Mgmt::V2018_10_01
                       type: {
                         name: 'Composite',
                         class_name: 'MetricSpecification'
+                      }
+                  }
+                }
+              },
+              log_specifications: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'logSpecifications',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'LogSpecificationElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'LogSpecification'
                       }
                   }
                 }

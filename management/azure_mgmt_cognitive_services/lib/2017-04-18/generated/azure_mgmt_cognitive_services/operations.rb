@@ -56,6 +56,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def list_async(custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
 
 
       request_headers = {}

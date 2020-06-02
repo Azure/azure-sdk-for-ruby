@@ -472,7 +472,7 @@
                 },
                 "Microsoft.Kusto": {
                     "management": {
-                        "2019-11-09": ["*"]
+                        "2020-02-15": ["*"]
                     }
                 },
                 "Microsoft.Labservices": {
@@ -537,7 +537,8 @@
                 },
                 "Microsoft.MixedReality": {
                     "management": {
-                        "2019-12-02-preview": ["*"]
+                        "2020-04-06-preview": ["*"],
+                        "2020-05-01": ["*"]
                     }
                 },
                 "Microsoft.Monitor": {
@@ -585,7 +586,7 @@
                 "Microsoft.OperationalInsights": {
                     "management": {
                         "2015-03-20": ["*"],
-                        "2015-11-01-preview": ["*"]
+                        "2020-03-01-preview": ["*"]
                     }
                 },
                 "Microsoft.OperationsManagement" : {
@@ -733,7 +734,7 @@
                 },
                 "Microsoft.Signalr": {
                     "management": {
-                        "2018-10-01": ["*"]
+                        "2020-05-01": ["*"]
                     }
                 },
                 "Microsoft.SQL": {
@@ -1762,7 +1763,7 @@
             "resourceTypes": {
                 "Microsoft.Kusto": {
                     "management": {
-                        "2019-11-09": ["*"]
+                        "2020-02-15": ["*"]
                     }
                 }
             },
@@ -1992,7 +1993,8 @@
             "resourceTypes": {
                 "Microsoft.MixedReality": {
                     "management": {
-                        "2019-12-02-preview": ["*"]
+                        "2020-04-06-preview": ["*"],
+                        "2020-05-01": ["*"]
                     }
                 }
             },
@@ -2155,7 +2157,7 @@
                 "Microsoft.OperationalInsights" : {
                     "management": {
                         "2015-03-20": ["*"],
-                        "2015-11-01-preview": ["*"]
+                        "2020-03-01-preview": ["*"]
                     }
                 }
             },
@@ -2606,7 +2608,7 @@
             "resourceTypes": {
                 "Microsoft.Signalr": {
                     "management": {
-                        "2018-10-01": ["*"]
+                        "2020-05-01": ["*"]
                     }
                 }
             },

@@ -23,6 +23,11 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # @return [String] The internal identifier.
       attr_accessor :internal_id
 
+      # @return [Array<SkuCapability>] Gets the capabilities of the cognitive
+      # services account. Each item indicates the capability of a specific
+      # feature. The values are read-only and for reference only.
+      attr_accessor :capabilities
+
       # @return [String] Optional subdomain name used for token-based
       # authentication.
       attr_accessor :custom_sub_domain_name
@@ -37,6 +42,15 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # @return [Array<UserOwnedStorage>] The storage accounts for this
       # resource.
       attr_accessor :user_owned_storage
+
+      # @return [Array<PrivateEndpointConnection>] The private endpoint
+      # connection associated with the Cognitive Services account.
+      attr_accessor :private_endpoint_connections
+
+      # @return [PublicNetworkAccess] Whether or not public endpoint access is
+      # allowed for this account. Value is optional but if passed in, must be
+      # 'Enabled' or 'Disabled'. Possible values include: 'Enabled', 'Disabled'
+      attr_accessor :public_network_access
 
       # @return [CognitiveServicesAccountApiProperties] The api properties for
       # special APIs.
@@ -83,6 +97,24 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                   name: 'String'
                 }
               },
+              capabilities: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'capabilities',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'SkuCapabilityElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SkuCapability'
+                      }
+                  }
+                }
+              },
               custom_sub_domain_name: {
                 client_side_validation: true,
                 required: false,
@@ -124,6 +156,31 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                         class_name: 'UserOwnedStorage'
                       }
                   }
+                }
+              },
+              private_endpoint_connections: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'privateEndpointConnections',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'PrivateEndpointConnectionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PrivateEndpointConnection'
+                      }
+                  }
+                }
+              },
+              public_network_access: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'publicNetworkAccess',
+                type: {
+                  name: 'String'
                 }
               },
               api_properties: {

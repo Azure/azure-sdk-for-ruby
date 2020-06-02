@@ -13,8 +13,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<StorageInsight>] Gets or sets a list of storage insight
-      # instances.
+      # @return [Array<StorageInsight>] A list of storage insight items.
       attr_accessor :value
 
       # @return [String] The link (url) to the next page of results.

@@ -13,13 +13,21 @@ module Azure::Signalr::Mgmt::V2018_10_01
 
       include MsRestAzure
 
-      # @return [String] Kind of feature. Required. Default value:
-      # 'ServiceMode' .
+      # @return [FeatureFlags] FeatureFlags is the supported features of Azure
+      # SignalR service.
+      # - ServiceMode: Flag for backend server for SignalR service. Values
+      # allowed: "Default": have your own backend server; "Serverless": your
+      # application doesn't have a backend server; "Classic": for backward
+      # compatibility. Support both Default and Serverless mode but not
+      # recommended; "PredefinedOnly": for future use.
+      # - EnableConnectivityLogs: "true"/"false", to enable/disable the
+      # connectivity log category respectively. Possible values include:
+      # 'ServiceMode', 'EnableConnectivityLogs'
       attr_accessor :flag
 
       # @return [String] Value of the feature flag. See Azure SignalR service
-      # document https://docs.microsoft.com/en-us/azure/azure-signalr/ for
-      # allowed values.
+      # document https://docs.microsoft.com/azure/azure-signalr/ for allowed
+      # values.
       attr_accessor :value
 
       # @return [Hash{String => String}] Optional properties related to this
@@ -43,9 +51,7 @@ module Azure::Signalr::Mgmt::V2018_10_01
               flag: {
                 client_side_validation: true,
                 required: true,
-                is_constant: true,
                 serialized_name: 'flag',
-                default_value: 'ServiceMode',
                 type: {
                   name: 'String'
                 }

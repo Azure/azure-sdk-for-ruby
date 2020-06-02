@@ -92,7 +92,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 3454bfe2-263b-41e0-920b-cdd68f625a7d
       x-ms-routing-request-id:
-      - WESTUS:20160519T203553Z:3454bfe2-263b-41e0-920b-cdd68f625a7d
+      - WESTUS:20160.19.303553Z:3454bfe2-263b-41e0-920b-cdd68f625a7d
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
@@ -144,7 +144,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - e92789a5-034b-42a0-9375-8d5cfb9dd107
       x-ms-routing-request-id:
-      - WESTUS:20160519T203554Z:e92789a5-034b-42a0-9375-8d5cfb9dd107
+      - WESTUS:20160.19.303554Z:e92789a5-034b-42a0-9375-8d5cfb9dd107
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
@@ -195,7 +195,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - ca191986-393d-4a85-962e-2b9d54191f04
       x-ms-routing-request-id:
-      - WESTUS:20160519T203625Z:ca191986-393d-4a85-962e-2b9d54191f04
+      - WESTUS:20160.19.303625Z:ca191986-393d-4a85-962e-2b9d54191f04
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
@@ -253,7 +253,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 80135fd2-0f71-4819-b045-af4682589fbf
       x-ms-routing-request-id:
-      - WESTUS:20160519T203625Z:80135fd2-0f71-4819-b045-af4682589fbf
+      - WESTUS:20160.19.303625Z:80135fd2-0f71-4819-b045-af4682589fbf
       date:
       - Thu, 19 May 2016 20:36:25 GMT
       connection:
@@ -316,7 +316,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - ae823577-bc05-4125-a233-6b9abfb418c1
       x-ms-routing-request-id:
-      - WESTUS:20160519T205653Z:ae823577-bc05-4125-a233-6b9abfb418c1
+      - WESTUS:20160.19.305653Z:ae823577-bc05-4125-a233-6b9abfb418c1
       date:
       - Thu, 19 May 2016 20:56:53 GMT
       connection:
@@ -367,7 +367,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 300ce186-51b4-4135-b316-43886b9c8190
       x-ms-routing-request-id:
-      - WESTUS:20160519T205654Z:300ce186-51b4-4135-b316-43886b9c8190
+      - WESTUS:20160.19.305654Z:300ce186-51b4-4135-b316-43886b9c8190
       date:
       - Thu, 19 May 2016 20:56:53 GMT
       connection:
@@ -433,7 +433,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 4a735974-4f2c-4c23-9518-2dbc811ad71e
       x-ms-routing-request-id:
-      - WESTUS:20160519T205654Z:4a735974-4f2c-4c23-9518-2dbc811ad71e
+      - WESTUS:20160.19.305654Z:4a735974-4f2c-4c23-9518-2dbc811ad71e
       date:
       - Thu, 19 May 2016 20:56:53 GMT
       connection:
@@ -487,7 +487,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - c89ed3a9-4024-4598-ba31-0cfc73e1a276
       x-ms-routing-request-id:
-      - WESTUS:20160519T210732Z:c89ed3a9-4024-4598-ba31-0cfc73e1a276
+      - WESTUS:20160.19.310732Z:c89ed3a9-4024-4598-ba31-0cfc73e1a276
       date:
       - Thu, 19 May 2016 21:07:31 GMT
       connection:
@@ -538,7 +538,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 392b5777-34f6-4427-a815-78922ec153ee
       x-ms-routing-request-id:
-      - WESTUS:20160519T210732Z:392b5777-34f6-4427-a815-78922ec153ee
+      - WESTUS:20160.19.310732Z:392b5777-34f6-4427-a815-78922ec153ee
       date:
       - Thu, 19 May 2016 21:07:31 GMT
       connection:
@@ -595,7 +595,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - e647b4fd-e2ff-4220-ba50-4cd6fb63f062
       x-ms-routing-request-id:
-      - WESTUS:20160519T210733Z:e647b4fd-e2ff-4220-ba50-4cd6fb63f062
+      - WESTUS:20160.19.310733Z:e647b4fd-e2ff-4220-ba50-4cd6fb63f062
       date:
       - Thu, 19 May 2016 21:07:33 GMT
       connection:
@@ -654,7 +654,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - b911e561-1e48-4cb9-899b-e36e1f49c9ed
       x-ms-routing-request-id:
-      - WESTUS:20160519T210804Z:b911e561-1e48-4cb9-899b-e36e1f49c9ed
+      - WESTUS:20160.19.310804Z:b911e561-1e48-4cb9-899b-e36e1f49c9ed
       date:
       - Thu, 19 May 2016 21:08:03 GMT
       connection:
@@ -705,7 +705,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 4b692690-da4c-4aff-836b-232a15d0747f
       x-ms-routing-request-id:
-      - WESTUS:20160519T210804Z:4b692690-da4c-4aff-836b-232a15d0747f
+      - WESTUS:20160.19.310804Z:4b692690-da4c-4aff-836b-232a15d0747f
       date:
       - Thu, 19 May 2016 21:08:04 GMT
       connection:
@@ -766,7 +766,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 536d9343-58ca-4220-9ee0-6fe400353cfb
       x-ms-routing-request-id:
-      - WESTUS:20160519T210805Z:536d9343-58ca-4220-9ee0-6fe400353cfb
+      - WESTUS:20160.19.310805Z:536d9343-58ca-4220-9ee0-6fe400353cfb
       date:
       - Thu, 19 May 2016 21:08:05 GMT
       connection:
@@ -836,7 +836,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - da12f4c0-520d-4d1b-b9ca-9e50bc228c16
       x-ms-routing-request-id:
-      - WESTUS:20160519T210807Z:da12f4c0-520d-4d1b-b9ca-9e50bc228c16
+      - WESTUS:20160.19.310807Z:da12f4c0-520d-4d1b-b9ca-9e50bc228c16
       date:
       - Thu, 19 May 2016 21:08:06 GMT
       connection:
@@ -905,7 +905,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 30852eb1-296e-4121-8813-2e6fa01cdf08
       x-ms-routing-request-id:
-      - WESTUS:20160519T210837Z:30852eb1-296e-4121-8813-2e6fa01cdf08
+      - WESTUS:20160.19.310837Z:30852eb1-296e-4121-8813-2e6fa01cdf08
       date:
       - Thu, 19 May 2016 21:08:36 GMT
       connection:
@@ -959,7 +959,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - a6f2895b-e381-44fe-8cc7-870a7e57366b
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T210909Z:a6f2895b-e381-44fe-8cc7-870a7e57366b
+      - CENTRALUS:20160.19.310909Z:a6f2895b-e381-44fe-8cc7-870a7e57366b
       date:
       - Thu, 19 May 2016 21:09:08 GMT
       connection:
@@ -1013,7 +1013,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 06aec3e7-6547-4741-b0c7-0d3017c283f4
       x-ms-routing-request-id:
-      - WESTUS:20160519T210939Z:06aec3e7-6547-4741-b0c7-0d3017c283f4
+      - WESTUS:20160.19.310939Z:06aec3e7-6547-4741-b0c7-0d3017c283f4
       date:
       - Thu, 19 May 2016 21:09:39 GMT
       connection:
@@ -1067,7 +1067,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 6726ab1b-dd12-4f59-ba8f-d1cc12c5c569
       x-ms-routing-request-id:
-      - WESTUS:20160519T211010Z:6726ab1b-dd12-4f59-ba8f-d1cc12c5c569
+      - WESTUS:20160.19.311010Z:6726ab1b-dd12-4f59-ba8f-d1cc12c5c569
       date:
       - Thu, 19 May 2016 21:10:09 GMT
       connection:
@@ -1121,7 +1121,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 009b8b73-f80c-4258-8e84-8160f81580f8
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211041Z:009b8b73-f80c-4258-8e84-8160f81580f8
+      - CENTRALUS:20160.19.311041Z:009b8b73-f80c-4258-8e84-8160f81580f8
       date:
       - Thu, 19 May 2016 21:10:40 GMT
       connection:
@@ -1175,7 +1175,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 1c0b9a22-1318-4aea-8fb9-7c696839fb32
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211112Z:1c0b9a22-1318-4aea-8fb9-7c696839fb32
+      - CENTRALUS:20160.19.311112Z:1c0b9a22-1318-4aea-8fb9-7c696839fb32
       date:
       - Thu, 19 May 2016 21:11:11 GMT
       connection:
@@ -1229,7 +1229,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - e19f0a0e-98fb-420e-ba15-8c6c8a361888
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211142Z:e19f0a0e-98fb-420e-ba15-8c6c8a361888
+      - CENTRALUS:20160.19.311142Z:e19f0a0e-98fb-420e-ba15-8c6c8a361888
       date:
       - Thu, 19 May 2016 21:11:42 GMT
       connection:
@@ -1283,7 +1283,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 95b1fd71-823c-43b2-98c8-0818b0328cb7
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211213Z:95b1fd71-823c-43b2-98c8-0818b0328cb7
+      - CENTRALUS:20160.19.311213Z:95b1fd71-823c-43b2-98c8-0818b0328cb7
       date:
       - Thu, 19 May 2016 21:12:13 GMT
       connection:
@@ -1337,7 +1337,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 2905f1f0-d508-4b83-bce5-b4cdfd7e673c
       x-ms-routing-request-id:
-      - WESTUS:20160519T211243Z:2905f1f0-d508-4b83-bce5-b4cdfd7e673c
+      - WESTUS:20160.19.311243Z:2905f1f0-d508-4b83-bce5-b4cdfd7e673c
       date:
       - Thu, 19 May 2016 21:12:43 GMT
       connection:
@@ -1391,7 +1391,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 77b60640-bdac-4edc-b82c-1305aad15780
       x-ms-routing-request-id:
-      - WESTUS:20160519T211313Z:77b60640-bdac-4edc-b82c-1305aad15780
+      - WESTUS:20160.19.311313Z:77b60640-bdac-4edc-b82c-1305aad15780
       date:
       - Thu, 19 May 2016 21:13:12 GMT
       connection:
@@ -1445,7 +1445,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 0dc84b13-15f9-4ec1-a771-4ff199d7463d
       x-ms-routing-request-id:
-      - WESTUS:20160519T211344Z:0dc84b13-15f9-4ec1-a771-4ff199d7463d
+      - WESTUS:20160.19.311344Z:0dc84b13-15f9-4ec1-a771-4ff199d7463d
       date:
       - Thu, 19 May 2016 21:13:43 GMT
       connection:
@@ -1499,7 +1499,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 0b4f6abd-8bbf-47ba-8a06-103c7aade57c
       x-ms-routing-request-id:
-      - WESTUS:20160519T211414Z:0b4f6abd-8bbf-47ba-8a06-103c7aade57c
+      - WESTUS:20160.19.311414Z:0b4f6abd-8bbf-47ba-8a06-103c7aade57c
       date:
       - Thu, 19 May 2016 21:14:14 GMT
       connection:
@@ -1553,7 +1553,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 7033c574-72d2-4d16-bfe7-72abd29cbdd7
       x-ms-routing-request-id:
-      - WESTUS:20160519T211444Z:7033c574-72d2-4d16-bfe7-72abd29cbdd7
+      - WESTUS:20160.19.311444Z:7033c574-72d2-4d16-bfe7-72abd29cbdd7
       date:
       - Thu, 19 May 2016 21:14:44 GMT
       connection:
@@ -1607,7 +1607,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 67df2941-3b90-47d5-a0ab-133d104697b7
       x-ms-routing-request-id:
-      - WESTUS:20160519T211514Z:67df2941-3b90-47d5-a0ab-133d104697b7
+      - WESTUS:20160.19.311514Z:67df2941-3b90-47d5-a0ab-133d104697b7
       date:
       - Thu, 19 May 2016 21:15:14 GMT
       connection:
@@ -1661,7 +1661,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - f98f011f-ebe5-48f2-85f2-2e4def08ba7a
       x-ms-routing-request-id:
-      - WESTUS:20160519T211545Z:f98f011f-ebe5-48f2-85f2-2e4def08ba7a
+      - WESTUS:20160.19.311545Z:f98f011f-ebe5-48f2-85f2-2e4def08ba7a
       date:
       - Thu, 19 May 2016 21:15:44 GMT
       connection:
@@ -1715,7 +1715,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - c5e61dc6-2ee1-47ae-90b9-dee790060efe
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211616Z:c5e61dc6-2ee1-47ae-90b9-dee790060efe
+      - CENTRALUS:20160.19.311616Z:c5e61dc6-2ee1-47ae-90b9-dee790060efe
       date:
       - Thu, 19 May 2016 21:16:15 GMT
       connection:
@@ -1769,7 +1769,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - bb13b948-f208-4eff-ad56-f91b43353d1c
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211646Z:bb13b948-f208-4eff-ad56-f91b43353d1c
+      - CENTRALUS:20160.19.311646Z:bb13b948-f208-4eff-ad56-f91b43353d1c
       date:
       - Thu, 19 May 2016 21:16:46 GMT
       connection:
@@ -1823,7 +1823,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - a033a12e-2f84-4dcf-b0b1-8ac650c88e78
       x-ms-routing-request-id:
-      - WESTUS:20160519T211717Z:a033a12e-2f84-4dcf-b0b1-8ac650c88e78
+      - WESTUS:20160.19.311717Z:a033a12e-2f84-4dcf-b0b1-8ac650c88e78
       date:
       - Thu, 19 May 2016 21:17:16 GMT
       connection:
@@ -1877,7 +1877,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 616465c7-3757-4cea-bf15-cdaded882ec4
       x-ms-routing-request-id:
-      - WESTUS:20160519T211748Z:616465c7-3757-4cea-bf15-cdaded882ec4
+      - WESTUS:20160.19.311748Z:616465c7-3757-4cea-bf15-cdaded882ec4
       date:
       - Thu, 19 May 2016 21:17:47 GMT
       connection:
@@ -1931,7 +1931,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - e2b105c3-8b36-4c85-9d58-868605849f2d
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211818Z:e2b105c3-8b36-4c85-9d58-868605849f2d
+      - CENTRALUS:20160.19.311818Z:e2b105c3-8b36-4c85-9d58-868605849f2d
       date:
       - Thu, 19 May 2016 21:18:17 GMT
       connection:
@@ -1985,7 +1985,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 97baa7e4-f944-451a-a2da-a32c67212f09
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211849Z:97baa7e4-f944-451a-a2da-a32c67212f09
+      - CENTRALUS:20160.19.311849Z:97baa7e4-f944-451a-a2da-a32c67212f09
       date:
       - Thu, 19 May 2016 21:18:48 GMT
       connection:
@@ -2039,7 +2039,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - f6de05f4-eb99-4d52-8d74-04331ff8d299
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211919Z:f6de05f4-eb99-4d52-8d74-04331ff8d299
+      - CENTRALUS:20160.19.311919Z:f6de05f4-eb99-4d52-8d74-04331ff8d299
       date:
       - Thu, 19 May 2016 21:19:19 GMT
       connection:
@@ -2092,7 +2092,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - c08a0efa-b174-437f-afb6-961424be1665
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211920Z:c08a0efa-b174-437f-afb6-961424be1665
+      - CENTRALUS:20160.19.311920Z:c08a0efa-b174-437f-afb6-961424be1665
       date:
       - Thu, 19 May 2016 21:19:19 GMT
       connection:
@@ -2163,7 +2163,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - ea38eadd-f902-4a44-aad0-338820e88bc2
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211922Z:ea38eadd-f902-4a44-aad0-338820e88bc2
+      - CENTRALUS:20160.19.311922Z:ea38eadd-f902-4a44-aad0-338820e88bc2
       date:
       - Thu, 19 May 2016 21:19:22 GMT
       connection:
@@ -2222,7 +2222,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - b43b4582-5785-4a48-bf9a-f71a0e48c842
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T211953Z:b43b4582-5785-4a48-bf9a-f71a0e48c842
+      - CENTRALUS:20160.19.311953Z:b43b4582-5785-4a48-bf9a-f71a0e48c842
       date:
       - Thu, 19 May 2016 21:19:52 GMT
       connection:
@@ -2276,7 +2276,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - da5a7123-3a99-4928-8abc-06bf706a7e36
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T212023Z:da5a7123-3a99-4928-8abc-06bf706a7e36
+      - CENTRALUS:20160.19.312023Z:da5a7123-3a99-4928-8abc-06bf706a7e36
       date:
       - Thu, 19 May 2016 21:20:23 GMT
       connection:
@@ -2330,7 +2330,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - b9711c23-3913-4793-9391-62569310452c
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T212054Z:b9711c23-3913-4793-9391-62569310452c
+      - CENTRALUS:20160.19.312054Z:b9711c23-3913-4793-9391-62569310452c
       date:
       - Thu, 19 May 2016 21:20:54 GMT
       connection:
@@ -2384,7 +2384,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 553d293b-356b-478c-89ec-8a73cbc67b27
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T212125Z:553d293b-356b-478c-89ec-8a73cbc67b27
+      - CENTRALUS:20160.19.312125Z:553d293b-356b-478c-89ec-8a73cbc67b27
       date:
       - Thu, 19 May 2016 21:21:24 GMT
       connection:
@@ -2438,7 +2438,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - d8ff70b5-96b7-4ca9-b642-a0f639d28c0f
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T212156Z:d8ff70b5-96b7-4ca9-b642-a0f639d28c0f
+      - CENTRALUS:20160.19.312156Z:d8ff70b5-96b7-4ca9-b642-a0f639d28c0f
       date:
       - Thu, 19 May 2016 21:21:55 GMT
       connection:
@@ -2492,7 +2492,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 7f098dd1-58ae-45b1-aee1-2283487130fd
       x-ms-routing-request-id:
-      - WESTUS:20160519T212226Z:7f098dd1-58ae-45b1-aee1-2283487130fd
+      - WESTUS:20160.19.312226Z:7f098dd1-58ae-45b1-aee1-2283487130fd
       date:
       - Thu, 19 May 2016 21:22:25 GMT
       connection:
@@ -2546,7 +2546,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 5f73627a-6e85-4bd4-8616-cb9b31b8f5f9
       x-ms-routing-request-id:
-      - WESTUS:20160519T212257Z:5f73627a-6e85-4bd4-8616-cb9b31b8f5f9
+      - WESTUS:20160.19.312257Z:5f73627a-6e85-4bd4-8616-cb9b31b8f5f9
       date:
       - Thu, 19 May 2016 21:22:56 GMT
       connection:
@@ -2600,7 +2600,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 3f5ab612-e57a-424b-91f2-39860bbaa0f7
       x-ms-routing-request-id:
-      - WESTUS:20160519T212327Z:3f5ab612-e57a-424b-91f2-39860bbaa0f7
+      - WESTUS:20160.19.312327Z:3f5ab612-e57a-424b-91f2-39860bbaa0f7
       date:
       - Thu, 19 May 2016 21:23:27 GMT
       connection:
@@ -2654,7 +2654,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - c71c4060-5cc5-4eb4-8d07-8fd724e0dedd
       x-ms-routing-request-id:
-      - WESTUS:20160519T212357Z:c71c4060-5cc5-4eb4-8d07-8fd724e0dedd
+      - WESTUS:20160.19.312357Z:c71c4060-5cc5-4eb4-8d07-8fd724e0dedd
       date:
       - Thu, 19 May 2016 21:23:57 GMT
       connection:
@@ -2708,7 +2708,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 002d2da5-e408-4f28-a781-bb8a2d03673f
       x-ms-routing-request-id:
-      - WESTUS:20160519T212428Z:002d2da5-e408-4f28-a781-bb8a2d03673f
+      - WESTUS:20160.19.312428Z:002d2da5-e408-4f28-a781-bb8a2d03673f
       date:
       - Thu, 19 May 2016 21:24:27 GMT
       connection:
@@ -2762,7 +2762,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - c2cc5ffa-4c1e-47a5-8557-d93fd2e45891
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T212459Z:c2cc5ffa-4c1e-47a5-8557-d93fd2e45891
+      - CENTRALUS:20160.19.312459Z:c2cc5ffa-4c1e-47a5-8557-d93fd2e45891
       date:
       - Thu, 19 May 2016 21:24:58 GMT
       connection:
@@ -2816,7 +2816,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 2c717a00-2a9e-4189-a74f-944a4db55310
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T212530Z:2c717a00-2a9e-4189-a74f-944a4db55310
+      - CENTRALUS:20160.19.312530Z:2c717a00-2a9e-4189-a74f-944a4db55310
       date:
       - Thu, 19 May 2016 21:25:29 GMT
       connection:
@@ -2870,7 +2870,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - b3ed3661-c9e5-4e63-b663-ccf74706184d
       x-ms-routing-request-id:
-      - WESTUS:20160519T212600Z:b3ed3661-c9e5-4e63-b663-ccf74706184d
+      - WESTUS:20160.19.312600Z:b3ed3661-c9e5-4e63-b663-ccf74706184d
       date:
       - Thu, 19 May 2016 21:25:59 GMT
       connection:
@@ -2924,7 +2924,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 771553be-a2cd-47ea-ac7d-2ffe0bce1b7a
       x-ms-routing-request-id:
-      - CENTRALUS:20160519T212631Z:771553be-a2cd-47ea-ac7d-2ffe0bce1b7a
+      - CENTRALUS:20160.19.312631Z:771553be-a2cd-47ea-ac7d-2ffe0bce1b7a
       date:
       - Thu, 19 May 2016 21:26:30 GMT
       connection:
@@ -2978,7 +2978,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 1303dafe-579a-4c18-a667-2bc18fb46cd0
       x-ms-routing-request-id:
-      - WESTUS:20160519T212701Z:1303dafe-579a-4c18-a667-2bc18fb46cd0
+      - WESTUS:20160.19.312701Z:1303dafe-579a-4c18-a667-2bc18fb46cd0
       date:
       - Thu, 19 May 2016 21:27:01 GMT
       connection:
@@ -3031,7 +3031,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - ff2e4620-8715-483e-8ca7-24d85e2b8240
       x-ms-routing-request-id:
-      - WESTUS:20160519T212701Z:ff2e4620-8715-483e-8ca7-24d85e2b8240
+      - WESTUS:20160.19.312701Z:ff2e4620-8715-483e-8ca7-24d85e2b8240
       date:
       - Thu, 19 May 2016 21:27:00 GMT
       connection:
@@ -3088,7 +3088,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 2c63cace-7c86-4980-bb7f-b597144c0e35
       x-ms-routing-request-id:
-      - WESTUS:20160519T212701Z:2c63cace-7c86-4980-bb7f-b597144c0e35
+      - WESTUS:20160.19.312701Z:2c63cace-7c86-4980-bb7f-b597144c0e35
       date:
       - Thu, 19 May 2016 21:27:01 GMT
       connection:
@@ -3138,7 +3138,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - c88195f2-da0e-4497-b23e-365034403d7a
       x-ms-routing-request-id:
-      - WESTUS:20160519T212702Z:c88195f2-da0e-4497-b23e-365034403d7a
+      - WESTUS:20160.19.312702Z:c88195f2-da0e-4497-b23e-365034403d7a
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
@@ -3185,7 +3185,7 @@ http_interactions:
       x-ms-correlation-request-id:
       - 9352dce3-ec68-46d2-8460-5f10d9a5161f
       x-ms-routing-request-id:
-      - WESTUS:20160519T213337Z:9352dce3-ec68-46d2-8460-5f10d9a5161f
+      - WESTUS:20160.19.313337Z:9352dce3-ec68-46d2-8460-5f10d9a5161f
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
