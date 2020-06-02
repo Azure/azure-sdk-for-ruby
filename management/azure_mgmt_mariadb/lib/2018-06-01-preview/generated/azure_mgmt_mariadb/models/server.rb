@@ -12,6 +12,10 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
 
       include MsRestAzure
 
+      # @return [ResourceIdentity] The Azure Active Directory identity of the
+      # server.
+      attr_accessor :identity
+
       # @return [Sku] The SKU (pricing tier) of the server.
       attr_accessor :sku
 
@@ -115,6 +119,15 @@ module Azure::MariaDB::Mgmt::V2018_06_01_preview
                         name: 'String'
                       }
                   }
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ResourceIdentity'
                 }
               },
               sku: {
