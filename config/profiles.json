@@ -340,7 +340,7 @@
                 },
                 "Microsoft.Cosmosdb": {
                     "management": {
-                        "2019-08-01": ["*"],
+                        "2020-04-01": ["*"],
                         "2019-08-01-preview": ["*"]
                     }
                 },
@@ -1342,7 +1342,7 @@
             "resourceTypes": {
                 "Microsoft.Cosmosdb": {
                     "management": {
-                        "2019-08-01": ["*"],
+                        "2020-04-01": ["*"],
                         "2019-08-01-preview": ["*"]
                     }
                 }
